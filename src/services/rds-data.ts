@@ -132,11 +132,41 @@ export type Arn = string;
 
 export type ArrayOfArray = Array<ArrayValue>;
 export type ArrayValue =
-  | { booleanValues: Array<boolean> }
-  | { longValues: Array<number> }
-  | { doubleValues: Array<number> }
-  | { stringValues: Array<string> }
-  | { arrayValues: Array<ArrayValue> };
+  | {
+      booleanValues: Array<boolean>;
+      longValues?: undefined;
+      doubleValues?: undefined;
+      stringValues?: undefined;
+      arrayValues?: undefined;
+    }
+  | {
+      booleanValues?: undefined;
+      longValues: Array<number>;
+      doubleValues?: undefined;
+      stringValues?: undefined;
+      arrayValues?: undefined;
+    }
+  | {
+      booleanValues?: undefined;
+      longValues?: undefined;
+      doubleValues: Array<number>;
+      stringValues?: undefined;
+      arrayValues?: undefined;
+    }
+  | {
+      booleanValues?: undefined;
+      longValues?: undefined;
+      doubleValues?: undefined;
+      stringValues: Array<string>;
+      arrayValues?: undefined;
+    }
+  | {
+      booleanValues?: undefined;
+      longValues?: undefined;
+      doubleValues?: undefined;
+      stringValues?: undefined;
+      arrayValues: Array<ArrayValue>;
+    };
 export type ArrayValueList = Array<Value>;
 export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
@@ -259,13 +289,69 @@ export interface ExecuteStatementResponse {
   formattedRecords?: string;
 }
 export type Field =
-  | { isNull: boolean }
-  | { booleanValue: boolean }
-  | { longValue: number }
-  | { doubleValue: number }
-  | { stringValue: string }
-  | { blobValue: Uint8Array | string }
-  | { arrayValue: ArrayValue };
+  | {
+      isNull: boolean;
+      booleanValue?: undefined;
+      longValue?: undefined;
+      doubleValue?: undefined;
+      stringValue?: undefined;
+      blobValue?: undefined;
+      arrayValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      booleanValue: boolean;
+      longValue?: undefined;
+      doubleValue?: undefined;
+      stringValue?: undefined;
+      blobValue?: undefined;
+      arrayValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      booleanValue?: undefined;
+      longValue: number;
+      doubleValue?: undefined;
+      stringValue?: undefined;
+      blobValue?: undefined;
+      arrayValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      booleanValue?: undefined;
+      longValue?: undefined;
+      doubleValue: number;
+      stringValue?: undefined;
+      blobValue?: undefined;
+      arrayValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      booleanValue?: undefined;
+      longValue?: undefined;
+      doubleValue?: undefined;
+      stringValue: string;
+      blobValue?: undefined;
+      arrayValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      booleanValue?: undefined;
+      longValue?: undefined;
+      doubleValue?: undefined;
+      stringValue?: undefined;
+      blobValue: Uint8Array | string;
+      arrayValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      booleanValue?: undefined;
+      longValue?: undefined;
+      doubleValue?: undefined;
+      stringValue?: undefined;
+      blobValue?: undefined;
+      arrayValue: ArrayValue;
+    };
 export type FieldList = Array<Field>;
 export declare class ForbiddenException extends EffectData.TaggedError(
   "ForbiddenException",
@@ -392,16 +478,126 @@ export interface UpdateResult {
 }
 export type UpdateResults = Array<UpdateResult>;
 export type Value =
-  | { isNull: boolean }
-  | { bitValue: boolean }
-  | { bigIntValue: number }
-  | { intValue: number }
-  | { doubleValue: number }
-  | { realValue: number }
-  | { stringValue: string }
-  | { blobValue: Uint8Array | string }
-  | { arrayValues: Array<Value> }
-  | { structValue: StructValue };
+  | {
+      isNull: boolean;
+      bitValue?: undefined;
+      bigIntValue?: undefined;
+      intValue?: undefined;
+      doubleValue?: undefined;
+      realValue?: undefined;
+      stringValue?: undefined;
+      blobValue?: undefined;
+      arrayValues?: undefined;
+      structValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      bitValue: boolean;
+      bigIntValue?: undefined;
+      intValue?: undefined;
+      doubleValue?: undefined;
+      realValue?: undefined;
+      stringValue?: undefined;
+      blobValue?: undefined;
+      arrayValues?: undefined;
+      structValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      bitValue?: undefined;
+      bigIntValue: number;
+      intValue?: undefined;
+      doubleValue?: undefined;
+      realValue?: undefined;
+      stringValue?: undefined;
+      blobValue?: undefined;
+      arrayValues?: undefined;
+      structValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      bitValue?: undefined;
+      bigIntValue?: undefined;
+      intValue: number;
+      doubleValue?: undefined;
+      realValue?: undefined;
+      stringValue?: undefined;
+      blobValue?: undefined;
+      arrayValues?: undefined;
+      structValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      bitValue?: undefined;
+      bigIntValue?: undefined;
+      intValue?: undefined;
+      doubleValue: number;
+      realValue?: undefined;
+      stringValue?: undefined;
+      blobValue?: undefined;
+      arrayValues?: undefined;
+      structValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      bitValue?: undefined;
+      bigIntValue?: undefined;
+      intValue?: undefined;
+      doubleValue?: undefined;
+      realValue: number;
+      stringValue?: undefined;
+      blobValue?: undefined;
+      arrayValues?: undefined;
+      structValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      bitValue?: undefined;
+      bigIntValue?: undefined;
+      intValue?: undefined;
+      doubleValue?: undefined;
+      realValue?: undefined;
+      stringValue: string;
+      blobValue?: undefined;
+      arrayValues?: undefined;
+      structValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      bitValue?: undefined;
+      bigIntValue?: undefined;
+      intValue?: undefined;
+      doubleValue?: undefined;
+      realValue?: undefined;
+      stringValue?: undefined;
+      blobValue: Uint8Array | string;
+      arrayValues?: undefined;
+      structValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      bitValue?: undefined;
+      bigIntValue?: undefined;
+      intValue?: undefined;
+      doubleValue?: undefined;
+      realValue?: undefined;
+      stringValue?: undefined;
+      blobValue?: undefined;
+      arrayValues: Array<Value>;
+      structValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      bitValue?: undefined;
+      bigIntValue?: undefined;
+      intValue?: undefined;
+      doubleValue?: undefined;
+      realValue?: undefined;
+      stringValue?: undefined;
+      blobValue?: undefined;
+      arrayValues?: undefined;
+      structValue: StructValue;
+    };
 export declare namespace BatchExecuteStatement {
   export type Input = BatchExecuteStatementRequest;
   export type Output = BatchExecuteStatementResponse;

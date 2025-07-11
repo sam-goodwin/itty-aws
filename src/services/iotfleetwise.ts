@@ -257,8 +257,14 @@ export type CloudWatchLogGroupName = string;
 export type collectionPeriodMs = number;
 
 export type CollectionScheme =
-  | { timeBasedCollectionScheme: TimeBasedCollectionScheme }
-  | { conditionBasedCollectionScheme: ConditionBasedCollectionScheme };
+  | {
+      timeBasedCollectionScheme: TimeBasedCollectionScheme;
+      conditionBasedCollectionScheme?: undefined;
+    }
+  | {
+      timeBasedCollectionScheme?: undefined;
+      conditionBasedCollectionScheme: ConditionBasedCollectionScheme;
+    };
 export type Compression = "OFF" | "SNAPPY";
 export interface ConditionBasedCollectionScheme {
   expression: string;
@@ -423,9 +429,21 @@ export interface CustomStruct {
   comment?: string;
 }
 export type DataDestinationConfig =
-  | { s3Config: S3Config }
-  | { timestreamConfig: TimestreamConfig }
-  | { mqttTopicConfig: MqttTopicConfig };
+  | {
+      s3Config: S3Config;
+      timestreamConfig?: undefined;
+      mqttTopicConfig?: undefined;
+    }
+  | {
+      s3Config?: undefined;
+      timestreamConfig: TimestreamConfig;
+      mqttTopicConfig?: undefined;
+    }
+  | {
+      s3Config?: undefined;
+      timestreamConfig?: undefined;
+      mqttTopicConfig: MqttTopicConfig;
+    };
 export type DataDestinationConfigs = Array<DataDestinationConfig>;
 export type DataExtraDimensionNodePathList = Array<string>;
 export type DataFormat = "JSON" | "PARQUET";
@@ -954,12 +972,54 @@ export type NetworkInterfaceType =
 export type nextToken = string;
 
 export type Node =
-  | { branch: Branch }
-  | { sensor: Sensor }
-  | { actuator: Actuator }
-  | { attribute: Attribute }
-  | { struct: CustomStruct }
-  | { property: CustomProperty };
+  | {
+      branch: Branch;
+      sensor?: undefined;
+      actuator?: undefined;
+      attribute?: undefined;
+      struct?: undefined;
+      property?: undefined;
+    }
+  | {
+      branch?: undefined;
+      sensor: Sensor;
+      actuator?: undefined;
+      attribute?: undefined;
+      struct?: undefined;
+      property?: undefined;
+    }
+  | {
+      branch?: undefined;
+      sensor?: undefined;
+      actuator: Actuator;
+      attribute?: undefined;
+      struct?: undefined;
+      property?: undefined;
+    }
+  | {
+      branch?: undefined;
+      sensor?: undefined;
+      actuator?: undefined;
+      attribute: Attribute;
+      struct?: undefined;
+      property?: undefined;
+    }
+  | {
+      branch?: undefined;
+      sensor?: undefined;
+      actuator?: undefined;
+      attribute?: undefined;
+      struct: CustomStruct;
+      property?: undefined;
+    }
+  | {
+      branch?: undefined;
+      sensor?: undefined;
+      actuator?: undefined;
+      attribute?: undefined;
+      struct?: undefined;
+      property: CustomProperty;
+    };
 export interface NodeCounts {
   totalNodes?: number;
   totalBranches?: number;
@@ -1182,8 +1242,8 @@ export type SignalDecoderType =
   | "MESSAGE_SIGNAL"
   | "CUSTOM_DECODING_SIGNAL";
 export type SignalFetchConfig =
-  | { timeBased: TimeBasedSignalFetchConfig }
-  | { conditionBased: ConditionBasedSignalFetchConfig };
+  | { timeBased: TimeBasedSignalFetchConfig; conditionBased?: undefined }
+  | { timeBased?: undefined; conditionBased: ConditionBasedSignalFetchConfig };
 export interface SignalFetchInformation {
   fullyQualifiedName: string;
   signalFetchConfig: SignalFetchConfig;
@@ -1227,8 +1287,8 @@ export interface StateTemplateSummary {
   id?: string;
 }
 export type StateTemplateUpdateStrategy =
-  | { periodic: PeriodicStateTemplateUpdateStrategy }
-  | { onChange: OnChangeStateTemplateUpdateStrategy };
+  | { periodic: PeriodicStateTemplateUpdateStrategy; onChange?: undefined }
+  | { periodic?: undefined; onChange: OnChangeStateTemplateUpdateStrategy };
 export type statusStr = string;
 
 export type StorageCompressionFormat = "NONE" | "GZIP";
@@ -1251,9 +1311,19 @@ export type StorageMinimumTimeToLiveValue = number;
 export type Iotfleetwisestring = string;
 
 export type StructuredMessage =
-  | { primitiveMessageDefinition: PrimitiveMessageDefinition }
-  | { structuredMessageListDefinition: StructuredMessageListDefinition }
   | {
+      primitiveMessageDefinition: PrimitiveMessageDefinition;
+      structuredMessageListDefinition?: undefined;
+      structuredMessageDefinition?: undefined;
+    }
+  | {
+      primitiveMessageDefinition?: undefined;
+      structuredMessageListDefinition: StructuredMessageListDefinition;
+      structuredMessageDefinition?: undefined;
+    }
+  | {
+      primitiveMessageDefinition?: undefined;
+      structuredMessageListDefinition?: undefined;
       structuredMessageDefinition: Array<StructuredMessageFieldNameAndDataTypePair>;
     };
 export type StructuredMessageDefinition =

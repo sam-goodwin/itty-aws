@@ -375,7 +375,9 @@ export type AccountAggregations = Array<FindingAggregationAccountDetails>;
 export type AccountIdsList = Array<string>;
 export type AclCanonicalId = string;
 
-export type AclGrantee = { id: string } | { uri: string };
+export type AclGrantee =
+  | { id: string; uri?: undefined }
+  | { id?: undefined; uri: string };
 export type AclPermission = string;
 
 export type AclUri = string;
@@ -414,8 +416,8 @@ export interface AnalyzedResourceSummary {
 export type AnalyzerArn = string;
 
 export type AnalyzerConfiguration =
-  | { unusedAccess: UnusedAccessConfiguration }
-  | { internalAccess: InternalAccessConfiguration };
+  | { unusedAccess: UnusedAccessConfiguration; internalAccess?: undefined }
+  | { unusedAccess?: undefined; internalAccess: InternalAccessConfiguration };
 export type AnalyzersList = Array<AnalyzerSummary>;
 export type AnalyzerStatus = string;
 
@@ -497,20 +499,230 @@ export interface CloudTrailProperties {
 }
 export type ConditionKeyMap = Record<string, string>;
 export type Configuration =
-  | { ebsSnapshot: EbsSnapshotConfiguration }
-  | { ecrRepository: EcrRepositoryConfiguration }
-  | { iamRole: IamRoleConfiguration }
-  | { efsFileSystem: EfsFileSystemConfiguration }
-  | { kmsKey: KmsKeyConfiguration }
-  | { rdsDbClusterSnapshot: RdsDbClusterSnapshotConfiguration }
-  | { rdsDbSnapshot: RdsDbSnapshotConfiguration }
-  | { secretsManagerSecret: SecretsManagerSecretConfiguration }
-  | { s3Bucket: S3BucketConfiguration }
-  | { snsTopic: SnsTopicConfiguration }
-  | { sqsQueue: SqsQueueConfiguration }
-  | { s3ExpressDirectoryBucket: S3ExpressDirectoryBucketConfiguration }
-  | { dynamodbStream: DynamodbStreamConfiguration }
-  | { dynamodbTable: DynamodbTableConfiguration };
+  | {
+      ebsSnapshot: EbsSnapshotConfiguration;
+      ecrRepository?: undefined;
+      iamRole?: undefined;
+      efsFileSystem?: undefined;
+      kmsKey?: undefined;
+      rdsDbClusterSnapshot?: undefined;
+      rdsDbSnapshot?: undefined;
+      secretsManagerSecret?: undefined;
+      s3Bucket?: undefined;
+      snsTopic?: undefined;
+      sqsQueue?: undefined;
+      s3ExpressDirectoryBucket?: undefined;
+      dynamodbStream?: undefined;
+      dynamodbTable?: undefined;
+    }
+  | {
+      ebsSnapshot?: undefined;
+      ecrRepository: EcrRepositoryConfiguration;
+      iamRole?: undefined;
+      efsFileSystem?: undefined;
+      kmsKey?: undefined;
+      rdsDbClusterSnapshot?: undefined;
+      rdsDbSnapshot?: undefined;
+      secretsManagerSecret?: undefined;
+      s3Bucket?: undefined;
+      snsTopic?: undefined;
+      sqsQueue?: undefined;
+      s3ExpressDirectoryBucket?: undefined;
+      dynamodbStream?: undefined;
+      dynamodbTable?: undefined;
+    }
+  | {
+      ebsSnapshot?: undefined;
+      ecrRepository?: undefined;
+      iamRole: IamRoleConfiguration;
+      efsFileSystem?: undefined;
+      kmsKey?: undefined;
+      rdsDbClusterSnapshot?: undefined;
+      rdsDbSnapshot?: undefined;
+      secretsManagerSecret?: undefined;
+      s3Bucket?: undefined;
+      snsTopic?: undefined;
+      sqsQueue?: undefined;
+      s3ExpressDirectoryBucket?: undefined;
+      dynamodbStream?: undefined;
+      dynamodbTable?: undefined;
+    }
+  | {
+      ebsSnapshot?: undefined;
+      ecrRepository?: undefined;
+      iamRole?: undefined;
+      efsFileSystem: EfsFileSystemConfiguration;
+      kmsKey?: undefined;
+      rdsDbClusterSnapshot?: undefined;
+      rdsDbSnapshot?: undefined;
+      secretsManagerSecret?: undefined;
+      s3Bucket?: undefined;
+      snsTopic?: undefined;
+      sqsQueue?: undefined;
+      s3ExpressDirectoryBucket?: undefined;
+      dynamodbStream?: undefined;
+      dynamodbTable?: undefined;
+    }
+  | {
+      ebsSnapshot?: undefined;
+      ecrRepository?: undefined;
+      iamRole?: undefined;
+      efsFileSystem?: undefined;
+      kmsKey: KmsKeyConfiguration;
+      rdsDbClusterSnapshot?: undefined;
+      rdsDbSnapshot?: undefined;
+      secretsManagerSecret?: undefined;
+      s3Bucket?: undefined;
+      snsTopic?: undefined;
+      sqsQueue?: undefined;
+      s3ExpressDirectoryBucket?: undefined;
+      dynamodbStream?: undefined;
+      dynamodbTable?: undefined;
+    }
+  | {
+      ebsSnapshot?: undefined;
+      ecrRepository?: undefined;
+      iamRole?: undefined;
+      efsFileSystem?: undefined;
+      kmsKey?: undefined;
+      rdsDbClusterSnapshot: RdsDbClusterSnapshotConfiguration;
+      rdsDbSnapshot?: undefined;
+      secretsManagerSecret?: undefined;
+      s3Bucket?: undefined;
+      snsTopic?: undefined;
+      sqsQueue?: undefined;
+      s3ExpressDirectoryBucket?: undefined;
+      dynamodbStream?: undefined;
+      dynamodbTable?: undefined;
+    }
+  | {
+      ebsSnapshot?: undefined;
+      ecrRepository?: undefined;
+      iamRole?: undefined;
+      efsFileSystem?: undefined;
+      kmsKey?: undefined;
+      rdsDbClusterSnapshot?: undefined;
+      rdsDbSnapshot: RdsDbSnapshotConfiguration;
+      secretsManagerSecret?: undefined;
+      s3Bucket?: undefined;
+      snsTopic?: undefined;
+      sqsQueue?: undefined;
+      s3ExpressDirectoryBucket?: undefined;
+      dynamodbStream?: undefined;
+      dynamodbTable?: undefined;
+    }
+  | {
+      ebsSnapshot?: undefined;
+      ecrRepository?: undefined;
+      iamRole?: undefined;
+      efsFileSystem?: undefined;
+      kmsKey?: undefined;
+      rdsDbClusterSnapshot?: undefined;
+      rdsDbSnapshot?: undefined;
+      secretsManagerSecret: SecretsManagerSecretConfiguration;
+      s3Bucket?: undefined;
+      snsTopic?: undefined;
+      sqsQueue?: undefined;
+      s3ExpressDirectoryBucket?: undefined;
+      dynamodbStream?: undefined;
+      dynamodbTable?: undefined;
+    }
+  | {
+      ebsSnapshot?: undefined;
+      ecrRepository?: undefined;
+      iamRole?: undefined;
+      efsFileSystem?: undefined;
+      kmsKey?: undefined;
+      rdsDbClusterSnapshot?: undefined;
+      rdsDbSnapshot?: undefined;
+      secretsManagerSecret?: undefined;
+      s3Bucket: S3BucketConfiguration;
+      snsTopic?: undefined;
+      sqsQueue?: undefined;
+      s3ExpressDirectoryBucket?: undefined;
+      dynamodbStream?: undefined;
+      dynamodbTable?: undefined;
+    }
+  | {
+      ebsSnapshot?: undefined;
+      ecrRepository?: undefined;
+      iamRole?: undefined;
+      efsFileSystem?: undefined;
+      kmsKey?: undefined;
+      rdsDbClusterSnapshot?: undefined;
+      rdsDbSnapshot?: undefined;
+      secretsManagerSecret?: undefined;
+      s3Bucket?: undefined;
+      snsTopic: SnsTopicConfiguration;
+      sqsQueue?: undefined;
+      s3ExpressDirectoryBucket?: undefined;
+      dynamodbStream?: undefined;
+      dynamodbTable?: undefined;
+    }
+  | {
+      ebsSnapshot?: undefined;
+      ecrRepository?: undefined;
+      iamRole?: undefined;
+      efsFileSystem?: undefined;
+      kmsKey?: undefined;
+      rdsDbClusterSnapshot?: undefined;
+      rdsDbSnapshot?: undefined;
+      secretsManagerSecret?: undefined;
+      s3Bucket?: undefined;
+      snsTopic?: undefined;
+      sqsQueue: SqsQueueConfiguration;
+      s3ExpressDirectoryBucket?: undefined;
+      dynamodbStream?: undefined;
+      dynamodbTable?: undefined;
+    }
+  | {
+      ebsSnapshot?: undefined;
+      ecrRepository?: undefined;
+      iamRole?: undefined;
+      efsFileSystem?: undefined;
+      kmsKey?: undefined;
+      rdsDbClusterSnapshot?: undefined;
+      rdsDbSnapshot?: undefined;
+      secretsManagerSecret?: undefined;
+      s3Bucket?: undefined;
+      snsTopic?: undefined;
+      sqsQueue?: undefined;
+      s3ExpressDirectoryBucket: S3ExpressDirectoryBucketConfiguration;
+      dynamodbStream?: undefined;
+      dynamodbTable?: undefined;
+    }
+  | {
+      ebsSnapshot?: undefined;
+      ecrRepository?: undefined;
+      iamRole?: undefined;
+      efsFileSystem?: undefined;
+      kmsKey?: undefined;
+      rdsDbClusterSnapshot?: undefined;
+      rdsDbSnapshot?: undefined;
+      secretsManagerSecret?: undefined;
+      s3Bucket?: undefined;
+      snsTopic?: undefined;
+      sqsQueue?: undefined;
+      s3ExpressDirectoryBucket?: undefined;
+      dynamodbStream: DynamodbStreamConfiguration;
+      dynamodbTable?: undefined;
+    }
+  | {
+      ebsSnapshot?: undefined;
+      ecrRepository?: undefined;
+      iamRole?: undefined;
+      efsFileSystem?: undefined;
+      kmsKey?: undefined;
+      rdsDbClusterSnapshot?: undefined;
+      rdsDbSnapshot?: undefined;
+      secretsManagerSecret?: undefined;
+      s3Bucket?: undefined;
+      snsTopic?: undefined;
+      sqsQueue?: undefined;
+      s3ExpressDirectoryBucket?: undefined;
+      dynamodbStream?: undefined;
+      dynamodbTable: DynamodbTableConfiguration;
+    };
 export type ConfigurationsMap = Record<string, Configuration>;
 export type ConfigurationsMapKey = string;
 
@@ -635,12 +847,54 @@ export type FindingAggregationAccountDetailsMap = Record<string, number>;
 export type FindingChangeType = string;
 
 export type FindingDetails =
-  | { internalAccessDetails: InternalAccessDetails }
-  | { externalAccessDetails: ExternalAccessDetails }
-  | { unusedPermissionDetails: UnusedPermissionDetails }
-  | { unusedIamUserAccessKeyDetails: UnusedIamUserAccessKeyDetails }
-  | { unusedIamRoleDetails: UnusedIamRoleDetails }
-  | { unusedIamUserPasswordDetails: UnusedIamUserPasswordDetails };
+  | {
+      internalAccessDetails: InternalAccessDetails;
+      externalAccessDetails?: undefined;
+      unusedPermissionDetails?: undefined;
+      unusedIamUserAccessKeyDetails?: undefined;
+      unusedIamRoleDetails?: undefined;
+      unusedIamUserPasswordDetails?: undefined;
+    }
+  | {
+      internalAccessDetails?: undefined;
+      externalAccessDetails: ExternalAccessDetails;
+      unusedPermissionDetails?: undefined;
+      unusedIamUserAccessKeyDetails?: undefined;
+      unusedIamRoleDetails?: undefined;
+      unusedIamUserPasswordDetails?: undefined;
+    }
+  | {
+      internalAccessDetails?: undefined;
+      externalAccessDetails?: undefined;
+      unusedPermissionDetails: UnusedPermissionDetails;
+      unusedIamUserAccessKeyDetails?: undefined;
+      unusedIamRoleDetails?: undefined;
+      unusedIamUserPasswordDetails?: undefined;
+    }
+  | {
+      internalAccessDetails?: undefined;
+      externalAccessDetails?: undefined;
+      unusedPermissionDetails?: undefined;
+      unusedIamUserAccessKeyDetails: UnusedIamUserAccessKeyDetails;
+      unusedIamRoleDetails?: undefined;
+      unusedIamUserPasswordDetails?: undefined;
+    }
+  | {
+      internalAccessDetails?: undefined;
+      externalAccessDetails?: undefined;
+      unusedPermissionDetails?: undefined;
+      unusedIamUserAccessKeyDetails?: undefined;
+      unusedIamRoleDetails: UnusedIamRoleDetails;
+      unusedIamUserPasswordDetails?: undefined;
+    }
+  | {
+      internalAccessDetails?: undefined;
+      externalAccessDetails?: undefined;
+      unusedPermissionDetails?: undefined;
+      unusedIamUserAccessKeyDetails?: undefined;
+      unusedIamRoleDetails?: undefined;
+      unusedIamUserPasswordDetails: UnusedIamUserPasswordDetails;
+    };
 export type FindingDetailsList = Array<FindingDetails>;
 export type FindingId = string;
 
@@ -659,9 +913,21 @@ export type FindingSourceList = Array<FindingSource>;
 export type FindingSourceType = string;
 
 export type FindingsStatistics =
-  | { externalAccessFindingsStatistics: ExternalAccessFindingsStatistics }
-  | { internalAccessFindingsStatistics: InternalAccessFindingsStatistics }
-  | { unusedAccessFindingsStatistics: UnusedAccessFindingsStatistics };
+  | {
+      externalAccessFindingsStatistics: ExternalAccessFindingsStatistics;
+      internalAccessFindingsStatistics?: undefined;
+      unusedAccessFindingsStatistics?: undefined;
+    }
+  | {
+      externalAccessFindingsStatistics?: undefined;
+      internalAccessFindingsStatistics: InternalAccessFindingsStatistics;
+      unusedAccessFindingsStatistics?: undefined;
+    }
+  | {
+      externalAccessFindingsStatistics?: undefined;
+      internalAccessFindingsStatistics?: undefined;
+      unusedAccessFindingsStatistics: UnusedAccessFindingsStatistics;
+    };
 export type FindingsStatisticsList = Array<FindingsStatistics>;
 export type FindingStatus = string;
 
@@ -1011,15 +1277,28 @@ export type LocationList = Array<Location>;
 export type Name = string;
 
 export type NetworkOriginConfiguration =
-  | { vpcConfiguration: VpcConfiguration }
-  | { internetConfiguration: InternetConfiguration };
+  | { vpcConfiguration: VpcConfiguration; internetConfiguration?: undefined }
+  | {
+      vpcConfiguration?: undefined;
+      internetConfiguration: InternetConfiguration;
+    };
 export type OrderBy = string;
 
 export type PathElement =
-  | { index: number }
-  | { key: string }
-  | { substring: Substring }
-  | { value: string };
+  | { index: number; key?: undefined; substring?: undefined; value?: undefined }
+  | { index?: undefined; key: string; substring?: undefined; value?: undefined }
+  | {
+      index?: undefined;
+      key?: undefined;
+      substring: Substring;
+      value?: undefined;
+    }
+  | {
+      index?: undefined;
+      key?: undefined;
+      substring?: undefined;
+      value: string;
+    };
 export type PathElementList = Array<PathElement>;
 export type PolicyDocument = string;
 

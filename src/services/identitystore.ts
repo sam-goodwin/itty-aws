@@ -54,8 +54,8 @@ export interface Address {
 }
 export type Addresses = Array<Address>;
 export type AlternateIdentifier =
-  | { ExternalId: ExternalId }
-  | { UniqueAttribute: UniqueAttribute };
+  | { ExternalId: ExternalId; UniqueAttribute?: undefined }
+  | { ExternalId?: undefined; UniqueAttribute: UniqueAttribute };
 export interface AttributeOperation {
   AttributePath: string;
   AttributeValue?: unknown;

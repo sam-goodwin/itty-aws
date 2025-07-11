@@ -2185,11 +2185,41 @@ export type TagsNumberResults = number;
 export type TagValue = string;
 
 export type TypedAttributeValue =
-  | { StringValue: string }
-  | { BinaryValue: Uint8Array | string }
-  | { BooleanValue: boolean }
-  | { NumberValue: string }
-  | { DatetimeValue: Date | string };
+  | {
+      StringValue: string;
+      BinaryValue?: undefined;
+      BooleanValue?: undefined;
+      NumberValue?: undefined;
+      DatetimeValue?: undefined;
+    }
+  | {
+      StringValue?: undefined;
+      BinaryValue: Uint8Array | string;
+      BooleanValue?: undefined;
+      NumberValue?: undefined;
+      DatetimeValue?: undefined;
+    }
+  | {
+      StringValue?: undefined;
+      BinaryValue?: undefined;
+      BooleanValue: boolean;
+      NumberValue?: undefined;
+      DatetimeValue?: undefined;
+    }
+  | {
+      StringValue?: undefined;
+      BinaryValue?: undefined;
+      BooleanValue?: undefined;
+      NumberValue: string;
+      DatetimeValue?: undefined;
+    }
+  | {
+      StringValue?: undefined;
+      BinaryValue?: undefined;
+      BooleanValue?: undefined;
+      NumberValue?: undefined;
+      DatetimeValue: Date | string;
+    };
 export interface TypedAttributeValueRange {
   StartMode: RangeMode;
   StartValue?: TypedAttributeValue;

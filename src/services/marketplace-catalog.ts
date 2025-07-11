@@ -447,21 +447,133 @@ export type EntitySummaryList = Array<EntitySummary>;
 export type EntityType = string;
 
 export type EntityTypeFilters =
-  | { DataProductFilters: DataProductFilters }
-  | { SaaSProductFilters: SaaSProductFilters }
-  | { AmiProductFilters: AmiProductFilters }
-  | { OfferFilters: OfferFilters }
-  | { ContainerProductFilters: ContainerProductFilters }
-  | { ResaleAuthorizationFilters: ResaleAuthorizationFilters }
-  | { MachineLearningProductFilters: MachineLearningProductFilters };
+  | {
+      DataProductFilters: DataProductFilters;
+      SaaSProductFilters?: undefined;
+      AmiProductFilters?: undefined;
+      OfferFilters?: undefined;
+      ContainerProductFilters?: undefined;
+      ResaleAuthorizationFilters?: undefined;
+      MachineLearningProductFilters?: undefined;
+    }
+  | {
+      DataProductFilters?: undefined;
+      SaaSProductFilters: SaaSProductFilters;
+      AmiProductFilters?: undefined;
+      OfferFilters?: undefined;
+      ContainerProductFilters?: undefined;
+      ResaleAuthorizationFilters?: undefined;
+      MachineLearningProductFilters?: undefined;
+    }
+  | {
+      DataProductFilters?: undefined;
+      SaaSProductFilters?: undefined;
+      AmiProductFilters: AmiProductFilters;
+      OfferFilters?: undefined;
+      ContainerProductFilters?: undefined;
+      ResaleAuthorizationFilters?: undefined;
+      MachineLearningProductFilters?: undefined;
+    }
+  | {
+      DataProductFilters?: undefined;
+      SaaSProductFilters?: undefined;
+      AmiProductFilters?: undefined;
+      OfferFilters: OfferFilters;
+      ContainerProductFilters?: undefined;
+      ResaleAuthorizationFilters?: undefined;
+      MachineLearningProductFilters?: undefined;
+    }
+  | {
+      DataProductFilters?: undefined;
+      SaaSProductFilters?: undefined;
+      AmiProductFilters?: undefined;
+      OfferFilters?: undefined;
+      ContainerProductFilters: ContainerProductFilters;
+      ResaleAuthorizationFilters?: undefined;
+      MachineLearningProductFilters?: undefined;
+    }
+  | {
+      DataProductFilters?: undefined;
+      SaaSProductFilters?: undefined;
+      AmiProductFilters?: undefined;
+      OfferFilters?: undefined;
+      ContainerProductFilters?: undefined;
+      ResaleAuthorizationFilters: ResaleAuthorizationFilters;
+      MachineLearningProductFilters?: undefined;
+    }
+  | {
+      DataProductFilters?: undefined;
+      SaaSProductFilters?: undefined;
+      AmiProductFilters?: undefined;
+      OfferFilters?: undefined;
+      ContainerProductFilters?: undefined;
+      ResaleAuthorizationFilters?: undefined;
+      MachineLearningProductFilters: MachineLearningProductFilters;
+    };
 export type EntityTypeSort =
-  | { DataProductSort: DataProductSort }
-  | { SaaSProductSort: SaaSProductSort }
-  | { AmiProductSort: AmiProductSort }
-  | { OfferSort: OfferSort }
-  | { ContainerProductSort: ContainerProductSort }
-  | { ResaleAuthorizationSort: ResaleAuthorizationSort }
-  | { MachineLearningProductSort: MachineLearningProductSort };
+  | {
+      DataProductSort: DataProductSort;
+      SaaSProductSort?: undefined;
+      AmiProductSort?: undefined;
+      OfferSort?: undefined;
+      ContainerProductSort?: undefined;
+      ResaleAuthorizationSort?: undefined;
+      MachineLearningProductSort?: undefined;
+    }
+  | {
+      DataProductSort?: undefined;
+      SaaSProductSort: SaaSProductSort;
+      AmiProductSort?: undefined;
+      OfferSort?: undefined;
+      ContainerProductSort?: undefined;
+      ResaleAuthorizationSort?: undefined;
+      MachineLearningProductSort?: undefined;
+    }
+  | {
+      DataProductSort?: undefined;
+      SaaSProductSort?: undefined;
+      AmiProductSort: AmiProductSort;
+      OfferSort?: undefined;
+      ContainerProductSort?: undefined;
+      ResaleAuthorizationSort?: undefined;
+      MachineLearningProductSort?: undefined;
+    }
+  | {
+      DataProductSort?: undefined;
+      SaaSProductSort?: undefined;
+      AmiProductSort?: undefined;
+      OfferSort: OfferSort;
+      ContainerProductSort?: undefined;
+      ResaleAuthorizationSort?: undefined;
+      MachineLearningProductSort?: undefined;
+    }
+  | {
+      DataProductSort?: undefined;
+      SaaSProductSort?: undefined;
+      AmiProductSort?: undefined;
+      OfferSort?: undefined;
+      ContainerProductSort: ContainerProductSort;
+      ResaleAuthorizationSort?: undefined;
+      MachineLearningProductSort?: undefined;
+    }
+  | {
+      DataProductSort?: undefined;
+      SaaSProductSort?: undefined;
+      AmiProductSort?: undefined;
+      OfferSort?: undefined;
+      ContainerProductSort?: undefined;
+      ResaleAuthorizationSort: ResaleAuthorizationSort;
+      MachineLearningProductSort?: undefined;
+    }
+  | {
+      DataProductSort?: undefined;
+      SaaSProductSort?: undefined;
+      AmiProductSort?: undefined;
+      OfferSort?: undefined;
+      ContainerProductSort?: undefined;
+      ResaleAuthorizationSort?: undefined;
+      MachineLearningProductSort: MachineLearningProductSort;
+    };
 export type ErrorCodeString = string;
 
 export interface ErrorDetail {

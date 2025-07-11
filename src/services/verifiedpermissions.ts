@@ -54,14 +54,86 @@ export type ActionType = string;
 export type AmazonResourceName = string;
 
 export type AttributeValue =
-  | { boolean: boolean }
-  | { entityIdentifier: EntityIdentifier }
-  | { long: number }
-  | { string: string }
-  | { set: Array<AttributeValue> }
-  | { record: Record<string, AttributeValue> }
-  | { ipaddr: string }
-  | { decimal: string };
+  | {
+      boolean: boolean;
+      entityIdentifier?: undefined;
+      long?: undefined;
+      string?: undefined;
+      set?: undefined;
+      record?: undefined;
+      ipaddr?: undefined;
+      decimal?: undefined;
+    }
+  | {
+      boolean?: undefined;
+      entityIdentifier: EntityIdentifier;
+      long?: undefined;
+      string?: undefined;
+      set?: undefined;
+      record?: undefined;
+      ipaddr?: undefined;
+      decimal?: undefined;
+    }
+  | {
+      boolean?: undefined;
+      entityIdentifier?: undefined;
+      long: number;
+      string?: undefined;
+      set?: undefined;
+      record?: undefined;
+      ipaddr?: undefined;
+      decimal?: undefined;
+    }
+  | {
+      boolean?: undefined;
+      entityIdentifier?: undefined;
+      long?: undefined;
+      string: string;
+      set?: undefined;
+      record?: undefined;
+      ipaddr?: undefined;
+      decimal?: undefined;
+    }
+  | {
+      boolean?: undefined;
+      entityIdentifier?: undefined;
+      long?: undefined;
+      string?: undefined;
+      set: Array<AttributeValue>;
+      record?: undefined;
+      ipaddr?: undefined;
+      decimal?: undefined;
+    }
+  | {
+      boolean?: undefined;
+      entityIdentifier?: undefined;
+      long?: undefined;
+      string?: undefined;
+      set?: undefined;
+      record: Record<string, AttributeValue>;
+      ipaddr?: undefined;
+      decimal?: undefined;
+    }
+  | {
+      boolean?: undefined;
+      entityIdentifier?: undefined;
+      long?: undefined;
+      string?: undefined;
+      set?: undefined;
+      record?: undefined;
+      ipaddr: string;
+      decimal?: undefined;
+    }
+  | {
+      boolean?: undefined;
+      entityIdentifier?: undefined;
+      long?: undefined;
+      string?: undefined;
+      set?: undefined;
+      record?: undefined;
+      ipaddr?: undefined;
+      decimal: string;
+    };
 export type Audience = string;
 
 export type Audiences = Array<string>;
@@ -181,14 +253,32 @@ export interface CognitoUserPoolConfigurationItem {
   groupConfiguration?: CognitoGroupConfigurationItem;
 }
 export type Configuration =
-  | { cognitoUserPoolConfiguration: CognitoUserPoolConfiguration }
-  | { openIdConnectConfiguration: OpenIdConnectConfiguration };
+  | {
+      cognitoUserPoolConfiguration: CognitoUserPoolConfiguration;
+      openIdConnectConfiguration?: undefined;
+    }
+  | {
+      cognitoUserPoolConfiguration?: undefined;
+      openIdConnectConfiguration: OpenIdConnectConfiguration;
+    };
 export type ConfigurationDetail =
-  | { cognitoUserPoolConfiguration: CognitoUserPoolConfigurationDetail }
-  | { openIdConnectConfiguration: OpenIdConnectConfigurationDetail };
+  | {
+      cognitoUserPoolConfiguration: CognitoUserPoolConfigurationDetail;
+      openIdConnectConfiguration?: undefined;
+    }
+  | {
+      cognitoUserPoolConfiguration?: undefined;
+      openIdConnectConfiguration: OpenIdConnectConfigurationDetail;
+    };
 export type ConfigurationItem =
-  | { cognitoUserPoolConfiguration: CognitoUserPoolConfigurationItem }
-  | { openIdConnectConfiguration: OpenIdConnectConfigurationItem };
+  | {
+      cognitoUserPoolConfiguration: CognitoUserPoolConfigurationItem;
+      openIdConnectConfiguration?: undefined;
+    }
+  | {
+      cognitoUserPoolConfiguration?: undefined;
+      openIdConnectConfiguration: OpenIdConnectConfigurationItem;
+    };
 export declare class ConflictException extends EffectData.TaggedError(
   "ConflictException",
 )<{
@@ -196,8 +286,8 @@ export declare class ConflictException extends EffectData.TaggedError(
   readonly resources: Array<ResourceConflict>;
 }> {}
 export type ContextDefinition =
-  | { contextMap: Record<string, AttributeValue> }
-  | { cedarJson: string };
+  | { contextMap: Record<string, AttributeValue>; cedarJson?: undefined }
+  | { contextMap?: undefined; cedarJson: string };
 export type ContextMap = Record<string, AttributeValue>;
 export interface CreateIdentitySourceInput {
   clientToken?: string;
@@ -282,8 +372,8 @@ export type DeterminingPolicyList = Array<DeterminingPolicyItem>;
 export type DiscoveryUrl = string;
 
 export type EntitiesDefinition =
-  | { entityList: Array<EntityItem> }
-  | { cedarJson: string };
+  | { entityList: Array<EntityItem>; cedarJson?: undefined }
+  | { entityList?: undefined; cedarJson: string };
 export type EntityAttributes = Record<string, AttributeValue>;
 export type EntityId = string;
 
@@ -300,8 +390,8 @@ export interface EntityItem {
 }
 export type EntityList = Array<EntityItem>;
 export type EntityReference =
-  | { unspecified: boolean }
-  | { identifier: EntityIdentifier };
+  | { unspecified: boolean; identifier?: undefined }
+  | { unspecified?: undefined; identifier: EntityIdentifier };
 export type EntityType = string;
 
 export interface EvaluationErrorItem {
@@ -557,25 +647,46 @@ export interface OpenIdConnectIdentityTokenConfigurationItem {
   clientIds?: Array<string>;
 }
 export type OpenIdConnectTokenSelection =
-  | { accessTokenOnly: OpenIdConnectAccessTokenConfiguration }
-  | { identityTokenOnly: OpenIdConnectIdentityTokenConfiguration };
+  | {
+      accessTokenOnly: OpenIdConnectAccessTokenConfiguration;
+      identityTokenOnly?: undefined;
+    }
+  | {
+      accessTokenOnly?: undefined;
+      identityTokenOnly: OpenIdConnectIdentityTokenConfiguration;
+    };
 export type OpenIdConnectTokenSelectionDetail =
-  | { accessTokenOnly: OpenIdConnectAccessTokenConfigurationDetail }
-  | { identityTokenOnly: OpenIdConnectIdentityTokenConfigurationDetail };
+  | {
+      accessTokenOnly: OpenIdConnectAccessTokenConfigurationDetail;
+      identityTokenOnly?: undefined;
+    }
+  | {
+      accessTokenOnly?: undefined;
+      identityTokenOnly: OpenIdConnectIdentityTokenConfigurationDetail;
+    };
 export type OpenIdConnectTokenSelectionItem =
-  | { accessTokenOnly: OpenIdConnectAccessTokenConfigurationItem }
-  | { identityTokenOnly: OpenIdConnectIdentityTokenConfigurationItem };
+  | {
+      accessTokenOnly: OpenIdConnectAccessTokenConfigurationItem;
+      identityTokenOnly?: undefined;
+    }
+  | {
+      accessTokenOnly?: undefined;
+      identityTokenOnly: OpenIdConnectIdentityTokenConfigurationItem;
+    };
 export type OpenIdIssuer = "COGNITO";
 export type ParentList = Array<EntityIdentifier>;
 export type PolicyDefinition =
-  | { static: StaticPolicyDefinition }
-  | { templateLinked: TemplateLinkedPolicyDefinition };
+  | { static: StaticPolicyDefinition; templateLinked?: undefined }
+  | { static?: undefined; templateLinked: TemplateLinkedPolicyDefinition };
 export type PolicyDefinitionDetail =
-  | { static: StaticPolicyDefinitionDetail }
-  | { templateLinked: TemplateLinkedPolicyDefinitionDetail };
+  | { static: StaticPolicyDefinitionDetail; templateLinked?: undefined }
+  | {
+      static?: undefined;
+      templateLinked: TemplateLinkedPolicyDefinitionDetail;
+    };
 export type PolicyDefinitionItem =
-  | { static: StaticPolicyDefinitionItem }
-  | { templateLinked: TemplateLinkedPolicyDefinitionItem };
+  | { static: StaticPolicyDefinitionItem; templateLinked?: undefined }
+  | { static?: undefined; templateLinked: TemplateLinkedPolicyDefinitionItem };
 export type PolicyEffect = "PERMIT" | "FORBID";
 export interface PolicyFilter {
   principal?: EntityReference;
@@ -743,8 +854,14 @@ export interface UpdateCognitoUserPoolConfiguration {
   groupConfiguration?: UpdateCognitoGroupConfiguration;
 }
 export type UpdateConfiguration =
-  | { cognitoUserPoolConfiguration: UpdateCognitoUserPoolConfiguration }
-  | { openIdConnectConfiguration: UpdateOpenIdConnectConfiguration };
+  | {
+      cognitoUserPoolConfiguration: UpdateCognitoUserPoolConfiguration;
+      openIdConnectConfiguration?: undefined;
+    }
+  | {
+      cognitoUserPoolConfiguration?: undefined;
+      openIdConnectConfiguration: UpdateOpenIdConnectConfiguration;
+    };
 export interface UpdateIdentitySourceInput {
   policyStoreId: string;
   identitySourceId: string;
@@ -776,8 +893,14 @@ export interface UpdateOpenIdConnectIdentityTokenConfiguration {
   clientIds?: Array<string>;
 }
 export type UpdateOpenIdConnectTokenSelection =
-  | { accessTokenOnly: UpdateOpenIdConnectAccessTokenConfiguration }
-  | { identityTokenOnly: UpdateOpenIdConnectIdentityTokenConfiguration };
+  | {
+      accessTokenOnly: UpdateOpenIdConnectAccessTokenConfiguration;
+      identityTokenOnly?: undefined;
+    }
+  | {
+      accessTokenOnly?: undefined;
+      identityTokenOnly: UpdateOpenIdConnectIdentityTokenConfiguration;
+    };
 export type UpdatePolicyDefinition = { static: UpdateStaticPolicyDefinition };
 export interface UpdatePolicyInput {
   policyStoreId: string;

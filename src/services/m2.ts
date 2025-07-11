@@ -104,8 +104,14 @@ export type ArnList = Array<string>;
 export type AuthSecretsManagerArn = string;
 
 export type BatchJobDefinition =
-  | { fileBatchJobDefinition: FileBatchJobDefinition }
-  | { scriptBatchJobDefinition: ScriptBatchJobDefinition };
+  | {
+      fileBatchJobDefinition: FileBatchJobDefinition;
+      scriptBatchJobDefinition?: undefined;
+    }
+  | {
+      fileBatchJobDefinition?: undefined;
+      scriptBatchJobDefinition: ScriptBatchJobDefinition;
+    };
 export type BatchJobDefinitions = Array<BatchJobDefinition>;
 export type BatchJobExecutionStatus = string;
 
@@ -123,10 +129,30 @@ export interface BatchJobExecutionSummary {
 }
 export type BatchJobExecutionSummaryList = Array<BatchJobExecutionSummary>;
 export type BatchJobIdentifier =
-  | { fileBatchJobIdentifier: FileBatchJobIdentifier }
-  | { scriptBatchJobIdentifier: ScriptBatchJobIdentifier }
-  | { s3BatchJobIdentifier: S3BatchJobIdentifier }
-  | { restartBatchJobIdentifier: RestartBatchJobIdentifier };
+  | {
+      fileBatchJobIdentifier: FileBatchJobIdentifier;
+      scriptBatchJobIdentifier?: undefined;
+      s3BatchJobIdentifier?: undefined;
+      restartBatchJobIdentifier?: undefined;
+    }
+  | {
+      fileBatchJobIdentifier?: undefined;
+      scriptBatchJobIdentifier: ScriptBatchJobIdentifier;
+      s3BatchJobIdentifier?: undefined;
+      restartBatchJobIdentifier?: undefined;
+    }
+  | {
+      fileBatchJobIdentifier?: undefined;
+      scriptBatchJobIdentifier?: undefined;
+      s3BatchJobIdentifier: S3BatchJobIdentifier;
+      restartBatchJobIdentifier?: undefined;
+    }
+  | {
+      fileBatchJobIdentifier?: undefined;
+      scriptBatchJobIdentifier?: undefined;
+      s3BatchJobIdentifier?: undefined;
+      restartBatchJobIdentifier: RestartBatchJobIdentifier;
+    };
 export type BatchJobParametersMap = Record<string, string>;
 export type BatchJobStepList = Array<JobStep>;
 export type BatchJobType = string;
@@ -223,13 +249,33 @@ export interface DataSet {
   recordLength: RecordLength;
 }
 export type DatasetDetailOrgAttributes =
-  | { vsam: VsamDetailAttributes }
-  | { gdg: GdgDetailAttributes }
-  | { po: PoDetailAttributes }
-  | { ps: PsDetailAttributes };
+  | {
+      vsam: VsamDetailAttributes;
+      gdg?: undefined;
+      po?: undefined;
+      ps?: undefined;
+    }
+  | {
+      vsam?: undefined;
+      gdg: GdgDetailAttributes;
+      po?: undefined;
+      ps?: undefined;
+    }
+  | {
+      vsam?: undefined;
+      gdg?: undefined;
+      po: PoDetailAttributes;
+      ps?: undefined;
+    }
+  | {
+      vsam?: undefined;
+      gdg?: undefined;
+      po?: undefined;
+      ps: PsDetailAttributes;
+    };
 export type DataSetExportConfig =
-  | { s3Location: string }
-  | { dataSets: Array<DataSetExportItem> };
+  | { s3Location: string; dataSets?: undefined }
+  | { s3Location?: undefined; dataSets: Array<DataSetExportItem> };
 export interface DataSetExportItem {
   datasetName: string;
   externalLocation: ExternalLocation;
@@ -250,8 +296,8 @@ export interface DataSetExportTask {
 }
 export type DataSetExportTaskList = Array<DataSetExportTask>;
 export type DataSetImportConfig =
-  | { s3Location: string }
-  | { dataSets: Array<DataSetImportItem> };
+  | { s3Location: string; dataSets?: undefined }
+  | { s3Location?: undefined; dataSets: Array<DataSetImportItem> };
 export interface DataSetImportItem {
   dataSet: DataSet;
   externalLocation: ExternalLocation;
@@ -272,10 +318,10 @@ export interface DataSetImportTask {
 }
 export type DataSetImportTaskList = Array<DataSetImportTask>;
 export type DatasetOrgAttributes =
-  | { vsam: VsamAttributes }
-  | { gdg: GdgAttributes }
-  | { po: PoAttributes }
-  | { ps: PsAttributes };
+  | { vsam: VsamAttributes; gdg?: undefined; po?: undefined; ps?: undefined }
+  | { vsam?: undefined; gdg: GdgAttributes; po?: undefined; ps?: undefined }
+  | { vsam?: undefined; gdg?: undefined; po: PoAttributes; ps?: undefined }
+  | { vsam?: undefined; gdg?: undefined; po?: undefined; ps: PsAttributes };
 export type DataSetsSummaryList = Array<DataSetSummary>;
 export interface DataSetSummary {
   dataSetName: string;
@@ -287,7 +333,9 @@ export interface DataSetSummary {
 }
 export type DataSetTaskLifecycle = string;
 
-export type Definition = { s3Location: string } | { content: string };
+export type Definition =
+  | { s3Location: string; content?: undefined }
+  | { s3Location?: undefined; content: string };
 export interface DeleteApplicationFromEnvironmentRequest {
   applicationId: string;
   environmentId: string;
@@ -526,7 +574,9 @@ export declare class InternalServerException extends EffectData.TaggedError(
   readonly message: string;
   readonly retryAfterSeconds?: number;
 }> {}
-export type JobIdentifier = { fileName: string } | { scriptName: string };
+export type JobIdentifier =
+  | { fileName: string; scriptName?: undefined }
+  | { fileName?: undefined; scriptName: string };
 export interface JobStep {
   stepNumber?: number;
   stepName?: string;
@@ -765,8 +815,8 @@ export interface StopApplicationRequest {
 }
 export interface StopApplicationResponse {}
 export type StorageConfiguration =
-  | { efs: EfsStorageConfiguration }
-  | { fsx: FsxStorageConfiguration };
+  | { efs: EfsStorageConfiguration; fsx?: undefined }
+  | { efs?: undefined; fsx: FsxStorageConfiguration };
 export type StorageConfigurationList = Array<StorageConfiguration>;
 export type String100 = string;
 

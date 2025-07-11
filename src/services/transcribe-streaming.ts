@@ -72,8 +72,8 @@ export interface AudioEvent {
   AudioChunk?: Uint8Array | string;
 }
 export type AudioStream =
-  | { AudioEvent: AudioEvent }
-  | { ConfigurationEvent: ConfigurationEvent };
+  | { AudioEvent: AudioEvent; ConfigurationEvent?: undefined }
+  | { AudioEvent?: undefined; ConfigurationEvent: ConfigurationEvent };
 export declare class BadRequestException extends EffectData.TaggedError(
   "BadRequestException",
 )<{
@@ -113,13 +113,69 @@ export type CallAnalyticsLanguageCode =
   | "DE_DE"
   | "PT_BR";
 export type CallAnalyticsTranscriptResultStream =
-  | { UtteranceEvent: UtteranceEvent }
-  | { CategoryEvent: CategoryEvent }
-  | { BadRequestException: BadRequestException }
-  | { LimitExceededException: LimitExceededException }
-  | { InternalFailureException: InternalFailureException }
-  | { ConflictException: ConflictException }
-  | { ServiceUnavailableException: ServiceUnavailableException };
+  | {
+      UtteranceEvent: UtteranceEvent;
+      CategoryEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      UtteranceEvent?: undefined;
+      CategoryEvent: CategoryEvent;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      UtteranceEvent?: undefined;
+      CategoryEvent?: undefined;
+      BadRequestException: BadRequestException;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      UtteranceEvent?: undefined;
+      CategoryEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException: LimitExceededException;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      UtteranceEvent?: undefined;
+      CategoryEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException: InternalFailureException;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      UtteranceEvent?: undefined;
+      CategoryEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException: ConflictException;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      UtteranceEvent?: undefined;
+      CategoryEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException: ServiceUnavailableException;
+    };
 export interface CategoryEvent {
   MatchedCategories?: Array<string>;
   MatchedDetails?: Record<string, PointsOfInterest>;
@@ -341,9 +397,21 @@ export interface MedicalScribeEncryptionSettings {
   KmsKeyId: string;
 }
 export type MedicalScribeInputStream =
-  | { AudioEvent: MedicalScribeAudioEvent }
-  | { SessionControlEvent: MedicalScribeSessionControlEvent }
-  | { ConfigurationEvent: MedicalScribeConfigurationEvent };
+  | {
+      AudioEvent: MedicalScribeAudioEvent;
+      SessionControlEvent?: undefined;
+      ConfigurationEvent?: undefined;
+    }
+  | {
+      AudioEvent?: undefined;
+      SessionControlEvent: MedicalScribeSessionControlEvent;
+      ConfigurationEvent?: undefined;
+    }
+  | {
+      AudioEvent?: undefined;
+      SessionControlEvent?: undefined;
+      ConfigurationEvent: MedicalScribeConfigurationEvent;
+    };
 export type MedicalScribeLanguageCode = "EN_US";
 export type MedicalScribeMediaEncoding = "PCM" | "OGG_OPUS" | "FLAC";
 export type MedicalScribeMediaSampleRateHertz = number;
@@ -364,12 +432,54 @@ export interface MedicalScribePostStreamAnalyticsSettings {
   ClinicalNoteGenerationSettings: ClinicalNoteGenerationSettings;
 }
 export type MedicalScribeResultStream =
-  | { TranscriptEvent: MedicalScribeTranscriptEvent }
-  | { BadRequestException: BadRequestException }
-  | { LimitExceededException: LimitExceededException }
-  | { InternalFailureException: InternalFailureException }
-  | { ConflictException: ConflictException }
-  | { ServiceUnavailableException: ServiceUnavailableException };
+  | {
+      TranscriptEvent: MedicalScribeTranscriptEvent;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      TranscriptEvent?: undefined;
+      BadRequestException: BadRequestException;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      TranscriptEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException: LimitExceededException;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      TranscriptEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException: InternalFailureException;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      TranscriptEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException: ConflictException;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      TranscriptEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException: ServiceUnavailableException;
+    };
 export interface MedicalScribeSessionControlEvent {
   Type: MedicalScribeSessionControlEventType;
 }
@@ -427,12 +537,54 @@ export interface MedicalTranscriptEvent {
   Transcript?: MedicalTranscript;
 }
 export type MedicalTranscriptResultStream =
-  | { TranscriptEvent: MedicalTranscriptEvent }
-  | { BadRequestException: BadRequestException }
-  | { LimitExceededException: LimitExceededException }
-  | { InternalFailureException: InternalFailureException }
-  | { ConflictException: ConflictException }
-  | { ServiceUnavailableException: ServiceUnavailableException };
+  | {
+      TranscriptEvent: MedicalTranscriptEvent;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      TranscriptEvent?: undefined;
+      BadRequestException: BadRequestException;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      TranscriptEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException: LimitExceededException;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      TranscriptEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException: InternalFailureException;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      TranscriptEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException: ConflictException;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      TranscriptEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException: ServiceUnavailableException;
+    };
 export type ModelName = string;
 
 export type NonEmptyString = string;
@@ -632,12 +784,54 @@ export interface TranscriptEvent {
   Transcript?: Transcript;
 }
 export type TranscriptResultStream =
-  | { TranscriptEvent: TranscriptEvent }
-  | { BadRequestException: BadRequestException }
-  | { LimitExceededException: LimitExceededException }
-  | { InternalFailureException: InternalFailureException }
-  | { ConflictException: ConflictException }
-  | { ServiceUnavailableException: ServiceUnavailableException };
+  | {
+      TranscriptEvent: TranscriptEvent;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      TranscriptEvent?: undefined;
+      BadRequestException: BadRequestException;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      TranscriptEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException: LimitExceededException;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      TranscriptEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException: InternalFailureException;
+      ConflictException?: undefined;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      TranscriptEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException: ConflictException;
+      ServiceUnavailableException?: undefined;
+    }
+  | {
+      TranscriptEvent?: undefined;
+      BadRequestException?: undefined;
+      LimitExceededException?: undefined;
+      InternalFailureException?: undefined;
+      ConflictException?: undefined;
+      ServiceUnavailableException: ServiceUnavailableException;
+    };
 export type Type = "CONVERSATION" | "DICTATION";
 export type Uri = string;
 

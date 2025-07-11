@@ -109,10 +109,30 @@ export interface AnalysisRuleList {
 }
 export type AnalysisRulePolicy = { v1: AnalysisRulePolicyV1 };
 export type AnalysisRulePolicyV1 =
-  | { list: AnalysisRuleList }
-  | { aggregation: AnalysisRuleAggregation }
-  | { custom: AnalysisRuleCustom }
-  | { idMappingTable: AnalysisRuleIdMappingTable };
+  | {
+      list: AnalysisRuleList;
+      aggregation?: undefined;
+      custom?: undefined;
+      idMappingTable?: undefined;
+    }
+  | {
+      list?: undefined;
+      aggregation: AnalysisRuleAggregation;
+      custom?: undefined;
+      idMappingTable?: undefined;
+    }
+  | {
+      list?: undefined;
+      aggregation?: undefined;
+      custom: AnalysisRuleCustom;
+      idMappingTable?: undefined;
+    }
+  | {
+      list?: undefined;
+      aggregation?: undefined;
+      custom?: undefined;
+      idMappingTable: AnalysisRuleIdMappingTable;
+    };
 export type AnalysisRuleType =
   | "AGGREGATION"
   | "LIST"
@@ -123,8 +143,8 @@ export interface AnalysisSchema {
   referencedTables?: Array<string>;
 }
 export type AnalysisSource =
-  | { text: string }
-  | { artifacts: AnalysisTemplateArtifacts };
+  | { text: string; artifacts?: undefined }
+  | { text?: undefined; artifacts: AnalysisTemplateArtifacts };
 export type AnalysisSourceMetadata = {
   artifacts: AnalysisTemplateArtifactMetadata;
 };
@@ -507,9 +527,13 @@ export type ConfiguredTableAnalysisRulePolicy = {
   v1: ConfiguredTableAnalysisRulePolicyV1;
 };
 export type ConfiguredTableAnalysisRulePolicyV1 =
-  | { list: AnalysisRuleList }
-  | { aggregation: AnalysisRuleAggregation }
-  | { custom: AnalysisRuleCustom };
+  | { list: AnalysisRuleList; aggregation?: undefined; custom?: undefined }
+  | {
+      list?: undefined;
+      aggregation: AnalysisRuleAggregation;
+      custom?: undefined;
+    }
+  | { list?: undefined; aggregation?: undefined; custom: AnalysisRuleCustom };
 export type ConfiguredTableAnalysisRuleType = "AGGREGATION" | "LIST" | "CUSTOM";
 export type ConfiguredTableAnalysisRuleTypeList =
   Array<ConfiguredTableAnalysisRuleType>;
@@ -554,9 +578,21 @@ export type ConfiguredTableAssociationAnalysisRulePolicy = {
   v1: ConfiguredTableAssociationAnalysisRulePolicyV1;
 };
 export type ConfiguredTableAssociationAnalysisRulePolicyV1 =
-  | { list: ConfiguredTableAssociationAnalysisRuleList }
-  | { aggregation: ConfiguredTableAssociationAnalysisRuleAggregation }
-  | { custom: ConfiguredTableAssociationAnalysisRuleCustom };
+  | {
+      list: ConfiguredTableAssociationAnalysisRuleList;
+      aggregation?: undefined;
+      custom?: undefined;
+    }
+  | {
+      list?: undefined;
+      aggregation: ConfiguredTableAssociationAnalysisRuleAggregation;
+      custom?: undefined;
+    }
+  | {
+      list?: undefined;
+      aggregation?: undefined;
+      custom: ConfiguredTableAssociationAnalysisRuleCustom;
+    };
 export type ConfiguredTableAssociationAnalysisRuleType =
   | "AGGREGATION"
   | "LIST"
@@ -634,9 +670,21 @@ export interface ConsolidatedPolicyList {
   allowedAdditionalAnalyses?: Array<string>;
 }
 export type ConsolidatedPolicyV1 =
-  | { list: ConsolidatedPolicyList }
-  | { aggregation: ConsolidatedPolicyAggregation }
-  | { custom: ConsolidatedPolicyCustom };
+  | {
+      list: ConsolidatedPolicyList;
+      aggregation?: undefined;
+      custom?: undefined;
+    }
+  | {
+      list?: undefined;
+      aggregation: ConsolidatedPolicyAggregation;
+      custom?: undefined;
+    }
+  | {
+      list?: undefined;
+      aggregation?: undefined;
+      custom: ConsolidatedPolicyCustom;
+    };
 export interface CreateAnalysisTemplateInput {
   description?: string;
   membershipIdentifier: string;
@@ -1618,14 +1666,14 @@ export interface ProtectedJobMemberOutputConfigurationOutput {
 export type ProtectedJobMemberOutputList =
   Array<ProtectedJobSingleMemberOutput>;
 export type ProtectedJobOutput =
-  | { s3: ProtectedJobS3Output }
-  | { memberList: Array<ProtectedJobSingleMemberOutput> };
+  | { s3: ProtectedJobS3Output; memberList?: undefined }
+  | { s3?: undefined; memberList: Array<ProtectedJobSingleMemberOutput> };
 export type ProtectedJobOutputConfigurationInput = {
   member: ProtectedJobMemberOutputConfigurationInput;
 };
 export type ProtectedJobOutputConfigurationOutput =
-  | { s3: ProtectedJobS3OutputConfigurationOutput }
-  | { member: ProtectedJobMemberOutputConfigurationOutput };
+  | { s3: ProtectedJobS3OutputConfigurationOutput; member?: undefined }
+  | { s3?: undefined; member: ProtectedJobMemberOutputConfigurationOutput };
 export interface ProtectedJobParameters {
   analysisTemplateArn?: string;
 }
@@ -1702,8 +1750,8 @@ export interface ProtectedQueryDistributeOutputConfiguration {
   locations: Array<ProtectedQueryDistributeOutputConfigurationLocation>;
 }
 export type ProtectedQueryDistributeOutputConfigurationLocation =
-  | { s3: ProtectedQueryS3OutputConfiguration }
-  | { member: ProtectedQueryMemberOutputConfiguration };
+  | { s3: ProtectedQueryS3OutputConfiguration; member?: undefined }
+  | { s3?: undefined; member: ProtectedQueryMemberOutputConfiguration };
 export type ProtectedQueryDistributeOutputConfigurationLocations =
   Array<ProtectedQueryDistributeOutputConfigurationLocation>;
 export interface ProtectedQueryError {
@@ -1718,13 +1766,37 @@ export interface ProtectedQueryMemberOutputConfiguration {
 export type ProtectedQueryMemberOutputList =
   Array<ProtectedQuerySingleMemberOutput>;
 export type ProtectedQueryOutput =
-  | { s3: ProtectedQueryS3Output }
-  | { memberList: Array<ProtectedQuerySingleMemberOutput> }
-  | { distribute: ProtectedQueryDistributeOutput };
+  | {
+      s3: ProtectedQueryS3Output;
+      memberList?: undefined;
+      distribute?: undefined;
+    }
+  | {
+      s3?: undefined;
+      memberList: Array<ProtectedQuerySingleMemberOutput>;
+      distribute?: undefined;
+    }
+  | {
+      s3?: undefined;
+      memberList?: undefined;
+      distribute: ProtectedQueryDistributeOutput;
+    };
 export type ProtectedQueryOutputConfiguration =
-  | { s3: ProtectedQueryS3OutputConfiguration }
-  | { member: ProtectedQueryMemberOutputConfiguration }
-  | { distribute: ProtectedQueryDistributeOutputConfiguration };
+  | {
+      s3: ProtectedQueryS3OutputConfiguration;
+      member?: undefined;
+      distribute?: undefined;
+    }
+  | {
+      s3?: undefined;
+      member: ProtectedQueryMemberOutputConfiguration;
+      distribute?: undefined;
+    }
+  | {
+      s3?: undefined;
+      member?: undefined;
+      distribute: ProtectedQueryDistributeOutputConfiguration;
+    };
 export interface ProtectedQueryResult {
   output: ProtectedQueryOutput;
 }
@@ -1931,9 +2003,9 @@ export type TableAliasList = Array<string>;
 export type TableDescription = string;
 
 export type TableReference =
-  | { glue: GlueTableReference }
-  | { snowflake: SnowflakeTableReference }
-  | { athena: AthenaTableReference };
+  | { glue: GlueTableReference; snowflake?: undefined; athena?: undefined }
+  | { glue?: undefined; snowflake: SnowflakeTableReference; athena?: undefined }
+  | { glue?: undefined; snowflake?: undefined; athena: AthenaTableReference };
 export type TagKey = string;
 
 export type TagKeys = Array<string>;

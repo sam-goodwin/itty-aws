@@ -264,9 +264,21 @@ export interface DeleteRoomRequest {
 export type DeliveryStreamName = string;
 
 export type DestinationConfiguration =
-  | { s3: S3DestinationConfiguration }
-  | { cloudWatchLogs: CloudWatchLogsDestinationConfiguration }
-  | { firehose: FirehoseDestinationConfiguration };
+  | {
+      s3: S3DestinationConfiguration;
+      cloudWatchLogs?: undefined;
+      firehose?: undefined;
+    }
+  | {
+      s3?: undefined;
+      cloudWatchLogs: CloudWatchLogsDestinationConfiguration;
+      firehose?: undefined;
+    }
+  | {
+      s3?: undefined;
+      cloudWatchLogs?: undefined;
+      firehose: FirehoseDestinationConfiguration;
+    };
 export interface DisconnectUserRequest {
   roomIdentifier: string;
   userId: string;

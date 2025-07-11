@@ -255,8 +255,8 @@ export interface Source {
   sourceData?: SourceData;
 }
 export type SourceData =
-  | { x509CertificateData: string }
-  | { acmPcaArn: string };
+  | { x509CertificateData: string; acmPcaArn?: undefined }
+  | { x509CertificateData?: undefined; acmPcaArn: string };
 export type SpecifierList = Array<string>;
 export interface SubjectDetail {
   subjectArn?: string;

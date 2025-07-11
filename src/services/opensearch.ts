@@ -1501,8 +1501,11 @@ export type DirectQueryDataSourceName = string;
 export type DirectQueryDataSourceRoleArn = string;
 
 export type DirectQueryDataSourceType =
-  | { CloudWatchLog: CloudWatchDirectQueryDataSource }
-  | { SecurityLake: SecurityLakeDirectQueryDataSource };
+  | { CloudWatchLog: CloudWatchDirectQueryDataSource; SecurityLake?: undefined }
+  | {
+      CloudWatchLog?: undefined;
+      SecurityLake: SecurityLakeDirectQueryDataSource;
+    };
 export type DirectQueryOpenSearchARNList = Array<string>;
 export declare class DisabledOperationException extends EffectData.TaggedError(
   "DisabledOperationException",

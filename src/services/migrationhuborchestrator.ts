@@ -443,10 +443,30 @@ export type StepGroupStatus = string;
 export type StepId = string;
 
 export type StepInput =
-  | { integerValue: number }
-  | { stringValue: string }
-  | { listOfStringsValue: Array<string> }
-  | { mapOfStringValue: Record<string, string> };
+  | {
+      integerValue: number;
+      stringValue?: undefined;
+      listOfStringsValue?: undefined;
+      mapOfStringValue?: undefined;
+    }
+  | {
+      integerValue?: undefined;
+      stringValue: string;
+      listOfStringsValue?: undefined;
+      mapOfStringValue?: undefined;
+    }
+  | {
+      integerValue?: undefined;
+      stringValue?: undefined;
+      listOfStringsValue: Array<string>;
+      mapOfStringValue?: undefined;
+    }
+  | {
+      integerValue?: undefined;
+      stringValue?: undefined;
+      listOfStringsValue?: undefined;
+      mapOfStringValue: Record<string, string>;
+    };
 export type StepInputParameters = Record<string, StepInput>;
 export type StepInputParametersKey = string;
 
@@ -650,9 +670,21 @@ export type WorkflowStepOutputList = Array<WorkflowStepOutput>;
 export type WorkflowStepOutputName = string;
 
 export type WorkflowStepOutputUnion =
-  | { integerValue: number }
-  | { stringValue: string }
-  | { listOfStringValue: Array<string> };
+  | {
+      integerValue: number;
+      stringValue?: undefined;
+      listOfStringValue?: undefined;
+    }
+  | {
+      integerValue?: undefined;
+      stringValue: string;
+      listOfStringValue?: undefined;
+    }
+  | {
+      integerValue?: undefined;
+      stringValue?: undefined;
+      listOfStringValue: Array<string>;
+    };
 export type WorkflowStepsSummaryList = Array<WorkflowStepSummary>;
 export interface WorkflowStepSummary {
   stepId?: string;

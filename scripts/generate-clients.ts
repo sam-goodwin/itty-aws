@@ -250,10 +250,23 @@ const generateUnionType = (name: string, shape: Extract<Shape, { type: "union" }
   let code = doc ? `${doc}\n` : "";
   
   if (shape.members) {
+    const memberNames = Object.keys(shape.members);
+    
     const variants = Object.entries(shape.members).map(([memberName, member]) => {
       const memberType = generateTypeReference(member.target, manifest, crossServiceImports, typeNameMapping);
-      return `{ ${memberName}: ${memberType} }`;
+      
+      // Create a variant where this member is defined and all others are undefined
+      const properties = memberNames.map(name => {
+        if (name === memberName) {
+          return `${name}: ${memberType}`;
+        } else {
+          return `${name}?: undefined`;
+        }
+      });
+      
+      return `{ ${properties.join('; ')} }`;
     });
+    
     code += `export type ${name} = ${variants.join(" | ")};`;
   } else {
     code += `export type ${name} = never;`;

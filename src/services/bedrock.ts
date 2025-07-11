@@ -1137,8 +1137,8 @@ export type EvaluationBedrockModelIdentifier = string;
 
 export type EvaluationBedrockModelIdentifiers = Array<string>;
 export type EvaluationConfig =
-  | { automated: AutomatedEvaluationConfig }
-  | { human: HumanEvaluationConfig };
+  | { automated: AutomatedEvaluationConfig; human?: undefined }
+  | { automated?: undefined; human: HumanEvaluationConfig };
 export interface EvaluationDataset {
   name: string;
   datasetLocation?: EvaluationDatasetLocation;
@@ -1154,8 +1154,8 @@ export type EvaluationDatasetMetricConfigs =
 export type EvaluationDatasetName = string;
 
 export type EvaluationInferenceConfig =
-  | { models: Array<EvaluationModelConfig> }
-  | { ragConfigs: Array<RAGConfig> };
+  | { models: Array<EvaluationModelConfig>; ragConfigs?: undefined }
+  | { models?: undefined; ragConfigs: Array<RAGConfig> };
 export interface EvaluationInferenceConfigSummary {
   modelConfigSummary?: EvaluationModelConfigSummary;
   ragConfigSummary?: EvaluationRagConfigSummary;
@@ -1183,8 +1183,14 @@ export type EvaluationMetricName = string;
 
 export type EvaluationMetricNames = Array<string>;
 export type EvaluationModelConfig =
-  | { bedrockModel: EvaluationBedrockModel }
-  | { precomputedInferenceSource: EvaluationPrecomputedInferenceSource };
+  | {
+      bedrockModel: EvaluationBedrockModel;
+      precomputedInferenceSource?: undefined;
+    }
+  | {
+      bedrockModel?: undefined;
+      precomputedInferenceSource: EvaluationPrecomputedInferenceSource;
+    };
 export type EvaluationModelConfigs = Array<EvaluationModelConfig>;
 export interface EvaluationModelConfigSummary {
   bedrockModelIdentifiers?: Array<string>;
@@ -1202,8 +1208,12 @@ export type EvaluationPrecomputedInferenceSourceIdentifier = string;
 
 export type EvaluationPrecomputedInferenceSourceIdentifiers = Array<string>;
 export type EvaluationPrecomputedRagSourceConfig =
-  | { retrieveSourceConfig: EvaluationPrecomputedRetrieveSourceConfig }
   | {
+      retrieveSourceConfig: EvaluationPrecomputedRetrieveSourceConfig;
+      retrieveAndGenerateSourceConfig?: undefined;
+    }
+  | {
+      retrieveSourceConfig?: undefined;
       retrieveAndGenerateSourceConfig: EvaluationPrecomputedRetrieveAndGenerateSourceConfig;
     };
 export type EvaluationPrecomputedRagSourceIdentifier = string;
@@ -1979,8 +1989,11 @@ export type KmsKeyArn = string;
 export type KmsKeyId = string;
 
 export type KnowledgeBaseConfig =
-  | { retrieveConfig: RetrieveConfig }
-  | { retrieveAndGenerateConfig: RetrieveAndGenerateConfiguration };
+  | { retrieveConfig: RetrieveConfig; retrieveAndGenerateConfig?: undefined }
+  | {
+      retrieveConfig?: undefined;
+      retrieveAndGenerateConfig: RetrieveAndGenerateConfiguration;
+    };
 export type KnowledgeBaseId = string;
 
 export interface KnowledgeBaseRetrievalConfiguration {
@@ -2467,8 +2480,14 @@ export interface QueryTransformationConfiguration {
 }
 export type QueryTransformationType = "QUERY_DECOMPOSITION";
 export type RAGConfig =
-  | { knowledgeBaseConfig: KnowledgeBaseConfig }
-  | { precomputedRagSourceConfig: EvaluationPrecomputedRagSourceConfig };
+  | {
+      knowledgeBaseConfig: KnowledgeBaseConfig;
+      precomputedRagSourceConfig?: undefined;
+    }
+  | {
+      knowledgeBaseConfig?: undefined;
+      precomputedRagSourceConfig: EvaluationPrecomputedRagSourceConfig;
+    };
 export type RagConfigs = Array<RAGConfig>;
 export type RAGStopSequences = Array<string>;
 export type RateCard = Array<DimensionalPriceRate>;
@@ -2480,8 +2499,8 @@ export interface RatingScaleItem {
 export type RatingScaleItemDefinition = string;
 
 export type RatingScaleItemValue =
-  | { stringValue: string }
-  | { floatValue: number };
+  | { stringValue: string; floatValue?: undefined }
+  | { stringValue?: undefined; floatValue: number };
 export type RegionAvailability = "AVAILABLE" | "NOT_AVAILABLE";
 export interface RegisterMarketplaceModelEndpointRequest {
   endpointIdentifier: string;
@@ -2495,35 +2514,237 @@ export interface RequestMetadataBaseFilters {
   notEquals?: Record<string, string>;
 }
 export type RequestMetadataFilters =
-  | { equals: Record<string, string> }
-  | { notEquals: Record<string, string> }
-  | { andAll: Array<RequestMetadataBaseFilters> }
-  | { orAll: Array<RequestMetadataBaseFilters> };
+  | {
+      equals: Record<string, string>;
+      notEquals?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals: Record<string, string>;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      andAll: Array<RequestMetadataBaseFilters>;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      andAll?: undefined;
+      orAll: Array<RequestMetadataBaseFilters>;
+    };
 export type RequestMetadataFiltersList = Array<RequestMetadataBaseFilters>;
 export type RequestMetadataMap = Record<string, string>;
 export type RerankingMetadataSelectionMode = "SELECTIVE" | "ALL";
 export type RerankingMetadataSelectiveModeConfiguration =
-  | { fieldsToInclude: Array<FieldForReranking> }
-  | { fieldsToExclude: Array<FieldForReranking> };
+  | { fieldsToInclude: Array<FieldForReranking>; fieldsToExclude?: undefined }
+  | { fieldsToInclude?: undefined; fieldsToExclude: Array<FieldForReranking> };
 export declare class ResourceNotFoundException extends EffectData.TaggedError(
   "ResourceNotFoundException",
 )<{
   readonly message?: string;
 }> {}
 export type RetrievalFilter =
-  | { equals: FilterAttribute }
-  | { notEquals: FilterAttribute }
-  | { greaterThan: FilterAttribute }
-  | { greaterThanOrEquals: FilterAttribute }
-  | { lessThan: FilterAttribute }
-  | { lessThanOrEquals: FilterAttribute }
-  | { in: FilterAttribute }
-  | { notIn: FilterAttribute }
-  | { startsWith: FilterAttribute }
-  | { listContains: FilterAttribute }
-  | { stringContains: FilterAttribute }
-  | { andAll: Array<RetrievalFilter> }
-  | { orAll: Array<RetrievalFilter> };
+  | {
+      equals: FilterAttribute;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals: FilterAttribute;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan: FilterAttribute;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals: FilterAttribute;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan: FilterAttribute;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals: FilterAttribute;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in: FilterAttribute;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn: FilterAttribute;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith: FilterAttribute;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains: FilterAttribute;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains: FilterAttribute;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll: Array<RetrievalFilter>;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll: Array<RetrievalFilter>;
+    };
 export type RetrievalFilterList = Array<RetrievalFilter>;
 export interface RetrieveAndGenerateConfiguration {
   type: RetrieveAndGenerateType;

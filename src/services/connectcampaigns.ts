@@ -346,9 +346,21 @@ export interface DescribeCampaignResponse {
 export type DestinationPhoneNumber = string;
 
 export type DialerConfig =
-  | { progressiveDialerConfig: ProgressiveDialerConfig }
-  | { predictiveDialerConfig: PredictiveDialerConfig }
-  | { agentlessDialerConfig: AgentlessDialerConfig };
+  | {
+      progressiveDialerConfig: ProgressiveDialerConfig;
+      predictiveDialerConfig?: undefined;
+      agentlessDialerConfig?: undefined;
+    }
+  | {
+      progressiveDialerConfig?: undefined;
+      predictiveDialerConfig: PredictiveDialerConfig;
+      agentlessDialerConfig?: undefined;
+    }
+  | {
+      progressiveDialerConfig?: undefined;
+      predictiveDialerConfig?: undefined;
+      agentlessDialerConfig: AgentlessDialerConfig;
+    };
 export type DialingCapacity = number;
 
 export interface DialRequest {

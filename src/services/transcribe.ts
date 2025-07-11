@@ -1153,10 +1153,30 @@ export interface RelativeTimeRange {
   Last?: number;
 }
 export type Rule =
-  | { NonTalkTimeFilter: NonTalkTimeFilter }
-  | { InterruptionFilter: InterruptionFilter }
-  | { TranscriptFilter: TranscriptFilter }
-  | { SentimentFilter: SentimentFilter };
+  | {
+      NonTalkTimeFilter: NonTalkTimeFilter;
+      InterruptionFilter?: undefined;
+      TranscriptFilter?: undefined;
+      SentimentFilter?: undefined;
+    }
+  | {
+      NonTalkTimeFilter?: undefined;
+      InterruptionFilter: InterruptionFilter;
+      TranscriptFilter?: undefined;
+      SentimentFilter?: undefined;
+    }
+  | {
+      NonTalkTimeFilter?: undefined;
+      InterruptionFilter?: undefined;
+      TranscriptFilter: TranscriptFilter;
+      SentimentFilter?: undefined;
+    }
+  | {
+      NonTalkTimeFilter?: undefined;
+      InterruptionFilter?: undefined;
+      TranscriptFilter?: undefined;
+      SentimentFilter: SentimentFilter;
+    };
 export type RuleList = Array<Rule>;
 export interface SentimentFilter {
   Sentiments: Array<SentimentValue>;

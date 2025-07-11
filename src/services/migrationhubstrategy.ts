@@ -236,8 +236,8 @@ export declare class AccessDeniedException extends EffectData.TaggedError(
   readonly message: string;
 }> {}
 export type AnalysisStatusUnion =
-  | { runtimeAnalysisStatus: string }
-  | { srcCodeOrDbAnalysisStatus: string };
+  | { runtimeAnalysisStatus: string; srcCodeOrDbAnalysisStatus?: undefined }
+  | { runtimeAnalysisStatus?: undefined; srcCodeOrDbAnalysisStatus: string };
 export type AnalysisType = string;
 
 export interface AnalyzableServerSummary {
@@ -248,9 +248,21 @@ export interface AnalyzableServerSummary {
 }
 export type AnalyzableServerSummaryList = Array<AnalyzableServerSummary>;
 export type AnalyzerNameUnion =
-  | { binaryAnalyzerName: string }
-  | { runTimeAnalyzerName: string }
-  | { sourceCodeAnalyzerName: string };
+  | {
+      binaryAnalyzerName: string;
+      runTimeAnalyzerName?: undefined;
+      sourceCodeAnalyzerName?: undefined;
+    }
+  | {
+      binaryAnalyzerName?: undefined;
+      runTimeAnalyzerName: string;
+      sourceCodeAnalyzerName?: undefined;
+    }
+  | {
+      binaryAnalyzerName?: undefined;
+      runTimeAnalyzerName?: undefined;
+      sourceCodeAnalyzerName: string;
+    };
 export interface AntipatternReportResult {
   analyzerName?: AnalyzerNameUnion;
   antiPatternReportS3Object?: S3Object;
@@ -408,9 +420,21 @@ export interface DatabaseConfigDetail {
 export type DatabaseManagementPreference = string;
 
 export type DatabaseMigrationPreference =
-  | { heterogeneous: Heterogeneous }
-  | { homogeneous: Homogeneous }
-  | { noPreference: NoDatabaseMigrationPreference };
+  | {
+      heterogeneous: Heterogeneous;
+      homogeneous?: undefined;
+      noPreference?: undefined;
+    }
+  | {
+      heterogeneous?: undefined;
+      homogeneous: Homogeneous;
+      noPreference?: undefined;
+    }
+  | {
+      heterogeneous?: undefined;
+      homogeneous?: undefined;
+      noPreference: NoDatabaseMigrationPreference;
+    };
 export interface DatabasePreferences {
   databaseManagementPreference?: string;
   databaseMigrationPreference?: DatabaseMigrationPreference;
@@ -631,9 +655,21 @@ export type Location = string;
 export type MacAddress = string;
 
 export type ManagementPreference =
-  | { awsManagedResources: AwsManagedResources }
-  | { selfManageResources: SelfManageResources }
-  | { noPreference: NoManagementPreference };
+  | {
+      awsManagedResources: AwsManagedResources;
+      selfManageResources?: undefined;
+      noPreference?: undefined;
+    }
+  | {
+      awsManagedResources?: undefined;
+      selfManageResources: SelfManageResources;
+      noPreference?: undefined;
+    }
+  | {
+      awsManagedResources?: undefined;
+      selfManageResources?: undefined;
+      noPreference: NoManagementPreference;
+    };
 export type MaxResult = number;
 
 export type NetMask = string;

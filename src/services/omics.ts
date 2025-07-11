@@ -521,8 +521,8 @@ export interface Filter {
   type?: Array<string>;
 }
 export type FormatOptions =
-  | { tsvOptions: TsvOptions }
-  | { vcfOptions: VcfOptions };
+  | { tsvOptions: TsvOptions; vcfOptions?: undefined }
+  | { tsvOptions?: undefined; vcfOptions: VcfOptions };
 export type FormatToHeader = Record<string, string>;
 export type FormatToHeaderKey = string;
 

@@ -67,11 +67,41 @@ export type AuditEventFieldId = string;
 
 export type AuditEventFieldList = Array<AuditEventField>;
 export type AuditEventFieldValueUnion =
-  | { stringValue: string }
-  | { doubleValue: number }
-  | { booleanValue: boolean }
-  | { emptyValue: EmptyFieldValue }
-  | { userArnValue: string };
+  | {
+      stringValue: string;
+      doubleValue?: undefined;
+      booleanValue?: undefined;
+      emptyValue?: undefined;
+      userArnValue?: undefined;
+    }
+  | {
+      stringValue?: undefined;
+      doubleValue: number;
+      booleanValue?: undefined;
+      emptyValue?: undefined;
+      userArnValue?: undefined;
+    }
+  | {
+      stringValue?: undefined;
+      doubleValue?: undefined;
+      booleanValue: boolean;
+      emptyValue?: undefined;
+      userArnValue?: undefined;
+    }
+  | {
+      stringValue?: undefined;
+      doubleValue?: undefined;
+      booleanValue?: undefined;
+      emptyValue: EmptyFieldValue;
+      userArnValue?: undefined;
+    }
+  | {
+      stringValue?: undefined;
+      doubleValue?: undefined;
+      booleanValue?: undefined;
+      emptyValue?: undefined;
+      userArnValue: string;
+    };
 export type AuditEventId = string;
 
 export interface AuditEventPerformedBy {
@@ -115,8 +145,8 @@ export interface BatchPutFieldOptionsResponse {
   errors?: Array<FieldOptionError>;
 }
 export type BooleanCondition =
-  | { equalTo: BooleanOperands }
-  | { notEqualTo: BooleanOperands };
+  | { equalTo: BooleanOperands; notEqualTo?: undefined }
+  | { equalTo?: undefined; notEqualTo: BooleanOperands };
 export type BooleanConditionList = Array<BooleanCondition>;
 export interface BooleanOperands {
   operandOne: OperandOne;
@@ -129,10 +159,30 @@ export interface CaseEventIncludedData {
   fields: Array<FieldIdentifier>;
 }
 export type CaseFilter =
-  | { field: FieldFilter }
-  | { not: CaseFilter }
-  | { andAll: Array<CaseFilter> }
-  | { orAll: Array<CaseFilter> };
+  | {
+      field: FieldFilter;
+      not?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      field?: undefined;
+      not: CaseFilter;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      field?: undefined;
+      not?: undefined;
+      andAll: Array<CaseFilter>;
+      orAll?: undefined;
+    }
+  | {
+      field?: undefined;
+      not?: undefined;
+      andAll?: undefined;
+      orAll: Array<CaseFilter>;
+    };
 export type CaseFilterList = Array<CaseFilter>;
 export type CaseId = string;
 
@@ -347,12 +397,54 @@ export interface FieldError {
   message?: string;
 }
 export type FieldFilter =
-  | { equalTo: FieldValue }
-  | { contains: FieldValue }
-  | { greaterThan: FieldValue }
-  | { greaterThanOrEqualTo: FieldValue }
-  | { lessThan: FieldValue }
-  | { lessThanOrEqualTo: FieldValue };
+  | {
+      equalTo: FieldValue;
+      contains?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEqualTo?: undefined;
+      lessThan?: undefined;
+      lessThanOrEqualTo?: undefined;
+    }
+  | {
+      equalTo?: undefined;
+      contains: FieldValue;
+      greaterThan?: undefined;
+      greaterThanOrEqualTo?: undefined;
+      lessThan?: undefined;
+      lessThanOrEqualTo?: undefined;
+    }
+  | {
+      equalTo?: undefined;
+      contains?: undefined;
+      greaterThan: FieldValue;
+      greaterThanOrEqualTo?: undefined;
+      lessThan?: undefined;
+      lessThanOrEqualTo?: undefined;
+    }
+  | {
+      equalTo?: undefined;
+      contains?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEqualTo: FieldValue;
+      lessThan?: undefined;
+      lessThanOrEqualTo?: undefined;
+    }
+  | {
+      equalTo?: undefined;
+      contains?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEqualTo?: undefined;
+      lessThan: FieldValue;
+      lessThanOrEqualTo?: undefined;
+    }
+  | {
+      equalTo?: undefined;
+      contains?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEqualTo?: undefined;
+      lessThan?: undefined;
+      lessThanOrEqualTo: FieldValue;
+    };
 export interface FieldGroup {
   name?: string;
   fields: Array<FieldItem>;
@@ -403,11 +495,41 @@ export interface FieldValue {
 }
 export type FieldValueList = Array<FieldValue>;
 export type FieldValueUnion =
-  | { stringValue: string }
-  | { doubleValue: number }
-  | { booleanValue: boolean }
-  | { emptyValue: EmptyFieldValue }
-  | { userArnValue: string };
+  | {
+      stringValue: string;
+      doubleValue?: undefined;
+      booleanValue?: undefined;
+      emptyValue?: undefined;
+      userArnValue?: undefined;
+    }
+  | {
+      stringValue?: undefined;
+      doubleValue: number;
+      booleanValue?: undefined;
+      emptyValue?: undefined;
+      userArnValue?: undefined;
+    }
+  | {
+      stringValue?: undefined;
+      doubleValue?: undefined;
+      booleanValue: boolean;
+      emptyValue?: undefined;
+      userArnValue?: undefined;
+    }
+  | {
+      stringValue?: undefined;
+      doubleValue?: undefined;
+      booleanValue?: undefined;
+      emptyValue: EmptyFieldValue;
+      userArnValue?: undefined;
+    }
+  | {
+      stringValue?: undefined;
+      doubleValue?: undefined;
+      booleanValue?: undefined;
+      emptyValue?: undefined;
+      userArnValue: string;
+    };
 export type FileArn = string;
 
 export interface FileContent {
@@ -617,10 +739,30 @@ export type NextToken = string;
 
 export type OperandOne = { fieldId: string };
 export type OperandTwo =
-  | { stringValue: string }
-  | { booleanValue: boolean }
-  | { doubleValue: number }
-  | { emptyValue: EmptyOperandValue };
+  | {
+      stringValue: string;
+      booleanValue?: undefined;
+      doubleValue?: undefined;
+      emptyValue?: undefined;
+    }
+  | {
+      stringValue?: undefined;
+      booleanValue: boolean;
+      doubleValue?: undefined;
+      emptyValue?: undefined;
+    }
+  | {
+      stringValue?: undefined;
+      booleanValue?: undefined;
+      doubleValue: number;
+      emptyValue?: undefined;
+    }
+  | {
+      stringValue?: undefined;
+      booleanValue?: undefined;
+      doubleValue?: undefined;
+      emptyValue: EmptyOperandValue;
+    };
 export type Order = string;
 
 export interface PutCaseEventConfigurationRequest {
@@ -631,10 +773,30 @@ export interface PutCaseEventConfigurationResponse {}
 export type RelatedItemArn = string;
 
 export type RelatedItemContent =
-  | { contact: ContactContent }
-  | { comment: CommentContent }
-  | { file: FileContent }
-  | { sla: SlaContent };
+  | {
+      contact: ContactContent;
+      comment?: undefined;
+      file?: undefined;
+      sla?: undefined;
+    }
+  | {
+      contact?: undefined;
+      comment: CommentContent;
+      file?: undefined;
+      sla?: undefined;
+    }
+  | {
+      contact?: undefined;
+      comment?: undefined;
+      file: FileContent;
+      sla?: undefined;
+    }
+  | {
+      contact?: undefined;
+      comment?: undefined;
+      file?: undefined;
+      sla: SlaContent;
+    };
 export interface RelatedItemEventIncludedData {
   includeContent: boolean;
 }
@@ -642,17 +804,52 @@ export type RelatedItemFilterList = Array<RelatedItemTypeFilter>;
 export type RelatedItemId = string;
 
 export type RelatedItemInputContent =
-  | { contact: Contact }
-  | { comment: CommentContent }
-  | { file: FileContent }
-  | { sla: SlaInputContent };
+  | { contact: Contact; comment?: undefined; file?: undefined; sla?: undefined }
+  | {
+      contact?: undefined;
+      comment: CommentContent;
+      file?: undefined;
+      sla?: undefined;
+    }
+  | {
+      contact?: undefined;
+      comment?: undefined;
+      file: FileContent;
+      sla?: undefined;
+    }
+  | {
+      contact?: undefined;
+      comment?: undefined;
+      file?: undefined;
+      sla: SlaInputContent;
+    };
 export type RelatedItemType = string;
 
 export type RelatedItemTypeFilter =
-  | { contact: ContactFilter }
-  | { comment: CommentFilter }
-  | { file: FileFilter }
-  | { sla: SlaFilter };
+  | {
+      contact: ContactFilter;
+      comment?: undefined;
+      file?: undefined;
+      sla?: undefined;
+    }
+  | {
+      contact?: undefined;
+      comment: CommentFilter;
+      file?: undefined;
+      sla?: undefined;
+    }
+  | {
+      contact?: undefined;
+      comment?: undefined;
+      file: FileFilter;
+      sla?: undefined;
+    }
+  | {
+      contact?: undefined;
+      comment?: undefined;
+      file?: undefined;
+      sla: SlaFilter;
+    };
 export interface RequiredCaseRule {
   defaultValue: boolean;
   conditions: Array<BooleanCondition>;
@@ -842,7 +1039,9 @@ export interface UpdateTemplateRequest {
 export interface UpdateTemplateResponse {}
 export type UserArn = string;
 
-export type UserUnion = { userArn: string } | { customEntity: string };
+export type UserUnion =
+  | { userArn: string; customEntity?: undefined }
+  | { userArn?: undefined; customEntity: string };
 export declare class ValidationException extends EffectData.TaggedError(
   "ValidationException",
 )<{

@@ -75,9 +75,21 @@ export interface ActionParameters {
   state?: MutationActionSetStateParameter;
 }
 export type ApiConfiguration =
-  | { graphQLConfig: GraphQLRenderConfig }
-  | { dataStoreConfig: DataStoreRenderConfig }
-  | { noApiConfig: NoApiRenderConfig };
+  | {
+      graphQLConfig: GraphQLRenderConfig;
+      dataStoreConfig?: undefined;
+      noApiConfig?: undefined;
+    }
+  | {
+      graphQLConfig?: undefined;
+      dataStoreConfig: DataStoreRenderConfig;
+      noApiConfig?: undefined;
+    }
+  | {
+      graphQLConfig?: undefined;
+      dataStoreConfig?: undefined;
+      noApiConfig: NoApiRenderConfig;
+    };
 export type AppId = string;
 
 export type AssociatedFieldsList = Array<string>;
@@ -448,9 +460,9 @@ export interface FieldInputConfig {
   fileUploaderConfig?: FileUploaderFieldConfig;
 }
 export type FieldPosition =
-  | { fixed: FixedPosition }
-  | { rightOf: string }
-  | { below: string };
+  | { fixed: FixedPosition; rightOf?: undefined; below?: undefined }
+  | { fixed?: undefined; rightOf: string; below?: undefined }
+  | { fixed?: undefined; rightOf?: undefined; below: string };
 export type FieldsMap = Record<string, FieldConfig>;
 export interface FieldValidationConfiguration {
   type: string;
@@ -535,7 +547,9 @@ export interface FormStyle {
   verticalGap?: FormStyleConfig;
   outerPadding?: FormStyleConfig;
 }
-export type FormStyleConfig = { tokenReference: string } | { value: string };
+export type FormStyleConfig =
+  | { tokenReference: string; value?: undefined }
+  | { tokenReference?: undefined; value: string };
 export interface FormSummary {
   appId: string;
   dataType: FormDataTypeConfig;

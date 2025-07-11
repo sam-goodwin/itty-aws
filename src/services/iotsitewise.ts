@@ -2843,15 +2843,105 @@ export declare class ResourceNotFoundException extends EffectData.TaggedError(
 }> {}
 export type ResourceType = "PORTAL" | "PROJECT";
 export type ResponseStream =
-  | { trace: Trace }
-  | { output: InvocationOutput }
-  | { accessDeniedException: AccessDeniedException }
-  | { conflictingOperationException: ConflictingOperationException }
-  | { internalFailureException: InternalFailureException }
-  | { invalidRequestException: InvalidRequestException }
-  | { limitExceededException: LimitExceededException }
-  | { resourceNotFoundException: ResourceNotFoundException }
-  | { throttlingException: ThrottlingException };
+  | {
+      trace: Trace;
+      output?: undefined;
+      accessDeniedException?: undefined;
+      conflictingOperationException?: undefined;
+      internalFailureException?: undefined;
+      invalidRequestException?: undefined;
+      limitExceededException?: undefined;
+      resourceNotFoundException?: undefined;
+      throttlingException?: undefined;
+    }
+  | {
+      trace?: undefined;
+      output: InvocationOutput;
+      accessDeniedException?: undefined;
+      conflictingOperationException?: undefined;
+      internalFailureException?: undefined;
+      invalidRequestException?: undefined;
+      limitExceededException?: undefined;
+      resourceNotFoundException?: undefined;
+      throttlingException?: undefined;
+    }
+  | {
+      trace?: undefined;
+      output?: undefined;
+      accessDeniedException: AccessDeniedException;
+      conflictingOperationException?: undefined;
+      internalFailureException?: undefined;
+      invalidRequestException?: undefined;
+      limitExceededException?: undefined;
+      resourceNotFoundException?: undefined;
+      throttlingException?: undefined;
+    }
+  | {
+      trace?: undefined;
+      output?: undefined;
+      accessDeniedException?: undefined;
+      conflictingOperationException: ConflictingOperationException;
+      internalFailureException?: undefined;
+      invalidRequestException?: undefined;
+      limitExceededException?: undefined;
+      resourceNotFoundException?: undefined;
+      throttlingException?: undefined;
+    }
+  | {
+      trace?: undefined;
+      output?: undefined;
+      accessDeniedException?: undefined;
+      conflictingOperationException?: undefined;
+      internalFailureException: InternalFailureException;
+      invalidRequestException?: undefined;
+      limitExceededException?: undefined;
+      resourceNotFoundException?: undefined;
+      throttlingException?: undefined;
+    }
+  | {
+      trace?: undefined;
+      output?: undefined;
+      accessDeniedException?: undefined;
+      conflictingOperationException?: undefined;
+      internalFailureException?: undefined;
+      invalidRequestException: InvalidRequestException;
+      limitExceededException?: undefined;
+      resourceNotFoundException?: undefined;
+      throttlingException?: undefined;
+    }
+  | {
+      trace?: undefined;
+      output?: undefined;
+      accessDeniedException?: undefined;
+      conflictingOperationException?: undefined;
+      internalFailureException?: undefined;
+      invalidRequestException?: undefined;
+      limitExceededException: LimitExceededException;
+      resourceNotFoundException?: undefined;
+      throttlingException?: undefined;
+    }
+  | {
+      trace?: undefined;
+      output?: undefined;
+      accessDeniedException?: undefined;
+      conflictingOperationException?: undefined;
+      internalFailureException?: undefined;
+      invalidRequestException?: undefined;
+      limitExceededException?: undefined;
+      resourceNotFoundException: ResourceNotFoundException;
+      throttlingException?: undefined;
+    }
+  | {
+      trace?: undefined;
+      output?: undefined;
+      accessDeniedException?: undefined;
+      conflictingOperationException?: undefined;
+      internalFailureException?: undefined;
+      invalidRequestException?: undefined;
+      limitExceededException?: undefined;
+      resourceNotFoundException?: undefined;
+      throttlingException: ThrottlingException;
+    };
 export type RestrictedDescription = string;
 
 export type RestrictedName = string;

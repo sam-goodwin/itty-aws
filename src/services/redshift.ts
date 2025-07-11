@@ -3217,8 +3217,14 @@ export interface ModifyUsageLimitMessage {
   BreachAction?: UsageLimitBreachAction;
 }
 export type NamespaceIdentifierUnion =
-  | { ServerlessIdentifier: ServerlessIdentifier }
-  | { ProvisionedIdentifier: ProvisionedIdentifier };
+  | {
+      ServerlessIdentifier: ServerlessIdentifier;
+      ProvisionedIdentifier?: undefined;
+    }
+  | {
+      ServerlessIdentifier?: undefined;
+      ProvisionedIdentifier: ProvisionedIdentifier;
+    };
 export type NamespaceRegistrationStatus = "REGISTERING" | "DEREGISTERING";
 export interface NetworkInterface {
   NetworkInterfaceId?: string;
@@ -3779,8 +3785,14 @@ export interface ServerlessIdentifier {
 export type ServiceAuthorization = "ENABLED" | "DISABLED";
 export type ServiceIntegrationList = Array<ServiceIntegrationsUnion>;
 export type ServiceIntegrationsUnion =
-  | { LakeFormation: Array<LakeFormationScopeUnion> }
-  | { S3AccessGrants: Array<S3AccessGrantsScopeUnion> };
+  | {
+      LakeFormation: Array<LakeFormationScopeUnion>;
+      S3AccessGrants?: undefined;
+    }
+  | {
+      LakeFormation?: undefined;
+      S3AccessGrants: Array<S3AccessGrantsScopeUnion>;
+    };
 export interface Snapshot {
   SnapshotIdentifier?: string;
   ClusterIdentifier?: string;

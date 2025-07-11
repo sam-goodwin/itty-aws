@@ -4214,8 +4214,8 @@ export interface CreateContactResponse {
   ContactArn?: string;
 }
 export type CreatedByInfo =
-  | { ConnectUserArn: string }
-  | { AWSIdentityArn: string };
+  | { ConnectUserArn: string; AWSIdentityArn?: undefined }
+  | { ConnectUserArn?: undefined; AWSIdentityArn: string };
 export interface CreateEmailAddressRequest {
   Description?: string;
   InstanceId: string;
@@ -5188,9 +5188,13 @@ export interface Evaluation {
   Tags?: Record<string, string>;
 }
 export type EvaluationAnswerData =
-  | { StringValue: string }
-  | { NumericValue: number }
-  | { NotApplicable: boolean };
+  | { StringValue: string; NumericValue?: undefined; NotApplicable?: undefined }
+  | { StringValue?: undefined; NumericValue: number; NotApplicable?: undefined }
+  | {
+      StringValue?: undefined;
+      NumericValue?: undefined;
+      NotApplicable: boolean;
+    };
 export type EvaluationAnswerDataNumericValue = number;
 
 export type EvaluationAnswerDataStringValue = string;
@@ -5236,8 +5240,8 @@ export type EvaluationFormDescription = string;
 export type EvaluationFormId = string;
 
 export type EvaluationFormItem =
-  | { Section: EvaluationFormSection }
-  | { Question: EvaluationFormQuestion };
+  | { Section: EvaluationFormSection; Question?: undefined }
+  | { Section?: undefined; Question: EvaluationFormQuestion };
 export type EvaluationFormItemsList = Array<EvaluationFormItem>;
 export type EvaluationFormItemWeight = number;
 
@@ -5275,8 +5279,14 @@ export type EvaluationFormQuestionTitle = string;
 
 export type EvaluationFormQuestionType = "TEXT" | "SINGLESELECT" | "NUMERIC";
 export type EvaluationFormQuestionTypeProperties =
-  | { Numeric: EvaluationFormNumericQuestionProperties }
-  | { SingleSelect: EvaluationFormSingleSelectQuestionProperties };
+  | {
+      Numeric: EvaluationFormNumericQuestionProperties;
+      SingleSelect?: undefined;
+    }
+  | {
+      Numeric?: undefined;
+      SingleSelect: EvaluationFormSingleSelectQuestionProperties;
+    };
 export type EvaluationFormScoringMode = "QUESTION_ONLY" | "SECTION_ONLY";
 export type EvaluationFormScoringStatus = "ENABLED" | "DISABLED";
 export interface EvaluationFormScoringStrategy {
@@ -6906,8 +6916,14 @@ export type ParticipantTimerDurationInMinutes = number;
 
 export type ParticipantTimerType = "IDLE" | "DISCONNECT_NONCUSTOMER";
 export type ParticipantTimerValue =
-  | { ParticipantTimerAction: ParticipantTimerAction }
-  | { ParticipantTimerDurationInMinutes: number };
+  | {
+      ParticipantTimerAction: ParticipantTimerAction;
+      ParticipantTimerDurationInMinutes?: undefined;
+    }
+  | {
+      ParticipantTimerAction?: undefined;
+      ParticipantTimerDurationInMinutes: number;
+    };
 export type ParticipantToken = string;
 
 export interface ParticipantTokenCredentials {
@@ -7502,12 +7518,54 @@ export type RealTimeContactAnalysisPostContactSummaryStatus =
   | "FAILED"
   | "COMPLETED";
 export type RealtimeContactAnalysisSegment =
-  | { Transcript: RealTimeContactAnalysisSegmentTranscript }
-  | { Categories: RealTimeContactAnalysisSegmentCategories }
-  | { Issues: RealTimeContactAnalysisSegmentIssues }
-  | { Event: RealTimeContactAnalysisSegmentEvent }
-  | { Attachments: RealTimeContactAnalysisSegmentAttachments }
-  | { PostContactSummary: RealTimeContactAnalysisSegmentPostContactSummary };
+  | {
+      Transcript: RealTimeContactAnalysisSegmentTranscript;
+      Categories?: undefined;
+      Issues?: undefined;
+      Event?: undefined;
+      Attachments?: undefined;
+      PostContactSummary?: undefined;
+    }
+  | {
+      Transcript?: undefined;
+      Categories: RealTimeContactAnalysisSegmentCategories;
+      Issues?: undefined;
+      Event?: undefined;
+      Attachments?: undefined;
+      PostContactSummary?: undefined;
+    }
+  | {
+      Transcript?: undefined;
+      Categories?: undefined;
+      Issues: RealTimeContactAnalysisSegmentIssues;
+      Event?: undefined;
+      Attachments?: undefined;
+      PostContactSummary?: undefined;
+    }
+  | {
+      Transcript?: undefined;
+      Categories?: undefined;
+      Issues?: undefined;
+      Event: RealTimeContactAnalysisSegmentEvent;
+      Attachments?: undefined;
+      PostContactSummary?: undefined;
+    }
+  | {
+      Transcript?: undefined;
+      Categories?: undefined;
+      Issues?: undefined;
+      Event?: undefined;
+      Attachments: RealTimeContactAnalysisSegmentAttachments;
+      PostContactSummary?: undefined;
+    }
+  | {
+      Transcript?: undefined;
+      Categories?: undefined;
+      Issues?: undefined;
+      Event?: undefined;
+      Attachments?: undefined;
+      PostContactSummary: RealTimeContactAnalysisSegmentPostContactSummary;
+    };
 export interface RealTimeContactAnalysisSegmentAttachments {
   Id: string;
   ParticipantId: string;
@@ -7628,13 +7686,69 @@ export type ReferenceStatus =
 export type ReferenceStatusReason = string;
 
 export type ReferenceSummary =
-  | { Url: UrlReference }
-  | { Attachment: AttachmentReference }
-  | { EmailMessage: EmailMessageReference }
-  | { String: StringReference }
-  | { Number: NumberReference }
-  | { Date: DateReference }
-  | { Email: EmailReference };
+  | {
+      Url: UrlReference;
+      Attachment?: undefined;
+      EmailMessage?: undefined;
+      String?: undefined;
+      Number?: undefined;
+      Date?: undefined;
+      Email?: undefined;
+    }
+  | {
+      Url?: undefined;
+      Attachment: AttachmentReference;
+      EmailMessage?: undefined;
+      String?: undefined;
+      Number?: undefined;
+      Date?: undefined;
+      Email?: undefined;
+    }
+  | {
+      Url?: undefined;
+      Attachment?: undefined;
+      EmailMessage: EmailMessageReference;
+      String?: undefined;
+      Number?: undefined;
+      Date?: undefined;
+      Email?: undefined;
+    }
+  | {
+      Url?: undefined;
+      Attachment?: undefined;
+      EmailMessage?: undefined;
+      String: StringReference;
+      Number?: undefined;
+      Date?: undefined;
+      Email?: undefined;
+    }
+  | {
+      Url?: undefined;
+      Attachment?: undefined;
+      EmailMessage?: undefined;
+      String?: undefined;
+      Number: NumberReference;
+      Date?: undefined;
+      Email?: undefined;
+    }
+  | {
+      Url?: undefined;
+      Attachment?: undefined;
+      EmailMessage?: undefined;
+      String?: undefined;
+      Number?: undefined;
+      Date: DateReference;
+      Email?: undefined;
+    }
+  | {
+      Url?: undefined;
+      Attachment?: undefined;
+      EmailMessage?: undefined;
+      String?: undefined;
+      Number?: undefined;
+      Date?: undefined;
+      Email: EmailReference;
+    };
 export type ReferenceSummaryList = Array<ReferenceSummary>;
 export type ReferenceType =
   | "URL"

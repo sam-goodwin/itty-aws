@@ -2485,10 +2485,30 @@ export interface StartLiveTailResponse {
   responseStream?: StartLiveTailResponseStream;
 }
 export type StartLiveTailResponseStream =
-  | { sessionStart: LiveTailSessionStart }
-  | { sessionUpdate: LiveTailSessionUpdate }
-  | { SessionTimeoutException: SessionTimeoutException }
-  | { SessionStreamingException: SessionStreamingException };
+  | {
+      sessionStart: LiveTailSessionStart;
+      sessionUpdate?: undefined;
+      SessionTimeoutException?: undefined;
+      SessionStreamingException?: undefined;
+    }
+  | {
+      sessionStart?: undefined;
+      sessionUpdate: LiveTailSessionUpdate;
+      SessionTimeoutException?: undefined;
+      SessionStreamingException?: undefined;
+    }
+  | {
+      sessionStart?: undefined;
+      sessionUpdate?: undefined;
+      SessionTimeoutException: SessionTimeoutException;
+      SessionStreamingException?: undefined;
+    }
+  | {
+      sessionStart?: undefined;
+      sessionUpdate?: undefined;
+      SessionTimeoutException?: undefined;
+      SessionStreamingException: SessionStreamingException;
+    };
 export interface StartQueryRequest {
   queryLanguage?: QueryLanguage;
   logGroupName?: string;

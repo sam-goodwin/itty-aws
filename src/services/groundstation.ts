@@ -132,9 +132,21 @@ export type ConfigCapabilityType =
   | "UPLINK_ECHO"
   | "S3_RECORDING";
 export type ConfigDetails =
-  | { endpointDetails: EndpointDetails }
-  | { antennaDemodDecodeDetails: AntennaDemodDecodeDetails }
-  | { s3RecordingDetails: S3RecordingDetails };
+  | {
+      endpointDetails: EndpointDetails;
+      antennaDemodDecodeDetails?: undefined;
+      s3RecordingDetails?: undefined;
+    }
+  | {
+      endpointDetails?: undefined;
+      antennaDemodDecodeDetails: AntennaDemodDecodeDetails;
+      s3RecordingDetails?: undefined;
+    }
+  | {
+      endpointDetails?: undefined;
+      antennaDemodDecodeDetails?: undefined;
+      s3RecordingDetails: S3RecordingDetails;
+    };
 export interface ConfigIdResponse {
   configId?: string;
   configType?: ConfigCapabilityType;
@@ -148,13 +160,69 @@ export interface ConfigListItem {
   name?: string;
 }
 export type ConfigTypeData =
-  | { antennaDownlinkConfig: AntennaDownlinkConfig }
-  | { trackingConfig: TrackingConfig }
-  | { dataflowEndpointConfig: DataflowEndpointConfig }
-  | { antennaDownlinkDemodDecodeConfig: AntennaDownlinkDemodDecodeConfig }
-  | { antennaUplinkConfig: AntennaUplinkConfig }
-  | { uplinkEchoConfig: UplinkEchoConfig }
-  | { s3RecordingConfig: S3RecordingConfig };
+  | {
+      antennaDownlinkConfig: AntennaDownlinkConfig;
+      trackingConfig?: undefined;
+      dataflowEndpointConfig?: undefined;
+      antennaDownlinkDemodDecodeConfig?: undefined;
+      antennaUplinkConfig?: undefined;
+      uplinkEchoConfig?: undefined;
+      s3RecordingConfig?: undefined;
+    }
+  | {
+      antennaDownlinkConfig?: undefined;
+      trackingConfig: TrackingConfig;
+      dataflowEndpointConfig?: undefined;
+      antennaDownlinkDemodDecodeConfig?: undefined;
+      antennaUplinkConfig?: undefined;
+      uplinkEchoConfig?: undefined;
+      s3RecordingConfig?: undefined;
+    }
+  | {
+      antennaDownlinkConfig?: undefined;
+      trackingConfig?: undefined;
+      dataflowEndpointConfig: DataflowEndpointConfig;
+      antennaDownlinkDemodDecodeConfig?: undefined;
+      antennaUplinkConfig?: undefined;
+      uplinkEchoConfig?: undefined;
+      s3RecordingConfig?: undefined;
+    }
+  | {
+      antennaDownlinkConfig?: undefined;
+      trackingConfig?: undefined;
+      dataflowEndpointConfig?: undefined;
+      antennaDownlinkDemodDecodeConfig: AntennaDownlinkDemodDecodeConfig;
+      antennaUplinkConfig?: undefined;
+      uplinkEchoConfig?: undefined;
+      s3RecordingConfig?: undefined;
+    }
+  | {
+      antennaDownlinkConfig?: undefined;
+      trackingConfig?: undefined;
+      dataflowEndpointConfig?: undefined;
+      antennaDownlinkDemodDecodeConfig?: undefined;
+      antennaUplinkConfig: AntennaUplinkConfig;
+      uplinkEchoConfig?: undefined;
+      s3RecordingConfig?: undefined;
+    }
+  | {
+      antennaDownlinkConfig?: undefined;
+      trackingConfig?: undefined;
+      dataflowEndpointConfig?: undefined;
+      antennaDownlinkDemodDecodeConfig?: undefined;
+      antennaUplinkConfig?: undefined;
+      uplinkEchoConfig: UplinkEchoConfig;
+      s3RecordingConfig?: undefined;
+    }
+  | {
+      antennaDownlinkConfig?: undefined;
+      trackingConfig?: undefined;
+      dataflowEndpointConfig?: undefined;
+      antennaDownlinkDemodDecodeConfig?: undefined;
+      antennaUplinkConfig?: undefined;
+      uplinkEchoConfig?: undefined;
+      s3RecordingConfig: S3RecordingConfig;
+    };
 export interface ConnectionDetails {
   socketAddress: SocketAddress;
   mtu?: number;
@@ -357,7 +425,9 @@ export type EndpointStatus =
   | "deleting"
   | "failed";
 export type EphemeridesList = Array<EphemerisItem>;
-export type EphemerisData = { tle: TLEEphemeris } | { oem: OEMEphemeris };
+export type EphemerisData =
+  | { tle: TLEEphemeris; oem?: undefined }
+  | { tle?: undefined; oem: OEMEphemeris };
 export interface EphemerisDescription {
   sourceS3Object?: S3Object;
   ephemerisData?: string;
@@ -398,8 +468,8 @@ export type EphemerisStatus =
   | "EXPIRED";
 export type EphemerisStatusList = Array<EphemerisStatus>;
 export type EphemerisTypeDescription =
-  | { tle: EphemerisDescription }
-  | { oem: EphemerisDescription };
+  | { tle: EphemerisDescription; oem?: undefined }
+  | { tle?: undefined; oem: EphemerisDescription };
 export interface Frequency {
   value: number;
   units: FrequencyUnits;
@@ -512,9 +582,9 @@ export type KeyAliasName = string;
 export type KeyArn = string;
 
 export type KmsKey =
-  | { kmsKeyArn: string }
-  | { kmsAliasArn: string }
-  | { kmsAliasName: string };
+  | { kmsKeyArn: string; kmsAliasArn?: undefined; kmsAliasName?: undefined }
+  | { kmsKeyArn?: undefined; kmsAliasArn: string; kmsAliasName?: undefined }
+  | { kmsKeyArn?: undefined; kmsAliasArn?: undefined; kmsAliasName: string };
 export interface ListConfigsRequest {
   maxResults?: number;
   nextToken?: string;

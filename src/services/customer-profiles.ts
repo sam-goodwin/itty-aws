@@ -1425,8 +1425,11 @@ export interface DetectProfileObjectTypeResponse {
   DetectedProfileObjectTypes?: Array<DetectedProfileObjectType>;
 }
 export type Dimension =
-  | { ProfileAttributes: ProfileAttributes }
-  | { CalculatedAttributes: Record<string, CalculatedAttributeDimension> };
+  | { ProfileAttributes: ProfileAttributes; CalculatedAttributes?: undefined }
+  | {
+      ProfileAttributes?: undefined;
+      CalculatedAttributes: Record<string, CalculatedAttributeDimension>;
+    };
 export type DimensionList = Array<Dimension>;
 export type displayName = string;
 

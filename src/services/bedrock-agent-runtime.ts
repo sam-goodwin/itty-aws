@@ -410,8 +410,8 @@ export declare class AccessDeniedException extends EffectData.TaggedError(
   readonly message?: string;
 }> {}
 export type ActionGroupExecutor =
-  | { lambda: string }
-  | { customControl: CustomControlMethod };
+  | { lambda: string; customControl?: undefined }
+  | { lambda?: undefined; customControl: CustomControlMethod };
 export interface ActionGroupInvocationInput {
   actionGroupName?: string;
   verb?: string;
@@ -526,7 +526,9 @@ export interface ApiResult {
   responseBody?: Record<string, ContentBody>;
   agentId?: string;
 }
-export type APISchema = { s3: S3Identifier } | { payload: string };
+export type APISchema =
+  | { s3: S3Identifier; payload?: undefined }
+  | { s3?: undefined; payload: string };
 export type AttributeType = "STRING" | "NUMBER" | "BOOLEAN" | "STRING_LIST";
 export interface Attribution {
   citations?: Array<Citation>;
@@ -557,8 +559,8 @@ export interface BedrockRerankingModelConfiguration {
   additionalModelRequestFields?: Record<string, unknown>;
 }
 export type BedrockSessionContentBlock =
-  | { text: string }
-  | { image: ImageBlock };
+  | { text: string; image?: undefined }
+  | { text?: undefined; image: ImageBlock };
 export type BedrockSessionContentBlocks = Array<BedrockSessionContentBlock>;
 export type ByteContentBlob = Uint8Array | string;
 
@@ -779,13 +781,69 @@ export interface FlowExecutionError {
 export type FlowExecutionErrors = Array<FlowExecutionError>;
 export type FlowExecutionErrorType = "TIMED_OUT";
 export type FlowExecutionEvent =
-  | { flowInputEvent: FlowExecutionInputEvent }
-  | { flowOutputEvent: FlowExecutionOutputEvent }
-  | { nodeInputEvent: NodeInputEvent }
-  | { nodeOutputEvent: NodeOutputEvent }
-  | { conditionResultEvent: ConditionResultEvent }
-  | { nodeFailureEvent: NodeFailureEvent }
-  | { flowFailureEvent: FlowFailureEvent };
+  | {
+      flowInputEvent: FlowExecutionInputEvent;
+      flowOutputEvent?: undefined;
+      nodeInputEvent?: undefined;
+      nodeOutputEvent?: undefined;
+      conditionResultEvent?: undefined;
+      nodeFailureEvent?: undefined;
+      flowFailureEvent?: undefined;
+    }
+  | {
+      flowInputEvent?: undefined;
+      flowOutputEvent: FlowExecutionOutputEvent;
+      nodeInputEvent?: undefined;
+      nodeOutputEvent?: undefined;
+      conditionResultEvent?: undefined;
+      nodeFailureEvent?: undefined;
+      flowFailureEvent?: undefined;
+    }
+  | {
+      flowInputEvent?: undefined;
+      flowOutputEvent?: undefined;
+      nodeInputEvent: NodeInputEvent;
+      nodeOutputEvent?: undefined;
+      conditionResultEvent?: undefined;
+      nodeFailureEvent?: undefined;
+      flowFailureEvent?: undefined;
+    }
+  | {
+      flowInputEvent?: undefined;
+      flowOutputEvent?: undefined;
+      nodeInputEvent?: undefined;
+      nodeOutputEvent: NodeOutputEvent;
+      conditionResultEvent?: undefined;
+      nodeFailureEvent?: undefined;
+      flowFailureEvent?: undefined;
+    }
+  | {
+      flowInputEvent?: undefined;
+      flowOutputEvent?: undefined;
+      nodeInputEvent?: undefined;
+      nodeOutputEvent?: undefined;
+      conditionResultEvent: ConditionResultEvent;
+      nodeFailureEvent?: undefined;
+      flowFailureEvent?: undefined;
+    }
+  | {
+      flowInputEvent?: undefined;
+      flowOutputEvent?: undefined;
+      nodeInputEvent?: undefined;
+      nodeOutputEvent?: undefined;
+      conditionResultEvent?: undefined;
+      nodeFailureEvent: NodeFailureEvent;
+      flowFailureEvent?: undefined;
+    }
+  | {
+      flowInputEvent?: undefined;
+      flowOutputEvent?: undefined;
+      nodeInputEvent?: undefined;
+      nodeOutputEvent?: undefined;
+      conditionResultEvent?: undefined;
+      nodeFailureEvent?: undefined;
+      flowFailureEvent: FlowFailureEvent;
+    };
 export type FlowExecutionEvents = Array<FlowExecutionEvent>;
 export type FlowExecutionEventType = "NODE" | "FLOW";
 export type FlowExecutionId = string;
@@ -860,24 +918,226 @@ export interface FlowOutputField {
 }
 export type FlowOutputFields = Array<FlowOutputField>;
 export type FlowResponseStream =
-  | { flowOutputEvent: FlowOutputEvent }
-  | { flowCompletionEvent: FlowCompletionEvent }
-  | { flowTraceEvent: FlowTraceEvent }
-  | { internalServerException: InternalServerException }
-  | { validationException: ValidationException }
-  | { resourceNotFoundException: ResourceNotFoundException }
-  | { serviceQuotaExceededException: ServiceQuotaExceededException }
-  | { throttlingException: ThrottlingException }
-  | { accessDeniedException: AccessDeniedException }
-  | { conflictException: ConflictException }
-  | { dependencyFailedException: DependencyFailedException }
-  | { badGatewayException: BadGatewayException }
-  | { flowMultiTurnInputRequestEvent: FlowMultiTurnInputRequestEvent };
+  | {
+      flowOutputEvent: FlowOutputEvent;
+      flowCompletionEvent?: undefined;
+      flowTraceEvent?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      flowMultiTurnInputRequestEvent?: undefined;
+    }
+  | {
+      flowOutputEvent?: undefined;
+      flowCompletionEvent: FlowCompletionEvent;
+      flowTraceEvent?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      flowMultiTurnInputRequestEvent?: undefined;
+    }
+  | {
+      flowOutputEvent?: undefined;
+      flowCompletionEvent?: undefined;
+      flowTraceEvent: FlowTraceEvent;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      flowMultiTurnInputRequestEvent?: undefined;
+    }
+  | {
+      flowOutputEvent?: undefined;
+      flowCompletionEvent?: undefined;
+      flowTraceEvent?: undefined;
+      internalServerException: InternalServerException;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      flowMultiTurnInputRequestEvent?: undefined;
+    }
+  | {
+      flowOutputEvent?: undefined;
+      flowCompletionEvent?: undefined;
+      flowTraceEvent?: undefined;
+      internalServerException?: undefined;
+      validationException: ValidationException;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      flowMultiTurnInputRequestEvent?: undefined;
+    }
+  | {
+      flowOutputEvent?: undefined;
+      flowCompletionEvent?: undefined;
+      flowTraceEvent?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException: ResourceNotFoundException;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      flowMultiTurnInputRequestEvent?: undefined;
+    }
+  | {
+      flowOutputEvent?: undefined;
+      flowCompletionEvent?: undefined;
+      flowTraceEvent?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException: ServiceQuotaExceededException;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      flowMultiTurnInputRequestEvent?: undefined;
+    }
+  | {
+      flowOutputEvent?: undefined;
+      flowCompletionEvent?: undefined;
+      flowTraceEvent?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException: ThrottlingException;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      flowMultiTurnInputRequestEvent?: undefined;
+    }
+  | {
+      flowOutputEvent?: undefined;
+      flowCompletionEvent?: undefined;
+      flowTraceEvent?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException: AccessDeniedException;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      flowMultiTurnInputRequestEvent?: undefined;
+    }
+  | {
+      flowOutputEvent?: undefined;
+      flowCompletionEvent?: undefined;
+      flowTraceEvent?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException: ConflictException;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      flowMultiTurnInputRequestEvent?: undefined;
+    }
+  | {
+      flowOutputEvent?: undefined;
+      flowCompletionEvent?: undefined;
+      flowTraceEvent?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException: DependencyFailedException;
+      badGatewayException?: undefined;
+      flowMultiTurnInputRequestEvent?: undefined;
+    }
+  | {
+      flowOutputEvent?: undefined;
+      flowCompletionEvent?: undefined;
+      flowTraceEvent?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException: BadGatewayException;
+      flowMultiTurnInputRequestEvent?: undefined;
+    }
+  | {
+      flowOutputEvent?: undefined;
+      flowCompletionEvent?: undefined;
+      flowTraceEvent?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      flowMultiTurnInputRequestEvent: FlowMultiTurnInputRequestEvent;
+    };
 export type FlowTrace =
-  | { nodeInputTrace: FlowTraceNodeInputEvent }
-  | { nodeOutputTrace: FlowTraceNodeOutputEvent }
-  | { conditionNodeResultTrace: FlowTraceConditionNodeResultEvent }
-  | { nodeActionTrace: FlowTraceNodeActionEvent };
+  | {
+      nodeInputTrace: FlowTraceNodeInputEvent;
+      nodeOutputTrace?: undefined;
+      conditionNodeResultTrace?: undefined;
+      nodeActionTrace?: undefined;
+    }
+  | {
+      nodeInputTrace?: undefined;
+      nodeOutputTrace: FlowTraceNodeOutputEvent;
+      conditionNodeResultTrace?: undefined;
+      nodeActionTrace?: undefined;
+    }
+  | {
+      nodeInputTrace?: undefined;
+      nodeOutputTrace?: undefined;
+      conditionNodeResultTrace: FlowTraceConditionNodeResultEvent;
+      nodeActionTrace?: undefined;
+    }
+  | {
+      nodeInputTrace?: undefined;
+      nodeOutputTrace?: undefined;
+      conditionNodeResultTrace?: undefined;
+      nodeActionTrace: FlowTraceNodeActionEvent;
+    };
 export interface FlowTraceCondition {
   conditionName: string;
 }
@@ -1184,8 +1444,8 @@ export type ImageInputFormat = "PNG" | "JPEG" | "GIF" | "WEBP";
 export type ImageInputs = Array<ImageInput>;
 export type ImageInputSource = { bytes: Uint8Array | string };
 export type ImageSource =
-  | { bytes: Uint8Array | string }
-  | { s3Location: S3Location };
+  | { bytes: Uint8Array | string; s3Location?: undefined }
+  | { bytes?: undefined; s3Location: S3Location };
 export interface ImplicitFilterConfiguration {
   metadataAttributes: Array<MetadataAttributeSchema>;
   modelArn: string;
@@ -1208,19 +1468,201 @@ export interface InlineAgentPayloadPart {
   attribution?: Attribution;
 }
 export type InlineAgentResponseStream =
-  | { chunk: InlineAgentPayloadPart }
-  | { trace: InlineAgentTracePart }
-  | { returnControl: InlineAgentReturnControlPayload }
-  | { internalServerException: InternalServerException }
-  | { validationException: ValidationException }
-  | { resourceNotFoundException: ResourceNotFoundException }
-  | { serviceQuotaExceededException: ServiceQuotaExceededException }
-  | { throttlingException: ThrottlingException }
-  | { accessDeniedException: AccessDeniedException }
-  | { conflictException: ConflictException }
-  | { dependencyFailedException: DependencyFailedException }
-  | { badGatewayException: BadGatewayException }
-  | { files: InlineAgentFilePart };
+  | {
+      chunk: InlineAgentPayloadPart;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace: InlineAgentTracePart;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl: InlineAgentReturnControlPayload;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException: InternalServerException;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException: ValidationException;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException: ResourceNotFoundException;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException: ServiceQuotaExceededException;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException: ThrottlingException;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException: AccessDeniedException;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException: ConflictException;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException: DependencyFailedException;
+      badGatewayException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException: BadGatewayException;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      files: InlineAgentFilePart;
+    };
 export interface InlineAgentReturnControlPayload {
   invocationInputs?: Array<InvocationInputMember>;
   invocationId?: string;
@@ -1274,12 +1716,18 @@ export interface InvocationInput {
   agentCollaboratorInvocationInput?: AgentCollaboratorInvocationInput;
 }
 export type InvocationInputMember =
-  | { apiInvocationInput: ApiInvocationInput }
-  | { functionInvocationInput: FunctionInvocationInput };
+  | {
+      apiInvocationInput: ApiInvocationInput;
+      functionInvocationInput?: undefined;
+    }
+  | {
+      apiInvocationInput?: undefined;
+      functionInvocationInput: FunctionInvocationInput;
+    };
 export type InvocationInputs = Array<InvocationInputMember>;
 export type InvocationResultMember =
-  | { apiResult: ApiResult }
-  | { functionResult: FunctionResult };
+  | { apiResult: ApiResult; functionResult?: undefined }
+  | { apiResult?: undefined; functionResult: FunctionResult };
 export interface InvocationStep {
   sessionId: string;
   invocationId: string;
@@ -1613,14 +2061,86 @@ export interface OptimizedPromptEvent {
   optimizedPrompt?: OptimizedPrompt;
 }
 export type OptimizedPromptStream =
-  | { optimizedPromptEvent: OptimizedPromptEvent }
-  | { analyzePromptEvent: AnalyzePromptEvent }
-  | { internalServerException: InternalServerException }
-  | { throttlingException: ThrottlingException }
-  | { validationException: ValidationException }
-  | { dependencyFailedException: DependencyFailedException }
-  | { accessDeniedException: AccessDeniedException }
-  | { badGatewayException: BadGatewayException };
+  | {
+      optimizedPromptEvent: OptimizedPromptEvent;
+      analyzePromptEvent?: undefined;
+      internalServerException?: undefined;
+      throttlingException?: undefined;
+      validationException?: undefined;
+      dependencyFailedException?: undefined;
+      accessDeniedException?: undefined;
+      badGatewayException?: undefined;
+    }
+  | {
+      optimizedPromptEvent?: undefined;
+      analyzePromptEvent: AnalyzePromptEvent;
+      internalServerException?: undefined;
+      throttlingException?: undefined;
+      validationException?: undefined;
+      dependencyFailedException?: undefined;
+      accessDeniedException?: undefined;
+      badGatewayException?: undefined;
+    }
+  | {
+      optimizedPromptEvent?: undefined;
+      analyzePromptEvent?: undefined;
+      internalServerException: InternalServerException;
+      throttlingException?: undefined;
+      validationException?: undefined;
+      dependencyFailedException?: undefined;
+      accessDeniedException?: undefined;
+      badGatewayException?: undefined;
+    }
+  | {
+      optimizedPromptEvent?: undefined;
+      analyzePromptEvent?: undefined;
+      internalServerException?: undefined;
+      throttlingException: ThrottlingException;
+      validationException?: undefined;
+      dependencyFailedException?: undefined;
+      accessDeniedException?: undefined;
+      badGatewayException?: undefined;
+    }
+  | {
+      optimizedPromptEvent?: undefined;
+      analyzePromptEvent?: undefined;
+      internalServerException?: undefined;
+      throttlingException?: undefined;
+      validationException: ValidationException;
+      dependencyFailedException?: undefined;
+      accessDeniedException?: undefined;
+      badGatewayException?: undefined;
+    }
+  | {
+      optimizedPromptEvent?: undefined;
+      analyzePromptEvent?: undefined;
+      internalServerException?: undefined;
+      throttlingException?: undefined;
+      validationException?: undefined;
+      dependencyFailedException: DependencyFailedException;
+      accessDeniedException?: undefined;
+      badGatewayException?: undefined;
+    }
+  | {
+      optimizedPromptEvent?: undefined;
+      analyzePromptEvent?: undefined;
+      internalServerException?: undefined;
+      throttlingException?: undefined;
+      validationException?: undefined;
+      dependencyFailedException?: undefined;
+      accessDeniedException: AccessDeniedException;
+      badGatewayException?: undefined;
+    }
+  | {
+      optimizedPromptEvent?: undefined;
+      analyzePromptEvent?: undefined;
+      internalServerException?: undefined;
+      throttlingException?: undefined;
+      validationException?: undefined;
+      dependencyFailedException?: undefined;
+      accessDeniedException?: undefined;
+      badGatewayException: BadGatewayException;
+    };
 export interface OptimizePromptRequest {
   input: InputPrompt;
   targetModelId: string;
@@ -1643,11 +2163,41 @@ export interface OrchestrationModelInvocationOutput {
   reasoningContent?: ReasoningContentBlock;
 }
 export type OrchestrationTrace =
-  | { rationale: Rationale }
-  | { invocationInput: InvocationInput }
-  | { observation: Observation }
-  | { modelInvocationInput: ModelInvocationInput }
-  | { modelInvocationOutput: OrchestrationModelInvocationOutput };
+  | {
+      rationale: Rationale;
+      invocationInput?: undefined;
+      observation?: undefined;
+      modelInvocationInput?: undefined;
+      modelInvocationOutput?: undefined;
+    }
+  | {
+      rationale?: undefined;
+      invocationInput: InvocationInput;
+      observation?: undefined;
+      modelInvocationInput?: undefined;
+      modelInvocationOutput?: undefined;
+    }
+  | {
+      rationale?: undefined;
+      invocationInput?: undefined;
+      observation: Observation;
+      modelInvocationInput?: undefined;
+      modelInvocationOutput?: undefined;
+    }
+  | {
+      rationale?: undefined;
+      invocationInput?: undefined;
+      observation?: undefined;
+      modelInvocationInput: ModelInvocationInput;
+      modelInvocationOutput?: undefined;
+    }
+  | {
+      rationale?: undefined;
+      invocationInput?: undefined;
+      observation?: undefined;
+      modelInvocationInput?: undefined;
+      modelInvocationOutput: OrchestrationModelInvocationOutput;
+    };
 export type OrchestrationType = "DEFAULT" | "CUSTOM_ORCHESTRATION";
 export interface OutputFile {
   name?: string;
@@ -1704,8 +2254,14 @@ export interface PostProcessingParsedResponse {
   text?: string;
 }
 export type PostProcessingTrace =
-  | { modelInvocationInput: ModelInvocationInput }
-  | { modelInvocationOutput: PostProcessingModelInvocationOutput };
+  | {
+      modelInvocationInput: ModelInvocationInput;
+      modelInvocationOutput?: undefined;
+    }
+  | {
+      modelInvocationInput?: undefined;
+      modelInvocationOutput: PostProcessingModelInvocationOutput;
+    };
 export interface PreProcessingModelInvocationOutput {
   traceId?: string;
   parsedResponse?: PreProcessingParsedResponse;
@@ -1718,8 +2274,14 @@ export interface PreProcessingParsedResponse {
   isValid?: boolean;
 }
 export type PreProcessingTrace =
-  | { modelInvocationInput: ModelInvocationInput }
-  | { modelInvocationOutput: PreProcessingModelInvocationOutput };
+  | {
+      modelInvocationInput: ModelInvocationInput;
+      modelInvocationOutput?: undefined;
+    }
+  | {
+      modelInvocationInput?: undefined;
+      modelInvocationOutput: PreProcessingModelInvocationOutput;
+    };
 export interface PromptConfiguration {
   promptType?: PromptType;
   promptCreationMode?: CreationMode;
@@ -1785,8 +2347,8 @@ export interface RawResponse {
   content?: string;
 }
 export type ReasoningContentBlock =
-  | { reasoningText: ReasoningTextBlock }
-  | { redactedContent: Uint8Array | string };
+  | { reasoningText: ReasoningTextBlock; redactedContent?: undefined }
+  | { reasoningText?: undefined; redactedContent: Uint8Array | string };
 export interface ReasoningTextBlock {
   text: string;
   signature?: string;
@@ -1813,8 +2375,8 @@ export interface RerankingConfiguration {
 export type RerankingConfigurationType = "BEDROCK_RERANKING_MODEL";
 export type RerankingMetadataSelectionMode = "SELECTIVE" | "ALL";
 export type RerankingMetadataSelectiveModeConfiguration =
-  | { fieldsToInclude: Array<FieldForReranking> }
-  | { fieldsToExclude: Array<FieldForReranking> };
+  | { fieldsToInclude: Array<FieldForReranking>; fieldsToExclude?: undefined }
+  | { fieldsToInclude?: undefined; fieldsToExclude: Array<FieldForReranking> };
 export type RerankQueriesList = Array<RerankQuery>;
 export interface RerankQuery {
   type: RerankQueryContentType;
@@ -1858,34 +2420,426 @@ export declare class ResourceNotFoundException extends EffectData.TaggedError(
 export type ResponseBody = Record<string, ContentBody>;
 export type ResponseState = "FAILURE" | "REPROMPT";
 export type ResponseStream =
-  | { chunk: PayloadPart }
-  | { trace: TracePart }
-  | { returnControl: ReturnControlPayload }
-  | { internalServerException: InternalServerException }
-  | { validationException: ValidationException }
-  | { resourceNotFoundException: ResourceNotFoundException }
-  | { serviceQuotaExceededException: ServiceQuotaExceededException }
-  | { throttlingException: ThrottlingException }
-  | { accessDeniedException: AccessDeniedException }
-  | { conflictException: ConflictException }
-  | { dependencyFailedException: DependencyFailedException }
-  | { badGatewayException: BadGatewayException }
-  | { modelNotReadyException: ModelNotReadyException }
-  | { files: FilePart };
+  | {
+      chunk: PayloadPart;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      modelNotReadyException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace: TracePart;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      modelNotReadyException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl: ReturnControlPayload;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      modelNotReadyException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException: InternalServerException;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      modelNotReadyException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException: ValidationException;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      modelNotReadyException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException: ResourceNotFoundException;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      modelNotReadyException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException: ServiceQuotaExceededException;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      modelNotReadyException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException: ThrottlingException;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      modelNotReadyException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException: AccessDeniedException;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      modelNotReadyException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException: ConflictException;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      modelNotReadyException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException: DependencyFailedException;
+      badGatewayException?: undefined;
+      modelNotReadyException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException: BadGatewayException;
+      modelNotReadyException?: undefined;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      modelNotReadyException: ModelNotReadyException;
+      files?: undefined;
+    }
+  | {
+      chunk?: undefined;
+      trace?: undefined;
+      returnControl?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+      modelNotReadyException?: undefined;
+      files: FilePart;
+    };
 export type RetrievalFilter =
-  | { equals: FilterAttribute }
-  | { notEquals: FilterAttribute }
-  | { greaterThan: FilterAttribute }
-  | { greaterThanOrEquals: FilterAttribute }
-  | { lessThan: FilterAttribute }
-  | { lessThanOrEquals: FilterAttribute }
-  | { in: FilterAttribute }
-  | { notIn: FilterAttribute }
-  | { startsWith: FilterAttribute }
-  | { listContains: FilterAttribute }
-  | { stringContains: FilterAttribute }
-  | { andAll: Array<RetrievalFilter> }
-  | { orAll: Array<RetrievalFilter> };
+  | {
+      equals: FilterAttribute;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals: FilterAttribute;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan: FilterAttribute;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals: FilterAttribute;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan: FilterAttribute;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals: FilterAttribute;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in: FilterAttribute;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn: FilterAttribute;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith: FilterAttribute;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains: FilterAttribute;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains: FilterAttribute;
+      andAll?: undefined;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll: Array<RetrievalFilter>;
+      orAll?: undefined;
+    }
+  | {
+      equals?: undefined;
+      notEquals?: undefined;
+      greaterThan?: undefined;
+      greaterThanOrEquals?: undefined;
+      lessThan?: undefined;
+      lessThanOrEquals?: undefined;
+      in?: undefined;
+      notIn?: undefined;
+      startsWith?: undefined;
+      listContains?: undefined;
+      stringContains?: undefined;
+      andAll?: undefined;
+      orAll: Array<RetrievalFilter>;
+    };
 export type RetrievalFilterList = Array<RetrievalFilter>;
 export interface RetrievalResultConfluenceLocation {
   url?: string;
@@ -1996,18 +2950,174 @@ export interface RetrieveAndGenerateStreamResponse {
   sessionId: string;
 }
 export type RetrieveAndGenerateStreamResponseOutput =
-  | { output: RetrieveAndGenerateOutputEvent }
-  | { citation: CitationEvent }
-  | { guardrail: GuardrailEvent }
-  | { internalServerException: InternalServerException }
-  | { validationException: ValidationException }
-  | { resourceNotFoundException: ResourceNotFoundException }
-  | { serviceQuotaExceededException: ServiceQuotaExceededException }
-  | { throttlingException: ThrottlingException }
-  | { accessDeniedException: AccessDeniedException }
-  | { conflictException: ConflictException }
-  | { dependencyFailedException: DependencyFailedException }
-  | { badGatewayException: BadGatewayException };
+  | {
+      output: RetrieveAndGenerateOutputEvent;
+      citation?: undefined;
+      guardrail?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+    }
+  | {
+      output?: undefined;
+      citation: CitationEvent;
+      guardrail?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+    }
+  | {
+      output?: undefined;
+      citation?: undefined;
+      guardrail: GuardrailEvent;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+    }
+  | {
+      output?: undefined;
+      citation?: undefined;
+      guardrail?: undefined;
+      internalServerException: InternalServerException;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+    }
+  | {
+      output?: undefined;
+      citation?: undefined;
+      guardrail?: undefined;
+      internalServerException?: undefined;
+      validationException: ValidationException;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+    }
+  | {
+      output?: undefined;
+      citation?: undefined;
+      guardrail?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException: ResourceNotFoundException;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+    }
+  | {
+      output?: undefined;
+      citation?: undefined;
+      guardrail?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException: ServiceQuotaExceededException;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+    }
+  | {
+      output?: undefined;
+      citation?: undefined;
+      guardrail?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException: ThrottlingException;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+    }
+  | {
+      output?: undefined;
+      citation?: undefined;
+      guardrail?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException: AccessDeniedException;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+    }
+  | {
+      output?: undefined;
+      citation?: undefined;
+      guardrail?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException: ConflictException;
+      dependencyFailedException?: undefined;
+      badGatewayException?: undefined;
+    }
+  | {
+      output?: undefined;
+      citation?: undefined;
+      guardrail?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException: DependencyFailedException;
+      badGatewayException?: undefined;
+    }
+  | {
+      output?: undefined;
+      citation?: undefined;
+      guardrail?: undefined;
+      internalServerException?: undefined;
+      validationException?: undefined;
+      resourceNotFoundException?: undefined;
+      serviceQuotaExceededException?: undefined;
+      throttlingException?: undefined;
+      accessDeniedException?: undefined;
+      conflictException?: undefined;
+      dependencyFailedException?: undefined;
+      badGatewayException: BadGatewayException;
+    };
 export type RetrieveAndGenerateType = "KNOWLEDGE_BASE" | "EXTERNAL_SOURCES";
 export interface RetrievedReference {
   content?: RetrievalResultContent;
@@ -2042,10 +3152,30 @@ export interface RoutingClassifierModelInvocationOutput {
   metadata?: Metadata;
 }
 export type RoutingClassifierTrace =
-  | { invocationInput: InvocationInput }
-  | { observation: Observation }
-  | { modelInvocationInput: ModelInvocationInput }
-  | { modelInvocationOutput: RoutingClassifierModelInvocationOutput };
+  | {
+      invocationInput: InvocationInput;
+      observation?: undefined;
+      modelInvocationInput?: undefined;
+      modelInvocationOutput?: undefined;
+    }
+  | {
+      invocationInput?: undefined;
+      observation: Observation;
+      modelInvocationInput?: undefined;
+      modelInvocationOutput?: undefined;
+    }
+  | {
+      invocationInput?: undefined;
+      observation?: undefined;
+      modelInvocationInput: ModelInvocationInput;
+      modelInvocationOutput?: undefined;
+    }
+  | {
+      invocationInput?: undefined;
+      observation?: undefined;
+      modelInvocationInput?: undefined;
+      modelInvocationOutput: RoutingClassifierModelInvocationOutput;
+    };
 export type S3BucketName = string;
 
 export interface S3Identifier {
@@ -2186,13 +3316,69 @@ export type TopK = number;
 export type TopP = number;
 
 export type Trace =
-  | { guardrailTrace: GuardrailTrace }
-  | { preProcessingTrace: PreProcessingTrace }
-  | { orchestrationTrace: OrchestrationTrace }
-  | { postProcessingTrace: PostProcessingTrace }
-  | { routingClassifierTrace: RoutingClassifierTrace }
-  | { failureTrace: FailureTrace }
-  | { customOrchestrationTrace: CustomOrchestrationTrace };
+  | {
+      guardrailTrace: GuardrailTrace;
+      preProcessingTrace?: undefined;
+      orchestrationTrace?: undefined;
+      postProcessingTrace?: undefined;
+      routingClassifierTrace?: undefined;
+      failureTrace?: undefined;
+      customOrchestrationTrace?: undefined;
+    }
+  | {
+      guardrailTrace?: undefined;
+      preProcessingTrace: PreProcessingTrace;
+      orchestrationTrace?: undefined;
+      postProcessingTrace?: undefined;
+      routingClassifierTrace?: undefined;
+      failureTrace?: undefined;
+      customOrchestrationTrace?: undefined;
+    }
+  | {
+      guardrailTrace?: undefined;
+      preProcessingTrace?: undefined;
+      orchestrationTrace: OrchestrationTrace;
+      postProcessingTrace?: undefined;
+      routingClassifierTrace?: undefined;
+      failureTrace?: undefined;
+      customOrchestrationTrace?: undefined;
+    }
+  | {
+      guardrailTrace?: undefined;
+      preProcessingTrace?: undefined;
+      orchestrationTrace?: undefined;
+      postProcessingTrace: PostProcessingTrace;
+      routingClassifierTrace?: undefined;
+      failureTrace?: undefined;
+      customOrchestrationTrace?: undefined;
+    }
+  | {
+      guardrailTrace?: undefined;
+      preProcessingTrace?: undefined;
+      orchestrationTrace?: undefined;
+      postProcessingTrace?: undefined;
+      routingClassifierTrace: RoutingClassifierTrace;
+      failureTrace?: undefined;
+      customOrchestrationTrace?: undefined;
+    }
+  | {
+      guardrailTrace?: undefined;
+      preProcessingTrace?: undefined;
+      orchestrationTrace?: undefined;
+      postProcessingTrace?: undefined;
+      routingClassifierTrace?: undefined;
+      failureTrace: FailureTrace;
+      customOrchestrationTrace?: undefined;
+    }
+  | {
+      guardrailTrace?: undefined;
+      preProcessingTrace?: undefined;
+      orchestrationTrace?: undefined;
+      postProcessingTrace?: undefined;
+      routingClassifierTrace?: undefined;
+      failureTrace?: undefined;
+      customOrchestrationTrace: CustomOrchestrationTrace;
+    };
 export type TraceId = string;
 
 export type TraceKnowledgeBaseId = string;

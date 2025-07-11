@@ -842,33 +842,345 @@ export type AggCounts = number;
 export type AggregationFindingType = string;
 
 export type AggregationRequest =
-  | { accountAggregation: AccountAggregation }
-  | { amiAggregation: AmiAggregation }
-  | { awsEcrContainerAggregation: AwsEcrContainerAggregation }
-  | { ec2InstanceAggregation: Ec2InstanceAggregation }
-  | { findingTypeAggregation: FindingTypeAggregation }
-  | { imageLayerAggregation: ImageLayerAggregation }
-  | { packageAggregation: PackageAggregation }
-  | { repositoryAggregation: RepositoryAggregation }
-  | { titleAggregation: TitleAggregation }
-  | { lambdaLayerAggregation: LambdaLayerAggregation }
-  | { lambdaFunctionAggregation: LambdaFunctionAggregation }
-  | { codeRepositoryAggregation: CodeRepositoryAggregation };
+  | {
+      accountAggregation: AccountAggregation;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation: AmiAggregation;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation: AwsEcrContainerAggregation;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation: Ec2InstanceAggregation;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation: FindingTypeAggregation;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation: ImageLayerAggregation;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation: PackageAggregation;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation: RepositoryAggregation;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation: TitleAggregation;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation: LambdaLayerAggregation;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation: LambdaFunctionAggregation;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation: CodeRepositoryAggregation;
+    };
 export type AggregationResourceType = string;
 
 export type AggregationResponse =
-  | { accountAggregation: AccountAggregationResponse }
-  | { amiAggregation: AmiAggregationResponse }
-  | { awsEcrContainerAggregation: AwsEcrContainerAggregationResponse }
-  | { ec2InstanceAggregation: Ec2InstanceAggregationResponse }
-  | { findingTypeAggregation: FindingTypeAggregationResponse }
-  | { imageLayerAggregation: ImageLayerAggregationResponse }
-  | { packageAggregation: PackageAggregationResponse }
-  | { repositoryAggregation: RepositoryAggregationResponse }
-  | { titleAggregation: TitleAggregationResponse }
-  | { lambdaLayerAggregation: LambdaLayerAggregationResponse }
-  | { lambdaFunctionAggregation: LambdaFunctionAggregationResponse }
-  | { codeRepositoryAggregation: CodeRepositoryAggregationResponse };
+  | {
+      accountAggregation: AccountAggregationResponse;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation: AmiAggregationResponse;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation: AwsEcrContainerAggregationResponse;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation: Ec2InstanceAggregationResponse;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation: FindingTypeAggregationResponse;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation: ImageLayerAggregationResponse;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation: PackageAggregationResponse;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation: RepositoryAggregationResponse;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation: TitleAggregationResponse;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation: LambdaLayerAggregationResponse;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation: LambdaFunctionAggregationResponse;
+      codeRepositoryAggregation?: undefined;
+    }
+  | {
+      accountAggregation?: undefined;
+      amiAggregation?: undefined;
+      awsEcrContainerAggregation?: undefined;
+      ec2InstanceAggregation?: undefined;
+      findingTypeAggregation?: undefined;
+      imageLayerAggregation?: undefined;
+      packageAggregation?: undefined;
+      repositoryAggregation?: undefined;
+      titleAggregation?: undefined;
+      lambdaLayerAggregation?: undefined;
+      lambdaFunctionAggregation?: undefined;
+      codeRepositoryAggregation: CodeRepositoryAggregationResponse;
+    };
 export type AggregationResponseList = Array<AggregationResponse>;
 export type AggregationType = string;
 
@@ -1317,8 +1629,14 @@ export interface ClusterInformation {
 }
 export type ClusterInformationList = Array<ClusterInformation>;
 export type ClusterMetadata =
-  | { awsEcsMetadataDetails: AwsEcsMetadataDetails }
-  | { awsEksMetadataDetails: AwsEksMetadataDetails };
+  | {
+      awsEcsMetadataDetails: AwsEcsMetadataDetails;
+      awsEksMetadataDetails?: undefined;
+    }
+  | {
+      awsEcsMetadataDetails?: undefined;
+      awsEksMetadataDetails: AwsEksMetadataDetails;
+    };
 export interface CodeFilePath {
   fileName: string;
   filePath: string;
@@ -2826,10 +3144,30 @@ export type ScanStatusReason = string;
 export type ScanType = string;
 
 export type Schedule =
-  | { oneTime: OneTimeSchedule }
-  | { daily: DailySchedule }
-  | { weekly: WeeklySchedule }
-  | { monthly: MonthlySchedule };
+  | {
+      oneTime: OneTimeSchedule;
+      daily?: undefined;
+      weekly?: undefined;
+      monthly?: undefined;
+    }
+  | {
+      oneTime?: undefined;
+      daily: DailySchedule;
+      weekly?: undefined;
+      monthly?: undefined;
+    }
+  | {
+      oneTime?: undefined;
+      daily?: undefined;
+      weekly: WeeklySchedule;
+      monthly?: undefined;
+    }
+  | {
+      oneTime?: undefined;
+      daily?: undefined;
+      weekly?: undefined;
+      monthly: MonthlySchedule;
+    };
 export interface ScopeSettings {
   projectSelectionScope?: ProjectSelectionScope;
 }
@@ -3112,8 +3450,11 @@ export interface UpdateGitLabSelfManagedIntegrationDetail {
   authCode: string;
 }
 export type UpdateIntegrationDetails =
-  | { gitlabSelfManaged: UpdateGitLabSelfManagedIntegrationDetail }
-  | { github: UpdateGitHubIntegrationDetail };
+  | {
+      gitlabSelfManaged: UpdateGitLabSelfManagedIntegrationDetail;
+      github?: undefined;
+    }
+  | { gitlabSelfManaged?: undefined; github: UpdateGitHubIntegrationDetail };
 export interface UpdateOrganizationConfigurationRequest {
   autoEnable: AutoEnable;
 }

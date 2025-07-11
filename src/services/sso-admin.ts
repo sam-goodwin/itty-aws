@@ -1141,10 +1141,30 @@ export interface GetPermissionsBoundaryForPermissionSetResponse {
   PermissionsBoundary?: PermissionsBoundary;
 }
 export type Grant =
-  | { AuthorizationCode: AuthorizationCodeGrant }
-  | { JwtBearer: JwtBearerGrant }
-  | { RefreshToken: RefreshTokenGrant }
-  | { TokenExchange: TokenExchangeGrant };
+  | {
+      AuthorizationCode: AuthorizationCodeGrant;
+      JwtBearer?: undefined;
+      RefreshToken?: undefined;
+      TokenExchange?: undefined;
+    }
+  | {
+      AuthorizationCode?: undefined;
+      JwtBearer: JwtBearerGrant;
+      RefreshToken?: undefined;
+      TokenExchange?: undefined;
+    }
+  | {
+      AuthorizationCode?: undefined;
+      JwtBearer?: undefined;
+      RefreshToken: RefreshTokenGrant;
+      TokenExchange?: undefined;
+    }
+  | {
+      AuthorizationCode?: undefined;
+      JwtBearer?: undefined;
+      RefreshToken?: undefined;
+      TokenExchange: TokenExchangeGrant;
+    };
 export interface GrantItem {
   GrantType: GrantType;
   Grant: Grant;

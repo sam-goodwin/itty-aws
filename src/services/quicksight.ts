@@ -4928,32 +4928,734 @@ export type DataSourceFilterAttribute =
   | "DATASOURCE_NAME";
 export type DataSourceList = Array<DataSource>;
 export type DataSourceParameters =
-  | { AmazonElasticsearchParameters: AmazonElasticsearchParameters }
-  | { AthenaParameters: AthenaParameters }
-  | { AuroraParameters: AuroraParameters }
-  | { AuroraPostgreSqlParameters: AuroraPostgreSqlParameters }
-  | { AwsIotAnalyticsParameters: AwsIotAnalyticsParameters }
-  | { JiraParameters: JiraParameters }
-  | { MariaDbParameters: MariaDbParameters }
-  | { MySqlParameters: MySqlParameters }
-  | { OracleParameters: OracleParameters }
-  | { PostgreSqlParameters: PostgreSqlParameters }
-  | { PrestoParameters: PrestoParameters }
-  | { RdsParameters: RdsParameters }
-  | { RedshiftParameters: RedshiftParameters }
-  | { S3Parameters: S3Parameters }
-  | { ServiceNowParameters: ServiceNowParameters }
-  | { SnowflakeParameters: SnowflakeParameters }
-  | { SparkParameters: SparkParameters }
-  | { SqlServerParameters: SqlServerParameters }
-  | { TeradataParameters: TeradataParameters }
-  | { TwitterParameters: TwitterParameters }
-  | { AmazonOpenSearchParameters: AmazonOpenSearchParameters }
-  | { ExasolParameters: ExasolParameters }
-  | { DatabricksParameters: DatabricksParameters }
-  | { StarburstParameters: StarburstParameters }
-  | { TrinoParameters: TrinoParameters }
-  | { BigQueryParameters: BigQueryParameters };
+  | {
+      AmazonElasticsearchParameters: AmazonElasticsearchParameters;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters: AthenaParameters;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters: AuroraParameters;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters: AuroraPostgreSqlParameters;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters: AwsIotAnalyticsParameters;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters: JiraParameters;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters: MariaDbParameters;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters: MySqlParameters;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters: OracleParameters;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters: PostgreSqlParameters;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters: PrestoParameters;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters: RdsParameters;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters: RedshiftParameters;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters: S3Parameters;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters: ServiceNowParameters;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters: SnowflakeParameters;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters: SparkParameters;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters: SqlServerParameters;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters: TeradataParameters;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters: TwitterParameters;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters: AmazonOpenSearchParameters;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters: ExasolParameters;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters: DatabricksParameters;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters: StarburstParameters;
+      TrinoParameters?: undefined;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters: TrinoParameters;
+      BigQueryParameters?: undefined;
+    }
+  | {
+      AmazonElasticsearchParameters?: undefined;
+      AthenaParameters?: undefined;
+      AuroraParameters?: undefined;
+      AuroraPostgreSqlParameters?: undefined;
+      AwsIotAnalyticsParameters?: undefined;
+      JiraParameters?: undefined;
+      MariaDbParameters?: undefined;
+      MySqlParameters?: undefined;
+      OracleParameters?: undefined;
+      PostgreSqlParameters?: undefined;
+      PrestoParameters?: undefined;
+      RdsParameters?: undefined;
+      RedshiftParameters?: undefined;
+      S3Parameters?: undefined;
+      ServiceNowParameters?: undefined;
+      SnowflakeParameters?: undefined;
+      SparkParameters?: undefined;
+      SqlServerParameters?: undefined;
+      TeradataParameters?: undefined;
+      TwitterParameters?: undefined;
+      AmazonOpenSearchParameters?: undefined;
+      ExasolParameters?: undefined;
+      DatabricksParameters?: undefined;
+      StarburstParameters?: undefined;
+      TrinoParameters?: undefined;
+      BigQueryParameters: BigQueryParameters;
+    };
 export type DataSourceParametersList = Array<DataSourceParameters>;
 export interface DataSourceSearchFilter {
   Operator: FilterOperator;
@@ -7238,7 +7940,9 @@ export interface ImageSet {
 export interface ImageSetConfiguration {
   Original: ImageConfiguration;
 }
-export type ImageSource = { PublicUrl: string } | { S3Uri: string };
+export type ImageSource =
+  | { PublicUrl: string; S3Uri?: undefined }
+  | { PublicUrl?: undefined; S3Uri: string };
 export interface ImageStaticFile {
   StaticFileId: string;
   Source?: StaticFileSource;
@@ -8626,9 +9330,13 @@ export interface PeriodToDateComputation {
 }
 export type PersonalizationMode = "ENABLED" | "DISABLED";
 export type PhysicalTable =
-  | { RelationalTable: RelationalTable }
-  | { CustomSql: CustomSql }
-  | { S3Source: S3Source };
+  | {
+      RelationalTable: RelationalTable;
+      CustomSql?: undefined;
+      S3Source?: undefined;
+    }
+  | { RelationalTable?: undefined; CustomSql: CustomSql; S3Source?: undefined }
+  | { RelationalTable?: undefined; CustomSql?: undefined; S3Source: S3Source };
 export type PhysicalTableId = string;
 
 export type PhysicalTableMap = Record<string, PhysicalTable>;
@@ -10873,14 +11581,86 @@ export interface TotalOptions {
   TotalAggregationOptions?: Array<TotalAggregationOption>;
 }
 export type TransformOperation =
-  | { ProjectOperation: ProjectOperation }
-  | { FilterOperation: FilterOperation }
-  | { CreateColumnsOperation: CreateColumnsOperation }
-  | { RenameColumnOperation: RenameColumnOperation }
-  | { CastColumnTypeOperation: CastColumnTypeOperation }
-  | { TagColumnOperation: TagColumnOperation }
-  | { UntagColumnOperation: UntagColumnOperation }
-  | { OverrideDatasetParameterOperation: OverrideDatasetParameterOperation };
+  | {
+      ProjectOperation: ProjectOperation;
+      FilterOperation?: undefined;
+      CreateColumnsOperation?: undefined;
+      RenameColumnOperation?: undefined;
+      CastColumnTypeOperation?: undefined;
+      TagColumnOperation?: undefined;
+      UntagColumnOperation?: undefined;
+      OverrideDatasetParameterOperation?: undefined;
+    }
+  | {
+      ProjectOperation?: undefined;
+      FilterOperation: FilterOperation;
+      CreateColumnsOperation?: undefined;
+      RenameColumnOperation?: undefined;
+      CastColumnTypeOperation?: undefined;
+      TagColumnOperation?: undefined;
+      UntagColumnOperation?: undefined;
+      OverrideDatasetParameterOperation?: undefined;
+    }
+  | {
+      ProjectOperation?: undefined;
+      FilterOperation?: undefined;
+      CreateColumnsOperation: CreateColumnsOperation;
+      RenameColumnOperation?: undefined;
+      CastColumnTypeOperation?: undefined;
+      TagColumnOperation?: undefined;
+      UntagColumnOperation?: undefined;
+      OverrideDatasetParameterOperation?: undefined;
+    }
+  | {
+      ProjectOperation?: undefined;
+      FilterOperation?: undefined;
+      CreateColumnsOperation?: undefined;
+      RenameColumnOperation: RenameColumnOperation;
+      CastColumnTypeOperation?: undefined;
+      TagColumnOperation?: undefined;
+      UntagColumnOperation?: undefined;
+      OverrideDatasetParameterOperation?: undefined;
+    }
+  | {
+      ProjectOperation?: undefined;
+      FilterOperation?: undefined;
+      CreateColumnsOperation?: undefined;
+      RenameColumnOperation?: undefined;
+      CastColumnTypeOperation: CastColumnTypeOperation;
+      TagColumnOperation?: undefined;
+      UntagColumnOperation?: undefined;
+      OverrideDatasetParameterOperation?: undefined;
+    }
+  | {
+      ProjectOperation?: undefined;
+      FilterOperation?: undefined;
+      CreateColumnsOperation?: undefined;
+      RenameColumnOperation?: undefined;
+      CastColumnTypeOperation?: undefined;
+      TagColumnOperation: TagColumnOperation;
+      UntagColumnOperation?: undefined;
+      OverrideDatasetParameterOperation?: undefined;
+    }
+  | {
+      ProjectOperation?: undefined;
+      FilterOperation?: undefined;
+      CreateColumnsOperation?: undefined;
+      RenameColumnOperation?: undefined;
+      CastColumnTypeOperation?: undefined;
+      TagColumnOperation?: undefined;
+      UntagColumnOperation: UntagColumnOperation;
+      OverrideDatasetParameterOperation?: undefined;
+    }
+  | {
+      ProjectOperation?: undefined;
+      FilterOperation?: undefined;
+      CreateColumnsOperation?: undefined;
+      RenameColumnOperation?: undefined;
+      CastColumnTypeOperation?: undefined;
+      TagColumnOperation?: undefined;
+      UntagColumnOperation?: undefined;
+      OverrideDatasetParameterOperation: OverrideDatasetParameterOperation;
+    };
 export type TransformOperationList = Array<TransformOperation>;
 export type TransposedColumnIndex = number;
 

@@ -157,9 +157,21 @@ export interface PayloadPart {
 export type RequestTTLSecondsHeader = number;
 
 export type ResponseStream =
-  | { PayloadPart: PayloadPart }
-  | { ModelStreamError: ModelStreamError }
-  | { InternalStreamFailure: InternalStreamFailure };
+  | {
+      PayloadPart: PayloadPart;
+      ModelStreamError?: undefined;
+      InternalStreamFailure?: undefined;
+    }
+  | {
+      PayloadPart?: undefined;
+      ModelStreamError: ModelStreamError;
+      InternalStreamFailure?: undefined;
+    }
+  | {
+      PayloadPart?: undefined;
+      ModelStreamError?: undefined;
+      InternalStreamFailure: InternalStreamFailure;
+    };
 export declare class ServiceUnavailable extends EffectData.TaggedError(
   "ServiceUnavailable",
 )<{

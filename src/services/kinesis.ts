@@ -905,16 +905,126 @@ export interface SubscribeToShardEvent {
   ChildShards?: Array<ChildShard>;
 }
 export type SubscribeToShardEventStream =
-  | { SubscribeToShardEvent: SubscribeToShardEvent }
-  | { ResourceNotFoundException: ResourceNotFoundException }
-  | { ResourceInUseException: ResourceInUseException }
-  | { KMSDisabledException: KMSDisabledException }
-  | { KMSInvalidStateException: KMSInvalidStateException }
-  | { KMSAccessDeniedException: KMSAccessDeniedException }
-  | { KMSNotFoundException: KMSNotFoundException }
-  | { KMSOptInRequired: KMSOptInRequired }
-  | { KMSThrottlingException: KMSThrottlingException }
-  | { InternalFailureException: InternalFailureException };
+  | {
+      SubscribeToShardEvent: SubscribeToShardEvent;
+      ResourceNotFoundException?: undefined;
+      ResourceInUseException?: undefined;
+      KMSDisabledException?: undefined;
+      KMSInvalidStateException?: undefined;
+      KMSAccessDeniedException?: undefined;
+      KMSNotFoundException?: undefined;
+      KMSOptInRequired?: undefined;
+      KMSThrottlingException?: undefined;
+      InternalFailureException?: undefined;
+    }
+  | {
+      SubscribeToShardEvent?: undefined;
+      ResourceNotFoundException: ResourceNotFoundException;
+      ResourceInUseException?: undefined;
+      KMSDisabledException?: undefined;
+      KMSInvalidStateException?: undefined;
+      KMSAccessDeniedException?: undefined;
+      KMSNotFoundException?: undefined;
+      KMSOptInRequired?: undefined;
+      KMSThrottlingException?: undefined;
+      InternalFailureException?: undefined;
+    }
+  | {
+      SubscribeToShardEvent?: undefined;
+      ResourceNotFoundException?: undefined;
+      ResourceInUseException: ResourceInUseException;
+      KMSDisabledException?: undefined;
+      KMSInvalidStateException?: undefined;
+      KMSAccessDeniedException?: undefined;
+      KMSNotFoundException?: undefined;
+      KMSOptInRequired?: undefined;
+      KMSThrottlingException?: undefined;
+      InternalFailureException?: undefined;
+    }
+  | {
+      SubscribeToShardEvent?: undefined;
+      ResourceNotFoundException?: undefined;
+      ResourceInUseException?: undefined;
+      KMSDisabledException: KMSDisabledException;
+      KMSInvalidStateException?: undefined;
+      KMSAccessDeniedException?: undefined;
+      KMSNotFoundException?: undefined;
+      KMSOptInRequired?: undefined;
+      KMSThrottlingException?: undefined;
+      InternalFailureException?: undefined;
+    }
+  | {
+      SubscribeToShardEvent?: undefined;
+      ResourceNotFoundException?: undefined;
+      ResourceInUseException?: undefined;
+      KMSDisabledException?: undefined;
+      KMSInvalidStateException: KMSInvalidStateException;
+      KMSAccessDeniedException?: undefined;
+      KMSNotFoundException?: undefined;
+      KMSOptInRequired?: undefined;
+      KMSThrottlingException?: undefined;
+      InternalFailureException?: undefined;
+    }
+  | {
+      SubscribeToShardEvent?: undefined;
+      ResourceNotFoundException?: undefined;
+      ResourceInUseException?: undefined;
+      KMSDisabledException?: undefined;
+      KMSInvalidStateException?: undefined;
+      KMSAccessDeniedException: KMSAccessDeniedException;
+      KMSNotFoundException?: undefined;
+      KMSOptInRequired?: undefined;
+      KMSThrottlingException?: undefined;
+      InternalFailureException?: undefined;
+    }
+  | {
+      SubscribeToShardEvent?: undefined;
+      ResourceNotFoundException?: undefined;
+      ResourceInUseException?: undefined;
+      KMSDisabledException?: undefined;
+      KMSInvalidStateException?: undefined;
+      KMSAccessDeniedException?: undefined;
+      KMSNotFoundException: KMSNotFoundException;
+      KMSOptInRequired?: undefined;
+      KMSThrottlingException?: undefined;
+      InternalFailureException?: undefined;
+    }
+  | {
+      SubscribeToShardEvent?: undefined;
+      ResourceNotFoundException?: undefined;
+      ResourceInUseException?: undefined;
+      KMSDisabledException?: undefined;
+      KMSInvalidStateException?: undefined;
+      KMSAccessDeniedException?: undefined;
+      KMSNotFoundException?: undefined;
+      KMSOptInRequired: KMSOptInRequired;
+      KMSThrottlingException?: undefined;
+      InternalFailureException?: undefined;
+    }
+  | {
+      SubscribeToShardEvent?: undefined;
+      ResourceNotFoundException?: undefined;
+      ResourceInUseException?: undefined;
+      KMSDisabledException?: undefined;
+      KMSInvalidStateException?: undefined;
+      KMSAccessDeniedException?: undefined;
+      KMSNotFoundException?: undefined;
+      KMSOptInRequired?: undefined;
+      KMSThrottlingException: KMSThrottlingException;
+      InternalFailureException?: undefined;
+    }
+  | {
+      SubscribeToShardEvent?: undefined;
+      ResourceNotFoundException?: undefined;
+      ResourceInUseException?: undefined;
+      KMSDisabledException?: undefined;
+      KMSInvalidStateException?: undefined;
+      KMSAccessDeniedException?: undefined;
+      KMSNotFoundException?: undefined;
+      KMSOptInRequired?: undefined;
+      KMSThrottlingException?: undefined;
+      InternalFailureException: InternalFailureException;
+    };
 export interface SubscribeToShardInput {
   ConsumerARN: string;
   ShardId: string;

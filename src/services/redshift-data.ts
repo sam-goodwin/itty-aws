@@ -270,12 +270,54 @@ export interface ExecuteStatementOutput {
   SessionId?: string;
 }
 export type Field =
-  | { isNull: boolean }
-  | { booleanValue: boolean }
-  | { longValue: number }
-  | { doubleValue: number }
-  | { stringValue: string }
-  | { blobValue: Uint8Array | string };
+  | {
+      isNull: boolean;
+      booleanValue?: undefined;
+      longValue?: undefined;
+      doubleValue?: undefined;
+      stringValue?: undefined;
+      blobValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      booleanValue: boolean;
+      longValue?: undefined;
+      doubleValue?: undefined;
+      stringValue?: undefined;
+      blobValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      booleanValue?: undefined;
+      longValue: number;
+      doubleValue?: undefined;
+      stringValue?: undefined;
+      blobValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      booleanValue?: undefined;
+      longValue?: undefined;
+      doubleValue: number;
+      stringValue?: undefined;
+      blobValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      booleanValue?: undefined;
+      longValue?: undefined;
+      doubleValue?: undefined;
+      stringValue: string;
+      blobValue?: undefined;
+    }
+  | {
+      isNull?: undefined;
+      booleanValue?: undefined;
+      longValue?: undefined;
+      doubleValue?: undefined;
+      stringValue?: undefined;
+      blobValue: Uint8Array | string;
+    };
 export type FieldList = Array<Field>;
 export type FormattedSqlRecords = Array<QueryRecords>;
 export interface GetStatementResultRequest {

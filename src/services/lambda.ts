@@ -1522,8 +1522,11 @@ export interface InvokeWithResponseStreamResponse {
   ResponseStreamContentType?: string;
 }
 export type InvokeWithResponseStreamResponseEvent =
-  | { PayloadChunk: InvokeResponseStreamUpdate }
-  | { InvokeComplete: InvokeWithResponseStreamCompleteEvent };
+  | { PayloadChunk: InvokeResponseStreamUpdate; InvokeComplete?: undefined }
+  | {
+      PayloadChunk?: undefined;
+      InvokeComplete: InvokeWithResponseStreamCompleteEvent;
+    };
 export interface KafkaSchemaRegistryAccessConfig {
   Type?: KafkaSchemaRegistryAuthType;
   URI?: string;

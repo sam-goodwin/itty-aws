@@ -1354,16 +1354,126 @@ export type DataProviderDescriptorDefinitionList =
 export type DataProviderDescriptorList = Array<DataProviderDescriptor>;
 export type DataProviderList = Array<DataProvider>;
 export type DataProviderSettings =
-  | { RedshiftSettings: RedshiftDataProviderSettings }
-  | { PostgreSqlSettings: PostgreSqlDataProviderSettings }
-  | { MySqlSettings: MySqlDataProviderSettings }
-  | { OracleSettings: OracleDataProviderSettings }
-  | { MicrosoftSqlServerSettings: MicrosoftSqlServerDataProviderSettings }
-  | { DocDbSettings: DocDbDataProviderSettings }
-  | { MariaDbSettings: MariaDbDataProviderSettings }
-  | { IbmDb2LuwSettings: IbmDb2LuwDataProviderSettings }
-  | { IbmDb2zOsSettings: IbmDb2zOsDataProviderSettings }
-  | { MongoDbSettings: MongoDbDataProviderSettings };
+  | {
+      RedshiftSettings: RedshiftDataProviderSettings;
+      PostgreSqlSettings?: undefined;
+      MySqlSettings?: undefined;
+      OracleSettings?: undefined;
+      MicrosoftSqlServerSettings?: undefined;
+      DocDbSettings?: undefined;
+      MariaDbSettings?: undefined;
+      IbmDb2LuwSettings?: undefined;
+      IbmDb2zOsSettings?: undefined;
+      MongoDbSettings?: undefined;
+    }
+  | {
+      RedshiftSettings?: undefined;
+      PostgreSqlSettings: PostgreSqlDataProviderSettings;
+      MySqlSettings?: undefined;
+      OracleSettings?: undefined;
+      MicrosoftSqlServerSettings?: undefined;
+      DocDbSettings?: undefined;
+      MariaDbSettings?: undefined;
+      IbmDb2LuwSettings?: undefined;
+      IbmDb2zOsSettings?: undefined;
+      MongoDbSettings?: undefined;
+    }
+  | {
+      RedshiftSettings?: undefined;
+      PostgreSqlSettings?: undefined;
+      MySqlSettings: MySqlDataProviderSettings;
+      OracleSettings?: undefined;
+      MicrosoftSqlServerSettings?: undefined;
+      DocDbSettings?: undefined;
+      MariaDbSettings?: undefined;
+      IbmDb2LuwSettings?: undefined;
+      IbmDb2zOsSettings?: undefined;
+      MongoDbSettings?: undefined;
+    }
+  | {
+      RedshiftSettings?: undefined;
+      PostgreSqlSettings?: undefined;
+      MySqlSettings?: undefined;
+      OracleSettings: OracleDataProviderSettings;
+      MicrosoftSqlServerSettings?: undefined;
+      DocDbSettings?: undefined;
+      MariaDbSettings?: undefined;
+      IbmDb2LuwSettings?: undefined;
+      IbmDb2zOsSettings?: undefined;
+      MongoDbSettings?: undefined;
+    }
+  | {
+      RedshiftSettings?: undefined;
+      PostgreSqlSettings?: undefined;
+      MySqlSettings?: undefined;
+      OracleSettings?: undefined;
+      MicrosoftSqlServerSettings: MicrosoftSqlServerDataProviderSettings;
+      DocDbSettings?: undefined;
+      MariaDbSettings?: undefined;
+      IbmDb2LuwSettings?: undefined;
+      IbmDb2zOsSettings?: undefined;
+      MongoDbSettings?: undefined;
+    }
+  | {
+      RedshiftSettings?: undefined;
+      PostgreSqlSettings?: undefined;
+      MySqlSettings?: undefined;
+      OracleSettings?: undefined;
+      MicrosoftSqlServerSettings?: undefined;
+      DocDbSettings: DocDbDataProviderSettings;
+      MariaDbSettings?: undefined;
+      IbmDb2LuwSettings?: undefined;
+      IbmDb2zOsSettings?: undefined;
+      MongoDbSettings?: undefined;
+    }
+  | {
+      RedshiftSettings?: undefined;
+      PostgreSqlSettings?: undefined;
+      MySqlSettings?: undefined;
+      OracleSettings?: undefined;
+      MicrosoftSqlServerSettings?: undefined;
+      DocDbSettings?: undefined;
+      MariaDbSettings: MariaDbDataProviderSettings;
+      IbmDb2LuwSettings?: undefined;
+      IbmDb2zOsSettings?: undefined;
+      MongoDbSettings?: undefined;
+    }
+  | {
+      RedshiftSettings?: undefined;
+      PostgreSqlSettings?: undefined;
+      MySqlSettings?: undefined;
+      OracleSettings?: undefined;
+      MicrosoftSqlServerSettings?: undefined;
+      DocDbSettings?: undefined;
+      MariaDbSettings?: undefined;
+      IbmDb2LuwSettings: IbmDb2LuwDataProviderSettings;
+      IbmDb2zOsSettings?: undefined;
+      MongoDbSettings?: undefined;
+    }
+  | {
+      RedshiftSettings?: undefined;
+      PostgreSqlSettings?: undefined;
+      MySqlSettings?: undefined;
+      OracleSettings?: undefined;
+      MicrosoftSqlServerSettings?: undefined;
+      DocDbSettings?: undefined;
+      MariaDbSettings?: undefined;
+      IbmDb2LuwSettings?: undefined;
+      IbmDb2zOsSettings: IbmDb2zOsDataProviderSettings;
+      MongoDbSettings?: undefined;
+    }
+  | {
+      RedshiftSettings?: undefined;
+      PostgreSqlSettings?: undefined;
+      MySqlSettings?: undefined;
+      OracleSettings?: undefined;
+      MicrosoftSqlServerSettings?: undefined;
+      DocDbSettings?: undefined;
+      MariaDbSettings?: undefined;
+      IbmDb2LuwSettings?: undefined;
+      IbmDb2zOsSettings?: undefined;
+      MongoDbSettings: MongoDbDataProviderSettings;
+    };
 export type DatePartitionDelimiterValue =
   | "SLASH"
   | "UNDERSCORE"

@@ -284,9 +284,9 @@ export type AnnotationKey = string;
 
 export type Annotations = Record<string, Array<ValueWithServiceIds>>;
 export type AnnotationValue =
-  | { NumberValue: number }
-  | { BooleanValue: boolean }
-  | { StringValue: string };
+  | { NumberValue: number; BooleanValue?: undefined; StringValue?: undefined }
+  | { NumberValue?: undefined; BooleanValue: boolean; StringValue?: undefined }
+  | { NumberValue?: undefined; BooleanValue?: undefined; StringValue: string };
 export interface AnomalousService {
   ServiceId?: ServiceId;
 }

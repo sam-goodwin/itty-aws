@@ -338,8 +338,8 @@ export type MQBrokerAccessCredentials = { BasicAuth: string };
 export type MQBrokerQueueName = string;
 
 export type MSKAccessCredentials =
-  | { SaslScram512Auth: string }
-  | { ClientCertificateTlsAuth: string };
+  | { SaslScram512Auth: string; ClientCertificateTlsAuth?: undefined }
+  | { SaslScram512Auth?: undefined; ClientCertificateTlsAuth: string };
 export type MSKStartPosition = string;
 
 export interface MultiMeasureAttributeMapping {
@@ -649,10 +649,30 @@ export type SecurityGroupId = string;
 export type SecurityGroupIds = Array<string>;
 export type SecurityGroups = Array<string>;
 export type SelfManagedKafkaAccessConfigurationCredentials =
-  | { BasicAuth: string }
-  | { SaslScram512Auth: string }
-  | { SaslScram256Auth: string }
-  | { ClientCertificateTlsAuth: string };
+  | {
+      BasicAuth: string;
+      SaslScram512Auth?: undefined;
+      SaslScram256Auth?: undefined;
+      ClientCertificateTlsAuth?: undefined;
+    }
+  | {
+      BasicAuth?: undefined;
+      SaslScram512Auth: string;
+      SaslScram256Auth?: undefined;
+      ClientCertificateTlsAuth?: undefined;
+    }
+  | {
+      BasicAuth?: undefined;
+      SaslScram512Auth?: undefined;
+      SaslScram256Auth: string;
+      ClientCertificateTlsAuth?: undefined;
+    }
+  | {
+      BasicAuth?: undefined;
+      SaslScram512Auth?: undefined;
+      SaslScram256Auth?: undefined;
+      ClientCertificateTlsAuth: string;
+    };
 export interface SelfManagedKafkaAccessConfigurationVpc {
   Subnets?: Array<string>;
   SecurityGroup?: Array<string>;

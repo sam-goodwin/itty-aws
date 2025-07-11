@@ -233,7 +233,9 @@ export type GrafanaVersion = string;
 export type GrafanaVersionList = Array<string>;
 export type IamRoleArn = string;
 
-export type IdpMetadata = { url: string } | { xml: string };
+export type IdpMetadata =
+  | { url: string; xml?: undefined }
+  | { url?: undefined; xml: string };
 export type IdpMetadataUrl = string;
 
 export declare class InternalServerException extends EffectData.TaggedError(

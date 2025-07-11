@@ -1020,8 +1020,8 @@ export interface IotSiteWiseSourceConfiguration {
   filters?: Array<IotSiteWiseSourceConfigurationFilter>;
 }
 export type IotSiteWiseSourceConfigurationFilter =
-  | { filterByAssetModel: FilterByAssetModel }
-  | { filterByAsset: FilterByAsset };
+  | { filterByAssetModel: FilterByAssetModel; filterByAsset?: undefined }
+  | { filterByAssetModel?: undefined; filterByAsset: FilterByAsset };
 export type IotSiteWiseSourceConfigurationFilters =
   Array<IotSiteWiseSourceConfigurationFilter>;
 export interface IotTwinMakerDestinationConfiguration {
@@ -1032,8 +1032,8 @@ export interface IotTwinMakerSourceConfiguration {
   filters?: Array<IotTwinMakerSourceConfigurationFilter>;
 }
 export type IotTwinMakerSourceConfigurationFilter =
-  | { filterByComponentType: FilterByComponentType }
-  | { filterByEntity: FilterByEntity };
+  | { filterByComponentType: FilterByComponentType; filterByEntity?: undefined }
+  | { filterByComponentType?: undefined; filterByEntity: FilterByEntity };
 export type IotTwinMakerSourceConfigurationFilters =
   Array<IotTwinMakerSourceConfigurationFilter>;
 export type LambdaArn = string;
@@ -1056,9 +1056,9 @@ export interface ListComponentsResponse {
   nextToken?: string;
 }
 export type ListComponentTypesFilter =
-  | { extendsFrom: string }
-  | { namespace: string }
-  | { isAbstract: boolean };
+  | { extendsFrom: string; namespace?: undefined; isAbstract?: undefined }
+  | { extendsFrom?: undefined; namespace: string; isAbstract?: undefined }
+  | { extendsFrom?: undefined; namespace?: undefined; isAbstract: boolean };
 export type ListComponentTypesFilters = Array<ListComponentTypesFilter>;
 export interface ListComponentTypesRequest {
   workspaceId: string;
@@ -1073,9 +1073,21 @@ export interface ListComponentTypesResponse {
   maxResults?: number;
 }
 export type ListEntitiesFilter =
-  | { parentEntityId: string }
-  | { componentTypeId: string }
-  | { externalId: string };
+  | {
+      parentEntityId: string;
+      componentTypeId?: undefined;
+      externalId?: undefined;
+    }
+  | {
+      parentEntityId?: undefined;
+      componentTypeId: string;
+      externalId?: undefined;
+    }
+  | {
+      parentEntityId?: undefined;
+      componentTypeId?: undefined;
+      externalId: string;
+    };
 export type ListEntitiesFilters = Array<ListEntitiesFilter>;
 export interface ListEntitiesRequest {
   workspaceId: string;
@@ -1088,8 +1100,8 @@ export interface ListEntitiesResponse {
   nextToken?: string;
 }
 export type ListMetadataTransferJobsFilter =
-  | { workspaceId: string }
-  | { state: string };
+  | { workspaceId: string; state?: undefined }
+  | { workspaceId?: undefined; state: string };
 export type ListMetadataTransferJobsFilters =
   Array<ListMetadataTransferJobsFilter>;
 export interface ListMetadataTransferJobsRequest {
@@ -1426,10 +1438,30 @@ export interface SyncJobSummary {
   updateDateTime?: Date | string;
 }
 export type SyncResourceFilter =
-  | { state: string }
-  | { resourceType: string }
-  | { resourceId: string }
-  | { externalId: string };
+  | {
+      state: string;
+      resourceType?: undefined;
+      resourceId?: undefined;
+      externalId?: undefined;
+    }
+  | {
+      state?: undefined;
+      resourceType: string;
+      resourceId?: undefined;
+      externalId?: undefined;
+    }
+  | {
+      state?: undefined;
+      resourceType?: undefined;
+      resourceId: string;
+      externalId?: undefined;
+    }
+  | {
+      state?: undefined;
+      resourceType?: undefined;
+      resourceId?: undefined;
+      externalId: string;
+    };
 export type SyncResourceFilters = Array<SyncResourceFilter>;
 export type SyncResourceState = string;
 

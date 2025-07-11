@@ -426,30 +426,282 @@ export interface StartConversationRequest {
   requestEventStream: StartConversationRequestEventStream;
 }
 export type StartConversationRequestEventStream =
-  | { ConfigurationEvent: ConfigurationEvent }
-  | { AudioInputEvent: AudioInputEvent }
-  | { DTMFInputEvent: DTMFInputEvent }
-  | { TextInputEvent: TextInputEvent }
-  | { PlaybackCompletionEvent: PlaybackCompletionEvent }
-  | { DisconnectionEvent: DisconnectionEvent };
+  | {
+      ConfigurationEvent: ConfigurationEvent;
+      AudioInputEvent?: undefined;
+      DTMFInputEvent?: undefined;
+      TextInputEvent?: undefined;
+      PlaybackCompletionEvent?: undefined;
+      DisconnectionEvent?: undefined;
+    }
+  | {
+      ConfigurationEvent?: undefined;
+      AudioInputEvent: AudioInputEvent;
+      DTMFInputEvent?: undefined;
+      TextInputEvent?: undefined;
+      PlaybackCompletionEvent?: undefined;
+      DisconnectionEvent?: undefined;
+    }
+  | {
+      ConfigurationEvent?: undefined;
+      AudioInputEvent?: undefined;
+      DTMFInputEvent: DTMFInputEvent;
+      TextInputEvent?: undefined;
+      PlaybackCompletionEvent?: undefined;
+      DisconnectionEvent?: undefined;
+    }
+  | {
+      ConfigurationEvent?: undefined;
+      AudioInputEvent?: undefined;
+      DTMFInputEvent?: undefined;
+      TextInputEvent: TextInputEvent;
+      PlaybackCompletionEvent?: undefined;
+      DisconnectionEvent?: undefined;
+    }
+  | {
+      ConfigurationEvent?: undefined;
+      AudioInputEvent?: undefined;
+      DTMFInputEvent?: undefined;
+      TextInputEvent?: undefined;
+      PlaybackCompletionEvent: PlaybackCompletionEvent;
+      DisconnectionEvent?: undefined;
+    }
+  | {
+      ConfigurationEvent?: undefined;
+      AudioInputEvent?: undefined;
+      DTMFInputEvent?: undefined;
+      TextInputEvent?: undefined;
+      PlaybackCompletionEvent?: undefined;
+      DisconnectionEvent: DisconnectionEvent;
+    };
 export interface StartConversationResponse {
   responseEventStream?: StartConversationResponseEventStream;
 }
 export type StartConversationResponseEventStream =
-  | { PlaybackInterruptionEvent: PlaybackInterruptionEvent }
-  | { TranscriptEvent: TranscriptEvent }
-  | { IntentResultEvent: IntentResultEvent }
-  | { TextResponseEvent: TextResponseEvent }
-  | { AudioResponseEvent: AudioResponseEvent }
-  | { HeartbeatEvent: HeartbeatEvent }
-  | { AccessDeniedException: AccessDeniedException }
-  | { ResourceNotFoundException: ResourceNotFoundException }
-  | { ValidationException: ValidationException }
-  | { ThrottlingException: ThrottlingException }
-  | { InternalServerException: InternalServerException }
-  | { ConflictException: ConflictException }
-  | { DependencyFailedException: DependencyFailedException }
-  | { BadGatewayException: BadGatewayException };
+  | {
+      PlaybackInterruptionEvent: PlaybackInterruptionEvent;
+      TranscriptEvent?: undefined;
+      IntentResultEvent?: undefined;
+      TextResponseEvent?: undefined;
+      AudioResponseEvent?: undefined;
+      HeartbeatEvent?: undefined;
+      AccessDeniedException?: undefined;
+      ResourceNotFoundException?: undefined;
+      ValidationException?: undefined;
+      ThrottlingException?: undefined;
+      InternalServerException?: undefined;
+      ConflictException?: undefined;
+      DependencyFailedException?: undefined;
+      BadGatewayException?: undefined;
+    }
+  | {
+      PlaybackInterruptionEvent?: undefined;
+      TranscriptEvent: TranscriptEvent;
+      IntentResultEvent?: undefined;
+      TextResponseEvent?: undefined;
+      AudioResponseEvent?: undefined;
+      HeartbeatEvent?: undefined;
+      AccessDeniedException?: undefined;
+      ResourceNotFoundException?: undefined;
+      ValidationException?: undefined;
+      ThrottlingException?: undefined;
+      InternalServerException?: undefined;
+      ConflictException?: undefined;
+      DependencyFailedException?: undefined;
+      BadGatewayException?: undefined;
+    }
+  | {
+      PlaybackInterruptionEvent?: undefined;
+      TranscriptEvent?: undefined;
+      IntentResultEvent: IntentResultEvent;
+      TextResponseEvent?: undefined;
+      AudioResponseEvent?: undefined;
+      HeartbeatEvent?: undefined;
+      AccessDeniedException?: undefined;
+      ResourceNotFoundException?: undefined;
+      ValidationException?: undefined;
+      ThrottlingException?: undefined;
+      InternalServerException?: undefined;
+      ConflictException?: undefined;
+      DependencyFailedException?: undefined;
+      BadGatewayException?: undefined;
+    }
+  | {
+      PlaybackInterruptionEvent?: undefined;
+      TranscriptEvent?: undefined;
+      IntentResultEvent?: undefined;
+      TextResponseEvent: TextResponseEvent;
+      AudioResponseEvent?: undefined;
+      HeartbeatEvent?: undefined;
+      AccessDeniedException?: undefined;
+      ResourceNotFoundException?: undefined;
+      ValidationException?: undefined;
+      ThrottlingException?: undefined;
+      InternalServerException?: undefined;
+      ConflictException?: undefined;
+      DependencyFailedException?: undefined;
+      BadGatewayException?: undefined;
+    }
+  | {
+      PlaybackInterruptionEvent?: undefined;
+      TranscriptEvent?: undefined;
+      IntentResultEvent?: undefined;
+      TextResponseEvent?: undefined;
+      AudioResponseEvent: AudioResponseEvent;
+      HeartbeatEvent?: undefined;
+      AccessDeniedException?: undefined;
+      ResourceNotFoundException?: undefined;
+      ValidationException?: undefined;
+      ThrottlingException?: undefined;
+      InternalServerException?: undefined;
+      ConflictException?: undefined;
+      DependencyFailedException?: undefined;
+      BadGatewayException?: undefined;
+    }
+  | {
+      PlaybackInterruptionEvent?: undefined;
+      TranscriptEvent?: undefined;
+      IntentResultEvent?: undefined;
+      TextResponseEvent?: undefined;
+      AudioResponseEvent?: undefined;
+      HeartbeatEvent: HeartbeatEvent;
+      AccessDeniedException?: undefined;
+      ResourceNotFoundException?: undefined;
+      ValidationException?: undefined;
+      ThrottlingException?: undefined;
+      InternalServerException?: undefined;
+      ConflictException?: undefined;
+      DependencyFailedException?: undefined;
+      BadGatewayException?: undefined;
+    }
+  | {
+      PlaybackInterruptionEvent?: undefined;
+      TranscriptEvent?: undefined;
+      IntentResultEvent?: undefined;
+      TextResponseEvent?: undefined;
+      AudioResponseEvent?: undefined;
+      HeartbeatEvent?: undefined;
+      AccessDeniedException: AccessDeniedException;
+      ResourceNotFoundException?: undefined;
+      ValidationException?: undefined;
+      ThrottlingException?: undefined;
+      InternalServerException?: undefined;
+      ConflictException?: undefined;
+      DependencyFailedException?: undefined;
+      BadGatewayException?: undefined;
+    }
+  | {
+      PlaybackInterruptionEvent?: undefined;
+      TranscriptEvent?: undefined;
+      IntentResultEvent?: undefined;
+      TextResponseEvent?: undefined;
+      AudioResponseEvent?: undefined;
+      HeartbeatEvent?: undefined;
+      AccessDeniedException?: undefined;
+      ResourceNotFoundException: ResourceNotFoundException;
+      ValidationException?: undefined;
+      ThrottlingException?: undefined;
+      InternalServerException?: undefined;
+      ConflictException?: undefined;
+      DependencyFailedException?: undefined;
+      BadGatewayException?: undefined;
+    }
+  | {
+      PlaybackInterruptionEvent?: undefined;
+      TranscriptEvent?: undefined;
+      IntentResultEvent?: undefined;
+      TextResponseEvent?: undefined;
+      AudioResponseEvent?: undefined;
+      HeartbeatEvent?: undefined;
+      AccessDeniedException?: undefined;
+      ResourceNotFoundException?: undefined;
+      ValidationException: ValidationException;
+      ThrottlingException?: undefined;
+      InternalServerException?: undefined;
+      ConflictException?: undefined;
+      DependencyFailedException?: undefined;
+      BadGatewayException?: undefined;
+    }
+  | {
+      PlaybackInterruptionEvent?: undefined;
+      TranscriptEvent?: undefined;
+      IntentResultEvent?: undefined;
+      TextResponseEvent?: undefined;
+      AudioResponseEvent?: undefined;
+      HeartbeatEvent?: undefined;
+      AccessDeniedException?: undefined;
+      ResourceNotFoundException?: undefined;
+      ValidationException?: undefined;
+      ThrottlingException: ThrottlingException;
+      InternalServerException?: undefined;
+      ConflictException?: undefined;
+      DependencyFailedException?: undefined;
+      BadGatewayException?: undefined;
+    }
+  | {
+      PlaybackInterruptionEvent?: undefined;
+      TranscriptEvent?: undefined;
+      IntentResultEvent?: undefined;
+      TextResponseEvent?: undefined;
+      AudioResponseEvent?: undefined;
+      HeartbeatEvent?: undefined;
+      AccessDeniedException?: undefined;
+      ResourceNotFoundException?: undefined;
+      ValidationException?: undefined;
+      ThrottlingException?: undefined;
+      InternalServerException: InternalServerException;
+      ConflictException?: undefined;
+      DependencyFailedException?: undefined;
+      BadGatewayException?: undefined;
+    }
+  | {
+      PlaybackInterruptionEvent?: undefined;
+      TranscriptEvent?: undefined;
+      IntentResultEvent?: undefined;
+      TextResponseEvent?: undefined;
+      AudioResponseEvent?: undefined;
+      HeartbeatEvent?: undefined;
+      AccessDeniedException?: undefined;
+      ResourceNotFoundException?: undefined;
+      ValidationException?: undefined;
+      ThrottlingException?: undefined;
+      InternalServerException?: undefined;
+      ConflictException: ConflictException;
+      DependencyFailedException?: undefined;
+      BadGatewayException?: undefined;
+    }
+  | {
+      PlaybackInterruptionEvent?: undefined;
+      TranscriptEvent?: undefined;
+      IntentResultEvent?: undefined;
+      TextResponseEvent?: undefined;
+      AudioResponseEvent?: undefined;
+      HeartbeatEvent?: undefined;
+      AccessDeniedException?: undefined;
+      ResourceNotFoundException?: undefined;
+      ValidationException?: undefined;
+      ThrottlingException?: undefined;
+      InternalServerException?: undefined;
+      ConflictException?: undefined;
+      DependencyFailedException: DependencyFailedException;
+      BadGatewayException?: undefined;
+    }
+  | {
+      PlaybackInterruptionEvent?: undefined;
+      TranscriptEvent?: undefined;
+      IntentResultEvent?: undefined;
+      TextResponseEvent?: undefined;
+      AudioResponseEvent?: undefined;
+      HeartbeatEvent?: undefined;
+      AccessDeniedException?: undefined;
+      ResourceNotFoundException?: undefined;
+      ValidationException?: undefined;
+      ThrottlingException?: undefined;
+      InternalServerException?: undefined;
+      ConflictException?: undefined;
+      DependencyFailedException?: undefined;
+      BadGatewayException: BadGatewayException;
+    };
 export type LexRuntimeV2String = string;
 
 export type StringList = Array<string>;

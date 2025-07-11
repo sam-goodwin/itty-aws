@@ -453,16 +453,22 @@ export interface LogSource {
 }
 export type LogSourceList = Array<LogSource>;
 export type LogSourceResource =
-  | { awsLogSource: AwsLogSourceResource }
-  | { customLogSource: CustomLogSourceResource };
+  | { awsLogSource: AwsLogSourceResource; customLogSource?: undefined }
+  | { awsLogSource?: undefined; customLogSource: CustomLogSourceResource };
 export type LogSourceResourceList = Array<LogSourceResource>;
 export type MaxResults = number;
 
 export type NextToken = string;
 
 export type NotificationConfiguration =
-  | { sqsNotificationConfiguration: SqsNotificationConfiguration }
-  | { httpsNotificationConfiguration: HttpsNotificationConfiguration };
+  | {
+      sqsNotificationConfiguration: SqsNotificationConfiguration;
+      httpsNotificationConfiguration?: undefined;
+    }
+  | {
+      sqsNotificationConfiguration?: undefined;
+      httpsNotificationConfiguration: HttpsNotificationConfiguration;
+    };
 export type OcsfEventClass = string;
 
 export type OcsfEventClassList = Array<string>;
