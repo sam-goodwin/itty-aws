@@ -1,7 +1,13 @@
 # itty-aws
 
-A lightweight (34KB) AWS SDK implementation for [Effect](https://effect.website) implemented with a single [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) and types generated from the AWS API specifications. `itty-aws` captures the entire AWS API surface area, including each API's exact error codes, in ~34KB of bundled JS.
+A lightweight (34KB) AWS SDK implementation for [Effect](https://effect.website) implemented with a single [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) and types generated from the AWS API specifications. 
 
+`itty-aws` captures the entire AWS API surface area, including each API's exact error codes, in 34KB of JavaScript:
+
+- 🪶 **Lightweight**: Much smaller than AWS SDK v3 (fixed size, single NPM package)
+- 🔄 **Effect**: Type-safe error handling, built-in retries, composable operations
+- 🎯 **Simple API**: `client.apiName(..)` instead of `client.send(Command)`
+- ⚡ **Fast cold starts**: No impact on Lambda startup times
 
 ```ts
 import { AWS } from "itty-aws";
@@ -26,39 +32,45 @@ const program = Effect.gen(function* () {
 
   return user.Item;
 });
-
-await Effect.runPromise(program);
 ```
 
 > [!CAUTION]
 > Only works with AWS APIs that accept JSON payloads. S3 (based on XML) is currently not supported, but will be in the future using Bun's built-in S3 client and a lightweight XML parser + aws4fetch for node.js.
 
-## Bundle Size
+## Why?
 
-The entire AWS SDK (including all Services and APIs) fits into:
+The official AWS SDK v3 is a massive 200+ NPM package monorepo with an awkward `client.send(new Command())` syntax that is a heavy dependency in your bundle. The `@effect-aws/*` project adapts the AWS SDK v3 to Effect, but at the cost of an additional 200+ NPM packages. 
+
+`itty-aws` achieves the same goal with a single NPM package, a `Proxy` and types generated from the Smith spec. It has a fixed-cost bundle size, meaning that no matter how many services you use, the bundle size will never grow:
 
 - **Core bundle size**: `34.0 KB` (minified, excluding Effect.js)
 - **Full bundle size**: `228.1 KB` (minified, with Effect.js)
 
-## Why?
+`itty-aws` also brings back the good ol' days of `aws-sdk` (v2) where you have a single `AWS` object from which you can instantiate any client for any AWS service. Instead of the clunky `client.send(new Command())` syntax, `itty-aws` supports `client.apiName(..)` syntax::
 
-The official AWS SDK v3 is a massive 200+ NPM package monorepo. "@effect-aws/*" is another large monorepo that wraps the official AWS SDK v3 in Effect.js, adding additonal overhead on top of the official SDK.
-
-The official AWS SDK v3 makes unfortunate trade-offs to support tree-shaking:
 ```ts
-// instea dof just simply claling a method
-await client.getItem()
+const client = new AWS.DynamoDB({ region: "us-east-1" });
 
-// you have to cosntruct a Command, because methods are not tree-shakable
-await client.send(new GetItemCommand());
+// instead of just simply calling a method
+yield* client.getItem({
+  TableName: "users",
+  Key: { id: { S: "123" } }
+})
 ```
 
-`itty-aws` cuts the cord from AWS's official SDK and instead prioritizes a minimal, type-safe, lightweight library designed specifically for Effect.js with none of the bloat of the official SDK.
+Compare this to the official AWS SDK v3, which requires you to construct a Command:
 
-- 🪶 **Lightweight**: Much smaller than AWS SDK v3
-- 🔄 **Effect.js**: Type-safe error handling, built-in retries, composable operations
-- 🎯 **Simple API**: `client.apiName(..)` instead of `client.send(Command)`
-- ⚡ **Fast cold starts**: No impact on Lambda startup times
+```ts
+import { DynamoDBClient, GetItemCommand } from "@aws-sdk/client-dynamodb";
+
+const client = new DynamoDBClient({ region: "us-east-1" });
+
+// instead of just simply calling a method
+await client.send(new GetItemCommand({
+  TableName: "users",
+  Key: { id: { S: "123" } }
+}))
+```
 
 ## Installation
 
