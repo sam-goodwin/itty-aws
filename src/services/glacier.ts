@@ -1,4 +1,6 @@
-import type { Effect, Data as EffectData } from "effect";
+import type { Effect, Stream, Data as EffectData } from "effect";
+import type { ResponseError } from "@effect/platform/HttpClientError";
+import type { Buffer } from "node:buffer";
 import type { CommonAwsError } from "../error.ts";
 import { AWSServiceClient } from "../client.ts";
 
@@ -467,7 +469,7 @@ export interface GetJobOutputInput {
   range?: string;
 }
 export interface GetJobOutputOutput {
-  body?: Uint8Array | string;
+  body?: Stream.Stream<Uint8Array, ResponseError>;
   checksum?: string;
   status?: number;
   contentRange?: string;
@@ -802,7 +804,7 @@ export interface UploadArchiveInput {
   accountId: string;
   archiveDescription?: string;
   checksum?: string;
-  body?: Uint8Array | string;
+  body?: Uint8Array | string | Buffer | Stream.Stream<Uint8Array>;
 }
 export interface UploadListElement {
   MultipartUploadId?: string;
@@ -817,7 +819,7 @@ export interface UploadMultipartPartInput {
   uploadId: string;
   checksum?: string;
   range?: string;
-  body?: Uint8Array | string;
+  body?: Uint8Array | string | Buffer | Stream.Stream<Uint8Array>;
 }
 export interface UploadMultipartPartOutput {
   checksum?: string;

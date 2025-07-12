@@ -1,4 +1,6 @@
-import type { Effect, Data as EffectData } from "effect";
+import type { Effect, Stream, Data as EffectData } from "effect";
+import type { ResponseError } from "@effect/platform/HttpClientError";
+import type { Buffer } from "node:buffer";
 import type { CommonAwsError } from "../error.ts";
 import { AWSServiceClient } from "../client.ts";
 
@@ -1831,7 +1833,7 @@ export type EndpointType = "REGIONAL" | "EDGE" | "PRIVATE";
 export interface ExportResponse {
   contentType?: string;
   contentDisposition?: string;
-  body?: Uint8Array | string;
+  body?: Stream.Stream<Uint8Array, ResponseError>;
 }
 export interface FlushStageAuthorizersCacheRequest {
   restApiId: string;
@@ -2102,7 +2104,7 @@ export interface GetVpcLinksRequest {
   limit?: number;
 }
 export interface ImportApiKeysRequest {
-  body: Uint8Array | string;
+  body: Uint8Array | string | Buffer | Stream.Stream<Uint8Array>;
   format: ApiKeysFormat;
   failOnWarnings?: boolean;
 }
@@ -2110,12 +2112,12 @@ export interface ImportDocumentationPartsRequest {
   restApiId: string;
   mode?: PutMode;
   failOnWarnings?: boolean;
-  body: Uint8Array | string;
+  body: Uint8Array | string | Buffer | Stream.Stream<Uint8Array>;
 }
 export interface ImportRestApiRequest {
   failOnWarnings?: boolean;
   parameters?: Record<string, string>;
-  body: Uint8Array | string;
+  body: Uint8Array | string | Buffer | Stream.Stream<Uint8Array>;
 }
 export type Integer = number;
 
@@ -2337,7 +2339,7 @@ export interface PutRestApiRequest {
   mode?: PutMode;
   failOnWarnings?: boolean;
   parameters?: Record<string, string>;
-  body: Uint8Array | string;
+  body: Uint8Array | string | Buffer | Stream.Stream<Uint8Array>;
 }
 export type QuotaPeriodType = "DAY" | "WEEK" | "MONTH";
 export interface QuotaSettings {
@@ -2405,7 +2407,7 @@ export interface SdkConfigurationProperty {
 export interface SdkResponse {
   contentType?: string;
   contentDisposition?: string;
-  body?: Uint8Array | string;
+  body?: Stream.Stream<Uint8Array, ResponseError>;
 }
 export interface SdkType {
   id?: string;

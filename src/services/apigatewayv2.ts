@@ -1,4 +1,5 @@
-import type { Effect, Data as EffectData } from "effect";
+import type { Effect, Stream, Data as EffectData } from "effect";
+import type { ResponseError } from "@effect/platform/HttpClientError";
 import type { CommonAwsError } from "../error.ts";
 import { AWSServiceClient } from "../client.ts";
 
@@ -1140,7 +1141,7 @@ export interface ExportApiRequest {
   StageName?: string;
 }
 export interface ExportApiResponse {
-  body?: Uint8Array | string;
+  body?: Stream.Stream<Uint8Array, ResponseError>;
 }
 export type ExportedApi = Uint8Array | string;
 

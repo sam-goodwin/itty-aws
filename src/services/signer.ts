@@ -1,4 +1,6 @@
-import type { Effect, Data as EffectData } from "effect";
+import type { Effect, Stream, Data as EffectData } from "effect";
+import type { ResponseError } from "@effect/platform/HttpClientError";
+import type { Buffer } from "node:buffer";
 import type { CommonAwsError } from "../error.ts";
 import { AWSServiceClient } from "../client.ts";
 
@@ -596,7 +598,7 @@ export type SigningStatus = "InProgress" | "Failed" | "Succeeded";
 export interface SignPayloadRequest {
   profileName: string;
   profileOwner?: string;
-  payload: Uint8Array | string;
+  payload: Uint8Array | string | Buffer | Stream.Stream<Uint8Array>;
   payloadFormat: string;
 }
 export interface SignPayloadResponse {

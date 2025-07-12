@@ -1,4 +1,5 @@
-import type { Effect, Data as EffectData } from "effect";
+import type { Effect, Stream, Data as EffectData } from "effect";
+import type { ResponseError } from "@effect/platform/HttpClientError";
 import type { CommonAwsError } from "../error.ts";
 import { AWSServiceClient } from "../client.ts";
 
@@ -559,7 +560,7 @@ export interface GetCodeBindingSourceRequest {
   SchemaVersion?: string;
 }
 export interface GetCodeBindingSourceResponse {
-  Body?: Uint8Array | string;
+  Body?: Stream.Stream<Uint8Array, ResponseError>;
 }
 export interface GetDiscoveredSchemaRequest {
   Events: Array<string>;

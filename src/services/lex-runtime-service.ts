@@ -1,4 +1,6 @@
-import type { Effect, Data as EffectData } from "effect";
+import type { Effect, Stream, Data as EffectData } from "effect";
+import type { ResponseError } from "@effect/platform/HttpClientError";
+import type { Buffer } from "node:buffer";
 import type { CommonAwsError } from "../error.ts";
 import { AWSServiceClient } from "../client.ts";
 
@@ -249,7 +251,7 @@ export interface PostContentRequest {
   requestAttributes?: string;
   contentType: string;
   accept?: string;
-  inputStream: Uint8Array | string;
+  inputStream: Uint8Array | string | Buffer | Stream.Stream<Uint8Array>;
   activeContexts?: string;
 }
 export interface PostContentResponse {
@@ -267,7 +269,7 @@ export interface PostContentResponse {
   slotToElicit?: string;
   inputTranscript?: string;
   encodedInputTranscript?: string;
-  audioStream?: Uint8Array | string;
+  audioStream?: Stream.Stream<Uint8Array, ResponseError>;
   botVersion?: string;
   sessionId?: string;
   activeContexts?: string;
@@ -322,7 +324,7 @@ export interface PutSessionResponse {
   messageFormat?: MessageFormatType;
   dialogState?: DialogState;
   slotToElicit?: string;
-  audioStream?: Uint8Array | string;
+  audioStream?: Stream.Stream<Uint8Array, ResponseError>;
   sessionId?: string;
   activeContexts?: string;
 }

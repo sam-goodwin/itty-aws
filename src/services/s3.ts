@@ -1,4 +1,6 @@
-import type { Effect, Data as EffectData } from "effect";
+import type { Effect, Stream, Data as EffectData } from "effect";
+import type { ResponseError } from "@effect/platform/HttpClientError";
+import type { Buffer } from "node:buffer";
 import type { CommonAwsError } from "../error.ts";
 import { AWSServiceClient } from "../client.ts";
 
@@ -1302,7 +1304,7 @@ export interface GetObjectLockConfigurationRequest {
   ExpectedBucketOwner?: string;
 }
 export interface GetObjectOutput {
-  Body?: Uint8Array | string;
+  Body?: Stream.Stream<Uint8Array, ResponseError>;
   DeleteMarker?: boolean;
   AcceptRanges?: string;
   Expiration?: string;
@@ -1388,7 +1390,7 @@ export interface GetObjectTaggingRequest {
   RequestPayer?: RequestPayer;
 }
 export interface GetObjectTorrentOutput {
-  Body?: Uint8Array | string;
+  Body?: Stream.Stream<Uint8Array, ResponseError>;
   RequestCharged?: RequestCharged;
 }
 export interface GetObjectTorrentRequest {
@@ -2437,7 +2439,7 @@ export interface PutObjectOutput {
 }
 export interface PutObjectRequest {
   ACL?: ObjectCannedACL;
-  Body?: Uint8Array | string;
+  Body?: Uint8Array | string | Buffer | Stream.Stream<Uint8Array>;
   Bucket: string;
   CacheControl?: string;
   ContentDisposition?: string;
@@ -2533,7 +2535,7 @@ export type Range = string;
 export type RecordDelimiter = string;
 
 export interface RecordsEvent {
-  Payload?: Uint8Array | string;
+  Payload?: Uint8Array | string | Stream.Stream<Uint8Array>;
 }
 export interface Redirect {
   HostName?: string;
@@ -2966,7 +2968,7 @@ export interface UploadPartOutput {
   RequestCharged?: RequestCharged;
 }
 export interface UploadPartRequest {
-  Body?: Uint8Array | string;
+  Body?: Uint8Array | string | Buffer | Stream.Stream<Uint8Array>;
   Bucket: string;
   ContentLength?: number;
   ContentMD5?: string;
@@ -3009,7 +3011,7 @@ export type WebsiteRedirectLocation = string;
 export interface WriteGetObjectResponseRequest {
   RequestRoute: string;
   RequestToken: string;
-  Body?: Uint8Array | string;
+  Body?: Uint8Array | string | Buffer | Stream.Stream<Uint8Array>;
   StatusCode?: number;
   ErrorCode?: string;
   ErrorMessage?: string;

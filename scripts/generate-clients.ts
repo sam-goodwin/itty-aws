@@ -6,6 +6,22 @@ import type { Manifest, Shape } from "./manifest.ts";
 // Configuration flags
 const INCLUDE_DOCUMENTATION = false; // Set to false to disable JSDoc comments
 
+// Fields that should support streaming in addition to regular blob types
+const STREAMING_FIELDS = new Set([
+  "Body", // S3 GetObject response
+  "body", // Bedrock and other services use lowercase
+  "StreamingBody", // Some AWS services use this name
+  "BlobStream", // Some services use this pattern
+  "ReadSetPartStreamingBlob", // Omics service
+  "ReadSetStreamingBlob", // Omics service  
+  "ReferenceStreamingBlob", // Omics service
+  "ResponseStream", // Bedrock and other services
+  "InvokeArgs", // Lambda service
+  "inputStream", // Lex services
+  "audioStream", // Lex services
+  "payload", // Omics service
+]);
+
 // Helper to extract service name from shape ID
 const extractShapeName = (shapeId: string): string => {
   const parts = shapeId.split("#");
@@ -58,8 +74,31 @@ const isRequired = (traits: Record<string, any> | undefined): boolean => {
   return !!(traits && "smithy.api#required" in traits);
 };
 
+// Type generation options
+interface TypeGenOptions {
+  manifest: Manifest;
+  crossServiceImports?: Set<string>;
+  typeNameMapping?: Map<string, string>;
+  responseErrorTypeName?: string;
+  inputShapes?: Set<string>;
+  outputShapes?: Set<string>;
+}
+
+// Helper to determine if a field should support streaming
+const shouldSupportStreaming = (memberName: string, shapeName: string): boolean => {
+  return STREAMING_FIELDS.has(memberName) || STREAMING_FIELDS.has(shapeName);
+};
+
 // Helper to map Smithy types to TypeScript
-const mapSmithyTypeToTypeScript = (shape: Shape, shapeName: string): string => {
+const mapSmithyTypeToTypeScript = (
+  shape: Shape, 
+  shapeName: string, 
+  memberName?: string, 
+  contextShapeName?: string, 
+  options: TypeGenOptions = {} as TypeGenOptions
+): string => {
+  const { responseErrorTypeName = "ResponseError", inputShapes, outputShapes } = options;
+  
   switch (shape.type) {
     case "string":
       return "string";
@@ -73,6 +112,20 @@ const mapSmithyTypeToTypeScript = (shape: Shape, shapeName: string): string => {
     case "timestamp":
       return "Date | string";
     case "blob":
+      // Check if this blob should support streaming
+      if (memberName && shouldSupportStreaming(memberName, shapeName)) {
+        if (contextShapeName && inputShapes && outputShapes) {
+          if (outputShapes.has(contextShapeName)) {
+            // Output types: only Stream with ResponseError
+            return `Stream.Stream<Uint8Array, ${responseErrorTypeName}>`;
+          } else if (inputShapes.has(contextShapeName)) {
+            // Input types: union with Buffer support and flexible Stream error type
+            return `Uint8Array | string | Buffer | Stream.Stream<Uint8Array>`;
+          }
+        }
+        // Default fallback for unknown context
+        return `Uint8Array | string | Stream.Stream<Uint8Array>`;
+      }
       return "Uint8Array | string";
     case "document":
       return "unknown";
@@ -82,7 +135,21 @@ const mapSmithyTypeToTypeScript = (shape: Shape, shapeName: string): string => {
 };
 
 // Helper to generate type reference from shape target
-const generateTypeReference = (target: string, manifest: Manifest, crossServiceImports?: Set<string>, typeNameMapping?: Map<string, string>): string => {
+const generateTypeReference = (
+  target: string, 
+  memberName?: string, 
+  contextShapeName?: string, 
+  options: TypeGenOptions = {} as TypeGenOptions
+): string => {
+  const { 
+    manifest, 
+    crossServiceImports, 
+    typeNameMapping, 
+    responseErrorTypeName = "ResponseError",
+    inputShapes,
+    outputShapes
+  } = options;
+  
   // Handle special Smithy built-in types
   if (target === "smithy.api#Unit") {
     return "{}";
@@ -103,6 +170,20 @@ const generateTypeReference = (target: string, manifest: Manifest, crossServiceI
     return "Date | string";
   }
   if (target === "smithy.api#Blob") {
+    // Check if this blob should support streaming
+    if (memberName && shouldSupportStreaming(memberName, "")) {
+      if (contextShapeName && inputShapes && outputShapes) {
+        if (outputShapes.has(contextShapeName)) {
+          // Output types: only Stream with ResponseError
+          return `Stream.Stream<Uint8Array, ${responseErrorTypeName}>`;
+        } else if (inputShapes.has(contextShapeName)) {
+          // Input types: union with Buffer support and flexible Stream error type
+          return `Uint8Array | string | Buffer | Stream.Stream<Uint8Array>`;
+        }
+      }
+      // Default fallback for unknown context
+      return `Uint8Array | string | Stream.Stream<Uint8Array>`;
+    }
     return "Uint8Array | string";
   }
   if (target === "smithy.api#Document") {
@@ -144,17 +225,17 @@ const generateTypeReference = (target: string, manifest: Manifest, crossServiceI
     case "timestamp":
     case "blob":
     case "document":
-      return mapSmithyTypeToTypeScript(targetShape, shapeName);
+      return mapSmithyTypeToTypeScript(targetShape, shapeName, memberName, contextShapeName, options);
     case "list":
       if (targetShape.member) {
-        const memberType = generateTypeReference(targetShape.member.target, manifest, crossServiceImports, typeNameMapping);
+        const memberType = generateTypeReference(targetShape.member.target, memberName, contextShapeName, options);
         return `Array<${memberType}>`;
       }
       return `Array<unknown>`;
     case "map":
       if (targetShape.key && targetShape.value) {
-        const keyType = generateTypeReference(targetShape.key.target, manifest, crossServiceImports, typeNameMapping);
-        const valueType = generateTypeReference(targetShape.value.target, manifest, crossServiceImports, typeNameMapping);
+        const keyType = generateTypeReference(targetShape.key.target, undefined, contextShapeName, options);
+        const valueType = generateTypeReference(targetShape.value.target, undefined, contextShapeName, options);
         return `Record<${keyType}, ${valueType}>`;
       }
       return `Record<string, unknown>`;
@@ -188,7 +269,7 @@ const getDocumentation = (traits: Record<string, any> | undefined): string | und
 };
 
 // Helper to generate error class (declare class extending EffectData.TaggedError)
-const generateErrorInterface = (shapeName: string, shape: any, manifest: Manifest, crossServiceImports?: Set<string>, typeNameMapping?: Map<string, string>): string => {
+const generateErrorInterface = (shapeName: string, shape: any, options: TypeGenOptions): string => {
   const doc = getDocumentation(shape.traits);
   let code = "";
   
@@ -204,7 +285,7 @@ const generateErrorInterface = (shapeName: string, shape: any, manifest: Manifes
   if (shape.members) {
     for (const [memberName, member] of Object.entries(shape.members)) {
       const memberInfo = member as any;
-      const fieldType = generateTypeReference(memberInfo.target, manifest, crossServiceImports, typeNameMapping);
+      const fieldType = generateTypeReference(memberInfo.target, memberName, shapeName, options);
       const optional = !isRequired(memberInfo.traits);
       const memberDoc = getDocumentation(memberInfo.traits);
       
@@ -221,7 +302,7 @@ const generateErrorInterface = (shapeName: string, shape: any, manifest: Manifes
 };
 
 // Helper to generate structure interface
-const generateStructureInterface = (name: string, shape: Extract<Shape, { type: "structure" }>, manifest: Manifest, crossServiceImports?: Set<string>, typeNameMapping?: Map<string, string>): string => {
+const generateStructureInterface = (name: string, shape: Extract<Shape, { type: "structure" }>, options: TypeGenOptions): string => {
   const doc = getDocumentation(shape.traits);
   let code = doc ? `${doc}\n` : "";
   
@@ -235,7 +316,7 @@ const generateStructureInterface = (name: string, shape: Extract<Shape, { type: 
       }
       const isRequiredField = isRequired(member.traits);
       const questionMark = isRequiredField ? "" : "?";
-      const fieldType = generateTypeReference(member.target, manifest, crossServiceImports, typeNameMapping);
+      const fieldType = generateTypeReference(member.target, memberName, name, options);
       code += `  ${memberName}${questionMark}: ${fieldType};\n`;
     }
   }
@@ -245,7 +326,7 @@ const generateStructureInterface = (name: string, shape: Extract<Shape, { type: 
 };
 
 // Helper to generate union type
-const generateUnionType = (name: string, shape: Extract<Shape, { type: "union" }>, manifest: Manifest, crossServiceImports?: Set<string>, typeNameMapping?: Map<string, string>): string => {
+const generateUnionType = (name: string, shape: Extract<Shape, { type: "union" }>, options: TypeGenOptions): string => {
   const doc = getDocumentation(shape.traits);
   let code = doc ? `${doc}\n` : "";
   
@@ -255,7 +336,7 @@ const generateUnionType = (name: string, shape: Extract<Shape, { type: "union" }
     // Generate base interface with all properties as optional
     code += `interface ${baseName} {\n`;
     for (const [memberName, member] of Object.entries(shape.members)) {
-      const memberType = generateTypeReference(member.target, manifest, crossServiceImports, typeNameMapping);
+      const memberType = generateTypeReference(member.target, memberName, baseName, options);
       const memberDoc = getDocumentation(member.traits);
       
       if (memberDoc) {
@@ -268,7 +349,7 @@ const generateUnionType = (name: string, shape: Extract<Shape, { type: "union" }
     
     // Generate union type using intersection with base interface
     const variants = Object.entries(shape.members).map(([memberName, member]) => {
-      const memberType = generateTypeReference(member.target, manifest, crossServiceImports, typeNameMapping);
+      const memberType = generateTypeReference(member.target, memberName, baseName, options);
       return `(${baseName} & { ${memberName}: ${memberType} })`;
     });
     
@@ -281,7 +362,7 @@ const generateUnionType = (name: string, shape: Extract<Shape, { type: "union" }
 };
 
 // Helper to generate enum type
-const generateEnumType = (name: string, shape: Extract<Shape, { type: "enum" }>, manifest: Manifest): string => {
+const generateEnumType = (name: string, shape: Extract<Shape, { type: "enum" }>, options: TypeGenOptions): string => {
   const doc = getDocumentation(shape.traits);
   let code = doc ? `${doc}\n` : "";
   
@@ -296,12 +377,12 @@ const generateEnumType = (name: string, shape: Extract<Shape, { type: "enum" }>,
 };
 
 // Helper to generate list type
-const generateListType = (name: string, shape: Extract<Shape, { type: "list" }>, manifest: Manifest, crossServiceImports?: Set<string>, typeNameMapping?: Map<string, string>): string => {
+const generateListType = (name: string, shape: Extract<Shape, { type: "list" }>, options: TypeGenOptions): string => {
   const doc = getDocumentation(shape.traits);
   let code = doc ? `${doc}\n` : "";
   
   if (shape.member) {
-    const memberType = generateTypeReference(shape.member.target, manifest, crossServiceImports, typeNameMapping);
+    const memberType = generateTypeReference(shape.member.target, undefined, name, options);
     code += `export type ${name} = Array<${memberType}>;`;
   } else {
     code += `export type ${name} = Array<unknown>;`;
@@ -311,13 +392,13 @@ const generateListType = (name: string, shape: Extract<Shape, { type: "list" }>,
 };
 
 // Helper to generate map type
-const generateMapType = (name: string, shape: Extract<Shape, { type: "map" }>, manifest: Manifest, crossServiceImports?: Set<string>, typeNameMapping?: Map<string, string>): string => {
+const generateMapType = (name: string, shape: Extract<Shape, { type: "map" }>, options: TypeGenOptions): string => {
   const doc = getDocumentation(shape.traits);
   let code = doc ? `${doc}\n` : "";
   
   if (shape.key && shape.value) {
-    const keyType = generateTypeReference(shape.key.target, manifest, crossServiceImports, typeNameMapping);
-    const valueType = generateTypeReference(shape.value.target, manifest, crossServiceImports, typeNameMapping);
+    const keyType = generateTypeReference(shape.key.target, undefined, name, options);
+    const valueType = generateTypeReference(shape.value.target, undefined, name, options);
     code += `export type ${name} = Record<${keyType}, ${valueType}>;`;
   } else {
     code += `export type ${name} = Record<string, unknown>;`;
@@ -337,6 +418,19 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
     
     // Track cross-service imports needed
     const crossServiceImports = new Set<string>();
+
+    // Check if there's a ResponseError conflict
+    const hasResponseErrorConflict = Object.entries(manifest.shapes).some(([shapeId, shape]) => {
+      if (shapeId.includes('#')) {
+        const shapeName = extractShapeName(shapeId);
+        return shapeName === "ResponseError";
+      }
+      return false;
+    });
+
+    // Determine the ResponseError import name and type name
+    const responseErrorImportName = hasResponseErrorConflict ? "EffectResponseError" : "ResponseError";
+    const responseErrorTypeName = hasResponseErrorConflict ? "EffectResponseError" : "ResponseError";
 
     // Create type name mapping for conflicting types
     const typeNameMapping = new Map<string, string>();
@@ -401,6 +495,32 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
         }));
     }
 
+    // Build maps of input and output shapes from operations
+    const inputShapes = new Set<string>();
+    const outputShapes = new Set<string>();
+    
+    for (const operation of operations) {
+      if (operation.shape.input) {
+        const inputShapeName = extractShapeName(operation.shape.input.target);
+        inputShapes.add(inputShapeName);
+      }
+      if (operation.shape.output) {
+        const outputShapeName = extractShapeName(operation.shape.output.target);
+        outputShapes.add(outputShapeName);
+      }
+    }
+
+    // Create the base options object for type generation
+    const createTypeGenOptions = (overrides: Partial<TypeGenOptions> = {}): TypeGenOptions => ({
+      manifest,
+      crossServiceImports,
+      typeNameMapping,
+      responseErrorTypeName,
+      inputShapes,
+      outputShapes,
+      ...overrides
+    });
+
     // Check if we need Data import by looking for error shapes
     for (const [shapeId, shape] of Object.entries(manifest.shapes)) {
       if (shape.type === "structure" && shape.traits && "smithy.api#error" in shape.traits) {
@@ -408,6 +528,50 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
         break;
       }
     }
+
+    // Check if we need Stream import and Buffer support by looking for streaming fields
+    let needsStreamImport = false;
+    let needsBufferSupport = false;
+    for (const [shapeId, shape] of Object.entries(manifest.shapes)) {
+      if (shape.type === "structure" && shape.members) {
+        const shapeName = extractShapeName(shapeId);
+        for (const [memberName, member] of Object.entries(shape.members)) {
+          const targetShape = manifest.shapes[member.target];
+          // Check both custom blob shapes and primitive blob types
+          if (shouldSupportStreaming(memberName, shapeName)) {
+            if (targetShape && targetShape.type === "blob") {
+              needsStreamImport = true;
+              // Check if this is an input shape that needs Buffer support
+              if (inputShapes.has(shapeName)) {
+                needsBufferSupport = true;
+              }
+              break;
+            }
+            // Also check for primitive blob types
+            if (member.target === "smithy.api#Blob") {
+              needsStreamImport = true;
+              // Check if this is an input shape that needs Buffer support
+              if (inputShapes.has(shapeName)) {
+                needsBufferSupport = true;
+              }
+              break;
+            }
+          }
+        }
+        if (needsStreamImport && needsBufferSupport) break;
+      }
+    }
+
+    // Generate imports
+    let code = `import type { Effect${needsStreamImport ? ", Stream" : ""}${needsDataImport ? ", Data as EffectData" : ""} } from "effect";\n`;
+    if (needsStreamImport) {
+      code += `import type { ${responseErrorImportName} } from "@effect/platform/HttpClientError";\n`;
+    }
+    if (needsBufferSupport) {
+      code += `import type { Buffer } from "node:buffer";\n`;
+    }
+    code += `import type { CommonAwsError } from "../error.ts";\n`;
+    code += `import { AWSServiceClient } from "../client.ts";\n\n`;
 
     // First pass: Build type name mapping for conflicting types and track all type names
     const allShapes = Object.entries(manifest.shapes)
@@ -456,11 +620,6 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
         }
       }
     }
-
-    // Generate imports
-    let code = `import type { Effect${needsDataImport ? ", Data as EffectData" : ""} } from "effect";\n`;
-    code += `import type { CommonAwsError } from "../error.ts";\n`;
-    code += `import { AWSServiceClient } from "../client.ts";\n\n`;
 
     // Generate service interface first at the top - use consistent naming based on sdkId  
     let consistentInterfaceName = sdkId.replace(/\s+/g, ''); // Remove spaces to make valid TS identifier
@@ -549,26 +708,26 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
         case "structure":
           // Check if it's an exception/error
           if (shape.traits && "smithy.api#error" in shape.traits) {
-            code += generateErrorInterface(finalTypeName, shape, manifest, crossServiceImports, typeNameMapping);
+            code += generateErrorInterface(finalTypeName, shape, createTypeGenOptions());
           } else {
-            code += generateStructureInterface(finalTypeName, shape, manifest, crossServiceImports, typeNameMapping);
+            code += generateStructureInterface(finalTypeName, shape, createTypeGenOptions());
           }
           code += "\n";
           break;
         case "union":
-          code += generateUnionType(finalTypeName, shape, manifest, crossServiceImports, typeNameMapping);
+          code += generateUnionType(finalTypeName, shape, createTypeGenOptions());
           code += "\n";
           break;
         case "enum":
-          code += generateEnumType(finalTypeName, shape, manifest);
+          code += generateEnumType(finalTypeName, shape, createTypeGenOptions());
           code += "\n";
           break;
         case "list":
-          code += generateListType(finalTypeName, shape, manifest, crossServiceImports, typeNameMapping);
+          code += generateListType(finalTypeName, shape, createTypeGenOptions());
           code += "\n";
           break;
         case "map":
-          code += generateMapType(finalTypeName, shape, manifest, crossServiceImports, typeNameMapping);
+          code += generateMapType(finalTypeName, shape, createTypeGenOptions());
           code += "\n";
           break;
         case "string":
@@ -581,7 +740,7 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
         case "blob":
         case "document":
           // Generate type alias for simple types that might have traits/constraints
-          const baseType = mapSmithyTypeToTypeScript(shape, shapeName);
+          const baseType = mapSmithyTypeToTypeScript(shape, shapeName, undefined, finalTypeName, createTypeGenOptions());
           const doc = getDocumentation(shape.traits);
           if (doc) {
             code += `${doc}\n`;

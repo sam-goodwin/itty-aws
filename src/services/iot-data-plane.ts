@@ -1,4 +1,6 @@
-import type { Effect, Data as EffectData } from "effect";
+import type { Effect, Stream, Data as EffectData } from "effect";
+import type { ResponseError } from "@effect/platform/HttpClientError";
+import type { Buffer } from "node:buffer";
 import type { CommonAwsError } from "../error.ts";
 import { AWSServiceClient } from "../client.ts";
 
@@ -113,7 +115,7 @@ export interface DeleteThingShadowRequest {
   shadowName?: string;
 }
 export interface DeleteThingShadowResponse {
-  payload: Uint8Array | string;
+  payload: Stream.Stream<Uint8Array, ResponseError>;
 }
 export type errorMessage = string;
 
@@ -122,7 +124,7 @@ export interface GetRetainedMessageRequest {
 }
 export interface GetRetainedMessageResponse {
   topic?: string;
-  payload?: Uint8Array | string;
+  payload?: Stream.Stream<Uint8Array, ResponseError>;
   qos?: number;
   lastModifiedTime?: number;
   userProperties?: Uint8Array | string;
@@ -132,7 +134,7 @@ export interface GetThingShadowRequest {
   shadowName?: string;
 }
 export interface GetThingShadowResponse {
-  payload?: Uint8Array | string;
+  payload?: Stream.Stream<Uint8Array, ResponseError>;
 }
 export declare class InternalFailureException extends EffectData.TaggedError(
   "InternalFailureException",
@@ -187,7 +189,7 @@ export interface PublishRequest {
   topic: string;
   qos?: number;
   retain?: boolean;
-  payload?: Uint8Array | string;
+  payload?: Uint8Array | string | Buffer | Stream.Stream<Uint8Array>;
   userProperties?: string;
   payloadFormatIndicator?: PayloadFormatIndicator;
   contentType?: string;
@@ -251,10 +253,10 @@ export declare class UnsupportedDocumentEncodingException extends EffectData.Tag
 export interface UpdateThingShadowRequest {
   thingName: string;
   shadowName?: string;
-  payload: Uint8Array | string;
+  payload: Uint8Array | string | Buffer | Stream.Stream<Uint8Array>;
 }
 export interface UpdateThingShadowResponse {
-  payload?: Uint8Array | string;
+  payload?: Stream.Stream<Uint8Array, ResponseError>;
 }
 export type UserPropertiesBlob = Uint8Array | string;
 

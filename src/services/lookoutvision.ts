@@ -1,4 +1,6 @@
-import type { Effect, Data as EffectData } from "effect";
+import type { Effect, Stream, Data as EffectData } from "effect";
+import type { ResponseError } from "@effect/platform/HttpClientError";
+import type { Buffer } from "node:buffer";
 import type { CommonAwsError } from "../error.ts";
 import { AWSServiceClient } from "../client.ts";
 
@@ -444,7 +446,7 @@ export interface DescribeProjectResponse {
 export interface DetectAnomaliesRequest {
   ProjectName: string;
   ModelVersion: string;
-  Body: Uint8Array | string;
+  Body: Uint8Array | string | Buffer | Stream.Stream<Uint8Array>;
   ContentType: string;
 }
 export interface DetectAnomaliesResponse {

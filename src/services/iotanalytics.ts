@@ -1,4 +1,5 @@
-import type { Effect, Data as EffectData } from "effect";
+import type { Effect, Stream, Data as EffectData } from "effect";
+import type { ResponseError } from "@effect/platform/HttpClientError";
 import type { CommonAwsError } from "../error.ts";
 import { AWSServiceClient } from "../client.ts";
 
@@ -937,7 +938,7 @@ export type MaxVersions = number;
 
 export interface Message {
   messageId: string;
-  payload: Uint8Array | string;
+  payload: Uint8Array | string | Stream.Stream<Uint8Array>;
 }
 export type MessageId = string;
 

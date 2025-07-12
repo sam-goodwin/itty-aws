@@ -1,4 +1,5 @@
-import type { Effect, Data as EffectData } from "effect";
+import type { Effect, Stream, Data as EffectData } from "effect";
+import type { ResponseError } from "@effect/platform/HttpClientError";
 import type { CommonAwsError } from "../error.ts";
 import { AWSServiceClient } from "../client.ts";
 
@@ -662,7 +663,7 @@ export interface GetReadSetRequest {
   partNumber: number;
 }
 export interface GetReadSetResponse {
-  payload?: Uint8Array | string;
+  payload?: Uint8Array | string | Stream.Stream<Uint8Array>;
 }
 export interface GetReferenceImportJobRequest {
   id: string;
@@ -704,7 +705,7 @@ export interface GetReferenceRequest {
   file?: string;
 }
 export interface GetReferenceResponse {
-  payload?: Uint8Array | string;
+  payload?: Uint8Array | string | Stream.Stream<Uint8Array>;
 }
 export interface GetReferenceStoreRequest {
   id: string;
@@ -2008,7 +2009,7 @@ export interface UploadReadSetPartRequest {
   uploadId: string;
   partSource: string;
   partNumber: number;
-  payload: Uint8Array | string;
+  payload: Uint8Array | string | Stream.Stream<Uint8Array>;
 }
 export interface UploadReadSetPartResponse {
   checksum: string;
