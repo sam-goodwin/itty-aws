@@ -127,8 +127,29 @@ export function createServiceProxy<T>(
             const action =
               methodName.charAt(0).toUpperCase() + methodName.slice(1);
 
+            // Determine Content-Type based on protocol
+            let contentType = "application/json"; // default
+            switch (metadata.protocol) {
+              case "awsJson1_0":
+                contentType = "application/x-amz-json-1.0";
+                break;
+              case "awsJson1_1":
+                contentType = "application/x-amz-json-1.1";
+                break;
+              case "restJson1":
+                contentType = "application/json";
+                break;
+              case "awsQuery":
+              case "ec2Query":
+                contentType = "application/x-www-form-urlencoded";
+                break;
+              case "restXml":
+                contentType = "application/xml";
+                break;
+            }
+
             const headers: Record<string, string> = {
-              "Content-Type": "application/x-amz-json-1.0",
+              "Content-Type": contentType,
               "X-Amz-Target": `${metadata.targetPrefix}.${action}`,
               "User-Agent": "itty-aws",
             };
