@@ -458,15 +458,21 @@ const generateServiceCode = (serviceName: string, manifest: Manifest) =>
     // Determine protocol
     let protocol = "unknown";
     if (serviceTraits["aws.protocols#awsJson1_0"]) {
-      protocol = "json";
+      protocol = "awsJson1_0";
     } else if (serviceTraits["aws.protocols#awsJson1_1"]) {
-      protocol = "json";
+      protocol = "awsJson1_1";
     } else if (serviceTraits["aws.protocols#restJson1"]) {
-      protocol = "rest-json";
+      protocol = "restJson1";
+    } else if (serviceTraits["aws.protocols#awsQuery"]) {
+      protocol = "awsQuery";
+    } else if (serviceTraits["aws.protocols#ec2Query"]) {
+      protocol = "ec2Query";
+    } else if (serviceTraits["aws.protocols#restXml"]) {
+      protocol = "restXml";
     }
     
     // For AWS JSON protocols, the targetPrefix is the service name itself
-    const targetPrefix = protocol === "json" ? serviceShapeName : "";
+    const targetPrefix = (protocol === "awsJson1_0" || protocol === "awsJson1_1") ? serviceShapeName : "";
 
     // Find operations using the new Smithy 2.0 format
     let operations: Array<{ name: string; shape: any }> = [];
