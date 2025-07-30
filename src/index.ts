@@ -6,12 +6,12 @@ import type { AWSClientConfig } from "./client.ts";
 
 const services: Record<string, Record<string, any>> = {};
 
-// Create constructor types for all AWS services that return the actual service instance
+// Create constructor types for all AWS services  
 type ServiceConstructor<T> = new (config?: AWSClientConfig) => T;
 
-// Transform exported services into constructors that return the proper service types
+// Transform exported services into constructors
 type AWSServices = {
-  [K in keyof typeof Services]: ServiceConstructor<InstanceType<typeof Services[K]>>
+  [K in keyof typeof Services]: ServiceConstructor<typeof Services[K]>
 };
 
 export type AWS = AWSServices;
