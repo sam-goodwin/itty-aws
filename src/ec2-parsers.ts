@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { XMLParser } from "fast-xml-parser";
-import type * as ec2 from "./services/ec2";
 
 /**
  * Shared runtime helpers
@@ -31874,15 +31873,6 @@ function parseByShape(node: any, shapeId: ShapeId): any {
   }
 
   return node;
-}
-
-/** Resolve a response node for an operation name (tolerate default XML namespace) */
-function pickResponseNode(root: any, opName: string): any {
-  const expected = `${opName}Response`;
-  if (root[expected]) return root[expected];
-  // Fallback: pick first top-level element
-  const firstKey = Object.keys(root)[0];
-  return root[firstKey];
 }
 
 /**

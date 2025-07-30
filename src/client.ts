@@ -13,7 +13,6 @@ import {
   type AwsErrorMeta,
 } from "./error.ts";
 import { serviceMetadata } from "./metadata.ts";
-import { transformXmlToJson } from "./xml-transformer.js";
 
 // Helper function to extract simple error name from AWS namespaced error type
 function extractErrorName(awsErrorType: string): string {
@@ -41,10 +40,10 @@ export function parseAwsResponse(
     return parseEC2Response(responseText);
   }
   
-  if (protocol === "awsQuery" || protocol === "restXml") {
-    // Use generic XML transformer for other XML protocols
-    return transformXmlToJson(responseText);
-  }
+  // if (protocol === "awsQuery" || protocol === "restXml") {
+  //   // Use generic XML transformer for other XML protocols
+  //   return transformXmlToJson(responseText);
+  // }
 
   // Fallback to JSON for unknown protocols
   try {
