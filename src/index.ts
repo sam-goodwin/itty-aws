@@ -1,11 +1,20 @@
 import * as Data from "effect/Data";
 import { createServiceProxy } from "./client.ts";
 
-import type * as AWS_ from "../src/aws.ts";
+import type * as Services from "./aws.ts";
+import type { AWSClientConfig } from "./client.ts";
 
 const services: Record<string, Record<string, any>> = {};
 
-export type AWS = typeof AWS_;
+// Create constructor types for all AWS services  
+type ServiceConstructor<T> = new (config?: AWSClientConfig) => T;
+
+// Transform exported services into constructors
+type AWSServices = {
+  [K in keyof typeof Services]: ServiceConstructor<typeof Services[K]>
+};
+
+export type AWS = AWSServices;
 
 export const AWS = new Proxy(
   {},
@@ -30,4 +39,4 @@ export const AWS = new Proxy(
       }));
     },
   },
-) as any as typeof AWS_;
+) as any as AWSServices;
