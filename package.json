@@ -18,6 +18,7 @@
     "build": "tsc -b",
     "fetch:manifests": "bun scripts/fetch-manifests.ts",
     "generate": "bun scripts/generate-clients.ts && bun biome check --write && tsc -b",
+    "generate-ec2-parsers": "bun scripts/generate-ec2-parsers.ts --in manifests/ec2.json --out src/ec2-parsers.ts && bun biome check --write && tsc -b",
     "gen": "bun generate",
     "bundle:size": "bun scripts/bundle-size.ts",
     "test": "vitest",
