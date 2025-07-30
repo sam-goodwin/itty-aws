@@ -4,6 +4,7 @@ import * as Data from "effect/Data";
 import * as Effect from "effect/Effect";
 import { XMLParser } from "fast-xml-parser";
 import { ec2Parsers } from "./ec2-parsers.ts";
+import { transformXmlToJson } from "./xml-transformer.js";
 import {
   AccessDeniedException,
   RequestTimeout,
@@ -35,22 +36,9 @@ export function parseAwsResponse(
     return JSON.parse(responseText);
   }
 
-  // Handle EC2 Query protocol with specialized parsers
-  if (protocol === "ec2Query" && operationName && operationName in ec2Parsers) {
-    const parser = ec2Parsers[operationName as keyof typeof ec2Parsers];
-    return parser(responseText);
-  }
-
-  // Handle other XML protocols (awsQuery, restXml)
-  if (protocol === "awsQuery" || protocol === "restXml") {
-    const parser = new XMLParser({
-      ignoreAttributes: false,
-      attributeNamePrefix: "@_",
-      textNodeName: "_text",
-      removeNSPrefix: true,
-      parseAttributeValue: true,
-    });
-    return parser.parse(responseText);
+  // Handle all XML protocols (ec2Query, awsQuery, restXml) with generic transformer
+  if (protocol === "ec2Query" || protocol === "awsQuery" || protocol === "restXml") {
+    return transformXmlToJson(responseText);
   }
 
   // Fallback to JSON for unknown protocols
@@ -268,6 +256,7 @@ export function createServiceProxy<T>(
 
             if (statusCode >= 200 && statusCode < 300) {
               // Success
+              console.log("RESPONSE: ", responseText);
               const data = parseAwsResponse(
                 responseText,
                 metadata.protocol,

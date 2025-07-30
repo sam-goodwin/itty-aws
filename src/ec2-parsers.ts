@@ -31907,8 +31907,8 @@ function parseByShape(node: any, shapeId: ShapeId): any {
       const targetShape = REGISTRY[m.target as ShapeId];
 
       if (!targetShape) {
-        // Unknown target: pass through string
-        if (child !== undefined) out[m.memberName] = String(child);
+        // Unknown target: pass through as-is rather than stringifying
+        if (child !== undefined) out[m.memberName] = child;
         continue;
       }
 
