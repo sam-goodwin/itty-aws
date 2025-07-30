@@ -14,12 +14,11 @@
     "esModuleInterop": true,
     "noEmit": false,
     // Bundler mode
-    "module": "ESNext",
+    "module": "Preserve",
     "moduleResolution": "Bundler",
     "allowImportingTsExtensions": true,
     "rewriteRelativeImportExtensions": true,
     "verbatimModuleSyntax": true,
-    "declaration": true,
 
     // Best practices
     "strict": true,
