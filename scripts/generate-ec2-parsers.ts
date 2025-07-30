@@ -345,41 +345,48 @@ function pickResponseNode(root: any, opName: string): any {
 }
 `;
 
-/** Per-operation parser functions */
-const perOperationFns: string[] = [];
-
-for (const op of operations) {
-  const opName = op.name; // e.g., DescribeRegions
-  const outputSimple = simpleName(op.outputId); // e.g., DescribeRegionsResult
-
-  // Skip generating function for Unit output (no actual output from service)
-  if (outputSimple === "Unit") {
-    continue;
-  }
-
-  const fn = `
-export function parse${opName}(xml: string): ec2.${outputSimple} {
+/** Single dynamic parser function that uses REGISTRY lookup */
+const dynamicParserFn = `
+/**
+ * Parse EC2 XML response dynamically using the REGISTRY
+ * @param xml - Raw XML response from AWS
+ * @returns Parsed JavaScript object
+ */
+export function parseEC2Response(xml: string): any {
   const root = xmlParser.parse(xml);
-  const response = pickResponseNode(root, "${opName}");
-  const result = parseByShape(response, "${op.outputId}" as any);
-  return result as ec2.${outputSimple};
+  
+  // Get the root element name (e.g., "DescribeRegionsResponse")
+  const rootElementName = Object.keys(root)[0];
+  if (!rootElementName) {
+    throw new Error("Empty XML response");
+  }
+  
+  // Convert "DescribeRegionsResponse" -> "com.amazonaws.ec2#DescribeRegionsResult"
+  const resultShapeId = rootElementName.replace(/Response$/, "Result");
+  const fullShapeId = \`com.amazonaws.ec2#\${resultShapeId}\` as ShapeId;
+  
+  // Get the response content
+  const responseContent = root[rootElementName];
+  
+  // Use the registry to parse the structure
+  if (REGISTRY[fullShapeId]) {
+    return parseByShape(responseContent, fullShapeId);
+  } else {
+    // Fallback: return raw parsed XML if shape not in registry
+    console.warn(\`Shape \${fullShapeId} not found in registry, returning raw XML\`);
+    return responseContent;
+  }
 }
 `;
-  perOperationFns.push(fn);
-}
 
-/** Optional: index of available parsers */
-const indexExport = `
-/** All generated parser functions (by operation name) */
-export const ec2Parsers = {
-${operations
-  .filter((op) => simpleName(op.outputId) !== "Unit")
-  .map((op) => `  "${op.name}": parse${op.name}`)
-  .join(",\n")}
-} as const;
+/** Export the available registry for inspection */
+const registryExport = `
+/** Export the shape registry for inspection/debugging */
+export const EC2_REGISTRY = REGISTRY;
+export type EC2ShapeId = ShapeId;
 `;
 
-const source = header + perOperationFns.join("\n") + indexExport + "\n";
+const source = header + dynamicParserFn + registryExport + "\n";
 
 /** Write output */
 fs.writeFileSync(outFile, source, "utf8");

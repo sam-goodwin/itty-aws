@@ -2,9 +2,7 @@ import { fromNodeProviderChain } from "@aws-sdk/credential-providers";
 import { AwsClient } from "aws4fetch";
 import * as Data from "effect/Data";
 import * as Effect from "effect/Effect";
-import { XMLParser } from "fast-xml-parser";
-import { ec2Parsers } from "./ec2-parsers.ts";
-import { transformXmlToJson } from "./xml-transformer.js";
+import { parseEC2Response } from "./ec2-parsers.js";
 import {
   AccessDeniedException,
   RequestTimeout,
@@ -15,6 +13,7 @@ import {
   type AwsErrorMeta,
 } from "./error.ts";
 import { serviceMetadata } from "./metadata.ts";
+import { transformXmlToJson } from "./xml-transformer.js";
 
 // Helper function to extract simple error name from AWS namespaced error type
 function extractErrorName(awsErrorType: string): string {
@@ -28,7 +27,7 @@ function extractErrorName(awsErrorType: string): string {
 export function parseAwsResponse(
   responseText: string,
   protocol: string,
-  operationName?: string,
+  serviceName?: string,
 ): any {
   if (!responseText) return {};
 
@@ -36,8 +35,14 @@ export function parseAwsResponse(
     return JSON.parse(responseText);
   }
 
-  // Handle all XML protocols (ec2Query, awsQuery, restXml) with generic transformer
-  if (protocol === "ec2Query" || protocol === "awsQuery" || protocol === "restXml") {
+  // Handle XML protocols with service-specific parsers
+  if (protocol === "ec2Query") {
+    // Use specialized EC2 parser with registry-based dynamic parsing
+    return parseEC2Response(responseText);
+  }
+  
+  if (protocol === "awsQuery" || protocol === "restXml") {
+    // Use generic XML transformer for other XML protocols
     return transformXmlToJson(responseText);
   }
 
@@ -53,10 +58,10 @@ export function parseAwsResponse(
 function parseAwsError(
   responseText: string,
   protocol: string,
-  operationName?: string,
+  serviceName?: string,
 ): any {
   try {
-    return parseAwsResponse(responseText, protocol, operationName);
+    return parseAwsResponse(responseText, protocol, serviceName);
   } catch {
     return { message: responseText };
   }
@@ -256,11 +261,10 @@ export function createServiceProxy<T>(
 
             if (statusCode >= 200 && statusCode < 300) {
               // Success
-              console.log("RESPONSE: ", responseText);
               const data = parseAwsResponse(
                 responseText,
                 metadata.protocol,
-                action,
+                normalizedServiceName,
               );
               return data;
             } else {
@@ -268,7 +272,7 @@ export function createServiceProxy<T>(
               const errorData = parseAwsError(
                 responseText,
                 metadata.protocol,
-                action,
+                normalizedServiceName,
               );
 
               // Extract error info from different response formats
