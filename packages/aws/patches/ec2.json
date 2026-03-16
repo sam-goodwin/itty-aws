@@ -905,6 +905,7 @@
         "RequestLimitExceeded",
         "InvalidAMIID.Malformed",
         "InvalidAMIID.NotFound",
+        "InvalidParameterValue",
         "MissingParameter",
         "ParseError"
       ]

@@ -47,6 +47,7 @@ import {
   // Import/Export
   describeImportImageTasks,
   describeImportSnapshotTasks,
+  InvalidParameterValue,
   // Instance Connect Endpoints
   describeInstanceConnectEndpoints,
   describeInstanceCreditSpecifications,
@@ -170,15 +171,134 @@ import {
   // Images in Recycle Bin
   listImagesInRecycleBin,
   listSnapshotsInRecycleBin,
+  runInstances,
+  terminateInstances,
 } from "../../src/services/ec2.ts";
 import { test } from "../test.ts";
 
 // ============================================================================
 // EC2 API Tests
 //
-// These tests call read-only EC2 APIs to verify response parsing works
-// correctly. They don't create any resources.
+// These tests are mostly read-only EC2 API coverage with one targeted
+// runInstances repro that cleans up any tagged instances it might create.
 // ============================================================================
+
+const RUN_INSTANCES_REPRO_NAME = "distilled-ec2-invalid-instance-profile";
+const RUN_INSTANCES_REPRO_PROFILE_NAME =
+  "distilled-ec2-invalid-instance-profile";
+const RUN_INSTANCES_REPRO_TAG_KEY = "distilled:fixture";
+const RUN_INSTANCES_REPRO_TAG_VALUE = "ec2-runinstances-invalid-profile";
+
+const getTaggedInstanceIds = Effect.gen(function* () {
+  const result = yield* describeInstances({
+    Filters: [
+      {
+        Name: `tag:${RUN_INSTANCES_REPRO_TAG_KEY}`,
+        Values: [RUN_INSTANCES_REPRO_TAG_VALUE],
+      },
+      {
+        Name: "instance-state-name",
+        Values: ["pending", "running", "stopping", "stopped"],
+      },
+    ],
+  });
+
+  return (result.Reservations ?? []).flatMap((reservation) =>
+    (reservation.Instances ?? []).flatMap((instance) =>
+      instance.InstanceId ? [instance.InstanceId] : [],
+    ),
+  );
+});
+
+const cleanupRunInstancesRepro = getTaggedInstanceIds.pipe(
+  Effect.flatMap((instanceIds) =>
+    instanceIds.length === 0
+      ? Effect.void
+      : terminateInstances({ InstanceIds: instanceIds }).pipe(
+          Effect.map(() => undefined),
+        ),
+  ),
+  Effect.catch(() => Effect.void),
+);
+
+const resolveRunInstancesImageId = Effect.gen(function* () {
+  const result = yield* describeImages({
+    Owners: ["amazon"],
+    Filters: [
+      {
+        Name: "name",
+        Values: ["al2023-ami-2023.*-x86_64"],
+      },
+      {
+        Name: "architecture",
+        Values: ["x86_64"],
+      },
+      {
+        Name: "root-device-type",
+        Values: ["ebs"],
+      },
+      {
+        Name: "virtualization-type",
+        Values: ["hvm"],
+      },
+      {
+        Name: "state",
+        Values: ["available"],
+      },
+    ],
+  });
+
+  const image = [...(result.Images ?? [])]
+    .filter((candidate) => candidate.ImageId && candidate.CreationDate)
+    .sort((a, b) =>
+      (b.CreationDate ?? "").localeCompare(a.CreationDate ?? ""),
+    )[0];
+
+  expect(image?.ImageId).toBeDefined();
+  return image!.ImageId!;
+});
+
+const resolveRunInstancesNetwork = Effect.gen(function* () {
+  const subnets = yield* describeSubnets({
+    Filters: [
+      {
+        Name: "default-for-az",
+        Values: ["true"],
+      },
+    ],
+  });
+
+  const subnet = (subnets.Subnets ?? []).find(
+    (candidate) => candidate.SubnetId && candidate.VpcId,
+  );
+
+  expect(subnet?.SubnetId).toBeDefined();
+  expect(subnet?.VpcId).toBeDefined();
+
+  const securityGroups = yield* describeSecurityGroups({
+    Filters: [
+      {
+        Name: "group-name",
+        Values: ["default"],
+      },
+      {
+        Name: "vpc-id",
+        Values: [subnet!.VpcId!],
+      },
+    ],
+  });
+
+  const securityGroup = (securityGroups.SecurityGroups ?? []).find(
+    (candidate) => candidate.GroupId,
+  );
+
+  expect(securityGroup?.GroupId).toBeDefined();
+
+  return {
+    subnetId: subnet!.SubnetId!,
+    securityGroupId: securityGroup!.GroupId!,
+  };
+});
 
 // ----------------------------------------------------------------------------
 // Account & Region
@@ -658,6 +778,60 @@ test(
     expect(result).toBeDefined();
     expect(result.InstanceCreditSpecifications).toBeDefined();
   }),
+);
+
+test(
+  "runInstances - invalid instance profile is tagged",
+  { timeout: 120_000 },
+  Effect.gen(function* () {
+    yield* cleanupRunInstancesRepro;
+
+    const imageId = yield* resolveRunInstancesImageId;
+    const { subnetId, securityGroupId } = yield* resolveRunInstancesNetwork;
+
+    const error = yield* runInstances({
+      ImageId: imageId,
+      InstanceType: "t3.nano",
+      MinCount: 1,
+      MaxCount: 1,
+      SubnetId: subnetId,
+      SecurityGroupIds: [securityGroupId],
+      IamInstanceProfile: {
+        Name: RUN_INSTANCES_REPRO_PROFILE_NAME,
+      },
+      TagSpecifications: [
+        {
+          ResourceType: "instance",
+          Tags: [
+            {
+              Key: "Name",
+              Value: RUN_INSTANCES_REPRO_NAME,
+            },
+            {
+              Key: RUN_INSTANCES_REPRO_TAG_KEY,
+              Value: RUN_INSTANCES_REPRO_TAG_VALUE,
+            },
+          ],
+        },
+        {
+          ResourceType: "volume",
+          Tags: [
+            {
+              Key: "Name",
+              Value: RUN_INSTANCES_REPRO_NAME,
+            },
+            {
+              Key: RUN_INSTANCES_REPRO_TAG_KEY,
+              Value: RUN_INSTANCES_REPRO_TAG_VALUE,
+            },
+          ],
+        },
+      ],
+    }).pipe(Effect.flip);
+
+    expect(error).toBeInstanceOf(InvalidParameterValue);
+    expect((error as { _tag?: string })._tag).toBe("InvalidParameterValue");
+  }).pipe(Effect.ensuring(cleanupRunInstancesRepro)),
 );
 
 // ----------------------------------------------------------------------------

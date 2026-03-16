@@ -94958,6 +94958,7 @@ export type RunInstancesError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
   | InvalidAMIIDNotFound
+  | InvalidParameterValue
   | MissingParameter
   | ParseError
   | CommonErrors;
@@ -95025,6 +95026,7 @@ export const runInstances: API.OperationMethod<
     RequestLimitExceeded,
     InvalidAMIIDMalformed,
     InvalidAMIIDNotFound,
+    InvalidParameterValue,
     MissingParameter,
     ParseError,
   ],
