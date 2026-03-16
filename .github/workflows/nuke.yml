@@ -1,0 +1,264 @@
+name: Nuke Test Resources
+
+on:
+  # Run after CI completes on merge_group events (merge queue)
+  merge_group:
+    types: [checks_requested]
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      all:
+        description: "Nuke ALL SDKs"
+        type: boolean
+        default: false
+      aws:
+        description: "AWS"
+        type: boolean
+        default: false
+      cloudflare:
+        description: "Cloudflare"
+        type: boolean
+        default: false
+      coinbase:
+        description: "Coinbase"
+        type: boolean
+        default: false
+      fly-io:
+        description: "Fly.io"
+        type: boolean
+        default: false
+      gcp:
+        description: "GCP"
+        type: boolean
+        default: false
+      kubernetes:
+        description: "Kubernetes"
+        type: boolean
+        default: false
+      mongodb-atlas:
+        description: "MongoDB Atlas"
+        type: boolean
+        default: false
+      neon:
+        description: "Neon"
+        type: boolean
+        default: false
+      planetscale:
+        description: "PlanetScale"
+        type: boolean
+        default: false
+      prisma-postgres:
+        description: "Prisma Postgres"
+        type: boolean
+        default: false
+      stripe:
+        description: "Stripe"
+        type: boolean
+        default: false
+      supabase:
+        description: "Supabase"
+        type: boolean
+        default: false
+      turso:
+        description: "Turso"
+        type: boolean
+        default: false
+
+jobs:
+  # ── Gate: decide whether to proceed ──
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.decide.outputs.run }}
+    steps:
+      - name: Check if merge queue is empty
+        if: github.event_name == 'merge_group'
+        id: queue-check
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: entries } = await github.rest.repos.getMergeQueueForBranch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              branch: 'main',
+            });
+
+            const count = entries.total_count ?? 0;
+            console.log(`Merge queue entries remaining: ${count}`);
+            core.setOutput('is_last', count <= 1 ? 'true' : 'false');
+
+      - name: Validate inputs
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          if [[ "${{ inputs.all }}" != "true" \
+             && "${{ inputs.aws }}" != "true" \
+             && "${{ inputs.cloudflare }}" != "true" \
+             && "${{ inputs.coinbase }}" != "true" \
+             && "${{ inputs.fly-io }}" != "true" \
+             && "${{ inputs.gcp }}" != "true" \
+             && "${{ inputs.kubernetes }}" != "true" \
+             && "${{ inputs.mongodb-atlas }}" != "true" \
+             && "${{ inputs.neon }}" != "true" \
+             && "${{ inputs.planetscale }}" != "true" \
+             && "${{ inputs.prisma-postgres }}" != "true" \
+             && "${{ inputs.stripe }}" != "true" \
+             && "${{ inputs.supabase }}" != "true" \
+             && "${{ inputs.turso }}" != "true" ]]; then
+            echo "::error::You must select at least one SDK to nuke (or choose 'all')"
+            exit 1
+          fi
+
+      - name: Decide whether to run
+        id: decide
+        run: |
+          if [[ "${{ github.event_name }}" == "merge_group" ]]; then
+            echo "run=${{ steps.queue-check.outputs.is_last }}" >> $GITHUB_OUTPUT
+          else
+            echo "run=true" >> $GITHUB_OUTPUT
+          fi
+
+  # ── AWS ──
+  nuke-aws:
+    needs: gate
+    if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.aws)
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: arn:aws:iam::391965393224:role/distilled-github-oidc-role
+          aws-region: us-east-1
+
+      - name: Install aws-nuke
+        run: |
+          curl -fsSL "https://github.com/ekristen/aws-nuke/releases/latest/download/aws-nuke-v3-linux-amd64.tar.gz" -o aws-nuke.tar.gz
+          tar -xzf aws-nuke.tar.gz
+          chmod +x aws-nuke
+          sudo mv aws-nuke /usr/local/bin/
+
+      - name: Run aws-nuke
+        run: aws-nuke run --config packages/aws/nuke-config.yml --no-alias-check --no-dry-run
+
+  # ── Cloudflare ──
+  # nuke-cloudflare:
+  #   needs: gate
+  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.cloudflare)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: |
+  #         echo "Nuking Cloudflare test resources..."
+  #         # TODO: add Cloudflare nuke logic
+
+  # ── Coinbase ──
+  # nuke-coinbase:
+  #   needs: gate
+  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.coinbase)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: |
+  #         echo "Nuking Coinbase test resources..."
+  #         # TODO: add Coinbase nuke logic
+
+  # ── Fly.io ──
+  # nuke-fly-io:
+  #   needs: gate
+  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.fly-io)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: |
+  #         echo "Nuking Fly.io test resources..."
+  #         # TODO: add Fly.io nuke logic
+
+  # ── GCP ──
+  # nuke-gcp:
+  #   needs: gate
+  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.gcp)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: |
+  #         echo "Nuking GCP test resources..."
+  #         # TODO: add GCP nuke logic
+
+  # ── Kubernetes ──
+  # nuke-kubernetes:
+  #   needs: gate
+  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.kubernetes)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: |
+  #         echo "Nuking Kubernetes test resources..."
+  #         # TODO: add Kubernetes nuke logic
+
+  # ── MongoDB Atlas ──
+  # nuke-mongodb-atlas:
+  #   needs: gate
+  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.mongodb-atlas)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: |
+  #         echo "Nuking MongoDB Atlas test resources..."
+  #         # TODO: add MongoDB Atlas nuke logic
+
+  # ── Neon ──
+  # nuke-neon:
+  #   needs: gate
+  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.neon)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: |
+  #         echo "Nuking Neon test resources..."
+  #         # TODO: add Neon nuke logic
+
+  # ── PlanetScale ──
+  # nuke-planetscale:
+  #   needs: gate
+  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.planetscale)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: |
+  #         echo "Nuking PlanetScale test resources..."
+  #         # TODO: add PlanetScale nuke logic
+
+  # ── Prisma Postgres ──
+  # nuke-prisma-postgres:
+  #   needs: gate
+  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.prisma-postgres)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: |
+  #         echo "Nuking Prisma Postgres test resources..."
+  #         # TODO: add Prisma Postgres nuke logic
+
+  # ── Stripe ──
+  # nuke-stripe:
+  #   needs: gate
+  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.stripe)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: |
+  #         echo "Nuking Stripe test resources..."
+  #         # TODO: add Stripe nuke logic
+
+  # ── Supabase ──
+  # nuke-supabase:
+  #   needs: gate
+  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.supabase)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: |
+  #         echo "Nuking Supabase test resources..."
+  #         # TODO: add Supabase nuke logic
+
+  # ── Turso ──
+  # nuke-turso:
+  #   needs: gate
+  #   if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.turso)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: |
+  #         echo "Nuking Turso test resources..."
+  #         # TODO: add Turso nuke logic

@@ -27,10 +27,18 @@ jobs:
       version: ${{ steps.bump.outputs.version }}
       sha: ${{ steps.sha.outputs.sha }}
     steps:
+      - name: Generate bot token
+        id: bot-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.ALCHEMY_VERSION_BOT_ID }}
+          private-key: ${{ secrets.ALCHEMY_VERSION_BOT_PRIVATE_KEY }}
+
       - uses: actions/checkout@v6
         with:
           ref: ${{ github.event.inputs.ref || github.ref }}
           fetch-depth: 0
+          token: ${{ steps.bot-token.outputs.token }}
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -54,8 +62,8 @@ jobs:
 
       - name: Commit version bump
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --local user.email "alchemy-version-bot[bot]@users.noreply.github.com"
+          git config --local user.name "alchemy-version-bot[bot]"
           git add -A
           git diff --cached --quiet && echo "No changes to commit" || (git commit -m "chore(release): ${{ steps.bump.outputs.version }}" && git push)
 
