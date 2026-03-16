@@ -1,51 +1,68 @@
 [submodule "packages/gcp/specs/distilled-spec-gcp"]
 	path = packages/gcp/specs/distilled-spec-gcp
 	url = https://github.com/alchemy-run/distilled-spec-gcp.git
+	shallow = true
 [submodule "packages/cloudflare/specs/cloudflare-typescript"]
 	path = packages/cloudflare/specs/cloudflare-typescript
 	url = https://github.com/cloudflare/cloudflare-typescript.git
+	shallow = true
 [submodule "packages/planetscale/specs/distilled-spec-planetscale"]
 	path = packages/planetscale/specs/distilled-spec-planetscale
 	url = https://github.com/alchemy-run/distilled-spec-planetscale.git
+	shallow = true
 [submodule "packages/neon/specs/distilled-spec-neon"]
 	path = packages/neon/specs/distilled-spec-neon
 	url = https://github.com/alchemy-run/distilled-spec-neon.git
+	shallow = true
 [submodule "packages/aws/specs/api-models-aws"]
 	path = packages/aws/specs/api-models-aws
 	url = https://github.com/aws/api-models-aws.git
+	shallow = true
 [submodule "packages/aws/specs/aws-sdk-js-v3"]
 	path = packages/aws/specs/aws-sdk-js-v3
 	url = https://github.com/aws/aws-sdk-js-v3.git
+	shallow = true
 [submodule "packages/aws/specs/smithy"]
 	path = packages/aws/specs/smithy
 	url = https://github.com/smithy-lang/smithy.git
+	shallow = true
 [submodule "packages/aws/specs/smithy-typescript"]
 	path = packages/aws/specs/smithy-typescript
 	url = https://github.com/smithy-lang/smithy-typescript.git
+	shallow = true
 [submodule "packages/prisma-postgres/specs/distilled-spec-prisma-postgres"]
 	path = packages/prisma-postgres/specs/distilled-spec-prisma-postgres
 	url = https://github.com/alchemy-run/distilled-spec-prisma-postgres.git
+	shallow = true
 [submodule "packages/stripe/specs/stripe-openapi"]
 	path = packages/stripe/specs/stripe-openapi
 	url = https://github.com/stripe/openapi.git
+	shallow = true
 [submodule "packages/supabase/specs/distilled-spec-supabase"]
 	path = packages/supabase/specs/distilled-spec-supabase
 	url = https://github.com/alchemy-run/distilled-spec-supabase.git
+	shallow = true
 [submodule "packages/mongodb-atlas/specs/distilled-spec-mongodb-atlas"]
 	path = packages/mongodb-atlas/specs/distilled-spec-mongodb-atlas
 	url = https://github.com/alchemy-run/distilled-spec-mongodb-atlas.git
+	shallow = true
 [submodule "packages/fly-io/specs/distilled-spec-fly-io"]
 	path = packages/fly-io/specs/distilled-spec-fly-io
 	url = https://github.com/alchemy-run/distilled-spec-fly-io.git
+	shallow = true
 [submodule "packages/turso/specs/turso-docs"]
 	path = packages/turso/specs/turso-docs
 	url = https://github.com/tursodatabase/turso-docs.git
+	shallow = true
 [submodule "packages/coinbase/specs/cdp-sdk"]
 	path = packages/coinbase/specs/cdp-sdk
 	url = https://github.com/coinbase/cdp-sdk
+	shallow = true
 [submodule "packages/kubernetes/specs/kubernetes"]
 	path = packages/kubernetes/specs/kubernetes
 	url = https://github.com/kubernetes/kubernetes
+	shallow = true
 [submodule "packages/azure/specs/azure-rest-api-specs"]
 	path = packages/azure/specs/azure-rest-api-specs
 	url = https://github.com/Azure/azure-rest-api-specs
+	shallow = true

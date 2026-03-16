@@ -42,11 +42,8 @@ const functions = yield* Lambda.listFunctions
 ## Getting Started
 
 ```bash
-# Clone with submodules (needed for aws tests and code generation)
-git clone --recurse-submodules https://github.com/alchemy-run/distilled.git
-
-# Or if already cloned without submodules
-git submodule update --init --recursive
+# Clone the repo (submodules are NOT needed for building or typechecking)
+git clone https://github.com/alchemy-run/distilled.git
 
 # Install dependencies
 bun install
@@ -60,19 +57,24 @@ bun run test
 
 ## Git Config for Submodules
 
-These settings make working with submodules much less painful:
+These settings keep submodule working trees in sync without fetching all 18 submodules on every pull:
 
 ```bash
-# Automatically fetch submodules when pulling/cloning
+# Automatically update submodule working trees on pull/checkout/switch
 git config submodule.recurse true
+
+# Only fetch submodules whose pointer actually changed (not all of them)
+git config fetch.recurseSubmodules on-demand
 
 # Automatically push submodule changes when pushing
 git config push.recurseSubmodules on-demand
 ```
 
+> **Why `fetch.recurseSubmodules on-demand`?** Without it, `submodule.recurse true` implies fetching **every** submodule on every pull — 18 network round-trips including massive repos like `kubernetes/kubernetes` and `azure-rest-api-specs`. With `on-demand`, git only fetches submodules whose pinned commit actually changed.
+
 ## Submodules
 
-Vendor API specifications are stored as git submodules under each package's `specs/` directory. They are **not needed for building or typechecking** — only for code generation (`bun run generate`). The exception is `aws`, which also needs submodules for testing.
+Vendor API specifications are stored as git submodules under each package's `specs/` directory. They are **not needed for building or typechecking** — only for code generation (`bun run generate`). The exception is `aws`, which also needs submodules for testing. All submodules use `shallow = true` to avoid cloning full histories.
 
 ```bash
 # Fetch specs for a specific package
