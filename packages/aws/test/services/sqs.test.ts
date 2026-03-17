@@ -12,6 +12,7 @@ import {
   purgeQueue,
   receiveMessage,
   sendMessage,
+  sendMessageBatch,
   setQueueAttributes,
   tagQueue,
   untagQueue,
@@ -486,6 +487,98 @@ test(
 // ============================================================================
 
 test(
+  "sendMessageBatch sends multiple messages in one request",
+  withQueue("distilled-sqs-send-message-batch", (queueUrl) =>
+    Effect.gen(function* () {
+      const batchResult = yield* sendMessageBatch({
+        QueueUrl: queueUrl,
+        Entries: [
+          {
+            Id: "message-1",
+            MessageBody: "Batch Message 1",
+          },
+          {
+            Id: "message-2",
+            MessageBody: "Batch Message 2",
+            MessageAttributes: {
+              BatchKey: {
+                DataType: "String",
+                StringValue: "batch-2",
+              },
+            },
+          },
+          {
+            Id: "message-3",
+            MessageBody: "Batch Message 3",
+          },
+        ],
+      }).pipe(Effect.retry(retryQueueNotExist));
+
+      expect(batchResult.Failed ?? []).toEqual([]);
+      expect(batchResult.Successful.length).toEqual(3);
+      expect(batchResult.Successful.map((entry) => entry.Id).sort()).toEqual([
+        "message-1",
+        "message-2",
+        "message-3",
+      ]);
+
+      type Message = {
+        Body?: string;
+        ReceiptHandle?: string;
+        MessageAttributes?: {
+          [key: string]:
+            | {
+            DataType?: string;
+            StringValue?: string;
+              }
+            | undefined;
+        };
+      };
+
+      const allMessages: Message[] = [];
+      let attempts = 0;
+
+      while (allMessages.length < 3 && attempts < 5) {
+        const receiveResult = yield* receiveMessage({
+          QueueUrl: queueUrl,
+          MaxNumberOfMessages: 10,
+          WaitTimeSeconds: 3,
+          MessageAttributeNames: ["All"],
+        }).pipe(Effect.retry(retryQueueNotExist));
+
+        if (receiveResult.Messages) {
+          allMessages.push(...receiveResult.Messages);
+        }
+
+        attempts++;
+      }
+
+      expect(allMessages.length).toEqual(3);
+
+      const receivedByBody = new Map(
+        allMessages.map((message) => [message.Body, message]),
+      );
+      expect(Array.from(receivedByBody.keys()).sort()).toEqual([
+        "Batch Message 1",
+        "Batch Message 2",
+        "Batch Message 3",
+      ]);
+      expect(
+        receivedByBody.get("Batch Message 2")?.MessageAttributes?.BatchKey
+          ?.StringValue,
+      ).toEqual("batch-2");
+
+      for (const message of allMessages) {
+        yield* deleteMessage({
+          QueueUrl: queueUrl,
+          ReceiptHandle: message.ReceiptHandle!,
+        }).pipe(Effect.retry(retryQueueNotExist));
+      }
+    }),
+  ),
+);
+
+test(
   "send multiple messages and delete them individually",
   withQueue("distilled-sqs-batch", (queueUrl) =>
     Effect.gen(function* () {
@@ -601,6 +694,68 @@ test(
 // ============================================================================
 // FIFO Queue Tests
 // ============================================================================
+
+test(
+  "FIFO queue: sendMessageBatch preserves order within a message group",
+  withFifoQueue("distilled-sqs-fifo-batch", (queueUrl) =>
+    Effect.gen(function* () {
+      const batchResult = yield* sendMessageBatch({
+        QueueUrl: queueUrl,
+        Entries: [
+          {
+            Id: "message-1",
+            MessageBody: "FIFO Batch Message 1",
+            MessageGroupId: "group1",
+          },
+          {
+            Id: "message-2",
+            MessageBody: "FIFO Batch Message 2",
+            MessageGroupId: "group1",
+          },
+          {
+            Id: "message-3",
+            MessageBody: "FIFO Batch Message 3",
+            MessageGroupId: "group1",
+          },
+        ],
+      }).pipe(Effect.retry(retryQueueNotExist));
+
+      expect(batchResult.Failed ?? []).toEqual([]);
+      expect(batchResult.Successful.length).toEqual(3);
+
+      const receiveResult1 = yield* receiveMessage({
+        QueueUrl: queueUrl,
+        MaxNumberOfMessages: 1,
+        WaitTimeSeconds: 5,
+      }).pipe(Effect.retry(retryQueueNotExist));
+      expect(receiveResult1.Messages?.[0]?.Body).toEqual("FIFO Batch Message 1");
+
+      yield* deleteMessage({
+        QueueUrl: queueUrl,
+        ReceiptHandle: receiveResult1.Messages![0].ReceiptHandle!,
+      }).pipe(Effect.retry(retryQueueNotExist));
+
+      const receiveResult2 = yield* receiveMessage({
+        QueueUrl: queueUrl,
+        MaxNumberOfMessages: 1,
+        WaitTimeSeconds: 5,
+      }).pipe(Effect.retry(retryQueueNotExist));
+      expect(receiveResult2.Messages?.[0]?.Body).toEqual("FIFO Batch Message 2");
+
+      yield* deleteMessage({
+        QueueUrl: queueUrl,
+        ReceiptHandle: receiveResult2.Messages![0].ReceiptHandle!,
+      }).pipe(Effect.retry(retryQueueNotExist));
+
+      const receiveResult3 = yield* receiveMessage({
+        QueueUrl: queueUrl,
+        MaxNumberOfMessages: 1,
+        WaitTimeSeconds: 5,
+      }).pipe(Effect.retry(retryQueueNotExist));
+      expect(receiveResult3.Messages?.[0]?.Body).toEqual("FIFO Batch Message 3");
+    }),
+  ),
+);
 
 test(
   "FIFO queue: send and receive with message group",

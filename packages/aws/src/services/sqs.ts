@@ -957,7 +957,7 @@ export const SendMessageBatchResultEntryList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SendMessageBatchResultEntry);
 export interface SendMessageBatchResult {
   Successful: SendMessageBatchResultEntry[];
-  Failed: BatchResultErrorEntry[];
+  Failed?: BatchResultErrorEntry[];
 }
 export const SendMessageBatchResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -966,7 +966,7 @@ export const SendMessageBatchResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
         T.XmlName("SendMessageBatchResultEntry"),
         T.XmlFlattened(),
       ),
-      Failed: BatchResultErrorEntryList.pipe(
+      Failed: S.optional(BatchResultErrorEntryList).pipe(
         T.XmlName("BatchResultErrorEntry"),
         T.XmlFlattened(),
       ),

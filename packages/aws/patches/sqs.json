@@ -40,5 +40,14 @@
         "MissingRequiredParameterException"
       ]
     }
+  },
+  "structures": {
+    "SendMessageBatchResult": {
+      "members": {
+        "Failed": {
+          "optional": true
+        }
+      }
+    }
   }
 }
