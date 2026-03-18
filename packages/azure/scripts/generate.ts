@@ -60,16 +60,84 @@ function resolvePointer(doc: any, pointer: string): any {
   return current;
 }
 
+/**
+ * Track which external document a piece of inlined content came from,
+ * so we can transplant missing `#/definitions/X` refs later.
+ */
+interface ExternalRefContext {
+  /** The main spec object — we'll add missing definitions here */
+  mainSpec: any;
+  /** Set of definition names currently being transplanted (to avoid infinite loops) */
+  transplanting: Set<string>;
+}
+
+/**
+ * Given an object that was resolved from an external document, find all
+ * `#/definitions/X` refs within it and transplant the referenced definitions
+ * from the external document into the main spec if they don't already exist.
+ */
+function transplantMissingDefinitions(
+  obj: any,
+  externalDoc: any,
+  externalDir: string,
+  ctx: ExternalRefContext,
+): void {
+  if (obj === null || obj === undefined || typeof obj !== "object") return;
+
+  if (Array.isArray(obj)) {
+    for (const item of obj) {
+      transplantMissingDefinitions(item, externalDoc, externalDir, ctx);
+    }
+    return;
+  }
+
+  if (
+    typeof obj.$ref === "string" &&
+    obj.$ref.startsWith("#/definitions/")
+  ) {
+    const defName = obj.$ref.slice("#/definitions/".length);
+    if (
+      !ctx.mainSpec.definitions?.[defName] &&
+      !ctx.transplanting.has(defName)
+    ) {
+      // Look for the definition in the external doc
+      const externalDef = externalDoc?.definitions?.[defName];
+      if (externalDef) {
+        ctx.transplanting.add(defName);
+        if (!ctx.mainSpec.definitions) ctx.mainSpec.definitions = {};
+
+        // Deep clone and resolve any external refs within the transplanted definition
+        const resolvedDef = resolveExternalRefs(
+          JSON.parse(JSON.stringify(externalDef)),
+          externalDir,
+          new Set(),
+          ctx,
+        );
+        ctx.mainSpec.definitions[defName] = resolvedDef;
+
+        // Recursively transplant any #/definitions/ refs within this new definition
+        transplantMissingDefinitions(resolvedDef, externalDoc, externalDir, ctx);
+      }
+    }
+    return;
+  }
+
+  for (const value of Object.values(obj)) {
+    transplantMissingDefinitions(value, externalDoc, externalDir, ctx);
+  }
+}
+
 function resolveExternalRefs(
   obj: any,
   specDir: string,
   visited: Set<string> = new Set(),
+  ctx?: ExternalRefContext,
 ): any {
   if (obj === null || obj === undefined) return obj;
   if (typeof obj !== "object") return obj;
 
   if (Array.isArray(obj)) {
-    return obj.map((item) => resolveExternalRefs(item, specDir, visited));
+    return obj.map((item) => resolveExternalRefs(item, specDir, visited, ctx));
   }
 
   if (typeof obj.$ref === "string" && !obj.$ref.startsWith("#/")) {
@@ -106,18 +174,103 @@ function resolveExternalRefs(
     }
 
     const externalDir = path.dirname(externalPath);
-    return resolveExternalRefs(
+    const resolvedCopy = resolveExternalRefs(
       JSON.parse(JSON.stringify(resolved)),
       externalDir,
       new Set([...visited, ref]),
+      ctx,
     );
+
+    // Transplant any #/definitions/X refs from the external doc into the main spec
+    if (ctx) {
+      transplantMissingDefinitions(resolvedCopy, externalDoc, externalDir, ctx);
+    }
+
+    return resolvedCopy;
   }
 
   const result: any = {};
   for (const [key, value] of Object.entries(obj)) {
-    result[key] = resolveExternalRefs(value, specDir, visited);
+    result[key] = resolveExternalRefs(value, specDir, visited, ctx);
   }
   return result;
+}
+
+/**
+ * Scan the entire resolved spec for #/definitions/X refs where X is missing,
+ * and search through all cached files to find and transplant them.
+ * This handles cases where definitions were referenced inside allOf/properties
+ * chains that weren't caught during the initial resolveExternalRefs pass.
+ */
+function collectMissingDefinitions(
+  spec: any,
+  specDir: string,
+  root: any,
+  visited: Set<string> = new Set(),
+): void {
+  // Collect all #/definitions/X refs in the spec
+  const missingRefs = new Set<string>();
+  findMissingDefRefs(spec, root, missingRefs);
+
+  if (missingRefs.size === 0) return;
+
+  // Search through all cached files for the missing definitions
+  for (const defName of missingRefs) {
+    if (visited.has(defName)) continue;
+    visited.add(defName);
+
+    if (root.definitions?.[defName]) continue;
+
+    // Search in all cached files for this definition
+    for (const [, doc] of fileCache) {
+      if (doc?.definitions?.[defName]) {
+        if (!root.definitions) root.definitions = {};
+        const docDir = findFileDir(doc);
+        const cloned = JSON.parse(JSON.stringify(doc.definitions[defName]));
+        // Resolve any external refs within the transplanted definition
+        const resolved = resolveExternalRefs(cloned, docDir || specDir, new Set());
+        root.definitions[defName] = resolved;
+
+        // Also transplant any definitions this one references
+        collectMissingDefinitions(resolved, docDir || specDir, root, visited);
+        break;
+      }
+    }
+  }
+}
+
+/** Find the directory for a cached document */
+function findFileDir(doc: any): string | null {
+  for (const [filePath, cachedDoc] of fileCache) {
+    if (cachedDoc === doc) {
+      return path.dirname(filePath);
+    }
+  }
+  return null;
+}
+
+/** Recursively find all #/definitions/X refs that are missing from the spec */
+function findMissingDefRefs(obj: any, root: any, missing: Set<string>): void {
+  if (obj === null || obj === undefined || typeof obj !== "object") return;
+
+  if (Array.isArray(obj)) {
+    for (const item of obj) {
+      findMissingDefRefs(item, root, missing);
+    }
+    return;
+  }
+
+  if (typeof obj.$ref === "string" && obj.$ref.startsWith("#/definitions/")) {
+    const defName = obj.$ref.slice("#/definitions/".length);
+    if (!root.definitions?.[defName]) {
+      missing.add(defName);
+    }
+    return;
+  }
+
+  for (const value of Object.values(obj)) {
+    findMissingDefRefs(value, root, missing);
+  }
 }
 
 // ============================================================================
@@ -416,8 +569,36 @@ function main() {
       // Merge sibling definitions
       mergeSiblingDefinitions(specObj, spec.versionDir);
 
-      // Resolve external $refs
-      const resolved = resolveExternalRefs(specObj, specDir);
+      // Resolve external $refs, transplanting missing definitions from common-types
+      const ctx: ExternalRefContext = {
+        mainSpec: specObj,
+        transplanting: new Set(),
+      };
+      const resolved = resolveExternalRefs(specObj, specDir, new Set(), ctx);
+
+      // Copy transplanted definitions into the resolved spec
+      // (resolveExternalRefs returns a new object tree, but transplantMissingDefinitions
+      // adds definitions to ctx.mainSpec which is the original specObj)
+      if (specObj.definitions) {
+        if (!resolved.definitions) resolved.definitions = {};
+        for (const [name, def] of Object.entries(specObj.definitions)) {
+          if (!resolved.definitions[name]) {
+            resolved.definitions[name] = JSON.parse(JSON.stringify(def));
+          }
+        }
+      }
+      if (specObj.parameters) {
+        if (!resolved.parameters) resolved.parameters = {};
+        for (const [name, param] of Object.entries(specObj.parameters)) {
+          if (!resolved.parameters[name]) {
+            resolved.parameters[name] = JSON.parse(JSON.stringify(param));
+          }
+        }
+      }
+
+      // Do a second pass to find any remaining dangling #/definitions/ refs
+      // that weren't caught during the first resolve pass
+      collectMissingDefinitions(resolved, specDir, resolved);
 
       const specBaseName = path.basename(spec.filePath, ".json");
       const tempSpecName = `${spec.service}-${spec.provider}-${spec.subService ?? specBaseName}`;

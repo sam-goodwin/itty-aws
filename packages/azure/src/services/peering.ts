@@ -9,6 +9,74 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export const CdnPeeringPrefixesListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    peeringLocation: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/cdnPeeringPrefixes",
+    }),
+  );
+export type CdnPeeringPrefixesListInput =
+  typeof CdnPeeringPrefixesListInput.Type;
+
+// Output Schema
+export const CdnPeeringPrefixesListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type CdnPeeringPrefixesListOutput =
+  typeof CdnPeeringPrefixesListOutput.Type;
+
+// The operation
+/**
+ * Lists all of the advertised prefixes for the specified peering location
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param peeringLocation - The peering location.
+ */
+export const CdnPeeringPrefixesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: CdnPeeringPrefixesListInput,
+    outputSchema: CdnPeeringPrefixesListOutput,
+  }),
+);
+// Input Schema
 export const CheckServiceProviderAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -493,6 +561,86 @@ export const PeerAsnsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const PeeringLocationsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    kind: Schema.Literals(["Direct", "Exchange"]),
+    directPeeringType: Schema.optional(
+      Schema.Literals([
+        "Edge",
+        "Transit",
+        "Cdn",
+        "Internal",
+        "Ix",
+        "IxRs",
+        "Voice",
+        "EdgeZoneForOperators",
+        "PeerProp",
+      ]),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringLocations",
+    }),
+  );
+export type PeeringLocationsListInput = typeof PeeringLocationsListInput.Type;
+
+// Output Schema
+export const PeeringLocationsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type PeeringLocationsListOutput = typeof PeeringLocationsListOutput.Type;
+
+// The operation
+/**
+ * Lists all of the available peering locations for the specified kind of peering.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param kind - The kind of the peering.
+ * @param directPeeringType - The type of direct peering.
+ */
+export const PeeringLocationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: PeeringLocationsListInput,
+    outputSchema: PeeringLocationsListOutput,
+  }),
+);
+// Input Schema
 export const PeeringsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -563,6 +711,206 @@ export const PeeringsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PeeringsDeleteInput,
   outputSchema: PeeringsDeleteOutput,
 }));
+// Input Schema
+export const PeeringServiceCountriesListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringServiceCountries",
+    }),
+  );
+export type PeeringServiceCountriesListInput =
+  typeof PeeringServiceCountriesListInput.Type;
+
+// Output Schema
+export const PeeringServiceCountriesListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type PeeringServiceCountriesListOutput =
+  typeof PeeringServiceCountriesListOutput.Type;
+
+// The operation
+/**
+ * Lists all of the available countries for peering service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ */
+export const PeeringServiceCountriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: PeeringServiceCountriesListInput,
+    outputSchema: PeeringServiceCountriesListOutput,
+  }),
+);
+// Input Schema
+export const PeeringServiceLocationsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    country: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringServiceLocations",
+    }),
+  );
+export type PeeringServiceLocationsListInput =
+  typeof PeeringServiceLocationsListInput.Type;
+
+// Output Schema
+export const PeeringServiceLocationsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type PeeringServiceLocationsListOutput =
+  typeof PeeringServiceLocationsListOutput.Type;
+
+// The operation
+/**
+ * Lists all of the available locations for peering service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param country - The country of interest, in which the locations are to be present.
+ */
+export const PeeringServiceLocationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: PeeringServiceLocationsListInput,
+    outputSchema: PeeringServiceLocationsListOutput,
+  }),
+);
+// Input Schema
+export const PeeringServiceProvidersListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringServiceProviders",
+    }),
+  );
+export type PeeringServiceProvidersListInput =
+  typeof PeeringServiceProvidersListInput.Type;
+
+// Output Schema
+export const PeeringServiceProvidersListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type PeeringServiceProvidersListOutput =
+  typeof PeeringServiceProvidersListOutput.Type;
+
+// The operation
+/**
+ * Lists all of the available peering service locations for the specified kind of peering.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ */
+export const PeeringServiceProvidersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: PeeringServiceProvidersListInput,
+    outputSchema: PeeringServiceProvidersListOutput,
+  }),
+);
 // Input Schema
 export const PeeringServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

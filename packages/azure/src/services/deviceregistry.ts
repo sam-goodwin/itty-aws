@@ -1695,6 +1695,140 @@ export const NamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesUpdateOutput,
 }));
 // Input Schema
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.DeviceRegistry/operations",
+  }),
+);
+export type OperationsListInput = typeof OperationsListInput.Type;
+
+// Output Schema
+export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
+        display: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        origin: Schema.optional(
+          Schema.Literals(["user", "system", "user,system"]),
+        ),
+        actionType: Schema.optional(Schema.Literals(["Internal"])),
+      }),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type OperationsListOutput = typeof OperationsListOutput.Type;
+
+// The operation
+/**
+ * List the operations for the provider
+ *
+ * @param api-version - The API version to use for this operation.
+ */
+export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OperationsListInput,
+  outputSchema: OperationsListOutput,
+}));
+// Input Schema
+export const OperationStatusGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/locations/{location}/operationStatuses/{operationId}",
+    }),
+  );
+export type OperationStatusGetInput = typeof OperationStatusGetInput.Type;
+
+// Output Schema
+export const OperationStatusGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(Schema.Array(Schema.Unknown)),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type OperationStatusGetOutput = typeof OperationStatusGetOutput.Type;
+
+// The operation
+/**
+ * Returns the current status of an async operation.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param operationId - The ID of an ongoing async operation.
+ */
+export const OperationStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OperationStatusGetInput,
+  outputSchema: OperationStatusGetOutput,
+}));
+// Input Schema
 export const SchemaRegistriesCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),

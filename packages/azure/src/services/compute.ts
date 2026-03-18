@@ -1978,6 +1978,50 @@ export const LogAnalyticsExportThrottledRequests =
     outputSchema: LogAnalyticsExportThrottledRequestsOutput,
   }));
 // Input Schema
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({ method: "GET", path: "/providers/Microsoft.Compute/operations" }),
+);
+export type OperationsListInput = typeof OperationsListInput.Type;
+
+// Output Schema
+export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
+        display: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        origin: Schema.optional(
+          Schema.Literals(["user", "system", "user,system"]),
+        ),
+        actionType: Schema.optional(Schema.Literals(["Internal"])),
+      }),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type OperationsListOutput = typeof OperationsListOutput.Type;
+
+// The operation
+/**
+ * List the operations for the provider
+ *
+ * @param api-version - The API version to use for this operation.
+ */
+export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OperationsListInput,
+  outputSchema: OperationsListOutput,
+}));
+// Input Schema
 export const ProximityPlacementGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3295,6 +3339,60 @@ export const VirtualMachineExtensionsUpdate =
     outputSchema: VirtualMachineExtensionsUpdateOutput,
   }));
 // Input Schema
+export const VirtualMachineImagesEdgeZoneGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.String.pipe(T.PathParam()),
+    edgeZone: Schema.String.pipe(T.PathParam()),
+    publisherName: Schema.String.pipe(T.PathParam()),
+    offer: Schema.String.pipe(T.PathParam()),
+    skus: Schema.String.pipe(T.PathParam()),
+    version: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions/{version}",
+    }),
+  );
+export type VirtualMachineImagesEdgeZoneGetInput =
+  typeof VirtualMachineImagesEdgeZoneGetInput.Type;
+
+// Output Schema
+export const VirtualMachineImagesEdgeZoneGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["EdgeZone"])),
+      }),
+    ),
+  });
+export type VirtualMachineImagesEdgeZoneGetOutput =
+  typeof VirtualMachineImagesEdgeZoneGetOutput.Type;
+
+// The operation
+/**
+ * Gets a virtual machine image in an edge zone.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param location - The name of Azure region.
+ * @param edgeZone - The name of the edge zone.
+ * @param publisherName - A valid image publisher.
+ * @param offer - A valid image publisher offer.
+ * @param skus - A valid image SKU.
+ * @param version - A valid image SKU version.
+ * @param subscriptionId - The ID of the target subscription.
+ */
+export const VirtualMachineImagesEdgeZoneGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: VirtualMachineImagesEdgeZoneGetInput,
+    outputSchema: VirtualMachineImagesEdgeZoneGetOutput,
+  }));
+// Input Schema
 export const VirtualMachineImagesEdgeZoneListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3472,6 +3570,59 @@ export const VirtualMachineImagesEdgeZoneListSkus =
     inputSchema: VirtualMachineImagesEdgeZoneListSkusInput,
     outputSchema: VirtualMachineImagesEdgeZoneListSkusOutput,
   }));
+// Input Schema
+export const VirtualMachineImagesGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.String.pipe(T.PathParam()),
+    publisherName: Schema.String.pipe(T.PathParam()),
+    offer: Schema.String.pipe(T.PathParam()),
+    skus: Schema.String.pipe(T.PathParam()),
+    version: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions/{version}",
+    }),
+  );
+export type VirtualMachineImagesGetInput =
+  typeof VirtualMachineImagesGetInput.Type;
+
+// Output Schema
+export const VirtualMachineImagesGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String,
+    location: Schema.String,
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    extendedLocation: Schema.optional(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.Literals(["EdgeZone"])),
+      }),
+    ),
+  });
+export type VirtualMachineImagesGetOutput =
+  typeof VirtualMachineImagesGetOutput.Type;
+
+// The operation
+/**
+ * Gets a virtual machine image.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param location - The name of Azure region.
+ * @param publisherName - A valid image publisher.
+ * @param offer - A valid image publisher offer.
+ * @param skus - A valid image SKU.
+ * @param version - A valid image SKU version.
+ * @param subscriptionId - The ID of the target subscription.
+ */
+export const VirtualMachineImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: VirtualMachineImagesGetInput,
+    outputSchema: VirtualMachineImagesGetOutput,
+  }),
+);
 // Input Schema
 export const VirtualMachineImagesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3981,6 +4132,104 @@ export const VirtualMachineRunCommandsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineRunCommandsUpdateInput,
     outputSchema: VirtualMachineRunCommandsUpdateOutput,
+  }));
+// Input Schema
+export const VirtualMachinesAssessPatchesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vmName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/assessPatches",
+    }),
+  );
+export type VirtualMachinesAssessPatchesInput =
+  typeof VirtualMachinesAssessPatchesInput.Type;
+
+// Output Schema
+export const VirtualMachinesAssessPatchesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(
+      Schema.Literals([
+        "Unknown",
+        "InProgress",
+        "Failed",
+        "Succeeded",
+        "CompletedWithWarnings",
+      ]),
+    ),
+    assessmentActivityId: Schema.optional(Schema.String),
+    rebootPending: Schema.optional(Schema.Boolean),
+    criticalAndSecurityPatchCount: Schema.optional(Schema.Number),
+    otherPatchCount: Schema.optional(Schema.Number),
+    startDateTime: Schema.optional(Schema.String),
+    availablePatches: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          patchId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          version: Schema.optional(Schema.String),
+          kbId: Schema.optional(Schema.String),
+          classifications: Schema.optional(Schema.Array(Schema.String)),
+          rebootBehavior: Schema.optional(
+            Schema.Literals([
+              "Unknown",
+              "NeverReboots",
+              "AlwaysRequiresReboot",
+              "CanRequestReboot",
+            ]),
+          ),
+          activityId: Schema.optional(Schema.String),
+          publishedDate: Schema.optional(Schema.String),
+          lastModifiedDateTime: Schema.optional(Schema.String),
+          assessmentState: Schema.optional(
+            Schema.Literals(["Unknown", "Available"]),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        innererror: Schema.optional(
+          Schema.Struct({
+            exceptiontype: Schema.optional(Schema.String),
+            errordetail: Schema.optional(Schema.String),
+          }),
+        ),
+        code: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type VirtualMachinesAssessPatchesOutput =
+  typeof VirtualMachinesAssessPatchesOutput.Type;
+
+// The operation
+/**
+ * Assess patches on the VM.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vmName - The name of the virtual machine.
+ */
+export const VirtualMachinesAssessPatches =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: VirtualMachinesAssessPatchesInput,
+    outputSchema: VirtualMachinesAssessPatchesOutput,
   }));
 // Input Schema
 export const VirtualMachinesAttachDetachDataDisksInput =
@@ -4892,6 +5141,136 @@ export const VirtualMachineScaleSetsGetInstanceView =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineScaleSetsGetInstanceViewInput,
     outputSchema: VirtualMachineScaleSetsGetInstanceViewOutput,
+  }));
+// Input Schema
+export const VirtualMachineScaleSetsGetOSUpgradeHistoryInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vmScaleSetName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osUpgradeHistory",
+    }),
+  );
+export type VirtualMachineScaleSetsGetOSUpgradeHistoryInput =
+  typeof VirtualMachineScaleSetsGetOSUpgradeHistoryInput.Type;
+
+// Output Schema
+export const VirtualMachineScaleSetsGetOSUpgradeHistoryOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        properties: Schema.optional(
+          Schema.Struct({
+            runningStatus: Schema.optional(
+              Schema.Struct({
+                code: Schema.optional(
+                  Schema.Literals([
+                    "RollingForward",
+                    "Cancelled",
+                    "Completed",
+                    "Faulted",
+                  ]),
+                ),
+                startTime: Schema.optional(Schema.String),
+                endTime: Schema.optional(Schema.String),
+              }),
+            ),
+            progress: Schema.optional(
+              Schema.Struct({
+                successfulInstanceCount: Schema.optional(Schema.Number),
+                failedInstanceCount: Schema.optional(Schema.Number),
+                inProgressInstanceCount: Schema.optional(Schema.Number),
+                pendingInstanceCount: Schema.optional(Schema.Number),
+              }),
+            ),
+            error: Schema.optional(
+              Schema.Struct({
+                details: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      code: Schema.optional(Schema.String),
+                      target: Schema.optional(Schema.String),
+                      message: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                innererror: Schema.optional(
+                  Schema.Struct({
+                    exceptiontype: Schema.optional(Schema.String),
+                    errordetail: Schema.optional(Schema.String),
+                  }),
+                ),
+                code: Schema.optional(Schema.String),
+                target: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+            startedBy: Schema.optional(
+              Schema.Literals(["Unknown", "User", "Platform"]),
+            ),
+            targetImageReference: Schema.optional(
+              Schema.Struct({
+                id: Schema.optional(Schema.String),
+              }),
+            ),
+            rollbackInfo: Schema.optional(
+              Schema.Struct({
+                successfullyRolledbackInstanceCount: Schema.optional(
+                  Schema.Number,
+                ),
+                failedRolledbackInstanceCount: Schema.optional(Schema.Number),
+                rollbackError: Schema.optional(
+                  Schema.Struct({
+                    details: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          code: Schema.optional(Schema.String),
+                          target: Schema.optional(Schema.String),
+                          message: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    innererror: Schema.optional(
+                      Schema.Struct({
+                        exceptiontype: Schema.optional(Schema.String),
+                        errordetail: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    code: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type VirtualMachineScaleSetsGetOSUpgradeHistoryOutput =
+  typeof VirtualMachineScaleSetsGetOSUpgradeHistoryOutput.Type;
+
+// The operation
+/**
+ * Gets list of OS upgrades on a VM scale set instance.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vmScaleSetName - The name of the VM scale set.
+ */
+export const VirtualMachineScaleSetsGetOSUpgradeHistory =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: VirtualMachineScaleSetsGetOSUpgradeHistoryInput,
+    outputSchema: VirtualMachineScaleSetsGetOSUpgradeHistoryOutput,
   }));
 // Input Schema
 export const VirtualMachineScaleSetsListInput =
@@ -7251,6 +7630,438 @@ export const VirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesGetInput,
   outputSchema: VirtualMachinesGetOutput,
 }));
+// Input Schema
+export const VirtualMachinesInstallPatchesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vmName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/installPatches",
+    }),
+  );
+export type VirtualMachinesInstallPatchesInput =
+  typeof VirtualMachinesInstallPatchesInput.Type;
+
+// Output Schema
+export const VirtualMachinesInstallPatchesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(
+      Schema.Literals([
+        "Unknown",
+        "InProgress",
+        "Failed",
+        "Succeeded",
+        "CompletedWithWarnings",
+      ]),
+    ),
+    installationActivityId: Schema.optional(Schema.String),
+    rebootStatus: Schema.optional(
+      Schema.Literals([
+        "Unknown",
+        "NotNeeded",
+        "Required",
+        "Started",
+        "Failed",
+        "Completed",
+      ]),
+    ),
+    maintenanceWindowExceeded: Schema.optional(Schema.Boolean),
+    excludedPatchCount: Schema.optional(Schema.Number),
+    notSelectedPatchCount: Schema.optional(Schema.Number),
+    pendingPatchCount: Schema.optional(Schema.Number),
+    installedPatchCount: Schema.optional(Schema.Number),
+    failedPatchCount: Schema.optional(Schema.Number),
+    patches: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          patchId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          version: Schema.optional(Schema.String),
+          kbId: Schema.optional(Schema.String),
+          classifications: Schema.optional(Schema.Array(Schema.String)),
+          installationState: Schema.optional(
+            Schema.Literals([
+              "Unknown",
+              "Installed",
+              "Failed",
+              "Excluded",
+              "NotSelected",
+              "Pending",
+            ]),
+          ),
+        }),
+      ),
+    ),
+    startDateTime: Schema.optional(Schema.String),
+    error: Schema.optional(
+      Schema.Struct({
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        innererror: Schema.optional(
+          Schema.Struct({
+            exceptiontype: Schema.optional(Schema.String),
+            errordetail: Schema.optional(Schema.String),
+          }),
+        ),
+        code: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type VirtualMachinesInstallPatchesOutput =
+  typeof VirtualMachinesInstallPatchesOutput.Type;
+
+// The operation
+/**
+ * Installs patches on the VM.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vmName - The name of the virtual machine.
+ */
+export const VirtualMachinesInstallPatches =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: VirtualMachinesInstallPatchesInput,
+    outputSchema: VirtualMachinesInstallPatchesOutput,
+  }));
+// Input Schema
+export const VirtualMachinesInstanceViewInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vmName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView",
+    }),
+  );
+export type VirtualMachinesInstanceViewInput =
+  typeof VirtualMachinesInstanceViewInput.Type;
+
+// Output Schema
+export const VirtualMachinesInstanceViewOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    platformUpdateDomain: Schema.optional(Schema.Number),
+    platformFaultDomain: Schema.optional(Schema.Number),
+    computerName: Schema.optional(Schema.String),
+    osName: Schema.optional(Schema.String),
+    osVersion: Schema.optional(Schema.String),
+    hyperVGeneration: Schema.optional(Schema.Literals(["V1", "V2"])),
+    rdpThumbPrint: Schema.optional(Schema.String),
+    vmAgent: Schema.optional(
+      Schema.Struct({
+        vmAgentVersion: Schema.optional(Schema.String),
+        extensionHandlers: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              typeHandlerVersion: Schema.optional(Schema.String),
+              status: Schema.optional(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  level: Schema.optional(
+                    Schema.Literals(["Info", "Warning", "Error"]),
+                  ),
+                  displayStatus: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            }),
+          ),
+        ),
+        statuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              level: Schema.optional(
+                Schema.Literals(["Info", "Warning", "Error"]),
+              ),
+              displayStatus: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    maintenanceRedeployStatus: Schema.optional(
+      Schema.Struct({
+        isCustomerInitiatedMaintenanceAllowed: Schema.optional(Schema.Boolean),
+        preMaintenanceWindowStartTime: Schema.optional(Schema.String),
+        preMaintenanceWindowEndTime: Schema.optional(Schema.String),
+        maintenanceWindowStartTime: Schema.optional(Schema.String),
+        maintenanceWindowEndTime: Schema.optional(Schema.String),
+        lastOperationResultCode: Schema.optional(
+          Schema.Literals([
+            "None",
+            "RetryLater",
+            "MaintenanceAborted",
+            "MaintenanceCompleted",
+          ]),
+        ),
+        lastOperationMessage: Schema.optional(Schema.String),
+      }),
+    ),
+    disks: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          encryptionSettings: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                diskEncryptionKey: Schema.optional(
+                  Schema.Struct({
+                    secretUrl: Schema.String,
+                    sourceVault: Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  }),
+                ),
+                keyEncryptionKey: Schema.optional(
+                  Schema.Struct({
+                    keyUrl: Schema.String,
+                    sourceVault: Schema.Struct({
+                      id: Schema.optional(Schema.String),
+                    }),
+                  }),
+                ),
+                enabled: Schema.optional(Schema.Boolean),
+              }),
+            ),
+          ),
+          statuses: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                level: Schema.optional(
+                  Schema.Literals(["Info", "Warning", "Error"]),
+                ),
+                displayStatus: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                time: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    ),
+    extensions: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          typeHandlerVersion: Schema.optional(Schema.String),
+          substatuses: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                level: Schema.optional(
+                  Schema.Literals(["Info", "Warning", "Error"]),
+                ),
+                displayStatus: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                time: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          statuses: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                code: Schema.optional(Schema.String),
+                level: Schema.optional(
+                  Schema.Literals(["Info", "Warning", "Error"]),
+                ),
+                displayStatus: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+                time: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    ),
+    vmHealth: Schema.optional(
+      Schema.Struct({
+        status: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            level: Schema.optional(
+              Schema.Literals(["Info", "Warning", "Error"]),
+            ),
+            displayStatus: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    bootDiagnostics: Schema.optional(
+      Schema.Struct({
+        consoleScreenshotBlobUri: Schema.optional(Schema.String),
+        serialConsoleLogBlobUri: Schema.optional(Schema.String),
+        status: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            level: Schema.optional(
+              Schema.Literals(["Info", "Warning", "Error"]),
+            ),
+            displayStatus: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            time: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    assignedHost: Schema.optional(Schema.String),
+    statuses: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          code: Schema.optional(Schema.String),
+          level: Schema.optional(Schema.Literals(["Info", "Warning", "Error"])),
+          displayStatus: Schema.optional(Schema.String),
+          message: Schema.optional(Schema.String),
+          time: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    patchStatus: Schema.optional(
+      Schema.Struct({
+        availablePatchSummary: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(
+              Schema.Literals([
+                "Unknown",
+                "InProgress",
+                "Failed",
+                "Succeeded",
+                "CompletedWithWarnings",
+              ]),
+            ),
+            assessmentActivityId: Schema.optional(Schema.String),
+            rebootPending: Schema.optional(Schema.Boolean),
+            criticalAndSecurityPatchCount: Schema.optional(Schema.Number),
+            otherPatchCount: Schema.optional(Schema.Number),
+            startTime: Schema.optional(Schema.String),
+            lastModifiedTime: Schema.optional(Schema.String),
+            error: Schema.optional(
+              Schema.Struct({
+                details: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      code: Schema.optional(Schema.String),
+                      target: Schema.optional(Schema.String),
+                      message: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                innererror: Schema.optional(
+                  Schema.Struct({
+                    exceptiontype: Schema.optional(Schema.String),
+                    errordetail: Schema.optional(Schema.String),
+                  }),
+                ),
+                code: Schema.optional(Schema.String),
+                target: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        lastPatchInstallationSummary: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(
+              Schema.Literals([
+                "Unknown",
+                "InProgress",
+                "Failed",
+                "Succeeded",
+                "CompletedWithWarnings",
+              ]),
+            ),
+            installationActivityId: Schema.optional(Schema.String),
+            maintenanceWindowExceeded: Schema.optional(Schema.Boolean),
+            notSelectedPatchCount: Schema.optional(Schema.Number),
+            excludedPatchCount: Schema.optional(Schema.Number),
+            pendingPatchCount: Schema.optional(Schema.Number),
+            installedPatchCount: Schema.optional(Schema.Number),
+            failedPatchCount: Schema.optional(Schema.Number),
+            startTime: Schema.optional(Schema.String),
+            lastModifiedTime: Schema.optional(Schema.String),
+            error: Schema.optional(
+              Schema.Struct({
+                details: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      code: Schema.optional(Schema.String),
+                      target: Schema.optional(Schema.String),
+                      message: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                innererror: Schema.optional(
+                  Schema.Struct({
+                    exceptiontype: Schema.optional(Schema.String),
+                    errordetail: Schema.optional(Schema.String),
+                  }),
+                ),
+                code: Schema.optional(Schema.String),
+                target: Schema.optional(Schema.String),
+                message: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        configurationStatuses: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              level: Schema.optional(
+                Schema.Literals(["Info", "Warning", "Error"]),
+              ),
+              displayStatus: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    isVMInStandbyPool: Schema.optional(Schema.Boolean),
+  });
+export type VirtualMachinesInstanceViewOutput =
+  typeof VirtualMachinesInstanceViewOutput.Type;
+
+// The operation
+/**
+ * Retrieves information about the run-time state of a virtual machine.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vmName - The name of the virtual machine.
+ */
+export const VirtualMachinesInstanceView = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: VirtualMachinesInstanceViewInput,
+    outputSchema: VirtualMachinesInstanceViewOutput,
+  }),
+);
 // Input Schema
 export const VirtualMachineSizesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

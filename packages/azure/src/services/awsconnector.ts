@@ -5741,6 +5741,133 @@ export const Ec2InstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: Ec2InstancesListOutput,
 }));
 // Input Schema
+export const Ec2InstancesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    "api-version": Schema.String,
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/{resourceUri}/providers/Microsoft.AwsConnector/ec2Instances/default/start",
+  }),
+);
+export type Ec2InstancesStartInput = typeof Ec2InstancesStartInput.Type;
+
+// Output Schema
+export const Ec2InstancesStartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(Schema.Array(Schema.Unknown)),
+          error: Schema.optional(
+            Schema.Struct({
+              errorCode: Schema.optional(Schema.String),
+              errorData: Schema.optional(Schema.Array(Schema.Unknown)),
+              errorMessage: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        errorCode: Schema.optional(Schema.String),
+        errorData: Schema.optional(Schema.Array(Schema.Unknown)),
+        errorMessage: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type Ec2InstancesStartOutput = typeof Ec2InstancesStartOutput.Type;
+
+// The operation
+/**
+ * A long-running resource action.
+ *
+ * @param api-version - The API version to use for this operation.
+ */
+export const Ec2InstancesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: Ec2InstancesStartInput,
+  outputSchema: Ec2InstancesStartOutput,
+}));
+// Input Schema
+export const Ec2InstancesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/{resourceUri}/providers/Microsoft.AwsConnector/ec2Instances/default/stop",
+  }),
+);
+export type Ec2InstancesStopInput = typeof Ec2InstancesStopInput.Type;
+
+// Output Schema
+export const Ec2InstancesStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(Schema.Array(Schema.Unknown)),
+          error: Schema.optional(
+            Schema.Struct({
+              errorCode: Schema.optional(Schema.String),
+              errorData: Schema.optional(Schema.Array(Schema.Unknown)),
+              errorMessage: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        errorCode: Schema.optional(Schema.String),
+        errorData: Schema.optional(Schema.Array(Schema.Unknown)),
+        errorMessage: Schema.optional(Schema.String),
+      }),
+    ),
+  },
+);
+export type Ec2InstancesStopOutput = typeof Ec2InstancesStopOutput.Type;
+
+// The operation
+/**
+ * A long-running resource action.
+ *
+ * @param api-version - The API version to use for this operation.
+ */
+export const Ec2InstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: Ec2InstancesStopInput,
+  outputSchema: Ec2InstancesStopOutput,
+}));
+// Input Schema
 export const Ec2InstanceStatusesCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18852,6 +18979,53 @@ export const OpenSearchDomainStatusesUpdate =
     inputSchema: OpenSearchDomainStatusesUpdateInput,
     outputSchema: OpenSearchDomainStatusesUpdateOutput,
   }));
+// Input Schema
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.AwsConnector/operations",
+  }),
+);
+export type OperationsListInput = typeof OperationsListInput.Type;
+
+// Output Schema
+export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
+        display: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        origin: Schema.optional(
+          Schema.Literals(["user", "system", "user,system"]),
+        ),
+        actionType: Schema.optional(Schema.Literals(["Internal"])),
+      }),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type OperationsListOutput = typeof OperationsListOutput.Type;
+
+// The operation
+/**
+ * List the operations for the provider
+ *
+ * @param api-version - The API version to use for this operation.
+ */
+export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OperationsListInput,
+  outputSchema: OperationsListOutput,
+}));
 // Input Schema
 export const OrganizationsAccountsCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

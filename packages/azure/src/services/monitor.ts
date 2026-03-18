@@ -237,491 +237,52 @@ export const AzureMonitorWorkspacesUpdate =
     outputSchema: AzureMonitorWorkspacesUpdateOutput,
   }));
 // Input Schema
-export const PrivateEndpointConnectionsDeleteInput =
+export const MonitorOperationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
+    T.Http({ method: "GET", path: "/providers/Microsoft.Monitor/operations" }),
   );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+export type MonitorOperationsListInput = typeof MonitorOperationsListInput.Type;
 
 // Output Schema
-export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
-
-// The operation
-/**
- * Deletes a private endpoint connection with a given name.
- *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param privateEndpointConnectionName - The name of the private endpoint connection.
- */
-export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsDeleteInput,
-    outputSchema: PrivateEndpointConnectionsDeleteOutput,
-  }));
-// Input Schema
-export const PrivateEndpointConnectionsGetInput =
+export const MonitorOperationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}",
-    }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
-
-// Output Schema
-export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
-
-// The operation
-/**
- * Gets a private endpoint connection.
- *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param privateEndpointConnectionName - The name of the private endpoint connection.
- */
-export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateEndpointConnectionsGetInput,
-    outputSchema: PrivateEndpointConnectionsGetOutput,
-  }));
-// Input Schema
-export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateLinkResources/{groupName}",
-    }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
-
-// Output Schema
-export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
-
-// The operation
-/**
- * Gets the private link resources that need to be created for a Azure Monitor PrivateLinkScope.
- *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
-// Input Schema
-export const PrivateLinkScopedResourcesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/scopedResources/{name}",
-    }),
-  );
-export type PrivateLinkScopedResourcesCreateOrUpdateInput =
-  typeof PrivateLinkScopedResourcesCreateOrUpdateInput.Type;
-
-// Output Schema
-export const PrivateLinkScopedResourcesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
-export type PrivateLinkScopedResourcesCreateOrUpdateOutput =
-  typeof PrivateLinkScopedResourcesCreateOrUpdateOutput.Type;
-
-// The operation
-/**
- * Add an Azure monitor scoped resource in the private link scope.
- *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param name - The name of the scoped resource object.
- */
-export const PrivateLinkScopedResourcesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateLinkScopedResourcesCreateOrUpdateInput,
-    outputSchema: PrivateLinkScopedResourcesCreateOrUpdateOutput,
-  }));
-// Input Schema
-export const PrivateLinkScopedResourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/scopedResources/{name}",
-    }),
-  );
-export type PrivateLinkScopedResourcesDeleteInput =
-  typeof PrivateLinkScopedResourcesDeleteInput.Type;
-
-// Output Schema
-export const PrivateLinkScopedResourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateLinkScopedResourcesDeleteOutput =
-  typeof PrivateLinkScopedResourcesDeleteOutput.Type;
-
-// The operation
-/**
- * Deletes an Azure monitor scoped resource with a given name.
- *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param name - The name of the scoped resource object.
- */
-export const PrivateLinkScopedResourcesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateLinkScopedResourcesDeleteInput,
-    outputSchema: PrivateLinkScopedResourcesDeleteOutput,
-  }));
-// Input Schema
-export const PrivateLinkScopedResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/scopedResources/{name}",
-    }),
-  );
-export type PrivateLinkScopedResourcesGetInput =
-  typeof PrivateLinkScopedResourcesGetInput.Type;
-
-// Output Schema
-export const PrivateLinkScopedResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
-export type PrivateLinkScopedResourcesGetOutput =
-  typeof PrivateLinkScopedResourcesGetOutput.Type;
-
-// The operation
-/**
- * Gets a scoped resource in a private link scope.
- *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param name - The name of the scoped resource object.
- */
-export const PrivateLinkScopedResourcesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateLinkScopedResourcesGetInput,
-    outputSchema: PrivateLinkScopedResourcesGetOutput,
-  }));
-// Input Schema
-export const PrivateLinkScopedResourcesListByPrivateLinkScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/scopedResources",
-    }),
-  );
-export type PrivateLinkScopedResourcesListByPrivateLinkScopeInput =
-  typeof PrivateLinkScopedResourcesListByPrivateLinkScopeInput.Type;
-
-// Output Schema
-export const PrivateLinkScopedResourcesListByPrivateLinkScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
-    nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkScopedResourcesListByPrivateLinkScopeOutput =
-  typeof PrivateLinkScopedResourcesListByPrivateLinkScopeOutput.Type;
-
-// The operation
-/**
- * Gets all scoped resources on a private link scope.
- *
- * @param subscriptionId - The ID of the target subscription.
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- */
-export const PrivateLinkScopedResourcesListByPrivateLinkScope =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateLinkScopedResourcesListByPrivateLinkScopeInput,
-    outputSchema: PrivateLinkScopedResourcesListByPrivateLinkScopeOutput,
-  }));
-// Input Schema
-export const PrivateLinkScopesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}",
-    }),
-  );
-export type PrivateLinkScopesCreateOrUpdateInput =
-  typeof PrivateLinkScopesCreateOrUpdateInput.Type;
-
-// Output Schema
-export const PrivateLinkScopesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
-  });
-export type PrivateLinkScopesCreateOrUpdateOutput =
-  typeof PrivateLinkScopesCreateOrUpdateOutput.Type;
-
-// The operation
-/**
- * Creates (or updates) a Azure Monitor PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
- *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
- */
-export const PrivateLinkScopesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateLinkScopesCreateOrUpdateInput,
-    outputSchema: PrivateLinkScopesCreateOrUpdateOutput,
-  }));
-// Input Schema
-export const PrivateLinkScopesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}",
-    }),
-  );
-export type PrivateLinkScopesDeleteInput =
-  typeof PrivateLinkScopesDeleteInput.Type;
-
-// Output Schema
-export const PrivateLinkScopesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateLinkScopesDeleteOutput =
-  typeof PrivateLinkScopesDeleteOutput.Type;
-
-// The operation
-/**
- * Deletes a Azure Monitor PrivateLinkScope.
- *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
- */
-export const PrivateLinkScopesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkScopesDeleteInput,
-    outputSchema: PrivateLinkScopesDeleteOutput,
-  }),
-);
-// Input Schema
-export const PrivateLinkScopesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}",
-    }),
-  );
-export type PrivateLinkScopesGetInput = typeof PrivateLinkScopesGetInput.Type;
-
-// Output Schema
-export const PrivateLinkScopesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
-  });
-export type PrivateLinkScopesGetOutput = typeof PrivateLinkScopesGetOutput.Type;
-
-// The operation
-/**
- * Returns a Azure Monitor PrivateLinkScope.
- *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
- */
-export const PrivateLinkScopesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkScopesGetInput,
-    outputSchema: PrivateLinkScopesGetOutput,
-  }),
-);
-// Input Schema
-export const PrivateLinkScopesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Insights/privateLinkScopes",
-    }),
-  );
-export type PrivateLinkScopesListInput = typeof PrivateLinkScopesListInput.Type;
-
-// Output Schema
-export const PrivateLinkScopesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
-      }),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          isDataAction: Schema.optional(Schema.Boolean),
+          display: Schema.optional(
+            Schema.Struct({
+              provider: Schema.optional(Schema.String),
+              resource: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              description: Schema.optional(Schema.String),
+            }),
+          ),
+          origin: Schema.optional(
+            Schema.Literals(["user", "system", "user,system"]),
+          ),
+          actionType: Schema.optional(Schema.Literals(["Internal"])),
+        }),
+      ),
     ),
     nextLink: Schema.optional(Schema.String),
   });
-export type PrivateLinkScopesListOutput =
-  typeof PrivateLinkScopesListOutput.Type;
+export type MonitorOperationsListOutput =
+  typeof MonitorOperationsListOutput.Type;
 
 // The operation
 /**
- * Gets a list of all Azure Monitor PrivateLinkScopes within a subscription.
+ * Lists available Operations for this Resource Provider
  *
  * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
  */
-export const PrivateLinkScopesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+export const MonitorOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
-    inputSchema: PrivateLinkScopesListInput,
-    outputSchema: PrivateLinkScopesListOutput,
-  }),
-);
-// Input Schema
-export const PrivateLinkScopesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes",
-    }),
-  );
-export type PrivateLinkScopesListByResourceGroupInput =
-  typeof PrivateLinkScopesListByResourceGroupInput.Type;
-
-// Output Schema
-export const PrivateLinkScopesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.Array(
-      Schema.Struct({
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        location: Schema.String,
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkScopesListByResourceGroupOutput =
-  typeof PrivateLinkScopesListByResourceGroupOutput.Type;
-
-// The operation
-/**
- * Gets a list of Azure Monitor PrivateLinkScopes within a resource group.
- *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
- */
-export const PrivateLinkScopesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PrivateLinkScopesListByResourceGroupInput,
-    outputSchema: PrivateLinkScopesListByResourceGroupOutput,
-  }));
-// Input Schema
-export const PrivateLinkScopesUpdateTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    "api-version": Schema.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}",
-    }),
-  );
-export type PrivateLinkScopesUpdateTagsInput =
-  typeof PrivateLinkScopesUpdateTagsInput.Type;
-
-// Output Schema
-export const PrivateLinkScopesUpdateTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
-  });
-export type PrivateLinkScopesUpdateTagsOutput =
-  typeof PrivateLinkScopesUpdateTagsOutput.Type;
-
-// The operation
-/**
- * Updates an existing PrivateLinkScope's tags. To update other fields use the CreateOrUpdate method.
- *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
- * @param subscriptionId - The ID of the target subscription.
- */
-export const PrivateLinkScopesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkScopesUpdateTagsInput,
-    outputSchema: PrivateLinkScopesUpdateTagsOutput,
+    inputSchema: MonitorOperationsListInput,
+    outputSchema: MonitorOperationsListOutput,
   }),
 );
 // Input Schema

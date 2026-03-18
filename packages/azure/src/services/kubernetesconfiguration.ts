@@ -195,6 +195,88 @@ export const ExtensionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExtensionsUpdateOutput,
 }));
 // Input Schema
+export const FluxConfigOperationStatusGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterRp: Schema.String.pipe(T.PathParam()),
+    clusterResourceName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}/operations/{operationId}",
+    }),
+  );
+export type FluxConfigOperationStatusGetInput =
+  typeof FluxConfigOperationStatusGetInput.Type;
+
+// Output Schema
+export const FluxConfigOperationStatusGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    properties: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type FluxConfigOperationStatusGetOutput =
+  typeof FluxConfigOperationStatusGetOutput.Type;
+
+// The operation
+/**
+ * Get Async Operation status
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
+ * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
+ * @param clusterName - The name of the kubernetes cluster.
+ * @param api-version - The API version to use for this operation.
+ * @param operationId - operation Id
+ */
+export const FluxConfigOperationStatusGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: FluxConfigOperationStatusGetInput,
+    outputSchema: FluxConfigOperationStatusGetOutput,
+  }));
+// Input Schema
 export const FluxConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -445,6 +527,169 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
+}));
+// Input Schema
+export const OperationStatusGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterRp: Schema.String.pipe(T.PathParam()),
+    clusterResourceName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}/operations/{operationId}",
+    }),
+  );
+export type OperationStatusGetInput = typeof OperationStatusGetInput.Type;
+
+// Output Schema
+export const OperationStatusGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    properties: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type OperationStatusGetOutput = typeof OperationStatusGetOutput.Type;
+
+// The operation
+/**
+ * Get Async Operation status
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
+ * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
+ * @param clusterName - The name of the kubernetes cluster.
+ * @param api-version - The API version to use for this operation.
+ * @param operationId - operation Id
+ */
+export const OperationStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OperationStatusGetInput,
+  outputSchema: OperationStatusGetOutput,
+}));
+// Input Schema
+export const OperationStatusListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterRp: Schema.String.pipe(T.PathParam()),
+    clusterResourceName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/operations",
+    }),
+  );
+export type OperationStatusListInput = typeof OperationStatusListInput.Type;
+
+// Output Schema
+export const OperationStatusListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          properties: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+          ),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    code: Schema.optional(Schema.String),
+                    message: Schema.optional(Schema.String),
+                    target: Schema.optional(Schema.String),
+                    details: Schema.optional(Schema.Array(Schema.Unknown)),
+                    additionalInfo: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          type: Schema.optional(Schema.String),
+                          info: Schema.optional(Schema.Unknown),
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              ),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type OperationStatusListOutput = typeof OperationStatusListOutput.Type;
+
+// The operation
+/**
+ * List Async Operations, currently in progress, in a cluster
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
+ * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
+ * @param clusterName - The name of the kubernetes cluster.
+ * @param api-version - The API version to use for this operation.
+ */
+export const OperationStatusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OperationStatusListInput,
+  outputSchema: OperationStatusListOutput,
 }));
 // Input Schema
 export const SourceControlConfigurationsCreateOrUpdateInput =

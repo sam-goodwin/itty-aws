@@ -1033,6 +1033,45 @@ export const NetworkSecurityPerimeterGetConfiguration =
     outputSchema: NetworkSecurityPerimeterGetConfigurationOutput,
   }));
 // Input Schema
+export const NetworkSecurityPerimeterListConfigurationsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/networkSecurityPerimeterConfigurations",
+    }),
+  );
+export type NetworkSecurityPerimeterListConfigurationsInput =
+  typeof NetworkSecurityPerimeterListConfigurationsInput.Type;
+
+// Output Schema
+export const NetworkSecurityPerimeterListConfigurationsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type NetworkSecurityPerimeterListConfigurationsOutput =
+  typeof NetworkSecurityPerimeterListConfigurationsOutput.Type;
+
+// The operation
+/**
+ * Lists all of the NSP configurations in the specified account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
+ */
+export const NetworkSecurityPerimeterListConfigurations =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkSecurityPerimeterListConfigurationsInput,
+    outputSchema: NetworkSecurityPerimeterListConfigurationsOutput,
+  }));
+// Input Schema
 export const NetworkSecurityPerimeterReconcileConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),

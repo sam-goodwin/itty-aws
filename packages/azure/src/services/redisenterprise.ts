@@ -569,6 +569,109 @@ export const DatabasesUpgradeDBRedisVersion =
     outputSchema: DatabasesUpgradeDBRedisVersionOutput,
   }));
 // Input Schema
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({ method: "GET", path: "/providers/Microsoft.Cache/operations" }),
+);
+export type OperationsListInput = typeof OperationsListInput.Type;
+
+// Output Schema
+export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
+        display: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        origin: Schema.optional(
+          Schema.Literals(["user", "system", "user,system"]),
+        ),
+        actionType: Schema.optional(Schema.Literals(["Internal"])),
+      }),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type OperationsListOutput = typeof OperationsListOutput.Type;
+
+// The operation
+/**
+ * Lists all of the available REST API operations of the Microsoft.Cache provider.
+ *
+ * @param api-version - The API version to use for this operation.
+ */
+export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OperationsListInput,
+  outputSchema: OperationsListOutput,
+}));
+// Input Schema
+export const OperationsStatusGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/locations/{location}/operationsStatus/{operationId}",
+    }),
+  );
+export type OperationsStatusGetInput = typeof OperationsStatusGetInput.Type;
+
+// Output Schema
+export const OperationsStatusGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    error: Schema.optional(
+      Schema.Struct({
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+  });
+export type OperationsStatusGetOutput = typeof OperationsStatusGetOutput.Type;
+
+// The operation
+/**
+ * Gets the status of operation.
+ *
+ * @param location - The name of Azure region.
+ * @param operationId - The ID of an ongoing async operation.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ */
+export const OperationsStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OperationsStatusGetInput,
+  outputSchema: OperationsStatusGetOutput,
+}));
+// Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -643,6 +746,154 @@ export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
+  }));
+// Input Schema
+export const PrivateEndpointConnectionsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/privateEndpointConnections",
+    }),
+  );
+export type PrivateEndpointConnectionsListInput =
+  typeof PrivateEndpointConnectionsListInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+  });
+export type PrivateEndpointConnectionsListOutput =
+  typeof PrivateEndpointConnectionsListOutput.Type;
+
+// The operation
+/**
+ * Lists all the private endpoint connections associated with the Redis Enterprise cluster.
+ *
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ */
+export const PrivateEndpointConnectionsList =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionsListInput,
+    outputSchema: PrivateEndpointConnectionsListOutput,
+  }));
+// Input Schema
+export const PrivateEndpointConnectionsPutInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals(["Pending", "Approved", "Rejected"]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type PrivateEndpointConnectionsPutInput =
+  typeof PrivateEndpointConnectionsPutInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsPutOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+export type PrivateEndpointConnectionsPutOutput =
+  typeof PrivateEndpointConnectionsPutOutput.Type;
+
+// The operation
+/**
+ * Updates the state of the specified private endpoint connection associated with the Redis Enterprise cluster.
+ *
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
+ * @param properties - Resource properties.
+ */
+export const PrivateEndpointConnectionsPut =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionsPutInput,
+    outputSchema: PrivateEndpointConnectionsPutOutput,
+  }));
+// Input Schema
+export const PrivateLinkResourcesListByClusterInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/privateLinkResources",
+    }),
+  );
+export type PrivateLinkResourcesListByClusterInput =
+  typeof PrivateLinkResourcesListByClusterInput.Type;
+
+// Output Schema
+export const PrivateLinkResourcesListByClusterOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+  });
+export type PrivateLinkResourcesListByClusterOutput =
+  typeof PrivateLinkResourcesListByClusterOutput.Type;
+
+// The operation
+/**
+ * Gets the private link resources that need to be created for a Redis Enterprise cluster.
+ *
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ */
+export const PrivateLinkResourcesListByCluster =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateLinkResourcesListByClusterInput,
+    outputSchema: PrivateLinkResourcesListByClusterOutput,
   }));
 // Input Schema
 export const RedisEnterpriseCreateInput =

@@ -681,6 +681,49 @@ export const DatabaseMigrationsSqlVmGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const FilesCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}",
+    }),
+  );
+export type FilesCreateOrUpdateInput = typeof FilesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const FilesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type FilesCreateOrUpdateOutput = typeof FilesCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Create a file resource
+ *
+ * The PUT method creates a new file or updates an existing one.
+ */
+export const FilesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: FilesCreateOrUpdateInput,
+  outputSchema: FilesCreateOrUpdateOutput,
+}));
+// Input Schema
 export const FilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -704,6 +747,109 @@ export type FilesDeleteOutput = typeof FilesDeleteOutput.Type;
 export const FilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FilesDeleteInput,
   outputSchema: FilesDeleteOutput,
+}));
+// Input Schema
+export const FilesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}",
+  }),
+);
+export type FilesGetInput = typeof FilesGetInput.Type;
+
+// Output Schema
+export const FilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type FilesGetOutput = typeof FilesGetOutput.Type;
+
+// The operation
+/**
+ * Get file information
+ *
+ * The files resource is a nested, proxy-only resource representing a file stored under the project resource. This method retrieves information about a file.
+ */
+export const FilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: FilesGetInput,
+  outputSchema: FilesGetOutput,
+}));
+// Input Schema
+export const FilesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files",
+  }),
+);
+export type FilesListInput = typeof FilesListInput.Type;
+
+// Output Schema
+export const FilesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type FilesListOutput = typeof FilesListOutput.Type;
+
+// The operation
+/**
+ * Get files in a project
+ *
+ * The project resource is a nested resource representing a stored migration project. This method returns a list of files owned by a project resource.
+ *
+ * @param subscriptionId - Subscription ID that identifies an Azure subscription.
+ */
+export const FilesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: FilesListInput,
+  outputSchema: FilesListOutput,
 }));
 // Input Schema
 export const FilesReadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -764,6 +910,49 @@ export type FilesReadWriteOutput = typeof FilesReadWriteOutput.Type;
 export const FilesReadWrite = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FilesReadWriteInput,
   outputSchema: FilesReadWriteOutput,
+}));
+// Input Schema
+export const FilesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}",
+  }),
+);
+export type FilesUpdateInput = typeof FilesUpdateInput.Type;
+
+// Output Schema
+export const FilesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type FilesUpdateOutput = typeof FilesUpdateOutput.Type;
+
+// The operation
+/**
+ * Update a file
+ *
+ * This method updates an existing file.
+ */
+export const FilesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: FilesUpdateInput,
+  outputSchema: FilesUpdateOutput,
 }));
 // Input Schema
 export const MigrationServicesCreateOrUpdateInput =
@@ -1111,6 +1300,43 @@ export const ProjectsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsGetOutput,
 }));
 // Input Schema
+export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects",
+  }),
+);
+export type ProjectsListInput = typeof ProjectsListInput.Type;
+
+// Output Schema
+export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type ProjectsListOutput = typeof ProjectsListOutput.Type;
+
+// The operation
+/**
+ * Get projects in a service
+ *
+ * The project resource is a nested resource representing a stored migration project. This method returns a list of projects owned by a service resource.
+ *
+ * @param subscriptionId - Subscription ID that identifies an Azure subscription.
+ */
+export const ProjectsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ProjectsListInput,
+  outputSchema: ProjectsListOutput,
+}));
+// Input Schema
 export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1138,6 +1364,89 @@ export const ProjectsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProjectsUpdateInput,
   outputSchema: ProjectsUpdateOutput,
 }));
+// Input Schema
+export const ResourceSkusListSkusInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/skus",
+    }),
+  );
+export type ResourceSkusListSkusInput = typeof ResourceSkusListSkusInput.Type;
+
+// Output Schema
+export const ResourceSkusListSkusOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        resourceType: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        tier: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.String),
+        family: Schema.optional(Schema.String),
+        kind: Schema.optional(Schema.String),
+        capacity: Schema.optional(
+          Schema.Struct({
+            minimum: Schema.optional(Schema.Number),
+            maximum: Schema.optional(Schema.Number),
+            default: Schema.optional(Schema.Number),
+            scaleType: Schema.optional(
+              Schema.Literals(["Automatic", "Manual", "None"]),
+            ),
+          }),
+        ),
+        locations: Schema.optional(Schema.Array(Schema.String)),
+        apiVersions: Schema.optional(Schema.Array(Schema.String)),
+        costs: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              meterID: Schema.optional(Schema.String),
+              quantity: Schema.optional(Schema.Number),
+              extendedUnit: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        capabilities: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        restrictions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.Literals(["location"])),
+              values: Schema.optional(Schema.Array(Schema.String)),
+              reasonCode: Schema.optional(
+                Schema.Literals(["QuotaId", "NotAvailableForSubscription"]),
+              ),
+            }),
+          ),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ResourceSkusListSkusOutput = typeof ResourceSkusListSkusOutput.Type;
+
+// The operation
+/**
+ * Get supported SKUs
+ *
+ * The skus action returns the list of SKUs that DMS (classic) supports.
+ *
+ * @param subscriptionId - Subscription ID that identifies an Azure subscription.
+ */
+export const ResourceSkusListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ResourceSkusListSkusInput,
+    outputSchema: ResourceSkusListSkusOutput,
+  }),
+);
 // Input Schema
 export const ServicesCheckChildrenNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1331,6 +1640,142 @@ export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
+export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/services",
+  }),
+);
+export type ServicesListInput = typeof ServicesListInput.Type;
+
+// Output Schema
+export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        location: Schema.String,
+      }),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type ServicesListOutput = typeof ServicesListOutput.Type;
+
+// The operation
+/**
+ * Get services in subscription
+ *
+ * The services resource is the top-level resource that represents the Azure Database Migration Service (classic). This method returns a list of service resources in a subscription.
+ *
+ * @param subscriptionId - Subscription ID that identifies an Azure subscription.
+ */
+export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ServicesListInput,
+  outputSchema: ServicesListOutput,
+}));
+// Input Schema
+export const ServicesListByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services",
+    }),
+  );
+export type ServicesListByResourceGroupInput =
+  typeof ServicesListByResourceGroupInput.Type;
+
+// Output Schema
+export const ServicesListByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+          location: Schema.String,
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ServicesListByResourceGroupOutput =
+  typeof ServicesListByResourceGroupOutput.Type;
+
+// The operation
+/**
+ * Get services in resource group
+ *
+ * The Services resource is the top-level resource that represents the Azure Database Migration Service (classic). This method returns a list of service resources in a resource group.
+ *
+ * @param subscriptionId - Subscription ID that identifies an Azure subscription.
+ */
+export const ServicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ServicesListByResourceGroupInput,
+    outputSchema: ServicesListByResourceGroupOutput,
+  }),
+);
+// Input Schema
+export const ServicesListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/skus",
+  }),
+);
+export type ServicesListSkusInput = typeof ServicesListSkusInput.Type;
+
+// Output Schema
+export const ServicesListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          resourceType: Schema.optional(Schema.String),
+          sku: Schema.optional(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              family: Schema.optional(Schema.String),
+              size: Schema.optional(Schema.String),
+              tier: Schema.optional(Schema.String),
+            }),
+          ),
+          capacity: Schema.optional(
+            Schema.Struct({
+              minimum: Schema.optional(Schema.Number),
+              maximum: Schema.optional(Schema.Number),
+              default: Schema.optional(Schema.Number),
+              scaleType: Schema.optional(
+                Schema.Literals(["none", "manual", "automatic"]),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  },
+);
+export type ServicesListSkusOutput = typeof ServicesListSkusOutput.Type;
+
+// The operation
+/**
+ * Get compatible SKUs
+ *
+ * The services resource is the top-level resource that represents the Database Migration Service (classic). The skus action returns the list of SKUs that a service resource can be updated to.
+ *
+ * @param subscriptionId - Subscription ID that identifies an Azure subscription.
+ */
+export const ServicesListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ServicesListSkusInput,
+  outputSchema: ServicesListSkusOutput,
+}));
+// Input Schema
 export const ServicesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1413,6 +1858,100 @@ export const ServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesUpdateOutput,
 }));
 // Input Schema
+export const ServiceTasksCancelInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}/cancel",
+    }),
+  );
+export type ServiceTasksCancelInput = typeof ServiceTasksCancelInput.Type;
+
+// Output Schema
+export const ServiceTasksCancelOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ServiceTasksCancelOutput = typeof ServiceTasksCancelOutput.Type;
+
+// The operation
+/**
+ * Cancel a service task
+ *
+ * The service tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. This method cancels a service task if it's currently queued or running.
+ *
+ * @param subscriptionId - Subscription ID that identifies an Azure subscription.
+ */
+export const ServiceTasksCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ServiceTasksCancelInput,
+  outputSchema: ServiceTasksCancelOutput,
+}));
+// Input Schema
+export const ServiceTasksCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
+    }),
+  );
+export type ServiceTasksCreateOrUpdateInput =
+  typeof ServiceTasksCreateOrUpdateInput.Type;
+
+// Output Schema
+export const ServiceTasksCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ServiceTasksCreateOrUpdateOutput =
+  typeof ServiceTasksCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Create or update service task
+ *
+ * The service tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The PUT method creates a new service task or updates an existing one, although since service tasks have no mutable custom properties, there is little reason to update an existing one.
+ */
+export const ServiceTasksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ServiceTasksCreateOrUpdateInput,
+    outputSchema: ServiceTasksCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
 export const ServiceTasksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -1435,6 +1974,158 @@ export type ServiceTasksDeleteOutput = typeof ServiceTasksDeleteOutput.Type;
 export const ServiceTasksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServiceTasksDeleteInput,
   outputSchema: ServiceTasksDeleteOutput,
+}));
+// Input Schema
+export const ServiceTasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  $expand: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
+  }),
+);
+export type ServiceTasksGetInput = typeof ServiceTasksGetInput.Type;
+
+// Output Schema
+export const ServiceTasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type ServiceTasksGetOutput = typeof ServiceTasksGetOutput.Type;
+
+// The operation
+/**
+ * Get service task information
+ *
+ * The service tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The GET method retrieves information about a service task.
+ *
+ * @param $expand - Expand the response
+ */
+export const ServiceTasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ServiceTasksGetInput,
+  outputSchema: ServiceTasksGetOutput,
+}));
+// Input Schema
+export const ServiceTasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks",
+  }),
+);
+export type ServiceTasksListInput = typeof ServiceTasksListInput.Type;
+
+// Output Schema
+export const ServiceTasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  },
+);
+export type ServiceTasksListOutput = typeof ServiceTasksListOutput.Type;
+
+// The operation
+/**
+ * Get service level tasks for a service
+ *
+ * The services resource is the top-level resource that represents the Azure Database Migration Service (classic). This method returns a list of service level tasks owned by a service resource. Some tasks may have a status of Unknown, which indicates that an error occurred while querying the status of that task.
+ *
+ * @param subscriptionId - Subscription ID that identifies an Azure subscription.
+ */
+export const ServiceTasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ServiceTasksListInput,
+  outputSchema: ServiceTasksListOutput,
+}));
+// Input Schema
+export const ServiceTasksUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
+    }),
+  );
+export type ServiceTasksUpdateInput = typeof ServiceTasksUpdateInput.Type;
+
+// Output Schema
+export const ServiceTasksUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ServiceTasksUpdateOutput = typeof ServiceTasksUpdateOutput.Type;
+
+// The operation
+/**
+ * Create or update service task
+ *
+ * The service tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The PATCH method updates an existing service task, but since service tasks have no mutable custom properties, there is little reason to do so.
+ */
+export const ServiceTasksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ServiceTasksUpdateInput,
+  outputSchema: ServiceTasksUpdateOutput,
 }));
 // Input Schema
 export const SqlMigrationServicesCreateOrUpdateInput =
@@ -1787,6 +2478,149 @@ export const SqlMigrationServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const TasksCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}/cancel",
+  }),
+);
+export type TasksCancelInput = typeof TasksCancelInput.Type;
+
+// Output Schema
+export const TasksCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type TasksCancelOutput = typeof TasksCancelOutput.Type;
+
+// The operation
+/**
+ * Cancel a task
+ *
+ * The tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. This method cancels a task if it's currently queued or running.
+ *
+ * @param subscriptionId - Subscription ID that identifies an Azure subscription.
+ */
+export const TasksCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: TasksCancelInput,
+  outputSchema: TasksCancelOutput,
+}));
+// Input Schema
+export const TasksCommandInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}/command",
+  }),
+);
+export type TasksCommandInput = typeof TasksCommandInput.Type;
+
+// Output Schema
+export const TasksCommandOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  commandType: Schema.Literals([
+    "Migrate.Sync.Complete.Database",
+    "Migrate.SqlServer.AzureDbSqlMi.Complete",
+    "cancel",
+    "finish",
+    "restart",
+  ]),
+  errors: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+            }),
+          ),
+        ),
+      }),
+    ),
+  ),
+  state: Schema.optional(
+    Schema.Literals(["Unknown", "Accepted", "Running", "Succeeded", "Failed"]),
+  ),
+});
+export type TasksCommandOutput = typeof TasksCommandOutput.Type;
+
+// The operation
+/**
+ * Execute a command on a task
+ *
+ * The tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. This method executes a command on a running task.
+ *
+ * @param subscriptionId - Subscription ID that identifies an Azure subscription.
+ */
+export const TasksCommand = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: TasksCommandInput,
+  outputSchema: TasksCommandOutput,
+}));
+// Input Schema
+export const TasksCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}",
+    }),
+  );
+export type TasksCreateOrUpdateInput = typeof TasksCreateOrUpdateInput.Type;
+
+// Output Schema
+export const TasksCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type TasksCreateOrUpdateOutput = typeof TasksCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Create or update task
+ *
+ * The tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The PUT method creates a new task or updates an existing one, although since tasks have no mutable custom properties, there is little reason to update an existing one.
+ */
+export const TasksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: TasksCreateOrUpdateInput,
+  outputSchema: TasksCreateOrUpdateOutput,
+}));
+// Input Schema
 export const TasksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1810,4 +2644,199 @@ export type TasksDeleteOutput = typeof TasksDeleteOutput.Type;
 export const TasksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TasksDeleteInput,
   outputSchema: TasksDeleteOutput,
+}));
+// Input Schema
+export const TasksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  $expand: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}",
+  }),
+);
+export type TasksGetInput = typeof TasksGetInput.Type;
+
+// Output Schema
+export const TasksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type TasksGetOutput = typeof TasksGetOutput.Type;
+
+// The operation
+/**
+ * Get task information
+ *
+ * The tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The GET method retrieves information about a task.
+ *
+ * @param $expand - Expand the response
+ */
+export const TasksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: TasksGetInput,
+  outputSchema: TasksGetOutput,
+}));
+// Input Schema
+export const TasksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks",
+  }),
+);
+export type TasksListInput = typeof TasksListInput.Type;
+
+// Output Schema
+export const TasksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type TasksListOutput = typeof TasksListOutput.Type;
+
+// The operation
+/**
+ * Get tasks in a service
+ *
+ * The services resource is the top-level resource that represents the Azure Database Migration Service (classic). This method returns a list of tasks owned by a service resource. Some tasks may have a status of Unknown, which indicates that an error occurred while querying the status of that task.
+ *
+ * @param subscriptionId - Subscription ID that identifies an Azure subscription.
+ */
+export const TasksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: TasksListInput,
+  outputSchema: TasksListOutput,
+}));
+// Input Schema
+export const TasksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}",
+  }),
+);
+export type TasksUpdateInput = typeof TasksUpdateInput.Type;
+
+// Output Schema
+export const TasksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type TasksUpdateOutput = typeof TasksUpdateOutput.Type;
+
+// The operation
+/**
+ * Create or update task
+ *
+ * The tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The PATCH method updates an existing task, but since tasks have no mutable custom properties, there is little reason to do so.
+ */
+export const TasksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: TasksUpdateInput,
+  outputSchema: TasksUpdateOutput,
+}));
+// Input Schema
+export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/locations/{location}/usages",
+  }),
+);
+export type UsagesListInput = typeof UsagesListInput.Type;
+
+// Output Schema
+export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        currentValue: Schema.optional(Schema.Number),
+        id: Schema.optional(Schema.String),
+        limit: Schema.optional(Schema.Number),
+        name: Schema.optional(
+          Schema.Struct({
+            localizedValue: Schema.optional(Schema.String),
+            value: Schema.optional(Schema.String),
+          }),
+        ),
+        unit: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type UsagesListOutput = typeof UsagesListOutput.Type;
+
+// The operation
+/**
+ * Get resource quotas and usage information
+ *
+ * This method returns region-specific quotas and resource usage information for the Azure Database Migration Service (classic).
+ *
+ * @param subscriptionId - Subscription ID that identifies an Azure subscription.
+ */
+export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: UsagesListInput,
+  outputSchema: UsagesListOutput,
 }));

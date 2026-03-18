@@ -2681,6 +2681,59 @@ export const PolicySetsEvaluatePolicies = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const ProviderOperationsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.DevTestLab/operations",
+    }),
+  );
+export type ProviderOperationsListInput =
+  typeof ProviderOperationsListInput.Type;
+
+// Output Schema
+export const ProviderOperationsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          isDataAction: Schema.optional(Schema.Boolean),
+          display: Schema.optional(
+            Schema.Struct({
+              provider: Schema.optional(Schema.String),
+              resource: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              description: Schema.optional(Schema.String),
+            }),
+          ),
+          origin: Schema.optional(
+            Schema.Literals(["user", "system", "user,system"]),
+          ),
+          actionType: Schema.optional(Schema.Literals(["Internal"])),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ProviderOperationsListOutput =
+  typeof ProviderOperationsListOutput.Type;
+
+// The operation
+/**
+ * List the operations for the provider
+ *
+ * @param api-version - The API version to use for this operation.
+ */
+export const ProviderOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ProviderOperationsListInput,
+    outputSchema: ProviderOperationsListOutput,
+  }),
+);
+// Input Schema
 export const SchedulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3562,6 +3615,64 @@ export const ServiceFabricsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServiceFabricsListInput,
   outputSchema: ServiceFabricsListOutput,
 }));
+// Input Schema
+export const ServiceFabricsListApplicableSchedulesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labName: Schema.String.pipe(T.PathParam()),
+    userName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{name}/listApplicableSchedules",
+    }),
+  );
+export type ServiceFabricsListApplicableSchedulesInput =
+  typeof ServiceFabricsListApplicableSchedulesInput.Type;
+
+// Output Schema
+export const ServiceFabricsListApplicableSchedulesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ServiceFabricsListApplicableSchedulesOutput =
+  typeof ServiceFabricsListApplicableSchedulesOutput.Type;
+
+// The operation
+/**
+ * Lists the applicable start/stop schedules, if any.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab.
+ * @param userName - The name of the user profile.
+ * @param name - The name of the service fabric.
+ */
+export const ServiceFabricsListApplicableSchedules =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ServiceFabricsListApplicableSchedulesInput,
+    outputSchema: ServiceFabricsListApplicableSchedulesOutput,
+  }));
 // Input Schema
 export const ServiceFabricsStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4565,6 +4676,62 @@ export const VirtualMachinesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesListInput,
   outputSchema: VirtualMachinesListOutput,
 }));
+// Input Schema
+export const VirtualMachinesListApplicableSchedulesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    labName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/listApplicableSchedules",
+    }),
+  );
+export type VirtualMachinesListApplicableSchedulesInput =
+  typeof VirtualMachinesListApplicableSchedulesInput.Type;
+
+// Output Schema
+export const VirtualMachinesListApplicableSchedulesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type VirtualMachinesListApplicableSchedulesOutput =
+  typeof VirtualMachinesListApplicableSchedulesOutput.Type;
+
+// The operation
+/**
+ * Lists the applicable start/stop schedules, if any.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param labName - The name of the lab.
+ * @param name - The name of the virtual machine.
+ */
+export const VirtualMachinesListApplicableSchedules =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: VirtualMachinesListApplicableSchedulesInput,
+    outputSchema: VirtualMachinesListApplicableSchedulesOutput,
+  }));
 // Input Schema
 export const VirtualMachinesRedeployInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

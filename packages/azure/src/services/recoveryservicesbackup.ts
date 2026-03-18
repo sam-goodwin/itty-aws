@@ -9,6 +9,63 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export const BackupEnginesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  backupEngineName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEngines/{backupEngineName}",
+  }),
+);
+export type BackupEnginesGetInput = typeof BackupEnginesGetInput.Type;
+
+// Output Schema
+export const BackupEnginesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  },
+);
+export type BackupEnginesGetOutput = typeof BackupEnginesGetOutput.Type;
+
+// The operation
+/**
+ * Returns backup management server registered to Recovery Services Vault.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ * @param backupEngineName - Name of the backup management server.
+ * @param $filter - OData filter options.
+ * @param $skipToken - skipToken Filter.
+ */
+export const BackupEnginesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: BackupEnginesGetInput,
+  outputSchema: BackupEnginesGetOutput,
+}));
+// Input Schema
 export const BackupEnginesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -402,6 +459,60 @@ export const BackupProtectionIntentList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const BackupResourceEncryptionConfigsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEncryptionConfigs/backupResourceEncryptionConfig",
+    }),
+  );
+export type BackupResourceEncryptionConfigsGetInput =
+  typeof BackupResourceEncryptionConfigsGetInput.Type;
+
+// Output Schema
+export const BackupResourceEncryptionConfigsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type BackupResourceEncryptionConfigsGetOutput =
+  typeof BackupResourceEncryptionConfigsGetOutput.Type;
+
+// The operation
+/**
+ * Fetches Vault Encryption config.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ */
+export const BackupResourceEncryptionConfigsGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: BackupResourceEncryptionConfigsGetInput,
+    outputSchema: BackupResourceEncryptionConfigsGetOutput,
+  }));
+// Input Schema
 export const BackupResourceEncryptionConfigsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -438,6 +549,60 @@ export const BackupResourceEncryptionConfigsUpdate =
     outputSchema: BackupResourceEncryptionConfigsUpdateOutput,
   }));
 // Input Schema
+export const BackupResourceStorageConfigsNonCRRGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig",
+    }),
+  );
+export type BackupResourceStorageConfigsNonCRRGetInput =
+  typeof BackupResourceStorageConfigsNonCRRGetInput.Type;
+
+// Output Schema
+export const BackupResourceStorageConfigsNonCRRGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type BackupResourceStorageConfigsNonCRRGetOutput =
+  typeof BackupResourceStorageConfigsNonCRRGetOutput.Type;
+
+// The operation
+/**
+ * Fetches resource storage config.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ */
+export const BackupResourceStorageConfigsNonCRRGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: BackupResourceStorageConfigsNonCRRGetInput,
+    outputSchema: BackupResourceStorageConfigsNonCRRGetOutput,
+  }));
+// Input Schema
 export const BackupResourceStorageConfigsNonCRRPatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -472,6 +637,222 @@ export const BackupResourceStorageConfigsNonCRRPatch =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: BackupResourceStorageConfigsNonCRRPatchInput,
     outputSchema: BackupResourceStorageConfigsNonCRRPatchOutput,
+  }));
+// Input Schema
+export const BackupResourceStorageConfigsNonCRRUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig",
+    }),
+  );
+export type BackupResourceStorageConfigsNonCRRUpdateInput =
+  typeof BackupResourceStorageConfigsNonCRRUpdateInput.Type;
+
+// Output Schema
+export const BackupResourceStorageConfigsNonCRRUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type BackupResourceStorageConfigsNonCRRUpdateOutput =
+  typeof BackupResourceStorageConfigsNonCRRUpdateOutput.Type;
+
+// The operation
+/**
+ * Updates vault storage model type.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ */
+export const BackupResourceStorageConfigsNonCRRUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: BackupResourceStorageConfigsNonCRRUpdateInput,
+    outputSchema: BackupResourceStorageConfigsNonCRRUpdateOutput,
+  }));
+// Input Schema
+export const BackupResourceVaultConfigsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
+    }),
+  );
+export type BackupResourceVaultConfigsGetInput =
+  typeof BackupResourceVaultConfigsGetInput.Type;
+
+// Output Schema
+export const BackupResourceVaultConfigsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type BackupResourceVaultConfigsGetOutput =
+  typeof BackupResourceVaultConfigsGetOutput.Type;
+
+// The operation
+/**
+ * Fetches resource vault config.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ */
+export const BackupResourceVaultConfigsGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: BackupResourceVaultConfigsGetInput,
+    outputSchema: BackupResourceVaultConfigsGetOutput,
+  }));
+// Input Schema
+export const BackupResourceVaultConfigsPutInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
+    }),
+  );
+export type BackupResourceVaultConfigsPutInput =
+  typeof BackupResourceVaultConfigsPutInput.Type;
+
+// Output Schema
+export const BackupResourceVaultConfigsPutOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type BackupResourceVaultConfigsPutOutput =
+  typeof BackupResourceVaultConfigsPutOutput.Type;
+
+// The operation
+/**
+ * Updates vault security config.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ */
+export const BackupResourceVaultConfigsPut =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: BackupResourceVaultConfigsPutInput,
+    outputSchema: BackupResourceVaultConfigsPutOutput,
+  }));
+// Input Schema
+export const BackupResourceVaultConfigsUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
+    }),
+  );
+export type BackupResourceVaultConfigsUpdateInput =
+  typeof BackupResourceVaultConfigsUpdateInput.Type;
+
+// Output Schema
+export const BackupResourceVaultConfigsUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type BackupResourceVaultConfigsUpdateOutput =
+  typeof BackupResourceVaultConfigsUpdateOutput.Type;
+
+// The operation
+/**
+ * Updates vault security config.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ */
+export const BackupResourceVaultConfigsUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: BackupResourceVaultConfigsUpdateInput,
+    outputSchema: BackupResourceVaultConfigsUpdateOutput,
   }));
 // Input Schema
 export const BackupStatusGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1205,6 +1586,57 @@ export const JobCancellationsTrigger = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const JobDetailsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  vaultName: Schema.String.pipe(T.PathParam()),
+  jobName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}",
+  }),
+);
+export type JobDetailsGetInput = typeof JobDetailsGetInput.Type;
+
+// Output Schema
+export const JobDetailsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type JobDetailsGetOutput = typeof JobDetailsGetOutput.Type;
+
+// The operation
+/**
+ * Gets extended information associated with the job.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ * @param jobName - Name of the job whose details are to be fetched.
+ */
+export const JobDetailsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: JobDetailsGetInput,
+  outputSchema: JobDetailsGetOutput,
+}));
+// Input Schema
 export const JobOperationResultsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1466,6 +1898,118 @@ export const PrivateEndpointConnectionDelete =
     outputSchema: PrivateEndpointConnectionDeleteOutput,
   }));
 // Input Schema
+export const PrivateEndpointConnectionGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type PrivateEndpointConnectionGetInput =
+  typeof PrivateEndpointConnectionGetInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type PrivateEndpointConnectionGetOutput =
+  typeof PrivateEndpointConnectionGetOutput.Type;
+
+// The operation
+/**
+ * Get Private Endpoint Connection. This call is made by Backup Admin.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
+ */
+export const PrivateEndpointConnectionGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionGetInput,
+    outputSchema: PrivateEndpointConnectionGetOutput,
+  }));
+// Input Schema
+export const PrivateEndpointConnectionPutInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type PrivateEndpointConnectionPutInput =
+  typeof PrivateEndpointConnectionPutInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionPutOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type PrivateEndpointConnectionPutOutput =
+  typeof PrivateEndpointConnectionPutOutput.Type;
+
+// The operation
+/**
+ * Approve or Reject Private Endpoint requests. This call is made by Backup Admin.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ * @param privateEndpointConnectionName - The name of the private endpoint connection.
+ */
+export const PrivateEndpointConnectionPut =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionPutInput,
+    outputSchema: PrivateEndpointConnectionPutOutput,
+  }));
+// Input Schema
 export const PrivateEndpointGetOperationStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1573,6 +2117,68 @@ export const ProtectableContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const ProtectedItemOperationResultsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    fabricName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
+    protectedItemName: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/operationResults/{operationId}",
+    }),
+  );
+export type ProtectedItemOperationResultsGetInput =
+  typeof ProtectedItemOperationResultsGetInput.Type;
+
+// Output Schema
+export const ProtectedItemOperationResultsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProtectedItemOperationResultsGetOutput =
+  typeof ProtectedItemOperationResultsGetOutput.Type;
+
+// The operation
+/**
+ * Fetches the result of any operation on the backup item.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - vaults
+ * @param fabricName - backupFabrics
+ * @param containerName - The name of the ProtectionContainerResource
+ * @param protectedItemName - The name of the ProtectedItemResource
+ * @param operationId - The name of the ProtectedItemResource
+ */
+export const ProtectedItemOperationResultsGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ProtectedItemOperationResultsGetInput,
+    outputSchema: ProtectedItemOperationResultsGetOutput,
+  }));
+// Input Schema
 export const ProtectedItemOperationStatusesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1644,6 +2250,67 @@ export const ProtectedItemOperationStatusesGet =
     outputSchema: ProtectedItemOperationStatusesGetOutput,
   }));
 // Input Schema
+export const ProtectedItemsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    fabricName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
+    protectedItemName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
+    }),
+  );
+export type ProtectedItemsCreateOrUpdateInput =
+  typeof ProtectedItemsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const ProtectedItemsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProtectedItemsCreateOrUpdateOutput =
+  typeof ProtectedItemsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Enables backup of an item or to modifies the backup policy information of an already backed up item. This is an
+ * asynchronous operation. To know the status of the operation, call the GetItemOperationResult API.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ * @param fabricName - The name of the BackupFabricResource
+ * @param containerName - Name of the container whose details need to be fetched.
+ * @param protectedItemName - Backed up item name whose details are to be fetched.
+ */
+export const ProtectedItemsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ProtectedItemsCreateOrUpdateInput,
+    outputSchema: ProtectedItemsCreateOrUpdateOutput,
+  }));
+// Input Schema
 export const ProtectedItemsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1686,6 +2353,127 @@ export const ProtectedItemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const ProtectedItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    fabricName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
+    protectedItemName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
+  }),
+);
+export type ProtectedItemsGetInput = typeof ProtectedItemsGetInput.Type;
+
+// Output Schema
+export const ProtectedItemsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProtectedItemsGetOutput = typeof ProtectedItemsGetOutput.Type;
+
+// The operation
+/**
+ * Provides the details of the backed up item. This is an asynchronous operation. To know the status of the operation,
+ * call the GetItemOperationResult API.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ * @param fabricName - The name of the BackupFabricResource
+ * @param containerName - Name of the container whose details need to be fetched.
+ * @param protectedItemName - Backed up item name whose details are to be fetched.
+ * @param $filter - OData filter options.
+ */
+export const ProtectedItemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ProtectedItemsGetInput,
+  outputSchema: ProtectedItemsGetOutput,
+}));
+// Input Schema
+export const ProtectionContainerOperationResultsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    fabricName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/operationResults/{operationId}",
+    }),
+  );
+export type ProtectionContainerOperationResultsGetInput =
+  typeof ProtectionContainerOperationResultsGetInput.Type;
+
+// Output Schema
+export const ProtectionContainerOperationResultsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProtectionContainerOperationResultsGetOutput =
+  typeof ProtectionContainerOperationResultsGetOutput.Type;
+
+// The operation
+/**
+ * Fetches the result of any operation on the container.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - vaults
+ * @param fabricName - backupFabrics
+ * @param containerName - The name of the ProtectionContainerResource
+ * @param operationId - The name of the ProtectionContainerResource
+ */
+export const ProtectionContainerOperationResultsGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ProtectionContainerOperationResultsGetInput,
+    outputSchema: ProtectionContainerOperationResultsGetOutput,
+  }));
+// Input Schema
 export const ProtectionContainerRefreshOperationResultsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vaultName: Schema.String.pipe(T.PathParam()),
@@ -1725,6 +2513,65 @@ export const ProtectionContainerRefreshOperationResultsGet =
     inputSchema: ProtectionContainerRefreshOperationResultsGetInput,
     outputSchema: ProtectionContainerRefreshOperationResultsGetOutput,
   }));
+// Input Schema
+export const ProtectionContainersGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    fabricName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
+    }),
+  );
+export type ProtectionContainersGetInput =
+  typeof ProtectionContainersGetInput.Type;
+
+// Output Schema
+export const ProtectionContainersGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProtectionContainersGetOutput =
+  typeof ProtectionContainersGetOutput.Type;
+
+// The operation
+/**
+ * Gets details of the specific container registered to your Recovery Services Vault.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ * @param fabricName - The name of the BackupFabricResource
+ * @param containerName - Name of the container whose details need to be fetched.
+ */
+export const ProtectionContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ProtectionContainersGetInput,
+    outputSchema: ProtectionContainersGetOutput,
+  }),
+);
 // Input Schema
 export const ProtectionContainersInquireInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1811,6 +2658,66 @@ export const ProtectionContainersRefresh = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const ProtectionContainersRegisterInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    fabricName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
+    }),
+  );
+export type ProtectionContainersRegisterInput =
+  typeof ProtectionContainersRegisterInput.Type;
+
+// Output Schema
+export const ProtectionContainersRegisterOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProtectionContainersRegisterOutput =
+  typeof ProtectionContainersRegisterOutput.Type;
+
+// The operation
+/**
+ * Registers the container with Recovery Services vault.
+ * This is an asynchronous operation. To track the operation status, use location header to call get latest status of
+ * the operation.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ * @param fabricName - The name of the BackupFabricResource
+ * @param containerName - Name of the container whose details need to be fetched.
+ */
+export const ProtectionContainersRegister =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ProtectionContainersRegisterInput,
+    outputSchema: ProtectionContainersRegisterOutput,
+  }));
+// Input Schema
 export const ProtectionContainersUnregisterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1850,6 +2757,64 @@ export const ProtectionContainersUnregister =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ProtectionContainersUnregisterInput,
     outputSchema: ProtectionContainersUnregisterOutput,
+  }));
+// Input Schema
+export const ProtectionIntentCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    fabricName: Schema.String.pipe(T.PathParam()),
+    intentObjectName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
+    }),
+  );
+export type ProtectionIntentCreateOrUpdateInput =
+  typeof ProtectionIntentCreateOrUpdateInput.Type;
+
+// Output Schema
+export const ProtectionIntentCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProtectionIntentCreateOrUpdateOutput =
+  typeof ProtectionIntentCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Create Intent for Enabling backup of an item. This is a synchronous operation.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ * @param fabricName - The name of the BackupFabricResource
+ * @param intentObjectName - Backed up item name whose details are to be fetched.
+ */
+export const ProtectionIntentCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ProtectionIntentCreateOrUpdateInput,
+    outputSchema: ProtectionIntentCreateOrUpdateOutput,
   }));
 // Input Schema
 export const ProtectionIntentDeleteInput =
@@ -1892,6 +2857,62 @@ export const ProtectionIntentDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
     outputSchema: ProtectionIntentDeleteOutput,
   }),
 );
+// Input Schema
+export const ProtectionIntentGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    fabricName: Schema.String.pipe(T.PathParam()),
+    intentObjectName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
+    }),
+  );
+export type ProtectionIntentGetInput = typeof ProtectionIntentGetInput.Type;
+
+// Output Schema
+export const ProtectionIntentGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProtectionIntentGetOutput = typeof ProtectionIntentGetOutput.Type;
+
+// The operation
+/**
+ * Provides the details of the protection intent up item. This is an asynchronous operation. To know the status of the operation,
+ * call the GetItemOperationResult API.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ * @param fabricName - The name of the BackupFabricResource
+ * @param intentObjectName - Backed up item name whose details are to be fetched.
+ */
+export const ProtectionIntentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ProtectionIntentGetInput,
+  outputSchema: ProtectionIntentGetOutput,
+}));
 // Input Schema
 export const ProtectionIntentValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1945,6 +2966,63 @@ export const ProtectionIntentValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const ProtectionPoliciesCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
+    }),
+  );
+export type ProtectionPoliciesCreateOrUpdateInput =
+  typeof ProtectionPoliciesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const ProtectionPoliciesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProtectionPoliciesCreateOrUpdateOutput =
+  typeof ProtectionPoliciesCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or modifies a backup policy. This is an asynchronous operation. Status of the operation can be fetched
+ * using GetPolicyOperationResult API.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ * @param policyName - Backup policy information to be fetched.
+ */
+export const ProtectionPoliciesCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ProtectionPoliciesCreateOrUpdateInput,
+    outputSchema: ProtectionPoliciesCreateOrUpdateOutput,
+  }));
+// Input Schema
 export const ProtectionPoliciesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1984,6 +3062,121 @@ export const ProtectionPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
     outputSchema: ProtectionPoliciesDeleteOutput,
   }),
 );
+// Input Schema
+export const ProtectionPoliciesGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
+    }),
+  );
+export type ProtectionPoliciesGetInput = typeof ProtectionPoliciesGetInput.Type;
+
+// Output Schema
+export const ProtectionPoliciesGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProtectionPoliciesGetOutput =
+  typeof ProtectionPoliciesGetOutput.Type;
+
+// The operation
+/**
+ * Provides the details of the backup policies associated to Recovery Services Vault. This is an asynchronous
+ * operation. Status of the operation can be fetched using GetPolicyOperationResult API.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ * @param policyName - Backup policy information to be fetched.
+ */
+export const ProtectionPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ProtectionPoliciesGetInput,
+    outputSchema: ProtectionPoliciesGetOutput,
+  }),
+);
+// Input Schema
+export const ProtectionPolicyOperationResultsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    policyName: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}/operationResults/{operationId}",
+    }),
+  );
+export type ProtectionPolicyOperationResultsGetInput =
+  typeof ProtectionPolicyOperationResultsGetInput.Type;
+
+// Output Schema
+export const ProtectionPolicyOperationResultsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProtectionPolicyOperationResultsGetOutput =
+  typeof ProtectionPolicyOperationResultsGetOutput.Type;
+
+// The operation
+/**
+ * Provides the result of an operation.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - vaults
+ * @param policyName - The name of the ProtectionPolicyResource
+ * @param operationId - The name of the ProtectionPolicyResource
+ */
+export const ProtectionPolicyOperationResultsGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ProtectionPolicyOperationResultsGetInput,
+    outputSchema: ProtectionPolicyOperationResultsGetOutput,
+  }));
 // Input Schema
 export const ProtectionPolicyOperationStatusesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2051,6 +3244,67 @@ export const ProtectionPolicyOperationStatusesGet =
     inputSchema: ProtectionPolicyOperationStatusesGetInput,
     outputSchema: ProtectionPolicyOperationStatusesGetOutput,
   }));
+// Input Schema
+export const RecoveryPointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    fabricName: Schema.String.pipe(T.PathParam()),
+    containerName: Schema.String.pipe(T.PathParam()),
+    protectedItemName: Schema.String.pipe(T.PathParam()),
+    recoveryPointId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}",
+  }),
+);
+export type RecoveryPointsGetInput = typeof RecoveryPointsGetInput.Type;
+
+// Output Schema
+export const RecoveryPointsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type RecoveryPointsGetOutput = typeof RecoveryPointsGetOutput.Type;
+
+// The operation
+/**
+ * Provides the information of the backed up data identified using RecoveryPointID. This is an asynchronous operation.
+ * To know the status of the operation, call the GetProtectedItemOperationResult API.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ * @param fabricName - The name of the BackupFabricResource
+ * @param containerName - Name of the container whose details need to be fetched.
+ * @param protectedItemName - Backed up item name whose details are to be fetched.
+ * @param recoveryPointId - RecoveryPointID represents the backed up data to be fetched.
+ */
+export const RecoveryPointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: RecoveryPointsGetInput,
+  outputSchema: RecoveryPointsGetOutput,
+}));
 // Input Schema
 export const RecoveryPointsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2213,6 +3467,117 @@ export const ResourceGuardProxyDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ResourceGuardProxyDeleteInput,
     outputSchema: ResourceGuardProxyDeleteOutput,
+  }),
+);
+// Input Schema
+export const ResourceGuardProxyGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    resourceGuardProxyName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
+    }),
+  );
+export type ResourceGuardProxyGetInput = typeof ResourceGuardProxyGetInput.Type;
+
+// Output Schema
+export const ResourceGuardProxyGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ResourceGuardProxyGetOutput =
+  typeof ResourceGuardProxyGetOutput.Type;
+
+// The operation
+/**
+ * Returns ResourceGuardProxy under vault and with the name referenced in request
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ */
+export const ResourceGuardProxyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ResourceGuardProxyGetInput,
+    outputSchema: ResourceGuardProxyGetOutput,
+  }),
+);
+// Input Schema
+export const ResourceGuardProxyPutInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vaultName: Schema.String.pipe(T.PathParam()),
+    resourceGuardProxyName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
+    }),
+  );
+export type ResourceGuardProxyPutInput = typeof ResourceGuardProxyPutInput.Type;
+
+// Output Schema
+export const ResourceGuardProxyPutOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ResourceGuardProxyPutOutput =
+  typeof ResourceGuardProxyPutOutput.Type;
+
+// The operation
+/**
+ * Add or Update ResourceGuardProxy under vault
+ * Secures vault critical operations
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vaultName - The name of the VaultResource
+ */
+export const ResourceGuardProxyPut = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ResourceGuardProxyPutInput,
+    outputSchema: ResourceGuardProxyPutOutput,
   }),
 );
 // Input Schema

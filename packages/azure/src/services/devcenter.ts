@@ -9,6 +9,58 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export const AttachedNetworksCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/attachednetworks/{attachedNetworkConnectionName}",
+    }),
+  );
+export type AttachedNetworksCreateOrUpdateInput =
+  typeof AttachedNetworksCreateOrUpdateInput.Type;
+
+// Output Schema
+export const AttachedNetworksCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type AttachedNetworksCreateOrUpdateOutput =
+  typeof AttachedNetworksCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an attached NetworkConnection.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const AttachedNetworksCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AttachedNetworksCreateOrUpdateInput,
+    outputSchema: AttachedNetworksCreateOrUpdateOutput,
+  }));
+// Input Schema
 export const AttachedNetworksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -44,6 +96,252 @@ export const AttachedNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const AttachedNetworksGetByDevCenterInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/attachednetworks/{attachedNetworkConnectionName}",
+    }),
+  );
+export type AttachedNetworksGetByDevCenterInput =
+  typeof AttachedNetworksGetByDevCenterInput.Type;
+
+// Output Schema
+export const AttachedNetworksGetByDevCenterOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type AttachedNetworksGetByDevCenterOutput =
+  typeof AttachedNetworksGetByDevCenterOutput.Type;
+
+// The operation
+/**
+ * Gets an attached NetworkConnection.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const AttachedNetworksGetByDevCenter =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AttachedNetworksGetByDevCenterInput,
+    outputSchema: AttachedNetworksGetByDevCenterOutput,
+  }));
+// Input Schema
+export const AttachedNetworksGetByProjectInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/attachednetworks/{attachedNetworkConnectionName}",
+    }),
+  );
+export type AttachedNetworksGetByProjectInput =
+  typeof AttachedNetworksGetByProjectInput.Type;
+
+// Output Schema
+export const AttachedNetworksGetByProjectOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type AttachedNetworksGetByProjectOutput =
+  typeof AttachedNetworksGetByProjectOutput.Type;
+
+// The operation
+/**
+ * Gets an attached NetworkConnection.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const AttachedNetworksGetByProject =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AttachedNetworksGetByProjectInput,
+    outputSchema: AttachedNetworksGetByProjectOutput,
+  }));
+// Input Schema
+export const AttachedNetworksListByDevCenterInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/attachednetworks",
+    }),
+  );
+export type AttachedNetworksListByDevCenterInput =
+  typeof AttachedNetworksListByDevCenterInput.Type;
+
+// Output Schema
+export const AttachedNetworksListByDevCenterOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type AttachedNetworksListByDevCenterOutput =
+  typeof AttachedNetworksListByDevCenterOutput.Type;
+
+// The operation
+/**
+ * Lists the attached NetworkConnections for a DevCenter.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ */
+export const AttachedNetworksListByDevCenter =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AttachedNetworksListByDevCenterInput,
+    outputSchema: AttachedNetworksListByDevCenterOutput,
+  }));
+// Input Schema
+export const AttachedNetworksListByProjectInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/attachednetworks",
+    }),
+  );
+export type AttachedNetworksListByProjectInput =
+  typeof AttachedNetworksListByProjectInput.Type;
+
+// Output Schema
+export const AttachedNetworksListByProjectOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type AttachedNetworksListByProjectOutput =
+  typeof AttachedNetworksListByProjectOutput.Type;
+
+// The operation
+/**
+ * Lists the attached NetworkConnections for a Project.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ */
+export const AttachedNetworksListByProject =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AttachedNetworksListByProjectInput,
+    outputSchema: AttachedNetworksListByProjectOutput,
+  }));
+// Input Schema
 export const CatalogsConnectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -73,6 +371,59 @@ export const CatalogsConnect = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CatalogsConnectOutput,
 }));
 // Input Schema
+export const CatalogsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}",
+    }),
+  );
+export type CatalogsCreateOrUpdateInput =
+  typeof CatalogsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const CatalogsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type CatalogsCreateOrUpdateOutput =
+  typeof CatalogsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates a catalog.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const CatalogsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: CatalogsCreateOrUpdateInput,
+    outputSchema: CatalogsCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
 export const CatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -100,6 +451,53 @@ export type CatalogsDeleteOutput = typeof CatalogsDeleteOutput.Type;
 export const CatalogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CatalogsDeleteInput,
   outputSchema: CatalogsDeleteOutput,
+}));
+// Input Schema
+export const CatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}",
+  }),
+);
+export type CatalogsGetInput = typeof CatalogsGetInput.Type;
+
+// Output Schema
+export const CatalogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type CatalogsGetOutput = typeof CatalogsGetOutput.Type;
+
+// The operation
+/**
+ * Gets a catalog
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const CatalogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CatalogsGetInput,
+  outputSchema: CatalogsGetOutput,
 }));
 // Input Schema
 export const CatalogsGetSyncErrorDetailsInput =
@@ -159,6 +557,78 @@ export const CatalogsGetSyncErrorDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const CatalogsListByDevCenterInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs",
+    }),
+  );
+export type CatalogsListByDevCenterInput =
+  typeof CatalogsListByDevCenterInput.Type;
+
+// Output Schema
+export const CatalogsListByDevCenterOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type CatalogsListByDevCenterOutput =
+  typeof CatalogsListByDevCenterOutput.Type;
+
+// The operation
+/**
+ * Lists catalogs for a devcenter.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ */
+export const CatalogsListByDevCenter = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: CatalogsListByDevCenterInput,
+    outputSchema: CatalogsListByDevCenterOutput,
+  }),
+);
+// Input Schema
 export const CatalogsSyncInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -186,6 +656,53 @@ export type CatalogsSyncOutput = typeof CatalogsSyncOutput.Type;
 export const CatalogsSync = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CatalogsSyncInput,
   outputSchema: CatalogsSyncOutput,
+}));
+// Input Schema
+export const CatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}",
+  }),
+);
+export type CatalogsUpdateInput = typeof CatalogsUpdateInput.Type;
+
+// Output Schema
+export const CatalogsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type CatalogsUpdateOutput = typeof CatalogsUpdateOutput.Type;
+
+// The operation
+/**
+ * Partially updates a catalog.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const CatalogsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CatalogsUpdateInput,
+  outputSchema: CatalogsUpdateOutput,
 }));
 // Input Schema
 export const CheckNameAvailabilityExecuteInput =
@@ -956,6 +1473,58 @@ export const EnvironmentDefinitionsListByProjectCatalog =
     outputSchema: EnvironmentDefinitionsListByProjectCatalogOutput,
   }));
 // Input Schema
+export const EnvironmentTypesCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/environmentTypes/{environmentTypeName}",
+    }),
+  );
+export type EnvironmentTypesCreateOrUpdateInput =
+  typeof EnvironmentTypesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const EnvironmentTypesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type EnvironmentTypesCreateOrUpdateOutput =
+  typeof EnvironmentTypesCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an environment type.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const EnvironmentTypesCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: EnvironmentTypesCreateOrUpdateInput,
+    outputSchema: EnvironmentTypesCreateOrUpdateOutput,
+  }));
+// Input Schema
 export const EnvironmentTypesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -991,6 +1560,232 @@ export const EnvironmentTypesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const EnvironmentTypesGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/environmentTypes/{environmentTypeName}",
+    }),
+  );
+export type EnvironmentTypesGetInput = typeof EnvironmentTypesGetInput.Type;
+
+// Output Schema
+export const EnvironmentTypesGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type EnvironmentTypesGetOutput = typeof EnvironmentTypesGetOutput.Type;
+
+// The operation
+/**
+ * Gets an environment type.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const EnvironmentTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: EnvironmentTypesGetInput,
+  outputSchema: EnvironmentTypesGetOutput,
+}));
+// Input Schema
+export const EnvironmentTypesListByDevCenterInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/environmentTypes",
+    }),
+  );
+export type EnvironmentTypesListByDevCenterInput =
+  typeof EnvironmentTypesListByDevCenterInput.Type;
+
+// Output Schema
+export const EnvironmentTypesListByDevCenterOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type EnvironmentTypesListByDevCenterOutput =
+  typeof EnvironmentTypesListByDevCenterOutput.Type;
+
+// The operation
+/**
+ * Lists environment types for the devcenter.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ */
+export const EnvironmentTypesListByDevCenter =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: EnvironmentTypesListByDevCenterInput,
+    outputSchema: EnvironmentTypesListByDevCenterOutput,
+  }));
+// Input Schema
+export const EnvironmentTypesUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/environmentTypes/{environmentTypeName}",
+    }),
+  );
+export type EnvironmentTypesUpdateInput =
+  typeof EnvironmentTypesUpdateInput.Type;
+
+// Output Schema
+export const EnvironmentTypesUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type EnvironmentTypesUpdateOutput =
+  typeof EnvironmentTypesUpdateOutput.Type;
+
+// The operation
+/**
+ * Partially updates an environment type.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const EnvironmentTypesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: EnvironmentTypesUpdateInput,
+    outputSchema: EnvironmentTypesUpdateOutput,
+  }),
+);
+// Input Schema
+export const GalleriesCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}",
+    }),
+  );
+export type GalleriesCreateOrUpdateInput =
+  typeof GalleriesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const GalleriesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type GalleriesCreateOrUpdateOutput =
+  typeof GalleriesCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates a gallery.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const GalleriesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: GalleriesCreateOrUpdateInput,
+    outputSchema: GalleriesCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
 export const GalleriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1019,6 +1814,125 @@ export const GalleriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GalleriesDeleteInput,
   outputSchema: GalleriesDeleteOutput,
 }));
+// Input Schema
+export const GalleriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}",
+  }),
+);
+export type GalleriesGetInput = typeof GalleriesGetInput.Type;
+
+// Output Schema
+export const GalleriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type GalleriesGetOutput = typeof GalleriesGetOutput.Type;
+
+// The operation
+/**
+ * Gets a gallery
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const GalleriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: GalleriesGetInput,
+  outputSchema: GalleriesGetOutput,
+}));
+// Input Schema
+export const GalleriesListByDevCenterInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries",
+    }),
+  );
+export type GalleriesListByDevCenterInput =
+  typeof GalleriesListByDevCenterInput.Type;
+
+// Output Schema
+export const GalleriesListByDevCenterOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type GalleriesListByDevCenterOutput =
+  typeof GalleriesListByDevCenterOutput.Type;
+
+// The operation
+/**
+ * Lists galleries for a devcenter.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ */
+export const GalleriesListByDevCenter = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: GalleriesListByDevCenterInput,
+    outputSchema: GalleriesListByDevCenterOutput,
+  }),
+);
 // Input Schema
 export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1424,6 +2338,58 @@ export const NetworkConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const NetworkConnectionsGetHealthDetailsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}/healthChecks/latest",
+    }),
+  );
+export type NetworkConnectionsGetHealthDetailsInput =
+  typeof NetworkConnectionsGetHealthDetailsInput.Type;
+
+// Output Schema
+export const NetworkConnectionsGetHealthDetailsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type NetworkConnectionsGetHealthDetailsOutput =
+  typeof NetworkConnectionsGetHealthDetailsOutput.Type;
+
+// The operation
+/**
+ * Gets health check status details.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const NetworkConnectionsGetHealthDetails =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkConnectionsGetHealthDetailsInput,
+    outputSchema: NetworkConnectionsGetHealthDetailsOutput,
+  }));
+// Input Schema
 export const NetworkConnectionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -1494,6 +2460,67 @@ export const NetworkConnectionsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: NetworkConnectionsListBySubscriptionInput,
     outputSchema: NetworkConnectionsListBySubscriptionOutput,
+  }));
+// Input Schema
+export const NetworkConnectionsListHealthDetailsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}/healthChecks",
+    }),
+  );
+export type NetworkConnectionsListHealthDetailsInput =
+  typeof NetworkConnectionsListHealthDetailsInput.Type;
+
+// Output Schema
+export const NetworkConnectionsListHealthDetailsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type NetworkConnectionsListHealthDetailsOutput =
+  typeof NetworkConnectionsListHealthDetailsOutput.Type;
+
+// The operation
+/**
+ * Lists health check status details
+ */
+export const NetworkConnectionsListHealthDetails =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkConnectionsListHealthDetailsInput,
+    outputSchema: NetworkConnectionsListHealthDetailsOutput,
   }));
 // Input Schema
 export const NetworkConnectionsListOutboundNetworkDependenciesEndpointsInput =
@@ -1609,6 +2636,137 @@ export const NetworkConnectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: NetworkConnectionsUpdateInput,
     outputSchema: NetworkConnectionsUpdateOutput,
+  }),
+);
+// Input Schema
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({ method: "GET", path: "/providers/Microsoft.DevCenter/operations" }),
+);
+export type OperationsListInput = typeof OperationsListInput.Type;
+
+// Output Schema
+export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
+        display: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        origin: Schema.optional(
+          Schema.Literals(["user", "system", "user,system"]),
+        ),
+        actionType: Schema.optional(Schema.Literals(["Internal"])),
+      }),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type OperationsListOutput = typeof OperationsListOutput.Type;
+
+// The operation
+/**
+ * Lists all of the available resource provider operations.
+ *
+ * @param api-version - The API version to use for this operation.
+ */
+export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OperationsListInput,
+  outputSchema: OperationsListOutput,
+}));
+// Input Schema
+export const OperationStatusesGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/locations/{location}/operationStatuses/{operationId}",
+    }),
+  );
+export type OperationStatusesGetInput = typeof OperationStatusesGetInput.Type;
+
+// Output Schema
+export const OperationStatusesGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(Schema.Array(Schema.Unknown)),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type OperationStatusesGetOutput = typeof OperationStatusesGetOutput.Type;
+
+// The operation
+/**
+ * Get Operation Status
+ *
+ * Gets the current status of an async operation.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ */
+export const OperationStatusesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: OperationStatusesGetInput,
+    outputSchema: OperationStatusesGetOutput,
   }),
 );
 // Input Schema
@@ -1778,6 +2936,129 @@ export const PoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PoolsUpdateInput,
   outputSchema: PoolsUpdateOutput,
 }));
+// Input Schema
+export const ProjectAllowedEnvironmentTypesGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/allowedEnvironmentTypes/{environmentTypeName}",
+    }),
+  );
+export type ProjectAllowedEnvironmentTypesGetInput =
+  typeof ProjectAllowedEnvironmentTypesGetInput.Type;
+
+// Output Schema
+export const ProjectAllowedEnvironmentTypesGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProjectAllowedEnvironmentTypesGetOutput =
+  typeof ProjectAllowedEnvironmentTypesGetOutput.Type;
+
+// The operation
+/**
+ * Gets an allowed environment type.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const ProjectAllowedEnvironmentTypesGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ProjectAllowedEnvironmentTypesGetInput,
+    outputSchema: ProjectAllowedEnvironmentTypesGetOutput,
+  }));
+// Input Schema
+export const ProjectAllowedEnvironmentTypesListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/allowedEnvironmentTypes",
+    }),
+  );
+export type ProjectAllowedEnvironmentTypesListInput =
+  typeof ProjectAllowedEnvironmentTypesListInput.Type;
+
+// Output Schema
+export const ProjectAllowedEnvironmentTypesListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ProjectAllowedEnvironmentTypesListOutput =
+  typeof ProjectAllowedEnvironmentTypesListOutput.Type;
+
+// The operation
+/**
+ * Lists allowed environment types for a project.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ */
+export const ProjectAllowedEnvironmentTypesList =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ProjectAllowedEnvironmentTypesListInput,
+    outputSchema: ProjectAllowedEnvironmentTypesListOutput,
+  }));
 // Input Schema
 export const ProjectCatalogEnvironmentDefinitionsGetErrorDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2097,6 +3378,58 @@ export const ProjectCatalogsConnect = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const ProjectCatalogsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}",
+    }),
+  );
+export type ProjectCatalogsCreateOrUpdateInput =
+  typeof ProjectCatalogsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const ProjectCatalogsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProjectCatalogsCreateOrUpdateOutput =
+  typeof ProjectCatalogsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates a project catalog.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const ProjectCatalogsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ProjectCatalogsCreateOrUpdateInput,
+    outputSchema: ProjectCatalogsCreateOrUpdateOutput,
+  }));
+// Input Schema
 export const ProjectCatalogsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2130,6 +3463,55 @@ export const ProjectCatalogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
     outputSchema: ProjectCatalogsDeleteOutput,
   }),
 );
+// Input Schema
+export const ProjectCatalogsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}",
+    }),
+  );
+export type ProjectCatalogsGetInput = typeof ProjectCatalogsGetInput.Type;
+
+// Output Schema
+export const ProjectCatalogsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProjectCatalogsGetOutput = typeof ProjectCatalogsGetOutput.Type;
+
+// The operation
+/**
+ * Gets an associated project catalog.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const ProjectCatalogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ProjectCatalogsGetInput,
+  outputSchema: ProjectCatalogsGetOutput,
+}));
 // Input Schema
 export const ProjectCatalogsGetSyncErrorDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2195,6 +3577,125 @@ export const ProjectCatalogsGetSyncErrorDetails =
     outputSchema: ProjectCatalogsGetSyncErrorDetailsOutput,
   }));
 // Input Schema
+export const ProjectCatalogsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs",
+    }),
+  );
+export type ProjectCatalogsListInput = typeof ProjectCatalogsListInput.Type;
+
+// Output Schema
+export const ProjectCatalogsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ProjectCatalogsListOutput = typeof ProjectCatalogsListOutput.Type;
+
+// The operation
+/**
+ * Lists the catalogs associated with a project.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ */
+export const ProjectCatalogsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ProjectCatalogsListInput,
+  outputSchema: ProjectCatalogsListOutput,
+}));
+// Input Schema
+export const ProjectCatalogsPatchInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}",
+    }),
+  );
+export type ProjectCatalogsPatchInput = typeof ProjectCatalogsPatchInput.Type;
+
+// Output Schema
+export const ProjectCatalogsPatchOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProjectCatalogsPatchOutput = typeof ProjectCatalogsPatchOutput.Type;
+
+// The operation
+/**
+ * Partially updates a project catalog.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const ProjectCatalogsPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ProjectCatalogsPatchInput,
+    outputSchema: ProjectCatalogsPatchOutput,
+  }),
+);
+// Input Schema
 export const ProjectCatalogsSyncInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2225,6 +3726,58 @@ export const ProjectCatalogsSync = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProjectCatalogsSyncInput,
   outputSchema: ProjectCatalogsSyncOutput,
 }));
+// Input Schema
+export const ProjectEnvironmentTypesCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/environmentTypes/{environmentTypeName}",
+    }),
+  );
+export type ProjectEnvironmentTypesCreateOrUpdateInput =
+  typeof ProjectEnvironmentTypesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const ProjectEnvironmentTypesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProjectEnvironmentTypesCreateOrUpdateOutput =
+  typeof ProjectEnvironmentTypesCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates a project environment type.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const ProjectEnvironmentTypesCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ProjectEnvironmentTypesCreateOrUpdateInput,
+    outputSchema: ProjectEnvironmentTypesCreateOrUpdateOutput,
+  }));
 // Input Schema
 export const ProjectEnvironmentTypesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2260,6 +3813,235 @@ export const ProjectEnvironmentTypesDelete =
     outputSchema: ProjectEnvironmentTypesDeleteOutput,
   }));
 // Input Schema
+export const ProjectEnvironmentTypesGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/environmentTypes/{environmentTypeName}",
+    }),
+  );
+export type ProjectEnvironmentTypesGetInput =
+  typeof ProjectEnvironmentTypesGetInput.Type;
+
+// Output Schema
+export const ProjectEnvironmentTypesGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProjectEnvironmentTypesGetOutput =
+  typeof ProjectEnvironmentTypesGetOutput.Type;
+
+// The operation
+/**
+ * Gets a project environment type.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const ProjectEnvironmentTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ProjectEnvironmentTypesGetInput,
+    outputSchema: ProjectEnvironmentTypesGetOutput,
+  }),
+);
+// Input Schema
+export const ProjectEnvironmentTypesListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/environmentTypes",
+    }),
+  );
+export type ProjectEnvironmentTypesListInput =
+  typeof ProjectEnvironmentTypesListInput.Type;
+
+// Output Schema
+export const ProjectEnvironmentTypesListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ProjectEnvironmentTypesListOutput =
+  typeof ProjectEnvironmentTypesListOutput.Type;
+
+// The operation
+/**
+ * Lists environment types for a project.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ */
+export const ProjectEnvironmentTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ProjectEnvironmentTypesListInput,
+    outputSchema: ProjectEnvironmentTypesListOutput,
+  }),
+);
+// Input Schema
+export const ProjectEnvironmentTypesUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/environmentTypes/{environmentTypeName}",
+    }),
+  );
+export type ProjectEnvironmentTypesUpdateInput =
+  typeof ProjectEnvironmentTypesUpdateInput.Type;
+
+// Output Schema
+export const ProjectEnvironmentTypesUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProjectEnvironmentTypesUpdateOutput =
+  typeof ProjectEnvironmentTypesUpdateOutput.Type;
+
+// The operation
+/**
+ * Partially updates a project environment type.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const ProjectEnvironmentTypesUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ProjectEnvironmentTypesUpdateInput,
+    outputSchema: ProjectEnvironmentTypesUpdateOutput,
+  }));
+// Input Schema
+export const ProjectPoliciesCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies/{projectPolicyName}",
+    }),
+  );
+export type ProjectPoliciesCreateOrUpdateInput =
+  typeof ProjectPoliciesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const ProjectPoliciesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProjectPoliciesCreateOrUpdateOutput =
+  typeof ProjectPoliciesCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an project policy.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const ProjectPoliciesCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ProjectPoliciesCreateOrUpdateInput,
+    outputSchema: ProjectPoliciesCreateOrUpdateOutput,
+  }));
+// Input Schema
 export const ProjectPoliciesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2291,6 +4073,178 @@ export const ProjectPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ProjectPoliciesDeleteInput,
     outputSchema: ProjectPoliciesDeleteOutput,
+  }),
+);
+// Input Schema
+export const ProjectPoliciesGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies/{projectPolicyName}",
+    }),
+  );
+export type ProjectPoliciesGetInput = typeof ProjectPoliciesGetInput.Type;
+
+// Output Schema
+export const ProjectPoliciesGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProjectPoliciesGetOutput = typeof ProjectPoliciesGetOutput.Type;
+
+// The operation
+/**
+ * Gets a specific project policy.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const ProjectPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ProjectPoliciesGetInput,
+  outputSchema: ProjectPoliciesGetOutput,
+}));
+// Input Schema
+export const ProjectPoliciesListByDevCenterInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $top: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies",
+    }),
+  );
+export type ProjectPoliciesListByDevCenterInput =
+  typeof ProjectPoliciesListByDevCenterInput.Type;
+
+// Output Schema
+export const ProjectPoliciesListByDevCenterOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ProjectPoliciesListByDevCenterOutput =
+  typeof ProjectPoliciesListByDevCenterOutput.Type;
+
+// The operation
+/**
+ * Lists all project policies in the dev center
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ */
+export const ProjectPoliciesListByDevCenter =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ProjectPoliciesListByDevCenterInput,
+    outputSchema: ProjectPoliciesListByDevCenterOutput,
+  }));
+// Input Schema
+export const ProjectPoliciesUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies/{projectPolicyName}",
+    }),
+  );
+export type ProjectPoliciesUpdateInput = typeof ProjectPoliciesUpdateInput.Type;
+
+// Output Schema
+export const ProjectPoliciesUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ProjectPoliciesUpdateOutput =
+  typeof ProjectPoliciesUpdateOutput.Type;
+
+// The operation
+/**
+ * Partially updates an project policy.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const ProjectPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ProjectPoliciesUpdateInput,
+    outputSchema: ProjectPoliciesUpdateOutput,
   }),
 );
 // Input Schema
@@ -2566,6 +4520,51 @@ export const ProjectsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsUpdateOutput,
 }));
 // Input Schema
+export const SchedulesCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules/{scheduleName}",
+    }),
+  );
+export type SchedulesCreateOrUpdateInput =
+  typeof SchedulesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const SchedulesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type SchedulesCreateOrUpdateOutput =
+  typeof SchedulesCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates a Schedule.
+ */
+export const SchedulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: SchedulesCreateOrUpdateInput,
+    outputSchema: SchedulesCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
 export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -2588,6 +4587,235 @@ export const SchedulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SchedulesDeleteInput,
   outputSchema: SchedulesDeleteOutput,
 }));
+// Input Schema
+export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules/{scheduleName}",
+  }),
+);
+export type SchedulesGetInput = typeof SchedulesGetInput.Type;
+
+// Output Schema
+export const SchedulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type SchedulesGetOutput = typeof SchedulesGetOutput.Type;
+
+// The operation
+/**
+ * Gets a schedule resource.
+ */
+export const SchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: SchedulesGetInput,
+  outputSchema: SchedulesGetOutput,
+}));
+// Input Schema
+export const SchedulesListByPoolInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules",
+    }),
+  );
+export type SchedulesListByPoolInput = typeof SchedulesListByPoolInput.Type;
+
+// Output Schema
+export const SchedulesListByPoolOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type SchedulesListByPoolOutput = typeof SchedulesListByPoolOutput.Type;
+
+// The operation
+/**
+ * Lists schedules for a pool
+ */
+export const SchedulesListByPool = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: SchedulesListByPoolInput,
+  outputSchema: SchedulesListByPoolOutput,
+}));
+// Input Schema
+export const SchedulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules/{scheduleName}",
+  }),
+);
+export type SchedulesUpdateInput = typeof SchedulesUpdateInput.Type;
+
+// Output Schema
+export const SchedulesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type SchedulesUpdateOutput = typeof SchedulesUpdateOutput.Type;
+
+// The operation
+/**
+ * Partially updates a Scheduled.
+ */
+export const SchedulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: SchedulesUpdateInput,
+  outputSchema: SchedulesUpdateOutput,
+}));
+// Input Schema
+export const SkusListByProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/listSkus",
+  }),
+);
+export type SkusListByProjectInput = typeof SkusListByProjectInput.Type;
+
+// Output Schema
+export const SkusListByProjectOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          tier: Schema.optional(
+            Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+          ),
+          size: Schema.optional(Schema.String),
+          family: Schema.optional(Schema.String),
+          capacity: Schema.optional(Schema.Number),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type SkusListByProjectOutput = typeof SkusListByProjectOutput.Type;
+
+// The operation
+/**
+ * Lists SKUs available to the project
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const SkusListByProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: SkusListByProjectInput,
+  outputSchema: SkusListByProjectOutput,
+}));
+// Input Schema
+export const SkusListBySubscriptionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/skus",
+    }),
+  );
+export type SkusListBySubscriptionInput =
+  typeof SkusListBySubscriptionInput.Type;
+
+// Output Schema
+export const SkusListBySubscriptionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          tier: Schema.optional(
+            Schema.Literals(["Free", "Basic", "Standard", "Premium"]),
+          ),
+          size: Schema.optional(Schema.String),
+          family: Schema.optional(Schema.String),
+          capacity: Schema.optional(Schema.Number),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type SkusListBySubscriptionOutput =
+  typeof SkusListBySubscriptionOutput.Type;
+
+// The operation
+/**
+ * Lists the Microsoft.DevCenter SKUs available in a subscription
+ */
+export const SkusListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: SkusListBySubscriptionInput,
+    outputSchema: SkusListBySubscriptionOutput,
+  }),
+);
 // Input Schema
 export const UsagesListByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

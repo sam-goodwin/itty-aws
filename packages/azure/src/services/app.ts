@@ -4772,6 +4772,98 @@ export const ManagedEnvironmentDiagnosticsListDetectors =
     outputSchema: ManagedEnvironmentDiagnosticsListDetectorsOutput,
   }));
 // Input Schema
+export const ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals([
+              "Pending",
+              "Approved",
+              "Rejected",
+              "Disconnected",
+            ]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals([
+            "Succeeded",
+            "Failed",
+            "Canceled",
+            "Waiting",
+            "Updating",
+            "Deleting",
+            "Pending",
+          ]),
+        ),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateInput =
+  typeof ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateOutput =
+  typeof ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Update the state of a private endpoint connection for a given managed environment.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the Managed Environment.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
+ * @param api-version - The API version to use for this operation.
+ * @param properties - Resource properties.
+ */
+export const ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema:
+      ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateInput,
+    outputSchema:
+      ManagedEnvironmentPrivateEndpointConnectionsCreateOrUpdateOutput,
+  }));
+// Input Schema
 export const ManagedEnvironmentPrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4808,6 +4900,204 @@ export const ManagedEnvironmentPrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ManagedEnvironmentPrivateEndpointConnectionsDeleteInput,
     outputSchema: ManagedEnvironmentPrivateEndpointConnectionsDeleteOutput,
+  }));
+// Input Schema
+export const ManagedEnvironmentPrivateEndpointConnectionsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type ManagedEnvironmentPrivateEndpointConnectionsGetInput =
+  typeof ManagedEnvironmentPrivateEndpointConnectionsGetInput.Type;
+
+// Output Schema
+export const ManagedEnvironmentPrivateEndpointConnectionsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ManagedEnvironmentPrivateEndpointConnectionsGetOutput =
+  typeof ManagedEnvironmentPrivateEndpointConnectionsGetOutput.Type;
+
+// The operation
+/**
+ * Get a private endpoint connection for a given managed environment.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the Managed Environment.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
+ * @param api-version - The API version to use for this operation.
+ */
+export const ManagedEnvironmentPrivateEndpointConnectionsGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ManagedEnvironmentPrivateEndpointConnectionsGetInput,
+    outputSchema: ManagedEnvironmentPrivateEndpointConnectionsGetOutput,
+  }));
+// Input Schema
+export const ManagedEnvironmentPrivateEndpointConnectionsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/privateEndpointConnections",
+    }),
+  );
+export type ManagedEnvironmentPrivateEndpointConnectionsListInput =
+  typeof ManagedEnvironmentPrivateEndpointConnectionsListInput.Type;
+
+// Output Schema
+export const ManagedEnvironmentPrivateEndpointConnectionsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ManagedEnvironmentPrivateEndpointConnectionsListOutput =
+  typeof ManagedEnvironmentPrivateEndpointConnectionsListOutput.Type;
+
+// The operation
+/**
+ * List private endpoint connections for a given managed environment.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the Managed Environment.
+ * @param api-version - The API version to use for this operation.
+ */
+export const ManagedEnvironmentPrivateEndpointConnectionsList =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ManagedEnvironmentPrivateEndpointConnectionsListInput,
+    outputSchema: ManagedEnvironmentPrivateEndpointConnectionsListOutput,
+  }));
+// Input Schema
+export const ManagedEnvironmentPrivateLinkResourcesListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    environmentName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/privateLinkResources",
+    }),
+  );
+export type ManagedEnvironmentPrivateLinkResourcesListInput =
+  typeof ManagedEnvironmentPrivateLinkResourcesListInput.Type;
+
+// Output Schema
+export const ManagedEnvironmentPrivateLinkResourcesListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ManagedEnvironmentPrivateLinkResourcesListOutput =
+  typeof ManagedEnvironmentPrivateLinkResourcesListOutput.Type;
+
+// The operation
+/**
+ * List private link resources for a given managed environment.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param environmentName - Name of the Managed Environment.
+ * @param api-version - The API version to use for this operation.
+ */
+export const ManagedEnvironmentPrivateLinkResourcesList =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ManagedEnvironmentPrivateLinkResourcesListInput,
+    outputSchema: ManagedEnvironmentPrivateLinkResourcesListOutput,
   }));
 // Input Schema
 export const ManagedEnvironmentsCreateOrUpdateInput =

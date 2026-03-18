@@ -62,6 +62,234 @@ export const AdvisorScoresList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AdvisorScoresListOutput,
 }));
 // Input Schema
+export const ConfigurationsCreateInResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configurationName: Schema.Literals(["default"]).pipe(T.PathParam()),
+    resourceGroup: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Advisor/configurations/{configurationName}",
+    }),
+  );
+export type ConfigurationsCreateInResourceGroupInput =
+  typeof ConfigurationsCreateInResourceGroupInput.Type;
+
+// Output Schema
+export const ConfigurationsCreateInResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ConfigurationsCreateInResourceGroupOutput =
+  typeof ConfigurationsCreateInResourceGroupOutput.Type;
+
+// The operation
+/**
+ * Create/Overwrite Azure Advisor configuration.
+ *
+ * @param configurationName - Advisor configuration name. Value must be 'default'
+ * @param resourceGroup - The name of the Azure resource group.
+ */
+export const ConfigurationsCreateInResourceGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ConfigurationsCreateInResourceGroupInput,
+    outputSchema: ConfigurationsCreateInResourceGroupOutput,
+  }));
+// Input Schema
+export const ConfigurationsCreateInSubscriptionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configurationName: Schema.Literals(["default"]).pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/configurations/{configurationName}",
+    }),
+  );
+export type ConfigurationsCreateInSubscriptionInput =
+  typeof ConfigurationsCreateInSubscriptionInput.Type;
+
+// Output Schema
+export const ConfigurationsCreateInSubscriptionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ConfigurationsCreateInSubscriptionOutput =
+  typeof ConfigurationsCreateInSubscriptionOutput.Type;
+
+// The operation
+/**
+ * Create/Overwrite Azure Advisor configuration.
+ *
+ * Create/Overwrite Azure Advisor configuration and also delete all configurations of contained resource groups.
+ *
+ * @param configurationName - Advisor configuration name. Value must be 'default'
+ */
+export const ConfigurationsCreateInSubscription =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ConfigurationsCreateInSubscriptionInput,
+    outputSchema: ConfigurationsCreateInSubscriptionOutput,
+  }));
+// Input Schema
+export const ConfigurationsListByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroup: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Advisor/configurations",
+    }),
+  );
+export type ConfigurationsListByResourceGroupInput =
+  typeof ConfigurationsListByResourceGroupInput.Type;
+
+// Output Schema
+export const ConfigurationsListByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ConfigurationsListByResourceGroupOutput =
+  typeof ConfigurationsListByResourceGroupOutput.Type;
+
+// The operation
+/**
+ * Retrieve Azure Advisor configurations.
+ *
+ * @param resourceGroup - The name of the Azure resource group.
+ */
+export const ConfigurationsListByResourceGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ConfigurationsListByResourceGroupInput,
+    outputSchema: ConfigurationsListByResourceGroupOutput,
+  }));
+// Input Schema
+export const ConfigurationsListBySubscriptionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/configurations",
+    }),
+  );
+export type ConfigurationsListBySubscriptionInput =
+  typeof ConfigurationsListBySubscriptionInput.Type;
+
+// Output Schema
+export const ConfigurationsListBySubscriptionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ConfigurationsListBySubscriptionOutput =
+  typeof ConfigurationsListBySubscriptionOutput.Type;
+
+// The operation
+/**
+ * Retrieve Azure Advisor configurations.
+ *
+ * Retrieve Azure Advisor configurations and also retrieve configurations of contained resource groups.
+ */
+export const ConfigurationsListBySubscription =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ConfigurationsListBySubscriptionInput,
+    outputSchema: ConfigurationsListBySubscriptionOutput,
+  }));
+// Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -282,6 +510,53 @@ export const RecommendationsGenerate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const RecommendationsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+    recommendationId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/{resourceUri}/providers/Microsoft.Advisor/recommendations/{recommendationId}",
+    }),
+  );
+export type RecommendationsGetInput = typeof RecommendationsGetInput.Type;
+
+// Output Schema
+export const RecommendationsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type RecommendationsGetOutput = typeof RecommendationsGetOutput.Type;
+
+// The operation
+/**
+ * Obtains details of a cached recommendation.
+ *
+ * @param resourceUri - The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
+ * @param recommendationId - The recommendation ID.
+ */
+export const RecommendationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: RecommendationsGetInput,
+  outputSchema: RecommendationsGetOutput,
+}));
+// Input Schema
 export const RecommendationsGetGenerateStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationId: Schema.String.pipe(T.PathParam()),
@@ -312,6 +587,121 @@ export const RecommendationsGetGenerateStatus =
     outputSchema: RecommendationsGetGenerateStatusOutput,
   }));
 // Input Schema
+export const RecommendationsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/recommendations",
+    }),
+  );
+export type RecommendationsListInput = typeof RecommendationsListInput.Type;
+
+// Output Schema
+export const RecommendationsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextLink: Schema.optional(Schema.String),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+  });
+export type RecommendationsListOutput = typeof RecommendationsListOutput.Type;
+
+// The operation
+/**
+ * Obtains cached recommendations for a subscription. The recommendations are generated or computed by invoking generateRecommendations.
+ *
+ * @param $filter - The filter to apply to the recommendations.<br>Filter can be applied to properties ['ResourceId', 'ResourceGroup', 'RecommendationTypeGuid', '[Category](#category)', 'SubCategory', 'RetirementDate'] with operators ['eq', 'and', 'or', 'lt', 'gt', 'le', 'ge'].<br><br>⚠ **Note:** `Control` is a legacy filter property and will be deprecated in the future. Please use `SubCategory` for filtering recommendation subcategory.<br><br>Valid options for SubCategory:<br>['BusinessContinuity', 'DisasterRecovery', 'HighAvailability', 'MonitoringAndAlerting', 'Other', 'Personalized', 'PrioritizedRecommendations', 'Scalability', 'ServiceUpgradeAndRetirement', 'Validation']<br><br>Example:<br>- $filter=Category eq 'Cost' and ResourceGroup eq 'MyResourceGroup'<br>-$filter=SubCategory eq 'ServiceUpgradeAndRetirement' and RetirementDate le '2024-01-01' and RetirementDate ge '2028-01-01'
+ * @param $top - The number of recommendations per page if a paged version of this API is being used.
+ * @param $skipToken - The page-continuation token to use with a paged version of this API.
+ */
+export const RecommendationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: RecommendationsListInput,
+  outputSchema: RecommendationsListOutput,
+}));
+// Input Schema
+export const SuppressionsCreateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+    recommendationId: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/{resourceUri}/providers/Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}",
+    }),
+  );
+export type SuppressionsCreateInput = typeof SuppressionsCreateInput.Type;
+
+// Output Schema
+export const SuppressionsCreateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type SuppressionsCreateOutput = typeof SuppressionsCreateOutput.Type;
+
+// The operation
+/**
+ * Enables the snoozed or dismissed attribute of a recommendation. The snoozed or dismissed attribute is referred to as a suppression. Use this API to create or update the snoozed or dismissed status of a recommendation.
+ *
+ * @param resourceUri - The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
+ * @param recommendationId - The recommendation ID.
+ * @param name - The name of the suppression.
+ */
+export const SuppressionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: SuppressionsCreateInput,
+  outputSchema: SuppressionsCreateOutput,
+}));
+// Input Schema
 export const SuppressionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -340,4 +730,115 @@ export type SuppressionsDeleteOutput = typeof SuppressionsDeleteOutput.Type;
 export const SuppressionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SuppressionsDeleteInput,
   outputSchema: SuppressionsDeleteOutput,
+}));
+// Input Schema
+export const SuppressionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+  recommendationId: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{resourceUri}/providers/Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}",
+  }),
+);
+export type SuppressionsGetInput = typeof SuppressionsGetInput.Type;
+
+// Output Schema
+export const SuppressionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type SuppressionsGetOutput = typeof SuppressionsGetOutput.Type;
+
+// The operation
+/**
+ * Obtains the details of a suppression.
+ *
+ * @param resourceUri - The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
+ * @param recommendationId - The recommendation ID.
+ * @param name - The name of the suppression.
+ */
+export const SuppressionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: SuppressionsGetInput,
+  outputSchema: SuppressionsGetOutput,
+}));
+// Input Schema
+export const SuppressionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  $top: Schema.optional(Schema.Number),
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/suppressions",
+  }),
+);
+export type SuppressionsListInput = typeof SuppressionsListInput.Type;
+
+// Output Schema
+export const SuppressionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextLink: Schema.optional(Schema.String),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+  },
+);
+export type SuppressionsListOutput = typeof SuppressionsListOutput.Type;
+
+// The operation
+/**
+ * Retrieves the list of snoozed or dismissed suppressions for a subscription. The snoozed or dismissed attribute of a recommendation is referred to as a suppression.
+ *
+ * @param $top - The number of suppressions per page if a paged version of this API is being used.
+ * @param $skipToken - The page-continuation token to use with a paged version of this API.
+ */
+export const SuppressionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: SuppressionsListInput,
+  outputSchema: SuppressionsListOutput,
 }));

@@ -308,6 +308,95 @@ export const AccessPolicyList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccessPolicyListOutput,
 }));
 // Input Schema
+export const AsyncOperationStatusGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/locations/{location}/asyncOperations/{operationId}",
+    }),
+  );
+export type AsyncOperationStatusGetInput =
+  typeof AsyncOperationStatusGetInput.Type;
+
+// Output Schema
+export const AsyncOperationStatusGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(Schema.Array(Schema.Unknown)),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type AsyncOperationStatusGetOutput =
+  typeof AsyncOperationStatusGetOutput.Type;
+
+// The operation
+/**
+ * For checking the ongoing status of an operation
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param location - The location at which operation was triggered
+ * @param operationId - The ID of asynchronous operation
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ */
+export const AsyncOperationStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AsyncOperationStatusGetInput,
+    outputSchema: AsyncOperationStatusGetOutput,
+  }),
+);
+// Input Schema
 export const FirewallRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -819,6 +908,277 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export const PrivateEndpointConnectionsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type PrivateEndpointConnectionsGetInput =
+  typeof PrivateEndpointConnectionsGetInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type PrivateEndpointConnectionsGetOutput =
+  typeof PrivateEndpointConnectionsGetOutput.Type;
+
+// The operation
+/**
+ * Gets the specified private endpoint connection associated with the redis cache.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - The name of the Redis cache.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
+ */
+export const PrivateEndpointConnectionsGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionsGetInput,
+    outputSchema: PrivateEndpointConnectionsGetOutput,
+  }));
+// Input Schema
+export const PrivateEndpointConnectionsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections",
+    }),
+  );
+export type PrivateEndpointConnectionsListInput =
+  typeof PrivateEndpointConnectionsListInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type PrivateEndpointConnectionsListOutput =
+  typeof PrivateEndpointConnectionsListOutput.Type;
+
+// The operation
+/**
+ * List all the private endpoint connections associated with the redis cache.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - The name of the Redis cache.
+ */
+export const PrivateEndpointConnectionsList =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionsListInput,
+    outputSchema: PrivateEndpointConnectionsListOutput,
+  }));
+// Input Schema
+export const PrivateEndpointConnectionsPutInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals(["Pending", "Approved", "Rejected"]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type PrivateEndpointConnectionsPutInput =
+  typeof PrivateEndpointConnectionsPutInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsPutOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type PrivateEndpointConnectionsPutOutput =
+  typeof PrivateEndpointConnectionsPutOutput.Type;
+
+// The operation
+/**
+ * Update the state of specified private endpoint connection associated with the redis cache.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - The name of the Redis cache.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
+ * @param properties - Resource properties.
+ */
+export const PrivateEndpointConnectionsPut =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionsPutInput,
+    outputSchema: PrivateEndpointConnectionsPutOutput,
+  }));
+// Input Schema
+export const PrivateLinkResourcesListByRedisCacheInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cacheName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateLinkResources",
+    }),
+  );
+export type PrivateLinkResourcesListByRedisCacheInput =
+  typeof PrivateLinkResourcesListByRedisCacheInput.Type;
+
+// Output Schema
+export const PrivateLinkResourcesListByRedisCacheOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type PrivateLinkResourcesListByRedisCacheOutput =
+  typeof PrivateLinkResourcesListByRedisCacheOutput.Type;
+
+// The operation
+/**
+ * Gets the private link resources that need to be created for a redis cache.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - The name of the Redis cache.
+ */
+export const PrivateLinkResourcesListByRedisCache =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateLinkResourcesListByRedisCacheInput,
+    outputSchema: PrivateLinkResourcesListByRedisCacheOutput,
+  }));
+// Input Schema
 export const RedisCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -946,6 +1306,89 @@ export type RedisExportDataOutput = typeof RedisExportDataOutput.Type;
 export const RedisExportData = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RedisExportDataInput,
   outputSchema: RedisExportDataOutput,
+}));
+// Input Schema
+export const RedisFlushCacheInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/flush",
+  }),
+);
+export type RedisFlushCacheInput = typeof RedisFlushCacheInput.Type;
+
+// Output Schema
+export const RedisFlushCacheOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  status: Schema.String,
+  percentComplete: Schema.optional(Schema.Number),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  operations: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        status: Schema.String,
+        percentComplete: Schema.optional(Schema.Number),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.String),
+        operations: Schema.optional(Schema.Array(Schema.Unknown)),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+  ),
+  error: Schema.optional(
+    Schema.Struct({
+      code: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+      target: Schema.optional(Schema.String),
+      details: Schema.optional(Schema.Array(Schema.Unknown)),
+      additionalInfo: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            info: Schema.optional(Schema.Unknown),
+          }),
+        ),
+      ),
+    }),
+  ),
+});
+export type RedisFlushCacheOutput = typeof RedisFlushCacheOutput.Type;
+
+// The operation
+/**
+ * Deletes all of the keys in a cache.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cacheName - The name of the Redis cache.
+ */
+export const RedisFlushCache = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: RedisFlushCacheInput,
+  outputSchema: RedisFlushCacheOutput,
 }));
 // Input Schema
 export const RedisForceRebootInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

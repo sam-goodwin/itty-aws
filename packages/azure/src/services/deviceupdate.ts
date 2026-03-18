@@ -357,6 +357,51 @@ export const InstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InstancesUpdateOutput,
 }));
 // Input Schema
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.DeviceUpdate/operations",
+  }),
+);
+export type OperationsListInput = typeof OperationsListInput.Type;
+
+// Output Schema
+export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
+        display: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        origin: Schema.optional(
+          Schema.Literals(["user", "system", "user,system"]),
+        ),
+        actionType: Schema.optional(Schema.Literals(["Internal"])),
+      }),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type OperationsListOutput = typeof OperationsListOutput.Type;
+
+// The operation
+/**
+ * Returns list of operations for Microsoft.DeviceUpdate resource provider.
+ */
+export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OperationsListInput,
+  outputSchema: OperationsListOutput,
+}));
+// Input Schema
 export const PrivateEndpointConnectionProxiesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -752,6 +797,73 @@ export const PrivateEndpointConnectionProxiesValidate =
     outputSchema: PrivateEndpointConnectionProxiesValidateOutput,
   }));
 // Input Schema
+export const PrivateEndpointConnectionsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      privateEndpoint: Schema.optional(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+        }),
+      ),
+      privateLinkServiceConnectionState: Schema.Struct({
+        status: Schema.optional(
+          Schema.Literals(["Pending", "Approved", "Rejected"]),
+        ),
+        description: Schema.optional(Schema.String),
+        actionsRequired: Schema.optional(Schema.String),
+      }),
+      groupIds: Schema.optional(Schema.Array(Schema.String)),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+      ),
+    }),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type PrivateEndpointConnectionsCreateOrUpdateInput =
+  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type PrivateEndpointConnectionsCreateOrUpdateOutput =
+  typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Update the state of specified private endpoint connection associated with the device update account.
+ *
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
+ * @param properties - Resource properties.
+ */
+export const PrivateEndpointConnectionsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
+    outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
+  }));
+// Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
@@ -780,6 +892,114 @@ export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
+  }));
+// Input Schema
+export const PrivateEndpointConnectionsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type PrivateEndpointConnectionsGetInput =
+  typeof PrivateEndpointConnectionsGetInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type PrivateEndpointConnectionsGetOutput =
+  typeof PrivateEndpointConnectionsGetOutput.Type;
+
+// The operation
+/**
+ * Get the specified private endpoint connection associated with the device update account.
+ *
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
+ */
+export const PrivateEndpointConnectionsGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionsGetInput,
+    outputSchema: PrivateEndpointConnectionsGetOutput,
+  }));
+// Input Schema
+export const PrivateEndpointConnectionsListByAccountInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnections",
+    }),
+  );
+export type PrivateEndpointConnectionsListByAccountInput =
+  typeof PrivateEndpointConnectionsListByAccountInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsListByAccountOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+  });
+export type PrivateEndpointConnectionsListByAccountOutput =
+  typeof PrivateEndpointConnectionsListByAccountOutput.Type;
+
+// The operation
+/**
+ * List all private endpoint connections in a device update account.
+ */
+export const PrivateEndpointConnectionsListByAccount =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionsListByAccountInput,
+    outputSchema: PrivateEndpointConnectionsListByAccountOutput,
   }));
 // Input Schema
 export const PrivateLinkResourcesGetInput =

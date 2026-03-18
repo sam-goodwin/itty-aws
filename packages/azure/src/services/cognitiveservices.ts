@@ -13,6 +13,8 @@ export const AccountCapabilityHostsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    capabilityHostName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -33,9 +35,11 @@ export type AccountCapabilityHostsCreateOrUpdateOutput =
 /**
  * Create or update account capabilityHost.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param accountName - The name of Cognitive Services account.
+ * @param capabilityHostName - The name of the capability host associated with the Cognitive Services Resource
  */
 export const AccountCapabilityHostsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -47,6 +51,8 @@ export const AccountCapabilityHostsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    capabilityHostName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -67,9 +73,11 @@ export type AccountCapabilityHostsDeleteOutput =
 /**
  * Delete account capabilityHost.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param accountName - The name of Cognitive Services account.
+ * @param capabilityHostName - The name of the capability host associated with the Cognitive Services Resource
  */
 export const AccountCapabilityHostsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -81,6 +89,8 @@ export const AccountCapabilityHostsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    capabilityHostName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -101,9 +111,11 @@ export type AccountCapabilityHostsGetOutput =
 /**
  * Get account capabilityHost.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param accountName - The name of Cognitive Services account.
+ * @param capabilityHostName - The name of the capability host associated with the Cognitive Services Resource
  */
 export const AccountCapabilityHostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -116,6 +128,7 @@ export const AccountCapabilityHostsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -130,7 +143,7 @@ export type AccountCapabilityHostsListInput =
 export const AccountCapabilityHostsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
-    value: Schema.optional(Schema.NullOr(Schema.Array(Schema.Struct({})))),
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
   });
 export type AccountCapabilityHostsListOutput =
   typeof AccountCapabilityHostsListOutput.Type;
@@ -139,9 +152,10 @@ export type AccountCapabilityHostsListOutput =
 /**
  * List capabilityHost.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const AccountCapabilityHostsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -150,10 +164,51 @@ export const AccountCapabilityHostsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const AccountConnectionsCreateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    connectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
+    }),
+  );
+export type AccountConnectionsCreateInput =
+  typeof AccountConnectionsCreateInput.Type;
+
+// Output Schema
+export const AccountConnectionsCreateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type AccountConnectionsCreateOutput =
+  typeof AccountConnectionsCreateOutput.Type;
+
+// The operation
+/**
+ * Create or update Cognitive Services account connection under the specified account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param connectionName - Friendly name of the connection
+ */
+export const AccountConnectionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AccountConnectionsCreateInput,
+    outputSchema: AccountConnectionsCreateOutput,
+  }),
+);
+// Input Schema
 export const AccountConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    connectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -174,9 +229,11 @@ export type AccountConnectionsDeleteOutput =
 /**
  * Delete Cognitive Services account connection by name.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param accountName - The name of Cognitive Services account.
+ * @param connectionName - Friendly name of the connection
  */
 export const AccountConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -185,9 +242,133 @@ export const AccountConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const AccountConnectionsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    connectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
+    }),
+  );
+export type AccountConnectionsGetInput = typeof AccountConnectionsGetInput.Type;
+
+// Output Schema
+export const AccountConnectionsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type AccountConnectionsGetOutput =
+  typeof AccountConnectionsGetOutput.Type;
+
+// The operation
+/**
+ * Lists Cognitive Services account connection by name.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param connectionName - Friendly name of the connection
+ */
+export const AccountConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AccountConnectionsGetInput,
+    outputSchema: AccountConnectionsGetOutput,
+  }),
+);
+// Input Schema
+export const AccountConnectionsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    target: Schema.optional(Schema.String),
+    category: Schema.optional(Schema.String),
+    includeAll: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections",
+    }),
+  );
+export type AccountConnectionsListInput =
+  typeof AccountConnectionsListInput.Type;
+
+// Output Schema
+export const AccountConnectionsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextLink: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+  });
+export type AccountConnectionsListOutput =
+  typeof AccountConnectionsListOutput.Type;
+
+// The operation
+/**
+ * Lists all the available  Cognitive Services account connections under the specified account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param target - Target of the connection.
+ * @param category - Category of the connection.
+ * @param includeAll - query parameter that indicates if get connection call should return both connections and datastores
+ */
+export const AccountConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AccountConnectionsListInput,
+    outputSchema: AccountConnectionsListOutput,
+  }),
+);
+// Input Schema
+export const AccountConnectionsUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    connectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
+    }),
+  );
+export type AccountConnectionsUpdateInput =
+  typeof AccountConnectionsUpdateInput.Type;
+
+// Output Schema
+export const AccountConnectionsUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type AccountConnectionsUpdateOutput =
+  typeof AccountConnectionsUpdateOutput.Type;
+
+// The operation
+/**
+ * Update Cognitive Services account connection under the specified account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param connectionName - Friendly name of the connection
+ */
+export const AccountConnectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AccountConnectionsUpdateInput,
+    outputSchema: AccountConnectionsUpdateOutput,
+  }),
+);
+// Input Schema
 export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -199,7 +380,23 @@ export type AccountsCreateInput = typeof AccountsCreateInput.Type;
 
 // Output Schema
 export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  etag: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type AccountsCreateOutput = typeof AccountsCreateOutput.Type;
 
@@ -207,9 +404,10 @@ export type AccountsCreateOutput = typeof AccountsCreateOutput.Type;
 /**
  * Create Cognitive Services Account. Accounts is a resource group wide resource type. It holds the keys for developer to access intelligent APIs. It's also the resource type for billing.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const AccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsCreateInput,
@@ -217,8 +415,9 @@ export const AccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -236,9 +435,10 @@ export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
 /**
  * Deletes a Cognitive Services account from the resource group.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
@@ -246,8 +446,9 @@ export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -259,7 +460,23 @@ export type AccountsGetInput = typeof AccountsGetInput.Type;
 
 // Output Schema
 export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  etag: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type AccountsGetOutput = typeof AccountsGetOutput.Type;
 
@@ -267,9 +484,10 @@ export type AccountsGetOutput = typeof AccountsGetOutput.Type;
 /**
  * Returns a Cognitive Services account specified by the parameters.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
@@ -293,7 +511,33 @@ export const AccountsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        etag: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
   ),
@@ -314,8 +558,8 @@ export const AccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -333,7 +577,33 @@ export const AccountsListByResourceGroupOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          etag: Schema.optional(Schema.String),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
@@ -345,9 +615,9 @@ export type AccountsListByResourceGroupOutput =
 /**
  * Returns all the resources of a particular type belonging to a resource group
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -357,8 +627,9 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const AccountsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -381,9 +652,10 @@ export type AccountsListKeysOutput = typeof AccountsListKeysOutput.Type;
 /**
  * Lists the account keys for the specified Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const AccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsListKeysInput,
@@ -392,8 +664,9 @@ export const AccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AccountsListModelsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -451,9 +724,10 @@ export type AccountsListModelsOutput = typeof AccountsListModelsOutput.Type;
 /**
  * List available Models for the requested Cognitive Services account
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const AccountsListModels = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsListModelsInput,
@@ -461,8 +735,9 @@ export const AccountsListModels = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const AccountsListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -507,9 +782,10 @@ export type AccountsListSkusOutput = typeof AccountsListSkusOutput.Type;
 /**
  * List available SKUs for the requested Cognitive Services account
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const AccountsListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsListSkusInput,
@@ -518,9 +794,11 @@ export const AccountsListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AccountsListUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
@@ -570,9 +848,11 @@ export type AccountsListUsagesOutput = typeof AccountsListUsagesOutput.Type;
 /**
  * Get usages for the requested Cognitive Services account
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param $filter - An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
  */
 export const AccountsListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsListUsagesInput,
@@ -581,8 +861,9 @@ export const AccountsListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const AccountsRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -605,9 +886,10 @@ export type AccountsRegenerateKeyOutput =
 /**
  * Regenerates the specified account key for the specified Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const AccountsRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -617,8 +899,9 @@ export const AccountsRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -630,7 +913,23 @@ export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
 
 // Output Schema
 export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  etag: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
 
@@ -638,14 +937,575 @@ export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
 /**
  * Updates a Cognitive Services account
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
   outputSchema: AccountsUpdateOutput,
 }));
+// Input Schema
+export const AgentApplicationsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
+    }),
+  );
+export type AgentApplicationsCreateOrUpdateInput =
+  typeof AgentApplicationsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const AgentApplicationsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type AgentApplicationsCreateOrUpdateOutput =
+  typeof AgentApplicationsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an Agent Application (asynchronous).
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param name - Name for the Agent Application.
+ */
+export const AgentApplicationsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AgentApplicationsCreateOrUpdateInput,
+    outputSchema: AgentApplicationsCreateOrUpdateOutput,
+  }));
+// Input Schema
+export const AgentApplicationsDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
+    }),
+  );
+export type AgentApplicationsDeleteInput =
+  typeof AgentApplicationsDeleteInput.Type;
+
+// Output Schema
+export const AgentApplicationsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type AgentApplicationsDeleteOutput =
+  typeof AgentApplicationsDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete Agent Application.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param name - Name for the Agent Application.
+ */
+export const AgentApplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentApplicationsDeleteInput,
+    outputSchema: AgentApplicationsDeleteOutput,
+  }),
+);
+// Input Schema
+export const AgentApplicationsDisableInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/disable",
+    }),
+  );
+export type AgentApplicationsDisableInput =
+  typeof AgentApplicationsDisableInput.Type;
+
+// Output Schema
+export const AgentApplicationsDisableOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type AgentApplicationsDisableOutput =
+  typeof AgentApplicationsDisableOutput.Type;
+
+// The operation
+/**
+ * Disables an Agent Application.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param name - Name for the Agent Application.
+ */
+export const AgentApplicationsDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentApplicationsDisableInput,
+    outputSchema: AgentApplicationsDisableOutput,
+  }),
+);
+// Input Schema
+export const AgentApplicationsEnableInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/enable",
+    }),
+  );
+export type AgentApplicationsEnableInput =
+  typeof AgentApplicationsEnableInput.Type;
+
+// Output Schema
+export const AgentApplicationsEnableOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type AgentApplicationsEnableOutput =
+  typeof AgentApplicationsEnableOutput.Type;
+
+// The operation
+/**
+ * Enables an Agent Application.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param name - Name for the Agent Application.
+ */
+export const AgentApplicationsEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentApplicationsEnableInput,
+    outputSchema: AgentApplicationsEnableOutput,
+  }),
+);
+// Input Schema
+export const AgentApplicationsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
+    }),
+  );
+export type AgentApplicationsGetInput = typeof AgentApplicationsGetInput.Type;
+
+// Output Schema
+export const AgentApplicationsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type AgentApplicationsGetOutput = typeof AgentApplicationsGetOutput.Type;
+
+// The operation
+/**
+ * Gets an Agent Application by name.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param name - Name for the Agent Application.
+ */
+export const AgentApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentApplicationsGetInput,
+    outputSchema: AgentApplicationsGetOutput,
+  }),
+);
+// Input Schema
+export const AgentApplicationsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    count: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
+    names: Schema.optional(Schema.String),
+    searchText: Schema.optional(Schema.String),
+    orderBy: Schema.optional(Schema.String),
+    orderByAsc: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications",
+    }),
+  );
+export type AgentApplicationsListInput = typeof AgentApplicationsListInput.Type;
+
+// Output Schema
+export const AgentApplicationsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextLink: Schema.optional(Schema.NullOr(Schema.String)),
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+  });
+export type AgentApplicationsListOutput =
+  typeof AgentApplicationsListOutput.Type;
+
+// The operation
+/**
+ * Lists Agent Applications in the project.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param count - Number of agent applications to be retrieved in a page of results.
+ * @param $skip - Number of agent applications to skip.
+ * @param $skipToken - Continuation token for pagination.
+ * @param names - Names of agent applications to retrieve.
+ * @param searchText - Search text for filtering agent applications.
+ * @param orderBy - Field to order by.
+ * @param orderByAsc - Whether to order in ascending order.
+ */
+export const AgentApplicationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentApplicationsListInput,
+    outputSchema: AgentApplicationsListOutput,
+  }),
+);
+// Input Schema
+export const AgentApplicationsListAgentsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/listAgents",
+    }),
+  );
+export type AgentApplicationsListAgentsInput =
+  typeof AgentApplicationsListAgentsInput.Type;
+
+// Output Schema
+export const AgentApplicationsListAgentsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextLink: Schema.optional(Schema.NullOr(Schema.String)),
+    value: Schema.optional(Schema.NullOr(Schema.Array(Schema.Struct({})))),
+  });
+export type AgentApplicationsListAgentsOutput =
+  typeof AgentApplicationsListAgentsOutput.Type;
+
+// The operation
+/**
+ * Lists agents for an Agent Application.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param name - Name for the Agent Application.
+ */
+export const AgentApplicationsListAgents = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentApplicationsListAgentsInput,
+    outputSchema: AgentApplicationsListAgentsOutput,
+  }),
+);
+// Input Schema
+export const AgentDeploymentsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
+    }),
+  );
+export type AgentDeploymentsCreateOrUpdateInput =
+  typeof AgentDeploymentsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const AgentDeploymentsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type AgentDeploymentsCreateOrUpdateOutput =
+  typeof AgentDeploymentsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates an Agent Deployment (asynchronous).
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param appName - The name of the application associated with the Cognitive Services Account
+ * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
+ */
+export const AgentDeploymentsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AgentDeploymentsCreateOrUpdateInput,
+    outputSchema: AgentDeploymentsCreateOrUpdateOutput,
+  }));
+// Input Schema
+export const AgentDeploymentsDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
+    }),
+  );
+export type AgentDeploymentsDeleteInput =
+  typeof AgentDeploymentsDeleteInput.Type;
+
+// Output Schema
+export const AgentDeploymentsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type AgentDeploymentsDeleteOutput =
+  typeof AgentDeploymentsDeleteOutput.Type;
+
+// The operation
+/**
+ * Delete Agent Deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param appName - The name of the application associated with the Cognitive Services Account
+ * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
+ */
+export const AgentDeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentDeploymentsDeleteInput,
+    outputSchema: AgentDeploymentsDeleteOutput,
+  }),
+);
+// Input Schema
+export const AgentDeploymentsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
+    }),
+  );
+export type AgentDeploymentsGetInput = typeof AgentDeploymentsGetInput.Type;
+
+// Output Schema
+export const AgentDeploymentsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type AgentDeploymentsGetOutput = typeof AgentDeploymentsGetOutput.Type;
+
+// The operation
+/**
+ * Gets an Agent Deployment by name.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param appName - The name of the application associated with the Cognitive Services Account
+ * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
+ */
+export const AgentDeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AgentDeploymentsGetInput,
+  outputSchema: AgentDeploymentsGetOutput,
+}));
+// Input Schema
+export const AgentDeploymentsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    count: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
+    names: Schema.optional(Schema.String),
+    orderBy: Schema.optional(Schema.String),
+    orderByAsc: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments",
+    }),
+  );
+export type AgentDeploymentsListInput = typeof AgentDeploymentsListInput.Type;
+
+// Output Schema
+export const AgentDeploymentsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextLink: Schema.optional(Schema.NullOr(Schema.String)),
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+  });
+export type AgentDeploymentsListOutput = typeof AgentDeploymentsListOutput.Type;
+
+// The operation
+/**
+ * Lists Agent Deployments in the application.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param appName - The name of the application associated with the Cognitive Services Account
+ * @param count - Number of agent deployments to be retrieved in a page of results.
+ * @param $skipToken - Continuation token for pagination.
+ * @param names - Names of agent deployments to retrieve.
+ * @param orderBy - Field to order by.
+ * @param orderByAsc - Whether to order in ascending order.
+ */
+export const AgentDeploymentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentDeploymentsListInput,
+    outputSchema: AgentDeploymentsListOutput,
+  }),
+);
+// Input Schema
+export const AgentDeploymentsStartInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}/start",
+    }),
+  );
+export type AgentDeploymentsStartInput = typeof AgentDeploymentsStartInput.Type;
+
+// Output Schema
+export const AgentDeploymentsStartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type AgentDeploymentsStartOutput =
+  typeof AgentDeploymentsStartOutput.Type;
+
+// The operation
+/**
+ * Starts an Agent Deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param appName - The name of the application associated with the Cognitive Services Account
+ * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
+ */
+export const AgentDeploymentsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentDeploymentsStartInput,
+    outputSchema: AgentDeploymentsStartOutput,
+  }),
+);
+// Input Schema
+export const AgentDeploymentsStopInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}/stop",
+    }),
+  );
+export type AgentDeploymentsStopInput = typeof AgentDeploymentsStopInput.Type;
+
+// Output Schema
+export const AgentDeploymentsStopOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type AgentDeploymentsStopOutput = typeof AgentDeploymentsStopOutput.Type;
+
+// The operation
+/**
+ * Stops an Agent Deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param appName - The name of the application associated with the Cognitive Services Account
+ * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
+ */
+export const AgentDeploymentsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AgentDeploymentsStopInput,
+    outputSchema: AgentDeploymentsStopOutput,
+  }),
+);
 // Input Schema
 export const CalculateModelCapacityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -713,8 +1573,8 @@ export type CalculateModelCapacityOutput =
 /**
  * Model capacity calculator.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const calculateModelCapacity = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -752,8 +1612,8 @@ export type CheckDomainAvailabilityOutput =
 /**
  * Check whether a domain is available.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const CheckDomainAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -765,6 +1625,7 @@ export const CheckDomainAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const CheckSkuAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -796,8 +1657,9 @@ export type CheckSkuAvailabilityOutput = typeof CheckSkuAvailabilityOutput.Type;
 /**
  * Check available SKUs.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param location - The name of Azure region.
  */
 export const CheckSkuAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -808,8 +1670,10 @@ export const CheckSkuAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CommitmentPlansCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    commitmentPlanName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -822,7 +1686,25 @@ export type CommitmentPlansCreateOrUpdateInput =
 
 // Output Schema
 export const CommitmentPlansCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type CommitmentPlansCreateOrUpdateOutput =
   typeof CommitmentPlansCreateOrUpdateOutput.Type;
 
@@ -830,9 +1712,11 @@ export type CommitmentPlansCreateOrUpdateOutput =
 /**
  * Update the state of specified commitmentPlans associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
  */
 export const CommitmentPlansCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -842,8 +1726,10 @@ export const CommitmentPlansCreateOrUpdate =
 // Input Schema
 export const CommitmentPlansCreateOrUpdateAssociationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    commitmentPlanName: Schema.String.pipe(T.PathParam()),
+    commitmentPlanAssociationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -864,9 +1750,11 @@ export type CommitmentPlansCreateOrUpdateAssociationOutput =
 /**
  * Create or update the association of the Cognitive Services commitment plan.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
+ * @param commitmentPlanAssociationName - The name of the commitment plan association with the Cognitive Services Account
  */
 export const CommitmentPlansCreateOrUpdateAssociation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -876,8 +1764,9 @@ export const CommitmentPlansCreateOrUpdateAssociation =
 // Input Schema
 export const CommitmentPlansCreateOrUpdatePlanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    commitmentPlanName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -890,7 +1779,25 @@ export type CommitmentPlansCreateOrUpdatePlanInput =
 
 // Output Schema
 export const CommitmentPlansCreateOrUpdatePlanOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type CommitmentPlansCreateOrUpdatePlanOutput =
   typeof CommitmentPlansCreateOrUpdatePlanOutput.Type;
 
@@ -898,9 +1805,10 @@ export type CommitmentPlansCreateOrUpdatePlanOutput =
 /**
  * Create Cognitive Services commitment plan.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
  */
 export const CommitmentPlansCreateOrUpdatePlan =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -910,8 +1818,10 @@ export const CommitmentPlansCreateOrUpdatePlan =
 // Input Schema
 export const CommitmentPlansDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    commitmentPlanName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -931,9 +1841,11 @@ export type CommitmentPlansDeleteOutput =
 /**
  * Deletes the specified commitmentPlan associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
  */
 export const CommitmentPlansDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -944,8 +1856,10 @@ export const CommitmentPlansDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CommitmentPlansDeleteAssociationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    commitmentPlanName: Schema.String.pipe(T.PathParam()),
+    commitmentPlanAssociationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -966,9 +1880,11 @@ export type CommitmentPlansDeleteAssociationOutput =
 /**
  * Deletes the association of the Cognitive Services commitment plan.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
+ * @param commitmentPlanAssociationName - The name of the commitment plan association with the Cognitive Services Account
  */
 export const CommitmentPlansDeleteAssociation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -978,8 +1894,9 @@ export const CommitmentPlansDeleteAssociation =
 // Input Schema
 export const CommitmentPlansDeletePlanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    commitmentPlanName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1000,9 +1917,10 @@ export type CommitmentPlansDeletePlanOutput =
 /**
  * Deletes a Cognitive Services commitment plan from the resource group.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
  */
 export const CommitmentPlansDeletePlan = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1013,8 +1931,10 @@ export const CommitmentPlansDeletePlan = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CommitmentPlansGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    commitmentPlanName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1026,16 +1946,36 @@ export type CommitmentPlansGetInput = typeof CommitmentPlansGetInput.Type;
 
 // Output Schema
 export const CommitmentPlansGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type CommitmentPlansGetOutput = typeof CommitmentPlansGetOutput.Type;
 
 // The operation
 /**
  * Gets the specified commitmentPlans associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
  */
 export const CommitmentPlansGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CommitmentPlansGetInput,
@@ -1044,8 +1984,10 @@ export const CommitmentPlansGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const CommitmentPlansGetAssociationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    commitmentPlanName: Schema.String.pipe(T.PathParam()),
+    commitmentPlanAssociationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1066,9 +2008,11 @@ export type CommitmentPlansGetAssociationOutput =
 /**
  * Gets the association of the Cognitive Services commitment plan.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
+ * @param commitmentPlanAssociationName - The name of the commitment plan association with the Cognitive Services Account
  */
 export const CommitmentPlansGetAssociation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1078,8 +2022,9 @@ export const CommitmentPlansGetAssociation =
 // Input Schema
 export const CommitmentPlansGetPlanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    commitmentPlanName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1092,7 +2037,25 @@ export type CommitmentPlansGetPlanInput =
 
 // Output Schema
 export const CommitmentPlansGetPlanOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type CommitmentPlansGetPlanOutput =
   typeof CommitmentPlansGetPlanOutput.Type;
 
@@ -1100,9 +2063,10 @@ export type CommitmentPlansGetPlanOutput =
 /**
  * Returns a Cognitive Services commitment plan specified by the parameters.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
  */
 export const CommitmentPlansGetPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1113,8 +2077,9 @@ export const CommitmentPlansGetPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CommitmentPlansListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1128,7 +2093,39 @@ export type CommitmentPlansListInput = typeof CommitmentPlansListInput.Type;
 export const CommitmentPlansListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
   });
 export type CommitmentPlansListOutput = typeof CommitmentPlansListOutput.Type;
 
@@ -1136,9 +2133,10 @@ export type CommitmentPlansListOutput = typeof CommitmentPlansListOutput.Type;
 /**
  * Gets the commitmentPlans associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const CommitmentPlansList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CommitmentPlansListInput,
@@ -1147,8 +2145,9 @@ export const CommitmentPlansList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const CommitmentPlansListAssociationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    commitmentPlanName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1172,9 +2171,10 @@ export type CommitmentPlansListAssociationsOutput =
 /**
  * Gets the associations of the Cognitive Services commitment plan.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
  */
 export const CommitmentPlansListAssociations =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1184,8 +2184,8 @@ export const CommitmentPlansListAssociations =
 // Input Schema
 export const CommitmentPlansListPlansByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1200,7 +2200,39 @@ export type CommitmentPlansListPlansByResourceGroupInput =
 export const CommitmentPlansListPlansByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
   });
 export type CommitmentPlansListPlansByResourceGroupOutput =
   typeof CommitmentPlansListPlansByResourceGroupOutput.Type;
@@ -1209,9 +2241,9 @@ export type CommitmentPlansListPlansByResourceGroupOutput =
 /**
  * Returns all the resources of a particular type belonging to a resource group
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const CommitmentPlansListPlansByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1236,7 +2268,39 @@ export type CommitmentPlansListPlansBySubscriptionInput =
 export const CommitmentPlansListPlansBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
   });
 export type CommitmentPlansListPlansBySubscriptionOutput =
   typeof CommitmentPlansListPlansBySubscriptionOutput.Type;
@@ -1256,8 +2320,9 @@ export const CommitmentPlansListPlansBySubscription =
 // Input Schema
 export const CommitmentPlansUpdatePlanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    commitmentPlanName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1270,7 +2335,25 @@ export type CommitmentPlansUpdatePlanInput =
 
 // Output Schema
 export const CommitmentPlansUpdatePlanOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
 export type CommitmentPlansUpdatePlanOutput =
   typeof CommitmentPlansUpdatePlanOutput.Type;
 
@@ -1278,9 +2361,10 @@ export type CommitmentPlansUpdatePlanOutput =
 /**
  * Create Cognitive Services commitment plan.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param commitmentPlanName - The name of the commitmentPlan associated with the Cognitive Services Account
  */
 export const CommitmentPlansUpdatePlan = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1292,6 +2376,7 @@ export const CommitmentPlansUpdatePlan = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const CommitmentTiersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1343,8 +2428,9 @@ export type CommitmentTiersListOutput = typeof CommitmentTiersListOutput.Type;
 /**
  * List Commitment Tiers.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param location - The name of Azure region.
  */
 export const CommitmentTiersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CommitmentTiersListInput,
@@ -1353,8 +2439,10 @@ export const CommitmentTiersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DefenderForAISettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    defenderForAISettingName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1375,9 +2463,11 @@ export type DefenderForAISettingsCreateOrUpdateOutput =
 /**
  * Creates or Updates the specified Defender for AI setting.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param defenderForAISettingName - The name of the defender for AI setting.
  */
 export const DefenderForAISettingsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1387,8 +2477,10 @@ export const DefenderForAISettingsCreateOrUpdate =
 // Input Schema
 export const DefenderForAISettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    defenderForAISettingName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1409,9 +2501,11 @@ export type DefenderForAISettingsGetOutput =
 /**
  * Gets the specified Defender for AI setting by name.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param defenderForAISettingName - The name of the defender for AI setting.
  */
 export const DefenderForAISettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1422,8 +2516,9 @@ export const DefenderForAISettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DefenderForAISettingsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1447,9 +2542,10 @@ export type DefenderForAISettingsListOutput =
 /**
  * Lists the Defender for AI settings.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const DefenderForAISettingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1460,8 +2556,10 @@ export const DefenderForAISettingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DefenderForAISettingsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    defenderForAISettingName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1482,9 +2580,11 @@ export type DefenderForAISettingsUpdateOutput =
 /**
  * Updates the specified Defender for AI setting.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param defenderForAISettingName - The name of the defender for AI setting.
  */
 export const DefenderForAISettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1495,8 +2595,10 @@ export const DefenderForAISettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DeletedAccountsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1509,7 +2611,23 @@ export type DeletedAccountsGetInput = typeof DeletedAccountsGetInput.Type;
 // Output Schema
 export const DeletedAccountsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    etag: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   });
 export type DeletedAccountsGetOutput = typeof DeletedAccountsGetOutput.Type;
 
@@ -1517,9 +2635,11 @@ export type DeletedAccountsGetOutput = typeof DeletedAccountsGetOutput.Type;
 /**
  * Returns a Cognitive Services account specified by the parameters.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param location - The name of Azure region.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const DeletedAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeletedAccountsGetInput,
@@ -1545,7 +2665,33 @@ export const DeletedAccountsListOutput =
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          etag: Schema.optional(Schema.String),
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
         }),
       ),
     ),
@@ -1566,8 +2712,10 @@ export const DeletedAccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DeletedAccountsPurgeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1586,9 +2734,11 @@ export type DeletedAccountsPurgeOutput = typeof DeletedAccountsPurgeOutput.Type;
 /**
  * Deletes a Cognitive Services account from the resource group.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param location - The name of Azure region.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const DeletedAccountsPurge = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1599,8 +2749,10 @@ export const DeletedAccountsPurge = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DeploymentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1621,9 +2773,11 @@ export type DeploymentsCreateOrUpdateOutput =
 /**
  * Update the state of specified deployments associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
 export const DeploymentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1634,8 +2788,10 @@ export const DeploymentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -1654,9 +2810,11 @@ export type DeploymentsDeleteOutput = typeof DeploymentsDeleteOutput.Type;
 /**
  * Deletes the specified deployment associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
 export const DeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsDeleteInput,
@@ -1664,8 +2822,10 @@ export const DeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  deploymentName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1685,9 +2845,11 @@ export type DeploymentsGetOutput = typeof DeploymentsGetOutput.Type;
 /**
  * Gets the specified deployments associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
 export const DeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsGetInput,
@@ -1695,8 +2857,9 @@ export const DeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const DeploymentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -1717,9 +2880,10 @@ export type DeploymentsListOutput = typeof DeploymentsListOutput.Type;
 /**
  * Gets the deployments associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const DeploymentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsListInput,
@@ -1728,8 +2892,10 @@ export const DeploymentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const DeploymentsListSkusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1783,19 +2949,98 @@ export type DeploymentsListSkusOutput = typeof DeploymentsListSkusOutput.Type;
 /**
  * Lists the specified deployments skus associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
 export const DeploymentsListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsListSkusInput,
   outputSchema: DeploymentsListSkusOutput,
 }));
 // Input Schema
+export const DeploymentsPauseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  deploymentName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}/pause",
+  }),
+);
+export type DeploymentsPauseInput = typeof DeploymentsPauseInput.Type;
+
+// Output Schema
+export const DeploymentsPauseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+);
+export type DeploymentsPauseOutput = typeof DeploymentsPauseOutput.Type;
+
+// The operation
+/**
+ * Pause a deployment
+ *
+ * Pauses inferencing on a deployment by setting the deploymentState to 'Paused' (see #/definitions/DeploymentProperties/properties/deploymentState). Only Standard, DataZoneStandard, and GlobalStandard SKUs support this operation. Inference requests to the paused deployment endpoint will receive HTTP 423 (Locked). This operation is idempotent.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
+ */
+export const DeploymentsPause = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DeploymentsPauseInput,
+  outputSchema: DeploymentsPauseOutput,
+}));
+// Input Schema
+export const DeploymentsResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}/resume",
+  }),
+);
+export type DeploymentsResumeInput = typeof DeploymentsResumeInput.Type;
+
+// Output Schema
+export const DeploymentsResumeOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type DeploymentsResumeOutput = typeof DeploymentsResumeOutput.Type;
+
+// The operation
+/**
+ * Resume a deployment
+ *
+ * Resumes inferencing on a previously paused deployment by setting the deploymentState to 'Running' (see #/definitions/DeploymentProperties/properties/deploymentState). This operation is idempotent and can be safely called on already running deployments.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
+ */
+export const DeploymentsResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DeploymentsResumeInput,
+  outputSchema: DeploymentsResumeOutput,
+}));
+// Input Schema
 export const DeploymentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -1815,9 +3060,11 @@ export type DeploymentsUpdateOutput = typeof DeploymentsUpdateOutput.Type;
 /**
  * Update specified deployments associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param deploymentName - The name of the deployment associated with the Cognitive Services Account
  */
 export const DeploymentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsUpdateInput,
@@ -1826,8 +3073,10 @@ export const DeploymentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const EncryptionScopesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    encryptionScopeName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1848,9 +3097,11 @@ export type EncryptionScopesCreateOrUpdateOutput =
 /**
  * Update the state of specified encryptionScope associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param encryptionScopeName - The name of the encryptionScope associated with the Cognitive Services Account
  */
 export const EncryptionScopesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1860,8 +3111,10 @@ export const EncryptionScopesCreateOrUpdate =
 // Input Schema
 export const EncryptionScopesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    encryptionScopeName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1882,9 +3135,11 @@ export type EncryptionScopesDeleteOutput =
 /**
  * Deletes the specified encryptionScope associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param encryptionScopeName - The name of the encryptionScope associated with the Cognitive Services Account
  */
 export const EncryptionScopesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1895,8 +3150,10 @@ export const EncryptionScopesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const EncryptionScopesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    encryptionScopeName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1915,9 +3172,11 @@ export type EncryptionScopesGetOutput = typeof EncryptionScopesGetOutput.Type;
 /**
  * Gets the specified EncryptionScope associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param encryptionScopeName - The name of the encryptionScope associated with the Cognitive Services Account
  */
 export const EncryptionScopesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EncryptionScopesGetInput,
@@ -1926,8 +3185,9 @@ export const EncryptionScopesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const EncryptionScopesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -1949,9 +3209,10 @@ export type EncryptionScopesListOutput = typeof EncryptionScopesListOutput.Type;
 /**
  * Gets the content filters associated with the Azure OpenAI account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const EncryptionScopesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1963,7 +3224,11 @@ export const EncryptionScopesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const LocationBasedModelCapacitiesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    modelFormat: Schema.String,
+    modelName: Schema.String,
+    modelVersion: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -1986,8 +3251,12 @@ export type LocationBasedModelCapacitiesListOutput =
 /**
  * List Location Based ModelCapacities.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param location - The name of Azure region.
+ * @param modelFormat - The format of the Model
+ * @param modelName - The name of the Model
+ * @param modelVersion - The version of the Model
  */
 export const LocationBasedModelCapacitiesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1995,10 +3264,208 @@ export const LocationBasedModelCapacitiesList =
     outputSchema: LocationBasedModelCapacitiesListOutput,
   }));
 // Input Schema
+export const ManagedNetworkProvisionsProvisionManagedNetworkInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/provisionManagedNetwork",
+    }),
+  );
+export type ManagedNetworkProvisionsProvisionManagedNetworkInput =
+  typeof ManagedNetworkProvisionsProvisionManagedNetworkInput.Type;
+
+// Output Schema
+export const ManagedNetworkProvisionsProvisionManagedNetworkOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.Literals(["Inactive", "Active"])),
+  });
+export type ManagedNetworkProvisionsProvisionManagedNetworkOutput =
+  typeof ManagedNetworkProvisionsProvisionManagedNetworkOutput.Type;
+
+// The operation
+/**
+ * Provisions the managed network of a cognitive services account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ */
+export const ManagedNetworkProvisionsProvisionManagedNetwork =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ManagedNetworkProvisionsProvisionManagedNetworkInput,
+    outputSchema: ManagedNetworkProvisionsProvisionManagedNetworkOutput,
+  }));
+// Input Schema
+export const ManagedNetworkSettingsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    managedNetworkName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
+    }),
+  );
+export type ManagedNetworkSettingsGetInput =
+  typeof ManagedNetworkSettingsGetInput.Type;
+
+// Output Schema
+export const ManagedNetworkSettingsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type ManagedNetworkSettingsGetOutput =
+  typeof ManagedNetworkSettingsGetOutput.Type;
+
+// The operation
+/**
+ * Get API for managed network settings of a cognitive services account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
+ */
+export const ManagedNetworkSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ManagedNetworkSettingsGetInput,
+    outputSchema: ManagedNetworkSettingsGetOutput,
+  }),
+);
+// Input Schema
+export const ManagedNetworkSettingsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks",
+    }),
+  );
+export type ManagedNetworkSettingsListInput =
+  typeof ManagedNetworkSettingsListInput.Type;
+
+// Output Schema
+export const ManagedNetworkSettingsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextLink: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+  });
+export type ManagedNetworkSettingsListOutput =
+  typeof ManagedNetworkSettingsListOutput.Type;
+
+// The operation
+/**
+ * List API for managed network settings of a cognitive services account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ */
+export const ManagedNetworkSettingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ManagedNetworkSettingsListInput,
+    outputSchema: ManagedNetworkSettingsListOutput,
+  }),
+);
+// Input Schema
+export const ManagedNetworkSettingsPatchInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    managedNetworkName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
+    }),
+  );
+export type ManagedNetworkSettingsPatchInput =
+  typeof ManagedNetworkSettingsPatchInput.Type;
+
+// Output Schema
+export const ManagedNetworkSettingsPatchOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type ManagedNetworkSettingsPatchOutput =
+  typeof ManagedNetworkSettingsPatchOutput.Type;
+
+// The operation
+/**
+ * Patch API for managed network settings of a cognitive services account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
+ */
+export const ManagedNetworkSettingsPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ManagedNetworkSettingsPatchInput,
+    outputSchema: ManagedNetworkSettingsPatchOutput,
+  }),
+);
+// Input Schema
+export const ManagedNetworkSettingsPutInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    managedNetworkName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
+    }),
+  );
+export type ManagedNetworkSettingsPutInput =
+  typeof ManagedNetworkSettingsPutInput.Type;
+
+// Output Schema
+export const ManagedNetworkSettingsPutOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type ManagedNetworkSettingsPutOutput =
+  typeof ManagedNetworkSettingsPutOutput.Type;
+
+// The operation
+/**
+ * PUT API for managed network settings of a cognitive services account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
+ */
+export const ManagedNetworkSettingsPut = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ManagedNetworkSettingsPutInput,
+    outputSchema: ManagedNetworkSettingsPutOutput,
+  }),
+);
+// Input Schema
 export const ModelCapacitiesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
+    modelFormat: Schema.String,
+    modelName: Schema.String,
+    modelVersion: Schema.String,
   }).pipe(
     T.Http({
       method: "GET",
@@ -2019,8 +3486,11 @@ export type ModelCapacitiesListOutput = typeof ModelCapacitiesListOutput.Type;
 /**
  * List ModelCapacities.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param modelFormat - The format of the Model
+ * @param modelName - The name of the Model
+ * @param modelVersion - The version of the Model
  */
 export const ModelCapacitiesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ModelCapacitiesListInput,
@@ -2029,6 +3499,7 @@ export const ModelCapacitiesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const ModelsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2092,8 +3563,9 @@ export type ModelsListOutput = typeof ModelsListOutput.Type;
 /**
  * List Models.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param location - The name of Azure region.
  */
 export const ModelsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ModelsListInput,
@@ -2102,8 +3574,10 @@ export const ModelsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const NetworkSecurityPerimeterConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    nspConfigurationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2124,9 +3598,11 @@ export type NetworkSecurityPerimeterConfigurationsGetOutput =
 /**
  * Gets the specified NSP configurations for an account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param nspConfigurationName - The name of the NSP Configuration.
  */
 export const NetworkSecurityPerimeterConfigurationsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2136,8 +3612,9 @@ export const NetworkSecurityPerimeterConfigurationsGet =
 // Input Schema
 export const NetworkSecurityPerimeterConfigurationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2161,9 +3638,10 @@ export type NetworkSecurityPerimeterConfigurationsListOutput =
 /**
  * Gets a list of NSP configurations for an account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const NetworkSecurityPerimeterConfigurationsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2173,8 +3651,10 @@ export const NetworkSecurityPerimeterConfigurationsList =
 // Input Schema
 export const NetworkSecurityPerimeterConfigurationsReconcileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    nspConfigurationName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2195,9 +3675,11 @@ export type NetworkSecurityPerimeterConfigurationsReconcileOutput =
 /**
  * Reconcile the NSP configuration for an account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param nspConfigurationName - The name of the NSP Configuration.
  */
 export const NetworkSecurityPerimeterConfigurationsReconcile =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2205,10 +3687,250 @@ export const NetworkSecurityPerimeterConfigurationsReconcile =
     outputSchema: NetworkSecurityPerimeterConfigurationsReconcileOutput,
   }));
 // Input Schema
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.CognitiveServices/operations",
+  }),
+);
+export type OperationsListInput = typeof OperationsListInput.Type;
+
+// Output Schema
+export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
+        display: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        origin: Schema.optional(
+          Schema.Literals(["user", "system", "user,system"]),
+        ),
+        actionType: Schema.optional(Schema.Literals(["Internal"])),
+      }),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type OperationsListOutput = typeof OperationsListOutput.Type;
+
+// The operation
+/**
+ * Lists all the available Cognitive Services account operations.
+ *
+ * @param api-version - The API version to use for this operation.
+ */
+export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OperationsListInput,
+  outputSchema: OperationsListOutput,
+}));
+// Input Schema
+export const OutboundRuleCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    managedNetworkName: Schema.String.pipe(T.PathParam()),
+    ruleName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules/{ruleName}",
+    }),
+  );
+export type OutboundRuleCreateOrUpdateInput =
+  typeof OutboundRuleCreateOrUpdateInput.Type;
+
+// Output Schema
+export const OutboundRuleCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type OutboundRuleCreateOrUpdateOutput =
+  typeof OutboundRuleCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * The PUT API for creating or updating a single outbound rule of the managed network associated with the cognitive services account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
+ * @param ruleName - Name of the cognitive services account managed network outbound rule
+ */
+export const OutboundRuleCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: OutboundRuleCreateOrUpdateInput,
+    outputSchema: OutboundRuleCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
+export const OutboundRuleDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    managedNetworkName: Schema.String.pipe(T.PathParam()),
+    ruleName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules/{ruleName}",
+    }),
+  );
+export type OutboundRuleDeleteInput = typeof OutboundRuleDeleteInput.Type;
+
+// Output Schema
+export const OutboundRuleDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type OutboundRuleDeleteOutput = typeof OutboundRuleDeleteOutput.Type;
+
+// The operation
+/**
+ * The DELETE API for deleting a single outbound rule of the managed network associated with the cognitive services account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
+ * @param ruleName - Name of the cognitive services account managed network outbound rule
+ */
+export const OutboundRuleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OutboundRuleDeleteInput,
+  outputSchema: OutboundRuleDeleteOutput,
+}));
+// Input Schema
+export const OutboundRuleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  managedNetworkName: Schema.String.pipe(T.PathParam()),
+  ruleName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules/{ruleName}",
+  }),
+);
+export type OutboundRuleGetInput = typeof OutboundRuleGetInput.Type;
+
+// Output Schema
+export const OutboundRuleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+);
+export type OutboundRuleGetOutput = typeof OutboundRuleGetOutput.Type;
+
+// The operation
+/**
+ * The GET API for retrieving a single outbound rule of the managed network associated with the cognitive services account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
+ * @param ruleName - Name of the cognitive services account managed network outbound rule
+ */
+export const OutboundRuleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OutboundRuleGetInput,
+  outputSchema: OutboundRuleGetOutput,
+}));
+// Input Schema
+export const OutboundRuleListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  managedNetworkName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules",
+  }),
+);
+export type OutboundRuleListInput = typeof OutboundRuleListInput.Type;
+
+// Output Schema
+export const OutboundRuleListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextLink: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+  },
+);
+export type OutboundRuleListOutput = typeof OutboundRuleListOutput.Type;
+
+// The operation
+/**
+ * The GET API for retrieving the list of outbound rules of the managed network associated with the cognitive services account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
+ */
+export const OutboundRuleList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OutboundRuleListInput,
+  outputSchema: OutboundRuleListOutput,
+}));
+// Input Schema
+export const OutboundRulesPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    managedNetworkName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/batchOutboundRules",
+  }),
+);
+export type OutboundRulesPostInput = typeof OutboundRulesPostInput.Type;
+
+// Output Schema
+export const OutboundRulesPostOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextLink: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+  });
+export type OutboundRulesPostOutput = typeof OutboundRulesPostOutput.Type;
+
+// The operation
+/**
+ * The POST API for updating the outbound rules of the managed network associated with the cognitive services account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
+ */
+export const OutboundRulesPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OutboundRulesPostInput,
+  outputSchema: OutboundRulesPostOutput,
+}));
+// Input Schema
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2221,9 +3943,7 @@ export type PrivateEndpointConnectionsCreateOrUpdateInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    etag: Schema.optional(Schema.String),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type PrivateEndpointConnectionsCreateOrUpdateOutput =
   typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
 
@@ -2231,9 +3951,11 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
 /**
  * Update the state of specified private endpoint connection associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Cognitive Services Account
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2243,8 +3965,10 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
 // Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2265,9 +3989,11 @@ export type PrivateEndpointConnectionsDeleteOutput =
 /**
  * Deletes the specified private endpoint connection associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Cognitive Services Account
  */
 export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2277,8 +4003,10 @@ export const PrivateEndpointConnectionsDelete =
 // Input Schema
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2291,9 +4019,7 @@ export type PrivateEndpointConnectionsGetInput =
 
 // Output Schema
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    etag: Schema.optional(Schema.String),
-  });
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
 export type PrivateEndpointConnectionsGetOutput =
   typeof PrivateEndpointConnectionsGetOutput.Type;
 
@@ -2301,9 +4027,11 @@ export type PrivateEndpointConnectionsGetOutput =
 /**
  * Gets the specified private endpoint connection associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Cognitive Services Account
  */
 export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2313,8 +4041,9 @@ export const PrivateEndpointConnectionsGet =
 // Input Schema
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2328,13 +4057,7 @@ export type PrivateEndpointConnectionsListInput =
 // Output Schema
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          etag: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
   });
 export type PrivateEndpointConnectionsListOutput =
   typeof PrivateEndpointConnectionsListOutput.Type;
@@ -2343,9 +4066,10 @@ export type PrivateEndpointConnectionsListOutput =
 /**
  * Gets the private endpoint connections associated with the Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const PrivateEndpointConnectionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2353,10 +4077,84 @@ export const PrivateEndpointConnectionsList =
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
 // Input Schema
+export const PrivateLinkResourcesListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateLinkResources",
+    }),
+  );
+export type PrivateLinkResourcesListInput =
+  typeof PrivateLinkResourcesListInput.Type;
+
+// Output Schema
+export const PrivateLinkResourcesListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+  });
+export type PrivateLinkResourcesListOutput =
+  typeof PrivateLinkResourcesListOutput.Type;
+
+// The operation
+/**
+ * Gets the private link resources that need to be created for a Cognitive Services account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ */
+export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: PrivateLinkResourcesListInput,
+    outputSchema: PrivateLinkResourcesListOutput,
+  }),
+);
+// Input Schema
 export const ProjectCapabilityHostsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    capabilityHostName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2377,9 +4175,12 @@ export type ProjectCapabilityHostsCreateOrUpdateOutput =
 /**
  * Create or update project capabilityHost.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param capabilityHostName - The name of the capability host associated with the Cognitive Services Resource
  */
 export const ProjectCapabilityHostsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2391,6 +4192,9 @@ export const ProjectCapabilityHostsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    capabilityHostName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2411,9 +4215,12 @@ export type ProjectCapabilityHostsDeleteOutput =
 /**
  * Delete project capabilityHost.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param capabilityHostName - The name of the capability host associated with the Cognitive Services Resource
  */
 export const ProjectCapabilityHostsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2425,6 +4232,9 @@ export const ProjectCapabilityHostsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    capabilityHostName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2445,9 +4255,12 @@ export type ProjectCapabilityHostsGetOutput =
 /**
  * Get project capabilityHost.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param capabilityHostName - The name of the capability host associated with the Cognitive Services Resource
  */
 export const ProjectCapabilityHostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2460,6 +4273,8 @@ export const ProjectCapabilityHostsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2474,7 +4289,7 @@ export type ProjectCapabilityHostsListInput =
 export const ProjectCapabilityHostsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
-    value: Schema.optional(Schema.NullOr(Schema.Array(Schema.Struct({})))),
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
   });
 export type ProjectCapabilityHostsListOutput =
   typeof ProjectCapabilityHostsListOutput.Type;
@@ -2483,9 +4298,11 @@ export type ProjectCapabilityHostsListOutput =
 /**
  * List capabilityHost.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
  */
 export const ProjectCapabilityHostsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2494,10 +4311,54 @@ export const ProjectCapabilityHostsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const ProjectConnectionsCreateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    connectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
+    }),
+  );
+export type ProjectConnectionsCreateInput =
+  typeof ProjectConnectionsCreateInput.Type;
+
+// Output Schema
+export const ProjectConnectionsCreateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type ProjectConnectionsCreateOutput =
+  typeof ProjectConnectionsCreateOutput.Type;
+
+// The operation
+/**
+ * Create or update Cognitive Services project connection under the specified project.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param connectionName - Friendly name of the connection
+ */
+export const ProjectConnectionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ProjectConnectionsCreateInput,
+    outputSchema: ProjectConnectionsCreateOutput,
+  }),
+);
+// Input Schema
 export const ProjectConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    connectionName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2518,9 +4379,12 @@ export type ProjectConnectionsDeleteOutput =
 /**
  * Delete Cognitive Services project connection by name.
  *
+ * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
- * @param api-version - The API version to use for this operation.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param connectionName - Friendly name of the connection
  */
 export const ProjectConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2529,9 +4393,140 @@ export const ProjectConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const ProjectConnectionsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    connectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
+    }),
+  );
+export type ProjectConnectionsGetInput = typeof ProjectConnectionsGetInput.Type;
+
+// Output Schema
+export const ProjectConnectionsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type ProjectConnectionsGetOutput =
+  typeof ProjectConnectionsGetOutput.Type;
+
+// The operation
+/**
+ * Lists Cognitive Services project connection by name.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param connectionName - Friendly name of the connection
+ */
+export const ProjectConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ProjectConnectionsGetInput,
+    outputSchema: ProjectConnectionsGetOutput,
+  }),
+);
+// Input Schema
+export const ProjectConnectionsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    target: Schema.optional(Schema.String),
+    category: Schema.optional(Schema.String),
+    includeAll: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections",
+    }),
+  );
+export type ProjectConnectionsListInput =
+  typeof ProjectConnectionsListInput.Type;
+
+// Output Schema
+export const ProjectConnectionsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextLink: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+  });
+export type ProjectConnectionsListOutput =
+  typeof ProjectConnectionsListOutput.Type;
+
+// The operation
+/**
+ * Lists all the available Cognitive Services project connections under the specified project.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param target - Target of the connection.
+ * @param category - Category of the connection.
+ * @param includeAll - query parameter that indicates if get connection call should return both connections and datastores
+ */
+export const ProjectConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ProjectConnectionsListInput,
+    outputSchema: ProjectConnectionsListOutput,
+  }),
+);
+// Input Schema
+export const ProjectConnectionsUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    projectName: Schema.String.pipe(T.PathParam()),
+    connectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
+    }),
+  );
+export type ProjectConnectionsUpdateInput =
+  typeof ProjectConnectionsUpdateInput.Type;
+
+// Output Schema
+export const ProjectConnectionsUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type ProjectConnectionsUpdateOutput =
+  typeof ProjectConnectionsUpdateOutput.Type;
+
+// The operation
+/**
+ * Update Cognitive Services project connection under the specified project.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
+ * @param connectionName - Friendly name of the connection
+ */
+export const ProjectConnectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ProjectConnectionsUpdateInput,
+    outputSchema: ProjectConnectionsUpdateOutput,
+  }),
+);
+// Input Schema
 export const ProjectsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  projectName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2543,7 +4538,23 @@ export type ProjectsCreateInput = typeof ProjectsCreateInput.Type;
 
 // Output Schema
 export const ProjectsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  etag: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type ProjectsCreateOutput = typeof ProjectsCreateOutput.Type;
 
@@ -2551,9 +4562,11 @@ export type ProjectsCreateOutput = typeof ProjectsCreateOutput.Type;
 /**
  * Create Cognitive Services Account's Project. Project is a sub-resource of an account which give AI developer it's individual container to work on.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
  */
 export const ProjectsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProjectsCreateInput,
@@ -2561,8 +4574,10 @@ export const ProjectsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  projectName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2580,9 +4595,11 @@ export type ProjectsDeleteOutput = typeof ProjectsDeleteOutput.Type;
 /**
  * Deletes a Cognitive Services project from the resource group.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
  */
 export const ProjectsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProjectsDeleteInput,
@@ -2590,8 +4607,10 @@ export const ProjectsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  projectName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2603,7 +4622,23 @@ export type ProjectsGetInput = typeof ProjectsGetInput.Type;
 
 // Output Schema
 export const ProjectsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  etag: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type ProjectsGetOutput = typeof ProjectsGetOutput.Type;
 
@@ -2611,9 +4646,11 @@ export type ProjectsGetOutput = typeof ProjectsGetOutput.Type;
 /**
  * Returns a Cognitive Services project specified by the parameters.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
  */
 export const ProjectsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProjectsGetInput,
@@ -2621,8 +4658,9 @@ export const ProjectsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2638,7 +4676,33 @@ export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
-        etag: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
       }),
     ),
   ),
@@ -2649,9 +4713,10 @@ export type ProjectsListOutput = typeof ProjectsListOutput.Type;
 /**
  * Returns all the projects in a Cognitive Services account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const ProjectsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProjectsListInput,
@@ -2659,8 +4724,10 @@ export const ProjectsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  projectName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2672,7 +4739,23 @@ export type ProjectsUpdateInput = typeof ProjectsUpdateInput.Type;
 
 // Output Schema
 export const ProjectsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  etag: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 });
 export type ProjectsUpdateOutput = typeof ProjectsUpdateOutput.Type;
 
@@ -2680,9 +4763,11 @@ export type ProjectsUpdateOutput = typeof ProjectsUpdateOutput.Type;
 /**
  * Updates a Cognitive Services Project
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param projectName - The name of Cognitive Services account's project.
  */
 export const ProjectsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProjectsUpdateInput,
@@ -2692,6 +4777,7 @@ export const ProjectsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const QuotaTiersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    default: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2714,8 +4800,9 @@ export type QuotaTiersCreateOrUpdateOutput =
  *
  * Update the Quota Tier information for the given subscription. QuotaTiers is a subscription wide resource type. It holds current tier information.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param default - Default parameter. Leave the value as default.
  */
 export const QuotaTiersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2726,6 +4813,7 @@ export const QuotaTiersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const QuotaTiersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  default: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2747,8 +4835,9 @@ export type QuotaTiersGetOutput = typeof QuotaTiersGetOutput.Type;
  *
  * Gets the Quota Tier information for the given subscription. QuotaTiers is a subscription wide resource type. It holds current tier information.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param default - Default parameter. Leave the value as default.
  */
 export const QuotaTiersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QuotaTiersGetInput,
@@ -2792,6 +4881,7 @@ export const QuotaTiersListBySubscription =
 // Input Schema
 export const QuotaTiersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  default: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -2813,8 +4903,9 @@ export type QuotaTiersUpdateOutput = typeof QuotaTiersUpdateOutput.Type;
  *
  * Update the Quota Tier information for the given subscription. QuotaTiers is a subscription wide resource type. It holds current tier information.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param default - Default parameter. Leave the value as default.
  */
 export const QuotaTiersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QuotaTiersUpdateInput,
@@ -2823,8 +4914,10 @@ export const QuotaTiersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const RaiBlocklistItemsBatchAddInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    raiBlocklistName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2845,9 +4938,11 @@ export type RaiBlocklistItemsBatchAddOutput =
 /**
  * Batch operation to add blocklist items.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
  */
 export const RaiBlocklistItemsBatchAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2858,8 +4953,10 @@ export const RaiBlocklistItemsBatchAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const RaiBlocklistItemsBatchDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    raiBlocklistName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2880,9 +4977,11 @@ export type RaiBlocklistItemsBatchDeleteOutput =
 /**
  * Batch operation to delete blocklist items.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
  */
 export const RaiBlocklistItemsBatchDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2892,8 +4991,11 @@ export const RaiBlocklistItemsBatchDelete =
 // Input Schema
 export const RaiBlocklistItemsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    raiBlocklistName: Schema.String.pipe(T.PathParam()),
+    raiBlocklistItemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2914,9 +5016,12 @@ export type RaiBlocklistItemsCreateOrUpdateOutput =
 /**
  * Update the state of specified blocklist item associated with the Azure OpenAI account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
+ * @param raiBlocklistItemName - The name of the RaiBlocklist Item associated with the custom blocklist
  */
 export const RaiBlocklistItemsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2926,8 +5031,11 @@ export const RaiBlocklistItemsCreateOrUpdate =
 // Input Schema
 export const RaiBlocklistItemsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    raiBlocklistName: Schema.String.pipe(T.PathParam()),
+    raiBlocklistItemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2948,9 +5056,12 @@ export type RaiBlocklistItemsDeleteOutput =
 /**
  * Deletes the specified blocklist Item associated with the custom blocklist.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
+ * @param raiBlocklistItemName - The name of the RaiBlocklist Item associated with the custom blocklist
  */
 export const RaiBlocklistItemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2961,8 +5072,11 @@ export const RaiBlocklistItemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const RaiBlocklistItemsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    raiBlocklistName: Schema.String.pipe(T.PathParam()),
+    raiBlocklistItemName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -2981,9 +5095,12 @@ export type RaiBlocklistItemsGetOutput = typeof RaiBlocklistItemsGetOutput.Type;
 /**
  * Gets the specified custom blocklist Item associated with the custom blocklist.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
+ * @param raiBlocklistItemName - The name of the RaiBlocklist Item associated with the custom blocklist
  */
 export const RaiBlocklistItemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2994,8 +5111,10 @@ export const RaiBlocklistItemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const RaiBlocklistItemsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    raiBlocklistName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3018,9 +5137,11 @@ export type RaiBlocklistItemsListOutput =
 /**
  * Gets the blocklist items associated with the custom blocklist.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
  */
 export const RaiBlocklistItemsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3031,8 +5152,10 @@ export const RaiBlocklistItemsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const RaiBlocklistsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    raiBlocklistName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3053,9 +5176,11 @@ export type RaiBlocklistsCreateOrUpdateOutput =
 /**
  * Update the state of specified blocklist associated with the Azure OpenAI account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
  */
 export const RaiBlocklistsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3066,8 +5191,10 @@ export const RaiBlocklistsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const RaiBlocklistsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    raiBlocklistName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3086,9 +5213,11 @@ export type RaiBlocklistsDeleteOutput = typeof RaiBlocklistsDeleteOutput.Type;
 /**
  * Deletes the specified custom blocklist associated with the Azure OpenAI account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
  */
 export const RaiBlocklistsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RaiBlocklistsDeleteInput,
@@ -3096,8 +5225,10 @@ export const RaiBlocklistsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const RaiBlocklistsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  raiBlocklistName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3117,9 +5248,11 @@ export type RaiBlocklistsGetOutput = typeof RaiBlocklistsGetOutput.Type;
 /**
  * Gets the specified custom blocklist associated with the Azure OpenAI account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiBlocklistName - The name of the RaiBlocklist associated with the Cognitive Services Account
  */
 export const RaiBlocklistsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RaiBlocklistsGetInput,
@@ -3128,8 +5261,9 @@ export const RaiBlocklistsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 // Input Schema
 export const RaiBlocklistsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -3152,9 +5286,10 @@ export type RaiBlocklistsListOutput = typeof RaiBlocklistsListOutput.Type;
 /**
  * Gets the custom blocklists associated with the Azure OpenAI account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const RaiBlocklistsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RaiBlocklistsListInput,
@@ -3164,6 +5299,8 @@ export const RaiBlocklistsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export const RaiContentFiltersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    filterName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3182,8 +5319,10 @@ export type RaiContentFiltersGetOutput = typeof RaiContentFiltersGetOutput.Type;
 /**
  * Get Content Filters by Name.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param location - The name of Azure region.
+ * @param filterName - The name of the RAI Content Filter.
  */
 export const RaiContentFiltersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3195,6 +5334,7 @@ export const RaiContentFiltersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
 export const RaiContentFiltersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3217,8 +5357,9 @@ export type RaiContentFiltersListOutput =
 /**
  * List Content Filters types.
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param location - The name of Azure region.
  */
 export const RaiContentFiltersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3227,10 +5368,149 @@ export const RaiContentFiltersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const RaiExternalSafetyProviderCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    safetyProviderName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
+    }),
+  );
+export type RaiExternalSafetyProviderCreateOrUpdateInput =
+  typeof RaiExternalSafetyProviderCreateOrUpdateInput.Type;
+
+// Output Schema
+export const RaiExternalSafetyProviderCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type RaiExternalSafetyProviderCreateOrUpdateOutput =
+  typeof RaiExternalSafetyProviderCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Create the rai safety provider associated with the subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param safetyProviderName - The name of the Rai External Safety Provider associated with the Cognitive Services Account
+ */
+export const RaiExternalSafetyProviderCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: RaiExternalSafetyProviderCreateOrUpdateInput,
+    outputSchema: RaiExternalSafetyProviderCreateOrUpdateOutput,
+  }));
+// Input Schema
+export const RaiExternalSafetyProviderDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    safetyProviderName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
+    }),
+  );
+export type RaiExternalSafetyProviderDeleteInput =
+  typeof RaiExternalSafetyProviderDeleteInput.Type;
+
+// Output Schema
+export const RaiExternalSafetyProviderDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type RaiExternalSafetyProviderDeleteOutput =
+  typeof RaiExternalSafetyProviderDeleteOutput.Type;
+
+// The operation
+/**
+ * Deletes the specified custom topic associated with the subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param safetyProviderName - The name of the Rai External Safety Provider associated with the Cognitive Services Account
+ */
+export const RaiExternalSafetyProviderDelete =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: RaiExternalSafetyProviderDeleteInput,
+    outputSchema: RaiExternalSafetyProviderDeleteOutput,
+  }));
+// Input Schema
+export const RaiExternalSafetyProviderGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    safetyProviderName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
+    }),
+  );
+export type RaiExternalSafetyProviderGetInput =
+  typeof RaiExternalSafetyProviderGetInput.Type;
+
+// Output Schema
+export const RaiExternalSafetyProviderGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type RaiExternalSafetyProviderGetOutput =
+  typeof RaiExternalSafetyProviderGetOutput.Type;
+
+// The operation
+/**
+ * Gets the specified external safety provider associated with the Subscription
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param safetyProviderName - The name of the Rai External Safety Provider associated with the Cognitive Services Account
+ */
+export const RaiExternalSafetyProviderGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: RaiExternalSafetyProviderGetInput,
+    outputSchema: RaiExternalSafetyProviderGetOutput,
+  }));
+// Input Schema
+export const RaiExternalSafetyProvidersListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders",
+    }),
+  );
+export type RaiExternalSafetyProvidersListInput =
+  typeof RaiExternalSafetyProvidersListInput.Type;
+
+// Output Schema
+export const RaiExternalSafetyProvidersListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextLink: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+  });
+export type RaiExternalSafetyProvidersListOutput =
+  typeof RaiExternalSafetyProvidersListOutput.Type;
+
+// The operation
+/**
+ * Gets the safety providers associated with the subscription
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ */
+export const RaiExternalSafetyProvidersList =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: RaiExternalSafetyProvidersListInput,
+    outputSchema: RaiExternalSafetyProvidersListOutput,
+  }));
+// Input Schema
 export const RaiPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    raiPolicyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3251,9 +5531,11 @@ export type RaiPoliciesCreateOrUpdateOutput =
 /**
  * Update the state of specified Content Filters associated with the Azure OpenAI account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiPolicyName - The name of the RaiPolicy associated with the Cognitive Services Account
  */
 export const RaiPoliciesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3264,8 +5546,10 @@ export const RaiPoliciesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const RaiPoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    raiPolicyName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   },
 ).pipe(
@@ -3284,9 +5568,11 @@ export type RaiPoliciesDeleteOutput = typeof RaiPoliciesDeleteOutput.Type;
 /**
  * Deletes the specified Content Filters associated with the Azure OpenAI account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiPolicyName - The name of the RaiPolicy associated with the Cognitive Services Account
  */
 export const RaiPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RaiPoliciesDeleteInput,
@@ -3294,8 +5580,10 @@ export const RaiPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const RaiPoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  raiPolicyName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3315,9 +5603,11 @@ export type RaiPoliciesGetOutput = typeof RaiPoliciesGetOutput.Type;
 /**
  * Gets the specified Content Filters associated with the Azure OpenAI account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiPolicyName - The name of the RaiPolicy associated with the Cognitive Services Account
  */
 export const RaiPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RaiPoliciesGetInput,
@@ -3325,8 +5615,9 @@ export const RaiPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const RaiPoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3347,19 +5638,168 @@ export type RaiPoliciesListOutput = typeof RaiPoliciesListOutput.Type;
 /**
  * Gets the content filters associated with the Azure OpenAI account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const RaiPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RaiPoliciesListInput,
   outputSchema: RaiPoliciesListOutput,
 }));
 // Input Schema
+export const RaiToolLabelsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    raiToolConnectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels/{raiToolConnectionName}",
+    }),
+  );
+export type RaiToolLabelsCreateOrUpdateInput =
+  typeof RaiToolLabelsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const RaiToolLabelsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type RaiToolLabelsCreateOrUpdateOutput =
+  typeof RaiToolLabelsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates the RAI Tool Label associated with the Azure OpenAI account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiToolConnectionName - The name of the Rai Tool Label
+ */
+export const RaiToolLabelsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: RaiToolLabelsCreateOrUpdateInput,
+    outputSchema: RaiToolLabelsCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
+export const RaiToolLabelsDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    raiToolConnectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels/{raiToolConnectionName}",
+    }),
+  );
+export type RaiToolLabelsDeleteInput = typeof RaiToolLabelsDeleteInput.Type;
+
+// Output Schema
+export const RaiToolLabelsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type RaiToolLabelsDeleteOutput = typeof RaiToolLabelsDeleteOutput.Type;
+
+// The operation
+/**
+ * Deletes the specified RAI Tool Label associated with the Azure OpenAI account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiToolConnectionName - The name of the Rai Tool Label
+ */
+export const RaiToolLabelsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: RaiToolLabelsDeleteInput,
+  outputSchema: RaiToolLabelsDeleteOutput,
+}));
+// Input Schema
+export const RaiToolLabelsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  raiToolConnectionName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels/{raiToolConnectionName}",
+  }),
+);
+export type RaiToolLabelsGetInput = typeof RaiToolLabelsGetInput.Type;
+
+// Output Schema
+export const RaiToolLabelsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+);
+export type RaiToolLabelsGetOutput = typeof RaiToolLabelsGetOutput.Type;
+
+// The operation
+/**
+ * Gets the specified RAI Tool Label associated with the Azure OpenAI account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiToolConnectionName - The name of the Rai Tool Label
+ */
+export const RaiToolLabelsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: RaiToolLabelsGetInput,
+  outputSchema: RaiToolLabelsGetOutput,
+}));
+// Input Schema
+export const RaiToolLabelsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels",
+  }),
+);
+export type RaiToolLabelsListInput = typeof RaiToolLabelsListInput.Type;
+
+// Output Schema
+export const RaiToolLabelsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextLink: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+  });
+export type RaiToolLabelsListOutput = typeof RaiToolLabelsListOutput.Type;
+
+// The operation
+/**
+ * Lists all RAI Tool Labels associated with the Azure OpenAI account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ */
+export const RaiToolLabelsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: RaiToolLabelsListInput,
+  outputSchema: RaiToolLabelsListOutput,
+}));
+// Input Schema
 export const RaiTopicsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    raiTopicName: Schema.String.pipe(T.PathParam()),
     "api-version": Schema.String,
   }).pipe(
     T.Http({
@@ -3380,9 +5820,11 @@ export type RaiTopicsCreateOrUpdateOutput =
 /**
  * Create the rai topic associated with the Azure OpenAI account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiTopicName - The name of the Rai Topic associated with the Cognitive Services Account
  */
 export const RaiTopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3392,8 +5834,10 @@ export const RaiTopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const RaiTopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  raiTopicName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3411,9 +5855,11 @@ export type RaiTopicsDeleteOutput = typeof RaiTopicsDeleteOutput.Type;
 /**
  * Deletes the specified custom topic associated with the Azure OpenAI account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiTopicName - The name of the Rai Topic associated with the Cognitive Services Account
  */
 export const RaiTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RaiTopicsDeleteInput,
@@ -3421,8 +5867,10 @@ export const RaiTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const RaiTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  raiTopicName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3440,9 +5888,11 @@ export type RaiTopicsGetOutput = typeof RaiTopicsGetOutput.Type;
 /**
  * Gets the specified custom topic associated with the Azure OpenAI account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param raiTopicName - The name of the Rai Topic associated with the Cognitive Services Account
  */
 export const RaiTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RaiTopicsGetInput,
@@ -3450,8 +5900,9 @@ export const RaiTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 }));
 // Input Schema
 export const RaiTopicsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
 }).pipe(
   T.Http({
@@ -3472,9 +5923,10 @@ export type RaiTopicsListOutput = typeof RaiTopicsListOutput.Type;
 /**
  * Gets the custom topics associated with the Azure OpenAI account.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
  */
 export const RaiTopicsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RaiTopicsListInput,
@@ -3538,9 +5990,153 @@ export const ResourceSkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ResourceSkusListOutput,
 }));
 // Input Schema
+export const SubscriptionRaiPolicyCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    raiPolicyName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}",
+    }),
+  );
+export type SubscriptionRaiPolicyCreateOrUpdateInput =
+  typeof SubscriptionRaiPolicyCreateOrUpdateInput.Type;
+
+// Output Schema
+export const SubscriptionRaiPolicyCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type SubscriptionRaiPolicyCreateOrUpdateOutput =
+  typeof SubscriptionRaiPolicyCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Update the state of specified Content Filters associated with the subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param raiPolicyName - The name of the RaiPolicy associated with the Cognitive Services Account
+ */
+export const SubscriptionRaiPolicyCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: SubscriptionRaiPolicyCreateOrUpdateInput,
+    outputSchema: SubscriptionRaiPolicyCreateOrUpdateOutput,
+  }));
+// Input Schema
+export const SubscriptionRaiPolicyDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    raiPolicyName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}",
+    }),
+  );
+export type SubscriptionRaiPolicyDeleteInput =
+  typeof SubscriptionRaiPolicyDeleteInput.Type;
+
+// Output Schema
+export const SubscriptionRaiPolicyDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type SubscriptionRaiPolicyDeleteOutput =
+  typeof SubscriptionRaiPolicyDeleteOutput.Type;
+
+// The operation
+/**
+ * Deletes the specified Content Filters associated with the subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param raiPolicyName - The name of the RaiPolicy associated with the Cognitive Services Account
+ */
+export const SubscriptionRaiPolicyDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: SubscriptionRaiPolicyDeleteInput,
+    outputSchema: SubscriptionRaiPolicyDeleteOutput,
+  }),
+);
+// Input Schema
+export const SubscriptionRaiPolicyGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    raiPolicyName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}",
+    }),
+  );
+export type SubscriptionRaiPolicyGetInput =
+  typeof SubscriptionRaiPolicyGetInput.Type;
+
+// Output Schema
+export const SubscriptionRaiPolicyGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type SubscriptionRaiPolicyGetOutput =
+  typeof SubscriptionRaiPolicyGetOutput.Type;
+
+// The operation
+/**
+ * Gets the specified Content Filters associated with the Subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param raiPolicyName - The name of the RaiPolicy associated with the Cognitive Services Account
+ */
+export const SubscriptionRaiPolicyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: SubscriptionRaiPolicyGetInput,
+    outputSchema: SubscriptionRaiPolicyGetOutput,
+  }),
+);
+// Input Schema
+export const TestRaiExternalSafetyProviderCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    safetyProviderName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/testRaiExternalSafetyProvider/{safetyProviderName}",
+    }),
+  );
+export type TestRaiExternalSafetyProviderCreateOrUpdateInput =
+  typeof TestRaiExternalSafetyProviderCreateOrUpdateInput.Type;
+
+// Output Schema
+export const TestRaiExternalSafetyProviderCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type TestRaiExternalSafetyProviderCreateOrUpdateOutput =
+  typeof TestRaiExternalSafetyProviderCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Test the rai safety provider associated with the subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param safetyProviderName - The name of the Rai External Safety Provider associated with the Cognitive Services Account
+ */
+export const TestRaiExternalSafetyProviderCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: TestRaiExternalSafetyProviderCreateOrUpdateInput,
+    outputSchema: TestRaiExternalSafetyProviderCreateOrUpdateOutput,
+  }));
+// Input Schema
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "GET",
@@ -3589,8 +6185,10 @@ export type UsagesListOutput = typeof UsagesListOutput.Type;
 /**
  * Get usages for the requested subscription
  *
- * @param subscriptionId - The ID of the target subscription.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param location - The name of Azure region.
+ * @param $filter - An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
  */
 export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UsagesListInput,

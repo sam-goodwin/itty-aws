@@ -1033,6 +1033,80 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export const PrivateEndpointConnectionsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals(["Pending", "Approved", "Rejected"]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type PrivateEndpointConnectionsCreateOrUpdateInput =
+  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals(["Pending", "Approved", "Rejected"]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
+  });
+export type PrivateEndpointConnectionsCreateOrUpdateOutput =
+  typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Update the state of the specified private endpoint connection associated with the service.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
+ * @param properties - Resource properties.
+ */
+export const PrivateEndpointConnectionsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
+    outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
+  }));
+// Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1065,6 +1139,212 @@ export const PrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
+  }));
+// Input Schema
+export const PrivateEndpointConnectionsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type PrivateEndpointConnectionsGetInput =
+  typeof PrivateEndpointConnectionsGetInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals(["Pending", "Approved", "Rejected"]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
+  });
+export type PrivateEndpointConnectionsGetOutput =
+  typeof PrivateEndpointConnectionsGetOutput.Type;
+
+// The operation
+/**
+ * Gets the specified private endpoint connection associated with the service.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
+ */
+export const PrivateEndpointConnectionsGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionsGetInput,
+    outputSchema: PrivateEndpointConnectionsGetOutput,
+  }));
+// Input Schema
+export const PrivateEndpointConnectionsListByServiceInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections",
+    }),
+  );
+export type PrivateEndpointConnectionsListByServiceInput =
+  typeof PrivateEndpointConnectionsListByServiceInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsListByServiceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          properties: Schema.optional(
+            Schema.Struct({
+              privateEndpoint: Schema.optional(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+              privateLinkServiceConnectionState: Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals(["Pending", "Approved", "Rejected"]),
+                ),
+                description: Schema.optional(Schema.String),
+                actionsRequired: Schema.optional(Schema.String),
+              }),
+              provisioningState: Schema.optional(
+                Schema.Literals([
+                  "Succeeded",
+                  "Creating",
+                  "Deleting",
+                  "Failed",
+                ]),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+  });
+export type PrivateEndpointConnectionsListByServiceOutput =
+  typeof PrivateEndpointConnectionsListByServiceOutput.Type;
+
+// The operation
+/**
+ * Lists all private endpoint connections for a service.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ */
+export const PrivateEndpointConnectionsListByService =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionsListByServiceInput,
+    outputSchema: PrivateEndpointConnectionsListByServiceOutput,
+  }));
+// Input Schema
+export const PrivateLinkResourcesGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    groupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateLinkResources/{groupName}",
+    }),
+  );
+export type PrivateLinkResourcesGetInput =
+  typeof PrivateLinkResourcesGetInput.Type;
+
+// Output Schema
+export const PrivateLinkResourcesGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        groupId: Schema.optional(Schema.String),
+        requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+        requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+  });
+export type PrivateLinkResourcesGetOutput =
+  typeof PrivateLinkResourcesGetOutput.Type;
+
+// The operation
+/**
+ * Gets a private link resource that need to be created for a service.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ * @param groupName - The name of the private link resource group.
+ */
+export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: PrivateLinkResourcesGetInput,
+    outputSchema: PrivateLinkResourcesGetOutput,
+  }),
+);
+// Input Schema
+export const PrivateLinkResourcesListByServiceInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateLinkResources",
+    }),
+  );
+export type PrivateLinkResourcesListByServiceInput =
+  typeof PrivateLinkResourcesListByServiceInput.Type;
+
+// Output Schema
+export const PrivateLinkResourcesListByServiceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          properties: Schema.optional(
+            Schema.Struct({
+              groupId: Schema.optional(Schema.String),
+              requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+              requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        }),
+      ),
+    ),
+  });
+export type PrivateLinkResourcesListByServiceOutput =
+  typeof PrivateLinkResourcesListByServiceOutput.Type;
+
+// The operation
+/**
+ * Gets the private link resources that need to be created for a service.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
+ */
+export const PrivateLinkResourcesListByService =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateLinkResourcesListByServiceInput,
+    outputSchema: PrivateLinkResourcesListByServiceOutput,
   }));
 // Input Schema
 export const ServicesCheckNameAvailabilityInput =
@@ -1368,6 +1648,60 @@ export const ServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesUpdateOutput,
 }));
 // Input Schema
+export const WorkspacePrivateEndpointConnectionsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type WorkspacePrivateEndpointConnectionsCreateOrUpdateInput =
+  typeof WorkspacePrivateEndpointConnectionsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const WorkspacePrivateEndpointConnectionsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals(["Pending", "Approved", "Rejected"]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
+  });
+export type WorkspacePrivateEndpointConnectionsCreateOrUpdateOutput =
+  typeof WorkspacePrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Update the state of the specified private endpoint connection associated with the workspace.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
+ */
+export const WorkspacePrivateEndpointConnectionsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: WorkspacePrivateEndpointConnectionsCreateOrUpdateInput,
+    outputSchema: WorkspacePrivateEndpointConnectionsCreateOrUpdateOutput,
+  }));
+// Input Schema
 export const WorkspacePrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1400,6 +1734,211 @@ export const WorkspacePrivateEndpointConnectionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: WorkspacePrivateEndpointConnectionsDeleteInput,
     outputSchema: WorkspacePrivateEndpointConnectionsDeleteOutput,
+  }));
+// Input Schema
+export const WorkspacePrivateEndpointConnectionsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type WorkspacePrivateEndpointConnectionsGetInput =
+  typeof WorkspacePrivateEndpointConnectionsGetInput.Type;
+
+// Output Schema
+export const WorkspacePrivateEndpointConnectionsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.Struct({
+          status: Schema.optional(
+            Schema.Literals(["Pending", "Approved", "Rejected"]),
+          ),
+          description: Schema.optional(Schema.String),
+          actionsRequired: Schema.optional(Schema.String),
+        }),
+        provisioningState: Schema.optional(
+          Schema.Literals(["Succeeded", "Creating", "Deleting", "Failed"]),
+        ),
+      }),
+    ),
+  });
+export type WorkspacePrivateEndpointConnectionsGetOutput =
+  typeof WorkspacePrivateEndpointConnectionsGetOutput.Type;
+
+// The operation
+/**
+ * Gets the specified private endpoint connection associated with the workspace.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
+ */
+export const WorkspacePrivateEndpointConnectionsGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: WorkspacePrivateEndpointConnectionsGetInput,
+    outputSchema: WorkspacePrivateEndpointConnectionsGetOutput,
+  }));
+// Input Schema
+export const WorkspacePrivateEndpointConnectionsListByWorkspaceInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateEndpointConnections",
+    }),
+  );
+export type WorkspacePrivateEndpointConnectionsListByWorkspaceInput =
+  typeof WorkspacePrivateEndpointConnectionsListByWorkspaceInput.Type;
+
+// Output Schema
+export const WorkspacePrivateEndpointConnectionsListByWorkspaceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          properties: Schema.optional(
+            Schema.Struct({
+              privateEndpoint: Schema.optional(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+              privateLinkServiceConnectionState: Schema.Struct({
+                status: Schema.optional(
+                  Schema.Literals(["Pending", "Approved", "Rejected"]),
+                ),
+                description: Schema.optional(Schema.String),
+                actionsRequired: Schema.optional(Schema.String),
+              }),
+              provisioningState: Schema.optional(
+                Schema.Literals([
+                  "Succeeded",
+                  "Creating",
+                  "Deleting",
+                  "Failed",
+                ]),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+  });
+export type WorkspacePrivateEndpointConnectionsListByWorkspaceOutput =
+  typeof WorkspacePrivateEndpointConnectionsListByWorkspaceOutput.Type;
+
+// The operation
+/**
+ * Lists all private endpoint connections for a workspace.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ */
+export const WorkspacePrivateEndpointConnectionsListByWorkspace =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: WorkspacePrivateEndpointConnectionsListByWorkspaceInput,
+    outputSchema: WorkspacePrivateEndpointConnectionsListByWorkspaceOutput,
+  }));
+// Input Schema
+export const WorkspacePrivateLinkResourcesGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    groupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateLinkResources/{groupName}",
+    }),
+  );
+export type WorkspacePrivateLinkResourcesGetInput =
+  typeof WorkspacePrivateLinkResourcesGetInput.Type;
+
+// Output Schema
+export const WorkspacePrivateLinkResourcesGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        groupId: Schema.optional(Schema.String),
+        requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+        requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+  });
+export type WorkspacePrivateLinkResourcesGetOutput =
+  typeof WorkspacePrivateLinkResourcesGetOutput.Type;
+
+// The operation
+/**
+ * Gets a private link resource that need to be created for a workspace.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param groupName - The name of the private link resource group.
+ */
+export const WorkspacePrivateLinkResourcesGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: WorkspacePrivateLinkResourcesGetInput,
+    outputSchema: WorkspacePrivateLinkResourcesGetOutput,
+  }));
+// Input Schema
+export const WorkspacePrivateLinkResourcesListByWorkspaceInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateLinkResources",
+    }),
+  );
+export type WorkspacePrivateLinkResourcesListByWorkspaceInput =
+  typeof WorkspacePrivateLinkResourcesListByWorkspaceInput.Type;
+
+// Output Schema
+export const WorkspacePrivateLinkResourcesListByWorkspaceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          properties: Schema.optional(
+            Schema.Struct({
+              groupId: Schema.optional(Schema.String),
+              requiredMembers: Schema.optional(Schema.Array(Schema.String)),
+              requiredZoneNames: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+        }),
+      ),
+    ),
+  });
+export type WorkspacePrivateLinkResourcesListByWorkspaceOutput =
+  typeof WorkspacePrivateLinkResourcesListByWorkspaceOutput.Type;
+
+// The operation
+/**
+ * Gets the private link resources that need to be created for a workspace.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ */
+export const WorkspacePrivateLinkResourcesListByWorkspace =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: WorkspacePrivateLinkResourcesListByWorkspaceInput,
+    outputSchema: WorkspacePrivateLinkResourcesListByWorkspaceOutput,
   }));
 // Input Schema
 export const WorkspacesCreateOrUpdateInput =

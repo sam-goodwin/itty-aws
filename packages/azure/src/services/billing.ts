@@ -6591,6 +6591,373 @@ export const ReservationOrdersListByBillingAccount =
     outputSchema: ReservationOrdersListByBillingAccountOutput,
   }));
 // Input Schema
+export const ReservationsGetByReservationOrderInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountName: Schema.String.pipe(T.PathParam()),
+    reservationOrderId: Schema.String.pipe(T.PathParam()),
+    reservationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    expand: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservationOrders/{reservationOrderId}/reservations/{reservationId}",
+    }),
+  );
+export type ReservationsGetByReservationOrderInput =
+  typeof ReservationsGetByReservationOrderInput.Type;
+
+// Output Schema
+export const ReservationsGetByReservationOrderOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ReservationsGetByReservationOrderOutput =
+  typeof ReservationsGetByReservationOrderOutput.Type;
+
+// The operation
+/**
+ * Get Reservation details in the billing account.
+ *
+ * Get specific Reservation details in the billing account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountName - The ID that uniquely identifies a billing account.
+ * @param reservationOrderId - Order Id of the reservation
+ * @param reservationId - Id of the reservation item
+ * @param expand - May be used to expand the detail information of some properties.
+ */
+export const ReservationsGetByReservationOrder =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ReservationsGetByReservationOrderInput,
+    outputSchema: ReservationsGetByReservationOrderOutput,
+  }));
+// Input Schema
+export const ReservationsListByBillingAccountInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    filter: Schema.optional(Schema.String),
+    orderBy: Schema.optional(Schema.String),
+    skiptoken: Schema.optional(Schema.Number),
+    refreshSummary: Schema.optional(Schema.String),
+    selectedState: Schema.optional(Schema.String),
+    take: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservations",
+    }),
+  );
+export type ReservationsListByBillingAccountInput =
+  typeof ReservationsListByBillingAccountInput.Type;
+
+// Output Schema
+export const ReservationsListByBillingAccountOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextLink: Schema.optional(Schema.String),
+    summary: Schema.optional(
+      Schema.Struct({
+        cancelledCount: Schema.optional(Schema.Number),
+        expiredCount: Schema.optional(Schema.Number),
+        expiringCount: Schema.optional(Schema.Number),
+        failedCount: Schema.optional(Schema.Number),
+        pendingCount: Schema.optional(Schema.Number),
+        succeededCount: Schema.optional(Schema.Number),
+        noBenefitCount: Schema.optional(Schema.Number),
+        warningCount: Schema.optional(Schema.Number),
+        processingCount: Schema.optional(Schema.Number),
+      }),
+    ),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+  });
+export type ReservationsListByBillingAccountOutput =
+  typeof ReservationsListByBillingAccountOutput.Type;
+
+// The operation
+/**
+ * Lists the reservations in the billing account and the roll up counts of reservations group by provisioning states.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountName - The ID that uniquely identifies a billing account.
+ * @param filter - The filter query option allows clients to filter a collection of resources that are addressed by a request URL.
+ * @param orderBy - The orderby query option allows clients to request resources in a particular order.
+ * @param skiptoken - The number of reservations to skip from the list before returning results
+ * @param refreshSummary - To indicate whether to refresh the roll up counts of the reservations group by provisioning states
+ * @param selectedState - The selected provisioning state
+ * @param take - The number of reservations to return in API response.
+ */
+export const ReservationsListByBillingAccount =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ReservationsListByBillingAccountInput,
+    outputSchema: ReservationsListByBillingAccountOutput,
+  }));
+// Input Schema
+export const ReservationsListByBillingProfileInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountName: Schema.String.pipe(T.PathParam()),
+    billingProfileName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    filter: Schema.optional(Schema.String),
+    orderBy: Schema.optional(Schema.String),
+    skiptoken: Schema.optional(Schema.Number),
+    refreshSummary: Schema.optional(Schema.String),
+    selectedState: Schema.optional(Schema.String),
+    take: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/reservations",
+    }),
+  );
+export type ReservationsListByBillingProfileInput =
+  typeof ReservationsListByBillingProfileInput.Type;
+
+// Output Schema
+export const ReservationsListByBillingProfileOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextLink: Schema.optional(Schema.String),
+    summary: Schema.optional(
+      Schema.Struct({
+        cancelledCount: Schema.optional(Schema.Number),
+        expiredCount: Schema.optional(Schema.Number),
+        expiringCount: Schema.optional(Schema.Number),
+        failedCount: Schema.optional(Schema.Number),
+        pendingCount: Schema.optional(Schema.Number),
+        succeededCount: Schema.optional(Schema.Number),
+        noBenefitCount: Schema.optional(Schema.Number),
+        warningCount: Schema.optional(Schema.Number),
+        processingCount: Schema.optional(Schema.Number),
+      }),
+    ),
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+  });
+export type ReservationsListByBillingProfileOutput =
+  typeof ReservationsListByBillingProfileOutput.Type;
+
+// The operation
+/**
+ * Lists the reservations for a billing profile and the roll up counts of reservations group by provisioning state.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountName - The ID that uniquely identifies a billing account.
+ * @param billingProfileName - The ID that uniquely identifies a billing profile.
+ * @param filter - The filter query option allows clients to filter a collection of resources that are addressed by a request URL.
+ * @param orderBy - The orderby query option allows clients to request resources in a particular order.
+ * @param skiptoken - The number of reservations to skip from the list before returning results
+ * @param refreshSummary - To indicate whether to refresh the roll up counts of the reservations group by provisioning states
+ * @param selectedState - The selected provisioning state
+ * @param take - The number of reservations to return in API response.
+ */
+export const ReservationsListByBillingProfile =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ReservationsListByBillingProfileInput,
+    outputSchema: ReservationsListByBillingProfileOutput,
+  }));
+// Input Schema
+export const ReservationsListByReservationOrderInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountName: Schema.String.pipe(T.PathParam()),
+    reservationOrderId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservationOrders/{reservationOrderId}/reservations",
+    }),
+  );
+export type ReservationsListByReservationOrderInput =
+  typeof ReservationsListByReservationOrderInput.Type;
+
+// Output Schema
+export const ReservationsListByReservationOrderOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ReservationsListByReservationOrderOutput =
+  typeof ReservationsListByReservationOrderOutput.Type;
+
+// The operation
+/**
+ * Get Reservations in a given reservation Order in the billing account
+ *
+ * List Reservations within a single ReservationOrder in the billing account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountName - The ID that uniquely identifies a billing account.
+ * @param reservationOrderId - Order Id of the reservation
+ */
+export const ReservationsListByReservationOrder =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ReservationsListByReservationOrderInput,
+    outputSchema: ReservationsListByReservationOrderOutput,
+  }));
+// Input Schema
+export const ReservationsUpdateByBillingAccountInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountName: Schema.String.pipe(T.PathParam()),
+    reservationOrderId: Schema.String.pipe(T.PathParam()),
+    reservationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservationOrders/{reservationOrderId}/reservations/{reservationId}",
+    }),
+  );
+export type ReservationsUpdateByBillingAccountInput =
+  typeof ReservationsUpdateByBillingAccountInput.Type;
+
+// Output Schema
+export const ReservationsUpdateByBillingAccountOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ReservationsUpdateByBillingAccountOutput =
+  typeof ReservationsUpdateByBillingAccountOutput.Type;
+
+// The operation
+/**
+ * Update reservation by billing account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountName - The ID that uniquely identifies a billing account.
+ * @param reservationOrderId - Order Id of the reservation
+ * @param reservationId - Id of the reservation item
+ */
+export const ReservationsUpdateByBillingAccount =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ReservationsUpdateByBillingAccountInput,
+    outputSchema: ReservationsUpdateByBillingAccountOutput,
+  }));
+// Input Schema
 export const SavingsPlanOrdersGetByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingAccountName: Schema.String.pipe(T.PathParam()),

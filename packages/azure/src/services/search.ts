@@ -399,6 +399,78 @@ export const PrivateEndpointConnectionsUpdate =
     outputSchema: PrivateEndpointConnectionsUpdateOutput,
   }));
 // Input Schema
+export const PrivateLinkResourcesListSupportedInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    searchServiceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/privateLinkResources",
+    }),
+  );
+export type PrivateLinkResourcesListSupportedInput =
+  typeof PrivateLinkResourcesListSupportedInput.Type;
+
+// Output Schema
+export const PrivateLinkResourcesListSupportedOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type PrivateLinkResourcesListSupportedOutput =
+  typeof PrivateLinkResourcesListSupportedOutput.Type;
+
+// The operation
+/**
+ * Gets a list of all supported private link resource types for the given service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param searchServiceName - The name of the Azure AI Search service associated with the specified resource group.
+ * @param x-ms-client-request-id - A client-generated GUID value that identifies this request. If specified, this will be included in response information as a way to track the request.
+ */
+export const PrivateLinkResourcesListSupported =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateLinkResourcesListSupportedInput,
+    outputSchema: PrivateLinkResourcesListSupportedOutput,
+  }));
+// Input Schema
 export const QueryKeysCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),

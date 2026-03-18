@@ -1111,6 +1111,114 @@ export const ExposureControlQueryFeatureValuesByFactory =
     outputSchema: ExposureControlQueryFeatureValuesByFactoryOutput,
   }));
 // Input Schema
+export const FactoriesConfigureFactoryRepoInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataFactory/locations/{locationId}/configureFactoryRepo",
+    }),
+  );
+export type FactoriesConfigureFactoryRepoInput =
+  typeof FactoriesConfigureFactoryRepoInput.Type;
+
+// Output Schema
+export const FactoriesConfigureFactoryRepoOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type FactoriesConfigureFactoryRepoOutput =
+  typeof FactoriesConfigureFactoryRepoOutput.Type;
+
+// The operation
+/**
+ * Updates a factory's repo information.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param locationId - The location identifier.
+ */
+export const FactoriesConfigureFactoryRepo =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: FactoriesConfigureFactoryRepoInput,
+    outputSchema: FactoriesConfigureFactoryRepoOutput,
+  }));
+// Input Schema
+export const FactoriesCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    factoryName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}",
+    }),
+  );
+export type FactoriesCreateOrUpdateInput =
+  typeof FactoriesCreateOrUpdateInput.Type;
+
+// Output Schema
+export const FactoriesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type FactoriesCreateOrUpdateOutput =
+  typeof FactoriesCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates a factory.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param factoryName - The factory name.
+ * @param if-match - ETag of the factory entity. Should only be specified for update, for which it should match existing entity or can be * for unconditional update.
+ */
+export const FactoriesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: FactoriesCreateOrUpdateInput,
+    outputSchema: FactoriesCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
 export const FactoriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1140,6 +1248,56 @@ export type FactoriesDeleteOutput = typeof FactoriesDeleteOutput.Type;
 export const FactoriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FactoriesDeleteInput,
   outputSchema: FactoriesDeleteOutput,
+}));
+// Input Schema
+export const FactoriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  factoryName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}",
+  }),
+);
+export type FactoriesGetInput = typeof FactoriesGetInput.Type;
+
+// Output Schema
+export const FactoriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type FactoriesGetOutput = typeof FactoriesGetOutput.Type;
+
+// The operation
+/**
+ * Gets a factory.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param factoryName - The factory name.
+ * @param if-none-match - ETag of the factory entity. Should only be specified for get. If the ETag matches the existing entity tag, or if * was provided, then no content will be returned.
+ */
+export const FactoriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: FactoriesGetInput,
+  outputSchema: FactoriesGetOutput,
 }));
 // Input Schema
 export const FactoriesGetDataPlaneAccessInput =
@@ -1228,6 +1386,172 @@ export const FactoriesGetGitHubAccessToken =
     inputSchema: FactoriesGetGitHubAccessTokenInput,
     outputSchema: FactoriesGetGitHubAccessTokenOutput,
   }));
+// Input Schema
+export const FactoriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataFactory/factories",
+  }),
+);
+export type FactoriesListInput = typeof FactoriesListInput.Type;
+
+// Output Schema
+export const FactoriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type FactoriesListOutput = typeof FactoriesListOutput.Type;
+
+// The operation
+/**
+ * Lists factories under the specified subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ */
+export const FactoriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: FactoriesListInput,
+  outputSchema: FactoriesListOutput,
+}));
+// Input Schema
+export const FactoriesListByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories",
+    }),
+  );
+export type FactoriesListByResourceGroupInput =
+  typeof FactoriesListByResourceGroupInput.Type;
+
+// Output Schema
+export const FactoriesListByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type FactoriesListByResourceGroupOutput =
+  typeof FactoriesListByResourceGroupOutput.Type;
+
+// The operation
+/**
+ * Lists factories.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ */
+export const FactoriesListByResourceGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: FactoriesListByResourceGroupInput,
+    outputSchema: FactoriesListByResourceGroupOutput,
+  }));
+// Input Schema
+export const FactoriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  factoryName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}",
+  }),
+);
+export type FactoriesUpdateInput = typeof FactoriesUpdateInput.Type;
+
+// Output Schema
+export const FactoriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type FactoriesUpdateOutput = typeof FactoriesUpdateOutput.Type;
+
+// The operation
+/**
+ * Updates a factory.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param factoryName - The factory name.
+ */
+export const FactoriesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: FactoriesUpdateInput,
+  outputSchema: FactoriesUpdateOutput,
+}));
 // Input Schema
 export const GlobalParametersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

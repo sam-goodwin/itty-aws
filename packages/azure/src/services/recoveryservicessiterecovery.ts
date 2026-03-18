@@ -6111,6 +6111,117 @@ export const ReplicationStorageClassificationsListByReplicationFabrics =
       ReplicationStorageClassificationsListByReplicationFabricsOutput,
   }));
 // Input Schema
+export const ReplicationVaultHealthGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultHealth",
+    }),
+  );
+export type ReplicationVaultHealthGetInput =
+  typeof ReplicationVaultHealthGetInput.Type;
+
+// Output Schema
+export const ReplicationVaultHealthGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ReplicationVaultHealthGetOutput =
+  typeof ReplicationVaultHealthGetOutput.Type;
+
+// The operation
+/**
+ * Gets the health summary for the vault.
+ *
+ * Gets the health details of the vault.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the recovery services vault.
+ */
+export const ReplicationVaultHealthGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ReplicationVaultHealthGetInput,
+    outputSchema: ReplicationVaultHealthGetOutput,
+  }),
+);
+// Input Schema
+export const ReplicationVaultHealthRefreshInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultHealth/default/refresh",
+    }),
+  );
+export type ReplicationVaultHealthRefreshInput =
+  typeof ReplicationVaultHealthRefreshInput.Type;
+
+// Output Schema
+export const ReplicationVaultHealthRefreshOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ReplicationVaultHealthRefreshOutput =
+  typeof ReplicationVaultHealthRefreshOutput.Type;
+
+// The operation
+/**
+ * Refreshes health summary of the vault.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the recovery services vault.
+ */
+export const ReplicationVaultHealthRefresh =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ReplicationVaultHealthRefreshInput,
+    outputSchema: ReplicationVaultHealthRefreshOutput,
+  }));
+// Input Schema
 export const ReplicationVaultSettingCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6490,6 +6601,62 @@ export const ReplicationvCentersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
     outputSchema: ReplicationvCentersUpdateOutput,
   }),
 );
+// Input Schema
+export const SupportedOperatingSystemsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    instanceType: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationSupportedOperatingSystems",
+    }),
+  );
+export type SupportedOperatingSystemsGetInput =
+  typeof SupportedOperatingSystemsGetInput.Type;
+
+// Output Schema
+export const SupportedOperatingSystemsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type SupportedOperatingSystemsGetOutput =
+  typeof SupportedOperatingSystemsGetOutput.Type;
+
+// The operation
+/**
+ * Gets the data of supported operating systems by SRS.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the recovery services vault.
+ * @param instanceType - The instance type.
+ */
+export const SupportedOperatingSystemsGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: SupportedOperatingSystemsGetInput,
+    outputSchema: SupportedOperatingSystemsGetOutput,
+  }));
 // Input Schema
 export const TargetComputeSizesListByReplicationProtectedItemsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

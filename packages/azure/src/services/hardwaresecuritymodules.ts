@@ -9,6 +9,89 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export const CloudHsmClusterBackupStatusGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
+    jobId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/backupOperationStatus/{jobId}",
+    }),
+  );
+export type CloudHsmClusterBackupStatusGetInput =
+  typeof CloudHsmClusterBackupStatusGetInput.Type;
+
+// Output Schema
+export const CloudHsmClusterBackupStatusGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        status: Schema.optional(
+          Schema.Literals(["InProgress", "Succeeded", "Failed", "Cancelled"]),
+        ),
+        statusDetails: Schema.optional(Schema.String),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  target: Schema.optional(Schema.String),
+                  details: Schema.optional(Schema.Array(Schema.Unknown)),
+                  additionalInfo: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        type: Schema.optional(Schema.String),
+                        info: Schema.optional(Schema.Unknown),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
+        ),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.NullOr(Schema.String)),
+        jobId: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type CloudHsmClusterBackupStatusGetOutput =
+  typeof CloudHsmClusterBackupStatusGetOutput.Type;
+
+// The operation
+/**
+ * Gets the backup operation status of the specified Cloud HSM Cluster
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
+ * @param jobId - Identifier for the backup operation
+ */
+export const CloudHsmClusterBackupStatusGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CloudHsmClusterBackupStatusGetInput,
+    outputSchema: CloudHsmClusterBackupStatusGetOutput,
+  }));
+// Input Schema
 export const CloudHsmClusterPrivateEndpointConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -122,6 +205,243 @@ export const CloudHsmClusterPrivateEndpointConnectionsGet =
     inputSchema: CloudHsmClusterPrivateEndpointConnectionsGetInput,
     outputSchema: CloudHsmClusterPrivateEndpointConnectionsGetOutput,
   }));
+// Input Schema
+export const CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/privateLinkResources",
+    }),
+  );
+export type CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterInput =
+  typeof CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterInput.Type;
+
+// Output Schema
+export const CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterOutput =
+  typeof CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterOutput.Type;
+
+// The operation
+/**
+ * Gets the private link resources supported for the Cloud Hsm Cluster.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
+ */
+export const CloudHsmClusterPrivateLinkResourcesListByCloudHsmCluster =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterInput,
+    outputSchema:
+      CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterOutput,
+  }));
+// Input Schema
+export const CloudHsmClusterRestoreStatusGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
+    jobId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/restoreOperationStatus/{jobId}",
+    }),
+  );
+export type CloudHsmClusterRestoreStatusGetInput =
+  typeof CloudHsmClusterRestoreStatusGetInput.Type;
+
+// Output Schema
+export const CloudHsmClusterRestoreStatusGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        status: Schema.optional(
+          Schema.Literals(["InProgress", "Succeeded", "Failed", "Cancelled"]),
+        ),
+        statusDetails: Schema.optional(Schema.String),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  target: Schema.optional(Schema.String),
+                  details: Schema.optional(Schema.Array(Schema.Unknown)),
+                  additionalInfo: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        type: Schema.optional(Schema.String),
+                        info: Schema.optional(Schema.Unknown),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
+        ),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.NullOr(Schema.String)),
+        jobId: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type CloudHsmClusterRestoreStatusGetOutput =
+  typeof CloudHsmClusterRestoreStatusGetOutput.Type;
+
+// The operation
+/**
+ * Gets the restore operation status of the specified Cloud HSM Cluster
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
+ * @param jobId - Identifier for the restore operation
+ */
+export const CloudHsmClusterRestoreStatusGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CloudHsmClusterRestoreStatusGetInput,
+    outputSchema: CloudHsmClusterRestoreStatusGetOutput,
+  }));
+// Input Schema
+export const CloudHsmClustersBackupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/backup",
+    }),
+  );
+export type CloudHsmClustersBackupInput =
+  typeof CloudHsmClustersBackupInput.Type;
+
+// Output Schema
+export const CloudHsmClustersBackupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        status: Schema.optional(
+          Schema.Literals(["InProgress", "Succeeded", "Failed", "Cancelled"]),
+        ),
+        statusDetails: Schema.optional(Schema.String),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  target: Schema.optional(Schema.String),
+                  details: Schema.optional(Schema.Array(Schema.Unknown)),
+                  additionalInfo: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        type: Schema.optional(Schema.String),
+                        info: Schema.optional(Schema.Unknown),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
+        ),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.NullOr(Schema.String)),
+        jobId: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type CloudHsmClustersBackupOutput =
+  typeof CloudHsmClustersBackupOutput.Type;
+
+// The operation
+/**
+ * Create a backup of the Cloud HSM Cluster in the specified subscription
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
+ */
+export const CloudHsmClustersBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: CloudHsmClustersBackupInput,
+    outputSchema: CloudHsmClustersBackupOutput,
+  }),
+);
 // Input Schema
 export const CloudHsmClustersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -321,6 +641,88 @@ export const CloudHsmClustersListBySubscription =
     outputSchema: CloudHsmClustersListBySubscriptionOutput,
   }));
 // Input Schema
+export const CloudHsmClustersRestoreInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/restore",
+    }),
+  );
+export type CloudHsmClustersRestoreInput =
+  typeof CloudHsmClustersRestoreInput.Type;
+
+// Output Schema
+export const CloudHsmClustersRestoreOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        status: Schema.optional(
+          Schema.Literals(["InProgress", "Succeeded", "Failed", "Cancelled"]),
+        ),
+        statusDetails: Schema.optional(Schema.String),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  target: Schema.optional(Schema.String),
+                  details: Schema.optional(Schema.Array(Schema.Unknown)),
+                  additionalInfo: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        type: Schema.optional(Schema.String),
+                        info: Schema.optional(Schema.Unknown),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
+        ),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.NullOr(Schema.String)),
+        jobId: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type CloudHsmClustersRestoreOutput =
+  typeof CloudHsmClustersRestoreOutput.Type;
+
+// The operation
+/**
+ * Restores all key materials of a specified Cloud HSM Cluster
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
+ */
+export const CloudHsmClustersRestore = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: CloudHsmClustersRestoreInput,
+    outputSchema: CloudHsmClustersRestoreOutput,
+  }),
+);
+// Input Schema
 export const CloudHsmClustersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -360,6 +762,168 @@ export const CloudHsmClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
     outputSchema: CloudHsmClustersUpdateOutput,
   }),
 );
+// Input Schema
+export const CloudHsmClustersValidateBackupPropertiesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/validateBackupProperties",
+    }),
+  );
+export type CloudHsmClustersValidateBackupPropertiesInput =
+  typeof CloudHsmClustersValidateBackupPropertiesInput.Type;
+
+// Output Schema
+export const CloudHsmClustersValidateBackupPropertiesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        status: Schema.optional(
+          Schema.Literals(["InProgress", "Succeeded", "Failed", "Cancelled"]),
+        ),
+        statusDetails: Schema.optional(Schema.String),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  target: Schema.optional(Schema.String),
+                  details: Schema.optional(Schema.Array(Schema.Unknown)),
+                  additionalInfo: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        type: Schema.optional(Schema.String),
+                        info: Schema.optional(Schema.Unknown),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
+        ),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.NullOr(Schema.String)),
+        jobId: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type CloudHsmClustersValidateBackupPropertiesOutput =
+  typeof CloudHsmClustersValidateBackupPropertiesOutput.Type;
+
+// The operation
+/**
+ * Pre Backup operation to validate whether the customer can perform a backup on the Cloud HSM Cluster resource in the specified subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
+ */
+export const CloudHsmClustersValidateBackupProperties =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CloudHsmClustersValidateBackupPropertiesInput,
+    outputSchema: CloudHsmClustersValidateBackupPropertiesOutput,
+  }));
+// Input Schema
+export const CloudHsmClustersValidateRestorePropertiesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    cloudHsmClusterName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/validateRestoreProperties",
+    }),
+  );
+export type CloudHsmClustersValidateRestorePropertiesInput =
+  typeof CloudHsmClustersValidateRestorePropertiesInput.Type;
+
+// Output Schema
+export const CloudHsmClustersValidateRestorePropertiesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        status: Schema.optional(
+          Schema.Literals(["InProgress", "Succeeded", "Failed", "Cancelled"]),
+        ),
+        statusDetails: Schema.optional(Schema.String),
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  code: Schema.optional(Schema.String),
+                  message: Schema.optional(Schema.String),
+                  target: Schema.optional(Schema.String),
+                  details: Schema.optional(Schema.Array(Schema.Unknown)),
+                  additionalInfo: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        type: Schema.optional(Schema.String),
+                        info: Schema.optional(Schema.Unknown),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
+        ),
+        startTime: Schema.optional(Schema.String),
+        endTime: Schema.optional(Schema.NullOr(Schema.String)),
+        jobId: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type CloudHsmClustersValidateRestorePropertiesOutput =
+  typeof CloudHsmClustersValidateRestorePropertiesOutput.Type;
+
+// The operation
+/**
+ * Queued validating pre restore operation
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param cloudHsmClusterName - The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
+ */
+export const CloudHsmClustersValidateRestoreProperties =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CloudHsmClustersValidateRestorePropertiesInput,
+    outputSchema: CloudHsmClustersValidateRestorePropertiesOutput,
+  }));
 // Input Schema
 export const DedicatedHsmCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -647,6 +1211,53 @@ export type DedicatedHsmUpdateOutput = typeof DedicatedHsmUpdateOutput.Type;
 export const DedicatedHsmUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DedicatedHsmUpdateInput,
   outputSchema: DedicatedHsmUpdateOutput,
+}));
+// Input Schema
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.HardwareSecurityModules/operations",
+  }),
+);
+export type OperationsListInput = typeof OperationsListInput.Type;
+
+// Output Schema
+export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
+        display: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        origin: Schema.optional(
+          Schema.Literals(["user", "system", "user,system"]),
+        ),
+        actionType: Schema.optional(Schema.Literals(["Internal"])),
+      }),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type OperationsListOutput = typeof OperationsListOutput.Type;
+
+// The operation
+/**
+ * List the operations for the provider
+ *
+ * @param api-version - The API version to use for this operation.
+ */
+export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OperationsListInput,
+  outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export const PrivateEndpointConnectionsListByCloudHsmClusterInput =

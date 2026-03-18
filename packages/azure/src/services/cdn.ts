@@ -2393,6 +2393,68 @@ export const LogAnalyticsGetWafLogAnalyticsRankings =
     outputSchema: LogAnalyticsGetWafLogAnalyticsRankingsOutput,
   }));
 // Input Schema
+export const ManagedRuleSetsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/cdnWebApplicationFirewallManagedRuleSets",
+    }),
+  );
+export type ManagedRuleSetsListInput = typeof ManagedRuleSetsListInput.Type;
+
+// Output Schema
+export const ManagedRuleSetsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ManagedRuleSetsListOutput = typeof ManagedRuleSetsListOutput.Type;
+
+// The operation
+/**
+ * Lists all available managed rule sets.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ */
+export const ManagedRuleSetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ManagedRuleSetsListInput,
+  outputSchema: ManagedRuleSetsListOutput,
+}));
+// Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(T.Http({ method: "GET", path: "/providers/Microsoft.Cdn/operations" }));

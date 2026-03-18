@@ -1040,6 +1040,62 @@ export const RegistriesGetBuildSourceUploadUrl =
     outputSchema: RegistriesGetBuildSourceUploadUrlOutput,
   }));
 // Input Schema
+export const RegistriesGetPrivateLinkResourceInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    registryName: Schema.String.pipe(T.PathParam()),
+    groupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateLinkResources/{groupName}",
+    }),
+  );
+export type RegistriesGetPrivateLinkResourceInput =
+  typeof RegistriesGetPrivateLinkResourceInput.Type;
+
+// Output Schema
+export const RegistriesGetPrivateLinkResourceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type RegistriesGetPrivateLinkResourceOutput =
+  typeof RegistriesGetPrivateLinkResourceOutput.Type;
+
+// The operation
+/**
+ * Gets a private link resource by a specified group name for a container registry.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param registryName - The name of the container registry.
+ * @param groupName - The name of the private link associated with the Azure resource.
+ */
+export const RegistriesGetPrivateLinkResource =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: RegistriesGetPrivateLinkResourceInput,
+    outputSchema: RegistriesGetPrivateLinkResourceOutput,
+  }));
+// Input Schema
 export const RegistriesImportImageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1203,6 +1259,77 @@ export const RegistriesListCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(
     outputSchema: RegistriesListCredentialsOutput,
   }),
 );
+// Input Schema
+export const RegistriesListPrivateLinkResourcesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    registryName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateLinkResources",
+    }),
+  );
+export type RegistriesListPrivateLinkResourcesInput =
+  typeof RegistriesListPrivateLinkResourcesInput.Type;
+
+// Output Schema
+export const RegistriesListPrivateLinkResourcesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type RegistriesListPrivateLinkResourcesOutput =
+  typeof RegistriesListPrivateLinkResourcesOutput.Type;
+
+// The operation
+/**
+ * Lists the private link resources for a container registry.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param registryName - The name of the container registry.
+ */
+export const RegistriesListPrivateLinkResources =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: RegistriesListPrivateLinkResourcesInput,
+    outputSchema: RegistriesListPrivateLinkResourcesOutput,
+  }));
 // Input Schema
 export const RegistriesListUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

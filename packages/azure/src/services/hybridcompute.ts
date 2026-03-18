@@ -1460,6 +1460,107 @@ export const MachineRunCommandsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const MachinesAssessPatchesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{name}/assessPatches",
+    }),
+  );
+export type MachinesAssessPatchesInput = typeof MachinesAssessPatchesInput.Type;
+
+// Output Schema
+export const MachinesAssessPatchesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(
+      Schema.Literals([
+        "Unknown",
+        "InProgress",
+        "Failed",
+        "Succeeded",
+        "CompletedWithWarnings",
+      ]),
+    ),
+    assessmentActivityId: Schema.optional(Schema.String),
+    rebootPending: Schema.optional(Schema.Boolean),
+    availablePatchCountByClassification: Schema.optional(
+      Schema.Struct({
+        security: Schema.optional(Schema.Number),
+        critical: Schema.optional(Schema.Number),
+        definition: Schema.optional(Schema.Number),
+        updateRollup: Schema.optional(Schema.Number),
+        featurePack: Schema.optional(Schema.Number),
+        servicePack: Schema.optional(Schema.Number),
+        tools: Schema.optional(Schema.Number),
+        updates: Schema.optional(Schema.Number),
+        other: Schema.optional(Schema.Number),
+      }),
+    ),
+    startDateTime: Schema.optional(Schema.String),
+    lastModifiedDateTime: Schema.optional(Schema.String),
+    startedBy: Schema.optional(Schema.Literals(["User", "Platform"])),
+    patchServiceUsed: Schema.optional(
+      Schema.Literals(["Unknown", "WU", "WU_WSUS", "YUM", "APT", "Zypper"]),
+    ),
+    osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
+    errorDetails: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type MachinesAssessPatchesOutput =
+  typeof MachinesAssessPatchesOutput.Type;
+
+// The operation
+/**
+ * The operation to assess patches on a hybrid machine identity in Azure.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group.
+ * @param name - The name of the hybrid machine.
+ */
+export const MachinesAssessPatches = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: MachinesAssessPatchesInput,
+    outputSchema: MachinesAssessPatchesOutput,
+  }),
+);
+// Input Schema
 export const MachinesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1568,6 +1669,110 @@ export const MachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MachinesGetInput,
   outputSchema: MachinesGetOutput,
 }));
+// Input Schema
+export const MachinesInstallPatchesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{name}/installPatches",
+    }),
+  );
+export type MachinesInstallPatchesInput =
+  typeof MachinesInstallPatchesInput.Type;
+
+// Output Schema
+export const MachinesInstallPatchesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(
+      Schema.Literals([
+        "Unknown",
+        "InProgress",
+        "Failed",
+        "Succeeded",
+        "CompletedWithWarnings",
+      ]),
+    ),
+    installationActivityId: Schema.optional(Schema.String),
+    rebootStatus: Schema.optional(
+      Schema.Literals([
+        "Unknown",
+        "NotNeeded",
+        "Required",
+        "Started",
+        "Failed",
+        "Completed",
+      ]),
+    ),
+    maintenanceWindowExceeded: Schema.optional(Schema.Boolean),
+    excludedPatchCount: Schema.optional(Schema.Number),
+    notSelectedPatchCount: Schema.optional(Schema.Number),
+    pendingPatchCount: Schema.optional(Schema.Number),
+    installedPatchCount: Schema.optional(Schema.Number),
+    failedPatchCount: Schema.optional(Schema.Number),
+    startDateTime: Schema.optional(Schema.String),
+    lastModifiedDateTime: Schema.optional(Schema.String),
+    startedBy: Schema.optional(Schema.Literals(["User", "Platform"])),
+    patchServiceUsed: Schema.optional(
+      Schema.Literals(["Unknown", "WU", "WU_WSUS", "YUM", "APT", "Zypper"]),
+    ),
+    osType: Schema.optional(Schema.Literals(["Windows", "Linux"])),
+    errorDetails: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type MachinesInstallPatchesOutput =
+  typeof MachinesInstallPatchesOutput.Type;
+
+// The operation
+/**
+ * The operation to install patches on a hybrid machine identity in Azure.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group.
+ * @param name - The name of the hybrid machine.
+ */
+export const MachinesInstallPatches = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: MachinesInstallPatchesInput,
+    outputSchema: MachinesInstallPatchesOutput,
+  }),
+);
 // Input Schema
 export const MachinesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

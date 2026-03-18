@@ -15530,6 +15530,86 @@ export const NetworkSecurityPerimeterLoggingConfigurationsList =
     outputSchema: NetworkSecurityPerimeterLoggingConfigurationsListOutput,
   }));
 // Input Schema
+export const NetworkSecurityPerimeterOperationStatusesGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/networkSecurityPerimeterOperationStatuses/{operationId}",
+    }),
+  );
+export type NetworkSecurityPerimeterOperationStatusesGetInput =
+  typeof NetworkSecurityPerimeterOperationStatusesGetInput.Type;
+
+// Output Schema
+export const NetworkSecurityPerimeterOperationStatusesGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(Schema.Array(Schema.Unknown)),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkSecurityPerimeterOperationStatusesGetOutput =
+  typeof NetworkSecurityPerimeterOperationStatusesGetOutput.Type;
+
+// The operation
+/**
+ * Gets the operation status for the given operation id.
+ */
+export const NetworkSecurityPerimeterOperationStatusesGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkSecurityPerimeterOperationStatusesGetInput,
+    outputSchema: NetworkSecurityPerimeterOperationStatusesGetOutput,
+  }));
+// Input Schema
 export const NetworkSecurityPerimeterProfilesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({

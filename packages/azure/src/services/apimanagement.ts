@@ -11984,6 +11984,93 @@ export const OperationsResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const OperationStatusGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/locations/{location}/operationStatuses/{operationId}",
+    }),
+  );
+export type OperationStatusGetInput = typeof OperationStatusGetInput.Type;
+
+// Output Schema
+export const OperationStatusGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.String,
+    percentComplete: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operations: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          resourceId: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          status: Schema.String,
+          percentComplete: Schema.optional(Schema.Number),
+          startTime: Schema.optional(Schema.String),
+          endTime: Schema.optional(Schema.String),
+          operations: Schema.optional(Schema.Array(Schema.Unknown)),
+          error: Schema.optional(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+      ),
+    ),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type OperationStatusGetOutput = typeof OperationStatusGetOutput.Type;
+
+// The operation
+/**
+ * Returns the current status of an async operation.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param location - The name of the Azure region.
+ * @param operationId - The ID of an ongoing async operation.
+ */
+export const OperationStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OperationStatusGetInput,
+  outputSchema: OperationStatusGetOutput,
+}));
+// Input Schema
 export const OutboundNetworkDependenciesEndpointsListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13248,6 +13335,64 @@ export const PortalRevisionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const PrivateEndpointConnectionCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    id: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(
+              Schema.Literals(["Pending", "Approved", "Rejected"]),
+            ),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type PrivateEndpointConnectionCreateOrUpdateInput =
+  typeof PrivateEndpointConnectionCreateOrUpdateInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+export type PrivateEndpointConnectionCreateOrUpdateOutput =
+  typeof PrivateEndpointConnectionCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates a new Private Endpoint Connection or updates an existing one.
+ *
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serviceName - The name of the API Management service.
+ * @param privateEndpointConnectionName - Name of the private endpoint connection.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param id - Private Endpoint Connection Resource Id.
+ * @param properties - The connection state of the private endpoint connection.
+ */
+export const PrivateEndpointConnectionCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionCreateOrUpdateInput,
+    outputSchema: PrivateEndpointConnectionCreateOrUpdateOutput,
+  }));
+// Input Schema
 export const PrivateEndpointConnectionDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -13368,6 +13513,98 @@ export const PrivateEndpointConnectionGetPrivateLinkResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionGetPrivateLinkResourceInput,
     outputSchema: PrivateEndpointConnectionGetPrivateLinkResourceOutput,
+  }));
+// Input Schema
+export const PrivateEndpointConnectionListByServiceInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/privateEndpointConnections",
+    }),
+  );
+export type PrivateEndpointConnectionListByServiceInput =
+  typeof PrivateEndpointConnectionListByServiceInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionListByServiceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+  });
+export type PrivateEndpointConnectionListByServiceOutput =
+  typeof PrivateEndpointConnectionListByServiceOutput.Type;
+
+// The operation
+/**
+ * Lists all private endpoint connections of the API Management service instance.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param serviceName - The name of the API Management service.
+ * @param api-version - The API version to use for this operation.
+ */
+export const PrivateEndpointConnectionListByService =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionListByServiceInput,
+    outputSchema: PrivateEndpointConnectionListByServiceOutput,
+  }));
+// Input Schema
+export const PrivateEndpointConnectionListPrivateLinkResourcesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/privateLinkResources",
+    }),
+  );
+export type PrivateEndpointConnectionListPrivateLinkResourcesInput =
+  typeof PrivateEndpointConnectionListPrivateLinkResourcesInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionListPrivateLinkResourcesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+  });
+export type PrivateEndpointConnectionListPrivateLinkResourcesOutput =
+  typeof PrivateEndpointConnectionListPrivateLinkResourcesOutput.Type;
+
+// The operation
+/**
+ * Gets the private link resources
+ *
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param api-version - The API version to use for this operation.
+ * @param serviceName - The name of the API Management service.
+ */
+export const PrivateEndpointConnectionListPrivateLinkResources =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionListPrivateLinkResourcesInput,
+    outputSchema: PrivateEndpointConnectionListPrivateLinkResourcesOutput,
   }));
 // Input Schema
 export const ProductApiCreateOrUpdateInput =

@@ -215,6 +215,60 @@ export const AccessControlListsListBySubscription =
     outputSchema: AccessControlListsListBySubscriptionOutput,
   }));
 // Input Schema
+export const AccessControlListsResyncInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}/resync",
+    }),
+  );
+export type AccessControlListsResyncInput =
+  typeof AccessControlListsResyncInput.Type;
+
+// Output Schema
+export const AccessControlListsResyncOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type AccessControlListsResyncOutput =
+  typeof AccessControlListsResyncOutput.Type;
+
+// The operation
+/**
+ * Resync operation on the Access Control Lists.
+ *
+ * Implements the operation to the underlying resources.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const AccessControlListsResync = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AccessControlListsResyncInput,
+    outputSchema: AccessControlListsResyncOutput,
+  }),
+);
+// Input Schema
 export const AccessControlListsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -254,6 +308,114 @@ export const AccessControlListsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
     outputSchema: AccessControlListsUpdateOutput,
   }),
 );
+// Input Schema
+export const AccessControlListsUpdateAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}/updateAdministrativeState",
+    }),
+  );
+export type AccessControlListsUpdateAdministrativeStateInput =
+  typeof AccessControlListsUpdateAdministrativeStateInput.Type;
+
+// Output Schema
+export const AccessControlListsUpdateAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type AccessControlListsUpdateAdministrativeStateOutput =
+  typeof AccessControlListsUpdateAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Updates administrative state of Access Control Lists.
+ *
+ * Implements the operation to the underlying resources.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param state - Administrative state.
+ */
+export const AccessControlListsUpdateAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AccessControlListsUpdateAdministrativeStateInput,
+    outputSchema: AccessControlListsUpdateAdministrativeStateOutput,
+  }));
+// Input Schema
+export const AccessControlListsValidateConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}/validateConfiguration",
+    }),
+  );
+export type AccessControlListsValidateConfigurationInput =
+  typeof AccessControlListsValidateConfigurationInput.Type;
+
+// Output Schema
+export const AccessControlListsValidateConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type AccessControlListsValidateConfigurationOutput =
+  typeof AccessControlListsValidateConfigurationOutput.Type;
+
+// The operation
+/**
+ * Validates the configuration of the Access Control Lists.
+ *
+ * Implements the operation to the underlying resources.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const AccessControlListsValidateConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AccessControlListsValidateConfigurationInput,
+    outputSchema: AccessControlListsValidateConfigurationOutput,
+  }));
 // Input Schema
 export const ExternalNetworksCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -438,6 +600,116 @@ export const ExternalNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const ExternalNetworksUpdateAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}/updateAdministrativeState",
+    }),
+  );
+export type ExternalNetworksUpdateAdministrativeStateInput =
+  typeof ExternalNetworksUpdateAdministrativeStateInput.Type;
+
+// Output Schema
+export const ExternalNetworksUpdateAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type ExternalNetworksUpdateAdministrativeStateOutput =
+  typeof ExternalNetworksUpdateAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Executes update operation to enable or disable administrative State for externalNetwork.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param state - Administrative state.
+ */
+export const ExternalNetworksUpdateAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ExternalNetworksUpdateAdministrativeStateInput,
+    outputSchema: ExternalNetworksUpdateAdministrativeStateOutput,
+  }));
+// Input Schema
+export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}/updateStaticRouteBfdAdministrativeState",
+    }),
+  );
+export type ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
+  typeof ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput.Type;
+
+// Output Schema
+export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
+  typeof ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Executes Static Route BFD state update operation to the underlying resources.
+ *
+ * Update Static Route BFD for external Network.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param state - Administrative state.
+ */
+export const ExternalNetworksUpdateStaticRouteBfdAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput,
+    outputSchema: ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput,
+  }));
+// Input Schema
 export const InternalNetworksCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -620,6 +892,171 @@ export const InternalNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
     outputSchema: InternalNetworksUpdateOutput,
   }),
 );
+// Input Schema
+export const InternalNetworksUpdateAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateAdministrativeState",
+    }),
+  );
+export type InternalNetworksUpdateAdministrativeStateInput =
+  typeof InternalNetworksUpdateAdministrativeStateInput.Type;
+
+// Output Schema
+export const InternalNetworksUpdateAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type InternalNetworksUpdateAdministrativeStateOutput =
+  typeof InternalNetworksUpdateAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Executes the operation to the underlying resources.
+ *
+ * Update Administrative state of  InternalNetworks on resources referred by their resource ids.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param state - Administrative state.
+ */
+export const InternalNetworksUpdateAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: InternalNetworksUpdateAdministrativeStateInput,
+    outputSchema: InternalNetworksUpdateAdministrativeStateOutput,
+  }));
+// Input Schema
+export const InternalNetworksUpdateBgpAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateBgpAdministrativeState",
+    }),
+  );
+export type InternalNetworksUpdateBgpAdministrativeStateInput =
+  typeof InternalNetworksUpdateBgpAdministrativeStateInput.Type;
+
+// Output Schema
+export const InternalNetworksUpdateBgpAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type InternalNetworksUpdateBgpAdministrativeStateOutput =
+  typeof InternalNetworksUpdateBgpAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Executes the operation to the underlying resources for updating BGP state on edge devices.
+ *
+ * Update BGP state for internalNetwork. Allowed only on edge devices.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param state - Administrative state.
+ */
+export const InternalNetworksUpdateBgpAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: InternalNetworksUpdateBgpAdministrativeStateInput,
+    outputSchema: InternalNetworksUpdateBgpAdministrativeStateOutput,
+  }));
+// Input Schema
+export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateStaticRouteBfdAdministrativeState",
+    }),
+  );
+export type InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
+  typeof InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput.Type;
+
+// Output Schema
+export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
+  typeof InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Update Static Route BFD administrative state for internalNetwork.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param state - Administrative state.
+ */
+export const InternalNetworksUpdateStaticRouteBfdAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput,
+    outputSchema: InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput,
+  }));
 // Input Schema
 export const InternetGatewayRulesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1816,6 +2253,59 @@ export const IpPrefixesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IpPrefixesUpdateOutput,
 }));
 // Input Schema
+export const L2IsolationDomainsCommitConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}/commitConfiguration",
+    }),
+  );
+export type L2IsolationDomainsCommitConfigurationInput =
+  typeof L2IsolationDomainsCommitConfigurationInput.Type;
+
+// Output Schema
+export const L2IsolationDomainsCommitConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type L2IsolationDomainsCommitConfigurationOutput =
+  typeof L2IsolationDomainsCommitConfigurationOutput.Type;
+
+// The operation
+/**
+ * Execute the commit on the resources.
+ *
+ * Commits the configuration of the given resources.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const L2IsolationDomainsCommitConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: L2IsolationDomainsCommitConfigurationInput,
+    outputSchema: L2IsolationDomainsCommitConfigurationOutput,
+  }));
+// Input Schema
 export const L2IsolationDomainsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2062,6 +2552,165 @@ export const L2IsolationDomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const L2IsolationDomainsUpdateAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}/updateAdministrativeState",
+    }),
+  );
+export type L2IsolationDomainsUpdateAdministrativeStateInput =
+  typeof L2IsolationDomainsUpdateAdministrativeStateInput.Type;
+
+// Output Schema
+export const L2IsolationDomainsUpdateAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type L2IsolationDomainsUpdateAdministrativeStateOutput =
+  typeof L2IsolationDomainsUpdateAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Enables isolation domain across the fabric or on specified racks.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param state - Administrative state.
+ */
+export const L2IsolationDomainsUpdateAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: L2IsolationDomainsUpdateAdministrativeStateInput,
+    outputSchema: L2IsolationDomainsUpdateAdministrativeStateOutput,
+  }));
+// Input Schema
+export const L2IsolationDomainsValidateConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}/validateConfiguration",
+    }),
+  );
+export type L2IsolationDomainsValidateConfigurationInput =
+  typeof L2IsolationDomainsValidateConfigurationInput.Type;
+
+// Output Schema
+export const L2IsolationDomainsValidateConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type L2IsolationDomainsValidateConfigurationOutput =
+  typeof L2IsolationDomainsValidateConfigurationOutput.Type;
+
+// The operation
+/**
+ * Validates the configuration of the resources.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const L2IsolationDomainsValidateConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: L2IsolationDomainsValidateConfigurationInput,
+    outputSchema: L2IsolationDomainsValidateConfigurationOutput,
+  }));
+// Input Schema
+export const L3IsolationDomainsCommitConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/commitConfiguration",
+    }),
+  );
+export type L3IsolationDomainsCommitConfigurationInput =
+  typeof L3IsolationDomainsCommitConfigurationInput.Type;
+
+// Output Schema
+export const L3IsolationDomainsCommitConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type L3IsolationDomainsCommitConfigurationOutput =
+  typeof L3IsolationDomainsCommitConfigurationOutput.Type;
+
+// The operation
+/**
+ * Execute the commit on the resources.
+ *
+ * Commits the configuration of the given resources.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const L3IsolationDomainsCommitConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: L3IsolationDomainsCommitConfigurationInput,
+    outputSchema: L3IsolationDomainsCommitConfigurationOutput,
+  }));
+// Input Schema
 export const L3IsolationDomainsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2307,6 +2956,112 @@ export const L3IsolationDomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
     outputSchema: L3IsolationDomainsUpdateOutput,
   }),
 );
+// Input Schema
+export const L3IsolationDomainsUpdateAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/updateAdministrativeState",
+    }),
+  );
+export type L3IsolationDomainsUpdateAdministrativeStateInput =
+  typeof L3IsolationDomainsUpdateAdministrativeStateInput.Type;
+
+// Output Schema
+export const L3IsolationDomainsUpdateAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type L3IsolationDomainsUpdateAdministrativeStateOutput =
+  typeof L3IsolationDomainsUpdateAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * executes enable operation to the underlying resources.
+ *
+ * Enables racks for this Isolation Domain.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param state - Administrative state.
+ */
+export const L3IsolationDomainsUpdateAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: L3IsolationDomainsUpdateAdministrativeStateInput,
+    outputSchema: L3IsolationDomainsUpdateAdministrativeStateOutput,
+  }));
+// Input Schema
+export const L3IsolationDomainsValidateConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/validateConfiguration",
+    }),
+  );
+export type L3IsolationDomainsValidateConfigurationInput =
+  typeof L3IsolationDomainsValidateConfigurationInput.Type;
+
+// Output Schema
+export const L3IsolationDomainsValidateConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type L3IsolationDomainsValidateConfigurationOutput =
+  typeof L3IsolationDomainsValidateConfigurationOutput.Type;
+
+// The operation
+/**
+ * Validates the configuration of the resources.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const L3IsolationDomainsValidateConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: L3IsolationDomainsValidateConfigurationInput,
+    outputSchema: L3IsolationDomainsValidateConfigurationOutput,
+  }));
 // Input Schema
 export const NeighborGroupsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2816,6 +3571,111 @@ export const NetworkDevicesListBySubscription =
     outputSchema: NetworkDevicesListBySubscriptionOutput,
   }));
 // Input Schema
+export const NetworkDevicesRebootInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/reboot",
+    }),
+  );
+export type NetworkDevicesRebootInput = typeof NetworkDevicesRebootInput.Type;
+
+// Output Schema
+export const NetworkDevicesRebootOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkDevicesRebootOutput = typeof NetworkDevicesRebootOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Reboot the Network Device.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const NetworkDevicesReboot = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: NetworkDevicesRebootInput,
+    outputSchema: NetworkDevicesRebootOutput,
+  }),
+);
+// Input Schema
+export const NetworkDevicesRefreshConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/refreshConfiguration",
+    }),
+  );
+export type NetworkDevicesRefreshConfigurationInput =
+  typeof NetworkDevicesRefreshConfigurationInput.Type;
+
+// Output Schema
+export const NetworkDevicesRefreshConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkDevicesRefreshConfigurationOutput =
+  typeof NetworkDevicesRefreshConfigurationOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Refreshes the configuration the Network Device.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const NetworkDevicesRefreshConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkDevicesRefreshConfigurationInput,
+    outputSchema: NetworkDevicesRefreshConfigurationOutput,
+  }));
+// Input Schema
 export const NetworkDevicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2851,6 +3711,114 @@ export const NetworkDevicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: NetworkDevicesUpdateInput,
     outputSchema: NetworkDevicesUpdateOutput,
+  }),
+);
+// Input Schema
+export const NetworkDevicesUpdateAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/updateAdministrativeState",
+    }),
+  );
+export type NetworkDevicesUpdateAdministrativeStateInput =
+  typeof NetworkDevicesUpdateAdministrativeStateInput.Type;
+
+// Output Schema
+export const NetworkDevicesUpdateAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkDevicesUpdateAdministrativeStateOutput =
+  typeof NetworkDevicesUpdateAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Updates the Administrative state of the Network Device.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const NetworkDevicesUpdateAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkDevicesUpdateAdministrativeStateInput,
+    outputSchema: NetworkDevicesUpdateAdministrativeStateOutput,
+  }));
+// Input Schema
+export const NetworkDevicesUpgradeInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    version: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/upgrade",
+    }),
+  );
+export type NetworkDevicesUpgradeInput = typeof NetworkDevicesUpgradeInput.Type;
+
+// Output Schema
+export const NetworkDevicesUpgradeOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkDevicesUpgradeOutput =
+  typeof NetworkDevicesUpgradeOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Upgrades the version of the Network Device.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param version - Specify the version.
+ */
+export const NetworkDevicesUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: NetworkDevicesUpgradeInput,
+    outputSchema: NetworkDevicesUpgradeOutput,
   }),
 );
 // Input Schema
@@ -3098,6 +4066,59 @@ export const NetworkFabricControllersUpdate =
     outputSchema: NetworkFabricControllersUpdateOutput,
   }));
 // Input Schema
+export const NetworkFabricsCommitConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/commitConfiguration",
+    }),
+  );
+export type NetworkFabricsCommitConfigurationInput =
+  typeof NetworkFabricsCommitConfigurationInput.Type;
+
+// Output Schema
+export const NetworkFabricsCommitConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkFabricsCommitConfigurationOutput =
+  typeof NetworkFabricsCommitConfigurationOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Atomic update of the given Network Fabric instance. Sync update of NFA resources at Fabric level.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const NetworkFabricsCommitConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkFabricsCommitConfigurationInput,
+    outputSchema: NetworkFabricsCommitConfigurationOutput,
+  }));
+// Input Schema
 export const NetworkFabricsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3171,6 +4192,60 @@ export const NetworkFabricsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const NetworkFabricsDeprovisionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/deprovision",
+    }),
+  );
+export type NetworkFabricsDeprovisionInput =
+  typeof NetworkFabricsDeprovisionInput.Type;
+
+// Output Schema
+export const NetworkFabricsDeprovisionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkFabricsDeprovisionOutput =
+  typeof NetworkFabricsDeprovisionOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Deprovisions the underlying resources in the given Network Fabric instance.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const NetworkFabricsDeprovision = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: NetworkFabricsDeprovisionInput,
+    outputSchema: NetworkFabricsDeprovisionOutput,
+  }),
+);
+// Input Schema
 export const NetworkFabricsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3207,6 +4282,60 @@ export const NetworkFabricsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NetworkFabricsGetInput,
   outputSchema: NetworkFabricsGetOutput,
 }));
+// Input Schema
+export const NetworkFabricsGetTopologyInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/getTopology",
+    }),
+  );
+export type NetworkFabricsGetTopologyInput =
+  typeof NetworkFabricsGetTopologyInput.Type;
+
+// Output Schema
+export const NetworkFabricsGetTopologyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkFabricsGetTopologyOutput =
+  typeof NetworkFabricsGetTopologyOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Gets Topology of the underlying resources in the given Network Fabric instance.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const NetworkFabricsGetTopology = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: NetworkFabricsGetTopologyInput,
+    outputSchema: NetworkFabricsGetTopologyOutput,
+  }),
+);
 // Input Schema
 export const NetworkFabricSkusGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3368,6 +4497,113 @@ export const NetworkFabricsListBySubscription =
     outputSchema: NetworkFabricsListBySubscriptionOutput,
   }));
 // Input Schema
+export const NetworkFabricsProvisionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/provision",
+    }),
+  );
+export type NetworkFabricsProvisionInput =
+  typeof NetworkFabricsProvisionInput.Type;
+
+// Output Schema
+export const NetworkFabricsProvisionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkFabricsProvisionOutput =
+  typeof NetworkFabricsProvisionOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Provisions the underlying resources in the given Network Fabric instance.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const NetworkFabricsProvision = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: NetworkFabricsProvisionInput,
+    outputSchema: NetworkFabricsProvisionOutput,
+  }),
+);
+// Input Schema
+export const NetworkFabricsRefreshConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/refreshConfiguration",
+    }),
+  );
+export type NetworkFabricsRefreshConfigurationInput =
+  typeof NetworkFabricsRefreshConfigurationInput.Type;
+
+// Output Schema
+export const NetworkFabricsRefreshConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkFabricsRefreshConfigurationOutput =
+  typeof NetworkFabricsRefreshConfigurationOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Refreshes the configuration of the underlying resources in the given Network Fabric instance.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const NetworkFabricsRefreshConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkFabricsRefreshConfigurationInput,
+    outputSchema: NetworkFabricsRefreshConfigurationOutput,
+  }));
+// Input Schema
 export const NetworkFabricsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3405,6 +4641,222 @@ export const NetworkFabricsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
     outputSchema: NetworkFabricsUpdateOutput,
   }),
 );
+// Input Schema
+export const NetworkFabricsUpdateInfraManagementBfdConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/updateInfraManagementBfdConfiguration",
+    }),
+  );
+export type NetworkFabricsUpdateInfraManagementBfdConfigurationInput =
+  typeof NetworkFabricsUpdateInfraManagementBfdConfigurationInput.Type;
+
+// Output Schema
+export const NetworkFabricsUpdateInfraManagementBfdConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkFabricsUpdateInfraManagementBfdConfigurationOutput =
+  typeof NetworkFabricsUpdateInfraManagementBfdConfigurationOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Updates the Infra Management BFD Configuration of the underlying resources in the given Network Fabric instance.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param state - Administrative state.
+ */
+export const NetworkFabricsUpdateInfraManagementBfdConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkFabricsUpdateInfraManagementBfdConfigurationInput,
+    outputSchema: NetworkFabricsUpdateInfraManagementBfdConfigurationOutput,
+  }));
+// Input Schema
+export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/updateWorkloadManagementBfdConfiguration",
+    }),
+  );
+export type NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput =
+  typeof NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput.Type;
+
+// Output Schema
+export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput =
+  typeof NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Updates the Workload Management BFD Configuration of the underlying resources in the given Network Fabric instance.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param state - Administrative state.
+ */
+export const NetworkFabricsUpdateWorkloadManagementBfdConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput,
+    outputSchema: NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput,
+  }));
+// Input Schema
+export const NetworkFabricsUpgradeInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/upgrade",
+    }),
+  );
+export type NetworkFabricsUpgradeInput = typeof NetworkFabricsUpgradeInput.Type;
+
+// Output Schema
+export const NetworkFabricsUpgradeOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkFabricsUpgradeOutput =
+  typeof NetworkFabricsUpgradeOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Upgrades the version of the underlying resources in the given Network Fabric instance.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const NetworkFabricsUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: NetworkFabricsUpgradeInput,
+    outputSchema: NetworkFabricsUpgradeOutput,
+  }),
+);
+// Input Schema
+export const NetworkFabricsValidateConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/validateConfiguration",
+    }),
+  );
+export type NetworkFabricsValidateConfigurationInput =
+  typeof NetworkFabricsValidateConfigurationInput.Type;
+
+// Output Schema
+export const NetworkFabricsValidateConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkFabricsValidateConfigurationOutput =
+  typeof NetworkFabricsValidateConfigurationOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Validates the configuration of the underlying resources in the given Network Fabric instance.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const NetworkFabricsValidateConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkFabricsValidateConfigurationInput,
+    outputSchema: NetworkFabricsValidateConfigurationOutput,
+  }));
 // Input Schema
 export const NetworkInterfacesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3590,6 +5042,61 @@ export const NetworkInterfacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
     outputSchema: NetworkInterfacesUpdateOutput,
   }),
 );
+// Input Schema
+export const NetworkInterfacesUpdateAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}/updateAdministrativeState",
+    }),
+  );
+export type NetworkInterfacesUpdateAdministrativeStateInput =
+  typeof NetworkInterfacesUpdateAdministrativeStateInput.Type;
+
+// Output Schema
+export const NetworkInterfacesUpdateAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkInterfacesUpdateAdministrativeStateOutput =
+  typeof NetworkInterfacesUpdateAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Updates the admin state of the network interface.
+ *
+ * Update the admin state of the Network Interface.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param state - Administrative state.
+ */
+export const NetworkInterfacesUpdateAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkInterfacesUpdateAdministrativeStateInput,
+    outputSchema: NetworkInterfacesUpdateAdministrativeStateOutput,
+  }));
 // Input Schema
 export const NetworkPacketBrokersCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4267,6 +5774,59 @@ export const NetworkTapRulesListBySubscription =
     outputSchema: NetworkTapRulesListBySubscriptionOutput,
   }));
 // Input Schema
+export const NetworkTapRulesResyncInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}/resync",
+    }),
+  );
+export type NetworkTapRulesResyncInput = typeof NetworkTapRulesResyncInput.Type;
+
+// Output Schema
+export const NetworkTapRulesResyncOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkTapRulesResyncOutput =
+  typeof NetworkTapRulesResyncOutput.Type;
+
+// The operation
+/**
+ * Resync the Network Tap Rule.
+ *
+ * Implements the operation to the underlying resources.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const NetworkTapRulesResync = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: NetworkTapRulesResyncInput,
+    outputSchema: NetworkTapRulesResyncOutput,
+  }),
+);
+// Input Schema
 export const NetworkTapRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4305,6 +5865,114 @@ export const NetworkTapRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
     outputSchema: NetworkTapRulesUpdateOutput,
   }),
 );
+// Input Schema
+export const NetworkTapRulesUpdateAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}/updateAdministrativeState",
+    }),
+  );
+export type NetworkTapRulesUpdateAdministrativeStateInput =
+  typeof NetworkTapRulesUpdateAdministrativeStateInput.Type;
+
+// Output Schema
+export const NetworkTapRulesUpdateAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkTapRulesUpdateAdministrativeStateOutput =
+  typeof NetworkTapRulesUpdateAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Updates administrative state of  Network Tap Rules.
+ *
+ * Implements the operation to the underlying resources.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param state - Administrative state.
+ */
+export const NetworkTapRulesUpdateAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkTapRulesUpdateAdministrativeStateInput,
+    outputSchema: NetworkTapRulesUpdateAdministrativeStateOutput,
+  }));
+// Input Schema
+export const NetworkTapRulesValidateConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}/validateConfiguration",
+    }),
+  );
+export type NetworkTapRulesValidateConfigurationInput =
+  typeof NetworkTapRulesValidateConfigurationInput.Type;
+
+// Output Schema
+export const NetworkTapRulesValidateConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkTapRulesValidateConfigurationOutput =
+  typeof NetworkTapRulesValidateConfigurationOutput.Type;
+
+// The operation
+/**
+ * Validates the configuration of the Network Tap Rule.
+ *
+ * Implements the operation to the underlying resources.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const NetworkTapRulesValidateConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkTapRulesValidateConfigurationInput,
+    outputSchema: NetworkTapRulesValidateConfigurationOutput,
+  }));
 // Input Schema
 export const NetworkTapsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
@@ -4500,6 +6168,57 @@ export const NetworkTapsListBySubscription =
     outputSchema: NetworkTapsListBySubscriptionOutput,
   }));
 // Input Schema
+export const NetworkTapsResyncInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}/resync",
+  }),
+);
+export type NetworkTapsResyncInput = typeof NetworkTapsResyncInput.Type;
+
+// Output Schema
+export const NetworkTapsResyncOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkTapsResyncOutput = typeof NetworkTapsResyncOutput.Type;
+
+// The operation
+/**
+ * Resync operation on the Network Tap.
+ *
+ * Implements the operation to the underlying resources.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const NetworkTapsResync = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: NetworkTapsResyncInput,
+  outputSchema: NetworkTapsResyncOutput,
+}));
+// Input Schema
 export const NetworkTapsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4536,6 +6255,61 @@ export const NetworkTapsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NetworkTapsUpdateInput,
   outputSchema: NetworkTapsUpdateOutput,
 }));
+// Input Schema
+export const NetworkTapsUpdateAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}/updateAdministrativeState",
+    }),
+  );
+export type NetworkTapsUpdateAdministrativeStateInput =
+  typeof NetworkTapsUpdateAdministrativeStateInput.Type;
+
+// Output Schema
+export const NetworkTapsUpdateAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkTapsUpdateAdministrativeStateOutput =
+  typeof NetworkTapsUpdateAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Updates administrative state of  Network Tap.
+ *
+ * Implements the operation to the underlying resources.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param state - Administrative state.
+ */
+export const NetworkTapsUpdateAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkTapsUpdateAdministrativeStateInput,
+    outputSchema: NetworkTapsUpdateAdministrativeStateOutput,
+  }));
 // Input Schema
 export const NetworkToNetworkInterconnectsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4718,6 +6492,218 @@ export const NetworkToNetworkInterconnectsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: NetworkToNetworkInterconnectsUpdateInput,
     outputSchema: NetworkToNetworkInterconnectsUpdateOutput,
+  }));
+// Input Schema
+export const NetworkToNetworkInterconnectsUpdateAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}/updateAdministrativeState",
+    }),
+  );
+export type NetworkToNetworkInterconnectsUpdateAdministrativeStateInput =
+  typeof NetworkToNetworkInterconnectsUpdateAdministrativeStateInput.Type;
+
+// Output Schema
+export const NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput =
+  typeof NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Updates the Admin State.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param state - Administrative state.
+ */
+export const NetworkToNetworkInterconnectsUpdateAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: NetworkToNetworkInterconnectsUpdateAdministrativeStateInput,
+    outputSchema: NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput,
+  }));
+// Input Schema
+export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}/updateNpbStaticRouteBfdAdministrativeState",
+    }),
+  );
+export type NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateInput =
+  typeof NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateInput.Type;
+
+// Output Schema
+export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateOutput =
+  typeof NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Implements the operation to the underlying resources.
+ *
+ * Updates the NPB Static Route BFD Administrative State.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param state - Administrative state.
+ */
+export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema:
+      NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateInput,
+    outputSchema:
+      NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateOutput,
+  }));
+// Input Schema
+export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/providers/Microsoft.ManagedNetworkFabric/operations",
+  }),
+);
+export type OperationsListInput = typeof OperationsListInput.Type;
+
+// Output Schema
+export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
+        display: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        origin: Schema.optional(
+          Schema.Literals(["user", "system", "user,system"]),
+        ),
+        actionType: Schema.optional(Schema.Literals(["Internal"])),
+      }),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type OperationsListOutput = typeof OperationsListOutput.Type;
+
+// The operation
+/**
+ * Returns list of all operations.
+ *
+ * @param api-version - The API version to use for this operation.
+ */
+export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: OperationsListInput,
+  outputSchema: OperationsListOutput,
+}));
+// Input Schema
+export const RoutePoliciesCommitConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}/commitConfiguration",
+    }),
+  );
+export type RoutePoliciesCommitConfigurationInput =
+  typeof RoutePoliciesCommitConfigurationInput.Type;
+
+// Output Schema
+export const RoutePoliciesCommitConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type RoutePoliciesCommitConfigurationOutput =
+  typeof RoutePoliciesCommitConfigurationOutput.Type;
+
+// The operation
+/**
+ * Execute the commit on the resources.
+ *
+ * Commits the configuration of the given resources.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const RoutePoliciesCommitConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: RoutePoliciesCommitConfigurationInput,
+    outputSchema: RoutePoliciesCommitConfigurationOutput,
   }));
 // Input Schema
 export const RoutePoliciesCreateInput =
@@ -4950,3 +6936,109 @@ export const RoutePoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RoutePoliciesUpdateInput,
   outputSchema: RoutePoliciesUpdateOutput,
 }));
+// Input Schema
+export const RoutePoliciesUpdateAdministrativeStateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    state: Schema.optional(Schema.Literals(["Enable", "Disable"])),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}/updateAdministrativeState",
+    }),
+  );
+export type RoutePoliciesUpdateAdministrativeStateInput =
+  typeof RoutePoliciesUpdateAdministrativeStateInput.Type;
+
+// Output Schema
+export const RoutePoliciesUpdateAdministrativeStateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type RoutePoliciesUpdateAdministrativeStateOutput =
+  typeof RoutePoliciesUpdateAdministrativeStateOutput.Type;
+
+// The operation
+/**
+ * Executes enable operation to the underlying resources.
+ *
+ * Updated the admin state for this Route Policy.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param state - Administrative state.
+ */
+export const RoutePoliciesUpdateAdministrativeState =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: RoutePoliciesUpdateAdministrativeStateInput,
+    outputSchema: RoutePoliciesUpdateAdministrativeStateOutput,
+  }));
+// Input Schema
+export const RoutePoliciesValidateConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}/validateConfiguration",
+    }),
+  );
+export type RoutePoliciesValidateConfigurationInput =
+  typeof RoutePoliciesValidateConfigurationInput.Type;
+
+// Output Schema
+export const RoutePoliciesValidateConfigurationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(Schema.Array(Schema.Unknown)),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+  });
+export type RoutePoliciesValidateConfigurationOutput =
+  typeof RoutePoliciesValidateConfigurationOutput.Type;
+
+// The operation
+/**
+ * Validates the configuration of the resources.
+ *
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ */
+export const RoutePoliciesValidateConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: RoutePoliciesValidateConfigurationInput,
+    outputSchema: RoutePoliciesValidateConfigurationOutput,
+  }));

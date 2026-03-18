@@ -9,6 +9,60 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export const ActionsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}/actions/{actionId}",
+    }),
+  );
+export type ActionsCreateOrUpdateInput = typeof ActionsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const ActionsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ActionsCreateOrUpdateOutput =
+  typeof ActionsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Creates or updates the action of alert rule.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ */
+export const ActionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ActionsCreateOrUpdateInput,
+    outputSchema: ActionsCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
 export const ActionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -39,6 +93,125 @@ export const ActionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ActionsDeleteInput,
   outputSchema: ActionsDeleteOutput,
 }));
+// Input Schema
+export const ActionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}/actions/{actionId}",
+  }),
+);
+export type ActionsGetInput = typeof ActionsGetInput.Type;
+
+// Output Schema
+export const ActionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type ActionsGetOutput = typeof ActionsGetOutput.Type;
+
+// The operation
+/**
+ * Gets the action of alert rule.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ */
+export const ActionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ActionsGetInput,
+  outputSchema: ActionsGetOutput,
+}));
+// Input Schema
+export const ActionsListByAlertRuleInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}/actions",
+    }),
+  );
+export type ActionsListByAlertRuleInput =
+  typeof ActionsListByAlertRuleInput.Type;
+
+// Output Schema
+export const ActionsListByAlertRuleOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextLink: Schema.optional(Schema.String),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  });
+export type ActionsListByAlertRuleOutput =
+  typeof ActionsListByAlertRuleOutput.Type;
+
+// The operation
+/**
+ * Gets all actions of alert rule.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ */
+export const ActionsListByAlertRule = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ActionsListByAlertRuleInput,
+    outputSchema: ActionsListByAlertRuleOutput,
+  }),
+);
 // Input Schema
 export const AlertRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -180,6 +353,130 @@ export const AlertRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AlertRulesListInput,
   outputSchema: AlertRulesListOutput,
 }));
+// Input Schema
+export const AlertRuleTemplatesGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRuleTemplates/{alertRuleTemplateId}",
+    }),
+  );
+export type AlertRuleTemplatesGetInput = typeof AlertRuleTemplatesGetInput.Type;
+
+// Output Schema
+export const AlertRuleTemplatesGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type AlertRuleTemplatesGetOutput =
+  typeof AlertRuleTemplatesGetOutput.Type;
+
+// The operation
+/**
+ * Gets the alert rule template.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ */
+export const AlertRuleTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AlertRuleTemplatesGetInput,
+    outputSchema: AlertRuleTemplatesGetOutput,
+  }),
+);
+// Input Schema
+export const AlertRuleTemplatesListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRuleTemplates",
+    }),
+  );
+export type AlertRuleTemplatesListInput =
+  typeof AlertRuleTemplatesListInput.Type;
+
+// Output Schema
+export const AlertRuleTemplatesListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextLink: Schema.optional(Schema.String),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  });
+export type AlertRuleTemplatesListOutput =
+  typeof AlertRuleTemplatesListOutput.Type;
+
+// The operation
+/**
+ * Gets all alert rule templates.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ */
+export const AlertRuleTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AlertRuleTemplatesListInput,
+    outputSchema: AlertRuleTemplatesListOutput,
+  }),
+);
 // Input Schema
 export const AutomationRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1624,6 +1921,232 @@ export const IncidentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IncidentsListInput,
   outputSchema: IncidentsListOutput,
 }));
+// Input Schema
+export const IncidentsListAlertsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/alerts",
+    }),
+  );
+export type IncidentsListAlertsInput = typeof IncidentsListAlertsInput.Type;
+
+// Output Schema
+export const IncidentsListAlertsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        kind: Schema.Literals([
+          "Account",
+          "Host",
+          "File",
+          "AzureResource",
+          "CloudApplication",
+          "DnsResolution",
+          "FileHash",
+          "Ip",
+          "Malware",
+          "Process",
+          "RegistryKey",
+          "RegistryValue",
+          "SecurityGroup",
+          "Url",
+          "IoTDevice",
+          "SecurityAlert",
+          "Bookmark",
+          "Mailbox",
+          "MailCluster",
+          "MailMessage",
+          "SubmissionMail",
+        ]),
+      }),
+    ),
+  });
+export type IncidentsListAlertsOutput = typeof IncidentsListAlertsOutput.Type;
+
+// The operation
+/**
+ * Gets all alerts for an incident.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ */
+export const IncidentsListAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: IncidentsListAlertsInput,
+  outputSchema: IncidentsListAlertsOutput,
+}));
+// Input Schema
+export const IncidentsListBookmarksInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/bookmarks",
+    }),
+  );
+export type IncidentsListBookmarksInput =
+  typeof IncidentsListBookmarksInput.Type;
+
+// Output Schema
+export const IncidentsListBookmarksOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        kind: Schema.Literals([
+          "Account",
+          "Host",
+          "File",
+          "AzureResource",
+          "CloudApplication",
+          "DnsResolution",
+          "FileHash",
+          "Ip",
+          "Malware",
+          "Process",
+          "RegistryKey",
+          "RegistryValue",
+          "SecurityGroup",
+          "Url",
+          "IoTDevice",
+          "SecurityAlert",
+          "Bookmark",
+          "Mailbox",
+          "MailCluster",
+          "MailMessage",
+          "SubmissionMail",
+        ]),
+      }),
+    ),
+  });
+export type IncidentsListBookmarksOutput =
+  typeof IncidentsListBookmarksOutput.Type;
+
+// The operation
+/**
+ * Gets all bookmarks for an incident.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ */
+export const IncidentsListBookmarks = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: IncidentsListBookmarksInput,
+    outputSchema: IncidentsListBookmarksOutput,
+  }),
+);
+// Input Schema
+export const IncidentsListEntitiesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/entities",
+    }),
+  );
+export type IncidentsListEntitiesInput = typeof IncidentsListEntitiesInput.Type;
+
+// Output Schema
+export const IncidentsListEntitiesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entities: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    metaData: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          count: Schema.Number,
+          entityKind: Schema.Literals([
+            "Account",
+            "Host",
+            "File",
+            "AzureResource",
+            "CloudApplication",
+            "DnsResolution",
+            "FileHash",
+            "Ip",
+            "Malware",
+            "Process",
+            "RegistryKey",
+            "RegistryValue",
+            "SecurityGroup",
+            "Url",
+            "IoTDevice",
+            "SecurityAlert",
+            "Bookmark",
+            "Mailbox",
+            "MailCluster",
+            "MailMessage",
+            "SubmissionMail",
+          ]),
+        }),
+      ),
+    ),
+  });
+export type IncidentsListEntitiesOutput =
+  typeof IncidentsListEntitiesOutput.Type;
+
+// The operation
+/**
+ * Gets all entities for an incident.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ */
+export const IncidentsListEntities = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: IncidentsListEntitiesInput,
+    outputSchema: IncidentsListEntitiesOutput,
+  }),
+);
 // Input Schema
 export const IncidentsRunPlaybookInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

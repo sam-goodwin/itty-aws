@@ -1215,6 +1215,67 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export const OperationStatusesGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.String.pipe(T.PathParam()),
+    asyncOperationId: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/locations/{location}/operationStatuses/{asyncOperationId}",
+    }),
+  );
+export type OperationStatusesGetInput = typeof OperationStatusesGetInput.Type;
+
+// Output Schema
+export const OperationStatusesGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    error: Schema.optional(
+      Schema.Struct({
+        error: Schema.optional(
+          Schema.Struct({
+            code: Schema.optional(Schema.String),
+            message: Schema.optional(Schema.String),
+            target: Schema.optional(Schema.String),
+            details: Schema.optional(Schema.Array(Schema.Unknown)),
+            additionalInfo: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.optional(Schema.String),
+                  info: Schema.optional(Schema.Unknown),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
+  });
+export type OperationStatusesGetOutput = typeof OperationStatusesGetOutput.Type;
+
+// The operation
+/**
+ * Get the status of a long running azure asynchronous operation.
+ *
+ * @param location - The region name of operation.
+ * @param asyncOperationId - The operation Id.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ */
+export const OperationStatusesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: OperationStatusesGetInput,
+    outputSchema: OperationStatusesGetOutput,
+  }),
+);
+// Input Schema
 export const QueriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2998,6 +3059,43 @@ export const WorkspacesListByResourceGroup =
     inputSchema: WorkspacesListByResourceGroupInput,
     outputSchema: WorkspacesListByResourceGroupOutput,
   }));
+// Input Schema
+export const WorkspacesListNSPInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/networkSecurityPerimeterConfigurations",
+  }),
+);
+export type WorkspacesListNSPInput = typeof WorkspacesListNSPInput.Type;
+
+// Output Schema
+export const WorkspacesListNSPOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type WorkspacesListNSPOutput = typeof WorkspacesListNSPOutput.Type;
+
+// The operation
+/**
+ * Gets a list of NSP configurations for specified workspace.
+ *
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ */
+export const WorkspacesListNSP = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: WorkspacesListNSPInput,
+  outputSchema: WorkspacesListNSPOutput,
+}));
 // Input Schema
 export const WorkspacesReconcileNSPInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

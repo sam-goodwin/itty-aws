@@ -186,6 +186,302 @@ export const BenefitRecommendationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export const BenefitUtilizationSummariesListByBillingAccountIdInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    grainParameter: Schema.optional(
+      Schema.Literals(["Hourly", "Daily", "Monthly"]),
+    ),
+    filter: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
+    }),
+  );
+export type BenefitUtilizationSummariesListByBillingAccountIdInput =
+  typeof BenefitUtilizationSummariesListByBillingAccountIdInput.Type;
+
+// Output Schema
+export const BenefitUtilizationSummariesListByBillingAccountIdOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type BenefitUtilizationSummariesListByBillingAccountIdOutput =
+  typeof BenefitUtilizationSummariesListByBillingAccountIdOutput.Type;
+
+// The operation
+/**
+ * Lists savings plan utilization summaries for the enterprise agreement scope. Supported at grain values: 'Daily' and 'Monthly'.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - BillingAccount ID
+ * @param grainParameter - Grain.
+ * @param filter - Supports filtering by properties/benefitId, properties/benefitOrderId and properties/usageDate.
+ */
+export const BenefitUtilizationSummariesListByBillingAccountId =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: BenefitUtilizationSummariesListByBillingAccountIdInput,
+    outputSchema: BenefitUtilizationSummariesListByBillingAccountIdOutput,
+  }));
+// Input Schema
+export const BenefitUtilizationSummariesListByBillingProfileIdInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    billingProfileId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    grainParameter: Schema.optional(
+      Schema.Literals(["Hourly", "Daily", "Monthly"]),
+    ),
+    filter: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
+    }),
+  );
+export type BenefitUtilizationSummariesListByBillingProfileIdInput =
+  typeof BenefitUtilizationSummariesListByBillingProfileIdInput.Type;
+
+// Output Schema
+export const BenefitUtilizationSummariesListByBillingProfileIdOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type BenefitUtilizationSummariesListByBillingProfileIdOutput =
+  typeof BenefitUtilizationSummariesListByBillingProfileIdOutput.Type;
+
+// The operation
+/**
+ * Lists savings plan utilization summaries for billing profile. Supported at grain values: 'Daily' and 'Monthly'.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - BillingAccount ID
+ * @param billingProfileId - Billing Profile ID.
+ * @param grainParameter - Grain.
+ * @param filter - Supports filtering by properties/benefitId, properties/benefitOrderId and properties/usageDate.
+ */
+export const BenefitUtilizationSummariesListByBillingProfileId =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: BenefitUtilizationSummariesListByBillingProfileIdInput,
+    outputSchema: BenefitUtilizationSummariesListByBillingProfileIdOutput,
+  }));
+// Input Schema
+export const BenefitUtilizationSummariesListBySavingsPlanIdInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
+    savingsPlanId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
+    grainParameter: Schema.optional(
+      Schema.Literals(["Hourly", "Daily", "Monthly"]),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
+    }),
+  );
+export type BenefitUtilizationSummariesListBySavingsPlanIdInput =
+  typeof BenefitUtilizationSummariesListBySavingsPlanIdInput.Type;
+
+// Output Schema
+export const BenefitUtilizationSummariesListBySavingsPlanIdOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type BenefitUtilizationSummariesListBySavingsPlanIdOutput =
+  typeof BenefitUtilizationSummariesListBySavingsPlanIdOutput.Type;
+
+// The operation
+/**
+ * Lists the savings plan utilization summaries for daily or monthly grain.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param $filter - Supports filtering by properties/usageDate.
+ * @param grainParameter - Grain.
+ * @param savingsPlanOrderId - Savings plan order ID.
+ * @param savingsPlanId - Savings plan ID.
+ */
+export const BenefitUtilizationSummariesListBySavingsPlanId =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: BenefitUtilizationSummariesListBySavingsPlanIdInput,
+    outputSchema: BenefitUtilizationSummariesListBySavingsPlanIdOutput,
+  }));
+// Input Schema
+export const BenefitUtilizationSummariesListBySavingsPlanOrderInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    savingsPlanOrderId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
+    grainParameter: Schema.optional(
+      Schema.Literals(["Hourly", "Daily", "Monthly"]),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
+    }),
+  );
+export type BenefitUtilizationSummariesListBySavingsPlanOrderInput =
+  typeof BenefitUtilizationSummariesListBySavingsPlanOrderInput.Type;
+
+// Output Schema
+export const BenefitUtilizationSummariesListBySavingsPlanOrderOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type BenefitUtilizationSummariesListBySavingsPlanOrderOutput =
+  typeof BenefitUtilizationSummariesListBySavingsPlanOrderOutput.Type;
+
+// The operation
+/**
+ * Lists the savings plan utilization summaries for daily or monthly grain.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param $filter - Supports filtering by properties/usageDate.
+ * @param grainParameter - Grain.
+ * @param savingsPlanOrderId - Savings plan order ID.
+ */
+export const BenefitUtilizationSummariesListBySavingsPlanOrder =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: BenefitUtilizationSummariesListBySavingsPlanOrderInput,
+    outputSchema: BenefitUtilizationSummariesListBySavingsPlanOrderOutput,
+  }));
+// Input Schema
 export const BudgetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),

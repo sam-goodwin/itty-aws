@@ -1583,6 +1583,57 @@ export const VaultsGetDeleted = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VaultsGetDeletedOutput,
 }));
 // Input Schema
+export const VaultsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  $filter: Schema.Literals(["resourceType eq 'Microsoft.KeyVault/vaults'"]),
+  $top: Schema.optional(Schema.Number),
+  "api-version": Schema.Literals(["2015-11-01"]),
+}).pipe(
+  T.Http({ method: "GET", path: "/subscriptions/{subscriptionId}/resources" }),
+);
+export type VaultsListInput = typeof VaultsListInput.Type;
+
+// Output Schema
+export const VaultsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type VaultsListOutput = typeof VaultsListOutput.Type;
+
+// The operation
+/**
+ * The List operation gets information about the vaults associated with the subscription.
+ *
+ * @param $filter - The filter to apply on the operation.
+ * @param $top - Maximum number of results to return.
+ * @param api-version - Azure Resource Manager Api Version.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ */
+export const VaultsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: VaultsListInput,
+  outputSchema: VaultsListOutput,
+}));
+// Input Schema
 export const VaultsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),

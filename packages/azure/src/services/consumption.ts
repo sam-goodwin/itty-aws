@@ -9,6 +9,213 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export const AggregatedCostGetByManagementGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managementGroupId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Consumption/aggregatedcost",
+    }),
+  );
+export type AggregatedCostGetByManagementGroupInput =
+  typeof AggregatedCostGetByManagementGroupInput.Type;
+
+// Output Schema
+export const AggregatedCostGetByManagementGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type AggregatedCostGetByManagementGroupOutput =
+  typeof AggregatedCostGetByManagementGroupOutput.Type;
+
+// The operation
+/**
+ * Provides the aggregate cost of a management group and all child management groups by current billing period.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param managementGroupId - Order Id of the reservation
+ * @param $filter - Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and  'ge'
+ */
+export const AggregatedCostGetByManagementGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AggregatedCostGetByManagementGroupInput,
+    outputSchema: AggregatedCostGetByManagementGroupOutput,
+  }));
+// Input Schema
+export const AggregatedCostGetForBillingPeriodByManagementGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managementGroupId: Schema.String.pipe(T.PathParam()),
+    billingPeriodName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/aggregatedCost",
+    }),
+  );
+export type AggregatedCostGetForBillingPeriodByManagementGroupInput =
+  typeof AggregatedCostGetForBillingPeriodByManagementGroupInput.Type;
+
+// Output Schema
+export const AggregatedCostGetForBillingPeriodByManagementGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type AggregatedCostGetForBillingPeriodByManagementGroupOutput =
+  typeof AggregatedCostGetForBillingPeriodByManagementGroupOutput.Type;
+
+// The operation
+/**
+ * Provides the aggregate cost of a management group and all child management groups by specified billing period
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param managementGroupId - Order Id of the reservation
+ * @param billingPeriodName - Billing Period Name.
+ */
+export const AggregatedCostGetForBillingPeriodByManagementGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AggregatedCostGetForBillingPeriodByManagementGroupInput,
+    outputSchema: AggregatedCostGetForBillingPeriodByManagementGroupOutput,
+  }));
+// Input Schema
+export const BalancesGetByBillingAccountInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/balances",
+    }),
+  );
+export type BalancesGetByBillingAccountInput =
+  typeof BalancesGetByBillingAccountInput.Type;
+
+// Output Schema
+export const BalancesGetByBillingAccountOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type BalancesGetByBillingAccountOutput =
+  typeof BalancesGetByBillingAccountOutput.Type;
+
+// The operation
+/**
+ * Gets the balances for a scope by billingAccountId. Balances are available via this API only for May 1, 2014 or later.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - BillingAccount ID
+ */
+export const BalancesGetByBillingAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: BalancesGetByBillingAccountInput,
+    outputSchema: BalancesGetByBillingAccountOutput,
+  }),
+);
+// Input Schema
+export const BalancesGetForBillingPeriodByBillingAccountInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    billingPeriodName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/balances",
+    }),
+  );
+export type BalancesGetForBillingPeriodByBillingAccountInput =
+  typeof BalancesGetForBillingPeriodByBillingAccountInput.Type;
+
+// Output Schema
+export const BalancesGetForBillingPeriodByBillingAccountOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type BalancesGetForBillingPeriodByBillingAccountOutput =
+  typeof BalancesGetForBillingPeriodByBillingAccountOutput.Type;
+
+// The operation
+/**
+ * Gets the balances for a scope by billing period and billingAccountId. Balances are available via this API only for May 1, 2014 or later.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - BillingAccount ID
+ * @param billingPeriodName - Billing Period Name.
+ */
+export const BalancesGetForBillingPeriodByBillingAccount =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: BalancesGetForBillingPeriodByBillingAccountInput,
+    outputSchema: BalancesGetForBillingPeriodByBillingAccountOutput,
+  }));
+// Input Schema
 export const BudgetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -389,6 +596,76 @@ export const LotsListByCustomer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LotsListByCustomerOutput,
 }));
 // Input Schema
+export const MarketplacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $filter: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+  $skiptoken: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{scope}/providers/Microsoft.Consumption/marketplaces",
+  }),
+);
+export type MarketplacesListInput = typeof MarketplacesListInput.Type;
+
+// Output Schema
+export const MarketplacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  },
+);
+export type MarketplacesListOutput = typeof MarketplacesListOutput.Type;
+
+// The operation
+/**
+ * Lists the marketplaces for a scope at the defined scope. Marketplaces are available via this API only for May 1, 2014 or later.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param scope - The fully qualified Azure Resource manager identifier of the resource.
+ * @param $filter - May be used to filter marketplaces by properties/usageEnd (Utc time), properties/usageStart (Utc time), properties/resourceGroup, properties/instanceName or properties/instanceId. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'.
+ * @param $top - May be used to limit the number of results to the most recent N marketplaces.
+ * @param $skiptoken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
+ */
+export const MarketplacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: MarketplacesListInput,
+  outputSchema: MarketplacesListOutput,
+}));
+// Input Schema
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   "api-version": Schema.String,
 }).pipe(
@@ -551,6 +828,68 @@ export const PriceSheetGetByBillingPeriod =
     outputSchema: PriceSheetGetByBillingPeriodOutput,
   }));
 // Input Schema
+export const ReservationRecommendationDetailsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceScope: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    scope: Schema.Literals(["Single", "Shared"]),
+    region: Schema.String,
+    term: Schema.Literals(["P1M", "P1Y", "P3Y"]),
+    lookBackPeriod: Schema.Literals(["Last7Days", "Last30Days", "Last60Days"]),
+    product: Schema.String,
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/{resourceScope}/providers/Microsoft.Consumption/reservationRecommendationDetails",
+    }),
+  );
+export type ReservationRecommendationDetailsGetInput =
+  typeof ReservationRecommendationDetailsGetInput.Type;
+
+// Output Schema
+export const ReservationRecommendationDetailsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type ReservationRecommendationDetailsGetOutput =
+  typeof ReservationRecommendationDetailsGetOutput.Type;
+
+// The operation
+/**
+ * Details of a reservation recommendation for what-if analysis of reserved instances.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceScope - The scope associated with reservation recommendation details operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resource group scope, /providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for BillingAccount scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope
+ * @param scope - Scope of the reservation.
+ * @param region - Used to select the region the recommendation should be generated for.
+ * @param term - Specify length of reservation recommendation term.
+ * @param lookBackPeriod - Filter the time period on which reservation recommendation results are based.
+ * @param product - Filter the products for which reservation recommendation results are generated. Examples: Standard_DS1_v2 (for VM), Premium_SSD_Managed_Disks_P30 (for Managed Disks)
+ * @param $filter - Used to filter reservation recommendation details by: properties/subscriptionId can be specified for billing account and billing profile paths.
+ */
+export const ReservationRecommendationDetailsGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ReservationRecommendationDetailsGetInput,
+    outputSchema: ReservationRecommendationDetailsGetOutput,
+  }));
+// Input Schema
 export const ReservationRecommendationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceScope: Schema.String.pipe(T.PathParam()),
@@ -626,6 +965,594 @@ export const ReservationRecommendationsList =
     outputSchema: ReservationRecommendationsListOutput,
   }));
 // Input Schema
+export const ReservationsDetailsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceScope: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    startDate: Schema.optional(Schema.String),
+    endDate: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    reservationId: Schema.optional(Schema.String),
+    reservationOrderId: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/{resourceScope}/providers/Microsoft.Consumption/reservationDetails",
+    }),
+  );
+export type ReservationsDetailsListInput =
+  typeof ReservationsDetailsListInput.Type;
+
+// Output Schema
+export const ReservationsDetailsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ReservationsDetailsListOutput =
+  typeof ReservationsDetailsListOutput.Type;
+
+// The operation
+/**
+ * Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceScope - The fully qualified Azure Resource manager identifier of the resource.
+ * @param startDate - Start date. Only applicable when querying with billing profile
+ * @param endDate - End date. Only applicable when querying with billing profile
+ * @param $filter - Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and  'ge'. Not applicable when querying with billing profile
+ * @param reservationId - Reservation Id GUID. Only valid if reservationOrderId is also provided. Filter to a specific reservation
+ * @param reservationOrderId - Reservation Order Id GUID. Required if reservationId is provided. Filter to a specific reservation order
+ */
+export const ReservationsDetailsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ReservationsDetailsListInput,
+    outputSchema: ReservationsDetailsListOutput,
+  }),
+);
+// Input Schema
+export const ReservationsDetailsListByReservationOrderInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservationOrderId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $filter: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.Consumption/reservationDetails",
+    }),
+  );
+export type ReservationsDetailsListByReservationOrderInput =
+  typeof ReservationsDetailsListByReservationOrderInput.Type;
+
+// Output Schema
+export const ReservationsDetailsListByReservationOrderOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ReservationsDetailsListByReservationOrderOutput =
+  typeof ReservationsDetailsListByReservationOrderOutput.Type;
+
+// The operation
+/**
+ * Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
+ * @param $filter - Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and  'ge'
+ */
+export const ReservationsDetailsListByReservationOrder =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ReservationsDetailsListByReservationOrderInput,
+    outputSchema: ReservationsDetailsListByReservationOrderOutput,
+  }));
+// Input Schema
+export const ReservationsDetailsListByReservationOrderAndReservationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservationOrderId: Schema.String.pipe(T.PathParam()),
+    reservationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $filter: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationDetails",
+    }),
+  );
+export type ReservationsDetailsListByReservationOrderAndReservationInput =
+  typeof ReservationsDetailsListByReservationOrderAndReservationInput.Type;
+
+// Output Schema
+export const ReservationsDetailsListByReservationOrderAndReservationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ReservationsDetailsListByReservationOrderAndReservationOutput =
+  typeof ReservationsDetailsListByReservationOrderAndReservationOutput.Type;
+
+// The operation
+/**
+ * Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
+ * @param reservationId - Id of the reservation
+ * @param $filter - Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and  'ge'
+ */
+export const ReservationsDetailsListByReservationOrderAndReservation =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ReservationsDetailsListByReservationOrderAndReservationInput,
+    outputSchema: ReservationsDetailsListByReservationOrderAndReservationOutput,
+  }));
+// Input Schema
+export const ReservationsSummariesListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceScope: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    grain: Schema.Literals(["daily", "monthly"]),
+    startDate: Schema.optional(Schema.String),
+    endDate: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    reservationId: Schema.optional(Schema.String),
+    reservationOrderId: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/{resourceScope}/providers/Microsoft.Consumption/reservationSummaries",
+    }),
+  );
+export type ReservationsSummariesListInput =
+  typeof ReservationsSummariesListInput.Type;
+
+// Output Schema
+export const ReservationsSummariesListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ReservationsSummariesListOutput =
+  typeof ReservationsSummariesListOutput.Type;
+
+// The operation
+/**
+ * Lists the reservations summaries for the defined scope daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param resourceScope - The fully qualified Azure Resource manager identifier of the resource.
+ * @param grain - Can be daily or monthly
+ * @param startDate - Start date. Only applicable when querying with billing profile
+ * @param endDate - End date. Only applicable when querying with billing profile
+ * @param $filter - Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and  'ge'. Not applicable when querying with billing profile
+ * @param reservationId - Reservation Id GUID. Only valid if reservationOrderId is also provided. Filter to a specific reservation
+ * @param reservationOrderId - Reservation Order Id GUID. Required if reservationId is provided. Filter to a specific reservation order
+ */
+export const ReservationsSummariesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ReservationsSummariesListInput,
+    outputSchema: ReservationsSummariesListOutput,
+  }),
+);
+// Input Schema
+export const ReservationsSummariesListByReservationOrderInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservationOrderId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    grain: Schema.Literals(["daily", "monthly"]),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.Consumption/reservationSummaries",
+    }),
+  );
+export type ReservationsSummariesListByReservationOrderInput =
+  typeof ReservationsSummariesListByReservationOrderInput.Type;
+
+// Output Schema
+export const ReservationsSummariesListByReservationOrderOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ReservationsSummariesListByReservationOrderOutput =
+  typeof ReservationsSummariesListByReservationOrderOutput.Type;
+
+// The operation
+/**
+ * Lists the reservations summaries for daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
+ * @param grain - Can be daily or monthly
+ * @param $filter - Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and  'ge'
+ */
+export const ReservationsSummariesListByReservationOrder =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ReservationsSummariesListByReservationOrderInput,
+    outputSchema: ReservationsSummariesListByReservationOrderOutput,
+  }));
+// Input Schema
+export const ReservationsSummariesListByReservationOrderAndReservationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservationOrderId: Schema.String.pipe(T.PathParam()),
+    reservationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    grain: Schema.Literals(["daily", "monthly"]),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationSummaries",
+    }),
+  );
+export type ReservationsSummariesListByReservationOrderAndReservationInput =
+  typeof ReservationsSummariesListByReservationOrderAndReservationInput.Type;
+
+// Output Schema
+export const ReservationsSummariesListByReservationOrderAndReservationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ReservationsSummariesListByReservationOrderAndReservationOutput =
+  typeof ReservationsSummariesListByReservationOrderAndReservationOutput.Type;
+
+// The operation
+/**
+ * Lists the reservations summaries for daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param reservationOrderId - Order Id of the reservation
+ * @param reservationId - Id of the reservation
+ * @param grain - Can be daily or monthly
+ * @param $filter - Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and  'ge'
+ */
+export const ReservationsSummariesListByReservationOrderAndReservation =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ReservationsSummariesListByReservationOrderAndReservationInput,
+    outputSchema:
+      ReservationsSummariesListByReservationOrderAndReservationOutput,
+  }));
+// Input Schema
+export const ReservationTransactionsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
+    useMarkupIfPartner: Schema.optional(Schema.Boolean),
+    previewMarkupPercentage: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/reservationTransactions",
+    }),
+  );
+export type ReservationTransactionsListInput =
+  typeof ReservationTransactionsListInput.Type;
+
+// Output Schema
+export const ReservationTransactionsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ReservationTransactionsListOutput =
+  typeof ReservationTransactionsListOutput.Type;
+
+// The operation
+/**
+ * List of transactions for reserved instances on billing account scope. Note: The refund transactions are posted along with its purchase transaction (i.e. in the purchase billing month). For example, The refund is requested in May 2021. This refund transaction will have event date as May 2021 but the billing month as April 2020 when the reservation purchase was made. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - BillingAccount ID
+ * @param $filter - Filter reservation transactions by date range. The properties/EventDate for start date and end date. The filter supports 'le' and  'ge'. Note: API returns data for the entire start date's and end date's billing month. For example, filter properties/eventDate+ge+2020-01-01+AND+properties/eventDate+le+2020-12-29 will include data for the entire December 2020 month (i.e. will contain records for dates December 30 and 31)
+ * @param useMarkupIfPartner - Applies mark up to the transactions if the caller is a partner.
+ * @param previewMarkupPercentage - Preview markup percentage to be applied.
+ */
+export const ReservationTransactionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ReservationTransactionsListInput,
+    outputSchema: ReservationTransactionsListOutput,
+  }),
+);
+// Input Schema
+export const ReservationTransactionsListByBillingProfileInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    billingProfileId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/reservationTransactions",
+    }),
+  );
+export type ReservationTransactionsListByBillingProfileInput =
+  typeof ReservationTransactionsListByBillingProfileInput.Type;
+
+// Output Schema
+export const ReservationTransactionsListByBillingProfileOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type ReservationTransactionsListByBillingProfileOutput =
+  typeof ReservationTransactionsListByBillingProfileOutput.Type;
+
+// The operation
+/**
+ * List of transactions for reserved instances on billing profile scope. The refund transactions are posted along with its purchase transaction (i.e. in the purchase billing month). For example, The refund is requested in May 2021. This refund transaction will have event date as May 2021 but the billing month as April 2020 when the reservation purchase was made. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - BillingAccount ID
+ * @param billingProfileId - Azure Billing Profile ID.
+ * @param $filter - Filter reservation transactions by date range. The properties/EventDate for start date and end date. The filter supports 'le' and  'ge'. Note: API returns data for the entire start date's and end date's billing month. For example, filter properties/eventDate+ge+2020-01-01+AND+properties/eventDate+le+2020-12-29 will include data for entire December 2020 month (i.e. will contain records for dates December 30 and 31)
+ */
+export const ReservationTransactionsListByBillingProfile =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ReservationTransactionsListByBillingProfileInput,
+    outputSchema: ReservationTransactionsListByBillingProfileOutput,
+  }));
+// Input Schema
 export const TagsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   "api-version": Schema.String,
@@ -651,4 +1578,81 @@ export type TagsGetOutput = typeof TagsGetOutput.Type;
 export const TagsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TagsGetInput,
   outputSchema: TagsGetOutput,
+}));
+// Input Schema
+export const UsageDetailsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $expand: Schema.optional(Schema.String),
+  $filter: Schema.optional(Schema.String),
+  $skiptoken: Schema.optional(Schema.String),
+  $top: Schema.optional(Schema.Number),
+  metric: Schema.optional(
+    Schema.Literals(["actualcost", "amortizedcost", "usage"]),
+  ),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/{scope}/providers/Microsoft.Consumption/usageDetails",
+  }),
+);
+export type UsageDetailsListInput = typeof UsageDetailsListInput.Type;
+
+// Output Schema
+export const UsageDetailsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  },
+);
+export type UsageDetailsListOutput = typeof UsageDetailsListOutput.Type;
+
+// The operation
+/**
+ * Lists the usage details for the defined scope. Usage details are available via this API only for May 1, 2014 or later.
+ * **Note:Microsoft will be retiring the Consumption Usage Details API at some point in the future. We do not recommend that you take a new dependency on this API. Please use the Cost Details API instead. We will notify customers once a date for retirement has been determined.For Learn more,see [Generate Cost Details Report - Create Operation](https://learn.microsoft.com/en-us/rest/api/cost-management/generate-cost-details-report/create-operation?tabs=HTTP)**
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param scope - The fully qualified Azure Resource manager identifier of the resource.
+ * @param $expand - May be used to expand the properties/additionalInfo or properties/meterDetails within a list of usage details. By default, these fields are not included when listing usage details.
+ * @param $filter - May be used to filter usageDetails by properties/resourceGroup, properties/resourceName, properties/resourceId, properties/chargeType, properties/reservationId, properties/publisherType or tags. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:). PublisherType Filter accepts two values azure and marketplace and it is currently supported for Web Direct Offer Type
+ * @param $skiptoken - Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
+ * @param $top - May be used to limit the number of results to the most recent N usageDetails.
+ * @param metric - Allows to select different type of cost/usage records.
+ */
+export const UsageDetailsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: UsageDetailsListInput,
+  outputSchema: UsageDetailsListOutput,
 }));

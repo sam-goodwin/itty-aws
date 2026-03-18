@@ -4070,6 +4070,60 @@ export const PackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PackageUpdateOutput,
 }));
 // Input Schema
+export const PrivateEndpointConnectionsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    automationAccountName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        groupIds: Schema.optional(Schema.Array(Schema.String)),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type PrivateEndpointConnectionsCreateOrUpdateInput =
+  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type PrivateEndpointConnectionsCreateOrUpdateOutput =
+  typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Approve or reject a private endpoint connection with a given name.
+ *
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param api-version - Client Api Version.
+ * @param automationAccountName - The name of the automation account.
+ * @param properties - Resource properties.
+ */
+export const PrivateEndpointConnectionsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
+    outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
+  }));
+// Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7534,6 +7588,62 @@ export const VariableUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VariableUpdateOutput,
 }));
 // Input Schema
+export const WatcherCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    automationAccountName: Schema.String.pipe(T.PathParam()),
+    watcherName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
+    }),
+  );
+export type WatcherCreateOrUpdateInput = typeof WatcherCreateOrUpdateInput.Type;
+
+// Output Schema
+export const WatcherCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  });
+export type WatcherCreateOrUpdateOutput =
+  typeof WatcherCreateOrUpdateOutput.Type;
+
+// The operation
+/**
+ * Create the watcher identified by watcher name.
+ *
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param automationAccountName - The name of the automation account.
+ * @param watcherName - The watcher name.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Client Api Version.
+ */
+export const WatcherCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: WatcherCreateOrUpdateInput,
+    outputSchema: WatcherCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
 export const WatcherDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   automationAccountName: Schema.String.pipe(T.PathParam()),
@@ -7566,6 +7676,130 @@ export const WatcherDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WatcherDeleteInput,
   outputSchema: WatcherDeleteOutput,
 }));
+// Input Schema
+export const WatcherGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  watcherName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
+  }),
+);
+export type WatcherGetInput = typeof WatcherGetInput.Type;
+
+// Output Schema
+export const WatcherGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type WatcherGetOutput = typeof WatcherGetOutput.Type;
+
+// The operation
+/**
+ * Retrieve the watcher identified by watcher name.
+ *
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param automationAccountName - The name of the automation account.
+ * @param watcherName - The watcher name.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Client Api Version.
+ */
+export const WatcherGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: WatcherGetInput,
+  outputSchema: WatcherGetOutput,
+}));
+// Input Schema
+export const WatcherListByAutomationAccountInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    automationAccountName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers",
+    }),
+  );
+export type WatcherListByAutomationAccountInput =
+  typeof WatcherListByAutomationAccountInput.Type;
+
+// Output Schema
+export const WatcherListByAutomationAccountOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type WatcherListByAutomationAccountOutput =
+  typeof WatcherListByAutomationAccountOutput.Type;
+
+// The operation
+/**
+ * Retrieve a list of watchers.
+ *
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param automationAccountName - The name of the automation account.
+ * @param $filter - The filter to apply on the operation.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Client Api Version.
+ */
+export const WatcherListByAutomationAccount =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: WatcherListByAutomationAccountInput,
+    outputSchema: WatcherListByAutomationAccountOutput,
+  }));
 // Input Schema
 export const WatcherStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -7631,6 +7865,57 @@ export type WatcherStopOutput = typeof WatcherStopOutput.Type;
 export const WatcherStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WatcherStopInput,
   outputSchema: WatcherStopOutput,
+}));
+// Input Schema
+export const WatcherUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  automationAccountName: Schema.String.pipe(T.PathParam()),
+  watcherName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
+  }),
+);
+export type WatcherUpdateInput = typeof WatcherUpdateInput.Type;
+
+// Output Schema
+export const WatcherUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+});
+export type WatcherUpdateOutput = typeof WatcherUpdateOutput.Type;
+
+// The operation
+/**
+ * Update the watcher identified by watcher name.
+ *
+ * @param resourceGroupName - Name of an Azure Resource group.
+ * @param automationAccountName - The name of the automation account.
+ * @param watcherName - The watcher name.
+ * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Client Api Version.
+ */
+export const WatcherUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: WatcherUpdateInput,
+  outputSchema: WatcherUpdateOutput,
 }));
 // Input Schema
 export const WebhookCreateOrUpdateInput =

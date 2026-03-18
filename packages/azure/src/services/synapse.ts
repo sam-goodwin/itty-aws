@@ -2161,6 +2161,89 @@ export const OperationsCheckNameAvailability =
     outputSchema: OperationsCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export const OperationsGetAzureAsyncHeaderResultInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    operationId: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/operationStatuses/{operationId}",
+    }),
+  );
+export type OperationsGetAzureAsyncHeaderResultInput =
+  typeof OperationsGetAzureAsyncHeaderResultInput.Type;
+
+// Output Schema
+export const OperationsGetAzureAsyncHeaderResultOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.optional(
+      Schema.Literals(["InProgress", "Succeeded", "Failed", "Canceled"]),
+    ),
+    properties: Schema.optional(Schema.Unknown),
+    error: Schema.optional(
+      Schema.Struct({
+        code: Schema.optional(Schema.String),
+        message: Schema.optional(Schema.String),
+        target: Schema.optional(Schema.String),
+        details: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              code: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              target: Schema.optional(Schema.String),
+              details: Schema.optional(Schema.Array(Schema.Unknown)),
+              additionalInfo: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    type: Schema.optional(Schema.String),
+                    info: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        additionalInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              type: Schema.optional(Schema.String),
+              info: Schema.optional(Schema.Unknown),
+            }),
+          ),
+        ),
+      }),
+    ),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    percentComplete: Schema.optional(Schema.Number),
+  });
+export type OperationsGetAzureAsyncHeaderResultOutput =
+  typeof OperationsGetAzureAsyncHeaderResultOutput.Type;
+
+// The operation
+/**
+ * Get operation status
+ *
+ * Get the status of an operation
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ * @param operationId - Operation ID
+ */
+export const OperationsGetAzureAsyncHeaderResult =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: OperationsGetAzureAsyncHeaderResultInput,
+    outputSchema: OperationsGetAzureAsyncHeaderResultOutput,
+  }));
+// Input Schema
 export const OperationsGetLocationHeaderResultInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2281,6 +2364,51 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export const PrivateEndpointConnectionsCreateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type PrivateEndpointConnectionsCreateInput =
+  typeof PrivateEndpointConnectionsCreateInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsCreateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type PrivateEndpointConnectionsCreateOutput =
+  typeof PrivateEndpointConnectionsCreateOutput.Type;
+
+// The operation
+/**
+ * Approve or reject a private endpoint connection.
+ * @param properties - Private endpoint connection properties.
+ */
+export const PrivateEndpointConnectionsCreate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionsCreateInput,
+    outputSchema: PrivateEndpointConnectionsCreateOutput,
+  }));
+// Input Schema
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -2331,6 +2459,146 @@ export const PrivateEndpointConnectionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
+  }));
+// Input Schema
+export const PrivateEndpointConnectionsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections",
+    }),
+  );
+export type PrivateEndpointConnectionsListInput =
+  typeof PrivateEndpointConnectionsListInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.Array(Schema.Struct({}))),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type PrivateEndpointConnectionsListOutput =
+  typeof PrivateEndpointConnectionsListOutput.Type;
+
+// The operation
+/**
+ * Lists private endpoint connection in workspace.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace.
+ */
+export const PrivateEndpointConnectionsList =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionsListInput,
+    outputSchema: PrivateEndpointConnectionsListOutput,
+  }));
+// Input Schema
+export const PrivateEndpointConnectionsPrivateLinkHubGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateEndpointConnections/{privateEndpointConnectionName}",
+    }),
+  );
+export type PrivateEndpointConnectionsPrivateLinkHubGetInput =
+  typeof PrivateEndpointConnectionsPrivateLinkHubGetInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsPrivateLinkHubGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Struct({
+        privateEndpoint: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+          }),
+        ),
+        privateLinkServiceConnectionState: Schema.optional(
+          Schema.Struct({
+            status: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+            actionsRequired: Schema.optional(Schema.String),
+          }),
+        ),
+        provisioningState: Schema.optional(Schema.String),
+      }),
+    ),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  });
+export type PrivateEndpointConnectionsPrivateLinkHubGetOutput =
+  typeof PrivateEndpointConnectionsPrivateLinkHubGetOutput.Type;
+
+// The operation
+/**
+ * Get all PrivateEndpointConnection in the PrivateLinkHub by name
+ */
+export const PrivateEndpointConnectionsPrivateLinkHubGet =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionsPrivateLinkHubGetInput,
+    outputSchema: PrivateEndpointConnectionsPrivateLinkHubGetOutput,
+  }));
+// Input Schema
+export const PrivateEndpointConnectionsPrivateLinkHubListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateEndpointConnections",
+    }),
+  );
+export type PrivateEndpointConnectionsPrivateLinkHubListInput =
+  typeof PrivateEndpointConnectionsPrivateLinkHubListInput.Type;
+
+// Output Schema
+export const PrivateEndpointConnectionsPrivateLinkHubListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          properties: Schema.optional(
+            Schema.Struct({
+              privateEndpoint: Schema.optional(
+                Schema.Struct({
+                  id: Schema.optional(Schema.String),
+                }),
+              ),
+              privateLinkServiceConnectionState: Schema.optional(
+                Schema.Struct({
+                  status: Schema.optional(Schema.String),
+                  description: Schema.optional(Schema.String),
+                  actionsRequired: Schema.optional(Schema.String),
+                }),
+              ),
+              provisioningState: Schema.optional(Schema.String),
+            }),
+          ),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type PrivateEndpointConnectionsPrivateLinkHubListOutput =
+  typeof PrivateEndpointConnectionsPrivateLinkHubListOutput.Type;
+
+// The operation
+/**
+ * Get all PrivateEndpointConnections in the PrivateLinkHub
+ */
+export const PrivateEndpointConnectionsPrivateLinkHubList =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateEndpointConnectionsPrivateLinkHubListInput,
+    outputSchema: PrivateEndpointConnectionsPrivateLinkHubListOutput,
   }));
 // Input Schema
 export const PrivateLinkHubPrivateLinkResourcesGetInput =

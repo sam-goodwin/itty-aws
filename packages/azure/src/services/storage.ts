@@ -2754,6 +2754,76 @@ export const PrivateEndpointConnectionsPut =
     outputSchema: PrivateEndpointConnectionsPutOutput,
   }));
 // Input Schema
+export const PrivateLinkResourcesListByStorageAccountInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateLinkResources",
+    }),
+  );
+export type PrivateLinkResourcesListByStorageAccountInput =
+  typeof PrivateLinkResourcesListByStorageAccountInput.Type;
+
+// Output Schema
+export const PrivateLinkResourcesListByStorageAccountOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.String),
+          name: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+          systemData: Schema.optional(
+            Schema.Struct({
+              createdBy: Schema.optional(Schema.String),
+              createdByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              createdAt: Schema.optional(Schema.String),
+              lastModifiedBy: Schema.optional(Schema.String),
+              lastModifiedByType: Schema.optional(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
+              ),
+              lastModifiedAt: Schema.optional(Schema.String),
+            }),
+          ),
+        }),
+      ),
+    ),
+  });
+export type PrivateLinkResourcesListByStorageAccountOutput =
+  typeof PrivateLinkResourcesListByStorageAccountOutput.Type;
+
+// The operation
+/**
+ * Gets the private link resources that need to be created for a storage account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+ */
+export const PrivateLinkResourcesListByStorageAccount =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PrivateLinkResourcesListByStorageAccountInput,
+    outputSchema: PrivateLinkResourcesListByStorageAccountOutput,
+  }));
+// Input Schema
 export const QueueCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2851,6 +2921,64 @@ export type QueueGetOutput = typeof QueueGetOutput.Type;
 export const QueueGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QueueGetInput,
   outputSchema: QueueGetOutput,
+}));
+// Input Schema
+export const QueueListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+  "api-version": Schema.String,
+  $maxpagesize: Schema.optional(Schema.String),
+  $filter: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues",
+  }),
+);
+export type QueueListInput = typeof QueueListInput.Type;
+
+// Output Schema
+export const QueueListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type QueueListOutput = typeof QueueListOutput.Type;
+
+// The operation
+/**
+ * Gets a list of all the queues under the specified storage account
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+ * @param $maxpagesize - Optional, a maximum number of queues that should be included in a list queue response
+ * @param $filter - Optional, When specified, only the queues with a name starting with the given filter will be listed.
+ */
+export const QueueList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: QueueListInput,
+  outputSchema: QueueListOutput,
 }));
 // Input Schema
 export const QueueServicesGetServicePropertiesInput =

@@ -1204,6 +1204,58 @@ export const DataProtectionCheckFeatureSupport =
     outputSchema: DataProtectionCheckFeatureSupportOutput,
   }));
 // Input Schema
+export const DataProtectionOperationsListInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "api-version": Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.DataProtection/operations",
+    }),
+  );
+export type DataProtectionOperationsListInput =
+  typeof DataProtectionOperationsListInput.Type;
+
+// Output Schema
+export const DataProtectionOperationsListOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+          isDataAction: Schema.optional(Schema.Boolean),
+          display: Schema.optional(
+            Schema.Struct({
+              provider: Schema.optional(Schema.String),
+              resource: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              description: Schema.optional(Schema.String),
+            }),
+          ),
+          origin: Schema.optional(
+            Schema.Literals(["user", "system", "user,system"]),
+          ),
+          actionType: Schema.optional(Schema.Literals(["Internal"])),
+        }),
+      ),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  });
+export type DataProtectionOperationsListOutput =
+  typeof DataProtectionOperationsListOutput.Type;
+
+// The operation
+/**
+ * List the operations for the provider
+ *
+ * @param api-version - The API version to use for this operation.
+ */
+export const DataProtectionOperationsList =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: DataProtectionOperationsListInput,
+    outputSchema: DataProtectionOperationsListOutput,
+  }));
+// Input Schema
 export const DeletedBackupInstancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),

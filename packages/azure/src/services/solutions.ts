@@ -1189,3 +1189,47 @@ export const JitRequestsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JitRequestsUpdateInput,
   outputSchema: JitRequestsUpdateOutput,
 }));
+// Input Schema
+export const ListOperationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "api-version": Schema.String,
+}).pipe(
+  T.Http({ method: "GET", path: "/providers/Microsoft.Solutions/operations" }),
+);
+export type ListOperationsInput = typeof ListOperationsInput.Type;
+
+// Output Schema
+export const ListOperationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
+        display: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        origin: Schema.optional(
+          Schema.Literals(["user", "system", "user,system"]),
+        ),
+        actionType: Schema.optional(Schema.Literals(["Internal"])),
+      }),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+});
+export type ListOperationsOutput = typeof ListOperationsOutput.Type;
+
+// The operation
+/**
+ * Lists all of the available Microsoft.Solutions REST API operations.
+ *
+ * @param api-version - The API version to use for this operation.
+ */
+export const ListOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ListOperationsInput,
+  outputSchema: ListOperationsOutput,
+}));
