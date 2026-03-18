@@ -55,22 +55,53 @@ bun run build
 bun run test
 ```
 
-## Git Config for Submodules
+## Git Performance
 
-These settings keep submodule working trees in sync without fetching all 18 submodules on every pull:
+This repo has 17+ submodules including very large repos (`kubernetes/kubernetes`, `azure-rest-api-specs`, `aws-sdk-js-v3`). Without the settings below, basic git commands will be extremely slow (~11+ seconds for `git status`).
+
+### Global config (once per machine)
+
+**Do NOT set `submodule.recurse=true`.** If it's already set, remove it — it makes every git command recurse into all submodules:
 
 ```bash
-# Automatically update submodule working trees on pull/checkout/switch
-git config submodule.recurse true
-
-# Only fetch submodules whose pointer actually changed (not all of them)
-git config fetch.recurseSubmodules on-demand
-
-# Automatically push submodule changes when pushing
-git config push.recurseSubmodules on-demand
+git config --global --unset submodule.recurse
 ```
 
-> **Why `fetch.recurseSubmodules on-demand`?** Without it, `submodule.recurse true` implies fetching **every** submodule on every pull — 18 network round-trips including massive repos like `kubernetes/kubernetes` and `azure-rest-api-specs`. With `on-demand`, git only fetches submodules whose pinned commit actually changed.
+These are fine to keep:
+
+```bash
+git config --global fetch.recurseSubmodules on-demand
+git config --global push.recurseSubmodules on-demand
+```
+
+### Local config (once per clone)
+
+```bash
+git config --local diff.ignoreSubmodules dirty
+git config --local status.submoduleSummary false
+```
+
+The `.gitmodules` file also has `ignore = dirty` on every submodule, so most of this is handled automatically on fresh clones.
+
+### Why `ignore = dirty`?
+
+| Setting | Tracks submodule HEAD changes | Scans submodule working tree |
+|---------|------|------|
+| `ignore = none` (default) | Yes | Yes (slow) |
+| `ignore = dirty` | Yes | No (fast) |
+| `ignore = all` | No | No (breaks `git add` after `specs:update`) |
+
+`dirty` skips the expensive working tree scan but still detects when a submodule's committed SHA changes. After `specs:update`, `git status` will show the updated submodule and `git add` / `git commit` work normally.
+
+### Committing submodule updates
+
+After running `bun run specs:update` in a package directory:
+
+```bash
+git status                                    # shows submodule as modified
+git add packages/{name}/specs/{submodule}
+git commit -m "update {name} spec to latest"
+```
 
 ## Submodules
 
