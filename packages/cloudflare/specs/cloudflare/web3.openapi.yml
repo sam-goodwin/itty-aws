@@ -1,0 +1,696 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare WEB3 API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: web3
+paths:
+  /zones/{zone_id}/web3/hostnames/{identifier}:
+    get:
+      operationId: getHostname
+      description: "Web3 Hostname Details  @example ```ts const hostname = await
+        client.web3.hostnames.get( '023e105f4ecef8ad9ca31a8372d0c353', {
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Specify the identifier of the hostname.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Specify the identifier of the hostname.
+                  created_on:
+                    type: string
+                  description:
+                    type: string
+                    description: Specify an optional description of the hostname.
+                  dnslink:
+                    type: string
+                    description: Specify the DNSLink value used if the target is ipfs.
+                  modified_on:
+                    type: string
+                  name:
+                    type: string
+                    description: Specify the hostname that points to the target gateway via CNAME.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - pending
+                      - deleting
+                      - error
+                    description: Specifies the status of the hostname's activation.
+                  target:
+                    type: string
+                    enum:
+                      - ethereum
+                      - ipfs
+                      - ipfs_universal_path
+                    description: Specify the target gateway of the hostname.
+      x-distilled-response-path: result
+    patch:
+      operationId: patchHostname
+      description: "Edit Web3 Hostname  @example ```ts const hostname = await
+        client.web3.hostnames.edit( '023e105f4ecef8ad9ca31a8372d0c353', {
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Specify the identifier of the hostname."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: "Body param: Specify an optional description of the hostname."
+                dnslink:
+                  type: string
+                  description: "Body param: Specify the DNSLink value used if the target is ipfs."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Specify the identifier of the hostname.
+                  created_on:
+                    type: string
+                  description:
+                    type: string
+                    description: Specify an optional description of the hostname.
+                  dnslink:
+                    type: string
+                    description: Specify the DNSLink value used if the target is ipfs.
+                  modified_on:
+                    type: string
+                  name:
+                    type: string
+                    description: Specify the hostname that points to the target gateway via CNAME.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - pending
+                      - deleting
+                      - error
+                    description: Specifies the status of the hostname's activation.
+                  target:
+                    type: string
+                    enum:
+                      - ethereum
+                      - ipfs
+                      - ipfs_universal_path
+                    description: Specify the target gateway of the hostname.
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteHostname
+      description: "Delete Web3 Hostname  @example ```ts const hostname = await
+        client.web3.hostnames.delete( '023e105f4ecef8ad9ca31a8372d0c353', {
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Specify the identifier of the hostname.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Specify the identifier of the hostname.
+                required:
+                  - id
+      x-distilled-response-path: result
+  /zones/{zone_id}/web3/hostnames:
+    get:
+      operationId: listHostnames
+      description: "List Web3 Hostnames  @example ```ts // Automatically fetches more
+        pages as needed. for await (const hostname of
+        client.web3.hostnames.list({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', })) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Specify the identifier of the hostname.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Specify the identifier of the hostname.
+                  created_on:
+                    type: string
+                  description:
+                    type: string
+                    description: Specify an optional description of the hostname.
+                  dnslink:
+                    type: string
+                    description: Specify the DNSLink value used if the target is ipfs.
+                  modified_on:
+                    type: string
+                  name:
+                    type: string
+                    description: Specify the hostname that points to the target gateway via CNAME.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - pending
+                      - deleting
+                      - error
+                    description: Specifies the status of the hostname's activation.
+                  target:
+                    type: string
+                    enum:
+                      - ethereum
+                      - ipfs
+                      - ipfs_universal_path
+                    description: Specify the target gateway of the hostname.
+      x-distilled-pagination-class: HostnamesSinglePage
+    post:
+      operationId: createHostname
+      description: "Create Web3 Hostname  @example ```ts const hostname = await
+        client.web3.hostnames.create({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', name: 'gateway.example.com', target:
+        'ipfs', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Specify the identifier of the hostname."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: Specify the hostname that points to the target gateway
+                    via CNAME."
+                target:
+                  type: string
+                  enum:
+                    - ethereum
+                    - ipfs
+                    - ipfs_universal_path
+                  description: "Body param: Specify the target gateway of the hostname."
+                description:
+                  type: string
+                  description: "Body param: Specify an optional description of the hostname."
+                dnslink:
+                  type: string
+                  description: "Body param: Specify the DNSLink value used if the target is ipfs."
+              required:
+                - name
+                - target
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Specify the identifier of the hostname.
+                  created_on:
+                    type: string
+                  description:
+                    type: string
+                    description: Specify an optional description of the hostname.
+                  dnslink:
+                    type: string
+                    description: Specify the DNSLink value used if the target is ipfs.
+                  modified_on:
+                    type: string
+                  name:
+                    type: string
+                    description: Specify the hostname that points to the target gateway via CNAME.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - pending
+                      - deleting
+                      - error
+                    description: Specifies the status of the hostname's activation.
+                  target:
+                    type: string
+                    enum:
+                      - ethereum
+                      - ipfs
+                      - ipfs_universal_path
+                    description: Specify the target gateway of the hostname.
+      x-distilled-response-path: result
+  /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list:
+    get:
+      operationId: getHostnameIpfsUniversalPathContentList
+      description: "IPFS Universal Path Gateway Content List Details  @example ```ts
+        const contentList = await
+        client.web3.hostnames.ipfsUniversalPaths.contentLists.get(
+        '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Specify the identifier of the hostname.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  action:
+                    type: string
+                    enum:
+                      - block
+                    description: Behavior of the content list.
+      x-distilled-response-path: result
+    put:
+      operationId: putHostnameIpfsUniversalPathContentList
+      description: "Update IPFS Universal Path Gateway Content List  @example ```ts
+        const contentList = await
+        client.web3.hostnames.ipfsUniversalPaths.contentLists.update(
+        '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', action: 'block', entries: [{}], },
+        ); ```"
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Specify the identifier of the hostname."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  enum:
+                    - block
+                  description: "Body param: Behavior of the content list."
+                entries:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      content:
+                        type: string
+                        description: Specify the CID or content path of content to block.
+                      description:
+                        type: string
+                        description: Specify an optional description of the content list entry.
+                      type:
+                        type: string
+                        enum:
+                          - cid
+                          - content_path
+                        description: Specify the type of content list entry to block.
+                  description: "Body param: Provides content list entries."
+              required:
+                - action
+                - entries
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  action:
+                    type: string
+                    enum:
+                      - block
+                    description: Behavior of the content list.
+      x-distilled-response-path: result
+  /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{contentListEntryIdentifier}:
+    get:
+      operationId: getHostnameIpfsUniversalPathContentListEntry
+      description: "IPFS Universal Path Gateway Content List Entry Details  @example
+        ```ts const entry = await
+        client.web3.hostnames.ipfsUniversalPaths.contentLists.entries.get(
+        '023e105f4ecef8ad9ca31a8372d0c353', '023e105f4ecef8ad9ca31a8372d0c353',
+        { zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: contentListEntryIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Specify the identifier of the hostname.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Specify the identifier of the hostname.
+                  content:
+                    type: string
+                    description: Specify the CID or content path of content to block.
+                  created_on:
+                    type: string
+                  description:
+                    type: string
+                    description: Specify an optional description of the content list entry.
+                  modified_on:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                      - cid
+                      - content_path
+                    description: Specify the type of content list entry to block.
+      x-distilled-response-path: result
+    put:
+      operationId: updateHostnameIpfsUniversalPathContentListEntry
+      description: "Edit IPFS Universal Path Gateway Content List Entry  @example
+        ```ts const entry = await
+        client.web3.hostnames.ipfsUniversalPaths.contentLists.entries.update(
+        '023e105f4ecef8ad9ca31a8372d0c353', '023e105f4ecef8ad9ca31a8372d0c353',
+        { zone_id: '023e105f4ecef8ad9ca31a8372d0c353', content:
+        'QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB', type: 'cid', }, );
+        ```"
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: contentListEntryIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Specify the identifier of the hostname."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: "Body param: Specify the CID or content path of content to block."
+                type:
+                  type: string
+                  enum:
+                    - cid
+                    - content_path
+                  description: "Body param: Specify the type of content list entry to block."
+                description:
+                  type: string
+                  description: "Body param: Specify an optional description of the content list
+                    entry."
+              required:
+                - content
+                - type
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Specify the identifier of the hostname.
+                  content:
+                    type: string
+                    description: Specify the CID or content path of content to block.
+                  created_on:
+                    type: string
+                  description:
+                    type: string
+                    description: Specify an optional description of the content list entry.
+                  modified_on:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                      - cid
+                      - content_path
+                    description: Specify the type of content list entry to block.
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteHostnameIpfsUniversalPathContentListEntry
+      description: "Delete IPFS Universal Path Gateway Content List Entry  @example
+        ```ts const entry = await
+        client.web3.hostnames.ipfsUniversalPaths.contentLists.entries.delete(
+        '023e105f4ecef8ad9ca31a8372d0c353', '023e105f4ecef8ad9ca31a8372d0c353',
+        { zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: contentListEntryIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Specify the identifier of the hostname.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Specify the identifier of the hostname.
+                required:
+                  - id
+      x-distilled-response-path: result
+  /zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries:
+    get:
+      operationId: listHostnameIpfsUniversalPathContentListEntries
+      description: "List IPFS Universal Path Gateway Content List Entries  @example
+        ```ts const entries = await
+        client.web3.hostnames.ipfsUniversalPaths.contentLists.entries.list(
+        '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Specify the identifier of the hostname.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entries:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Specify the identifier of the hostname.
+                        content:
+                          type: string
+                          description: Specify the CID or content path of content to block.
+                        created_on:
+                          type: string
+                        description:
+                          type: string
+                          description: Specify an optional description of the content list entry.
+                        modified_on:
+                          type: string
+                        type:
+                          type: string
+                          enum:
+                            - cid
+                            - content_path
+                          description: Specify the type of content list entry to block.
+                    description: Provides content list entries.
+      x-distilled-response-path: result
+    post:
+      operationId: createHostnameIpfsUniversalPathContentListEntry
+      description: "Create IPFS Universal Path Gateway Content List Entry  @example
+        ```ts const entry = await
+        client.web3.hostnames.ipfsUniversalPaths.contentLists.entries.create(
+        '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', content:
+        'QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB', type: 'cid', }, );
+        ```"
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Specify the identifier of the hostname."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: "Body param: Specify the CID or content path of content to block."
+                type:
+                  type: string
+                  enum:
+                    - cid
+                    - content_path
+                  description: "Body param: Specify the type of content list entry to block."
+                description:
+                  type: string
+                  description: "Body param: Specify an optional description of the content list
+                    entry."
+              required:
+                - content
+                - type
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Specify the identifier of the hostname.
+                  content:
+                    type: string
+                    description: Specify the CID or content path of content to block.
+                  created_on:
+                    type: string
+                  description:
+                    type: string
+                    description: Specify an optional description of the content list entry.
+                  modified_on:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                      - cid
+                      - content_path
+                    description: Specify the type of content list entry to block.
+      x-distilled-response-path: result

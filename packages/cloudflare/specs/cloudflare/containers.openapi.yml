@@ -1,0 +1,2284 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare CONTAINERS API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: containers
+paths:
+  /accounts/{account_id}/containers/applications/{application_id}:
+    get:
+      operationId: getContainerApplication
+      summary: Get container application
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: application_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Container application
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  account_id:
+                    type: string
+                  name:
+                    type: string
+                  scheduling_policy:
+                    type: string
+                    enum:
+                      - moon
+                      - gpu
+                      - regional
+                      - fill_metals
+                      - default
+                  instances:
+                    type: number
+                  max_instances:
+                    type: number
+                  constraints:
+                    type: object
+                    properties:
+                      tier:
+                        type: number
+                  affinities:
+                    type: object
+                    properties:
+                      colocation:
+                        type: string
+                        enum:
+                          - datacenter
+                  configuration:
+                    type: object
+                    properties:
+                      image:
+                        type: string
+                      instance_type:
+                        type: string
+                        enum:
+                          - lite
+                          - dev
+                          - basic
+                          - standard
+                          - standard-1
+                          - standard-2
+                          - standard-3
+                          - standard-4
+                      observability:
+                        type: object
+                        properties:
+                          logs:
+                            type: object
+                            properties:
+                              enabled:
+                                type: boolean
+                            required:
+                              - enabled
+                      ssh_public_key_ids:
+                        type: array
+                        items:
+                          type: string
+                      secrets:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - env
+                            secret:
+                              type: string
+                          required:
+                            - name
+                            - type
+                            - secret
+                      vcpu:
+                        type: number
+                      memory:
+                        type: string
+                      disk:
+                        type: object
+                        properties:
+                          size:
+                            type: string
+                        required:
+                          - size
+                      environment_variables:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                            - name
+                            - value
+                      labels:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                            - name
+                            - value
+                      network:
+                        type: object
+                        properties:
+                          assign_ipv4:
+                            type: string
+                            enum:
+                              - none
+                              - predefined
+                              - account
+                          assign_ipv6:
+                            type: string
+                            enum:
+                              - none
+                              - predefined
+                              - account
+                          mode:
+                            type: string
+                            enum:
+                              - public
+                              - private
+                      command:
+                        type: array
+                        items:
+                          type: string
+                      entrypoint:
+                        type: array
+                        items:
+                          type: string
+                      dns:
+                        type: object
+                        properties:
+                          servers:
+                            type: array
+                            items:
+                              type: string
+                          searches:
+                            type: array
+                            items:
+                              type: string
+                      ports:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            port:
+                              type: number
+                          required:
+                            - name
+                      checks:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - http
+                                - tcp
+                            tls:
+                              type: boolean
+                            port:
+                              type: string
+                            http:
+                              type: object
+                              properties:
+                                method:
+                                  type: string
+                                  enum:
+                                    - GET
+                                    - POST
+                                    - PUT
+                                    - PATCH
+                                    - DELETE
+                                    - OPTIONS
+                                    - HEAD
+                                body:
+                                  type: string
+                                path:
+                                  type: string
+                                headers: {}
+                            interval:
+                              type: string
+                            timeout:
+                              type: string
+                            retries:
+                              type: number
+                            kind:
+                              type: string
+                              enum:
+                                - health
+                                - ready
+                          required:
+                            - type
+                            - port
+                            - interval
+                            - timeout
+                            - kind
+                    required:
+                      - image
+                  durable_objects:
+                    type: object
+                    properties:
+                      namespace_id:
+                        type: string
+                    required:
+                      - namespace_id
+                  created_at:
+                    type: string
+                  version:
+                    type: number
+                  durable_object_namespace_id:
+                    type: string
+                  health:
+                    type: object
+                    properties:
+                      instances: {}
+                    required:
+                      - instances
+                required:
+                  - id
+                  - account_id
+                  - name
+                  - scheduling_policy
+                  - instances
+                  - max_instances
+                  - constraints
+                  - configuration
+                  - durable_objects
+                  - created_at
+                  - version
+                  - durable_object_namespace_id
+                  - health
+      x-distilled-response-path: result
+    patch:
+      operationId: updateContainerApplication
+      summary: Update container application
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: application_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instances:
+                  type: number
+                max_instances:
+                  type: number
+                affinities:
+                  type: object
+                  properties:
+                    colocation:
+                      type: string
+                      enum:
+                        - datacenter
+                scheduling_policy:
+                  type: string
+                  enum:
+                    - moon
+                    - gpu
+                    - regional
+                    - fill_metals
+                    - default
+                constraints:
+                  type: object
+                  properties:
+                    tier:
+                      type: number
+                    region:
+                      type: string
+                      enum:
+                        - AFR
+                        - APAC
+                        - EEUR
+                        - ENAM
+                        - WNAM
+                        - ME
+                        - OC
+                        - SAM
+                        - WEUR
+                    regions:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - AFR
+                          - APAC
+                          - EEUR
+                          - ENAM
+                          - WNAM
+                          - ME
+                          - OC
+                          - SAM
+                          - WEUR
+                    cities:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - AFR
+                          - APAC
+                          - EEUR
+                          - ENAM
+                          - WNAM
+                          - ME
+                          - OC
+                          - SAM
+                          - WEUR
+                configuration:
+                  type: object
+                  properties:
+                    image:
+                      type: string
+                    instance_type:
+                      type: string
+                      enum:
+                        - lite
+                        - dev
+                        - basic
+                        - standard
+                        - standard-1
+                        - standard-2
+                        - standard-3
+                        - standard-4
+                    observability:
+                      type: object
+                      properties:
+                        logs:
+                          type: object
+                          properties:
+                            enabled:
+                              type: boolean
+                          required:
+                            - enabled
+                    ssh_public_key_ids:
+                      type: array
+                      items:
+                        type: string
+                    secrets:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          type:
+                            type: string
+                            enum:
+                              - env
+                          secret:
+                            type: string
+                        required:
+                          - name
+                          - type
+                          - secret
+                    vcpu:
+                      type: number
+                    memory:
+                      type: string
+                    disk:
+                      type: object
+                      properties:
+                        size:
+                          type: string
+                      required:
+                        - size
+                    environment_variables:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          value:
+                            type: string
+                        required:
+                          - name
+                          - value
+                    labels:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          value:
+                            type: string
+                        required:
+                          - name
+                          - value
+                    network:
+                      type: object
+                      properties:
+                        assign_ipv4:
+                          type: string
+                          enum:
+                            - none
+                            - predefined
+                            - account
+                        assign_ipv6:
+                          type: string
+                          enum:
+                            - none
+                            - predefined
+                            - account
+                        mode:
+                          type: string
+                          enum:
+                            - public
+                            - private
+                    command:
+                      type: array
+                      items:
+                        type: string
+                    entrypoint:
+                      type: array
+                      items:
+                        type: string
+                    dns:
+                      type: object
+                      properties:
+                        servers:
+                          type: array
+                          items:
+                            type: string
+                        searches:
+                          type: array
+                          items:
+                            type: string
+                    ports:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          port:
+                            type: number
+                        required:
+                          - name
+                    checks:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          type:
+                            type: string
+                            enum:
+                              - http
+                              - tcp
+                          tls:
+                            type: boolean
+                          port:
+                            type: string
+                          http:
+                            type: object
+                            properties:
+                              method:
+                                type: string
+                                enum:
+                                  - GET
+                                  - POST
+                                  - PUT
+                                  - PATCH
+                                  - DELETE
+                                  - OPTIONS
+                                  - HEAD
+                              body:
+                                type: string
+                              path:
+                                type: string
+                              headers: {}
+                          interval:
+                            type: string
+                          timeout:
+                            type: string
+                          retries:
+                            type: number
+                          kind:
+                            type: string
+                            enum:
+                              - health
+                              - ready
+                        required:
+                          - type
+                          - port
+                          - interval
+                          - timeout
+                          - kind
+                  required:
+                    - image
+      responses:
+        "200":
+          description: Updated container application
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  account_id:
+                    type: string
+                  name:
+                    type: string
+                  scheduling_policy:
+                    type: string
+                    enum:
+                      - moon
+                      - gpu
+                      - regional
+                      - fill_metals
+                      - default
+                  instances:
+                    type: number
+                  max_instances:
+                    type: number
+                  constraints:
+                    type: object
+                    properties:
+                      tier:
+                        type: number
+                  affinities:
+                    type: object
+                    properties:
+                      colocation:
+                        type: string
+                        enum:
+                          - datacenter
+                  configuration:
+                    type: object
+                    properties:
+                      image:
+                        type: string
+                      instance_type:
+                        type: string
+                        enum:
+                          - lite
+                          - dev
+                          - basic
+                          - standard
+                          - standard-1
+                          - standard-2
+                          - standard-3
+                          - standard-4
+                      observability:
+                        type: object
+                        properties:
+                          logs:
+                            type: object
+                            properties:
+                              enabled:
+                                type: boolean
+                            required:
+                              - enabled
+                      ssh_public_key_ids:
+                        type: array
+                        items:
+                          type: string
+                      secrets:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - env
+                            secret:
+                              type: string
+                          required:
+                            - name
+                            - type
+                            - secret
+                      vcpu:
+                        type: number
+                      memory:
+                        type: string
+                      disk:
+                        type: object
+                        properties:
+                          size:
+                            type: string
+                        required:
+                          - size
+                      environment_variables:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                            - name
+                            - value
+                      labels:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                            - name
+                            - value
+                      network:
+                        type: object
+                        properties:
+                          assign_ipv4:
+                            type: string
+                            enum:
+                              - none
+                              - predefined
+                              - account
+                          assign_ipv6:
+                            type: string
+                            enum:
+                              - none
+                              - predefined
+                              - account
+                          mode:
+                            type: string
+                            enum:
+                              - public
+                              - private
+                      command:
+                        type: array
+                        items:
+                          type: string
+                      entrypoint:
+                        type: array
+                        items:
+                          type: string
+                      dns:
+                        type: object
+                        properties:
+                          servers:
+                            type: array
+                            items:
+                              type: string
+                          searches:
+                            type: array
+                            items:
+                              type: string
+                      ports:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            port:
+                              type: number
+                          required:
+                            - name
+                      checks:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - http
+                                - tcp
+                            tls:
+                              type: boolean
+                            port:
+                              type: string
+                            http:
+                              type: object
+                              properties:
+                                method:
+                                  type: string
+                                  enum:
+                                    - GET
+                                    - POST
+                                    - PUT
+                                    - PATCH
+                                    - DELETE
+                                    - OPTIONS
+                                    - HEAD
+                                body:
+                                  type: string
+                                path:
+                                  type: string
+                                headers: {}
+                            interval:
+                              type: string
+                            timeout:
+                              type: string
+                            retries:
+                              type: number
+                            kind:
+                              type: string
+                              enum:
+                                - health
+                                - ready
+                          required:
+                            - type
+                            - port
+                            - interval
+                            - timeout
+                            - kind
+                    required:
+                      - image
+                  durable_objects:
+                    type: object
+                    properties:
+                      namespace_id:
+                        type: string
+                    required:
+                      - namespace_id
+                  created_at:
+                    type: string
+                  version:
+                    type: number
+                  durable_object_namespace_id:
+                    type: string
+                  health:
+                    type: object
+                    properties:
+                      instances: {}
+                    required:
+                      - instances
+                required:
+                  - id
+                  - account_id
+                  - name
+                  - scheduling_policy
+                  - instances
+                  - max_instances
+                  - constraints
+                  - configuration
+                  - durable_objects
+                  - created_at
+                  - version
+                  - durable_object_namespace_id
+                  - health
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteContainerApplication
+      summary: Delete container application
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: application_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Deletion result
+      x-distilled-response-path: result
+  /accounts/{account_id}/containers/applications:
+    get:
+      operationId: listContainerApplications
+      summary: List container applications
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Container applications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    account_id:
+                      type: string
+                    name:
+                      type: string
+                    scheduling_policy:
+                      type: string
+                      enum:
+                        - moon
+                        - gpu
+                        - regional
+                        - fill_metals
+                        - default
+                    instances:
+                      type: number
+                    max_instances:
+                      type: number
+                    constraints:
+                      type: object
+                      properties:
+                        tier:
+                          type: number
+                    affinities:
+                      type: object
+                      properties:
+                        colocation:
+                          type: string
+                          enum:
+                            - datacenter
+                    configuration:
+                      type: object
+                      properties:
+                        image:
+                          type: string
+                        instance_type:
+                          type: string
+                          enum:
+                            - lite
+                            - dev
+                            - basic
+                            - standard
+                            - standard-1
+                            - standard-2
+                            - standard-3
+                            - standard-4
+                        observability:
+                          type: object
+                          properties:
+                            logs:
+                              type: object
+                              properties:
+                                enabled:
+                                  type: boolean
+                              required:
+                                - enabled
+                        ssh_public_key_ids:
+                          type: array
+                          items:
+                            type: string
+                        secrets:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              type:
+                                type: string
+                                enum:
+                                  - env
+                              secret:
+                                type: string
+                            required:
+                              - name
+                              - type
+                              - secret
+                        vcpu:
+                          type: number
+                        memory:
+                          type: string
+                        disk:
+                          type: object
+                          properties:
+                            size:
+                              type: string
+                          required:
+                            - size
+                        environment_variables:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              value:
+                                type: string
+                            required:
+                              - name
+                              - value
+                        labels:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              value:
+                                type: string
+                            required:
+                              - name
+                              - value
+                        network:
+                          type: object
+                          properties:
+                            assign_ipv4:
+                              type: string
+                              enum:
+                                - none
+                                - predefined
+                                - account
+                            assign_ipv6:
+                              type: string
+                              enum:
+                                - none
+                                - predefined
+                                - account
+                            mode:
+                              type: string
+                              enum:
+                                - public
+                                - private
+                        command:
+                          type: array
+                          items:
+                            type: string
+                        entrypoint:
+                          type: array
+                          items:
+                            type: string
+                        dns:
+                          type: object
+                          properties:
+                            servers:
+                              type: array
+                              items:
+                                type: string
+                            searches:
+                              type: array
+                              items:
+                                type: string
+                        ports:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              port:
+                                type: number
+                            required:
+                              - name
+                        checks:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              type:
+                                type: string
+                                enum:
+                                  - http
+                                  - tcp
+                              tls:
+                                type: boolean
+                              port:
+                                type: string
+                              http:
+                                type: object
+                                properties:
+                                  method:
+                                    type: string
+                                    enum:
+                                      - GET
+                                      - POST
+                                      - PUT
+                                      - PATCH
+                                      - DELETE
+                                      - OPTIONS
+                                      - HEAD
+                                  body:
+                                    type: string
+                                  path:
+                                    type: string
+                                  headers: {}
+                              interval:
+                                type: string
+                              timeout:
+                                type: string
+                              retries:
+                                type: number
+                              kind:
+                                type: string
+                                enum:
+                                  - health
+                                  - ready
+                            required:
+                              - type
+                              - port
+                              - interval
+                              - timeout
+                              - kind
+                      required:
+                        - image
+                    durable_objects:
+                      type: object
+                      properties:
+                        namespace_id:
+                          type: string
+                      required:
+                        - namespace_id
+                    created_at:
+                      type: string
+                    version:
+                      type: number
+                    durable_object_namespace_id:
+                      type: string
+                    health:
+                      type: object
+                      properties:
+                        instances: {}
+                      required:
+                        - instances
+                  required:
+                    - id
+                    - account_id
+                    - name
+                    - scheduling_policy
+                    - instances
+                    - max_instances
+                    - constraints
+                    - configuration
+                    - durable_objects
+                    - created_at
+                    - version
+                    - durable_object_namespace_id
+                    - health
+      x-distilled-response-path: result
+    post:
+      operationId: createContainerApplication
+      summary: Create container application
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                max_instances:
+                  type: number
+                configuration:
+                  type: object
+                  properties:
+                    image:
+                      type: string
+                    instance_type:
+                      type: string
+                      enum:
+                        - lite
+                        - dev
+                        - basic
+                        - standard
+                        - standard-1
+                        - standard-2
+                        - standard-3
+                        - standard-4
+                    observability:
+                      type: object
+                      properties:
+                        logs:
+                          type: object
+                          properties:
+                            enabled:
+                              type: boolean
+                          required:
+                            - enabled
+                    ssh_public_key_ids:
+                      type: array
+                      items:
+                        type: string
+                    secrets:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          type:
+                            type: string
+                            enum:
+                              - env
+                          secret:
+                            type: string
+                        required:
+                          - name
+                          - type
+                          - secret
+                    vcpu:
+                      type: number
+                    memory:
+                      type: string
+                    disk:
+                      type: object
+                      properties:
+                        size:
+                          type: string
+                      required:
+                        - size
+                    environment_variables:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          value:
+                            type: string
+                        required:
+                          - name
+                          - value
+                    labels:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          value:
+                            type: string
+                        required:
+                          - name
+                          - value
+                    network:
+                      type: object
+                      properties:
+                        assign_ipv4:
+                          type: string
+                          enum:
+                            - none
+                            - predefined
+                            - account
+                        assign_ipv6:
+                          type: string
+                          enum:
+                            - none
+                            - predefined
+                            - account
+                        mode:
+                          type: string
+                          enum:
+                            - public
+                            - private
+                    command:
+                      type: array
+                      items:
+                        type: string
+                    entrypoint:
+                      type: array
+                      items:
+                        type: string
+                    dns:
+                      type: object
+                      properties:
+                        servers:
+                          type: array
+                          items:
+                            type: string
+                        searches:
+                          type: array
+                          items:
+                            type: string
+                    ports:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          port:
+                            type: number
+                        required:
+                          - name
+                    checks:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          type:
+                            type: string
+                            enum:
+                              - http
+                              - tcp
+                          tls:
+                            type: boolean
+                          port:
+                            type: string
+                          http:
+                            type: object
+                            properties:
+                              method:
+                                type: string
+                                enum:
+                                  - GET
+                                  - POST
+                                  - PUT
+                                  - PATCH
+                                  - DELETE
+                                  - OPTIONS
+                                  - HEAD
+                              body:
+                                type: string
+                              path:
+                                type: string
+                              headers: {}
+                          interval:
+                            type: string
+                          timeout:
+                            type: string
+                          retries:
+                            type: number
+                          kind:
+                            type: string
+                            enum:
+                              - health
+                              - ready
+                        required:
+                          - type
+                          - port
+                          - interval
+                          - timeout
+                          - kind
+                  required:
+                    - image
+                durable_objects:
+                  type: object
+                  properties:
+                    namespace_id:
+                      type: string
+                  required:
+                    - namespace_id
+                instances:
+                  type: number
+                scheduling_policy:
+                  type: string
+                  enum:
+                    - moon
+                    - gpu
+                    - regional
+                    - fill_metals
+                    - default
+                constraints:
+                  type: object
+                  properties:
+                    tier:
+                      type: number
+                affinities:
+                  type: object
+                  properties:
+                    colocation:
+                      type: string
+                      enum:
+                        - datacenter
+              required:
+                - name
+                - max_instances
+                - configuration
+      responses:
+        "200":
+          description: Created container application
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  account_id:
+                    type: string
+                  name:
+                    type: string
+                  scheduling_policy:
+                    type: string
+                    enum:
+                      - moon
+                      - gpu
+                      - regional
+                      - fill_metals
+                      - default
+                  instances:
+                    type: number
+                  max_instances:
+                    type: number
+                  constraints:
+                    type: object
+                    properties:
+                      tier:
+                        type: number
+                  affinities:
+                    type: object
+                    properties:
+                      colocation:
+                        type: string
+                        enum:
+                          - datacenter
+                  configuration:
+                    type: object
+                    properties:
+                      image:
+                        type: string
+                      instance_type:
+                        type: string
+                        enum:
+                          - lite
+                          - dev
+                          - basic
+                          - standard
+                          - standard-1
+                          - standard-2
+                          - standard-3
+                          - standard-4
+                      observability:
+                        type: object
+                        properties:
+                          logs:
+                            type: object
+                            properties:
+                              enabled:
+                                type: boolean
+                            required:
+                              - enabled
+                      ssh_public_key_ids:
+                        type: array
+                        items:
+                          type: string
+                      secrets:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - env
+                            secret:
+                              type: string
+                          required:
+                            - name
+                            - type
+                            - secret
+                      vcpu:
+                        type: number
+                      memory:
+                        type: string
+                      disk:
+                        type: object
+                        properties:
+                          size:
+                            type: string
+                        required:
+                          - size
+                      environment_variables:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                            - name
+                            - value
+                      labels:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                            - name
+                            - value
+                      network:
+                        type: object
+                        properties:
+                          assign_ipv4:
+                            type: string
+                            enum:
+                              - none
+                              - predefined
+                              - account
+                          assign_ipv6:
+                            type: string
+                            enum:
+                              - none
+                              - predefined
+                              - account
+                          mode:
+                            type: string
+                            enum:
+                              - public
+                              - private
+                      command:
+                        type: array
+                        items:
+                          type: string
+                      entrypoint:
+                        type: array
+                        items:
+                          type: string
+                      dns:
+                        type: object
+                        properties:
+                          servers:
+                            type: array
+                            items:
+                              type: string
+                          searches:
+                            type: array
+                            items:
+                              type: string
+                      ports:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            port:
+                              type: number
+                          required:
+                            - name
+                      checks:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - http
+                                - tcp
+                            tls:
+                              type: boolean
+                            port:
+                              type: string
+                            http:
+                              type: object
+                              properties:
+                                method:
+                                  type: string
+                                  enum:
+                                    - GET
+                                    - POST
+                                    - PUT
+                                    - PATCH
+                                    - DELETE
+                                    - OPTIONS
+                                    - HEAD
+                                body:
+                                  type: string
+                                path:
+                                  type: string
+                                headers: {}
+                            interval:
+                              type: string
+                            timeout:
+                              type: string
+                            retries:
+                              type: number
+                            kind:
+                              type: string
+                              enum:
+                                - health
+                                - ready
+                          required:
+                            - type
+                            - port
+                            - interval
+                            - timeout
+                            - kind
+                    required:
+                      - image
+                  durable_objects:
+                    type: object
+                    properties:
+                      namespace_id:
+                        type: string
+                    required:
+                      - namespace_id
+                  created_at:
+                    type: string
+                  version:
+                    type: number
+                  durable_object_namespace_id:
+                    type: string
+                  health:
+                    type: object
+                    properties:
+                      instances: {}
+                    required:
+                      - instances
+                required:
+                  - id
+                  - account_id
+                  - name
+                  - scheduling_policy
+                  - instances
+                  - max_instances
+                  - constraints
+                  - configuration
+                  - durable_objects
+                  - created_at
+                  - version
+                  - durable_object_namespace_id
+                  - health
+      x-distilled-response-path: result
+  /accounts/{account_id}/containers/applications/{application_id}/rollouts:
+    post:
+      operationId: createContainerApplicationRollout
+      summary: Create container application rollout
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: application_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                strategy:
+                  type: string
+                  enum:
+                    - rolling
+                kind:
+                  type: string
+                  enum:
+                    - full_auto
+                step_percentage:
+                  type: number
+                target_configuration:
+                  type: object
+                  properties:
+                    image:
+                      type: string
+                    instance_type:
+                      type: string
+                      enum:
+                        - lite
+                        - dev
+                        - basic
+                        - standard
+                        - standard-1
+                        - standard-2
+                        - standard-3
+                        - standard-4
+                    observability:
+                      type: object
+                      properties:
+                        logs:
+                          type: object
+                          properties:
+                            enabled:
+                              type: boolean
+                          required:
+                            - enabled
+                    ssh_public_key_ids:
+                      type: array
+                      items:
+                        type: string
+                    secrets:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          type:
+                            type: string
+                            enum:
+                              - env
+                          secret:
+                            type: string
+                        required:
+                          - name
+                          - type
+                          - secret
+                    vcpu:
+                      type: number
+                    memory:
+                      type: string
+                    disk:
+                      type: object
+                      properties:
+                        size:
+                          type: string
+                      required:
+                        - size
+                    environment_variables:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          value:
+                            type: string
+                        required:
+                          - name
+                          - value
+                    labels:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          value:
+                            type: string
+                        required:
+                          - name
+                          - value
+                    network:
+                      type: object
+                      properties:
+                        assign_ipv4:
+                          type: string
+                          enum:
+                            - none
+                            - predefined
+                            - account
+                        assign_ipv6:
+                          type: string
+                          enum:
+                            - none
+                            - predefined
+                            - account
+                        mode:
+                          type: string
+                          enum:
+                            - public
+                            - private
+                    command:
+                      type: array
+                      items:
+                        type: string
+                    entrypoint:
+                      type: array
+                      items:
+                        type: string
+                    dns:
+                      type: object
+                      properties:
+                        servers:
+                          type: array
+                          items:
+                            type: string
+                        searches:
+                          type: array
+                          items:
+                            type: string
+                    ports:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          port:
+                            type: number
+                        required:
+                          - name
+                    checks:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          type:
+                            type: string
+                            enum:
+                              - http
+                              - tcp
+                          tls:
+                            type: boolean
+                          port:
+                            type: string
+                          http:
+                            type: object
+                            properties:
+                              method:
+                                type: string
+                                enum:
+                                  - GET
+                                  - POST
+                                  - PUT
+                                  - PATCH
+                                  - DELETE
+                                  - OPTIONS
+                                  - HEAD
+                              body:
+                                type: string
+                              path:
+                                type: string
+                              headers: {}
+                          interval:
+                            type: string
+                          timeout:
+                            type: string
+                          retries:
+                            type: number
+                          kind:
+                            type: string
+                            enum:
+                              - health
+                              - ready
+                        required:
+                          - type
+                          - port
+                          - interval
+                          - timeout
+                          - kind
+                  required:
+                    - image
+              required:
+                - description
+                - strategy
+                - step_percentage
+                - target_configuration
+      responses:
+        "200":
+          description: Rollout
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  created_at:
+                    type: string
+                  last_updated_at:
+                    type: string
+                  description:
+                    type: string
+                  status:
+                    type: string
+                    enum:
+                      - progressing
+                      - completed
+                      - failed
+                  health:
+                    type: object
+                    properties:
+                      instances:
+                        type: object
+                        properties:
+                          healthy:
+                            type: number
+                          failed:
+                            type: number
+                          starting:
+                            type: number
+                          scheduling:
+                            type: number
+                        required:
+                          - healthy
+                          - failed
+                          - starting
+                          - scheduling
+                    required:
+                      - instances
+                  kind:
+                    type: string
+                    enum:
+                      - full_auto
+                  strategy:
+                    type: string
+                    enum:
+                      - rolling
+                  current_configuration:
+                    type: object
+                    properties:
+                      image:
+                        type: string
+                      observability:
+                        type: object
+                        properties:
+                          logs:
+                            type: object
+                            properties:
+                              enabled:
+                                type: boolean
+                            required:
+                              - enabled
+                    required:
+                      - image
+                  target_configuration:
+                    type: object
+                    properties:
+                      image:
+                        type: string
+                      instance_type:
+                        type: string
+                        enum:
+                          - lite
+                          - dev
+                          - basic
+                          - standard
+                          - standard-1
+                          - standard-2
+                          - standard-3
+                          - standard-4
+                      observability:
+                        type: object
+                        properties:
+                          logs:
+                            type: object
+                            properties:
+                              enabled:
+                                type: boolean
+                            required:
+                              - enabled
+                      ssh_public_key_ids:
+                        type: array
+                        items:
+                          type: string
+                      secrets:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - env
+                            secret:
+                              type: string
+                          required:
+                            - name
+                            - type
+                            - secret
+                      vcpu:
+                        type: number
+                      memory:
+                        type: string
+                      disk:
+                        type: object
+                        properties:
+                          size:
+                            type: string
+                        required:
+                          - size
+                      environment_variables:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                            - name
+                            - value
+                      labels:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                          required:
+                            - name
+                            - value
+                      network:
+                        type: object
+                        properties:
+                          assign_ipv4:
+                            type: string
+                            enum:
+                              - none
+                              - predefined
+                              - account
+                          assign_ipv6:
+                            type: string
+                            enum:
+                              - none
+                              - predefined
+                              - account
+                          mode:
+                            type: string
+                            enum:
+                              - public
+                              - private
+                      command:
+                        type: array
+                        items:
+                          type: string
+                      entrypoint:
+                        type: array
+                        items:
+                          type: string
+                      dns:
+                        type: object
+                        properties:
+                          servers:
+                            type: array
+                            items:
+                              type: string
+                          searches:
+                            type: array
+                            items:
+                              type: string
+                      ports:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            port:
+                              type: number
+                          required:
+                            - name
+                      checks:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - http
+                                - tcp
+                            tls:
+                              type: boolean
+                            port:
+                              type: string
+                            http:
+                              type: object
+                              properties:
+                                method:
+                                  type: string
+                                  enum:
+                                    - GET
+                                    - POST
+                                    - PUT
+                                    - PATCH
+                                    - DELETE
+                                    - OPTIONS
+                                    - HEAD
+                                body:
+                                  type: string
+                                path:
+                                  type: string
+                                headers: {}
+                            interval:
+                              type: string
+                            timeout:
+                              type: string
+                            retries:
+                              type: number
+                            kind:
+                              type: string
+                              enum:
+                                - health
+                                - ready
+                          required:
+                            - type
+                            - port
+                            - interval
+                            - timeout
+                            - kind
+                    required:
+                      - image
+                  current_version:
+                    type: number
+                  target_version:
+                    type: number
+                  steps:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        status:
+                          type: string
+                          enum:
+                            - progressing
+                            - pending
+                            - completed
+                            - failed
+                        step_size:
+                          type: object
+                          properties:
+                            percentage:
+                              type: number
+                          required:
+                            - percentage
+                        description:
+                          type: string
+                        started_at:
+                          type: string
+                      required:
+                        - id
+                        - status
+                        - step_size
+                        - description
+                  progress:
+                    type: object
+                    properties:
+                      total_steps:
+                        type: number
+                      current_step:
+                        type: number
+                      updated_instances:
+                        type: number
+                      total_instances:
+                        type: number
+                    required:
+                      - total_steps
+                      - current_step
+                      - updated_instances
+                      - total_instances
+                required:
+                  - id
+                  - created_at
+                  - last_updated_at
+                  - description
+                  - status
+                  - health
+                  - kind
+                  - strategy
+                  - current_configuration
+                  - target_configuration
+                  - current_version
+                  - target_version
+                  - steps
+                  - progress
+      x-distilled-response-path: result
+  /accounts/{account_id}/containers/me:
+    get:
+      operationId: getContainerIdentity
+      summary: Get container identity
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Container identity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account_id:
+                    type: string
+                  external_account_id:
+                    type: string
+                  legacy_identity:
+                    type: string
+                  capabilities:
+                    type: array
+                    items:
+                      type: string
+                  limits:
+                    type: object
+                    properties:
+                      account_id:
+                        type: string
+                      vcpu_per_deployment:
+                        type: number
+                      memory_mib_per_deployment:
+                        type: number
+                      memory_per_deployment:
+                        type: string
+                      disk_per_deployment:
+                        type: string
+                      disk_mb_per_deployment:
+                        type: number
+                      total_vcpu:
+                        type: number
+                      total_memory_mib:
+                        type: number
+                      node_group:
+                        type: string
+                      ipv4s:
+                        type: number
+                      network_modes:
+                        type: array
+                        items:
+                          type: string
+                      total_disk_mb:
+                        type: number
+                      total_memory:
+                        type: string
+                    required:
+                      - account_id
+                      - vcpu_per_deployment
+                      - memory_mib_per_deployment
+                      - memory_per_deployment
+                      - disk_per_deployment
+                      - disk_mb_per_deployment
+                      - total_vcpu
+                      - total_memory_mib
+                      - node_group
+                      - ipv4s
+                      - network_modes
+                      - total_disk_mb
+                      - total_memory
+                  locations:
+                    type: array
+                    items: {}
+                  defaults:
+                    type: object
+                    properties:
+                      vcpus:
+                        type: number
+                      memory_mib:
+                        type: number
+                      memory:
+                        type: string
+                      disk_mb:
+                        type: number
+                    required:
+                      - vcpus
+                      - memory_mib
+                      - memory
+                      - disk_mb
+                required:
+                  - account_id
+                  - external_account_id
+                  - legacy_identity
+                  - capabilities
+                  - limits
+                  - locations
+                  - defaults
+      x-distilled-response-path: result
+  /accounts/{account_id}/containers/registries/{registry_id}/credentials:
+    post:
+      operationId: createContainerRegistryCredentials
+      summary: Create registry credentials
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: registry_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                permissions:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - pull
+                      - push
+                expiration_minutes:
+                  type: number
+              required:
+                - permissions
+                - expiration_minutes
+      responses:
+        "200":
+          description: Registry credentials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: string
+                  username:
+                    type: string
+                  password:
+                    type: string
+                required:
+                  - password
+      x-distilled-response-path: result

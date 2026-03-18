@@ -1,0 +1,337 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare SNIPPETS API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: snippets
+paths:
+  /zones/{zone_id}/snippets/{snippetName}/content:
+    get:
+      operationId: getContent
+      description: Fetches the content of a snippet belonging to the zone.
+      parameters:
+        - name: snippetName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: The unique ID of the zone.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /zones/{zone_id}/snippets/snippet_rules:
+    get:
+      operationId: listRules
+      description: Fetches all snippet rules belonging to the zone.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: The unique ID of the zone.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique ID of the rule.
+                  expression:
+                    type: string
+                    description: The expression defining which traffic will match the rule.
+                  last_updated:
+                    type: string
+                    description: The timestamp of when the rule was last modified.
+                  snippet_name:
+                    type: string
+                    description: The identifying name of the snippet.
+                  description:
+                    type: string
+                    description: An informative description of the rule.
+                  enabled:
+                    type: boolean
+                    description: Whether the rule should be executed.
+                required:
+                  - id
+                  - expression
+                  - last_updated
+                  - snippet_name
+      x-distilled-pagination-class: RuleListResponsesSinglePage
+    put:
+      operationId: putRule
+      description: Updates all snippet rules belonging to the zone.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The unique ID of the zone."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rules:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      expression:
+                        type: string
+                        description: The expression defining which traffic will match the rule.
+                      snippet_name:
+                        type: string
+                        description: The identifying name of the snippet.
+                      description:
+                        type: string
+                        description: An informative description of the rule.
+                      enabled:
+                        type: boolean
+                        description: Whether the rule should be executed.
+                    required:
+                      - expression
+                      - snippet_name
+                  description: "Body param: A list of snippet rules."
+              required:
+                - rules
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique ID of the rule.
+                  expression:
+                    type: string
+                    description: The expression defining which traffic will match the rule.
+                  last_updated:
+                    type: string
+                    description: The timestamp of when the rule was last modified.
+                  snippet_name:
+                    type: string
+                    description: The identifying name of the snippet.
+                  description:
+                    type: string
+                    description: An informative description of the rule.
+                  enabled:
+                    type: boolean
+                    description: Whether the rule should be executed.
+                required:
+                  - id
+                  - expression
+                  - last_updated
+                  - snippet_name
+      x-distilled-pagination-class: RuleUpdateResponsesSinglePage
+    delete:
+      operationId: deleteRule
+      description: Deletes all snippet rules belonging to the zone.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: The unique ID of the zone.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique ID of the rule.
+                  expression:
+                    type: string
+                    description: The expression defining which traffic will match the rule.
+                  last_updated:
+                    type: string
+                    description: The timestamp of when the rule was last modified.
+                  snippet_name:
+                    type: string
+                    description: The identifying name of the snippet.
+                  description:
+                    type: string
+                    description: An informative description of the rule.
+                  enabled:
+                    type: boolean
+                    description: Whether the rule should be executed.
+                required:
+                  - id
+                  - expression
+                  - last_updated
+                  - snippet_name
+      x-distilled-pagination-class: RuleDeleteResponsesSinglePage
+  /zones/{zone_id}/snippets/{snippetName}:
+    get:
+      operationId: getSnippet
+      description: Fetches a snippet belonging to the zone.
+      parameters:
+        - name: snippetName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: The unique ID of the zone.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_on:
+                    type: string
+                    description: The timestamp of when the snippet was created.
+                  snippet_name:
+                    type: string
+                    description: The identifying name of the snippet.
+                  modified_on:
+                    type: string
+                    description: The timestamp of when the snippet was last modified.
+                required:
+                  - created_on
+                  - snippet_name
+      x-distilled-response-path: result
+    put:
+      operationId: putSnippet
+      description: Creates or updates a snippet belonging to the zone.
+      parameters:
+        - name: snippetName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The unique ID of the zone."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                metadata:
+                  type: object
+                  properties:
+                    main_module:
+                      type: string
+                      description: Name of the file that contains the main module of the snippet.
+                  required:
+                    - main_module
+                  description: "Body param: Metadata about the snippet."
+              required:
+                - metadata
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_on:
+                    type: string
+                    description: The timestamp of when the snippet was created.
+                  snippet_name:
+                    type: string
+                    description: The identifying name of the snippet.
+                  modified_on:
+                    type: string
+                    description: The timestamp of when the snippet was last modified.
+                required:
+                  - created_on
+                  - snippet_name
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteSnippet
+      description: Deletes a snippet belonging to the zone.
+      parameters:
+        - name: snippetName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: The unique ID of the zone.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: string
+                nullable: true
+      x-distilled-response-path: result
+  /zones/{zone_id}/snippets:
+    get:
+      operationId: listSnippets
+      description: Fetches all snippets belonging to the zone.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The unique ID of the zone."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_on:
+                    type: string
+                    description: The timestamp of when the snippet was created.
+                  snippet_name:
+                    type: string
+                    description: The identifying name of the snippet.
+                  modified_on:
+                    type: string
+                    description: The timestamp of when the snippet was last modified.
+                required:
+                  - created_on
+                  - snippet_name
+      x-distilled-pagination-class: SnippetListResponsesV4PagePaginationArray

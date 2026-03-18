@@ -1,0 +1,348 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare LOGS API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: logs
+paths:
+  /accounts/{account_id}/logs/control/cmb/config:
+    get:
+      operationId: getControlCmbConfig
+      description: "Gets CMB config.  @example ```ts const cmbConfig = await
+        client.logs.control.cmb.config.get({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allow_out_of_region_access:
+                    type: boolean
+                    description: Allow out of region access
+                  regions:
+                    type: string
+                    description: Name of the region.
+      x-distilled-response-path: result
+    post:
+      operationId: createControlCmbConfig
+      description: "Updates CMB config.  @example ```ts const cmbConfig = await
+        client.logs.control.cmb.config.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                allow_out_of_region_access:
+                  type: boolean
+                  description: "Body param: Allow out of region access"
+                regions:
+                  type: string
+                  description: "Body param: Name of the region."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allow_out_of_region_access:
+                    type: boolean
+                    description: Allow out of region access
+                  regions:
+                    type: string
+                    description: Name of the region.
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteControlCmbConfig
+      description: "Deletes CMB config.  @example ```ts const config = await
+        client.logs.control.cmb.config.delete({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+  /zones/{zone_id}/logs/control/retention/flag:
+    get:
+      operationId: getControlRetention
+      description: "Gets log retention flag for Logpull API.  @example ```ts const
+        retention = await client.logs.control.retention.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  flag:
+                    type: boolean
+                    description: The log retention flag for Logpull API.
+      x-distilled-response-path: result
+    post:
+      operationId: createControlRetention
+      description: "Updates log retention flag for Logpull API.  @example ```ts const
+        retention = await client.logs.control.retention.create({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                flag:
+                  type: boolean
+                  description: "Body param: The log retention flag for Logpull API."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  flag:
+                    type: boolean
+                    description: The log retention flag for Logpull API.
+      x-distilled-response-path: result
+  /zones/{zone_id}/logs/rayids/{RayID}:
+    get:
+      operationId: getRayid
+      description: "The `/rayids` api route allows lookups by specific rayid. The
+        rayids route will return zero, one, or more records (ray ids are not
+        unique).  @example ```ts const RayID = await client.logs.RayID.get(
+        '41ddf1740f67442d', { zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, );
+        ```"
+      parameters:
+        - name: RayID
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: fields
+          in: query
+          required: false
+          description: "Query param: The `/received` route by default returns a limited
+            set of fields, and allows customers to override the default field
+            set by specifying individual fields. The reasons for this are: 1.
+            Most customers require only a small subset of fields, but that
+            subset varies from customer to customer; 2. Flat schema is much
+            easier to work with downstream (importing into BigTable etc); 3.
+            Performance (time to process, file size). If `?fields=` is not
+            specified, default field set is returned. This default field set may
+            change at any time. When `?fields=` is provided, each record is
+            returned with the specified fields. `fields` must be specified as a
+            comma separated list without any whitespaces, and all fields must
+            exist. The order in which fields are specified does not matter, and
+            the order of fields in the response is not specified."
+          schema:
+            type: string
+        - name: timestamps
+          in: query
+          required: false
+          description: "Query param: By default, timestamps in responses are returned as
+            Unix nanosecond integers. The `?timestamps=` argument can be set to
+            change the format in which response timestamps are returned.
+            Possible values are: `unix`, `unixnano`, `rfc3339`. Note that `unix`
+            and `unixnano` return timestamps as integers; `rfc3339` returns
+            timestamps as strings."
+          schema:
+            type: string
+            enum:
+              - unix
+              - unixnano
+              - rfc3339
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+  /zones/{zone_id}/logs/received:
+    get:
+      operationId: getReceived
+      description: "The `/received` api route allows customers to retrieve their edge
+        HTTP logs. The basic access pattern is \"give me all the logs for zone Z
+        for minute M\", where the minute M refers to the time records were
+        received at Cloudflare's central data center. `start` is inclusive, and
+        `end` is exclusive. Because of that, to get all data, at minutely
+        cadence, starting at 10AM, the proper values are:
+        `start=2018-05-20T10:00:00Z&end=2018-05-20T10:01:00Z`, then
+        `start=2018-05-20T10:01:00Z&end=2018-05-20T10:02:00Z` and so on; the
+        overlap will be handled properly.  @example ```ts const received = await
+        client.logs.received.get({ zone_id: '023e105f4ecef8ad9ca31a8372d0c353',
+        end: '2018-05-20T10:01:00Z', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: end
+          in: query
+          required: true
+          description: "Query param: Sets the (exclusive) end of the requested time frame.
+            This can be a unix timestamp (in seconds or nanoseconds), or an
+            absolute timestamp that conforms to RFC 3339. `end` must be at least
+            five minutes earlier than now and must be later than `start`.
+            Difference between `start` and `end` must be not greater than one
+            hour."
+          schema:
+            oneOf:
+              - type: string
+              - type: number
+        - name: count
+          in: query
+          required: false
+          description: "Query param: When `?count=` is provided, the response will contain
+            up to `count` results. Since results are not sorted, you are likely
+            to get different data for repeated requests. `count` must be an
+            integer > 0."
+          schema:
+            type: number
+        - name: fields
+          in: query
+          required: false
+          description: "Query param: The `/received` route by default returns a limited
+            set of fields, and allows customers to override the default field
+            set by specifying individual fields. The reasons for this are: 1.
+            Most customers require only a small subset of fields, but that
+            subset varies from customer to customer; 2. Flat schema is much
+            easier to work with downstream (importing into BigTable etc); 3.
+            Performance (time to process, file size). If `?fields=` is not
+            specified, default field set is returned. This default field set may
+            change at any time. When `?fields=` is provided, each record is
+            returned with the specified fields. `fields` must be specified as a
+            comma separated list without any whitespaces, and all fields must
+            exist. The order in which fields are specified does not matter, and
+            the order of fields in the response is not specified."
+          schema:
+            type: string
+        - name: sample
+          in: query
+          required: false
+          description: "Query param: When `?sample=` is provided, a sample of matching
+            records is returned. If `sample=0.1` then 10% of records will be
+            returned. Sampling is random: repeated calls will not only return
+            different records, but likely will also vary slightly in number of
+            returned records. When `?count=` is also specified, `count` is
+            applied to the number of returned records, not the sampled records.
+            So, with `sample=0.05` and `count=7`, when there is a total of 100
+            records available, approximately five will be returned. When there
+            are 1000 records, seven will be returned. When there are 10,000
+            records, seven will be returned."
+          schema:
+            type: number
+        - name: start
+          in: query
+          required: false
+          description: "Query param: Sets the (inclusive) beginning of the requested time
+            frame. This can be a unix timestamp (in seconds or nanoseconds), or
+            an absolute timestamp that conforms to RFC 3339. At this point in
+            time, it cannot exceed a time in the past greater than seven days."
+          schema:
+            oneOf:
+              - type: string
+              - type: number
+        - name: timestamps
+          in: query
+          required: false
+          description: "Query param: By default, timestamps in responses are returned as
+            Unix nanosecond integers. The `?timestamps=` argument can be set to
+            change the format in which response timestamps are returned.
+            Possible values are: `unix`, `unixnano`, `rfc3339`. Note that `unix`
+            and `unixnano` return timestamps as integers; `rfc3339` returns
+            timestamps as strings."
+          schema:
+            type: string
+            enum:
+              - unix
+              - unixnano
+              - rfc3339
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+  /zones/{zone_id}/logs/received/fields:
+    get:
+      operationId: getReceivedField
+      description: "Lists all fields available. The response is json object with
+        key-value pairs, where keys are field names, and values are
+        descriptions.  @example ```ts const field = await
+        client.logs.received.fields.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  key:
+                    type: string

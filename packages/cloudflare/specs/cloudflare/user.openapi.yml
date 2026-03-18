@@ -1,0 +1,1018 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare USER API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: user
+paths:
+  /user/audit_logs:
+    get:
+      operationId: listAuditLogs
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-pagination-class: AuditLogsV4PagePaginationArray
+  /user/billing/history:
+    get:
+      operationId: listBillingHistories
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Billing item identifier tag.
+                  action:
+                    type: string
+                    description: The billing item action.
+                  amount:
+                    type: number
+                    description: The amount associated with this billing item.
+                  currency:
+                    type: string
+                    description: The monetary unit in which pricing information is displayed.
+                  description:
+                    type: string
+                    description: The billing item description.
+                  occurred_at:
+                    type: string
+                    description: When the billing item was created.
+                  type:
+                    type: string
+                    description: The billing item type.
+                  zone:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                required:
+                  - id
+                  - action
+                  - amount
+                  - currency
+                  - description
+                  - occurred_at
+                  - type
+                  - zone
+      x-distilled-pagination-class: BillingHistoriesV4PagePaginationArray
+  /user/billing/profile:
+    get:
+      operationId: getBillingProfile
+      description: Accesses your billing profile object.  @deprecated
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Billing item identifier tag.
+                  account_type:
+                    type: string
+                  address:
+                    type: string
+                  address2:
+                    type: string
+                  balance:
+                    type: string
+                  card_expiry_month:
+                    type: number
+                  card_expiry_year:
+                    type: number
+                  card_number:
+                    type: string
+                  city:
+                    type: string
+                  company:
+                    type: string
+                  country:
+                    type: string
+                  created_on:
+                    type: string
+                  device_data:
+                    type: string
+                  edited_on:
+                    type: string
+                  enterprise_billing_email:
+                    type: string
+                  enterprise_primary_email:
+                    type: string
+                  first_name:
+                    type: string
+                  is_partner:
+                    type: boolean
+                  last_name:
+                    type: string
+                  next_bill_date:
+                    type: string
+                  payment_address:
+                    type: string
+                  payment_address2:
+                    type: string
+                  payment_city:
+                    type: string
+                  payment_country:
+                    type: string
+                  payment_email:
+                    type: string
+                  payment_first_name:
+                    type: string
+                  payment_gateway:
+                    type: string
+                  payment_last_name:
+                    type: string
+                  payment_nonce:
+                    type: string
+                  payment_state:
+                    type: string
+                  payment_zipcode:
+                    type: string
+                  primary_email:
+                    type: string
+                  state:
+                    type: string
+                  tax_id_type:
+                    type: string
+                  telephone:
+                    type: string
+                  use_legacy:
+                    type: boolean
+                  validation_code:
+                    type: string
+                  vat:
+                    type: string
+                  zipcode:
+                    type: string
+      x-distilled-response-path: result
+  /user/invites/{inviteId}:
+    get:
+      operationId: getInvite
+      description: Gets the details of an invitation.  @example ```ts const invite =
+        await client.user.invites.get( '4f5f0c14a2a41d5063dd301b2f829f04', );
+        ```
+      parameters:
+        - name: inviteId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  invited_member_id:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: ID of the user to add to the organization.
+                  organization_id:
+                    type: string
+                    description: ID of the organization the user will be added to.
+                  id:
+                    type: string
+                    description: Invite identifier tag.
+                  expires_on:
+                    type: string
+                    description: When the invite is no longer active.
+                  invited_by:
+                    type: string
+                    description: The email address of the user who created the invite.
+                  invited_member_email:
+                    type: string
+                    description: Email address of the user to add to the organization.
+                  invited_on:
+                    type: string
+                    description: When the invite was sent.
+                  organization_is_enforcing_twofactor:
+                    type: boolean
+                  organization_name:
+                    type: string
+                    description: Organization name.
+                  roles:
+                    type: array
+                    items:
+                      type: string
+                    description: List of role names the membership has for this account.
+                  status:
+                    type: string
+                    enum:
+                      - pending
+                      - accepted
+                      - rejected
+                      - expired
+                    description: Current status of the invitation.
+                required:
+                  - invited_member_id
+                  - organization_id
+      x-distilled-response-path: result
+    patch:
+      operationId: patchInvite
+      description: "Responds to an invitation.  @example ```ts const invite = await
+        client.user.invites.edit( '4f5f0c14a2a41d5063dd301b2f829f04', { status:
+        'accepted' }, ); ```"
+      parameters:
+        - name: inviteId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum:
+                    - accepted
+                    - rejected
+                  description: Status of your response to the invitation (rejected or accepted).
+              required:
+                - status
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  invited_member_id:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: ID of the user to add to the organization.
+                  organization_id:
+                    type: string
+                    description: ID of the organization the user will be added to.
+                  id:
+                    type: string
+                    description: Invite identifier tag.
+                  expires_on:
+                    type: string
+                    description: When the invite is no longer active.
+                  invited_by:
+                    type: string
+                    description: The email address of the user who created the invite.
+                  invited_member_email:
+                    type: string
+                    description: Email address of the user to add to the organization.
+                  invited_on:
+                    type: string
+                    description: When the invite was sent.
+                  organization_is_enforcing_twofactor:
+                    type: boolean
+                  organization_name:
+                    type: string
+                    description: Organization name.
+                  roles:
+                    type: array
+                    items:
+                      type: string
+                    description: List of role names the membership has for this account.
+                  status:
+                    type: string
+                    enum:
+                      - pending
+                      - accepted
+                      - rejected
+                      - expired
+                    description: Current status of the invitation.
+                required:
+                  - invited_member_id
+                  - organization_id
+      x-distilled-response-path: result
+  /user/invites:
+    get:
+      operationId: listInvites
+      description: Lists all invitations associated with my user.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const invite of
+        client.user.invites.list()) { // ... } ```
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  invited_member_id:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: ID of the user to add to the organization.
+                  organization_id:
+                    type: string
+                    description: ID of the organization the user will be added to.
+                  id:
+                    type: string
+                    description: Invite identifier tag.
+                  expires_on:
+                    type: string
+                    description: When the invite is no longer active.
+                  invited_by:
+                    type: string
+                    description: The email address of the user who created the invite.
+                  invited_member_email:
+                    type: string
+                    description: Email address of the user to add to the organization.
+                  invited_on:
+                    type: string
+                    description: When the invite was sent.
+                  organization_is_enforcing_twofactor:
+                    type: boolean
+                  organization_name:
+                    type: string
+                    description: Organization name.
+                  roles:
+                    type: array
+                    items:
+                      type: string
+                    description: List of role names the membership has for this account.
+                  status:
+                    type: string
+                    enum:
+                      - pending
+                      - accepted
+                      - rejected
+                      - expired
+                    description: Current status of the invitation.
+                required:
+                  - invited_member_id
+                  - organization_id
+      x-distilled-pagination-class: InvitesSinglePage
+  /user/organizations/{organizationId}:
+    get:
+      operationId: getOrganization
+      description: Gets a specific organization the user is associated with.  @deprecated
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteOrganization
+      description: Removes association to an organization.  @deprecated
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+  /user/organizations:
+    get:
+      operationId: listOrganizations
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+                  name:
+                    type: string
+                    description: Organization name.
+                  permissions:
+                    type: array
+                    items:
+                      type: string
+                    description: Access permissions for this User.
+                  roles:
+                    type: array
+                    items:
+                      type: string
+                    description: List of roles that a user has within an organization.
+                  status:
+                    type: string
+                    enum:
+                      - member
+                      - invited
+                    description: Whether the user is a member of the organization or has an
+                      invitation pending.
+      x-distilled-pagination-class: OrganizationsV4PagePaginationArray
+  /user/subscriptions:
+    get:
+      operationId: getSubscription
+      description: Lists all of a user's subscriptions.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        subscription of client.user.subscriptions.get()) { // ... } ```
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-pagination-class: SubscriptionsSinglePage
+  /user/subscriptions/{identifier}:
+    put:
+      operationId: putSubscription
+      description: Updates a user's subscriptions.  @example ```ts const subscription
+        = await client.user.subscriptions.update(
+        '506e3185e9c882d175a2d0cb0093d9f2', ); ```
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                frequency:
+                  type: string
+                  enum:
+                    - weekly
+                    - monthly
+                    - quarterly
+                    - yearly
+                  description: How often the subscription is renewed automatically.
+                rate_plan:
+                  type: object
+                  additionalProperties: true
+                  description: The rate plan applied to the subscription.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: string
+                nullable: true
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteSubscription
+      description: Deletes a user's subscription.  @example ```ts const subscription =
+        await client.user.subscriptions.delete(
+        '506e3185e9c882d175a2d0cb0093d9f2', ); ```
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subscription_id:
+                    type: string
+                    description: Subscription identifier tag.
+  /user/tokens/{tokenId}:
+    get:
+      operationId: getToken
+      description: Get information about a specific token.  @example ```ts const token
+        = await client.user.tokens.get( 'ed17574386854bf78a67040be0a770b0', );
+        ```
+      parameters:
+        - name: tokenId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+    put:
+      operationId: updateToken
+      description: "Update an existing token.  @example ```ts const token = await
+        client.user.tokens.update( 'ed17574386854bf78a67040be0a770b0', { name:
+        'readonly token', policies: [ { effect: 'allow', permission_groups: [ {
+        id: 'c8fed203ed3043cba015a93ad1616f1f' }, { id:
+        '82e64a83756745bbbb1c9c2701bf816b' }, ], resources: { foo: 'string' },
+        }, ], }, ); ```"
+      parameters:
+        - name: tokenId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Token name.
+                policies:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+                  description: List of access policies assigned to the token.
+                condition:
+                  type: object
+                  properties:
+                    request_ip:
+                      type: object
+                      properties:
+                        in:
+                          type: array
+                          items:
+                            type: string
+                          description: List of IPv4/IPv6 CIDR addresses.
+                        not_in:
+                          type: array
+                          items:
+                            type: string
+                          description: List of IPv4/IPv6 CIDR addresses.
+                      description: Client IP restrictions.
+                expires_on:
+                  type: string
+                  description: The expiration time on or after which the JWT MUST NOT be accepted
+                    for processing.
+                not_before:
+                  type: string
+                  description: The time before which the token MUST NOT be accepted for
+                    processing.
+                status:
+                  type: string
+                  enum:
+                    - active
+                    - disabled
+                    - expired
+                  description: Status of the token.
+              required:
+                - name
+                - policies
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteToken
+      description: Destroy a token.  @example ```ts const token = await
+        client.user.tokens.delete( 'ed17574386854bf78a67040be0a770b0', ); ```
+      parameters:
+        - name: tokenId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+                required:
+                  - id
+      x-distilled-response-path: result
+  /user/tokens:
+    get:
+      operationId: listTokens
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-pagination-class: TokensV4PagePaginationArray
+    post:
+      operationId: createToken
+      description: "Create a new access token.  @example ```ts const token = await
+        client.user.tokens.create({ name: 'readonly token', policies: [ {
+        effect: 'allow', permission_groups: [ { id:
+        'c8fed203ed3043cba015a93ad1616f1f' }, { id:
+        '82e64a83756745bbbb1c9c2701bf816b' }, ], resources: { foo: 'string' },
+        }, ], }); ```"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Token name.
+                policies:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+                  description: List of access policies assigned to the token.
+                condition:
+                  type: object
+                  properties:
+                    request_ip:
+                      type: object
+                      properties:
+                        in:
+                          type: array
+                          items:
+                            type: string
+                          description: List of IPv4/IPv6 CIDR addresses.
+                        not_in:
+                          type: array
+                          items:
+                            type: string
+                          description: List of IPv4/IPv6 CIDR addresses.
+                      description: Client IP restrictions.
+                expires_on:
+                  type: string
+                  description: The expiration time on or after which the JWT MUST NOT be accepted
+                    for processing.
+                not_before:
+                  type: string
+                  description: The time before which the token MUST NOT be accepted for
+                    processing.
+              required:
+                - name
+                - policies
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Token identifier tag.
+                  condition:
+                    type: object
+                    properties:
+                      request_ip:
+                        type: object
+                        properties:
+                          in:
+                            type: array
+                            items:
+                              type: string
+                            description: List of IPv4/IPv6 CIDR addresses.
+                          not_in:
+                            type: array
+                            items:
+                              type: string
+                            description: List of IPv4/IPv6 CIDR addresses.
+                        description: Client IP restrictions.
+                  expires_on:
+                    type: string
+                    description: The expiration time on or after which the JWT MUST NOT be accepted
+                      for processing.
+                  issued_on:
+                    type: string
+                    description: The time on which the token was created.
+                  last_used_on:
+                    type: string
+                    description: Last time the token was used.
+                  modified_on:
+                    type: string
+                    description: Last time the token was modified.
+                  name:
+                    type: string
+                    description: Token name.
+                  not_before:
+                    type: string
+                    description: The time before which the token MUST NOT be accepted for
+                      processing.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                    description: List of access policies assigned to the token.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - disabled
+                      - expired
+                    description: Status of the token.
+                  value:
+                    type: string
+                    description: The token value.
+      x-distilled-response-path: result
+  /user/tokens/verify:
+    get:
+      operationId: verifyToken
+      description: Test whether a token works.  @example ```ts const response = await
+        client.user.tokens.verify(); ```
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Token identifier tag.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - disabled
+                      - expired
+                    description: Status of the token.
+                  expires_on:
+                    type: string
+                    description: The expiration time on or after which the JWT MUST NOT be accepted
+                      for processing.
+                  not_before:
+                    type: string
+                    description: The time before which the token MUST NOT be accepted for
+                      processing.
+                required:
+                  - id
+                  - status
+      x-distilled-response-path: result
+  /user/tokens/permission_groups:
+    get:
+      operationId: listTokenPermissionGroups
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Public ID.
+                  name:
+                    type: string
+                    description: Permission Group Name
+                  scopes:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - com.cloudflare.api.account
+                        - com.cloudflare.api.account.zone
+                        - com.cloudflare.api.user
+                        - com.cloudflare.edge.r2.bucket
+                    description: Resources to which the Permission Group is scoped
+      x-distilled-pagination-class: PermissionGroupListResponsesSinglePage
+  /user/tokens/{tokenId}/value:
+    put:
+      operationId: putTokenValue
+      description: Roll the token secret.  @example ```ts const tokenValue = await
+        client.user.tokens.value.update( 'ed17574386854bf78a67040be0a770b0', {},
+        ); ```
+      parameters:
+        - name: tokenId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+  /user:
+    get:
+      operationId: getUser
+      description: User Details  @example ```ts const user = await client.user.get(); ```
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier of the user.
+                  betas:
+                    type: array
+                    items:
+                      type: string
+                    description: Lists the betas that the user is participating in.
+                  country:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: The country in which the user lives.
+                  first_name:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: User's first name
+                  has_business_zones:
+                    type: boolean
+                    description: Indicates whether user has any business zones
+                  has_enterprise_zones:
+                    type: boolean
+                    description: Indicates whether user has any enterprise zones
+                  has_pro_zones:
+                    type: boolean
+                    description: Indicates whether user has any pro zones
+                  last_name:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: User's last name
+                  organizations:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                  suspended:
+                    type: boolean
+                    description: Indicates whether user has been suspended
+                  telephone:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: User's telephone number
+                  two_factor_authentication_enabled:
+                    type: boolean
+                    description: Indicates whether two-factor authentication is enabled for the user
+                      account. Does not apply to API authentication.
+                  two_factor_authentication_locked:
+                    type: boolean
+                    description: Indicates whether two-factor authentication is required by one of
+                      the accounts that the user is a member of.
+                  zipcode:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: The zipcode or postal code where the user lives.
+      x-distilled-response-path: result
+    patch:
+      operationId: patchUser
+      description: Edit part of your user details.  @example ```ts const response =
+        await client.user.edit(); ```
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                country:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: The country in which the user lives.
+                first_name:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: User's first name
+                last_name:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: User's last name
+                telephone:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: User's telephone number
+                zipcode:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: The zipcode or postal code where the user lives.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier of the user.
+                  betas:
+                    type: array
+                    items:
+                      type: string
+                    description: Lists the betas that the user is participating in.
+                  country:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: The country in which the user lives.
+                  first_name:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: User's first name
+                  has_business_zones:
+                    type: boolean
+                    description: Indicates whether user has any business zones
+                  has_enterprise_zones:
+                    type: boolean
+                    description: Indicates whether user has any enterprise zones
+                  has_pro_zones:
+                    type: boolean
+                    description: Indicates whether user has any pro zones
+                  last_name:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: User's last name
+                  organizations:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                  suspended:
+                    type: boolean
+                    description: Indicates whether user has been suspended
+                  telephone:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: User's telephone number
+                  two_factor_authentication_enabled:
+                    type: boolean
+                    description: Indicates whether two-factor authentication is enabled for the user
+                      account. Does not apply to API authentication.
+                  two_factor_authentication_locked:
+                    type: boolean
+                    description: Indicates whether two-factor authentication is required by one of
+                      the accounts that the user is a member of.
+                  zipcode:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: The zipcode or postal code where the user lives.
+      x-distilled-response-path: result

@@ -1,0 +1,762 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare SPEED API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: speed
+paths:
+  /zones/{zone_id}/speed_api/availabilities:
+    get:
+      operationId: listAvailabilities
+      description: "Retrieves quota for all plans, as well as the current zone
+        quota.  @example ```ts const availability = await
+        client.speed.availabilities.list( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  quota:
+                    type: object
+                    properties:
+                      plan:
+                        type: string
+                        description: Cloudflare plan.
+                      quotasPerPlan:
+                        type: object
+                        properties:
+                          value:
+                            type: object
+                            properties:
+                              business:
+                                type: number
+                              enterprise:
+                                type: number
+                              free:
+                                type: number
+                              pro:
+                                type: number
+                            description: Counts per account plan.
+                        description: The number of tests available per plan.
+                      remainingSchedules:
+                        type: number
+                        description: The number of remaining schedules available.
+                      remainingTests:
+                        type: number
+                        description: The number of remaining tests available.
+                      scheduleQuotasPerPlan:
+                        type: object
+                        properties:
+                          value:
+                            type: object
+                            properties:
+                              business:
+                                type: number
+                              enterprise:
+                                type: number
+                              free:
+                                type: number
+                              pro:
+                                type: number
+                            description: Counts per account plan.
+                        description: The number of schedules available per plan.
+                  regions:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                  regionsPerPlan:
+                    type: object
+                    properties:
+                      business:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                      enterprise:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                      free:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                      pro:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                    description: Available regions.
+      x-distilled-response-path: result
+  /zones/{zone_id}/speed_api/pages:
+    get:
+      operationId: listPages
+      description: "Lists all webpages which have been tested.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        pageListResponse of client.speed.pages.list( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  region:
+                    type: object
+                    additionalProperties: true
+                    description: A test region with a label.
+                  scheduleFrequency:
+                    type: string
+                    enum:
+                      - DAILY
+                      - WEEKLY
+                    description: The frequency of the test.
+                  tests:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                  url:
+                    type: string
+                    description: A URL.
+      x-distilled-pagination-class: PageListResponsesSinglePage
+  /zones/{zone_id}/speed_api/pages/{url}/trend:
+    get:
+      operationId: trendPage
+      description: "Lists the core web vital metrics trend over time for a specific
+        page.  @example ```ts const trend = await client.speed.pages.trend(
+        'example.com', { zone_id: '023e105f4ecef8ad9ca31a8372d0c353',
+        deviceType: 'DESKTOP', metrics:
+        'performanceScore,ttfb,fcp,si,lcp,tti,tbt,cls', region: 'us-central1',
+        start: '2014-01-01T05:20:00.12345Z', tz: 'tz', }, ); ```"
+      parameters:
+        - name: url
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: deviceType
+          in: query
+          required: true
+          description: "Query param: The type of device."
+          schema:
+            type: string
+            enum:
+              - DESKTOP
+              - MOBILE
+        - name: metrics
+          in: query
+          required: true
+          description: "Query param: A comma-separated list of metrics to include in the
+            results."
+          schema:
+            type: string
+        - name: region
+          in: query
+          required: true
+          description: "Query param: A test region."
+          schema:
+            type: string
+            enum:
+              - asia-east1
+              - asia-northeast1
+              - asia-northeast2
+              - asia-south1
+              - asia-southeast1
+              - australia-southeast1
+              - europe-north1
+              - europe-southwest1
+              - europe-west1
+              - europe-west2
+              - europe-west3
+              - europe-west4
+              - europe-west8
+              - europe-west9
+              - me-west1
+              - southamerica-east1
+              - us-central1
+              - us-east1
+              - us-east4
+              - us-south1
+              - us-west1
+        - name: start
+          in: query
+          required: true
+          description: "Query param:"
+          schema:
+            type: string
+        - name: tz
+          in: query
+          required: true
+          description: "Query param: The timezone of the start and end timestamps."
+          schema:
+            type: string
+        - name: end
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+  /zones/{zone_id}/speed_api/pages/{url}/tests/{testId}:
+    get:
+      operationId: getPageTest
+      description: "Retrieves the result of a specific test.  @example ```ts const
+        test = await client.speed.pages.tests.get( 'example.com', 'test_id', {
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: url
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: testId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID.
+                  date:
+                    type: string
+                  desktopReport:
+                    type: object
+                    additionalProperties: true
+                    description: The Lighthouse report.
+                  mobileReport:
+                    type: object
+                    additionalProperties: true
+                    description: The Lighthouse report.
+                  region:
+                    type: object
+                    additionalProperties: true
+                    description: A test region with a label.
+                  scheduleFrequency:
+                    type: string
+                    enum:
+                      - DAILY
+                      - WEEKLY
+                    description: The frequency of the test.
+                  url:
+                    type: string
+                    description: A URL.
+      x-distilled-response-path: result
+  /zones/{zone_id}/speed_api/pages/{url}/tests:
+    get:
+      operationId: listPageTests
+      description: "Test history (list of tests) for a specific webpage.  @example
+        ```ts // Automatically fetches more pages as needed. for await (const
+        test of client.speed.pages.tests.list( 'example.com', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: url
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: region
+          in: query
+          required: false
+          description: "Query param: A test region."
+          schema:
+            type: string
+            enum:
+              - asia-east1
+              - asia-northeast1
+              - asia-northeast2
+              - asia-south1
+              - asia-southeast1
+              - australia-southeast1
+              - europe-north1
+              - europe-southwest1
+              - europe-west1
+              - europe-west2
+              - europe-west3
+              - europe-west4
+              - europe-west8
+              - europe-west9
+              - me-west1
+              - southamerica-east1
+              - us-central1
+              - us-east1
+              - us-east4
+              - us-south1
+              - us-west1
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID.
+                  date:
+                    type: string
+                  desktopReport:
+                    type: object
+                    additionalProperties: true
+                    description: The Lighthouse report.
+                  mobileReport:
+                    type: object
+                    additionalProperties: true
+                    description: The Lighthouse report.
+                  region:
+                    type: object
+                    additionalProperties: true
+                    description: A test region with a label.
+                  scheduleFrequency:
+                    type: string
+                    enum:
+                      - DAILY
+                      - WEEKLY
+                    description: The frequency of the test.
+                  url:
+                    type: string
+                    description: A URL.
+      x-distilled-pagination-class: TestsV4PagePaginationArray
+    post:
+      operationId: createPageTest
+      description: "Starts a test for a specific webpage, in a specific
+        region.  @example ```ts const test = await
+        client.speed.pages.tests.create( 'example.com', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: url
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                region:
+                  type: string
+                  enum:
+                    - asia-east1
+                    - asia-northeast1
+                    - asia-northeast2
+                    - asia-south1
+                    - asia-southeast1
+                    - australia-southeast1
+                    - europe-north1
+                    - europe-southwest1
+                    - europe-west1
+                    - europe-west2
+                    - europe-west3
+                    - europe-west4
+                    - europe-west8
+                    - europe-west9
+                    - me-west1
+                    - southamerica-east1
+                    - us-central1
+                    - us-east1
+                    - us-east4
+                    - us-south1
+                    - us-west1
+                  description: "Body param: A test region."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID.
+                  date:
+                    type: string
+                  desktopReport:
+                    type: object
+                    additionalProperties: true
+                    description: The Lighthouse report.
+                  mobileReport:
+                    type: object
+                    additionalProperties: true
+                    description: The Lighthouse report.
+                  region:
+                    type: object
+                    additionalProperties: true
+                    description: A test region with a label.
+                  scheduleFrequency:
+                    type: string
+                    enum:
+                      - DAILY
+                      - WEEKLY
+                    description: The frequency of the test.
+                  url:
+                    type: string
+                    description: A URL.
+      x-distilled-response-path: result
+    delete:
+      operationId: deletePageTest
+      description: "Deletes all tests for a specific webpage from a specific region.
+        Deleted tests are still counted as part of the quota.  @example ```ts
+        const test = await client.speed.pages.tests.delete( 'example.com', {
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: url
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: region
+          in: query
+          required: false
+          description: "Query param: A test region."
+          schema:
+            type: string
+            enum:
+              - asia-east1
+              - asia-northeast1
+              - asia-northeast2
+              - asia-south1
+              - asia-southeast1
+              - australia-southeast1
+              - europe-north1
+              - europe-southwest1
+              - europe-west1
+              - europe-west2
+              - europe-west3
+              - europe-west4
+              - europe-west8
+              - europe-west9
+              - me-west1
+              - southamerica-east1
+              - us-central1
+              - us-east1
+              - us-east4
+              - us-south1
+              - us-west1
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: number
+                    description: Number of items affected.
+      x-distilled-response-path: result
+  /zones/{zone_id}/speed_api/schedule/{url}:
+    get:
+      operationId: getSchedule
+      description: "Retrieves the test schedule for a page in a specific
+        region.  @example ```ts const schedule = await
+        client.speed.schedule.get( 'example.com', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: url
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: region
+          in: query
+          required: false
+          description: "Query param: A test region."
+          schema:
+            type: string
+            enum:
+              - asia-east1
+              - asia-northeast1
+              - asia-northeast2
+              - asia-south1
+              - asia-southeast1
+              - australia-southeast1
+              - europe-north1
+              - europe-southwest1
+              - europe-west1
+              - europe-west2
+              - europe-west3
+              - europe-west4
+              - europe-west8
+              - europe-west9
+              - me-west1
+              - southamerica-east1
+              - us-central1
+              - us-east1
+              - us-east4
+              - us-south1
+              - us-west1
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  frequency:
+                    type: string
+                    enum:
+                      - DAILY
+                      - WEEKLY
+                    description: The frequency of the test.
+                  region:
+                    type: string
+                    enum:
+                      - asia-east1
+                      - asia-northeast1
+                      - asia-northeast2
+                      - asia-south1
+                      - asia-southeast1
+                      - australia-southeast1
+                      - europe-north1
+                      - europe-southwest1
+                      - europe-west1
+                      - europe-west2
+                      - europe-west3
+                      - europe-west4
+                      - europe-west8
+                      - europe-west9
+                      - me-west1
+                      - southamerica-east1
+                      - us-central1
+                      - us-east1
+                      - us-east4
+                      - us-south1
+                      - us-west1
+                    description: A test region.
+                  url:
+                    type: string
+                    description: A URL.
+      x-distilled-response-path: result
+    post:
+      operationId: createSchedule
+      description: "Creates a scheduled test for a page.  @example ```ts const
+        schedule = await client.speed.schedule.create( 'example.com', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: url
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: region
+          in: query
+          required: false
+          description: "Query param: A test region."
+          schema:
+            type: string
+            enum:
+              - asia-east1
+              - asia-northeast1
+              - asia-northeast2
+              - asia-south1
+              - asia-southeast1
+              - australia-southeast1
+              - europe-north1
+              - europe-southwest1
+              - europe-west1
+              - europe-west2
+              - europe-west3
+              - europe-west4
+              - europe-west8
+              - europe-west9
+              - me-west1
+              - southamerica-east1
+              - us-central1
+              - us-east1
+              - us-east4
+              - us-south1
+              - us-west1
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  schedule:
+                    type: object
+                    properties:
+                      frequency:
+                        type: string
+                        enum:
+                          - DAILY
+                          - WEEKLY
+                        description: The frequency of the test.
+                      region:
+                        type: string
+                        enum:
+                          - asia-east1
+                          - asia-northeast1
+                          - asia-northeast2
+                          - asia-south1
+                          - asia-southeast1
+                          - australia-southeast1
+                          - europe-north1
+                          - europe-southwest1
+                          - europe-west1
+                          - europe-west2
+                          - europe-west3
+                          - europe-west4
+                          - europe-west8
+                          - europe-west9
+                          - me-west1
+                          - southamerica-east1
+                          - us-central1
+                          - us-east1
+                          - us-east4
+                          - us-south1
+                          - us-west1
+                        description: A test region.
+                      url:
+                        type: string
+                        description: A URL.
+                    description: The test schedule.
+                  test:
+                    type: object
+                    additionalProperties: true
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteSchedule
+      description: "Deletes a scheduled test for a page.  @example ```ts const
+        schedule = await client.speed.schedule.delete( 'example.com', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: url
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: region
+          in: query
+          required: false
+          description: "Query param: A test region."
+          schema:
+            type: string
+            enum:
+              - asia-east1
+              - asia-northeast1
+              - asia-northeast2
+              - asia-south1
+              - asia-southeast1
+              - australia-southeast1
+              - europe-north1
+              - europe-southwest1
+              - europe-west1
+              - europe-west2
+              - europe-west3
+              - europe-west4
+              - europe-west8
+              - europe-west9
+              - me-west1
+              - southamerica-east1
+              - us-central1
+              - us-east1
+              - us-east4
+              - us-south1
+              - us-west1
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: number
+                    description: Number of items affected.
+      x-distilled-response-path: result

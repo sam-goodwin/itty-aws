@@ -1,0 +1,123 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare ORIGIN-POST-QUANTUM-ENCRYPTION API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: origin-post-quantum-encryption
+paths:
+  /zones/{zone_id}/cache/origin_post_quantum_encryption:
+    get:
+      operationId: getOriginPostQuantumEncryption
+      description: Instructs Cloudflare to use Post-Quantum (PQ) key agreement
+        algorithms when connecting to your origin. Preferred instructs
+        Cloudflare to opportunistically send a Post-Quantum keyshare in the
+        first message to the origin (for fastest connections when the origin
+        supports and prefers PQ), supported means that PQ algorithms are
+        advertised but only used when requested by the origin, and off means
+        that PQ algorithms are not advertised.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - origin_pqe
+                    description: The identifier of the caching setting.
+                  editable:
+                    type: boolean
+                    description: Whether the setting is editable.
+                  value:
+                    type: string
+                    enum:
+                      - preferred
+                      - supported
+                      - off
+                    description: Value of the Origin Post Quantum Encryption Setting.
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+    put:
+      operationId: putOriginPostQuantumEncryption
+      description: Instructs Cloudflare to use Post-Quantum (PQ) key agreement
+        algorithms when connecting to your origin. Preferred instructs
+        Cloudflare to opportunistically send a Post-Quantum keyshare in the
+        first message to the origin (for fastest connections when the origin
+        supports and prefers PQ), supported means that PQ algorithms are
+        advertised but only used when requested by the origin, and off means
+        that PQ algorithms are not advertised.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  enum:
+                    - preferred
+                    - supported
+                    - off
+                  description: "Body param: Value of the Origin Post Quantum Encryption Setting."
+              required:
+                - value
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - origin_pqe
+                    description: The identifier of the caching setting.
+                  editable:
+                    type: boolean
+                    description: Whether the setting is editable.
+                  value:
+                    type: string
+                    enum:
+                      - preferred
+                      - supported
+                      - off
+                    description: Value of the Origin Post Quantum Encryption Setting.
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result

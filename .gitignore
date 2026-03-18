@@ -6,3 +6,4 @@ lib/
 pnpm-workspace.yaml
 .ai-workspace
 .gen-tmp
+vendor/

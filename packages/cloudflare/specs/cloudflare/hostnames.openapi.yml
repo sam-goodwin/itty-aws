@@ -1,0 +1,190 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare HOSTNAMES API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: hostnames
+paths:
+  /zones/{zone_id}/hostnames/settings/{settingId}:
+    get:
+      operationId: getSettingTls
+      description: "List the requested TLS setting for the hostnames under this
+        zone.  @example ```ts // Automatically fetches more pages as needed. for
+        await (const tlsGetResponse of client.hostnames.settings.tls.get(
+        'ciphers', { zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ...
+        } ```"
+      parameters:
+        - name: settingId
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - ciphers
+              - min_tls_version
+              - http2
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                    description: This is the time the tls setting was originally created for this
+                      hostname.
+                  hostname:
+                    type: string
+                    description: The hostname for which the tls settings are set.
+                  status:
+                    type: string
+                    description: Deployment status for the given tls setting.
+                  updated_at:
+                    type: string
+                    description: This is the time the tls setting was updated.
+                  value:
+                    oneOf:
+                      - type: string
+                      - type: number
+                      - type: object
+                        additionalProperties: true
+                    description: The tls setting value.
+      x-distilled-pagination-class: TLSGetResponsesSinglePage
+  /zones/{zone_id}/hostnames/settings/{settingId}/{hostname}:
+    put:
+      operationId: putSettingTls
+      description: "Update the tls setting value for the hostname.  @example ```ts
+        const setting = await client.hostnames.settings.tls.update( 'ciphers',
+        'app.example.com', { zone_id: '023e105f4ecef8ad9ca31a8372d0c353', value:
+        [ 'ECDHE-RSA-AES128-GCM-SHA256', 'AES128-GCM-SHA256', ], }, ); ```"
+      parameters:
+        - name: settingId
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - ciphers
+              - min_tls_version
+              - http2
+        - name: hostname
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  oneOf:
+                    - type: string
+                    - type: number
+                    - type: object
+                      additionalProperties: true
+                  description: "Body param: The tls setting value."
+              required:
+                - value
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                    description: This is the time the tls setting was originally created for this
+                      hostname.
+                  hostname:
+                    type: string
+                    description: The hostname for which the tls settings are set.
+                  status:
+                    type: string
+                    description: Deployment status for the given tls setting.
+                  updated_at:
+                    type: string
+                    description: This is the time the tls setting was updated.
+                  value:
+                    oneOf:
+                      - type: string
+                      - type: number
+                      - type: object
+                        additionalProperties: true
+                    description: The tls setting value.
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteSettingTls
+      description: "Delete the tls setting value for the hostname.  @example ```ts
+        const tls = await client.hostnames.settings.tls.delete( 'ciphers',
+        'app.example.com', { zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, );
+        ```"
+      parameters:
+        - name: settingId
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - ciphers
+              - min_tls_version
+              - http2
+        - name: hostname
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                    description: This is the time the tls setting was originally created for this
+                      hostname.
+                  hostname:
+                    type: string
+                    description: The hostname for which the tls settings are set.
+                  status:
+                    type: string
+                    description: Deployment status for the given tls setting.
+                  updated_at:
+                    type: string
+                    description: This is the time the tls setting was updated.
+                  value:
+                    oneOf:
+                      - type: string
+                      - type: number
+                      - type: object
+                        additionalProperties: true
+                    description: The tls setting value.
+      x-distilled-response-path: result

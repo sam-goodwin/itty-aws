@@ -1,0 +1,588 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare HYPERDRIVE API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: hyperdrive
+paths:
+  /accounts/{account_id}/hyperdrive/configs/{hyperdriveId}:
+    get:
+      operationId: getConfig
+      description: "Returns the specified Hyperdrive configuration.  @example ```ts
+        const hyperdrive = await client.hyperdrive.configs.get(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: hyperdriveId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Define configurations using a unique string identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        PrivateHostNotAllowed:
+          - code: 2009
+        HyperdriveConfigNotFound:
+          - code: 2006
+        InvalidObjectIdentifier:
+          - code: 7003
+    put:
+      operationId: updateConfig
+      description: "Updates and returns the specified Hyperdrive
+        configuration.  @example ```ts const hyperdrive = await
+        client.hyperdrive.configs.update( '023e105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', name:
+        'example-hyperdrive', origin: { database: 'postgres', host:
+        'database.example.com', password: 'password', port: 5432, scheme:
+        'postgres', user: 'postgres', }, }, ); ```"
+      parameters:
+        - name: hyperdriveId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Define configurations using a unique string identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: The name of the Hyperdrive configuration. Used to
+                    identify the configuration in the Cloudflare dashboard and
+                    API."
+                origin:
+                  oneOf:
+                    - type: object
+                      properties:
+                        database:
+                          type: string
+                          description: Set the name of your origin database.
+                        host:
+                          type: string
+                          description: Defines the host (hostname or IP) of your origin database.
+                        password:
+                          type: string
+                          description: Set the password needed to access your origin database. The API
+                            never returns this write-only value.
+                        port:
+                          type: number
+                          description: Defines the port of your origin database. Defaults to 5432 for
+                            PostgreSQL or 3306 for MySQL if not specified.
+                        scheme:
+                          type: string
+                          enum:
+                            - postgres
+                            - postgresql
+                            - mysql
+                          description: Specifies the URL scheme used to connect to your origin database.
+                        user:
+                          type: string
+                          description: Set the user of your origin database.
+                      required:
+                        - database
+                        - host
+                        - password
+                        - port
+                        - scheme
+                        - user
+                    - type: object
+                      properties:
+                        access_client_id:
+                          type: string
+                          description: Defines the Client ID of the Access token to use when connecting to
+                            the origin database.
+                        access_client_secret:
+                          type: string
+                          description: Defines the Client Secret of the Access Token to use when
+                            connecting to the origin database. The API never
+                            returns this write-only value.
+                        database:
+                          type: string
+                          description: Set the name of your origin database.
+                        host:
+                          type: string
+                          description: Defines the host (hostname or IP) of your origin database.
+                        password:
+                          type: string
+                          description: Set the password needed to access your origin database. The API
+                            never returns this write-only value.
+                        scheme:
+                          type: string
+                          enum:
+                            - postgres
+                            - postgresql
+                            - mysql
+                          description: Specifies the URL scheme used to connect to your origin database.
+                        user:
+                          type: string
+                          description: Set the user of your origin database.
+                      required:
+                        - access_client_id
+                        - access_client_secret
+                        - database
+                        - host
+                        - password
+                        - scheme
+                        - user
+                  description: "Body param:"
+                caching:
+                  oneOf:
+                    - type: object
+                      properties:
+                        disabled:
+                          type: boolean
+                          description: Set to true to disable caching of SQL responses. Default is false.
+                    - type: object
+                      properties:
+                        disabled:
+                          type: boolean
+                          description: Set to true to disable caching of SQL responses. Default is false.
+                        max_age:
+                          type: number
+                          description: Specify the maximum duration (in seconds) items should persist in
+                            the cache. Defaults to 60 seconds if not specified.
+                        stale_while_revalidate:
+                          type: number
+                          description: Specify the number of seconds the cache may serve a stale response.
+                            Defaults to 15 seconds if not specified.
+                  description: "Body param:"
+                mtls:
+                  type: object
+                  properties:
+                    ca_certificate_id:
+                      type: string
+                      description: Define CA certificate ID obtained after uploading CA cert.
+                    mtls_certificate_id:
+                      type: string
+                      description: Define mTLS certificate ID obtained after uploading client cert.
+                    sslmode:
+                      type: string
+                      description: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify
+                        the CA.
+                  description: "Body param:"
+                origin_connection_limit:
+                  type: number
+                  description: "Body param: The (soft) maximum number of connections the
+                    Hyperdrive is allowed to make to the origin database."
+              required:
+                - name
+                - origin
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        PrivateHostNotAllowed:
+          - code: 2009
+        HyperdriveConfigNotFound:
+          - code: 2006
+        InvalidObjectIdentifier:
+          - code: 7003
+        MethodNotAllowed:
+          - code: 10000
+            message:
+              includes: method not allowed
+          - code: 10405
+            message:
+              includes: Method not allowed
+    patch:
+      operationId: patchConfig
+      description: "Patches and returns the specified Hyperdrive configuration. Custom
+        caching settings are not kept if caching is disabled.  @example ```ts
+        const hyperdrive = await client.hyperdrive.configs.edit(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: hyperdriveId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Define configurations using a unique string identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                caching:
+                  oneOf:
+                    - type: object
+                      properties:
+                        disabled:
+                          type: boolean
+                          description: Set to true to disable caching of SQL responses. Default is false.
+                    - type: object
+                      properties:
+                        disabled:
+                          type: boolean
+                          description: Set to true to disable caching of SQL responses. Default is false.
+                        max_age:
+                          type: number
+                          description: Specify the maximum duration (in seconds) items should persist in
+                            the cache. Defaults to 60 seconds if not specified.
+                        stale_while_revalidate:
+                          type: number
+                          description: Specify the number of seconds the cache may serve a stale response.
+                            Defaults to 15 seconds if not specified.
+                  description: "Body param:"
+                mtls:
+                  type: object
+                  properties:
+                    ca_certificate_id:
+                      type: string
+                      description: Define CA certificate ID obtained after uploading CA cert.
+                    mtls_certificate_id:
+                      type: string
+                      description: Define mTLS certificate ID obtained after uploading client cert.
+                    sslmode:
+                      type: string
+                      description: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify
+                        the CA.
+                  description: "Body param:"
+                name:
+                  type: string
+                  description: "Body param: The name of the Hyperdrive configuration. Used to
+                    identify the configuration in the Cloudflare dashboard and
+                    API."
+                origin:
+                  oneOf:
+                    - type: object
+                      properties:
+                        database:
+                          type: string
+                          description: Set the name of your origin database.
+                        password:
+                          type: string
+                          description: Set the password needed to access your origin database. The API
+                            never returns this write-only value.
+                        scheme:
+                          type: string
+                          enum:
+                            - postgres
+                            - postgresql
+                            - mysql
+                          description: Specifies the URL scheme used to connect to your origin database.
+                        user:
+                          type: string
+                          description: Set the user of your origin database.
+                    - type: object
+                      properties:
+                        host:
+                          type: string
+                          description: Defines the host (hostname or IP) of your origin database.
+                        port:
+                          type: number
+                          description: Defines the port of your origin database. Defaults to 5432 for
+                            PostgreSQL or 3306 for MySQL if not specified.
+                      required:
+                        - host
+                        - port
+                    - type: object
+                      properties:
+                        access_client_id:
+                          type: string
+                          description: Defines the Client ID of the Access token to use when connecting to
+                            the origin database.
+                        access_client_secret:
+                          type: string
+                          description: Defines the Client Secret of the Access Token to use when
+                            connecting to the origin database. The API never
+                            returns this write-only value.
+                        host:
+                          type: string
+                          description: Defines the host (hostname or IP) of your origin database.
+                      required:
+                        - access_client_id
+                        - access_client_secret
+                        - host
+                  description: "Body param:"
+                origin_connection_limit:
+                  type: number
+                  description: "Body param: The (soft) maximum number of connections the
+                    Hyperdrive is allowed to make to the origin database."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        PrivateHostNotAllowed:
+          - code: 2009
+        HyperdriveConfigNotFound:
+          - code: 2006
+        InvalidObjectIdentifier:
+          - code: 7003
+        MethodNotAllowed:
+          - code: 10000
+            message:
+              includes: method not allowed
+          - code: 10405
+            message:
+              includes: Method not allowed
+    delete:
+      operationId: deleteConfig
+      description: "Deletes the specified Hyperdrive.  @example ```ts const config =
+        await client.hyperdrive.configs.delete(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: hyperdriveId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Define configurations using a unique string identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+      x-distilled-errors:
+        PrivateHostNotAllowed:
+          - code: 2009
+        HyperdriveConfigNotFound:
+          - code: 2006
+        InvalidObjectIdentifier:
+          - code: 7003
+        MethodNotAllowed:
+          - code: 10000
+            message:
+              includes: method not allowed
+          - code: 10405
+            message:
+              includes: Method not allowed
+  /accounts/{account_id}/hyperdrive/configs:
+    get:
+      operationId: listConfigs
+      description: "Returns a list of Hyperdrives.  @example ```ts // Automatically
+        fetches more pages as needed. for await (const hyperdrive of
+        client.hyperdrive.configs.list( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Define configurations using a unique string identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-pagination-class: HyperdrivesSinglePage
+      x-distilled-errors:
+        PrivateHostNotAllowed:
+          - code: 2009
+        InvalidObjectIdentifier:
+          - code: 7003
+    post:
+      operationId: createConfig
+      description: "Creates and returns a new Hyperdrive configuration.  @example
+        ```ts const hyperdrive = await client.hyperdrive.configs.create({
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', name:
+        'example-hyperdrive', origin: { database: 'postgres', host:
+        'database.example.com', password: 'password', port: 5432, scheme:
+        'postgres', user: 'postgres', }, }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Define configurations using a unique string identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: The name of the Hyperdrive configuration. Used to
+                    identify the configuration in the Cloudflare dashboard and
+                    API."
+                origin:
+                  oneOf:
+                    - type: object
+                      properties:
+                        database:
+                          type: string
+                          description: Set the name of your origin database.
+                        host:
+                          type: string
+                          description: Defines the host (hostname or IP) of your origin database.
+                        password:
+                          type: string
+                          description: Set the password needed to access your origin database. The API
+                            never returns this write-only value.
+                        port:
+                          type: number
+                          description: Defines the port of your origin database. Defaults to 5432 for
+                            PostgreSQL or 3306 for MySQL if not specified.
+                        scheme:
+                          type: string
+                          enum:
+                            - postgres
+                            - postgresql
+                            - mysql
+                          description: Specifies the URL scheme used to connect to your origin database.
+                        user:
+                          type: string
+                          description: Set the user of your origin database.
+                      required:
+                        - database
+                        - host
+                        - password
+                        - port
+                        - scheme
+                        - user
+                    - type: object
+                      properties:
+                        access_client_id:
+                          type: string
+                          description: Defines the Client ID of the Access token to use when connecting to
+                            the origin database.
+                        access_client_secret:
+                          type: string
+                          description: Defines the Client Secret of the Access Token to use when
+                            connecting to the origin database. The API never
+                            returns this write-only value.
+                        database:
+                          type: string
+                          description: Set the name of your origin database.
+                        host:
+                          type: string
+                          description: Defines the host (hostname or IP) of your origin database.
+                        password:
+                          type: string
+                          description: Set the password needed to access your origin database. The API
+                            never returns this write-only value.
+                        scheme:
+                          type: string
+                          enum:
+                            - postgres
+                            - postgresql
+                            - mysql
+                          description: Specifies the URL scheme used to connect to your origin database.
+                        user:
+                          type: string
+                          description: Set the user of your origin database.
+                      required:
+                        - access_client_id
+                        - access_client_secret
+                        - database
+                        - host
+                        - password
+                        - scheme
+                        - user
+                  description: "Body param:"
+                caching:
+                  oneOf:
+                    - type: object
+                      properties:
+                        disabled:
+                          type: boolean
+                          description: Set to true to disable caching of SQL responses. Default is false.
+                    - type: object
+                      properties:
+                        disabled:
+                          type: boolean
+                          description: Set to true to disable caching of SQL responses. Default is false.
+                        max_age:
+                          type: number
+                          description: Specify the maximum duration (in seconds) items should persist in
+                            the cache. Defaults to 60 seconds if not specified.
+                        stale_while_revalidate:
+                          type: number
+                          description: Specify the number of seconds the cache may serve a stale response.
+                            Defaults to 15 seconds if not specified.
+                  description: "Body param:"
+                mtls:
+                  type: object
+                  properties:
+                    ca_certificate_id:
+                      type: string
+                      description: Define CA certificate ID obtained after uploading CA cert.
+                    mtls_certificate_id:
+                      type: string
+                      description: Define mTLS certificate ID obtained after uploading client cert.
+                    sslmode:
+                      type: string
+                      description: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify
+                        the CA.
+                  description: "Body param:"
+                origin_connection_limit:
+                  type: number
+                  description: "Body param: The (soft) maximum number of connections the
+                    Hyperdrive is allowed to make to the origin database."
+              required:
+                - name
+                - origin
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        PrivateHostNotAllowed:
+          - code: 2009
+        InvalidHyperdriveConfig:
+          - code: 2007
+        InvalidObjectIdentifier:
+          - code: 7003

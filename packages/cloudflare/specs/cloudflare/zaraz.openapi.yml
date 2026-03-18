@@ -1,0 +1,785 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare ZARAZ API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: zaraz
+paths:
+  /zones/{zone_id}/settings/zaraz/config:
+    get:
+      operationId: getConfig
+      description: "Gets latest Zaraz configuration for a zone. It can be preview or
+        published configuration, whichever was the last updated. Secret
+        variables values will not be included.  @example ```ts const
+        configuration = await client.zaraz.config.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dataLayer:
+                    type: boolean
+                    description: Data layer compatibility mode enabled.
+                  debugKey:
+                    type: string
+                    description: The key for Zaraz debug mode.
+                  settings:
+                    type: object
+                    properties:
+                      autoInjectScript:
+                        type: boolean
+                        description: Automatic injection of Zaraz scripts enabled.
+                      contextEnricher:
+                        type: object
+                        properties:
+                          escapedWorkerName:
+                            type: string
+                          workerTag:
+                            type: string
+                        required:
+                          - escapedWorkerName
+                          - workerTag
+                        description: Details of the worker that receives and edits Zaraz Context object.
+                      cookieDomain:
+                        type: string
+                        description: The domain Zaraz will use for writing and reading its cookies.
+                      ecommerce:
+                        type: boolean
+                        description: Ecommerce API enabled.
+                      eventsApiPath:
+                        type: string
+                        description: Custom endpoint for server-side track events.
+                      hideExternalReferer:
+                        type: boolean
+                        description: Hiding external referrer URL enabled.
+                      hideIPAddress:
+                        type: boolean
+                        description: Trimming IP address enabled.
+                      hideQueryParams:
+                        type: boolean
+                        description: Removing URL query params enabled.
+                      hideUserAgent:
+                        type: boolean
+                        description: Removing sensitive data from User Aagent string enabled.
+                      initPath:
+                        type: string
+                        description: Custom endpoint for Zaraz init script.
+                      injectIframes:
+                        type: boolean
+                        description: Injection of Zaraz scripts into iframes enabled.
+                      mcRootPath:
+                        type: string
+                        description: Custom path for Managed Components server functionalities.
+                      scriptPath:
+                        type: string
+                        description: Custom endpoint for Zaraz main script.
+                      trackPath:
+                        type: string
+                        description: Custom endpoint for Zaraz tracking requests.
+                    required:
+                      - autoInjectScript
+                    description: General Zaraz settings.
+                  tools:
+                    type: object
+                    additionalProperties: true
+                    description: Tools set up under Zaraz configuration, where key is the
+                      alpha-numeric tool ID and value is the tool configuration
+                      object.
+                  triggers:
+                    type: object
+                    additionalProperties: true
+                    description: Triggers set up under Zaraz configuration, where key is the trigger
+                      alpha-numeric ID and value is the trigger configuration.
+                  variables:
+                    type: object
+                    additionalProperties: true
+                    description: Variables set up under Zaraz configuration, where key is the
+                      variable alpha-numeric ID and value is the variable
+                      configuration. Values of variables of type secret are not
+                      included.
+                  zarazVersion:
+                    type: number
+                    description: Zaraz internal version of the config.
+                  analytics:
+                    type: object
+                    properties:
+                      defaultPurpose:
+                        type: string
+                        description: Consent purpose assigned to Monitoring.
+                      enabled:
+                        type: boolean
+                        description: Whether Advanced Monitoring reports are enabled.
+                      sessionExpTime:
+                        type: number
+                        description: Session expiration time (seconds).
+                    description: Cloudflare Monitoring settings.
+                  consent:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                      buttonTextTranslations:
+                        type: object
+                        additionalProperties: true
+                      companyEmail:
+                        type: string
+                      companyName:
+                        type: string
+                      companyStreetAddress:
+                        type: string
+                      consentModalIntroHTML:
+                        type: string
+                      consentModalIntroHTMLWithTranslations:
+                        type: object
+                        additionalProperties: true
+                        description: Object where keys are language codes
+                      cookieName:
+                        type: string
+                      customCSS:
+                        type: string
+                      customIntroDisclaimerDismissed:
+                        type: boolean
+                      defaultLanguage:
+                        type: string
+                      hideModal:
+                        type: boolean
+                      purposes:
+                        type: object
+                        additionalProperties: true
+                        description: Object where keys are purpose alpha-numeric IDs
+                      purposesWithTranslations:
+                        type: object
+                        additionalProperties: true
+                        description: Object where keys are purpose alpha-numeric IDs
+                      tcfCompliant:
+                        type: boolean
+                    required:
+                      - enabled
+                    description: Consent management configuration.
+                  historyChange:
+                    type: boolean
+                    description: Single Page Application support enabled.
+                required:
+                  - dataLayer
+                  - debugKey
+                  - settings
+                  - tools
+                  - triggers
+                  - variables
+                  - zarazVersion
+      x-distilled-response-path: result
+    put:
+      operationId: putConfig
+      description: "Updates Zaraz configuration for a zone.  @example ```ts const
+        configuration = await client.zaraz.config.update({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', dataLayer: true, debugKey:
+        'debugKey', settings: { autoInjectScript: true }, tools: { foo: { ... },
+        }, triggers: { foo: { ... }, }, variables: { foo: { ... }, },
+        zarazVersion: 0, }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dataLayer:
+                  type: boolean
+                  description: "Body param: Data layer compatibility mode enabled."
+                debugKey:
+                  type: string
+                  description: "Body param: The key for Zaraz debug mode."
+                settings:
+                  type: object
+                  properties:
+                    autoInjectScript:
+                      type: boolean
+                      description: Automatic injection of Zaraz scripts enabled.
+                    contextEnricher:
+                      type: object
+                      properties:
+                        escapedWorkerName:
+                          type: string
+                        workerTag:
+                          type: string
+                      required:
+                        - escapedWorkerName
+                        - workerTag
+                      description: Details of the worker that receives and edits Zaraz Context object.
+                    cookieDomain:
+                      type: string
+                      description: The domain Zaraz will use for writing and reading its cookies.
+                    ecommerce:
+                      type: boolean
+                      description: Ecommerce API enabled.
+                    eventsApiPath:
+                      type: string
+                      description: Custom endpoint for server-side track events.
+                    hideExternalReferer:
+                      type: boolean
+                      description: Hiding external referrer URL enabled.
+                    hideIPAddress:
+                      type: boolean
+                      description: Trimming IP address enabled.
+                    hideQueryParams:
+                      type: boolean
+                      description: Removing URL query params enabled.
+                    hideUserAgent:
+                      type: boolean
+                      description: Removing sensitive data from User Aagent string enabled.
+                    initPath:
+                      type: string
+                      description: Custom endpoint for Zaraz init script.
+                    injectIframes:
+                      type: boolean
+                      description: Injection of Zaraz scripts into iframes enabled.
+                    mcRootPath:
+                      type: string
+                      description: Custom path for Managed Components server functionalities.
+                    scriptPath:
+                      type: string
+                      description: Custom endpoint for Zaraz main script.
+                    trackPath:
+                      type: string
+                      description: Custom endpoint for Zaraz tracking requests.
+                  required:
+                    - autoInjectScript
+                  description: "Body param: General Zaraz settings."
+                tools:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param: Tools set up under Zaraz configuration, where key is
+                    the alpha-numeric tool ID and value is the tool
+                    configuration object."
+                triggers:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param: Triggers set up under Zaraz configuration, where key
+                    is the trigger alpha-numeric ID and value is the trigger
+                    configuration."
+                variables:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param: Variables set up under Zaraz configuration, where key
+                    is the variable alpha-numeric ID and value is the variable
+                    configuration. Values of variables of type secret are not
+                    included."
+                zarazVersion:
+                  type: number
+                  description: "Body param: Zaraz internal version of the config."
+                analytics:
+                  type: object
+                  properties:
+                    defaultPurpose:
+                      type: string
+                      description: Consent purpose assigned to Monitoring.
+                    enabled:
+                      type: boolean
+                      description: Whether Advanced Monitoring reports are enabled.
+                    sessionExpTime:
+                      type: number
+                      description: Session expiration time (seconds).
+                  description: "Body param: Cloudflare Monitoring settings."
+                consent:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    buttonTextTranslations:
+                      type: object
+                      additionalProperties: true
+                    companyEmail:
+                      type: string
+                    companyName:
+                      type: string
+                    companyStreetAddress:
+                      type: string
+                    consentModalIntroHTML:
+                      type: string
+                    consentModalIntroHTMLWithTranslations:
+                      type: object
+                      additionalProperties: true
+                      description: Object where keys are language codes
+                    cookieName:
+                      type: string
+                    customCSS:
+                      type: string
+                    customIntroDisclaimerDismissed:
+                      type: boolean
+                    defaultLanguage:
+                      type: string
+                    hideModal:
+                      type: boolean
+                    purposes:
+                      type: object
+                      additionalProperties: true
+                      description: Object where keys are purpose alpha-numeric IDs
+                    purposesWithTranslations:
+                      type: object
+                      additionalProperties: true
+                      description: Object where keys are purpose alpha-numeric IDs
+                    tcfCompliant:
+                      type: boolean
+                  required:
+                    - enabled
+                  description: "Body param: Consent management configuration."
+                historyChange:
+                  type: boolean
+                  description: "Body param: Single Page Application support enabled."
+              required:
+                - dataLayer
+                - debugKey
+                - settings
+                - tools
+                - triggers
+                - variables
+                - zarazVersion
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dataLayer:
+                    type: boolean
+                    description: Data layer compatibility mode enabled.
+                  debugKey:
+                    type: string
+                    description: The key for Zaraz debug mode.
+                  settings:
+                    type: object
+                    properties:
+                      autoInjectScript:
+                        type: boolean
+                        description: Automatic injection of Zaraz scripts enabled.
+                      contextEnricher:
+                        type: object
+                        properties:
+                          escapedWorkerName:
+                            type: string
+                          workerTag:
+                            type: string
+                        required:
+                          - escapedWorkerName
+                          - workerTag
+                        description: Details of the worker that receives and edits Zaraz Context object.
+                      cookieDomain:
+                        type: string
+                        description: The domain Zaraz will use for writing and reading its cookies.
+                      ecommerce:
+                        type: boolean
+                        description: Ecommerce API enabled.
+                      eventsApiPath:
+                        type: string
+                        description: Custom endpoint for server-side track events.
+                      hideExternalReferer:
+                        type: boolean
+                        description: Hiding external referrer URL enabled.
+                      hideIPAddress:
+                        type: boolean
+                        description: Trimming IP address enabled.
+                      hideQueryParams:
+                        type: boolean
+                        description: Removing URL query params enabled.
+                      hideUserAgent:
+                        type: boolean
+                        description: Removing sensitive data from User Aagent string enabled.
+                      initPath:
+                        type: string
+                        description: Custom endpoint for Zaraz init script.
+                      injectIframes:
+                        type: boolean
+                        description: Injection of Zaraz scripts into iframes enabled.
+                      mcRootPath:
+                        type: string
+                        description: Custom path for Managed Components server functionalities.
+                      scriptPath:
+                        type: string
+                        description: Custom endpoint for Zaraz main script.
+                      trackPath:
+                        type: string
+                        description: Custom endpoint for Zaraz tracking requests.
+                    required:
+                      - autoInjectScript
+                    description: General Zaraz settings.
+                  tools:
+                    type: object
+                    additionalProperties: true
+                    description: Tools set up under Zaraz configuration, where key is the
+                      alpha-numeric tool ID and value is the tool configuration
+                      object.
+                  triggers:
+                    type: object
+                    additionalProperties: true
+                    description: Triggers set up under Zaraz configuration, where key is the trigger
+                      alpha-numeric ID and value is the trigger configuration.
+                  variables:
+                    type: object
+                    additionalProperties: true
+                    description: Variables set up under Zaraz configuration, where key is the
+                      variable alpha-numeric ID and value is the variable
+                      configuration. Values of variables of type secret are not
+                      included.
+                  zarazVersion:
+                    type: number
+                    description: Zaraz internal version of the config.
+                  analytics:
+                    type: object
+                    properties:
+                      defaultPurpose:
+                        type: string
+                        description: Consent purpose assigned to Monitoring.
+                      enabled:
+                        type: boolean
+                        description: Whether Advanced Monitoring reports are enabled.
+                      sessionExpTime:
+                        type: number
+                        description: Session expiration time (seconds).
+                    description: Cloudflare Monitoring settings.
+                  consent:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                      buttonTextTranslations:
+                        type: object
+                        additionalProperties: true
+                      companyEmail:
+                        type: string
+                      companyName:
+                        type: string
+                      companyStreetAddress:
+                        type: string
+                      consentModalIntroHTML:
+                        type: string
+                      consentModalIntroHTMLWithTranslations:
+                        type: object
+                        additionalProperties: true
+                        description: Object where keys are language codes
+                      cookieName:
+                        type: string
+                      customCSS:
+                        type: string
+                      customIntroDisclaimerDismissed:
+                        type: boolean
+                      defaultLanguage:
+                        type: string
+                      hideModal:
+                        type: boolean
+                      purposes:
+                        type: object
+                        additionalProperties: true
+                        description: Object where keys are purpose alpha-numeric IDs
+                      purposesWithTranslations:
+                        type: object
+                        additionalProperties: true
+                        description: Object where keys are purpose alpha-numeric IDs
+                      tcfCompliant:
+                        type: boolean
+                    required:
+                      - enabled
+                    description: Consent management configuration.
+                  historyChange:
+                    type: boolean
+                    description: Single Page Application support enabled.
+                required:
+                  - dataLayer
+                  - debugKey
+                  - settings
+                  - tools
+                  - triggers
+                  - variables
+                  - zarazVersion
+      x-distilled-response-path: result
+  /zones/{zone_id}/settings/zaraz/default:
+    get:
+      operationId: getDefault
+      description: "Gets default Zaraz configuration for a zone.  @example ```ts const
+        configuration = await client.zaraz.default.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+  /zones/{zone_id}/settings/zaraz/export:
+    get:
+      operationId: getExport
+      description: "Exports full current published Zaraz configuration for a zone,
+        secret variables included.  @example ```ts const configuration = await
+        client.zaraz.export.get({ zone_id: '023e105f4ecef8ad9ca31a8372d0c353',
+        }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /zones/{zone_id}/settings/zaraz/history:
+    get:
+      operationId: listHistories
+      description: "Lists a history of published Zaraz configuration records for a
+        zone.  @example ```ts // Automatically fetches more pages as needed. for
+        await (const historyListResponse of client.zaraz.history.list( {
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          description: "Query param: Maximum amount of results to list. Default value is
+            10."
+          schema:
+            type: number
+        - name: offset
+          in: query
+          required: false
+          description: "Query param: Ordinal number to start listing the results with.
+            Default value is 0."
+          schema:
+            type: number
+        - name: sortField
+          in: query
+          required: false
+          description: "Query param: The field to sort by. Default is updated_at."
+          schema:
+            type: string
+            enum:
+              - id
+              - user_id
+              - description
+              - created_at
+              - updated_at
+        - name: sortOrder
+          in: query
+          required: false
+          description: "Query param: Sorting order. Default is DESC."
+          schema:
+            type: string
+            enum:
+              - DESC
+              - ASC
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: ID of the configuration
+                  createdAt:
+                    type: string
+                    description: Date and time the configuration was created
+                  description:
+                    type: string
+                    description: Configuration description provided by the user who published this
+                      configuration
+                  updatedAt:
+                    type: string
+                    description: Date and time the configuration was last updated
+                  userId:
+                    type: string
+                    description: Alpha-numeric ID of the account user who published the
+                      configuration
+                required:
+                  - id
+                  - createdAt
+                  - description
+                  - updatedAt
+                  - userId
+      x-distilled-pagination-class: HistoryListResponsesSinglePage
+    put:
+      operationId: putHistory
+      description: "Restores a historical published Zaraz configuration by ID for a
+        zone.  @example ```ts const configuration = await
+        client.zaraz.history.update({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', body: 12345, }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: number
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+  /zones/{zone_id}/settings/zaraz/history/configs:
+    get:
+      operationId: getHistoryConfig
+      description: "Gets a history of published Zaraz configurations by ID(s) for a
+        zone.  @example ```ts const config = await
+        client.zaraz.history.configs.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', ids: [0], }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: ids
+          in: query
+          required: true
+          description: "Query param: Comma separated list of Zaraz configuration IDs"
+          schema:
+            type: array
+            items:
+              type: number
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+  /zones/{zone_id}/settings/zaraz/publish:
+    post:
+      operationId: createPublish
+      description: "Publish current Zaraz preview configuration for a zone.  @example
+        ```ts const publish = await client.zaraz.publish.create({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+      x-distilled-response-path: result
+  /zones/{zone_id}/settings/zaraz/workflow:
+    get:
+      operationId: getWorkflow
+      description: "Gets Zaraz workflow for a zone.  @example ```ts const workflow =
+        await client.zaraz.workflow.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+                enum:
+                  - realtime
+                  - preview
+      x-distilled-response-path: result
+    put:
+      operationId: putZaraz
+      description: "Updates Zaraz workflow for a zone.  @example ```ts const workflow
+        = await client.zaraz.update({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', workflow: 'realtime', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                workflow:
+                  type: string
+                  enum:
+                    - realtime
+                    - preview
+                  description: "Body param: Zaraz workflow"
+              required:
+                - workflow
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result

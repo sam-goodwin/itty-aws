@@ -1,0 +1,697 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare CONNECTIVITY API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: connectivity
+paths:
+  /accounts/{account_id}/connectivity/directory/services/{serviceId}:
+    get:
+      operationId: getDirectoryService
+      description: "Get connectivity service  @example ```ts const service = await
+        client.connectivity.directory.services.get(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id: 'account_id' }, );
+        ```"
+      parameters:
+        - name: serviceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  host:
+                    oneOf:
+                      - type: object
+                        properties:
+                          ipv4:
+                            type: string
+                          network:
+                            type: object
+                            properties:
+                              tunnel_id:
+                                type: string
+                            required:
+                              - tunnel_id
+                        required:
+                          - ipv4
+                          - network
+                      - type: object
+                        properties:
+                          ipv6:
+                            type: string
+                          network:
+                            type: object
+                            properties:
+                              tunnel_id:
+                                type: string
+                            required:
+                              - tunnel_id
+                        required:
+                          - ipv6
+                          - network
+                      - type: object
+                        properties:
+                          ipv4:
+                            type: string
+                          ipv6:
+                            type: string
+                          network:
+                            type: object
+                            properties:
+                              tunnel_id:
+                                type: string
+                            required:
+                              - tunnel_id
+                        required:
+                          - ipv4
+                          - ipv6
+                          - network
+                      - type: object
+                        properties:
+                          hostname:
+                            type: string
+                          resolver_network:
+                            type: object
+                            properties:
+                              tunnel_id:
+                                type: string
+                              resolver_ips:
+                                oneOf:
+                                  - type: array
+                                    items:
+                                      type: string
+                                nullable: true
+                            required:
+                              - tunnel_id
+                        required:
+                          - hostname
+                          - resolver_network
+                  name:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                      - http
+                  created_at:
+                    type: string
+                  http_port:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  https_port:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  service_id:
+                    type: string
+                  updated_at:
+                    type: string
+                required:
+                  - host
+                  - name
+                  - type
+      x-distilled-response-path: result
+    put:
+      operationId: updateDirectoryService
+      description: "Update connectivity service  @example ```ts const service = await
+        client.connectivity.directory.services.update(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id: 'account_id',
+        host: { ipv4: '10.0.0.1', network: { tunnel_id:
+        '0191dce4-9ab4-7fce-b660-8e5dec5172da', }, }, name: 'web-app', type:
+        'http', }, ); ```"
+      parameters:
+        - name: serviceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                host:
+                  oneOf:
+                    - type: object
+                      properties:
+                        ipv4:
+                          type: string
+                        network:
+                          type: object
+                          properties:
+                            tunnel_id:
+                              type: string
+                          required:
+                            - tunnel_id
+                      required:
+                        - ipv4
+                        - network
+                    - type: object
+                      properties:
+                        ipv6:
+                          type: string
+                        network:
+                          type: object
+                          properties:
+                            tunnel_id:
+                              type: string
+                          required:
+                            - tunnel_id
+                      required:
+                        - ipv6
+                        - network
+                    - type: object
+                      properties:
+                        ipv4:
+                          type: string
+                        ipv6:
+                          type: string
+                        network:
+                          type: object
+                          properties:
+                            tunnel_id:
+                              type: string
+                          required:
+                            - tunnel_id
+                      required:
+                        - ipv4
+                        - ipv6
+                        - network
+                    - type: object
+                      properties:
+                        hostname:
+                          type: string
+                        resolver_network:
+                          type: object
+                          properties:
+                            tunnel_id:
+                              type: string
+                            resolver_ips:
+                              oneOf:
+                                - type: array
+                                  items:
+                                    type: string
+                              nullable: true
+                          required:
+                            - tunnel_id
+                      required:
+                        - hostname
+                        - resolver_network
+                  description: "Body param:"
+                name:
+                  type: string
+                  description: "Body param:"
+                type:
+                  type: string
+                  enum:
+                    - http
+                  description: "Body param:"
+                http_port:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: "Body param:"
+                https_port:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: "Body param:"
+              required:
+                - host
+                - name
+                - type
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  host:
+                    oneOf:
+                      - type: object
+                        properties:
+                          ipv4:
+                            type: string
+                          network:
+                            type: object
+                            properties:
+                              tunnel_id:
+                                type: string
+                            required:
+                              - tunnel_id
+                        required:
+                          - ipv4
+                          - network
+                      - type: object
+                        properties:
+                          ipv6:
+                            type: string
+                          network:
+                            type: object
+                            properties:
+                              tunnel_id:
+                                type: string
+                            required:
+                              - tunnel_id
+                        required:
+                          - ipv6
+                          - network
+                      - type: object
+                        properties:
+                          ipv4:
+                            type: string
+                          ipv6:
+                            type: string
+                          network:
+                            type: object
+                            properties:
+                              tunnel_id:
+                                type: string
+                            required:
+                              - tunnel_id
+                        required:
+                          - ipv4
+                          - ipv6
+                          - network
+                      - type: object
+                        properties:
+                          hostname:
+                            type: string
+                          resolver_network:
+                            type: object
+                            properties:
+                              tunnel_id:
+                                type: string
+                              resolver_ips:
+                                oneOf:
+                                  - type: array
+                                    items:
+                                      type: string
+                                nullable: true
+                            required:
+                              - tunnel_id
+                        required:
+                          - hostname
+                          - resolver_network
+                  name:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                      - http
+                  created_at:
+                    type: string
+                  http_port:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  https_port:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  service_id:
+                    type: string
+                  updated_at:
+                    type: string
+                required:
+                  - host
+                  - name
+                  - type
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteDirectoryService
+      description: "Delete connectivity service  @example ```ts await
+        client.connectivity.directory.services.delete(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id: 'account_id' }, );
+        ```"
+      parameters:
+        - name: serviceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  /accounts/{account_id}/connectivity/directory/services:
+    get:
+      operationId: listDirectoryServices
+      description: "List connectivity services  @example ```ts // Automatically
+        fetches more pages as needed. for await (const serviceListResponse of
+        client.connectivity.directory.services.list( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier"
+          schema:
+            type: string
+        - name: type
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+            enum:
+              - http
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  host:
+                    oneOf:
+                      - type: object
+                        properties:
+                          ipv4:
+                            type: string
+                          network:
+                            type: object
+                            properties:
+                              tunnel_id:
+                                type: string
+                            required:
+                              - tunnel_id
+                        required:
+                          - ipv4
+                          - network
+                      - type: object
+                        properties:
+                          ipv6:
+                            type: string
+                          network:
+                            type: object
+                            properties:
+                              tunnel_id:
+                                type: string
+                            required:
+                              - tunnel_id
+                        required:
+                          - ipv6
+                          - network
+                      - type: object
+                        properties:
+                          ipv4:
+                            type: string
+                          ipv6:
+                            type: string
+                          network:
+                            type: object
+                            properties:
+                              tunnel_id:
+                                type: string
+                            required:
+                              - tunnel_id
+                        required:
+                          - ipv4
+                          - ipv6
+                          - network
+                      - type: object
+                        properties:
+                          hostname:
+                            type: string
+                          resolver_network:
+                            type: object
+                            properties:
+                              tunnel_id:
+                                type: string
+                              resolver_ips:
+                                oneOf:
+                                  - type: array
+                                    items:
+                                      type: string
+                                nullable: true
+                            required:
+                              - tunnel_id
+                        required:
+                          - hostname
+                          - resolver_network
+                  name:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                      - http
+                  created_at:
+                    type: string
+                  http_port:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  https_port:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  service_id:
+                    type: string
+                  updated_at:
+                    type: string
+                required:
+                  - host
+                  - name
+                  - type
+      x-distilled-pagination-class: ServiceListResponsesV4PagePaginationArray
+    post:
+      operationId: createDirectoryService
+      description: "Create connectivity service  @example ```ts const service = await
+        client.connectivity.directory.services.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', host: { hostname: 'api.example.com',
+        resolver_network: { tunnel_id: '0191dce4-9ab4-7fce-b660-8e5dec5172da',
+        }, }, name: 'web-server', type: 'http', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                host:
+                  oneOf:
+                    - type: object
+                      properties:
+                        ipv4:
+                          type: string
+                        network:
+                          type: object
+                          properties:
+                            tunnel_id:
+                              type: string
+                          required:
+                            - tunnel_id
+                      required:
+                        - ipv4
+                        - network
+                    - type: object
+                      properties:
+                        ipv6:
+                          type: string
+                        network:
+                          type: object
+                          properties:
+                            tunnel_id:
+                              type: string
+                          required:
+                            - tunnel_id
+                      required:
+                        - ipv6
+                        - network
+                    - type: object
+                      properties:
+                        ipv4:
+                          type: string
+                        ipv6:
+                          type: string
+                        network:
+                          type: object
+                          properties:
+                            tunnel_id:
+                              type: string
+                          required:
+                            - tunnel_id
+                      required:
+                        - ipv4
+                        - ipv6
+                        - network
+                    - type: object
+                      properties:
+                        hostname:
+                          type: string
+                        resolver_network:
+                          type: object
+                          properties:
+                            tunnel_id:
+                              type: string
+                            resolver_ips:
+                              oneOf:
+                                - type: array
+                                  items:
+                                    type: string
+                              nullable: true
+                          required:
+                            - tunnel_id
+                      required:
+                        - hostname
+                        - resolver_network
+                  description: "Body param:"
+                name:
+                  type: string
+                  description: "Body param:"
+                type:
+                  type: string
+                  enum:
+                    - http
+                  description: "Body param:"
+                http_port:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: "Body param:"
+                https_port:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: "Body param:"
+              required:
+                - host
+                - name
+                - type
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  host:
+                    oneOf:
+                      - type: object
+                        properties:
+                          ipv4:
+                            type: string
+                          network:
+                            type: object
+                            properties:
+                              tunnel_id:
+                                type: string
+                            required:
+                              - tunnel_id
+                        required:
+                          - ipv4
+                          - network
+                      - type: object
+                        properties:
+                          ipv6:
+                            type: string
+                          network:
+                            type: object
+                            properties:
+                              tunnel_id:
+                                type: string
+                            required:
+                              - tunnel_id
+                        required:
+                          - ipv6
+                          - network
+                      - type: object
+                        properties:
+                          ipv4:
+                            type: string
+                          ipv6:
+                            type: string
+                          network:
+                            type: object
+                            properties:
+                              tunnel_id:
+                                type: string
+                            required:
+                              - tunnel_id
+                        required:
+                          - ipv4
+                          - ipv6
+                          - network
+                      - type: object
+                        properties:
+                          hostname:
+                            type: string
+                          resolver_network:
+                            type: object
+                            properties:
+                              tunnel_id:
+                                type: string
+                              resolver_ips:
+                                oneOf:
+                                  - type: array
+                                    items:
+                                      type: string
+                                nullable: true
+                            required:
+                              - tunnel_id
+                        required:
+                          - hostname
+                          - resolver_network
+                  name:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                      - http
+                  created_at:
+                    type: string
+                  http_port:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  https_port:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  service_id:
+                    type: string
+                  updated_at:
+                    type: string
+                required:
+                  - host
+                  - name
+                  - type
+      x-distilled-response-path: result

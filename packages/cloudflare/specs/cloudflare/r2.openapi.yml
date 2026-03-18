@@ -1,0 +1,3304 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare R2 API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: r2
+paths:
+  /accounts/{account_id}/slurper/jobs/abortAll:
+    put:
+      operationId: abortAllSuperSlurperJob
+      description: "Abort all jobs  @example ```ts const response = await
+        client.r2.superSlurper.jobs.abortAll( { account_id: 'account_id' }, );
+        ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+      x-distilled-response-path: result
+  /accounts/{account_id}/r2/buckets/{bucketName}:
+    get:
+      operationId: getBucket
+      description: "Gets properties of an existing R2 bucket.  @example ```ts const
+        bucket = await client.r2.buckets.get( 'example-bucket', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  creation_date:
+                    type: string
+                    description: Creation timestamp.
+                  jurisdiction:
+                    type: string
+                    enum:
+                      - default
+                      - eu
+                      - fedramp
+                    description: Jurisdiction where objects in this bucket are guaranteed to be
+                      stored.
+                  location:
+                    type: string
+                    enum:
+                      - apac
+                      - eeur
+                      - enam
+                      - weur
+                      - wnam
+                      - oc
+                      - APAC
+                      - EEUR
+                      - ENAM
+                      - WEUR
+                      - WNAM
+                      - OC
+                    description: Location of the bucket.
+                  name:
+                    type: string
+                    description: Name of the bucket.
+                  storage_class:
+                    type: string
+                    enum:
+                      - Standard
+                      - InfrequentAccess
+                    description: Storage class for newly uploaded objects, unless specified
+                      otherwise.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+    patch:
+      operationId: patchBucket
+      description: "Updates properties of an existing R2 bucket.  @example ```ts const
+        bucket = await client.r2.buckets.edit( 'example-bucket', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', storage_class: 'Standard', }, );
+        ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-storage-class
+          in: header
+          required: true
+          description: "Header param: Storage class for newly uploaded objects, unless
+            specified otherwise."
+          schema:
+            type: string
+            enum:
+              - Standard
+              - InfrequentAccess
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  creation_date:
+                    type: string
+                    description: Creation timestamp.
+                  jurisdiction:
+                    type: string
+                    enum:
+                      - default
+                      - eu
+                      - fedramp
+                    description: Jurisdiction where objects in this bucket are guaranteed to be
+                      stored.
+                  location:
+                    type: string
+                    enum:
+                      - apac
+                      - eeur
+                      - enam
+                      - weur
+                      - wnam
+                      - oc
+                      - APAC
+                      - EEUR
+                      - ENAM
+                      - WEUR
+                      - WNAM
+                      - OC
+                    description: Location of the bucket.
+                  name:
+                    type: string
+                    description: Name of the bucket.
+                  storage_class:
+                    type: string
+                    enum:
+                      - Standard
+                      - InfrequentAccess
+                    description: Storage class for newly uploaded objects, unless specified
+                      otherwise.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+    delete:
+      operationId: deleteBucket
+      description: "Deletes an existing R2 bucket.  @example ```ts const bucket =
+        await client.r2.buckets.delete( 'example-bucket', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+        NoRoute:
+          - code: 10015
+  /accounts/{account_id}/r2/buckets:
+    get:
+      operationId: listBuckets
+      description: "Lists all R2 buckets on your account.  @example ```ts const
+        buckets = await client.r2.buckets.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cursor
+          in: query
+          required: false
+          description: "Query param: Pagination cursor received during the last List
+            Buckets call. R2 buckets are paginated using cursors instead of page
+            numbers."
+          schema:
+            type: string
+        - name: direction
+          in: query
+          required: false
+          description: "Query param: Direction to order buckets."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: name_contains
+          in: query
+          required: false
+          description: "Query param: Bucket names to filter by. Only buckets with this
+            phrase in their name will be returned."
+          schema:
+            type: string
+        - name: order
+          in: query
+          required: false
+          description: "Query param: Field to order buckets by."
+          schema:
+            type: string
+            enum:
+              - name
+        - name: per_page
+          in: query
+          required: false
+          description: "Query param: Maximum number of buckets to return in a single call."
+          schema:
+            type: number
+        - name: start_after
+          in: query
+          required: false
+          description: "Query param: Bucket name to start searching after. Buckets are
+            ordered lexicographically."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  buckets:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        creation_date:
+                          type: string
+                          description: Creation timestamp.
+                        jurisdiction:
+                          type: string
+                          enum:
+                            - default
+                            - eu
+                            - fedramp
+                          description: Jurisdiction where objects in this bucket are guaranteed to be
+                            stored.
+                        location:
+                          type: string
+                          enum:
+                            - apac
+                            - eeur
+                            - enam
+                            - weur
+                            - wnam
+                            - oc
+                            - APAC
+                            - EEUR
+                            - ENAM
+                            - WEUR
+                            - WNAM
+                            - OC
+                          description: Location of the bucket.
+                        name:
+                          type: string
+                          description: Name of the bucket.
+                        storage_class:
+                          type: string
+                          enum:
+                            - Standard
+                            - InfrequentAccess
+                          description: Storage class for newly uploaded objects, unless specified
+                            otherwise.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+    post:
+      operationId: createBucket
+      description: "Creates a new R2 bucket.  @example ```ts const bucket = await
+        client.r2.buckets.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', name: 'example-bucket', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: Name of the bucket."
+                locationHint:
+                  type: string
+                  enum:
+                    - apac
+                    - eeur
+                    - enam
+                    - weur
+                    - wnam
+                    - oc
+                  description: "Body param: Location of the bucket."
+                storageClass:
+                  type: string
+                  enum:
+                    - Standard
+                    - InfrequentAccess
+                  description: "Body param: Storage class for newly uploaded objects, unless
+                    specified otherwise."
+              required:
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  creation_date:
+                    type: string
+                    description: Creation timestamp.
+                  jurisdiction:
+                    type: string
+                    enum:
+                      - default
+                      - eu
+                      - fedramp
+                    description: Jurisdiction where objects in this bucket are guaranteed to be
+                      stored.
+                  location:
+                    type: string
+                    enum:
+                      - apac
+                      - eeur
+                      - enam
+                      - weur
+                      - wnam
+                      - oc
+                      - APAC
+                      - EEUR
+                      - ENAM
+                      - WEUR
+                      - WNAM
+                      - OC
+                    description: Location of the bucket.
+                  name:
+                    type: string
+                    description: Name of the bucket.
+                  storage_class:
+                    type: string
+                    enum:
+                      - Standard
+                      - InfrequentAccess
+                    description: Storage class for newly uploaded objects, unless specified
+                      otherwise.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidBucketName:
+          - code: 10005
+        BucketAlreadyExists:
+          - code: 10004
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/r2/buckets/{bucketName}/cors:
+    get:
+      operationId: getBucketCors
+      description: "Get the CORS policy for a bucket.  @example ```ts const cors =
+        await client.r2.buckets.cors.get( 'example-bucket', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rules:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        allowed:
+                          type: object
+                          properties:
+                            methods:
+                              type: array
+                              items:
+                                type: string
+                                enum:
+                                  - GET
+                                  - PUT
+                                  - POST
+                                  - DELETE
+                                  - HEAD
+                              description: Specifies the value for the Access-Control-Allow-Methods header R2
+                                sets when requesting objects in a bucket from a
+                                browser.
+                            origins:
+                              type: array
+                              items:
+                                type: string
+                              description: Specifies the value for the Access-Control-Allow-Origin header R2
+                                sets when requesting objects in a bucket from a
+                                browser.
+                            headers:
+                              type: array
+                              items:
+                                type: string
+                              description: Specifies the value for the Access-Control-Allow-Headers header R2
+                                sets when requesting objects in this bucket from
+                                a browser. Cross-origin requests that include
+                                custom headers (e.g. x-user-id) should specify
+                                these headers as AllowedHeaders.
+                          required:
+                            - methods
+                            - origins
+                          description: Object specifying allowed origins, methods and headers for this
+                            CORS rule.
+                        id:
+                          type: string
+                          description: Identifier for this rule.
+                        exposeHeaders:
+                          type: array
+                          items:
+                            type: string
+                          description: Specifies the headers that can be exposed back, and accessed by,
+                            the JavaScript making the cross-origin request. If
+                            you need to access headers beyond the safelisted
+                            response headers, such as Content-Encoding or
+                            cf-cache-status, you must specify it here.
+                        maxAgeSeconds:
+                          type: number
+                          description: Specifies the amount of time (in seconds) browsers are allowed to
+                            cache CORS preflight responses. Browsers may limit
+                            this to 2 hours or less, even if the maximum value
+                            (86400) is specified.
+                      required:
+                        - allowed
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+        NoCorsConfiguration:
+          - code: 10059
+    put:
+      operationId: putBucketCors
+      description: "Set the CORS policy for a bucket.  @example ```ts const cors =
+        await client.r2.buckets.cors.update( 'example-bucket', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rules:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      allowed:
+                        type: object
+                        properties:
+                          methods:
+                            type: array
+                            items:
+                              type: string
+                              enum:
+                                - GET
+                                - PUT
+                                - POST
+                                - DELETE
+                                - HEAD
+                            description: Specifies the value for the Access-Control-Allow-Methods header R2
+                              sets when requesting objects in a bucket from a
+                              browser.
+                          origins:
+                            type: array
+                            items:
+                              type: string
+                            description: Specifies the value for the Access-Control-Allow-Origin header R2
+                              sets when requesting objects in a bucket from a
+                              browser.
+                          headers:
+                            type: array
+                            items:
+                              type: string
+                            description: Specifies the value for the Access-Control-Allow-Headers header R2
+                              sets when requesting objects in this bucket from a
+                              browser. Cross-origin requests that include custom
+                              headers (e.g. x-user-id) should specify these
+                              headers as AllowedHeaders.
+                        required:
+                          - methods
+                          - origins
+                        description: Object specifying allowed origins, methods and headers for this
+                          CORS rule.
+                      id:
+                        type: string
+                        description: Identifier for this rule.
+                      exposeHeaders:
+                        type: array
+                        items:
+                          type: string
+                        description: Specifies the headers that can be exposed back, and accessed by,
+                          the JavaScript making the cross-origin request. If you
+                          need to access headers beyond the safelisted response
+                          headers, such as Content-Encoding or cf-cache-status,
+                          you must specify it here.
+                      maxAgeSeconds:
+                        type: number
+                        description: Specifies the amount of time (in seconds) browsers are allowed to
+                          cache CORS preflight responses. Browsers may limit
+                          this to 2 hours or less, even if the maximum value
+                          (86400) is specified.
+                    required:
+                      - allowed
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+    delete:
+      operationId: deleteBucketCors
+      description: "Delete the CORS policy for a bucket.  @example ```ts const cors =
+        await client.r2.buckets.cors.delete( 'example-bucket', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/r2/buckets/{bucketName}/domains/custom/{domain}:
+    get:
+      operationId: getBucketDomainCustom
+      description: "Get the configuration for a custom domain on an existing R2
+        bucket.  @example ```ts const custom = await
+        client.r2.buckets.domains.custom.get( 'example-bucket',
+        'example-domain/custom-domain.com', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: domain
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  domain:
+                    type: string
+                    description: Domain name of the custom domain to be added.
+                  enabled:
+                    type: boolean
+                    description: Whether this bucket is publicly accessible at the specified custom
+                      domain.
+                  status:
+                    type: object
+                    properties:
+                      ownership:
+                        type: string
+                        enum:
+                          - pending
+                          - active
+                          - deactivated
+                          - blocked
+                          - error
+                          - unknown
+                        description: Ownership status of the domain.
+                      ssl:
+                        type: string
+                        enum:
+                          - initializing
+                          - pending
+                          - active
+                          - deactivated
+                          - error
+                          - unknown
+                        description: SSL certificate status.
+                    required:
+                      - ownership
+                      - ssl
+                  ciphers:
+                    type: array
+                    items:
+                      type: string
+                    description: An allowlist of ciphers for TLS termination. These ciphers must be
+                      in the BoringSSL format.
+                  minTLS:
+                    type: number
+                    enum:
+                      - 1
+                      - 1.1
+                      - 1.2
+                      - 1.3
+                    description: Minimum TLS Version the custom domain will accept for incoming
+                      connections. If not set, defaults to 1.0.
+                  zoneId:
+                    type: string
+                    description: Zone ID of the custom domain resides in.
+                  zoneName:
+                    type: string
+                    description: Zone that the custom domain resides in.
+                required:
+                  - domain
+                  - enabled
+                  - status
+      x-distilled-response-path: result
+    put:
+      operationId: updateBucketDomainCustom
+      description: "Edit the configuration for a custom domain on an existing R2
+        bucket.  @example ```ts const custom = await
+        client.r2.buckets.domains.custom.update( 'example-bucket',
+        'example-domain/custom-domain.com', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: domain
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ciphers:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: An allowlist of ciphers for TLS termination. These
+                    ciphers must be in the BoringSSL format."
+                enabled:
+                  type: boolean
+                  description: "Body param: Whether to enable public bucket access at the
+                    specified custom domain."
+                minTLS:
+                  type: number
+                  enum:
+                    - 1
+                    - 1.1
+                    - 1.2
+                    - 1.3
+                  description: "Body param: Minimum TLS Version the custom domain will accept for
+                    incoming connections. If not set, defaults to previous
+                    value."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  domain:
+                    type: string
+                    description: Domain name of the affected custom domain.
+                  ciphers:
+                    type: array
+                    items:
+                      type: string
+                    description: An allowlist of ciphers for TLS termination. These ciphers must be
+                      in the BoringSSL format.
+                  enabled:
+                    type: boolean
+                    description: Whether this bucket is publicly accessible at the specified custom
+                      domain.
+                  minTLS:
+                    type: number
+                    enum:
+                      - 1
+                      - 1.1
+                      - 1.2
+                      - 1.3
+                    description: Minimum TLS Version the custom domain will accept for incoming
+                      connections. If not set, defaults to 1.0.
+                required:
+                  - domain
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteBucketDomainCustom
+      description: "Remove custom domain registration from an existing R2
+        bucket.  @example ```ts const custom = await
+        client.r2.buckets.domains.custom.delete( 'example-bucket',
+        'example-domain/custom-domain.com', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: domain
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  domain:
+                    type: string
+                    description: Name of the removed custom domain.
+                required:
+                  - domain
+      x-distilled-response-path: result
+  /accounts/{account_id}/r2/buckets/{bucketName}/domains/custom:
+    get:
+      operationId: listBucketDomainCustoms
+      description: "Gets a list of all custom domains registered with an existing R2
+        bucket.  @example ```ts const customs = await
+        client.r2.buckets.domains.custom.list( 'example-bucket', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  domains:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        domain:
+                          type: string
+                          description: Domain name of the custom domain to be added.
+                        enabled:
+                          type: boolean
+                          description: Whether this bucket is publicly accessible at the specified custom
+                            domain.
+                        status:
+                          type: object
+                          properties:
+                            ownership:
+                              type: string
+                              enum:
+                                - pending
+                                - active
+                                - deactivated
+                                - blocked
+                                - error
+                                - unknown
+                              description: Ownership status of the domain.
+                            ssl:
+                              type: string
+                              enum:
+                                - initializing
+                                - pending
+                                - active
+                                - deactivated
+                                - error
+                                - unknown
+                              description: SSL certificate status.
+                          required:
+                            - ownership
+                            - ssl
+                        ciphers:
+                          type: array
+                          items:
+                            type: string
+                          description: An allowlist of ciphers for TLS termination. These ciphers must be
+                            in the BoringSSL format.
+                        minTLS:
+                          type: number
+                          enum:
+                            - 1
+                            - 1.1
+                            - 1.2
+                            - 1.3
+                          description: Minimum TLS Version the custom domain will accept for incoming
+                            connections. If not set, defaults to 1.0.
+                        zoneId:
+                          type: string
+                          description: Zone ID of the custom domain resides in.
+                        zoneName:
+                          type: string
+                          description: Zone that the custom domain resides in.
+                      required:
+                        - domain
+                        - enabled
+                        - status
+                required:
+                  - domains
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+    post:
+      operationId: createBucketDomainCustom
+      description: "Register a new custom domain for an existing R2 bucket.  @example
+        ```ts const custom = await client.r2.buckets.domains.custom.create(
+        'example-bucket', { account_id: '023e105f4ecef8ad9ca31a8372d0c353',
+        domain: 'prefix.example-domain.com', enabled: true, zoneId:
+        '36ca64a6d92827b8a6b90be344bb1bfd', }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                domain:
+                  type: string
+                  description: "Body param: Name of the custom domain to be added."
+                enabled:
+                  type: boolean
+                  description: "Body param: Whether to enable public bucket access at the custom
+                    domain. If undefined, the domain will be enabled."
+                zoneId:
+                  type: string
+                  description: "Body param: Zone ID of the custom domain."
+                ciphers:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: An allowlist of ciphers for TLS termination. These
+                    ciphers must be in the BoringSSL format."
+                minTLS:
+                  type: number
+                  enum:
+                    - 1
+                    - 1.1
+                    - 1.2
+                    - 1.3
+                  description: "Body param: Minimum TLS Version the custom domain will accept for
+                    incoming connections. If not set, defaults to 1.0."
+              required:
+                - domain
+                - enabled
+                - zoneId
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  domain:
+                    type: string
+                    description: Domain name of the affected custom domain.
+                  enabled:
+                    type: boolean
+                    description: Whether this bucket is publicly accessible at the specified custom
+                      domain.
+                  ciphers:
+                    type: array
+                    items:
+                      type: string
+                    description: An allowlist of ciphers for TLS termination. These ciphers must be
+                      in the BoringSSL format.
+                  minTLS:
+                    type: number
+                    enum:
+                      - 1
+                      - 1.1
+                      - 1.2
+                      - 1.3
+                    description: Minimum TLS Version the custom domain will accept for incoming
+                      connections. If not set, defaults to 1.0.
+                required:
+                  - domain
+                  - enabled
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidBucketName:
+          - code: 10005
+  /accounts/{account_id}/r2/buckets/{bucketName}/domains/managed:
+    get:
+      operationId: listBucketDomainManageds
+      description: "Gets state of public access over the bucket's R2-managed (r2.dev)
+        domain.  @example ```ts const manageds = await
+        client.r2.buckets.domains.managed.list( 'example-bucket', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bucketId:
+                    type: string
+                    description: Bucket ID.
+                  domain:
+                    type: string
+                    description: Domain name of the bucket's r2.dev domain.
+                  enabled:
+                    type: boolean
+                    description: Whether this bucket is publicly accessible at the r2.dev domain.
+                required:
+                  - bucketId
+                  - domain
+                  - enabled
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+    put:
+      operationId: putBucketDomainManaged
+      description: "Updates state of public access over the bucket's R2-managed
+        (r2.dev) domain.  @example ```ts const managed = await
+        client.r2.buckets.domains.managed.update( 'example-bucket', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', enabled: true, }, );
+        ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                  description: "Body param: Whether to enable public bucket access at the r2.dev
+                    domain."
+              required:
+                - enabled
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bucketId:
+                    type: string
+                    description: Bucket ID.
+                  domain:
+                    type: string
+                    description: Domain name of the bucket's r2.dev domain.
+                  enabled:
+                    type: boolean
+                    description: Whether this bucket is publicly accessible at the r2.dev domain.
+                required:
+                  - bucketId
+                  - domain
+                  - enabled
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/event_notifications/r2/{bucketName}/configuration/queues/{queueId}:
+    get:
+      operationId: getBucketEventNotification
+      description: "Get a single event notification rule.  @example ```ts const
+        eventNotification = await client.r2.buckets.eventNotifications.get(
+        'example-bucket', 'queue_id', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: The bucket jurisdiction."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  queueId:
+                    type: string
+                    description: Queue ID.
+                  queueName:
+                    type: string
+                    description: Name of the queue.
+                  rules:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        actions:
+                          type: array
+                          items:
+                            type: string
+                            enum:
+                              - PutObject
+                              - CopyObject
+                              - DeleteObject
+                              - CompleteMultipartUpload
+                              - LifecycleDeletion
+                          description: Array of R2 object actions that will trigger notifications.
+                        createdAt:
+                          type: string
+                          description: Timestamp when the rule was created.
+                        description:
+                          type: string
+                          description: A description that can be used to identify the event notification
+                            rule after creation.
+                        prefix:
+                          type: string
+                          description: Notifications will be sent only for objects with this prefix.
+                        ruleId:
+                          type: string
+                          description: Rule ID.
+                        suffix:
+                          type: string
+                          description: Notifications will be sent only for objects with this suffix.
+                      required:
+                        - actions
+      x-distilled-response-path: result
+    put:
+      operationId: putBucketEventNotification
+      description: "Create event notification rule.  @example ```ts const
+        eventNotification = await client.r2.buckets.eventNotifications.update(
+        'example-bucket', 'queue_id', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', rules: [{ actions: ['PutObject',
+        'CopyObject'] }], }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rules:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      actions:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - PutObject
+                            - CopyObject
+                            - DeleteObject
+                            - CompleteMultipartUpload
+                            - LifecycleDeletion
+                        description: Array of R2 object actions that will trigger notifications.
+                      description:
+                        type: string
+                        description: A description that can be used to identify the event notification
+                          rule after creation.
+                      prefix:
+                        type: string
+                        description: Notifications will be sent only for objects with this prefix.
+                      suffix:
+                        type: string
+                        description: Notifications will be sent only for objects with this suffix.
+                    required:
+                      - actions
+                  description: "Body param: Array of rules to drive notifications."
+              required:
+                - rules
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteBucketEventNotification
+      description: "Delete an event notification rule.  If no body is provided, all
+        rules for specified queue will be deleted  .  @example ```ts const
+        eventNotification = await client.r2.buckets.eventNotifications.delete(
+        'example-bucket', 'queue_id', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+  /accounts/{account_id}/event_notifications/r2/{bucketName}/configuration:
+    get:
+      operationId: listBucketEventNotifications
+      description: "List all event notification rules for a bucket.  @example ```ts
+        const eventNotifications = await
+        client.r2.buckets.eventNotifications.list( 'example-bucket', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bucketName:
+                    type: string
+                    description: Name of the bucket.
+                  queues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        queueId:
+                          type: string
+                          description: Queue ID.
+                        queueName:
+                          type: string
+                          description: Name of the queue.
+                        rules:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              actions:
+                                type: array
+                                items:
+                                  type: string
+                                  enum:
+                                    - PutObject
+                                    - CopyObject
+                                    - DeleteObject
+                                    - CompleteMultipartUpload
+                                    - LifecycleDeletion
+                                description: Array of R2 object actions that will trigger notifications.
+                              createdAt:
+                                type: string
+                                description: Timestamp when the rule was created.
+                              description:
+                                type: string
+                                description: A description that can be used to identify the event notification
+                                  rule after creation.
+                              prefix:
+                                type: string
+                                description: Notifications will be sent only for objects with this prefix.
+                              ruleId:
+                                type: string
+                                description: Rule ID.
+                              suffix:
+                                type: string
+                                description: Notifications will be sent only for objects with this suffix.
+                            required:
+                              - actions
+                    description: List of queues associated with the bucket.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+        NoEventNotificationConfig:
+          - code: 11015
+        BucketNotFound:
+          - code: 10085
+  /accounts/{account_id}/r2/buckets/{bucketName}/lifecycle:
+    get:
+      operationId: getBucketLifecycle
+      description: "Get object lifecycle rules for a bucket.  @example ```ts const
+        lifecycle = await client.r2.buckets.lifecycle.get( 'example-bucket', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rules:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Unique identifier for this rule.
+                        conditions:
+                          type: object
+                          properties:
+                            prefix:
+                              type: string
+                              description: Transitions will only apply to objects/uploads in the bucket that
+                                start with the given prefix, an empty prefix can
+                                be provided to scope rule to all
+                                objects/uploads.
+                          description: Conditions that apply to all transitions of this rule.
+                        enabled:
+                          type: boolean
+                          description: Whether or not this rule is in effect.
+                        abortMultipartUploadsTransition:
+                          type: object
+                          properties:
+                            condition:
+                              type: object
+                              properties:
+                                maxAge:
+                                  type: number
+                                type:
+                                  type: string
+                                  enum:
+                                    - Age
+                              required:
+                                - maxAge
+                                - type
+                              description: Condition for lifecycle transitions to apply after an object
+                                reaches an age in seconds.
+                          description: Transition to abort ongoing multipart uploads.
+                        deleteObjectsTransition:
+                          type: object
+                          properties:
+                            condition:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    maxAge:
+                                      type: number
+                                    type:
+                                      type: string
+                                      enum:
+                                        - Age
+                                  required:
+                                    - maxAge
+                                    - type
+                                - type: object
+                                  properties:
+                                    date:
+                                      type: string
+                                    type:
+                                      type: string
+                                      enum:
+                                        - Date
+                                  required:
+                                    - date
+                                    - type
+                              description: Condition for lifecycle transitions to apply after an object
+                                reaches an age in seconds.
+                          description: Transition to delete objects.
+                        storageClassTransitions:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              condition:
+                                oneOf:
+                                  - type: object
+                                    properties:
+                                      maxAge:
+                                        type: number
+                                      type:
+                                        type: string
+                                        enum:
+                                          - Age
+                                    required:
+                                      - maxAge
+                                      - type
+                                  - type: object
+                                    properties:
+                                      date:
+                                        type: string
+                                      type:
+                                        type: string
+                                        enum:
+                                          - Date
+                                    required:
+                                      - date
+                                      - type
+                                description: Condition for lifecycle transitions to apply after an object
+                                  reaches an age in seconds.
+                              storageClass:
+                                type: string
+                                enum:
+                                  - InfrequentAccess
+                            required:
+                              - condition
+                              - storageClass
+                          description: Transitions to change the storage class of objects.
+                      required:
+                        - id
+                        - conditions
+                        - enabled
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+    put:
+      operationId: putBucketLifecycle
+      description: "Set the object lifecycle rules for a bucket.  @example ```ts const
+        lifecycle = await client.r2.buckets.lifecycle.update( 'example-bucket',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rules:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for this rule.
+                      conditions:
+                        type: object
+                        properties:
+                          prefix:
+                            type: string
+                            description: Transitions will only apply to objects/uploads in the bucket that
+                              start with the given prefix, an empty prefix can
+                              be provided to scope rule to all objects/uploads.
+                        required:
+                          - prefix
+                        description: Conditions that apply to all transitions of this rule.
+                      enabled:
+                        type: boolean
+                        description: Whether or not this rule is in effect.
+                      abortMultipartUploadsTransition:
+                        type: object
+                        properties:
+                          condition:
+                            type: object
+                            properties:
+                              maxAge:
+                                type: number
+                              type:
+                                type: string
+                                enum:
+                                  - Age
+                            required:
+                              - maxAge
+                              - type
+                            description: Condition for lifecycle transitions to apply after an object
+                              reaches an age in seconds.
+                        description: Transition to abort ongoing multipart uploads.
+                      deleteObjectsTransition:
+                        type: object
+                        properties:
+                          condition:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  maxAge:
+                                    type: number
+                                  type:
+                                    type: string
+                                    enum:
+                                      - Age
+                                required:
+                                  - maxAge
+                                  - type
+                              - type: object
+                                properties:
+                                  date:
+                                    type: string
+                                  type:
+                                    type: string
+                                    enum:
+                                      - Date
+                                required:
+                                  - date
+                                  - type
+                            description: Condition for lifecycle transitions to apply after an object
+                              reaches an age in seconds.
+                        description: Transition to delete objects.
+                      storageClassTransitions:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            condition:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    maxAge:
+                                      type: number
+                                    type:
+                                      type: string
+                                      enum:
+                                        - Age
+                                  required:
+                                    - maxAge
+                                    - type
+                                - type: object
+                                  properties:
+                                    date:
+                                      type: string
+                                    type:
+                                      type: string
+                                      enum:
+                                        - Date
+                                  required:
+                                    - date
+                                    - type
+                              description: Condition for lifecycle transitions to apply after an object
+                                reaches an age in seconds.
+                            storageClass:
+                              type: string
+                              enum:
+                                - InfrequentAccess
+                          required:
+                            - condition
+                            - storageClass
+                        description: Transitions to change the storage class of objects.
+                    required:
+                      - id
+                      - conditions
+                      - enabled
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/r2/buckets/{bucketName}/lock:
+    get:
+      operationId: getBucketLock
+      description: "Get lock rules for a bucket.  @example ```ts const lock = await
+        client.r2.buckets.locks.get( 'example-bucket', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rules:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Unique identifier for this rule.
+                        condition:
+                          oneOf:
+                            - type: object
+                              properties:
+                                maxAgeSeconds:
+                                  type: number
+                                type:
+                                  type: string
+                                  enum:
+                                    - Age
+                              required:
+                                - maxAgeSeconds
+                                - type
+                            - type: object
+                              properties:
+                                date:
+                                  type: string
+                                type:
+                                  type: string
+                                  enum:
+                                    - Date
+                              required:
+                                - date
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - Indefinite
+                              required:
+                                - type
+                          description: Condition to apply a lock rule to an object for how long in
+                            seconds.
+                        enabled:
+                          type: boolean
+                          description: Whether or not this rule is in effect.
+                        prefix:
+                          type: string
+                          description: Rule will only apply to objects/uploads in the bucket that start
+                            with the given prefix, an empty prefix can be
+                            provided to scope rule to all objects/uploads.
+                      required:
+                        - id
+                        - condition
+                        - enabled
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+    put:
+      operationId: putBucketLock
+      description: "Set lock rules for a bucket.  @example ```ts const lock = await
+        client.r2.buckets.locks.update( 'example-bucket', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rules:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Unique identifier for this rule.
+                      condition:
+                        oneOf:
+                          - type: object
+                            properties:
+                              maxAgeSeconds:
+                                type: number
+                              type:
+                                type: string
+                                enum:
+                                  - Age
+                            required:
+                              - maxAgeSeconds
+                              - type
+                          - type: object
+                            properties:
+                              date:
+                                type: string
+                              type:
+                                type: string
+                                enum:
+                                  - Date
+                            required:
+                              - date
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - Indefinite
+                            required:
+                              - type
+                        description: Condition to apply a lock rule to an object for how long in
+                          seconds.
+                      enabled:
+                        type: boolean
+                        description: Whether or not this rule is in effect.
+                      prefix:
+                        type: string
+                        description: Rule will only apply to objects/uploads in the bucket that start
+                          with the given prefix, an empty prefix can be provided
+                          to scope rule to all objects/uploads.
+                    required:
+                      - id
+                      - condition
+                      - enabled
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/r2/metrics:
+    get:
+      operationId: listBucketMetrics
+      description: "Get Storage/Object Count Metrics across all buckets in your
+        account. Note that Account-Level Metrics may not immediately reflect the
+        latest data.  @example ```ts const metrics = await
+        client.r2.buckets.metrics.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  infrequentAccess:
+                    type: object
+                    properties:
+                      published:
+                        type: object
+                        properties:
+                          metadataSize:
+                            type: number
+                            description: Amount of.
+                          objects:
+                            type: number
+                            description: Number of objects stored.
+                          payloadSize:
+                            type: number
+                            description: Amount of storage used by object data.
+                        description: Metrics on number of objects/amount of storage used.
+                      uploaded:
+                        type: object
+                        properties:
+                          metadataSize:
+                            type: number
+                            description: Amount of.
+                          objects:
+                            type: number
+                            description: Number of objects stored.
+                          payloadSize:
+                            type: number
+                            description: Amount of storage used by object data.
+                        description: Metrics on number of objects/amount of storage used.
+                    description: Metrics based on what state they are in(uploaded or published).
+                  standard:
+                    type: object
+                    properties:
+                      published:
+                        type: object
+                        properties:
+                          metadataSize:
+                            type: number
+                            description: Amount of.
+                          objects:
+                            type: number
+                            description: Number of objects stored.
+                          payloadSize:
+                            type: number
+                            description: Amount of storage used by object data.
+                        description: Metrics on number of objects/amount of storage used.
+                      uploaded:
+                        type: object
+                        properties:
+                          metadataSize:
+                            type: number
+                            description: Amount of.
+                          objects:
+                            type: number
+                            description: Number of objects stored.
+                          payloadSize:
+                            type: number
+                            description: Amount of storage used by object data.
+                        description: Metrics on number of objects/amount of storage used.
+                    description: Metrics based on what state they are in(uploaded or published).
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/r2/buckets/{bucketName}/sippy:
+    get:
+      operationId: getBucketSippy
+      description: "Gets configuration for Sippy for an existing R2 bucket.  @example
+        ```ts const sippy = await client.r2.buckets.sippy.get( 'example-bucket',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  destination:
+                    type: object
+                    properties:
+                      accessKeyId:
+                        type: string
+                        description: ID of the Cloudflare API token used when writing objects to this
+                          bucket.
+                      account:
+                        type: string
+                      bucket:
+                        type: string
+                        description: Name of the bucket on the provider.
+                      provider:
+                        type: string
+                        enum:
+                          - r2
+                    description: Details about the configured destination bucket.
+                  enabled:
+                    type: boolean
+                    description: State of Sippy for this bucket.
+                  source:
+                    type: object
+                    properties:
+                      bucket:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: Name of the bucket on the provider (AWS, GCS only).
+                      bucketUrl:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: S3-compatible URL (Generic S3-compatible providers only).
+                      provider:
+                        type: string
+                        enum:
+                          - aws
+                          - gcs
+                          - s3
+                      region:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: Region where the bucket resides (AWS only).
+                    description: Details about the configured source bucket.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+    put:
+      operationId: putBucketSippy
+      description: "Sets configuration for Sippy for an existing R2 bucket.  @example
+        ```ts const sippy = await client.r2.buckets.sippy.update(
+        'example-bucket', { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, );
+        ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                destination:
+                  type: object
+                  properties:
+                    accessKeyId:
+                      type: string
+                      description: ID of a Cloudflare API token. This is the value labelled "Access
+                        Key ID" when creating an API. token from the [R2
+                        dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).  Sippy
+                        will use this token when writing objects to R2, so it is
+                        best to scope this token to the bucket you're enabling
+                        Sippy for.
+                    provider:
+                      type: string
+                      enum:
+                        - r2
+                    secretAccessKey:
+                      type: string
+                      description: Value of a Cloudflare API token. This is the value labelled "Secret
+                        Access Key" when creating an API. token from the [R2
+                        dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).  Sippy
+                        will use this token when writing objects to R2, so it is
+                        best to scope this token to the bucket you're enabling
+                        Sippy for.
+                  description: "Body param: R2 bucket to copy objects to."
+                source:
+                  type: object
+                  properties:
+                    accessKeyId:
+                      type: string
+                      description: Access Key ID of an IAM credential (ideally scoped to a single S3
+                        bucket).
+                    bucket:
+                      type: string
+                      description: Name of the AWS S3 bucket.
+                    provider:
+                      type: string
+                      enum:
+                        - aws
+                    region:
+                      type: string
+                      description: Name of the AWS availability zone.
+                    secretAccessKey:
+                      type: string
+                      description: Secret Access Key of an IAM credential (ideally scoped to a single
+                        S3 bucket).
+                  description: "Body param: AWS S3 bucket to copy objects from."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  destination:
+                    type: object
+                    properties:
+                      accessKeyId:
+                        type: string
+                        description: ID of the Cloudflare API token used when writing objects to this
+                          bucket.
+                      account:
+                        type: string
+                      bucket:
+                        type: string
+                        description: Name of the bucket on the provider.
+                      provider:
+                        type: string
+                        enum:
+                          - r2
+                    description: Details about the configured destination bucket.
+                  enabled:
+                    type: boolean
+                    description: State of Sippy for this bucket.
+                  source:
+                    type: object
+                    properties:
+                      bucket:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: Name of the bucket on the provider (AWS, GCS only).
+                      bucketUrl:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: S3-compatible URL (Generic S3-compatible providers only).
+                      provider:
+                        type: string
+                        enum:
+                          - aws
+                          - gcs
+                          - s3
+                      region:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: Region where the bucket resides (AWS only).
+                    description: Details about the configured source bucket.
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteBucketSippy
+      description: "Disables Sippy on this bucket.  @example ```ts const sippy = await
+        client.r2.buckets.sippy.delete( 'example-bucket', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: "Header param: Jurisdiction where objects in this bucket are
+            guaranteed to be stored."
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    enum:
+                      - false
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/slurper/source/connectivity-precheck:
+    put:
+      operationId: sourceSuperSlurperConnectivityPrecheck
+      description: "Check whether tokens are valid against the source bucket  @example
+        ```ts const response = await
+        client.r2.superSlurper.connectivityPrecheck.source({ account_id:
+        'account_id', bucket: 'bucket', secret: { accessKeyId: 'accessKeyId',
+        secretAccessKey: 'secretAccessKey', }, vendor: 's3', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bucket:
+                  type: string
+                  description: "Body param:"
+                secret:
+                  type: object
+                  properties:
+                    accessKeyId:
+                      type: string
+                    secretAccessKey:
+                      type: string
+                  required:
+                    - accessKeyId
+                    - secretAccessKey
+                  description: "Body param:"
+                vendor:
+                  type: string
+                  enum:
+                    - s3
+                  description: "Body param:"
+                endpoint:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: "Body param:"
+                pathPrefix:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: "Body param:"
+                region:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: "Body param:"
+              required:
+                - bucket
+                - secret
+                - vendor
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  connectivityStatus:
+                    type: string
+                    enum:
+                      - success
+                      - error
+      x-distilled-response-path: result
+  /accounts/{account_id}/slurper/target/connectivity-precheck:
+    put:
+      operationId: targetSuperSlurperConnectivityPrecheck
+      description: "Check whether tokens are valid against the target bucket  @example
+        ```ts const response = await
+        client.r2.superSlurper.connectivityPrecheck.target({ account_id:
+        'account_id', bucket: 'bucket', secret: { accessKeyId: 'accessKeyId',
+        secretAccessKey: 'secretAccessKey', }, vendor: 'r2', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bucket:
+                  type: string
+                  description: "Body param:"
+                secret:
+                  type: object
+                  properties:
+                    accessKeyId:
+                      type: string
+                    secretAccessKey:
+                      type: string
+                  required:
+                    - accessKeyId
+                    - secretAccessKey
+                  description: "Body param:"
+                vendor:
+                  type: string
+                  enum:
+                    - r2
+                  description: "Body param:"
+                jurisdiction:
+                  type: string
+                  enum:
+                    - default
+                    - eu
+                    - fedramp
+                  description: "Body param:"
+              required:
+                - bucket
+                - secret
+                - vendor
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  connectivityStatus:
+                    type: string
+                    enum:
+                      - success
+                      - error
+      x-distilled-response-path: result
+  /accounts/{account_id}/slurper/jobs/{jobId}:
+    get:
+      operationId: getSuperSlurperJob
+      description: "Get job details  @example ```ts const job = await
+        client.r2.superSlurper.jobs.get( 'job_id', { account_id: 'account_id' },
+        ); ```"
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  createdAt:
+                    type: string
+                  finishedAt:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  overwrite:
+                    type: boolean
+                  source:
+                    oneOf:
+                      - type: object
+                        properties:
+                          bucket:
+                            type: string
+                          endpoint:
+                            oneOf:
+                              - type: string
+                            nullable: true
+                          keys:
+                            oneOf:
+                              - type: array
+                                items:
+                                  type: string
+                            nullable: true
+                          pathPrefix:
+                            oneOf:
+                              - type: string
+                            nullable: true
+                          vendor:
+                            type: string
+                            enum:
+                              - s3
+                      - type: object
+                        properties:
+                          bucket:
+                            type: string
+                          keys:
+                            oneOf:
+                              - type: array
+                                items:
+                                  type: string
+                            nullable: true
+                          pathPrefix:
+                            oneOf:
+                              - type: string
+                            nullable: true
+                          vendor:
+                            type: string
+                            enum:
+                              - gcs
+                      - type: object
+                        properties:
+                          bucket:
+                            type: string
+                          jurisdiction:
+                            type: string
+                            enum:
+                              - default
+                              - eu
+                              - fedramp
+                          keys:
+                            oneOf:
+                              - type: array
+                                items:
+                                  type: string
+                            nullable: true
+                          pathPrefix:
+                            oneOf:
+                              - type: string
+                            nullable: true
+                          vendor:
+                            type: string
+                            enum:
+                              - r2
+                  status:
+                    type: string
+                    enum:
+                      - running
+                      - paused
+                      - aborted
+                      - completed
+                  target:
+                    type: object
+                    properties:
+                      bucket:
+                        type: string
+                      jurisdiction:
+                        type: string
+                        enum:
+                          - default
+                          - eu
+                          - fedramp
+                      vendor:
+                        type: string
+                        enum:
+                          - r2
+      x-distilled-response-path: result
+  /accounts/{account_id}/slurper/jobs:
+    get:
+      operationId: listSuperSlurperJobs
+      description: "List jobs  @example ```ts // Automatically fetches more pages as
+        needed. for await (const jobListResponse of
+        client.r2.superSlurper.jobs.list( { account_id: 'account_id' }, )) { //
+        ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: number
+        - name: offset
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  createdAt:
+                    type: string
+                  finishedAt:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  overwrite:
+                    type: boolean
+                  source:
+                    oneOf:
+                      - type: object
+                        properties:
+                          bucket:
+                            type: string
+                          endpoint:
+                            oneOf:
+                              - type: string
+                            nullable: true
+                          keys:
+                            oneOf:
+                              - type: array
+                                items:
+                                  type: string
+                            nullable: true
+                          pathPrefix:
+                            oneOf:
+                              - type: string
+                            nullable: true
+                          vendor:
+                            type: string
+                            enum:
+                              - s3
+                      - type: object
+                        properties:
+                          bucket:
+                            type: string
+                          keys:
+                            oneOf:
+                              - type: array
+                                items:
+                                  type: string
+                            nullable: true
+                          pathPrefix:
+                            oneOf:
+                              - type: string
+                            nullable: true
+                          vendor:
+                            type: string
+                            enum:
+                              - gcs
+                      - type: object
+                        properties:
+                          bucket:
+                            type: string
+                          jurisdiction:
+                            type: string
+                            enum:
+                              - default
+                              - eu
+                              - fedramp
+                          keys:
+                            oneOf:
+                              - type: array
+                                items:
+                                  type: string
+                            nullable: true
+                          pathPrefix:
+                            oneOf:
+                              - type: string
+                            nullable: true
+                          vendor:
+                            type: string
+                            enum:
+                              - r2
+                  status:
+                    type: string
+                    enum:
+                      - running
+                      - paused
+                      - aborted
+                      - completed
+                  target:
+                    type: object
+                    properties:
+                      bucket:
+                        type: string
+                      jurisdiction:
+                        type: string
+                        enum:
+                          - default
+                          - eu
+                          - fedramp
+                      vendor:
+                        type: string
+                        enum:
+                          - r2
+      x-distilled-pagination-class: JobListResponsesSinglePage
+    post:
+      operationId: createSuperSlurperJob
+      description: "Create a job  @example ```ts const job = await
+        client.r2.superSlurper.jobs.create({ account_id: 'account_id', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                overwrite:
+                  type: boolean
+                  description: "Body param:"
+                source:
+                  oneOf:
+                    - type: object
+                      properties:
+                        bucket:
+                          type: string
+                        secret:
+                          type: object
+                          properties:
+                            accessKeyId:
+                              type: string
+                            secretAccessKey:
+                              type: string
+                          required:
+                            - accessKeyId
+                            - secretAccessKey
+                        vendor:
+                          type: string
+                          enum:
+                            - s3
+                        endpoint:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                        pathPrefix:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                        region:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                      required:
+                        - bucket
+                        - secret
+                        - vendor
+                    - type: object
+                      properties:
+                        bucket:
+                          type: string
+                        secret:
+                          type: object
+                          properties:
+                            clientEmail:
+                              type: string
+                            privateKey:
+                              type: string
+                          required:
+                            - clientEmail
+                            - privateKey
+                        vendor:
+                          type: string
+                          enum:
+                            - gcs
+                        pathPrefix:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                      required:
+                        - bucket
+                        - secret
+                        - vendor
+                    - type: object
+                      properties:
+                        bucket:
+                          type: string
+                        secret:
+                          type: object
+                          properties:
+                            accessKeyId:
+                              type: string
+                            secretAccessKey:
+                              type: string
+                          required:
+                            - accessKeyId
+                            - secretAccessKey
+                        vendor:
+                          type: string
+                          enum:
+                            - r2
+                        jurisdiction:
+                          type: string
+                          enum:
+                            - default
+                            - eu
+                            - fedramp
+                        pathPrefix:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                      required:
+                        - bucket
+                        - secret
+                        - vendor
+                  description: "Body param:"
+                target:
+                  type: object
+                  properties:
+                    bucket:
+                      type: string
+                    secret:
+                      type: object
+                      properties:
+                        accessKeyId:
+                          type: string
+                        secretAccessKey:
+                          type: string
+                      required:
+                        - accessKeyId
+                        - secretAccessKey
+                    vendor:
+                      type: string
+                      enum:
+                        - r2
+                    jurisdiction:
+                      type: string
+                      enum:
+                        - default
+                        - eu
+                        - fedramp
+                  required:
+                    - bucket
+                    - secret
+                    - vendor
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+      x-distilled-response-path: result
+  /accounts/{account_id}/slurper/jobs/{jobId}/abort:
+    put:
+      operationId: abortSuperSlurperJob
+      description: "Abort a job  @example ```ts const response = await
+        client.r2.superSlurper.jobs.abort( 'job_id', { account_id: 'account_id'
+        }, ); ```"
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+      x-distilled-response-path: result
+  /accounts/{account_id}/slurper/jobs/{jobId}/pause:
+    put:
+      operationId: pauseSuperSlurperJob
+      description: "Pause a job  @example ```ts const response = await
+        client.r2.superSlurper.jobs.pause( 'job_id', { account_id: 'account_id'
+        }, ); ```"
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+      x-distilled-response-path: result
+  /accounts/{account_id}/slurper/jobs/{jobId}/progress:
+    get:
+      operationId: progressSuperSlurperJob
+      description: "Get job progress  @example ```ts const response = await
+        client.r2.superSlurper.jobs.progress( 'job_id', { account_id:
+        'account_id' }, ); ```"
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  createdAt:
+                    type: string
+                  failedObjects:
+                    type: number
+                  objects:
+                    type: number
+                  skippedObjects:
+                    type: number
+                  status:
+                    type: string
+                    enum:
+                      - running
+                      - paused
+                      - aborted
+                      - completed
+                  transferredObjects:
+                    type: number
+      x-distilled-response-path: result
+  /accounts/{account_id}/slurper/jobs/{jobId}/resume:
+    put:
+      operationId: resumeSuperSlurperJob
+      description: "Resume a job  @example ```ts const response = await
+        client.r2.superSlurper.jobs.resume( 'job_id', { account_id: 'account_id'
+        }, ); ```"
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+      x-distilled-response-path: result
+  /accounts/{account_id}/slurper/jobs/{jobId}/logs:
+    get:
+      operationId: listSuperSlurperJobLogs
+      description: "Get job logs  @example ```ts // Automatically fetches more pages
+        as needed. for await (const logListResponse of
+        client.r2.superSlurper.jobs.logs.list( 'job_id', { account_id:
+        'account_id' }, )) { // ... } ```"
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: number
+        - name: offset
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  createdAt:
+                    type: string
+                  job:
+                    type: string
+                  logType:
+                    type: string
+                    enum:
+                      - migrationStart
+                      - migrationComplete
+                      - migrationAbort
+                      - migrationError
+                      - migrationPause
+                      - migrationResume
+                      - migrationErrorFailedContinuation
+                      - importErrorRetryExhaustion
+                      - importSkippedStorageClass
+                      - importSkippedOversized
+                      - importSkippedEmptyObject
+                      - importSkippedUnsupportedContentType
+                      - importSkippedExcludedContentType
+                      - importSkippedInvalidMedia
+                      - importSkippedRequiresRetrieval
+                  message:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  objectKey:
+                    oneOf:
+                      - type: string
+                    nullable: true
+      x-distilled-pagination-class: LogListResponsesSinglePage
+  /accounts/{account_id}/r2/temp-access-credentials:
+    post:
+      operationId: createTemporaryCredential
+      description: "Creates temporary access credentials on a bucket that can be
+        optionally scoped to prefixes or objects.  @example ```ts const
+        temporaryCredential = await client.r2.temporaryCredentials.create({
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', bucket:
+        'example-bucket', parentAccessKeyId: 'example-access-key-id',
+        permission: 'object-read-write', ttlSeconds: 3600, }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bucket:
+                  type: string
+                  description: "Body param: Name of the R2 bucket."
+                parentAccessKeyId:
+                  type: string
+                  description: "Body param: The parent access key id to use for signing."
+                permission:
+                  type: string
+                  enum:
+                    - admin-read-write
+                    - admin-read-only
+                    - object-read-write
+                    - object-read-only
+                  description: "Body param: Permissions allowed on the credentials."
+                ttlSeconds:
+                  type: number
+                  description: "Body param: How long the credentials will live for in seconds."
+                objects:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Optional object paths to scope the credentials to."
+                prefixes:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Optional prefix paths to scope the credentials to."
+              required:
+                - bucket
+                - parentAccessKeyId
+                - permission
+                - ttlSeconds
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessKeyId:
+                    type: string
+                    description: ID for new access key.
+                  secretAccessKey:
+                    type: string
+                    description: Secret access key.
+                  sessionToken:
+                    type: string
+                    description: Security token.
+      x-distilled-response-path: result

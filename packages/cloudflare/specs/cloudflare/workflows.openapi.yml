@@ -1,0 +1,1043 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare WORKFLOWS API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: workflows
+paths:
+  /accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}:
+    get:
+      operationId: getInstance
+      description: Get logs and status from instance
+      parameters:
+        - name: workflowName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: instanceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  end:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  error:
+                    oneOf:
+                      - type: object
+                        properties:
+                          message:
+                            type: string
+                          name:
+                            type: string
+                        required:
+                          - message
+                          - name
+                    nullable: true
+                  output:
+                    oneOf:
+                      - type: string
+                      - type: number
+                    nullable: true
+                  params: {}
+                  queued:
+                    type: string
+                  start:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  status:
+                    type: string
+                    enum:
+                      - queued
+                      - running
+                      - paused
+                      - errored
+                      - terminated
+                      - complete
+                      - waitingForPause
+                      - waiting
+                  steps:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            attempts:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  end:
+                                    oneOf:
+                                      - type: string
+                                    nullable: true
+                                  error:
+                                    oneOf:
+                                      - type: object
+                                        properties:
+                                          message:
+                                            type: string
+                                          name:
+                                            type: string
+                                        required:
+                                          - message
+                                          - name
+                                    nullable: true
+                                  start:
+                                    type: string
+                                  success:
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
+                                required:
+                                  - end
+                                  - error
+                                  - start
+                                  - success
+                            config:
+                              type: object
+                              properties:
+                                retries:
+                                  type: object
+                                  properties:
+                                    delay:
+                                      type: number
+                                    limit:
+                                      type: number
+                                    backoff:
+                                      type: string
+                                      enum:
+                                        - constant
+                                        - linear
+                                        - exponential
+                                  required:
+                                    - delay
+                                    - limit
+                                timeout:
+                                  type: number
+                              required:
+                                - retries
+                                - timeout
+                            end:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                            name:
+                              type: string
+                            output: {}
+                            start:
+                              type: string
+                            success:
+                              oneOf:
+                                - type: boolean
+                              nullable: true
+                            type:
+                              type: string
+                              enum:
+                                - step
+                          required:
+                            - attempts
+                            - config
+                            - end
+                            - name
+                            - output
+                            - start
+                            - success
+                            - type
+                        - type: object
+                          properties:
+                            end:
+                              type: string
+                            error:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    message:
+                                      type: string
+                                    name:
+                                      type: string
+                                  required:
+                                    - message
+                                    - name
+                              nullable: true
+                            finished:
+                              type: boolean
+                            name:
+                              type: string
+                            start:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - sleep
+                          required:
+                            - end
+                            - error
+                            - finished
+                            - name
+                            - start
+                            - type
+                        - type: object
+                          properties:
+                            trigger:
+                              type: object
+                              properties:
+                                source:
+                                  type: string
+                              required:
+                                - source
+                            type:
+                              type: string
+                              enum:
+                                - termination
+                          required:
+                            - trigger
+                            - type
+                        - type: object
+                          properties:
+                            end:
+                              type: string
+                            error:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    message:
+                                      type: string
+                                    name:
+                                      type: string
+                                  required:
+                                    - message
+                                    - name
+                              nullable: true
+                            finished:
+                              type: boolean
+                            name:
+                              type: string
+                            output:
+                              oneOf:
+                                - type: string
+                                - type: number
+                                - type: boolean
+                            start:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - waitForEvent
+                          required:
+                            - end
+                            - error
+                            - finished
+                            - name
+                            - output
+                            - start
+                            - type
+                  success:
+                    oneOf:
+                      - type: boolean
+                    nullable: true
+                  trigger:
+                    type: object
+                    properties:
+                      source:
+                        type: string
+                        enum:
+                          - unknown
+                          - api
+                          - binding
+                          - event
+                          - cron
+                    required:
+                      - source
+                  versionId:
+                    type: string
+                required:
+                  - end
+                  - error
+                  - output
+                  - params
+                  - queued
+                  - start
+                  - status
+                  - steps
+                  - success
+                  - trigger
+                  - versionId
+      x-distilled-response-path: result
+      x-distilled-errors:
+        WorkflowNotFound:
+          - code: 10200
+        InvalidRoute:
+          - code: 7003
+        InstanceNotFound:
+          - code: 10400
+  /accounts/{account_id}/workflows/{workflowName}/instances:
+    get:
+      operationId: listInstances
+      description: List of workflow instances
+      parameters:
+        - name: workflowName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: cursor
+          in: query
+          required: false
+          description: "Query param: `page` and `cursor` are mutually exclusive, use one
+            or the other."
+          schema:
+            type: string
+        - name: date_end
+          in: query
+          required: false
+          description: "Query param: Accepts ISO 8601 with no timezone offsets and in UTC."
+          schema:
+            type: string
+        - name: date_start
+          in: query
+          required: false
+          description: "Query param: Accepts ISO 8601 with no timezone offsets and in UTC."
+          schema:
+            type: string
+        - name: direction
+          in: query
+          required: false
+          description: "Query param: should only be used when `cursor` is used, defines a
+            new direction for the cursor"
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: status
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+            enum:
+              - queued
+              - running
+              - paused
+              - errored
+              - terminated
+              - complete
+              - waitingForPause
+              - waiting
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  created_on:
+                    type: string
+                  ended_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  modified_on:
+                    type: string
+                  started_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  status:
+                    type: string
+                    enum:
+                      - queued
+                      - running
+                      - paused
+                      - errored
+                      - terminated
+                      - complete
+                      - waitingForPause
+                      - waiting
+                  version_id:
+                    type: string
+                  workflow_id:
+                    type: string
+                required:
+                  - id
+                  - created_on
+                  - ended_on
+                  - modified_on
+                  - started_on
+                  - status
+                  - version_id
+                  - workflow_id
+      x-distilled-pagination-class: InstanceListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        WorkflowNotFound:
+          - code: 10200
+        WorkflowInternalError:
+          - code: 10001
+        InvalidRoute:
+          - code: 7003
+        InvalidBody:
+          - code: 10002
+    post:
+      operationId: createInstance
+      description: Create a new workflow instance
+      parameters:
+        - name: workflowName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instance_id:
+                  type: string
+                  description: "Body param:"
+                instance_retention:
+                  type: object
+                  properties:
+                    error_retention:
+                      oneOf:
+                        - type: number
+                        - type: string
+                      description: Duration in milliseconds or as a string like '5 minutes'
+                    success_retention:
+                      oneOf:
+                        - type: number
+                        - type: string
+                      description: Duration in milliseconds or as a string like '5 minutes'
+                  description: "Body param:"
+                params:
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  status:
+                    type: string
+                    enum:
+                      - queued
+                      - running
+                      - paused
+                      - errored
+                      - terminated
+                      - complete
+                      - waitingForPause
+                      - waiting
+                  version_id:
+                    type: string
+                  workflow_id:
+                    type: string
+                required:
+                  - id
+                  - status
+                  - version_id
+                  - workflow_id
+      x-distilled-response-path: result
+      x-distilled-errors:
+        WorkflowNotFound:
+          - code: 10200
+        InvalidRoute:
+          - code: 7003
+        InvalidBody:
+          - code: 10002
+  /accounts/{account_id}/workflows/{workflowName}/instances/batch:
+    post:
+      operationId: bulkInstance
+      description: Batch create new Workflow instances
+      parameters:
+        - name: workflowName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  instance_id:
+                    type: string
+                  instance_retention:
+                    type: object
+                    properties:
+                      error_retention:
+                        oneOf:
+                          - type: number
+                          - type: string
+                        description: Duration in milliseconds or as a string like '5 minutes'
+                      success_retention:
+                        oneOf:
+                          - type: number
+                          - type: string
+                        description: Duration in milliseconds or as a string like '5 minutes'
+                  params: {}
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  status:
+                    type: string
+                    enum:
+                      - queued
+                      - running
+                      - paused
+                      - errored
+                      - terminated
+                      - complete
+                      - waitingForPause
+                      - waiting
+                  version_id:
+                    type: string
+                  workflow_id:
+                    type: string
+                required:
+                  - id
+                  - status
+                  - version_id
+                  - workflow_id
+      x-distilled-pagination-class: InstanceBulkResponsesSinglePage
+      x-distilled-errors:
+        WorkflowNotFound:
+          - code: 10200
+        InvalidRoute:
+          - code: 7003
+        InvalidBody:
+          - code: 10002
+  /accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}/events/{eventType}:
+    post:
+      operationId: createInstanceEvent
+      description: Send event to instance
+      parameters:
+        - name: workflowName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: instanceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: eventType
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+      x-distilled-errors:
+        WorkflowNotFound:
+          - code: 10200
+        InvalidRoute:
+          - code: 7003
+        InstanceNotFound:
+          - code: 10201
+        InvalidBody:
+          - code: 10002
+  /accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}/status:
+    patch:
+      operationId: patchInstanceStatus
+      description: Change status of instance
+      parameters:
+        - name: workflowName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: instanceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum:
+                    - resume
+                    - pause
+                    - terminate
+                    - restart
+                  description: "Body param: Apply action to instance."
+              required:
+                - status
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                      - queued
+                      - running
+                      - paused
+                      - errored
+                      - terminated
+                      - complete
+                      - waitingForPause
+                      - waiting
+                  timestamp:
+                    type: string
+                    description: Accepts ISO 8601 with no timezone offsets and in UTC.
+                required:
+                  - status
+                  - timestamp
+      x-distilled-response-path: result
+      x-distilled-errors:
+        WorkflowNotFound:
+          - code: 10200
+        InvalidRoute:
+          - code: 7003
+        InstanceNotFound:
+          - code: 10400
+        InstanceCannotTerminate:
+          - code: 10401
+  /accounts/{account_id}/workflows/{workflowName}/versions/{versionId}:
+    get:
+      operationId: getVersion
+      description: Get Workflow version details
+      parameters:
+        - name: workflowName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: versionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  class_name:
+                    type: string
+                  created_on:
+                    type: string
+                  modified_on:
+                    type: string
+                  workflow_id:
+                    type: string
+                required:
+                  - id
+                  - class_name
+                  - created_on
+                  - modified_on
+                  - workflow_id
+      x-distilled-response-path: result
+      x-distilled-errors:
+        WorkflowNotFound:
+          - code: 10200
+        InvalidRoute:
+          - code: 7003
+        VersionNotFound:
+          - code: 10300
+  /accounts/{account_id}/workflows/{workflowName}/versions:
+    get:
+      operationId: listVersions
+      description: List deployed Workflow versions
+      parameters:
+        - name: workflowName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  class_name:
+                    type: string
+                  created_on:
+                    type: string
+                  modified_on:
+                    type: string
+                  workflow_id:
+                    type: string
+                required:
+                  - id
+                  - class_name
+                  - created_on
+                  - modified_on
+                  - workflow_id
+      x-distilled-pagination-class: VersionListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        WorkflowNotFound:
+          - code: 10200
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/workflows/{workflowName}:
+    get:
+      operationId: getWorkflow
+      description: Get Workflow details
+      parameters:
+        - name: workflowName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  class_name:
+                    type: string
+                  created_on:
+                    type: string
+                  instances:
+                    type: object
+                    properties:
+                      complete:
+                        type: number
+                      errored:
+                        type: number
+                      paused:
+                        type: number
+                      queued:
+                        type: number
+                      running:
+                        type: number
+                      terminated:
+                        type: number
+                      waiting:
+                        type: number
+                      waitingForPause:
+                        type: number
+                  modified_on:
+                    type: string
+                  name:
+                    type: string
+                  script_name:
+                    type: string
+                  triggered_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                required:
+                  - id
+                  - class_name
+                  - created_on
+                  - instances
+                  - modified_on
+                  - name
+                  - script_name
+                  - triggered_on
+      x-distilled-response-path: result
+      x-distilled-errors:
+        WorkflowNotFound:
+          - code: 10200
+        InvalidRoute:
+          - code: 7003
+    put:
+      operationId: putWorkflow
+      description: Create/modify Workflow
+      parameters:
+        - name: workflowName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                class_name:
+                  type: string
+                  description: "Body param:"
+                script_name:
+                  type: string
+                  description: "Body param:"
+              required:
+                - class_name
+                - script_name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  class_name:
+                    type: string
+                  created_on:
+                    type: string
+                  is_deleted:
+                    type: number
+                  modified_on:
+                    type: string
+                  name:
+                    type: string
+                  script_name:
+                    type: string
+                  terminator_running:
+                    type: number
+                  triggered_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  version_id:
+                    type: string
+                required:
+                  - id
+                  - class_name
+                  - created_on
+                  - modified_on
+                  - name
+                  - script_name
+                  - version_id
+      x-distilled-response-path: result
+      x-distilled-errors:
+        WorkflowInternalError:
+          - code: 10001
+        InvalidRoute:
+          - code: 7003
+    delete:
+      operationId: deleteWorkflow
+      description: Deletes a Workflow. This only deletes the Workflow and does not
+        delete or modify any Worker associated to this Workflow or bounded to
+        it.
+      parameters:
+        - name: workflowName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                      - ok
+                  success:
+                    oneOf:
+                      - type: boolean
+                    nullable: true
+                required:
+                  - status
+      x-distilled-response-path: result
+      x-distilled-errors:
+        WorkflowNotFound:
+          - code: 10200
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/workflows:
+    get:
+      operationId: listWorkflows
+      description: List all Workflows
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: search
+          in: query
+          required: false
+          description: "Query param: Allows filtering workflows` name."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  class_name:
+                    type: string
+                  created_on:
+                    type: string
+                  instances:
+                    type: object
+                    properties:
+                      complete:
+                        type: number
+                      errored:
+                        type: number
+                      paused:
+                        type: number
+                      queued:
+                        type: number
+                      running:
+                        type: number
+                      terminated:
+                        type: number
+                      waiting:
+                        type: number
+                      waitingForPause:
+                        type: number
+                  modified_on:
+                    type: string
+                  name:
+                    type: string
+                  script_name:
+                    type: string
+                  triggered_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                required:
+                  - id
+                  - class_name
+                  - created_on
+                  - instances
+                  - modified_on
+                  - name
+                  - script_name
+                  - triggered_on
+      x-distilled-pagination-class: WorkflowListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003

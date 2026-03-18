@@ -378,7 +378,21 @@ export interface PropertyInfo {
   wireKey?: string;
 }
 
+export interface ErrorMatcherInfo {
+  code?: number;
+  status?: number;
+  message?: string | { includes: string };
+}
+
+export interface OperationErrorInfo {
+  tag: string;
+  matchers: ErrorMatcherInfo[];
+}
+
 export interface ParsedOperation {
+  /** Source used to discover this operation */
+  source: "ast" | "openapi";
+
   // =========================================================================
   // Computed identifiers (resolved in parse.ts)
   // =========================================================================
@@ -395,9 +409,18 @@ export interface ParsedOperation {
   // =========================================================================
   // From method signature
   // =========================================================================
-  methodName: string; // e.g., "create", "list", "get"
-  resourcePath: string[]; // e.g., ["r2", "buckets"]
-  className: string; // e.g., "Buckets"
+  /** e.g., "create", "list", "get" */
+  methodName: string;
+  /**
+   * Resource path used for AST naming/discovery. OpenAPI-derived operations can
+   * provide a synthetic path like ["containers"].
+   */
+  resourcePath: string[];
+  /**
+   * Resource class name used for AST naming/discovery. OpenAPI-derived
+   * operations can provide a synthetic class name.
+   */
+  className: string;
 
   // =========================================================================
   // From method body
@@ -413,6 +436,11 @@ export interface ParsedOperation {
   paginationClassName?: string;
   /** Response payload path explicitly unwrapped by the upstream SDK, e.g. "result" */
   responsePath?: string;
+  summary?: string;
+  description?: string;
+  successStatus?: string;
+  successDescription?: string;
+  errors?: OperationErrorInfo[];
 
   // =========================================================================
   // From params interface
@@ -425,20 +453,25 @@ export interface ParsedOperation {
   // =========================================================================
   // Response type
   // =========================================================================
+  /** For AST operations this is often a named type reference; for OpenAPI it can be fully resolved. */
   responseType: TypeInfo;
-  responseTypeName?: string; // Original type name from SDK
+  /** Original type name from the upstream SDK when available */
+  responseTypeName?: string;
 
   // =========================================================================
   // Source info
   // =========================================================================
   sourceFile: string;
 
-  // Type registry for this source file
-  registry: TypeRegistry;
+  /** Type registry for AST-derived operations */
+  registry?: TypeRegistry;
 }
 
 export interface ServiceInfo {
   name: string;
+  title?: string;
+  version?: string;
+  description?: string;
   operations: ParsedOperation[];
 }
 

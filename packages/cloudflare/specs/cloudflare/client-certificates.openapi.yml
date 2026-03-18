@@ -1,0 +1,531 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare CLIENT-CERTIFICATES API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: client-certificates
+paths:
+  /zones/{zone_id}/client_certificates/{clientCertificateId}:
+    get:
+      operationId: getClientCertificate
+      description: "Get Details for a single mTLS API Shield Client
+        Certificate  @example ```ts const clientCertificate = await
+        client.clientCertificates.get( '023e105f4ecef8ad9ca31a8372d0c353', {
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: clientCertificateId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  certificate:
+                    type: string
+                    description: The Client Certificate PEM
+                  certificate_authority:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                    description: Certificate Authority used to issue the Client Certificate
+                  common_name:
+                    type: string
+                    description: Common Name of the Client Certificate
+                  country:
+                    type: string
+                    description: Country, provided by the CSR
+                  csr:
+                    type: string
+                    description: The Certificate Signing Request (CSR). Must be newline-encoded.
+                  expires_on:
+                    type: string
+                    description: Date that the Client Certificate expires
+                  fingerprint_sha256:
+                    type: string
+                    description: Unique identifier of the Client Certificate
+                  issued_on:
+                    type: string
+                    description: Date that the Client Certificate was issued by the Certificate
+                      Authority
+                  location:
+                    type: string
+                    description: Location, provided by the CSR
+                  organization:
+                    type: string
+                    description: Organization, provided by the CSR
+                  organizational_unit:
+                    type: string
+                    description: Organizational Unit, provided by the CSR
+                  serial_number:
+                    type: string
+                    description: The serial number on the created Client Certificate.
+                  signature:
+                    type: string
+                    description: The type of hash used for the Client Certificate..
+                  ski:
+                    type: string
+                    description: Subject Key Identifier
+                  state:
+                    type: string
+                    description: State, provided by the CSR
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - pending_reactivation
+                      - pending_revocation
+                      - revoked
+                    description: Client Certificates may be active or revoked, and the
+                      pending_reactivation or pending_revocation represent
+                      in-progress asynchronous transitions
+                  validity_days:
+                    type: number
+                    description: The number of days the Client Certificate will be valid after the
+                      issued_on date
+      x-distilled-response-path: result
+    patch:
+      operationId: patchClientCertificate
+      description: "If a API Shield mTLS Client Certificate is in a pending_revocation
+        state, you may reactivate it with this endpoint.  @example ```ts const
+        clientCertificate = await client.clientCertificates.edit(
+        '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: clientCertificateId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reactivate:
+                  type: boolean
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  certificate:
+                    type: string
+                    description: The Client Certificate PEM
+                  certificate_authority:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                    description: Certificate Authority used to issue the Client Certificate
+                  common_name:
+                    type: string
+                    description: Common Name of the Client Certificate
+                  country:
+                    type: string
+                    description: Country, provided by the CSR
+                  csr:
+                    type: string
+                    description: The Certificate Signing Request (CSR). Must be newline-encoded.
+                  expires_on:
+                    type: string
+                    description: Date that the Client Certificate expires
+                  fingerprint_sha256:
+                    type: string
+                    description: Unique identifier of the Client Certificate
+                  issued_on:
+                    type: string
+                    description: Date that the Client Certificate was issued by the Certificate
+                      Authority
+                  location:
+                    type: string
+                    description: Location, provided by the CSR
+                  organization:
+                    type: string
+                    description: Organization, provided by the CSR
+                  organizational_unit:
+                    type: string
+                    description: Organizational Unit, provided by the CSR
+                  serial_number:
+                    type: string
+                    description: The serial number on the created Client Certificate.
+                  signature:
+                    type: string
+                    description: The type of hash used for the Client Certificate..
+                  ski:
+                    type: string
+                    description: Subject Key Identifier
+                  state:
+                    type: string
+                    description: State, provided by the CSR
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - pending_reactivation
+                      - pending_revocation
+                      - revoked
+                    description: Client Certificates may be active or revoked, and the
+                      pending_reactivation or pending_revocation represent
+                      in-progress asynchronous transitions
+                  validity_days:
+                    type: number
+                    description: The number of days the Client Certificate will be valid after the
+                      issued_on date
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteClientCertificate
+      description: "Set a API Shield mTLS Client Certificate to pending_revocation
+        status for processing to revoked status.  @example ```ts const
+        clientCertificate = await client.clientCertificates.delete(
+        '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: clientCertificateId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  certificate:
+                    type: string
+                    description: The Client Certificate PEM
+                  certificate_authority:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                    description: Certificate Authority used to issue the Client Certificate
+                  common_name:
+                    type: string
+                    description: Common Name of the Client Certificate
+                  country:
+                    type: string
+                    description: Country, provided by the CSR
+                  csr:
+                    type: string
+                    description: The Certificate Signing Request (CSR). Must be newline-encoded.
+                  expires_on:
+                    type: string
+                    description: Date that the Client Certificate expires
+                  fingerprint_sha256:
+                    type: string
+                    description: Unique identifier of the Client Certificate
+                  issued_on:
+                    type: string
+                    description: Date that the Client Certificate was issued by the Certificate
+                      Authority
+                  location:
+                    type: string
+                    description: Location, provided by the CSR
+                  organization:
+                    type: string
+                    description: Organization, provided by the CSR
+                  organizational_unit:
+                    type: string
+                    description: Organizational Unit, provided by the CSR
+                  serial_number:
+                    type: string
+                    description: The serial number on the created Client Certificate.
+                  signature:
+                    type: string
+                    description: The type of hash used for the Client Certificate..
+                  ski:
+                    type: string
+                    description: Subject Key Identifier
+                  state:
+                    type: string
+                    description: State, provided by the CSR
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - pending_reactivation
+                      - pending_revocation
+                      - revoked
+                    description: Client Certificates may be active or revoked, and the
+                      pending_reactivation or pending_revocation represent
+                      in-progress asynchronous transitions
+                  validity_days:
+                    type: number
+                    description: The number of days the Client Certificate will be valid after the
+                      issued_on date
+      x-distilled-response-path: result
+  /zones/{zone_id}/client_certificates:
+    get:
+      operationId: listClientCertificates
+      description: "List all of your Zone's API Shield mTLS Client Certificates by
+        Status and/or using Pagination  @example ```ts // Automatically fetches
+        more pages as needed. for await (const clientCertificate of
+        client.clientCertificates.list( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          description: "Query param: Limit to the number of records returned."
+          schema:
+            type: number
+        - name: offset
+          in: query
+          required: false
+          description: "Query param: Offset the results"
+          schema:
+            type: number
+        - name: status
+          in: query
+          required: false
+          description: "Query param: Client Certitifcate Status to filter results by."
+          schema:
+            type: string
+            enum:
+              - all
+              - active
+              - pending_reactivation
+              - pending_revocation
+              - revoked
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  certificate:
+                    type: string
+                    description: The Client Certificate PEM
+                  certificate_authority:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                    description: Certificate Authority used to issue the Client Certificate
+                  common_name:
+                    type: string
+                    description: Common Name of the Client Certificate
+                  country:
+                    type: string
+                    description: Country, provided by the CSR
+                  csr:
+                    type: string
+                    description: The Certificate Signing Request (CSR). Must be newline-encoded.
+                  expires_on:
+                    type: string
+                    description: Date that the Client Certificate expires
+                  fingerprint_sha256:
+                    type: string
+                    description: Unique identifier of the Client Certificate
+                  issued_on:
+                    type: string
+                    description: Date that the Client Certificate was issued by the Certificate
+                      Authority
+                  location:
+                    type: string
+                    description: Location, provided by the CSR
+                  organization:
+                    type: string
+                    description: Organization, provided by the CSR
+                  organizational_unit:
+                    type: string
+                    description: Organizational Unit, provided by the CSR
+                  serial_number:
+                    type: string
+                    description: The serial number on the created Client Certificate.
+                  signature:
+                    type: string
+                    description: The type of hash used for the Client Certificate..
+                  ski:
+                    type: string
+                    description: Subject Key Identifier
+                  state:
+                    type: string
+                    description: State, provided by the CSR
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - pending_reactivation
+                      - pending_revocation
+                      - revoked
+                    description: Client Certificates may be active or revoked, and the
+                      pending_reactivation or pending_revocation represent
+                      in-progress asynchronous transitions
+                  validity_days:
+                    type: number
+                    description: The number of days the Client Certificate will be valid after the
+                      issued_on date
+      x-distilled-pagination-class: ClientCertificatesV4PagePaginationArray
+    post:
+      operationId: createClientCertificate
+      description: "Create a new API Shield mTLS Client Certificate  @example ```ts
+        const clientCertificate = await client.clientCertificates.create({
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353', csr: '-----BEGIN
+        CERTIFICATE REQUEST-----\\\\nMIICY....\\\\n-----END CERTIFICATE
+        REQUEST-----\\\\n', validity_days: 3650, }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                csr:
+                  type: string
+                  description: "Body param: The Certificate Signing Request (CSR). Must be
+                    newline-encoded."
+                validity_days:
+                  type: number
+                  description: "Body param: The number of days the Client Certificate will be
+                    valid after the issued_on date"
+              required:
+                - csr
+                - validity_days
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  certificate:
+                    type: string
+                    description: The Client Certificate PEM
+                  certificate_authority:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                    description: Certificate Authority used to issue the Client Certificate
+                  common_name:
+                    type: string
+                    description: Common Name of the Client Certificate
+                  country:
+                    type: string
+                    description: Country, provided by the CSR
+                  csr:
+                    type: string
+                    description: The Certificate Signing Request (CSR). Must be newline-encoded.
+                  expires_on:
+                    type: string
+                    description: Date that the Client Certificate expires
+                  fingerprint_sha256:
+                    type: string
+                    description: Unique identifier of the Client Certificate
+                  issued_on:
+                    type: string
+                    description: Date that the Client Certificate was issued by the Certificate
+                      Authority
+                  location:
+                    type: string
+                    description: Location, provided by the CSR
+                  organization:
+                    type: string
+                    description: Organization, provided by the CSR
+                  organizational_unit:
+                    type: string
+                    description: Organizational Unit, provided by the CSR
+                  serial_number:
+                    type: string
+                    description: The serial number on the created Client Certificate.
+                  signature:
+                    type: string
+                    description: The type of hash used for the Client Certificate..
+                  ski:
+                    type: string
+                    description: Subject Key Identifier
+                  state:
+                    type: string
+                    description: State, provided by the CSR
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - pending_reactivation
+                      - pending_revocation
+                      - revoked
+                    description: Client Certificates may be active or revoked, and the
+                      pending_reactivation or pending_revocation represent
+                      in-progress asynchronous transitions
+                  validity_days:
+                    type: number
+                    description: The number of days the Client Certificate will be valid after the
+                      issued_on date
+      x-distilled-response-path: result

@@ -1,0 +1,245 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare REGISTRAR API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: registrar
+paths:
+  /accounts/{account_id}/registrar/domains/{domainName}:
+    get:
+      operationId: getDomain
+      description: "Show individual domain.  @example ```ts const domain = await
+        client.registrar.domains.get( 'cloudflare.com', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: domainName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+    put:
+      operationId: putDomain
+      description: "Update individual domain.  @example ```ts const domain = await
+        client.registrar.domains.update( 'cloudflare.com', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: domainName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                auto_renew:
+                  type: boolean
+                  description: "Body param: Auto-renew controls whether subscription is
+                    automatically renewed upon domain expiration."
+                locked:
+                  type: boolean
+                  description: "Body param: Shows whether a registrar lock is in place for a
+                    domain."
+                privacy:
+                  type: boolean
+                  description: "Body param: Privacy option controls redacting WHOIS information."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+  /accounts/{account_id}/registrar/domains:
+    get:
+      operationId: listDomains
+      description: "List domains handled by Registrar.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const domain of
+        client.registrar.domains.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', })) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Domain identifier.
+                  available:
+                    type: boolean
+                    description: Shows if a domain is available for transferring into Cloudflare
+                      Registrar.
+                  can_register:
+                    type: boolean
+                    description: Indicates if the domain can be registered as a new domain.
+                  created_at:
+                    type: string
+                    description: Shows time of creation.
+                  current_registrar:
+                    type: string
+                    description: Shows name of current registrar.
+                  expires_at:
+                    type: string
+                    description: Shows when domain name registration expires.
+                  locked:
+                    type: boolean
+                    description: Shows whether a registrar lock is in place for a domain.
+                  registrant_contact:
+                    type: object
+                    properties:
+                      address:
+                        type: string
+                        description: Address.
+                      city:
+                        type: string
+                        description: City.
+                      country:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: The country in which the user lives.
+                      first_name:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: User's first name
+                      last_name:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: User's last name
+                      organization:
+                        type: string
+                        description: Name of organization.
+                      phone:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: User's telephone number
+                      state:
+                        type: string
+                        description: State.
+                      zip:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: The zipcode or postal code where the user lives.
+                      id:
+                        type: string
+                        description: Contact Identifier.
+                      address2:
+                        type: string
+                        description: Optional address line for unit, floor, suite, etc.
+                      email:
+                        type: string
+                        description: The contact email address of the user.
+                      fax:
+                        type: string
+                        description: Contact fax number.
+                    required:
+                      - address
+                      - city
+                      - country
+                      - first_name
+                      - last_name
+                      - organization
+                      - phone
+                      - state
+                      - zip
+                    description: Shows contact information for domain registrant.
+                  registry_statuses:
+                    type: string
+                    description: A comma-separated list of registry status codes. A full list of
+                      status codes can be found at [EPP Status
+                      Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
+                  supported_tld:
+                    type: boolean
+                    description: Whether a particular TLD is currently supported by Cloudflare
+                      Registrar. Refer to [TLD
+                      Policies](https://www.cloudflare.com/tld-policies/) for a
+                      list of supported TLDs.
+                  transfer_in:
+                    type: object
+                    properties:
+                      accept_foa:
+                        type: string
+                        enum:
+                          - needed
+                          - ok
+                        description: Form of authorization has been accepted by the registrant.
+                      approve_transfer:
+                        type: string
+                        enum:
+                          - needed
+                          - ok
+                          - pending
+                          - trying
+                          - rejected
+                          - unknown
+                        description: Shows transfer status with the registry.
+                      can_cancel_transfer:
+                        type: boolean
+                        description: Indicates if cancellation is still possible.
+                      disable_privacy:
+                        type: string
+                        enum:
+                          - needed
+                          - ok
+                          - unknown
+                        description: Privacy guards are disabled at the foreign registrar.
+                      enter_auth_code:
+                        type: string
+                        enum:
+                          - needed
+                          - ok
+                          - pending
+                          - trying
+                          - rejected
+                        description: Auth code has been entered and verified.
+                      unlock_domain:
+                        type: string
+                        enum:
+                          - needed
+                          - ok
+                          - pending
+                          - trying
+                          - unknown
+                        description: Domain is unlocked at the foreign registrar.
+                    description: Statuses for domain transfers into Cloudflare Registrar.
+                  updated_at:
+                    type: string
+                    description: Last updated.
+      x-distilled-pagination-class: DomainsSinglePage

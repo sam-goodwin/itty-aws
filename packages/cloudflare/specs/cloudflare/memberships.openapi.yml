@@ -1,0 +1,460 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare MEMBERSHIPS API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: memberships
+paths:
+  /memberships/{membershipId}:
+    get:
+      operationId: getMembership
+      description: Get a specific membership.  @example ```ts const membership = await
+        client.memberships.get( '4536bcfad5faccb111b47003c79917fa', ); ```
+      parameters:
+        - name: membershipId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Membership identifier tag.
+                  account:
+                    type: object
+                    additionalProperties: true
+                  api_access_enabled:
+                    oneOf:
+                      - type: boolean
+                    nullable: true
+                    description: Enterprise only. Indicates whether or not API access is enabled
+                      specifically for this user on a given account.
+                  permissions:
+                    type: object
+                    properties:
+                      analytics:
+                        type: object
+                        additionalProperties: true
+                      billing:
+                        type: object
+                        additionalProperties: true
+                      cache_purge:
+                        type: object
+                        additionalProperties: true
+                      dns:
+                        type: object
+                        additionalProperties: true
+                      dns_records:
+                        type: object
+                        additionalProperties: true
+                      lb:
+                        type: object
+                        additionalProperties: true
+                      logs:
+                        type: object
+                        additionalProperties: true
+                      organization:
+                        type: object
+                        additionalProperties: true
+                      ssl:
+                        type: object
+                        additionalProperties: true
+                      waf:
+                        type: object
+                        additionalProperties: true
+                      zone_settings:
+                        type: object
+                        additionalProperties: true
+                      zones:
+                        type: object
+                        additionalProperties: true
+                    description: All access permissions for the user at the account.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        access:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the permission group.
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the permission group.
+                              name:
+                                type: string
+                                description: Name of the permission group.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resource_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the resource group.
+                              scope:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    key:
+                                      type: string
+                                      description: This is a combination of pre-defined resource name and identifier
+                                        (like Account ID etc.)
+                                    objects:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          key:
+                                            type: string
+                                            description: This is a combination of pre-defined resource name and identifier
+                                              (like Zone ID etc.)
+                                        required:
+                                          - key
+                                      description: A list of scope objects for additional context.
+                                  required:
+                                    - key
+                                    - objects
+                                description: The scope associated to the resource group
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the resource group.
+                              name:
+                                type: string
+                                description: Name of the resource group.
+                            required:
+                              - id
+                              - scope
+                          description: A list of resource groups that the policy applies to.
+                    description: Access policy for the membership
+                  roles:
+                    type: array
+                    items:
+                      type: string
+                    description: List of role names the membership has for this account.
+                  status:
+                    type: string
+                    enum:
+                      - accepted
+                      - pending
+                      - rejected
+                    description: Status of this membership.
+      x-distilled-response-path: result
+    put:
+      operationId: putMembership
+      description: "Accept or reject this account invitation.  @example ```ts const
+        membership = await client.memberships.update(
+        '4536bcfad5faccb111b47003c79917fa', { status: 'accepted' }, ); ```"
+      parameters:
+        - name: membershipId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum:
+                    - accepted
+                    - rejected
+                  description: Whether to accept or reject this account invitation.
+              required:
+                - status
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Membership identifier tag.
+                  account:
+                    type: object
+                    additionalProperties: true
+                  api_access_enabled:
+                    oneOf:
+                      - type: boolean
+                    nullable: true
+                    description: Enterprise only. Indicates whether or not API access is enabled
+                      specifically for this user on a given account.
+                  permissions:
+                    type: object
+                    properties:
+                      analytics:
+                        type: object
+                        additionalProperties: true
+                      billing:
+                        type: object
+                        additionalProperties: true
+                      cache_purge:
+                        type: object
+                        additionalProperties: true
+                      dns:
+                        type: object
+                        additionalProperties: true
+                      dns_records:
+                        type: object
+                        additionalProperties: true
+                      lb:
+                        type: object
+                        additionalProperties: true
+                      logs:
+                        type: object
+                        additionalProperties: true
+                      organization:
+                        type: object
+                        additionalProperties: true
+                      ssl:
+                        type: object
+                        additionalProperties: true
+                      waf:
+                        type: object
+                        additionalProperties: true
+                      zone_settings:
+                        type: object
+                        additionalProperties: true
+                      zones:
+                        type: object
+                        additionalProperties: true
+                    description: All access permissions for the user at the account.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        access:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the permission group.
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the permission group.
+                              name:
+                                type: string
+                                description: Name of the permission group.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resource_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the resource group.
+                              scope:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    key:
+                                      type: string
+                                      description: This is a combination of pre-defined resource name and identifier
+                                        (like Account ID etc.)
+                                    objects:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          key:
+                                            type: string
+                                            description: This is a combination of pre-defined resource name and identifier
+                                              (like Zone ID etc.)
+                                        required:
+                                          - key
+                                      description: A list of scope objects for additional context.
+                                  required:
+                                    - key
+                                    - objects
+                                description: The scope associated to the resource group
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the resource group.
+                              name:
+                                type: string
+                                description: Name of the resource group.
+                            required:
+                              - id
+                              - scope
+                          description: A list of resource groups that the policy applies to.
+                    description: Access policy for the membership
+                  roles:
+                    type: array
+                    items:
+                      type: string
+                    description: List of role names the membership has for this account.
+                  status:
+                    type: string
+                    enum:
+                      - accepted
+                      - pending
+                      - rejected
+                    description: Status of this membership.
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteMembership
+      description: Remove the associated member from an account.  @example ```ts const
+        membership = await client.memberships.delete(
+        '4536bcfad5faccb111b47003c79917fa', ); ```
+      parameters:
+        - name: membershipId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Membership identifier tag.
+      x-distilled-response-path: result
+  /memberships:
+    get:
+      operationId: listMemberships
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Membership identifier tag.
+                  account:
+                    type: object
+                    additionalProperties: true
+                  api_access_enabled:
+                    oneOf:
+                      - type: boolean
+                    nullable: true
+                    description: Enterprise only. Indicates whether or not API access is enabled
+                      specifically for this user on a given account.
+                  permissions:
+                    type: object
+                    properties:
+                      analytics:
+                        type: object
+                        additionalProperties: true
+                      billing:
+                        type: object
+                        additionalProperties: true
+                      cache_purge:
+                        type: object
+                        additionalProperties: true
+                      dns:
+                        type: object
+                        additionalProperties: true
+                      dns_records:
+                        type: object
+                        additionalProperties: true
+                      lb:
+                        type: object
+                        additionalProperties: true
+                      logs:
+                        type: object
+                        additionalProperties: true
+                      organization:
+                        type: object
+                        additionalProperties: true
+                      ssl:
+                        type: object
+                        additionalProperties: true
+                      waf:
+                        type: object
+                        additionalProperties: true
+                      zone_settings:
+                        type: object
+                        additionalProperties: true
+                      zones:
+                        type: object
+                        additionalProperties: true
+                    description: All access permissions for the user at the account.
+                  roles:
+                    type: array
+                    items:
+                      type: string
+                    description: List of role names the membership has for this account.
+                  status:
+                    type: string
+                    enum:
+                      - accepted
+                      - pending
+                      - rejected
+                    description: Status of this membership.
+      x-distilled-pagination-class: MembershipsV4PagePaginationArray

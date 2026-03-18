@@ -1,0 +1,2263 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare QUEUES API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: queues
+paths:
+  /accounts/{account_id}/queues/{queueId}/consumers/{consumerId}:
+    get:
+      operationId: getConsumer
+      description: "Fetches the consumer for a queue by consumer id  @example ```ts
+        const consumer = await client.queues.consumers.get(
+        '023e105f4ecef8ad9ca31a8372d0c353', '023e105f4ecef8ad9ca31a8372d0c353',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: consumerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: A Resource identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      consumer_id:
+                        type: string
+                        description: A Resource identifier.
+                      created_on:
+                        type: string
+                      queue_id:
+                        type: string
+                        description: A Resource identifier.
+                      script:
+                        type: string
+                        description: Name of a Worker
+                      settings:
+                        type: object
+                        properties:
+                          batch_size:
+                            type: number
+                            description: The maximum number of messages to include in a batch.
+                          max_concurrency:
+                            type: number
+                            description: Maximum number of concurrent consumers that may consume from this
+                              Queue. Set to `null` to automatically opt in to
+                              the platform's maximum (recommended).
+                          max_retries:
+                            type: number
+                            description: The maximum number of retries
+                          max_wait_time_ms:
+                            type: number
+                            description: The number of milliseconds to wait for a batch to fill up before
+                              attempting to deliver it
+                          retry_delay:
+                            type: number
+                            description: The number of seconds to delay before making the message available
+                              for another attempt.
+                      type:
+                        type: string
+                        enum:
+                          - worker
+                  - type: object
+                    properties:
+                      consumer_id:
+                        type: string
+                        description: A Resource identifier.
+                      created_on:
+                        type: string
+                      queue_id:
+                        type: string
+                        description: A Resource identifier.
+                      settings:
+                        type: object
+                        properties:
+                          batch_size:
+                            type: number
+                            description: The maximum number of messages to include in a batch.
+                          max_retries:
+                            type: number
+                            description: The maximum number of retries
+                          retry_delay:
+                            type: number
+                            description: The number of seconds to delay before making the message available
+                              for another attempt.
+                          visibility_timeout_ms:
+                            type: number
+                            description: The number of milliseconds that a message is exclusively leased.
+                              After the timeout, the message becomes available
+                              for another attempt.
+                      type:
+                        type: string
+                        enum:
+                          - http_pull
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRequestBody:
+          - code: 10026
+    put:
+      operationId: updateConsumer
+      description: "Updates the consumer for a queue, or creates one if it does not
+        exist.  @example ```ts const consumer = await
+        client.queues.consumers.update( '023e105f4ecef8ad9ca31a8372d0c353',
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: consumerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: A Resource identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dead_letter_queue:
+                  type: string
+                  description: "Body param:"
+                script_name:
+                  type: string
+                  description: "Body param: Name of a Worker"
+                settings:
+                  type: object
+                  properties:
+                    batch_size:
+                      type: number
+                      description: The maximum number of messages to include in a batch.
+                    max_concurrency:
+                      type: number
+                      description: Maximum number of concurrent consumers that may consume from this
+                        Queue. Set to `null` to automatically opt in to the
+                        platform's maximum (recommended).
+                    max_retries:
+                      type: number
+                      description: The maximum number of retries
+                    max_wait_time_ms:
+                      type: number
+                      description: The number of milliseconds to wait for a batch to fill up before
+                        attempting to deliver it
+                    retry_delay:
+                      type: number
+                      description: The number of seconds to delay before making the message available
+                        for another attempt.
+                  description: "Body param:"
+                type:
+                  type: string
+                  enum:
+                    - worker
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      consumer_id:
+                        type: string
+                        description: A Resource identifier.
+                      created_on:
+                        type: string
+                      queue_id:
+                        type: string
+                        description: A Resource identifier.
+                      script:
+                        type: string
+                        description: Name of a Worker
+                      settings:
+                        type: object
+                        properties:
+                          batch_size:
+                            type: number
+                            description: The maximum number of messages to include in a batch.
+                          max_concurrency:
+                            type: number
+                            description: Maximum number of concurrent consumers that may consume from this
+                              Queue. Set to `null` to automatically opt in to
+                              the platform's maximum (recommended).
+                          max_retries:
+                            type: number
+                            description: The maximum number of retries
+                          max_wait_time_ms:
+                            type: number
+                            description: The number of milliseconds to wait for a batch to fill up before
+                              attempting to deliver it
+                          retry_delay:
+                            type: number
+                            description: The number of seconds to delay before making the message available
+                              for another attempt.
+                      type:
+                        type: string
+                        enum:
+                          - worker
+                  - type: object
+                    properties:
+                      consumer_id:
+                        type: string
+                        description: A Resource identifier.
+                      created_on:
+                        type: string
+                      queue_id:
+                        type: string
+                        description: A Resource identifier.
+                      settings:
+                        type: object
+                        properties:
+                          batch_size:
+                            type: number
+                            description: The maximum number of messages to include in a batch.
+                          max_retries:
+                            type: number
+                            description: The maximum number of retries
+                          retry_delay:
+                            type: number
+                            description: The number of seconds to delay before making the message available
+                              for another attempt.
+                          visibility_timeout_ms:
+                            type: number
+                            description: The number of milliseconds that a message is exclusively leased.
+                              After the timeout, the message becomes available
+                              for another attempt.
+                      type:
+                        type: string
+                        enum:
+                          - http_pull
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRequestBody:
+          - code: 10026
+    delete:
+      operationId: deleteConsumer
+      description: "Deletes the consumer for a queue.  @example ```ts const consumer =
+        await client.queues.consumers.delete(
+        '023e105f4ecef8ad9ca31a8372d0c353', '023e105f4ecef8ad9ca31a8372d0c353',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: consumerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: A Resource identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Indicates if the API call was successful or not.
+      x-distilled-errors:
+        InvalidRequestBody:
+          - code: 10026
+  /accounts/{account_id}/queues/{queueId}/consumers:
+    get:
+      operationId: listConsumers
+      description: "Returns the consumers for a Queue  @example ```ts // Automatically
+        fetches more pages as needed. for await (const consumer of
+        client.queues.consumers.list( '023e105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: A Resource identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      consumer_id:
+                        type: string
+                        description: A Resource identifier.
+                      created_on:
+                        type: string
+                      queue_id:
+                        type: string
+                        description: A Resource identifier.
+                      script:
+                        type: string
+                        description: Name of a Worker
+                      settings:
+                        type: object
+                        properties:
+                          batch_size:
+                            type: number
+                            description: The maximum number of messages to include in a batch.
+                          max_concurrency:
+                            type: number
+                            description: Maximum number of concurrent consumers that may consume from this
+                              Queue. Set to `null` to automatically opt in to
+                              the platform's maximum (recommended).
+                          max_retries:
+                            type: number
+                            description: The maximum number of retries
+                          max_wait_time_ms:
+                            type: number
+                            description: The number of milliseconds to wait for a batch to fill up before
+                              attempting to deliver it
+                          retry_delay:
+                            type: number
+                            description: The number of seconds to delay before making the message available
+                              for another attempt.
+                      type:
+                        type: string
+                        enum:
+                          - worker
+                  - type: object
+                    properties:
+                      consumer_id:
+                        type: string
+                        description: A Resource identifier.
+                      created_on:
+                        type: string
+                      queue_id:
+                        type: string
+                        description: A Resource identifier.
+                      settings:
+                        type: object
+                        properties:
+                          batch_size:
+                            type: number
+                            description: The maximum number of messages to include in a batch.
+                          max_retries:
+                            type: number
+                            description: The maximum number of retries
+                          retry_delay:
+                            type: number
+                            description: The number of seconds to delay before making the message available
+                              for another attempt.
+                          visibility_timeout_ms:
+                            type: number
+                            description: The number of milliseconds that a message is exclusively leased.
+                              After the timeout, the message becomes available
+                              for another attempt.
+                      type:
+                        type: string
+                        enum:
+                          - http_pull
+      x-distilled-pagination-class: ConsumersSinglePage
+      x-distilled-errors:
+        InvalidRequestBody:
+          - code: 10026
+    post:
+      operationId: createConsumer
+      description: "Creates a new consumer for a Queue  @example ```ts const consumer
+        = await client.queues.consumers.create(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: A Resource identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dead_letter_queue:
+                  type: string
+                  description: "Body param:"
+                script_name:
+                  type: string
+                  description: "Body param: Name of a Worker"
+                settings:
+                  type: object
+                  properties:
+                    batch_size:
+                      type: number
+                      description: The maximum number of messages to include in a batch.
+                    max_concurrency:
+                      type: number
+                      description: Maximum number of concurrent consumers that may consume from this
+                        Queue. Set to `null` to automatically opt in to the
+                        platform's maximum (recommended).
+                    max_retries:
+                      type: number
+                      description: The maximum number of retries
+                    max_wait_time_ms:
+                      type: number
+                      description: The number of milliseconds to wait for a batch to fill up before
+                        attempting to deliver it
+                    retry_delay:
+                      type: number
+                      description: The number of seconds to delay before making the message available
+                        for another attempt.
+                  description: "Body param:"
+                type:
+                  type: string
+                  enum:
+                    - worker
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      consumer_id:
+                        type: string
+                        description: A Resource identifier.
+                      created_on:
+                        type: string
+                      queue_id:
+                        type: string
+                        description: A Resource identifier.
+                      script:
+                        type: string
+                        description: Name of a Worker
+                      settings:
+                        type: object
+                        properties:
+                          batch_size:
+                            type: number
+                            description: The maximum number of messages to include in a batch.
+                          max_concurrency:
+                            type: number
+                            description: Maximum number of concurrent consumers that may consume from this
+                              Queue. Set to `null` to automatically opt in to
+                              the platform's maximum (recommended).
+                          max_retries:
+                            type: number
+                            description: The maximum number of retries
+                          max_wait_time_ms:
+                            type: number
+                            description: The number of milliseconds to wait for a batch to fill up before
+                              attempting to deliver it
+                          retry_delay:
+                            type: number
+                            description: The number of seconds to delay before making the message available
+                              for another attempt.
+                      type:
+                        type: string
+                        enum:
+                          - worker
+                  - type: object
+                    properties:
+                      consumer_id:
+                        type: string
+                        description: A Resource identifier.
+                      created_on:
+                        type: string
+                      queue_id:
+                        type: string
+                        description: A Resource identifier.
+                      settings:
+                        type: object
+                        properties:
+                          batch_size:
+                            type: number
+                            description: The maximum number of messages to include in a batch.
+                          max_retries:
+                            type: number
+                            description: The maximum number of retries
+                          retry_delay:
+                            type: number
+                            description: The number of seconds to delay before making the message available
+                              for another attempt.
+                          visibility_timeout_ms:
+                            type: number
+                            description: The number of milliseconds that a message is exclusively leased.
+                              After the timeout, the message becomes available
+                              for another attempt.
+                      type:
+                        type: string
+                        enum:
+                          - http_pull
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRequestBody:
+          - code: 10026
+  /accounts/{account_id}/queues/{queueId}/messages/batch:
+    post:
+      operationId: bulkPushMessages
+      description: "Push a batch of message to a Queue  @example ```ts const response
+        = await client.queues.messages.bulkPush(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: A Resource identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                delay_seconds:
+                  type: number
+                  description: "Body param: The number of seconds to wait for attempting to
+                    deliver this batch to consumers"
+                messages:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: object
+                        properties:
+                          body:
+                            type: string
+                          content_type:
+                            type: string
+                            enum:
+                              - text
+                          delay_seconds:
+                            type: number
+                            description: The number of seconds to wait for attempting to deliver this
+                              message to consumers
+                      - type: object
+                        properties:
+                          body: {}
+                          content_type:
+                            type: string
+                            enum:
+                              - json
+                          delay_seconds:
+                            type: number
+                            description: The number of seconds to wait for attempting to deliver this
+                              message to consumers
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Indicates if the API call was successful or not.
+      x-distilled-errors:
+        InvalidMessageBody:
+          - code: 10207
+          - code: 10013
+  /accounts/{account_id}/queues/{queueId}/messages/pull:
+    post:
+      operationId: pullMessage
+      description: "Pull a batch of messages from a Queue  @example ```ts const
+        response = await client.queues.messages.pull(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: A Resource identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                batch_size:
+                  type: number
+                  description: "Body param: The maximum number of messages to include in a batch."
+                visibility_timeout_ms:
+                  type: number
+                  description: "Body param: The number of milliseconds that a message is
+                    exclusively leased. After the timeout, the message becomes
+                    available for another attempt."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message_backlog_count:
+                    type: number
+                    description: The number of unacknowledged messages in the queue
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        attempts:
+                          type: number
+                        body:
+                          type: string
+                        lease_id:
+                          type: string
+                          description: An ID that represents an "in-flight" message that has been pulled
+                            from a Queue. You must hold on to this ID and use it
+                            to acknowledge this message.
+                        metadata: {}
+                        timestamp_ms:
+                          type: number
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRequestBody:
+          - code: 10026
+  /accounts/{account_id}/queues/{queueId}/messages:
+    post:
+      operationId: pushMessage
+      description: "Push a message to a Queue  @example ```ts const response = await
+        client.queues.messages.push( '023e105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: A Resource identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: string
+                  description: "Body param:"
+                content_type:
+                  type: string
+                  enum:
+                    - text
+                  description: "Body param:"
+                delay_seconds:
+                  type: number
+                  description: "Body param: The number of seconds to wait for attempting to
+                    deliver this message to consumers"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Indicates if the API call was successful or not.
+      x-distilled-errors:
+        InvalidMessageBody:
+          - code: 10207
+  /accounts/{account_id}/queues/{queueId}/messages/ack:
+    post:
+      operationId: ackMessage
+      description: "Acknowledge + Retry messages from a Queue  @example ```ts const
+        response = await client.queues.messages.ack(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: A Resource identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                acks:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      lease_id:
+                        type: string
+                        description: An ID that represents an "in-flight" message that has been pulled
+                          from a Queue. You must hold on to this ID and use it
+                          to acknowledge this message.
+                  description: "Body param:"
+                retries:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      delay_seconds:
+                        type: number
+                        description: The number of seconds to delay before making the message available
+                          for another attempt.
+                      lease_id:
+                        type: string
+                        description: An ID that represents an "in-flight" message that has been pulled
+                          from a Queue. You must hold on to this ID and use it
+                          to acknowledge this message.
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ackCount:
+                    type: number
+                    description: The number of messages that were succesfully acknowledged.
+                  retryCount:
+                    type: number
+                    description: The number of messages that were succesfully retried.
+                  warnings:
+                    type: array
+                    items:
+                      type: string
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRequestBody:
+          - code: 10026
+  /accounts/{account_id}/queues/{queueId}/purge:
+    post:
+      operationId: startPurge
+      description: "Deletes all messages from the Queue.  @example ```ts const queue =
+        await client.queues.purge.start( '023e105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: A Resource identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                delete_messages_permanently:
+                  type: boolean
+                  description: "Body param: Confimation that all messages will be deleted
+                    permanently."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+    get:
+      operationId: statusPurge
+      description: "Get details about a Queue's purge status.  @example ```ts const
+        response = await client.queues.purge.status(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: A Resource identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  completed:
+                    type: string
+                    description: Indicates if the last purge operation completed successfully.
+                  started_at:
+                    type: string
+                    description: Timestamp when the last purge operation started.
+      x-distilled-response-path: result
+  /accounts/{account_id}/queues/{queueId}:
+    get:
+      operationId: getQueue
+      description: "Get details about a specific queue.  @example ```ts const queue =
+        await client.queues.get( '023e105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: A Resource identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  consumers:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          additionalProperties: true
+                        - type: object
+                          additionalProperties: true
+                  consumers_total_count:
+                    type: number
+                  created_on:
+                    type: string
+                  modified_on:
+                    type: string
+                  producers:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            script:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - worker
+                        - type: object
+                          properties:
+                            bucket_name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - r2_bucket
+                  producers_total_count:
+                    type: number
+                  queue_id:
+                    type: string
+                  queue_name:
+                    type: string
+                  settings:
+                    type: object
+                    properties:
+                      delivery_delay:
+                        type: number
+                        description: Number of seconds to delay delivery of all messages to consumers.
+                      delivery_paused:
+                        type: boolean
+                        description: Indicates if message delivery to consumers is currently paused.
+                      message_retention_period:
+                        type: number
+                        description: Number of seconds after which an unconsumed message will be
+                          delayed.
+      x-distilled-response-path: result
+    put:
+      operationId: updateQueue
+      description: "Updates a Queue. Note that this endpoint does not support partial
+        updates. If successful, the Queue's configuration is overwritten with
+        the supplied configuration.  @example ```ts const queue = await
+        client.queues.update( '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: A Resource identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                queue_name:
+                  type: string
+                  description: "Body param:"
+                settings:
+                  type: object
+                  properties:
+                    delivery_delay:
+                      type: number
+                      description: Number of seconds to delay delivery of all messages to consumers.
+                    delivery_paused:
+                      type: boolean
+                      description: Indicates if message delivery to consumers is currently paused.
+                    message_retention_period:
+                      type: number
+                      description: Number of seconds after which an unconsumed message will be
+                        delayed.
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  consumers:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          additionalProperties: true
+                        - type: object
+                          additionalProperties: true
+                  consumers_total_count:
+                    type: number
+                  created_on:
+                    type: string
+                  modified_on:
+                    type: string
+                  producers:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            script:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - worker
+                        - type: object
+                          properties:
+                            bucket_name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - r2_bucket
+                  producers_total_count:
+                    type: number
+                  queue_id:
+                    type: string
+                  queue_name:
+                    type: string
+                  settings:
+                    type: object
+                    properties:
+                      delivery_delay:
+                        type: number
+                        description: Number of seconds to delay delivery of all messages to consumers.
+                      delivery_paused:
+                        type: boolean
+                        description: Indicates if message delivery to consumers is currently paused.
+                      message_retention_period:
+                        type: number
+                        description: Number of seconds after which an unconsumed message will be
+                          delayed.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidQueueName:
+          - code: 11003
+    patch:
+      operationId: patchQueue
+      description: "Updates a Queue.  @example ```ts const queue = await
+        client.queues.edit( '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: A Resource identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                queue_name:
+                  type: string
+                  description: "Body param:"
+                settings:
+                  type: object
+                  properties:
+                    delivery_delay:
+                      type: number
+                      description: Number of seconds to delay delivery of all messages to consumers.
+                    delivery_paused:
+                      type: boolean
+                      description: Indicates if message delivery to consumers is currently paused.
+                    message_retention_period:
+                      type: number
+                      description: Number of seconds after which an unconsumed message will be
+                        delayed.
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  consumers:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          additionalProperties: true
+                        - type: object
+                          additionalProperties: true
+                  consumers_total_count:
+                    type: number
+                  created_on:
+                    type: string
+                  modified_on:
+                    type: string
+                  producers:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            script:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - worker
+                        - type: object
+                          properties:
+                            bucket_name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - r2_bucket
+                  producers_total_count:
+                    type: number
+                  queue_id:
+                    type: string
+                  queue_name:
+                    type: string
+                  settings:
+                    type: object
+                    properties:
+                      delivery_delay:
+                        type: number
+                        description: Number of seconds to delay delivery of all messages to consumers.
+                      delivery_paused:
+                        type: boolean
+                        description: Indicates if message delivery to consumers is currently paused.
+                      message_retention_period:
+                        type: number
+                        description: Number of seconds after which an unconsumed message will be
+                          delayed.
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteQueue
+      description: "Deletes a queue  @example ```ts const queue = await
+        client.queues.delete( '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: queueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: A Resource identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Indicates if the API call was successful or not.
+  /accounts/{account_id}/queues:
+    get:
+      operationId: listQueues
+      description: "Returns the queues owned by an account.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const queue of
+        client.queues.list({ account_id: '023e105f4ecef8ad9ca31a8372d0c353', }))
+        { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: A Resource identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  consumers:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          additionalProperties: true
+                        - type: object
+                          additionalProperties: true
+                  consumers_total_count:
+                    type: number
+                  created_on:
+                    type: string
+                  modified_on:
+                    type: string
+                  producers:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            script:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - worker
+                        - type: object
+                          properties:
+                            bucket_name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - r2_bucket
+                  producers_total_count:
+                    type: number
+                  queue_id:
+                    type: string
+                  queue_name:
+                    type: string
+                  settings:
+                    type: object
+                    properties:
+                      delivery_delay:
+                        type: number
+                        description: Number of seconds to delay delivery of all messages to consumers.
+                      delivery_paused:
+                        type: boolean
+                        description: Indicates if message delivery to consumers is currently paused.
+                      message_retention_period:
+                        type: number
+                        description: Number of seconds after which an unconsumed message will be
+                          delayed.
+      x-distilled-pagination-class: QueuesSinglePage
+    post:
+      operationId: createQueue
+      description: "Create a new queue  @example ```ts const queue = await
+        client.queues.create({ account_id: '023e105f4ecef8ad9ca31a8372d0c353',
+        queue_name: 'example-queue', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: A Resource identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                queue_name:
+                  type: string
+                  description: "Body param:"
+              required:
+                - queue_name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  consumers:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          additionalProperties: true
+                        - type: object
+                          additionalProperties: true
+                  consumers_total_count:
+                    type: number
+                  created_on:
+                    type: string
+                  modified_on:
+                    type: string
+                  producers:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            script:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - worker
+                        - type: object
+                          properties:
+                            bucket_name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - r2_bucket
+                  producers_total_count:
+                    type: number
+                  queue_id:
+                    type: string
+                  queue_name:
+                    type: string
+                  settings:
+                    type: object
+                    properties:
+                      delivery_delay:
+                        type: number
+                        description: Number of seconds to delay delivery of all messages to consumers.
+                      delivery_paused:
+                        type: boolean
+                        description: Indicates if message delivery to consumers is currently paused.
+                      message_retention_period:
+                        type: number
+                        description: Number of seconds after which an unconsumed message will be
+                          delayed.
+      x-distilled-response-path: result
+  /accounts/{account_id}/event_subscriptions/subscriptions/{subscriptionId}:
+    get:
+      operationId: getSubscription
+      description: "Get details about an existing event subscription  @example ```ts
+        const subscription = await client.queues.subscriptions.get(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: A Resource identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the subscription
+                  created_at:
+                    type: string
+                    description: When the subscription was created
+                  destination:
+                    type: object
+                    properties:
+                      queue_id:
+                        type: string
+                        description: ID of the target queue
+                      type:
+                        type: string
+                        enum:
+                          - queues.queue
+                        description: Type of destination
+                    required:
+                      - queue_id
+                      - type
+                    description: Destination configuration for the subscription
+                  enabled:
+                    type: boolean
+                    description: Whether the subscription is active
+                  events:
+                    type: array
+                    items:
+                      type: string
+                    description: List of event types this subscription handles
+                  modified_at:
+                    type: string
+                    description: When the subscription was last modified
+                  name:
+                    type: string
+                    description: Name of the subscription
+                  source:
+                    oneOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - images
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - kv
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - r2
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - superSlurper
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - vectorize
+                            description: Type of source
+                      - type: object
+                        properties:
+                          model_name:
+                            type: string
+                            description: Name of the Workers AI model
+                          type:
+                            type: string
+                            enum:
+                              - workersAi.model
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - workersBuilds.worker
+                            description: Type of source
+                          worker_name:
+                            type: string
+                            description: Name of the worker
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - workflows.workflow
+                            description: Type of source
+                          workflow_name:
+                            type: string
+                            description: Name of the workflow
+                    description: Source configuration for the subscription
+                required:
+                  - id
+                  - created_at
+                  - destination
+                  - enabled
+                  - events
+                  - modified_at
+                  - name
+                  - source
+      x-distilled-response-path: result
+      x-distilled-errors:
+        UnrecognizedEventType:
+          - code: 0
+            message:
+              includes: Unrecognized event types
+    patch:
+      operationId: patchSubscription
+      description: "Update an existing event subscription  @example ```ts const
+        subscription = await client.queues.subscriptions.update(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: A Resource identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                destination:
+                  type: object
+                  properties:
+                    queue_id:
+                      type: string
+                      description: ID of the target queue
+                    type:
+                      type: string
+                      enum:
+                        - queues.queue
+                      description: Type of destination
+                  required:
+                    - queue_id
+                    - type
+                  description: "Body param: Destination configuration for the subscription"
+                enabled:
+                  type: boolean
+                  description: "Body param: Whether the subscription is active"
+                events:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: List of event types this subscription handles"
+                name:
+                  type: string
+                  description: "Body param: Name of the subscription"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the subscription
+                  created_at:
+                    type: string
+                    description: When the subscription was created
+                  destination:
+                    type: object
+                    properties:
+                      queue_id:
+                        type: string
+                        description: ID of the target queue
+                      type:
+                        type: string
+                        enum:
+                          - queues.queue
+                        description: Type of destination
+                    required:
+                      - queue_id
+                      - type
+                    description: Destination configuration for the subscription
+                  enabled:
+                    type: boolean
+                    description: Whether the subscription is active
+                  events:
+                    type: array
+                    items:
+                      type: string
+                    description: List of event types this subscription handles
+                  modified_at:
+                    type: string
+                    description: When the subscription was last modified
+                  name:
+                    type: string
+                    description: Name of the subscription
+                  source:
+                    oneOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - images
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - kv
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - r2
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - superSlurper
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - vectorize
+                            description: Type of source
+                      - type: object
+                        properties:
+                          model_name:
+                            type: string
+                            description: Name of the Workers AI model
+                          type:
+                            type: string
+                            enum:
+                              - workersAi.model
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - workersBuilds.worker
+                            description: Type of source
+                          worker_name:
+                            type: string
+                            description: Name of the worker
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - workflows.workflow
+                            description: Type of source
+                          workflow_name:
+                            type: string
+                            description: Name of the workflow
+                    description: Source configuration for the subscription
+                required:
+                  - id
+                  - created_at
+                  - destination
+                  - enabled
+                  - events
+                  - modified_at
+                  - name
+                  - source
+      x-distilled-response-path: result
+      x-distilled-errors:
+        UnrecognizedEventType:
+          - code: 0
+            message:
+              includes: Unrecognized event types
+    delete:
+      operationId: deleteSubscription
+      description: "Delete an existing event subscription  @example ```ts const
+        subscription = await client.queues.subscriptions.delete(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: A Resource identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the subscription
+                  created_at:
+                    type: string
+                    description: When the subscription was created
+                  destination:
+                    type: object
+                    properties:
+                      queue_id:
+                        type: string
+                        description: ID of the target queue
+                      type:
+                        type: string
+                        enum:
+                          - queues.queue
+                        description: Type of destination
+                    required:
+                      - queue_id
+                      - type
+                    description: Destination configuration for the subscription
+                  enabled:
+                    type: boolean
+                    description: Whether the subscription is active
+                  events:
+                    type: array
+                    items:
+                      type: string
+                    description: List of event types this subscription handles
+                  modified_at:
+                    type: string
+                    description: When the subscription was last modified
+                  name:
+                    type: string
+                    description: Name of the subscription
+                  source:
+                    oneOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - images
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - kv
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - r2
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - superSlurper
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - vectorize
+                            description: Type of source
+                      - type: object
+                        properties:
+                          model_name:
+                            type: string
+                            description: Name of the Workers AI model
+                          type:
+                            type: string
+                            enum:
+                              - workersAi.model
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - workersBuilds.worker
+                            description: Type of source
+                          worker_name:
+                            type: string
+                            description: Name of the worker
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - workflows.workflow
+                            description: Type of source
+                          workflow_name:
+                            type: string
+                            description: Name of the workflow
+                    description: Source configuration for the subscription
+                required:
+                  - id
+                  - created_at
+                  - destination
+                  - enabled
+                  - events
+                  - modified_at
+                  - name
+                  - source
+      x-distilled-response-path: result
+      x-distilled-errors:
+        UnrecognizedEventType:
+          - code: 0
+            message:
+              includes: Unrecognized event types
+  /accounts/{account_id}/event_subscriptions/subscriptions:
+    get:
+      operationId: listSubscriptions
+      description: "Get a paginated list of event subscriptions with optional sorting
+        and filtering  @example ```ts // Automatically fetches more pages as
+        needed. for await (const subscriptionListResponse of
+        client.queues.subscriptions.list( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: A Resource identifier."
+          schema:
+            type: string
+        - name: direction
+          in: query
+          required: false
+          description: "Query param: Sort direction"
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: order
+          in: query
+          required: false
+          description: "Query param: Field to sort by"
+          schema:
+            type: string
+            enum:
+              - created_at
+              - name
+              - enabled
+              - source
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the subscription
+                  created_at:
+                    type: string
+                    description: When the subscription was created
+                  destination:
+                    type: object
+                    properties:
+                      queue_id:
+                        type: string
+                        description: ID of the target queue
+                      type:
+                        type: string
+                        enum:
+                          - queues.queue
+                        description: Type of destination
+                    required:
+                      - queue_id
+                      - type
+                    description: Destination configuration for the subscription
+                  enabled:
+                    type: boolean
+                    description: Whether the subscription is active
+                  events:
+                    type: array
+                    items:
+                      type: string
+                    description: List of event types this subscription handles
+                  modified_at:
+                    type: string
+                    description: When the subscription was last modified
+                  name:
+                    type: string
+                    description: Name of the subscription
+                  source:
+                    oneOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - images
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - kv
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - r2
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - superSlurper
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - vectorize
+                            description: Type of source
+                      - type: object
+                        properties:
+                          model_name:
+                            type: string
+                            description: Name of the Workers AI model
+                          type:
+                            type: string
+                            enum:
+                              - workersAi.model
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - workersBuilds.worker
+                            description: Type of source
+                          worker_name:
+                            type: string
+                            description: Name of the worker
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - workflows.workflow
+                            description: Type of source
+                          workflow_name:
+                            type: string
+                            description: Name of the workflow
+                    description: Source configuration for the subscription
+                required:
+                  - id
+                  - created_at
+                  - destination
+                  - enabled
+                  - events
+                  - modified_at
+                  - name
+                  - source
+      x-distilled-pagination-class: SubscriptionListResponsesV4PagePaginationArray
+    post:
+      operationId: createSubscription
+      description: "Create a new event subscription for a queue  @example ```ts const
+        subscription = await client.queues.subscriptions.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: A Resource identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                destination:
+                  type: object
+                  properties:
+                    queue_id:
+                      type: string
+                      description: ID of the target queue
+                    type:
+                      type: string
+                      enum:
+                        - queues.queue
+                      description: Type of destination
+                  required:
+                    - queue_id
+                    - type
+                  description: "Body param: Destination configuration for the subscription"
+                enabled:
+                  type: boolean
+                  description: "Body param: Whether the subscription is active"
+                events:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: List of event types this subscription handles"
+                name:
+                  type: string
+                  description: "Body param: Name of the subscription"
+                source:
+                  oneOf:
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - images
+                          description: Type of source
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - kv
+                          description: Type of source
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - r2
+                          description: Type of source
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - superSlurper
+                          description: Type of source
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - vectorize
+                          description: Type of source
+                    - type: object
+                      properties:
+                        model_name:
+                          type: string
+                          description: Name of the Workers AI model
+                        type:
+                          type: string
+                          enum:
+                            - workersAi.model
+                          description: Type of source
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - workersBuilds.worker
+                          description: Type of source
+                        worker_name:
+                          type: string
+                          description: Name of the worker
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - workflows.workflow
+                          description: Type of source
+                        workflow_name:
+                          type: string
+                          description: Name of the workflow
+                  description: "Body param: Source configuration for the subscription"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the subscription
+                  created_at:
+                    type: string
+                    description: When the subscription was created
+                  destination:
+                    type: object
+                    properties:
+                      queue_id:
+                        type: string
+                        description: ID of the target queue
+                      type:
+                        type: string
+                        enum:
+                          - queues.queue
+                        description: Type of destination
+                    required:
+                      - queue_id
+                      - type
+                    description: Destination configuration for the subscription
+                  enabled:
+                    type: boolean
+                    description: Whether the subscription is active
+                  events:
+                    type: array
+                    items:
+                      type: string
+                    description: List of event types this subscription handles
+                  modified_at:
+                    type: string
+                    description: When the subscription was last modified
+                  name:
+                    type: string
+                    description: Name of the subscription
+                  source:
+                    oneOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - images
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - kv
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - r2
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - superSlurper
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - vectorize
+                            description: Type of source
+                      - type: object
+                        properties:
+                          model_name:
+                            type: string
+                            description: Name of the Workers AI model
+                          type:
+                            type: string
+                            enum:
+                              - workersAi.model
+                            description: Type of source
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - workersBuilds.worker
+                            description: Type of source
+                          worker_name:
+                            type: string
+                            description: Name of the worker
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - workflows.workflow
+                            description: Type of source
+                          workflow_name:
+                            type: string
+                            description: Name of the workflow
+                    description: Source configuration for the subscription
+                required:
+                  - id
+                  - created_at
+                  - destination
+                  - enabled
+                  - events
+                  - modified_at
+                  - name
+                  - source
+      x-distilled-response-path: result
+      x-distilled-errors:
+        UnrecognizedEventType:
+          - code: 0
+            message:
+              includes: Unrecognized event types

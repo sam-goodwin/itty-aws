@@ -1,0 +1,1728 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare ACCOUNTS API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: accounts
+paths:
+  /accounts/{account_id}:
+    get:
+      operationId: getAccount
+      description: "Get information about a specific account that you are a member
+        of.  @example ```ts const account = await client.accounts.get({
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+                  name:
+                    type: string
+                    description: Account name
+                  type:
+                    type: string
+                    enum:
+                      - standard
+                      - enterprise
+                  created_on:
+                    type: string
+                    description: Timestamp for the creation of the account
+                  managed_by:
+                    type: object
+                    properties:
+                      parent_org_id:
+                        type: string
+                        description: ID of the parent Organization, if one exists
+                      parent_org_name:
+                        type: string
+                        description: Name of the parent Organization, if one exists
+                    description: Parent container details
+                  settings:
+                    type: object
+                    properties:
+                      abuse_contact_email:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: Sets an abuse contact email to notify for abuse reports.
+                      enforce_twofactor:
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                        description: Indicates whether membership in this account requires that
+                          Two-Factor Authentication is enabled
+                    description: Account settings
+                required:
+                  - id
+                  - name
+                  - type
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+    put:
+      operationId: updateAccount
+      description: "Update an existing account.  @example ```ts const account = await
+        client.accounts.update({ account_id: '023e105f4ecef8ad9ca31a8372d0c353',
+        id: '023e105f4ecef8ad9ca31a8372d0c353', name: 'Demo Account', type:
+        'standard', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: "Body param: Identifier"
+                name:
+                  type: string
+                  description: "Body param: Account name"
+                type:
+                  type: string
+                  enum:
+                    - standard
+                    - enterprise
+                  description: "Body param:"
+                managed_by:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param: Parent container details"
+                settings:
+                  type: object
+                  properties:
+                    abuse_contact_email:
+                      type: string
+                      description: Sets an abuse contact email to notify for abuse reports.
+                    enforce_twofactor:
+                      type: boolean
+                      description: Indicates whether membership in this account requires that
+                        Two-Factor Authentication is enabled
+                  description: "Body param: Account settings"
+              required:
+                - id
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+                  name:
+                    type: string
+                    description: Account name
+                  type:
+                    type: string
+                    enum:
+                      - standard
+                      - enterprise
+                  created_on:
+                    type: string
+                    description: Timestamp for the creation of the account
+                  managed_by:
+                    type: object
+                    properties:
+                      parent_org_id:
+                        type: string
+                        description: ID of the parent Organization, if one exists
+                      parent_org_name:
+                        type: string
+                        description: Name of the parent Organization, if one exists
+                    description: Parent container details
+                  settings:
+                    type: object
+                    properties:
+                      abuse_contact_email:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: Sets an abuse contact email to notify for abuse reports.
+                      enforce_twofactor:
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                        description: Indicates whether membership in this account requires that
+                          Two-Factor Authentication is enabled
+                    description: Account settings
+                required:
+                  - id
+                  - name
+                  - type
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidAccountName:
+          - code: 1001
+            message:
+              includes: invalid character
+        AccountNameTooLong:
+          - code: 1001
+            message:
+              includes: too long
+        UpdateAccountTypeNotSupported:
+          - code: 1001
+            message:
+              includes: account type is not supported
+        InvalidRoute:
+          - code: 7003
+        MethodNotAllowed:
+          - code: 7001
+    delete:
+      operationId: deleteAccount
+      description: "Delete a specific account (only available for tenant admins at
+        this time). This is a permanent operation that will delete any zones or
+        other resources under the account  @example ```ts const account = await
+        client.accounts.delete({ account_id: 'account_id', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: The account ID of the account to be deleted
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+                required:
+                  - id
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        MethodNotAllowed:
+          - code: 7001
+  /accounts:
+    get:
+      operationId: listAccounts
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+                  name:
+                    type: string
+                    description: Account name
+                  type:
+                    type: string
+                    enum:
+                      - standard
+                      - enterprise
+                  created_on:
+                    type: string
+                    description: Timestamp for the creation of the account
+                  managed_by:
+                    type: object
+                    properties:
+                      parent_org_id:
+                        type: string
+                        description: ID of the parent Organization, if one exists
+                      parent_org_name:
+                        type: string
+                        description: Name of the parent Organization, if one exists
+                    description: Parent container details
+                  settings:
+                    type: object
+                    properties:
+                      abuse_contact_email:
+                        type: string
+                        description: Sets an abuse contact email to notify for abuse reports.
+                      enforce_twofactor:
+                        type: boolean
+                        description: Indicates whether membership in this account requires that
+                          Two-Factor Authentication is enabled
+                    description: Account settings
+                required:
+                  - id
+                  - name
+                  - type
+      x-distilled-pagination-class: AccountsV4PagePaginationArray
+    post:
+      operationId: createAccount
+      description: "Create an account (only available for tenant admins at this
+        time)  @example ```ts const account = await client.accounts.create({
+        name: 'name', }); ```"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Account name
+                type:
+                  type: string
+                  enum:
+                    - standard
+                    - enterprise
+                unit:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: Tenant unit ID
+                  description: information related to the tenant unit, and optionally, an id of
+                    the unit to create the account on. see
+                    https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+              required:
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+                  name:
+                    type: string
+                    description: Account name
+                  type:
+                    type: string
+                    enum:
+                      - standard
+                      - enterprise
+                  created_on:
+                    type: string
+                    description: Timestamp for the creation of the account
+                  managed_by:
+                    type: object
+                    properties:
+                      parent_org_id:
+                        type: string
+                        description: ID of the parent Organization, if one exists
+                      parent_org_name:
+                        type: string
+                        description: Name of the parent Organization, if one exists
+                    description: Parent container details
+                  settings:
+                    type: object
+                    properties:
+                      abuse_contact_email:
+                        type: string
+                        description: Sets an abuse contact email to notify for abuse reports.
+                      enforce_twofactor:
+                        type: boolean
+                        description: Indicates whether membership in this account requires that
+                          Two-Factor Authentication is enabled
+                    description: Account settings
+                required:
+                  - id
+                  - name
+                  - type
+      x-distilled-response-path: result
+      x-distilled-errors:
+        AccountCreationForbidden:
+          - code: 1002
+        MissingName:
+          - code: 1001
+  /accounts/{account_id}/logs/audit:
+    get:
+      operationId: listLogAudits
+      description: "Gets a list of audit logs for an account. <br /> <br /> This is
+        the beta release of Audit Logs Version 2. Since this is a beta version,
+        there may be gaps or missing entries in the available audit logs. Be
+        aware of the following limitations. <br /> <ul> <li>Audit logs are
+        available only for the past 30 days. <br /></li> <li>Error handling is
+        not yet implemented. <br /> </li> </ul>  @example ```ts // Automatically
+        fetches more pages as needed. for await (const auditListResponse of
+        client.accounts.logs.audit.list( { account_id:
+        'a67e14daa5f8dceeb91fe5449ba496ef', before: '2024-10-31', since:
+        '2024-10-30', }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The unique id that identifies the account."
+          schema:
+            type: string
+        - name: before
+          in: query
+          required: true
+          description: "Query param: Limits the returned results to logs older than the
+            specified date. This can be a date string 2019-04-30 (interpreted in
+            UTC) or an absolute timestamp that conforms to RFC3339."
+          schema:
+            type: string
+        - name: since
+          in: query
+          required: true
+          description: "Query param: Limits the returned results to logs newer than the
+            specified date. This can be a date string 2019-04-30 (interpreted in
+            UTC) or an absolute timestamp that conforms to RFC3339."
+          schema:
+            type: string
+        - name: id
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                description: Filters out audit logs by their IDs.
+        - name: account_name
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                description: Filters out audit logs by the account name.
+        - name: action_result
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                  enum:
+                    - success
+                    - failure
+                description: Filters out audit logs by whether the action was successful or not.
+        - name: action_type
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                  enum:
+                    - create
+                    - delete
+                    - view
+                    - update
+                description: Filters out audit logs by the action type.
+        - name: actor_context
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                  enum:
+                    - api_key
+                    - api_token
+                    - dash
+                    - oauth
+                    - origin_ca_key
+                description: Filters out audit logs by the actor context.
+        - name: actor_email
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                description: Filters out audit logs by the actor's email address.
+        - name: actor_id
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                description: Filters out audit logs by the actor ID. This can be either the
+                  Account ID or User ID.
+        - name: actor_ip_address
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                description: Filters out audit logs IP address where the action was initiated.
+        - name: actor_token_id
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                description: Filters out audit logs by the API token ID when the actor context
+                  is an api_token or oauth.
+        - name: actor_token_name
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                description: Filters out audit logs by the API token name when the actor context
+                  is an api_token or oauth.
+        - name: actor_type
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                  enum:
+                    - account
+                    - cloudflare_admin
+                    - system
+                    - user
+                description: Filters out audit logs by the actor type.
+        - name: audit_log_id
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                description: "@deprecated Filters out audit logs by their IDs."
+        - name: direction
+          in: query
+          required: false
+          description: "Query param: Sets sorting order."
+          schema:
+            type: string
+            enum:
+              - desc
+              - asc
+        - name: limit
+          in: query
+          required: false
+          description: "Query param: The number limits the objects to return. The cursor
+            attribute may be used to iterate over the next batch of objects if
+            there are more than the limit."
+          schema:
+            type: number
+        - name: raw_cf_ray_id
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                description: Filters out audit logs by the response CF Ray ID.
+        - name: raw_method
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                description: Filters out audit logs by the HTTP method for the API call.
+        - name: raw_status_code
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: number
+                description: Filters out audit logs by the response status code that was
+                  returned.
+        - name: raw_uri
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                description: Filters out audit logs by the request URI.
+        - name: resource_id
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                description: Filters out audit logs by the resource ID.
+        - name: resource_product
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                description: Filters out audit logs by the Cloudflare product associated with
+                  the changed resource.
+        - name: resource_scope
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                  enum:
+                    - accounts
+                    - user
+                    - zones
+                description: Filters out audit logs by the resource scope, specifying whether
+                  the resource is associated with an user, an account, or a
+                  zone.
+        - name: resource_type
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                description: Filters out audit logs based on the unique type of resource changed
+                  by the action.
+        - name: zone_id
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                description: Filters out audit logs by the zone ID.
+        - name: zone_name
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              not:
+                type: array
+                items:
+                  type: string
+                description: Filters out audit logs by the zone name associated with the change.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: A unique identifier for the audit log entry.
+                  account:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: A unique identifier for the account.
+                      name:
+                        type: string
+                        description: A string that identifies the account name.
+                    description: Contains account related information.
+                  action:
+                    type: object
+                    properties:
+                      description:
+                        type: string
+                        description: A short description of the action performed.
+                      result:
+                        type: string
+                        description: The result of the action, indicating success or failure.
+                      time:
+                        type: string
+                        description: A timestamp indicating when the action was logged.
+                      type:
+                        type: string
+                        description: A short string that describes the action that was performed.
+                    description: Provides information about the action performed.
+                  actor:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The ID of the actor who performed the action. If a user performed
+                          the action, this will be their User ID.
+                      context:
+                        type: string
+                        enum:
+                          - api_key
+                          - api_token
+                          - dash
+                          - oauth
+                          - origin_ca_key
+                      email:
+                        type: string
+                        description: The email of the actor who performed the action.
+                      ip_address:
+                        type: string
+                        description: The IP address of the request that performed the action.
+                      token_id:
+                        type: string
+                        description: Filters by the API token ID when the actor context is an api_token.
+                      token_name:
+                        type: string
+                        description: Filters by the API token name when the actor context is an
+                          api_token.
+                      type:
+                        type: string
+                        enum:
+                          - account
+                          - cloudflare_admin
+                          - system
+                          - user
+                        description: The type of actor.
+                    description: Provides details about the actor who performed the action.
+                  raw:
+                    type: object
+                    properties:
+                      cf_ray_id:
+                        type: string
+                        description: The Cloudflare Ray ID for the request.
+                      method:
+                        type: string
+                        description: The HTTP method of the request.
+                      status_code:
+                        type: number
+                        description: The HTTP response status code returned by the API.
+                      uri:
+                        type: string
+                        description: The URI of the request.
+                      user_agent:
+                        type: string
+                        description: The client's user agent string sent with the request.
+                    description: Provides raw information about the request and response.
+                  resource:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The unique identifier for the affected resource.
+                      product:
+                        type: string
+                        description: The Cloudflare product associated with the resource.
+                      request: {}
+                      response: {}
+                      scope:
+                        description: The scope of the resource.
+                      type:
+                        type: string
+                        description: The type of the resource.
+                    description: Provides details about the affected resource.
+                  zone:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: A string that identifies the zone id.
+                      name:
+                        type: string
+                        description: A string that identifies the zone name.
+                    description: Provides details about the zone affected by the action.
+      x-distilled-pagination-class: AuditListResponsesCursorPaginationAfter
+  /accounts/{account_id}/members/{memberId}:
+    get:
+      operationId: getMember
+      description: "Get information about a specific member of an account.  @example
+        ```ts const member = await client.accounts.members.get(
+        '4536bcfad5faccb111b47003c79917fa', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: memberId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        MemberNotFound:
+          - code: 1003
+        InvalidRoute:
+          - code: 7003
+    put:
+      operationId: updateMember
+      description: "Modify an account member.  @example ```ts const member = await
+        client.accounts.members.update( '4536bcfad5faccb111b47003c79917fa', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: memberId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                roles:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+                  description: "Body param: Roles assigned to this member."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        MemberNotFound:
+          - code: 1003
+        InvalidRoute:
+          - code: 7003
+        BadRequest:
+          - code: 400
+        MethodNotAllowed:
+          - code: 10000
+          - code: 10405
+    delete:
+      operationId: deleteMember
+      description: "Remove a member from an account.  @example ```ts const member =
+        await client.accounts.members.delete(
+        '4536bcfad5faccb111b47003c79917fa', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: memberId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+                required:
+                  - id
+      x-distilled-response-path: result
+      x-distilled-errors:
+        MemberNotFound:
+          - code: 1003
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/members:
+    get:
+      operationId: listMembers
+      description: "List all members of an account.  @example ```ts // Automatically
+        fetches more pages as needed. for await (const member of
+        client.accounts.members.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', })) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+        - name: direction
+          in: query
+          required: false
+          description: "Query param: Direction to order results."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: order
+          in: query
+          required: false
+          description: "Query param: Field to order results by."
+          schema:
+            type: string
+            enum:
+              - user.first_name
+              - user.last_name
+              - user.email
+              - status
+        - name: status
+          in: query
+          required: false
+          description: "Query param: A member's status in the account."
+          schema:
+            type: string
+            enum:
+              - accepted
+              - pending
+              - rejected
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-pagination-class: MembersV4PagePaginationArray
+    post:
+      operationId: createMember
+      description: "Add a user to the list of members for this account.  @example
+        ```ts const member = await client.accounts.members.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', email: 'user@example.com', roles:
+        ['3536bcfad5faccb999b47003c79917fb'], }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: "Body param: The contact email address of the user."
+                roles:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Array of roles associated with this member."
+                status:
+                  type: string
+                  enum:
+                    - accepted
+                    - pending
+                  description: "Body param:"
+              required:
+                - email
+                - roles
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        ValidationError:
+          - code: 1001
+  /accounts/{account_id}/roles/{roleId}:
+    get:
+      operationId: getRole
+      description: "Get information about a specific role for an account.  @example
+        ```ts const role = await client.accounts.roles.get(
+        '3536bcfad5faccb999b47003c79917fb', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/roles:
+    get:
+      operationId: listRoles
+      description: "Get all available roles for an account.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const role of
+        client.accounts.roles.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', })) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-pagination-class: RolesV4PagePaginationArray
+  /accounts/{account_id}/subscriptions:
+    get:
+      operationId: getSubscription
+      description: "Lists all of an account's subscriptions.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        subscription of client.accounts.subscriptions.get( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-pagination-class: SubscriptionsSinglePage
+    post:
+      operationId: createSubscription
+      description: "Creates an account subscription.  @example ```ts const
+        subscription = await client.accounts.subscriptions.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                frequency:
+                  type: string
+                  enum:
+                    - weekly
+                    - monthly
+                    - quarterly
+                    - yearly
+                  description: "Body param: How often the subscription is renewed automatically."
+                rate_plan:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param: The rate plan applied to the subscription."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        JsonDecodeFailure:
+          - code: 1198
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/subscriptions/{subscriptionIdentifier}:
+    put:
+      operationId: updateSubscription
+      description: "Updates an account subscription.  @example ```ts const
+        subscription = await client.accounts.subscriptions.update(
+        '506e3185e9c882d175a2d0cb0093d9f2', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: subscriptionIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                frequency:
+                  type: string
+                  enum:
+                    - weekly
+                    - monthly
+                    - quarterly
+                    - yearly
+                  description: "Body param: How often the subscription is renewed automatically."
+                rate_plan:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param: The rate plan applied to the subscription."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        JsonDecodeFailure:
+          - code: 1198
+        InvalidRoute:
+          - code: 7003
+        EndpointNotFound:
+          - code: 1199
+    delete:
+      operationId: deleteSubscription
+      description: "Deletes an account's subscription.  @example ```ts const
+        subscription = await client.accounts.subscriptions.delete(
+        '506e3185e9c882d175a2d0cb0093d9f2', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: subscriptionIdentifier
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subscription_id:
+                    type: string
+                    description: Subscription identifier tag.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        EndpointNotFound:
+          - code: 1199
+  /accounts/{account_id}/tokens/{tokenId}:
+    get:
+      operationId: getToken
+      description: "Get information about a specific Account Owned API
+        token.  @example ```ts const token = await client.accounts.tokens.get(
+        'ed17574386854bf78a67040be0a770b0', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: tokenId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+    put:
+      operationId: updateToken
+      description: "Update an existing token.  @example ```ts const token = await
+        client.accounts.tokens.update( 'ed17574386854bf78a67040be0a770b0', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', name: 'readonly token',
+        policies: [ { effect: 'allow', permission_groups: [ { id:
+        'c8fed203ed3043cba015a93ad1616f1f' }, { id:
+        '82e64a83756745bbbb1c9c2701bf816b' }, ], resources: { foo: 'string' },
+        }, ], }, ); ```"
+      parameters:
+        - name: tokenId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: Token name."
+                policies:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+                  description: "Body param: List of access policies assigned to the token."
+                condition:
+                  type: object
+                  properties:
+                    request_ip:
+                      type: object
+                      properties:
+                        in:
+                          type: array
+                          items:
+                            type: string
+                          description: List of IPv4/IPv6 CIDR addresses.
+                        not_in:
+                          type: array
+                          items:
+                            type: string
+                          description: List of IPv4/IPv6 CIDR addresses.
+                      description: Client IP restrictions.
+                  description: "Body param:"
+                expires_on:
+                  type: string
+                  description: "Body param: The expiration time on or after which the JWT MUST NOT
+                    be accepted for processing."
+                not_before:
+                  type: string
+                  description: "Body param: The time before which the token MUST NOT be accepted
+                    for processing."
+                status:
+                  type: string
+                  enum:
+                    - active
+                    - disabled
+                    - expired
+                  description: "Body param: Status of the token."
+              required:
+                - name
+                - policies
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        MethodNotAllowed:
+          - code: 7001
+    delete:
+      operationId: deleteToken
+      description: "Destroy an Account Owned API token.  @example ```ts const token =
+        await client.accounts.tokens.delete( 'ed17574386854bf78a67040be0a770b0',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: tokenId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+                required:
+                  - id
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        MethodNotAllowed:
+          - code: 7001
+  /accounts/{account_id}/tokens:
+    get:
+      operationId: listTokens
+      description: "List all Account Owned API tokens created for this
+        account.  @example ```ts // Automatically fetches more pages as needed.
+        for await (const token of client.accounts.tokens.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', })) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+        - name: direction
+          in: query
+          required: false
+          description: "Query param: Direction to order results."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-pagination-class: TokensV4PagePaginationArray
+    post:
+      operationId: createToken
+      description: "Create a new Account Owned API token.  @example ```ts const token
+        = await client.accounts.tokens.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', name: 'readonly token', policies: [
+        { effect: 'allow', permission_groups: [ { id:
+        'c8fed203ed3043cba015a93ad1616f1f' }, { id:
+        '82e64a83756745bbbb1c9c2701bf816b' }, ], resources: { foo: 'string' },
+        }, ], }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: Token name."
+                policies:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+                  description: "Body param: List of access policies assigned to the token."
+                condition:
+                  type: object
+                  properties:
+                    request_ip:
+                      type: object
+                      properties:
+                        in:
+                          type: array
+                          items:
+                            type: string
+                          description: List of IPv4/IPv6 CIDR addresses.
+                        not_in:
+                          type: array
+                          items:
+                            type: string
+                          description: List of IPv4/IPv6 CIDR addresses.
+                      description: Client IP restrictions.
+                  description: "Body param:"
+                expires_on:
+                  type: string
+                  description: "Body param: The expiration time on or after which the JWT MUST NOT
+                    be accepted for processing."
+                not_before:
+                  type: string
+                  description: "Body param: The time before which the token MUST NOT be accepted
+                    for processing."
+              required:
+                - name
+                - policies
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Token identifier tag.
+                  condition:
+                    type: object
+                    properties:
+                      request_ip:
+                        type: object
+                        properties:
+                          in:
+                            type: array
+                            items:
+                              type: string
+                            description: List of IPv4/IPv6 CIDR addresses.
+                          not_in:
+                            type: array
+                            items:
+                              type: string
+                            description: List of IPv4/IPv6 CIDR addresses.
+                        description: Client IP restrictions.
+                  expires_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: The expiration time on or after which the JWT MUST NOT be accepted
+                      for processing.
+                  issued_on:
+                    type: string
+                    description: The time on which the token was created.
+                  last_used_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time the token was used.
+                  modified_on:
+                    type: string
+                    description: Last time the token was modified.
+                  name:
+                    type: string
+                    description: Token name.
+                  not_before:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: The time before which the token MUST NOT be accepted for
+                      processing.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                    description: List of access policies assigned to the token.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - disabled
+                      - expired
+                    description: Status of the token.
+                  value:
+                    type: string
+                    description: The token value.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        InvalidTokenName:
+          - code: 400
+            message:
+              includes: name must have a length
+  /accounts/{account_id}/tokens/verify:
+    get:
+      operationId: verifyToken
+      description: "Test whether a token works.  @example ```ts const response = await
+        client.accounts.tokens.verify({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Token identifier tag.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - disabled
+                      - expired
+                    description: Status of the token.
+                  expires_on:
+                    type: string
+                    description: The expiration time on or after which the JWT MUST NOT be accepted
+                      for processing.
+                  not_before:
+                    type: string
+                    description: The time before which the token MUST NOT be accepted for
+                      processing.
+                required:
+                  - id
+                  - status
+      x-distilled-response-path: result
+      x-distilled-errors:
+        MissingAuthenticationToken:
+          - code: 1001
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/tokens/permission_groups:
+    get:
+      operationId: listTokenPermissionGroups
+      description: "Find all available permission groups for Account Owned API
+        Tokens  @example ```ts // Automatically fetches more pages as needed.
+        for await (const permissionGroupListResponse of
+        client.accounts.tokens.permissionGroups.list( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+        - name: name
+          in: query
+          required: false
+          description: "Query param: Filter by the name of the permission group. The value
+            must be URL-encoded."
+          schema:
+            type: string
+        - name: scope
+          in: query
+          required: false
+          description: "Query param: Filter by the scope of the permission group. The
+            value must be URL-encoded."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Public ID.
+                  name:
+                    type: string
+                    description: Permission Group Name
+                  scopes:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - com.cloudflare.api.account
+                        - com.cloudflare.api.account.zone
+                        - com.cloudflare.api.user
+                        - com.cloudflare.edge.r2.bucket
+                    description: Resources to which the Permission Group is scoped
+      x-distilled-pagination-class: PermissionGroupListResponsesSinglePage
+  /accounts/{account_id}/tokens/{tokenId}/value:
+    put:
+      operationId: putTokenValue
+      description: "Roll the Account Owned API token secret.  @example ```ts const
+        tokenValue = await client.accounts.tokens.value.update(
+        'ed17574386854bf78a67040be0a770b0', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', body: {}, }, ); ```"
+      parameters:
+        - name: tokenId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003

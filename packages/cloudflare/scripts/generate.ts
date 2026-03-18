@@ -17,7 +17,10 @@
 import { NodeRuntime, NodeServices } from "@effect/platform-node";
 import { Console, Effect, FileSystem } from "effect";
 import * as path from "node:path";
+import { stringify as stringifyYaml } from "yaml";
 import {
+  type ErrorMatcherInfo,
+  type OperationErrorInfo,
   type ParamInfo,
   type ParsedOperation,
   type ServiceInfo,
@@ -147,6 +150,8 @@ interface OperationPatch {
 }
 
 const SDK_PATH = "./specs/cloudflare-typescript/src/resources";
+const PATCH_SPEC_PATH = "./specs/cloudflare-patch";
+const EMITTED_SPEC_PATH = "./specs/cloudflare";
 const OUTPUT_PATH = "./src/services";
 const PATCH_PATH = "./patches";
 
@@ -214,7 +219,7 @@ const loadServicePatches = (
  */
 type MergedErrorDef = {
   tag: string;
-  matchers: OperationPatch["errors"][string];
+  matchers: ErrorMatcherInfo[];
 };
 
 /**
@@ -224,13 +229,26 @@ type MergedErrorDef = {
  * their matcher arrays are merged and deduplicated so the error class is only
  * emitted once in the generated service file.
  */
+function getOperationErrors(
+  op: ParsedOperation,
+  patch?: OperationPatch,
+): OperationErrorInfo[] {
+  const patchErrors = Object.entries(patch?.errors ?? {}).map(([tag, matchers]) => ({
+    tag,
+    matchers,
+  }));
+  const existing = op.errors ?? [];
+  return [...existing, ...patchErrors];
+}
+
 function mergeServiceErrors(
+  service: ServiceInfo,
   patches: Map<string, OperationPatch>,
 ): MergedErrorDef[] {
-  const merged = new Map<string, OperationPatch["errors"][string]>();
+  const merged = new Map<string, ErrorMatcherInfo[]>();
 
-  for (const patch of patches.values()) {
-    for (const [tag, matchers] of Object.entries(patch.errors)) {
+  for (const op of service.operations) {
+    for (const { tag, matchers } of getOperationErrors(op, patches.get(op.operationName))) {
       const existing = merged.get(tag);
       if (!existing) {
         merged.set(tag, [...matchers]);
@@ -452,6 +470,175 @@ function unwrapToArray(typeInfo: TypeInfo): TypeInfo | undefined {
     return typeInfo.values.find((v) => v.kind === "array");
   }
   return undefined;
+}
+
+function resolveOperationTypeInfo(op: ParsedOperation, type: TypeInfo): TypeInfo {
+  return op.registry ? resolveTypeInfoDeep(type, op.registry) : type;
+}
+
+interface ResolvedOperationModel {
+  allParams: Array<ParamInfo & { type: TypeInfo }>;
+  pathParams: Array<ParamInfo & { type: TypeInfo }>;
+  queryParams: Array<ParamInfo & { type: TypeInfo }>;
+  headerParams: Array<ParamInfo & { type: TypeInfo }>;
+  bodyParams: Array<ParamInfo & { type: TypeInfo }>;
+  responseType?: TypeInfo;
+  paginatedItemType?: TypeInfo;
+  isTypeAlias: boolean;
+  responsePath?: string;
+  errors: OperationErrorInfo[];
+}
+
+function resolveOperationModel(
+  op: ParsedOperation,
+  patch?: OperationPatch,
+): ResolvedOperationModel {
+  const syntheticHeaderParams = getSyntheticHeaderParams(op);
+
+  const nonBodyParamNames = new Set([
+    ...op.pathParams.map((p) => toCamelCase(p.name)),
+    ...op.queryParams.map((p) => toCamelCase(p.name)),
+    ...op.headerParams.map((p) => toCamelCase(p.name)),
+    ...syntheticHeaderParams.map((p) => toCamelCase(p.name)),
+  ]);
+
+  const filteredBodyParams = op.bodyParams.filter(
+    (p) => !nonBodyParamNames.has(toCamelCase(p.name)),
+  );
+
+  const allParams = [
+    ...op.pathParams,
+    ...op.queryParams,
+    ...op.headerParams,
+    ...syntheticHeaderParams,
+    ...filteredBodyParams,
+  ].map((param) => ({
+    ...param,
+    type: resolveOperationTypeInfo(op, param.type),
+  }));
+
+  const resolvedPathParams = op.pathParams.map((p) => ({
+    ...p,
+    type: resolveOperationTypeInfo(op, p.type),
+  }));
+  const resolvedQueryParams = op.queryParams.map((p) => ({
+    ...p,
+    type: resolveOperationTypeInfo(op, p.type),
+  }));
+  const resolvedHeaderParams = [...op.headerParams, ...syntheticHeaderParams].map(
+    (p) => ({
+      ...p,
+      type: resolveOperationTypeInfo(op, p.type),
+    }),
+  );
+  const resolvedBodyParams = filteredBodyParams.map((p) => ({
+    ...p,
+    type: resolveOperationTypeInfo(op, p.type),
+  }));
+
+  if (patch?.request) {
+    const syntheticRequest: TypeInfo = {
+      kind: "object",
+      properties: allParams.map((p) => ({
+        name: toCamelCase(p.name),
+        type: p.type,
+        required: p.required,
+      })),
+    };
+    const patched = applyResponsePatch(syntheticRequest, patch.request);
+    if (patched.properties) {
+      for (const patchedProp of patched.properties) {
+        const param = allParams.find(
+          (p) => toCamelCase(p.name) === patchedProp.name,
+        );
+        if (param) {
+          param.type = patchedProp.type;
+          param.required = patchedProp.required;
+        }
+        for (const arr of [
+          resolvedPathParams,
+          resolvedQueryParams,
+          resolvedHeaderParams,
+          resolvedBodyParams,
+        ]) {
+          const catParam = arr.find(
+            (p) => toCamelCase(p.name) === patchedProp.name,
+          );
+          if (catParam) {
+            catParam.type = patchedProp.type;
+            catParam.required = patchedProp.required;
+          }
+        }
+      }
+    }
+  }
+
+  let resolvedResponseType: TypeInfo | undefined;
+  let paginatedItemType: TypeInfo | undefined;
+  let isTypeAlias = false;
+  const responsePath = op.responsePath ?? patch?.responsePath;
+
+  if (op.responseTypeName && op.registry) {
+    const responseInterface = op.registry.types.get(op.responseTypeName);
+    if (responseInterface) {
+      resolvedResponseType = resolveTypeInfoDeep(
+        { kind: "object", properties: responseInterface.properties },
+        op.registry,
+      );
+    } else {
+      const typeAlias = op.registry.typeAliases.get(op.responseTypeName);
+      if (typeAlias) {
+        resolvedResponseType = resolveTypeInfoDeep(typeAlias, op.registry);
+        isTypeAlias = true;
+      }
+    }
+  } else if (op.responseType.kind !== "unknown") {
+    resolvedResponseType = resolveOperationTypeInfo(op, op.responseType);
+    isTypeAlias =
+      resolvedResponseType.kind !== "object" || !resolvedResponseType.properties;
+  }
+
+  if (!resolvedResponseType && op.responseType.kind !== "unknown") {
+    resolvedResponseType = resolveOperationTypeInfo(op, op.responseType);
+    isTypeAlias =
+      resolvedResponseType.kind !== "object" || !resolvedResponseType.properties;
+  }
+
+  if (patch?.responseType === "array" && resolvedResponseType) {
+    resolvedResponseType = {
+      kind: "array",
+      elementType: resolvedResponseType,
+    };
+    isTypeAlias = true;
+  }
+
+  if (op.paginationClassName && resolvedResponseType) {
+    paginatedItemType = JSON.parse(
+      JSON.stringify(resolvedResponseType),
+    ) as TypeInfo;
+    resolvedResponseType = buildPaginatedResponseType(
+      resolvedResponseType,
+      op.paginationClassName,
+    );
+    isTypeAlias = false;
+  }
+
+  if (patch?.response && resolvedResponseType) {
+    resolvedResponseType = applyResponsePatch(resolvedResponseType, patch.response);
+  }
+
+  return {
+    allParams,
+    pathParams: resolvedPathParams,
+    queryParams: resolvedQueryParams,
+    headerParams: resolvedHeaderParams,
+    bodyParams: resolvedBodyParams,
+    responseType: resolvedResponseType,
+    paginatedItemType,
+    isTypeAlias,
+    responsePath,
+    errors: getOperationErrors(op, patch),
+  };
 }
 
 function buildPaginatedResponseType(
@@ -963,13 +1150,7 @@ function typeIncludesNull(type: TypeInfo): boolean {
   return type.kind === "union" && !!type.values?.some(typeIncludesNull);
 }
 
-/**
- * Generate Effect Schema code for an operation.
- * Error classes are NOT emitted here — they are emitted once at the service
- * level by generateServiceFile. This function only references the error tag
- * names from the patch in the operation's type signature and errors array.
- */
-function generateOperationSchema(
+function generateOperationSchemaAst(
   op: ParsedOperation,
   patch?: OperationPatch,
 ): string {
@@ -991,7 +1172,6 @@ function generateOperationSchema(
 
   const syntheticHeaderParams = getSyntheticHeaderParams(op);
 
-  // Collect property names from path/query/header params to avoid duplicates with body params
   const nonBodyParamNames = new Set([
     ...op.pathParams.map((p) => toCamelCase(p.name)),
     ...op.queryParams.map((p) => toCamelCase(p.name)),
@@ -999,12 +1179,10 @@ function generateOperationSchema(
     ...syntheticHeaderParams.map((p) => toCamelCase(p.name)),
   ]);
 
-  // Filter body params to exclude those that conflict with path/query/header params
   const filteredBodyParams = op.bodyParams.filter(
     (p) => !nonBodyParamNames.has(toCamelCase(p.name)),
   );
 
-  // Collect all params and resolve their types
   const allParams = [
     ...op.pathParams,
     ...op.queryParams,
@@ -1013,32 +1191,29 @@ function generateOperationSchema(
     ...filteredBodyParams,
   ].map((param) => ({
     ...param,
-    type: resolveTypeInfoDeep(param.type, op.registry),
+    type: resolveTypeInfoDeep(param.type, op.registry!),
   }));
 
-  // Also create resolved versions for each param category
   const resolvedPathParams = op.pathParams.map((p) => ({
     ...p,
-    type: resolveTypeInfoDeep(p.type, op.registry),
+    type: resolveTypeInfoDeep(p.type, op.registry!),
   }));
   const resolvedQueryParams = op.queryParams.map((p) => ({
     ...p,
-    type: resolveTypeInfoDeep(p.type, op.registry),
+    type: resolveTypeInfoDeep(p.type, op.registry!),
   }));
   const resolvedHeaderParams = [...op.headerParams, ...syntheticHeaderParams].map(
     (p) => ({
       ...p,
-      type: resolveTypeInfoDeep(p.type, op.registry),
+      type: resolveTypeInfoDeep(p.type, op.registry!),
     }),
   );
   const resolvedBodyParams = filteredBodyParams.map((p) => ({
     ...p,
-    type: resolveTypeInfoDeep(p.type, op.registry),
+    type: resolveTypeInfoDeep(p.type, op.registry!),
   }));
 
-  // Apply request property patches (optional, nullable, addValues, type overrides)
   if (patch?.request) {
-    // Build a synthetic TypeInfo object from allParams so we can reuse applyResponsePatch
     const syntheticRequest: TypeInfo = {
       kind: "object",
       properties: allParams.map((p) => ({
@@ -1048,10 +1223,8 @@ function generateOperationSchema(
       })),
     };
     const patched = applyResponsePatch(syntheticRequest, patch.request);
-    // Propagate patched required/type back to allParams and per-category arrays
     if (patched.properties) {
       for (const patchedProp of patched.properties) {
-        // Update allParams
         const param = allParams.find(
           (p) => toCamelCase(p.name) === patchedProp.name,
         );
@@ -1059,7 +1232,6 @@ function generateOperationSchema(
           param.type = patchedProp.type;
           param.required = patchedProp.required;
         }
-        // Update per-category arrays
         for (const arr of [
           resolvedPathParams,
           resolvedQueryParams,
@@ -1192,39 +1364,32 @@ function generateOperationSchema(
   );
   lines.push("");
 
-  // Generate response interface and schema
-  // Try to resolve the response type from the SDK registry
   let resolvedResponseType: TypeInfo | undefined;
   let paginatedItemType: TypeInfo | undefined;
   let isTypeAlias = false;
   const responsePath = op.responsePath ?? patch?.responsePath;
 
   if (op.responseTypeName) {
-    // First check interfaces
-    const responseInterface = op.registry.types.get(op.responseTypeName);
+    const responseInterface = op.registry!.types.get(op.responseTypeName);
     if (responseInterface) {
       resolvedResponseType = resolveTypeInfoDeep(
         { kind: "object", properties: responseInterface.properties },
-        op.registry,
+        op.registry!,
       );
     } else {
-      // Check type aliases
-      const typeAlias = op.registry.typeAliases.get(op.responseTypeName);
+      const typeAlias = op.registry!.typeAliases.get(op.responseTypeName);
       if (typeAlias) {
-        // Resolve nested types in the type alias
-        resolvedResponseType = resolveTypeInfoDeep(typeAlias, op.registry);
+        resolvedResponseType = resolveTypeInfoDeep(typeAlias, op.registry!);
         isTypeAlias = true;
       }
     }
   }
 
-  // Apply responseType override from patch (e.g., wrap in array when SDK type is wrong)
   if (patch?.responseType === "array" && resolvedResponseType) {
     resolvedResponseType = {
       kind: "array",
       elementType: resolvedResponseType,
     };
-    // Array responses are always emitted as type aliases, not interfaces
     isTypeAlias = true;
   }
 
@@ -1239,7 +1404,6 @@ function generateOperationSchema(
     isTypeAlias = false;
   }
 
-  // Apply response property patches (nullable, optional, addValues, type overrides)
   if (patch?.response && resolvedResponseType) {
     resolvedResponseType = applyResponsePatch(
       resolvedResponseType,
@@ -1341,6 +1505,298 @@ function generateOperationSchema(
   }
 
   // Generate error type alias and explicitly typed API function
+  const errorsArray =
+    errorClassNames.length > 0 ? `[${errorClassNames.join(", ")}]` : "[]";
+  const errorTypeName = `${pascalOpName}Error`;
+  const errorUnionMembers =
+    errorClassNames.length > 0
+      ? ["DefaultErrors", ...errorClassNames]
+      : ["DefaultErrors"];
+  lines.push(
+    `export type ${errorTypeName} =\n  | ${errorUnionMembers.join("\n  | ")};\n`,
+  );
+
+  if (op.paginationClassName && paginatedItemType) {
+    const pagination = getPaginationTrait(op.paginationClassName);
+    const itemTypeName = typeInfoToTsType(paginatedItemType, 0, true);
+    lines.push(`export const ${normalizedOpName}: API.PaginatedOperationMethod<`);
+    lines.push(`  ${requestTypeName},`);
+    lines.push(`  ${responseTypeName},`);
+    lines.push(`  ${errorTypeName},`);
+    lines.push(`  Credentials | HttpClient.HttpClient`);
+    lines.push(`> & {`);
+    lines.push(`  pages: (`);
+    lines.push(`    input: ${requestTypeName},`);
+    lines.push(`  ) => stream.Stream<`);
+    lines.push(`    ${responseTypeName},`);
+    lines.push(`    ${errorTypeName},`);
+    lines.push(`    Credentials | HttpClient.HttpClient`);
+    lines.push(`  >;`);
+    lines.push(`  items: (`);
+    lines.push(`    input: ${requestTypeName},`);
+    lines.push(`  ) => stream.Stream<`);
+    lines.push(`    ${itemTypeName},`);
+    lines.push(`    ${errorTypeName},`);
+    lines.push(`    Credentials | HttpClient.HttpClient`);
+    lines.push(`  >;`);
+    lines.push(`} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({`);
+    lines.push(`  input: ${requestTypeName},`);
+    lines.push(`  output: ${responseTypeName},`);
+    lines.push(`  errors: ${errorsArray},`);
+    lines.push(`  pagination: {`);
+    lines.push(`    mode: "${pagination.mode}",`);
+    if (pagination.inputToken) {
+      lines.push(`    inputToken: "${pagination.inputToken}",`);
+    }
+    if (pagination.outputToken) {
+      lines.push(`    outputToken: "${pagination.outputToken}",`);
+    }
+    lines.push(`    items: "${pagination.items}",`);
+    if (pagination.pageSize) {
+      lines.push(`    pageSize: "${pagination.pageSize}",`);
+    }
+    lines.push(`  } as const,`);
+    lines.push(`}));`);
+  } else {
+    lines.push(`export const ${normalizedOpName}: API.OperationMethod<`);
+    lines.push(`  ${requestTypeName},`);
+    lines.push(`  ${responseTypeName},`);
+    lines.push(`  ${errorTypeName},`);
+    lines.push(`  Credentials | HttpClient.HttpClient`);
+    lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({`);
+    lines.push(`  input: ${requestTypeName},`);
+    lines.push(`  output: ${responseTypeName},`);
+    lines.push(`  errors: ${errorsArray},`);
+    lines.push(`}));`);
+  }
+  lines.push("");
+
+  return lines.join("\n");
+}
+
+/**
+ * Generate Effect Schema code for an operation.
+ * Error classes are NOT emitted here — they are emitted once at the service
+ * level by generateServiceFile. This function only references the error tag
+ * names from the patch in the operation's type signature and errors array.
+ */
+function generateOperationSchema(
+  op: ParsedOperation,
+  patch?: OperationPatch,
+): string {
+  if (op.source === "ast") {
+    return generateOperationSchemaAst(op, patch);
+  }
+
+  // Use pre-computed operation name from the model
+  const normalizedOpName = op.operationName;
+  const pascalOpName = toPascalCase(normalizedOpName);
+  const requestTypeName = pascalOpName + "Request";
+  const responseTypeName = pascalOpName + "Response";
+
+  const lines: string[] = [];
+
+  const errorClassNames: string[] = [];
+  for (const errorDef of getOperationErrors(op, patch)) {
+    errorClassNames.push(errorDef.tag);
+  }
+
+  const resolved = resolveOperationModel(op, patch);
+  const allParams = resolved.allParams;
+  const resolvedPathParams = resolved.pathParams;
+  const resolvedQueryParams = resolved.queryParams;
+  const resolvedHeaderParams = resolved.headerParams;
+  const resolvedBodyParams = resolved.bodyParams;
+
+  // Generate request interface
+  lines.push(`export interface ${requestTypeName} {`);
+  for (const param of allParams) {
+    const propName = toCamelCase(param.name);
+    const tsType = typeInfoToTsType(param.type);
+    const optMark = param.required ? "" : "?";
+    if (param.description) {
+      lines.push(
+        `  /** ${param.description.replace(/\n/g, " ").slice(0, 200)} */`,
+      );
+    }
+    lines.push(`  ${quotePropKey(propName)}${optMark}: ${tsType};`);
+  }
+  lines.push(`}`);
+  lines.push("");
+
+  const requestProps: string[] = [];
+  for (const param of resolvedPathParams) {
+    const propName = toCamelCase(param.name);
+    const wireName = param.name;
+    const schema = typeInfoToSchema(param.type);
+    requestProps.push(
+      `  ${quotePropKey(propName)}: ${schema}.pipe(T.HttpPath("${wireName}"))`,
+    );
+  }
+  for (const param of resolvedQueryParams) {
+    const propName = toCamelCase(param.name);
+    const wireName = param.name;
+    let schema = typeInfoToSchema(param.type);
+    if (!param.required) {
+      schema = `Schema.optional(${schema})`;
+    }
+    requestProps.push(
+      `  ${quotePropKey(propName)}: ${schema}.pipe(T.HttpQuery("${wireName}"))`,
+    );
+  }
+  for (const param of resolvedHeaderParams) {
+    const propName = toCamelCase(param.name);
+    let schema = typeInfoToSchema(param.type);
+    if (!param.required) {
+      schema = `Schema.optional(${schema})`;
+    }
+    const headerName = param.headerName || param.name;
+    requestProps.push(
+      `  ${quotePropKey(propName)}: ${schema}.pipe(T.HttpHeader("${headerName}"))`,
+    );
+  }
+
+  const encodeKeysMap: Record<string, string> = {};
+  let hasRenamedBodyKey = false;
+  for (const param of resolvedBodyParams) {
+    const propName = toCamelCase(param.name);
+    const wireName = param.name;
+    let schema = typeInfoToSchema(param.type);
+    if (!param.required) {
+      schema = `Schema.optional(${schema})`;
+    }
+    if (wireName === "body") {
+      requestProps.push(
+        `  ${quotePropKey(propName)}: ${schema}.pipe(T.HttpBody())`,
+      );
+    } else {
+      encodeKeysMap[propName] = wireName;
+      if (propName !== wireName) {
+        hasRenamedBodyKey = true;
+      }
+      requestProps.push(`  ${quotePropKey(propName)}: ${schema}`);
+    }
+  }
+
+  const openApiPath = op.urlTemplate.replace(/\{(\w+)\}/g, "{$1}");
+  lines.push(
+    `export const ${requestTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+  );
+  if (requestProps.length > 0) {
+    lines.push(requestProps.join(",\n"));
+  }
+  lines.push(`})`);
+
+  const pipes: string[] = [];
+  if (hasRenamedBodyKey) {
+    const encodeKeysEntries = Object.entries(encodeKeysMap)
+      .map(([k, v]) => `${quotePropKey(k)}: "${v}"`)
+      .join(", ");
+    pipes.push(`Schema.encodeKeys({ ${encodeKeysEntries} })`);
+  }
+  const hasFiles = operationHasFiles(op);
+  const isMultipart = hasFiles || op.isMultipart;
+  const httpTrait = isMultipart
+    ? `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}", contentType: "multipart" })`
+    : `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}" })`;
+  pipes.push(httpTrait);
+
+  lines.push(
+    `  .pipe(${pipes.join(", ")}) as unknown as Schema.Schema<${requestTypeName}>;`,
+  );
+  lines.push("");
+
+  const resolvedResponseType = resolved.responseType;
+  const paginatedItemType = resolved.paginatedItemType;
+  const isTypeAlias = resolved.isTypeAlias;
+  const responsePath = resolved.responsePath;
+
+  if (isTypeAlias && resolvedResponseType) {
+    const tsType = typeInfoToTsType(resolvedResponseType, 0, true);
+    const schema = typeInfoToSchema(resolvedResponseType, "", 0, true);
+    const responsePathPipe = responsePath
+      ? `.pipe(T.ResponsePath("${responsePath}"))`
+      : "";
+    lines.push(`export type ${responseTypeName} = ${tsType};`);
+    lines.push("");
+    lines.push(
+      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ ${schema}${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
+    );
+    lines.push("");
+  } else if (
+    resolvedResponseType &&
+    resolvedResponseType.kind === "object" &&
+    resolvedResponseType.properties
+  ) {
+    lines.push(`export interface ${responseTypeName} {`);
+    for (const prop of resolvedResponseType.properties) {
+      const propName = toCamelCase(prop.name);
+      const tsType = typeInfoToTsType(prop.type, 0, true);
+      const optMark = prop.required ? "" : "?";
+      const nullableSuffix =
+        !prop.required && !typeIncludesNull(prop.type) ? " | null" : "";
+      if (prop.description) {
+        lines.push(
+          `  /** ${prop.description.replace(/\n/g, " ").slice(0, 200)} */`,
+        );
+      }
+      lines.push(
+        `  ${quotePropKey(propName)}${optMark}: ${tsType}${nullableSuffix};`,
+      );
+    }
+    lines.push(`}`);
+    lines.push("");
+
+    const responseEncodeKeysMap: Record<string, string> = {};
+    let hasRenamedResponseKey = false;
+    const responseProps = resolvedResponseType.properties.map((prop) => {
+      const wireName = prop.wireKey ?? prop.name;
+      const propName = toCamelCase(prop.name);
+      let schema = typeInfoToSchema(prop.type, "", 0, true);
+      if (!prop.required) {
+        if (!typeIncludesNull(prop.type)) {
+          schema = `Schema.Union([${schema}, Schema.Null])`;
+        }
+        schema = `Schema.optional(${schema})`;
+      }
+      responseEncodeKeysMap[propName] = wireName;
+      if (propName !== wireName) {
+        hasRenamedResponseKey = true;
+      }
+      return `  ${quotePropKey(propName)}: ${schema}`;
+    });
+
+    const responseEncodeKeysPipe = hasRenamedResponseKey
+      ? `.pipe(Schema.encodeKeys({ ${Object.entries(responseEncodeKeysMap)
+          .map(([k, v]) => `${quotePropKey(k)}: "${v}"`)
+          .join(", ")} }))`
+      : "";
+    const responsePathPipe = responsePath
+      ? `.pipe(T.ResponsePath("${responsePath}"))`
+      : "";
+
+    lines.push(
+      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+    );
+    if (responseProps.length > 0) {
+      lines.push(responseProps.join(",\n"));
+    }
+    lines.push(
+      `})${responseEncodeKeysPipe}${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
+    );
+    lines.push("");
+  } else {
+    const responsePathPipe = responsePath
+      ? `.pipe(T.ResponsePath("${responsePath}"))`
+      : "";
+    lines.push(`export type ${responseTypeName} = unknown;`);
+    lines.push("");
+    lines.push(
+      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
+    );
+    lines.push("");
+  }
+
   const errorsArray =
     errorClassNames.length > 0 ? `[${errorClassNames.join(", ")}]` : "[]";
   const errorTypeName = `${pascalOpName}Error`;
@@ -1553,6 +2009,218 @@ function sortOperations(operations: ParsedOperation[]): ParsedOperation[] {
   });
 }
 
+function typeInfoToOpenApiSchema(type: TypeInfo): Record<string, unknown> {
+  switch (type.kind) {
+    case "primitive":
+      if (type.value === "number") return { type: "number" };
+      if (type.value === "boolean") return { type: "boolean" };
+      return { type: "string" };
+    case "literal":
+      if (type.value === "true" || type.value === "false") {
+        return { type: "boolean", enum: [type.value === "true"] };
+      }
+      if (type.value !== undefined && /^-?\d+(\.\d+)?$/.test(type.value)) {
+        return { type: "number", enum: [Number(type.value)] };
+      }
+      return { type: "string", enum: [type.value] };
+    case "null":
+      return { type: "null" };
+    case "union": {
+      const values = type.values ?? [];
+      const nonNull = values.filter((value) => value.kind !== "null");
+      const nullable = nonNull.length !== values.length;
+      const literalValues = nonNull.filter((value) => value.kind === "literal");
+      if (literalValues.length === nonNull.length && literalValues.length > 0) {
+        const normalized = literalValues.map((value) => {
+          if (value.value === "true") return true;
+          if (value.value === "false") return false;
+          if (value.value !== undefined && /^-?\d+(\.\d+)?$/.test(value.value)) {
+            return Number(value.value);
+          }
+          return value.value;
+        });
+        const schema: Record<string, unknown> = {
+          type: typeof normalized[0] === "number" ? "number" : typeof normalized[0],
+          enum: normalized,
+        };
+        if (nullable) schema.nullable = true;
+        return schema;
+      }
+      const schema: Record<string, unknown> = {
+        oneOf: nonNull.map(typeInfoToOpenApiSchema),
+      };
+      if (nullable) schema.nullable = true;
+      return schema;
+    }
+    case "array":
+      return {
+        type: "array",
+        items: typeInfoToOpenApiSchema(type.elementType ?? { kind: "unknown" }),
+      };
+    case "object": {
+      if (!type.properties || type.properties.length === 0) {
+        return { type: "object", additionalProperties: true };
+      }
+      const properties: Record<string, unknown> = {};
+      const required: string[] = [];
+      for (const property of type.properties) {
+        const key = property.wireKey ?? property.name;
+        const schema = typeInfoToOpenApiSchema(property.type);
+        if (property.description) {
+          schema.description = property.description;
+        }
+        properties[key] = schema;
+        if (property.required) required.push(key);
+      }
+      const objectSchema: Record<string, unknown> = {
+        type: "object",
+        properties,
+      };
+      if (required.length > 0) objectSchema.required = required;
+      return objectSchema;
+    }
+    case "file":
+      return { type: "string", format: "binary" };
+    case "unknown":
+    default:
+      return {};
+  }
+}
+
+function bodyParamsToOpenApiSchema(
+  bodyParams: Array<ParamInfo & { type: TypeInfo }>,
+): Record<string, unknown> | undefined {
+  if (bodyParams.length === 0) {
+    return undefined;
+  }
+  if (bodyParams.length === 1 && bodyParams[0].name === "body") {
+    return typeInfoToOpenApiSchema(bodyParams[0].type);
+  }
+
+  const properties: Record<string, unknown> = {};
+  const required: string[] = [];
+  for (const param of bodyParams) {
+    properties[param.name] = typeInfoToOpenApiSchema(param.type);
+    if (param.description) {
+      (properties[param.name] as Record<string, unknown>).description =
+        param.description;
+    }
+    if (param.required) required.push(param.name);
+  }
+  const schema: Record<string, unknown> = {
+    type: "object",
+    properties,
+  };
+  if (required.length > 0) schema.required = required;
+  return schema;
+}
+
+function operationToOpenApi(
+  service: ServiceInfo,
+  op: ParsedOperation,
+  patch?: OperationPatch,
+): { path: string; method: string; operation: Record<string, unknown> } {
+  const resolved = resolveOperationModel(op, patch);
+  const responseSchemaSource =
+    resolved.paginatedItemType ?? resolved.responseType;
+  const parameters = [
+    ...resolved.pathParams.map((param) => ({
+      name: param.name,
+      in: "path",
+      required: true,
+      description: param.description,
+      schema: typeInfoToOpenApiSchema(param.type),
+    })),
+    ...resolved.queryParams.map((param) => ({
+      name: param.name,
+      in: "query",
+      required: param.required,
+      description: param.description,
+      schema: typeInfoToOpenApiSchema(param.type),
+    })),
+    ...resolved.headerParams.map((param) => ({
+      name: param.headerName || param.name,
+      in: "header",
+      required: param.required,
+      description: param.description,
+      schema: typeInfoToOpenApiSchema(param.type),
+    })),
+  ];
+  const bodySchema = bodyParamsToOpenApiSchema(resolved.bodyParams);
+  const contentType =
+    op.isMultipart || operationHasFiles(op)
+      ? "multipart/form-data"
+      : "application/json";
+  const errors =
+    resolved.errors.length > 0
+      ? Object.fromEntries(
+          resolved.errors.map((error) => [error.tag, error.matchers]),
+        )
+      : undefined;
+  const operation: Record<string, unknown> = {
+    operationId: op.operationName,
+    summary: op.summary,
+    description: op.description,
+    parameters: parameters.length > 0 ? parameters : undefined,
+    requestBody: bodySchema
+      ? {
+          required: resolved.bodyParams.some((param) => param.required),
+          content: {
+            [contentType]: {
+              schema: bodySchema,
+            },
+          },
+        }
+      : undefined,
+    responses: {
+      [op.successStatus ?? "200"]: {
+        description: op.successDescription ?? "Success",
+        content: responseSchemaSource
+          ? {
+              "application/json": {
+                schema: typeInfoToOpenApiSchema(responseSchemaSource),
+              },
+            }
+          : undefined,
+      },
+    },
+    "x-distilled-response-path": resolved.responsePath,
+    "x-distilled-pagination-class": op.paginationClassName,
+    "x-distilled-errors": errors,
+  };
+
+  return {
+    path: op.urlTemplate,
+    method: op.httpMethod.toLowerCase(),
+    operation,
+  };
+}
+
+function buildServiceOpenApiDocument(
+  service: ServiceInfo,
+  patches: Map<string, OperationPatch>,
+): Record<string, unknown> {
+  const paths: Record<string, Record<string, unknown>> = {};
+  for (const op of sortOperations(service.operations)) {
+    const patch = patches.get(op.operationName);
+    const rendered = operationToOpenApi(service, op, patch);
+    paths[rendered.path] ??= {};
+    paths[rendered.path][rendered.method] = rendered.operation;
+  }
+
+  return {
+    openapi: "3.1.0",
+    info: {
+      title: service.title ?? `Cloudflare ${service.name.toUpperCase()} API`,
+      version: service.version ?? "0.0.0",
+      description: service.description,
+    },
+    servers: [{ url: "https://api.cloudflare.com/client/v4" }],
+    "x-distilled-service": service.name,
+    paths,
+  };
+}
+
 /**
  * Generate a complete service file
  */
@@ -1625,7 +2293,7 @@ function generateServiceFile(
   lines.push("");
 
   // Merge all error definitions across patches and emit each class once
-  const mergedErrors = mergeServiceErrors(patches);
+  const mergedErrors = mergeServiceErrors(service, patches);
   if (mergedErrors.length > 0) {
     lines.push(`// ${"=".repeat(77)}`);
     lines.push(`// Errors`);
@@ -1699,13 +2367,31 @@ T.applyErrorMatchers(${tag}, ${JSON.stringify(matchers)});`);
 
 interface GenerateOptions {
   outputPath: string;
+  loadPatches?: boolean;
   debug?: boolean;
 }
+
+const emitServiceSpecs = (
+  services: ServiceInfo[],
+  specOutputPath: string,
+) =>
+  Effect.gen(function* () {
+    const fs = yield* FileSystem.FileSystem;
+    yield* fs.makeDirectory(specOutputPath, { recursive: true });
+
+    for (const service of services) {
+      if (service.operations.length === 0) continue;
+      const patches = yield* loadServicePatches(service.name, service.operations);
+      const document = buildServiceOpenApiDocument(service, patches);
+      const outputFile = path.join(specOutputPath, `${service.name}.openapi.yml`);
+      yield* fs.writeFileString(outputFile, stringifyYaml(document));
+    }
+  });
 
 const generateCode = (services: ServiceInfo[], options: GenerateOptions) =>
   Effect.gen(function* () {
     const fs = yield* FileSystem.FileSystem;
-    const { outputPath } = options;
+    const { outputPath, loadPatches = true } = options;
     // Create output directory
     yield* fs.makeDirectory(outputPath, { recursive: true });
 
@@ -1716,7 +2402,9 @@ const generateCode = (services: ServiceInfo[], options: GenerateOptions) =>
       }
 
       // Load patches for this service
-      const patches = yield* loadServicePatches(svc.name, svc.operations);
+      const patches = loadPatches
+        ? yield* loadServicePatches(svc.name, svc.operations)
+        : new Map<string, OperationPatch>();
 
       const code = generateServiceFile(svc, patches);
       const outputFile = path.join(outputPath, `${svc.name}.ts`);
@@ -1729,6 +2417,8 @@ const generateCode = (services: ServiceInfo[], options: GenerateOptions) =>
 const main = Effect.gen(function* () {
   const { service, debug } = parseArgs();
   const basePath = path.resolve(SDK_PATH);
+  const patchSpecPath = path.resolve(PATCH_SPEC_PATH);
+  const emittedSpecPath = path.resolve(EMITTED_SPEC_PATH);
 
   if (service) {
     yield* Console.log(`Filtering to service: ${service}`);
@@ -1737,11 +2427,16 @@ const main = Effect.gen(function* () {
   // Parse all services
   const services = yield* parseCode({
     basePath,
+    openapiBasePath: patchSpecPath,
     serviceFilter: service,
   });
 
+  // Emit canonical per-service OpenAPI specs that include patch-defined services
+  // and legacy JSON patch metadata folded into the spec shape.
+  yield* emitServiceSpecs(services, emittedSpecPath);
+
   const outputPath = path.resolve(OUTPUT_PATH);
-  yield* generateCode(services, { outputPath, debug });
+  yield* generateCode(services, { outputPath, loadPatches: true, debug });
 });
 
 main.pipe(Effect.provide(NodeServices.layer), NodeRuntime.runMain);

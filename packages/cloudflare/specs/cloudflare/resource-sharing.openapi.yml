@@ -1,0 +1,1697 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare RESOURCE-SHARING API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: resource-sharing
+paths:
+  /accounts/{account_id}/shares/{shareId}/recipients/{recipientId}:
+    get:
+      operationId: getRecipient
+      description: "Get share recipient by ID.  @example ```ts const recipient = await
+        client.resourceSharing.recipients.get(
+        '3fd85f74b32742f1bff64a85009dda07', '3fd85f74b32742f1bff64a85009dda07',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: shareId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: recipientId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier."
+          schema:
+            type: string
+        - name: include_resources
+          in: query
+          required: false
+          description: "Query param: Include resources in the response."
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Share Recipient identifier tag.
+                  account_id:
+                    type: string
+                    description: Account identifier.
+                  association_status:
+                    type: string
+                    enum:
+                      - associating
+                      - associated
+                      - disassociating
+                      - disassociated
+                    description: Share Recipient association status.
+                  created:
+                    type: string
+                    description: When the share was created.
+                  modified:
+                    type: string
+                    description: When the share was modified.
+                  resources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          description: Share Recipient error message.
+                        resource_id:
+                          type: string
+                          description: Share Resource identifier.
+                        resource_version:
+                          type: number
+                          description: Resource Version.
+                        terminal:
+                          type: boolean
+                          description: Whether the error is terminal or will be continually retried.
+                      required:
+                        - error
+                        - resource_id
+                        - resource_version
+                        - terminal
+                required:
+                  - id
+                  - account_id
+                  - association_status
+                  - created
+                  - modified
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteRecipient
+      description: "Deletion is not immediate, an updated share recipient object with
+        a new status will be returned.  @example ```ts const recipient = await
+        client.resourceSharing.recipients.delete(
+        '3fd85f74b32742f1bff64a85009dda07', '3fd85f74b32742f1bff64a85009dda07',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: shareId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: recipientId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Share Recipient identifier tag.
+                  account_id:
+                    type: string
+                    description: Account identifier.
+                  association_status:
+                    type: string
+                    enum:
+                      - associating
+                      - associated
+                      - disassociating
+                      - disassociated
+                    description: Share Recipient association status.
+                  created:
+                    type: string
+                    description: When the share was created.
+                  modified:
+                    type: string
+                    description: When the share was modified.
+                  resources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          description: Share Recipient error message.
+                        resource_id:
+                          type: string
+                          description: Share Resource identifier.
+                        resource_version:
+                          type: number
+                          description: Resource Version.
+                        terminal:
+                          type: boolean
+                          description: Whether the error is terminal or will be continually retried.
+                      required:
+                        - error
+                        - resource_id
+                        - resource_version
+                        - terminal
+                required:
+                  - id
+                  - account_id
+                  - association_status
+                  - created
+                  - modified
+      x-distilled-response-path: result
+  /accounts/{account_id}/shares/{shareId}/recipients:
+    get:
+      operationId: listRecipients
+      description: "List share recipients by share ID.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        recipientListResponse of client.resourceSharing.recipients.list(
+        '3fd85f74b32742f1bff64a85009dda07', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: shareId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier."
+          schema:
+            type: string
+        - name: include_resources
+          in: query
+          required: false
+          description: "Query param: Include resources in the response."
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Share Recipient identifier tag.
+                  account_id:
+                    type: string
+                    description: Account identifier.
+                  association_status:
+                    type: string
+                    enum:
+                      - associating
+                      - associated
+                      - disassociating
+                      - disassociated
+                    description: Share Recipient association status.
+                  created:
+                    type: string
+                    description: When the share was created.
+                  modified:
+                    type: string
+                    description: When the share was modified.
+                  resources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          description: Share Recipient error message.
+                        resource_id:
+                          type: string
+                          description: Share Resource identifier.
+                        resource_version:
+                          type: number
+                          description: Resource Version.
+                        terminal:
+                          type: boolean
+                          description: Whether the error is terminal or will be continually retried.
+                      required:
+                        - error
+                        - resource_id
+                        - resource_version
+                        - terminal
+                required:
+                  - id
+                  - account_id
+                  - association_status
+                  - created
+                  - modified
+      x-distilled-pagination-class: RecipientListResponsesV4PagePaginationArray
+  /accounts/{path_account_id}/shares/{shareId}/recipients:
+    post:
+      operationId: createRecipient
+      description: "Create a new share recipient  @example ```ts const recipient =
+        await client.resourceSharing.recipients.create(
+        '3fd85f74b32742f1bff64a85009dda07', { path_account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: shareId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: path_account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body_account_id:
+                  type: string
+                  description: "Body param: Account identifier."
+                organization_id:
+                  type: string
+                  description: "Body param: Organization identifier."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Share Recipient identifier tag.
+                  account_id:
+                    type: string
+                    description: Account identifier.
+                  association_status:
+                    type: string
+                    enum:
+                      - associating
+                      - associated
+                      - disassociating
+                      - disassociated
+                    description: Share Recipient association status.
+                  created:
+                    type: string
+                    description: When the share was created.
+                  modified:
+                    type: string
+                    description: When the share was modified.
+                  resources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          description: Share Recipient error message.
+                        resource_id:
+                          type: string
+                          description: Share Resource identifier.
+                        resource_version:
+                          type: number
+                          description: Resource Version.
+                        terminal:
+                          type: boolean
+                          description: Whether the error is terminal or will be continually retried.
+                      required:
+                        - error
+                        - resource_id
+                        - resource_version
+                        - terminal
+                required:
+                  - id
+                  - account_id
+                  - association_status
+                  - created
+                  - modified
+      x-distilled-response-path: result
+  /accounts/{account_id}/shares/{shareId}/resources/{resourceId}:
+    get:
+      operationId: getResource
+      description: "Get share resource by ID.  @example ```ts const resource = await
+        client.resourceSharing.resources.get(
+        '3fd85f74b32742f1bff64a85009dda07', '023e105f4ecef8ad9ca31a8372d0c353',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: shareId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: resourceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Share Resource identifier.
+                  created:
+                    type: string
+                    description: When the share was created.
+                  meta:
+                    description: Resource Metadata.
+                  modified:
+                    type: string
+                    description: When the share was modified.
+                  resource_account_id:
+                    type: string
+                    description: Account identifier.
+                  resource_id:
+                    type: string
+                    description: Share Resource identifier.
+                  resource_type:
+                    type: string
+                    enum:
+                      - custom-ruleset
+                      - widget
+                      - gateway-policy
+                      - gateway-destination-ip
+                      - gateway-block-page-settings
+                      - gateway-extended-email-matching
+                    description: Resource Type.
+                  resource_version:
+                    type: number
+                    description: Resource Version.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - deleting
+                      - deleted
+                    description: Resource Status.
+                required:
+                  - id
+                  - created
+                  - meta
+                  - modified
+                  - resource_account_id
+                  - resource_id
+                  - resource_type
+                  - resource_version
+                  - status
+      x-distilled-response-path: result
+    put:
+      operationId: updateResource
+      description: "Update is not immediate, an updated share resource object with a
+        new status will be returned.  @example ```ts const resource = await
+        client.resourceSharing.resources.update(
+        '3fd85f74b32742f1bff64a85009dda07', '023e105f4ecef8ad9ca31a8372d0c353',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353', meta: {}, }, ); ```"
+      parameters:
+        - name: shareId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: resourceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                meta:
+                  description: "Body param: Resource Metadata."
+              required:
+                - meta
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Share Resource identifier.
+                  created:
+                    type: string
+                    description: When the share was created.
+                  meta:
+                    description: Resource Metadata.
+                  modified:
+                    type: string
+                    description: When the share was modified.
+                  resource_account_id:
+                    type: string
+                    description: Account identifier.
+                  resource_id:
+                    type: string
+                    description: Share Resource identifier.
+                  resource_type:
+                    type: string
+                    enum:
+                      - custom-ruleset
+                      - widget
+                      - gateway-policy
+                      - gateway-destination-ip
+                      - gateway-block-page-settings
+                      - gateway-extended-email-matching
+                    description: Resource Type.
+                  resource_version:
+                    type: number
+                    description: Resource Version.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - deleting
+                      - deleted
+                    description: Resource Status.
+                required:
+                  - id
+                  - created
+                  - meta
+                  - modified
+                  - resource_account_id
+                  - resource_id
+                  - resource_type
+                  - resource_version
+                  - status
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteResource
+      description: "Deletion is not immediate, an updated share resource object with a
+        new status will be returned.  @example ```ts const resource = await
+        client.resourceSharing.resources.delete(
+        '3fd85f74b32742f1bff64a85009dda07', '023e105f4ecef8ad9ca31a8372d0c353',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: shareId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: resourceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Share Resource identifier.
+                  created:
+                    type: string
+                    description: When the share was created.
+                  meta:
+                    description: Resource Metadata.
+                  modified:
+                    type: string
+                    description: When the share was modified.
+                  resource_account_id:
+                    type: string
+                    description: Account identifier.
+                  resource_id:
+                    type: string
+                    description: Share Resource identifier.
+                  resource_type:
+                    type: string
+                    enum:
+                      - custom-ruleset
+                      - widget
+                      - gateway-policy
+                      - gateway-destination-ip
+                      - gateway-block-page-settings
+                      - gateway-extended-email-matching
+                    description: Resource Type.
+                  resource_version:
+                    type: number
+                    description: Resource Version.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - deleting
+                      - deleted
+                    description: Resource Status.
+                required:
+                  - id
+                  - created
+                  - meta
+                  - modified
+                  - resource_account_id
+                  - resource_id
+                  - resource_type
+                  - resource_version
+                  - status
+      x-distilled-response-path: result
+  /accounts/{account_id}/shares/{shareId}/resources:
+    get:
+      operationId: listResources
+      description: "List share resources by share ID.  @example ```ts // Automatically
+        fetches more pages as needed. for await (const resourceListResponse of
+        client.resourceSharing.resources.list(
+        '3fd85f74b32742f1bff64a85009dda07', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: shareId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier."
+          schema:
+            type: string
+        - name: resource_type
+          in: query
+          required: false
+          description: "Query param: Filter share resources by resource_type."
+          schema:
+            type: string
+            enum:
+              - custom-ruleset
+              - widget
+              - gateway-policy
+              - gateway-destination-ip
+              - gateway-block-page-settings
+              - gateway-extended-email-matching
+        - name: status
+          in: query
+          required: false
+          description: "Query param: Filter share resources by status."
+          schema:
+            type: string
+            enum:
+              - active
+              - deleting
+              - deleted
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Share Resource identifier.
+                  created:
+                    type: string
+                    description: When the share was created.
+                  meta:
+                    description: Resource Metadata.
+                  modified:
+                    type: string
+                    description: When the share was modified.
+                  resource_account_id:
+                    type: string
+                    description: Account identifier.
+                  resource_id:
+                    type: string
+                    description: Share Resource identifier.
+                  resource_type:
+                    type: string
+                    enum:
+                      - custom-ruleset
+                      - widget
+                      - gateway-policy
+                      - gateway-destination-ip
+                      - gateway-block-page-settings
+                      - gateway-extended-email-matching
+                    description: Resource Type.
+                  resource_version:
+                    type: number
+                    description: Resource Version.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - deleting
+                      - deleted
+                    description: Resource Status.
+                required:
+                  - id
+                  - created
+                  - meta
+                  - modified
+                  - resource_account_id
+                  - resource_id
+                  - resource_type
+                  - resource_version
+                  - status
+      x-distilled-pagination-class: ResourceListResponsesV4PagePaginationArray
+    post:
+      operationId: createResource
+      description: "Create a new share resource  @example ```ts const resource = await
+        client.resourceSharing.resources.create(
+        '3fd85f74b32742f1bff64a85009dda07', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', meta: {}, resource_account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', resource_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', resource_type: 'custom-ruleset', },
+        ); ```"
+      parameters:
+        - name: shareId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                meta:
+                  description: "Body param: Resource Metadata."
+                resource_account_id:
+                  type: string
+                  description: "Body param: Account identifier."
+                resource_id:
+                  type: string
+                  description: "Body param: Share Resource identifier."
+                resource_type:
+                  type: string
+                  enum:
+                    - custom-ruleset
+                    - widget
+                    - gateway-policy
+                    - gateway-destination-ip
+                    - gateway-block-page-settings
+                    - gateway-extended-email-matching
+                  description: "Body param: Resource Type."
+              required:
+                - meta
+                - resource_account_id
+                - resource_id
+                - resource_type
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Share Resource identifier.
+                  created:
+                    type: string
+                    description: When the share was created.
+                  meta:
+                    description: Resource Metadata.
+                  modified:
+                    type: string
+                    description: When the share was modified.
+                  resource_account_id:
+                    type: string
+                    description: Account identifier.
+                  resource_id:
+                    type: string
+                    description: Share Resource identifier.
+                  resource_type:
+                    type: string
+                    enum:
+                      - custom-ruleset
+                      - widget
+                      - gateway-policy
+                      - gateway-destination-ip
+                      - gateway-block-page-settings
+                      - gateway-extended-email-matching
+                    description: Resource Type.
+                  resource_version:
+                    type: number
+                    description: Resource Version.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - deleting
+                      - deleted
+                    description: Resource Status.
+                required:
+                  - id
+                  - created
+                  - meta
+                  - modified
+                  - resource_account_id
+                  - resource_id
+                  - resource_type
+                  - resource_version
+                  - status
+      x-distilled-response-path: result
+  /accounts/{account_id}/shares/{shareId}:
+    get:
+      operationId: getResourceSharing
+      description: "Fetches share by ID.  @example ```ts const resourceSharing = await
+        client.resourceSharing.get( '3fd85f74b32742f1bff64a85009dda07', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: shareId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier."
+          schema:
+            type: string
+        - name: include_recipient_counts
+          in: query
+          required: false
+          description: "Query param: Include recipient counts in the response."
+          schema:
+            type: boolean
+        - name: include_resources
+          in: query
+          required: false
+          description: "Query param: Include resources in the response."
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Share identifier tag.
+                  account_id:
+                    type: string
+                    description: Account identifier.
+                  account_name:
+                    type: string
+                    description: The display name of an account.
+                  created:
+                    type: string
+                    description: When the share was created.
+                  modified:
+                    type: string
+                    description: When the share was modified.
+                  name:
+                    type: string
+                    description: The name of the share.
+                  organization_id:
+                    type: string
+                    description: Organization identifier.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - deleting
+                      - deleted
+                  target_type:
+                    type: string
+                    enum:
+                      - account
+                      - organization
+                  associated_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'associated' state. This field is
+                      only included when requested via the
+                      'include_recipient_counts' parameter.
+                  associating_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'associating' state. This field is
+                      only included when requested via the
+                      'include_recipient_counts' parameter.
+                  disassociated_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'disassociated' state. This field
+                      is only included when requested via the
+                      'include_recipient_counts' parameter.
+                  disassociating_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'disassociating' state. This field
+                      is only included when requested via the
+                      'include_recipient_counts' parameter.
+                  kind:
+                    type: string
+                    enum:
+                      - sent
+                      - received
+                  resources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Share Resource identifier.
+                        created:
+                          type: string
+                          description: When the share was created.
+                        meta:
+                          description: Resource Metadata.
+                        modified:
+                          type: string
+                          description: When the share was modified.
+                        resource_account_id:
+                          type: string
+                          description: Account identifier.
+                        resource_id:
+                          type: string
+                          description: Share Resource identifier.
+                        resource_type:
+                          type: string
+                          enum:
+                            - custom-ruleset
+                            - widget
+                            - gateway-policy
+                            - gateway-destination-ip
+                            - gateway-block-page-settings
+                            - gateway-extended-email-matching
+                          description: Resource Type.
+                        resource_version:
+                          type: number
+                          description: Resource Version.
+                        status:
+                          type: string
+                          enum:
+                            - active
+                            - deleting
+                            - deleted
+                          description: Resource Status.
+                      required:
+                        - id
+                        - created
+                        - meta
+                        - modified
+                        - resource_account_id
+                        - resource_id
+                        - resource_type
+                        - resource_version
+                        - status
+                    description: A list of resources that are part of the share. This field is only
+                      included when requested via the 'include_resources'
+                      parameter.
+                required:
+                  - id
+                  - account_id
+                  - account_name
+                  - created
+                  - modified
+                  - name
+                  - organization_id
+                  - status
+                  - target_type
+      x-distilled-response-path: result
+    put:
+      operationId: updateResourceSharing
+      description: "Updating is not immediate, an updated share object with a new
+        status will be returned.  @example ```ts const resourceSharing = await
+        client.resourceSharing.update( '3fd85f74b32742f1bff64a85009dda07', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', name: 'My Shared WAF
+        Managed Rule', }, ); ```"
+      parameters:
+        - name: shareId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: The name of the share."
+              required:
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Share identifier tag.
+                  account_id:
+                    type: string
+                    description: Account identifier.
+                  account_name:
+                    type: string
+                    description: The display name of an account.
+                  created:
+                    type: string
+                    description: When the share was created.
+                  modified:
+                    type: string
+                    description: When the share was modified.
+                  name:
+                    type: string
+                    description: The name of the share.
+                  organization_id:
+                    type: string
+                    description: Organization identifier.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - deleting
+                      - deleted
+                  target_type:
+                    type: string
+                    enum:
+                      - account
+                      - organization
+                  associated_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'associated' state. This field is
+                      only included when requested via the
+                      'include_recipient_counts' parameter.
+                  associating_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'associating' state. This field is
+                      only included when requested via the
+                      'include_recipient_counts' parameter.
+                  disassociated_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'disassociated' state. This field
+                      is only included when requested via the
+                      'include_recipient_counts' parameter.
+                  disassociating_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'disassociating' state. This field
+                      is only included when requested via the
+                      'include_recipient_counts' parameter.
+                  kind:
+                    type: string
+                    enum:
+                      - sent
+                      - received
+                  resources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Share Resource identifier.
+                        created:
+                          type: string
+                          description: When the share was created.
+                        meta:
+                          description: Resource Metadata.
+                        modified:
+                          type: string
+                          description: When the share was modified.
+                        resource_account_id:
+                          type: string
+                          description: Account identifier.
+                        resource_id:
+                          type: string
+                          description: Share Resource identifier.
+                        resource_type:
+                          type: string
+                          enum:
+                            - custom-ruleset
+                            - widget
+                            - gateway-policy
+                            - gateway-destination-ip
+                            - gateway-block-page-settings
+                            - gateway-extended-email-matching
+                          description: Resource Type.
+                        resource_version:
+                          type: number
+                          description: Resource Version.
+                        status:
+                          type: string
+                          enum:
+                            - active
+                            - deleting
+                            - deleted
+                          description: Resource Status.
+                      required:
+                        - id
+                        - created
+                        - meta
+                        - modified
+                        - resource_account_id
+                        - resource_id
+                        - resource_type
+                        - resource_version
+                        - status
+                    description: A list of resources that are part of the share. This field is only
+                      included when requested via the 'include_resources'
+                      parameter.
+                required:
+                  - id
+                  - account_id
+                  - account_name
+                  - created
+                  - modified
+                  - name
+                  - organization_id
+                  - status
+                  - target_type
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteResourceSharing
+      description: "Deletion is not immediate, an updated share object with a new
+        status will be returned.  @example ```ts const resourceSharing = await
+        client.resourceSharing.delete( '3fd85f74b32742f1bff64a85009dda07', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: shareId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Share identifier tag.
+                  account_id:
+                    type: string
+                    description: Account identifier.
+                  account_name:
+                    type: string
+                    description: The display name of an account.
+                  created:
+                    type: string
+                    description: When the share was created.
+                  modified:
+                    type: string
+                    description: When the share was modified.
+                  name:
+                    type: string
+                    description: The name of the share.
+                  organization_id:
+                    type: string
+                    description: Organization identifier.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - deleting
+                      - deleted
+                  target_type:
+                    type: string
+                    enum:
+                      - account
+                      - organization
+                  associated_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'associated' state. This field is
+                      only included when requested via the
+                      'include_recipient_counts' parameter.
+                  associating_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'associating' state. This field is
+                      only included when requested via the
+                      'include_recipient_counts' parameter.
+                  disassociated_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'disassociated' state. This field
+                      is only included when requested via the
+                      'include_recipient_counts' parameter.
+                  disassociating_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'disassociating' state. This field
+                      is only included when requested via the
+                      'include_recipient_counts' parameter.
+                  kind:
+                    type: string
+                    enum:
+                      - sent
+                      - received
+                  resources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Share Resource identifier.
+                        created:
+                          type: string
+                          description: When the share was created.
+                        meta:
+                          description: Resource Metadata.
+                        modified:
+                          type: string
+                          description: When the share was modified.
+                        resource_account_id:
+                          type: string
+                          description: Account identifier.
+                        resource_id:
+                          type: string
+                          description: Share Resource identifier.
+                        resource_type:
+                          type: string
+                          enum:
+                            - custom-ruleset
+                            - widget
+                            - gateway-policy
+                            - gateway-destination-ip
+                            - gateway-block-page-settings
+                            - gateway-extended-email-matching
+                          description: Resource Type.
+                        resource_version:
+                          type: number
+                          description: Resource Version.
+                        status:
+                          type: string
+                          enum:
+                            - active
+                            - deleting
+                            - deleted
+                          description: Resource Status.
+                      required:
+                        - id
+                        - created
+                        - meta
+                        - modified
+                        - resource_account_id
+                        - resource_id
+                        - resource_type
+                        - resource_version
+                        - status
+                    description: A list of resources that are part of the share. This field is only
+                      included when requested via the 'include_resources'
+                      parameter.
+                required:
+                  - id
+                  - account_id
+                  - account_name
+                  - created
+                  - modified
+                  - name
+                  - organization_id
+                  - status
+                  - target_type
+      x-distilled-response-path: result
+  /accounts/{account_id}/shares:
+    get:
+      operationId: listResourceSharings
+      description: "Lists all account shares.  @example ```ts // Automatically fetches
+        more pages as needed. for await (const resourceSharingListResponse of
+        client.resourceSharing.list( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier."
+          schema:
+            type: string
+        - name: direction
+          in: query
+          required: false
+          description: "Query param: Direction to sort objects."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: include_recipient_counts
+          in: query
+          required: false
+          description: "Query param: Include recipient counts in the response."
+          schema:
+            type: boolean
+        - name: include_resources
+          in: query
+          required: false
+          description: "Query param: Include resources in the response."
+          schema:
+            type: boolean
+        - name: kind
+          in: query
+          required: false
+          description: "Query param: Filter shares by kind."
+          schema:
+            type: string
+            enum:
+              - sent
+              - received
+        - name: order
+          in: query
+          required: false
+          description: "Query param: Order shares by values in the given field."
+          schema:
+            type: string
+            enum:
+              - name
+              - created
+        - name: resource_types
+          in: query
+          required: false
+          description: "Query param: Filter share resources by resource_types."
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - custom-ruleset
+                - widget
+                - gateway-policy
+                - gateway-destination-ip
+                - gateway-block-page-settings
+                - gateway-extended-email-matching
+        - name: status
+          in: query
+          required: false
+          description: "Query param: Filter shares by status."
+          schema:
+            type: string
+            enum:
+              - active
+              - deleting
+              - deleted
+        - name: target_type
+          in: query
+          required: false
+          description: "Query param: Filter shares by target_type."
+          schema:
+            type: string
+            enum:
+              - account
+              - organization
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Share identifier tag.
+                  account_id:
+                    type: string
+                    description: Account identifier.
+                  account_name:
+                    type: string
+                    description: The display name of an account.
+                  created:
+                    type: string
+                    description: When the share was created.
+                  modified:
+                    type: string
+                    description: When the share was modified.
+                  name:
+                    type: string
+                    description: The name of the share.
+                  organization_id:
+                    type: string
+                    description: Organization identifier.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - deleting
+                      - deleted
+                  target_type:
+                    type: string
+                    enum:
+                      - account
+                      - organization
+                  associated_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'associated' state. This field is
+                      only included when requested via the
+                      'include_recipient_counts' parameter.
+                  associating_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'associating' state. This field is
+                      only included when requested via the
+                      'include_recipient_counts' parameter.
+                  disassociated_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'disassociated' state. This field
+                      is only included when requested via the
+                      'include_recipient_counts' parameter.
+                  disassociating_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'disassociating' state. This field
+                      is only included when requested via the
+                      'include_recipient_counts' parameter.
+                  kind:
+                    type: string
+                    enum:
+                      - sent
+                      - received
+                  resources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Share Resource identifier.
+                        created:
+                          type: string
+                          description: When the share was created.
+                        meta:
+                          description: Resource Metadata.
+                        modified:
+                          type: string
+                          description: When the share was modified.
+                        resource_account_id:
+                          type: string
+                          description: Account identifier.
+                        resource_id:
+                          type: string
+                          description: Share Resource identifier.
+                        resource_type:
+                          type: string
+                          enum:
+                            - custom-ruleset
+                            - widget
+                            - gateway-policy
+                            - gateway-destination-ip
+                            - gateway-block-page-settings
+                            - gateway-extended-email-matching
+                          description: Resource Type.
+                        resource_version:
+                          type: number
+                          description: Resource Version.
+                        status:
+                          type: string
+                          enum:
+                            - active
+                            - deleting
+                            - deleted
+                          description: Resource Status.
+                      required:
+                        - id
+                        - created
+                        - meta
+                        - modified
+                        - resource_account_id
+                        - resource_id
+                        - resource_type
+                        - resource_version
+                        - status
+                    description: A list of resources that are part of the share. This field is only
+                      included when requested via the 'include_resources'
+                      parameter.
+                required:
+                  - id
+                  - account_id
+                  - account_name
+                  - created
+                  - modified
+                  - name
+                  - organization_id
+                  - status
+                  - target_type
+      x-distilled-pagination-class: ResourceSharingListResponsesV4PagePaginationArray
+    post:
+      operationId: createResourceSharing
+      description: "Create a new share  @example ```ts const resourceSharing = await
+        client.resourceSharing.create( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', name: 'My Shared WAF Managed Rule',
+        recipients: [{}], resources: [ { meta: {}, resource_account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', resource_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', resource_type: 'custom-ruleset', },
+        ], }, ); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: The name of the share."
+                recipients:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      account_id:
+                        type: string
+                        description: Account identifier.
+                      organization_id:
+                        type: string
+                        description: Organization identifier.
+                  description: "Body param:"
+                resources:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      meta:
+                        description: Resource Metadata.
+                      resource_account_id:
+                        type: string
+                        description: Account identifier.
+                      resource_id:
+                        type: string
+                        description: Share Resource identifier.
+                      resource_type:
+                        type: string
+                        enum:
+                          - custom-ruleset
+                          - widget
+                          - gateway-policy
+                          - gateway-destination-ip
+                          - gateway-block-page-settings
+                          - gateway-extended-email-matching
+                        description: Resource Type.
+                    required:
+                      - meta
+                      - resource_account_id
+                      - resource_id
+                      - resource_type
+                  description: "Body param:"
+              required:
+                - name
+                - recipients
+                - resources
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Share identifier tag.
+                  account_id:
+                    type: string
+                    description: Account identifier.
+                  account_name:
+                    type: string
+                    description: The display name of an account.
+                  created:
+                    type: string
+                    description: When the share was created.
+                  modified:
+                    type: string
+                    description: When the share was modified.
+                  name:
+                    type: string
+                    description: The name of the share.
+                  organization_id:
+                    type: string
+                    description: Organization identifier.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - deleting
+                      - deleted
+                  target_type:
+                    type: string
+                    enum:
+                      - account
+                      - organization
+                  associated_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'associated' state. This field is
+                      only included when requested via the
+                      'include_recipient_counts' parameter.
+                  associating_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'associating' state. This field is
+                      only included when requested via the
+                      'include_recipient_counts' parameter.
+                  disassociated_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'disassociated' state. This field
+                      is only included when requested via the
+                      'include_recipient_counts' parameter.
+                  disassociating_recipient_count:
+                    type: number
+                    description: The number of recipients in the 'disassociating' state. This field
+                      is only included when requested via the
+                      'include_recipient_counts' parameter.
+                  kind:
+                    type: string
+                    enum:
+                      - sent
+                      - received
+                  resources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Share Resource identifier.
+                        created:
+                          type: string
+                          description: When the share was created.
+                        meta:
+                          description: Resource Metadata.
+                        modified:
+                          type: string
+                          description: When the share was modified.
+                        resource_account_id:
+                          type: string
+                          description: Account identifier.
+                        resource_id:
+                          type: string
+                          description: Share Resource identifier.
+                        resource_type:
+                          type: string
+                          enum:
+                            - custom-ruleset
+                            - widget
+                            - gateway-policy
+                            - gateway-destination-ip
+                            - gateway-block-page-settings
+                            - gateway-extended-email-matching
+                          description: Resource Type.
+                        resource_version:
+                          type: number
+                          description: Resource Version.
+                        status:
+                          type: string
+                          enum:
+                            - active
+                            - deleting
+                            - deleted
+                          description: Resource Status.
+                      required:
+                        - id
+                        - created
+                        - meta
+                        - modified
+                        - resource_account_id
+                        - resource_id
+                        - resource_type
+                        - resource_version
+                        - status
+                    description: A list of resources that are part of the share. This field is only
+                      included when requested via the 'include_resources'
+                      parameter.
+                required:
+                  - id
+                  - account_id
+                  - account_name
+                  - created
+                  - modified
+                  - name
+                  - organization_id
+                  - status
+                  - target_type
+      x-distilled-response-path: result

@@ -1,0 +1,434 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare BRAND-PROTECTION API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: brand-protection
+paths:
+  /accounts/{account_id}/brand-protection/submit:
+    post:
+      operationId: submitBrandProtection
+      description: Return new URL submissions
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  skipped_urls:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                  submitted_urls:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+  /accounts/{account_id}/brand-protection/url-info:
+    get:
+      operationId: urlInfoBrandProtection
+      description: Return submitted URLs based on ID
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-pagination-class: BrandProtectionURLInfoResponsesSinglePage
+  /accounts/{account_id}/brand-protection/logos:
+    post:
+      operationId: createLogo
+      description: Return new saved logo queries created from image files
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: match_type
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+        - name: tag
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+        - name: threshold
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: number
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  tag:
+                    type: string
+                  upload_path:
+                    type: string
+  /accounts/{account_id}/brand-protection/logos/{logoId}:
+    delete:
+      operationId: deleteLogo
+      description: Return a success message after deleting saved logo queries by ID
+      parameters:
+        - name: logoId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  /accounts/{account_id}/brand-protection/logo-matches:
+    get:
+      operationId: getLogoMatch
+      description: Return matches for logo queries based on ID
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+        - name: logo_id
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: offset
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  matches:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                  total:
+                    type: number
+  /accounts/{account_id}/brand-protection/logo-matches/download:
+    get:
+      operationId: downloadLogoMatch
+      description: Return matches as CSV for logo queries based on ID
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+        - name: logo_id
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: offset
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  matches:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                  total:
+                    type: number
+  /accounts/{account_id}/brand-protection/matches:
+    get:
+      operationId: getMatch
+      description: Return matches for string queries based on ID
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: id
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+        - name: include_domain_id
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: boolean
+        - name: limit
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: number
+        - name: offset
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  matches:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                  total:
+                    type: number
+  /accounts/{account_id}/brand-protection/matches/download:
+    get:
+      operationId: downloadMatch
+      description: Return matches as CSV for string queries based on ID
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: id
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+        - name: include_domain_id
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: boolean
+        - name: limit
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: number
+        - name: offset
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  matches:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+                  total:
+                    type: number
+  /accounts/{account_id}/brand-protection/queries:
+    post:
+      operationId: createQuery
+      description: Return a success message after creating new saved string queries
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: id
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+        - name: query_scan
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: boolean
+        - name: query_tag
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                max_time:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: "Body param:"
+                min_time:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: "Body param:"
+                body_scan:
+                  type: boolean
+                  description: "Body param:"
+                string_matches:
+                  description: "Body param:"
+                body_tag:
+                  type: string
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+    delete:
+      operationId: deleteQuery
+      description: Return a success message after deleting saved string queries by ID
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: id
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+        - name: scan
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: boolean
+        - name: tag
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  /accounts/{account_id}/brand-protection/queries/bulk:
+    post:
+      operationId: bulkQuery
+      description: Return a success message after creating new saved string queries in bulk
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                queries:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success

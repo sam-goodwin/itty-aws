@@ -1,0 +1,505 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare ORGANIZATIONS API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: organizations
+paths:
+  /organizations/{organizationId}:
+    get:
+      operationId: getOrganization
+      description: Retrieve the details of a certain organization. (Currently in
+        Closed Beta - see
+        https://developers.cloudflare.com/fundamentals/organizations/)
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  create_time:
+                    type: string
+                  meta:
+                    type: object
+                    properties:
+                      flags:
+                        type: object
+                        properties:
+                          account_creation:
+                            type: string
+                          account_deletion:
+                            type: string
+                          account_migration:
+                            type: string
+                          account_mobility:
+                            type: string
+                          sub_org_creation:
+                            type: string
+                        required:
+                          - account_creation
+                          - account_deletion
+                          - account_migration
+                          - account_mobility
+                          - sub_org_creation
+                        description: Enable features for Organizations.
+                      managed_by:
+                        type: string
+                  name:
+                    type: string
+                  parent:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                      - id
+                      - name
+                  profile:
+                    type: object
+                    properties:
+                      business_address:
+                        type: string
+                      business_email:
+                        type: string
+                      business_name:
+                        type: string
+                      business_phone:
+                        type: string
+                      external_metadata:
+                        type: string
+                    required:
+                      - business_address
+                      - business_email
+                      - business_name
+                      - business_phone
+                      - external_metadata
+                required:
+                  - id
+                  - create_time
+                  - meta
+                  - name
+      x-distilled-response-path: result
+    put:
+      operationId: updateOrganization
+      description: Modify organization. (Currently in Closed Beta - see
+        https://developers.cloudflare.com/fundamentals/organizations/)
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                parent:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                  required:
+                    - id
+                profile:
+                  type: object
+                  properties:
+                    business_address:
+                      type: string
+                    business_email:
+                      type: string
+                    business_name:
+                      type: string
+                    business_phone:
+                      type: string
+                    external_metadata:
+                      type: string
+                  required:
+                    - business_address
+                    - business_email
+                    - business_name
+                    - business_phone
+                    - external_metadata
+              required:
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  create_time:
+                    type: string
+                  meta:
+                    type: object
+                    properties:
+                      flags:
+                        type: object
+                        properties:
+                          account_creation:
+                            type: string
+                          account_deletion:
+                            type: string
+                          account_migration:
+                            type: string
+                          account_mobility:
+                            type: string
+                          sub_org_creation:
+                            type: string
+                        required:
+                          - account_creation
+                          - account_deletion
+                          - account_migration
+                          - account_mobility
+                          - sub_org_creation
+                        description: Enable features for Organizations.
+                      managed_by:
+                        type: string
+                  name:
+                    type: string
+                  parent:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                      - id
+                      - name
+                  profile:
+                    type: object
+                    properties:
+                      business_address:
+                        type: string
+                      business_email:
+                        type: string
+                      business_name:
+                        type: string
+                      business_phone:
+                        type: string
+                      external_metadata:
+                        type: string
+                    required:
+                      - business_address
+                      - business_email
+                      - business_name
+                      - business_phone
+                      - external_metadata
+                required:
+                  - id
+                  - create_time
+                  - meta
+                  - name
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteOrganization
+      description: Delete an organization. The organization MUST be empty before
+        deleting. It must not contain any sub-organizations, accounts, members
+        or users. (Currently in Closed Beta - see
+        https://developers.cloudflare.com/fundamentals/organizations/)
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                required:
+                  - id
+      x-distilled-response-path: result
+  /organizations:
+    get:
+      operationId: listOrganizations
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  create_time:
+                    type: string
+                  meta:
+                    type: object
+                    properties:
+                      flags:
+                        type: object
+                        properties:
+                          account_creation:
+                            type: string
+                          account_deletion:
+                            type: string
+                          account_migration:
+                            type: string
+                          account_mobility:
+                            type: string
+                          sub_org_creation:
+                            type: string
+                        required:
+                          - account_creation
+                          - account_deletion
+                          - account_migration
+                          - account_mobility
+                          - sub_org_creation
+                        description: Enable features for Organizations.
+                      managed_by:
+                        type: string
+                  name:
+                    type: string
+                  parent:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                      - id
+                      - name
+                  profile:
+                    type: object
+                    properties:
+                      business_address:
+                        type: string
+                      business_email:
+                        type: string
+                      business_name:
+                        type: string
+                      business_phone:
+                        type: string
+                      external_metadata:
+                        type: string
+                    required:
+                      - business_address
+                      - business_email
+                      - business_name
+                      - business_phone
+                      - external_metadata
+                required:
+                  - id
+                  - create_time
+                  - meta
+                  - name
+      x-distilled-pagination-class: OrganizationsSinglePage
+    post:
+      operationId: createOrganization
+      description: Create a new organization for a user. (Currently in Closed Beta -
+        see https://developers.cloudflare.com/fundamentals/organizations/)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                parent:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                  required:
+                    - id
+                profile:
+                  type: object
+                  properties:
+                    business_address:
+                      type: string
+                    business_email:
+                      type: string
+                    business_name:
+                      type: string
+                    business_phone:
+                      type: string
+                    external_metadata:
+                      type: string
+                  required:
+                    - business_address
+                    - business_email
+                    - business_name
+                    - business_phone
+                    - external_metadata
+              required:
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  create_time:
+                    type: string
+                  meta:
+                    type: object
+                    properties:
+                      flags:
+                        type: object
+                        properties:
+                          account_creation:
+                            type: string
+                          account_deletion:
+                            type: string
+                          account_migration:
+                            type: string
+                          account_mobility:
+                            type: string
+                          sub_org_creation:
+                            type: string
+                        required:
+                          - account_creation
+                          - account_deletion
+                          - account_migration
+                          - account_mobility
+                          - sub_org_creation
+                        description: Enable features for Organizations.
+                      managed_by:
+                        type: string
+                  name:
+                    type: string
+                  parent:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                      - id
+                      - name
+                  profile:
+                    type: object
+                    properties:
+                      business_address:
+                        type: string
+                      business_email:
+                        type: string
+                      business_name:
+                        type: string
+                      business_phone:
+                        type: string
+                      external_metadata:
+                        type: string
+                    required:
+                      - business_address
+                      - business_email
+                      - business_name
+                      - business_phone
+                      - external_metadata
+                required:
+                  - id
+                  - create_time
+                  - meta
+                  - name
+      x-distilled-response-path: result
+  /organizations/{organizationId}/profile:
+    get:
+      operationId: getOrganizationProfile
+      description: Get an organizations profile if it exists. (Currently in Closed
+        Beta - see
+        https://developers.cloudflare.com/fundamentals/organizations/)
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  business_address:
+                    type: string
+                  business_email:
+                    type: string
+                  business_name:
+                    type: string
+                  business_phone:
+                    type: string
+                  external_metadata:
+                    type: string
+                required:
+                  - business_address
+                  - business_email
+                  - business_name
+                  - business_phone
+                  - external_metadata
+      x-distilled-response-path: result
+    put:
+      operationId: putOrganizationProfile
+      description: Modify organization profile. (Currently in Closed Beta - see
+        https://developers.cloudflare.com/fundamentals/organizations/)
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                business_address:
+                  type: string
+                business_email:
+                  type: string
+                business_name:
+                  type: string
+                business_phone:
+                  type: string
+                external_metadata:
+                  type: string
+              required:
+                - business_address
+                - business_email
+                - business_name
+                - business_phone
+                - external_metadata
+      responses:
+        "200":
+          description: Success

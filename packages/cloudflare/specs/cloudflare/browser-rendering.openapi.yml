@@ -1,0 +1,2661 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare BROWSER-RENDERING API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: browser-rendering
+paths:
+  /accounts/{account_id}/browser-rendering/content:
+    post:
+      operationId: createContent
+      description: "Fetches rendered HTML content from provided URL or HTML. Check
+        available options like `gotoOptions` and `waitFor ` to control page load
+        behaviour.  @example ```ts const content = await
+        client.browserRendering.content.create({ account_id: 'account_id', url:
+        'https://www.example.com/', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cacheTTL
+          in: query
+          required: false
+          description: "Query param: Cache TTL default is 5s. Set to 0 to disable."
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: "Body param: URL to navigate to, eg. `https://example.com`."
+                actionTimeout:
+                  type: number
+                  description: "Body param: The maximum duration allowed for the browser action to
+                    complete after the page has loaded (such as taking
+                    screenshots, extracting content, or generating PDFs). If
+                    this time limit is exceeded, the action stops and returns a
+                    timeout error."
+                addScriptTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      content:
+                        type: string
+                      type:
+                        type: string
+                      url:
+                        type: string
+                  description: "Body param: Adds a `<script>` tag into the page with the desired
+                    URL or content."
+                addStyleTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      content:
+                        type: string
+                      url:
+                        type: string
+                  description: 'Body param: Adds a `<link rel="stylesheet">` tag into the page
+                    with the desired URL or a `<style type="text/css">` tag with
+                    the content.'
+                allowRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Only allow requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                allowResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Only allow requests that match the provided resource
+                    types, eg. 'image' or 'script'."
+                authenticate:
+                  type: object
+                  properties:
+                    password:
+                      type: string
+                    username:
+                      type: string
+                  required:
+                    - password
+                    - username
+                  description: "Body param: Provide credentials for HTTP authentication."
+                bestAttempt:
+                  type: boolean
+                  description: "Body param: Attempt to proceed when 'awaited' events fail or
+                    timeout."
+                cookies:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      value:
+                        type: string
+                      domain:
+                        type: string
+                      expires:
+                        type: number
+                      httpOnly:
+                        type: boolean
+                      partitionKey:
+                        type: string
+                      path:
+                        type: string
+                      priority:
+                        type: string
+                        enum:
+                          - Low
+                          - Medium
+                          - High
+                      sameParty:
+                        type: boolean
+                      sameSite:
+                        type: string
+                        enum:
+                          - Strict
+                          - Lax
+                          - None
+                      secure:
+                        type: boolean
+                      sourcePort:
+                        type: number
+                      sourceScheme:
+                        type: string
+                        enum:
+                          - Unset
+                          - NonSecure
+                          - Secure
+                      url:
+                        type: string
+                    required:
+                      - name
+                      - value
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+                emulateMediaType:
+                  type: string
+                  description: "Body param:"
+                gotoOptions:
+                  type: object
+                  properties:
+                    referer:
+                      type: string
+                    referrerPolicy:
+                      type: string
+                    timeout:
+                      type: number
+                    waitUntil:
+                      oneOf:
+                        - type: string
+                          enum:
+                            - load
+                        - type: string
+                          enum:
+                            - domcontentloaded
+                        - type: string
+                          enum:
+                            - networkidle0
+                        - type: string
+                          enum:
+                            - networkidle2
+                        - type: array
+                          items:
+                            type: string
+                            enum:
+                              - load
+                              - domcontentloaded
+                              - networkidle0
+                              - networkidle2
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.gotooptions)."
+                rejectRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Block undesired requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                rejectResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Block undesired requests that match the provided
+                    resource types, eg. 'image' or 'script'."
+                setExtraHTTPHeaders:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param:"
+                setJavaScriptEnabled:
+                  type: boolean
+                  description: "Body param:"
+                userAgent:
+                  type: string
+                  description: "Body param:"
+                viewport:
+                  type: object
+                  properties:
+                    height:
+                      type: number
+                    width:
+                      type: number
+                    deviceScaleFactor:
+                      type: number
+                    hasTouch:
+                      type: boolean
+                    isLandscape:
+                      type: boolean
+                    isMobile:
+                      type: boolean
+                  required:
+                    - height
+                    - width
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+                waitForSelector:
+                  type: object
+                  properties:
+                    selector:
+                      type: string
+                    hidden:
+                      type: boolean
+                      enum:
+                        - true
+                    timeout:
+                      type: number
+                    visible:
+                      type: boolean
+                      enum:
+                        - true
+                  required:
+                    - selector
+                  description: "Body param: Wait for the selector to appear in page. Check
+                    [options](https://pptr.dev/api/puppeteer.page.waitforselect\
+                    or)."
+                waitForTimeout:
+                  type: number
+                  description: "Body param: Waits for a specified timeout before continuing."
+              required:
+                - url
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+      x-distilled-response-path: result
+  /accounts/{account_id}/browser-rendering/json:
+    post:
+      operationId: createJson
+      description: "Gets json from a webpage from a provided URL or HTML. Pass
+        `prompt` or `schema` in the body. Control page loading with
+        `gotoOptions` and `waitFor ` options.  @example ```ts const json = await
+        client.browserRendering.json.create({ account_id: 'account_id', html:
+        '<h1>Hello World!</h1>', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cacheTTL
+          in: query
+          required: false
+          description: "Query param: Cache TTL default is 5s. Set to 0 to disable."
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                html:
+                  type: string
+                  description: "Body param: Set the content of the page, eg: `<h1>Hello
+                    World!!</h1>`. Either `html` or `url` must be set."
+                actionTimeout:
+                  type: number
+                  description: "Body param: The maximum duration allowed for the browser action to
+                    complete after the page has loaded (such as taking
+                    screenshots, extracting content, or generating PDFs). If
+                    this time limit is exceeded, the action stops and returns a
+                    timeout error."
+                addScriptTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      content:
+                        type: string
+                      type:
+                        type: string
+                      url:
+                        type: string
+                  description: "Body param: Adds a `<script>` tag into the page with the desired
+                    URL or content."
+                addStyleTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      content:
+                        type: string
+                      url:
+                        type: string
+                  description: 'Body param: Adds a `<link rel="stylesheet">` tag into the page
+                    with the desired URL or a `<style type="text/css">` tag with
+                    the content.'
+                allowRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Only allow requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                allowResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Only allow requests that match the provided resource
+                    types, eg. 'image' or 'script'."
+                authenticate:
+                  type: object
+                  properties:
+                    password:
+                      type: string
+                    username:
+                      type: string
+                  required:
+                    - password
+                    - username
+                  description: "Body param: Provide credentials for HTTP authentication."
+                bestAttempt:
+                  type: boolean
+                  description: "Body param: Attempt to proceed when 'awaited' events fail or
+                    timeout."
+                cookies:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      value:
+                        type: string
+                      domain:
+                        type: string
+                      expires:
+                        type: number
+                      httpOnly:
+                        type: boolean
+                      partitionKey:
+                        type: string
+                      path:
+                        type: string
+                      priority:
+                        type: string
+                        enum:
+                          - Low
+                          - Medium
+                          - High
+                      sameParty:
+                        type: boolean
+                      sameSite:
+                        type: string
+                        enum:
+                          - Strict
+                          - Lax
+                          - None
+                      secure:
+                        type: boolean
+                      sourcePort:
+                        type: number
+                      sourceScheme:
+                        type: string
+                        enum:
+                          - Unset
+                          - NonSecure
+                          - Secure
+                      url:
+                        type: string
+                    required:
+                      - name
+                      - value
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+                custom_ai:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      authorization:
+                        type: string
+                        description: "Authorization token for the AI model: `Bearer <token>`."
+                      model:
+                        type: string
+                        description: AI model to use for the request. Must be formed as
+                          `<provider>/<model_name>`, e.g.
+                          `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`
+                    required:
+                      - authorization
+                      - model
+                  description: "Body param: Optional list of custom AI models to use for the
+                    request. The models will be tried in the order provided, and
+                    in case a model returns an error, the next one will be used
+                    as fallback."
+                emulateMediaType:
+                  type: string
+                  description: "Body param:"
+                gotoOptions:
+                  type: object
+                  properties:
+                    referer:
+                      type: string
+                    referrerPolicy:
+                      type: string
+                    timeout:
+                      type: number
+                    waitUntil:
+                      oneOf:
+                        - type: string
+                          enum:
+                            - load
+                        - type: string
+                          enum:
+                            - domcontentloaded
+                        - type: string
+                          enum:
+                            - networkidle0
+                        - type: string
+                          enum:
+                            - networkidle2
+                        - type: array
+                          items:
+                            type: string
+                            enum:
+                              - load
+                              - domcontentloaded
+                              - networkidle0
+                              - networkidle2
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.gotooptions)."
+                prompt:
+                  type: string
+                  description: "Body param:"
+                rejectRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Block undesired requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                rejectResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Block undesired requests that match the provided
+                    resource types, eg. 'image' or 'script'."
+                response_format:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    json_schema:
+                      oneOf:
+                        - type: object
+                          additionalProperties: true
+                      nullable: true
+                      description: "Schema for the response format. More information here:
+                        https://developers.cloudflare.com/workers-ai/json-mode/"
+                  required:
+                    - type
+                  description: "Body param:"
+                setExtraHTTPHeaders:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param:"
+                setJavaScriptEnabled:
+                  type: boolean
+                  description: "Body param:"
+                userAgent:
+                  type: string
+                  description: "Body param:"
+                viewport:
+                  type: object
+                  properties:
+                    height:
+                      type: number
+                    width:
+                      type: number
+                    deviceScaleFactor:
+                      type: number
+                    hasTouch:
+                      type: boolean
+                    isLandscape:
+                      type: boolean
+                    isMobile:
+                      type: boolean
+                  required:
+                    - height
+                    - width
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+                waitForSelector:
+                  type: object
+                  properties:
+                    selector:
+                      type: string
+                    hidden:
+                      type: boolean
+                      enum:
+                        - true
+                    timeout:
+                      type: number
+                    visible:
+                      type: boolean
+                      enum:
+                        - true
+                  required:
+                    - selector
+                  description: "Body param: Wait for the selector to appear in page. Check
+                    [options](https://pptr.dev/api/puppeteer.page.waitforselect\
+                    or)."
+                waitForTimeout:
+                  type: number
+                  description: "Body param: Waits for a specified timeout before continuing."
+              required:
+                - html
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+  /accounts/{account_id}/browser-rendering/links:
+    post:
+      operationId: createLink
+      description: "Get links from a web page.  @example ```ts const links = await
+        client.browserRendering.links.create({ account_id: 'account_id', html:
+        '<h1>Hello World!</h1>', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cacheTTL
+          in: query
+          required: false
+          description: "Query param: Cache TTL default is 5s. Set to 0 to disable."
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                html:
+                  type: string
+                  description: "Body param: Set the content of the page, eg: `<h1>Hello
+                    World!!</h1>`. Either `html` or `url` must be set."
+                actionTimeout:
+                  type: number
+                  description: "Body param: The maximum duration allowed for the browser action to
+                    complete after the page has loaded (such as taking
+                    screenshots, extracting content, or generating PDFs). If
+                    this time limit is exceeded, the action stops and returns a
+                    timeout error."
+                addScriptTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      content:
+                        type: string
+                      type:
+                        type: string
+                      url:
+                        type: string
+                  description: "Body param: Adds a `<script>` tag into the page with the desired
+                    URL or content."
+                addStyleTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      content:
+                        type: string
+                      url:
+                        type: string
+                  description: 'Body param: Adds a `<link rel="stylesheet">` tag into the page
+                    with the desired URL or a `<style type="text/css">` tag with
+                    the content.'
+                allowRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Only allow requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                allowResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Only allow requests that match the provided resource
+                    types, eg. 'image' or 'script'."
+                authenticate:
+                  type: object
+                  properties:
+                    password:
+                      type: string
+                    username:
+                      type: string
+                  required:
+                    - password
+                    - username
+                  description: "Body param: Provide credentials for HTTP authentication."
+                bestAttempt:
+                  type: boolean
+                  description: "Body param: Attempt to proceed when 'awaited' events fail or
+                    timeout."
+                cookies:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      value:
+                        type: string
+                      domain:
+                        type: string
+                      expires:
+                        type: number
+                      httpOnly:
+                        type: boolean
+                      partitionKey:
+                        type: string
+                      path:
+                        type: string
+                      priority:
+                        type: string
+                        enum:
+                          - Low
+                          - Medium
+                          - High
+                      sameParty:
+                        type: boolean
+                      sameSite:
+                        type: string
+                        enum:
+                          - Strict
+                          - Lax
+                          - None
+                      secure:
+                        type: boolean
+                      sourcePort:
+                        type: number
+                      sourceScheme:
+                        type: string
+                        enum:
+                          - Unset
+                          - NonSecure
+                          - Secure
+                      url:
+                        type: string
+                    required:
+                      - name
+                      - value
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+                emulateMediaType:
+                  type: string
+                  description: "Body param:"
+                excludeExternalLinks:
+                  type: boolean
+                  description: "Body param:"
+                gotoOptions:
+                  type: object
+                  properties:
+                    referer:
+                      type: string
+                    referrerPolicy:
+                      type: string
+                    timeout:
+                      type: number
+                    waitUntil:
+                      oneOf:
+                        - type: string
+                          enum:
+                            - load
+                        - type: string
+                          enum:
+                            - domcontentloaded
+                        - type: string
+                          enum:
+                            - networkidle0
+                        - type: string
+                          enum:
+                            - networkidle2
+                        - type: array
+                          items:
+                            type: string
+                            enum:
+                              - load
+                              - domcontentloaded
+                              - networkidle0
+                              - networkidle2
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.gotooptions)."
+                rejectRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Block undesired requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                rejectResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Block undesired requests that match the provided
+                    resource types, eg. 'image' or 'script'."
+                setExtraHTTPHeaders:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param:"
+                setJavaScriptEnabled:
+                  type: boolean
+                  description: "Body param:"
+                userAgent:
+                  type: string
+                  description: "Body param:"
+                viewport:
+                  type: object
+                  properties:
+                    height:
+                      type: number
+                    width:
+                      type: number
+                    deviceScaleFactor:
+                      type: number
+                    hasTouch:
+                      type: boolean
+                    isLandscape:
+                      type: boolean
+                    isMobile:
+                      type: boolean
+                  required:
+                    - height
+                    - width
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+                visibleLinksOnly:
+                  type: boolean
+                  description: "Body param:"
+                waitForSelector:
+                  type: object
+                  properties:
+                    selector:
+                      type: string
+                    hidden:
+                      type: boolean
+                      enum:
+                        - true
+                    timeout:
+                      type: number
+                    visible:
+                      type: boolean
+                      enum:
+                        - true
+                  required:
+                    - selector
+                  description: "Body param: Wait for the selector to appear in page. Check
+                    [options](https://pptr.dev/api/puppeteer.page.waitforselect\
+                    or)."
+                waitForTimeout:
+                  type: number
+                  description: "Body param: Waits for a specified timeout before continuing."
+              required:
+                - html
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+      x-distilled-response-path: result
+  /accounts/{account_id}/browser-rendering/markdown:
+    post:
+      operationId: createMarkdown
+      description: "Gets markdown of a webpage from provided URL or HTML. Control page
+        loading with `gotoOptions` and `waitFor ` options.  @example ```ts const
+        markdown = await client.browserRendering.markdown.create({ account_id:
+        'account_id', url: 'https://www.example.com/', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cacheTTL
+          in: query
+          required: false
+          description: "Query param: Cache TTL default is 5s. Set to 0 to disable."
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: "Body param: URL to navigate to, eg. `https://example.com`."
+                actionTimeout:
+                  type: number
+                  description: "Body param: The maximum duration allowed for the browser action to
+                    complete after the page has loaded (such as taking
+                    screenshots, extracting content, or generating PDFs). If
+                    this time limit is exceeded, the action stops and returns a
+                    timeout error."
+                addScriptTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      content:
+                        type: string
+                      type:
+                        type: string
+                      url:
+                        type: string
+                  description: "Body param: Adds a `<script>` tag into the page with the desired
+                    URL or content."
+                addStyleTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      content:
+                        type: string
+                      url:
+                        type: string
+                  description: 'Body param: Adds a `<link rel="stylesheet">` tag into the page
+                    with the desired URL or a `<style type="text/css">` tag with
+                    the content.'
+                allowRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Only allow requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                allowResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Only allow requests that match the provided resource
+                    types, eg. 'image' or 'script'."
+                authenticate:
+                  type: object
+                  properties:
+                    password:
+                      type: string
+                    username:
+                      type: string
+                  required:
+                    - password
+                    - username
+                  description: "Body param: Provide credentials for HTTP authentication."
+                bestAttempt:
+                  type: boolean
+                  description: "Body param: Attempt to proceed when 'awaited' events fail or
+                    timeout."
+                cookies:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      value:
+                        type: string
+                      domain:
+                        type: string
+                      expires:
+                        type: number
+                      httpOnly:
+                        type: boolean
+                      partitionKey:
+                        type: string
+                      path:
+                        type: string
+                      priority:
+                        type: string
+                        enum:
+                          - Low
+                          - Medium
+                          - High
+                      sameParty:
+                        type: boolean
+                      sameSite:
+                        type: string
+                        enum:
+                          - Strict
+                          - Lax
+                          - None
+                      secure:
+                        type: boolean
+                      sourcePort:
+                        type: number
+                      sourceScheme:
+                        type: string
+                        enum:
+                          - Unset
+                          - NonSecure
+                          - Secure
+                      url:
+                        type: string
+                    required:
+                      - name
+                      - value
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+                emulateMediaType:
+                  type: string
+                  description: "Body param:"
+                gotoOptions:
+                  type: object
+                  properties:
+                    referer:
+                      type: string
+                    referrerPolicy:
+                      type: string
+                    timeout:
+                      type: number
+                    waitUntil:
+                      oneOf:
+                        - type: string
+                          enum:
+                            - load
+                        - type: string
+                          enum:
+                            - domcontentloaded
+                        - type: string
+                          enum:
+                            - networkidle0
+                        - type: string
+                          enum:
+                            - networkidle2
+                        - type: array
+                          items:
+                            type: string
+                            enum:
+                              - load
+                              - domcontentloaded
+                              - networkidle0
+                              - networkidle2
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.gotooptions)."
+                rejectRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Block undesired requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                rejectResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Block undesired requests that match the provided
+                    resource types, eg. 'image' or 'script'."
+                setExtraHTTPHeaders:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param:"
+                setJavaScriptEnabled:
+                  type: boolean
+                  description: "Body param:"
+                userAgent:
+                  type: string
+                  description: "Body param:"
+                viewport:
+                  type: object
+                  properties:
+                    height:
+                      type: number
+                    width:
+                      type: number
+                    deviceScaleFactor:
+                      type: number
+                    hasTouch:
+                      type: boolean
+                    isLandscape:
+                      type: boolean
+                    isMobile:
+                      type: boolean
+                  required:
+                    - height
+                    - width
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+                waitForSelector:
+                  type: object
+                  properties:
+                    selector:
+                      type: string
+                    hidden:
+                      type: boolean
+                      enum:
+                        - true
+                    timeout:
+                      type: number
+                    visible:
+                      type: boolean
+                      enum:
+                        - true
+                  required:
+                    - selector
+                  description: "Body param: Wait for the selector to appear in page. Check
+                    [options](https://pptr.dev/api/puppeteer.page.waitforselect\
+                    or)."
+                waitForTimeout:
+                  type: number
+                  description: "Body param: Waits for a specified timeout before continuing."
+              required:
+                - url
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+      x-distilled-response-path: result
+  /accounts/{account_id}/browser-rendering/pdf:
+    post:
+      operationId: createPdf
+      description: "Fetches rendered PDF from provided URL or HTML. Check available
+        options like `gotoOptions` and `waitFor ` to control page load
+        behaviour.  @example ```ts const pdf = await
+        client.browserRendering.pdf.create({ account_id: 'account_id', html:
+        '<h1>Hello World!</h1>', });  const content = await pdf.blob();
+        console.log(content); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cacheTTL
+          in: query
+          required: false
+          description: "Query param: Cache TTL default is 5s. Set to 0 to disable."
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                html:
+                  type: string
+                  description: "Body param: Set the content of the page, eg: `<h1>Hello
+                    World!!</h1>`. Either `html` or `url` must be set."
+                actionTimeout:
+                  type: number
+                  description: "Body param: The maximum duration allowed for the browser action to
+                    complete after the page has loaded (such as taking
+                    screenshots, extracting content, or generating PDFs). If
+                    this time limit is exceeded, the action stops and returns a
+                    timeout error."
+                addScriptTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      content:
+                        type: string
+                      type:
+                        type: string
+                      url:
+                        type: string
+                  description: "Body param: Adds a `<script>` tag into the page with the desired
+                    URL or content."
+                addStyleTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      content:
+                        type: string
+                      url:
+                        type: string
+                  description: 'Body param: Adds a `<link rel="stylesheet">` tag into the page
+                    with the desired URL or a `<style type="text/css">` tag with
+                    the content.'
+                allowRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Only allow requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                allowResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Only allow requests that match the provided resource
+                    types, eg. 'image' or 'script'."
+                authenticate:
+                  type: object
+                  properties:
+                    password:
+                      type: string
+                    username:
+                      type: string
+                  required:
+                    - password
+                    - username
+                  description: "Body param: Provide credentials for HTTP authentication."
+                bestAttempt:
+                  type: boolean
+                  description: "Body param: Attempt to proceed when 'awaited' events fail or
+                    timeout."
+                cookies:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      value:
+                        type: string
+                      domain:
+                        type: string
+                      expires:
+                        type: number
+                      httpOnly:
+                        type: boolean
+                      partitionKey:
+                        type: string
+                      path:
+                        type: string
+                      priority:
+                        type: string
+                        enum:
+                          - Low
+                          - Medium
+                          - High
+                      sameParty:
+                        type: boolean
+                      sameSite:
+                        type: string
+                        enum:
+                          - Strict
+                          - Lax
+                          - None
+                      secure:
+                        type: boolean
+                      sourcePort:
+                        type: number
+                      sourceScheme:
+                        type: string
+                        enum:
+                          - Unset
+                          - NonSecure
+                          - Secure
+                      url:
+                        type: string
+                    required:
+                      - name
+                      - value
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+                emulateMediaType:
+                  type: string
+                  description: "Body param:"
+                gotoOptions:
+                  type: object
+                  properties:
+                    referer:
+                      type: string
+                    referrerPolicy:
+                      type: string
+                    timeout:
+                      type: number
+                    waitUntil:
+                      oneOf:
+                        - type: string
+                          enum:
+                            - load
+                        - type: string
+                          enum:
+                            - domcontentloaded
+                        - type: string
+                          enum:
+                            - networkidle0
+                        - type: string
+                          enum:
+                            - networkidle2
+                        - type: array
+                          items:
+                            type: string
+                            enum:
+                              - load
+                              - domcontentloaded
+                              - networkidle0
+                              - networkidle2
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.gotooptions)."
+                pdfOptions:
+                  type: object
+                  properties:
+                    displayHeaderFooter:
+                      type: boolean
+                      description: Whether to show the header and footer.
+                    footerTemplate:
+                      type: string
+                      description: HTML template for the print footer.
+                    format:
+                      type: string
+                      enum:
+                        - letter
+                        - legal
+                        - tabloid
+                        - ledger
+                        - a0
+                        - a1
+                        - a2
+                        - a3
+                        - a4
+                        - a5
+                        - a6
+                      description: Paper format. Takes priority over width and height if set.
+                    headerTemplate:
+                      type: string
+                      description: HTML template for the print header.
+                    height:
+                      oneOf:
+                        - type: string
+                        - type: number
+                      description: Sets the height of paper. Can be a number or string with unit.
+                    landscape:
+                      type: boolean
+                      description: Whether to print in landscape orientation.
+                    margin:
+                      type: object
+                      properties:
+                        bottom:
+                          oneOf:
+                            - type: string
+                            - type: number
+                        left:
+                          oneOf:
+                            - type: string
+                            - type: number
+                        right:
+                          oneOf:
+                            - type: string
+                            - type: number
+                        top:
+                          oneOf:
+                            - type: string
+                            - type: number
+                      description: Set the PDF margins. Useful when setting header and footer.
+                    omitBackground:
+                      type: boolean
+                      description: Hides default white background and allows generating pdfs with
+                        transparency.
+                    outline:
+                      type: boolean
+                      description: Generate document outline.
+                    pageRanges:
+                      type: string
+                      description: Paper ranges to print, e.g. '1-5, 8, 11-13'.
+                    preferCSSPageSize:
+                      type: boolean
+                      description: Give CSS @page size priority over other size declarations.
+                    printBackground:
+                      type: boolean
+                      description: Set to true to print background graphics.
+                    scale:
+                      type: number
+                      description: Scales the rendering of the web page. Amount must be between 0.1
+                        and 2.
+                    tagged:
+                      type: boolean
+                      description: Generate tagged (accessible) PDF.
+                    timeout:
+                      type: number
+                      description: Timeout in milliseconds.
+                    width:
+                      oneOf:
+                        - type: string
+                        - type: number
+                      description: Sets the width of paper. Can be a number or string with unit.
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.pdfoptions)."
+                rejectRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Block undesired requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                rejectResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Block undesired requests that match the provided
+                    resource types, eg. 'image' or 'script'."
+                setExtraHTTPHeaders:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param:"
+                setJavaScriptEnabled:
+                  type: boolean
+                  description: "Body param:"
+                userAgent:
+                  type: string
+                  description: "Body param:"
+                viewport:
+                  type: object
+                  properties:
+                    height:
+                      type: number
+                    width:
+                      type: number
+                    deviceScaleFactor:
+                      type: number
+                    hasTouch:
+                      type: boolean
+                    isLandscape:
+                      type: boolean
+                    isMobile:
+                      type: boolean
+                  required:
+                    - height
+                    - width
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+                waitForSelector:
+                  type: object
+                  properties:
+                    selector:
+                      type: string
+                    hidden:
+                      type: boolean
+                      enum:
+                        - true
+                    timeout:
+                      type: number
+                    visible:
+                      type: boolean
+                      enum:
+                        - true
+                  required:
+                    - selector
+                  description: "Body param: Wait for the selector to appear in page. Check
+                    [options](https://pptr.dev/api/puppeteer.page.waitforselect\
+                    or)."
+                waitForTimeout:
+                  type: number
+                  description: "Body param: Waits for a specified timeout before continuing."
+              required:
+                - html
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /accounts/{account_id}/browser-rendering/scrape:
+    post:
+      operationId: createScrape
+      description: "Get meta attributes like height, width, text and others of
+        selected elements.  @example ```ts const scrapes = await
+        client.browserRendering.scrape.create( { account_id: 'account_id',
+        elements: [{ selector: 'h1' }], html: '<h1>Hello World!</h1>', }, );
+        ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cacheTTL
+          in: query
+          required: false
+          description: "Query param: Cache TTL default is 5s. Set to 0 to disable."
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                elements:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      selector:
+                        type: string
+                    required:
+                      - selector
+                  description: "Body param:"
+                html:
+                  type: string
+                  description: "Body param: Set the content of the page, eg: `<h1>Hello
+                    World!!</h1>`. Either `html` or `url` must be set."
+                actionTimeout:
+                  type: number
+                  description: "Body param: The maximum duration allowed for the browser action to
+                    complete after the page has loaded (such as taking
+                    screenshots, extracting content, or generating PDFs). If
+                    this time limit is exceeded, the action stops and returns a
+                    timeout error."
+                addScriptTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      content:
+                        type: string
+                      type:
+                        type: string
+                      url:
+                        type: string
+                  description: "Body param: Adds a `<script>` tag into the page with the desired
+                    URL or content."
+                addStyleTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      content:
+                        type: string
+                      url:
+                        type: string
+                  description: 'Body param: Adds a `<link rel="stylesheet">` tag into the page
+                    with the desired URL or a `<style type="text/css">` tag with
+                    the content.'
+                allowRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Only allow requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                allowResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Only allow requests that match the provided resource
+                    types, eg. 'image' or 'script'."
+                authenticate:
+                  type: object
+                  properties:
+                    password:
+                      type: string
+                    username:
+                      type: string
+                  required:
+                    - password
+                    - username
+                  description: "Body param: Provide credentials for HTTP authentication."
+                bestAttempt:
+                  type: boolean
+                  description: "Body param: Attempt to proceed when 'awaited' events fail or
+                    timeout."
+                cookies:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      value:
+                        type: string
+                      domain:
+                        type: string
+                      expires:
+                        type: number
+                      httpOnly:
+                        type: boolean
+                      partitionKey:
+                        type: string
+                      path:
+                        type: string
+                      priority:
+                        type: string
+                        enum:
+                          - Low
+                          - Medium
+                          - High
+                      sameParty:
+                        type: boolean
+                      sameSite:
+                        type: string
+                        enum:
+                          - Strict
+                          - Lax
+                          - None
+                      secure:
+                        type: boolean
+                      sourcePort:
+                        type: number
+                      sourceScheme:
+                        type: string
+                        enum:
+                          - Unset
+                          - NonSecure
+                          - Secure
+                      url:
+                        type: string
+                    required:
+                      - name
+                      - value
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+                emulateMediaType:
+                  type: string
+                  description: "Body param:"
+                gotoOptions:
+                  type: object
+                  properties:
+                    referer:
+                      type: string
+                    referrerPolicy:
+                      type: string
+                    timeout:
+                      type: number
+                    waitUntil:
+                      oneOf:
+                        - type: string
+                          enum:
+                            - load
+                        - type: string
+                          enum:
+                            - domcontentloaded
+                        - type: string
+                          enum:
+                            - networkidle0
+                        - type: string
+                          enum:
+                            - networkidle2
+                        - type: array
+                          items:
+                            type: string
+                            enum:
+                              - load
+                              - domcontentloaded
+                              - networkidle0
+                              - networkidle2
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.gotooptions)."
+                rejectRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Block undesired requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                rejectResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Block undesired requests that match the provided
+                    resource types, eg. 'image' or 'script'."
+                setExtraHTTPHeaders:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param:"
+                setJavaScriptEnabled:
+                  type: boolean
+                  description: "Body param:"
+                userAgent:
+                  type: string
+                  description: "Body param:"
+                viewport:
+                  type: object
+                  properties:
+                    height:
+                      type: number
+                    width:
+                      type: number
+                    deviceScaleFactor:
+                      type: number
+                    hasTouch:
+                      type: boolean
+                    isLandscape:
+                      type: boolean
+                    isMobile:
+                      type: boolean
+                  required:
+                    - height
+                    - width
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+                waitForSelector:
+                  type: object
+                  properties:
+                    selector:
+                      type: string
+                    hidden:
+                      type: boolean
+                      enum:
+                        - true
+                    timeout:
+                      type: number
+                    visible:
+                      type: boolean
+                      enum:
+                        - true
+                  required:
+                    - selector
+                  description: "Body param: Wait for the selector to appear in page. Check
+                    [options](https://pptr.dev/api/puppeteer.page.waitforselect\
+                    or)."
+                waitForTimeout:
+                  type: number
+                  description: "Body param: Waits for a specified timeout before continuing."
+              required:
+                - elements
+                - html
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    results:
+                      type: object
+                      properties:
+                        attributes:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                                description: Attribute name
+                              value:
+                                type: string
+                                description: Attribute value
+                            required:
+                              - name
+                              - value
+                        height:
+                          type: number
+                          description: Element height
+                        html:
+                          type: string
+                          description: Html content
+                        left:
+                          type: number
+                          description: Element left
+                        text:
+                          type: string
+                          description: Text content
+                        top:
+                          type: number
+                          description: Element top
+                        width:
+                          type: number
+                          description: Element width
+                      required:
+                        - attributes
+                        - height
+                        - html
+                        - left
+                        - text
+                        - top
+                        - width
+                    selector:
+                      type: string
+                      description: Selector
+                  required:
+                    - results
+                    - selector
+      x-distilled-response-path: result
+  /accounts/{account_id}/browser-rendering/screenshot:
+    post:
+      operationId: createScreenshot
+      description: "Takes a screenshot of a webpage from provided URL or HTML. Control
+        page loading with `gotoOptions` and `waitFor ` options. Customize
+        screenshots with `viewport`, `fullPage`, `clip` and others.  @example
+        ```ts const screenshot = await
+        client.browserRendering.screenshot.create({ account_id: 'account_id',
+        html: '<h1>Hello World!</h1>', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cacheTTL
+          in: query
+          required: false
+          description: "Query param: Cache TTL default is 5s. Set to 0 to disable."
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                html:
+                  type: string
+                  description: "Body param: Set the content of the page, eg: `<h1>Hello
+                    World!!</h1>`. Either `html` or `url` must be set."
+                actionTimeout:
+                  type: number
+                  description: "Body param: The maximum duration allowed for the browser action to
+                    complete after the page has loaded (such as taking
+                    screenshots, extracting content, or generating PDFs). If
+                    this time limit is exceeded, the action stops and returns a
+                    timeout error."
+                addScriptTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      content:
+                        type: string
+                      type:
+                        type: string
+                      url:
+                        type: string
+                  description: "Body param: Adds a `<script>` tag into the page with the desired
+                    URL or content."
+                addStyleTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      content:
+                        type: string
+                      url:
+                        type: string
+                  description: 'Body param: Adds a `<link rel="stylesheet">` tag into the page
+                    with the desired URL or a `<style type="text/css">` tag with
+                    the content.'
+                allowRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Only allow requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                allowResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Only allow requests that match the provided resource
+                    types, eg. 'image' or 'script'."
+                authenticate:
+                  type: object
+                  properties:
+                    password:
+                      type: string
+                    username:
+                      type: string
+                  required:
+                    - password
+                    - username
+                  description: "Body param: Provide credentials for HTTP authentication."
+                bestAttempt:
+                  type: boolean
+                  description: "Body param: Attempt to proceed when 'awaited' events fail or
+                    timeout."
+                cookies:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      value:
+                        type: string
+                      domain:
+                        type: string
+                      expires:
+                        type: number
+                      httpOnly:
+                        type: boolean
+                      partitionKey:
+                        type: string
+                      path:
+                        type: string
+                      priority:
+                        type: string
+                        enum:
+                          - Low
+                          - Medium
+                          - High
+                      sameParty:
+                        type: boolean
+                      sameSite:
+                        type: string
+                        enum:
+                          - Strict
+                          - Lax
+                          - None
+                      secure:
+                        type: boolean
+                      sourcePort:
+                        type: number
+                      sourceScheme:
+                        type: string
+                        enum:
+                          - Unset
+                          - NonSecure
+                          - Secure
+                      url:
+                        type: string
+                    required:
+                      - name
+                      - value
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+                emulateMediaType:
+                  type: string
+                  description: "Body param:"
+                gotoOptions:
+                  type: object
+                  properties:
+                    referer:
+                      type: string
+                    referrerPolicy:
+                      type: string
+                    timeout:
+                      type: number
+                    waitUntil:
+                      oneOf:
+                        - type: string
+                          enum:
+                            - load
+                        - type: string
+                          enum:
+                            - domcontentloaded
+                        - type: string
+                          enum:
+                            - networkidle0
+                        - type: string
+                          enum:
+                            - networkidle2
+                        - type: array
+                          items:
+                            type: string
+                            enum:
+                              - load
+                              - domcontentloaded
+                              - networkidle0
+                              - networkidle2
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.gotooptions)."
+                rejectRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Block undesired requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                rejectResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Block undesired requests that match the provided
+                    resource types, eg. 'image' or 'script'."
+                screenshotOptions:
+                  type: object
+                  properties:
+                    captureBeyondViewport:
+                      type: boolean
+                    clip:
+                      type: object
+                      properties:
+                        height:
+                          type: number
+                        width:
+                          type: number
+                        x:
+                          type: number
+                        y:
+                          type: number
+                        scale:
+                          type: number
+                      required:
+                        - height
+                        - width
+                        - x
+                        - y
+                    encoding:
+                      type: string
+                      enum:
+                        - binary
+                        - base64
+                    fromSurface:
+                      type: boolean
+                    fullPage:
+                      type: boolean
+                    omitBackground:
+                      type: boolean
+                    optimizeForSpeed:
+                      type: boolean
+                    quality:
+                      type: number
+                    type:
+                      type: string
+                      enum:
+                        - png
+                        - jpeg
+                        - webp
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.screenshotoptions)\
+                    ."
+                scrollPage:
+                  type: boolean
+                  description: "Body param:"
+                selector:
+                  type: string
+                  description: "Body param:"
+                setExtraHTTPHeaders:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param:"
+                setJavaScriptEnabled:
+                  type: boolean
+                  description: "Body param:"
+                userAgent:
+                  type: string
+                  description: "Body param:"
+                viewport:
+                  type: object
+                  properties:
+                    height:
+                      type: number
+                    width:
+                      type: number
+                    deviceScaleFactor:
+                      type: number
+                    hasTouch:
+                      type: boolean
+                    isLandscape:
+                      type: boolean
+                    isMobile:
+                      type: boolean
+                  required:
+                    - height
+                    - width
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+                waitForSelector:
+                  type: object
+                  properties:
+                    selector:
+                      type: string
+                    hidden:
+                      type: boolean
+                      enum:
+                        - true
+                    timeout:
+                      type: number
+                    visible:
+                      type: boolean
+                      enum:
+                        - true
+                  required:
+                    - selector
+                  description: "Body param: Wait for the selector to appear in page. Check
+                    [options](https://pptr.dev/api/puppeteer.page.waitforselect\
+                    or)."
+                waitForTimeout:
+                  type: number
+                  description: "Body param: Waits for a specified timeout before continuing."
+              required:
+                - html
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Response status
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                          description: Error code
+                        message:
+                          type: string
+                          description: Error Message
+                      required:
+                        - code
+                        - message
+                required:
+                  - success
+  /accounts/{account_id}/browser-rendering/snapshot:
+    post:
+      operationId: createSnapshot
+      description: "Returns the page's HTML content and screenshot. Control page
+        loading with `gotoOptions` and `waitFor ` options. Customize screenshots
+        with `viewport`, `fullPage`, `clip` and others.  @example ```ts const
+        snapshot = await client.browserRendering.snapshot.create({ account_id:
+        'account_id', html: '<h1>Hello World!</h1>', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: cacheTTL
+          in: query
+          required: false
+          description: "Query param: Cache TTL default is 5s. Set to 0 to disable."
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                html:
+                  type: string
+                  description: "Body param: Set the content of the page, eg: `<h1>Hello
+                    World!!</h1>`. Either `html` or `url` must be set."
+                actionTimeout:
+                  type: number
+                  description: "Body param: The maximum duration allowed for the browser action to
+                    complete after the page has loaded (such as taking
+                    screenshots, extracting content, or generating PDFs). If
+                    this time limit is exceeded, the action stops and returns a
+                    timeout error."
+                addScriptTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      content:
+                        type: string
+                      type:
+                        type: string
+                      url:
+                        type: string
+                  description: "Body param: Adds a `<script>` tag into the page with the desired
+                    URL or content."
+                addStyleTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      content:
+                        type: string
+                      url:
+                        type: string
+                  description: 'Body param: Adds a `<link rel="stylesheet">` tag into the page
+                    with the desired URL or a `<style type="text/css">` tag with
+                    the content.'
+                allowRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Only allow requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                allowResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Only allow requests that match the provided resource
+                    types, eg. 'image' or 'script'."
+                authenticate:
+                  type: object
+                  properties:
+                    password:
+                      type: string
+                    username:
+                      type: string
+                  required:
+                    - password
+                    - username
+                  description: "Body param: Provide credentials for HTTP authentication."
+                bestAttempt:
+                  type: boolean
+                  description: "Body param: Attempt to proceed when 'awaited' events fail or
+                    timeout."
+                cookies:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      value:
+                        type: string
+                      domain:
+                        type: string
+                      expires:
+                        type: number
+                      httpOnly:
+                        type: boolean
+                      partitionKey:
+                        type: string
+                      path:
+                        type: string
+                      priority:
+                        type: string
+                        enum:
+                          - Low
+                          - Medium
+                          - High
+                      sameParty:
+                        type: boolean
+                      sameSite:
+                        type: string
+                        enum:
+                          - Strict
+                          - Lax
+                          - None
+                      secure:
+                        type: boolean
+                      sourcePort:
+                        type: number
+                      sourceScheme:
+                        type: string
+                        enum:
+                          - Unset
+                          - NonSecure
+                          - Secure
+                      url:
+                        type: string
+                    required:
+                      - name
+                      - value
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setcookie)."
+                emulateMediaType:
+                  type: string
+                  description: "Body param:"
+                gotoOptions:
+                  type: object
+                  properties:
+                    referer:
+                      type: string
+                    referrerPolicy:
+                      type: string
+                    timeout:
+                      type: number
+                    waitUntil:
+                      oneOf:
+                        - type: string
+                          enum:
+                            - load
+                        - type: string
+                          enum:
+                            - domcontentloaded
+                        - type: string
+                          enum:
+                            - networkidle0
+                        - type: string
+                          enum:
+                            - networkidle2
+                        - type: array
+                          items:
+                            type: string
+                            enum:
+                              - load
+                              - domcontentloaded
+                              - networkidle0
+                              - networkidle2
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.gotooptions)."
+                rejectRequestPattern:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Block undesired requests that match the provided regex
+                    patterns, eg. '/^.\\ \\.(css)'."
+                rejectResourceTypes:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - document
+                      - stylesheet
+                      - image
+                      - media
+                      - font
+                      - script
+                      - texttrack
+                      - xhr
+                      - fetch
+                      - prefetch
+                      - eventsource
+                      - websocket
+                      - manifest
+                      - signedexchange
+                      - ping
+                      - cspviolationreport
+                      - preflight
+                      - other
+                  description: "Body param: Block undesired requests that match the provided
+                    resource types, eg. 'image' or 'script'."
+                screenshotOptions:
+                  type: object
+                  properties:
+                    captureBeyondViewport:
+                      type: boolean
+                    clip:
+                      type: object
+                      properties:
+                        height:
+                          type: number
+                        width:
+                          type: number
+                        x:
+                          type: number
+                        y:
+                          type: number
+                        scale:
+                          type: number
+                      required:
+                        - height
+                        - width
+                        - x
+                        - y
+                    fromSurface:
+                      type: boolean
+                    fullPage:
+                      type: boolean
+                    omitBackground:
+                      type: boolean
+                    optimizeForSpeed:
+                      type: boolean
+                    quality:
+                      type: number
+                    type:
+                      type: string
+                      enum:
+                        - png
+                        - jpeg
+                        - webp
+                  description: "Body param:"
+                setExtraHTTPHeaders:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param:"
+                setJavaScriptEnabled:
+                  type: boolean
+                  description: "Body param:"
+                userAgent:
+                  type: string
+                  description: "Body param:"
+                viewport:
+                  type: object
+                  properties:
+                    height:
+                      type: number
+                    width:
+                      type: number
+                    deviceScaleFactor:
+                      type: number
+                    hasTouch:
+                      type: boolean
+                    isLandscape:
+                      type: boolean
+                    isMobile:
+                      type: boolean
+                  required:
+                    - height
+                    - width
+                  description: "Body param: Check
+                    [options](https://pptr.dev/api/puppeteer.page.setviewport)."
+                waitForSelector:
+                  type: object
+                  properties:
+                    selector:
+                      type: string
+                    hidden:
+                      type: boolean
+                      enum:
+                        - true
+                    timeout:
+                      type: number
+                    visible:
+                      type: boolean
+                      enum:
+                        - true
+                  required:
+                    - selector
+                  description: "Body param: Wait for the selector to appear in page. Check
+                    [options](https://pptr.dev/api/puppeteer.page.waitforselect\
+                    or)."
+                waitForTimeout:
+                  type: number
+                  description: "Body param: Waits for a specified timeout before continuing."
+              required:
+                - html
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content:
+                    type: string
+                    description: HTML content
+                  screenshot:
+                    type: string
+                    description: Base64 encoded image
+                required:
+                  - content
+                  - screenshot
+      x-distilled-response-path: result

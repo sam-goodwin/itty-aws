@@ -1,0 +1,3832 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare FIREWALL API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: firewall
+paths:
+  /{accountOrZone}/{accountOrZoneId}/firewall/access_rules/rules/{ruleId}:
+    get:
+      operationId: getAccessRule
+      parameters:
+        - name: ruleId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the IP Access rule.
+                  allowed_modes:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - block
+                        - challenge
+                        - whitelist
+                        - js_challenge
+                        - managed_challenge
+                    description: The available actions that a rule can apply to a matched request.
+                  configuration:
+                    oneOf:
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - ip
+                            description: The configuration target. You must set the target to `ip` when
+                              specifying an IP address in the rule.
+                          value:
+                            type: string
+                            description: The IP address to match. This address will be compared to the IP
+                              address of incoming requests.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - ip6
+                            description: The configuration target. You must set the target to `ip6` when
+                              specifying an IPv6 address in the rule.
+                          value:
+                            type: string
+                            description: The IPv6 address to match.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - ip_range
+                            description: The configuration target. You must set the target to `ip_range`
+                              when specifying an IP address range in the rule.
+                          value:
+                            type: string
+                            description: The IP address range to match. You can only use prefix lengths
+                              `/16` and `/24` for IPv4 ranges, and prefix
+                              lengths `/32`, `/48`, and `/64` for IPv6 ranges.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - asn
+                            description: The configuration target. You must set the target to `asn` when
+                              specifying an Autonomous System Number (ASN) in
+                              the rule.
+                          value:
+                            type: string
+                            description: The AS number to match.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - country
+                            description: The configuration target. You must set the target to `country` when
+                              specifying a country code in the rule.
+                          value:
+                            type: string
+                            description: "The two-letter ISO-3166-1 alpha-2 code to match. For more
+                              information, refer to [IP Access rules:
+                              Parameters](https://developers.cloudflare.com/waf\
+                              /tools/ip-access-rules/parameters/#country)."
+                    description: The rule configuration.
+                  mode:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - whitelist
+                      - js_challenge
+                      - managed_challenge
+                    description: The action to apply to a matched request.
+                  created_on:
+                    type: string
+                    description: The timestamp of when the rule was created.
+                  modified_on:
+                    type: string
+                    description: The timestamp of when the rule was last modified.
+                  notes:
+                    type: string
+                    description: An informative summary of the rule, typically used as a reminder or
+                      explanation.
+                  scope:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Defines an identifier.
+                      email:
+                        type: string
+                        description: The contact email address of the user.
+                      type:
+                        type: string
+                        enum:
+                          - user
+                          - organization
+                        description: Defines the scope of the rule.
+                    description: All zones owned by the user will have the rule applied.
+                required:
+                  - id
+                  - allowed_modes
+                  - configuration
+                  - mode
+      x-distilled-response-path: result
+    patch:
+      operationId: patchAccessRule
+      description: "Updates an IP Access rule defined.  Note: This operation will
+        affect all zones in the account or zone.  @example ```ts const response
+        = await client.firewall.accessRules.edit(
+        '023e105f4ecef8ad9ca31a8372d0c353', { configuration: {}, mode:
+        'challenge', account_id: 'account_id', }, ); ```"
+      parameters:
+        - name: ruleId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                configuration:
+                  oneOf:
+                    - type: object
+                      properties:
+                        target:
+                          type: string
+                          enum:
+                            - ip
+                          description: The configuration target. You must set the target to `ip` when
+                            specifying an IP address in the rule.
+                        value:
+                          type: string
+                          description: The IP address to match. This address will be compared to the IP
+                            address of incoming requests.
+                    - type: object
+                      properties:
+                        target:
+                          type: string
+                          enum:
+                            - ip6
+                          description: The configuration target. You must set the target to `ip6` when
+                            specifying an IPv6 address in the rule.
+                        value:
+                          type: string
+                          description: The IPv6 address to match.
+                    - type: object
+                      properties:
+                        target:
+                          type: string
+                          enum:
+                            - ip_range
+                          description: The configuration target. You must set the target to `ip_range`
+                            when specifying an IP address range in the rule.
+                        value:
+                          type: string
+                          description: The IP address range to match. You can only use prefix lengths
+                            `/16` and `/24` for IPv4 ranges, and prefix lengths
+                            `/32`, `/48`, and `/64` for IPv6 ranges.
+                    - type: object
+                      properties:
+                        target:
+                          type: string
+                          enum:
+                            - asn
+                          description: The configuration target. You must set the target to `asn` when
+                            specifying an Autonomous System Number (ASN) in the
+                            rule.
+                        value:
+                          type: string
+                          description: The AS number to match.
+                    - type: object
+                      properties:
+                        target:
+                          type: string
+                          enum:
+                            - country
+                          description: The configuration target. You must set the target to `country` when
+                            specifying a country code in the rule.
+                        value:
+                          type: string
+                          description: "The two-letter ISO-3166-1 alpha-2 code to match. For more
+                            information, refer to [IP Access rules:
+                            Parameters](https://developers.cloudflare.com/waf/t\
+                            ools/ip-access-rules/parameters/#country)."
+                  description: "Body param: The rule configuration."
+                mode:
+                  type: string
+                  enum:
+                    - block
+                    - challenge
+                    - whitelist
+                    - js_challenge
+                    - managed_challenge
+                  description: "Body param: The action to apply to a matched request."
+                notes:
+                  type: string
+                  description: "Body param: An informative summary of the rule, typically used as
+                    a reminder or explanation."
+              required:
+                - configuration
+                - mode
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the IP Access rule.
+                  allowed_modes:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - block
+                        - challenge
+                        - whitelist
+                        - js_challenge
+                        - managed_challenge
+                    description: The available actions that a rule can apply to a matched request.
+                  configuration:
+                    oneOf:
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - ip
+                            description: The configuration target. You must set the target to `ip` when
+                              specifying an IP address in the rule.
+                          value:
+                            type: string
+                            description: The IP address to match. This address will be compared to the IP
+                              address of incoming requests.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - ip6
+                            description: The configuration target. You must set the target to `ip6` when
+                              specifying an IPv6 address in the rule.
+                          value:
+                            type: string
+                            description: The IPv6 address to match.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - ip_range
+                            description: The configuration target. You must set the target to `ip_range`
+                              when specifying an IP address range in the rule.
+                          value:
+                            type: string
+                            description: The IP address range to match. You can only use prefix lengths
+                              `/16` and `/24` for IPv4 ranges, and prefix
+                              lengths `/32`, `/48`, and `/64` for IPv6 ranges.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - asn
+                            description: The configuration target. You must set the target to `asn` when
+                              specifying an Autonomous System Number (ASN) in
+                              the rule.
+                          value:
+                            type: string
+                            description: The AS number to match.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - country
+                            description: The configuration target. You must set the target to `country` when
+                              specifying a country code in the rule.
+                          value:
+                            type: string
+                            description: "The two-letter ISO-3166-1 alpha-2 code to match. For more
+                              information, refer to [IP Access rules:
+                              Parameters](https://developers.cloudflare.com/waf\
+                              /tools/ip-access-rules/parameters/#country)."
+                    description: The rule configuration.
+                  mode:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - whitelist
+                      - js_challenge
+                      - managed_challenge
+                    description: The action to apply to a matched request.
+                  created_on:
+                    type: string
+                    description: The timestamp of when the rule was created.
+                  modified_on:
+                    type: string
+                    description: The timestamp of when the rule was last modified.
+                  notes:
+                    type: string
+                    description: An informative summary of the rule, typically used as a reminder or
+                      explanation.
+                  scope:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Defines an identifier.
+                      email:
+                        type: string
+                        description: The contact email address of the user.
+                      type:
+                        type: string
+                        enum:
+                          - user
+                          - organization
+                        description: Defines the scope of the rule.
+                    description: All zones owned by the user will have the rule applied.
+                required:
+                  - id
+                  - allowed_modes
+                  - configuration
+                  - mode
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteAccessRule
+      parameters:
+        - name: ruleId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Defines an identifier.
+                required:
+                  - id
+      x-distilled-response-path: result
+  /{accountOrZone}/{accountOrZoneId}/firewall/access_rules/rules:
+    get:
+      operationId: listAccessRules
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the IP Access rule.
+                  allowed_modes:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - block
+                        - challenge
+                        - whitelist
+                        - js_challenge
+                        - managed_challenge
+                    description: The available actions that a rule can apply to a matched request.
+                  configuration:
+                    oneOf:
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - ip
+                            description: The configuration target. You must set the target to `ip` when
+                              specifying an IP address in the rule.
+                          value:
+                            type: string
+                            description: The IP address to match. This address will be compared to the IP
+                              address of incoming requests.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - ip6
+                            description: The configuration target. You must set the target to `ip6` when
+                              specifying an IPv6 address in the rule.
+                          value:
+                            type: string
+                            description: The IPv6 address to match.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - ip_range
+                            description: The configuration target. You must set the target to `ip_range`
+                              when specifying an IP address range in the rule.
+                          value:
+                            type: string
+                            description: The IP address range to match. You can only use prefix lengths
+                              `/16` and `/24` for IPv4 ranges, and prefix
+                              lengths `/32`, `/48`, and `/64` for IPv6 ranges.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - asn
+                            description: The configuration target. You must set the target to `asn` when
+                              specifying an Autonomous System Number (ASN) in
+                              the rule.
+                          value:
+                            type: string
+                            description: The AS number to match.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - country
+                            description: The configuration target. You must set the target to `country` when
+                              specifying a country code in the rule.
+                          value:
+                            type: string
+                            description: "The two-letter ISO-3166-1 alpha-2 code to match. For more
+                              information, refer to [IP Access rules:
+                              Parameters](https://developers.cloudflare.com/waf\
+                              /tools/ip-access-rules/parameters/#country)."
+                    description: The rule configuration.
+                  mode:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - whitelist
+                      - js_challenge
+                      - managed_challenge
+                    description: The action to apply to a matched request.
+                  created_on:
+                    type: string
+                    description: The timestamp of when the rule was created.
+                  modified_on:
+                    type: string
+                    description: The timestamp of when the rule was last modified.
+                  notes:
+                    type: string
+                    description: An informative summary of the rule, typically used as a reminder or
+                      explanation.
+                  scope:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Defines an identifier.
+                      email:
+                        type: string
+                        description: The contact email address of the user.
+                      type:
+                        type: string
+                        enum:
+                          - user
+                          - organization
+                        description: Defines the scope of the rule.
+                    description: All zones owned by the user will have the rule applied.
+                required:
+                  - id
+                  - allowed_modes
+                  - configuration
+                  - mode
+      x-distilled-pagination-class: AccessRuleListResponsesV4PagePaginationArray
+    post:
+      operationId: createAccessRule
+      description: "Creates a new IP Access rule for an account or zone. The rule will
+        apply to all zones in the account or zone.  Note: To create an IP Access
+        rule that applies to a single zone, refer to the [IP Access rules for a
+        zone](#ip-access-rules-for-a-zone) endpoints.  @example ```ts const
+        accessRule = await client.firewall.accessRules.create( { configuration:
+        {}, mode: 'challenge', account_id: 'account_id', }, ); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                configuration:
+                  oneOf:
+                    - type: object
+                      properties:
+                        target:
+                          type: string
+                          enum:
+                            - ip
+                          description: The configuration target. You must set the target to `ip` when
+                            specifying an IP address in the rule.
+                        value:
+                          type: string
+                          description: The IP address to match. This address will be compared to the IP
+                            address of incoming requests.
+                    - type: object
+                      properties:
+                        target:
+                          type: string
+                          enum:
+                            - ip6
+                          description: The configuration target. You must set the target to `ip6` when
+                            specifying an IPv6 address in the rule.
+                        value:
+                          type: string
+                          description: The IPv6 address to match.
+                    - type: object
+                      properties:
+                        target:
+                          type: string
+                          enum:
+                            - ip_range
+                          description: The configuration target. You must set the target to `ip_range`
+                            when specifying an IP address range in the rule.
+                        value:
+                          type: string
+                          description: The IP address range to match. You can only use prefix lengths
+                            `/16` and `/24` for IPv4 ranges, and prefix lengths
+                            `/32`, `/48`, and `/64` for IPv6 ranges.
+                    - type: object
+                      properties:
+                        target:
+                          type: string
+                          enum:
+                            - asn
+                          description: The configuration target. You must set the target to `asn` when
+                            specifying an Autonomous System Number (ASN) in the
+                            rule.
+                        value:
+                          type: string
+                          description: The AS number to match.
+                    - type: object
+                      properties:
+                        target:
+                          type: string
+                          enum:
+                            - country
+                          description: The configuration target. You must set the target to `country` when
+                            specifying a country code in the rule.
+                        value:
+                          type: string
+                          description: "The two-letter ISO-3166-1 alpha-2 code to match. For more
+                            information, refer to [IP Access rules:
+                            Parameters](https://developers.cloudflare.com/waf/t\
+                            ools/ip-access-rules/parameters/#country)."
+                  description: "Body param: The rule configuration."
+                mode:
+                  type: string
+                  enum:
+                    - block
+                    - challenge
+                    - whitelist
+                    - js_challenge
+                    - managed_challenge
+                  description: "Body param: The action to apply to a matched request."
+                notes:
+                  type: string
+                  description: "Body param: An informative summary of the rule, typically used as
+                    a reminder or explanation."
+              required:
+                - configuration
+                - mode
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the IP Access rule.
+                  allowed_modes:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - block
+                        - challenge
+                        - whitelist
+                        - js_challenge
+                        - managed_challenge
+                    description: The available actions that a rule can apply to a matched request.
+                  configuration:
+                    oneOf:
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - ip
+                            description: The configuration target. You must set the target to `ip` when
+                              specifying an IP address in the rule.
+                          value:
+                            type: string
+                            description: The IP address to match. This address will be compared to the IP
+                              address of incoming requests.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - ip6
+                            description: The configuration target. You must set the target to `ip6` when
+                              specifying an IPv6 address in the rule.
+                          value:
+                            type: string
+                            description: The IPv6 address to match.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - ip_range
+                            description: The configuration target. You must set the target to `ip_range`
+                              when specifying an IP address range in the rule.
+                          value:
+                            type: string
+                            description: The IP address range to match. You can only use prefix lengths
+                              `/16` and `/24` for IPv4 ranges, and prefix
+                              lengths `/32`, `/48`, and `/64` for IPv6 ranges.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - asn
+                            description: The configuration target. You must set the target to `asn` when
+                              specifying an Autonomous System Number (ASN) in
+                              the rule.
+                          value:
+                            type: string
+                            description: The AS number to match.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - country
+                            description: The configuration target. You must set the target to `country` when
+                              specifying a country code in the rule.
+                          value:
+                            type: string
+                            description: "The two-letter ISO-3166-1 alpha-2 code to match. For more
+                              information, refer to [IP Access rules:
+                              Parameters](https://developers.cloudflare.com/waf\
+                              /tools/ip-access-rules/parameters/#country)."
+                    description: The rule configuration.
+                  mode:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - whitelist
+                      - js_challenge
+                      - managed_challenge
+                    description: The action to apply to a matched request.
+                  created_on:
+                    type: string
+                    description: The timestamp of when the rule was created.
+                  modified_on:
+                    type: string
+                    description: The timestamp of when the rule was last modified.
+                  notes:
+                    type: string
+                    description: An informative summary of the rule, typically used as a reminder or
+                      explanation.
+                  scope:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Defines an identifier.
+                      email:
+                        type: string
+                        description: The contact email address of the user.
+                      type:
+                        type: string
+                        enum:
+                          - user
+                          - organization
+                        description: Defines the scope of the rule.
+                    description: All zones owned by the user will have the rule applied.
+                required:
+                  - id
+                  - allowed_modes
+                  - configuration
+                  - mode
+      x-distilled-response-path: result
+  /zones/{zone_id}/firewall/lockdowns/{lockDownsId}:
+    get:
+      operationId: getLockdown
+      description: "Fetches the details of a Zone Lockdown rule.  @example ```ts const
+        lockdown = await client.firewall.lockdowns.get(
+        '372e67954025e0ba6aaa6d586b9e0b59', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: lockDownsId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the Zone Lockdown rule.
+                  configurations:
+                    type: object
+                    additionalProperties: true
+                    description: A list of IP addresses or CIDR ranges that will be allowed to
+                      access the URLs specified in the Zone Lockdown rule. You
+                      can include any number of `ip` or `ip_range`
+                      configurations.
+                  created_on:
+                    type: string
+                    description: The timestamp of when the rule was created.
+                  description:
+                    type: string
+                    description: An informative summary of the rule.
+                  modified_on:
+                    type: string
+                    description: The timestamp of when the rule was last modified.
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the rule is currently paused.
+                  urls:
+                    type: array
+                    items:
+                      type: string
+                    description: The URLs to include in the rule definition. You can use wildcards.
+                      Each entered URL will be escaped before use, which means
+                      you can only use simple wildcard patterns.
+                required:
+                  - id
+                  - configurations
+                  - created_on
+                  - description
+                  - modified_on
+                  - paused
+                  - urls
+      x-distilled-response-path: result
+    put:
+      operationId: updateLockdown
+      description: "Updates an existing Zone Lockdown rule.  @example ```ts const
+        lockdown = await client.firewall.lockdowns.update(
+        '372e67954025e0ba6aaa6d586b9e0b59', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', configurations: [{}], urls:
+        ['shop.example.com/ '], }, ); ```"
+      parameters:
+        - name: lockDownsId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                configurations:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param: A list of IP addresses or CIDR ranges that will be
+                    allowed to access the URLs specified in the Zone Lockdown
+                    rule. You can include any number of `ip` or `ip_range`
+                    configurations."
+                urls:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: The URLs to include in the current WAF override. You
+                    can use wildcards. Each entered URL will be escaped before
+                    use, which means you can only use simple wildcard patterns."
+              required:
+                - configurations
+                - urls
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the Zone Lockdown rule.
+                  configurations:
+                    type: object
+                    additionalProperties: true
+                    description: A list of IP addresses or CIDR ranges that will be allowed to
+                      access the URLs specified in the Zone Lockdown rule. You
+                      can include any number of `ip` or `ip_range`
+                      configurations.
+                  created_on:
+                    type: string
+                    description: The timestamp of when the rule was created.
+                  description:
+                    type: string
+                    description: An informative summary of the rule.
+                  modified_on:
+                    type: string
+                    description: The timestamp of when the rule was last modified.
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the rule is currently paused.
+                  urls:
+                    type: array
+                    items:
+                      type: string
+                    description: The URLs to include in the rule definition. You can use wildcards.
+                      Each entered URL will be escaped before use, which means
+                      you can only use simple wildcard patterns.
+                required:
+                  - id
+                  - configurations
+                  - created_on
+                  - description
+                  - modified_on
+                  - paused
+                  - urls
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteLockdown
+      description: "Deletes an existing Zone Lockdown rule.  @example ```ts const
+        lockdown = await client.firewall.lockdowns.delete(
+        '372e67954025e0ba6aaa6d586b9e0b59', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: lockDownsId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the Zone Lockdown rule.
+      x-distilled-response-path: result
+  /zones/{zone_id}/firewall/lockdowns:
+    get:
+      operationId: listLockdowns
+      description: "Fetches Zone Lockdown rules. You can filter the results using
+        several optional parameters.  @example ```ts // Automatically fetches
+        more pages as needed. for await (const lockdown of
+        client.firewall.lockdowns.list( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+        - name: created_on
+          in: query
+          required: false
+          description: "Query param: The timestamp of when the rule was created."
+          schema:
+            type: string
+        - name: description
+          in: query
+          required: false
+          description: "Query param: A string to search for in the description of existing
+            rules."
+          schema:
+            type: string
+        - name: description_search
+          in: query
+          required: false
+          description: "Query param: A string to search for in the description of existing
+            rules."
+          schema:
+            type: string
+        - name: ip
+          in: query
+          required: false
+          description: "Query param: A single IP address to search for in existing rules."
+          schema:
+            type: string
+        - name: ip_range_search
+          in: query
+          required: false
+          description: "Query param: A single IP address range to search for in existing
+            rules."
+          schema:
+            type: string
+        - name: ip_search
+          in: query
+          required: false
+          description: "Query param: A single IP address to search for in existing rules."
+          schema:
+            type: string
+        - name: modified_on
+          in: query
+          required: false
+          description: "Query param: The timestamp of when the rule was last modified."
+          schema:
+            type: string
+        - name: priority
+          in: query
+          required: false
+          description: "Query param: The priority of the rule to control the processing
+            order. A lower number indicates higher priority. If not provided,
+            any rules with a configured priority will be processed before rules
+            without a priority."
+          schema:
+            type: number
+        - name: uri_search
+          in: query
+          required: false
+          description: "Query param: A single URI to search for in the list of URLs of
+            existing rules."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the Zone Lockdown rule.
+                  configurations:
+                    type: object
+                    additionalProperties: true
+                    description: A list of IP addresses or CIDR ranges that will be allowed to
+                      access the URLs specified in the Zone Lockdown rule. You
+                      can include any number of `ip` or `ip_range`
+                      configurations.
+                  created_on:
+                    type: string
+                    description: The timestamp of when the rule was created.
+                  description:
+                    type: string
+                    description: An informative summary of the rule.
+                  modified_on:
+                    type: string
+                    description: The timestamp of when the rule was last modified.
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the rule is currently paused.
+                  urls:
+                    type: array
+                    items:
+                      type: string
+                    description: The URLs to include in the rule definition. You can use wildcards.
+                      Each entered URL will be escaped before use, which means
+                      you can only use simple wildcard patterns.
+                required:
+                  - id
+                  - configurations
+                  - created_on
+                  - description
+                  - modified_on
+                  - paused
+                  - urls
+      x-distilled-pagination-class: LockdownsV4PagePaginationArray
+    post:
+      operationId: createLockdown
+      description: "Creates a new Zone Lockdown rule.  @example ```ts const lockdown =
+        await client.firewall.lockdowns.create({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', configurations: [{}], urls:
+        ['shop.example.com/ '], }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                configurations:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param: A list of IP addresses or CIDR ranges that will be
+                    allowed to access the URLs specified in the Zone Lockdown
+                    rule. You can include any number of `ip` or `ip_range`
+                    configurations."
+                urls:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: The URLs to include in the current WAF override. You
+                    can use wildcards. Each entered URL will be escaped before
+                    use, which means you can only use simple wildcard patterns."
+                description:
+                  type: string
+                  description: "Body param: An informative summary of the rule. This value is
+                    sanitized and any tags will be removed."
+                paused:
+                  type: boolean
+                  description: "Body param: When true, indicates that the rule is currently
+                    paused."
+                priority:
+                  type: number
+                  description: "Body param: The priority of the rule to control the processing
+                    order. A lower number indicates higher priority. If not
+                    provided, any rules with a configured priority will be
+                    processed before rules without a priority."
+              required:
+                - configurations
+                - urls
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the Zone Lockdown rule.
+                  configurations:
+                    type: object
+                    additionalProperties: true
+                    description: A list of IP addresses or CIDR ranges that will be allowed to
+                      access the URLs specified in the Zone Lockdown rule. You
+                      can include any number of `ip` or `ip_range`
+                      configurations.
+                  created_on:
+                    type: string
+                    description: The timestamp of when the rule was created.
+                  description:
+                    type: string
+                    description: An informative summary of the rule.
+                  modified_on:
+                    type: string
+                    description: The timestamp of when the rule was last modified.
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the rule is currently paused.
+                  urls:
+                    type: array
+                    items:
+                      type: string
+                    description: The URLs to include in the rule definition. You can use wildcards.
+                      Each entered URL will be escaped before use, which means
+                      you can only use simple wildcard patterns.
+                required:
+                  - id
+                  - configurations
+                  - created_on
+                  - description
+                  - modified_on
+                  - paused
+                  - urls
+      x-distilled-response-path: result
+  /zones/{zone_id}/firewall/rules:
+    put:
+      operationId: bulkPutRules
+      description: Updates one or more existing firewall rules.  @deprecated The
+        Firewall Rules API is deprecated in favour of using the Ruleset Engine.
+        See
+        https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#firewall-rules-api-and-filters-api
+        for full details.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the firewall rule.
+                  action:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - js_challenge
+                      - managed_challenge
+                      - allow
+                      - log
+                      - bypass
+                    description: The action to apply to a matched request. The `log` action is only
+                      available on an Enterprise plan.
+                  description:
+                    type: string
+                    description: An informative summary of the firewall rule.
+                  filter:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: object
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          deleted:
+                            type: boolean
+                            description: When true, indicates that the firewall rule was deleted.
+                        required:
+                          - id
+                          - deleted
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the firewall rule is currently paused.
+                  priority:
+                    type: number
+                    description: The priority of the rule. Optional value used to define the
+                      processing order. A lower number indicates a higher
+                      priority. If not provided, rules with a defined priority
+                      will be processed before rules without a priority.
+                  products:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - zoneLockdown
+                        - uaBlock
+                        - bic
+                        - hot
+                        - securityLevel
+                        - rateLimit
+                        - waf
+                  ref:
+                    type: string
+                    description: A short reference tag. Allows you to select related firewall rules.
+      x-distilled-pagination-class: FirewallRulesSinglePage
+    get:
+      operationId: listRules
+      description: Fetches firewall rules in a zone. You can filter the results using
+        several optional parameters.  @deprecated The Firewall Rules API is
+        deprecated in favour of using the Ruleset Engine. See
+        https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#firewall-rules-api-and-filters-api
+        for full details.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+        - name: id
+          in: query
+          required: false
+          description: "Query param: The unique identifier of the firewall rule."
+          schema:
+            type: string
+        - name: action
+          in: query
+          required: false
+          description: "Query param: The action to search for. Must be an exact match."
+          schema:
+            type: string
+        - name: description
+          in: query
+          required: false
+          description: "Query param: A case-insensitive string to find in the description."
+          schema:
+            type: string
+        - name: paused
+          in: query
+          required: false
+          description: "Query param: When true, indicates that the firewall rule is
+            currently paused."
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the firewall rule.
+                  action:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - js_challenge
+                      - managed_challenge
+                      - allow
+                      - log
+                      - bypass
+                    description: The action to apply to a matched request. The `log` action is only
+                      available on an Enterprise plan.
+                  description:
+                    type: string
+                    description: An informative summary of the firewall rule.
+                  filter:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: object
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          deleted:
+                            type: boolean
+                            description: When true, indicates that the firewall rule was deleted.
+                        required:
+                          - id
+                          - deleted
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the firewall rule is currently paused.
+                  priority:
+                    type: number
+                    description: The priority of the rule. Optional value used to define the
+                      processing order. A lower number indicates a higher
+                      priority. If not provided, rules with a defined priority
+                      will be processed before rules without a priority.
+                  products:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - zoneLockdown
+                        - uaBlock
+                        - bic
+                        - hot
+                        - securityLevel
+                        - rateLimit
+                        - waf
+                  ref:
+                    type: string
+                    description: A short reference tag. Allows you to select related firewall rules.
+      x-distilled-pagination-class: FirewallRulesV4PagePaginationArray
+    post:
+      operationId: createRule
+      description: Create one or more firewall rules.  @deprecated The Firewall Rules
+        API is deprecated in favour of using the Ruleset Engine. See
+        https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#firewall-rules-api-and-filters-api
+        for full details.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: object
+                  properties:
+                    mode:
+                      type: string
+                      enum:
+                        - simulate
+                        - ban
+                        - challenge
+                        - js_challenge
+                        - managed_challenge
+                      description: The action to perform.
+                    response:
+                      type: object
+                      properties:
+                        body:
+                          type: string
+                          description: The response body to return. The value must conform to the
+                            configured content type.
+                        content_type:
+                          type: string
+                          description: "The content type of the body. Must be one of the following:
+                            `text/plain`, `text/xml`, or `application/json`."
+                      description: 'A custom content type and reponse to return when the threshold is
+                        exceeded. The custom response configured in this object
+                        will override the custom error for the zone. This object
+                        is optional. Notes: If you omit this object, Cloudflare
+                        will use the default HTML error page. If "mode" is
+                        "challenge", "managed_challenge", or "js_challenge",
+                        Cloudflare will use the zone challenge pages and you
+                        should not provide the "response" object.'
+                    timeout:
+                      type: number
+                      description: "The time in seconds during which Cloudflare will perform the
+                        mitigation action. Must be an integer value greater than
+                        or equal to the period. Notes: If \"mode\" is
+                        \"challenge\", \"managed_challenge\", or
+                        \"js_challenge\", Cloudflare will use the zone's
+                        Challenge Passage time and you should not provide this
+                        value."
+                  description: "Body param: The action to perform when the threshold of matched
+                    traffic within the configured period is exceeded."
+                filter:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param:"
+              required:
+                - action
+                - filter
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the firewall rule.
+                  action:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - js_challenge
+                      - managed_challenge
+                      - allow
+                      - log
+                      - bypass
+                    description: The action to apply to a matched request. The `log` action is only
+                      available on an Enterprise plan.
+                  description:
+                    type: string
+                    description: An informative summary of the firewall rule.
+                  filter:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: object
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          deleted:
+                            type: boolean
+                            description: When true, indicates that the firewall rule was deleted.
+                        required:
+                          - id
+                          - deleted
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the firewall rule is currently paused.
+                  priority:
+                    type: number
+                    description: The priority of the rule. Optional value used to define the
+                      processing order. A lower number indicates a higher
+                      priority. If not provided, rules with a defined priority
+                      will be processed before rules without a priority.
+                  products:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - zoneLockdown
+                        - uaBlock
+                        - bic
+                        - hot
+                        - securityLevel
+                        - rateLimit
+                        - waf
+                  ref:
+                    type: string
+                    description: A short reference tag. Allows you to select related firewall rules.
+      x-distilled-pagination-class: FirewallRulesSinglePage
+    patch:
+      operationId: bulkPatchRules
+      description: Updates the priority of existing firewall rules.  @deprecated The
+        Firewall Rules API is deprecated in favour of using the Ruleset Engine.
+        See
+        https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#firewall-rules-api-and-filters-api
+        for full details.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the firewall rule.
+                  action:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - js_challenge
+                      - managed_challenge
+                      - allow
+                      - log
+                      - bypass
+                    description: The action to apply to a matched request. The `log` action is only
+                      available on an Enterprise plan.
+                  description:
+                    type: string
+                    description: An informative summary of the firewall rule.
+                  filter:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: object
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          deleted:
+                            type: boolean
+                            description: When true, indicates that the firewall rule was deleted.
+                        required:
+                          - id
+                          - deleted
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the firewall rule is currently paused.
+                  priority:
+                    type: number
+                    description: The priority of the rule. Optional value used to define the
+                      processing order. A lower number indicates a higher
+                      priority. If not provided, rules with a defined priority
+                      will be processed before rules without a priority.
+                  products:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - zoneLockdown
+                        - uaBlock
+                        - bic
+                        - hot
+                        - securityLevel
+                        - rateLimit
+                        - waf
+                  ref:
+                    type: string
+                    description: A short reference tag. Allows you to select related firewall rules.
+      x-distilled-pagination-class: FirewallRulesSinglePage
+    delete:
+      operationId: bulkDeleteRules
+      description: Deletes existing firewall rules.  @deprecated The Firewall Rules
+        API is deprecated in favour of using the Ruleset Engine. See
+        https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#firewall-rules-api-and-filters-api
+        for full details.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the firewall rule.
+                  action:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - js_challenge
+                      - managed_challenge
+                      - allow
+                      - log
+                      - bypass
+                    description: The action to apply to a matched request. The `log` action is only
+                      available on an Enterprise plan.
+                  description:
+                    type: string
+                    description: An informative summary of the firewall rule.
+                  filter:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: object
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          deleted:
+                            type: boolean
+                            description: When true, indicates that the firewall rule was deleted.
+                        required:
+                          - id
+                          - deleted
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the firewall rule is currently paused.
+                  priority:
+                    type: number
+                    description: The priority of the rule. Optional value used to define the
+                      processing order. A lower number indicates a higher
+                      priority. If not provided, rules with a defined priority
+                      will be processed before rules without a priority.
+                  products:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - zoneLockdown
+                        - uaBlock
+                        - bic
+                        - hot
+                        - securityLevel
+                        - rateLimit
+                        - waf
+                  ref:
+                    type: string
+                    description: A short reference tag. Allows you to select related firewall rules.
+      x-distilled-pagination-class: FirewallRulesSinglePage
+  /zones/{zone_id}/firewall/rules/{ruleId}:
+    get:
+      operationId: getRule
+      description: Fetches the details of a firewall rule.  @deprecated The Firewall
+        Rules API is deprecated in favour of using the Ruleset Engine. See
+        https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#firewall-rules-api-and-filters-api
+        for full details.
+      parameters:
+        - name: ruleId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the firewall rule.
+                  action:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - js_challenge
+                      - managed_challenge
+                      - allow
+                      - log
+                      - bypass
+                    description: The action to apply to a matched request. The `log` action is only
+                      available on an Enterprise plan.
+                  description:
+                    type: string
+                    description: An informative summary of the firewall rule.
+                  filter:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: object
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          deleted:
+                            type: boolean
+                            description: When true, indicates that the firewall rule was deleted.
+                        required:
+                          - id
+                          - deleted
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the firewall rule is currently paused.
+                  priority:
+                    type: number
+                    description: The priority of the rule. Optional value used to define the
+                      processing order. A lower number indicates a higher
+                      priority. If not provided, rules with a defined priority
+                      will be processed before rules without a priority.
+                  products:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - zoneLockdown
+                        - uaBlock
+                        - bic
+                        - hot
+                        - securityLevel
+                        - rateLimit
+                        - waf
+                  ref:
+                    type: string
+                    description: A short reference tag. Allows you to select related firewall rules.
+      x-distilled-response-path: result
+    put:
+      operationId: updateRule
+      description: Updates an existing firewall rule.  @deprecated The Firewall Rules
+        API is deprecated in favour of using the Ruleset Engine. See
+        https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#firewall-rules-api-and-filters-api
+        for full details.
+      parameters:
+        - name: ruleId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: object
+                  properties:
+                    mode:
+                      type: string
+                      enum:
+                        - simulate
+                        - ban
+                        - challenge
+                        - js_challenge
+                        - managed_challenge
+                      description: The action to perform.
+                    response:
+                      type: object
+                      properties:
+                        body:
+                          type: string
+                          description: The response body to return. The value must conform to the
+                            configured content type.
+                        content_type:
+                          type: string
+                          description: "The content type of the body. Must be one of the following:
+                            `text/plain`, `text/xml`, or `application/json`."
+                      description: 'A custom content type and reponse to return when the threshold is
+                        exceeded. The custom response configured in this object
+                        will override the custom error for the zone. This object
+                        is optional. Notes: If you omit this object, Cloudflare
+                        will use the default HTML error page. If "mode" is
+                        "challenge", "managed_challenge", or "js_challenge",
+                        Cloudflare will use the zone challenge pages and you
+                        should not provide the "response" object.'
+                    timeout:
+                      type: number
+                      description: "The time in seconds during which Cloudflare will perform the
+                        mitigation action. Must be an integer value greater than
+                        or equal to the period. Notes: If \"mode\" is
+                        \"challenge\", \"managed_challenge\", or
+                        \"js_challenge\", Cloudflare will use the zone's
+                        Challenge Passage time and you should not provide this
+                        value."
+                  description: "Body param: The action to perform when the threshold of matched
+                    traffic within the configured period is exceeded."
+                filter:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param:"
+              required:
+                - action
+                - filter
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the firewall rule.
+                  action:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - js_challenge
+                      - managed_challenge
+                      - allow
+                      - log
+                      - bypass
+                    description: The action to apply to a matched request. The `log` action is only
+                      available on an Enterprise plan.
+                  description:
+                    type: string
+                    description: An informative summary of the firewall rule.
+                  filter:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: object
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          deleted:
+                            type: boolean
+                            description: When true, indicates that the firewall rule was deleted.
+                        required:
+                          - id
+                          - deleted
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the firewall rule is currently paused.
+                  priority:
+                    type: number
+                    description: The priority of the rule. Optional value used to define the
+                      processing order. A lower number indicates a higher
+                      priority. If not provided, rules with a defined priority
+                      will be processed before rules without a priority.
+                  products:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - zoneLockdown
+                        - uaBlock
+                        - bic
+                        - hot
+                        - securityLevel
+                        - rateLimit
+                        - waf
+                  ref:
+                    type: string
+                    description: A short reference tag. Allows you to select related firewall rules.
+      x-distilled-response-path: result
+    patch:
+      operationId: patchRule
+      description: Updates the priority of an existing firewall rule.  @deprecated The
+        Firewall Rules API is deprecated in favour of using the Ruleset Engine.
+        See
+        https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#firewall-rules-api-and-filters-api
+        for full details.
+      parameters:
+        - name: ruleId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the firewall rule.
+                  action:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - js_challenge
+                      - managed_challenge
+                      - allow
+                      - log
+                      - bypass
+                    description: The action to apply to a matched request. The `log` action is only
+                      available on an Enterprise plan.
+                  description:
+                    type: string
+                    description: An informative summary of the firewall rule.
+                  filter:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: object
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          deleted:
+                            type: boolean
+                            description: When true, indicates that the firewall rule was deleted.
+                        required:
+                          - id
+                          - deleted
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the firewall rule is currently paused.
+                  priority:
+                    type: number
+                    description: The priority of the rule. Optional value used to define the
+                      processing order. A lower number indicates a higher
+                      priority. If not provided, rules with a defined priority
+                      will be processed before rules without a priority.
+                  products:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - zoneLockdown
+                        - uaBlock
+                        - bic
+                        - hot
+                        - securityLevel
+                        - rateLimit
+                        - waf
+                  ref:
+                    type: string
+                    description: A short reference tag. Allows you to select related firewall rules.
+      x-distilled-pagination-class: FirewallRulesSinglePage
+    delete:
+      operationId: deleteRule
+      description: Deletes an existing firewall rule.  @deprecated The Firewall Rules
+        API is deprecated in favour of using the Ruleset Engine. See
+        https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#firewall-rules-api-and-filters-api
+        for full details.
+      parameters:
+        - name: ruleId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the firewall rule.
+                  action:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - js_challenge
+                      - managed_challenge
+                      - allow
+                      - log
+                      - bypass
+                    description: The action to apply to a matched request. The `log` action is only
+                      available on an Enterprise plan.
+                  description:
+                    type: string
+                    description: An informative summary of the firewall rule.
+                  filter:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: object
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          deleted:
+                            type: boolean
+                            description: When true, indicates that the firewall rule was deleted.
+                        required:
+                          - id
+                          - deleted
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the firewall rule is currently paused.
+                  priority:
+                    type: number
+                    description: The priority of the rule. Optional value used to define the
+                      processing order. A lower number indicates a higher
+                      priority. If not provided, rules with a defined priority
+                      will be processed before rules without a priority.
+                  products:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - zoneLockdown
+                        - uaBlock
+                        - bic
+                        - hot
+                        - securityLevel
+                        - rateLimit
+                        - waf
+                  ref:
+                    type: string
+                    description: A short reference tag. Allows you to select related firewall rules.
+      x-distilled-response-path: result
+  /zones/{zone_id}/firewall/ua_rules/{uaRuleId}:
+    get:
+      operationId: getUaRule
+      description: "Fetches the details of a User Agent Blocking rule.  @example ```ts
+        const uaRule = await client.firewall.uaRules.get(
+        '372e67954025e0ba6aaa6d586b9e0b59', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: uaRuleId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the User Agent Blocking rule.
+                  configuration:
+                    type: object
+                    properties:
+                      target:
+                        type: string
+                        description: The configuration target for this rule. You must set the target to
+                          `ua` for User Agent Blocking rules.
+                      value:
+                        type: string
+                        description: The exact user agent string to match. This value will be compared
+                          to the received `User-Agent` HTTP header value.
+                    description: The configuration object for the current rule.
+                  description:
+                    type: string
+                    description: An informative summary of the rule.
+                  mode:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - js_challenge
+                      - managed_challenge
+                    description: The action to apply to a matched request.
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the rule is currently paused.
+      x-distilled-response-path: result
+    put:
+      operationId: updateUaRule
+      description: "Updates an existing User Agent Blocking rule.  @example ```ts
+        const uaRule = await client.firewall.uaRules.update(
+        '372e67954025e0ba6aaa6d586b9e0b59', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', configuration: {}, mode:
+        'challenge', }, ); ```"
+      parameters:
+        - name: uaRuleId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                configuration:
+                  oneOf:
+                    - type: object
+                      additionalProperties: true
+                    - type: object
+                      additionalProperties: true
+                    - type: object
+                      additionalProperties: true
+                    - type: object
+                      additionalProperties: true
+                    - type: object
+                      additionalProperties: true
+                  description: "Body param: The rule configuration."
+                mode:
+                  type: string
+                  enum:
+                    - block
+                    - challenge
+                    - whitelist
+                    - js_challenge
+                    - managed_challenge
+                  description: "Body param: The action to apply to a matched request."
+                description:
+                  type: string
+                  description: "Body param: An informative summary of the rule. This value is
+                    sanitized and any tags will be removed."
+                paused:
+                  type: boolean
+                  description: "Body param: When true, indicates that the rule is currently
+                    paused."
+              required:
+                - configuration
+                - mode
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the User Agent Blocking rule.
+                  configuration:
+                    type: object
+                    properties:
+                      target:
+                        type: string
+                        description: The configuration target for this rule. You must set the target to
+                          `ua` for User Agent Blocking rules.
+                      value:
+                        type: string
+                        description: The exact user agent string to match. This value will be compared
+                          to the received `User-Agent` HTTP header value.
+                    description: The configuration object for the current rule.
+                  description:
+                    type: string
+                    description: An informative summary of the rule.
+                  mode:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - js_challenge
+                      - managed_challenge
+                    description: The action to apply to a matched request.
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the rule is currently paused.
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteUaRule
+      description: "Deletes an existing User Agent Blocking rule.  @example ```ts
+        const uaRule = await client.firewall.uaRules.delete(
+        '372e67954025e0ba6aaa6d586b9e0b59', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: uaRuleId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the User Agent Blocking rule.
+                  configuration:
+                    type: object
+                    properties:
+                      target:
+                        type: string
+                        description: The configuration target for this rule. You must set the target to
+                          `ua` for User Agent Blocking rules.
+                      value:
+                        type: string
+                        description: The exact user agent string to match. This value will be compared
+                          to the received `User-Agent` HTTP header value.
+                    description: The configuration object for the current rule.
+                  description:
+                    type: string
+                    description: An informative summary of the rule.
+                  mode:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - js_challenge
+                      - managed_challenge
+                    description: The action to apply to a matched request.
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the rule is currently paused.
+      x-distilled-response-path: result
+  /zones/{zone_id}/firewall/ua_rules:
+    get:
+      operationId: listUaRules
+      description: "Fetches User Agent Blocking rules in a zone. You can filter the
+        results using several optional parameters.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        uaRuleListResponse of client.firewall.uaRules.list( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+        - name: description
+          in: query
+          required: false
+          description: "Query param: A string to search for in the description of existing
+            rules."
+          schema:
+            type: string
+        - name: paused
+          in: query
+          required: false
+          description: "Query param: When true, indicates that the rule is currently
+            paused."
+          schema:
+            type: boolean
+        - name: user_agent
+          in: query
+          required: false
+          description: "Query param: A string to search for in the user agent values of
+            existing rules."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the User Agent Blocking rule.
+                  configuration:
+                    type: object
+                    properties:
+                      target:
+                        type: string
+                        description: The configuration target for this rule. You must set the target to
+                          `ua` for User Agent Blocking rules.
+                      value:
+                        type: string
+                        description: The exact user agent string to match. This value will be compared
+                          to the received `User-Agent` HTTP header value.
+                    description: The configuration object for the current rule.
+                  description:
+                    type: string
+                    description: An informative summary of the rule.
+                  mode:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - js_challenge
+                      - managed_challenge
+                    description: The action to apply to a matched request.
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the rule is currently paused.
+      x-distilled-pagination-class: UARuleListResponsesV4PagePaginationArray
+    post:
+      operationId: createUaRule
+      description: "Creates a new User Agent Blocking rule in a zone.  @example ```ts
+        const uaRule = await client.firewall.uaRules.create({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', configuration: {}, mode:
+        'challenge', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                configuration:
+                  type: object
+                  properties:
+                    target:
+                      type: string
+                      enum:
+                        - ua
+                      description: The configuration target. You must set the target to `ua` when
+                        specifying a user agent in the rule.
+                    value:
+                      type: string
+                      description: the user agent to exactly match
+                  description: "Body param:"
+                mode:
+                  type: string
+                  enum:
+                    - block
+                    - challenge
+                    - whitelist
+                    - js_challenge
+                    - managed_challenge
+                  description: "Body param: The action to apply to a matched request."
+                description:
+                  type: string
+                  description: "Body param: An informative summary of the rule. This value is
+                    sanitized and any tags will be removed."
+                paused:
+                  type: boolean
+                  description: "Body param: When true, indicates that the rule is currently
+                    paused."
+              required:
+                - configuration
+                - mode
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the User Agent Blocking rule.
+                  configuration:
+                    type: object
+                    properties:
+                      target:
+                        type: string
+                        description: The configuration target for this rule. You must set the target to
+                          `ua` for User Agent Blocking rules.
+                      value:
+                        type: string
+                        description: The exact user agent string to match. This value will be compared
+                          to the received `User-Agent` HTTP header value.
+                    description: The configuration object for the current rule.
+                  description:
+                    type: string
+                    description: An informative summary of the rule.
+                  mode:
+                    type: string
+                    enum:
+                      - block
+                      - challenge
+                      - js_challenge
+                      - managed_challenge
+                    description: The action to apply to a matched request.
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the rule is currently paused.
+      x-distilled-response-path: result
+  /zones/{zone_id}/firewall/waf/overrides/{overridesId}:
+    get:
+      operationId: getWafOverride
+      description: "Fetches the details of a URI-based WAF override.    Note:  Applies
+        only to the [previous version of WAF managed
+        rules](https://developers.cloudflare.com/support/firewall/managed-rules\
+        -web-application-firewall-waf/understanding-waf-managed-rules-web-appli\
+        cation-firewall/).  @deprecated"
+      parameters:
+        - name: overridesId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the WAF override.
+                  description:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: An informative summary of the current URI-based WAF override.
+                  groups:
+                    type: object
+                    additionalProperties: true
+                    description: An object that allows you to enable or disable WAF rule groups for
+                      the current WAF override. Each key of this object must be
+                      the ID of a WAF rule group, and each value must be a valid
+                      WAF action (usually `default` or `disable`). When creating
+                      a new URI-based WAF override, you must provide a `groups`
+                      object or a `rules` object.
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the rule is currently paused.
+                  priority:
+                    type: number
+                    description: The relative priority of the current URI-based WAF override when
+                      multiple overrides match a single URL. A lower number
+                      indicates higher priority. Higher priority overrides may
+                      overwrite values set by lower priority overrides.
+                  rewrite_action:
+                    type: object
+                    properties:
+                      block:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                      challenge:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                      default:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                      disable:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                      simulate:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                    description: Specifies that, when a WAF rule matches, its configured action will
+                      be replaced by the action configured in this object.
+                  rules:
+                    type: object
+                    additionalProperties: true
+                    description: An object that allows you to override the action of specific WAF
+                      rules. Each key of this object must be the ID of a WAF
+                      rule, and each value must be a valid WAF action. Unless
+                      you are disabling a rule, ensure that you also enable the
+                      rule group that this WAF rule belongs to. When creating a
+                      new URI-based WAF override, you must provide a `groups`
+                      object or a `rules` object.
+                  urls:
+                    type: array
+                    items:
+                      type: string
+                    description: The URLs to include in the current WAF override. You can use
+                      wildcards. Each entered URL will be escaped before use,
+                      which means you can only use simple wildcard patterns.
+      x-distilled-response-path: result
+    put:
+      operationId: updateWafOverride
+      description: "Updates an existing URI-based WAF override.    Note:  Applies only
+        to the [previous version of WAF managed
+        rules](https://developers.cloudflare.com/support/firewall/managed-rules\
+        -web-application-firewall-waf/understanding-waf-managed-rules-web-appli\
+        cation-firewall/).  @deprecated"
+      parameters:
+        - name: overridesId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: "Body param: Defines an identifier."
+                rewrite_action:
+                  type: object
+                  properties:
+                    block:
+                      type: string
+                      enum:
+                        - challenge
+                        - block
+                        - simulate
+                        - disable
+                        - default
+                      description: The WAF rule action to apply.
+                    challenge:
+                      type: string
+                      enum:
+                        - challenge
+                        - block
+                        - simulate
+                        - disable
+                        - default
+                      description: The WAF rule action to apply.
+                    default:
+                      type: string
+                      enum:
+                        - challenge
+                        - block
+                        - simulate
+                        - disable
+                        - default
+                      description: The WAF rule action to apply.
+                    disable:
+                      type: string
+                      enum:
+                        - challenge
+                        - block
+                        - simulate
+                        - disable
+                        - default
+                      description: The WAF rule action to apply.
+                    simulate:
+                      type: string
+                      enum:
+                        - challenge
+                        - block
+                        - simulate
+                        - disable
+                        - default
+                      description: The WAF rule action to apply.
+                  description: "Body param: Specifies that, when a WAF rule matches, its
+                    configured action will be replaced by the action configured
+                    in this object."
+                rules:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param: An object that allows you to override the action of
+                    specific WAF rules. Each key of this object must be the ID
+                    of a WAF rule, and each value must be a valid WAF action.
+                    Unless you are disabling a rule, ensure that you also enable
+                    the rule group that this WAF rule belongs to. When creating
+                    a new URI-based WAF override, you must provide a `groups`
+                    object or a `rules` object."
+                urls:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: The URLs to include in the current WAF override. You
+                    can use wildcards. Each entered URL will be escaped before
+                    use, which means you can only use simple wildcard patterns."
+              required:
+                - id
+                - rewrite_action
+                - rules
+                - urls
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the WAF override.
+                  description:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: An informative summary of the current URI-based WAF override.
+                  groups:
+                    type: object
+                    additionalProperties: true
+                    description: An object that allows you to enable or disable WAF rule groups for
+                      the current WAF override. Each key of this object must be
+                      the ID of a WAF rule group, and each value must be a valid
+                      WAF action (usually `default` or `disable`). When creating
+                      a new URI-based WAF override, you must provide a `groups`
+                      object or a `rules` object.
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the rule is currently paused.
+                  priority:
+                    type: number
+                    description: The relative priority of the current URI-based WAF override when
+                      multiple overrides match a single URL. A lower number
+                      indicates higher priority. Higher priority overrides may
+                      overwrite values set by lower priority overrides.
+                  rewrite_action:
+                    type: object
+                    properties:
+                      block:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                      challenge:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                      default:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                      disable:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                      simulate:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                    description: Specifies that, when a WAF rule matches, its configured action will
+                      be replaced by the action configured in this object.
+                  rules:
+                    type: object
+                    additionalProperties: true
+                    description: An object that allows you to override the action of specific WAF
+                      rules. Each key of this object must be the ID of a WAF
+                      rule, and each value must be a valid WAF action. Unless
+                      you are disabling a rule, ensure that you also enable the
+                      rule group that this WAF rule belongs to. When creating a
+                      new URI-based WAF override, you must provide a `groups`
+                      object or a `rules` object.
+                  urls:
+                    type: array
+                    items:
+                      type: string
+                    description: The URLs to include in the current WAF override. You can use
+                      wildcards. Each entered URL will be escaped before use,
+                      which means you can only use simple wildcard patterns.
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteWafOverride
+      description: "Deletes an existing URI-based WAF override.    Note:  Applies only
+        to the [previous version of WAF managed
+        rules](https://developers.cloudflare.com/support/firewall/managed-rules\
+        -web-application-firewall-waf/understanding-waf-managed-rules-web-appli\
+        cation-firewall/).  @deprecated"
+      parameters:
+        - name: overridesId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the WAF override.
+      x-distilled-response-path: result
+  /zones/{zone_id}/firewall/waf/overrides:
+    get:
+      operationId: listWafOverrides
+      description: "Fetches the URI-based WAF overrides in a zone.    Note:  Applies
+        only to the [previous version of WAF managed
+        rules](https://developers.cloudflare.com/support/firewall/managed-rules\
+        -web-application-firewall-waf/understanding-waf-managed-rules-web-appli\
+        cation-firewall/).  @deprecated"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the WAF override.
+                  description:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: An informative summary of the current URI-based WAF override.
+                  groups:
+                    type: object
+                    additionalProperties: true
+                    description: An object that allows you to enable or disable WAF rule groups for
+                      the current WAF override. Each key of this object must be
+                      the ID of a WAF rule group, and each value must be a valid
+                      WAF action (usually `default` or `disable`). When creating
+                      a new URI-based WAF override, you must provide a `groups`
+                      object or a `rules` object.
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the rule is currently paused.
+                  priority:
+                    type: number
+                    description: The relative priority of the current URI-based WAF override when
+                      multiple overrides match a single URL. A lower number
+                      indicates higher priority. Higher priority overrides may
+                      overwrite values set by lower priority overrides.
+                  rewrite_action:
+                    type: object
+                    properties:
+                      block:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                      challenge:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                      default:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                      disable:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                      simulate:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                    description: Specifies that, when a WAF rule matches, its configured action will
+                      be replaced by the action configured in this object.
+                  rules:
+                    type: object
+                    additionalProperties: true
+                    description: An object that allows you to override the action of specific WAF
+                      rules. Each key of this object must be the ID of a WAF
+                      rule, and each value must be a valid WAF action. Unless
+                      you are disabling a rule, ensure that you also enable the
+                      rule group that this WAF rule belongs to. When creating a
+                      new URI-based WAF override, you must provide a `groups`
+                      object or a `rules` object.
+                  urls:
+                    type: array
+                    items:
+                      type: string
+                    description: The URLs to include in the current WAF override. You can use
+                      wildcards. Each entered URL will be escaped before use,
+                      which means you can only use simple wildcard patterns.
+      x-distilled-pagination-class: OverridesV4PagePaginationArray
+    post:
+      operationId: createWafOverride
+      description: "Creates a URI-based WAF override for a zone.    Note:  Applies
+        only to the [previous version of WAF managed
+        rules](https://developers.cloudflare.com/support/firewall/managed-rules\
+        -web-application-firewall-waf/understanding-waf-managed-rules-web-appli\
+        cation-firewall/).  @deprecated"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                urls:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: The URLs to include in the current WAF override. You
+                    can use wildcards. Each entered URL will be escaped before
+                    use, which means you can only use simple wildcard patterns."
+              required:
+                - urls
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the WAF override.
+                  description:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: An informative summary of the current URI-based WAF override.
+                  groups:
+                    type: object
+                    additionalProperties: true
+                    description: An object that allows you to enable or disable WAF rule groups for
+                      the current WAF override. Each key of this object must be
+                      the ID of a WAF rule group, and each value must be a valid
+                      WAF action (usually `default` or `disable`). When creating
+                      a new URI-based WAF override, you must provide a `groups`
+                      object or a `rules` object.
+                  paused:
+                    type: boolean
+                    description: When true, indicates that the rule is currently paused.
+                  priority:
+                    type: number
+                    description: The relative priority of the current URI-based WAF override when
+                      multiple overrides match a single URL. A lower number
+                      indicates higher priority. Higher priority overrides may
+                      overwrite values set by lower priority overrides.
+                  rewrite_action:
+                    type: object
+                    properties:
+                      block:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                      challenge:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                      default:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                      disable:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                      simulate:
+                        type: string
+                        enum:
+                          - challenge
+                          - block
+                          - simulate
+                          - disable
+                          - default
+                        description: The WAF rule action to apply.
+                    description: Specifies that, when a WAF rule matches, its configured action will
+                      be replaced by the action configured in this object.
+                  rules:
+                    type: object
+                    additionalProperties: true
+                    description: An object that allows you to override the action of specific WAF
+                      rules. Each key of this object must be the ID of a WAF
+                      rule, and each value must be a valid WAF action. Unless
+                      you are disabling a rule, ensure that you also enable the
+                      rule group that this WAF rule belongs to. When creating a
+                      new URI-based WAF override, you must provide a `groups`
+                      object or a `rules` object.
+                  urls:
+                    type: array
+                    items:
+                      type: string
+                    description: The URLs to include in the current WAF override. You can use
+                      wildcards. Each entered URL will be escaped before use,
+                      which means you can only use simple wildcard patterns.
+      x-distilled-response-path: result
+  /zones/{zone_id}/firewall/waf/packages/{packageId}:
+    get:
+      operationId: getWafPackage
+      description: "Fetches the details of a WAF package.    Note:  Applies only to
+        the [previous version of WAF managed
+        rules](https://developers.cloudflare.com/support/firewall/managed-rules\
+        -web-application-firewall-waf/understanding-waf-managed-rules-web-appli\
+        cation-firewall/).  @deprecated"
+      parameters:
+        - name: packageId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      errors:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                      messages:
+                        type: array
+                        items:
+                          type: object
+                          additionalProperties: true
+                      result:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      success:
+                        type: boolean
+                        enum:
+                          - true
+                        description: Defines whether the API call was successful.
+                    required:
+                      - errors
+                      - messages
+                      - result
+                      - success
+                  - type: object
+                    properties:
+                      result: {}
+  /zones/{zone_id}/firewall/waf/packages:
+    get:
+      operationId: listWafPackages
+      description: "Fetches WAF packages for a zone.    Note:  Applies only to the
+        [previous version of WAF managed
+        rules](https://developers.cloudflare.com/support/firewall/managed-rules\
+        -web-application-firewall-waf/understanding-waf-managed-rules-web-appli\
+        cation-firewall/).  @deprecated"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+        - name: direction
+          in: query
+          required: false
+          description: "Query param: The direction used to sort returned packages."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: match
+          in: query
+          required: false
+          description: "Query param: When set to `all`, all the search requirements must
+            match. When set to `any`, only one of the search requirements has to
+            match."
+          schema:
+            type: string
+            enum:
+              - any
+              - all
+        - name: name
+          in: query
+          required: false
+          description: "Query param: The name of the WAF package."
+          schema:
+            type: string
+        - name: order
+          in: query
+          required: false
+          description: "Query param: The field used to sort returned packages."
+          schema:
+            type: string
+            enum:
+              - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-pagination-class: PackageListResponsesV4PagePaginationArray
+  /zones/{zone_id}/firewall/waf/packages/{packageId}/groups/{groupId}:
+    get:
+      operationId: getWafPackageGroup
+      description: "Fetches the details of a WAF rule group.    Note:  Applies only to
+        the [previous version of WAF managed
+        rules](https://developers.cloudflare.com/support/firewall/managed-rules\
+        -web-application-firewall-waf/understanding-waf-managed-rules-web-appli\
+        cation-firewall/).  @deprecated"
+      parameters:
+        - name: packageId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: groupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier of a schema.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: string
+                nullable: true
+      x-distilled-response-path: result
+    patch:
+      operationId: patchWafPackageGroup
+      description: "Updates a WAF rule group. You can update the state (`mode`
+        parameter) of a rule group.    Note:  Applies only to the [previous
+        version of WAF managed
+        rules](https://developers.cloudflare.com/support/firewall/managed-rules\
+        -web-application-firewall-waf/understanding-waf-managed-rules-web-appli\
+        cation-firewall/).  @deprecated"
+      parameters:
+        - name: packageId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: groupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier of a schema."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mode:
+                  type: string
+                  enum:
+                    - on
+                    - off
+                  description: "Body param: Defines the state of the rules contained in the rule
+                    group. When `on`, the rules in the group are
+                    configurable/usable."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: string
+                nullable: true
+      x-distilled-response-path: result
+  /zones/{zone_id}/firewall/waf/packages/{packageId}/groups:
+    get:
+      operationId: listWafPackageGroups
+      description: "Fetches the WAF rule groups in a WAF package.    Note:  Applies
+        only to the [previous version of WAF managed
+        rules](https://developers.cloudflare.com/support/firewall/managed-rules\
+        -web-application-firewall-waf/understanding-waf-managed-rules-web-appli\
+        cation-firewall/).  @deprecated"
+      parameters:
+        - name: packageId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier of a schema."
+          schema:
+            type: string
+        - name: direction
+          in: query
+          required: false
+          description: "Query param: Defines the direction used to sort returned rule
+            groups."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: match
+          in: query
+          required: false
+          description: "Query param: Defines the condition for search requirements. When
+            set to `all`, all the search requirements must match. When set to
+            `any`, only one of the search requirements has to match."
+          schema:
+            type: string
+            enum:
+              - any
+              - all
+        - name: mode
+          in: query
+          required: false
+          description: "Query param: Defines the state of the rules contained in the rule
+            group. When `on`, the rules in the group are configurable/usable."
+          schema:
+            type: string
+            enum:
+              - on
+              - off
+        - name: name
+          in: query
+          required: false
+          description: "Query param: Defines the name of the rule group."
+          schema:
+            type: string
+        - name: order
+          in: query
+          required: false
+          description: "Query param: Defines the field used to sort returned rule groups."
+          schema:
+            type: string
+            enum:
+              - mode
+              - rules_count
+        - name: rules_count
+          in: query
+          required: false
+          description: "Query param: Defines the number of rules in the current rule group."
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Defines the unique identifier of the rule group.
+                  description:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Defines an informative summary of what the rule group does.
+                  mode:
+                    type: string
+                    enum:
+                      - on
+                      - off
+                    description: Defines the state of the rules contained in the rule group. When
+                      `on`, the rules in the group are configurable/usable.
+                  name:
+                    type: string
+                    description: Defines the name of the rule group.
+                  rules_count:
+                    type: number
+                    description: Defines the number of rules in the current rule group.
+                  allowed_modes:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - on
+                        - off
+                    description: Defines the available states for the rule group.
+                  modified_rules_count:
+                    type: number
+                    description: Defines the number of rules within the group that have been
+                      modified from their default configuration.
+                  package_id:
+                    type: string
+                    description: Defines the unique identifier of a WAF package.
+                required:
+                  - id
+                  - description
+                  - mode
+                  - name
+                  - rules_count
+      x-distilled-pagination-class: GroupsV4PagePaginationArray
+  /zones/{zone_id}/firewall/waf/packages/{packageId}/rules/{ruleId}:
+    get:
+      operationId: getWafPackageRule
+      description: "Fetches the details of a WAF rule in a WAF
+        package.    Note:  Applies only to the [previous version of WAF managed
+        rules](https://developers.cloudflare.com/support/firewall/managed-rules\
+        -web-application-firewall-waf/understanding-waf-managed-rules-web-appli\
+        cation-firewall/).  @deprecated"
+      parameters:
+        - name: packageId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: ruleId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier of a schema.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: string
+                nullable: true
+      x-distilled-response-path: result
+    patch:
+      operationId: patchWafPackageRule
+      description: "Updates a WAF rule. You can only update the mode/action of the
+        rule.    Note:  Applies only to the [previous version of WAF managed
+        rules](https://developers.cloudflare.com/support/firewall/managed-rules\
+        -web-application-firewall-waf/understanding-waf-managed-rules-web-appli\
+        cation-firewall/).  @deprecated"
+      parameters:
+        - name: packageId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: ruleId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier of a schema."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mode:
+                  type: string
+                  enum:
+                    - default
+                    - disable
+                    - simulate
+                    - block
+                    - challenge
+                    - on
+                    - off
+                  description: "Body param: Defines the mode/action of the rule when triggered.
+                    You must use a value from the `allowed_modes` array of the
+                    current rule."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Defines the unique identifier of the WAF rule.
+                      allowed_modes:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - on
+                            - off
+                        description: Defines the available modes for the current WAF rule. Applies to
+                          anomaly detection WAF rules.
+                      description:
+                        type: string
+                        description: Defines the public description of the WAF rule.
+                      group:
+                        type: object
+                        additionalProperties: true
+                        description: Defines the rule group to which the current WAF rule belongs.
+                      mode:
+                        type: string
+                        enum:
+                          - on
+                          - off
+                        description: Defines the mode anomaly. When set to `on`, the current WAF rule
+                          will be used when evaluating the request. Applies to
+                          anomaly detection WAF rules.
+                      package_id:
+                        type: string
+                        description: Defines the unique identifier of a WAF package.
+                      priority:
+                        type: string
+                        description: Defines the order in which the individual WAF rule is executed
+                          within its rule group.
+                    required:
+                      - id
+                      - allowed_modes
+                      - description
+                      - group
+                      - mode
+                      - package_id
+                      - priority
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Defines the unique identifier of the WAF rule.
+                      allowed_modes:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - default
+                            - disable
+                            - simulate
+                            - block
+                            - challenge
+                        description: Defines the list of possible actions of the WAF rule when it is
+                          triggered.
+                      default_mode:
+                        type: string
+                        enum:
+                          - disable
+                          - simulate
+                          - block
+                          - challenge
+                        description: Defines the default action/mode of a rule.
+                      description:
+                        type: string
+                        description: Defines the public description of the WAF rule.
+                      group:
+                        type: object
+                        additionalProperties: true
+                        description: Defines the rule group to which the current WAF rule belongs.
+                      mode:
+                        type: string
+                        enum:
+                          - default
+                          - disable
+                          - simulate
+                          - block
+                          - challenge
+                        description: Defines the action that the current WAF rule will perform when
+                          triggered. Applies to traditional (deny) WAF rules.
+                      package_id:
+                        type: string
+                        description: Defines the unique identifier of a WAF package.
+                      priority:
+                        type: string
+                        description: Defines the order in which the individual WAF rule is executed
+                          within its rule group.
+                    required:
+                      - id
+                      - allowed_modes
+                      - default_mode
+                      - description
+                      - group
+                      - mode
+                      - package_id
+                      - priority
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Defines the unique identifier of the WAF rule.
+                      allowed_modes:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - on
+                            - off
+                        description: Defines the available modes for the current WAF rule.
+                      description:
+                        type: string
+                        description: Defines the public description of the WAF rule.
+                      group:
+                        type: object
+                        additionalProperties: true
+                        description: Defines the rule group to which the current WAF rule belongs.
+                      mode:
+                        type: string
+                        enum:
+                          - on
+                          - off
+                        description: When set to `on`, the current rule will be used when evaluating the
+                          request. Applies to traditional (allow) WAF rules.
+                      package_id:
+                        type: string
+                        description: Defines the unique identifier of a WAF package.
+                      priority:
+                        type: string
+                        description: Defines the order in which the individual WAF rule is executed
+                          within its rule group.
+                    required:
+                      - id
+                      - allowed_modes
+                      - description
+                      - group
+                      - mode
+                      - package_id
+                      - priority
+      x-distilled-response-path: result
+  /zones/{zone_id}/firewall/waf/packages/{packageId}/rules:
+    get:
+      operationId: listWafPackageRules
+      description: "Fetches WAF rules in a WAF package.    Note:  Applies only to the
+        [previous version of WAF managed
+        rules](https://developers.cloudflare.com/support/firewall/managed-rules\
+        -web-application-firewall-waf/understanding-waf-managed-rules-web-appli\
+        cation-firewall/).  @deprecated"
+      parameters:
+        - name: packageId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier of a schema."
+          schema:
+            type: string
+        - name: description
+          in: query
+          required: false
+          description: "Query param: Defines the public description of the WAF rule."
+          schema:
+            type: string
+        - name: direction
+          in: query
+          required: false
+          description: "Query param: Defines the direction used to sort returned rules."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: group_id
+          in: query
+          required: false
+          description: "Query param: Defines the unique identifier of the rule group."
+          schema:
+            type: string
+        - name: match
+          in: query
+          required: false
+          description: "Query param: Defines the search requirements. When set to `all`,
+            all the search requirements must match. When set to `any`, only one
+            of the search requirements has to match."
+          schema:
+            type: string
+            enum:
+              - any
+              - all
+        - name: mode
+          in: query
+          required: false
+          description: "Query param: Defines the action/mode a rule has been overridden to
+            perform."
+          schema:
+            type: string
+            enum:
+              - DIS
+              - CHL
+              - BLK
+              - SIM
+        - name: order
+          in: query
+          required: false
+          description: "Query param: Defines the field used to sort returned rules."
+          schema:
+            type: string
+            enum:
+              - priority
+              - group_id
+              - description
+        - name: priority
+          in: query
+          required: false
+          description: "Query param: Defines the order in which the individual WAF rule is
+            executed within its rule group."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Defines the unique identifier of the WAF rule.
+                      allowed_modes:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - on
+                            - off
+                        description: Defines the available modes for the current WAF rule. Applies to
+                          anomaly detection WAF rules.
+                      description:
+                        type: string
+                        description: Defines the public description of the WAF rule.
+                      group:
+                        type: object
+                        additionalProperties: true
+                        description: Defines the rule group to which the current WAF rule belongs.
+                      mode:
+                        type: string
+                        enum:
+                          - on
+                          - off
+                        description: Defines the mode anomaly. When set to `on`, the current WAF rule
+                          will be used when evaluating the request. Applies to
+                          anomaly detection WAF rules.
+                      package_id:
+                        type: string
+                        description: Defines the unique identifier of a WAF package.
+                      priority:
+                        type: string
+                        description: Defines the order in which the individual WAF rule is executed
+                          within its rule group.
+                    required:
+                      - id
+                      - allowed_modes
+                      - description
+                      - group
+                      - mode
+                      - package_id
+                      - priority
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Defines the unique identifier of the WAF rule.
+                      allowed_modes:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - default
+                            - disable
+                            - simulate
+                            - block
+                            - challenge
+                        description: Defines the list of possible actions of the WAF rule when it is
+                          triggered.
+                      default_mode:
+                        type: string
+                        enum:
+                          - disable
+                          - simulate
+                          - block
+                          - challenge
+                        description: Defines the default action/mode of a rule.
+                      description:
+                        type: string
+                        description: Defines the public description of the WAF rule.
+                      group:
+                        type: object
+                        additionalProperties: true
+                        description: Defines the rule group to which the current WAF rule belongs.
+                      mode:
+                        type: string
+                        enum:
+                          - default
+                          - disable
+                          - simulate
+                          - block
+                          - challenge
+                        description: Defines the action that the current WAF rule will perform when
+                          triggered. Applies to traditional (deny) WAF rules.
+                      package_id:
+                        type: string
+                        description: Defines the unique identifier of a WAF package.
+                      priority:
+                        type: string
+                        description: Defines the order in which the individual WAF rule is executed
+                          within its rule group.
+                    required:
+                      - id
+                      - allowed_modes
+                      - default_mode
+                      - description
+                      - group
+                      - mode
+                      - package_id
+                      - priority
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Defines the unique identifier of the WAF rule.
+                      allowed_modes:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - on
+                            - off
+                        description: Defines the available modes for the current WAF rule.
+                      description:
+                        type: string
+                        description: Defines the public description of the WAF rule.
+                      group:
+                        type: object
+                        additionalProperties: true
+                        description: Defines the rule group to which the current WAF rule belongs.
+                      mode:
+                        type: string
+                        enum:
+                          - on
+                          - off
+                        description: When set to `on`, the current rule will be used when evaluating the
+                          request. Applies to traditional (allow) WAF rules.
+                      package_id:
+                        type: string
+                        description: Defines the unique identifier of a WAF package.
+                      priority:
+                        type: string
+                        description: Defines the order in which the individual WAF rule is executed
+                          within its rule group.
+                    required:
+                      - id
+                      - allowed_modes
+                      - description
+                      - group
+                      - mode
+                      - package_id
+                      - priority
+      x-distilled-pagination-class: RuleListResponsesV4PagePaginationArray

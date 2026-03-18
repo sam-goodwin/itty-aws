@@ -1,0 +1,902 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare D1 API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: d1
+paths:
+  /accounts/{account_id}/d1/database/{databaseId}/time_travel/bookmark:
+    get:
+      operationId: getBookmarkDatabaseTimeTravel
+      description: "Retrieves the current bookmark, or the nearest bookmark at or
+        before a provided timestamp. Bookmarks can be used with the restore
+        endpoint to revert the database to a previous point in time.  @example
+        ```ts const response = await client.d1.database.timeTravel.getBookmark(
+        'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: databaseId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+        - name: timestamp
+          in: query
+          required: false
+          description: "Query param: An optional ISO 8601 timestamp. If provided, returns
+            the nearest available bookmark at or before this timestamp. If
+            omitted, returns the current bookmark."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bookmark:
+                    type: string
+                    description: A bookmark representing a specific state of the database at a
+                      specific point in time.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        NoHistoryAvailable:
+          - code: 7500
+        TimestampTooOld:
+          - code: 7400
+        DatabaseNotFound:
+          - code: 7404
+  /accounts/{account_id}/d1/database:
+    get:
+      operationId: listDatabases
+      description: "Returns a list of D1 databases.  @example ```ts // Automatically
+        fetches more pages as needed. for await (const databaseListResponse of
+        client.d1.database.list( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+        - name: name
+          in: query
+          required: false
+          description: "Query param: a database name to search for."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                    description: Specifies the timestamp the resource was created as an ISO8601
+                      string.
+                  name:
+                    type: string
+                    description: D1 database name.
+                  uuid:
+                    type: string
+                    description: D1 database identifier (UUID).
+                  version:
+                    type: string
+      x-distilled-pagination-class: DatabaseListResponsesV4PagePaginationArray
+    post:
+      operationId: createDatabase
+      description: "Returns the created D1 database.  @example ```ts const d1 = await
+        client.d1.database.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', name: 'my-database', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: D1 database name."
+                jurisdiction:
+                  type: string
+                  enum:
+                    - eu
+                    - fedramp
+                  description: "Body param: Specify the location to restrict the D1 database to
+                    run and store data. If this option is present, the location
+                    hint is ignored."
+                primary_location_hint:
+                  type: string
+                  enum:
+                    - wnam
+                    - enam
+                    - weur
+                    - eeur
+                    - apac
+                    - oc
+                  description: "Body param: Specify the region to create the D1 primary, if
+                    available. If this option is omitted, the D1 will be created
+                    as close as possible to the current user."
+              required:
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        InvalidProperty:
+          - code: 7400
+  /accounts/{account_id}/d1/database/{databaseId}:
+    get:
+      operationId: getDatabase
+      description: "Returns the specified D1 database.  @example ```ts const d1 =
+        await client.d1.database.get( 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: databaseId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        DatabaseNotFound:
+          - code: 7404
+        UnknownError:
+          - code: 0
+    put:
+      operationId: updateDatabase
+      description: "Updates the specified D1 database.  @example ```ts const d1 =
+        await client.d1.database.update( 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353', read_replication: {
+        mode: 'auto' }, }, ); ```"
+      parameters:
+        - name: databaseId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                read_replication:
+                  type: object
+                  properties:
+                    mode:
+                      type: string
+                      enum:
+                        - auto
+                        - disabled
+                      description: The read replication mode for the database. Use 'auto' to create
+                        replicas and allow D1 automatically place them around
+                        the world, or 'disabled' to not use any database
+                        replicas (it can take a few hours for all replicas to be
+                        deleted).
+                  required:
+                    - mode
+                  description: "Body param: Configuration for D1 read replication."
+              required:
+                - read_replication
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        InternalError:
+          - code: 7500
+        DatabaseNotFound:
+          - code: 7404
+    patch:
+      operationId: patchDatabase
+      description: "Updates partially the specified D1 database.  @example ```ts const
+        d1 = await client.d1.database.edit(
+        'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: databaseId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                read_replication:
+                  type: object
+                  properties:
+                    mode:
+                      type: string
+                      enum:
+                        - auto
+                        - disabled
+                      description: The read replication mode for the database. Use 'auto' to create
+                        replicas and allow D1 automatically place them around
+                        the world, or 'disabled' to not use any database
+                        replicas (it can take a few hours for all replicas to be
+                        deleted).
+                  required:
+                    - mode
+                  description: "Body param: Configuration for D1 read replication."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        InternalError:
+          - code: 7500
+        DatabaseNotFound:
+          - code: 7404
+    delete:
+      operationId: deleteDatabase
+      description: "Deletes the specified D1 database.  @example ```ts const database
+        = await client.d1.database.delete(
+        'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: databaseId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        DatabaseNotFound:
+          - code: 7404
+        UnknownError:
+          - code: 0
+  /accounts/{account_id}/d1/database/{databaseId}/export:
+    post:
+      operationId: exportDatabase
+      description: "Returns a URL where the SQL contents of your D1 can be downloaded.
+        Note: this process may take some time for larger DBs, during which your
+        D1 will be unavailable to serve queries. To avoid blocking your DB
+        unnecessarily, an in-progress export must be continually polled or will
+        automatically cancel.  @example ```ts const response = await
+        client.d1.database.export( 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', output_format:
+        'polling', }, ); ```"
+      parameters:
+        - name: databaseId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                output_format:
+                  type: string
+                  enum:
+                    - polling
+                  description: "Body param: Specifies that you will poll this endpoint until the
+                    export completes"
+                current_bookmark:
+                  type: string
+                  description: "Body param: To poll an in-progress export, provide the current
+                    bookmark (returned by your first polling response)"
+                dump_options:
+                  type: object
+                  properties:
+                    no_data:
+                      type: boolean
+                      description: Export only the table definitions, not their contents
+                    no_schema:
+                      type: boolean
+                      description: Export only each table's contents, not its definition
+                    tables:
+                      type: array
+                      items:
+                        type: string
+                      description: "Filter the export to just one or more tables. Passing an empty
+                        array is the same as not passing anything and means:
+                        export all tables."
+                  description: "Body param:"
+              required:
+                - output_format
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  at_bookmark:
+                    type: string
+                    description: The current time-travel bookmark for your D1, used to poll for
+                      updates. Will not change for the duration of the export
+                      task.
+                  error:
+                    type: string
+                    description: Only present when status = 'error'. Contains the error message.
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                    description: Logs since the last time you polled
+                  result:
+                    type: object
+                    properties:
+                      filename:
+                        type: string
+                        description: The generated SQL filename.
+                      signed_url:
+                        type: string
+                        description: The URL to download the exported SQL. Available for one hour.
+                    description: Only present when status = 'complete'
+                  status:
+                    type: string
+                    enum:
+                      - complete
+                      - error
+                      - active
+                  success:
+                    type: boolean
+                  type:
+                    type: string
+                    enum:
+                      - export
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        InvalidRequest:
+          - code: 7400
+        DatabaseNotFound:
+          - code: 7404
+  /accounts/{account_id}/d1/database/{databaseId}/import:
+    post:
+      operationId: importDatabase
+      description: "Generates a temporary URL for uploading an SQL file to, then
+        instructing the D1 to import it and polling it for status updates.
+        Imports block the D1 for their duration.  @example ```ts const response
+        = await client.d1.database.import(
+        'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', action: 'init', etag: 'etag', }, );
+        ```"
+      parameters:
+        - name: databaseId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  enum:
+                    - init
+                  description: "Body param: Indicates you have a new SQL file to upload."
+                etag:
+                  type: string
+                  description: "Body param: Required when action is 'init' or 'ingest'. An md5
+                    hash of the file you're uploading. Used to check if it
+                    already exists, and validate its contents before ingesting."
+              required:
+                - action
+                - etag
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  at_bookmark:
+                    type: string
+                    description: The current time-travel bookmark for your D1, used to poll for
+                      updates. Will not change for the duration of the import.
+                      Only returned if an import process is currently running or
+                      recently finished.
+                  error:
+                    type: string
+                    description: Only present when status = 'error'. Contains the error message that
+                      prevented the import from succeeding.
+                  filename:
+                    type: string
+                    description: Derived from the database ID and etag, to use in avoiding repeated
+                      uploads. Only returned when for the 'init' action.
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                    description: Logs since the last time you polled
+                  result:
+                    type: object
+                    properties:
+                      final_bookmark:
+                        type: string
+                        description: The time-travel bookmark if you need restore your D1 to directly
+                          after the import succeeded.
+                      meta:
+                        type: object
+                        properties:
+                          changed_db:
+                            type: boolean
+                            description: Denotes if the database has been altered in some way, like deleting
+                              rows.
+                          changes:
+                            type: number
+                            description: Rough indication of how many rows were modified by the query, as
+                              provided by SQLite's `sqlite3_total_changes()`.
+                          duration:
+                            type: number
+                            description: The duration of the SQL query execution inside the database. Does
+                              not include any network communication.
+                          last_row_id:
+                            type: number
+                            description: The row ID of the last inserted row in a table with an `INTEGER
+                              PRIMARY KEY` as provided by SQLite. Tables created
+                              with `WITHOUT ROWID` do not populate this.
+                          rows_read:
+                            type: number
+                            description: Number of rows read during the SQL query execution, including
+                              indices (not all rows are necessarily returned).
+                          rows_written:
+                            type: number
+                            description: Number of rows written during the SQL query execution, including
+                              indices.
+                          served_by_colo:
+                            type: string
+                            description: The three letters airport code of the colo that handled the query.
+                          served_by_primary:
+                            type: boolean
+                            description: Denotes if the query has been handled by the database primary
+                              instance.
+                          served_by_region:
+                            type: string
+                            enum:
+                              - WNAM
+                              - ENAM
+                              - WEUR
+                              - EEUR
+                              - APAC
+                              - OC
+                            description: Region location hint of the database instance that handled the
+                              query.
+                          size_after:
+                            type: number
+                            description: Size of the database after the query committed, in bytes.
+                          timings:
+                            type: object
+                            properties:
+                              sql_duration_ms:
+                                type: number
+                                description: The duration of the SQL query execution inside the database. Does
+                                  not include any network communication.
+                            description: Various durations for the query.
+                      num_queries:
+                        type: number
+                        description: The total number of queries that were executed during the import.
+                    description: Only present when status = 'complete'
+                  status:
+                    type: string
+                    enum:
+                      - complete
+                      - error
+                  success:
+                    type: boolean
+                  type:
+                    type: string
+                    enum:
+                      - import
+                  upload_url:
+                    type: string
+                    description: The R2 presigned URL to use for uploading. Only returned when for
+                      the 'init' action.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+  /accounts/{account_id}/d1/database/{databaseId}/query:
+    post:
+      operationId: queryDatabase
+      description: "Returns the query result as an object.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const queryResult
+        of client.d1.database.query( 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', sql: 'SELECT FROM
+        myTable WHERE field = ? OR field = ?;', }, )) { // ... } ```"
+      parameters:
+        - name: databaseId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sql:
+                  type: string
+                  description: "Body param: Your SQL query. Supports multiple statements, joined
+                    by semicolons, which will be executed as a batch."
+                params:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param:"
+              required:
+                - sql
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      changed_db:
+                        type: boolean
+                        description: Denotes if the database has been altered in some way, like deleting
+                          rows.
+                      changes:
+                        type: number
+                        description: Rough indication of how many rows were modified by the query, as
+                          provided by SQLite's `sqlite3_total_changes()`.
+                      duration:
+                        type: number
+                        description: The duration of the SQL query execution inside the database. Does
+                          not include any network communication.
+                      last_row_id:
+                        type: number
+                        description: The row ID of the last inserted row in a table with an `INTEGER
+                          PRIMARY KEY` as provided by SQLite. Tables created
+                          with `WITHOUT ROWID` do not populate this.
+                      rows_read:
+                        type: number
+                        description: Number of rows read during the SQL query execution, including
+                          indices (not all rows are necessarily returned).
+                      rows_written:
+                        type: number
+                        description: Number of rows written during the SQL query execution, including
+                          indices.
+                      served_by_colo:
+                        type: string
+                        description: The three letters airport code of the colo that handled the query.
+                      served_by_primary:
+                        type: boolean
+                        description: Denotes if the query has been handled by the database primary
+                          instance.
+                      served_by_region:
+                        type: string
+                        enum:
+                          - WNAM
+                          - ENAM
+                          - WEUR
+                          - EEUR
+                          - APAC
+                          - OC
+                        description: Region location hint of the database instance that handled the
+                          query.
+                      size_after:
+                        type: number
+                        description: Size of the database after the query committed, in bytes.
+                      timings:
+                        type: object
+                        properties:
+                          sql_duration_ms:
+                            type: number
+                            description: The duration of the SQL query execution inside the database. Does
+                              not include any network communication.
+                        description: Various durations for the query.
+                  results:
+                    type: array
+                    items: {}
+                  success:
+                    type: boolean
+      x-distilled-pagination-class: QueryResultsSinglePage
+  /accounts/{account_id}/d1/database/{databaseId}/raw:
+    post:
+      operationId: rawDatabase
+      description: "Returns the query result rows as arrays rather than objects. This
+        is a performance-optimized version of the /query endpoint.  @example
+        ```ts // Automatically fetches more pages as needed. for await (const
+        databaseRawResponse of client.d1.database.raw(
+        'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', sql: 'SELECT FROM myTable WHERE
+        field = ? OR field = ?;', }, )) { // ... } ```"
+      parameters:
+        - name: databaseId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sql:
+                  type: string
+                  description: "Body param: Your SQL query. Supports multiple statements, joined
+                    by semicolons, which will be executed as a batch."
+                params:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param:"
+              required:
+                - sql
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      changed_db:
+                        type: boolean
+                        description: Denotes if the database has been altered in some way, like deleting
+                          rows.
+                      changes:
+                        type: number
+                        description: Rough indication of how many rows were modified by the query, as
+                          provided by SQLite's `sqlite3_total_changes()`.
+                      duration:
+                        type: number
+                        description: The duration of the SQL query execution inside the database. Does
+                          not include any network communication.
+                      last_row_id:
+                        type: number
+                        description: The row ID of the last inserted row in a table with an `INTEGER
+                          PRIMARY KEY` as provided by SQLite. Tables created
+                          with `WITHOUT ROWID` do not populate this.
+                      rows_read:
+                        type: number
+                        description: Number of rows read during the SQL query execution, including
+                          indices (not all rows are necessarily returned).
+                      rows_written:
+                        type: number
+                        description: Number of rows written during the SQL query execution, including
+                          indices.
+                      served_by_colo:
+                        type: string
+                        description: The three letters airport code of the colo that handled the query.
+                      served_by_primary:
+                        type: boolean
+                        description: Denotes if the query has been handled by the database primary
+                          instance.
+                      served_by_region:
+                        type: string
+                        enum:
+                          - WNAM
+                          - ENAM
+                          - WEUR
+                          - EEUR
+                          - APAC
+                          - OC
+                        description: Region location hint of the database instance that handled the
+                          query.
+                      size_after:
+                        type: number
+                        description: Size of the database after the query committed, in bytes.
+                      timings:
+                        type: object
+                        properties:
+                          sql_duration_ms:
+                            type: number
+                            description: The duration of the SQL query execution inside the database. Does
+                              not include any network communication.
+                        description: Various durations for the query.
+                  results:
+                    type: object
+                    properties:
+                      columns:
+                        type: array
+                        items:
+                          type: string
+                      rows:
+                        type: array
+                        items:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: number
+                              - type: string
+                  success:
+                    type: boolean
+      x-distilled-pagination-class: DatabaseRawResponsesSinglePage
+  /accounts/{account_id}/d1/database/{databaseId}/time_travel/restore:
+    post:
+      operationId: restoreDatabaseTimeTravel
+      description: "Restores a D1 database to a previous point in time either via a
+        bookmark or a timestamp.  @example ```ts const response = await
+        client.d1.database.timeTravel.restore(
+        'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: databaseId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+        - name: bookmark
+          in: query
+          required: false
+          description: "Query param: A bookmark to restore the database to. Required if
+            `timestamp` is not provided."
+          schema:
+            type: string
+        - name: timestamp
+          in: query
+          required: false
+          description: "Query param: An ISO 8601 timestamp to restore the database to.
+            Required if `bookmark` is not provided."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bookmark:
+                    type: string
+                    description: The new bookmark representing the state of the database after the
+                      restore operation.
+                  message:
+                    type: string
+                    description: A message describing the result of the restore operation.
+                  previous_bookmark:
+                    type: string
+                    description: The bookmark representing the state of the database before the
+                      restore operation. Can be used to undo the restore if
+                      needed.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        NoHistoryAvailable:
+          - code: 7500
+        DatabaseNotFound:
+          - code: 7404
+        InvalidProperty:
+          - code: 7400

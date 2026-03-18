@@ -1,0 +1,772 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare VECTORIZE API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: vectorize
+paths:
+  /accounts/{account_id}/vectorize/v2/indexes/{indexName}/get_by_ids:
+    post:
+      operationId: getByIdsIndex
+      description: "Get a set of vectors from an index by their vector
+        identifiers.  @example ```ts const response = await
+        client.vectorize.indexes.getByIds( 'example-index', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: indexName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: A list of vector identifiers to retrieve from the
+                    index indicated by the path."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+  /accounts/{account_id}/vectorize/v2/indexes/{indexName}/delete_by_ids:
+    post:
+      operationId: deleteByIdsIndex
+      description: "Delete a set of vectors from an index by their vector
+        identifiers.  @example ```ts const response = await
+        client.vectorize.indexes.deleteByIds( 'example-index', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: indexName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: A list of vector identifiers to delete from the index
+                    indicated by the path."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mutationId:
+                    type: string
+                    description: The unique identifier for the async mutation operation containing
+                      the changeset.
+      x-distilled-response-path: result
+  /accounts/{account_id}/vectorize/v2/indexes/{indexName}:
+    get:
+      operationId: getIndex
+      description: "Returns the specified Vectorize Index.  @example ```ts const
+        createIndex = await client.vectorize.indexes.get( 'example-index', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: indexName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  config:
+                    type: object
+                    properties:
+                      dimensions:
+                        type: number
+                        description: Specifies the number of dimensions for the index
+                      metric:
+                        type: string
+                        enum:
+                          - cosine
+                          - euclidean
+                          - dot-product
+                        description: Specifies the type of metric to use calculating distance.
+                    required:
+                      - dimensions
+                      - metric
+                  created_on:
+                    type: string
+                    description: Specifies the timestamp the resource was created as an ISO8601
+                      string.
+                  description:
+                    type: string
+                    description: Specifies the description of the index.
+                  modified_on:
+                    type: string
+                    description: Specifies the timestamp the resource was modified as an ISO8601
+                      string.
+                  name:
+                    type: string
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteIndex
+      description: "Deletes the specified Vectorize Index.  @example ```ts const index
+        = await client.vectorize.indexes.delete( 'example-index', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: indexName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+      x-distilled-response-path: result
+  /accounts/{account_id}/vectorize/v2/indexes:
+    get:
+      operationId: listIndexes
+      description: "Returns a list of Vectorize Indexes  @example ```ts //
+        Automatically fetches more pages as needed. for await (const createIndex
+        of client.vectorize.indexes.list( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  config:
+                    type: object
+                    properties:
+                      dimensions:
+                        type: number
+                        description: Specifies the number of dimensions for the index
+                      metric:
+                        type: string
+                        enum:
+                          - cosine
+                          - euclidean
+                          - dot-product
+                        description: Specifies the type of metric to use calculating distance.
+                    required:
+                      - dimensions
+                      - metric
+                  created_on:
+                    type: string
+                    description: Specifies the timestamp the resource was created as an ISO8601
+                      string.
+                  description:
+                    type: string
+                    description: Specifies the description of the index.
+                  modified_on:
+                    type: string
+                    description: Specifies the timestamp the resource was modified as an ISO8601
+                      string.
+                  name:
+                    type: string
+      x-distilled-pagination-class: CreateIndicesSinglePage
+    post:
+      operationId: createIndex
+      description: "Creates and returns a new Vectorize Index.  @example ```ts const
+        createIndex = await client.vectorize.indexes.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', config: { dimensions: 768, metric:
+        'cosine' }, name: 'example-index', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                config:
+                  oneOf:
+                    - type: object
+                      properties:
+                        dimensions:
+                          type: number
+                          description: Specifies the number of dimensions for the index
+                        metric:
+                          type: string
+                          enum:
+                            - cosine
+                            - euclidean
+                            - dot-product
+                          description: Specifies the type of metric to use calculating distance.
+                      required:
+                        - dimensions
+                        - metric
+                    - type: object
+                      properties:
+                        preset:
+                          type: string
+                          enum:
+                            - "@cf/baai/bge-small-en-v1.5"
+                            - "@cf/baai/bge-base-en-v1.5"
+                            - "@cf/baai/bge-large-en-v1.5"
+                            - openai/text-embedding-ada-002
+                            - cohere/embed-multilingual-v2.0
+                          description: Specifies the preset to use for the index.
+                      required:
+                        - preset
+                  description: "Body param: Specifies the type of configuration to use for the
+                    index."
+                name:
+                  type: string
+                  description: "Body param:"
+                description:
+                  type: string
+                  description: "Body param: Specifies the description of the index."
+              required:
+                - config
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  config:
+                    type: object
+                    properties:
+                      dimensions:
+                        type: number
+                        description: Specifies the number of dimensions for the index
+                      metric:
+                        type: string
+                        enum:
+                          - cosine
+                          - euclidean
+                          - dot-product
+                        description: Specifies the type of metric to use calculating distance.
+                    required:
+                      - dimensions
+                      - metric
+                  created_on:
+                    type: string
+                    description: Specifies the timestamp the resource was created as an ISO8601
+                      string.
+                  description:
+                    type: string
+                    description: Specifies the description of the index.
+                  modified_on:
+                    type: string
+                    description: Specifies the timestamp the resource was modified as an ISO8601
+                      string.
+                  name:
+                    type: string
+      x-distilled-response-path: result
+  /accounts/{account_id}/vectorize/v2/indexes/{indexName}/info:
+    get:
+      operationId: infoIndex
+      description: "Get information about a vectorize index.  @example ```ts const
+        response = await client.vectorize.indexes.info( 'example-index', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: indexName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dimensions:
+                    type: number
+                    description: Specifies the number of dimensions for the index
+                  processedUpToDatetime:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Specifies the timestamp the last mutation batch was processed as an
+                      ISO8601 string.
+                  processedUpToMutation:
+                    type: string
+                    description: The unique identifier for the async mutation operation containing
+                      the changeset.
+                  vectorCount:
+                    type: number
+                    description: Specifies the number of vectors present in the index
+      x-distilled-response-path: result
+  /accounts/{account_id}/vectorize/v2/indexes/{indexName}/insert:
+    post:
+      operationId: insertIndex
+      description: "Inserts vectors into the specified index and returns a mutation id
+        corresponding to the vectors enqueued for insertion.  @example ```ts
+        const response = await client.vectorize.indexes.insert( 'example-index',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353', body:
+        fs.createReadStream('path/to/file'), }, ); ```"
+      parameters:
+        - name: indexName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+        - name: unparsable-behavior
+          in: query
+          required: false
+          description: "Query param: Behavior for ndjson parse failures."
+          schema:
+            type: string
+            enum:
+              - error
+              - discard
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: string
+              format: binary
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mutationId:
+                    type: string
+                    description: The unique identifier for the async mutation operation containing
+                      the changeset.
+      x-distilled-response-path: result
+  /accounts/{account_id}/vectorize/v2/indexes/{indexName}/query:
+    post:
+      operationId: queryIndex
+      description: "Finds vectors closest to a given vector in an index.  @example
+        ```ts const response = await client.vectorize.indexes.query(
+        'example-index', { account_id: '023e105f4ecef8ad9ca31a8372d0c353',
+        vector: [0.5, 0.5, 0.5], }, ); ```"
+      parameters:
+        - name: indexName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                vector:
+                  type: array
+                  items:
+                    type: number
+                  description: "Body param: The search vector that will be used to find the
+                    nearest neighbors."
+                filter:
+                  description: "Body param: A metadata filter expression used to limit nearest
+                    neighbor results."
+                returnMetadata:
+                  type: string
+                  enum:
+                    - none
+                    - indexed
+                    - all
+                  description: "Body param: Whether to return no metadata, indexed metadata or all
+                    metadata associated with the closest vectors."
+                returnValues:
+                  type: boolean
+                  description: "Body param: Whether to return the values associated with the
+                    closest vectors."
+                topK:
+                  type: number
+                  description: "Body param: The number of nearest neighbors to find."
+              required:
+                - vector
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: number
+                    description: Specifies the count of vectors returned by the search
+                  matches:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Identifier for a Vector
+                        metadata:
+                          type: "null"
+                        namespace:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                        score:
+                          type: number
+                          description: The score of the vector according to the index's distance metric
+                        values:
+                          oneOf:
+                            - type: array
+                              items:
+                                type: number
+                          nullable: true
+                    description: Array of vectors matched by the search
+      x-distilled-response-path: result
+  /accounts/{account_id}/vectorize/v2/indexes/{indexName}/upsert:
+    post:
+      operationId: upsertIndex
+      description: "Upserts vectors into the specified index, creating them if they do
+        not exist and returns a mutation id corresponding to the vectors
+        enqueued for upsertion.  @example ```ts const response = await
+        client.vectorize.indexes.upsert( 'example-index', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', body:
+        fs.createReadStream('path/to/file'), }, ); ```"
+      parameters:
+        - name: indexName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+        - name: unparsable-behavior
+          in: query
+          required: false
+          description: "Query param: Behavior for ndjson parse failures."
+          schema:
+            type: string
+            enum:
+              - error
+              - discard
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: string
+              format: binary
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mutationId:
+                    type: string
+                    description: The unique identifier for the async mutation operation containing
+                      the changeset.
+      x-distilled-response-path: result
+  /accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/list:
+    get:
+      operationId: listIndexMetadataIndexes
+      description: "List Metadata Indexes for the specified Vectorize Index.  @example
+        ```ts const metadataIndices = await
+        client.vectorize.indexes.metadataIndex.list( 'example-index', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: indexName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadataIndexes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        indexType:
+                          type: string
+                          enum:
+                            - string
+                            - number
+                            - boolean
+                          description: Specifies the type of indexed metadata property.
+                        propertyName:
+                          type: string
+                          description: Specifies the indexed metadata property.
+                    description: Array of indexed metadata properties.
+      x-distilled-response-path: result
+  /accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/create:
+    post:
+      operationId: createIndexMetadataIndex
+      description: "Enable metadata filtering based on metadata property. Limited to
+        10 properties.  @example ```ts const metadataIndex = await
+        client.vectorize.indexes.metadataIndex.create( 'example-index', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', indexType: 'string',
+        propertyName: 'random_metadata_property', }, ); ```"
+      parameters:
+        - name: indexName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                indexType:
+                  type: string
+                  enum:
+                    - string
+                    - number
+                    - boolean
+                  description: "Body param: Specifies the type of metadata property to index."
+                propertyName:
+                  type: string
+                  description: "Body param: Specifies the metadata property to index."
+              required:
+                - indexType
+                - propertyName
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mutationId:
+                    type: string
+                    description: The unique identifier for the async mutation operation containing
+                      the changeset.
+      x-distilled-response-path: result
+  /accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/delete:
+    post:
+      operationId: deleteIndexMetadataIndex
+      description: "Allow Vectorize to delete the specified metadata index.  @example
+        ```ts const metadataIndex = await
+        client.vectorize.indexes.metadataIndex.delete( 'example-index', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', propertyName:
+        'random_metadata_property', }, ); ```"
+      parameters:
+        - name: indexName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                propertyName:
+                  type: string
+                  description: "Body param: Specifies the metadata property for which the index
+                    must be deleted."
+              required:
+                - propertyName
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mutationId:
+                    type: string
+                    description: The unique identifier for the async mutation operation containing
+                      the changeset.
+      x-distilled-response-path: result
+  /accounts/{account_id}/vectorize/v2/indexes/{indexName}/list:
+    get:
+      operationId: listVectorsIndex
+      description: "Returns a paginated list of vector identifiers from the specified
+        index.  @example ```ts const response = await
+        client.vectorize.indexes.listVectors( 'example-index', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: indexName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+        - name: count
+          in: query
+          required: false
+          description: "Query param: Maximum number of vectors to return"
+          schema:
+            type: number
+        - name: cursor
+          in: query
+          required: false
+          description: "Query param: Cursor for pagination to get the next page of results"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: number
+                    description: Number of vectors returned in this response
+                  isTruncated:
+                    type: boolean
+                    description: Whether there are more vectors available beyond this response
+                  totalCount:
+                    type: number
+                    description: Total number of vectors in the index
+                  vectors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Identifier for a Vector
+                      required:
+                        - id
+                    description: Array of vector items
+                  cursorExpirationTimestamp:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: When the cursor expires as an ISO8601 string
+                  nextCursor:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Cursor for the next page of results
+                required:
+                  - count
+                  - isTruncated
+                  - totalCount
+                  - vectors
+      x-distilled-response-path: result

@@ -1,0 +1,449 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare DIAGNOSTICS API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: diagnostics
+paths:
+  /accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}:
+    get:
+      operationId: getEndpointHealthcheck
+      description: "Get a single Endpoint Health Check.  @example ```ts const
+        endpointHealthcheck = await client.diagnostics.endpointHealthchecks.get(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  check_type:
+                    type: string
+                    enum:
+                      - icmp
+                    description: type of check to perform
+                  endpoint:
+                    type: string
+                    description: the IP address of the host to perform checks against
+                  id:
+                    type: string
+                    description: UUID.
+                  name:
+                    type: string
+                    description: Optional name associated with this check
+                required:
+                  - check_type
+                  - endpoint
+      x-distilled-response-path: result
+    put:
+      operationId: updateEndpointHealthcheck
+      description: "Update a Endpoint Health Check.  @example ```ts const
+        endpointHealthcheck = await
+        client.diagnostics.endpointHealthchecks.update(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', check_type: 'icmp', endpoint:
+        '203.0.113.1', }, ); ```"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                check_type:
+                  type: string
+                  enum:
+                    - icmp
+                  description: "Body param: type of check to perform"
+                endpoint:
+                  type: string
+                  description: "Body param: the IP address of the host to perform checks against"
+                name:
+                  type: string
+                  description: "Body param: Optional name associated with this check"
+              required:
+                - check_type
+                - endpoint
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  check_type:
+                    type: string
+                    enum:
+                      - icmp
+                    description: type of check to perform
+                  endpoint:
+                    type: string
+                    description: the IP address of the host to perform checks against
+                  id:
+                    type: string
+                    description: UUID.
+                  name:
+                    type: string
+                    description: Optional name associated with this check
+                required:
+                  - check_type
+                  - endpoint
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteEndpointHealthcheck
+      description: "Delete Endpoint Health Check.  @example ```ts const
+        endpointHealthcheck = await
+        client.diagnostics.endpointHealthchecks.delete(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful.
+                required:
+                  - errors
+                  - messages
+                  - success
+  /accounts/{account_id}/diagnostics/endpoint-healthchecks:
+    get:
+      operationId: listEndpointHealthchecks
+      description: "List Endpoint Health Checks.  @example ```ts const
+        endpointHealthchecks = await
+        client.diagnostics.endpointHealthchecks.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  check_type:
+                    type: string
+                    enum:
+                      - icmp
+                    description: type of check to perform
+                  endpoint:
+                    type: string
+                    description: the IP address of the host to perform checks against
+                  id:
+                    type: string
+                    description: UUID.
+                  name:
+                    type: string
+                    description: Optional name associated with this check
+                required:
+                  - check_type
+                  - endpoint
+      x-distilled-response-path: result
+    post:
+      operationId: createEndpointHealthcheck
+      description: "Create Endpoint Health Check.  @example ```ts const
+        endpointHealthcheck = await
+        client.diagnostics.endpointHealthchecks.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', check_type: 'icmp', endpoint:
+        '203.0.113.1', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                check_type:
+                  type: string
+                  enum:
+                    - icmp
+                  description: "Body param: type of check to perform"
+                endpoint:
+                  type: string
+                  description: "Body param: the IP address of the host to perform checks against"
+                name:
+                  type: string
+                  description: "Body param: Optional name associated with this check"
+              required:
+                - check_type
+                - endpoint
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  check_type:
+                    type: string
+                    enum:
+                      - icmp
+                    description: type of check to perform
+                  endpoint:
+                    type: string
+                    description: the IP address of the host to perform checks against
+                  id:
+                    type: string
+                    description: UUID.
+                  name:
+                    type: string
+                    description: Optional name associated with this check
+                required:
+                  - check_type
+                  - endpoint
+      x-distilled-response-path: result
+  /accounts/{account_id}/diagnostics/traceroute:
+    post:
+      operationId: createTraceroute
+      description: "Run traceroutes from Cloudflare colos.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const traceroute
+        of client.diagnostics.traceroutes.create( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', targets: ['203.0.113.1',
+        'cloudflare.com'], }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                targets:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param:"
+                colos:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: If no source colo names specified, all colos will be
+                    used. China colos are unavailable for traceroutes."
+                options:
+                  type: object
+                  properties:
+                    max_ttl:
+                      type: number
+                      description: Max TTL.
+                    packet_type:
+                      type: string
+                      enum:
+                        - icmp
+                        - tcp
+                        - udp
+                        - gre
+                        - gre+icmp
+                      description: Type of packet sent.
+                    packets_per_ttl:
+                      type: number
+                      description: Number of packets sent at each TTL.
+                    port:
+                      type: number
+                      description: For UDP and TCP, specifies the destination port. For ICMP,
+                        specifies the initial ICMP sequence value. Default value
+                        0 will choose the best value to use for each protocol.
+                    wait_time:
+                      type: number
+                      description: Set the time (in seconds) to wait for a response to a probe.
+                  description: "Body param:"
+              required:
+                - targets
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  colos:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        colo:
+                          type: object
+                          properties:
+                            city:
+                              type: string
+                              description: Source colo city.
+                            name:
+                              type: string
+                              description: Source colo name.
+                        error:
+                          type: string
+                          enum:
+                            - ""
+                            - "Could not gather traceroute data: Code 1"
+                            - "Could not gather traceroute data: Code 2"
+                            - "Could not gather traceroute data: Code 3"
+                            - "Could not gather traceroute data: Code 4"
+                          description: Errors resulting from collecting traceroute from colo to target.
+                        hops:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              nodes:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    asn:
+                                      type: string
+                                      description: AS number associated with the node object.
+                                    ip:
+                                      type: string
+                                      description: IP address of the node.
+                                    labels:
+                                      type: array
+                                      items:
+                                        type: string
+                                      description: Field appears if there is an additional annotation printed when the
+                                        probe returns. Field also appears when
+                                        running a GRE+ICMP traceroute to denote
+                                        which traceroute a node comes from.
+                                    max_rtt_ms:
+                                      type: number
+                                      description: Maximum RTT in ms.
+                                    mean_rtt_ms:
+                                      type: number
+                                      description: Mean RTT in ms.
+                                    min_rtt_ms:
+                                      type: number
+                                      description: Minimum RTT in ms.
+                                    name:
+                                      type: string
+                                      description: Host name of the address, this may be the same as the IP address.
+                                    packet_count:
+                                      type: number
+                                      description: Number of packets with a response from this node.
+                                    std_dev_rtt_ms:
+                                      type: number
+                                      description: Standard deviation of the RTTs in ms.
+                                description: An array of node objects.
+                              packets_lost:
+                                type: number
+                                description: Number of packets where no response was received.
+                              packets_sent:
+                                type: number
+                                description: Number of packets sent with specified TTL.
+                              packets_ttl:
+                                type: number
+                                description: The time to live (TTL).
+                        target_summary:
+                          description: Aggregated statistics from all hops about the target.
+                        traceroute_time_ms:
+                          type: number
+                          description: Total time of traceroute in ms.
+                  target:
+                    type: string
+                    description: The target hostname, IPv6, or IPv6 address.
+      x-distilled-pagination-class: TraceroutesSinglePage

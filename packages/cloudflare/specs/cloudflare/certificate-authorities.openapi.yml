@@ -1,0 +1,82 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare CERTIFICATE-AUTHORITIES API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: certificate-authorities
+paths:
+  /zones/{zone_id}/certificate_authorities/hostname_associations:
+    get:
+      operationId: getHostnameAssociation
+      description: List Hostname Associations
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: mtls_certificate_id
+          in: query
+          required: false
+          description: "Query param: The UUID to match against for a certificate that was
+            uploaded to the mTLS Certificate Management endpoint. If no
+            mtls_certificate_id is given, the results will be the hostnames
+            associated to your active Cloudflare Managed CA."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  hostnames:
+                    type: array
+                    items:
+                      type: string
+      x-distilled-response-path: result
+    put:
+      operationId: putHostnameAssociation
+      description: Replace Hostname Associations
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hostnames:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param:"
+                mtls_certificate_id:
+                  type: string
+                  description: "Body param: The UUID for a certificate that was uploaded to the
+                    mTLS Certificate Management endpoint. If no
+                    mtls_certificate_id is given, the hostnames will be
+                    associated to your active Cloudflare Managed CA."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  hostnames:
+                    type: array
+                    items:
+                      type: string
+      x-distilled-response-path: result

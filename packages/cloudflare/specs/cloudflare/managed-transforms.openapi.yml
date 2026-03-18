@@ -1,0 +1,206 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare MANAGED-TRANSFORMS API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: managed-transforms
+paths:
+  /zones/{zone_id}/managed_headers:
+    get:
+      operationId: listManagedTransforms
+      description: Fetches a list of all Managed Transforms.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: The unique ID of the zone.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  managed_request_headers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: The human-readable identifier of the Managed Transform.
+                        enabled:
+                          type: boolean
+                          description: Whether the Managed Transform is enabled.
+                        has_conflict:
+                          type: boolean
+                          description: Whether the Managed Transform conflicts with the currently-enabled
+                            Managed Transforms.
+                        conflicts_with:
+                          type: array
+                          items:
+                            type: string
+                          description: The Managed Transforms that this Managed Transform conflicts with.
+                      required:
+                        - id
+                        - enabled
+                        - has_conflict
+                    description: The list of Managed Request Transforms.
+                  managed_response_headers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: The human-readable identifier of the Managed Transform.
+                        enabled:
+                          type: boolean
+                          description: Whether the Managed Transform is enabled.
+                        has_conflict:
+                          type: boolean
+                          description: Whether the Managed Transform conflicts with the currently-enabled
+                            Managed Transforms.
+                        conflicts_with:
+                          type: array
+                          items:
+                            type: string
+                          description: The Managed Transforms that this Managed Transform conflicts with.
+                      required:
+                        - id
+                        - enabled
+                        - has_conflict
+                    description: The list of Managed Response Transforms.
+                required:
+                  - managed_request_headers
+                  - managed_response_headers
+      x-distilled-response-path: result
+    patch:
+      operationId: patchManagedTransform
+      description: Updates the status of one or more Managed Transforms.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The unique ID of the zone."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                managed_request_headers:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The human-readable identifier of the Managed Transform.
+                      enabled:
+                        type: boolean
+                        description: Whether the Managed Transform is enabled.
+                    required:
+                      - id
+                      - enabled
+                  description: "Body param: The list of Managed Request Transforms."
+                managed_response_headers:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The human-readable identifier of the Managed Transform.
+                      enabled:
+                        type: boolean
+                        description: Whether the Managed Transform is enabled.
+                    required:
+                      - id
+                      - enabled
+                  description: "Body param: The list of Managed Response Transforms."
+              required:
+                - managed_request_headers
+                - managed_response_headers
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  managed_request_headers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: The human-readable identifier of the Managed Transform.
+                        enabled:
+                          type: boolean
+                          description: Whether the Managed Transform is enabled.
+                        has_conflict:
+                          type: boolean
+                          description: Whether the Managed Transform conflicts with the currently-enabled
+                            Managed Transforms.
+                        conflicts_with:
+                          type: array
+                          items:
+                            type: string
+                          description: The Managed Transforms that this Managed Transform conflicts with.
+                      required:
+                        - id
+                        - enabled
+                        - has_conflict
+                    description: The list of Managed Request Transforms.
+                  managed_response_headers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: The human-readable identifier of the Managed Transform.
+                        enabled:
+                          type: boolean
+                          description: Whether the Managed Transform is enabled.
+                        has_conflict:
+                          type: boolean
+                          description: Whether the Managed Transform conflicts with the currently-enabled
+                            Managed Transforms.
+                        conflicts_with:
+                          type: array
+                          items:
+                            type: string
+                          description: The Managed Transforms that this Managed Transform conflicts with.
+                      required:
+                        - id
+                        - enabled
+                        - has_conflict
+                    description: The list of Managed Response Transforms.
+                required:
+                  - managed_request_headers
+                  - managed_response_headers
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteManagedTransform
+      description: Disables all Managed Transforms.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: The unique ID of the zone.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success

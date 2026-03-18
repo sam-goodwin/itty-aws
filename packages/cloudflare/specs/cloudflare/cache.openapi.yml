@@ -1,0 +1,918 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare CACHE API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: cache
+paths:
+  /zones/{zone_id}/purge_cache:
+    post:
+      operationId: purgeCache
+      description: "### Purge All Cached Content  Removes ALL files from Cloudflare's
+        cache. All tiers can purge everything.  ``` {\"purge_everything\": true}
+        ```  ### Purge Cached Content by URL  Granularly removes one or more
+        files from Cloudflare's cache by specifying URLs. All tiers can purge by
+        URL.  To purge files with custom cache keys, include the headers used to
+        compute the cache key as in the example. If you have a device type or
+        geo in your cache key, you will need to include the CF-Device-Type or
+        CF-IPCountry headers. If you have lang in your cache key, you will need
+        to include the Accept-Language header.    NB:  When including the Origin
+        header, be sure to include the  scheme  and   hostname  . The port
+        number can be omitted if it is the default port (80 for http, 443 for
+        https), but must be included otherwise.  Single file purge example with
+        files:  ``` {\"files\": [\"http://www.example.com/css/styles.css\",
+        \"http://www.example.com/js/index.js\"]} ```  Single file purge example
+        with url and header pairs:  ``` {\"files\": [{url:
+        \"http://www.example.com/cat_picture.jpg\", headers: { \"CF-IPCountry\":
+        \"US\", \"CF-Device-Type\": \"desktop\", \"Accept-Language\": \"zh-CN\"
+        }}, {url: \"http://www.example.com/dog_picture.jpg\", headers: {
+        \"CF-IPCountry\": \"EU\", \"CF-Device-Type\": \"mobile\",
+        \"Accept-Language\": \"en-US\" }}]} ```  ### Purge Cached Content by
+        Tag, Host or Prefix  Granularly removes one or more files from
+        Cloudflare's cache either by specifying the host, the associated
+        Cache-Tag, or a Prefix.  Flex purge with tags:  ``` {\"tags\":
+        [\"a-cache-tag\", \"another-cache-tag\"]} ```  Flex purge with
+        hosts:  ``` {\"hosts\": [\"www.example.com\", \"images.example.com\"]}
+        ```  Flex purge with prefixes:  ``` {\"prefixes\":
+        [\"www.example.com/foo\", \"images.example.com/bar/baz\"]} ```  ###
+        Availability and limits  please refer to [purge cache availability and
+        limits documentation
+        page](https://developers.cloudflare.com/cache/how-to/purge-cache/#avail\
+        ability-and-limits).  @example ```ts const response = await
+        client.cache.purge({ zone_id: '023e105f4ecef8ad9ca31a8372d0c353', });
+        ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tags:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: For more information on cache tags and purging by
+                    tags, please refer to [purge by cache-tags documentation
+                    page](https://developers.cloudflare.com/cache/how-to/purge-\
+                    cache/purge-by-tags/)."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                required:
+                  - id
+      x-distilled-response-path: result
+  /zones/{zone_id}/cache/cache_reserve:
+    get:
+      operationId: getCacheReserve
+      description: "Increase cache lifetimes by automatically storing all cacheable
+        files into Cloudflare's persistent object storage buckets. Requires
+        Cache Reserve subscription. Note: using Tiered Cache with Cache Reserve
+        is highly recommended to reduce Reserve operations costs. See the
+        [developer
+        docs](https://developers.cloudflare.com/cache/about/cache-reserve) for
+        more information.  @example ```ts const cacheReserve = await
+        client.cache.cacheReserve.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - cache_reserve
+                    description: The identifier of the caching setting.
+                  editable:
+                    type: boolean
+                    description: Whether the setting is editable.
+                  value:
+                    type: string
+                    enum:
+                      - on
+                      - off
+                    description: Value of the Cache Reserve zone setting.
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+    patch:
+      operationId: patchCacheReserve
+      description: "Increase cache lifetimes by automatically storing all cacheable
+        files into Cloudflare's persistent object storage buckets. Requires
+        Cache Reserve subscription. Note: using Tiered Cache with Cache Reserve
+        is highly recommended to reduce Reserve operations costs. See the
+        [developer
+        docs](https://developers.cloudflare.com/cache/about/cache-reserve) for
+        more information.  @example ```ts const response = await
+        client.cache.cacheReserve.edit({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', value: 'on', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  enum:
+                    - on
+                    - off
+                  description: "Body param: Value of the Cache Reserve zone setting."
+              required:
+                - value
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - cache_reserve
+                    description: The identifier of the caching setting.
+                  editable:
+                    type: boolean
+                    description: Whether the setting is editable.
+                  value:
+                    type: string
+                    enum:
+                      - on
+                      - off
+                    description: Value of the Cache Reserve zone setting.
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+  /zones/{zone_id}/cache/cache_reserve_clear:
+    get:
+      operationId: statusCacheReserve
+      description: "You can use Cache Reserve Clear to clear your Cache Reserve, but
+        you must first disable Cache Reserve. In most cases, this will be
+        accomplished within 24 hours. You cannot re-enable Cache Reserve while
+        this process is ongoing. Keep in mind that you cannot undo or cancel
+        this operation.  @example ```ts const response = await
+        client.cache.cacheReserve.status({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - cache_reserve_clear
+                    description: ID of the zone setting.
+                  start_ts:
+                    type: string
+                    description: The time that the latest Cache Reserve Clear operation started.
+                  state:
+                    type: string
+                    enum:
+                      - In-progress
+                      - Completed
+                    description: The current state of the Cache Reserve Clear operation.
+                  end_ts:
+                    type: string
+                    description: The time that the latest Cache Reserve Clear operation completed.
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - start_ts
+                  - state
+      x-distilled-response-path: result
+    post:
+      operationId: clearCacheReserve
+      description: "You can use Cache Reserve Clear to clear your Cache Reserve, but
+        you must first disable Cache Reserve. In most cases, this will be
+        accomplished within 24 hours. You cannot re-enable Cache Reserve while
+        this process is ongoing. Keep in mind that you cannot undo or cancel
+        this operation.  @example ```ts const response = await
+        client.cache.cacheReserve.clear({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', body: {}, }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {}
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - cache_reserve_clear
+                    description: ID of the zone setting.
+                  start_ts:
+                    type: string
+                    description: The time that the latest Cache Reserve Clear operation started.
+                  state:
+                    type: string
+                    enum:
+                      - In-progress
+                      - Completed
+                    description: The current state of the Cache Reserve Clear operation.
+                  end_ts:
+                    type: string
+                    description: The time that the latest Cache Reserve Clear operation completed.
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - start_ts
+                  - state
+      x-distilled-response-path: result
+  /zones/{zone_id}/cache/regional_tiered_cache:
+    get:
+      operationId: getRegionalTieredCache
+      description: "Instructs Cloudflare to check a regional hub data center on the
+        way to your upper tier. This can help improve performance for smart and
+        custom tiered cache topologies.  @example ```ts const
+        regionalTieredCache = await client.cache.regionalTieredCache.get({
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - tc_regional
+                    description: The identifier of the caching setting.
+                  editable:
+                    type: boolean
+                    description: Whether the setting is editable.
+                  value:
+                    type: string
+                    enum:
+                      - on
+                      - off
+                    description: Value of the Regional Tiered Cache zone setting.
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+    patch:
+      operationId: patchRegionalTieredCache
+      description: "Instructs Cloudflare to check a regional hub data center on the
+        way to your upper tier. This can help improve performance for smart and
+        custom tiered cache topologies.  @example ```ts const response = await
+        client.cache.regionalTieredCache.edit({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', value: 'on', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  enum:
+                    - on
+                    - off
+                  description: "Body param: Value of the Regional Tiered Cache zone setting."
+              required:
+                - value
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - tc_regional
+                    description: The identifier of the caching setting.
+                  editable:
+                    type: boolean
+                    description: Whether the setting is editable.
+                  value:
+                    type: string
+                    enum:
+                      - on
+                      - off
+                    description: Value of the Regional Tiered Cache zone setting.
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+  /zones/{zone_id}/cache/tiered_cache_smart_topology_enable:
+    get:
+      operationId: getSmartTieredCache
+      description: "Smart Tiered Cache dynamically selects the single closest upper
+        tier for each of your website’s origins with no configuration required,
+        using our in-house performance and routing data. Cloudflare collects
+        latency data for each request to an origin, and uses the latency data to
+        determine how well any upper-tier data center is connected with an
+        origin. As a result, Cloudflare can select the data center with the
+        lowest latency to be the upper-tier for an origin.  @example ```ts const
+        smartTieredCache = await client.cache.smartTieredCache.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - tiered_cache_smart_topology_enable
+                    description: The identifier of the caching setting.
+                  editable:
+                    type: boolean
+                    description: Whether the setting is editable.
+                  value:
+                    type: string
+                    enum:
+                      - on
+                      - off
+                    description: Value of the Smart Tiered Cache zone setting.
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+    patch:
+      operationId: patchSmartTieredCache
+      description: "Smart Tiered Cache dynamically selects the single closest upper
+        tier for each of your website’s origins with no configuration required,
+        using our in-house performance and routing data. Cloudflare collects
+        latency data for each request to an origin, and uses the latency data to
+        determine how well any upper-tier data center is connected with an
+        origin. As a result, Cloudflare can select the data center with the
+        lowest latency to be the upper-tier for an origin.  @example ```ts const
+        response = await client.cache.smartTieredCache.edit({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', value: 'on', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  enum:
+                    - on
+                    - off
+                  description: "Body param: Enable or disable the Smart Tiered Cache."
+              required:
+                - value
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - tiered_cache_smart_topology_enable
+                    description: The identifier of the caching setting.
+                  editable:
+                    type: boolean
+                    description: Whether the setting is editable.
+                  value:
+                    type: string
+                    enum:
+                      - on
+                      - off
+                    description: Value of the Smart Tiered Cache zone setting.
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteSmartTieredCache
+      description: "Smart Tiered Cache dynamically selects the single closest upper
+        tier for each of your website’s origins with no configuration required,
+        using our in-house performance and routing data. Cloudflare collects
+        latency data for each request to an origin, and uses the latency data to
+        determine how well any upper-tier data center is connected with an
+        origin. As a result, Cloudflare can select the data center with the
+        lowest latency to be the upper-tier for an origin.  @example ```ts const
+        smartTieredCache = await client.cache.smartTieredCache.delete({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - tiered_cache_smart_topology_enable
+                    description: The identifier of the caching setting.
+                  editable:
+                    type: boolean
+                    description: Whether the setting is editable.
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - editable
+      x-distilled-response-path: result
+  /zones/{zone_id}/cache/variants:
+    get:
+      operationId: getVariant
+      description: "Variant support enables caching variants of images with certain
+        file extensions in addition to the original. This only applies when the
+        origin server sends the 'Vary: Accept' response header. If the origin
+        server sends 'Vary: Accept' but does not serve the variant requested,
+        the response will not be cached. This will be indicated with BYPASS
+        cache status in the response headers.  @example ```ts const variant =
+        await client.cache.variants.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - variants
+                    description: The identifier of the caching setting.
+                  editable:
+                    type: boolean
+                    description: Whether the setting is editable.
+                  value:
+                    type: object
+                    properties:
+                      avif:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for avif.
+                      bmp:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for bmp.
+                      gif:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for gif.
+                      jp2:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for jp2.
+                      jpeg:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for jpeg.
+                      jpg:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for jpg.
+                      jpg2:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for jpg2.
+                      png:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for png.
+                      tif:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for tif.
+                      tiff:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for tiff.
+                      webp:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for webp.
+                    description: Value of the zone setting.
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+    patch:
+      operationId: patchVariant
+      description: "Variant support enables caching variants of images with certain
+        file extensions in addition to the original. This only applies when the
+        origin server sends the 'Vary: Accept' response header. If the origin
+        server sends 'Vary: Accept' but does not serve the variant requested,
+        the response will not be cached. This will be indicated with BYPASS
+        cache status in the response headers.  @example ```ts const response =
+        await client.cache.variants.edit({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', value: {}, }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: object
+                  properties:
+                    avif:
+                      type: array
+                      items:
+                        type: string
+                      description: List of strings with the MIME types of all the variants that should
+                        be served for avif.
+                    bmp:
+                      type: array
+                      items:
+                        type: string
+                      description: List of strings with the MIME types of all the variants that should
+                        be served for bmp.
+                    gif:
+                      type: array
+                      items:
+                        type: string
+                      description: List of strings with the MIME types of all the variants that should
+                        be served for gif.
+                    jp2:
+                      type: array
+                      items:
+                        type: string
+                      description: List of strings with the MIME types of all the variants that should
+                        be served for jp2.
+                    jpeg:
+                      type: array
+                      items:
+                        type: string
+                      description: List of strings with the MIME types of all the variants that should
+                        be served for jpeg.
+                    jpg:
+                      type: array
+                      items:
+                        type: string
+                      description: List of strings with the MIME types of all the variants that should
+                        be served for jpg.
+                    jpg2:
+                      type: array
+                      items:
+                        type: string
+                      description: List of strings with the MIME types of all the variants that should
+                        be served for jpg2.
+                    png:
+                      type: array
+                      items:
+                        type: string
+                      description: List of strings with the MIME types of all the variants that should
+                        be served for png.
+                    tif:
+                      type: array
+                      items:
+                        type: string
+                      description: List of strings with the MIME types of all the variants that should
+                        be served for tif.
+                    tiff:
+                      type: array
+                      items:
+                        type: string
+                      description: List of strings with the MIME types of all the variants that should
+                        be served for tiff.
+                    webp:
+                      type: array
+                      items:
+                        type: string
+                      description: List of strings with the MIME types of all the variants that should
+                        be served for webp.
+                  description: "Body param: Value of the zone setting."
+              required:
+                - value
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - variants
+                    description: The identifier of the caching setting.
+                  editable:
+                    type: boolean
+                    description: Whether the setting is editable.
+                  value:
+                    type: object
+                    properties:
+                      avif:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for avif.
+                      bmp:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for bmp.
+                      gif:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for gif.
+                      jp2:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for jp2.
+                      jpeg:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for jpeg.
+                      jpg:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for jpg.
+                      jpg2:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for jpg2.
+                      png:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for png.
+                      tif:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for tif.
+                      tiff:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for tiff.
+                      webp:
+                        type: array
+                        items:
+                          type: string
+                        description: List of strings with the MIME types of all the variants that should
+                          be served for webp.
+                    description: Value of the zone setting.
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteVariant
+      description: "Variant support enables caching variants of images with certain
+        file extensions in addition to the original. This only applies when the
+        origin server sends the 'Vary: Accept' response header. If the origin
+        server sends 'Vary: Accept' but does not serve the variant requested,
+        the response will not be cached. This will be indicated with BYPASS
+        cache status in the response headers.  @example ```ts const variant =
+        await client.cache.variants.delete({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - variants
+                    description: The identifier of the caching setting.
+                  editable:
+                    type: boolean
+                    description: Whether the setting is editable.
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - editable
+      x-distilled-response-path: result

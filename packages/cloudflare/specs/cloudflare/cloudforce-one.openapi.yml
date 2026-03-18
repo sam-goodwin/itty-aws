@@ -1,0 +1,3614 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare CLOUDFORCE-ONE API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: cloudforce-one
+paths:
+  /accounts/{account_id}/cloudforce-one/binary/{hash}:
+    get:
+      operationId: getBinaryStorage
+      description: "Retrieves a file from Binary Storage  @example ```ts await
+        client.cloudforceOne.binaryStorage.get('hash', { account_id:
+        'account_id', }); ```"
+      parameters:
+        - name: hash
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  /accounts/{account_id}/cloudforce-one/binary:
+    post:
+      operationId: createBinaryStorage
+      description: "Posts a file to Binary Storage  @example ```ts const binaryStorage
+        = await client.cloudforceOne.binaryStorage.create({ account_id:
+        'account_id', file: fs.createReadStream('path/to/file'), }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: "Body param: The binary file content to upload."
+              required:
+                - file
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content_type:
+                    type: string
+                  md5:
+                    type: string
+                  sha1:
+                    type: string
+                  sha256:
+                    type: string
+                required:
+                  - content_type
+                  - md5
+                  - sha1
+                  - sha256
+  /accounts/{account_id}/cloudforce-one/requests/{requestId}:
+    get:
+      operationId: getRequest
+      description: "Get a Request  @example ```ts const item = await
+        client.cloudforceOne.requests.get(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID.
+                  content:
+                    type: string
+                    description: Request content.
+                  created:
+                    type: string
+                  priority:
+                    type: string
+                  request:
+                    type: string
+                    description: Requested information from request.
+                  summary:
+                    type: string
+                    description: Brief description of the request.
+                  tlp:
+                    type: string
+                    enum:
+                      - clear
+                      - amber
+                      - amber-strict
+                      - green
+                      - red
+                    description: The CISA defined Traffic Light Protocol (TLP).
+                  updated:
+                    type: string
+                  completed:
+                    type: string
+                  message_tokens:
+                    type: number
+                    description: Tokens for the request messages.
+                  readable_id:
+                    type: string
+                    description: Readable Request ID.
+                  status:
+                    type: string
+                    enum:
+                      - open
+                      - accepted
+                      - reported
+                      - approved
+                      - completed
+                      - declined
+                    description: Request Status.
+                  tokens:
+                    type: number
+                    description: Tokens for the request.
+                required:
+                  - id
+                  - content
+                  - created
+                  - priority
+                  - request
+                  - summary
+                  - tlp
+                  - updated
+      x-distilled-response-path: result
+    put:
+      operationId: updateRequest
+      description: "Updating a request alters the request in the Cloudforce One queue.
+        This API may be used to update any attributes of the request after the
+        initial submission. Only fields that you choose to update need to be add
+        to the request body.  @example ```ts const item = await
+        client.cloudforceOne.requests.update(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: "Body param: Request content."
+                priority:
+                  type: string
+                  description: "Body param: Priority for analyzing the request."
+                request_type:
+                  type: string
+                  description: "Body param: Requested information from request."
+                summary:
+                  type: string
+                  description: "Body param: Brief description of the request."
+                tlp:
+                  type: string
+                  enum:
+                    - clear
+                    - amber
+                    - amber-strict
+                    - green
+                    - red
+                  description: "Body param: The CISA defined Traffic Light Protocol (TLP)."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID.
+                  content:
+                    type: string
+                    description: Request content.
+                  created:
+                    type: string
+                  priority:
+                    type: string
+                  request:
+                    type: string
+                    description: Requested information from request.
+                  summary:
+                    type: string
+                    description: Brief description of the request.
+                  tlp:
+                    type: string
+                    enum:
+                      - clear
+                      - amber
+                      - amber-strict
+                      - green
+                      - red
+                    description: The CISA defined Traffic Light Protocol (TLP).
+                  updated:
+                    type: string
+                  completed:
+                    type: string
+                  message_tokens:
+                    type: number
+                    description: Tokens for the request messages.
+                  readable_id:
+                    type: string
+                    description: Readable Request ID.
+                  status:
+                    type: string
+                    enum:
+                      - open
+                      - accepted
+                      - reported
+                      - approved
+                      - completed
+                      - declined
+                    description: Request Status.
+                  tokens:
+                    type: number
+                    description: Tokens for the request.
+                required:
+                  - id
+                  - content
+                  - created
+                  - priority
+                  - request
+                  - summary
+                  - tlp
+                  - updated
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteRequest
+      description: "Delete a Request  @example ```ts const request = await
+        client.cloudforceOne.requests.delete(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful.
+                required:
+                  - errors
+                  - messages
+                  - success
+  /accounts/{account_id}/cloudforce-one/requests:
+    post:
+      operationId: listRequests
+      description: "List Requests  @example ```ts // Automatically fetches more pages
+        as needed. for await (const listItem of
+        client.cloudforceOne.requests.list( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', page: 0, per_page: 10, }, )) { //
+        ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                page:
+                  type: number
+                  description: "Body param: Page number of results."
+                per_page:
+                  type: number
+                  description: "Body param: Number of results per page."
+                completed_after:
+                  type: string
+                  description: "Body param: Retrieve requests completed after this time."
+                completed_before:
+                  type: string
+                  description: "Body param: Retrieve requests completed before this time."
+                created_after:
+                  type: string
+                  description: "Body param: Retrieve requests created after this time."
+                created_before:
+                  type: string
+                  description: "Body param: Retrieve requests created before this time."
+                request_type:
+                  type: string
+                  description: "Body param: Requested information from request."
+                sort_by:
+                  type: string
+                  description: "Body param: Field to sort results by."
+                sort_order:
+                  type: string
+                  enum:
+                    - asc
+                    - desc
+                  description: "Body param: Sort order (asc or desc)."
+                status:
+                  type: string
+                  enum:
+                    - open
+                    - accepted
+                    - reported
+                    - approved
+                    - completed
+                    - declined
+                  description: "Body param: Request Status."
+              required:
+                - page
+                - per_page
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID.
+                  created:
+                    type: string
+                    description: Request creation time.
+                  priority:
+                    type: string
+                    enum:
+                      - routine
+                      - high
+                      - urgent
+                  request:
+                    type: string
+                    description: Requested information from request.
+                  summary:
+                    type: string
+                    description: Brief description of the request.
+                  tlp:
+                    type: string
+                    enum:
+                      - clear
+                      - amber
+                      - amber-strict
+                      - green
+                      - red
+                    description: The CISA defined Traffic Light Protocol (TLP).
+                  updated:
+                    type: string
+                    description: Request last updated time.
+                  completed:
+                    type: string
+                    description: Request completion time.
+                  message_tokens:
+                    type: number
+                    description: Tokens for the request messages.
+                  readable_id:
+                    type: string
+                    description: Readable Request ID.
+                  status:
+                    type: string
+                    enum:
+                      - open
+                      - accepted
+                      - reported
+                      - approved
+                      - completed
+                      - declined
+                    description: Request Status.
+                  tokens:
+                    type: number
+                    description: Tokens for the request.
+                required:
+                  - id
+                  - created
+                  - priority
+                  - request
+                  - summary
+                  - tlp
+                  - updated
+      x-distilled-pagination-class: ListItemsSinglePage
+  /accounts/{account_id}/cloudforce-one/requests/new:
+    post:
+      operationId: createRequest
+      description: "Creating a request adds the request into the Cloudforce One queue
+        for analysis. In addition to the content, a short title, type, priority,
+        and releasability should be provided. If one is not provided, a default
+        will be assigned.  @example ```ts const item = await
+        client.cloudforceOne.requests.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: "Body param: Request content."
+                priority:
+                  type: string
+                  description: "Body param: Priority for analyzing the request."
+                request_type:
+                  type: string
+                  description: "Body param: Requested information from request."
+                summary:
+                  type: string
+                  description: "Body param: Brief description of the request."
+                tlp:
+                  type: string
+                  enum:
+                    - clear
+                    - amber
+                    - amber-strict
+                    - green
+                    - red
+                  description: "Body param: The CISA defined Traffic Light Protocol (TLP)."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID.
+                  content:
+                    type: string
+                    description: Request content.
+                  created:
+                    type: string
+                  priority:
+                    type: string
+                  request:
+                    type: string
+                    description: Requested information from request.
+                  summary:
+                    type: string
+                    description: Brief description of the request.
+                  tlp:
+                    type: string
+                    enum:
+                      - clear
+                      - amber
+                      - amber-strict
+                      - green
+                      - red
+                    description: The CISA defined Traffic Light Protocol (TLP).
+                  updated:
+                    type: string
+                  completed:
+                    type: string
+                  message_tokens:
+                    type: number
+                    description: Tokens for the request messages.
+                  readable_id:
+                    type: string
+                    description: Readable Request ID.
+                  status:
+                    type: string
+                    enum:
+                      - open
+                      - accepted
+                      - reported
+                      - approved
+                      - completed
+                      - declined
+                    description: Request Status.
+                  tokens:
+                    type: number
+                    description: Tokens for the request.
+                required:
+                  - id
+                  - content
+                  - created
+                  - priority
+                  - request
+                  - summary
+                  - tlp
+                  - updated
+      x-distilled-response-path: result
+  /accounts/{account_id}/cloudforce-one/requests/constants:
+    get:
+      operationId: constantsRequest
+      description: "Get Request Priority, Status, and TLP constants  @example ```ts
+        const requestConstants = await client.cloudforceOne.requests.constants({
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  priority:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - routine
+                        - high
+                        - urgent
+                  status:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - open
+                        - accepted
+                        - reported
+                        - approved
+                        - completed
+                        - declined
+                  tlp:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - clear
+                        - amber
+                        - amber-strict
+                        - green
+                        - red
+      x-distilled-response-path: result
+  /accounts/{account_id}/cloudforce-one/requests/quota:
+    get:
+      operationId: quotaRequest
+      description: "Get Request Quota  @example ```ts const quota = await
+        client.cloudforceOne.requests.quota({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  anniversary_date:
+                    type: string
+                    description: Anniversary date is when annual quota limit is refreshed.
+                  quarter_anniversary_date:
+                    type: string
+                    description: Quarter anniversary date is when quota limit is refreshed each
+                      quarter.
+                  quota:
+                    type: number
+                    description: Tokens for the quarter.
+                  remaining:
+                    type: number
+                    description: Tokens remaining for the quarter.
+      x-distilled-response-path: result
+  /accounts/{account_id}/cloudforce-one/requests/types:
+    get:
+      operationId: typesRequest
+      description: "Get Request Types  @example ```ts // Automatically fetches more
+        pages as needed. for await (const requestTypesResponse of
+        client.cloudforceOne.requests.types( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+      x-distilled-pagination-class: RequestTypesResponsesSinglePage
+  /accounts/{account_id}/cloudforce-one/requests/{requestId}/asset/{assetId}:
+    get:
+      operationId: getRequestAsset
+      description: "Get a Request Asset  @example ```ts // Automatically fetches more
+        pages as needed. for await (const assetGetResponse of
+        client.cloudforceOne.requests.assets.get(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415',
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: assetId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: Asset ID.
+                  name:
+                    type: string
+                    description: Asset name.
+                  created:
+                    type: string
+                    description: Defines the asset creation time.
+                  description:
+                    type: string
+                    description: Asset description.
+                  file_type:
+                    type: string
+                    description: Asset file type.
+                required:
+                  - id
+                  - name
+      x-distilled-pagination-class: AssetGetResponsesSinglePage
+    put:
+      operationId: updateRequestAsset
+      description: "Update a Request Asset  @example ```ts const asset = await
+        client.cloudforceOne.requests.assets.update(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415',
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: assetId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source:
+                  type: string
+                  description: "Body param: Asset file to upload."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: Asset ID.
+                  name:
+                    type: string
+                    description: Asset name.
+                  created:
+                    type: string
+                    description: Defines the asset creation time.
+                  description:
+                    type: string
+                    description: Asset description.
+                  file_type:
+                    type: string
+                    description: Asset file type.
+                required:
+                  - id
+                  - name
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteRequestAsset
+      description: "Delete a Request Asset  @example ```ts const asset = await
+        client.cloudforceOne.requests.assets.delete(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415',
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: assetId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful.
+                required:
+                  - errors
+                  - messages
+                  - success
+  /accounts/{account_id}/cloudforce-one/requests/{requestId}/asset:
+    post:
+      operationId: createRequestAsset
+      description: "List Request Assets  @example ```ts // Automatically fetches more
+        pages as needed. for await (const assetCreateResponse of
+        client.cloudforceOne.requests.assets.create(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', page: 0, per_page: 10, }, )) { //
+        ... } ```"
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                page:
+                  type: number
+                  description: "Body param: Page number of results."
+                per_page:
+                  type: number
+                  description: "Body param: Number of results per page."
+              required:
+                - page
+                - per_page
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: Asset ID.
+                  name:
+                    type: string
+                    description: Asset name.
+                  created:
+                    type: string
+                    description: Defines the asset creation time.
+                  description:
+                    type: string
+                    description: Asset description.
+                  file_type:
+                    type: string
+                    description: Asset file type.
+                required:
+                  - id
+                  - name
+      x-distilled-pagination-class: AssetCreateResponsesSinglePage
+  /accounts/{account_id}/cloudforce-one/requests/{requestId}/message:
+    post:
+      operationId: getRequestMessage
+      description: "List Request Messages  @example ```ts // Automatically fetches
+        more pages as needed. for await (const message of
+        client.cloudforceOne.requests.message.get(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', page: 0, per_page: 10, }, )) { //
+        ... } ```"
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                page:
+                  type: number
+                  description: "Body param: Page number of results."
+                per_page:
+                  type: number
+                  description: "Body param: Number of results per page."
+                after:
+                  type: string
+                  description: "Body param: Retrieve mes ges created after this time."
+                before:
+                  type: string
+                  description: "Body param: Retrieve messages created before this time."
+                sort_by:
+                  type: string
+                  description: "Body param: Field to sort results by."
+                sort_order:
+                  type: string
+                  enum:
+                    - asc
+                    - desc
+                  description: "Body param: Sort order (asc or desc)."
+              required:
+                - page
+                - per_page
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                  documentation_url:
+                    type: string
+                  source:
+                    type: object
+                    properties:
+                      pointer:
+                        type: string
+                required:
+                  - code
+                  - message
+      x-distilled-pagination-class: MessagesSinglePage
+  /accounts/{account_id}/cloudforce-one/requests/{requestId}/message/new:
+    post:
+      operationId: createRequestMessage
+      description: "Create a New Request Message  @example ```ts const message = await
+        client.cloudforceOne.requests.message.create(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: "Body param: Content of message."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                  documentation_url:
+                    type: string
+                  source:
+                    type: object
+                    properties:
+                      pointer:
+                        type: string
+                required:
+                  - code
+                  - message
+      x-distilled-response-path: result
+  /accounts/{account_id}/cloudforce-one/requests/{requestId}/message/{messageId}:
+    put:
+      operationId: updateRequestMessage
+      description: "Update a Request Message  @example ```ts const message = await
+        client.cloudforceOne.requests.message.update(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', 0, { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: messageId
+          in: path
+          required: true
+          schema:
+            type: number
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: "Body param: Content of message."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+                  documentation_url:
+                    type: string
+                  source:
+                    type: object
+                    properties:
+                      pointer:
+                        type: string
+                required:
+                  - code
+                  - message
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteRequestMessage
+      description: "Delete a Request Message  @example ```ts const message = await
+        client.cloudforceOne.requests.message.delete(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', 0, { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: requestId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: messageId
+          in: path
+          required: true
+          schema:
+            type: number
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful.
+                required:
+                  - errors
+                  - messages
+                  - success
+  /accounts/{account_id}/cloudforce-one/requests/priority/{priorityId}:
+    get:
+      operationId: getRequestPriority
+      description: "Get a Priority Intelligence Requirement  @example ```ts const item
+        = await client.cloudforceOne.requests.priority.get(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: priorityId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+    put:
+      operationId: updateRequestPriority
+      description: "Update a Priority Intelligence Requirement  @example ```ts const
+        item = await client.cloudforceOne.requests.priority.update(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', labels: ['DoS', 'CVE'], priority: 1,
+        requirement: 'DoS attacks carried out by CVEs', tlp: 'clear', }, ); ```"
+      parameters:
+        - name: priorityId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                labels:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: List of labels."
+                priority:
+                  type: number
+                  description: "Body param: Priority."
+                requirement:
+                  type: string
+                  description: "Body param: Requirement."
+                tlp:
+                  type: string
+                  enum:
+                    - clear
+                    - amber
+                    - amber-strict
+                    - green
+                    - red
+                  description: "Body param: The CISA defined Traffic Light Protocol (TLP)."
+              required:
+                - labels
+                - priority
+                - requirement
+                - tlp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteRequestPriority
+      description: "Delete a Priority Intelligence Requirement  @example ```ts const
+        priority = await client.cloudforceOne.requests.priority.delete(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: priorityId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful.
+                required:
+                  - errors
+                  - messages
+                  - success
+  /accounts/{account_id}/cloudforce-one/requests/priority/new:
+    post:
+      operationId: createRequestPriority
+      description: "Create a New Priority Intelligence Requirement  @example ```ts
+        const priority = await client.cloudforceOne.requests.priority.create({
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', labels: ['DoS', 'CVE'],
+        priority: 1, requirement: 'DoS attacks carried out by CVEs', tlp:
+        'clear', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                labels:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: List of labels."
+                priority:
+                  type: number
+                  description: "Body param: Priority."
+                requirement:
+                  type: string
+                  description: "Body param: Requirement."
+                tlp:
+                  type: string
+                  enum:
+                    - clear
+                    - amber
+                    - amber-strict
+                    - green
+                    - red
+                  description: "Body param: The CISA defined Traffic Light Protocol (TLP)."
+              required:
+                - labels
+                - priority
+                - requirement
+                - tlp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID.
+                  created:
+                    type: string
+                    description: Priority creation time.
+                  labels:
+                    type: array
+                    items:
+                      type: string
+                    description: List of labels.
+                  priority:
+                    type: number
+                    description: Priority.
+                  requirement:
+                    type: string
+                    description: Requirement.
+                  tlp:
+                    type: string
+                    enum:
+                      - clear
+                      - amber
+                      - amber-strict
+                      - green
+                      - red
+                    description: The CISA defined Traffic Light Protocol (TLP).
+                  updated:
+                    type: string
+                    description: Priority last updated time.
+                required:
+                  - id
+                  - created
+                  - labels
+                  - priority
+                  - requirement
+                  - tlp
+                  - updated
+      x-distilled-response-path: result
+  /accounts/{account_id}/cloudforce-one/requests/priority/quota:
+    get:
+      operationId: quotaRequestPriority
+      description: "Get Priority Intelligence Requirement Quota  @example ```ts const
+        quota = await client.cloudforceOne.requests.priority.quota({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+  /accounts/{account_id}/cloudforce-one/scans/config:
+    get:
+      operationId: listScanConfigs
+      description: "List Scan Configs  @example ```ts // Automatically fetches more
+        pages as needed. for await (const configListResponse of
+        client.cloudforceOne.scans.config.list( { account_id: 'account_id' }, ))
+        { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Defines the Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Defines the Config ID.
+                  account_id:
+                    type: string
+                  frequency:
+                    type: number
+                    description: Defines the number of days between each scan (0 = One-off scan).
+                  ips:
+                    type: array
+                    items:
+                      type: string
+                    description: Defines a list of IP addresses or CIDR blocks to scan. The maximum
+                      number of total IP addresses allowed is 5000.
+                  ports:
+                    type: array
+                    items:
+                      type: string
+                    description: Defines a list of ports to scan. Valid values are:"default", "all",
+                      or a comma-separated list of ports or range of ports (e.g.
+                      ["1-80", "443"]). "default" scans the 100 most commonly
+                      open ports.
+                required:
+                  - id
+                  - account_id
+                  - frequency
+                  - ips
+                  - ports
+      x-distilled-pagination-class: ConfigListResponsesSinglePage
+    post:
+      operationId: createScanConfig
+      description: "Create a new Scan Config  @example ```ts const config = await
+        client.cloudforceOne.scans.config.create({ account_id: 'account_id',
+        ips: ['1.1.1.1', '2606:4700:4700::1111'], }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Defines the Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ips:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Defines a list of IP addresses or CIDR blocks to scan.
+                    The maximum number of total IP addresses allowed is 5000."
+                frequency:
+                  type: number
+                  description: "Body param: Defines the number of days between each scan (0 =
+                    One-off scan)."
+                ports:
+                  type: array
+                  items:
+                    type: string
+                  description: 'Body param: Defines a list of ports to scan. Valid values
+                    are:"default", "all", or a comma-separated list of ports or
+                    range of ports (e.g. ["1-80", "443"]). "default" scans the
+                    100 most commonly open ports.'
+              required:
+                - ips
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Defines the Config ID.
+                  account_id:
+                    type: string
+                  frequency:
+                    type: number
+                    description: Defines the number of days between each scan (0 = One-off scan).
+                  ips:
+                    type: array
+                    items:
+                      type: string
+                    description: Defines a list of IP addresses or CIDR blocks to scan. The maximum
+                      number of total IP addresses allowed is 5000.
+                  ports:
+                    type: array
+                    items:
+                      type: string
+                    description: Defines a list of ports to scan. Valid values are:"default", "all",
+                      or a comma-separated list of ports or range of ports (e.g.
+                      ["1-80", "443"]). "default" scans the 100 most commonly
+                      open ports.
+                required:
+                  - id
+                  - account_id
+                  - frequency
+                  - ips
+                  - ports
+      x-distilled-response-path: result
+  /accounts/{account_id}/cloudforce-one/scans/config/{configId}:
+    patch:
+      operationId: patchScanConfig
+      description: "Update an existing Scan Config  @example ```ts const response =
+        await client.cloudforceOne.scans.config.edit( 'config_id', { account_id:
+        'account_id' }, ); ```"
+      parameters:
+        - name: configId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Defines the Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                frequency:
+                  type: number
+                  description: "Body param: Defines the number of days between each scan (0 =
+                    One-off scan)."
+                ips:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: Defines a list of IP addresses or CIDR blocks to scan.
+                    The maximum number of total IP addresses allowed is 5000."
+                ports:
+                  type: array
+                  items:
+                    type: string
+                  description: 'Body param: Defines a list of ports to scan. Valid values
+                    are:"default", "all", or a comma-separated list of ports or
+                    range of ports (e.g. ["1-80", "443"]). "default" scans the
+                    100 most commonly open ports.'
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Defines the Config ID.
+                  account_id:
+                    type: string
+                  frequency:
+                    type: number
+                    description: Defines the number of days between each scan (0 = One-off scan).
+                  ips:
+                    type: array
+                    items:
+                      type: string
+                    description: Defines a list of IP addresses or CIDR blocks to scan. The maximum
+                      number of total IP addresses allowed is 5000.
+                  ports:
+                    type: array
+                    items:
+                      type: string
+                    description: Defines a list of ports to scan. Valid values are:"default", "all",
+                      or a comma-separated list of ports or range of ports (e.g.
+                      ["1-80", "443"]). "default" scans the 100 most commonly
+                      open ports.
+                required:
+                  - id
+                  - account_id
+                  - frequency
+                  - ips
+                  - ports
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteScanConfig
+      description: "Delete a Scan Config  @example ```ts const config = await
+        client.cloudforceOne.scans.config.delete( 'config_id', { account_id:
+        'account_id' }, ); ```"
+      parameters:
+        - name: configId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Defines the Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+  /accounts/{account_id}/cloudforce-one/scans/results/{configId}:
+    get:
+      operationId: getScanResult
+      description: "Get the Latest Scan Result  @example ```ts const result = await
+        client.cloudforceOne.scans.results.get( 'config_id', { account_id:
+        'account_id' }, ); ```"
+      parameters:
+        - name: configId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Defines the Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  1.1.1.1:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        number:
+                          type: number
+                        proto:
+                          type: string
+                        status:
+                          type: string
+                required:
+                  - 1.1.1.1
+      x-distilled-response-path: result
+  /accounts/{account_id}/cloudforce-one/events/{eventId}:
+    get:
+      operationId: getThreatEvent
+      description: This Method is deprecated. Please use
+        /events/dataset/:dataset_id/events/:event_id instead.  @deprecated
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  attacker:
+                    type: string
+                  attackerCountry:
+                    type: string
+                  category:
+                    type: string
+                  date:
+                    type: string
+                  event:
+                    type: string
+                  hasChildren:
+                    type: boolean
+                  indicator:
+                    type: string
+                  indicatorType:
+                    type: string
+                  indicatorTypeId:
+                    type: number
+                  killChain:
+                    type: number
+                  mitreAttack:
+                    type: array
+                    items:
+                      type: string
+                  numReferenced:
+                    type: number
+                  numReferences:
+                    type: number
+                  rawId:
+                    type: string
+                  referenced:
+                    type: array
+                    items:
+                      type: string
+                  referencedIds:
+                    type: array
+                    items:
+                      type: number
+                  references:
+                    type: array
+                    items:
+                      type: string
+                  referencesIds:
+                    type: array
+                    items:
+                      type: number
+                  tags:
+                    type: array
+                    items:
+                      type: string
+                  targetCountry:
+                    type: string
+                  targetIndustry:
+                    type: string
+                  tlp:
+                    type: string
+                  uuid:
+                    type: string
+                  insight:
+                    type: string
+                  releasabilityId:
+                    type: string
+                required:
+                  - attacker
+                  - attackerCountry
+                  - category
+                  - date
+                  - event
+                  - hasChildren
+                  - indicator
+                  - indicatorType
+                  - indicatorTypeId
+                  - killChain
+                  - mitreAttack
+                  - numReferenced
+                  - numReferences
+                  - rawId
+                  - referenced
+                  - referencedIds
+                  - references
+                  - referencesIds
+                  - tags
+                  - targetCountry
+                  - targetIndustry
+                  - tlp
+                  - uuid
+    patch:
+      operationId: patchThreatEvent
+      description: "Updates an event  @example ```ts const response = await
+        client.cloudforceOne.threatEvents.edit('event_id', { account_id:
+        'account_id', }); ```"
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                attacker:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: "Body param:"
+                attackerCountry:
+                  type: string
+                  description: "Body param:"
+                category:
+                  type: string
+                  description: "Body param:"
+                createdAt:
+                  type: string
+                  description: "Body param:"
+                datasetId:
+                  type: string
+                  description: "Body param:"
+                date:
+                  type: string
+                  description: "Body param:"
+                event:
+                  type: string
+                  description: "Body param:"
+                indicator:
+                  type: string
+                  description: "Body param:"
+                indicatorType:
+                  type: string
+                  description: "Body param:"
+                insight:
+                  type: string
+                  description: "Body param:"
+                raw:
+                  type: object
+                  properties:
+                    data:
+                      oneOf:
+                        - type: object
+                          additionalProperties: true
+                      nullable: true
+                    source:
+                      type: string
+                    tlp:
+                      type: string
+                  description: "Body param:"
+                targetCountry:
+                  type: string
+                  description: "Body param:"
+                targetIndustry:
+                  type: string
+                  description: "Body param:"
+                tlp:
+                  type: string
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  attacker:
+                    type: string
+                  attackerCountry:
+                    type: string
+                  category:
+                    type: string
+                  date:
+                    type: string
+                  event:
+                    type: string
+                  hasChildren:
+                    type: boolean
+                  indicator:
+                    type: string
+                  indicatorType:
+                    type: string
+                  indicatorTypeId:
+                    type: number
+                  killChain:
+                    type: number
+                  mitreAttack:
+                    type: array
+                    items:
+                      type: string
+                  numReferenced:
+                    type: number
+                  numReferences:
+                    type: number
+                  rawId:
+                    type: string
+                  referenced:
+                    type: array
+                    items:
+                      type: string
+                  referencedIds:
+                    type: array
+                    items:
+                      type: number
+                  references:
+                    type: array
+                    items:
+                      type: string
+                  referencesIds:
+                    type: array
+                    items:
+                      type: number
+                  tags:
+                    type: array
+                    items:
+                      type: string
+                  targetCountry:
+                    type: string
+                  targetIndustry:
+                    type: string
+                  tlp:
+                    type: string
+                  uuid:
+                    type: string
+                  insight:
+                    type: string
+                  releasabilityId:
+                    type: string
+                required:
+                  - attacker
+                  - attackerCountry
+                  - category
+                  - date
+                  - event
+                  - hasChildren
+                  - indicator
+                  - indicatorType
+                  - indicatorTypeId
+                  - killChain
+                  - mitreAttack
+                  - numReferenced
+                  - numReferences
+                  - rawId
+                  - referenced
+                  - referencedIds
+                  - references
+                  - referencesIds
+                  - tags
+                  - targetCountry
+                  - targetIndustry
+                  - tlp
+                  - uuid
+    delete:
+      operationId: deleteThreatEvent
+      description: "The `datasetId` parameter must be defined. To list existing
+        datasets (and their IDs) in your account, use the [`List
+        Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_o\
+        ne/subresources/threat_events/subresources/datasets/methods/list/)
+        endpoint.  @example ```ts const threatEvent = await
+        client.cloudforceOne.threatEvents.delete( 'event_id', { account_id:
+        'account_id' }, ); ```"
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+                required:
+                  - uuid
+  /accounts/{account_id}/cloudforce-one/events:
+    get:
+      operationId: listThreatEvents
+      description: "When `datasetId` is unspecified, events will be listed from the
+        `Cloudforce One Threat Events` dataset. To list existing datasets (and
+        their IDs), use the [`List
+        Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_o\
+        ne/subresources/threat_events/subresources/datasets/methods/list/)
+        endpoint). Also, must provide query parameters.  @example ```ts const
+        threatEvents = await client.cloudforceOne.threatEvents.list({
+        account_id: 'account_id', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: datasetId
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: forceRefresh
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: boolean
+        - name: format
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+            enum:
+              - json
+              - stix2
+        - name: order
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: orderBy
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: number
+        - name: pageSize
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: number
+        - name: search
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                field:
+                  type: string
+                op:
+                  type: string
+                  enum:
+                    - equals
+                    - not
+                    - gt
+                    - gte
+                    - lt
+                    - lte
+                    - like
+                    - contains
+                    - startsWith
+                    - endsWith
+                    - in
+                    - find
+                value:
+                  oneOf:
+                    - type: string
+                    - type: number
+                    - type: array
+                      items:
+                        oneOf:
+                          - type: string
+                          - type: number
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    attacker:
+                      type: string
+                    attackerCountry:
+                      type: string
+                    category:
+                      type: string
+                    date:
+                      type: string
+                    event:
+                      type: string
+                    hasChildren:
+                      type: boolean
+                    indicator:
+                      type: string
+                    indicatorType:
+                      type: string
+                    indicatorTypeId:
+                      type: number
+                    killChain:
+                      type: number
+                    mitreAttack:
+                      type: array
+                      items:
+                        type: string
+                    numReferenced:
+                      type: number
+                    numReferences:
+                      type: number
+                    rawId:
+                      type: string
+                    referenced:
+                      type: array
+                      items:
+                        type: string
+                    referencedIds:
+                      type: array
+                      items:
+                        type: number
+                    references:
+                      type: array
+                      items:
+                        type: string
+                    referencesIds:
+                      type: array
+                      items:
+                        type: number
+                    tags:
+                      type: array
+                      items:
+                        type: string
+                    targetCountry:
+                      type: string
+                    targetIndustry:
+                      type: string
+                    tlp:
+                      type: string
+                    uuid:
+                      type: string
+                    insight:
+                      type: string
+                    releasabilityId:
+                      type: string
+                  required:
+                    - attacker
+                    - attackerCountry
+                    - category
+                    - date
+                    - event
+                    - hasChildren
+                    - indicator
+                    - indicatorType
+                    - indicatorTypeId
+                    - killChain
+                    - mitreAttack
+                    - numReferenced
+                    - numReferences
+                    - rawId
+                    - referenced
+                    - referencedIds
+                    - references
+                    - referencesIds
+                    - tags
+                    - targetCountry
+                    - targetIndustry
+                    - tlp
+                    - uuid
+  /accounts/{account_id}/cloudforce-one/events/create:
+    post:
+      operationId: createThreatEvent
+      description: "To create a dataset, see the [`Create
+        Dataset`](https://developers.cloudflare.com/api/resources/cloudforce_on\
+        e/subresources/threat_events/subresources/datasets/methods/create/)
+        endpoint. When `datasetId` parameter is unspecified, it will be created
+        in a default dataset named `Cloudforce One Threat Events`.  @example
+        ```ts const threatEvent = await
+        client.cloudforceOne.threatEvents.create({ account_id: 'account_id',
+        category: 'Domain Resolution', date: '2022-04-01T00:00:00Z', event: 'An
+        attacker registered the domain domain.com', raw: { data: { foo: 'bar' }
+        }, tlp: 'amber', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category:
+                  type: string
+                  description: "Body param:"
+                date:
+                  type: string
+                  description: "Body param:"
+                event:
+                  type: string
+                  description: "Body param:"
+                raw:
+                  type: object
+                  properties:
+                    data:
+                      oneOf:
+                        - type: object
+                          additionalProperties: true
+                      nullable: true
+                    source:
+                      type: string
+                    tlp:
+                      type: string
+                  required:
+                    - data
+                  description: "Body param:"
+                tlp:
+                  type: string
+                  description: "Body param:"
+                attacker:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: "Body param:"
+                attackerCountry:
+                  type: string
+                  description: "Body param:"
+                datasetId:
+                  type: string
+                  description: "Body param:"
+                indicator:
+                  type: string
+                  description: "Body param:"
+                indicators:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      indicatorType:
+                        type: string
+                        description: The type of indicator (e.g., DOMAIN, IP, JA3, HASH)
+                      value:
+                        type: string
+                        description: The indicator value (e.g., domain name, IP address, hash)
+                    required:
+                      - indicatorType
+                      - value
+                  description: "Body param: Array of indicators for this event. Supports multiple
+                    indicators per event for complex scenarios."
+                indicatorType:
+                  type: string
+                  description: "Body param:"
+                insight:
+                  type: string
+                  description: "Body param:"
+                tags:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param:"
+                targetCountry:
+                  type: string
+                  description: "Body param:"
+                targetIndustry:
+                  type: string
+                  description: "Body param:"
+                uuid:
+                  type: string
+                  description: "Body param: Optional UUID for the event. Only used when
+                    preserveUuid=true in bulk create. Must be a valid UUID
+                    format."
+              required:
+                - category
+                - date
+                - event
+                - raw
+                - tlp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  attacker:
+                    type: string
+                  attackerCountry:
+                    type: string
+                  category:
+                    type: string
+                  date:
+                    type: string
+                  event:
+                    type: string
+                  hasChildren:
+                    type: boolean
+                  indicator:
+                    type: string
+                  indicatorType:
+                    type: string
+                  indicatorTypeId:
+                    type: number
+                  killChain:
+                    type: number
+                  mitreAttack:
+                    type: array
+                    items:
+                      type: string
+                  numReferenced:
+                    type: number
+                  numReferences:
+                    type: number
+                  rawId:
+                    type: string
+                  referenced:
+                    type: array
+                    items:
+                      type: string
+                  referencedIds:
+                    type: array
+                    items:
+                      type: number
+                  references:
+                    type: array
+                    items:
+                      type: string
+                  referencesIds:
+                    type: array
+                    items:
+                      type: number
+                  tags:
+                    type: array
+                    items:
+                      type: string
+                  targetCountry:
+                    type: string
+                  targetIndustry:
+                    type: string
+                  tlp:
+                    type: string
+                  uuid:
+                    type: string
+                  insight:
+                    type: string
+                  releasabilityId:
+                    type: string
+                required:
+                  - attacker
+                  - attackerCountry
+                  - category
+                  - date
+                  - event
+                  - hasChildren
+                  - indicator
+                  - indicatorType
+                  - indicatorTypeId
+                  - killChain
+                  - mitreAttack
+                  - numReferenced
+                  - numReferences
+                  - rawId
+                  - referenced
+                  - referencedIds
+                  - references
+                  - referencesIds
+                  - tags
+                  - targetCountry
+                  - targetIndustry
+                  - tlp
+                  - uuid
+  /accounts/{account_id}/cloudforce-one/events/create/bulk:
+    post:
+      operationId: bulkCreateThreatEvents
+      description: "The `datasetId` parameter must be defined. To list existing
+        datasets (and their IDs) in your account, use the [`List
+        Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_o\
+        ne/subresources/threat_events/subresources/datasets/methods/list/)
+        endpoint.  @example ```ts const response = await
+        client.cloudforceOne.threatEvents.bulkCreate({ account_id: 'account_id',
+        data: [ { category: 'Domain Resolution', date: '2022-04-01T00:00:00Z',
+        event: 'An attacker registered the domain domain.com', raw: { data: {
+        foo: 'bar' } }, tlp: 'amber', }, ], datasetId: 'durableObjectName', });
+        ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      category:
+                        type: string
+                      date:
+                        type: string
+                      event:
+                        type: string
+                      raw:
+                        type: object
+                        properties:
+                          data:
+                            oneOf:
+                              - type: object
+                                additionalProperties: true
+                            nullable: true
+                          source:
+                            type: string
+                          tlp:
+                            type: string
+                        required:
+                          - data
+                      tlp:
+                        type: string
+                      accountId:
+                        type: number
+                      attacker:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      attackerCountry:
+                        type: string
+                      datasetId:
+                        type: string
+                      indicator:
+                        type: string
+                      indicators:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            indicatorType:
+                              type: string
+                              description: The type of indicator (e.g., DOMAIN, IP, JA3, HASH)
+                            value:
+                              type: string
+                              description: The indicator value (e.g., domain name, IP address, hash)
+                          required:
+                            - indicatorType
+                            - value
+                        description: Array of indicators for this event. Supports multiple indicators
+                          per event for complex scenarios.
+                      indicatorType:
+                        type: string
+                      insight:
+                        type: string
+                      tags:
+                        type: array
+                        items:
+                          type: string
+                      targetCountry:
+                        type: string
+                      targetIndustry:
+                        type: string
+                      uuid:
+                        type: string
+                        description: Optional UUID for the event. Only used when preserveUuid=true in
+                          bulk create. Must be a valid UUID format.
+                    required:
+                      - category
+                      - date
+                      - event
+                      - raw
+                      - tlp
+                  description: "Body param:"
+                datasetId:
+                  type: string
+                  description: "Body param:"
+                preserveUuid:
+                  type: boolean
+                  description: "Body param: When true, use provided UUIDs from event data instead
+                    of generating new ones. Used for migration scenarios where
+                    original UUIDs must be preserved. Duplicate UUIDs will be
+                    skipped."
+              required:
+                - data
+                - datasetId
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  createdEventsCount:
+                    type: number
+                    description: Number of events created
+                  createdTagsCount:
+                    type: number
+                    description: Number of new tags created in SoT
+                  errorCount:
+                    type: number
+                    description: Number of errors encountered
+                  queuedIndicatorsCount:
+                    type: number
+                    description: Number of indicators queued for async processing
+                  skippedEventsCount:
+                    type: number
+                    description: Number of events skipped due to duplicate UUID (only when
+                      preserveUuid=true)
+                  createBulkEventsRequestId:
+                    type: string
+                    description: Correlation ID for async indicator processing
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error:
+                          type: string
+                          description: Error message
+                        eventIndex:
+                          type: number
+                          description: Index of the event that caused the error
+                      required:
+                        - error
+                        - eventIndex
+                    description: Array of error details
+                required:
+                  - createdEventsCount
+                  - createdTagsCount
+                  - errorCount
+                  - queuedIndicatorsCount
+                  - skippedEventsCount
+  /accounts/{account_id}/cloudforce-one/events/attackers:
+    get:
+      operationId: listThreatEventAttackers
+      description: "Lists attackers across multiple datasets  @example ```ts const
+        attackers = await client.cloudforceOne.threatEvents.attackers.list({
+        account_id: 'account_id', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: datasetIds
+          in: query
+          required: false
+          description: "Query param: Array of dataset IDs to query attackers from. If not
+            provided, uses the default dataset."
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                    required:
+                      - type
+                  type:
+                    type: string
+                required:
+                  - items
+                  - type
+  /accounts/{account_id}/cloudforce-one/events/categories/{categoryId}:
+    get:
+      operationId: getThreatEventCategory
+      description: "Reads a category  @example ```ts const category = await
+        client.cloudforceOne.threatEvents.categories.get(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id: 'account_id' }, );
+        ```"
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  killChain:
+                    type: number
+                  name:
+                    type: string
+                  uuid:
+                    type: string
+                  mitreAttack:
+                    type: array
+                    items:
+                      type: string
+                  shortname:
+                    type: string
+                required:
+                  - killChain
+                  - name
+                  - uuid
+    patch:
+      operationId: patchThreatEventCategory
+      description: "Updates a category  @example ```ts const response = await
+        client.cloudforceOne.threatEvents.categories.edit(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id: 'account_id' }, );
+        ```"
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                killChain:
+                  type: number
+                  description: "Body param:"
+                mitreAttack:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param:"
+                name:
+                  type: string
+                  description: "Body param:"
+                shortname:
+                  type: string
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  killChain:
+                    type: number
+                  name:
+                    type: string
+                  uuid:
+                    type: string
+                  mitreAttack:
+                    type: array
+                    items:
+                      type: string
+                  shortname:
+                    type: string
+                required:
+                  - killChain
+                  - name
+                  - uuid
+    delete:
+      operationId: deleteThreatEventCategory
+      description: "Deletes a category  @example ```ts const category = await
+        client.cloudforceOne.threatEvents.categories.delete(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id: 'account_id' }, );
+        ```"
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+                required:
+                  - uuid
+  /accounts/{account_id}/cloudforce-one/events/categories:
+    get:
+      operationId: listThreatEventCategories
+      description: "Lists categories across multiple datasets  @example ```ts const
+        categories = await client.cloudforceOne.threatEvents.categories.list({
+        account_id: 'account_id', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: datasetIds
+          in: query
+          required: false
+          description: "Query param: Array of dataset IDs to query categories from. If not
+            provided, uses the default dataset."
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    killChain:
+                      type: number
+                    name:
+                      type: string
+                    uuid:
+                      type: string
+                    mitreAttack:
+                      type: array
+                      items:
+                        type: string
+                    shortname:
+                      type: string
+                  required:
+                    - killChain
+                    - name
+                    - uuid
+  /accounts/{account_id}/cloudforce-one/events/categories/create:
+    post:
+      operationId: createThreatEventCategory
+      description: "Creates a new category  @example ```ts const category = await
+        client.cloudforceOne.threatEvents.categories.create( { account_id:
+        'account_id', killChain: 0, name: 'name', }, ); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                killChain:
+                  type: number
+                  description: "Body param:"
+                name:
+                  type: string
+                  description: "Body param:"
+                mitreAttack:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param:"
+                shortname:
+                  type: string
+                  description: "Body param:"
+              required:
+                - killChain
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  killChain:
+                    type: number
+                  name:
+                    type: string
+                  uuid:
+                    type: string
+                  mitreAttack:
+                    type: array
+                    items:
+                      type: string
+                  shortname:
+                    type: string
+                required:
+                  - killChain
+                  - name
+                  - uuid
+  /accounts/{account_id}/cloudforce-one/events/countries:
+    get:
+      operationId: listThreatEventCountries
+      description: "Retrieves countries information for all countries  @example ```ts
+        const countries = await
+        client.cloudforceOne.threatEvents.countries.list({ account_id:
+        'account_id', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    result:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          alpha3:
+                            type: string
+                          name:
+                            type: string
+                        required:
+                          - alpha3
+                          - name
+                    success:
+                      type: string
+                  required:
+                    - result
+                    - success
+  /accounts/{account_id}/cloudforce-one/events/dataset/{datasetId}:
+    get:
+      operationId: getThreatEventDataset
+      description: "Reads a dataset  @example ```ts const dataset = await
+        client.cloudforceOne.threatEvents.datasets.get(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id: 'account_id' }, );
+        ```"
+      parameters:
+        - name: datasetId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isPublic:
+                    type: boolean
+                  name:
+                    type: string
+                  uuid:
+                    type: string
+                required:
+                  - isPublic
+                  - name
+                  - uuid
+    patch:
+      operationId: patchThreatEventDataset
+      description: "Updates an existing dataset  @example ```ts const response = await
+        client.cloudforceOne.threatEvents.datasets.edit(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { account_id: 'account_id',
+        isPublic: true, name: 'x' }, ); ```"
+      parameters:
+        - name: datasetId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                isPublic:
+                  type: boolean
+                  description: "Body param: If true, then anyone can search the dataset. If false,
+                    then its limited to the account."
+                name:
+                  type: string
+                  description: "Body param: Used to describe the dataset within the account
+                    context."
+              required:
+                - isPublic
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isPublic:
+                    type: boolean
+                  name:
+                    type: string
+                  uuid:
+                    type: string
+                required:
+                  - isPublic
+                  - name
+                  - uuid
+  /accounts/{account_id}/cloudforce-one/events/dataset:
+    get:
+      operationId: listThreatEventDatasets
+      description: "Lists all datasets in an account  @example ```ts const datasets =
+        await client.cloudforceOne.threatEvents.datasets.list({ account_id:
+        'account_id', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    isPublic:
+                      type: boolean
+                    name:
+                      type: string
+                    uuid:
+                      type: string
+                  required:
+                    - isPublic
+                    - name
+                    - uuid
+  /accounts/{account_id}/cloudforce-one/events/dataset/create:
+    post:
+      operationId: createThreatEventDataset
+      description: "Creates a dataset  @example ```ts const dataset = await
+        client.cloudforceOne.threatEvents.datasets.create({ account_id:
+        'account_id', isPublic: true, name: 'x', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                isPublic:
+                  type: boolean
+                  description: "Body param: If true, then anyone can search the dataset. If false,
+                    then its limited to the account."
+                name:
+                  type: string
+                  description: "Body param: Used to describe the dataset within the account
+                    context."
+              required:
+                - isPublic
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isPublic:
+                    type: boolean
+                  name:
+                    type: string
+                  uuid:
+                    type: string
+                required:
+                  - isPublic
+                  - name
+                  - uuid
+  /accounts/{account_id}/cloudforce-one/events/raw/{datasetId}/{eventId}:
+    get:
+      operationId: rawThreatEventDataset
+      description: "Reads data for a raw event  @example ```ts const response = await
+        client.cloudforceOne.threatEvents.datasets.raw( 'dataset_id',
+        'event_id', { account_id: 'account_id' }, ); ```"
+      parameters:
+        - name: datasetId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  accountId:
+                    type: number
+                  created:
+                    type: string
+                  data: {}
+                  source:
+                    type: string
+                  tlp:
+                    type: string
+                required:
+                  - id
+                  - accountId
+                  - created
+                  - data
+                  - source
+                  - tlp
+  /accounts/{account_id}/cloudforce-one/events/event_tag/{eventId}/create:
+    post:
+      operationId: createThreatEventEventTag
+      description: "Adds a tag to an event  @example ```ts const eventTag = await
+        client.cloudforceOne.threatEvents.eventTags.create( 'event_id', {
+        account_id: 'account_id', tags: ['botnet'] }, ); ```"
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tags:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param:"
+              required:
+                - tags
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+      x-distilled-response-path: result
+  /accounts/{account_id}/cloudforce-one/events/event_tag/{eventId}:
+    delete:
+      operationId: deleteThreatEventEventTag
+      description: "Removes a tag from an event  @example ```ts const eventTag = await
+        client.cloudforceOne.threatEvents.eventTags.delete( 'event_id', {
+        account_id: 'account_id' }, ); ```"
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+      x-distilled-response-path: result
+  /accounts/{account_id}/cloudforce-one/events/indicatorTypes:
+    get:
+      operationId: listThreatEventIndicatorTypes
+      description: This Method is deprecated. Please use
+        /events/dataset/:dataset_id/indicatorTypes instead.  @deprecated
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                    required:
+                      - type
+                  type:
+                    type: string
+                required:
+                  - items
+                  - type
+  /accounts/{account_id}/cloudforce-one/events/{eventId}/raw/{rawId}:
+    get:
+      operationId: getThreatEventRaw
+      description: "Reads data for a raw event  @example ```ts const raw = await
+        client.cloudforceOne.threatEvents.raw.get( 'event_id', 'raw_id', {
+        account_id: 'account_id' }, ); ```"
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: rawId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  accountId:
+                    type: number
+                  created:
+                    type: string
+                  data: {}
+                  source:
+                    type: string
+                  tlp:
+                    type: string
+                required:
+                  - id
+                  - accountId
+                  - created
+                  - data
+                  - source
+                  - tlp
+    patch:
+      operationId: patchThreatEventRaw
+      description: "Updates a raw event  @example ```ts const response = await
+        client.cloudforceOne.threatEvents.raw.edit( 'event_id', 'raw_id', {
+        account_id: 'account_id' }, ); ```"
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: rawId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  description: "Body param:"
+                source:
+                  type: string
+                  description: "Body param:"
+                tlp:
+                  type: string
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  data: {}
+                required:
+                  - id
+                  - data
+  /accounts/{account_id}/cloudforce-one/events/relate/{eventId}:
+    delete:
+      operationId: deleteThreatEventRelate
+      description: "Removes an event reference  @example ```ts const relate = await
+        client.cloudforceOne.threatEvents.relate.delete( 'event_id', {
+        account_id: 'account_id' }, ); ```"
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+      x-distilled-response-path: result
+  /accounts/{account_id}/cloudforce-one/events/tags/create:
+    post:
+      operationId: createThreatEventTag
+      description: "Creates a new tag to be used accross threat events.  @example
+        ```ts const tag = await client.cloudforceOne.threatEvents.tags.create({
+        account_id: 'account_id', value: 'APT28', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  description: "Body param:"
+                activeDuration:
+                  type: string
+                  description: "Body param:"
+                actorCategory:
+                  type: string
+                  description: "Body param:"
+                aliasGroupNames:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param:"
+                aliasGroupNamesInternal:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param:"
+                analyticPriority:
+                  type: number
+                  description: "Body param:"
+                attributionConfidence:
+                  type: string
+                  description: "Body param:"
+                attributionOrganization:
+                  type: string
+                  description: "Body param:"
+                categoryUuid:
+                  type: string
+                  description: "Body param:"
+                externalReferenceLinks:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param:"
+                internalDescription:
+                  type: string
+                  description: "Body param:"
+                motive:
+                  type: string
+                  description: "Body param:"
+                opsecLevel:
+                  type: string
+                  description: "Body param:"
+                originCountryISO:
+                  type: string
+                  description: "Body param:"
+                priority:
+                  type: number
+                  description: "Body param:"
+                sophisticationLevel:
+                  type: string
+                  description: "Body param:"
+              required:
+                - value
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+                  value:
+                    type: string
+                  activeDuration:
+                    type: string
+                  actorCategory:
+                    type: string
+                  aliasGroupNames:
+                    type: array
+                    items:
+                      type: string
+                  aliasGroupNamesInternal:
+                    type: array
+                    items:
+                      type: string
+                  analyticPriority:
+                    type: number
+                  attributionConfidence:
+                    type: string
+                  attributionOrganization:
+                    type: string
+                  categoryName:
+                    type: string
+                  categoryUuid:
+                    type: string
+                  externalReferenceLinks:
+                    type: array
+                    items:
+                      type: string
+                  internalDescription:
+                    type: string
+                  motive:
+                    type: string
+                  opsecLevel:
+                    type: string
+                  originCountryISO:
+                    type: string
+                  priority:
+                    type: number
+                  sophisticationLevel:
+                    type: string
+                required:
+                  - uuid
+                  - value
+  /accounts/{account_id}/cloudforce-one/events/targetIndustries:
+    get:
+      operationId: listThreatEventTargetIndustries
+      description: "Lists target industries across multiple datasets  @example ```ts
+        const targetIndustries = await
+        client.cloudforceOne.threatEvents.targetIndustries.list( { account_id:
+        'account_id' }, ); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account ID."
+          schema:
+            type: string
+        - name: datasetIds
+          in: query
+          required: false
+          description: "Query param: Array of dataset IDs to query target industries from.
+            If not provided, uses the default dataset."
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                    required:
+                      - type
+                  type:
+                    type: string
+                required:
+                  - items
+                  - type

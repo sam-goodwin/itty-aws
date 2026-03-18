@@ -1,0 +1,168 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare CUSTOM-NAMESERVERS API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: custom-nameservers
+paths:
+  /accounts/{account_id}/custom_ns:
+    get:
+      operationId: getCustomNameserver
+      description: "List an account's custom nameservers.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        customNameserver of client.customNameservers.get( { account_id:
+        '372e67954025e0ba6aaa6d586b9e0b59' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dns_records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - A
+                            - AAAA
+                          description: DNS record type.
+                        value:
+                          type: string
+                          description: DNS record contents (an IPv4 or IPv6 address).
+                    description: A and AAAA records associated with the nameserver.
+                  ns_name:
+                    type: string
+                    description: The FQDN of the name server.
+                  status:
+                    type: string
+                    enum:
+                      - moved
+                      - pending
+                      - verified
+                    description: "@deprecated Verification status of the nameserver."
+                  zone_tag:
+                    type: string
+                    description: Identifier.
+                  ns_set:
+                    type: number
+                    description: The number of the set that this name server belongs to.
+                required:
+                  - dns_records
+                  - ns_name
+                  - status
+                  - zone_tag
+      x-distilled-pagination-class: CustomNameserversSinglePage
+    post:
+      operationId: createCustomNameserver
+      description: "Add Account Custom Nameserver  @example ```ts const
+        customNameserver = await client.customNameservers.create({ account_id:
+        '372e67954025e0ba6aaa6d586b9e0b59', ns_name: 'ns1.example.com', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ns_name:
+                  type: string
+                  description: "Body param: The FQDN of the name server."
+                ns_set:
+                  type: number
+                  description: "Body param: The number of the set that this name server belongs
+                    to."
+              required:
+                - ns_name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dns_records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - A
+                            - AAAA
+                          description: DNS record type.
+                        value:
+                          type: string
+                          description: DNS record contents (an IPv4 or IPv6 address).
+                    description: A and AAAA records associated with the nameserver.
+                  ns_name:
+                    type: string
+                    description: The FQDN of the name server.
+                  status:
+                    type: string
+                    enum:
+                      - moved
+                      - pending
+                      - verified
+                    description: "@deprecated Verification status of the nameserver."
+                  zone_tag:
+                    type: string
+                    description: Identifier.
+                  ns_set:
+                    type: number
+                    description: The number of the set that this name server belongs to.
+                required:
+                  - dns_records
+                  - ns_name
+                  - status
+                  - zone_tag
+      x-distilled-response-path: result
+  /accounts/{account_id}/custom_ns/{customNSId}:
+    delete:
+      operationId: deleteCustomNameserver
+      description: "Delete Account Custom Nameserver  @example ```ts // Automatically
+        fetches more pages as needed. for await (const
+        customNameserverDeleteResponse of client.customNameservers.delete(
+        'ns1.example.com', { account_id: '372e67954025e0ba6aaa6d586b9e0b59' },
+        )) { // ... } ```"
+      parameters:
+        - name: customNSId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+      x-distilled-pagination-class: CustomNameserverDeleteResponsesSinglePage

@@ -1,0 +1,1956 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare CUSTOM-HOSTNAMES API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: custom-hostnames
+paths:
+  /zones/{zone_id}/custom_hostnames/{customHostnameId}/certificate_pack/{certificatePackId}/certificates/{certificateId}:
+    put:
+      operationId: putCertificatePackCertificate
+      description: "Replace a single custom certificate within a certificate pack that
+        contains two bundled certificates. The replacement must adhere to the
+        following constraints. You can only replace an RSA certificate with
+        another RSA certificate or an ECDSA certificate with another ECDSA
+        certificate.  @example ```ts const certificate = await
+        client.customHostnames.certificatePack.certificates.update(
+        '023e105f4ecef8ad9ca31a8372d0c353', '023e105f4ecef8ad9ca31a8372d0c353',
+        '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', custom_certificate: '-----BEGIN
+        CERTIFICATE-----\\nMIIDdjCCAl6gAwIBAgIJAPnMg0Fs+/B0MA0GCSqGSIb3DQEBCwUA\
+        MFsx...\\n-----END CERTIFICATE-----\\n', custom_key: '-----BEGIN PRIVATE
+        KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC/SCB5...\
+        \\n-----END PRIVATE KEY-----\\n', }, ); ```"
+      parameters:
+        - name: customHostnameId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: certificatePackId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: certificateId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                custom_certificate:
+                  type: string
+                  description: "Body param: If a custom uploaded certificate is used."
+                custom_key:
+                  type: string
+                  description: "Body param: The key for a custom uploaded certificate."
+              required:
+                - custom_certificate
+                - custom_key
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  hostname:
+                    type: string
+                    description: The custom hostname that will point to your hostname via CNAME.
+                  ssl:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Custom hostname SSL identifier tag.
+                      bundle_method:
+                        type: string
+                        enum:
+                          - ubiquitous
+                          - optimal
+                          - force
+                        description: A ubiquitous bundle has the highest probability of being verified
+                          everywhere, even by clients using outdated or unusual
+                          trust stores. An optimal bundle uses the shortest
+                          chain and newest intermediates. And the force bundle
+                          verifies the chain, but does not otherwise modify it.
+                      certificate_authority:
+                        type: string
+                        enum:
+                          - google
+                          - lets_encrypt
+                          - ssl_com
+                          - digicert
+                        description: The Certificate Authority that will issue the certificate
+                      custom_certificate:
+                        type: string
+                        description: If a custom uploaded certificate is used.
+                      custom_csr_id:
+                        type: string
+                        description: The identifier for the Custom CSR that was used.
+                      custom_key:
+                        type: string
+                        description: The key for a custom uploaded certificate.
+                      expires_on:
+                        type: string
+                        description: The time the custom certificate expires on.
+                      hosts:
+                        type: array
+                        items:
+                          type: string
+                        description: A list of Hostnames on a custom uploaded certificate.
+                      issuer:
+                        type: string
+                        description: The issuer on a custom uploaded certificate.
+                      method:
+                        type: string
+                        enum:
+                          - http
+                          - txt
+                          - email
+                        description: Domain control validation (DCV) method used for this hostname.
+                      serial_number:
+                        type: string
+                        description: The serial number on a custom uploaded certificate.
+                      settings:
+                        type: object
+                        properties:
+                          ciphers:
+                            type: array
+                            items:
+                              type: string
+                            description: An allowlist of ciphers for TLS termination. These ciphers must be
+                              in the BoringSSL format.
+                          early_hints:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: Whether or not Early Hints is enabled.
+                          http2:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: Whether or not HTTP2 is enabled.
+                          min_tls_version:
+                            type: number
+                            enum:
+                              - 1
+                              - 1.1
+                              - 1.2
+                              - 1.3
+                            description: The minimum TLS version supported.
+                          tls_1_3:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: Whether or not TLS 1.3 is enabled.
+                      signature:
+                        type: string
+                        description: The signature on a custom uploaded certificate.
+                      status:
+                        type: string
+                        enum:
+                          - initializing
+                          - pending_validation
+                          - deleted
+                          - pending_issuance
+                          - pending_deployment
+                          - pending_deletion
+                          - pending_expiration
+                          - expired
+                          - active
+                          - initializing_timed_out
+                          - validation_timed_out
+                          - issuance_timed_out
+                          - deployment_timed_out
+                          - deletion_timed_out
+                          - pending_cleanup
+                          - staging_deployment
+                          - staging_active
+                          - deactivating
+                          - inactive
+                          - backup_issued
+                          - holding_deployment
+                        description: Status of the hostname's SSL certificates.
+                      type:
+                        type: string
+                        enum:
+                          - dv
+                        description: Level of validation to be used for this hostname. Domain validation
+                          (dv) must be used.
+                      uploaded_on:
+                        type: string
+                        description: The time the custom certificate was uploaded.
+                      validation_errors:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            message:
+                              type: string
+                              description: A domain validation error.
+                        description: Domain validation errors that have been received by the certificate
+                          authority (CA).
+                      validation_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            emails:
+                              type: array
+                              items:
+                                type: string
+                              description: The set of email addresses that the certificate authority (CA) will
+                                use to complete domain validation.
+                            http_body:
+                              type: string
+                              description: The content that the certificate authority (CA) will expect to find
+                                at the http_url during the domain validation.
+                            http_url:
+                              type: string
+                              description: The url that will be checked during domain validation.
+                            txt_name:
+                              type: string
+                              description: The hostname that the certificate authority (CA) will check for a
+                                TXT record during domain validation .
+                            txt_value:
+                              type: string
+                              description: The TXT record that the certificate authority (CA) will check
+                                during domain validation.
+                      wildcard:
+                        type: boolean
+                        description: Indicates whether the certificate covers a wildcard.
+                  created_at:
+                    type: string
+                    description: This is the time the hostname was created.
+                  custom_metadata:
+                    type: object
+                    additionalProperties: true
+                    description: Unique key/value metadata for this hostname. These are per-hostname
+                      (customer) settings.
+                  custom_origin_server:
+                    type: string
+                    description: a valid hostname that’s been added to your DNS zone as an A, AAAA,
+                      or CNAME record.
+                  custom_origin_sni:
+                    type: string
+                    description: A hostname that will be sent to your custom origin server as SNI
+                      for TLS handshake. This can be a valid subdomain of the
+                      zone or custom origin server name or the string
+                      ':request_host_header:' which will cause the host header
+                      in the request to be used as SNI. Not configurable with
+                      default/fallback origin server.
+                  ownership_verification:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: DNS Name for record.
+                      type:
+                        type: string
+                        enum:
+                          - txt
+                        description: DNS Record type.
+                      value:
+                        type: string
+                        description: Content for the record.
+                    description: This is a record which can be placed to activate a hostname.
+                  ownership_verification_http:
+                    type: object
+                    properties:
+                      http_body:
+                        type: string
+                        description: Token to be served.
+                      http_url:
+                        type: string
+                        description: The HTTP URL that will be checked during custom hostname
+                          verification and where the customer should host the
+                          token.
+                    description: This presents the token to be served by the given http url to
+                      activate a hostname.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - pending
+                      - active_redeploying
+                      - moved
+                      - pending_deletion
+                      - deleted
+                      - pending_blocked
+                      - pending_migration
+                      - pending_provisioned
+                      - test_pending
+                      - test_active
+                      - test_active_apex
+                      - test_blocked
+                      - test_failed
+                      - provisioned
+                      - blocked
+                    description: Status of the hostname's activation.
+                  verification_errors:
+                    type: array
+                    items:
+                      type: string
+                    description: These are errors that were encountered while trying to activate a
+                      hostname.
+                required:
+                  - id
+                  - hostname
+                  - ssl
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteCertificatePackCertificate
+      description: "Delete a single custom certificate from a certificate pack that
+        contains two bundled certificates. Deletion is subject to the following
+        constraints. You cannot delete a certificate if it is the only remaining
+        certificate in the pack. At least one certificate must remain in the
+        pack.  @example ```ts const certificate = await
+        client.customHostnames.certificatePack.certificates.delete(
+        '023e105f4ecef8ad9ca31a8372d0c353', '023e105f4ecef8ad9ca31a8372d0c353',
+        '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: customHostnameId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: certificatePackId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: certificateId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+  /zones/{zone_id}/custom_hostnames/{customHostnameId}:
+    get:
+      operationId: getCustomHostname
+      description: "Custom Hostname Details  @example ```ts const customHostname =
+        await client.customHostnames.get( '023e105f4ecef8ad9ca31a8372d0c353', {
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: customHostnameId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  hostname:
+                    type: string
+                    description: The custom hostname that will point to your hostname via CNAME.
+                  ssl:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Custom hostname SSL identifier tag.
+                      bundle_method:
+                        type: string
+                        enum:
+                          - ubiquitous
+                          - optimal
+                          - force
+                        description: A ubiquitous bundle has the highest probability of being verified
+                          everywhere, even by clients using outdated or unusual
+                          trust stores. An optimal bundle uses the shortest
+                          chain and newest intermediates. And the force bundle
+                          verifies the chain, but does not otherwise modify it.
+                      certificate_authority:
+                        type: string
+                        enum:
+                          - google
+                          - lets_encrypt
+                          - ssl_com
+                          - digicert
+                        description: The Certificate Authority that will issue the certificate
+                      custom_certificate:
+                        type: string
+                        description: If a custom uploaded certificate is used.
+                      custom_csr_id:
+                        type: string
+                        description: The identifier for the Custom CSR that was used.
+                      custom_key:
+                        type: string
+                        description: The key for a custom uploaded certificate.
+                      expires_on:
+                        type: string
+                        description: The time the custom certificate expires on.
+                      hosts:
+                        type: array
+                        items:
+                          type: string
+                        description: A list of Hostnames on a custom uploaded certificate.
+                      issuer:
+                        type: string
+                        description: The issuer on a custom uploaded certificate.
+                      method:
+                        type: string
+                        enum:
+                          - http
+                          - txt
+                          - email
+                        description: Domain control validation (DCV) method used for this hostname.
+                      serial_number:
+                        type: string
+                        description: The serial number on a custom uploaded certificate.
+                      settings:
+                        type: object
+                        properties:
+                          ciphers:
+                            type: array
+                            items:
+                              type: string
+                            description: An allowlist of ciphers for TLS termination. These ciphers must be
+                              in the BoringSSL format.
+                          early_hints:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: Whether or not Early Hints is enabled.
+                          http2:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: Whether or not HTTP2 is enabled.
+                          min_tls_version:
+                            type: number
+                            enum:
+                              - 1
+                              - 1.1
+                              - 1.2
+                              - 1.3
+                            description: The minimum TLS version supported.
+                          tls_1_3:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: Whether or not TLS 1.3 is enabled.
+                      signature:
+                        type: string
+                        description: The signature on a custom uploaded certificate.
+                      status:
+                        type: string
+                        enum:
+                          - initializing
+                          - pending_validation
+                          - deleted
+                          - pending_issuance
+                          - pending_deployment
+                          - pending_deletion
+                          - pending_expiration
+                          - expired
+                          - active
+                          - initializing_timed_out
+                          - validation_timed_out
+                          - issuance_timed_out
+                          - deployment_timed_out
+                          - deletion_timed_out
+                          - pending_cleanup
+                          - staging_deployment
+                          - staging_active
+                          - deactivating
+                          - inactive
+                          - backup_issued
+                          - holding_deployment
+                        description: Status of the hostname's SSL certificates.
+                      type:
+                        type: string
+                        enum:
+                          - dv
+                        description: Level of validation to be used for this hostname. Domain validation
+                          (dv) must be used.
+                      uploaded_on:
+                        type: string
+                        description: The time the custom certificate was uploaded.
+                      validation_errors:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            message:
+                              type: string
+                              description: A domain validation error.
+                        description: Domain validation errors that have been received by the certificate
+                          authority (CA).
+                      validation_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            emails:
+                              type: array
+                              items:
+                                type: string
+                              description: The set of email addresses that the certificate authority (CA) will
+                                use to complete domain validation.
+                            http_body:
+                              type: string
+                              description: The content that the certificate authority (CA) will expect to find
+                                at the http_url during the domain validation.
+                            http_url:
+                              type: string
+                              description: The url that will be checked during domain validation.
+                            txt_name:
+                              type: string
+                              description: The hostname that the certificate authority (CA) will check for a
+                                TXT record during domain validation .
+                            txt_value:
+                              type: string
+                              description: The TXT record that the certificate authority (CA) will check
+                                during domain validation.
+                      wildcard:
+                        type: boolean
+                        description: Indicates whether the certificate covers a wildcard.
+                  created_at:
+                    type: string
+                    description: This is the time the hostname was created.
+                  custom_metadata:
+                    type: object
+                    additionalProperties: true
+                    description: Unique key/value metadata for this hostname. These are per-hostname
+                      (customer) settings.
+                  custom_origin_server:
+                    type: string
+                    description: a valid hostname that’s been added to your DNS zone as an A, AAAA,
+                      or CNAME record.
+                  custom_origin_sni:
+                    type: string
+                    description: A hostname that will be sent to your custom origin server as SNI
+                      for TLS handshake. This can be a valid subdomain of the
+                      zone or custom origin server name or the string
+                      ':request_host_header:' which will cause the host header
+                      in the request to be used as SNI. Not configurable with
+                      default/fallback origin server.
+                  ownership_verification:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: DNS Name for record.
+                      type:
+                        type: string
+                        enum:
+                          - txt
+                        description: DNS Record type.
+                      value:
+                        type: string
+                        description: Content for the record.
+                    description: This is a record which can be placed to activate a hostname.
+                  ownership_verification_http:
+                    type: object
+                    properties:
+                      http_body:
+                        type: string
+                        description: Token to be served.
+                      http_url:
+                        type: string
+                        description: The HTTP URL that will be checked during custom hostname
+                          verification and where the customer should host the
+                          token.
+                    description: This presents the token to be served by the given http url to
+                      activate a hostname.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - pending
+                      - active_redeploying
+                      - moved
+                      - pending_deletion
+                      - deleted
+                      - pending_blocked
+                      - pending_migration
+                      - pending_provisioned
+                      - test_pending
+                      - test_active
+                      - test_active_apex
+                      - test_blocked
+                      - test_failed
+                      - provisioned
+                      - blocked
+                    description: Status of the hostname's activation.
+                  verification_errors:
+                    type: array
+                    items:
+                      type: string
+                    description: These are errors that were encountered while trying to activate a
+                      hostname.
+                required:
+                  - id
+                  - hostname
+                  - ssl
+      x-distilled-response-path: result
+    patch:
+      operationId: patchCustomHostname
+      description: "Modify SSL configuration for a custom hostname. When sent with SSL
+        config that matches existing config, used to indicate that hostname
+        should pass domain control validation (DCV). Can also be used to change
+        validation type, e.g., from 'http' to 'email'. Bundle an existing
+        certificate with another certificate by using the \"custom_cert_bundle\"
+        field. The bundling process supports combining certificates as long as
+        the following condition is met. One certificate must use the RSA
+        algorithm, and the other must use the ECDSA algorithm.  @example ```ts
+        const response = await client.customHostnames.edit(
+        '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: customHostnameId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                custom_metadata:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param: Unique key/value metadata for this hostname. These are
+                    per-hostname (customer) settings."
+                custom_origin_server:
+                  type: string
+                  description: "Body param: a valid hostname that’s been added to your DNS zone as
+                    an A, AAAA, or CNAME record."
+                custom_origin_sni:
+                  type: string
+                  description: "Body param: A hostname that will be sent to your custom origin
+                    server as SNI for TLS handshake. This can be a valid
+                    subdomain of the zone or custom origin server name or the
+                    string ':request_host_header:' which will cause the host
+                    header in the request to be used as SNI. Not configurable
+                    with default/fallback origin server."
+                ssl:
+                  type: object
+                  properties:
+                    bundle_method:
+                      type: string
+                      enum:
+                        - ubiquitous
+                        - optimal
+                        - force
+                      description: A ubiquitous bundle has the highest probability of being verified
+                        everywhere, even by clients using outdated or unusual
+                        trust stores. An optimal bundle uses the shortest chain
+                        and newest intermediates. And the force bundle verifies
+                        the chain, but does not otherwise modify it.
+                    certificate_authority:
+                      type: string
+                      enum:
+                        - google
+                        - lets_encrypt
+                        - ssl_com
+                        - digicert
+                      description: The Certificate Authority that will issue the certificate
+                    cloudflare_branding:
+                      type: boolean
+                      description: Whether or not to add Cloudflare Branding for the order. This will
+                        add a subdomain of sni.cloudflaressl.com as the Common
+                        Name if set to true
+                    custom_cert_bundle:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          custom_certificate:
+                            type: string
+                            description: If a custom uploaded certificate is used.
+                          custom_key:
+                            type: string
+                            description: The key for a custom uploaded certificate.
+                        required:
+                          - custom_certificate
+                          - custom_key
+                      description: Array of custom certificate and key pairs (1 or 2 pairs allowed)
+                    custom_certificate:
+                      type: string
+                      description: If a custom uploaded certificate is used.
+                    custom_key:
+                      type: string
+                      description: The key for a custom uploaded certificate.
+                    method:
+                      type: string
+                      enum:
+                        - http
+                        - txt
+                        - email
+                      description: Domain control validation (DCV) method used for this hostname.
+                    settings:
+                      type: object
+                      properties:
+                        ciphers:
+                          type: array
+                          items:
+                            type: string
+                          description: An allowlist of ciphers for TLS termination. These ciphers must be
+                            in the BoringSSL format.
+                        early_hints:
+                          type: string
+                          enum:
+                            - on
+                            - off
+                          description: Whether or not Early Hints is enabled.
+                        http2:
+                          type: string
+                          enum:
+                            - on
+                            - off
+                          description: Whether or not HTTP2 is enabled.
+                        min_tls_version:
+                          type: number
+                          enum:
+                            - 1
+                            - 1.1
+                            - 1.2
+                            - 1.3
+                          description: The minimum TLS version supported.
+                        tls_1_3:
+                          type: string
+                          enum:
+                            - on
+                            - off
+                          description: Whether or not TLS 1.3 is enabled.
+                      description: SSL specific settings.
+                    type:
+                      type: string
+                      enum:
+                        - dv
+                      description: Level of validation to be used for this hostname. Domain validation
+                        (dv) must be used.
+                    wildcard:
+                      type: boolean
+                      description: Indicates whether the certificate covers a wildcard.
+                  description: "Body param: SSL properties used when creating the custom
+                    hostname."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  hostname:
+                    type: string
+                    description: The custom hostname that will point to your hostname via CNAME.
+                  ssl:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Custom hostname SSL identifier tag.
+                      bundle_method:
+                        type: string
+                        enum:
+                          - ubiquitous
+                          - optimal
+                          - force
+                        description: A ubiquitous bundle has the highest probability of being verified
+                          everywhere, even by clients using outdated or unusual
+                          trust stores. An optimal bundle uses the shortest
+                          chain and newest intermediates. And the force bundle
+                          verifies the chain, but does not otherwise modify it.
+                      certificate_authority:
+                        type: string
+                        enum:
+                          - google
+                          - lets_encrypt
+                          - ssl_com
+                          - digicert
+                        description: The Certificate Authority that will issue the certificate
+                      custom_certificate:
+                        type: string
+                        description: If a custom uploaded certificate is used.
+                      custom_csr_id:
+                        type: string
+                        description: The identifier for the Custom CSR that was used.
+                      custom_key:
+                        type: string
+                        description: The key for a custom uploaded certificate.
+                      expires_on:
+                        type: string
+                        description: The time the custom certificate expires on.
+                      hosts:
+                        type: array
+                        items:
+                          type: string
+                        description: A list of Hostnames on a custom uploaded certificate.
+                      issuer:
+                        type: string
+                        description: The issuer on a custom uploaded certificate.
+                      method:
+                        type: string
+                        enum:
+                          - http
+                          - txt
+                          - email
+                        description: Domain control validation (DCV) method used for this hostname.
+                      serial_number:
+                        type: string
+                        description: The serial number on a custom uploaded certificate.
+                      settings:
+                        type: object
+                        properties:
+                          ciphers:
+                            type: array
+                            items:
+                              type: string
+                            description: An allowlist of ciphers for TLS termination. These ciphers must be
+                              in the BoringSSL format.
+                          early_hints:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: Whether or not Early Hints is enabled.
+                          http2:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: Whether or not HTTP2 is enabled.
+                          min_tls_version:
+                            type: number
+                            enum:
+                              - 1
+                              - 1.1
+                              - 1.2
+                              - 1.3
+                            description: The minimum TLS version supported.
+                          tls_1_3:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: Whether or not TLS 1.3 is enabled.
+                      signature:
+                        type: string
+                        description: The signature on a custom uploaded certificate.
+                      status:
+                        type: string
+                        enum:
+                          - initializing
+                          - pending_validation
+                          - deleted
+                          - pending_issuance
+                          - pending_deployment
+                          - pending_deletion
+                          - pending_expiration
+                          - expired
+                          - active
+                          - initializing_timed_out
+                          - validation_timed_out
+                          - issuance_timed_out
+                          - deployment_timed_out
+                          - deletion_timed_out
+                          - pending_cleanup
+                          - staging_deployment
+                          - staging_active
+                          - deactivating
+                          - inactive
+                          - backup_issued
+                          - holding_deployment
+                        description: Status of the hostname's SSL certificates.
+                      type:
+                        type: string
+                        enum:
+                          - dv
+                        description: Level of validation to be used for this hostname. Domain validation
+                          (dv) must be used.
+                      uploaded_on:
+                        type: string
+                        description: The time the custom certificate was uploaded.
+                      validation_errors:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            message:
+                              type: string
+                              description: A domain validation error.
+                        description: Domain validation errors that have been received by the certificate
+                          authority (CA).
+                      validation_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            emails:
+                              type: array
+                              items:
+                                type: string
+                              description: The set of email addresses that the certificate authority (CA) will
+                                use to complete domain validation.
+                            http_body:
+                              type: string
+                              description: The content that the certificate authority (CA) will expect to find
+                                at the http_url during the domain validation.
+                            http_url:
+                              type: string
+                              description: The url that will be checked during domain validation.
+                            txt_name:
+                              type: string
+                              description: The hostname that the certificate authority (CA) will check for a
+                                TXT record during domain validation .
+                            txt_value:
+                              type: string
+                              description: The TXT record that the certificate authority (CA) will check
+                                during domain validation.
+                      wildcard:
+                        type: boolean
+                        description: Indicates whether the certificate covers a wildcard.
+                  created_at:
+                    type: string
+                    description: This is the time the hostname was created.
+                  custom_metadata:
+                    type: object
+                    additionalProperties: true
+                    description: Unique key/value metadata for this hostname. These are per-hostname
+                      (customer) settings.
+                  custom_origin_server:
+                    type: string
+                    description: a valid hostname that’s been added to your DNS zone as an A, AAAA,
+                      or CNAME record.
+                  custom_origin_sni:
+                    type: string
+                    description: A hostname that will be sent to your custom origin server as SNI
+                      for TLS handshake. This can be a valid subdomain of the
+                      zone or custom origin server name or the string
+                      ':request_host_header:' which will cause the host header
+                      in the request to be used as SNI. Not configurable with
+                      default/fallback origin server.
+                  ownership_verification:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: DNS Name for record.
+                      type:
+                        type: string
+                        enum:
+                          - txt
+                        description: DNS Record type.
+                      value:
+                        type: string
+                        description: Content for the record.
+                    description: This is a record which can be placed to activate a hostname.
+                  ownership_verification_http:
+                    type: object
+                    properties:
+                      http_body:
+                        type: string
+                        description: Token to be served.
+                      http_url:
+                        type: string
+                        description: The HTTP URL that will be checked during custom hostname
+                          verification and where the customer should host the
+                          token.
+                    description: This presents the token to be served by the given http url to
+                      activate a hostname.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - pending
+                      - active_redeploying
+                      - moved
+                      - pending_deletion
+                      - deleted
+                      - pending_blocked
+                      - pending_migration
+                      - pending_provisioned
+                      - test_pending
+                      - test_active
+                      - test_active_apex
+                      - test_blocked
+                      - test_failed
+                      - provisioned
+                      - blocked
+                    description: Status of the hostname's activation.
+                  verification_errors:
+                    type: array
+                    items:
+                      type: string
+                    description: These are errors that were encountered while trying to activate a
+                      hostname.
+                required:
+                  - id
+                  - hostname
+                  - ssl
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteCustomHostname
+      description: "Delete Custom Hostname (and any issued SSL certificates)  @example
+        ```ts const customHostname = await client.customHostnames.delete(
+        '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: customHostnameId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+  /zones/{zone_id}/custom_hostnames:
+    get:
+      operationId: listCustomHostnames
+      description: "List, search, sort, and filter all of your custom
+        hostnames.  @example ```ts // Automatically fetches more pages as
+        needed. for await (const customHostnameListResponse of
+        client.customHostnames.list( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: id
+          in: query
+          required: false
+          description: "Query param: Hostname ID to match against. This ID was generated
+            and returned during the initial custom_hostname creation. This
+            parameter cannot be used with the 'hostname' parameter."
+          schema:
+            type: string
+        - name: direction
+          in: query
+          required: false
+          description: "Query param: Direction to order hostnames."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: hostname
+          in: query
+          required: false
+          description: "Query param: Fully qualified domain name to match against. This
+            parameter cannot be used with the 'id' parameter."
+          schema:
+            type: string
+        - name: order
+          in: query
+          required: false
+          description: "Query param: Field to order hostnames by."
+          schema:
+            type: string
+            enum:
+              - ssl
+              - ssl_status
+        - name: ssl
+          in: query
+          required: false
+          description: "Query param: Whether to filter hostnames based on if they have SSL
+            enabled."
+          schema:
+            type: number
+            enum:
+              - 0
+              - 1
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  hostname:
+                    type: string
+                    description: The custom hostname that will point to your hostname via CNAME.
+                  ssl:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Custom hostname SSL identifier tag.
+                      bundle_method:
+                        type: string
+                        enum:
+                          - ubiquitous
+                          - optimal
+                          - force
+                        description: A ubiquitous bundle has the highest probability of being verified
+                          everywhere, even by clients using outdated or unusual
+                          trust stores. An optimal bundle uses the shortest
+                          chain and newest intermediates. And the force bundle
+                          verifies the chain, but does not otherwise modify it.
+                      certificate_authority:
+                        type: string
+                        enum:
+                          - google
+                          - lets_encrypt
+                          - ssl_com
+                          - digicert
+                        description: The Certificate Authority that will issue the certificate
+                      custom_certificate:
+                        type: string
+                        description: If a custom uploaded certificate is used.
+                      custom_csr_id:
+                        type: string
+                        description: The identifier for the Custom CSR that was used.
+                      custom_key:
+                        type: string
+                        description: The key for a custom uploaded certificate.
+                      expires_on:
+                        type: string
+                        description: The time the custom certificate expires on.
+                      hosts:
+                        type: array
+                        items:
+                          type: string
+                        description: A list of Hostnames on a custom uploaded certificate.
+                      issuer:
+                        type: string
+                        description: The issuer on a custom uploaded certificate.
+                      method:
+                        type: string
+                        enum:
+                          - http
+                          - txt
+                          - email
+                        description: Domain control validation (DCV) method used for this hostname.
+                      serial_number:
+                        type: string
+                        description: The serial number on a custom uploaded certificate.
+                      settings:
+                        type: object
+                        properties:
+                          ciphers:
+                            type: array
+                            items:
+                              type: string
+                            description: An allowlist of ciphers for TLS termination. These ciphers must be
+                              in the BoringSSL format.
+                          early_hints:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: Whether or not Early Hints is enabled.
+                          http2:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: Whether or not HTTP2 is enabled.
+                          min_tls_version:
+                            type: number
+                            enum:
+                              - 1
+                              - 1.1
+                              - 1.2
+                              - 1.3
+                            description: The minimum TLS version supported.
+                          tls_1_3:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: Whether or not TLS 1.3 is enabled.
+                      signature:
+                        type: string
+                        description: The signature on a custom uploaded certificate.
+                      status:
+                        type: string
+                        enum:
+                          - initializing
+                          - pending_validation
+                          - deleted
+                          - pending_issuance
+                          - pending_deployment
+                          - pending_deletion
+                          - pending_expiration
+                          - expired
+                          - active
+                          - initializing_timed_out
+                          - validation_timed_out
+                          - issuance_timed_out
+                          - deployment_timed_out
+                          - deletion_timed_out
+                          - pending_cleanup
+                          - staging_deployment
+                          - staging_active
+                          - deactivating
+                          - inactive
+                          - backup_issued
+                          - holding_deployment
+                        description: Status of the hostname's SSL certificates.
+                      type:
+                        type: string
+                        enum:
+                          - dv
+                        description: Level of validation to be used for this hostname. Domain validation
+                          (dv) must be used.
+                      uploaded_on:
+                        type: string
+                        description: The time the custom certificate was uploaded.
+                      validation_errors:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            message:
+                              type: string
+                              description: A domain validation error.
+                        description: Domain validation errors that have been received by the certificate
+                          authority (CA).
+                      validation_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            emails:
+                              type: array
+                              items:
+                                type: string
+                              description: The set of email addresses that the certificate authority (CA) will
+                                use to complete domain validation.
+                            http_body:
+                              type: string
+                              description: The content that the certificate authority (CA) will expect to find
+                                at the http_url during the domain validation.
+                            http_url:
+                              type: string
+                              description: The url that will be checked during domain validation.
+                            txt_name:
+                              type: string
+                              description: The hostname that the certificate authority (CA) will check for a
+                                TXT record during domain validation .
+                            txt_value:
+                              type: string
+                              description: The TXT record that the certificate authority (CA) will check
+                                during domain validation.
+                      wildcard:
+                        type: boolean
+                        description: Indicates whether the certificate covers a wildcard.
+                  created_at:
+                    type: string
+                    description: This is the time the hostname was created.
+                  custom_metadata:
+                    type: object
+                    additionalProperties: true
+                    description: Unique key/value metadata for this hostname. These are per-hostname
+                      (customer) settings.
+                  custom_origin_server:
+                    type: string
+                    description: a valid hostname that’s been added to your DNS zone as an A, AAAA,
+                      or CNAME record.
+                  custom_origin_sni:
+                    type: string
+                    description: A hostname that will be sent to your custom origin server as SNI
+                      for TLS handshake. This can be a valid subdomain of the
+                      zone or custom origin server name or the string
+                      ':request_host_header:' which will cause the host header
+                      in the request to be used as SNI. Not configurable with
+                      default/fallback origin server.
+                  ownership_verification:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: DNS Name for record.
+                      type:
+                        type: string
+                        enum:
+                          - txt
+                        description: DNS Record type.
+                      value:
+                        type: string
+                        description: Content for the record.
+                    description: This is a record which can be placed to activate a hostname.
+                  ownership_verification_http:
+                    type: object
+                    properties:
+                      http_body:
+                        type: string
+                        description: Token to be served.
+                      http_url:
+                        type: string
+                        description: The HTTP URL that will be checked during custom hostname
+                          verification and where the customer should host the
+                          token.
+                    description: This presents the token to be served by the given http url to
+                      activate a hostname.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - pending
+                      - active_redeploying
+                      - moved
+                      - pending_deletion
+                      - deleted
+                      - pending_blocked
+                      - pending_migration
+                      - pending_provisioned
+                      - test_pending
+                      - test_active
+                      - test_active_apex
+                      - test_blocked
+                      - test_failed
+                      - provisioned
+                      - blocked
+                    description: Status of the hostname's activation.
+                  verification_errors:
+                    type: array
+                    items:
+                      type: string
+                    description: These are errors that were encountered while trying to activate a
+                      hostname.
+                required:
+                  - id
+                  - hostname
+                  - ssl
+      x-distilled-pagination-class: CustomHostnameListResponsesV4PagePaginationArray
+    post:
+      operationId: createCustomHostname
+      description: "Add a new custom hostname and request that an SSL certificate be
+        issued for it. One of three validation methods—http, txt, email—should
+        be used, with 'http' recommended if the CNAME is already in place (or
+        will be soon). Specifying 'email' will send an email to the WHOIS
+        contacts on file for the base domain plus hostmaster, postmaster,
+        webmaster, admin, administrator. If http is used and the domain is not
+        already pointing to the Managed CNAME host, the PATCH method must be
+        used once it is (to complete validation). Enable bundling of
+        certificates using the custom_cert_bundle field. The bundling process
+        requires the following condition One certificate in the bundle must use
+        an RSA, and the other must use an ECDSA.  @example ```ts const
+        customHostname = await client.customHostnames.create({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', hostname: 'app.example.com', });
+        ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hostname:
+                  type: string
+                  description: "Body param: The custom hostname that will point to your hostname
+                    via CNAME."
+                custom_metadata:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param: Unique key/value metadata for this hostname. These are
+                    per-hostname (customer) settings."
+                ssl:
+                  type: object
+                  properties:
+                    bundle_method:
+                      type: string
+                      enum:
+                        - ubiquitous
+                        - optimal
+                        - force
+                      description: A ubiquitous bundle has the highest probability of being verified
+                        everywhere, even by clients using outdated or unusual
+                        trust stores. An optimal bundle uses the shortest chain
+                        and newest intermediates. And the force bundle verifies
+                        the chain, but does not otherwise modify it.
+                    certificate_authority:
+                      type: string
+                      enum:
+                        - google
+                        - lets_encrypt
+                        - ssl_com
+                        - digicert
+                      description: The Certificate Authority that will issue the certificate
+                    cloudflare_branding:
+                      type: boolean
+                      description: Whether or not to add Cloudflare Branding for the order. This will
+                        add a subdomain of sni.cloudflaressl.com as the Common
+                        Name if set to true
+                    custom_cert_bundle:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          custom_certificate:
+                            type: string
+                            description: If a custom uploaded certificate is used.
+                          custom_key:
+                            type: string
+                            description: The key for a custom uploaded certificate.
+                        required:
+                          - custom_certificate
+                          - custom_key
+                      description: Array of custom certificate and key pairs (1 or 2 pairs allowed)
+                    custom_certificate:
+                      type: string
+                      description: If a custom uploaded certificate is used.
+                    custom_key:
+                      type: string
+                      description: The key for a custom uploaded certificate.
+                    method:
+                      type: string
+                      enum:
+                        - http
+                        - txt
+                        - email
+                      description: Domain control validation (DCV) method used for this hostname.
+                    settings:
+                      type: object
+                      properties:
+                        ciphers:
+                          type: array
+                          items:
+                            type: string
+                          description: An allowlist of ciphers for TLS termination. These ciphers must be
+                            in the BoringSSL format.
+                        early_hints:
+                          type: string
+                          enum:
+                            - on
+                            - off
+                          description: Whether or not Early Hints is enabled.
+                        http2:
+                          type: string
+                          enum:
+                            - on
+                            - off
+                          description: Whether or not HTTP2 is enabled.
+                        min_tls_version:
+                          type: number
+                          enum:
+                            - 1
+                            - 1.1
+                            - 1.2
+                            - 1.3
+                          description: The minimum TLS version supported.
+                        tls_1_3:
+                          type: string
+                          enum:
+                            - on
+                            - off
+                          description: Whether or not TLS 1.3 is enabled.
+                      description: SSL specific settings.
+                    type:
+                      type: string
+                      enum:
+                        - dv
+                      description: Level of validation to be used for this hostname. Domain validation
+                        (dv) must be used.
+                    wildcard:
+                      type: boolean
+                      description: Indicates whether the certificate covers a wildcard.
+                  description: "Body param: SSL properties used when creating the custom
+                    hostname."
+              required:
+                - hostname
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  hostname:
+                    type: string
+                    description: The custom hostname that will point to your hostname via CNAME.
+                  ssl:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Custom hostname SSL identifier tag.
+                      bundle_method:
+                        type: string
+                        enum:
+                          - ubiquitous
+                          - optimal
+                          - force
+                        description: A ubiquitous bundle has the highest probability of being verified
+                          everywhere, even by clients using outdated or unusual
+                          trust stores. An optimal bundle uses the shortest
+                          chain and newest intermediates. And the force bundle
+                          verifies the chain, but does not otherwise modify it.
+                      certificate_authority:
+                        type: string
+                        enum:
+                          - google
+                          - lets_encrypt
+                          - ssl_com
+                          - digicert
+                        description: The Certificate Authority that will issue the certificate
+                      custom_certificate:
+                        type: string
+                        description: If a custom uploaded certificate is used.
+                      custom_csr_id:
+                        type: string
+                        description: The identifier for the Custom CSR that was used.
+                      custom_key:
+                        type: string
+                        description: The key for a custom uploaded certificate.
+                      expires_on:
+                        type: string
+                        description: The time the custom certificate expires on.
+                      hosts:
+                        type: array
+                        items:
+                          type: string
+                        description: A list of Hostnames on a custom uploaded certificate.
+                      issuer:
+                        type: string
+                        description: The issuer on a custom uploaded certificate.
+                      method:
+                        type: string
+                        enum:
+                          - http
+                          - txt
+                          - email
+                        description: Domain control validation (DCV) method used for this hostname.
+                      serial_number:
+                        type: string
+                        description: The serial number on a custom uploaded certificate.
+                      settings:
+                        type: object
+                        properties:
+                          ciphers:
+                            type: array
+                            items:
+                              type: string
+                            description: An allowlist of ciphers for TLS termination. These ciphers must be
+                              in the BoringSSL format.
+                          early_hints:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: Whether or not Early Hints is enabled.
+                          http2:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: Whether or not HTTP2 is enabled.
+                          min_tls_version:
+                            type: number
+                            enum:
+                              - 1
+                              - 1.1
+                              - 1.2
+                              - 1.3
+                            description: The minimum TLS version supported.
+                          tls_1_3:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: Whether or not TLS 1.3 is enabled.
+                      signature:
+                        type: string
+                        description: The signature on a custom uploaded certificate.
+                      status:
+                        type: string
+                        enum:
+                          - initializing
+                          - pending_validation
+                          - deleted
+                          - pending_issuance
+                          - pending_deployment
+                          - pending_deletion
+                          - pending_expiration
+                          - expired
+                          - active
+                          - initializing_timed_out
+                          - validation_timed_out
+                          - issuance_timed_out
+                          - deployment_timed_out
+                          - deletion_timed_out
+                          - pending_cleanup
+                          - staging_deployment
+                          - staging_active
+                          - deactivating
+                          - inactive
+                          - backup_issued
+                          - holding_deployment
+                        description: Status of the hostname's SSL certificates.
+                      type:
+                        type: string
+                        enum:
+                          - dv
+                        description: Level of validation to be used for this hostname. Domain validation
+                          (dv) must be used.
+                      uploaded_on:
+                        type: string
+                        description: The time the custom certificate was uploaded.
+                      validation_errors:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            message:
+                              type: string
+                              description: A domain validation error.
+                        description: Domain validation errors that have been received by the certificate
+                          authority (CA).
+                      validation_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            emails:
+                              type: array
+                              items:
+                                type: string
+                              description: The set of email addresses that the certificate authority (CA) will
+                                use to complete domain validation.
+                            http_body:
+                              type: string
+                              description: The content that the certificate authority (CA) will expect to find
+                                at the http_url during the domain validation.
+                            http_url:
+                              type: string
+                              description: The url that will be checked during domain validation.
+                            txt_name:
+                              type: string
+                              description: The hostname that the certificate authority (CA) will check for a
+                                TXT record during domain validation .
+                            txt_value:
+                              type: string
+                              description: The TXT record that the certificate authority (CA) will check
+                                during domain validation.
+                      wildcard:
+                        type: boolean
+                        description: Indicates whether the certificate covers a wildcard.
+                  created_at:
+                    type: string
+                    description: This is the time the hostname was created.
+                  custom_metadata:
+                    type: object
+                    additionalProperties: true
+                    description: Unique key/value metadata for this hostname. These are per-hostname
+                      (customer) settings.
+                  custom_origin_server:
+                    type: string
+                    description: a valid hostname that’s been added to your DNS zone as an A, AAAA,
+                      or CNAME record.
+                  custom_origin_sni:
+                    type: string
+                    description: A hostname that will be sent to your custom origin server as SNI
+                      for TLS handshake. This can be a valid subdomain of the
+                      zone or custom origin server name or the string
+                      ':request_host_header:' which will cause the host header
+                      in the request to be used as SNI. Not configurable with
+                      default/fallback origin server.
+                  ownership_verification:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: DNS Name for record.
+                      type:
+                        type: string
+                        enum:
+                          - txt
+                        description: DNS Record type.
+                      value:
+                        type: string
+                        description: Content for the record.
+                    description: This is a record which can be placed to activate a hostname.
+                  ownership_verification_http:
+                    type: object
+                    properties:
+                      http_body:
+                        type: string
+                        description: Token to be served.
+                      http_url:
+                        type: string
+                        description: The HTTP URL that will be checked during custom hostname
+                          verification and where the customer should host the
+                          token.
+                    description: This presents the token to be served by the given http url to
+                      activate a hostname.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - pending
+                      - active_redeploying
+                      - moved
+                      - pending_deletion
+                      - deleted
+                      - pending_blocked
+                      - pending_migration
+                      - pending_provisioned
+                      - test_pending
+                      - test_active
+                      - test_active_apex
+                      - test_blocked
+                      - test_failed
+                      - provisioned
+                      - blocked
+                    description: Status of the hostname's activation.
+                  verification_errors:
+                    type: array
+                    items:
+                      type: string
+                    description: These are errors that were encountered while trying to activate a
+                      hostname.
+                required:
+                  - id
+                  - hostname
+                  - ssl
+      x-distilled-response-path: result
+  /zones/{zone_id}/custom_hostnames/fallback_origin:
+    get:
+      operationId: getFallbackOrigin
+      description: "Get Fallback Origin for Custom Hostnames  @example ```ts const
+        fallbackOrigin = await client.customHostnames.fallbackOrigin.get({
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                    description: This is the time the fallback origin was created.
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    description: These are errors that were encountered while trying to activate a
+                      fallback origin.
+                  origin:
+                    type: string
+                    description: Your origin hostname that requests to your custom hostnames will be
+                      sent to.
+                  status:
+                    type: string
+                    enum:
+                      - initializing
+                      - pending_deployment
+                      - pending_deletion
+                      - active
+                      - deployment_timed_out
+                      - deletion_timed_out
+                    description: Status of the fallback origin's activation.
+                  updated_at:
+                    type: string
+                    description: This is the time the fallback origin was updated.
+      x-distilled-response-path: result
+    put:
+      operationId: putFallbackOrigin
+      description: "Update Fallback Origin for Custom Hostnames  @example ```ts const
+        fallbackOrigin = await client.customHostnames.fallbackOrigin.update({
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353', origin:
+        'fallback.example.com', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                origin:
+                  type: string
+                  description: "Body param: Your origin hostname that requests to your custom
+                    hostnames will be sent to."
+              required:
+                - origin
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                    description: This is the time the fallback origin was created.
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    description: These are errors that were encountered while trying to activate a
+                      fallback origin.
+                  origin:
+                    type: string
+                    description: Your origin hostname that requests to your custom hostnames will be
+                      sent to.
+                  status:
+                    type: string
+                    enum:
+                      - initializing
+                      - pending_deployment
+                      - pending_deletion
+                      - active
+                      - deployment_timed_out
+                      - deletion_timed_out
+                    description: Status of the fallback origin's activation.
+                  updated_at:
+                    type: string
+                    description: This is the time the fallback origin was updated.
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteFallbackOrigin
+      description: "Delete Fallback Origin for Custom Hostnames  @example ```ts const
+        fallbackOrigin = await client.customHostnames.fallbackOrigin.delete({
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                    description: This is the time the fallback origin was created.
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    description: These are errors that were encountered while trying to activate a
+                      fallback origin.
+                  origin:
+                    type: string
+                    description: Your origin hostname that requests to your custom hostnames will be
+                      sent to.
+                  status:
+                    type: string
+                    enum:
+                      - initializing
+                      - pending_deployment
+                      - pending_deletion
+                      - active
+                      - deployment_timed_out
+                      - deletion_timed_out
+                    description: Status of the fallback origin's activation.
+                  updated_at:
+                    type: string
+                    description: This is the time the fallback origin was updated.
+      x-distilled-response-path: result

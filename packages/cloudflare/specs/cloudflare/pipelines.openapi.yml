@@ -1,0 +1,4510 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare PIPELINES API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: pipelines
+paths:
+  /accounts/{account_id}/pipelines/{pipelineName}:
+    get:
+      operationId: getPipeline
+      description: "[DEPRECATED] Get configuration of a pipeline. Use the new
+        /pipelines/v1/pipelines endpoint instead.  @deprecated Use get_v1
+        instead. This endpoint will be removed in the future."
+      parameters:
+        - name: pipelineName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Specifies the public ID of the account.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Specifies the pipeline identifier.
+                  destination:
+                    type: object
+                    properties:
+                      batch:
+                        type: object
+                        properties:
+                          max_bytes:
+                            type: number
+                            description: Specifies rough maximum size of files.
+                          max_duration_s:
+                            type: number
+                            description: Specifies duration to wait to aggregate batches files.
+                          max_rows:
+                            type: number
+                            description: Specifies rough maximum number of rows per file.
+                      compression:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - none
+                              - gzip
+                              - deflate
+                            description: Specifies the desired compression algorithm and format.
+                      format:
+                        type: string
+                        enum:
+                          - json
+                        description: Specifies the format of data to deliver.
+                      path:
+                        type: object
+                        properties:
+                          bucket:
+                            type: string
+                            description: Specifies the R2 Bucket to store files.
+                          filename:
+                            type: string
+                            description: Specifies the name pattern to for individual data files.
+                          filepath:
+                            type: string
+                            description: Specifies the name pattern for directory.
+                          prefix:
+                            type: string
+                            description: Specifies the base directory within the bucket.
+                        required:
+                          - bucket
+                      type:
+                        type: string
+                        enum:
+                          - r2
+                        description: Specifies the type of destination.
+                    required:
+                      - batch
+                      - compression
+                      - format
+                      - path
+                      - type
+                  endpoint:
+                    type: string
+                    description: Indicates the endpoint URL to send traffic.
+                  name:
+                    type: string
+                    description: Defines the name of the pipeline.
+                  source:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            format:
+                              type: string
+                              enum:
+                                - json
+                              description: Specifies the format of source data.
+                            type:
+                              type: string
+                            authentication:
+                              type: boolean
+                              description: Specifies whether authentication is required to send to this
+                                pipeline via HTTP.
+                            cors:
+                              type: object
+                              properties:
+                                origins:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: Specifies allowed origins to allow Cross Origin HTTP Requests.
+                          required:
+                            - format
+                            - type
+                        - type: object
+                          properties:
+                            format:
+                              type: string
+                              enum:
+                                - json
+                              description: Specifies the format of source data.
+                            type:
+                              type: string
+                          required:
+                            - format
+                            - type
+                  version:
+                    type: number
+                    description: Indicates the version number of last saved configuration.
+                required:
+                  - id
+                  - destination
+                  - endpoint
+                  - name
+                  - source
+                  - version
+      x-distilled-response-path: result
+      x-distilled-errors:
+        PipelineNotExists:
+          - code: 1000
+    put:
+      operationId: updatePipeline
+      description: "[DEPRECATED] Update an existing pipeline. Use the new
+        /pipelines/v1/pipelines endpoint instead.  @deprecated The v1 API does
+        not support updates. This endpoint will be removed in the future."
+      parameters:
+        - name: pipelineName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Specifies the public ID of the account."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                destination:
+                  type: object
+                  properties:
+                    batch:
+                      type: object
+                      properties:
+                        max_bytes:
+                          type: number
+                          description: Specifies rough maximum size of files.
+                        max_duration_s:
+                          type: number
+                          description: Specifies duration to wait to aggregate batches files.
+                        max_rows:
+                          type: number
+                          description: Specifies rough maximum number of rows per file.
+                    compression:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - none
+                            - gzip
+                            - deflate
+                          description: Specifies the desired compression algorithm and format.
+                    format:
+                      type: string
+                      enum:
+                        - json
+                      description: Specifies the format of data to deliver.
+                    path:
+                      type: object
+                      properties:
+                        bucket:
+                          type: string
+                          description: Specifies the R2 Bucket to store files.
+                        filename:
+                          type: string
+                          description: Specifies the name pattern to for individual data files.
+                        filepath:
+                          type: string
+                          description: Specifies the name pattern for directory.
+                        prefix:
+                          type: string
+                          description: Specifies the base directory within the bucket.
+                      required:
+                        - bucket
+                    type:
+                      type: string
+                      enum:
+                        - r2
+                      description: Specifies the type of destination.
+                    credentials:
+                      type: object
+                      properties:
+                        access_key_id:
+                          type: string
+                          description: Specifies the R2 Bucket Access Key Id.
+                        endpoint:
+                          type: string
+                          description: Specifies the R2 Endpoint.
+                        secret_access_key:
+                          type: string
+                          description: Specifies the R2 Bucket Secret Access Key.
+                      required:
+                        - access_key_id
+                        - endpoint
+                        - secret_access_key
+                  required:
+                    - batch
+                    - compression
+                    - format
+                    - path
+                    - type
+                  description: "Body param:"
+                name:
+                  type: string
+                  description: "Body param: Defines the name of the pipeline."
+                source:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: object
+                        properties:
+                          format:
+                            type: string
+                            enum:
+                              - json
+                            description: Specifies the format of source data.
+                          type:
+                            type: string
+                          authentication:
+                            type: boolean
+                            description: Specifies whether authentication is required to send to this
+                              pipeline via HTTP.
+                          cors:
+                            type: object
+                            properties:
+                              origins:
+                                type: array
+                                items:
+                                  type: string
+                                description: Specifies allowed origins to allow Cross Origin HTTP Requests.
+                        required:
+                          - format
+                          - type
+                      - type: object
+                        properties:
+                          format:
+                            type: string
+                            enum:
+                              - json
+                            description: Specifies the format of source data.
+                          type:
+                            type: string
+                        required:
+                          - format
+                          - type
+                  description: "Body param:"
+              required:
+                - destination
+                - name
+                - source
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Specifies the pipeline identifier.
+                  destination:
+                    type: object
+                    properties:
+                      batch:
+                        type: object
+                        properties:
+                          max_bytes:
+                            type: number
+                            description: Specifies rough maximum size of files.
+                          max_duration_s:
+                            type: number
+                            description: Specifies duration to wait to aggregate batches files.
+                          max_rows:
+                            type: number
+                            description: Specifies rough maximum number of rows per file.
+                      compression:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - none
+                              - gzip
+                              - deflate
+                            description: Specifies the desired compression algorithm and format.
+                      format:
+                        type: string
+                        enum:
+                          - json
+                        description: Specifies the format of data to deliver.
+                      path:
+                        type: object
+                        properties:
+                          bucket:
+                            type: string
+                            description: Specifies the R2 Bucket to store files.
+                          filename:
+                            type: string
+                            description: Specifies the name pattern to for individual data files.
+                          filepath:
+                            type: string
+                            description: Specifies the name pattern for directory.
+                          prefix:
+                            type: string
+                            description: Specifies the base directory within the bucket.
+                        required:
+                          - bucket
+                      type:
+                        type: string
+                        enum:
+                          - r2
+                        description: Specifies the type of destination.
+                    required:
+                      - batch
+                      - compression
+                      - format
+                      - path
+                      - type
+                  endpoint:
+                    type: string
+                    description: Indicates the endpoint URL to send traffic.
+                  name:
+                    type: string
+                    description: Defines the name of the pipeline.
+                  source:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            format:
+                              type: string
+                              enum:
+                                - json
+                              description: Specifies the format of source data.
+                            type:
+                              type: string
+                            authentication:
+                              type: boolean
+                              description: Specifies whether authentication is required to send to this
+                                pipeline via HTTP.
+                            cors:
+                              type: object
+                              properties:
+                                origins:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: Specifies allowed origins to allow Cross Origin HTTP Requests.
+                          required:
+                            - format
+                            - type
+                        - type: object
+                          properties:
+                            format:
+                              type: string
+                              enum:
+                                - json
+                              description: Specifies the format of source data.
+                            type:
+                              type: string
+                          required:
+                            - format
+                            - type
+                  version:
+                    type: number
+                    description: Indicates the version number of last saved configuration.
+                required:
+                  - id
+                  - destination
+                  - endpoint
+                  - name
+                  - source
+                  - version
+      x-distilled-response-path: result
+      x-distilled-errors:
+        PipelineNotExists:
+          - code: 1000
+    delete:
+      operationId: deletePipeline
+      description: "[DEPRECATED] Delete a pipeline. Use the new
+        /pipelines/v1/pipelines endpoint instead.  @deprecated Use delete_v1
+        instead. This endpoint will be removed in the future."
+      parameters:
+        - name: pipelineName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Specifies the public ID of the account.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+      x-distilled-errors:
+        PipelineNotExists:
+          - code: 1000
+  /accounts/{account_id}/pipelines:
+    get:
+      operationId: listPipelines
+      description: "[DEPRECATED] List, filter, and paginate pipelines in an account.
+        Use the new /pipelines/v1/pipelines endpoint instead.  @deprecated Use
+        list_v1 instead. This endpoint will be removed in the future."
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Specifies the public ID of the account."
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          description: "Query param: Specifies which page to retrieve."
+          schema:
+            type: string
+        - name: per_page
+          in: query
+          required: false
+          description: "Query param: Specifies the number of pipelines per page."
+          schema:
+            type: string
+        - name: search
+          in: query
+          required: false
+          description: "Query param: Specifies the prefix of pipeline name to search."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result_info:
+                    type: object
+                    properties:
+                      count:
+                        type: number
+                        description: Indicates the number of items on current page.
+                      page:
+                        type: number
+                        description: Indicates the current page number.
+                      per_page:
+                        type: number
+                        description: Indicates the number of items per page.
+                      total_count:
+                        type: number
+                        description: Indicates the total number of items.
+                    required:
+                      - count
+                      - page
+                      - per_page
+                      - total_count
+                  result:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Specifies the pipeline identifier.
+                        destination:
+                          type: object
+                          properties:
+                            batch:
+                              type: object
+                              properties:
+                                max_bytes:
+                                  type: number
+                                  description: Specifies rough maximum size of files.
+                                max_duration_s:
+                                  type: number
+                                  description: Specifies duration to wait to aggregate batches files.
+                                max_rows:
+                                  type: number
+                                  description: Specifies rough maximum number of rows per file.
+                            compression:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - none
+                                    - gzip
+                                    - deflate
+                                  description: Specifies the desired compression algorithm and format.
+                            format:
+                              type: string
+                              enum:
+                                - json
+                              description: Specifies the format of data to deliver.
+                            path:
+                              type: object
+                              properties:
+                                bucket:
+                                  type: string
+                                  description: Specifies the R2 Bucket to store files.
+                                filename:
+                                  type: string
+                                  description: Specifies the name pattern to for individual data files.
+                                filepath:
+                                  type: string
+                                  description: Specifies the name pattern for directory.
+                                prefix:
+                                  type: string
+                                  description: Specifies the base directory within the bucket.
+                              required:
+                                - bucket
+                            type:
+                              type: string
+                              enum:
+                                - r2
+                              description: Specifies the type of destination.
+                          required:
+                            - batch
+                            - compression
+                            - format
+                            - path
+                            - type
+                        endpoint:
+                          type: string
+                          description: Indicates the endpoint URL to send traffic.
+                        name:
+                          type: string
+                          description: Defines the name of the pipeline.
+                        source:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  format:
+                                    type: string
+                                    enum:
+                                      - json
+                                    description: Specifies the format of source data.
+                                  type:
+                                    type: string
+                                  authentication:
+                                    type: boolean
+                                    description: Specifies whether authentication is required to send to this
+                                      pipeline via HTTP.
+                                  cors:
+                                    type: object
+                                    properties:
+                                      origins:
+                                        type: array
+                                        items:
+                                          type: string
+                                        description: Specifies allowed origins to allow Cross Origin HTTP Requests.
+                                required:
+                                  - format
+                                  - type
+                              - type: object
+                                properties:
+                                  format:
+                                    type: string
+                                    enum:
+                                      - json
+                                    description: Specifies the format of source data.
+                                  type:
+                                    type: string
+                                required:
+                                  - format
+                                  - type
+                        version:
+                          type: number
+                          description: Indicates the version number of last saved configuration.
+                      required:
+                        - id
+                        - destination
+                        - endpoint
+                        - name
+                        - source
+                        - version
+                  success:
+                    type: boolean
+                    description: Indicates whether the API call was successful.
+                required:
+                  - result
+                  - success
+    post:
+      operationId: createPipeline
+      description: "[DEPRECATED] Create a new pipeline. Use the new
+        /pipelines/v1/pipelines endpoint instead.  @deprecated Use create_v1
+        instead. This endpoint will be removed in the future."
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Specifies the public ID of the account."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                destination:
+                  type: object
+                  properties:
+                    batch:
+                      type: object
+                      properties:
+                        max_bytes:
+                          type: number
+                          description: Specifies rough maximum size of files.
+                        max_duration_s:
+                          type: number
+                          description: Specifies duration to wait to aggregate batches files.
+                        max_rows:
+                          type: number
+                          description: Specifies rough maximum number of rows per file.
+                    compression:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - none
+                            - gzip
+                            - deflate
+                          description: Specifies the desired compression algorithm and format.
+                    credentials:
+                      type: object
+                      properties:
+                        access_key_id:
+                          type: string
+                          description: Specifies the R2 Bucket Access Key Id.
+                        endpoint:
+                          type: string
+                          description: Specifies the R2 Endpoint.
+                        secret_access_key:
+                          type: string
+                          description: Specifies the R2 Bucket Secret Access Key.
+                      required:
+                        - access_key_id
+                        - endpoint
+                        - secret_access_key
+                    format:
+                      type: string
+                      enum:
+                        - json
+                      description: Specifies the format of data to deliver.
+                    path:
+                      type: object
+                      properties:
+                        bucket:
+                          type: string
+                          description: Specifies the R2 Bucket to store files.
+                        filename:
+                          type: string
+                          description: Specifies the name pattern to for individual data files.
+                        filepath:
+                          type: string
+                          description: Specifies the name pattern for directory.
+                        prefix:
+                          type: string
+                          description: Specifies the base directory within the bucket.
+                      required:
+                        - bucket
+                    type:
+                      type: string
+                      enum:
+                        - r2
+                      description: Specifies the type of destination.
+                  required:
+                    - batch
+                    - compression
+                    - credentials
+                    - format
+                    - path
+                    - type
+                  description: "Body param:"
+                name:
+                  type: string
+                  description: "Body param: Defines the name of the pipeline."
+                source:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: object
+                        properties:
+                          format:
+                            type: string
+                            enum:
+                              - json
+                            description: Specifies the format of source data.
+                          type:
+                            type: string
+                          authentication:
+                            type: boolean
+                            description: Specifies whether authentication is required to send to this
+                              pipeline via HTTP.
+                          cors:
+                            type: object
+                            properties:
+                              origins:
+                                type: array
+                                items:
+                                  type: string
+                                description: Specifies allowed origins to allow Cross Origin HTTP Requests.
+                        required:
+                          - format
+                          - type
+                      - type: object
+                        properties:
+                          format:
+                            type: string
+                            enum:
+                              - json
+                            description: Specifies the format of source data.
+                          type:
+                            type: string
+                        required:
+                          - format
+                          - type
+                  description: "Body param:"
+              required:
+                - destination
+                - name
+                - source
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Specifies the pipeline identifier.
+                  destination:
+                    type: object
+                    properties:
+                      batch:
+                        type: object
+                        properties:
+                          max_bytes:
+                            type: number
+                            description: Specifies rough maximum size of files.
+                          max_duration_s:
+                            type: number
+                            description: Specifies duration to wait to aggregate batches files.
+                          max_rows:
+                            type: number
+                            description: Specifies rough maximum number of rows per file.
+                      compression:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - none
+                              - gzip
+                              - deflate
+                            description: Specifies the desired compression algorithm and format.
+                      format:
+                        type: string
+                        enum:
+                          - json
+                        description: Specifies the format of data to deliver.
+                      path:
+                        type: object
+                        properties:
+                          bucket:
+                            type: string
+                            description: Specifies the R2 Bucket to store files.
+                          filename:
+                            type: string
+                            description: Specifies the name pattern to for individual data files.
+                          filepath:
+                            type: string
+                            description: Specifies the name pattern for directory.
+                          prefix:
+                            type: string
+                            description: Specifies the base directory within the bucket.
+                        required:
+                          - bucket
+                      type:
+                        type: string
+                        enum:
+                          - r2
+                        description: Specifies the type of destination.
+                    required:
+                      - batch
+                      - compression
+                      - format
+                      - path
+                      - type
+                  endpoint:
+                    type: string
+                    description: Indicates the endpoint URL to send traffic.
+                  name:
+                    type: string
+                    description: Defines the name of the pipeline.
+                  source:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            format:
+                              type: string
+                              enum:
+                                - json
+                              description: Specifies the format of source data.
+                            type:
+                              type: string
+                            authentication:
+                              type: boolean
+                              description: Specifies whether authentication is required to send to this
+                                pipeline via HTTP.
+                            cors:
+                              type: object
+                              properties:
+                                origins:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: Specifies allowed origins to allow Cross Origin HTTP Requests.
+                          required:
+                            - format
+                            - type
+                        - type: object
+                          properties:
+                            format:
+                              type: string
+                              enum:
+                                - json
+                              description: Specifies the format of source data.
+                            type:
+                              type: string
+                          required:
+                            - format
+                            - type
+                  version:
+                    type: number
+                    description: Indicates the version number of last saved configuration.
+                required:
+                  - id
+                  - destination
+                  - endpoint
+                  - name
+                  - source
+                  - version
+      x-distilled-response-path: result
+  /accounts/{account_id}/pipelines/v1/sinks/{sinkId}:
+    get:
+      operationId: getSink
+      description: "Get Sink Details.  @example ```ts const sink = await
+        client.pipelines.sinks.get( '0223105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '0123105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: sinkId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Specifies the public ID of the account.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Indicates a unique identifier for this sink.
+                  created_at:
+                    type: string
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                    description: Defines the name of the Sink.
+                  type:
+                    type: string
+                    enum:
+                      - r2
+                      - r2_data_catalog
+                    description: Specifies the type of sink.
+                  config:
+                    oneOf:
+                      - type: object
+                        properties:
+                          account_id:
+                            type: string
+                            description: Cloudflare Account ID for the bucket
+                          bucket:
+                            type: string
+                            description: R2 Bucket to write to
+                          credentials:
+                            type: object
+                            properties:
+                              access_key_id:
+                                type: string
+                                description: Cloudflare Account ID for the bucket
+                              secret_access_key:
+                                type: string
+                                description: Cloudflare Account ID for the bucket
+                            required:
+                              - access_key_id
+                              - secret_access_key
+                          file_naming:
+                            type: object
+                            properties:
+                              prefix:
+                                type: string
+                                description: The prefix to use in file name. i.e prefix-<uuid>.parquet
+                              strategy:
+                                type: string
+                                enum:
+                                  - serial
+                                  - uuid
+                                  - uuid_v7
+                                  - ulid
+                                description: Filename generation strategy.
+                              suffix:
+                                type: string
+                                description: This will overwrite the default file suffix. i.e .parquet, use with
+                                  caution
+                            description: Controls filename prefix/suffix and strategy.
+                          jurisdiction:
+                            type: string
+                            description: Jurisdiction this bucket is hosted in
+                          partitioning:
+                            type: object
+                            properties:
+                              time_pattern:
+                                type: string
+                                description: The pattern of the date string
+                            description: Data-layout partitioning for sinks.
+                          path:
+                            type: string
+                            description: Subpath within the bucket to write to
+                          rolling_policy:
+                            type: object
+                            properties:
+                              file_size_bytes:
+                                type: number
+                                description: Files will be rolled after reaching this number of bytes
+                              inactivity_seconds:
+                                type: number
+                                description: Number of seconds of inactivity to wait before rolling over to a
+                                  new file
+                              interval_seconds:
+                                type: number
+                                description: Number of seconds to wait before rolling over to a new file
+                            description: Rolling policy for file sinks (when & why to close a file and open
+                              a new one).
+                        required:
+                          - account_id
+                          - bucket
+                          - credentials
+                      - type: object
+                        properties:
+                          token:
+                            type: string
+                            description: Authentication token
+                          account_id:
+                            type: string
+                            description: Cloudflare Account ID
+                          bucket:
+                            type: string
+                            description: The R2 Bucket that hosts this catalog
+                          table_name:
+                            type: string
+                            description: Table name
+                          namespace:
+                            type: string
+                            description: Table namespace
+                          rolling_policy:
+                            type: object
+                            properties:
+                              file_size_bytes:
+                                type: number
+                                description: Files will be rolled after reaching this number of bytes
+                              inactivity_seconds:
+                                type: number
+                                description: Number of seconds of inactivity to wait before rolling over to a
+                                  new file
+                              interval_seconds:
+                                type: number
+                                description: Number of seconds to wait before rolling over to a new file
+                            description: Rolling policy for file sinks (when & why to close a file and open
+                              a new one).
+                        required:
+                          - token
+                          - account_id
+                          - bucket
+                          - table_name
+                    description: Defines the configuration of the R2 Sink.
+                  format:
+                    oneOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - json
+                          decimal_encoding:
+                            type: string
+                            enum:
+                              - number
+                              - string
+                              - bytes
+                          timestamp_format:
+                            type: string
+                            enum:
+                              - rfc3339
+                              - unix_millis
+                          unstructured:
+                            type: boolean
+                        required:
+                          - type
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - parquet
+                          compression:
+                            type: string
+                            enum:
+                              - uncompressed
+                              - snappy
+                              - gzip
+                              - zstd
+                              - lz4
+                          row_group_bytes:
+                            oneOf:
+                              - type: number
+                            nullable: true
+                        required:
+                          - type
+                  schema:
+                    type: object
+                    properties:
+                      fields:
+                        type: array
+                        items:
+                          oneOf:
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - int32
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - int64
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - float32
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - float64
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - bool
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - string
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - binary
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - timestamp
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                                unit:
+                                  type: string
+                                  enum:
+                                    - second
+                                    - millisecond
+                                    - microsecond
+                                    - nanosecond
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - json
+                                decimal_encoding:
+                                  type: string
+                                  enum:
+                                    - number
+                                    - string
+                                    - bytes
+                                timestamp_format:
+                                  type: string
+                                  enum:
+                                    - rfc3339
+                                    - unix_millis
+                                unstructured:
+                                  type: boolean
+                              required:
+                                - type
+                            - type: object
+                              additionalProperties: true
+                            - type: object
+                              additionalProperties: true
+                      format:
+                        oneOf:
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - json
+                              decimal_encoding:
+                                type: string
+                                enum:
+                                  - number
+                                  - string
+                                  - bytes
+                              timestamp_format:
+                                type: string
+                                enum:
+                                  - rfc3339
+                                  - unix_millis
+                              unstructured:
+                                type: boolean
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - parquet
+                              compression:
+                                type: string
+                                enum:
+                                  - uncompressed
+                                  - snappy
+                                  - gzip
+                                  - zstd
+                                  - lz4
+                              row_group_bytes:
+                                oneOf:
+                                  - type: number
+                                nullable: true
+                            required:
+                              - type
+                      inferred:
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                required:
+                  - id
+                  - created_at
+                  - modified_at
+                  - name
+                  - type
+      x-distilled-response-path: result
+      x-distilled-errors:
+        SinkNotFound:
+          - code: 1015
+        InvalidSinkId:
+          - code: 2
+    delete:
+      operationId: deleteSink
+      description: "Delete Pipeline in Account.  @example ```ts await
+        client.pipelines.sinks.delete( '0223105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '0123105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: sinkId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Specifies the public ID of the account."
+          schema:
+            type: string
+        - name: force
+          in: query
+          required: false
+          description: "Query param: Delete sink forcefully, including deleting any
+            dependent pipelines."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  /accounts/{account_id}/pipelines/v1/sinks:
+    get:
+      operationId: listSinks
+      description: "List/Filter Sinks in Account.  @example ```ts // Automatically
+        fetches more pages as needed. for await (const sinkListResponse of
+        client.pipelines.sinks.list( { account_id:
+        '0123105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Specifies the public ID of the account."
+          schema:
+            type: string
+        - name: pipeline_id
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Indicates a unique identifier for this sink.
+                  created_at:
+                    type: string
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                    description: Defines the name of the Sink.
+                  type:
+                    type: string
+                    enum:
+                      - r2
+                      - r2_data_catalog
+                    description: Specifies the type of sink.
+                  config:
+                    oneOf:
+                      - type: object
+                        properties:
+                          account_id:
+                            type: string
+                            description: Cloudflare Account ID for the bucket
+                          bucket:
+                            type: string
+                            description: R2 Bucket to write to
+                          credentials:
+                            type: object
+                            properties:
+                              access_key_id:
+                                type: string
+                                description: Cloudflare Account ID for the bucket
+                              secret_access_key:
+                                type: string
+                                description: Cloudflare Account ID for the bucket
+                            required:
+                              - access_key_id
+                              - secret_access_key
+                          file_naming:
+                            type: object
+                            properties:
+                              prefix:
+                                type: string
+                                description: The prefix to use in file name. i.e prefix-<uuid>.parquet
+                              strategy:
+                                type: string
+                                enum:
+                                  - serial
+                                  - uuid
+                                  - uuid_v7
+                                  - ulid
+                                description: Filename generation strategy.
+                              suffix:
+                                type: string
+                                description: This will overwrite the default file suffix. i.e .parquet, use with
+                                  caution
+                            description: Controls filename prefix/suffix and strategy.
+                          jurisdiction:
+                            type: string
+                            description: Jurisdiction this bucket is hosted in
+                          partitioning:
+                            type: object
+                            properties:
+                              time_pattern:
+                                type: string
+                                description: The pattern of the date string
+                            description: Data-layout partitioning for sinks.
+                          path:
+                            type: string
+                            description: Subpath within the bucket to write to
+                          rolling_policy:
+                            type: object
+                            properties:
+                              file_size_bytes:
+                                type: number
+                                description: Files will be rolled after reaching this number of bytes
+                              inactivity_seconds:
+                                type: number
+                                description: Number of seconds of inactivity to wait before rolling over to a
+                                  new file
+                              interval_seconds:
+                                type: number
+                                description: Number of seconds to wait before rolling over to a new file
+                            description: Rolling policy for file sinks (when & why to close a file and open
+                              a new one).
+                        required:
+                          - account_id
+                          - bucket
+                          - credentials
+                      - type: object
+                        properties:
+                          token:
+                            type: string
+                            description: Authentication token
+                          account_id:
+                            type: string
+                            description: Cloudflare Account ID
+                          bucket:
+                            type: string
+                            description: The R2 Bucket that hosts this catalog
+                          table_name:
+                            type: string
+                            description: Table name
+                          namespace:
+                            type: string
+                            description: Table namespace
+                          rolling_policy:
+                            type: object
+                            properties:
+                              file_size_bytes:
+                                type: number
+                                description: Files will be rolled after reaching this number of bytes
+                              inactivity_seconds:
+                                type: number
+                                description: Number of seconds of inactivity to wait before rolling over to a
+                                  new file
+                              interval_seconds:
+                                type: number
+                                description: Number of seconds to wait before rolling over to a new file
+                            description: Rolling policy for file sinks (when & why to close a file and open
+                              a new one).
+                        required:
+                          - token
+                          - account_id
+                          - bucket
+                          - table_name
+                    description: Defines the configuration of the R2 Sink.
+                  format:
+                    oneOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - json
+                          decimal_encoding:
+                            type: string
+                            enum:
+                              - number
+                              - string
+                              - bytes
+                          timestamp_format:
+                            type: string
+                            enum:
+                              - rfc3339
+                              - unix_millis
+                          unstructured:
+                            type: boolean
+                        required:
+                          - type
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - parquet
+                          compression:
+                            type: string
+                            enum:
+                              - uncompressed
+                              - snappy
+                              - gzip
+                              - zstd
+                              - lz4
+                          row_group_bytes:
+                            oneOf:
+                              - type: number
+                            nullable: true
+                        required:
+                          - type
+                  schema:
+                    type: object
+                    properties:
+                      fields:
+                        type: array
+                        items:
+                          oneOf:
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - int32
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - int64
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - float32
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - float64
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - bool
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - string
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - binary
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - timestamp
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                                unit:
+                                  type: string
+                                  enum:
+                                    - second
+                                    - millisecond
+                                    - microsecond
+                                    - nanosecond
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - json
+                                decimal_encoding:
+                                  type: string
+                                  enum:
+                                    - number
+                                    - string
+                                    - bytes
+                                timestamp_format:
+                                  type: string
+                                  enum:
+                                    - rfc3339
+                                    - unix_millis
+                                unstructured:
+                                  type: boolean
+                              required:
+                                - type
+                            - type: object
+                              additionalProperties: true
+                            - type: object
+                              additionalProperties: true
+                      format:
+                        oneOf:
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - json
+                              decimal_encoding:
+                                type: string
+                                enum:
+                                  - number
+                                  - string
+                                  - bytes
+                              timestamp_format:
+                                type: string
+                                enum:
+                                  - rfc3339
+                                  - unix_millis
+                              unstructured:
+                                type: boolean
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - parquet
+                              compression:
+                                type: string
+                                enum:
+                                  - uncompressed
+                                  - snappy
+                                  - gzip
+                                  - zstd
+                                  - lz4
+                              row_group_bytes:
+                                oneOf:
+                                  - type: number
+                                nullable: true
+                            required:
+                              - type
+                      inferred:
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                required:
+                  - id
+                  - created_at
+                  - modified_at
+                  - name
+                  - type
+      x-distilled-pagination-class: SinkListResponsesV4PagePaginationArray
+    post:
+      operationId: createSink
+      description: "Create a new Sink.  @example ```ts const sink = await
+        client.pipelines.sinks.create({ account_id:
+        '0123105f4ecef8ad9ca31a8372d0c353', name: 'my_sink', type: 'r2', });
+        ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Specifies the public ID of the account."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: Defines the name of the Sink."
+                type:
+                  type: string
+                  enum:
+                    - r2
+                    - r2_data_catalog
+                  description: "Body param: Specifies the type of sink."
+                config:
+                  oneOf:
+                    - type: object
+                      properties:
+                        account_id:
+                          type: string
+                          description: Cloudflare Account ID for the bucket
+                        bucket:
+                          type: string
+                          description: R2 Bucket to write to
+                        credentials:
+                          type: object
+                          properties:
+                            access_key_id:
+                              type: string
+                              description: Cloudflare Account ID for the bucket
+                            secret_access_key:
+                              type: string
+                              description: Cloudflare Account ID for the bucket
+                          required:
+                            - access_key_id
+                            - secret_access_key
+                        file_naming:
+                          type: object
+                          properties:
+                            prefix:
+                              type: string
+                              description: The prefix to use in file name. i.e prefix-<uuid>.parquet
+                            strategy:
+                              type: string
+                              enum:
+                                - serial
+                                - uuid
+                                - uuid_v7
+                                - ulid
+                              description: Filename generation strategy.
+                            suffix:
+                              type: string
+                              description: This will overwrite the default file suffix. i.e .parquet, use with
+                                caution
+                          description: Controls filename prefix/suffix and strategy.
+                        jurisdiction:
+                          type: string
+                          description: Jurisdiction this bucket is hosted in
+                        partitioning:
+                          type: object
+                          properties:
+                            time_pattern:
+                              type: string
+                              description: The pattern of the date string
+                          description: Data-layout partitioning for sinks.
+                        path:
+                          type: string
+                          description: Subpath within the bucket to write to
+                        rolling_policy:
+                          type: object
+                          properties:
+                            file_size_bytes:
+                              type: number
+                              description: Files will be rolled after reaching this number of bytes
+                            inactivity_seconds:
+                              type: number
+                              description: Number of seconds of inactivity to wait before rolling over to a
+                                new file
+                            interval_seconds:
+                              type: number
+                              description: Number of seconds to wait before rolling over to a new file
+                          description: Rolling policy for file sinks (when & why to close a file and open
+                            a new one).
+                      required:
+                        - account_id
+                        - bucket
+                        - credentials
+                    - type: object
+                      properties:
+                        token:
+                          type: string
+                          description: Authentication token
+                        account_id:
+                          type: string
+                          description: Cloudflare Account ID
+                        bucket:
+                          type: string
+                          description: The R2 Bucket that hosts this catalog
+                        table_name:
+                          type: string
+                          description: Table name
+                        namespace:
+                          type: string
+                          description: Table namespace
+                        rolling_policy:
+                          type: object
+                          properties:
+                            file_size_bytes:
+                              type: number
+                              description: Files will be rolled after reaching this number of bytes
+                            inactivity_seconds:
+                              type: number
+                              description: Number of seconds of inactivity to wait before rolling over to a
+                                new file
+                            interval_seconds:
+                              type: number
+                              description: Number of seconds to wait before rolling over to a new file
+                          description: Rolling policy for file sinks (when & why to close a file and open
+                            a new one).
+                      required:
+                        - token
+                        - account_id
+                        - bucket
+                        - table_name
+                  description: "Body param: Defines the configuration of the R2 Sink."
+                format:
+                  oneOf:
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - json
+                        decimal_encoding:
+                          type: string
+                          enum:
+                            - number
+                            - string
+                            - bytes
+                        timestamp_format:
+                          type: string
+                          enum:
+                            - rfc3339
+                            - unix_millis
+                        unstructured:
+                          type: boolean
+                      required:
+                        - type
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - parquet
+                        compression:
+                          type: string
+                          enum:
+                            - uncompressed
+                            - snappy
+                            - gzip
+                            - zstd
+                            - lz4
+                        row_group_bytes:
+                          oneOf:
+                            - type: number
+                          nullable: true
+                      required:
+                        - type
+                  description: "Body param:"
+                schema:
+                  type: object
+                  properties:
+                    fields:
+                      type: array
+                      items:
+                        oneOf:
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - int32
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              sql_name:
+                                type: string
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - int64
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              sql_name:
+                                type: string
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - float32
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              sql_name:
+                                type: string
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - float64
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              sql_name:
+                                type: string
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - bool
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              sql_name:
+                                type: string
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - string
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              sql_name:
+                                type: string
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - binary
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              sql_name:
+                                type: string
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - timestamp
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              sql_name:
+                                type: string
+                              unit:
+                                type: string
+                                enum:
+                                  - second
+                                  - millisecond
+                                  - microsecond
+                                  - nanosecond
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - json
+                              decimal_encoding:
+                                type: string
+                                enum:
+                                  - number
+                                  - string
+                                  - bytes
+                              timestamp_format:
+                                type: string
+                                enum:
+                                  - rfc3339
+                                  - unix_millis
+                              unstructured:
+                                type: boolean
+                            required:
+                              - type
+                          - type: object
+                            additionalProperties: true
+                          - type: object
+                            additionalProperties: true
+                    format:
+                      oneOf:
+                        - type: object
+                          properties:
+                            type:
+                              type: string
+                              enum:
+                                - json
+                            decimal_encoding:
+                              type: string
+                              enum:
+                                - number
+                                - string
+                                - bytes
+                            timestamp_format:
+                              type: string
+                              enum:
+                                - rfc3339
+                                - unix_millis
+                            unstructured:
+                              type: boolean
+                          required:
+                            - type
+                        - type: object
+                          properties:
+                            type:
+                              type: string
+                              enum:
+                                - parquet
+                            compression:
+                              type: string
+                              enum:
+                                - uncompressed
+                                - snappy
+                                - gzip
+                                - zstd
+                                - lz4
+                            row_group_bytes:
+                              oneOf:
+                                - type: number
+                              nullable: true
+                          required:
+                            - type
+                    inferred:
+                      oneOf:
+                        - type: boolean
+                      nullable: true
+                  description: "Body param:"
+              required:
+                - name
+                - type
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Indicates a unique identifier for this sink.
+                  created_at:
+                    type: string
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                    description: Defines the name of the Sink.
+                  type:
+                    type: string
+                    enum:
+                      - r2
+                      - r2_data_catalog
+                    description: Specifies the type of sink.
+                  config:
+                    oneOf:
+                      - type: object
+                        properties:
+                          account_id:
+                            type: string
+                            description: Cloudflare Account ID for the bucket
+                          bucket:
+                            type: string
+                            description: R2 Bucket to write to
+                          credentials:
+                            type: object
+                            properties:
+                              access_key_id:
+                                type: string
+                                description: Cloudflare Account ID for the bucket
+                              secret_access_key:
+                                type: string
+                                description: Cloudflare Account ID for the bucket
+                            required:
+                              - access_key_id
+                              - secret_access_key
+                          file_naming:
+                            type: object
+                            properties:
+                              prefix:
+                                type: string
+                                description: The prefix to use in file name. i.e prefix-<uuid>.parquet
+                              strategy:
+                                type: string
+                                enum:
+                                  - serial
+                                  - uuid
+                                  - uuid_v7
+                                  - ulid
+                                description: Filename generation strategy.
+                              suffix:
+                                type: string
+                                description: This will overwrite the default file suffix. i.e .parquet, use with
+                                  caution
+                            description: Controls filename prefix/suffix and strategy.
+                          jurisdiction:
+                            type: string
+                            description: Jurisdiction this bucket is hosted in
+                          partitioning:
+                            type: object
+                            properties:
+                              time_pattern:
+                                type: string
+                                description: The pattern of the date string
+                            description: Data-layout partitioning for sinks.
+                          path:
+                            type: string
+                            description: Subpath within the bucket to write to
+                          rolling_policy:
+                            type: object
+                            properties:
+                              file_size_bytes:
+                                type: number
+                                description: Files will be rolled after reaching this number of bytes
+                              inactivity_seconds:
+                                type: number
+                                description: Number of seconds of inactivity to wait before rolling over to a
+                                  new file
+                              interval_seconds:
+                                type: number
+                                description: Number of seconds to wait before rolling over to a new file
+                            description: Rolling policy for file sinks (when & why to close a file and open
+                              a new one).
+                        required:
+                          - account_id
+                          - bucket
+                          - credentials
+                      - type: object
+                        properties:
+                          token:
+                            type: string
+                            description: Authentication token
+                          account_id:
+                            type: string
+                            description: Cloudflare Account ID
+                          bucket:
+                            type: string
+                            description: The R2 Bucket that hosts this catalog
+                          table_name:
+                            type: string
+                            description: Table name
+                          namespace:
+                            type: string
+                            description: Table namespace
+                          rolling_policy:
+                            type: object
+                            properties:
+                              file_size_bytes:
+                                type: number
+                                description: Files will be rolled after reaching this number of bytes
+                              inactivity_seconds:
+                                type: number
+                                description: Number of seconds of inactivity to wait before rolling over to a
+                                  new file
+                              interval_seconds:
+                                type: number
+                                description: Number of seconds to wait before rolling over to a new file
+                            description: Rolling policy for file sinks (when & why to close a file and open
+                              a new one).
+                        required:
+                          - token
+                          - account_id
+                          - bucket
+                          - table_name
+                    description: R2 Data Catalog Sink
+                  format:
+                    oneOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - json
+                          decimal_encoding:
+                            type: string
+                            enum:
+                              - number
+                              - string
+                              - bytes
+                          timestamp_format:
+                            type: string
+                            enum:
+                              - rfc3339
+                              - unix_millis
+                          unstructured:
+                            type: boolean
+                        required:
+                          - type
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - parquet
+                          compression:
+                            type: string
+                            enum:
+                              - uncompressed
+                              - snappy
+                              - gzip
+                              - zstd
+                              - lz4
+                          row_group_bytes:
+                            oneOf:
+                              - type: number
+                            nullable: true
+                        required:
+                          - type
+                  schema:
+                    type: object
+                    properties:
+                      fields:
+                        type: array
+                        items:
+                          oneOf:
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - int32
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - int64
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - float32
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - float64
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - bool
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - string
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - binary
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - timestamp
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                                unit:
+                                  type: string
+                                  enum:
+                                    - second
+                                    - millisecond
+                                    - microsecond
+                                    - nanosecond
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - json
+                                decimal_encoding:
+                                  type: string
+                                  enum:
+                                    - number
+                                    - string
+                                    - bytes
+                                timestamp_format:
+                                  type: string
+                                  enum:
+                                    - rfc3339
+                                    - unix_millis
+                                unstructured:
+                                  type: boolean
+                              required:
+                                - type
+                            - type: object
+                              additionalProperties: true
+                            - type: object
+                              additionalProperties: true
+                      format:
+                        oneOf:
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - json
+                              decimal_encoding:
+                                type: string
+                                enum:
+                                  - number
+                                  - string
+                                  - bytes
+                              timestamp_format:
+                                type: string
+                                enum:
+                                  - rfc3339
+                                  - unix_millis
+                              unstructured:
+                                type: boolean
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - parquet
+                              compression:
+                                type: string
+                                enum:
+                                  - uncompressed
+                                  - snappy
+                                  - gzip
+                                  - zstd
+                                  - lz4
+                              row_group_bytes:
+                                oneOf:
+                                  - type: number
+                                nullable: true
+                            required:
+                              - type
+                      inferred:
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                required:
+                  - id
+                  - created_at
+                  - modified_at
+                  - name
+                  - type
+      x-distilled-response-path: result
+  /accounts/{account_id}/pipelines/v1/validate_sql:
+    post:
+      operationId: validateSqlPipeline
+      description: "Validate Arroyo SQL.  @example ```ts const response = await
+        client.pipelines.validateSql({ account_id:
+        '0123105f4ecef8ad9ca31a8372d0c353', sql: 'insert into sink select from
+        source;', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Specifies the public ID of the account."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sql:
+                  type: string
+                  description: "Body param: Specifies SQL to validate."
+              required:
+                - sql
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tables:
+                    type: object
+                    additionalProperties: true
+                    description: Indicates tables involved in the processing.
+                  graph:
+                    type: object
+                    properties:
+                      edges:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            dest_id:
+                              type: number
+                            edge_type:
+                              type: string
+                            key_type:
+                              type: string
+                            src_id:
+                              type: number
+                            value_type:
+                              type: string
+                          required:
+                            - dest_id
+                            - edge_type
+                            - key_type
+                            - src_id
+                            - value_type
+                      nodes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            description:
+                              type: string
+                            node_id:
+                              type: number
+                            operator:
+                              type: string
+                            parallelism:
+                              type: number
+                          required:
+                            - description
+                            - node_id
+                            - operator
+                            - parallelism
+                    required:
+                      - edges
+                      - nodes
+                required:
+                  - tables
+      x-distilled-response-path: result
+      x-distilled-errors:
+        TableNotFound:
+          - code: 1014
+  /accounts/{account_id}/pipelines/v1/streams/{streamId}:
+    get:
+      operationId: getStream
+      description: "Get Stream Details.  @example ```ts const stream = await
+        client.pipelines.streams.get( '033e105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '0123105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: streamId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Specifies the public ID of the account.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Indicates a unique identifier for this stream.
+                  created_at:
+                    type: string
+                  http:
+                    type: object
+                    properties:
+                      authentication:
+                        type: boolean
+                        description: Indicates that authentication is required for the HTTP endpoint.
+                      enabled:
+                        type: boolean
+                        description: Indicates that the HTTP endpoint is enabled.
+                      cors:
+                        type: object
+                        properties:
+                          origins:
+                            type: array
+                            items:
+                              type: string
+                        description: Specifies the CORS options for the HTTP endpoint.
+                    required:
+                      - authentication
+                      - enabled
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                    description: Indicates the name of the Stream.
+                  version:
+                    type: number
+                    description: Indicates the current version of this stream.
+                  worker_binding:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                        description: Indicates that the worker binding is enabled.
+                    required:
+                      - enabled
+                  endpoint:
+                    type: string
+                    description: Indicates the endpoint URL of this stream.
+                  format:
+                    oneOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - json
+                          decimal_encoding:
+                            type: string
+                            enum:
+                              - number
+                              - string
+                              - bytes
+                          timestamp_format:
+                            type: string
+                            enum:
+                              - rfc3339
+                              - unix_millis
+                          unstructured:
+                            type: boolean
+                        required:
+                          - type
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - parquet
+                          compression:
+                            type: string
+                            enum:
+                              - uncompressed
+                              - snappy
+                              - gzip
+                              - zstd
+                              - lz4
+                          row_group_bytes:
+                            oneOf:
+                              - type: number
+                            nullable: true
+                        required:
+                          - type
+                  schema:
+                    type: object
+                    properties:
+                      fields:
+                        type: array
+                        items:
+                          oneOf:
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - int32
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - int64
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - float32
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - float64
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - bool
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - string
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - binary
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - timestamp
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                                unit:
+                                  type: string
+                                  enum:
+                                    - second
+                                    - millisecond
+                                    - microsecond
+                                    - nanosecond
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - json
+                                decimal_encoding:
+                                  type: string
+                                  enum:
+                                    - number
+                                    - string
+                                    - bytes
+                                timestamp_format:
+                                  type: string
+                                  enum:
+                                    - rfc3339
+                                    - unix_millis
+                                unstructured:
+                                  type: boolean
+                              required:
+                                - type
+                            - type: object
+                              additionalProperties: true
+                            - type: object
+                              additionalProperties: true
+                      format:
+                        oneOf:
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - json
+                              decimal_encoding:
+                                type: string
+                                enum:
+                                  - number
+                                  - string
+                                  - bytes
+                              timestamp_format:
+                                type: string
+                                enum:
+                                  - rfc3339
+                                  - unix_millis
+                              unstructured:
+                                type: boolean
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - parquet
+                              compression:
+                                type: string
+                                enum:
+                                  - uncompressed
+                                  - snappy
+                                  - gzip
+                                  - zstd
+                                  - lz4
+                              row_group_bytes:
+                                oneOf:
+                                  - type: number
+                                nullable: true
+                            required:
+                              - type
+                      inferred:
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                required:
+                  - id
+                  - created_at
+                  - http
+                  - modified_at
+                  - name
+                  - version
+                  - worker_binding
+      x-distilled-response-path: result
+      x-distilled-errors:
+        StreamNotFound:
+          - code: 1016
+        InvalidStreamId:
+          - code: 2
+    patch:
+      operationId: patchStream
+      description: "Update a Stream.  @example ```ts const stream = await
+        client.pipelines.streams.update( '033e105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '0123105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: streamId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Specifies the public ID of the account."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                http:
+                  type: object
+                  properties:
+                    authentication:
+                      type: boolean
+                      description: Indicates that authentication is required for the HTTP endpoint.
+                    enabled:
+                      type: boolean
+                      description: Indicates that the HTTP endpoint is enabled.
+                    cors:
+                      type: object
+                      properties:
+                        origins:
+                          type: array
+                          items:
+                            type: string
+                      description: Specifies the CORS options for the HTTP endpoint.
+                  required:
+                    - authentication
+                    - enabled
+                  description: "Body param:"
+                worker_binding:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                      description: Indicates that the worker binding is enabled.
+                  required:
+                    - enabled
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Indicates a unique identifier for this stream.
+                  created_at:
+                    type: string
+                  http:
+                    type: object
+                    properties:
+                      authentication:
+                        type: boolean
+                        description: Indicates that authentication is required for the HTTP endpoint.
+                      enabled:
+                        type: boolean
+                        description: Indicates that the HTTP endpoint is enabled.
+                      cors:
+                        type: object
+                        properties:
+                          origins:
+                            type: array
+                            items:
+                              type: string
+                        description: Specifies the CORS options for the HTTP endpoint.
+                    required:
+                      - authentication
+                      - enabled
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                    description: Indicates the name of the Stream.
+                  version:
+                    type: number
+                    description: Indicates the current version of this stream.
+                  worker_binding:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                        description: Indicates that the worker binding is enabled.
+                    required:
+                      - enabled
+                  endpoint:
+                    type: string
+                    description: Indicates the endpoint URL of this stream.
+                  format:
+                    oneOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - json
+                          decimal_encoding:
+                            type: string
+                            enum:
+                              - number
+                              - string
+                              - bytes
+                          timestamp_format:
+                            type: string
+                            enum:
+                              - rfc3339
+                              - unix_millis
+                          unstructured:
+                            type: boolean
+                        required:
+                          - type
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - parquet
+                          compression:
+                            type: string
+                            enum:
+                              - uncompressed
+                              - snappy
+                              - gzip
+                              - zstd
+                              - lz4
+                          row_group_bytes:
+                            oneOf:
+                              - type: number
+                            nullable: true
+                        required:
+                          - type
+                required:
+                  - id
+                  - created_at
+                  - http
+                  - modified_at
+                  - name
+                  - version
+                  - worker_binding
+      x-distilled-response-path: result
+      x-distilled-errors:
+        StreamNotFound:
+          - code: 1016
+    delete:
+      operationId: deleteStream
+      description: "Delete Stream in Account.  @example ```ts await
+        client.pipelines.streams.delete( '033e105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '0123105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: streamId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Specifies the public ID of the account."
+          schema:
+            type: string
+        - name: force
+          in: query
+          required: false
+          description: "Query param: Delete stream forcefully, including deleting any
+            dependent pipelines."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+      x-distilled-errors:
+        PipelineNotExists:
+          - code: 1000
+  /accounts/{account_id}/pipelines/v1/streams:
+    get:
+      operationId: listStreams
+      description: "List/Filter Streams in Account.  @example ```ts // Automatically
+        fetches more pages as needed. for await (const streamListResponse of
+        client.pipelines.streams.list( { account_id:
+        '0123105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Specifies the public ID of the account."
+          schema:
+            type: string
+        - name: pipeline_id
+          in: query
+          required: false
+          description: "Query param: Specifies the public ID of the pipeline."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Indicates a unique identifier for this stream.
+                  created_at:
+                    type: string
+                  http:
+                    type: object
+                    properties:
+                      authentication:
+                        type: boolean
+                        description: Indicates that authentication is required for the HTTP endpoint.
+                      enabled:
+                        type: boolean
+                        description: Indicates that the HTTP endpoint is enabled.
+                      cors:
+                        type: object
+                        properties:
+                          origins:
+                            type: array
+                            items:
+                              type: string
+                        description: Specifies the CORS options for the HTTP endpoint.
+                    required:
+                      - authentication
+                      - enabled
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                    description: Indicates the name of the Stream.
+                  version:
+                    type: number
+                    description: Indicates the current version of this stream.
+                  worker_binding:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                        description: Indicates that the worker binding is enabled.
+                    required:
+                      - enabled
+                  endpoint:
+                    type: string
+                    description: Indicates the endpoint URL of this stream.
+                  format:
+                    oneOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - json
+                          decimal_encoding:
+                            type: string
+                            enum:
+                              - number
+                              - string
+                              - bytes
+                          timestamp_format:
+                            type: string
+                            enum:
+                              - rfc3339
+                              - unix_millis
+                          unstructured:
+                            type: boolean
+                        required:
+                          - type
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - parquet
+                          compression:
+                            type: string
+                            enum:
+                              - uncompressed
+                              - snappy
+                              - gzip
+                              - zstd
+                              - lz4
+                          row_group_bytes:
+                            oneOf:
+                              - type: number
+                            nullable: true
+                        required:
+                          - type
+                  schema:
+                    type: object
+                    properties:
+                      fields:
+                        type: array
+                        items:
+                          oneOf:
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - int32
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - int64
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - float32
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - float64
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - bool
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - string
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - binary
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - timestamp
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                                unit:
+                                  type: string
+                                  enum:
+                                    - second
+                                    - millisecond
+                                    - microsecond
+                                    - nanosecond
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - json
+                                decimal_encoding:
+                                  type: string
+                                  enum:
+                                    - number
+                                    - string
+                                    - bytes
+                                timestamp_format:
+                                  type: string
+                                  enum:
+                                    - rfc3339
+                                    - unix_millis
+                                unstructured:
+                                  type: boolean
+                              required:
+                                - type
+                            - type: object
+                              additionalProperties: true
+                            - type: object
+                              additionalProperties: true
+                      format:
+                        oneOf:
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - json
+                              decimal_encoding:
+                                type: string
+                                enum:
+                                  - number
+                                  - string
+                                  - bytes
+                              timestamp_format:
+                                type: string
+                                enum:
+                                  - rfc3339
+                                  - unix_millis
+                              unstructured:
+                                type: boolean
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - parquet
+                              compression:
+                                type: string
+                                enum:
+                                  - uncompressed
+                                  - snappy
+                                  - gzip
+                                  - zstd
+                                  - lz4
+                              row_group_bytes:
+                                oneOf:
+                                  - type: number
+                                nullable: true
+                            required:
+                              - type
+                      inferred:
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                required:
+                  - id
+                  - created_at
+                  - http
+                  - modified_at
+                  - name
+                  - version
+                  - worker_binding
+      x-distilled-pagination-class: StreamListResponsesV4PagePaginationArray
+    post:
+      operationId: createStream
+      description: "Create a new Stream.  @example ```ts const stream = await
+        client.pipelines.streams.create({ account_id:
+        '0123105f4ecef8ad9ca31a8372d0c353', name: 'my_stream', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Specifies the public ID of the account."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: Specifies the name of the Stream."
+                format:
+                  oneOf:
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - json
+                        decimal_encoding:
+                          type: string
+                          enum:
+                            - number
+                            - string
+                            - bytes
+                        timestamp_format:
+                          type: string
+                          enum:
+                            - rfc3339
+                            - unix_millis
+                        unstructured:
+                          type: boolean
+                      required:
+                        - type
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - parquet
+                        compression:
+                          type: string
+                          enum:
+                            - uncompressed
+                            - snappy
+                            - gzip
+                            - zstd
+                            - lz4
+                        row_group_bytes:
+                          oneOf:
+                            - type: number
+                          nullable: true
+                      required:
+                        - type
+                  description: "Body param:"
+                http:
+                  type: object
+                  properties:
+                    authentication:
+                      type: boolean
+                      description: Indicates that authentication is required for the HTTP endpoint.
+                    enabled:
+                      type: boolean
+                      description: Indicates that the HTTP endpoint is enabled.
+                    cors:
+                      type: object
+                      properties:
+                        origins:
+                          type: array
+                          items:
+                            type: string
+                      description: Specifies the CORS options for the HTTP endpoint.
+                  required:
+                    - authentication
+                    - enabled
+                  description: "Body param:"
+                schema:
+                  type: object
+                  properties:
+                    fields:
+                      type: array
+                      items:
+                        oneOf:
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - int32
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              sql_name:
+                                type: string
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - int64
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              sql_name:
+                                type: string
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - float32
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              sql_name:
+                                type: string
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - float64
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              sql_name:
+                                type: string
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - bool
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              sql_name:
+                                type: string
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - string
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              sql_name:
+                                type: string
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - binary
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              sql_name:
+                                type: string
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - timestamp
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
+                                type: string
+                              required:
+                                type: boolean
+                              sql_name:
+                                type: string
+                              unit:
+                                type: string
+                                enum:
+                                  - second
+                                  - millisecond
+                                  - microsecond
+                                  - nanosecond
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - json
+                              decimal_encoding:
+                                type: string
+                                enum:
+                                  - number
+                                  - string
+                                  - bytes
+                              timestamp_format:
+                                type: string
+                                enum:
+                                  - rfc3339
+                                  - unix_millis
+                              unstructured:
+                                type: boolean
+                            required:
+                              - type
+                          - type: object
+                            additionalProperties: true
+                          - type: object
+                            additionalProperties: true
+                    format:
+                      oneOf:
+                        - type: object
+                          properties:
+                            type:
+                              type: string
+                              enum:
+                                - json
+                            decimal_encoding:
+                              type: string
+                              enum:
+                                - number
+                                - string
+                                - bytes
+                            timestamp_format:
+                              type: string
+                              enum:
+                                - rfc3339
+                                - unix_millis
+                            unstructured:
+                              type: boolean
+                          required:
+                            - type
+                        - type: object
+                          properties:
+                            type:
+                              type: string
+                              enum:
+                                - parquet
+                            compression:
+                              type: string
+                              enum:
+                                - uncompressed
+                                - snappy
+                                - gzip
+                                - zstd
+                                - lz4
+                            row_group_bytes:
+                              oneOf:
+                                - type: number
+                              nullable: true
+                          required:
+                            - type
+                    inferred:
+                      oneOf:
+                        - type: boolean
+                      nullable: true
+                  description: "Body param:"
+                worker_binding:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                      description: Indicates that the worker binding is enabled.
+                  required:
+                    - enabled
+                  description: "Body param:"
+              required:
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Indicates a unique identifier for this stream.
+                  created_at:
+                    type: string
+                  http:
+                    type: object
+                    properties:
+                      authentication:
+                        type: boolean
+                        description: Indicates that authentication is required for the HTTP endpoint.
+                      enabled:
+                        type: boolean
+                        description: Indicates that the HTTP endpoint is enabled.
+                      cors:
+                        type: object
+                        properties:
+                          origins:
+                            type: array
+                            items:
+                              type: string
+                        description: Specifies the CORS options for the HTTP endpoint.
+                    required:
+                      - authentication
+                      - enabled
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                    description: Indicates the name of the Stream.
+                  version:
+                    type: number
+                    description: Indicates the current version of this stream.
+                  worker_binding:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                        description: Indicates that the worker binding is enabled.
+                    required:
+                      - enabled
+                  endpoint:
+                    type: string
+                    description: Indicates the endpoint URL of this stream.
+                  format:
+                    oneOf:
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - json
+                          decimal_encoding:
+                            type: string
+                            enum:
+                              - number
+                              - string
+                              - bytes
+                          timestamp_format:
+                            type: string
+                            enum:
+                              - rfc3339
+                              - unix_millis
+                          unstructured:
+                            type: boolean
+                        required:
+                          - type
+                      - type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - parquet
+                          compression:
+                            type: string
+                            enum:
+                              - uncompressed
+                              - snappy
+                              - gzip
+                              - zstd
+                              - lz4
+                          row_group_bytes:
+                            oneOf:
+                              - type: number
+                            nullable: true
+                        required:
+                          - type
+                  schema:
+                    type: object
+                    properties:
+                      fields:
+                        type: array
+                        items:
+                          oneOf:
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - int32
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - int64
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - float32
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - float64
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - bool
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - string
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - binary
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - timestamp
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
+                                  type: string
+                                required:
+                                  type: boolean
+                                sql_name:
+                                  type: string
+                                unit:
+                                  type: string
+                                  enum:
+                                    - second
+                                    - millisecond
+                                    - microsecond
+                                    - nanosecond
+                              required:
+                                - type
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - json
+                                decimal_encoding:
+                                  type: string
+                                  enum:
+                                    - number
+                                    - string
+                                    - bytes
+                                timestamp_format:
+                                  type: string
+                                  enum:
+                                    - rfc3339
+                                    - unix_millis
+                                unstructured:
+                                  type: boolean
+                              required:
+                                - type
+                            - type: object
+                              additionalProperties: true
+                            - type: object
+                              additionalProperties: true
+                      format:
+                        oneOf:
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - json
+                              decimal_encoding:
+                                type: string
+                                enum:
+                                  - number
+                                  - string
+                                  - bytes
+                              timestamp_format:
+                                type: string
+                                enum:
+                                  - rfc3339
+                                  - unix_millis
+                              unstructured:
+                                type: boolean
+                            required:
+                              - type
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - parquet
+                              compression:
+                                type: string
+                                enum:
+                                  - uncompressed
+                                  - snappy
+                                  - gzip
+                                  - zstd
+                                  - lz4
+                              row_group_bytes:
+                                oneOf:
+                                  - type: number
+                                nullable: true
+                            required:
+                              - type
+                      inferred:
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                required:
+                  - id
+                  - created_at
+                  - http
+                  - modified_at
+                  - name
+                  - version
+                  - worker_binding
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidStreamName:
+          - code: 2
+        StreamAlreadyExists:
+          - code: 1003
+  /accounts/{account_id}/pipelines/v1/pipelines/{pipelineId}:
+    get:
+      operationId: getV1Pipeline
+      description: "Get Pipelines Details.  @example ```ts const response = await
+        client.pipelines.getV1( '043e105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '0123105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: pipelineId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Specifies the public ID of the account.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Indicates a unique identifier for this pipeline.
+                  created_at:
+                    type: string
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                    description: Indicates the name of the Pipeline.
+                  sql:
+                    type: string
+                    description: Specifies SQL for the Pipeline processing flow.
+                  status:
+                    type: string
+                    description: Indicates the current status of the Pipeline.
+                  tables:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Unique identifier for the connection (stream or sink).
+                        latest:
+                          type: number
+                          description: Latest available version of the connection.
+                        name:
+                          type: string
+                          description: Name of the connection.
+                        type:
+                          type: string
+                          enum:
+                            - stream
+                            - sink
+                          description: Type of the connection.
+                        version:
+                          type: number
+                          description: Current version of the connection used by this pipeline.
+                      required:
+                        - id
+                        - latest
+                        - name
+                        - type
+                        - version
+                    description: List of streams and sinks used by this pipeline.
+                required:
+                  - id
+                  - created_at
+                  - modified_at
+                  - name
+                  - sql
+                  - status
+                  - tables
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteV1Pipeline
+      description: "Delete Pipeline in Account.  @example ```ts await
+        client.pipelines.deleteV1( '043e105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '0123105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: pipelineId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Specifies the public ID of the account.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  /accounts/{account_id}/pipelines/v1/pipelines:
+    get:
+      operationId: listV1Pipeline
+      description: "List/Filter Pipelines in Account.  @example ```ts // Automatically
+        fetches more pages as needed. for await (const pipelineListV1Response of
+        client.pipelines.listV1( { account_id:
+        '0123105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Specifies the public ID of the account."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Indicates a unique identifier for this pipeline.
+                  created_at:
+                    type: string
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                    description: Indicates the name of the Pipeline.
+                  sql:
+                    type: string
+                    description: Specifies SQL for the Pipeline processing flow.
+                  status:
+                    type: string
+                    description: Indicates the current status of the Pipeline.
+                required:
+                  - id
+                  - created_at
+                  - modified_at
+                  - name
+                  - sql
+                  - status
+      x-distilled-pagination-class: PipelineListV1ResponsesV4PagePaginationArray
+    post:
+      operationId: createV1Pipeline
+      description: "Create a new Pipeline.  @example ```ts const response = await
+        client.pipelines.createV1({ account_id:
+        '0123105f4ecef8ad9ca31a8372d0c353', name: 'my_pipeline', sql: 'insert
+        into sink select from source;', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Specifies the public ID of the account."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: Specifies the name of the Pipeline."
+                sql:
+                  type: string
+                  description: "Body param: Specifies SQL for the Pipeline processing flow."
+              required:
+                - name
+                - sql
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Indicates a unique identifier for this pipeline.
+                  created_at:
+                    type: string
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                    description: Indicates the name of the Pipeline.
+                  sql:
+                    type: string
+                    description: Specifies SQL for the Pipeline processing flow.
+                  status:
+                    type: string
+                    description: Indicates the current status of the Pipeline.
+                required:
+                  - id
+                  - created_at
+                  - modified_at
+                  - name
+                  - sql
+                  - status
+      x-distilled-response-path: result

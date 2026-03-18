@@ -1,0 +1,2599 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare API-GATEWAY API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: api-gateway
+paths:
+  /zones/{zone_id}/api_gateway/configuration:
+    get:
+      operationId: getConfiguration
+      description: "Retrieve information about specific configuration
+        properties  @example ```ts const configuration = await
+        client.apiGateway.configurations.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: normalize
+          in: query
+          required: false
+          description: "Query param: Ensures that the configuration is written or
+            retrieved in normalized fashion"
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  auth_id_characteristics:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              description: The name of the characteristic field, i.e., the header or cookie
+                                name.
+                            type:
+                              type: string
+                              enum:
+                                - header
+                                - cookie
+                              description: The type of characteristic.
+                          required:
+                            - name
+                            - type
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              description: Claim location expressed as `$(token_config_id):$(json_path)`,
+                                where `token_config_id` is the ID of the token
+                                configuration used in validating the JWT, and
+                                `json_path` is a RFC 9535 JSONPath
+                                (https://goessner.net/articles/JsonPath/,
+                                https://www.rfc-editor.org/rfc/rfc9535.html).
+                                The JSONPath expression may be in dot or bracket
+                                notation, may only specify literal keys or array
+                                indexes, and must return a singleton value,
+                                which will be interpreted as a string.
+                            type:
+                              type: string
+                              enum:
+                                - jwt
+                              description: The type of characteristic.
+                          required:
+                            - name
+                            - type
+                required:
+                  - auth_id_characteristics
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        NotEntitled:
+          - code: 10403
+    put:
+      operationId: putConfiguration
+      description: "Update configuration properties  @example ```ts const
+        configuration = await client.apiGateway.configurations.update({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', auth_id_characteristics: [ { name:
+        'authorization', type: 'header' }, ], }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: normalize
+          in: query
+          required: false
+          description: "Query param: Ensures that the configuration is written or
+            retrieved in normalized fashion"
+          schema:
+            type: boolean
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                auth_id_characteristics:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: object
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the characteristic field, i.e., the header or cookie
+                              name.
+                          type:
+                            type: string
+                            enum:
+                              - header
+                              - cookie
+                            description: The type of characteristic.
+                        required:
+                          - name
+                          - type
+                      - type: object
+                        properties:
+                          name:
+                            type: string
+                            description: Claim location expressed as `$(token_config_id):$(json_path)`,
+                              where `token_config_id` is the ID of the token
+                              configuration used in validating the JWT, and
+                              `json_path` is a RFC 9535 JSONPath
+                              (https://goessner.net/articles/JsonPath/,
+                              https://www.rfc-editor.org/rfc/rfc9535.html). The
+                              JSONPath expression may be in dot or bracket
+                              notation, may only specify literal keys or array
+                              indexes, and must return a singleton value, which
+                              will be interpreted as a string.
+                          type:
+                            type: string
+                            enum:
+                              - jwt
+                            description: The type of characteristic.
+                        required:
+                          - name
+                          - type
+                  description: "Body param:"
+              required:
+                - auth_id_characteristics
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  auth_id_characteristics:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              description: The name of the characteristic field, i.e., the header or cookie
+                                name.
+                            type:
+                              type: string
+                              enum:
+                                - header
+                                - cookie
+                              description: The type of characteristic.
+                          required:
+                            - name
+                            - type
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              description: Claim location expressed as `$(token_config_id):$(json_path)`,
+                                where `token_config_id` is the ID of the token
+                                configuration used in validating the JWT, and
+                                `json_path` is a RFC 9535 JSONPath
+                                (https://goessner.net/articles/JsonPath/,
+                                https://www.rfc-editor.org/rfc/rfc9535.html).
+                                The JSONPath expression may be in dot or bracket
+                                notation, may only specify literal keys or array
+                                indexes, and must return a singleton value,
+                                which will be interpreted as a string.
+                            type:
+                              type: string
+                              enum:
+                                - jwt
+                              description: The type of characteristic.
+                          required:
+                            - name
+                            - type
+                required:
+                  - auth_id_characteristics
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        NotEntitled:
+          - code: 10403
+  /zones/{zone_id}/api_gateway/discovery:
+    get:
+      operationId: getDiscovery
+      description: "Retrieve the most up to date view of discovered operations,
+        rendered as OpenAPI schemas  @example ```ts const discovery = await
+        client.apiGateway.discovery.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  schemas:
+                    type: array
+                    items: {}
+                  timestamp:
+                    type: string
+                required:
+                  - schemas
+                  - timestamp
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        NotEntitled:
+          - code: 10403
+          - code: 10404
+  /zones/{zone_id}/api_gateway/discovery/operations:
+    get:
+      operationId: listDiscoveryOperations
+      description: "Retrieve the most up to date view of discovered
+        operations  @example ```ts // Automatically fetches more pages as
+        needed. for await (const discoveryOperation of
+        client.apiGateway.discovery.operations.list( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: diff
+          in: query
+          required: false
+          description: "Query param: When `true`, only return API Discovery results that
+            are not saved into API Shield Endpoint Management"
+          schema:
+            type: boolean
+        - name: direction
+          in: query
+          required: false
+          description: "Query param: Direction to order results."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: endpoint
+          in: query
+          required: false
+          description: "Query param: Filter results to only include endpoints containing
+            this pattern."
+          schema:
+            type: string
+        - name: host
+          in: query
+          required: false
+          description: "Query param: Filter results to only include the specified hosts."
+          schema:
+            type: array
+            items:
+              type: string
+        - name: method
+          in: query
+          required: false
+          description: "Query param: Filter results to only include the specified HTTP
+            methods."
+          schema:
+            type: array
+            items:
+              type: string
+        - name: order
+          in: query
+          required: false
+          description: "Query param: Field to order by"
+          schema:
+            type: string
+            enum:
+              - host
+              - method
+              - endpoint
+              - traffic_stats.requests
+              - traffic_stats.last_updated
+        - name: origin
+          in: query
+          required: false
+          description: "Query param: Filter results to only include discovery results
+            sourced from a particular discovery engine  - `ML` - Discovered
+            operations that were sourced using ML API Discovery -
+            `SessionIdentifier` - Discovered operations that were sourced using
+            Session Identifier API Discovery"
+          schema:
+            type: string
+            enum:
+              - ML
+              - SessionIdentifier
+              - LabelDiscovery
+        - name: state
+          in: query
+          required: false
+          description: "Query param: Filter results to only include discovery results in a
+            particular state. States are as follows  - `review` - Discovered
+            operations that are not saved into API Shield Endpoint Management -
+            `saved` - Discovered operations that are already saved into API
+            Shield Endpoint Management - `ignored` - Discovered operations that
+            have been marked as ignored"
+          schema:
+            type: string
+            enum:
+              - review
+              - saved
+              - ignored
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-pagination-class: DiscoveryOperationsV4PagePaginationArray
+    patch:
+      operationId: bulkPatchDiscoveryOperations
+      description: "Update the `state` on one or more discovered operations  @example
+        ```ts const response = await
+        client.apiGateway.discovery.operations.bulkEdit({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', body: {
+        '3818d821-5901-4147-a474-f5f5aec1d54e': {},
+        'b17c8043-99a0-4202-b7d9-8f7cdbee02cd': {}, }, }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        NotEntitled:
+          - code: 10403
+  /zones/{zone_id}/api_gateway/discovery/operations/{operationId}:
+    patch:
+      operationId: patchDiscoveryOperation
+      description: "Update the `state` on a discovered operation  @example ```ts const
+        response = await client.apiGateway.discovery.operations.edit(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: operationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: string
+                  enum:
+                    - review
+                    - ignored
+                  description: "Body param: Mark state of operation in API Discovery  - `review` -
+                    Mark operation as for review - `ignored` - Mark operation as
+                    ignored"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: string
+                    enum:
+                      - review
+                      - saved
+                      - ignored
+                    description: State of operation in API Discovery  - `review` - Operation is not
+                      saved into API Shield Endpoint Management - `saved` -
+                      Operation is saved into API Shield Endpoint Management -
+                      `ignored` - Operation is marked as ignored
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        NotEntitled:
+          - code: 10403
+  /zones/{zone_id}/api_gateway/expression-template/fallthrough:
+    post:
+      operationId: createExpressionTemplateFallthrough
+      description: "Generate fallthrough WAF expression template from a set of API
+        hosts  @example ```ts const fallthrough = await
+        client.apiGateway.expressionTemplate.fallthrough.create( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', hosts: ['{zone}.domain1.tld',
+        'domain2.tld'], }, ); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hosts:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param: List of hosts to be targeted in the expression"
+              required:
+                - hosts
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  expression:
+                    type: string
+                    description: WAF Expression for fallthrough
+                  title:
+                    type: string
+                    description: Title for the expression
+                required:
+                  - expression
+                  - title
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+  /zones/{zone_id}/api_gateway/operations/{operationId}:
+    get:
+      operationId: getOperation
+      description: "Retrieve information about an operation  @example ```ts const
+        operation = await client.apiGateway.operations.get(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: operationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: feature
+          in: query
+          required: false
+          description: "Query param: Add feature(s) to the results. The feature name that
+            is given here corresponds to the resulting feature object. Have a
+            look at the top-level object description for more details on the
+            specific meaning."
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - thresholds
+                - parameter_schemas
+                - schema_info
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  endpoint:
+                    type: string
+                    description: "The endpoint which can contain path parameter templates in curly
+                      braces, each will be replaced from left to right with
+                      {varN}, starting with {var1}, during insertion. This will
+                      further be Cloudflare-normalized upon insertion. See:
+                      https://developers.cloudflare.com/rules/normalization/how\
+                      -it-works/."
+                  host:
+                    type: string
+                    description: RFC3986-compliant host.
+                  last_updated:
+                    type: string
+                  method:
+                    type: string
+                    enum:
+                      - GET
+                      - POST
+                      - HEAD
+                      - OPTIONS
+                      - PUT
+                      - DELETE
+                      - CONNECT
+                      - PATCH
+                      - TRACE
+                    description: The HTTP method used to access the endpoint.
+                  operation_id:
+                    type: string
+                    description: UUID.
+                  features:
+                    oneOf:
+                      - type: object
+                        properties:
+                          thresholds:
+                            type: object
+                            properties:
+                              auth_id_tokens:
+                                type: number
+                                description: The total number of auth-ids seen across this calculation.
+                              data_points:
+                                type: number
+                                description: The number of data points used for the threshold suggestion
+                                  calculation.
+                              last_updated:
+                                type: string
+                              p50:
+                                type: number
+                                description: The p50 quantile of requests (in period_seconds).
+                              p90:
+                                type: number
+                                description: The p90 quantile of requests (in period_seconds).
+                              p99:
+                                type: number
+                                description: The p99 quantile of requests (in period_seconds).
+                              period_seconds:
+                                type: number
+                                description: The period over which this threshold is suggested.
+                              requests:
+                                type: number
+                                description: The estimated number of requests covered by these calculations.
+                              suggested_threshold:
+                                type: number
+                                description: The suggested threshold in requests done by the same auth_id or
+                                  period_seconds.
+                      - type: object
+                        properties:
+                          parameter_schemas:
+                            type: object
+                            properties:
+                              last_updated:
+                                type: string
+                              parameter_schemas:
+                                type: object
+                                properties:
+                                  parameters:
+                                    type: array
+                                    items: {}
+                                    description: An array containing the learned parameter schemas.
+                                  responses:
+                                    type: "null"
+                                    description: An empty response object. This field is required to yield a valid
+                                      operation schema.
+                                description: An operation schema object containing a response.
+                        required:
+                          - parameter_schemas
+                      - type: object
+                        properties:
+                          api_routing:
+                            type: object
+                            properties:
+                              last_updated:
+                                type: string
+                              route:
+                                type: string
+                                description: Target route.
+                            description: API Routing settings on endpoint.
+                      - type: object
+                        properties:
+                          confidence_intervals:
+                            type: object
+                            properties:
+                              last_updated:
+                                type: string
+                              suggested_threshold:
+                                type: object
+                                properties:
+                                  confidence_intervals:
+                                    type: object
+                                    properties:
+                                      p90:
+                                        type: object
+                                        properties:
+                                          lower:
+                                            type: number
+                                            description: Lower bound for percentile estimate
+                                          upper:
+                                            type: number
+                                            description: Upper bound for percentile estimate
+                                        description: Upper and lower bound for percentile estimate
+                                      p95:
+                                        type: object
+                                        properties:
+                                          lower:
+                                            type: number
+                                            description: Lower bound for percentile estimate
+                                          upper:
+                                            type: number
+                                            description: Upper bound for percentile estimate
+                                        description: Upper and lower bound for percentile estimate
+                                      p99:
+                                        type: object
+                                        properties:
+                                          lower:
+                                            type: number
+                                            description: Lower bound for percentile estimate
+                                          upper:
+                                            type: number
+                                            description: Upper bound for percentile estimate
+                                        description: Upper and lower bound for percentile estimate
+                                  mean:
+                                    type: number
+                                    description: Suggested threshold.
+                      - type: object
+                        properties:
+                          schema_info:
+                            type: object
+                            properties:
+                              active_schema:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    description: UUID.
+                                  created_at:
+                                    type: string
+                                  is_learned:
+                                    type: boolean
+                                    description: True if schema is Cloudflare-provided.
+                                  name:
+                                    type: string
+                                    description: Schema file name.
+                                description: Schema active on endpoint.
+                              learned_available:
+                                type: boolean
+                                description: True if a Cloudflare-provided learned schema is available for this
+                                  endpoint.
+                              mitigation_action:
+                                type: string
+                                enum:
+                                  - none
+                                  - log
+                                  - block
+                                nullable: true
+                                description: Action taken on requests failing validation.
+                required:
+                  - endpoint
+                  - host
+                  - last_updated
+                  - method
+                  - operation_id
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        OperationNotFound:
+          - code: 10404
+    delete:
+      operationId: deleteOperation
+      description: "Delete an operation  @example ```ts const operation = await
+        client.apiGateway.operations.delete(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: operationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    additionalProperties: true
+                  messages:
+                    type: object
+                    additionalProperties: true
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful.
+                required:
+                  - errors
+                  - messages
+                  - success
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        OperationNotFound:
+          - code: 10404
+  /zones/{zone_id}/api_gateway/operations:
+    get:
+      operationId: listOperations
+      description: "Retrieve information about all operations on a zone  @example
+        ```ts // Automatically fetches more pages as needed. for await (const
+        operationListResponse of client.apiGateway.operations.list( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: direction
+          in: query
+          required: false
+          description: "Query param: Direction to order results."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: endpoint
+          in: query
+          required: false
+          description: "Query param: Filter results to only include endpoints containing
+            this pattern."
+          schema:
+            type: string
+        - name: feature
+          in: query
+          required: false
+          description: "Query param: Add feature(s) to the results. The feature name that
+            is given here corresponds to the resulting feature object. Have a
+            look at the top-level object description for more details on the
+            specific meaning."
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - thresholds
+                - parameter_schemas
+                - schema_info
+        - name: host
+          in: query
+          required: false
+          description: "Query param: Filter results to only include the specified hosts."
+          schema:
+            type: array
+            items:
+              type: string
+        - name: method
+          in: query
+          required: false
+          description: "Query param: Filter results to only include the specified HTTP
+            methods."
+          schema:
+            type: array
+            items:
+              type: string
+        - name: order
+          in: query
+          required: false
+          description: "Query param: Field to order by. When requesting a feature, the
+            feature keys are available for ordering as well, e.g.,
+            `thresholds.suggested_threshold`."
+          schema:
+            type: string
+            enum:
+              - method
+              - host
+              - endpoint
+              - thresholds.$key
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  endpoint:
+                    type: string
+                    description: "The endpoint which can contain path parameter templates in curly
+                      braces, each will be replaced from left to right with
+                      {varN}, starting with {var1}, during insertion. This will
+                      further be Cloudflare-normalized upon insertion. See:
+                      https://developers.cloudflare.com/rules/normalization/how\
+                      -it-works/."
+                  host:
+                    type: string
+                    description: RFC3986-compliant host.
+                  last_updated:
+                    type: string
+                  method:
+                    type: string
+                    enum:
+                      - GET
+                      - POST
+                      - HEAD
+                      - OPTIONS
+                      - PUT
+                      - DELETE
+                      - CONNECT
+                      - PATCH
+                      - TRACE
+                    description: The HTTP method used to access the endpoint.
+                  operation_id:
+                    type: string
+                    description: UUID.
+                  features:
+                    oneOf:
+                      - type: object
+                        properties:
+                          thresholds:
+                            type: object
+                            properties:
+                              auth_id_tokens:
+                                type: number
+                                description: The total number of auth-ids seen across this calculation.
+                              data_points:
+                                type: number
+                                description: The number of data points used for the threshold suggestion
+                                  calculation.
+                              last_updated:
+                                type: string
+                              p50:
+                                type: number
+                                description: The p50 quantile of requests (in period_seconds).
+                              p90:
+                                type: number
+                                description: The p90 quantile of requests (in period_seconds).
+                              p99:
+                                type: number
+                                description: The p99 quantile of requests (in period_seconds).
+                              period_seconds:
+                                type: number
+                                description: The period over which this threshold is suggested.
+                              requests:
+                                type: number
+                                description: The estimated number of requests covered by these calculations.
+                              suggested_threshold:
+                                type: number
+                                description: The suggested threshold in requests done by the same auth_id or
+                                  period_seconds.
+                      - type: object
+                        properties:
+                          parameter_schemas:
+                            type: object
+                            properties:
+                              last_updated:
+                                type: string
+                              parameter_schemas:
+                                type: object
+                                properties:
+                                  parameters:
+                                    type: array
+                                    items: {}
+                                    description: An array containing the learned parameter schemas.
+                                  responses:
+                                    type: "null"
+                                    description: An empty response object. This field is required to yield a valid
+                                      operation schema.
+                                description: An operation schema object containing a response.
+                        required:
+                          - parameter_schemas
+                      - type: object
+                        properties:
+                          api_routing:
+                            type: object
+                            properties:
+                              last_updated:
+                                type: string
+                              route:
+                                type: string
+                                description: Target route.
+                            description: API Routing settings on endpoint.
+                      - type: object
+                        properties:
+                          confidence_intervals:
+                            type: object
+                            properties:
+                              last_updated:
+                                type: string
+                              suggested_threshold:
+                                type: object
+                                properties:
+                                  confidence_intervals:
+                                    type: object
+                                    properties:
+                                      p90:
+                                        type: object
+                                        properties:
+                                          lower:
+                                            type: number
+                                            description: Lower bound for percentile estimate
+                                          upper:
+                                            type: number
+                                            description: Upper bound for percentile estimate
+                                        description: Upper and lower bound for percentile estimate
+                                      p95:
+                                        type: object
+                                        properties:
+                                          lower:
+                                            type: number
+                                            description: Lower bound for percentile estimate
+                                          upper:
+                                            type: number
+                                            description: Upper bound for percentile estimate
+                                        description: Upper and lower bound for percentile estimate
+                                      p99:
+                                        type: object
+                                        properties:
+                                          lower:
+                                            type: number
+                                            description: Lower bound for percentile estimate
+                                          upper:
+                                            type: number
+                                            description: Upper bound for percentile estimate
+                                        description: Upper and lower bound for percentile estimate
+                                  mean:
+                                    type: number
+                                    description: Suggested threshold.
+                      - type: object
+                        properties:
+                          schema_info:
+                            type: object
+                            properties:
+                              active_schema:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    description: UUID.
+                                  created_at:
+                                    type: string
+                                  is_learned:
+                                    type: boolean
+                                    description: True if schema is Cloudflare-provided.
+                                  name:
+                                    type: string
+                                    description: Schema file name.
+                                description: Schema active on endpoint.
+                              learned_available:
+                                type: boolean
+                                description: True if a Cloudflare-provided learned schema is available for this
+                                  endpoint.
+                              mitigation_action:
+                                type: string
+                                enum:
+                                  - none
+                                  - log
+                                  - block
+                                nullable: true
+                                description: Action taken on requests failing validation.
+                required:
+                  - endpoint
+                  - host
+                  - last_updated
+                  - method
+                  - operation_id
+      x-distilled-pagination-class: OperationListResponsesV4PagePaginationArray
+    post:
+      operationId: bulkCreateOperations
+      description: "Add one or more operations to a zone. Endpoints can contain path
+        variables. Host, method, endpoint will be normalized to a canoncial form
+        when creating an operation and must be unique on the zone. Inserting an
+        operation that matches an existing one will return the record of the
+        already existing operation and update its last_updated date.  @example
+        ```ts // Automatically fetches more pages as needed. for await (const
+        operationBulkCreateResponse of client.apiGateway.operations.bulkCreate(
+        { zone_id: '023e105f4ecef8ad9ca31a8372d0c353', body: [ { endpoint:
+        '/api/v1/users/{var1}', host: 'www.example.com', method: 'GET', }, ], },
+        )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  endpoint:
+                    type: string
+                    description: "The endpoint which can contain path parameter templates in curly
+                      braces, each will be replaced from left to right with
+                      {varN}, starting with {var1}, during insertion. This will
+                      further be Cloudflare-normalized upon insertion. See:
+                      https://developers.cloudflare.com/rules/normalization/how\
+                      -it-works/."
+                  host:
+                    type: string
+                    description: RFC3986-compliant host.
+                  method:
+                    type: string
+                    enum:
+                      - GET
+                      - POST
+                      - HEAD
+                      - OPTIONS
+                      - PUT
+                      - DELETE
+                      - CONNECT
+                      - PATCH
+                      - TRACE
+                    description: The HTTP method used to access the endpoint.
+                required:
+                  - endpoint
+                  - host
+                  - method
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  endpoint:
+                    type: string
+                    description: "The endpoint which can contain path parameter templates in curly
+                      braces, each will be replaced from left to right with
+                      {varN}, starting with {var1}, during insertion. This will
+                      further be Cloudflare-normalized upon insertion. See:
+                      https://developers.cloudflare.com/rules/normalization/how\
+                      -it-works/."
+                  host:
+                    type: string
+                    description: RFC3986-compliant host.
+                  last_updated:
+                    type: string
+                  method:
+                    type: string
+                    enum:
+                      - GET
+                      - POST
+                      - HEAD
+                      - OPTIONS
+                      - PUT
+                      - DELETE
+                      - CONNECT
+                      - PATCH
+                      - TRACE
+                    description: The HTTP method used to access the endpoint.
+                  operation_id:
+                    type: string
+                    description: UUID.
+                  features:
+                    oneOf:
+                      - type: object
+                        properties:
+                          thresholds:
+                            type: object
+                            properties:
+                              auth_id_tokens:
+                                type: number
+                                description: The total number of auth-ids seen across this calculation.
+                              data_points:
+                                type: number
+                                description: The number of data points used for the threshold suggestion
+                                  calculation.
+                              last_updated:
+                                type: string
+                              p50:
+                                type: number
+                                description: The p50 quantile of requests (in period_seconds).
+                              p90:
+                                type: number
+                                description: The p90 quantile of requests (in period_seconds).
+                              p99:
+                                type: number
+                                description: The p99 quantile of requests (in period_seconds).
+                              period_seconds:
+                                type: number
+                                description: The period over which this threshold is suggested.
+                              requests:
+                                type: number
+                                description: The estimated number of requests covered by these calculations.
+                              suggested_threshold:
+                                type: number
+                                description: The suggested threshold in requests done by the same auth_id or
+                                  period_seconds.
+                      - type: object
+                        properties:
+                          parameter_schemas:
+                            type: object
+                            properties:
+                              last_updated:
+                                type: string
+                              parameter_schemas:
+                                type: object
+                                properties:
+                                  parameters:
+                                    type: array
+                                    items: {}
+                                    description: An array containing the learned parameter schemas.
+                                  responses:
+                                    type: "null"
+                                    description: An empty response object. This field is required to yield a valid
+                                      operation schema.
+                                description: An operation schema object containing a response.
+                        required:
+                          - parameter_schemas
+                      - type: object
+                        properties:
+                          api_routing:
+                            type: object
+                            properties:
+                              last_updated:
+                                type: string
+                              route:
+                                type: string
+                                description: Target route.
+                            description: API Routing settings on endpoint.
+                      - type: object
+                        properties:
+                          confidence_intervals:
+                            type: object
+                            properties:
+                              last_updated:
+                                type: string
+                              suggested_threshold:
+                                type: object
+                                properties:
+                                  confidence_intervals:
+                                    type: object
+                                    properties:
+                                      p90:
+                                        type: object
+                                        properties:
+                                          lower:
+                                            type: number
+                                            description: Lower bound for percentile estimate
+                                          upper:
+                                            type: number
+                                            description: Upper bound for percentile estimate
+                                        description: Upper and lower bound for percentile estimate
+                                      p95:
+                                        type: object
+                                        properties:
+                                          lower:
+                                            type: number
+                                            description: Lower bound for percentile estimate
+                                          upper:
+                                            type: number
+                                            description: Upper bound for percentile estimate
+                                        description: Upper and lower bound for percentile estimate
+                                      p99:
+                                        type: object
+                                        properties:
+                                          lower:
+                                            type: number
+                                            description: Lower bound for percentile estimate
+                                          upper:
+                                            type: number
+                                            description: Upper bound for percentile estimate
+                                        description: Upper and lower bound for percentile estimate
+                                  mean:
+                                    type: number
+                                    description: Suggested threshold.
+                      - type: object
+                        properties:
+                          schema_info:
+                            type: object
+                            properties:
+                              active_schema:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    description: UUID.
+                                  created_at:
+                                    type: string
+                                  is_learned:
+                                    type: boolean
+                                    description: True if schema is Cloudflare-provided.
+                                  name:
+                                    type: string
+                                    description: Schema file name.
+                                description: Schema active on endpoint.
+                              learned_available:
+                                type: boolean
+                                description: True if a Cloudflare-provided learned schema is available for this
+                                  endpoint.
+                              mitigation_action:
+                                type: string
+                                enum:
+                                  - none
+                                  - log
+                                  - block
+                                nullable: true
+                                description: Action taken on requests failing validation.
+                required:
+                  - endpoint
+                  - host
+                  - last_updated
+                  - method
+                  - operation_id
+      x-distilled-pagination-class: OperationBulkCreateResponsesSinglePage
+    delete:
+      operationId: bulkDeleteOperations
+      description: "Delete multiple operations  @example ```ts const response = await
+        client.apiGateway.operations.bulkDelete({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    additionalProperties: true
+                  messages:
+                    type: object
+                    additionalProperties: true
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful.
+                required:
+                  - errors
+                  - messages
+                  - success
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+  /zones/{zone_id}/api_gateway/operations/item:
+    post:
+      operationId: createOperation
+      description: "Add one operation to a zone. Endpoints can contain path variables.
+        Host, method, endpoint will be normalized to a canoncial form when
+        creating an operation and must be unique on the zone. Inserting an
+        operation that matches an existing one will return the record of the
+        already existing operation and update its last_updated date.  @example
+        ```ts const operation = await client.apiGateway.operations.create( {
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353', endpoint:
+        '/api/v1/users/{var1}', host: 'www.example.com', method: 'GET', }, );
+        ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                endpoint:
+                  type: string
+                  description: "Body param: The endpoint which can contain path parameter
+                    templates in curly braces, each will be replaced from left
+                    to right with {varN}, starting with {var1}, during
+                    insertion. This will further be Cloudflare-normalized upon
+                    insertion. See:
+                    https://developers.cloudflare.com/rules/normalization/how-i\
+                    t-works/."
+                host:
+                  type: string
+                  description: "Body param: RFC3986-compliant host."
+                method:
+                  type: string
+                  enum:
+                    - GET
+                    - POST
+                    - HEAD
+                    - OPTIONS
+                    - PUT
+                    - DELETE
+                    - CONNECT
+                    - PATCH
+                    - TRACE
+                  description: "Body param: The HTTP method used to access the endpoint."
+              required:
+                - endpoint
+                - host
+                - method
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  endpoint:
+                    type: string
+                    description: "The endpoint which can contain path parameter templates in curly
+                      braces, each will be replaced from left to right with
+                      {varN}, starting with {var1}, during insertion. This will
+                      further be Cloudflare-normalized upon insertion. See:
+                      https://developers.cloudflare.com/rules/normalization/how\
+                      -it-works/."
+                  host:
+                    type: string
+                    description: RFC3986-compliant host.
+                  last_updated:
+                    type: string
+                  method:
+                    type: string
+                    enum:
+                      - GET
+                      - POST
+                      - HEAD
+                      - OPTIONS
+                      - PUT
+                      - DELETE
+                      - CONNECT
+                      - PATCH
+                      - TRACE
+                    description: The HTTP method used to access the endpoint.
+                  operation_id:
+                    type: string
+                    description: UUID.
+                  features:
+                    oneOf:
+                      - type: object
+                        properties:
+                          thresholds:
+                            type: object
+                            properties:
+                              auth_id_tokens:
+                                type: number
+                                description: The total number of auth-ids seen across this calculation.
+                              data_points:
+                                type: number
+                                description: The number of data points used for the threshold suggestion
+                                  calculation.
+                              last_updated:
+                                type: string
+                              p50:
+                                type: number
+                                description: The p50 quantile of requests (in period_seconds).
+                              p90:
+                                type: number
+                                description: The p90 quantile of requests (in period_seconds).
+                              p99:
+                                type: number
+                                description: The p99 quantile of requests (in period_seconds).
+                              period_seconds:
+                                type: number
+                                description: The period over which this threshold is suggested.
+                              requests:
+                                type: number
+                                description: The estimated number of requests covered by these calculations.
+                              suggested_threshold:
+                                type: number
+                                description: The suggested threshold in requests done by the same auth_id or
+                                  period_seconds.
+                      - type: object
+                        properties:
+                          parameter_schemas:
+                            type: object
+                            properties:
+                              last_updated:
+                                type: string
+                              parameter_schemas:
+                                type: object
+                                properties:
+                                  parameters:
+                                    type: array
+                                    items: {}
+                                    description: An array containing the learned parameter schemas.
+                                  responses:
+                                    type: "null"
+                                    description: An empty response object. This field is required to yield a valid
+                                      operation schema.
+                                description: An operation schema object containing a response.
+                        required:
+                          - parameter_schemas
+                      - type: object
+                        properties:
+                          api_routing:
+                            type: object
+                            properties:
+                              last_updated:
+                                type: string
+                              route:
+                                type: string
+                                description: Target route.
+                            description: API Routing settings on endpoint.
+                      - type: object
+                        properties:
+                          confidence_intervals:
+                            type: object
+                            properties:
+                              last_updated:
+                                type: string
+                              suggested_threshold:
+                                type: object
+                                properties:
+                                  confidence_intervals:
+                                    type: object
+                                    properties:
+                                      p90:
+                                        type: object
+                                        properties:
+                                          lower:
+                                            type: number
+                                            description: Lower bound for percentile estimate
+                                          upper:
+                                            type: number
+                                            description: Upper bound for percentile estimate
+                                        description: Upper and lower bound for percentile estimate
+                                      p95:
+                                        type: object
+                                        properties:
+                                          lower:
+                                            type: number
+                                            description: Lower bound for percentile estimate
+                                          upper:
+                                            type: number
+                                            description: Upper bound for percentile estimate
+                                        description: Upper and lower bound for percentile estimate
+                                      p99:
+                                        type: object
+                                        properties:
+                                          lower:
+                                            type: number
+                                            description: Lower bound for percentile estimate
+                                          upper:
+                                            type: number
+                                            description: Upper bound for percentile estimate
+                                        description: Upper and lower bound for percentile estimate
+                                  mean:
+                                    type: number
+                                    description: Suggested threshold.
+                      - type: object
+                        properties:
+                          schema_info:
+                            type: object
+                            properties:
+                              active_schema:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    description: UUID.
+                                  created_at:
+                                    type: string
+                                  is_learned:
+                                    type: boolean
+                                    description: True if schema is Cloudflare-provided.
+                                  name:
+                                    type: string
+                                    description: Schema file name.
+                                description: Schema active on endpoint.
+                              learned_available:
+                                type: boolean
+                                description: True if a Cloudflare-provided learned schema is available for this
+                                  endpoint.
+                              mitigation_action:
+                                type: string
+                                enum:
+                                  - none
+                                  - log
+                                  - block
+                                nullable: true
+                                description: Action taken on requests failing validation.
+                required:
+                  - endpoint
+                  - host
+                  - last_updated
+                  - method
+                  - operation_id
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+  /zones/{zone_id}/api_gateway/operations/{operationId}/schema_validation:
+    get:
+      operationId: getOperationSchemaValidation
+      description: Retrieves operation-level schema validation settings on the
+        zone  @deprecated Use [Schema Validation
+        API](https://developers.cloudflare.com/api/resources/schema_validation/)
+        instead.
+      parameters:
+        - name: operationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mitigation_action:
+                    type: string
+                    enum:
+                      - log
+                      - block
+                      - none
+                    nullable: true
+                    description: When set, this applies a mitigation action to this operation  -
+                      `log` log request when request does not conform to schema
+                      for this operation - `block` deny access to the site when
+                      request does not conform to schema for this operation -
+                      `none` will skip mitigation for this operation - `null`
+                      indicates that no operation level mitigation is in place,
+                      see Zone Level Schema Validation Settings for mitigation
+                      action that will be applied
+                  operation_id:
+                    type: string
+                    description: UUID.
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        OperationNotFound:
+          - code: 10404
+    put:
+      operationId: putOperationSchemaValidation
+      description: Updates operation-level schema validation settings on the
+        zone  @deprecated Use [Schema Validation
+        API](https://developers.cloudflare.com/api/resources/schema_validation/)
+        instead.
+      parameters:
+        - name: operationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mitigation_action:
+                  type: string
+                  enum:
+                    - log
+                    - block
+                    - none
+                  nullable: true
+                  description: "Body param: When set, this applies a mitigation action to this
+                    operation  - `log` log request when request does not conform
+                    to schema for this operation - `block` deny access to the
+                    site when request does not conform to schema for this
+                    operation - `none` will skip mitigation for this operation -
+                    `null` indicates that no operation level mitigation is in
+                    place, see Zone Level Schema Validation Settings for
+                    mitigation action that will be applied"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mitigation_action:
+                    type: string
+                    enum:
+                      - log
+                      - block
+                      - none
+                    nullable: true
+                    description: When set, this applies a mitigation action to this operation  -
+                      `log` log request when request does not conform to schema
+                      for this operation - `block` deny access to the site when
+                      request does not conform to schema for this operation -
+                      `none` will skip mitigation for this operation - `null`
+                      indicates that no operation level mitigation is in place,
+                      see Zone Level Schema Validation Settings for mitigation
+                      action that will be applied
+                  operation_id:
+                    type: string
+                    description: UUID.
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        OperationNotFound:
+          - code: 10404
+  /zones/{zone_id}/api_gateway/operations/schema_validation:
+    patch:
+      operationId: patchOperationSchemaValidation
+      description: Updates multiple operation-level schema validation settings on the
+        zone  @deprecated Use [Schema Validation
+        API](https://developers.cloudflare.com/api/resources/schema_validation/)
+        instead.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                settings_multiple_request:
+                  type: object
+                  additionalProperties: true
+                  description: "Body param:"
+              required:
+                - settings_multiple_request
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+  /zones/{zone_id}/api_gateway/schemas:
+    get:
+      operationId: listSchemas
+      description: "Retrieve operations and features as OpenAPI schemas  @example
+        ```ts const schemas = await client.apiGateway.schemas.list({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: feature
+          in: query
+          required: false
+          description: "Query param: Add feature(s) to the results. The feature name that
+            is given here corresponds to the resulting feature object. Have a
+            look at the top-level object description for more details on the
+            specific meaning."
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - thresholds
+                - parameter_schemas
+                - schema_info
+        - name: host
+          in: query
+          required: false
+          description: "Query param: Receive schema only for the given host(s)."
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  schemas:
+                    type: array
+                    items: {}
+                  timestamp:
+                    type: string
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+  /zones/{zone_id}/api_gateway/settings/schema_validation:
+    get:
+      operationId: getSettingSchemaValidation
+      description: Retrieves zone level schema validation settings currently set on
+        the zone  @deprecated Use [Schema Validation
+        API](https://developers.cloudflare.com/api/resources/schema_validation/)
+        instead.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+    put:
+      operationId: putSettingSchemaValidation
+      description: Updates zone level schema validation settings on the
+        zone  @deprecated Use [Schema Validation
+        API](https://developers.cloudflare.com/api/resources/schema_validation/)
+        instead.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                validation_default_mitigation_action:
+                  type: string
+                  enum:
+                    - none
+                    - log
+                    - block
+                  description: "Body param: The default mitigation action used when there is no
+                    mitigation action defined on the operation  Mitigation
+                    actions are as follows:  - `log` - log request when request
+                    does not conform to schema - `block` - deny access to the
+                    site when request does not conform to schema  A special
+                    value of of `none` will skip running schema validation
+                    entirely for the request when there is no mitigation action
+                    defined on the operation"
+                validation_override_mitigation_action:
+                  type: string
+                  enum:
+                    - none
+                    - disable_override
+                  nullable: true
+                  description: "Body param: When set, this overrides both zone level and operation
+                    level mitigation actions.  - `none` will skip running schema
+                    validation entirely for the request - `null` indicates that
+                    no override is in place  To clear any override, use the
+                    special value `disable_override` or `null`"
+              required:
+                - validation_default_mitigation_action
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+    patch:
+      operationId: patchSettingSchemaValidation
+      description: Updates zone level schema validation settings on the
+        zone  @deprecated Use [Schema Validation
+        API](https://developers.cloudflare.com/api/resources/schema_validation/)
+        instead.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                validation_default_mitigation_action:
+                  type: string
+                  enum:
+                    - none
+                    - log
+                    - block
+                  nullable: true
+                  description: "Body param: The default mitigation action used when there is no
+                    mitigation action defined on the operation Mitigation
+                    actions are as follows:  - `log` - log request when request
+                    does not conform to schema - `block` - deny access to the
+                    site when request does not conform to schema  A special
+                    value of of `none` will skip running schema validation
+                    entirely for the request when there is no mitigation action
+                    defined on the operation  `null` will have no effect."
+                validation_override_mitigation_action:
+                  type: string
+                  enum:
+                    - none
+                    - disable_override
+                  nullable: true
+                  description: "Body param: When set, this overrides both zone level and operation
+                    level mitigation actions.  - `none` will skip running schema
+                    validation entirely for the request  To clear any override,
+                    use the special value `disable_override`  `null` will have
+                    no effect."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+  /zones/{zone_id}/api_gateway/user_schemas/{schemaId}:
+    get:
+      operationId: getUserSchema
+      description: Retrieve information about a specific schema on a zone  @deprecated
+        Use [Schema Validation
+        API](https://developers.cloudflare.com/api/resources/schema_validation/)
+        instead.
+      parameters:
+        - name: schemaId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: omit_source
+          in: query
+          required: false
+          description: "Query param: Omit the source-files of schemas and only retrieve
+            their meta-data."
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  kind:
+                    type: string
+                    enum:
+                      - openapi_v3
+                    description: Kind of schema
+                  name:
+                    type: string
+                    description: Name of the schema
+                  schema_id:
+                    type: string
+                    description: UUID.
+                  source:
+                    type: string
+                    description: Source of the schema
+                  validation_enabled:
+                    type: boolean
+                    description: Flag whether schema is enabled for validation.
+                required:
+                  - created_at
+                  - kind
+                  - name
+                  - schema_id
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        SchemaNotFound:
+          - code: 19400
+    patch:
+      operationId: patchUserSchema
+      description: Enable validation for a schema  @deprecated Use [Schema Validation
+        API](https://developers.cloudflare.com/api/resources/schema_validation/)
+        instead.
+      parameters:
+        - name: schemaId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                validation_enabled:
+                  type: boolean
+                  enum:
+                    - true
+                  description: "Body param: Flag whether schema is enabled for validation."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  kind:
+                    type: string
+                    enum:
+                      - openapi_v3
+                    description: Kind of schema
+                  name:
+                    type: string
+                    description: Name of the schema
+                  schema_id:
+                    type: string
+                    description: UUID.
+                  source:
+                    type: string
+                    description: Source of the schema
+                  validation_enabled:
+                    type: boolean
+                    description: Flag whether schema is enabled for validation.
+                required:
+                  - created_at
+                  - kind
+                  - name
+                  - schema_id
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        SchemaNotFound:
+          - code: 19400
+    delete:
+      operationId: deleteUserSchema
+      description: Delete a schema  @deprecated Use [Schema Validation
+        API](https://developers.cloudflare.com/api/resources/schema_validation/)
+        instead.
+      parameters:
+        - name: schemaId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    additionalProperties: true
+                  messages:
+                    type: object
+                    additionalProperties: true
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful.
+                required:
+                  - errors
+                  - messages
+                  - success
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        SchemaNotFound:
+          - code: 19400
+  /zones/{zone_id}/api_gateway/user_schemas:
+    get:
+      operationId: listUserSchemas
+      description: Retrieve information about all schemas on a zone  @deprecated Use
+        [Schema Validation
+        API](https://developers.cloudflare.com/api/resources/schema_validation/)
+        instead.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: omit_source
+          in: query
+          required: false
+          description: "Query param: Omit the source-files of schemas and only retrieve
+            their meta-data."
+          schema:
+            type: boolean
+        - name: validation_enabled
+          in: query
+          required: false
+          description: "Query param: Flag whether schema is enabled for validation."
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  kind:
+                    type: string
+                    enum:
+                      - openapi_v3
+                    description: Kind of schema
+                  name:
+                    type: string
+                    description: Name of the schema
+                  schema_id:
+                    type: string
+                    description: UUID.
+                  source:
+                    type: string
+                    description: Source of the schema
+                  validation_enabled:
+                    type: boolean
+                    description: Flag whether schema is enabled for validation.
+                required:
+                  - created_at
+                  - kind
+                  - name
+                  - schema_id
+      x-distilled-pagination-class: OldPublicSchemasV4PagePaginationArray
+    post:
+      operationId: createUserSchema
+      description: Upload a schema to a zone  @deprecated Use [Schema Validation
+        API](https://developers.cloudflare.com/api/resources/schema_validation/)
+        instead.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: "Body param: Schema file bytes"
+                kind:
+                  type: string
+                  enum:
+                    - openapi_v3
+                  description: "Body param: Kind of schema"
+                name:
+                  type: string
+                  description: "Body param: Name of the schema"
+                validation_enabled:
+                  type: boolean
+                  enum:
+                    - true
+                    - false
+                  description: "Body param: Flag whether schema is enabled for validation."
+              required:
+                - file
+                - kind
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  schema:
+                    type: object
+                    properties:
+                      created_at:
+                        type: string
+                      kind:
+                        type: string
+                        enum:
+                          - openapi_v3
+                        description: Kind of schema
+                      name:
+                        type: string
+                        description: Name of the schema
+                      schema_id:
+                        type: string
+                        description: UUID.
+                      source:
+                        type: string
+                        description: Source of the schema
+                      validation_enabled:
+                        type: boolean
+                        description: Flag whether schema is enabled for validation.
+                    required:
+                      - created_at
+                      - kind
+                      - name
+                      - schema_id
+                  upload_details:
+                    type: object
+                    properties:
+                      warnings:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            code:
+                              type: number
+                              description: Code that identifies the event that occurred.
+                            locations:
+                              type: array
+                              items:
+                                type: string
+                              description: JSONPath location(s) in the schema where these events were
+                                encountered. See
+                                [https://goessner.net/articles/JsonPath/](https://goessner.net/articles/JsonPath/)
+                                for JSONPath specification.
+                            message:
+                              type: string
+                              description: Diagnostic message that describes the event.
+                          required:
+                            - code
+                        description: Diagnostic warning events that occurred during processing. These
+                          events are non-critical errors found within the
+                          schema.
+                required:
+                  - schema
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+  /zones/{zone_id}/api_gateway/user_schemas/hosts:
+    get:
+      operationId: listUserSchemaHosts
+      description: Retrieve schema hosts in a zone  @deprecated Use [Schema Validation
+        API](https://developers.cloudflare.com/api/resources/schema_validation/)
+        instead.
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  hosts:
+                    type: array
+                    items:
+                      type: string
+                    description: Hosts serving the schema, e.g zone.host.com
+                  name:
+                    type: string
+                    description: Name of the schema
+                  schema_id:
+                    type: string
+                    description: UUID.
+                required:
+                  - created_at
+                  - hosts
+                  - name
+                  - schema_id
+      x-distilled-pagination-class: HostListResponsesV4PagePaginationArray
+  /zones/{zone_id}/api_gateway/user_schemas/{schemaId}/operations:
+    get:
+      operationId: listUserSchemaOperations
+      description: Retrieves all operations from the schema. Operations that already
+        exist in API Shield Endpoint Management will be returned as full
+        operations.  @deprecated Use [Schema Validation
+        API](https://developers.cloudflare.com/api/resources/schema_validation/)
+        instead.
+      parameters:
+        - name: schemaId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: endpoint
+          in: query
+          required: false
+          description: "Query param: Filter results to only include endpoints containing
+            this pattern."
+          schema:
+            type: string
+        - name: feature
+          in: query
+          required: false
+          description: "Query param: Add feature(s) to the results. The feature name that
+            is given here corresponds to the resulting feature object. Have a
+            look at the top-level object description for more details on the
+            specific meaning."
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - thresholds
+                - parameter_schemas
+                - schema_info
+        - name: host
+          in: query
+          required: false
+          description: "Query param: Filter results to only include the specified hosts."
+          schema:
+            type: array
+            items:
+              type: string
+        - name: method
+          in: query
+          required: false
+          description: "Query param: Filter results to only include the specified HTTP
+            methods."
+          schema:
+            type: array
+            items:
+              type: string
+        - name: operation_status
+          in: query
+          required: false
+          description: "Query param: Filter results by whether operations exist in API
+            Shield Endpoint Management or not. `new` will just return operations
+            from the schema that do not exist in API Shield Endpoint Management.
+            `existing` will just return operations from the schema that already
+            exist in API Shield Endpoint Management."
+          schema:
+            type: string
+            enum:
+              - new
+              - existing
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      endpoint:
+                        type: string
+                        description: "The endpoint which can contain path parameter templates in curly
+                          braces, each will be replaced from left to right with
+                          {varN}, starting with {var1}, during insertion. This
+                          will further be Cloudflare-normalized upon insertion.
+                          See:
+                          https://developers.cloudflare.com/rules/normalization\
+                          /how-it-works/."
+                      host:
+                        type: string
+                        description: RFC3986-compliant host.
+                      last_updated:
+                        type: string
+                      method:
+                        type: string
+                        enum:
+                          - GET
+                          - POST
+                          - HEAD
+                          - OPTIONS
+                          - PUT
+                          - DELETE
+                          - CONNECT
+                          - PATCH
+                          - TRACE
+                        description: The HTTP method used to access the endpoint.
+                      operation_id:
+                        type: string
+                        description: UUID.
+                      features:
+                        oneOf:
+                          - type: object
+                            properties:
+                              thresholds:
+                                type: object
+                                properties:
+                                  auth_id_tokens:
+                                    type: number
+                                    description: The total number of auth-ids seen across this calculation.
+                                  data_points:
+                                    type: number
+                                    description: The number of data points used for the threshold suggestion
+                                      calculation.
+                                  last_updated:
+                                    type: string
+                                  p50:
+                                    type: number
+                                    description: The p50 quantile of requests (in period_seconds).
+                                  p90:
+                                    type: number
+                                    description: The p90 quantile of requests (in period_seconds).
+                                  p99:
+                                    type: number
+                                    description: The p99 quantile of requests (in period_seconds).
+                                  period_seconds:
+                                    type: number
+                                    description: The period over which this threshold is suggested.
+                                  requests:
+                                    type: number
+                                    description: The estimated number of requests covered by these calculations.
+                                  suggested_threshold:
+                                    type: number
+                                    description: The suggested threshold in requests done by the same auth_id or
+                                      period_seconds.
+                          - type: object
+                            properties:
+                              parameter_schemas:
+                                type: object
+                                properties:
+                                  last_updated:
+                                    type: string
+                                  parameter_schemas:
+                                    type: object
+                                    properties:
+                                      parameters:
+                                        type: array
+                                        items: {}
+                                        description: An array containing the learned parameter schemas.
+                                      responses:
+                                        type: "null"
+                                        description: An empty response object. This field is required to yield a valid
+                                          operation schema.
+                                    description: An operation schema object containing a response.
+                            required:
+                              - parameter_schemas
+                          - type: object
+                            properties:
+                              api_routing:
+                                type: object
+                                properties:
+                                  last_updated:
+                                    type: string
+                                  route:
+                                    type: string
+                                    description: Target route.
+                                description: API Routing settings on endpoint.
+                          - type: object
+                            properties:
+                              confidence_intervals:
+                                type: object
+                                properties:
+                                  last_updated:
+                                    type: string
+                                  suggested_threshold:
+                                    type: object
+                                    properties:
+                                      confidence_intervals:
+                                        type: object
+                                        properties:
+                                          p90:
+                                            type: object
+                                            properties:
+                                              lower:
+                                                type: number
+                                                description: Lower bound for percentile estimate
+                                              upper:
+                                                type: number
+                                                description: Upper bound for percentile estimate
+                                            description: Upper and lower bound for percentile estimate
+                                          p95:
+                                            type: object
+                                            properties:
+                                              lower:
+                                                type: number
+                                                description: Lower bound for percentile estimate
+                                              upper:
+                                                type: number
+                                                description: Upper bound for percentile estimate
+                                            description: Upper and lower bound for percentile estimate
+                                          p99:
+                                            type: object
+                                            properties:
+                                              lower:
+                                                type: number
+                                                description: Lower bound for percentile estimate
+                                              upper:
+                                                type: number
+                                                description: Upper bound for percentile estimate
+                                            description: Upper and lower bound for percentile estimate
+                                      mean:
+                                        type: number
+                                        description: Suggested threshold.
+                          - type: object
+                            properties:
+                              schema_info:
+                                type: object
+                                properties:
+                                  active_schema:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                        description: UUID.
+                                      created_at:
+                                        type: string
+                                      is_learned:
+                                        type: boolean
+                                        description: True if schema is Cloudflare-provided.
+                                      name:
+                                        type: string
+                                        description: Schema file name.
+                                    description: Schema active on endpoint.
+                                  learned_available:
+                                    type: boolean
+                                    description: True if a Cloudflare-provided learned schema is available for this
+                                      endpoint.
+                                  mitigation_action:
+                                    type: string
+                                    enum:
+                                      - none
+                                      - log
+                                      - block
+                                    nullable: true
+                                    description: Action taken on requests failing validation.
+                    required:
+                      - endpoint
+                      - host
+                      - last_updated
+                      - method
+                      - operation_id
+                  - type: object
+                    properties:
+                      endpoint:
+                        type: string
+                        description: "The endpoint which can contain path parameter templates in curly
+                          braces, each will be replaced from left to right with
+                          {varN}, starting with {var1}, during insertion. This
+                          will further be Cloudflare-normalized upon insertion.
+                          See:
+                          https://developers.cloudflare.com/rules/normalization\
+                          /how-it-works/."
+                      host:
+                        type: string
+                        description: RFC3986-compliant host.
+                      method:
+                        type: string
+                        enum:
+                          - GET
+                          - POST
+                          - HEAD
+                          - OPTIONS
+                          - PUT
+                          - DELETE
+                          - CONNECT
+                          - PATCH
+                          - TRACE
+                        description: The HTTP method used to access the endpoint.
+                    required:
+                      - endpoint
+                      - host
+                      - method
+      x-distilled-pagination-class: OperationListResponsesV4PagePaginationArray

@@ -1,0 +1,216 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare SECURITY-CENTER API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: security-center
+paths:
+  /{accountOrZone}/{accountOrZoneId}/security-center/insights:
+    get:
+      operationId: listInsights
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: number
+                    description: Total number of results
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        dismissed:
+                          type: boolean
+                        issue_class:
+                          type: string
+                        issue_type:
+                          type: string
+                          enum:
+                            - compliance_violation
+                            - email_security
+                            - exposed_infrastructure
+                            - insecure_configuration
+                            - weak_authentication
+                            - configuration_suggestion
+                        payload:
+                          type: object
+                          properties:
+                            detection_method:
+                              type: string
+                              description: Method used to detect insight
+                            zone_tag:
+                              type: string
+                        resolve_link:
+                          type: string
+                        resolve_text:
+                          type: string
+                        severity:
+                          type: string
+                          enum:
+                            - Low
+                            - Moderate
+                            - Critical
+                        since:
+                          type: string
+                        subject:
+                          type: string
+                        timestamp:
+                          type: string
+                  page:
+                    type: number
+                    description: Current page within paginated list of results
+                  per_page:
+                    type: number
+                    description: Number of results per page of results
+      x-distilled-pagination-class: InsightListResponsesV4PagePagination
+  /{accountOrZone}/{accountOrZoneId}/security-center/insights/{issueId}/dismiss:
+    put:
+      operationId: dismissInsight
+      description: Archive Security Center Insight
+      parameters:
+        - name: issueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dismiss:
+                  type: boolean
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful.
+                required:
+                  - errors
+                  - messages
+                  - success
+  /{accountOrZone}/{accountOrZoneId}/security-center/insights/class:
+    get:
+      operationId: getInsightClass
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    count:
+                      type: number
+                    value:
+                      type: string
+      x-distilled-response-path: result
+  /{accountOrZone}/{accountOrZoneId}/security-center/insights/severity:
+    get:
+      operationId: getInsightSeverity
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    count:
+                      type: number
+                    value:
+                      type: string
+      x-distilled-response-path: result
+  /{accountOrZone}/{accountOrZoneId}/security-center/insights/type:
+    get:
+      operationId: getInsightType
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    count:
+                      type: number
+                    value:
+                      type: string
+      x-distilled-response-path: result

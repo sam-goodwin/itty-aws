@@ -2,8 +2,12 @@ import { NodeServices } from "@effect/platform-node";
 import { Effect, FileSystem } from "effect";
 import * as path from "node:path";
 import { execSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import * as ts from "typescript";
+import { parse as parseYaml } from "yaml";
 import {
+  type ErrorMatcherInfo,
+  type OperationErrorInfo,
   type ParamInfo,
   type ParsedInterface,
   type ParsedOperation,
@@ -21,6 +25,7 @@ import {
 
 interface ParseOptions {
   basePath: string;
+  openapiBasePath?: string;
   serviceFilter?: string;
   /**
    * Force re-parsing even if a cached model exists
@@ -48,7 +53,7 @@ interface SerializedServiceInfo {
 }
 
 interface CacheData {
-  version: 2;
+  version: 3;
   hash: string;
   timestamp: number;
   services: SerializedServiceInfo[];
@@ -73,7 +78,9 @@ function serializeServices(services: ServiceInfo[]): SerializedServiceInfo[] {
     name: service.name,
     operations: service.operations.map((op) => ({
       ...op,
-      registry: serializeRegistry(op.registry),
+      registry: op.registry
+        ? serializeRegistry(op.registry)
+        : { types: [], typeAliases: [] },
     })),
   }));
 }
@@ -93,6 +100,78 @@ function deserializeServices(data: SerializedServiceInfo[]): ServiceInfo[] {
 // =============================================================================
 
 const CACHE_DIR = ".distilled/cache";
+const OPENAPI_SPEC_REGEX = /\.openapi\.(json|ya?ml)$/i;
+
+interface OpenApiSpec {
+  openapi?: string;
+  info?: { title?: string; version?: string; description?: string };
+  paths: Record<string, OpenApiPathItem>;
+  components?: {
+    schemas?: Record<string, OpenApiSchema>;
+    parameters?: Record<string, OpenApiParameter>;
+  };
+  "x-distilled-service"?: string;
+}
+
+interface OpenApiPathItem {
+  parameters?: OpenApiParameter[];
+  get?: OpenApiOperation;
+  post?: OpenApiOperation;
+  put?: OpenApiOperation;
+  patch?: OpenApiOperation;
+  delete?: OpenApiOperation;
+}
+
+interface OpenApiOperation {
+  operationId?: string;
+  summary?: string;
+  description?: string;
+  parameters?: OpenApiParameter[];
+  requestBody?: OpenApiRequestBody;
+  responses: Record<string, OpenApiResponse>;
+  "x-distilled-response-path"?: string;
+  "x-distilled-pagination-class"?: string;
+  "x-distilled-errors"?: Record<string, ErrorMatcherInfo[]>;
+}
+
+interface OpenApiRequestBody {
+  required?: boolean;
+  content?: Record<string, OpenApiMediaType>;
+}
+
+interface OpenApiResponse {
+  description?: string;
+  content?: Record<string, OpenApiMediaType>;
+  $ref?: string;
+}
+
+interface OpenApiMediaType {
+  schema?: OpenApiSchema;
+}
+
+interface OpenApiParameter {
+  name?: string;
+  in?: "path" | "query" | "header" | "cookie";
+  required?: boolean;
+  description?: string;
+  schema?: OpenApiSchema;
+  $ref?: string;
+}
+
+interface OpenApiSchema {
+  type?: string | string[];
+  $ref?: string;
+  properties?: Record<string, OpenApiSchema>;
+  items?: OpenApiSchema;
+  required?: string[];
+  enum?: Array<string | number | boolean>;
+  additionalProperties?: boolean | OpenApiSchema;
+  description?: string;
+  nullable?: boolean;
+  oneOf?: OpenApiSchema[];
+  anyOf?: OpenApiSchema[];
+  allOf?: OpenApiSchema[];
+}
 
 /**
  * Get the git commit hash of the cloudflare-typescript repo
@@ -104,6 +183,81 @@ const getGitHash = (repoPath: string) =>
     } catch {
       return "";
     }
+  });
+
+const hashString = (input: string): string =>
+  createHash("sha1").update(input).digest("hex");
+
+const collectFilesMatching = (
+  fs: FileSystem.FileSystem,
+  directory: string,
+  predicate: (fullPath: string) => boolean,
+): Effect.Effect<string[], unknown> =>
+  Effect.gen(function* () {
+    const exists = yield* fs.exists(directory).pipe(Effect.orDie);
+    if (!exists) {
+      return [];
+    }
+
+    const entries = yield* fs.readDirectory(directory).pipe(Effect.orDie);
+    const nested = yield* Effect.forEach(
+      entries,
+      (entry) => {
+        const fullPath = path.join(directory, entry);
+        return fs.stat(fullPath).pipe(
+          Effect.orDie,
+          Effect.flatMap((stat) => {
+            if (stat.type === "Directory") {
+              return collectFilesMatching(fs, fullPath, predicate);
+            }
+            if (stat.type === "File" && predicate(fullPath)) {
+              return Effect.succeed([fullPath]);
+            }
+            return Effect.succeed([]);
+          }),
+        );
+      },
+      { concurrency: "unbounded" },
+    );
+
+    return nested.flat().sort();
+  });
+
+const getOpenApiContentHash = (openapiBasePath?: string) =>
+  Effect.gen(function* () {
+    if (!openapiBasePath) return "";
+
+    const fs = yield* FileSystem.FileSystem;
+    const files = yield* collectFilesMatching(
+      fs,
+      openapiBasePath,
+      (file) => OPENAPI_SPEC_REGEX.test(file),
+    );
+
+    if (files.length === 0) {
+      return "";
+    }
+
+    const hash = createHash("sha1");
+    for (const file of files) {
+      const content = yield* fs.readFileString(file).pipe(Effect.orDie);
+      hash.update(path.relative(openapiBasePath, file));
+      hash.update("\0");
+      hash.update(content);
+      hash.update("\0");
+    }
+
+    return hash.digest("hex");
+  });
+
+const getCacheKey = (repoPath: string, openapiBasePath?: string) =>
+  Effect.gen(function* () {
+    const gitHash = yield* getGitHash(repoPath);
+    const openapiHash = yield* getOpenApiContentHash(openapiBasePath);
+    if (!gitHash && !openapiHash) {
+      return "";
+    }
+    return hashString(`${gitHash}:${openapiHash}`);
   });
 
 /**
@@ -122,7 +276,7 @@ const loadCache = (hash: string) =>
     const content = yield* fs.readFileString(cachePath);
     const data = JSON.parse(content) as CacheData;
 
-    if (data.version !== 2 || data.hash !== hash) {
+    if (data.version !== 3 || data.hash !== hash) {
       return undefined;
     }
 
@@ -143,7 +297,7 @@ const saveCache = (hash: string, services: ServiceInfo[]) =>
     yield* fs.makeDirectory(CACHE_DIR, { recursive: true });
 
     const data: CacheData = {
-      version: 2,
+      version: 3,
       hash,
       timestamp: Date.now(),
       services: serializeServices(services),
@@ -934,6 +1088,7 @@ function parseMethod(
   registry: TypeRegistry,
 ): ParsedOperation | undefined {
   const methodName = method.name.getText();
+  const methodComment = getJsDocComment(method);
 
   // Skip getters and private methods
   if (
@@ -1005,7 +1160,6 @@ function parseMethod(
   }
 
   // Get return type
-  let isPaginated = false;
   const returnType = method.type;
   if (returnType && ts.isTypeReferenceNode(returnType)) {
     const returnTypeName = returnType.typeName.getText();
@@ -1020,7 +1174,6 @@ function parseMethod(
       const itemType = returnType.typeArguments[1];
       if (ts.isTypeReferenceNode(itemType)) {
         responseTypeName = itemType.typeName.getText();
-        isPaginated = true;
       }
     }
     // Handle Core.APIPromise<T>
@@ -1125,6 +1278,7 @@ function parseMethod(
   const resources = computeResources(pathParams);
 
   return {
+    source: "ast",
     // Computed identifiers
     operationName,
     resourceName,
@@ -1148,6 +1302,7 @@ function parseMethod(
     isMultipart: isMultipart || undefined,
     paginationType,
     paginationClassName,
+    description: methodComment,
   };
 }
 
@@ -1227,31 +1382,7 @@ const collectTypeScriptFiles = (
   fs: FileSystem.FileSystem,
   directory: string,
 ): Effect.Effect<string[], unknown> =>
-  Effect.gen(function* () {
-    const entries = yield* fs.readDirectory(directory).pipe(Effect.orDie);
-
-    const nested = yield* Effect.forEach(
-      entries,
-      (entry) => {
-        const fullPath = path.join(directory, entry);
-        return fs.stat(fullPath).pipe(
-          Effect.orDie,
-          Effect.flatMap((stat) => {
-            if (stat.type === "Directory") {
-              return collectTypeScriptFiles(fs, fullPath);
-            }
-            if (stat.type === "File" && fullPath.endsWith(".ts")) {
-              return Effect.succeed([fullPath]);
-            }
-            return Effect.succeed([]);
-          }),
-        );
-      },
-      { concurrency: "unbounded" },
-    );
-
-    return nested.flat();
-  });
+  collectFilesMatching(fs, directory, (fullPath) => fullPath.endsWith(".ts"));
 
 const parseServiceFilesCore = (basePath: string, serviceFilter?: string) =>
   Effect.gen(function* () {
@@ -1271,7 +1402,7 @@ const parseServiceFilesCore = (basePath: string, serviceFilter?: string) =>
     );
 
     if (sourceFiles.length === 0) {
-      return yield* Effect.die("No source files found");
+      return [] as ServiceInfo[];
     }
     // Create TypeScript program
     const program = createProgram(sourceFiles);
@@ -1319,8 +1450,425 @@ const parseServiceFilesCore = (basePath: string, serviceFilter?: string) =>
     return services;
   });
 
+function openApiPointer<T>(ref: string, spec: OpenApiSpec): T | undefined {
+  if (!ref.startsWith("#/")) {
+    return undefined;
+  }
+
+  let current: unknown = spec;
+  for (const segment of ref.slice(2).split("/")) {
+    if (typeof current !== "object" || current === null) {
+      return undefined;
+    }
+    current = (current as Record<string, unknown>)[segment];
+  }
+
+  return current as T | undefined;
+}
+
+function resolveOpenApiParameter(
+  parameter: OpenApiParameter,
+  spec: OpenApiSpec,
+): OpenApiParameter | undefined {
+  if (!parameter.$ref) {
+    return parameter;
+  }
+  return openApiPointer<OpenApiParameter>(parameter.$ref, spec);
+}
+
+function resolveOpenApiResponse(
+  response: OpenApiResponse,
+  spec: OpenApiSpec,
+): OpenApiResponse | undefined {
+  if (!response.$ref) {
+    return response;
+  }
+  return openApiPointer<OpenApiResponse>(response.$ref, spec);
+}
+
+function buildLiteralTypeInfo(
+  values: Array<string | number | boolean>,
+): TypeInfo {
+  if (values.length === 1) {
+    return { kind: "literal", value: String(values[0]) };
+  }
+
+  return {
+    kind: "union",
+    values: values.map((value) => ({ kind: "literal", value: String(value) })),
+  };
+}
+
+function makeNullable(type: TypeInfo): TypeInfo {
+  if (type.kind === "null") {
+    return type;
+  }
+  if (type.kind === "union" && type.values?.some((value) => value.kind === "null")) {
+    return type;
+  }
+  return {
+    kind: "union",
+    values: [type, { kind: "null" }],
+  };
+}
+
+function schemaObjectToTypeInfo(
+  schema: OpenApiSchema | undefined,
+  spec: OpenApiSpec,
+  seenRefs: Set<string> = new Set(),
+): TypeInfo {
+  if (!schema) {
+    return { kind: "unknown" };
+  }
+
+  if (schema.$ref) {
+    if (seenRefs.has(schema.$ref)) {
+      return { kind: "unknown" };
+    }
+    const resolved = openApiPointer<OpenApiSchema>(schema.$ref, spec);
+    if (!resolved) {
+      return { kind: "unknown" };
+    }
+    return schemaObjectToTypeInfo(resolved, spec, new Set([...seenRefs, schema.$ref]));
+  }
+
+  if (schema.enum && schema.enum.length > 0) {
+    const enumType = buildLiteralTypeInfo(schema.enum);
+    return schema.nullable ? makeNullable(enumType) : enumType;
+  }
+
+  const unionSchemas = schema.oneOf ?? schema.anyOf;
+  if (unionSchemas && unionSchemas.length > 0) {
+    const values = unionSchemas.map((value) =>
+      schemaObjectToTypeInfo(value, spec, seenRefs),
+    );
+    const unionType: TypeInfo = { kind: "union", values };
+    return schema.nullable ? makeNullable(unionType) : unionType;
+  }
+
+  if (schema.allOf && schema.allOf.length > 0) {
+    const resolvedParts = schema.allOf.map((part) =>
+      schemaObjectToTypeInfo(part, spec, seenRefs),
+    );
+    const objectParts = resolvedParts.filter(
+      (part): part is TypeInfo & { kind: "object"; properties: NonNullable<TypeInfo["properties"]> } =>
+        part.kind === "object" && !!part.properties,
+    );
+    if (objectParts.length > 0) {
+      const merged: TypeInfo = {
+        kind: "object",
+        properties: objectParts.flatMap((part) => part.properties ?? []),
+      };
+      return schema.nullable ? makeNullable(merged) : merged;
+    }
+  }
+
+  const rawType = Array.isArray(schema.type)
+    ? schema.type.find((value) => value !== "null")
+    : schema.type;
+  const isNullable =
+    schema.nullable ||
+    (Array.isArray(schema.type) && schema.type.includes("null"));
+
+  let typeInfo: TypeInfo;
+  switch (rawType) {
+    case "string":
+      typeInfo = { kind: "primitive", value: "string" };
+      break;
+    case "integer":
+    case "number":
+      typeInfo = { kind: "primitive", value: "number" };
+      break;
+    case "boolean":
+      typeInfo = { kind: "primitive", value: "boolean" };
+      break;
+    case "array":
+      typeInfo = {
+        kind: "array",
+        elementType: schemaObjectToTypeInfo(schema.items, spec, seenRefs),
+      };
+      break;
+    case "object":
+      if (schema.properties && Object.keys(schema.properties).length > 0) {
+        const required = new Set(schema.required ?? []);
+        typeInfo = {
+          kind: "object",
+          properties: Object.entries(schema.properties).map(([name, propertySchema]) => ({
+            name,
+            type: schemaObjectToTypeInfo(propertySchema, spec, seenRefs),
+            required: required.has(name),
+            description: propertySchema.description,
+          })),
+        };
+      } else if (schema.additionalProperties) {
+        typeInfo = { kind: "unknown" };
+      } else {
+        typeInfo = { kind: "object", properties: [] };
+      }
+      break;
+    default:
+      if (schema.properties && Object.keys(schema.properties).length > 0) {
+        const required = new Set(schema.required ?? []);
+        typeInfo = {
+          kind: "object",
+          properties: Object.entries(schema.properties).map(([name, propertySchema]) => ({
+            name,
+            type: schemaObjectToTypeInfo(propertySchema, spec, seenRefs),
+            required: required.has(name),
+            description: propertySchema.description,
+          })),
+        };
+      } else {
+        typeInfo = { kind: "unknown" };
+      }
+      break;
+  }
+
+  return isNullable ? makeNullable(typeInfo) : typeInfo;
+}
+
+function requestBodyToParams(
+  requestBody: OpenApiRequestBody | undefined,
+  spec: OpenApiSpec,
+): ParamInfo[] {
+  if (!requestBody?.content) {
+    return [];
+  }
+
+  const mediaType =
+    requestBody.content["application/json"] ??
+    Object.values(requestBody.content)[0];
+  const schema = mediaType?.schema;
+  if (!schema) {
+    return [];
+  }
+
+  const type = schemaObjectToTypeInfo(schema, spec);
+  if (type.kind === "object" && type.properties && type.properties.length > 0) {
+    return type.properties.map((property) => ({
+      name: property.name,
+      type: property.type,
+      location: "body",
+      required: property.required,
+      description: property.description,
+    }));
+  }
+
+  return [
+    {
+      name: "body",
+      type,
+      location: "body",
+      required: requestBody.required ?? true,
+    },
+  ];
+}
+
+function getOperationMethodName(operationName: string): string {
+  const match = operationName.match(/^[a-z]+/);
+  return match?.[0] ?? operationName;
+}
+
+function getOperationResourceName(operationName: string, methodName: string): string {
+  const resource = operationName.slice(methodName.length);
+  return resource || "Operation";
+}
+
+function buildOpenApiOperation(
+  serviceName: string,
+  specFile: string,
+  pathTemplate: string,
+  httpMethod: "GET" | "POST" | "PUT" | "PATCH" | "DELETE",
+  operation: OpenApiOperation,
+  pathItem: OpenApiPathItem,
+  spec: OpenApiSpec,
+): ParsedOperation | undefined {
+  if (!operation.operationId) {
+    return undefined;
+  }
+
+  const urlPathParams = extractPathParamsFromUrl(pathTemplate);
+  const combinedParameters = [...(pathItem.parameters ?? []), ...(operation.parameters ?? [])];
+  const deduped = new Map<string, OpenApiParameter>();
+  for (const parameter of combinedParameters) {
+    const resolved = resolveOpenApiParameter(parameter, spec);
+    if (!resolved?.name || !resolved.in || resolved.in === "cookie") {
+      continue;
+    }
+    deduped.set(`${resolved.in}:${resolved.name}`, resolved);
+  }
+
+  const pathParams: ParamInfo[] = [];
+  const queryParams: ParamInfo[] = [];
+  const headerParams: ParamInfo[] = [];
+  for (const parameter of deduped.values()) {
+    const paramInfo: ParamInfo = {
+      name: parameter.name!,
+      type: schemaObjectToTypeInfo(parameter.schema, spec),
+      location: parameter.in as "path" | "query" | "header",
+      required: parameter.required ?? parameter.in === "path",
+      description: parameter.description,
+    };
+
+    if (urlPathParams.includes(paramInfo.name)) {
+      paramInfo.location = "path";
+    }
+
+    switch (paramInfo.location) {
+      case "path":
+        pathParams.push(paramInfo);
+        break;
+      case "query":
+        queryParams.push(paramInfo);
+        break;
+      case "header":
+        headerParams.push(paramInfo);
+        break;
+    }
+  }
+
+  const bodyParams = requestBodyToParams(operation.requestBody, spec);
+  const successResponseKey = Object.keys(operation.responses)
+    .filter((status) => /^2\d\d$/.test(status))
+    .sort()[0];
+  const successResponse = successResponseKey
+    ? resolveOpenApiResponse(operation.responses[successResponseKey], spec)
+    : undefined;
+  const mediaType =
+    successResponse?.content?.["application/json"] ??
+    (successResponse?.content ? Object.values(successResponse.content)[0] : undefined);
+  const requestContentTypes = Object.keys(operation.requestBody?.content ?? {});
+  const isMultipart = requestContentTypes.some((type) =>
+    type.includes("multipart/form-data"),
+  );
+  const responseType = schemaObjectToTypeInfo(mediaType?.schema, spec);
+  const methodName = getOperationMethodName(operation.operationId);
+  const resourceName = getOperationResourceName(operation.operationId, methodName);
+  const errors: OperationErrorInfo[] = Object.entries(
+    operation["x-distilled-errors"] ?? {},
+  ).map(([tag, matchers]) => ({ tag, matchers }));
+
+  return {
+    source: "openapi",
+    operationName: operation.operationId,
+    resourceName,
+    resources: computeResources(pathParams),
+    methodName,
+    resourcePath: [serviceName],
+    className: resourceName,
+    httpMethod,
+    urlTemplate: pathTemplate,
+    urlPathParams,
+    pathParams,
+    queryParams,
+    headerParams,
+    bodyParams,
+    responseType,
+    responsePath: operation["x-distilled-response-path"],
+    isMultipart: isMultipart || undefined,
+    paginationClassName: operation["x-distilled-pagination-class"],
+    summary: operation.summary,
+    description: operation.description,
+    successStatus: successResponseKey,
+    successDescription: successResponse?.description,
+    errors: errors.length > 0 ? errors : undefined,
+    sourceFile: specFile,
+  };
+}
+
+const parseOpenApiFiles = (
+  openapiBasePath: string | undefined,
+  serviceFilter?: string,
+) =>
+  Effect.gen(function* () {
+    if (!openapiBasePath) {
+      return [] as ServiceInfo[];
+    }
+
+    const fs = yield* FileSystem.FileSystem;
+    const files = yield* collectFilesMatching(
+      fs,
+      openapiBasePath,
+      (file) => OPENAPI_SPEC_REGEX.test(file),
+    );
+
+    const services: ServiceInfo[] = [];
+    for (const file of files) {
+      const content = yield* fs.readFileString(file).pipe(Effect.orDie);
+      const parsed = file.endsWith(".json")
+        ? (JSON.parse(content) as OpenApiSpec)
+        : (parseYaml(content) as OpenApiSpec);
+      const serviceName =
+        parsed["x-distilled-service"] ??
+        path.basename(file).replace(/\.openapi\.(json|ya?ml)$/i, "");
+
+      if (serviceFilter && serviceFilter !== serviceName) {
+        continue;
+      }
+
+      const operations: ParsedOperation[] = [];
+      for (const [pathTemplate, pathItem] of Object.entries(parsed.paths ?? {})) {
+        for (const method of ["get", "post", "put", "patch", "delete"] as const) {
+          const operation = pathItem[method];
+          if (!operation) continue;
+
+          const parsedOperation = buildOpenApiOperation(
+            serviceName,
+            file,
+            pathTemplate,
+            method.toUpperCase() as ParsedOperation["httpMethod"],
+            operation,
+            pathItem,
+            parsed,
+          );
+          if (parsedOperation) {
+            operations.push(parsedOperation);
+          }
+        }
+      }
+
+      services.push({
+        name: serviceName,
+        title: parsed.info?.title,
+        version: parsed.info?.version,
+        description: parsed.info?.description,
+        operations,
+      });
+    }
+
+    return services;
+  });
+
+function mergeServices(...serviceGroups: ServiceInfo[][]): ServiceInfo[] {
+  const merged = new Map<string, ServiceInfo>();
+
+  for (const services of serviceGroups) {
+    for (const service of services) {
+      const existing = merged.get(service.name);
+      if (existing) {
+        existing.operations.push(...service.operations);
+        existing.title ??= service.title;
+        existing.version ??= service.version;
+        existing.description ??= service.description;
+      } else {
+        merged.set(service.name, {
+          name: service.name,
+          title: service.title,
+          version: service.version,
+          description: service.description,
+          operations: [...service.operations],
+        });
+      }
+    }
+  }
+
+  return [...merged.values()]
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
 const parseServiceFiles = (
   basePath: string,
+  openapiBasePath?: string,
   serviceFilter?: string,
   force?: boolean,
 ) =>
@@ -1328,8 +1876,8 @@ const parseServiceFiles = (
     // Resolve the repo root (basePath is like "./cloudflare-typescript/src/resources")
     const repoRoot = path.resolve(basePath, "./");
 
-    // Get git hash for caching
-    const hash = yield* getGitHash(repoRoot);
+    // Get cache key for upstream SDK + local OpenAPI inputs
+    const hash = yield* getCacheKey(repoRoot, openapiBasePath);
 
     // Try to load from cache (unless force is true or filtering by service)
     if (!force && !serviceFilter && hash) {
@@ -1339,7 +1887,9 @@ const parseServiceFiles = (
       }
     }
 
-    const services = yield* parseServiceFilesCore(basePath, serviceFilter);
+    const astServices = yield* parseServiceFilesCore(basePath, serviceFilter);
+    const openapiServices = yield* parseOpenApiFiles(openapiBasePath, serviceFilter);
+    const services = mergeServices(astServices, openapiServices);
 
     // Save to cache (only if not filtering by service)
     if (!serviceFilter && hash) {
@@ -1350,9 +1900,14 @@ const parseServiceFiles = (
   });
 
 export const parseCode = (options: ParseOptions) => {
-  const { basePath, serviceFilter, force } = options;
-  return parseServiceFiles(basePath, serviceFilter, force);
+  const { basePath, openapiBasePath, serviceFilter, force } = options;
+  return parseServiceFiles(basePath, openapiBasePath, serviceFilter, force);
 };
+
+export const parseOpenApiCode = (options: {
+  openapiBasePath: string;
+  serviceFilter?: string;
+}) => parseOpenApiFiles(options.openapiBasePath, options.serviceFilter);
 
 export const loadModel = (options: ParseOptions) =>
   parseCode(options).pipe(

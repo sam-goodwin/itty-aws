@@ -1,0 +1,2488 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare ALERTING API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: alerting
+paths:
+  /accounts/{account_id}/alerting/v3/available_alerts:
+    get:
+      operationId: listAvailableAlerts
+      description: "Gets a list of all alert types for which an account is
+        eligible.  @example ```ts const availableAlerts = await
+        client.alerting.availableAlerts.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: The account id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/alerting/v3/destinations/eligible:
+    get:
+      operationId: getDestinationEligible
+      description: "Get a list of all delivery mechanism types for which an account is
+        eligible.  @example ```ts const eligible = await
+        client.alerting.destinations.eligible.get({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: The account id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/alerting/v3/destinations/pagerduty:
+    get:
+      operationId: getDestinationPagerduty
+      description: "Get a list of all configured PagerDuty services.  @example ```ts
+        // Automatically fetches more pages as needed. for await (const
+        pagerduty of client.alerting.destinations.pagerduty.get( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: The account id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID
+                  name:
+                    type: string
+                    description: The name of the pagerduty service.
+      x-distilled-pagination-class: PagerdutiesSinglePage
+    delete:
+      operationId: deleteDestinationPagerduty
+      description: "Deletes all the PagerDuty Services connected to the
+        account.  @example ```ts const pagerduty = await
+        client.alerting.destinations.pagerduty.delete({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: The account id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        code:
+                          type: number
+                      required:
+                        - message
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        code:
+                          type: number
+                      required:
+                        - message
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful
+                required:
+                  - errors
+                  - messages
+                  - success
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/alerting/v3/destinations/pagerduty/connect:
+    post:
+      operationId: createDestinationPagerduty
+      description: "Creates a new token for integrating with PagerDuty.  @example
+        ```ts const pagerduty = await
+        client.alerting.destinations.pagerduty.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: The account id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: token in form of UUID
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/alerting/v3/destinations/pagerduty/connect/{tokenId}:
+    get:
+      operationId: linkDestinationPagerduty
+      description: "Links PagerDuty with the account using the integration
+        token.  @example ```ts const response = await
+        client.alerting.destinations.pagerduty.link(
+        '8c71e667571b4f61b94d9e4b12158038', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: tokenId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: The account id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/alerting/v3/destinations/webhooks/{webhookId}:
+    get:
+      operationId: getDestinationWebhook
+      description: "Get details for a single webhooks destination.  @example ```ts
+        const webhooks = await client.alerting.destinations.webhooks.get(
+        'b115d5ec15c641ee8b7692c449b5227b', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: webhookId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: The account id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of a webhook
+                  created_at:
+                    type: string
+                    description: Timestamp of when the webhook destination was created.
+                  last_failure:
+                    type: string
+                    description: Timestamp of the last time an attempt to dispatch a notification to
+                      this webhook failed.
+                  last_success:
+                    type: string
+                    description: Timestamp of the last time Cloudflare was able to successfully
+                      dispatch a notification using this webhook.
+                  name:
+                    type: string
+                    description: The name of the webhook destination. This will be included in the
+                      request body when you receive a webhook notification.
+                  type:
+                    type: string
+                    enum:
+                      - datadog
+                      - discord
+                      - feishu
+                      - gchat
+                      - generic
+                      - opsgenie
+                      - slack
+                      - splunk
+                    description: Type of webhook endpoint.
+                  url:
+                    type: string
+                    description: The POST endpoint to call when dispatching a notification.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        WebhookNotFound:
+          - code: 0
+            message:
+              includes: Webhook not found
+    put:
+      operationId: updateDestinationWebhook
+      description: "Update a webhook destination.  @example ```ts const webhook =
+        await client.alerting.destinations.webhooks.update(
+        'b115d5ec15c641ee8b7692c449b5227b', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', name: 'Slack Webhook', url:
+        'https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd', }, ); ```"
+      parameters:
+        - name: webhookId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The account id"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: The name of the webhook destination. This will be
+                    included in the request body when you receive a webhook
+                    notification."
+                url:
+                  type: string
+                  description: "Body param: The POST endpoint to call when dispatching a
+                    notification."
+                secret:
+                  type: string
+                  description: "Body param: Optional secret that will be passed in the
+                    `cf-webhook-auth` header when dispatching generic webhook
+                    notifications or formatted for supported destinations.
+                    Secrets are not returned in any API response body."
+              required:
+                - name
+                - url
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        InvalidWebhookId:
+          - code: 0
+            message:
+              includes: invalid Webhook ID
+    delete:
+      operationId: deleteDestinationWebhook
+      description: "Delete a configured webhook destination.  @example ```ts const
+        webhook = await client.alerting.destinations.webhooks.delete(
+        'b115d5ec15c641ee8b7692c449b5227b', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: webhookId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: The account id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        code:
+                          type: number
+                      required:
+                        - message
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        code:
+                          type: number
+                      required:
+                        - message
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful
+                required:
+                  - errors
+                  - messages
+                  - success
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        InternalServerError:
+          - code: 15000
+  /accounts/{account_id}/alerting/v3/destinations/webhooks:
+    get:
+      operationId: listDestinationWebhooks
+      description: "Gets a list of all configured webhook destinations.  @example
+        ```ts // Automatically fetches more pages as needed. for await (const
+        webhooks of client.alerting.destinations.webhooks.list( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: The account id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of a webhook
+                  created_at:
+                    type: string
+                    description: Timestamp of when the webhook destination was created.
+                  last_failure:
+                    type: string
+                    description: Timestamp of the last time an attempt to dispatch a notification to
+                      this webhook failed.
+                  last_success:
+                    type: string
+                    description: Timestamp of the last time Cloudflare was able to successfully
+                      dispatch a notification using this webhook.
+                  name:
+                    type: string
+                    description: The name of the webhook destination. This will be included in the
+                      request body when you receive a webhook notification.
+                  type:
+                    type: string
+                    enum:
+                      - datadog
+                      - discord
+                      - feishu
+                      - gchat
+                      - generic
+                      - opsgenie
+                      - slack
+                      - splunk
+                    description: Type of webhook endpoint.
+                  url:
+                    type: string
+                    description: The POST endpoint to call when dispatching a notification.
+      x-distilled-pagination-class: WebhooksSinglePage
+    post:
+      operationId: createDestinationWebhook
+      description: "Creates a new webhook destination.  @example ```ts const webhook =
+        await client.alerting.destinations.webhooks.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', name: 'Slack Webhook', url:
+        'https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The account id"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: The name of the webhook destination. This will be
+                    included in the request body when you receive a webhook
+                    notification."
+                url:
+                  type: string
+                  description: "Body param: The POST endpoint to call when dispatching a
+                    notification."
+                secret:
+                  type: string
+                  description: "Body param: Optional secret that will be passed in the
+                    `cf-webhook-auth` header when dispatching generic webhook
+                    notifications or formatted for supported destinations.
+                    Secrets are not returned in any API response body."
+              required:
+                - name
+                - url
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        WebhookTestFailed:
+          - code: 0
+            message:
+              includes: Webhook test failed
+  /accounts/{account_id}/alerting/v3/history:
+    get:
+      operationId: listHistories
+      description: "Gets a list of history records for notifications sent to an
+        account. The records are displayed for last `x` number of days based on
+        the zone plan (free = 30, pro = 30, biz = 30, ent = 90).  @example ```ts
+        // Automatically fetches more pages as needed. for await (const history
+        of client.alerting.history.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', })) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The account id"
+          schema:
+            type: string
+        - name: before
+          in: query
+          required: false
+          description: "Query param: Limit the returned results to history records older
+            than the specified date. This must be a timestamp that conforms to
+            RFC3339."
+          schema:
+            type: string
+        - name: since
+          in: query
+          required: false
+          description: "Query param: Limit the returned results to history records newer
+            than the specified date. This must be a timestamp that conforms to
+            RFC3339."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID
+                  alert_body:
+                    type: string
+                    description: Message body included in the notification sent.
+                  alert_type:
+                    type: string
+                    description: Type of notification that has been dispatched.
+                  description:
+                    type: string
+                    description: Description of the notification policy (if present).
+                  mechanism:
+                    type: string
+                    description: The mechanism to which the notification has been dispatched.
+                  mechanism_type:
+                    type: string
+                    enum:
+                      - email
+                      - pagerduty
+                      - webhook
+                    description: The type of mechanism to which the notification has been
+                      dispatched. This can be email/pagerduty/webhook based on
+                      the mechanism configured.
+                  name:
+                    type: string
+                    description: Name of the policy.
+                  policy_id:
+                    type: string
+                    description: The unique identifier of a notification policy
+                  sent:
+                    type: string
+                    description: Timestamp of when the notification was dispatched in ISO 8601
+                      format.
+      x-distilled-pagination-class: HistoriesV4PagePaginationArray
+  /accounts/{account_id}/alerting/v3/policies/{policyId}:
+    get:
+      operationId: getPolicy
+      description: "Get details for a single policy.  @example ```ts const policy =
+        await client.alerting.policies.get( '0da2b59ef118439d8097bdfb215203c9',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: policyId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: The account id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of a notification policy
+                  alert_interval:
+                    type: string
+                    description: Optional specification of how often to re-alert from the same
+                      incident, not support on all alert types.
+                  alert_type:
+                    type: string
+                    enum:
+                      - abuse_report_alert
+                      - access_custom_certificate_expiration_type
+                      - advanced_ddos_attack_l4_alert
+                      - advanced_ddos_attack_l7_alert
+                      - advanced_http_alert_error
+                      - bgp_hijack_notification
+                      - billing_usage_alert
+                      - block_notification_block_removed
+                      - block_notification_new_block
+                      - block_notification_review_rejected
+                      - bot_traffic_basic_alert
+                      - brand_protection_alert
+                      - brand_protection_digest
+                      - clickhouse_alert_fw_anomaly
+                      - clickhouse_alert_fw_ent_anomaly
+                      - cloudforce_one_request_notification
+                      - custom_analytics
+                      - custom_bot_detection_alert
+                      - custom_ssl_certificate_event_type
+                      - dedicated_ssl_certificate_event_type
+                      - device_connectivity_anomaly_alert
+                      - dos_attack_l4
+                      - dos_attack_l7
+                      - expiring_service_token_alert
+                      - failing_logpush_job_disabled_alert
+                      - fbm_auto_advertisement
+                      - fbm_dosd_attack
+                      - fbm_volumetric_attack
+                      - health_check_status_notification
+                      - hostname_aop_custom_certificate_expiration_type
+                      - http_alert_edge_error
+                      - http_alert_origin_error
+                      - image_notification
+                      - image_resizing_notification
+                      - incident_alert
+                      - load_balancing_health_alert
+                      - load_balancing_pool_enablement_alert
+                      - logo_match_alert
+                      - magic_tunnel_health_check_event
+                      - magic_wan_tunnel_health
+                      - maintenance_event_notification
+                      - mtls_certificate_store_certificate_expiration_type
+                      - pages_event_alert
+                      - radar_notification
+                      - real_origin_monitoring
+                      - scriptmonitor_alert_new_code_change_detections
+                      - scriptmonitor_alert_new_hosts
+                      - scriptmonitor_alert_new_malicious_hosts
+                      - scriptmonitor_alert_new_malicious_scripts
+                      - scriptmonitor_alert_new_malicious_url
+                      - scriptmonitor_alert_new_max_length_resource_url
+                      - scriptmonitor_alert_new_resources
+                      - secondary_dns_all_primaries_failing
+                      - secondary_dns_primaries_failing
+                      - secondary_dns_warning
+                      - secondary_dns_zone_successfully_updated
+                      - secondary_dns_zone_validation_warning
+                      - security_insights_alert
+                      - sentinel_alert
+                      - stream_live_notifications
+                      - synthetic_test_latency_alert
+                      - synthetic_test_low_availability_alert
+                      - traffic_anomalies_alert
+                      - tunnel_health_event
+                      - tunnel_update_event
+                      - universal_ssl_event_type
+                      - web_analytics_metrics_update
+                      - zone_aop_custom_certificate_expiration_type
+                    description: Refers to which event will trigger a Notification dispatch. You can
+                      use the endpoint to get available alert types which then
+                      will give you a list of possible values.
+                  created:
+                    type: string
+                  description:
+                    type: string
+                    description: Optional description for the Notification policy.
+                  enabled:
+                    type: boolean
+                    description: Whether or not the Notification policy is enabled.
+                  filters:
+                    type: object
+                    properties:
+                      actions:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      affected_asns:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring radar_notification
+                      affected_components:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring incident_alert
+                      affected_locations:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring radar_notification
+                      airport_code:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring maintenance_event_notification
+                      alert_trigger_preferences:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      alert_trigger_preferences_value:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      enabled:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring load_balancing_pool_enablement_alert
+                      environment:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring pages_event_alert
+                      event:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring pages_event_alert
+                      event_source:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring load_balancing_health_alert
+                      event_type:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      group_by:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      health_check_id:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring health_check_status_notification
+                      incident_impact:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - INCIDENT_IMPACT_NONE
+                            - INCIDENT_IMPACT_MINOR
+                            - INCIDENT_IMPACT_MAJOR
+                            - INCIDENT_IMPACT_CRITICAL
+                        description: Used for configuring incident_alert
+                      input_id:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring stream_live_notifications
+                      insight_class:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring security_insights_alert
+                      limit:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring billing_usage_alert
+                      logo_tag:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring logo_match_alert
+                      megabits_per_second:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring advanced_ddos_attack_l4_alert
+                      new_health:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring load_balancing_health_alert
+                      new_status:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring tunnel_health_event
+                      packets_per_second:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring advanced_ddos_attack_l4_alert
+                      pool_id:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      pop_names:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      product:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring billing_usage_alert
+                      project_id:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring pages_event_alert
+                      protocol:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring advanced_ddos_attack_l4_alert
+                      query_tag:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      requests_per_second:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring advanced_ddos_attack_l7_alert
+                      selectors:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      services:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring clickhouse_alert_fw_ent_anomaly
+                      slo:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      status:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring health_check_status_notification
+                      target_hostname:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring advanced_ddos_attack_l7_alert
+                      target_ip:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring advanced_ddos_attack_l4_alert
+                      target_zone_name:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring advanced_ddos_attack_l7_alert
+                      traffic_exclusions:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - security_events
+                        description: Used for configuring traffic_anomalies_alert
+                      tunnel_id:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring tunnel_health_event
+                      tunnel_name:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      type:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      where:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      zones:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                    description: Optional filters that allow you to be alerted only on a subset of
+                      events for that alert type based on some criteria. This is
+                      only available for select alert types. See alert type
+                      documentation for more details.
+                  mechanisms:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: The email address
+                      pagerduty:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: UUID
+                      webhooks:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: UUID
+                    description: List of IDs that will be used when dispatching a notification. IDs
+                      for email type will be the email address.
+                  modified:
+                    type: string
+                  name:
+                    type: string
+                    description: Name of the policy.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        PolicyNotFound:
+          - code: 0
+            message:
+              includes: Policy not found
+    put:
+      operationId: updatePolicy
+      description: "Update a Notification policy.  @example ```ts const policy = await
+        client.alerting.policies.update( '0da2b59ef118439d8097bdfb215203c9', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: policyId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The account id"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                alert_interval:
+                  type: string
+                  description: "Body param: Optional specification of how often to re-alert from
+                    the same incident, not support on all alert types."
+                alert_type:
+                  type: string
+                  enum:
+                    - abuse_report_alert
+                    - access_custom_certificate_expiration_type
+                    - advanced_ddos_attack_l4_alert
+                    - advanced_ddos_attack_l7_alert
+                    - advanced_http_alert_error
+                    - bgp_hijack_notification
+                    - billing_usage_alert
+                    - block_notification_block_removed
+                    - block_notification_new_block
+                    - block_notification_review_rejected
+                    - bot_traffic_basic_alert
+                    - brand_protection_alert
+                    - brand_protection_digest
+                    - clickhouse_alert_fw_anomaly
+                    - clickhouse_alert_fw_ent_anomaly
+                    - cloudforce_one_request_notification
+                    - custom_analytics
+                    - custom_bot_detection_alert
+                    - custom_ssl_certificate_event_type
+                    - dedicated_ssl_certificate_event_type
+                    - device_connectivity_anomaly_alert
+                    - dos_attack_l4
+                    - dos_attack_l7
+                    - expiring_service_token_alert
+                    - failing_logpush_job_disabled_alert
+                    - fbm_auto_advertisement
+                    - fbm_dosd_attack
+                    - fbm_volumetric_attack
+                    - health_check_status_notification
+                    - hostname_aop_custom_certificate_expiration_type
+                    - http_alert_edge_error
+                    - http_alert_origin_error
+                    - image_notification
+                    - image_resizing_notification
+                    - incident_alert
+                    - load_balancing_health_alert
+                    - load_balancing_pool_enablement_alert
+                    - logo_match_alert
+                    - magic_tunnel_health_check_event
+                    - magic_wan_tunnel_health
+                    - maintenance_event_notification
+                    - mtls_certificate_store_certificate_expiration_type
+                    - pages_event_alert
+                    - radar_notification
+                    - real_origin_monitoring
+                    - scriptmonitor_alert_new_code_change_detections
+                    - scriptmonitor_alert_new_hosts
+                    - scriptmonitor_alert_new_malicious_hosts
+                    - scriptmonitor_alert_new_malicious_scripts
+                    - scriptmonitor_alert_new_malicious_url
+                    - scriptmonitor_alert_new_max_length_resource_url
+                    - scriptmonitor_alert_new_resources
+                    - secondary_dns_all_primaries_failing
+                    - secondary_dns_primaries_failing
+                    - secondary_dns_warning
+                    - secondary_dns_zone_successfully_updated
+                    - secondary_dns_zone_validation_warning
+                    - security_insights_alert
+                    - sentinel_alert
+                    - stream_live_notifications
+                    - synthetic_test_latency_alert
+                    - synthetic_test_low_availability_alert
+                    - traffic_anomalies_alert
+                    - tunnel_health_event
+                    - tunnel_update_event
+                    - universal_ssl_event_type
+                    - web_analytics_metrics_update
+                    - zone_aop_custom_certificate_expiration_type
+                  description: "Body param: Refers to which event will trigger a Notification
+                    dispatch. You can use the endpoint to get available alert
+                    types which then will give you a list of possible values."
+                description:
+                  type: string
+                  description: "Body param: Optional description for the Notification policy."
+                enabled:
+                  type: boolean
+                  description: "Body param: Whether or not the Notification policy is enabled."
+                filters:
+                  type: object
+                  properties:
+                    actions:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    affected_asns:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring radar_notification
+                    affected_components:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring incident_alert
+                    affected_locations:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring radar_notification
+                    airport_code:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring maintenance_event_notification
+                    alert_trigger_preferences:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    alert_trigger_preferences_value:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    enabled:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring load_balancing_pool_enablement_alert
+                    environment:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring pages_event_alert
+                    event:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring pages_event_alert
+                    event_source:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring load_balancing_health_alert
+                    event_type:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    group_by:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    health_check_id:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring health_check_status_notification
+                    incident_impact:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - INCIDENT_IMPACT_NONE
+                          - INCIDENT_IMPACT_MINOR
+                          - INCIDENT_IMPACT_MAJOR
+                          - INCIDENT_IMPACT_CRITICAL
+                      description: Used for configuring incident_alert
+                    input_id:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring stream_live_notifications
+                    insight_class:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring security_insights_alert
+                    limit:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring billing_usage_alert
+                    logo_tag:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring logo_match_alert
+                    megabits_per_second:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring advanced_ddos_attack_l4_alert
+                    new_health:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring load_balancing_health_alert
+                    new_status:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring tunnel_health_event
+                    packets_per_second:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring advanced_ddos_attack_l4_alert
+                    pool_id:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    pop_names:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    product:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring billing_usage_alert
+                    project_id:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring pages_event_alert
+                    protocol:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring advanced_ddos_attack_l4_alert
+                    query_tag:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    requests_per_second:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring advanced_ddos_attack_l7_alert
+                    selectors:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    services:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring clickhouse_alert_fw_ent_anomaly
+                    slo:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    status:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring health_check_status_notification
+                    target_hostname:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring advanced_ddos_attack_l7_alert
+                    target_ip:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring advanced_ddos_attack_l4_alert
+                    target_zone_name:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring advanced_ddos_attack_l7_alert
+                    traffic_exclusions:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - security_events
+                      description: Used for configuring traffic_anomalies_alert
+                    tunnel_id:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring tunnel_health_event
+                    tunnel_name:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    type:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    where:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    zones:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                  description: "Body param: Optional filters that allow you to be alerted only on
+                    a subset of events for that alert type based on some
+                    criteria. This is only available for select alert types. See
+                    alert type documentation for more details."
+                mechanisms:
+                  type: object
+                  properties:
+                    email:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            description: The email address
+                    pagerduty:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            description: UUID
+                    webhooks:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            description: UUID
+                  description: "Body param: List of IDs that will be used when dispatching a
+                    notification. IDs for email type will be the email address."
+                name:
+                  type: string
+                  description: "Body param: Name of the policy."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        PolicyNotFound:
+          - code: 0
+            message:
+              includes: Policy not found
+        InvalidAlertType:
+          - code: 17004
+        MechanismRequired:
+          - code: 17102
+    delete:
+      operationId: deletePolicy
+      description: "Delete a Notification policy.  @example ```ts const policy = await
+        client.alerting.policies.delete( '0da2b59ef118439d8097bdfb215203c9', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: policyId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: The account id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        code:
+                          type: number
+                      required:
+                        - message
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        code:
+                          type: number
+                      required:
+                        - message
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful
+                  result_info:
+                    type: object
+                    properties:
+                      count:
+                        type: number
+                        description: Total number of results for the requested service
+                      page:
+                        type: number
+                        description: Current page within paginated list of results
+                      per_page:
+                        type: number
+                        description: Number of results per page of results
+                      total_count:
+                        type: number
+                        description: Total results available without any search parameters
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        PolicyNotFound:
+          - code: 0
+            message:
+              includes: Policy not found
+  /accounts/{account_id}/alerting/v3/policies:
+    get:
+      operationId: listPolicies
+      description: "Get a list of all Notification policies.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const policy of
+        client.alerting.policies.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', })) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: The account id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of a notification policy
+                  alert_interval:
+                    type: string
+                    description: Optional specification of how often to re-alert from the same
+                      incident, not support on all alert types.
+                  alert_type:
+                    type: string
+                    enum:
+                      - abuse_report_alert
+                      - access_custom_certificate_expiration_type
+                      - advanced_ddos_attack_l4_alert
+                      - advanced_ddos_attack_l7_alert
+                      - advanced_http_alert_error
+                      - bgp_hijack_notification
+                      - billing_usage_alert
+                      - block_notification_block_removed
+                      - block_notification_new_block
+                      - block_notification_review_rejected
+                      - bot_traffic_basic_alert
+                      - brand_protection_alert
+                      - brand_protection_digest
+                      - clickhouse_alert_fw_anomaly
+                      - clickhouse_alert_fw_ent_anomaly
+                      - cloudforce_one_request_notification
+                      - custom_analytics
+                      - custom_bot_detection_alert
+                      - custom_ssl_certificate_event_type
+                      - dedicated_ssl_certificate_event_type
+                      - device_connectivity_anomaly_alert
+                      - dos_attack_l4
+                      - dos_attack_l7
+                      - expiring_service_token_alert
+                      - failing_logpush_job_disabled_alert
+                      - fbm_auto_advertisement
+                      - fbm_dosd_attack
+                      - fbm_volumetric_attack
+                      - health_check_status_notification
+                      - hostname_aop_custom_certificate_expiration_type
+                      - http_alert_edge_error
+                      - http_alert_origin_error
+                      - image_notification
+                      - image_resizing_notification
+                      - incident_alert
+                      - load_balancing_health_alert
+                      - load_balancing_pool_enablement_alert
+                      - logo_match_alert
+                      - magic_tunnel_health_check_event
+                      - magic_wan_tunnel_health
+                      - maintenance_event_notification
+                      - mtls_certificate_store_certificate_expiration_type
+                      - pages_event_alert
+                      - radar_notification
+                      - real_origin_monitoring
+                      - scriptmonitor_alert_new_code_change_detections
+                      - scriptmonitor_alert_new_hosts
+                      - scriptmonitor_alert_new_malicious_hosts
+                      - scriptmonitor_alert_new_malicious_scripts
+                      - scriptmonitor_alert_new_malicious_url
+                      - scriptmonitor_alert_new_max_length_resource_url
+                      - scriptmonitor_alert_new_resources
+                      - secondary_dns_all_primaries_failing
+                      - secondary_dns_primaries_failing
+                      - secondary_dns_warning
+                      - secondary_dns_zone_successfully_updated
+                      - secondary_dns_zone_validation_warning
+                      - security_insights_alert
+                      - sentinel_alert
+                      - stream_live_notifications
+                      - synthetic_test_latency_alert
+                      - synthetic_test_low_availability_alert
+                      - traffic_anomalies_alert
+                      - tunnel_health_event
+                      - tunnel_update_event
+                      - universal_ssl_event_type
+                      - web_analytics_metrics_update
+                      - zone_aop_custom_certificate_expiration_type
+                    description: Refers to which event will trigger a Notification dispatch. You can
+                      use the endpoint to get available alert types which then
+                      will give you a list of possible values.
+                  created:
+                    type: string
+                  description:
+                    type: string
+                    description: Optional description for the Notification policy.
+                  enabled:
+                    type: boolean
+                    description: Whether or not the Notification policy is enabled.
+                  filters:
+                    type: object
+                    properties:
+                      actions:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      affected_asns:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring radar_notification
+                      affected_components:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring incident_alert
+                      affected_locations:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring radar_notification
+                      airport_code:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring maintenance_event_notification
+                      alert_trigger_preferences:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      alert_trigger_preferences_value:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      enabled:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring load_balancing_pool_enablement_alert
+                      environment:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring pages_event_alert
+                      event:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring pages_event_alert
+                      event_source:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring load_balancing_health_alert
+                      event_type:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      group_by:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      health_check_id:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring health_check_status_notification
+                      incident_impact:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - INCIDENT_IMPACT_NONE
+                            - INCIDENT_IMPACT_MINOR
+                            - INCIDENT_IMPACT_MAJOR
+                            - INCIDENT_IMPACT_CRITICAL
+                        description: Used for configuring incident_alert
+                      input_id:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring stream_live_notifications
+                      insight_class:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring security_insights_alert
+                      limit:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring billing_usage_alert
+                      logo_tag:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring logo_match_alert
+                      megabits_per_second:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring advanced_ddos_attack_l4_alert
+                      new_health:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring load_balancing_health_alert
+                      new_status:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring tunnel_health_event
+                      packets_per_second:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring advanced_ddos_attack_l4_alert
+                      pool_id:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      pop_names:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      product:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring billing_usage_alert
+                      project_id:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring pages_event_alert
+                      protocol:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring advanced_ddos_attack_l4_alert
+                      query_tag:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      requests_per_second:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring advanced_ddos_attack_l7_alert
+                      selectors:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      services:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring clickhouse_alert_fw_ent_anomaly
+                      slo:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      status:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring health_check_status_notification
+                      target_hostname:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring advanced_ddos_attack_l7_alert
+                      target_ip:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring advanced_ddos_attack_l4_alert
+                      target_zone_name:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring advanced_ddos_attack_l7_alert
+                      traffic_exclusions:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - security_events
+                        description: Used for configuring traffic_anomalies_alert
+                      tunnel_id:
+                        type: array
+                        items:
+                          type: string
+                        description: Used for configuring tunnel_health_event
+                      tunnel_name:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      type:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      where:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                      zones:
+                        type: array
+                        items:
+                          type: string
+                        description: Usage depends on specific alert type
+                    description: Optional filters that allow you to be alerted only on a subset of
+                      events for that alert type based on some criteria. This is
+                      only available for select alert types. See alert type
+                      documentation for more details.
+                  mechanisms:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: The email address
+                      pagerduty:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: UUID
+                      webhooks:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: UUID
+                    description: List of IDs that will be used when dispatching a notification. IDs
+                      for email type will be the email address.
+                  modified:
+                    type: string
+                  name:
+                    type: string
+                    description: Name of the policy.
+      x-distilled-pagination-class: PoliciesSinglePage
+    post:
+      operationId: createPolicy
+      description: "Creates a new Notification policy.  @example ```ts const policy =
+        await client.alerting.policies.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', alert_type:
+        'universal_ssl_event_type', enabled: true, mechanisms: {}, name: 'SSL
+        Notification Event Policy', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The account id"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                alert_type:
+                  type: string
+                  enum:
+                    - abuse_report_alert
+                    - access_custom_certificate_expiration_type
+                    - advanced_ddos_attack_l4_alert
+                    - advanced_ddos_attack_l7_alert
+                    - advanced_http_alert_error
+                    - bgp_hijack_notification
+                    - billing_usage_alert
+                    - block_notification_block_removed
+                    - block_notification_new_block
+                    - block_notification_review_rejected
+                    - bot_traffic_basic_alert
+                    - brand_protection_alert
+                    - brand_protection_digest
+                    - clickhouse_alert_fw_anomaly
+                    - clickhouse_alert_fw_ent_anomaly
+                    - cloudforce_one_request_notification
+                    - custom_analytics
+                    - custom_bot_detection_alert
+                    - custom_ssl_certificate_event_type
+                    - dedicated_ssl_certificate_event_type
+                    - device_connectivity_anomaly_alert
+                    - dos_attack_l4
+                    - dos_attack_l7
+                    - expiring_service_token_alert
+                    - failing_logpush_job_disabled_alert
+                    - fbm_auto_advertisement
+                    - fbm_dosd_attack
+                    - fbm_volumetric_attack
+                    - health_check_status_notification
+                    - hostname_aop_custom_certificate_expiration_type
+                    - http_alert_edge_error
+                    - http_alert_origin_error
+                    - image_notification
+                    - image_resizing_notification
+                    - incident_alert
+                    - load_balancing_health_alert
+                    - load_balancing_pool_enablement_alert
+                    - logo_match_alert
+                    - magic_tunnel_health_check_event
+                    - magic_wan_tunnel_health
+                    - maintenance_event_notification
+                    - mtls_certificate_store_certificate_expiration_type
+                    - pages_event_alert
+                    - radar_notification
+                    - real_origin_monitoring
+                    - scriptmonitor_alert_new_code_change_detections
+                    - scriptmonitor_alert_new_hosts
+                    - scriptmonitor_alert_new_malicious_hosts
+                    - scriptmonitor_alert_new_malicious_scripts
+                    - scriptmonitor_alert_new_malicious_url
+                    - scriptmonitor_alert_new_max_length_resource_url
+                    - scriptmonitor_alert_new_resources
+                    - secondary_dns_all_primaries_failing
+                    - secondary_dns_primaries_failing
+                    - secondary_dns_warning
+                    - secondary_dns_zone_successfully_updated
+                    - secondary_dns_zone_validation_warning
+                    - security_insights_alert
+                    - sentinel_alert
+                    - stream_live_notifications
+                    - synthetic_test_latency_alert
+                    - synthetic_test_low_availability_alert
+                    - traffic_anomalies_alert
+                    - tunnel_health_event
+                    - tunnel_update_event
+                    - universal_ssl_event_type
+                    - web_analytics_metrics_update
+                    - zone_aop_custom_certificate_expiration_type
+                  description: "Body param: Refers to which event will trigger a Notification
+                    dispatch. You can use the endpoint to get available alert
+                    types which then will give you a list of possible values."
+                enabled:
+                  type: boolean
+                  description: "Body param: Whether or not the Notification policy is enabled."
+                mechanisms:
+                  type: object
+                  properties:
+                    email:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            description: The email address
+                    pagerduty:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            description: UUID
+                    webhooks:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            description: UUID
+                  description: "Body param: List of IDs that will be used when dispatching a
+                    notification. IDs for email type will be the email address."
+                name:
+                  type: string
+                  description: "Body param: Name of the policy."
+                alert_interval:
+                  type: string
+                  description: "Body param: Optional specification of how often to re-alert from
+                    the same incident, not support on all alert types."
+                description:
+                  type: string
+                  description: "Body param: Optional description for the Notification policy."
+                filters:
+                  type: object
+                  properties:
+                    actions:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    affected_asns:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring radar_notification
+                    affected_components:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring incident_alert
+                    affected_locations:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring radar_notification
+                    airport_code:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring maintenance_event_notification
+                    alert_trigger_preferences:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    alert_trigger_preferences_value:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    enabled:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring load_balancing_pool_enablement_alert
+                    environment:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring pages_event_alert
+                    event:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring pages_event_alert
+                    event_source:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring load_balancing_health_alert
+                    event_type:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    group_by:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    health_check_id:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring health_check_status_notification
+                    incident_impact:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - INCIDENT_IMPACT_NONE
+                          - INCIDENT_IMPACT_MINOR
+                          - INCIDENT_IMPACT_MAJOR
+                          - INCIDENT_IMPACT_CRITICAL
+                      description: Used for configuring incident_alert
+                    input_id:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring stream_live_notifications
+                    insight_class:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring security_insights_alert
+                    limit:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring billing_usage_alert
+                    logo_tag:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring logo_match_alert
+                    megabits_per_second:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring advanced_ddos_attack_l4_alert
+                    new_health:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring load_balancing_health_alert
+                    new_status:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring tunnel_health_event
+                    packets_per_second:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring advanced_ddos_attack_l4_alert
+                    pool_id:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    pop_names:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    product:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring billing_usage_alert
+                    project_id:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring pages_event_alert
+                    protocol:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring advanced_ddos_attack_l4_alert
+                    query_tag:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    requests_per_second:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring advanced_ddos_attack_l7_alert
+                    selectors:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    services:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring clickhouse_alert_fw_ent_anomaly
+                    slo:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    status:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring health_check_status_notification
+                    target_hostname:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring advanced_ddos_attack_l7_alert
+                    target_ip:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring advanced_ddos_attack_l4_alert
+                    target_zone_name:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring advanced_ddos_attack_l7_alert
+                    traffic_exclusions:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - security_events
+                      description: Used for configuring traffic_anomalies_alert
+                    tunnel_id:
+                      type: array
+                      items:
+                        type: string
+                      description: Used for configuring tunnel_health_event
+                    tunnel_name:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    type:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    where:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                    zones:
+                      type: array
+                      items:
+                        type: string
+                      description: Usage depends on specific alert type
+                  description: "Body param: Optional filters that allow you to be alerted only on
+                    a subset of events for that alert type based on some
+                    criteria. This is only available for select alert types. See
+                    alert type documentation for more details."
+              required:
+                - alert_type
+                - enabled
+                - mechanisms
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: UUID
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        FiltersRequired:
+          - code: 17103
+        MechanismRequired:
+          - code: 17102
+  /accounts/{account_id}/alerting/v3/silences/{silenceId}:
+    get:
+      operationId: getSilence
+      description: "Gets a specific silence for an account.  @example ```ts const
+        silence = await client.alerting.silences.get(
+        'f878e90c23f44126ae3cfc399f646977', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: silenceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: The account id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Silence ID
+                  created_at:
+                    type: string
+                    description: When the silence was created.
+                  end_time:
+                    type: string
+                    description: When the silence ends.
+                  policy_id:
+                    type: string
+                    description: The unique identifier of a notification policy
+                  start_time:
+                    type: string
+                    description: When the silence starts.
+                  updated_at:
+                    type: string
+                    description: When the silence was modified.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        InternalServerError:
+          - code: 15000
+    delete:
+      operationId: deleteSilence
+      description: "Deletes an existing silence for an account.  @example ```ts const
+        silence = await client.alerting.silences.delete(
+        'f878e90c23f44126ae3cfc399f646977', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: silenceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: The account id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        code:
+                          type: number
+                      required:
+                        - message
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        code:
+                          type: number
+                      required:
+                        - message
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful
+                required:
+                  - errors
+                  - messages
+                  - success
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/alerting/v3/silences:
+    get:
+      operationId: listSilences
+      description: "Gets a list of silences for an account.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        silenceListResponse of client.alerting.silences.list( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: The account id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Silence ID
+                  created_at:
+                    type: string
+                    description: When the silence was created.
+                  end_time:
+                    type: string
+                    description: When the silence ends.
+                  policy_id:
+                    type: string
+                    description: The unique identifier of a notification policy
+                  start_time:
+                    type: string
+                    description: When the silence starts.
+                  updated_at:
+                    type: string
+                    description: When the silence was modified.
+      x-distilled-pagination-class: SilenceListResponsesSinglePage
+    post:
+      operationId: createSilence
+      description: "Creates a new silence for an account.  @example ```ts const
+        silence = await client.alerting.silences.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', body: [{}], }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The account id"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  end_time:
+                    type: string
+                    description: When the silence ends.
+                  policy_id:
+                    type: string
+                    description: The unique identifier of a notification policy
+                  start_time:
+                    type: string
+                    description: When the silence starts.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        code:
+                          type: number
+                      required:
+                        - message
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                        code:
+                          type: number
+                      required:
+                        - message
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful
+                required:
+                  - errors
+                  - messages
+                  - success
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+    put:
+      operationId: updateSilence
+      description: "Updates existing silences for an account.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        silenceUpdateResponse of client.alerting.silences.update( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', body: [{}], }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The account id"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Silence ID
+                  end_time:
+                    type: string
+                    description: When the silence ends.
+                  start_time:
+                    type: string
+                    description: When the silence starts.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Silence ID
+                  created_at:
+                    type: string
+                    description: When the silence was created.
+                  end_time:
+                    type: string
+                    description: When the silence ends.
+                  policy_id:
+                    type: string
+                    description: The unique identifier of a notification policy
+                  start_time:
+                    type: string
+                    description: When the silence starts.
+                  updated_at:
+                    type: string
+                    description: When the silence was modified.
+      x-distilled-pagination-class: SilenceUpdateResponsesSinglePage

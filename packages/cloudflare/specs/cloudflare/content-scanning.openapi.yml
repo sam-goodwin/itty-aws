@@ -1,0 +1,229 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare CONTENT-SCANNING API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: content-scanning
+paths:
+  /zones/{zone_id}/content-upload-scan/settings:
+    get:
+      operationId: getSetting
+      description: "Retrieve the current status of Content Scanning.  @example ```ts
+        const setting = await client.contentScanning.settings.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  modified:
+                    type: string
+                    description: Defines the last modification date (ISO 8601) of the Content
+                      Scanning status.
+                  value:
+                    type: string
+                    description: Defines the status of Content Scanning.
+      x-distilled-response-path: result
+    put:
+      operationId: putContentScanning
+      description: "Update the Content Scanning status.  @example ```ts const
+        contentScanning = await client.contentScanning.update( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', value: 'enabled', }, ); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  enum:
+                    - enabled
+                    - disabled
+                  description: "Body param: The status value for Content Scanning."
+              required:
+                - value
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  modified:
+                    type: string
+                    description: Defines the last modification date (ISO 8601) of the Content
+                      Scanning status.
+                  value:
+                    type: string
+                    description: Defines the status of Content Scanning.
+      x-distilled-response-path: result
+  /zones/{zone_id}/content-upload-scan/enable:
+    post:
+      operationId: enableContentScanning
+      description: "Enable Content Scanning.  @example ```ts const response = await
+        client.contentScanning.enable({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+  /zones/{zone_id}/content-upload-scan/disable:
+    post:
+      operationId: disableContentScanning
+      description: "Disable Content Scanning.  @example ```ts const response = await
+        client.contentScanning.disable({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+  /zones/{zone_id}/content-upload-scan/payloads:
+    get:
+      operationId: listPayloads
+      description: "Get a list of existing custom scan expressions for Content
+        Scanning.  @example ```ts // Automatically fetches more pages as needed.
+        for await (const payloadListResponse of
+        client.contentScanning.payloads.list( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: defines the unique ID for this custom scan expression.
+                  payload:
+                    type: string
+                    description: Defines the ruleset expression to use in matching content objects.
+      x-distilled-pagination-class: PayloadListResponsesSinglePage
+    post:
+      operationId: createPayload
+      description: "Add custom scan expressions for Content Scanning.  @example ```ts
+        // Automatically fetches more pages as needed. for await (const
+        payloadCreateResponse of client.contentScanning.payloads.create( {
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353', body: [ { payload:
+        'lookup_json_string(http.request.body.raw, \"file\")', }, ], }, )) { //
+        ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Defines an identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  payload:
+                    type: string
+                    description: Defines the ruleset expression to use in matching content objects.
+                required:
+                  - payload
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: defines the unique ID for this custom scan expression.
+                  payload:
+                    type: string
+                    description: Defines the ruleset expression to use in matching content objects.
+      x-distilled-pagination-class: PayloadCreateResponsesSinglePage
+  /zones/{zone_id}/content-upload-scan/payloads/{expressionId}:
+    delete:
+      operationId: deletePayload
+      description: "Delete a Content Scan Custom Expression.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        payloadDeleteResponse of client.contentScanning.payloads.delete(
+        'a350a054caa840c9becd89c3b4f0195b', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: expressionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Defines an identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: defines the unique ID for this custom scan expression.
+                  payload:
+                    type: string
+                    description: Defines the ruleset expression to use in matching content objects.
+      x-distilled-pagination-class: PayloadDeleteResponsesSinglePage

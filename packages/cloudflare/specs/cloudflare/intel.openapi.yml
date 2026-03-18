@@ -1,0 +1,2001 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare INTEL API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: intel
+paths:
+  /accounts/{account_id}/intel/asn/{asn}:
+    get:
+      operationId: getAsn
+      description: "Gets an overview of the Autonomous System Number (ASN) and a list
+        of subnets for it.  @example ```ts const asn = await
+        client.intel.asn.get(0, { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result
+  /accounts/{account_id}/intel/asn/{asn}/subnets:
+    get:
+      operationId: getAsnSubnet
+      description: "Get ASN Subnets.  @example ```ts const subnet = await
+        client.intel.asn.subnets.get(0, { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  asn:
+                    type: number
+                  count:
+                    type: number
+                    description: Total results returned based on your search parameters.
+                  ip_count_total:
+                    type: number
+                  page:
+                    type: number
+                    description: Current page within paginated list of results.
+                  per_page:
+                    type: number
+                    description: Number of results per page of results.
+                  subnets:
+                    type: array
+                    items:
+                      type: string
+  /accounts/{account_id}/intel/attack-surface-report/issues:
+    get:
+      operationId: listAttackSurfaceReportIssues
+      description: Get Security Center Issues  @deprecated
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: dismissed
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: boolean
+        - name: issue_class
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: issue_class~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: issue_type
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - compliance_violation
+                - email_security
+                - exposed_infrastructure
+                - insecure_configuration
+                - weak_authentication
+                - configuration_suggestion
+        - name: issue_type~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - compliance_violation
+                - email_security
+                - exposed_infrastructure
+                - insecure_configuration
+                - weak_authentication
+                - configuration_suggestion
+        - name: product
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: product~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: severity
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - low
+                - moderate
+                - critical
+        - name: severity~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - low
+                - moderate
+                - critical
+        - name: subject
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: subject~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: number
+                    description: Total number of results
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        dismissed:
+                          type: boolean
+                        issue_class:
+                          type: string
+                        issue_type:
+                          type: string
+                          enum:
+                            - compliance_violation
+                            - email_security
+                            - exposed_infrastructure
+                            - insecure_configuration
+                            - weak_authentication
+                            - configuration_suggestion
+                        payload:
+                          type: object
+                          properties:
+                            detection_method:
+                              type: string
+                              description: Method used to detect insight
+                            zone_tag:
+                              type: string
+                        resolve_link:
+                          type: string
+                        resolve_text:
+                          type: string
+                        severity:
+                          type: string
+                          enum:
+                            - Low
+                            - Moderate
+                            - Critical
+                        since:
+                          type: string
+                        subject:
+                          type: string
+                        timestamp:
+                          type: string
+                  page:
+                    type: number
+                    description: Current page within paginated list of results
+                  per_page:
+                    type: number
+                    description: Number of results per page of results
+      x-distilled-pagination-class: IssueListResponsesV4PagePagination
+  /accounts/{account_id}/intel/attack-surface-report/issues/class:
+    get:
+      operationId: classAttackSurfaceReportIssue
+      description: Get Security Center Issue Counts by Class  @deprecated
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: dismissed
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: boolean
+        - name: issue_class
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: issue_class~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: issue_type
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - compliance_violation
+                - email_security
+                - exposed_infrastructure
+                - insecure_configuration
+                - weak_authentication
+                - configuration_suggestion
+        - name: issue_type~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - compliance_violation
+                - email_security
+                - exposed_infrastructure
+                - insecure_configuration
+                - weak_authentication
+                - configuration_suggestion
+        - name: product
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: product~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: severity
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - low
+                - moderate
+                - critical
+        - name: severity~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - low
+                - moderate
+                - critical
+        - name: subject
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: subject~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    count:
+                      type: number
+                    value:
+                      type: string
+      x-distilled-response-path: result
+  /accounts/{account_id}/intel/attack-surface-report/{issueId}/dismiss:
+    put:
+      operationId: dismissAttackSurfaceReportIssue
+      description: Archive Security Center Insight  @deprecated
+      parameters:
+        - name: issueId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dismiss:
+                  type: boolean
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful.
+                required:
+                  - errors
+                  - messages
+                  - success
+  /accounts/{account_id}/intel/attack-surface-report/issues/severity:
+    get:
+      operationId: severityAttackSurfaceReportIssue
+      description: Get Security Center Issue Counts by Severity  @deprecated
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: dismissed
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: boolean
+        - name: issue_class
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: issue_class~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: issue_type
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - compliance_violation
+                - email_security
+                - exposed_infrastructure
+                - insecure_configuration
+                - weak_authentication
+                - configuration_suggestion
+        - name: issue_type~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - compliance_violation
+                - email_security
+                - exposed_infrastructure
+                - insecure_configuration
+                - weak_authentication
+                - configuration_suggestion
+        - name: product
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: product~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: severity
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - low
+                - moderate
+                - critical
+        - name: severity~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - low
+                - moderate
+                - critical
+        - name: subject
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: subject~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    count:
+                      type: number
+                    value:
+                      type: string
+      x-distilled-response-path: result
+  /accounts/{account_id}/intel/attack-surface-report/issues/type:
+    get:
+      operationId: typeAttackSurfaceReportIssue
+      description: Get Security Center Issue Counts by Type  @deprecated
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: dismissed
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: boolean
+        - name: issue_class
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: issue_class~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: issue_type
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - compliance_violation
+                - email_security
+                - exposed_infrastructure
+                - insecure_configuration
+                - weak_authentication
+                - configuration_suggestion
+        - name: issue_type~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - compliance_violation
+                - email_security
+                - exposed_infrastructure
+                - insecure_configuration
+                - weak_authentication
+                - configuration_suggestion
+        - name: product
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: product~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: severity
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - low
+                - moderate
+                - critical
+        - name: severity~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - low
+                - moderate
+                - critical
+        - name: subject
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+        - name: subject~neq
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    count:
+                      type: number
+                    value:
+                      type: string
+      x-distilled-response-path: result
+  /accounts/{account_id}/intel/attack-surface-report/issue-types:
+    get:
+      operationId: getAttackSurfaceReportIssueType
+      description: "Get Security Center Issues Types  @example ```ts // Automatically
+        fetches more pages as needed. for await (const issueTypeGetResponse of
+        client.intel.attackSurfaceReport.issueTypes.get( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+      x-distilled-pagination-class: IssueTypeGetResponsesSinglePage
+  /accounts/{account_id}/intel/dns:
+    get:
+      operationId: listDns
+      description: "Gets a list of all the domains that have resolved to a specific IP
+        address.  @example ```ts // Automatically fetches more pages as needed.
+        for await (const dns of client.intel.dns.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', })) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: ipv4
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+        - name: start_end_params
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: object
+            properties:
+              end:
+                type: string
+                description: Defaults to the current date.
+              start:
+                type: string
+                description: Defaults to 30 days before the end parameter value.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: number
+                    description: Total results returned based on your search parameters.
+                  page:
+                    type: number
+                    description: Current page within paginated list of results.
+                  per_page:
+                    type: number
+                    description: Number of results per page of results.
+                  reverse_records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        first_seen:
+                          type: string
+                          description: First seen date of the DNS record during the time period.
+                        hostname:
+                          type: string
+                          description: Hostname that the IP was observed resolving to.
+                        last_seen:
+                          type: string
+                          description: Last seen date of the DNS record during the time period.
+                    description: Reverse DNS look-ups observed during the time period.
+      x-distilled-pagination-class: DNSV4PagePagination
+  /accounts/{account_id}/intel/domain:
+    get:
+      operationId: getDomain
+      description: "Gets security details and statistics about a domain.  @example
+        ```ts const domain = await client.intel.domains.get({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: domain
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  additional_information:
+                    type: object
+                    properties:
+                      suspected_malware_family:
+                        type: string
+                        description: Suspected DGA malware family.
+                    description: Additional information related to the host name.
+                  application:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      name:
+                        type: string
+                    description: Application that the hostname belongs to.
+                  content_categories:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        name:
+                          type: string
+                        super_category_id:
+                          type: number
+                  domain:
+                    type: string
+                  inherited_content_categories:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        name:
+                          type: string
+                        super_category_id:
+                          type: number
+                  inherited_from:
+                    type: string
+                    description: Domain from which `inherited_content_categories` and
+                      `inherited_risk_types` are inherited, if applicable.
+                  inherited_risk_types:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        name:
+                          type: string
+                        super_category_id:
+                          type: number
+                  popularity_rank:
+                    type: number
+                    description: Global Cloudflare 100k ranking for the last 30 days, if available
+                      for the hostname. The top ranked domain is 1, the lowest
+                      ranked domain is 100,000.
+                  resolves_to_refs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: "STIX 2.1 identifier:
+                            https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix\
+                            -v2.1-cs02.html#_64yvzeku5a5c."
+                        value:
+                          type: string
+                          description: IP address or domain name.
+                    description: Specifies a list of references to one or more IP addresses or
+                      domain names that the domain name currently resolves to.
+                  risk_score:
+                    type: number
+                    description: Hostname risk score, which is a value between 0 (lowest risk) to 1
+                      (highest risk).
+                  risk_types:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        name:
+                          type: string
+                        super_category_id:
+                          type: number
+      x-distilled-response-path: result
+  /accounts/{account_id}/intel/domain/bulk:
+    get:
+      operationId: getDomainBulk
+      description: "Same as summary.  @example ```ts const bulks = await
+        client.intel.domains.bulks.get({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: domain
+          in: query
+          required: false
+          description: "Query param: Accepts multiple values like
+            `?domain=cloudflare.com&domain=example.com`."
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    additional_information:
+                      type: object
+                      properties:
+                        suspected_malware_family:
+                          type: string
+                          description: Suspected DGA malware family.
+                      description: Additional information related to the host name.
+                    application:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        name:
+                          type: string
+                      description: Application that the hostname belongs to.
+                    content_categories:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: number
+                          name:
+                            type: string
+                          super_category_id:
+                            type: number
+                    domain:
+                      type: string
+                    inherited_content_categories:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: number
+                          name:
+                            type: string
+                          super_category_id:
+                            type: number
+                    inherited_from:
+                      type: string
+                      description: Domain from which `inherited_content_categories` and
+                        `inherited_risk_types` are inherited, if applicable.
+                    inherited_risk_types:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: number
+                          name:
+                            type: string
+                          super_category_id:
+                            type: number
+                    popularity_rank:
+                      type: number
+                      description: Global Cloudflare 100k ranking for the last 30 days, if available
+                        for the hostname. The top ranked domain is 1, the lowest
+                        ranked domain is 100,000.
+                    risk_score:
+                      type: number
+                      description: Hostname risk score, which is a value between 0 (lowest risk) to 1
+                        (highest risk).
+                    risk_types:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: number
+                          name:
+                            type: string
+                          super_category_id:
+                            type: number
+      x-distilled-response-path: result
+  /accounts/{account_id}/intel/domain-history:
+    get:
+      operationId: getDomainHistory
+      description: "Gets historical security threat and content categories currently
+        and previously assigned to a domain.  @example ```ts const
+        domainHistories = await client.intel.domainHistory.get({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: domain
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    categorizations:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          categories:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: number
+                                name:
+                                  type: string
+                          end:
+                            type: string
+                          start:
+                            type: string
+                    domain:
+                      type: string
+      x-distilled-response-path: result
+  /accounts/{account_id}/intel/indicator-feeds/{feedId}:
+    get:
+      operationId: getIndicatorFeed
+      description: "Get indicator feed metadata  @example ```ts const indicatorFeed =
+        await client.intel.indicatorFeeds.get( 12, { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: feedId
+          in: path
+          required: true
+          schema:
+            type: number
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: The unique identifier for the indicator feed
+                  created_on:
+                    type: string
+                    description: The date and time when the data entry was created
+                  description:
+                    type: string
+                    description: The description of the example test
+                  is_attributable:
+                    type: boolean
+                    description: Whether the indicator feed can be attributed to a provider
+                  is_downloadable:
+                    type: boolean
+                    description: Whether the indicator feed can be downloaded
+                  is_public:
+                    type: boolean
+                    description: Whether the indicator feed is exposed to customers
+                  latest_upload_status:
+                    type: string
+                    enum:
+                      - Mirroring
+                      - Unifying
+                      - Loading
+                      - Provisioning
+                      - Complete
+                      - Error
+                    description: Status of the latest snapshot uploaded
+                  modified_on:
+                    type: string
+                    description: The date and time when the data entry was last modified
+                  name:
+                    type: string
+                    description: The name of the indicator feed
+                  provider_id:
+                    type: string
+                    description: The unique identifier for the provider
+                  provider_name:
+                    type: string
+                    description: The provider of the indicator feed
+      x-distilled-response-path: result
+    put:
+      operationId: updateIndicatorFeed
+      description: "Update indicator feed metadata  @example ```ts const indicatorFeed
+        = await client.intel.indicatorFeeds.update(12, { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: feedId
+          in: path
+          required: true
+          schema:
+            type: number
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: "Body param: The new description of the feed"
+                is_attributable:
+                  type: boolean
+                  description: "Body param: The new is_attributable value of the feed"
+                is_downloadable:
+                  type: boolean
+                  description: "Body param: The new is_downloadable value of the feed"
+                is_public:
+                  type: boolean
+                  description: "Body param: The new is_public value of the feed"
+                name:
+                  type: string
+                  description: "Body param: The new name of the feed"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: The unique identifier for the indicator feed
+                  created_on:
+                    type: string
+                    description: The date and time when the data entry was created
+                  description:
+                    type: string
+                    description: The description of the example test
+                  is_attributable:
+                    type: boolean
+                    description: Whether the indicator feed can be attributed to a provider
+                  is_downloadable:
+                    type: boolean
+                    description: Whether the indicator feed can be downloaded
+                  is_public:
+                    type: boolean
+                    description: Whether the indicator feed is exposed to customers
+                  modified_on:
+                    type: string
+                    description: The date and time when the data entry was last modified
+                  name:
+                    type: string
+                    description: The name of the indicator feed
+      x-distilled-response-path: result
+  /accounts/{account_id}/intel/indicator-feeds:
+    get:
+      operationId: listIndicatorFeeds
+      description: "Get indicator feeds owned by this account  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        indicatorFeedListResponse of client.intel.indicatorFeeds.list( {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: The unique identifier for the indicator feed
+                  created_on:
+                    type: string
+                    description: The date and time when the data entry was created
+                  description:
+                    type: string
+                    description: The description of the example test
+                  is_attributable:
+                    type: boolean
+                    description: Whether the indicator feed can be attributed to a provider
+                  is_downloadable:
+                    type: boolean
+                    description: Whether the indicator feed can be downloaded
+                  is_public:
+                    type: boolean
+                    description: Whether the indicator feed is exposed to customers
+                  modified_on:
+                    type: string
+                    description: The date and time when the data entry was last modified
+                  name:
+                    type: string
+                    description: The name of the indicator feed
+      x-distilled-pagination-class: IndicatorFeedListResponsesSinglePage
+    post:
+      operationId: createIndicatorFeed
+      description: "Create new indicator feed  @example ```ts const indicatorFeed =
+        await client.intel.indicatorFeeds.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: "Body param: The description of the example test"
+                name:
+                  type: string
+                  description: "Body param: The name of the indicator feed"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: The unique identifier for the indicator feed
+                  created_on:
+                    type: string
+                    description: The date and time when the data entry was created
+                  description:
+                    type: string
+                    description: The description of the example test
+                  is_attributable:
+                    type: boolean
+                    description: Whether the indicator feed can be attributed to a provider
+                  is_downloadable:
+                    type: boolean
+                    description: Whether the indicator feed can be downloaded
+                  is_public:
+                    type: boolean
+                    description: Whether the indicator feed is exposed to customers
+                  modified_on:
+                    type: string
+                    description: The date and time when the data entry was last modified
+                  name:
+                    type: string
+                    description: The name of the indicator feed
+      x-distilled-response-path: result
+  /accounts/{account_id}/intel/indicator-feeds/{feedId}/data:
+    get:
+      operationId: dataIndicatorFeed
+      description: "Get indicator feed data  @example ```ts const response = await
+        client.intel.indicatorFeeds.data( 12, { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: feedId
+          in: path
+          required: true
+          schema:
+            type: number
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  /accounts/{account_id}/intel/indicator-feeds/permissions/view:
+    get:
+      operationId: listIndicatorFeedPermissions
+      description: "List indicator feed permissions  @example ```ts const permissions
+        = await client.intel.indicatorFeeds.permissions.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      description: The unique identifier for the indicator feed
+                    description:
+                      type: string
+                      description: The description of the example test
+                    is_attributable:
+                      type: boolean
+                      description: Whether the indicator feed can be attributed to a provider
+                    is_downloadable:
+                      type: boolean
+                      description: Whether the indicator feed can be downloaded
+                    is_public:
+                      type: boolean
+                      description: Whether the indicator feed is exposed to customers
+                    name:
+                      type: string
+                      description: The name of the indicator feed
+      x-distilled-response-path: result
+  /accounts/{account_id}/intel/indicator-feeds/permissions/add:
+    put:
+      operationId: createIndicatorFeedPermission
+      description: "Grant permission to indicator feed  @example ```ts const
+        permission = await client.intel.indicatorFeeds.permissions.create({
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_tag:
+                  type: string
+                  description: "Body param: The Cloudflare account tag of the account to change
+                    permissions on"
+                feed_id:
+                  type: number
+                  description: "Body param: The ID of the feed to add/remove permissions on"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether the update succeeded or not
+      x-distilled-response-path: result
+  /accounts/{account_id}/intel/indicator-feeds/permissions/remove:
+    put:
+      operationId: deleteIndicatorFeedPermission
+      description: "Revoke permission to indicator feed  @example ```ts const
+        permission = await client.intel.indicatorFeeds.permissions.delete({
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_tag:
+                  type: string
+                  description: "Body param: The Cloudflare account tag of the account to change
+                    permissions on"
+                feed_id:
+                  type: number
+                  description: "Body param: The ID of the feed to add/remove permissions on"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether the update succeeded or not
+      x-distilled-response-path: result
+  /accounts/{account_id}/intel/indicator-feeds/{feedId}/snapshot:
+    put:
+      operationId: putIndicatorFeedSnapshot
+      description: "Update indicator feed data  @example ```ts const snapshot = await
+        client.intel.indicatorFeeds.snapshots.update(12, { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: feedId
+          in: path
+          required: true
+          schema:
+            type: number
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                source:
+                  type: string
+                  description: "Body param: The file to upload"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  file_id:
+                    type: number
+                    description: Feed id
+                  filename:
+                    type: string
+                    description: Name of the file unified in our system
+                  status:
+                    type: string
+                    description: Current status of upload, should be unified
+      x-distilled-response-path: result
+  /accounts/{account_id}/intel/ip:
+    get:
+      operationId: getIp
+      description: "Gets the geolocation, ASN, infrastructure type of the ASN, and any
+        security threat categories of an IP address.  Must provide ip query
+        parameters.  For example, `/intel/ip?ipv4=1.1.1.1` or
+        `/intel/ip?ipv6=2001:db8::1`.  @example ```ts const ips = await
+        client.intel.ips.get({ account_id: '023e105f4ecef8ad9ca31a8372d0c353',
+        }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: ipv4
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+        - name: ipv6
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    belongs_to_ref:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        country:
+                          type: string
+                        description:
+                          type: string
+                        type:
+                          type: string
+                          enum:
+                            - hosting_provider
+                            - isp
+                            - organization
+                          description: Infrastructure type of this ASN.
+                        value:
+                          type: string
+                      description: Specifies a reference to the autonomous systems (AS) that the IP
+                        address belongs to.
+                    ip:
+                      type: string
+                    risk_types:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: number
+                          name:
+                            type: string
+                          super_category_id:
+                            type: number
+      x-distilled-response-path: result
+  /accounts/{account_id}/intel/ip-list:
+    get:
+      operationId: getIpList
+      description: "Get IP Lists.  @example ```ts // Automatically fetches more pages
+        as needed. for await (const ipList of client.intel.ipLists.get({
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', })) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  description:
+                    type: string
+                  name:
+                    type: string
+      x-distilled-pagination-class: IPListsSinglePage
+  /accounts/{account_id}/intel/miscategorization:
+    post:
+      operationId: createMiscategorization
+      description: "Allows you to submit requests to change a domain’s
+        category.  @example ```ts const miscategorization = await
+        client.intel.miscategorizations.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content_adds:
+                  type: array
+                  items:
+                    type: number
+                  description: "Body param: Content category IDs to add."
+                content_removes:
+                  type: array
+                  items:
+                    type: number
+                  description: "Body param: Content category IDs to remove."
+                indicator_type:
+                  type: string
+                  enum:
+                    - domain
+                    - ipv4
+                    - ipv6
+                    - url
+                  description: "Body param:"
+                ip:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: "Body param: Provide only if indicator_type is `ipv4` or `ipv6`."
+                security_adds:
+                  type: array
+                  items:
+                    type: number
+                  description: "Body param: Security category IDs to add."
+                security_removes:
+                  type: array
+                  items:
+                    type: number
+                  description: "Body param: Security category IDs to remove."
+                url:
+                  type: string
+                  description: "Body param: Provide only if indicator_type is `domain` or `url`.
+                    Example if indicator_type is `domain`: `example.com`.
+                    Example if indicator_type is `url`:
+                    `https://example.com/news/`."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful.
+                required:
+                  - errors
+                  - messages
+                  - success
+  /accounts/{account_id}/intel/sinkholes:
+    get:
+      operationId: listSinkholes
+      description: "List sinkholes owned by this account  @example ```ts //
+        Automatically fetches more pages as needed. for await (const sinkhole of
+        client.intel.sinkholes.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', })) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: The unique identifier for the sinkhole
+                  account_tag:
+                    type: string
+                    description: The account tag that owns this sinkhole
+                  created_on:
+                    type: string
+                    description: The date and time when the sinkhole was created
+                  modified_on:
+                    type: string
+                    description: The date and time when the sinkhole was last modified
+                  name:
+                    type: string
+                    description: The name of the sinkhole
+                  r2_bucket:
+                    type: string
+                    description: The name of the R2 bucket to store results
+                  r2_id:
+                    type: string
+                    description: The id of the R2 instance
+      x-distilled-pagination-class: SinkholesSinglePage
+  /accounts/{account_id}/intel/whois:
+    get:
+      operationId: getWhoi
+      description: "Get WHOIS Record  @example ```ts const whois = await
+        client.intel.whois.get({ account_id: '023e105f4ecef8ad9ca31a8372d0c353',
+        }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Use to uniquely identify or reference the resource."
+          schema:
+            type: string
+        - name: domain
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dnssec:
+                    type: boolean
+                  domain:
+                    type: string
+                  extension:
+                    type: string
+                  found:
+                    type: boolean
+                  nameservers:
+                    type: array
+                    items:
+                      type: string
+                  punycode:
+                    type: string
+                  registrant:
+                    type: string
+                  registrar:
+                    type: string
+                  id:
+                    type: string
+                  administrative_city:
+                    type: string
+                  administrative_country:
+                    type: string
+                  administrative_email:
+                    type: string
+                  administrative_fax:
+                    type: string
+                  administrative_fax_ext:
+                    type: string
+                  administrative_id:
+                    type: string
+                  administrative_name:
+                    type: string
+                  administrative_org:
+                    type: string
+                  administrative_phone:
+                    type: string
+                  administrative_phone_ext:
+                    type: string
+                  administrative_postal_code:
+                    type: string
+                  administrative_province:
+                    type: string
+                  administrative_referral_url:
+                    type: string
+                  administrative_street:
+                    type: string
+                  billing_city:
+                    type: string
+                  billing_country:
+                    type: string
+                  billing_email:
+                    type: string
+                  billing_fax:
+                    type: string
+                  billing_fax_ext:
+                    type: string
+                  billing_id:
+                    type: string
+                  billing_name:
+                    type: string
+                  billing_org:
+                    type: string
+                  billing_phone:
+                    type: string
+                  billing_phone_ext:
+                    type: string
+                  billing_postal_code:
+                    type: string
+                  billing_province:
+                    type: string
+                  billing_referral_url:
+                    type: string
+                  billing_street:
+                    type: string
+                  created_date:
+                    type: string
+                  created_date_raw:
+                    type: string
+                  expiration_date:
+                    type: string
+                  expiration_date_raw:
+                    type: string
+                  registrant_city:
+                    type: string
+                  registrant_country:
+                    type: string
+                  registrant_email:
+                    type: string
+                  registrant_fax:
+                    type: string
+                  registrant_fax_ext:
+                    type: string
+                  registrant_id:
+                    type: string
+                  registrant_name:
+                    type: string
+                  registrant_org:
+                    type: string
+                  registrant_phone:
+                    type: string
+                  registrant_phone_ext:
+                    type: string
+                  registrant_postal_code:
+                    type: string
+                  registrant_province:
+                    type: string
+                  registrant_referral_url:
+                    type: string
+                  registrant_street:
+                    type: string
+                  registrar_city:
+                    type: string
+                  registrar_country:
+                    type: string
+                  registrar_email:
+                    type: string
+                  registrar_fax:
+                    type: string
+                  registrar_fax_ext:
+                    type: string
+                  registrar_id:
+                    type: string
+                  registrar_name:
+                    type: string
+                  registrar_org:
+                    type: string
+                  registrar_phone:
+                    type: string
+                  registrar_phone_ext:
+                    type: string
+                  registrar_postal_code:
+                    type: string
+                  registrar_province:
+                    type: string
+                  registrar_referral_url:
+                    type: string
+                  registrar_street:
+                    type: string
+                  status:
+                    type: array
+                    items:
+                      type: string
+                  technical_city:
+                    type: string
+                  technical_country:
+                    type: string
+                  technical_email:
+                    type: string
+                  technical_fax:
+                    type: string
+                  technical_fax_ext:
+                    type: string
+                  technical_id:
+                    type: string
+                  technical_name:
+                    type: string
+                  technical_org:
+                    type: string
+                  technical_phone:
+                    type: string
+                  technical_phone_ext:
+                    type: string
+                  technical_postal_code:
+                    type: string
+                  technical_province:
+                    type: string
+                  technical_referral_url:
+                    type: string
+                  technical_street:
+                    type: string
+                  updated_date:
+                    type: string
+                  updated_date_raw:
+                    type: string
+                  whois_server:
+                    type: string
+                required:
+                  - dnssec
+                  - domain
+                  - extension
+                  - found
+                  - nameservers
+                  - punycode
+                  - registrant
+                  - registrar
+      x-distilled-response-path: result

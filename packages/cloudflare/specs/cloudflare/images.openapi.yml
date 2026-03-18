@@ -1,0 +1,1089 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare IMAGES API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: images
+paths:
+  /accounts/{account_id}/images/v1/{imageId}:
+    get:
+      operationId: getV1
+      description: "Fetch details for a single image.  @example ```ts const image =
+        await client.images.v1.get('image_id', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: imageId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Image unique identifier.
+                  creator:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Can set the creator field with an internal user ID.
+                  filename:
+                    type: string
+                    description: Image file name.
+                  meta:
+                    description: User modifiable key-value store. Can be used for keeping references
+                      to another system of record for managing images. Metadata
+                      must not exceed 1024 bytes.
+                  requireSignedURLs:
+                    type: boolean
+                    description: Indicates whether the image can be a accessed only using it's UID.
+                      If set to true, a signed token needs to be generated with
+                      a signing key to view the image.
+                  uploaded:
+                    type: string
+                    description: When the media item was uploaded.
+                  variants:
+                    type: array
+                    items:
+                      type: string
+                    description: Object specifying available variants for an image.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+        ImageNotFound:
+          - code: 5404
+    patch:
+      operationId: patchV1
+      description: "Update image access control. On access control change, all copies
+        of the image are purged from cache.  @example ```ts const image = await
+        client.images.v1.edit('image_id', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: imageId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                creator:
+                  type: string
+                  description: "Body param: Can set the creator field with an internal user ID."
+                metadata:
+                  description: "Body param: User modifiable key-value store. Can be used for
+                    keeping references to another system of record for managing
+                    images. No change if not specified."
+                requireSignedURLs:
+                  type: boolean
+                  description: "Body param: Indicates whether the image can be accessed using only
+                    its UID. If set to `true`, a signed token needs to be
+                    generated with a signing key to view the image. Returns a
+                    new UID on a change. No change if not specified."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Image unique identifier.
+                  creator:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Can set the creator field with an internal user ID.
+                  filename:
+                    type: string
+                    description: Image file name.
+                  meta:
+                    description: User modifiable key-value store. Can be used for keeping references
+                      to another system of record for managing images. Metadata
+                      must not exceed 1024 bytes.
+                  requireSignedURLs:
+                    type: boolean
+                    description: Indicates whether the image can be a accessed only using it's UID.
+                      If set to true, a signed token needs to be generated with
+                      a signing key to view the image.
+                  uploaded:
+                    type: string
+                    description: When the media item was uploaded.
+                  variants:
+                    type: array
+                    items:
+                      type: string
+                    description: Object specifying available variants for an image.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+        ImageNotFound:
+          - code: 5404
+    delete:
+      operationId: deleteV1
+      description: "Delete an image on Cloudflare Images. On success, all copies of
+        the image are deleted and purged from cache.  @example ```ts const v1 =
+        await client.images.v1.delete('image_id', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: imageId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+        ImageNotFound:
+          - code: 5404
+  /accounts/{account_id}/images/v1:
+    get:
+      operationId: listV1s
+      description: List up to 100 images with one request. Use the optional parameters
+        below to get a specific range of images.  @deprecated
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+        - name: creator
+          in: query
+          required: false
+          description: 'Query param: Internal user ID set within the creator field.
+            Setting to empty string "" will return images where creator field is
+            not set'
+          schema:
+            oneOf:
+              - type: string
+            nullable: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  images:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Image unique identifier.
+                        creator:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: Can set the creator field with an internal user ID.
+                        filename:
+                          type: string
+                          description: Image file name.
+                        meta:
+                          description: User modifiable key-value store. Can be used for keeping references
+                            to another system of record for managing images.
+                            Metadata must not exceed 1024 bytes.
+                        requireSignedURLs:
+                          type: boolean
+                          description: Indicates whether the image can be a accessed only using it's UID.
+                            If set to true, a signed token needs to be generated
+                            with a signing key to view the image.
+                        uploaded:
+                          type: string
+                          description: When the media item was uploaded.
+                        variants:
+                          type: array
+                          items:
+                            type: string
+                          description: Object specifying available variants for an image.
+      x-distilled-pagination-class: V1ListResponsesV4PagePagination
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+    post:
+      operationId: createV1
+      description: "Upload an image with up to 10 Megabytes using a single HTTP POST
+        (multipart/form-data) request. An image can be uploaded by sending an
+        image file or passing an accessible to an API url.  @example ```ts const
+        image = await client.images.v1.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: "Body param: An optional custom unique identifier for your image."
+                creator:
+                  type: string
+                  description: "Body param: Can set the creator field with an internal user ID."
+                file:
+                  type: string
+                  format: binary
+                  description: "Body param: An image binary data. Only needed when type is
+                    uploading a file."
+                metadata:
+                  description: "Body param: User modifiable key-value store. Can use used for
+                    keeping references to another system of record for managing
+                    images."
+                requireSignedURLs:
+                  type: boolean
+                  description: "Body param: Indicates whether the image requires a signature token
+                    for the access."
+                url:
+                  type: string
+                  description: "Body param: A URL to fetch an image from origin. Only needed when
+                    type is uploading from a URL."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Image unique identifier.
+                  creator:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Can set the creator field with an internal user ID.
+                  filename:
+                    type: string
+                    description: Image file name.
+                  meta:
+                    description: User modifiable key-value store. Can be used for keeping references
+                      to another system of record for managing images. Metadata
+                      must not exceed 1024 bytes.
+                  requireSignedURLs:
+                    type: boolean
+                    description: Indicates whether the image can be a accessed only using it's UID.
+                      If set to true, a signed token needs to be generated with
+                      a signing key to view the image.
+                  uploaded:
+                    type: string
+                    description: When the media item was uploaded.
+                  variants:
+                    type: array
+                    items:
+                      type: string
+                    description: Object specifying available variants for an image.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+  /accounts/{account_id}/images/v1/{imageId}/blob:
+    get:
+      operationId: getV1Blob
+      description: "Fetch base image. For most images this will be the originally
+        uploaded file. For larger images it can be a near-lossless version of
+        the original.  @example ```ts const blob = await
+        client.images.v1.blobs.get('image_id', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', });  const content = await
+        blob.blob(); console.log(content); ```"
+      parameters:
+        - name: imageId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+        ImageNotFound:
+          - code: 5404
+  /accounts/{account_id}/images/v1/keys:
+    get:
+      operationId: listV1Keys
+      description: "Lists your signing keys. These can be found on your Cloudflare
+        Images dashboard.  @example ```ts const keys = await
+        client.images.v1.keys.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  keys:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: Key name.
+                        value:
+                          type: string
+                          description: Key value.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+  /accounts/{account_id}/images/v1/keys/{signingKeyName}:
+    put:
+      operationId: putV1Key
+      description: "Create a new signing key with specified name. Returns all keys
+        available.  @example ```ts const key = await
+        client.images.v1.keys.update('someKey', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: signingKeyName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  keys:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: Key name.
+                        value:
+                          type: string
+                          description: Key value.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+    delete:
+      operationId: deleteV1Key
+      description: "Delete signing key with specified name. Returns all keys
+        available. When last key is removed, a new default signing key will be
+        generated.  @example ```ts const key = await
+        client.images.v1.keys.delete('someKey', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: signingKeyName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  keys:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: Key name.
+                        value:
+                          type: string
+                          description: Key value.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+        KeyNotFound:
+          - code: 5404
+  /accounts/{account_id}/images/v1/stats:
+    get:
+      operationId: getV1Stat
+      description: "Fetch image statistics details for Cloudflare Images. The returned
+        statistics detail storage usage, including the current image count vs
+        this account's allowance.  @example ```ts const stat = await
+        client.images.v1.stats.get({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: object
+                    properties:
+                      allowed:
+                        type: number
+                        description: Cloudflare Images allowed usage.
+                      current:
+                        type: number
+                        description: Cloudflare Images current usage.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+  /accounts/{account_id}/images/v1/variants/{variantId}:
+    get:
+      operationId: getV1Variant
+      description: "Fetch details for a single variant.  @example ```ts const variant
+        = await client.images.v1.variants.get( 'hero', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: variantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  variant:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      options:
+                        type: object
+                        properties:
+                          fit:
+                            type: string
+                            enum:
+                              - scale-down
+                              - contain
+                              - cover
+                              - crop
+                              - pad
+                            description: The fit property describes how the width and height dimensions
+                              should be interpreted.
+                          height:
+                            type: number
+                            description: Maximum height in image pixels.
+                          metadata:
+                            type: string
+                            enum:
+                              - keep
+                              - copyright
+                              - none
+                            description: What EXIF data should be preserved in the output image.
+                          width:
+                            type: number
+                            description: Maximum width in image pixels.
+                        required:
+                          - fit
+                          - height
+                          - metadata
+                          - width
+                        description: Allows you to define image resizing sizes for different use cases.
+                      neverRequireSignedURLs:
+                        type: boolean
+                        description: Indicates whether the variant can access an image without a
+                          signature, regardless of image access control.
+                    required:
+                      - id
+                      - options
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+        VariantNameNotAllowed:
+          - code: 5400
+        VariantNotFound:
+          - code: 5401
+    patch:
+      operationId: patchV1Variant
+      description: "Updating a variant purges the cache for all images associated with
+        the variant.  @example ```ts const response = await
+        client.images.v1.variants.edit( 'hero', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', options: { fit: 'scale-down',
+        height: 768, metadata: 'none', width: 1366, }, }, ); ```"
+      parameters:
+        - name: variantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                options:
+                  type: object
+                  properties:
+                    fit:
+                      type: string
+                      enum:
+                        - scale-down
+                        - contain
+                        - cover
+                        - crop
+                        - pad
+                      description: The fit property describes how the width and height dimensions
+                        should be interpreted.
+                    height:
+                      type: number
+                      description: Maximum height in image pixels.
+                    metadata:
+                      type: string
+                      enum:
+                        - keep
+                        - copyright
+                        - none
+                      description: What EXIF data should be preserved in the output image.
+                    width:
+                      type: number
+                      description: Maximum width in image pixels.
+                  required:
+                    - fit
+                    - height
+                    - metadata
+                    - width
+                  description: "Body param: Allows you to define image resizing sizes for
+                    different use cases."
+                neverRequireSignedURLs:
+                  type: boolean
+                  description: "Body param: Indicates whether the variant can access an image
+                    without a signature, regardless of image access control."
+              required:
+                - options
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  variant:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      options:
+                        type: object
+                        properties:
+                          fit:
+                            type: string
+                            enum:
+                              - scale-down
+                              - contain
+                              - cover
+                              - crop
+                              - pad
+                            description: The fit property describes how the width and height dimensions
+                              should be interpreted.
+                          height:
+                            type: number
+                            description: Maximum height in image pixels.
+                          metadata:
+                            type: string
+                            enum:
+                              - keep
+                              - copyright
+                              - none
+                            description: What EXIF data should be preserved in the output image.
+                          width:
+                            type: number
+                            description: Maximum width in image pixels.
+                        required:
+                          - fit
+                          - height
+                          - metadata
+                          - width
+                        description: Allows you to define image resizing sizes for different use cases.
+                      neverRequireSignedURLs:
+                        type: boolean
+                        description: Indicates whether the variant can access an image without a
+                          signature, regardless of image access control.
+                    required:
+                      - id
+                      - options
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+        VariantNameNotAllowed:
+          - code: 5400
+        VariantNotFound:
+          - code: 5401
+    delete:
+      operationId: deleteV1Variant
+      description: "Deleting a variant purges the cache for all images associated with
+        the variant.  @example ```ts const variant = await
+        client.images.v1.variants.delete( 'hero', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: variantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+        VariantNameNotAllowed:
+          - code: 5400
+        VariantNotFound:
+          - code: 5401
+  /accounts/{account_id}/images/v1/variants:
+    get:
+      operationId: listV1Variants
+      description: "Lists existing variants.  @example ```ts const variant = await
+        client.images.v1.variants.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  options:
+                    type: object
+                    properties:
+                      fit:
+                        type: string
+                        enum:
+                          - scale-down
+                          - contain
+                          - cover
+                          - crop
+                          - pad
+                        description: The fit property describes how the width and height dimensions
+                          should be interpreted.
+                      height:
+                        type: number
+                        description: Maximum height in image pixels.
+                      metadata:
+                        type: string
+                        enum:
+                          - keep
+                          - copyright
+                          - none
+                        description: What EXIF data should be preserved in the output image.
+                      width:
+                        type: number
+                        description: Maximum width in image pixels.
+                    required:
+                      - fit
+                      - height
+                      - metadata
+                      - width
+                    description: Allows you to define image resizing sizes for different use cases.
+                  neverRequireSignedURLs:
+                    type: boolean
+                    description: Indicates whether the variant can access an image without a
+                      signature, regardless of image access control.
+                required:
+                  - id
+                  - options
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+    post:
+      operationId: createV1Variant
+      description: "Specify variants that allow you to resize images for different use
+        cases.  @example ```ts const variant = await
+        client.images.v1.variants.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', id: 'hero', options: { fit:
+        'scale-down', height: 768, metadata: 'none', width: 1366, }, }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: "Body param:"
+                options:
+                  type: object
+                  properties:
+                    fit:
+                      type: string
+                      enum:
+                        - scale-down
+                        - contain
+                        - cover
+                        - crop
+                        - pad
+                      description: The fit property describes how the width and height dimensions
+                        should be interpreted.
+                    height:
+                      type: number
+                      description: Maximum height in image pixels.
+                    metadata:
+                      type: string
+                      enum:
+                        - keep
+                        - copyright
+                        - none
+                      description: What EXIF data should be preserved in the output image.
+                    width:
+                      type: number
+                      description: Maximum width in image pixels.
+                  required:
+                    - fit
+                    - height
+                    - metadata
+                    - width
+                  description: "Body param: Allows you to define image resizing sizes for
+                    different use cases."
+                neverRequireSignedURLs:
+                  type: boolean
+                  description: "Body param: Indicates whether the variant can access an image
+                    without a signature, regardless of image access control."
+              required:
+                - id
+                - options
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  variant:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      options:
+                        type: object
+                        properties:
+                          fit:
+                            type: string
+                            enum:
+                              - scale-down
+                              - contain
+                              - cover
+                              - crop
+                              - pad
+                            description: The fit property describes how the width and height dimensions
+                              should be interpreted.
+                          height:
+                            type: number
+                            description: Maximum height in image pixels.
+                          metadata:
+                            type: string
+                            enum:
+                              - keep
+                              - copyright
+                              - none
+                            description: What EXIF data should be preserved in the output image.
+                          width:
+                            type: number
+                            description: Maximum width in image pixels.
+                        required:
+                          - fit
+                          - height
+                          - metadata
+                          - width
+                        description: Allows you to define image resizing sizes for different use cases.
+                      neverRequireSignedURLs:
+                        type: boolean
+                        description: Indicates whether the variant can access an image without a
+                          signature, regardless of image access control.
+                    required:
+                      - id
+                      - options
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+        VariantNameNotAllowed:
+          - code: 5400
+  /accounts/{account_id}/images/v2:
+    get:
+      operationId: listV2s
+      description: "List up to 10000 images with one request. Use the optional
+        parameters below to get a specific range of images. Endpoint returns
+        continuation_token if more images are present.  @example ```ts const v2s
+        = await client.images.v2.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+        - name: continuation_token
+          in: query
+          required: false
+          description: "Query param: Continuation token for a next page. List images V2
+            returns continuation_token"
+          schema:
+            oneOf:
+              - type: string
+            nullable: true
+        - name: creator
+          in: query
+          required: false
+          description: 'Query param: Internal user ID set within the creator field.
+            Setting to empty string "" will return images where creator field is
+            not set'
+          schema:
+            oneOf:
+              - type: string
+            nullable: true
+        - name: per_page
+          in: query
+          required: false
+          description: "Query param: Number of items per page."
+          schema:
+            type: number
+        - name: sort_order
+          in: query
+          required: false
+          description: "Query param: Sorting order by upload time."
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  continuation_token:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Continuation token to fetch next page. Passed as a query param when
+                      requesting List V2 api endpoint.
+                  images:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: true
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+  /accounts/{account_id}/images/v2/direct_upload:
+    post:
+      operationId: createV2DirectUpload
+      description: "Direct uploads allow users to upload images without API keys. A
+        common use case are web apps, client-side applications, or mobile
+        devices where users upload content directly to Cloudflare Images. This
+        method creates a draft record for a future image. It returns an upload
+        URL and an image identifier. To verify if the image itself has been
+        uploaded, send an image details request
+        (accounts/:account_identifier/images/v1/:identifier), and check that the
+        `draft: true` property is not present.  @example ```ts const
+        directUpload = await client.images.v2.directUploads.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: "Body param: Optional Image Custom ID. Up to 1024 chars. Can
+                    include any number of subpaths, and utf8 characters. Cannot
+                    start nor end with a / (forward slash). Cannot be a UUID."
+                creator:
+                  type: string
+                  description: "Body param: Can set the creator field with an internal user ID."
+                expiry:
+                  type: string
+                  description: "Body param: The date after which the upload will not be accepted.
+                    Minimum: Now + 2 minutes. Maximum: Now + 6 hours."
+                metadata:
+                  description: "Body param: User modifiable key-value store. Can be used for
+                    keeping references to another system of record, for managing
+                    images."
+                requireSignedURLs:
+                  type: boolean
+                  description: "Body param: Indicates whether the image requires a signature token
+                    to be accessed."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Image unique identifier.
+                  uploadURL:
+                    type: string
+                    description: The URL the unauthenticated upload can be performed to using a
+                      single HTTP POST (multipart/form-data) request.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        ImagesAccessNotEnabled:
+          - code: 5403
+        ImageAlreadyExists:
+          - code: 5409
+        InvalidUploadFormat:
+          - code: 5415

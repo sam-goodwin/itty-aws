@@ -1,0 +1,3190 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare AI-GATEWAY API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: ai-gateway
+paths:
+  /accounts/{account_id}/ai-gateway/gateways/{id}:
+    get:
+      operationId: getAiGateway
+      description: "Fetch a Gateway  @example ```ts const aiGateway = await
+        client.aiGateway.get('my-gateway', { account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0', }); ```"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: gateway id
+                  account_id:
+                    type: string
+                  account_tag:
+                    type: string
+                  cache_invalidate_on_update:
+                    type: boolean
+                  cache_ttl:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  collect_logs:
+                    type: boolean
+                  created_at:
+                    type: string
+                  internal_id:
+                    type: string
+                  modified_at:
+                    type: string
+                  rate_limiting_interval:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  rate_limiting_limit:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  rate_limiting_technique:
+                    type: string
+                    enum:
+                      - fixed
+                      - sliding
+                  authentication:
+                    type: boolean
+                  dlp:
+                    oneOf:
+                      - type: object
+                        properties:
+                          action:
+                            type: string
+                            enum:
+                              - BLOCK
+                              - FLAG
+                          enabled:
+                            type: boolean
+                          profiles:
+                            type: array
+                            items:
+                              type: string
+                        required:
+                          - action
+                          - enabled
+                          - profiles
+                      - type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          policies:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                action:
+                                  type: string
+                                  enum:
+                                    - FLAG
+                                    - BLOCK
+                                check:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                      - REQUEST
+                                      - RESPONSE
+                                enabled:
+                                  type: boolean
+                                profiles:
+                                  type: array
+                                  items:
+                                    type: string
+                              required:
+                                - id
+                                - action
+                                - check
+                                - enabled
+                                - profiles
+                        required:
+                          - enabled
+                          - policies
+                  is_default:
+                    type: boolean
+                  log_management:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  log_management_strategy:
+                    type: string
+                    enum:
+                      - STOP_INSERTING
+                      - DELETE_OLDEST
+                    nullable: true
+                  logpush:
+                    type: boolean
+                  logpush_public_key:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  otel:
+                    oneOf:
+                      - type: array
+                        items:
+                          type: object
+                          properties:
+                            authorization:
+                              type: string
+                            headers:
+                              type: object
+                              additionalProperties: true
+                            url:
+                              type: string
+                          required:
+                            - authorization
+                            - headers
+                            - url
+                    nullable: true
+                  store_id:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  stripe:
+                    oneOf:
+                      - type: object
+                        properties:
+                          authorization:
+                            type: string
+                          usage_events:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                payload:
+                                  type: string
+                              required:
+                                - payload
+                        required:
+                          - authorization
+                          - usage_events
+                    nullable: true
+                  zdr:
+                    type: boolean
+                required:
+                  - id
+                  - cache_invalidate_on_update
+                  - cache_ttl
+                  - collect_logs
+                  - created_at
+                  - modified_at
+                  - rate_limiting_interval
+                  - rate_limiting_limit
+                  - rate_limiting_technique
+      x-distilled-response-path: result
+      x-distilled-errors:
+        GatewayNotFound:
+          - code: 7002
+    put:
+      operationId: updateAiGateway
+      description: "Update a Gateway  @example ```ts const aiGateway = await
+        client.aiGateway.update( 'my-gateway', { account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0', cache_invalidate_on_update: true,
+        cache_ttl: 0, collect_logs: true, rate_limiting_interval: 0,
+        rate_limiting_limit: 0, rate_limiting_technique: 'fixed', }, ); ```"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cache_invalidate_on_update:
+                  type: boolean
+                  description: "Body param:"
+                cache_ttl:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: "Body param:"
+                collect_logs:
+                  type: boolean
+                  description: "Body param:"
+                rate_limiting_interval:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: "Body param:"
+                rate_limiting_limit:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: "Body param:"
+                rate_limiting_technique:
+                  type: string
+                  enum:
+                    - fixed
+                    - sliding
+                  description: "Body param:"
+                authentication:
+                  type: boolean
+                  description: "Body param:"
+                dlp:
+                  oneOf:
+                    - type: object
+                      properties:
+                        action:
+                          type: string
+                          enum:
+                            - BLOCK
+                            - FLAG
+                        enabled:
+                          type: boolean
+                        profiles:
+                          type: array
+                          items:
+                            type: string
+                      required:
+                        - action
+                        - enabled
+                        - profiles
+                    - type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                        policies:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              action:
+                                type: string
+                                enum:
+                                  - FLAG
+                                  - BLOCK
+                              check:
+                                type: array
+                                items:
+                                  type: string
+                                  enum:
+                                    - REQUEST
+                                    - RESPONSE
+                              enabled:
+                                type: boolean
+                              profiles:
+                                type: array
+                                items:
+                                  type: string
+                            required:
+                              - id
+                              - action
+                              - check
+                              - enabled
+                              - profiles
+                      required:
+                        - enabled
+                        - policies
+                  description: "Body param:"
+                is_default:
+                  type: boolean
+                  description: "Body param:"
+                log_management:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: "Body param:"
+                log_management_strategy:
+                  type: string
+                  enum:
+                    - STOP_INSERTING
+                    - DELETE_OLDEST
+                  nullable: true
+                  description: "Body param:"
+                logpush:
+                  type: boolean
+                  description: "Body param:"
+                logpush_public_key:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: "Body param:"
+                otel:
+                  oneOf:
+                    - type: array
+                      items:
+                        type: object
+                        properties:
+                          authorization:
+                            type: string
+                          headers:
+                            type: object
+                            additionalProperties: true
+                          url:
+                            type: string
+                        required:
+                          - authorization
+                          - headers
+                          - url
+                  nullable: true
+                  description: "Body param:"
+                store_id:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: "Body param:"
+                stripe:
+                  oneOf:
+                    - type: object
+                      properties:
+                        authorization:
+                          type: string
+                        usage_events:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              payload:
+                                type: string
+                            required:
+                              - payload
+                      required:
+                        - authorization
+                        - usage_events
+                  nullable: true
+                  description: "Body param:"
+                zdr:
+                  type: boolean
+                  description: "Body param:"
+              required:
+                - cache_invalidate_on_update
+                - cache_ttl
+                - collect_logs
+                - rate_limiting_interval
+                - rate_limiting_limit
+                - rate_limiting_technique
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: gateway id
+                  account_id:
+                    type: string
+                  account_tag:
+                    type: string
+                  cache_invalidate_on_update:
+                    type: boolean
+                  cache_ttl:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  collect_logs:
+                    type: boolean
+                  created_at:
+                    type: string
+                  internal_id:
+                    type: string
+                  modified_at:
+                    type: string
+                  rate_limiting_interval:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  rate_limiting_limit:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  rate_limiting_technique:
+                    type: string
+                    enum:
+                      - fixed
+                      - sliding
+                  authentication:
+                    type: boolean
+                  dlp:
+                    oneOf:
+                      - type: object
+                        properties:
+                          action:
+                            type: string
+                            enum:
+                              - BLOCK
+                              - FLAG
+                          enabled:
+                            type: boolean
+                          profiles:
+                            type: array
+                            items:
+                              type: string
+                        required:
+                          - action
+                          - enabled
+                          - profiles
+                      - type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          policies:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                action:
+                                  type: string
+                                  enum:
+                                    - FLAG
+                                    - BLOCK
+                                check:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                      - REQUEST
+                                      - RESPONSE
+                                enabled:
+                                  type: boolean
+                                profiles:
+                                  type: array
+                                  items:
+                                    type: string
+                              required:
+                                - id
+                                - action
+                                - check
+                                - enabled
+                                - profiles
+                        required:
+                          - enabled
+                          - policies
+                  is_default:
+                    type: boolean
+                  log_management:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  log_management_strategy:
+                    type: string
+                    enum:
+                      - STOP_INSERTING
+                      - DELETE_OLDEST
+                    nullable: true
+                  logpush:
+                    type: boolean
+                  logpush_public_key:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  otel:
+                    oneOf:
+                      - type: array
+                        items:
+                          type: object
+                          properties:
+                            authorization:
+                              type: string
+                            headers:
+                              type: object
+                              additionalProperties: true
+                            url:
+                              type: string
+                          required:
+                            - authorization
+                            - headers
+                            - url
+                    nullable: true
+                  store_id:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  stripe:
+                    oneOf:
+                      - type: object
+                        properties:
+                          authorization:
+                            type: string
+                          usage_events:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                payload:
+                                  type: string
+                              required:
+                                - payload
+                        required:
+                          - authorization
+                          - usage_events
+                    nullable: true
+                  zdr:
+                    type: boolean
+                required:
+                  - id
+                  - cache_invalidate_on_update
+                  - cache_ttl
+                  - collect_logs
+                  - created_at
+                  - modified_at
+                  - rate_limiting_interval
+                  - rate_limiting_limit
+                  - rate_limiting_technique
+      x-distilled-response-path: result
+      x-distilled-errors:
+        GatewayNotFound:
+          - code: 7002
+    delete:
+      operationId: deleteAiGateway
+      description: "Delete a Gateway  @example ```ts const aiGateway = await
+        client.aiGateway.delete( 'my-gateway', { account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0' }, ); ```"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: gateway id
+                  account_id:
+                    type: string
+                  account_tag:
+                    type: string
+                  cache_invalidate_on_update:
+                    type: boolean
+                  cache_ttl:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  collect_logs:
+                    type: boolean
+                  created_at:
+                    type: string
+                  internal_id:
+                    type: string
+                  modified_at:
+                    type: string
+                  rate_limiting_interval:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  rate_limiting_limit:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  rate_limiting_technique:
+                    type: string
+                    enum:
+                      - fixed
+                      - sliding
+                  authentication:
+                    type: boolean
+                  dlp:
+                    oneOf:
+                      - type: object
+                        properties:
+                          action:
+                            type: string
+                            enum:
+                              - BLOCK
+                              - FLAG
+                          enabled:
+                            type: boolean
+                          profiles:
+                            type: array
+                            items:
+                              type: string
+                        required:
+                          - action
+                          - enabled
+                          - profiles
+                      - type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          policies:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                action:
+                                  type: string
+                                  enum:
+                                    - FLAG
+                                    - BLOCK
+                                check:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                      - REQUEST
+                                      - RESPONSE
+                                enabled:
+                                  type: boolean
+                                profiles:
+                                  type: array
+                                  items:
+                                    type: string
+                              required:
+                                - id
+                                - action
+                                - check
+                                - enabled
+                                - profiles
+                        required:
+                          - enabled
+                          - policies
+                  is_default:
+                    type: boolean
+                  log_management:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  log_management_strategy:
+                    type: string
+                    enum:
+                      - STOP_INSERTING
+                      - DELETE_OLDEST
+                    nullable: true
+                  logpush:
+                    type: boolean
+                  logpush_public_key:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  otel:
+                    oneOf:
+                      - type: array
+                        items:
+                          type: object
+                          properties:
+                            authorization:
+                              type: string
+                            headers:
+                              type: object
+                              additionalProperties: true
+                            url:
+                              type: string
+                          required:
+                            - authorization
+                            - headers
+                            - url
+                    nullable: true
+                  store_id:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  stripe:
+                    oneOf:
+                      - type: object
+                        properties:
+                          authorization:
+                            type: string
+                          usage_events:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                payload:
+                                  type: string
+                              required:
+                                - payload
+                        required:
+                          - authorization
+                          - usage_events
+                    nullable: true
+                  zdr:
+                    type: boolean
+                required:
+                  - id
+                  - cache_invalidate_on_update
+                  - cache_ttl
+                  - collect_logs
+                  - created_at
+                  - modified_at
+                  - rate_limiting_interval
+                  - rate_limiting_limit
+                  - rate_limiting_technique
+      x-distilled-response-path: result
+      x-distilled-errors:
+        GatewayNotFound:
+          - code: 7002
+  /accounts/{account_id}/ai-gateway/gateways:
+    get:
+      operationId: listAiGateways
+      description: "List Gateways  @example ```ts // Automatically fetches more pages
+        as needed. for await (const aiGatewayListResponse of
+        client.aiGateway.list( { account_id: '3ebbcb006d4d46d7bb6a8c7f14676cb0'
+        }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: search
+          in: query
+          required: false
+          description: "Query param: Search by id"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: gateway id
+                  account_id:
+                    type: string
+                  account_tag:
+                    type: string
+                  cache_invalidate_on_update:
+                    type: boolean
+                  cache_ttl:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  collect_logs:
+                    type: boolean
+                  created_at:
+                    type: string
+                  internal_id:
+                    type: string
+                  modified_at:
+                    type: string
+                  rate_limiting_interval:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  rate_limiting_limit:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  rate_limiting_technique:
+                    type: string
+                    enum:
+                      - fixed
+                      - sliding
+                  authentication:
+                    type: boolean
+                  dlp:
+                    oneOf:
+                      - type: object
+                        properties:
+                          action:
+                            type: string
+                            enum:
+                              - BLOCK
+                              - FLAG
+                          enabled:
+                            type: boolean
+                          profiles:
+                            type: array
+                            items:
+                              type: string
+                        required:
+                          - action
+                          - enabled
+                          - profiles
+                      - type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          policies:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                action:
+                                  type: string
+                                  enum:
+                                    - FLAG
+                                    - BLOCK
+                                check:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                      - REQUEST
+                                      - RESPONSE
+                                enabled:
+                                  type: boolean
+                                profiles:
+                                  type: array
+                                  items:
+                                    type: string
+                              required:
+                                - id
+                                - action
+                                - check
+                                - enabled
+                                - profiles
+                        required:
+                          - enabled
+                          - policies
+                  is_default:
+                    type: boolean
+                  log_management:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  log_management_strategy:
+                    type: string
+                    enum:
+                      - STOP_INSERTING
+                      - DELETE_OLDEST
+                    nullable: true
+                  logpush:
+                    type: boolean
+                  logpush_public_key:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  otel:
+                    oneOf:
+                      - type: array
+                        items:
+                          type: object
+                          properties:
+                            authorization:
+                              type: string
+                            headers:
+                              type: object
+                              additionalProperties: true
+                            url:
+                              type: string
+                          required:
+                            - authorization
+                            - headers
+                            - url
+                    nullable: true
+                  store_id:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  stripe:
+                    oneOf:
+                      - type: object
+                        properties:
+                          authorization:
+                            type: string
+                          usage_events:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                payload:
+                                  type: string
+                              required:
+                                - payload
+                        required:
+                          - authorization
+                          - usage_events
+                    nullable: true
+                  zdr:
+                    type: boolean
+                required:
+                  - id
+                  - account_id
+                  - account_tag
+                  - cache_invalidate_on_update
+                  - cache_ttl
+                  - collect_logs
+                  - created_at
+                  - internal_id
+                  - modified_at
+                  - rate_limiting_interval
+                  - rate_limiting_limit
+                  - rate_limiting_technique
+      x-distilled-pagination-class: AIGatewayListResponsesV4PagePaginationArray
+    post:
+      operationId: createAiGateway
+      description: "Create a new Gateway  @example ```ts const aiGateway = await
+        client.aiGateway.create({ account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0', id: 'my-gateway',
+        cache_invalidate_on_update: true, cache_ttl: 0, collect_logs: true,
+        rate_limiting_interval: 0, rate_limiting_limit: 0,
+        rate_limiting_technique: 'fixed', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: "Body param: gateway id"
+                cache_invalidate_on_update:
+                  type: boolean
+                  description: "Body param:"
+                cache_ttl:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: "Body param:"
+                collect_logs:
+                  type: boolean
+                  description: "Body param:"
+                rate_limiting_interval:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: "Body param:"
+                rate_limiting_limit:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: "Body param:"
+                rate_limiting_technique:
+                  type: string
+                  enum:
+                    - fixed
+                    - sliding
+                  description: "Body param:"
+                authentication:
+                  type: boolean
+                  description: "Body param:"
+                is_default:
+                  type: boolean
+                  description: "Body param:"
+                log_management:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: "Body param:"
+                log_management_strategy:
+                  type: string
+                  enum:
+                    - STOP_INSERTING
+                    - DELETE_OLDEST
+                  nullable: true
+                  description: "Body param:"
+                logpush:
+                  type: boolean
+                  description: "Body param:"
+                logpush_public_key:
+                  oneOf:
+                    - type: string
+                  nullable: true
+                  description: "Body param:"
+                zdr:
+                  type: boolean
+                  description: "Body param:"
+              required:
+                - id
+                - cache_invalidate_on_update
+                - cache_ttl
+                - collect_logs
+                - rate_limiting_interval
+                - rate_limiting_limit
+                - rate_limiting_technique
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: gateway id
+                  account_id:
+                    type: string
+                  account_tag:
+                    type: string
+                  cache_invalidate_on_update:
+                    type: boolean
+                  cache_ttl:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  collect_logs:
+                    type: boolean
+                  created_at:
+                    type: string
+                  internal_id:
+                    type: string
+                  modified_at:
+                    type: string
+                  rate_limiting_interval:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  rate_limiting_limit:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  rate_limiting_technique:
+                    type: string
+                    enum:
+                      - fixed
+                      - sliding
+                  authentication:
+                    type: boolean
+                  dlp:
+                    oneOf:
+                      - type: object
+                        properties:
+                          action:
+                            type: string
+                            enum:
+                              - BLOCK
+                              - FLAG
+                          enabled:
+                            type: boolean
+                          profiles:
+                            type: array
+                            items:
+                              type: string
+                        required:
+                          - action
+                          - enabled
+                          - profiles
+                      - type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          policies:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                action:
+                                  type: string
+                                  enum:
+                                    - FLAG
+                                    - BLOCK
+                                check:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                      - REQUEST
+                                      - RESPONSE
+                                enabled:
+                                  type: boolean
+                                profiles:
+                                  type: array
+                                  items:
+                                    type: string
+                              required:
+                                - id
+                                - action
+                                - check
+                                - enabled
+                                - profiles
+                        required:
+                          - enabled
+                          - policies
+                  is_default:
+                    type: boolean
+                  log_management:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  log_management_strategy:
+                    type: string
+                    enum:
+                      - STOP_INSERTING
+                      - DELETE_OLDEST
+                    nullable: true
+                  logpush:
+                    type: boolean
+                  logpush_public_key:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  otel:
+                    oneOf:
+                      - type: array
+                        items:
+                          type: object
+                          properties:
+                            authorization:
+                              type: string
+                            headers:
+                              type: object
+                              additionalProperties: true
+                            url:
+                              type: string
+                          required:
+                            - authorization
+                            - headers
+                            - url
+                    nullable: true
+                  store_id:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  stripe:
+                    oneOf:
+                      - type: object
+                        properties:
+                          authorization:
+                            type: string
+                          usage_events:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                payload:
+                                  type: string
+                              required:
+                                - payload
+                        required:
+                          - authorization
+                          - usage_events
+                    nullable: true
+                  zdr:
+                    type: boolean
+                required:
+                  - id
+                  - cache_invalidate_on_update
+                  - cache_ttl
+                  - collect_logs
+                  - created_at
+                  - modified_at
+                  - rate_limiting_interval
+                  - rate_limiting_limit
+                  - rate_limiting_technique
+      x-distilled-response-path: result
+      x-distilled-errors:
+        GatewayAlreadyExists:
+          - code: 7001
+          - status: 504
+  /accounts/{account_id}/ai-gateway/gateways/{gatewayId}/datasets/{id}:
+    get:
+      operationId: getDataset
+      description: "Fetch a Dataset  @example ```ts const dataset = await
+        client.aiGateway.datasets.get( 'my-gateway', 'id', { account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0' }, ); ```"
+      parameters:
+        - name: gatewayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  account_id:
+                    type: string
+                  account_tag:
+                    type: string
+                  created_at:
+                    type: string
+                  enable:
+                    type: boolean
+                  filters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          enum:
+                            - created_at
+                            - request_content_type
+                            - response_content_type
+                            - success
+                            - cached
+                            - provider
+                            - model
+                            - cost
+                            - tokens
+                            - tokens_in
+                            - tokens_out
+                            - duration
+                            - feedback
+                        operator:
+                          type: string
+                          enum:
+                            - eq
+                            - contains
+                            - lt
+                            - gt
+                        value:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                              - type: boolean
+                      required:
+                        - key
+                        - operator
+                        - value
+                  gateway_id:
+                    type: string
+                    description: gateway id
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                required:
+                  - id
+                  - account_id
+                  - account_tag
+                  - created_at
+                  - enable
+                  - filters
+                  - gateway_id
+                  - modified_at
+                  - name
+      x-distilled-response-path: result
+    put:
+      operationId: updateDataset
+      description: "Update a Dataset  @example ```ts const dataset = await
+        client.aiGateway.datasets.update( 'my-gateway', 'id', { account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0', enable: true, filters: [ { key:
+        'created_at', operator: 'eq', value: ['string'], }, ], name: 'name', },
+        ); ```"
+      parameters:
+        - name: gatewayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enable:
+                  type: boolean
+                  description: "Body param:"
+                filters:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                        enum:
+                          - created_at
+                          - request_content_type
+                          - response_content_type
+                          - success
+                          - cached
+                          - provider
+                          - model
+                          - cost
+                          - tokens
+                          - tokens_in
+                          - tokens_out
+                          - duration
+                          - feedback
+                      operator:
+                        type: string
+                        enum:
+                          - eq
+                          - contains
+                          - lt
+                          - gt
+                      value:
+                        type: array
+                        items:
+                          oneOf:
+                            - type: string
+                            - type: number
+                            - type: boolean
+                    required:
+                      - key
+                      - operator
+                      - value
+                  description: "Body param:"
+                name:
+                  type: string
+                  description: "Body param:"
+              required:
+                - enable
+                - filters
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  account_id:
+                    type: string
+                  account_tag:
+                    type: string
+                  created_at:
+                    type: string
+                  enable:
+                    type: boolean
+                  filters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          enum:
+                            - created_at
+                            - request_content_type
+                            - response_content_type
+                            - success
+                            - cached
+                            - provider
+                            - model
+                            - cost
+                            - tokens
+                            - tokens_in
+                            - tokens_out
+                            - duration
+                            - feedback
+                        operator:
+                          type: string
+                          enum:
+                            - eq
+                            - contains
+                            - lt
+                            - gt
+                        value:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                              - type: boolean
+                      required:
+                        - key
+                        - operator
+                        - value
+                  gateway_id:
+                    type: string
+                    description: gateway id
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                required:
+                  - id
+                  - account_id
+                  - account_tag
+                  - created_at
+                  - enable
+                  - filters
+                  - gateway_id
+                  - modified_at
+                  - name
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteDataset
+      description: "Delete a Dataset  @example ```ts const dataset = await
+        client.aiGateway.datasets.delete( 'my-gateway', 'id', { account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0' }, ); ```"
+      parameters:
+        - name: gatewayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  account_id:
+                    type: string
+                  account_tag:
+                    type: string
+                  created_at:
+                    type: string
+                  enable:
+                    type: boolean
+                  filters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          enum:
+                            - created_at
+                            - request_content_type
+                            - response_content_type
+                            - success
+                            - cached
+                            - provider
+                            - model
+                            - cost
+                            - tokens
+                            - tokens_in
+                            - tokens_out
+                            - duration
+                            - feedback
+                        operator:
+                          type: string
+                          enum:
+                            - eq
+                            - contains
+                            - lt
+                            - gt
+                        value:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                              - type: boolean
+                      required:
+                        - key
+                        - operator
+                        - value
+                  gateway_id:
+                    type: string
+                    description: gateway id
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                required:
+                  - id
+                  - account_id
+                  - account_tag
+                  - created_at
+                  - enable
+                  - filters
+                  - gateway_id
+                  - modified_at
+                  - name
+      x-distilled-response-path: result
+  /accounts/{account_id}/ai-gateway/gateways/{gatewayId}/datasets:
+    get:
+      operationId: listDatasets
+      description: "List Datasets  @example ```ts // Automatically fetches more pages
+        as needed. for await (const datasetListResponse of
+        client.aiGateway.datasets.list( 'my-gateway', { account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0' }, )) { // ... } ```"
+      parameters:
+        - name: gatewayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: enable
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: boolean
+        - name: name
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+        - name: search
+          in: query
+          required: false
+          description: "Query param: Search by id, name, filters"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  account_id:
+                    type: string
+                  account_tag:
+                    type: string
+                  created_at:
+                    type: string
+                  enable:
+                    type: boolean
+                  filters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          enum:
+                            - created_at
+                            - request_content_type
+                            - response_content_type
+                            - success
+                            - cached
+                            - provider
+                            - model
+                            - cost
+                            - tokens
+                            - tokens_in
+                            - tokens_out
+                            - duration
+                            - feedback
+                        operator:
+                          type: string
+                          enum:
+                            - eq
+                            - contains
+                            - lt
+                            - gt
+                        value:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                              - type: boolean
+                      required:
+                        - key
+                        - operator
+                        - value
+                  gateway_id:
+                    type: string
+                    description: gateway id
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                required:
+                  - id
+                  - account_id
+                  - account_tag
+                  - created_at
+                  - enable
+                  - filters
+                  - gateway_id
+                  - modified_at
+                  - name
+      x-distilled-pagination-class: DatasetListResponsesV4PagePaginationArray
+    post:
+      operationId: createDataset
+      description: "Create a new Dataset  @example ```ts const dataset = await
+        client.aiGateway.datasets.create( 'my-gateway', { account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0', enable: true, filters: [ { key:
+        'created_at', operator: 'eq', value: ['string'], }, ], name: 'name', },
+        ); ```"
+      parameters:
+        - name: gatewayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enable:
+                  type: boolean
+                  description: "Body param:"
+                filters:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                        enum:
+                          - created_at
+                          - request_content_type
+                          - response_content_type
+                          - success
+                          - cached
+                          - provider
+                          - model
+                          - cost
+                          - tokens
+                          - tokens_in
+                          - tokens_out
+                          - duration
+                          - feedback
+                      operator:
+                        type: string
+                        enum:
+                          - eq
+                          - contains
+                          - lt
+                          - gt
+                      value:
+                        type: array
+                        items:
+                          oneOf:
+                            - type: string
+                            - type: number
+                            - type: boolean
+                    required:
+                      - key
+                      - operator
+                      - value
+                  description: "Body param:"
+                name:
+                  type: string
+                  description: "Body param:"
+              required:
+                - enable
+                - filters
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  account_id:
+                    type: string
+                  account_tag:
+                    type: string
+                  created_at:
+                    type: string
+                  enable:
+                    type: boolean
+                  filters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          enum:
+                            - created_at
+                            - request_content_type
+                            - response_content_type
+                            - success
+                            - cached
+                            - provider
+                            - model
+                            - cost
+                            - tokens
+                            - tokens_in
+                            - tokens_out
+                            - duration
+                            - feedback
+                        operator:
+                          type: string
+                          enum:
+                            - eq
+                            - contains
+                            - lt
+                            - gt
+                        value:
+                          type: array
+                          items:
+                            oneOf:
+                              - type: string
+                              - type: number
+                              - type: boolean
+                      required:
+                        - key
+                        - operator
+                        - value
+                  gateway_id:
+                    type: string
+                    description: gateway id
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                required:
+                  - id
+                  - account_id
+                  - account_tag
+                  - created_at
+                  - enable
+                  - filters
+                  - gateway_id
+                  - modified_at
+                  - name
+      x-distilled-response-path: result
+  /accounts/{account_id}/ai-gateway/gateways/{gatewayId}/evaluations/{id}:
+    get:
+      operationId: getEvaluation
+      description: "Fetch a Evaluation  @example ```ts const evaluation = await
+        client.aiGateway.evaluations.get( 'my-gateway', 'id', { account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0' }, ); ```"
+      parameters:
+        - name: gatewayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  account_id:
+                    type: string
+                  account_tag:
+                    type: string
+                  created_at:
+                    type: string
+                  datasets:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        account_id:
+                          type: string
+                        account_tag:
+                          type: string
+                        created_at:
+                          type: string
+                        enable:
+                          type: boolean
+                        filters:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              key:
+                                type: string
+                                enum:
+                                  - created_at
+                                  - request_content_type
+                                  - response_content_type
+                                  - success
+                                  - cached
+                                  - provider
+                                  - model
+                                  - cost
+                                  - tokens
+                                  - tokens_in
+                                  - tokens_out
+                                  - duration
+                                  - feedback
+                              operator:
+                                type: string
+                                enum:
+                                  - eq
+                                  - contains
+                                  - lt
+                                  - gt
+                              value:
+                                type: array
+                                items:
+                                  oneOf:
+                                    - type: string
+                                    - type: number
+                                    - type: boolean
+                            required:
+                              - key
+                              - operator
+                              - value
+                        gateway_id:
+                          type: string
+                          description: gateway id
+                        modified_at:
+                          type: string
+                        name:
+                          type: string
+                      required:
+                        - id
+                        - account_id
+                        - account_tag
+                        - created_at
+                        - enable
+                        - filters
+                        - gateway_id
+                        - modified_at
+                        - name
+                  gateway_id:
+                    type: string
+                    description: gateway id
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                  processed:
+                    type: boolean
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        created_at:
+                          type: string
+                        evaluation_id:
+                          type: string
+                        evaluation_type_id:
+                          type: string
+                        modified_at:
+                          type: string
+                        result:
+                          type: string
+                        status:
+                          type: number
+                        status_description:
+                          type: string
+                        total_logs:
+                          type: number
+                      required:
+                        - id
+                        - created_at
+                        - evaluation_id
+                        - evaluation_type_id
+                        - modified_at
+                        - result
+                        - status
+                        - status_description
+                        - total_logs
+                  total_logs:
+                    type: number
+                required:
+                  - id
+                  - account_id
+                  - account_tag
+                  - created_at
+                  - datasets
+                  - gateway_id
+                  - modified_at
+                  - name
+                  - processed
+                  - results
+                  - total_logs
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteEvaluation
+      description: "Delete a Evaluation  @example ```ts const evaluation = await
+        client.aiGateway.evaluations.delete( 'my-gateway', 'id', { account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0' }, ); ```"
+      parameters:
+        - name: gatewayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  account_id:
+                    type: string
+                  account_tag:
+                    type: string
+                  created_at:
+                    type: string
+                  datasets:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        account_id:
+                          type: string
+                        account_tag:
+                          type: string
+                        created_at:
+                          type: string
+                        enable:
+                          type: boolean
+                        filters:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              key:
+                                type: string
+                                enum:
+                                  - created_at
+                                  - request_content_type
+                                  - response_content_type
+                                  - success
+                                  - cached
+                                  - provider
+                                  - model
+                                  - cost
+                                  - tokens
+                                  - tokens_in
+                                  - tokens_out
+                                  - duration
+                                  - feedback
+                              operator:
+                                type: string
+                                enum:
+                                  - eq
+                                  - contains
+                                  - lt
+                                  - gt
+                              value:
+                                type: array
+                                items:
+                                  oneOf:
+                                    - type: string
+                                    - type: number
+                                    - type: boolean
+                            required:
+                              - key
+                              - operator
+                              - value
+                        gateway_id:
+                          type: string
+                          description: gateway id
+                        modified_at:
+                          type: string
+                        name:
+                          type: string
+                      required:
+                        - id
+                        - account_id
+                        - account_tag
+                        - created_at
+                        - enable
+                        - filters
+                        - gateway_id
+                        - modified_at
+                        - name
+                  gateway_id:
+                    type: string
+                    description: gateway id
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                  processed:
+                    type: boolean
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        created_at:
+                          type: string
+                        evaluation_id:
+                          type: string
+                        evaluation_type_id:
+                          type: string
+                        modified_at:
+                          type: string
+                        result:
+                          type: string
+                        status:
+                          type: number
+                        status_description:
+                          type: string
+                        total_logs:
+                          type: number
+                      required:
+                        - id
+                        - created_at
+                        - evaluation_id
+                        - evaluation_type_id
+                        - modified_at
+                        - result
+                        - status
+                        - status_description
+                        - total_logs
+                  total_logs:
+                    type: number
+                required:
+                  - id
+                  - account_id
+                  - account_tag
+                  - created_at
+                  - datasets
+                  - gateway_id
+                  - modified_at
+                  - name
+                  - processed
+                  - results
+                  - total_logs
+      x-distilled-response-path: result
+  /accounts/{account_id}/ai-gateway/gateways/{gatewayId}/evaluations:
+    get:
+      operationId: listEvaluations
+      description: "List Evaluations  @example ```ts // Automatically fetches more
+        pages as needed. for await (const evaluationListResponse of
+        client.aiGateway.evaluations.list( 'my-gateway', { account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0' }, )) { // ... } ```"
+      parameters:
+        - name: gatewayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: name
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+        - name: processed
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: boolean
+        - name: search
+          in: query
+          required: false
+          description: "Query param: Search by id, name"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  account_id:
+                    type: string
+                  account_tag:
+                    type: string
+                  created_at:
+                    type: string
+                  datasets:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        account_id:
+                          type: string
+                        account_tag:
+                          type: string
+                        created_at:
+                          type: string
+                        enable:
+                          type: boolean
+                        filters:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              key:
+                                type: string
+                                enum:
+                                  - created_at
+                                  - request_content_type
+                                  - response_content_type
+                                  - success
+                                  - cached
+                                  - provider
+                                  - model
+                                  - cost
+                                  - tokens
+                                  - tokens_in
+                                  - tokens_out
+                                  - duration
+                                  - feedback
+                              operator:
+                                type: string
+                                enum:
+                                  - eq
+                                  - contains
+                                  - lt
+                                  - gt
+                              value:
+                                type: array
+                                items:
+                                  oneOf:
+                                    - type: string
+                                    - type: number
+                                    - type: boolean
+                            required:
+                              - key
+                              - operator
+                              - value
+                        gateway_id:
+                          type: string
+                          description: gateway id
+                        modified_at:
+                          type: string
+                        name:
+                          type: string
+                      required:
+                        - id
+                        - account_id
+                        - account_tag
+                        - created_at
+                        - enable
+                        - filters
+                        - gateway_id
+                        - modified_at
+                        - name
+                  gateway_id:
+                    type: string
+                    description: gateway id
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                  processed:
+                    type: boolean
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        created_at:
+                          type: string
+                        evaluation_id:
+                          type: string
+                        evaluation_type_id:
+                          type: string
+                        modified_at:
+                          type: string
+                        result:
+                          type: string
+                        status:
+                          type: number
+                        status_description:
+                          type: string
+                        total_logs:
+                          type: number
+                      required:
+                        - id
+                        - created_at
+                        - evaluation_id
+                        - evaluation_type_id
+                        - modified_at
+                        - result
+                        - status
+                        - status_description
+                        - total_logs
+                  total_logs:
+                    type: number
+                required:
+                  - id
+                  - account_id
+                  - account_tag
+                  - created_at
+                  - datasets
+                  - gateway_id
+                  - modified_at
+                  - name
+                  - processed
+                  - results
+                  - total_logs
+      x-distilled-pagination-class: EvaluationListResponsesV4PagePaginationArray
+    post:
+      operationId: createEvaluation
+      description: "Create a new Evaluation  @example ```ts const evaluation = await
+        client.aiGateway.evaluations.create('my-gateway', { account_id:
+        '3ebbcb006d4d46d7bb6a8c7f14676cb0', dataset_ids: ['string'],
+        evaluation_type_ids: ['string'], name: 'name', }); ```"
+      parameters:
+        - name: gatewayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dataset_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param:"
+                evaluation_type_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: "Body param:"
+                name:
+                  type: string
+                  description: "Body param:"
+              required:
+                - dataset_ids
+                - evaluation_type_ids
+                - name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  account_id:
+                    type: string
+                  account_tag:
+                    type: string
+                  created_at:
+                    type: string
+                  datasets:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        account_id:
+                          type: string
+                        account_tag:
+                          type: string
+                        created_at:
+                          type: string
+                        enable:
+                          type: boolean
+                        filters:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              key:
+                                type: string
+                                enum:
+                                  - created_at
+                                  - request_content_type
+                                  - response_content_type
+                                  - success
+                                  - cached
+                                  - provider
+                                  - model
+                                  - cost
+                                  - tokens
+                                  - tokens_in
+                                  - tokens_out
+                                  - duration
+                                  - feedback
+                              operator:
+                                type: string
+                                enum:
+                                  - eq
+                                  - contains
+                                  - lt
+                                  - gt
+                              value:
+                                type: array
+                                items:
+                                  oneOf:
+                                    - type: string
+                                    - type: number
+                                    - type: boolean
+                            required:
+                              - key
+                              - operator
+                              - value
+                        gateway_id:
+                          type: string
+                          description: gateway id
+                        modified_at:
+                          type: string
+                        name:
+                          type: string
+                      required:
+                        - id
+                        - account_id
+                        - account_tag
+                        - created_at
+                        - enable
+                        - filters
+                        - gateway_id
+                        - modified_at
+                        - name
+                  gateway_id:
+                    type: string
+                    description: gateway id
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                  processed:
+                    type: boolean
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        created_at:
+                          type: string
+                        evaluation_id:
+                          type: string
+                        evaluation_type_id:
+                          type: string
+                        modified_at:
+                          type: string
+                        result:
+                          type: string
+                        status:
+                          type: number
+                        status_description:
+                          type: string
+                        total_logs:
+                          type: number
+                      required:
+                        - id
+                        - created_at
+                        - evaluation_id
+                        - evaluation_type_id
+                        - modified_at
+                        - result
+                        - status
+                        - status_description
+                        - total_logs
+                  total_logs:
+                    type: number
+                required:
+                  - id
+                  - account_id
+                  - account_tag
+                  - created_at
+                  - datasets
+                  - gateway_id
+                  - modified_at
+                  - name
+                  - processed
+                  - results
+                  - total_logs
+      x-distilled-response-path: result
+  /accounts/{account_id}/ai-gateway/evaluation-types:
+    get:
+      operationId: listEvaluationTypes
+      description: "List Evaluators  @example ```ts // Automatically fetches more
+        pages as needed. for await (const evaluationTypeListResponse of
+        client.aiGateway.evaluationTypes.list( { account_id:
+        '0d37909e38d3e99c29fa2cd343ac421a' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: order_by
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+        - name: order_by_direction
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  created_at:
+                    type: string
+                  description:
+                    type: string
+                  enable:
+                    type: boolean
+                  mandatory:
+                    type: boolean
+                  modified_at:
+                    type: string
+                  name:
+                    type: string
+                  type:
+                    type: string
+                required:
+                  - id
+                  - created_at
+                  - description
+                  - enable
+                  - mandatory
+                  - modified_at
+                  - name
+                  - type
+      x-distilled-pagination-class: EvaluationTypeListResponsesV4PagePaginationArray
+  /accounts/{account_id}/ai-gateway/gateways/{gatewayId}/logs/{id}:
+    get:
+      operationId: getLog
+      description: "Get Gateway Log Detail  @example ```ts const log = await
+        client.aiGateway.logs.get( 'my-gateway', 'id', { account_id:
+        '0d37909e38d3e99c29fa2cd343ac421a' }, ); ```"
+      parameters:
+        - name: gatewayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  cached:
+                    type: boolean
+                  created_at:
+                    type: string
+                  duration:
+                    type: number
+                  model:
+                    type: string
+                  path:
+                    type: string
+                  provider:
+                    type: string
+                  success:
+                    type: boolean
+                  tokens_in:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  tokens_out:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  cost:
+                    type: number
+                  custom_cost:
+                    type: boolean
+                  metadata:
+                    type: string
+                  model_type:
+                    type: string
+                  request_content_type:
+                    type: string
+                  request_head:
+                    type: string
+                  request_head_complete:
+                    type: boolean
+                  request_size:
+                    type: number
+                  request_type:
+                    type: string
+                  response_content_type:
+                    type: string
+                  response_head:
+                    type: string
+                  response_head_complete:
+                    type: boolean
+                  response_size:
+                    type: number
+                  status_code:
+                    type: number
+                  step:
+                    type: number
+                required:
+                  - id
+                  - cached
+                  - created_at
+                  - duration
+                  - model
+                  - path
+                  - provider
+                  - success
+                  - tokens_in
+                  - tokens_out
+      x-distilled-response-path: result
+    patch:
+      operationId: patchLog
+      description: "Patch Gateway Log  @example ```ts const response = await
+        client.aiGateway.logs.edit( 'my-gateway', 'id', { account_id:
+        '0d37909e38d3e99c29fa2cd343ac421a' }, ); ```"
+      parameters:
+        - name: gatewayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                feedback:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: "Body param:"
+                metadata:
+                  oneOf:
+                    - type: object
+                      additionalProperties: true
+                  nullable: true
+                  description: "Body param:"
+                score:
+                  oneOf:
+                    - type: number
+                  nullable: true
+                  description: "Body param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+  /accounts/{account_id}/ai-gateway/gateways/{gatewayId}/logs:
+    get:
+      operationId: listLogs
+      description: "List Gateway Logs  @example ```ts // Automatically fetches more
+        pages as needed. for await (const logListResponse of
+        client.aiGateway.logs.list( 'my-gateway', { account_id:
+        '0d37909e38d3e99c29fa2cd343ac421a' }, )) { // ... } ```"
+      parameters:
+        - name: gatewayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: filters
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  enum:
+                    - id
+                    - created_at
+                    - request_content_type
+                    - response_content_type
+                    - request_type
+                    - success
+                    - cached
+                    - provider
+                    - model
+                    - model_type
+                    - cost
+                    - tokens
+                    - tokens_in
+                    - tokens_out
+                    - duration
+                    - feedback
+                    - event_id
+                    - metadata.key
+                    - metadata.value
+                    - prompts.prompt_id
+                    - prompts.version_id
+                    - authentication
+                    - wholesale
+                    - compatibilityMode
+                    - dlp_action
+                operator:
+                  type: string
+                  enum:
+                    - eq
+                    - neq
+                    - contains
+                    - lt
+                    - gt
+                value:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: string
+                      - type: number
+                      - type: boolean
+                    nullable: true
+              required:
+                - key
+                - operator
+                - value
+        - name: meta_info
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: boolean
+        - name: order_by
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+            enum:
+              - created_at
+              - provider
+              - model
+              - model_type
+              - success
+              - cached
+        - name: order_by_direction
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        - name: search
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cached:
+                  type: boolean
+                  description: "@deprecated Query param:"
+                direction:
+                  type: string
+                  enum:
+                    - asc
+                    - desc
+                  description: "@deprecated Query param:"
+                end_date:
+                  type: string
+                  description: "@deprecated Query param:"
+                feedback:
+                  type: number
+                  enum:
+                    - 0
+                    - 1
+                  description: "@deprecated Query param:"
+                max_cost:
+                  type: number
+                  description: "@deprecated Query param:"
+                max_duration:
+                  type: number
+                  description: "@deprecated Query param:"
+                max_tokens_in:
+                  type: number
+                  description: "@deprecated Query param:"
+                max_tokens_out:
+                  type: number
+                  description: "@deprecated Query param:"
+                max_total_tokens:
+                  type: number
+                  description: "@deprecated Query param:"
+                min_cost:
+                  type: number
+                  description: "@deprecated Query param:"
+                min_duration:
+                  type: number
+                  description: "@deprecated Query param:"
+                min_tokens_in:
+                  type: number
+                  description: "@deprecated Query param:"
+                min_tokens_out:
+                  type: number
+                  description: "@deprecated Query param:"
+                min_total_tokens:
+                  type: number
+                  description: "@deprecated Query param:"
+                model:
+                  type: string
+                  description: "@deprecated Query param:"
+                model_type:
+                  type: string
+                  description: "@deprecated Query param:"
+                provider:
+                  type: string
+                  description: "@deprecated Query param:"
+                request_content_type:
+                  type: string
+                  description: "@deprecated Query param:"
+                response_content_type:
+                  type: string
+                  description: "@deprecated Query param:"
+                start_date:
+                  type: string
+                  description: "@deprecated Query param:"
+                success:
+                  type: boolean
+                  description: "@deprecated Query param:"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  cached:
+                    type: boolean
+                  created_at:
+                    type: string
+                  duration:
+                    type: number
+                  model:
+                    type: string
+                  path:
+                    type: string
+                  provider:
+                    type: string
+                  success:
+                    type: boolean
+                  tokens_in:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  tokens_out:
+                    oneOf:
+                      - type: number
+                    nullable: true
+                  cost:
+                    type: number
+                  custom_cost:
+                    type: boolean
+                  metadata:
+                    type: string
+                  model_type:
+                    type: string
+                  request_content_type:
+                    type: string
+                  request_type:
+                    type: string
+                  response_content_type:
+                    type: string
+                  status_code:
+                    type: number
+                  step:
+                    type: number
+                required:
+                  - id
+                  - cached
+                  - created_at
+                  - duration
+                  - model
+                  - path
+                  - provider
+                  - success
+                  - tokens_in
+                  - tokens_out
+      x-distilled-pagination-class: LogListResponsesV4PagePaginationArray
+    delete:
+      operationId: deleteLog
+      description: "Delete Gateway Logs  @example ```ts const log = await
+        client.aiGateway.logs.delete( 'my-gateway', { account_id:
+        '0d37909e38d3e99c29fa2cd343ac421a' }, ); ```"
+      parameters:
+        - name: gatewayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param:"
+          schema:
+            type: string
+        - name: filters
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  enum:
+                    - id
+                    - created_at
+                    - request_content_type
+                    - response_content_type
+                    - request_type
+                    - success
+                    - cached
+                    - provider
+                    - model
+                    - model_type
+                    - cost
+                    - tokens
+                    - tokens_in
+                    - tokens_out
+                    - duration
+                    - feedback
+                    - event_id
+                    - metadata.key
+                    - metadata.value
+                    - prompts.prompt_id
+                    - prompts.version_id
+                    - authentication
+                    - wholesale
+                    - compatibilityMode
+                    - dlp_action
+                operator:
+                  type: string
+                  enum:
+                    - eq
+                    - neq
+                    - contains
+                    - lt
+                    - gt
+                value:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: string
+                      - type: number
+                      - type: boolean
+                    nullable: true
+              required:
+                - key
+                - operator
+                - value
+        - name: limit
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: number
+        - name: order_by
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+            enum:
+              - created_at
+              - provider
+              - model
+              - model_type
+              - success
+              - cached
+              - cost
+              - tokens_in
+              - tokens_out
+              - duration
+              - feedback
+        - name: order_by_direction
+          in: query
+          required: false
+          description: "Query param:"
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+  /accounts/{account_id}/ai-gateway/gateways/{gatewayId}/logs/{id}/request:
+    get:
+      operationId: requestLog
+      description: "Get Gateway Log Request  @example ```ts const response = await
+        client.aiGateway.logs.request( 'my-gateway', 'id', { account_id:
+        '0d37909e38d3e99c29fa2cd343ac421a' }, ); ```"
+      parameters:
+        - name: gatewayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  /accounts/{account_id}/ai-gateway/gateways/{gatewayId}/logs/{id}/response:
+    get:
+      operationId: responseLog
+      description: "Get Gateway Log Response  @example ```ts const response = await
+        client.aiGateway.logs.response( 'my-gateway', 'id', { account_id:
+        '0d37909e38d3e99c29fa2cd343ac421a' }, ); ```"
+      parameters:
+        - name: gatewayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+  /accounts/{account_id}/ai-gateway/gateways/{gatewayId}/url/{provider}:
+    get:
+      operationId: getUrl
+      description: "Get Gateway URL  @example ```ts const url = await
+        client.aiGateway.urls.get( 'my-gateway', 'workers-ai', { account_id:
+        '0d37909e38d3e99c29fa2cd343ac421a' }, ); ```"
+      parameters:
+        - name: gatewayId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: provider
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+      x-distilled-response-path: result

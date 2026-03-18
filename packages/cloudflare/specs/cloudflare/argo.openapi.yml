@@ -1,0 +1,248 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare ARGO API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: argo
+paths:
+  /zones/{zone_id}/argo/smart_routing:
+    get:
+      operationId: getSmartRouting
+      description: "Retrieves the value of Argo Smart Routing enablement
+        setting.  @example ```ts const smartRouting = await
+        client.argo.smartRouting.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Specifies the zone associated with the API call.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Specifies the identifier of the Argo Smart Routing setting.
+                  editable:
+                    type: boolean
+                    description: Specifies if the setting is editable.
+                  value:
+                    type: string
+                    enum:
+                      - on
+                      - off
+                    description: Specifies the enablement value of Argo Smart Routing.
+                  modified_on:
+                    type: string
+                    description: Specifies the time when the setting was last modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        NotAuthorized:
+          - code: 1015
+    patch:
+      operationId: patchSmartRouting
+      description: "Configures the value of the Argo Smart Routing enablement
+        setting.  @example ```ts const response = await
+        client.argo.smartRouting.edit({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', value: 'on', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Specifies the zone associated with the API call."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  enum:
+                    - on
+                    - off
+                  description: "Body param: Specifies the enablement value of Argo Smart Routing."
+              required:
+                - value
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Specifies the identifier of the Argo Smart Routing setting.
+                  editable:
+                    type: boolean
+                    description: Specifies if the setting is editable.
+                  value:
+                    type: string
+                    enum:
+                      - on
+                      - off
+                    description: Specifies the enablement value of Argo Smart Routing.
+                  modified_on:
+                    type: string
+                    description: Specifies the time when the setting was last modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+        NotAuthorized:
+          - code: 1015
+  /zones/{zone_id}/argo/tiered_caching:
+    get:
+      operationId: getTieredCaching
+      description: "Tiered Cache works by dividing Cloudflare's data centers into a
+        hierarchy of lower-tiers and upper-tiers. If content is not cached in
+        lower-tier data centers (generally the ones closest to a visitor), the
+        lower-tier must ask an upper-tier to see if it has the content. If the
+        upper-tier does not have the content, only the upper-tier can ask the
+        origin for content. This practice improves bandwidth efficiency by
+        limiting the number of data centers that can ask the origin for content,
+        which reduces origin load and makes websites more cost-effective to
+        operate. Additionally, Tiered Cache concentrates connections to origin
+        servers so they come from a small number of data centers rather than the
+        full set of network locations. This results in fewer open connections
+        using server resources.  @example ```ts const tieredCaching = await
+        client.argo.tieredCaching.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - tiered_caching
+                    description: The identifier of the caching setting.
+                  editable:
+                    type: boolean
+                    description: Whether the setting is editable.
+                  value:
+                    type: string
+                    enum:
+                      - on
+                      - off
+                    description: Value of the Tiered Cache zone setting.
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003
+    patch:
+      operationId: patchTieredCaching
+      description: "Tiered Cache works by dividing Cloudflare's data centers into a
+        hierarchy of lower-tiers and upper-tiers. If content is not cached in
+        lower-tier data centers (generally the ones closest to a visitor), the
+        lower-tier must ask an upper-tier to see if it has the content. If the
+        upper-tier does not have the content, only the upper-tier can ask the
+        origin for content. This practice improves bandwidth efficiency by
+        limiting the number of data centers that can ask the origin for content,
+        which reduces origin load and makes websites more cost-effective to
+        operate. Additionally, Tiered Cache concentrates connections to origin
+        servers so they come from a small number of data centers rather than the
+        full set of network locations. This results in fewer open connections
+        using server resources.  @example ```ts const response = await
+        client.argo.tieredCaching.edit({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', value: 'on', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  enum:
+                    - on
+                    - off
+                  description: "Body param: Enables Tiered Caching."
+              required:
+                - value
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    enum:
+                      - tiered_caching
+                    description: The identifier of the caching setting.
+                  editable:
+                    type: boolean
+                    description: Whether the setting is editable.
+                  value:
+                    type: string
+                    enum:
+                      - on
+                      - off
+                    description: Value of the Tiered Cache zone setting.
+                  modified_on:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Last time this setting was modified.
+                required:
+                  - id
+                  - editable
+                  - value
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidObjectIdentifier:
+          - code: 7003

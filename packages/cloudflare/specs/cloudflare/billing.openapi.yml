@@ -1,0 +1,107 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare BILLING API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: billing
+paths:
+  /accounts/{account_id}/billing/profile:
+    get:
+      operationId: getProfile
+      description: Gets the current billing profile for the account.  @deprecated
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Identifier
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Billing item identifier tag.
+                  account_type:
+                    type: string
+                  address:
+                    type: string
+                  address2:
+                    type: string
+                  balance:
+                    type: string
+                  card_expiry_month:
+                    type: number
+                  card_expiry_year:
+                    type: number
+                  card_number:
+                    type: string
+                  city:
+                    type: string
+                  company:
+                    type: string
+                  country:
+                    type: string
+                  created_on:
+                    type: string
+                  device_data:
+                    type: string
+                  edited_on:
+                    type: string
+                  enterprise_billing_email:
+                    type: string
+                  enterprise_primary_email:
+                    type: string
+                  first_name:
+                    type: string
+                  is_partner:
+                    type: boolean
+                  last_name:
+                    type: string
+                  next_bill_date:
+                    type: string
+                  payment_address:
+                    type: string
+                  payment_address2:
+                    type: string
+                  payment_city:
+                    type: string
+                  payment_country:
+                    type: string
+                  payment_email:
+                    type: string
+                  payment_first_name:
+                    type: string
+                  payment_gateway:
+                    type: string
+                  payment_last_name:
+                    type: string
+                  payment_nonce:
+                    type: string
+                  payment_state:
+                    type: string
+                  payment_zipcode:
+                    type: string
+                  primary_email:
+                    type: string
+                  state:
+                    type: string
+                  tax_id_type:
+                    type: string
+                  telephone:
+                    type: string
+                  use_legacy:
+                    type: boolean
+                  validation_code:
+                    type: string
+                  vat:
+                    type: string
+                  zipcode:
+                    type: string
+      x-distilled-response-path: result

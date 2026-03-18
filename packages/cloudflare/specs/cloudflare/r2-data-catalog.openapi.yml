@@ -1,0 +1,1093 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare R2-DATA-CATALOG API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: r2-data-catalog
+paths:
+  /accounts/{account_id}/r2-catalog/{bucketName}/credential:
+    post:
+      operationId: createCredential
+      description: "Store authentication credentials for a catalog. These credentials
+        are used to authenticate with R2 storage when performing catalog
+        operations.  @example ```ts const credential = await
+        client.r2DataCatalog.credentials.create( 'my-data-bucket', { account_id:
+        '0123456789abcdef0123456789abcdef', token:
+        'your-cloudflare-api-token-here', }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Use this to identify the account."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: "Body param: Provides the Cloudflare API token for accessing R2."
+              required:
+                - token
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        InvalidCredential:
+          - code: 30004
+  /accounts/{account_id}/r2-catalog/{bucketName}/maintenance-configs:
+    get:
+      operationId: getMaintenanceConfig
+      description: "Retrieve the maintenance configuration for a specific catalog,
+        including compaction settings and credential status.  @example ```ts
+        const maintenanceConfig = await
+        client.r2DataCatalog.maintenanceConfigs.get( 'my-data-bucket', {
+        account_id: '0123456789abcdef0123456789abcdef' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Use this to identify the account.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  credential_status:
+                    type: string
+                    enum:
+                      - present
+                      - absent
+                    description: Shows the credential configuration status.
+                  maintenance_config:
+                    type: object
+                    properties:
+                      compaction:
+                        type: object
+                        properties:
+                          state:
+                            type: string
+                            enum:
+                              - enabled
+                              - disabled
+                            description: Specifies the state of maintenance operations.
+                          target_size_mb:
+                            type: number
+                            enum:
+                              - 64
+                              - 128
+                              - 256
+                              - 512
+                            description: Sets the target file size for compaction in megabytes.
+                        required:
+                          - state
+                          - target_size_mb
+                        description: Configures compaction for catalog maintenance.
+                      snapshot_expiration:
+                        type: object
+                        properties:
+                          max_snapshot_age:
+                            type: string
+                            description: 'Specifies the maximum age for snapshots. The system deletes
+                              snapshots older than this age. Format:
+                              <number><unit> where unit is d (days), h (hours),
+                              m (minutes), or s (seconds). Examples: "7d" (7
+                              days), "48h" (48 hours), "2880m" (2,880 minutes).'
+                          min_snapshots_to_keep:
+                            type: number
+                            description: Specifies the minimum number of snapshots to retain.
+                          state:
+                            type: string
+                            enum:
+                              - enabled
+                              - disabled
+                            description: Specifies the state of maintenance operations.
+                        required:
+                          - max_snapshot_age
+                          - min_snapshots_to_keep
+                          - state
+                        description: Configures snapshot expiration settings.
+                    description: Configures maintenance for the catalog.
+                required:
+                  - credential_status
+                  - maintenance_config
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        WarehouseInactive:
+          - code: 40402
+        WarehouseNotFound:
+          - code: 40401
+    post:
+      operationId: updateMaintenanceConfig
+      description: "Update the maintenance configuration for a catalog. This allows
+        you to enable or disable compaction and adjust target file sizes for
+        optimization.  @example ```ts const maintenanceConfig = await
+        client.r2DataCatalog.maintenanceConfigs.update( 'my-data-bucket', {
+        account_id: '0123456789abcdef0123456789abcdef', compaction: { state:
+        'enabled', target_size_mb: '256', }, snapshot_expiration: {
+        max_snapshot_age: '14d', min_snapshots_to_keep: 5, state: 'enabled', },
+        }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Use this to identify the account."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                compaction:
+                  type: object
+                  properties:
+                    state:
+                      type: string
+                      enum:
+                        - enabled
+                        - disabled
+                      description: Updates the state optionally.
+                    target_size_mb:
+                      type: number
+                      enum:
+                        - 64
+                        - 128
+                        - 256
+                        - 512
+                      description: Updates the target file size optionally.
+                  description: "Body param: Updates compaction configuration (all fields
+                    optional)."
+                snapshot_expiration:
+                  type: object
+                  properties:
+                    max_snapshot_age:
+                      type: string
+                      description: Updates the maximum age for snapshots optionally.
+                    min_snapshots_to_keep:
+                      type: number
+                      description: Updates the minimum number of snapshots to retain optionally.
+                    state:
+                      type: string
+                      enum:
+                        - enabled
+                        - disabled
+                      description: Updates the state optionally.
+                  description: "Body param: Updates snapshot expiration configuration (all fields
+                    optional)."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  compaction:
+                    type: object
+                    properties:
+                      state:
+                        type: string
+                        enum:
+                          - enabled
+                          - disabled
+                        description: Specifies the state of maintenance operations.
+                      target_size_mb:
+                        type: number
+                        enum:
+                          - 64
+                          - 128
+                          - 256
+                          - 512
+                        description: Sets the target file size for compaction in megabytes.
+                    required:
+                      - state
+                      - target_size_mb
+                    description: Configures compaction for catalog maintenance.
+                  snapshot_expiration:
+                    type: object
+                    properties:
+                      max_snapshot_age:
+                        type: string
+                        description: 'Specifies the maximum age for snapshots. The system deletes
+                          snapshots older than this age. Format: <number><unit>
+                          where unit is d (days), h (hours), m (minutes), or s
+                          (seconds). Examples: "7d" (7 days), "48h" (48 hours),
+                          "2880m" (2,880 minutes).'
+                      min_snapshots_to_keep:
+                        type: number
+                        description: Specifies the minimum number of snapshots to retain.
+                      state:
+                        type: string
+                        enum:
+                          - enabled
+                          - disabled
+                        description: Specifies the state of maintenance operations.
+                    required:
+                      - max_snapshot_age
+                      - min_snapshots_to_keep
+                      - state
+                    description: Configures snapshot expiration settings.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        WarehouseInactive:
+          - code: 40402
+  /accounts/{account_id}/r2-catalog/{bucketName}/namespaces:
+    get:
+      operationId: listNamespaces
+      description: "Returns a list of namespaces in the specified R2 catalog. Supports
+        hierarchical filtering and pagination for efficient traversal of large
+        namespace hierarchies.  @example ```ts const namespaces = await
+        client.r2DataCatalog.namespaces.list( 'my-data-bucket', { account_id:
+        '0123456789abcdef0123456789abcdef' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Use this to identify the account."
+          schema:
+            type: string
+        - name: page_size
+          in: query
+          required: false
+          description: "Query param: Maximum number of namespaces to return per page.
+            Defaults to 100, maximum 1000."
+          schema:
+            type: number
+        - name: page_token
+          in: query
+          required: false
+          description: "Query param: Opaque pagination token from a previous response. Use
+            this to fetch the next page of results."
+          schema:
+            type: string
+        - name: parent
+          in: query
+          required: false
+          description: 'Query param: Parent namespace to filter by. Only returns direct
+            children of this namespace. For nested namespaces, use %1F as
+            separator (e.g., "bronze%1Fanalytics"). Omit this parameter to list
+            top-level namespaces.'
+          schema:
+            type: string
+        - name: return_details
+          in: query
+          required: false
+          description: "Query param: Whether to include additional metadata (timestamps).
+            When true, response includes created_at and updated_at arrays."
+          schema:
+            type: boolean
+        - name: return_uuids
+          in: query
+          required: false
+          description: "Query param: Whether to include namespace UUIDs in the response.
+            Set to true to receive the namespace_uuids array."
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  namespaces:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: string
+                    description: Lists namespaces in the catalog.
+                  details:
+                    oneOf:
+                      - type: array
+                        items:
+                          type: object
+                          properties:
+                            namespace:
+                              type: array
+                              items:
+                                type: string
+                              description: Specifies the hierarchical namespace parts as an array of strings.
+                                For example, ["bronze", "analytics"] represents
+                                the namespace "bronze.analytics".
+                            namespace_uuid:
+                              type: string
+                              description: Contains the UUID that persists across renames.
+                            created_at:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                              description: Indicates the creation timestamp in ISO 8601 format.
+                            updated_at:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                              description: Shows the last update timestamp in ISO 8601 format. Null if never
+                                updated.
+                          required:
+                            - namespace
+                            - namespace_uuid
+                    nullable: true
+                    description: Contains detailed metadata for each namespace when return_details
+                      is true. Each object includes the namespace, UUID, and
+                      timestamps.
+                  namespace_uuids:
+                    oneOf:
+                      - type: array
+                        items:
+                          type: string
+                    nullable: true
+                    description: Contains UUIDs for each namespace when return_uuids is true. The
+                      order corresponds to the namespaces array.
+                  next_page_token:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Use this opaque token to fetch the next page of results. A null or
+                      absent value indicates the last page.
+                required:
+                  - namespaces
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        WarehouseInactive:
+          - code: 40402
+        WarehouseNotFound:
+          - code: 40401
+  /accounts/{account_id}/r2-catalog/{bucketName}/namespaces/{namespace}/tables:
+    get:
+      operationId: listNamespaceTables
+      description: "Returns a list of tables in the specified namespace within an R2
+        catalog. Supports pagination for efficient traversal of large table
+        collections.  @example ```ts const tables = await
+        client.r2DataCatalog.namespaces.tables.list( 'my-data-bucket', 'bronze',
+        { account_id: '0123456789abcdef0123456789abcdef' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: namespace
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Use this to identify the account."
+          schema:
+            type: string
+        - name: page_size
+          in: query
+          required: false
+          description: "Query param: Maximum number of tables to return per page. Defaults
+            to 100, maximum 1000."
+          schema:
+            type: number
+        - name: page_token
+          in: query
+          required: false
+          description: "Query param: Opaque pagination token from a previous response. Use
+            this to fetch the next page of results."
+          schema:
+            type: string
+        - name: return_details
+          in: query
+          required: false
+          description: "Query param: Whether to include additional metadata (timestamps,
+            locations). When true, response includes created_at, updated_at,
+            metadata_locations, and locations arrays."
+          schema:
+            type: boolean
+        - name: return_uuids
+          in: query
+          required: false
+          description: "Query param: Whether to include table UUIDs in the response. Set
+            to true to receive the table_uuids array."
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  identifiers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: Specifies the table name.
+                        namespace:
+                          type: array
+                          items:
+                            type: string
+                          description: Specifies the hierarchical namespace parts as an array of strings.
+                            For example, ["bronze", "analytics"] represents the
+                            namespace "bronze.analytics".
+                      required:
+                        - name
+                        - namespace
+                    description: Lists tables in the namespace.
+                  details:
+                    oneOf:
+                      - type: array
+                        items:
+                          type: object
+                          properties:
+                            identifier:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                  description: Specifies the table name.
+                                namespace:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: Specifies the hierarchical namespace parts as an array of strings.
+                                    For example, ["bronze", "analytics"]
+                                    represents the namespace "bronze.analytics".
+                              required:
+                                - name
+                                - namespace
+                              description: Specifies a unique table identifier within a catalog.
+                            table_uuid:
+                              type: string
+                              description: Contains the UUID that persists across renames.
+                            created_at:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                              description: Indicates the creation timestamp in ISO 8601 format.
+                            location:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                              description: Specifies the base S3 URI for table storage location.
+                            metadata_location:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                              description: Contains the S3 URI to table metadata file. Null for staged tables.
+                            updated_at:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                              description: Shows the last update timestamp in ISO 8601 format. Null if never
+                                updated.
+                          required:
+                            - identifier
+                            - table_uuid
+                    nullable: true
+                    description: Contains detailed metadata for each table when return_details is
+                      true. Each object includes identifier, UUID, timestamps,
+                      and locations.
+                  next_page_token:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Use this opaque token to fetch the next page of results. A null or
+                      absent value indicates the last page.
+                  table_uuids:
+                    oneOf:
+                      - type: array
+                        items:
+                          type: string
+                    nullable: true
+                    description: Contains UUIDs for each table when return_uuids is true. The order
+                      corresponds to the identifiers array.
+                required:
+                  - identifiers
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        WarehouseInactive:
+          - code: 40402
+  /accounts/{account_id}/r2-catalog/{bucketName}/namespaces/{namespace}/tables/{tableName}/maintenance-configs:
+    get:
+      operationId: getNamespaceTableMaintenanceConfig
+      description: "Retrieve the maintenance configuration for a specific table,
+        including compaction settings.  @example ```ts const maintenanceConfig =
+        await client.r2DataCatalog.namespaces.tables.maintenanceConfigs.get(
+        'my-data-bucket', 'my_namespace%1Fsub_namespace', 'my_table', {
+        account_id: '0123456789abcdef0123456789abcdef' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: namespace
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: tableName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Use this to identify the account.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  maintenance_config:
+                    type: object
+                    properties:
+                      compaction:
+                        type: object
+                        properties:
+                          state:
+                            type: string
+                            enum:
+                              - enabled
+                              - disabled
+                            description: Specifies the state of maintenance operations.
+                          target_size_mb:
+                            type: number
+                            enum:
+                              - 64
+                              - 128
+                              - 256
+                              - 512
+                            description: Sets the target file size for compaction in megabytes.
+                        required:
+                          - state
+                          - target_size_mb
+                        description: Configures compaction settings for table optimization.
+                      snapshot_expiration:
+                        type: object
+                        properties:
+                          max_snapshot_age:
+                            type: string
+                            description: 'Specifies the maximum age for snapshots. The system deletes
+                              snapshots older than this age. Format:
+                              <number><unit> where unit is d (days), h (hours),
+                              m (minutes), or s (seconds). Examples: "7d" (7
+                              days), "48h" (48 hours), "2880m" (2,880 minutes).'
+                          min_snapshots_to_keep:
+                            type: number
+                            description: Specifies the minimum number of snapshots to retain.
+                          state:
+                            type: string
+                            enum:
+                              - enabled
+                              - disabled
+                            description: Specifies the state of maintenance operations.
+                        required:
+                          - max_snapshot_age
+                          - min_snapshots_to_keep
+                          - state
+                        description: Configures snapshot expiration settings.
+                    description: Configures maintenance for the table.
+                required:
+                  - maintenance_config
+      x-distilled-response-path: result
+      x-distilled-errors:
+        TableNotFound:
+          - code: 10001
+          - code: 40403
+        InvalidRoute:
+          - code: 7003
+        WarehouseInactive:
+          - code: 40402
+    post:
+      operationId: updateNamespaceTableMaintenanceConfig
+      description: "Update the maintenance configuration for a specific table. This
+        allows you to enable or disable compaction and adjust target file sizes
+        for optimization.  @example ```ts const maintenanceConfig = await
+        client.r2DataCatalog.namespaces.tables.maintenanceConfigs.update(
+        'my-data-bucket', 'my_namespace%1Fsub_namespace', 'my_table', {
+        account_id: '0123456789abcdef0123456789abcdef', compaction: { state:
+        'enabled', target_size_mb: '256', }, snapshot_expiration: {
+        max_snapshot_age: '14d', min_snapshots_to_keep: 5, state: 'enabled', },
+        }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: namespace
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: tableName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Use this to identify the account."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                compaction:
+                  type: object
+                  properties:
+                    state:
+                      type: string
+                      enum:
+                        - enabled
+                        - disabled
+                      description: Updates the state optionally.
+                    target_size_mb:
+                      type: number
+                      enum:
+                        - 64
+                        - 128
+                        - 256
+                        - 512
+                      description: Updates the target file size optionally.
+                  description: "Body param: Updates compaction configuration (all fields
+                    optional)."
+                snapshot_expiration:
+                  type: object
+                  properties:
+                    max_snapshot_age:
+                      type: string
+                      description: Updates the maximum age for snapshots optionally.
+                    min_snapshots_to_keep:
+                      type: number
+                      description: Updates the minimum number of snapshots to retain optionally.
+                    state:
+                      type: string
+                      enum:
+                        - enabled
+                        - disabled
+                      description: Updates the state optionally.
+                  description: "Body param: Updates snapshot expiration configuration (all fields
+                    optional)."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  compaction:
+                    type: object
+                    properties:
+                      state:
+                        type: string
+                        enum:
+                          - enabled
+                          - disabled
+                        description: Specifies the state of maintenance operations.
+                      target_size_mb:
+                        type: number
+                        enum:
+                          - 64
+                          - 128
+                          - 256
+                          - 512
+                        description: Sets the target file size for compaction in megabytes.
+                    required:
+                      - state
+                      - target_size_mb
+                    description: Configures compaction settings for table optimization.
+                  snapshot_expiration:
+                    type: object
+                    properties:
+                      max_snapshot_age:
+                        type: string
+                        description: 'Specifies the maximum age for snapshots. The system deletes
+                          snapshots older than this age. Format: <number><unit>
+                          where unit is d (days), h (hours), m (minutes), or s
+                          (seconds). Examples: "7d" (7 days), "48h" (48 hours),
+                          "2880m" (2,880 minutes).'
+                      min_snapshots_to_keep:
+                        type: number
+                        description: Specifies the minimum number of snapshots to retain.
+                      state:
+                        type: string
+                        enum:
+                          - enabled
+                          - disabled
+                        description: Specifies the state of maintenance operations.
+                    required:
+                      - max_snapshot_age
+                      - min_snapshots_to_keep
+                      - state
+                    description: Configures snapshot expiration settings.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        TableNotFound:
+          - code: 10001
+          - code: 40403
+        InvalidRoute:
+          - code: 7003
+        WarehouseInactive:
+          - code: 40402
+  /accounts/{account_id}/r2-catalog/{bucketName}:
+    get:
+      operationId: getR2DataCatalog
+      description: "Retrieve detailed information about a specific R2 catalog by
+        bucket name. Returns catalog status, maintenance configuration, and
+        credential status.  @example ```ts const r2DataCatalog = await
+        client.r2DataCatalog.get( 'my-data-bucket', { account_id:
+        '0123456789abcdef0123456789abcdef' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Use this to identify the account.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Use this to uniquely identify the catalog.
+                  bucket:
+                    type: string
+                    description: Specifies the associated R2 bucket name.
+                  name:
+                    type: string
+                    description: Specifies the catalog name (generated from account and bucket
+                      name).
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - inactive
+                    description: Indicates the status of the catalog.
+                  credential_status:
+                    type: string
+                    enum:
+                      - present
+                      - absent
+                    nullable: true
+                    description: Shows the credential configuration status.
+                  maintenance_config:
+                    oneOf:
+                      - type: object
+                        properties:
+                          compaction:
+                            type: object
+                            properties:
+                              state:
+                                type: string
+                                enum:
+                                  - enabled
+                                  - disabled
+                                description: Specifies the state of maintenance operations.
+                              target_size_mb:
+                                type: number
+                                enum:
+                                  - 64
+                                  - 128
+                                  - 256
+                                  - 512
+                                description: Sets the target file size for compaction in megabytes.
+                            required:
+                              - state
+                              - target_size_mb
+                            description: Configures compaction for catalog maintenance.
+                          snapshot_expiration:
+                            type: object
+                            properties:
+                              max_snapshot_age:
+                                type: string
+                                description: 'Specifies the maximum age for snapshots. The system deletes
+                                  snapshots older than this age. Format:
+                                  <number><unit> where unit is d (days), h
+                                  (hours), m (minutes), or s (seconds).
+                                  Examples: "7d" (7 days), "48h" (48 hours),
+                                  "2880m" (2,880 minutes).'
+                              min_snapshots_to_keep:
+                                type: number
+                                description: Specifies the minimum number of snapshots to retain.
+                              state:
+                                type: string
+                                enum:
+                                  - enabled
+                                  - disabled
+                                description: Specifies the state of maintenance operations.
+                            required:
+                              - max_snapshot_age
+                              - min_snapshots_to_keep
+                              - state
+                            description: Configures snapshot expiration settings.
+                    nullable: true
+                    description: Configures maintenance for the catalog.
+                required:
+                  - id
+                  - bucket
+                  - name
+                  - status
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/r2-catalog:
+    get:
+      operationId: listR2DataCatalogs
+      description: "Returns a list of R2 buckets that have been enabled as Apache
+        Iceberg catalogs for the specified account. Each catalog represents an
+        R2 bucket configured to store Iceberg metadata and data files.  @example
+        ```ts const r2DataCatalogs = await client.r2DataCatalog.list({
+        account_id: '0123456789abcdef0123456789abcdef', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Use this to identify the account.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  warehouses:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Use this to uniquely identify the catalog.
+                        bucket:
+                          type: string
+                          description: Specifies the associated R2 bucket name.
+                        name:
+                          type: string
+                          description: Specifies the catalog name (generated from account and bucket
+                            name).
+                        status:
+                          type: string
+                          enum:
+                            - active
+                            - inactive
+                          description: Indicates the status of the catalog.
+                        credential_status:
+                          type: string
+                          enum:
+                            - present
+                            - absent
+                          nullable: true
+                          description: Shows the credential configuration status.
+                        maintenance_config:
+                          oneOf:
+                            - type: object
+                              properties:
+                                compaction:
+                                  type: object
+                                  properties:
+                                    state:
+                                      type: string
+                                      enum:
+                                        - enabled
+                                        - disabled
+                                      description: Specifies the state of maintenance operations.
+                                    target_size_mb:
+                                      type: number
+                                      enum:
+                                        - 64
+                                        - 128
+                                        - 256
+                                        - 512
+                                      description: Sets the target file size for compaction in megabytes.
+                                  required:
+                                    - state
+                                    - target_size_mb
+                                  description: Configures compaction for catalog maintenance.
+                                snapshot_expiration:
+                                  type: object
+                                  properties:
+                                    max_snapshot_age:
+                                      type: string
+                                      description: 'Specifies the maximum age for snapshots. The system deletes
+                                        snapshots older than this age. Format:
+                                        <number><unit> where unit is d (days), h
+                                        (hours), m (minutes), or s (seconds).
+                                        Examples: "7d" (7 days), "48h" (48
+                                        hours), "2880m" (2,880 minutes).'
+                                    min_snapshots_to_keep:
+                                      type: number
+                                      description: Specifies the minimum number of snapshots to retain.
+                                    state:
+                                      type: string
+                                      enum:
+                                        - enabled
+                                        - disabled
+                                      description: Specifies the state of maintenance operations.
+                                  required:
+                                    - max_snapshot_age
+                                    - min_snapshots_to_keep
+                                    - state
+                                  description: Configures snapshot expiration settings.
+                          nullable: true
+                          description: Configures maintenance for the catalog.
+                      required:
+                        - id
+                        - bucket
+                        - name
+                        - status
+                    description: Lists catalogs in the account.
+                required:
+                  - warehouses
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/r2-catalog/{bucketName}/enable:
+    post:
+      operationId: enableR2DataCatalog
+      description: "Enable an R2 bucket as an Apache Iceberg catalog. This operation
+        creates the necessary catalog infrastructure and activates the bucket
+        for storing Iceberg metadata and data files.  @example ```ts const
+        response = await client.r2DataCatalog.enable( 'my-data-bucket', {
+        account_id: '0123456789abcdef0123456789abcdef' }, ); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Use this to identify the account.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Use this to uniquely identify the activated catalog.
+                  name:
+                    type: string
+                    description: Specifies the name of the activated catalog.
+                required:
+                  - name
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+  /accounts/{account_id}/r2-catalog/{bucketName}/disable:
+    post:
+      operationId: disableR2DataCatalog
+      description: "Disable an R2 bucket as a catalog. This operation deactivates the
+        catalog but preserves existing metadata and data files. The catalog can
+        be re-enabled later.  @example ```ts await
+        client.r2DataCatalog.disable('my-data-bucket', { account_id:
+        '0123456789abcdef0123456789abcdef', }); ```"
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Use this to identify the account.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003

@@ -1,0 +1,707 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare SCHEMA-VALIDATION API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: schema-validation
+paths:
+  /zones/{zone_id}/schema_validation/schemas/{schemaId}:
+    get:
+      operationId: getSchema
+      description: "Get details of a schema  @example ```ts const publicSchema = await
+        client.schemaValidation.schemas.get(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: schemaId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: omit_source
+          in: query
+          required: false
+          description: "Query param: Omit the source-files of schemas and only retrieve
+            their meta-data."
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  kind:
+                    type: string
+                    enum:
+                      - openapi_v3
+                    description: The kind of the schema
+                  name:
+                    type: string
+                    description: A human-readable name for the schema
+                  schema_id:
+                    type: string
+                    description: A unique identifier of this schema
+                  source:
+                    type: string
+                    description: The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
+                  validation_enabled:
+                    type: boolean
+                    description: An indicator if this schema is enabled
+                required:
+                  - created_at
+                  - kind
+                  - name
+                  - schema_id
+                  - source
+      x-distilled-response-path: result
+    patch:
+      operationId: patchSchema
+      description: "Edit details of a schema to enable validation  @example ```ts
+        const publicSchema = await client.schemaValidation.schemas.edit(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: schemaId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                validation_enabled:
+                  type: boolean
+                  description: "Body param: Flag whether schema is enabled for validation."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  kind:
+                    type: string
+                    enum:
+                      - openapi_v3
+                    description: The kind of the schema
+                  name:
+                    type: string
+                    description: A human-readable name for the schema
+                  schema_id:
+                    type: string
+                    description: A unique identifier of this schema
+                  source:
+                    type: string
+                    description: The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
+                  validation_enabled:
+                    type: boolean
+                    description: An indicator if this schema is enabled
+                required:
+                  - created_at
+                  - kind
+                  - name
+                  - schema_id
+                  - source
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteSchema
+      description: "Delete a schema  @example ```ts const schema = await
+        client.schemaValidation.schemas.delete(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: schemaId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The ID of the schema that was just deleted
+                required:
+                  - id
+      x-distilled-response-path: result
+  /zones/{zone_id}/schema_validation/schemas:
+    get:
+      operationId: listSchemas
+      description: "List all uploaded schemas  @example ```ts // Automatically fetches
+        more pages as needed. for await (const publicSchema of
+        client.schemaValidation.schemas.list( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: omit_source
+          in: query
+          required: false
+          description: "Query param: Omit the source-files of schemas and only retrieve
+            their meta-data."
+          schema:
+            type: boolean
+        - name: validation_enabled
+          in: query
+          required: false
+          description: "Query param: Filter for enabled schemas"
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  kind:
+                    type: string
+                    enum:
+                      - openapi_v3
+                    description: The kind of the schema
+                  name:
+                    type: string
+                    description: A human-readable name for the schema
+                  schema_id:
+                    type: string
+                    description: A unique identifier of this schema
+                  source:
+                    type: string
+                    description: The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
+                  validation_enabled:
+                    type: boolean
+                    description: An indicator if this schema is enabled
+                required:
+                  - created_at
+                  - kind
+                  - name
+                  - schema_id
+                  - source
+      x-distilled-pagination-class: PublicSchemasV4PagePaginationArray
+    post:
+      operationId: createSchema
+      description: "Upload a schema  @example ```ts const publicSchema = await
+        client.schemaValidation.schemas.create({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', kind: 'openapi_v3', name: 'petstore
+        schema', source: '<schema file contents>', validation_enabled: true, });
+        ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                kind:
+                  type: string
+                  enum:
+                    - openapi_v3
+                  description: "Body param: The kind of the schema"
+                name:
+                  type: string
+                  description: "Body param: A human-readable name for the schema"
+                source:
+                  type: string
+                  description: "Body param: The raw schema, e.g., the OpenAPI schema, either as
+                    JSON or YAML"
+                validation_enabled:
+                  type: boolean
+                  description: "Body param: An indicator if this schema is enabled"
+              required:
+                - kind
+                - name
+                - source
+                - validation_enabled
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_at:
+                    type: string
+                  kind:
+                    type: string
+                    enum:
+                      - openapi_v3
+                    description: The kind of the schema
+                  name:
+                    type: string
+                    description: A human-readable name for the schema
+                  schema_id:
+                    type: string
+                    description: A unique identifier of this schema
+                  source:
+                    type: string
+                    description: The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
+                  validation_enabled:
+                    type: boolean
+                    description: An indicator if this schema is enabled
+                required:
+                  - created_at
+                  - kind
+                  - name
+                  - schema_id
+                  - source
+      x-distilled-response-path: result
+  /zones/{zone_id}/schema_validation/settings:
+    get:
+      operationId: getSetting
+      description: "Get global schema validation settings  @example ```ts const
+        setting = await client.schemaValidation.settings.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  validation_default_mitigation_action:
+                    type: string
+                    enum:
+                      - none
+                      - log
+                      - block
+                    description: "The default mitigation action used  Mitigation actions are as
+                      follows:  - `log` - log request when request does not
+                      conform to schema - `block` - deny access to the site when
+                      request does not conform to schema - `none` - skip running
+                      schema validation"
+                  validation_override_mitigation_action:
+                    type: string
+                    enum:
+                      - none
+                    description: When not null, this overrides global both zone level and operation
+                      level mitigation actions. This can serve as a quick way to
+                      disable schema validation for the whole zone.  - `"none"`
+                      will skip running schema validation entirely for the
+                      request
+                required:
+                  - validation_default_mitigation_action
+      x-distilled-response-path: result
+    put:
+      operationId: putSetting
+      description: "Update global schema validation settings  @example ```ts const
+        setting = await client.schemaValidation.settings.update({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353',
+        validation_default_mitigation_action: 'block', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                validation_default_mitigation_action:
+                  type: string
+                  enum:
+                    - none
+                    - log
+                    - block
+                  description: 'Body param: The default mitigation action used Mitigation actions
+                    are as follows:  - `"log"` - log request when request does
+                    not conform to schema - `"block"` - deny access to the site
+                    when request does not conform to schema - `"none"` - skip
+                    running schema validation'
+                validation_override_mitigation_action:
+                  type: string
+                  enum:
+                    - none
+                  nullable: true
+                  description: 'Body param: When set, this overrides both zone level and operation
+                    level mitigation actions.  - `"none"` - skip running schema
+                    validation entirely for the request - `null` - clears any
+                    existing override'
+              required:
+                - validation_default_mitigation_action
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  validation_default_mitigation_action:
+                    type: string
+                    enum:
+                      - none
+                      - log
+                      - block
+                    description: "The default mitigation action used  Mitigation actions are as
+                      follows:  - `log` - log request when request does not
+                      conform to schema - `block` - deny access to the site when
+                      request does not conform to schema - `none` - skip running
+                      schema validation"
+                  validation_override_mitigation_action:
+                    type: string
+                    enum:
+                      - none
+                    description: When not null, this overrides global both zone level and operation
+                      level mitigation actions. This can serve as a quick way to
+                      disable schema validation for the whole zone.  - `"none"`
+                      will skip running schema validation entirely for the
+                      request
+                required:
+                  - validation_default_mitigation_action
+      x-distilled-response-path: result
+    patch:
+      operationId: patchSetting
+      description: "Edit global schema validation settings  @example ```ts const
+        response = await client.schemaValidation.settings.edit({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                validation_default_mitigation_action:
+                  type: string
+                  enum:
+                    - none
+                    - log
+                    - block
+                  description: 'Body param: The default mitigation action used Mitigation actions
+                    are as follows:  - `"log"` - log request when request does
+                    not conform to schema - `"block"` - deny access to the site
+                    when request does not conform to schema - `"none"` - skip
+                    running schema validation'
+                validation_override_mitigation_action:
+                  type: string
+                  enum:
+                    - none
+                  nullable: true
+                  description: 'Body param: When set, this overrides both zone level and operation
+                    level mitigation actions.  - `"none"` - skip running schema
+                    validation entirely for the request - `null` - clears any
+                    existing override'
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  validation_default_mitigation_action:
+                    type: string
+                    enum:
+                      - none
+                      - log
+                      - block
+                    description: "The default mitigation action used  Mitigation actions are as
+                      follows:  - `log` - log request when request does not
+                      conform to schema - `block` - deny access to the site when
+                      request does not conform to schema - `none` - skip running
+                      schema validation"
+                  validation_override_mitigation_action:
+                    type: string
+                    enum:
+                      - none
+                    description: When not null, this overrides global both zone level and operation
+                      level mitigation actions. This can serve as a quick way to
+                      disable schema validation for the whole zone.  - `"none"`
+                      will skip running schema validation entirely for the
+                      request
+                required:
+                  - validation_default_mitigation_action
+      x-distilled-response-path: result
+  /zones/{zone_id}/schema_validation/settings/operations/{operationId}:
+    get:
+      operationId: getSettingOperation
+      description: "Get per-operation schema validation setting  @example ```ts const
+        operation = await client.schemaValidation.settings.operations.get(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: operationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mitigation_action:
+                    type: string
+                    enum:
+                      - log
+                      - block
+                      - none
+                    description: When set, this applies a mitigation action to this operation which
+                      supersedes a global schema validation setting just for
+                      this operation  - `"log"` - log request when request does
+                      not conform to schema for this operation - `"block"` -
+                      deny access to the site when request does not conform to
+                      schema for this operation - `"none"` - will skip
+                      mitigation for this operation
+                  operation_id:
+                    type: string
+                    description: UUID.
+                required:
+                  - mitigation_action
+                  - operation_id
+      x-distilled-response-path: result
+    put:
+      operationId: putSettingOperation
+      description: "Update per-operation schema validation setting  @example ```ts
+        const operation = await
+        client.schemaValidation.settings.operations.update(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', mitigation_action: 'block', }, );
+        ```"
+      parameters:
+        - name: operationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mitigation_action:
+                  type: string
+                  enum:
+                    - log
+                    - block
+                    - none
+                  nullable: true
+                  description: 'Body param: When set, this applies a mitigation action to this
+                    operation  - `"log"` - log request when request does not
+                    conform to schema for this operation - `"block"` - deny
+                    access to the site when request does not conform to schema
+                    for this operation - `"none"` - will skip mitigation for
+                    this operation - `null` - clears any mitigation action'
+              required:
+                - mitigation_action
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mitigation_action:
+                    type: string
+                    enum:
+                      - log
+                      - block
+                      - none
+                    description: When set, this applies a mitigation action to this operation which
+                      supersedes a global schema validation setting just for
+                      this operation  - `"log"` - log request when request does
+                      not conform to schema for this operation - `"block"` -
+                      deny access to the site when request does not conform to
+                      schema for this operation - `"none"` - will skip
+                      mitigation for this operation
+                  operation_id:
+                    type: string
+                    description: UUID.
+                required:
+                  - mitigation_action
+                  - operation_id
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteSettingOperation
+      description: "Delete per-operation schema validation setting  @example ```ts
+        const operation = await
+        client.schemaValidation.settings.operations.delete(
+        'f174e90a-fafe-4643-bbbc-4a0ed4fc8415', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: operationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  operation_id:
+                    type: string
+                    description: UUID.
+      x-distilled-response-path: result
+  /zones/{zone_id}/schema_validation/settings/operations:
+    get:
+      operationId: listSettingOperations
+      description: "List per-operation schema validation settings  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        operationListResponse of
+        client.schemaValidation.settings.operations.list( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mitigation_action:
+                    type: string
+                    enum:
+                      - log
+                      - block
+                      - none
+                    description: When set, this applies a mitigation action to this operation which
+                      supersedes a global schema validation setting just for
+                      this operation  - `"log"` - log request when request does
+                      not conform to schema for this operation - `"block"` -
+                      deny access to the site when request does not conform to
+                      schema for this operation - `"none"` - will skip
+                      mitigation for this operation
+                  operation_id:
+                    type: string
+                    description: UUID.
+                required:
+                  - mitigation_action
+                  - operation_id
+      x-distilled-pagination-class: OperationListResponsesV4PagePaginationArray
+    patch:
+      operationId: bulkPatchSettingOperations
+      description: "Bulk edit per-operation schema validation settings  @example ```ts
+        const response = await
+        client.schemaValidation.settings.operations.bulkEdit( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', body: {
+        '3818d821-5901-4147-a474-f5f5aec1d54e': {},
+        'b17c8043-99a0-4202-b7d9-8f7cdbee02cd': {}, }, }, ); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      x-distilled-response-path: result

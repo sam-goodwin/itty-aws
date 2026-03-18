@@ -1,0 +1,1481 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare IAM API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: iam
+paths:
+  /accounts/{account_id}/iam/permission_groups/{permissionGroupId}:
+    get:
+      operationId: getPermissionGroup
+      description: "Get information about a specific permission group in an
+        account.  @example ```ts const permissionGroup = await
+        client.iam.permissionGroups.get( '023e105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: permissionGroupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier of the permission group.
+                  meta:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    description: Attributes associated to the permission group.
+                  name:
+                    type: string
+                    description: Name of the permission group.
+                required:
+                  - id
+      x-distilled-response-path: result
+  /accounts/{account_id}/iam/permission_groups:
+    get:
+      operationId: listPermissionGroups
+      description: "List all the permissions groups for an account.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        permissionGroupListResponse of client.iam.permissionGroups.list( {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+        - name: id
+          in: query
+          required: false
+          description: "Query param: ID of the permission group to be fetched."
+          schema:
+            type: string
+        - name: label
+          in: query
+          required: false
+          description: "Query param: Label of the permission group to be fetched."
+          schema:
+            type: string
+        - name: name
+          in: query
+          required: false
+          description: "Query param: Name of the permission group to be fetched."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier of the permission group.
+                  meta:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    description: Attributes associated to the permission group.
+                  name:
+                    type: string
+                    description: Name of the permission group.
+                required:
+                  - id
+      x-distilled-pagination-class: PermissionGroupListResponsesV4PagePaginationArray
+  /accounts/{account_id}/iam/resource_groups/{resourceGroupId}:
+    get:
+      operationId: getResourceGroup
+      description: "Get information about a specific resource group in an
+        account.  @example ```ts const resourceGroup = await
+        client.iam.resourceGroups.get( '023e105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: resourceGroupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier of the resource group.
+                  scope:
+                    description: The scope associated to the resource group
+                  meta:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    description: Attributes associated to the resource group.
+                  name:
+                    type: string
+                    description: Name of the resource group.
+                required:
+                  - id
+                  - scope
+      x-distilled-response-path: result
+    put:
+      operationId: updateResourceGroup
+      description: "Modify an existing resource group.  @example ```ts const
+        resourceGroup = await client.iam.resourceGroups.update(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: resourceGroupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: Name of the resource group"
+                scope:
+                  type: object
+                  properties:
+                    key:
+                      type: string
+                      description: This is a combination of pre-defined resource name and identifier
+                        (like Account ID etc.)
+                    objects:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          key:
+                            type: string
+                            description: This is a combination of pre-defined resource name and identifier
+                              (like Zone ID etc.)
+                        required:
+                          - key
+                      description: A list of scope objects for additional context. The number of Scope
+                        objects should not be zero.
+                  required:
+                    - key
+                    - objects
+                  description: "Body param: A scope is a combination of scope objects which
+                    provides additional context."
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier of the resource group.
+                  scope:
+                    description: The scope associated to the resource group
+                  meta:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    description: Attributes associated to the resource group.
+                  name:
+                    type: string
+                    description: Name of the resource group.
+                required:
+                  - id
+                  - scope
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteResourceGroup
+      description: "Remove a resource group from an account.  @example ```ts const
+        resourceGroup = await client.iam.resourceGroups.delete(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: resourceGroupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+                required:
+                  - id
+      x-distilled-response-path: result
+  /accounts/{account_id}/iam/resource_groups:
+    get:
+      operationId: listResourceGroups
+      description: "List all the resource groups for an account.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        resourceGroupListResponse of client.iam.resourceGroups.list( {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+        - name: id
+          in: query
+          required: false
+          description: "Query param: ID of the resource group to be fetched."
+          schema:
+            type: string
+        - name: name
+          in: query
+          required: false
+          description: "Query param: Name of the resource group to be fetched."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier of the resource group.
+                  scope:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          description: This is a combination of pre-defined resource name and identifier
+                            (like Account ID etc.)
+                        objects:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              key:
+                                type: string
+                                description: This is a combination of pre-defined resource name and identifier
+                                  (like Zone ID etc.)
+                            required:
+                              - key
+                          description: A list of scope objects for additional context.
+                      required:
+                        - key
+                        - objects
+                    description: The scope associated to the resource group
+                  meta:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    description: Attributes associated to the resource group.
+                  name:
+                    type: string
+                    description: Name of the resource group.
+                required:
+                  - id
+                  - scope
+      x-distilled-pagination-class: ResourceGroupListResponsesSinglePage
+    post:
+      operationId: createResourceGroup
+      description: "Create a new Resource Group under the specified account.  @example
+        ```ts const resourceGroup = await client.iam.resourceGroups.create({
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353', name:
+        'NewResourceGroup', scope: { key:
+        'com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4', objects:
+        [ { key:
+        'com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5', },
+        ], }, }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: Name of the resource group"
+                scope:
+                  type: object
+                  properties:
+                    key:
+                      type: string
+                      description: This is a combination of pre-defined resource name and identifier
+                        (like Account ID etc.)
+                    objects:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          key:
+                            type: string
+                            description: This is a combination of pre-defined resource name and identifier
+                              (like Zone ID etc.)
+                        required:
+                          - key
+                      description: A list of scope objects for additional context. The number of Scope
+                        objects should not be zero.
+                  required:
+                    - key
+                    - objects
+                  description: "Body param: A scope is a combination of scope objects which
+                    provides additional context."
+              required:
+                - name
+                - scope
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier of the resource group.
+                  scope:
+                    description: The scope associated to the resource group
+                  meta:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    description: Attributes associated to the resource group.
+                  name:
+                    type: string
+                    description: Name of the resource group.
+                required:
+                  - id
+                  - scope
+      x-distilled-response-path: result
+  /accounts/{account_id}/sso_connectors/{ssoConnectorId}:
+    get:
+      operationId: getSso
+      description: "Get single SSO connector  @example ```ts const sso = await
+        client.iam.sso.get( '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: ssoConnectorId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: SSO Connector identifier tag.
+                  created_on:
+                    type: string
+                    description: Timestamp for the creation of the SSO connector
+                  email_domain:
+                    type: string
+                  enabled:
+                    type: boolean
+                  updated_on:
+                    type: string
+                    description: Timestamp for the last update of the SSO connector
+                  use_fedramp_language:
+                    type: boolean
+                    description: Controls the display of FedRAMP language to the user during SSO
+                      login
+                  verification:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        description: DNS verification code. Add this entire string to the DNS TXT record
+                          of the email domain to validate ownership.
+                      status:
+                        type: string
+                        enum:
+                          - awaiting
+                          - pending
+                          - failed
+                          - verified
+                        description: The status of the verification code from the verification process.
+      x-distilled-response-path: result
+    patch:
+      operationId: patchSso
+      description: "Update SSO connector state  @example ```ts const sso = await
+        client.iam.sso.update( '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: ssoConnectorId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                  description: "Body param: SSO Connector enabled state"
+                use_fedramp_language:
+                  type: boolean
+                  description: "Body param: Controls the display of FedRAMP language to the user
+                    during SSO login"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: SSO Connector identifier tag.
+                  created_on:
+                    type: string
+                    description: Timestamp for the creation of the SSO connector
+                  email_domain:
+                    type: string
+                  enabled:
+                    type: boolean
+                  updated_on:
+                    type: string
+                    description: Timestamp for the last update of the SSO connector
+                  use_fedramp_language:
+                    type: boolean
+                    description: Controls the display of FedRAMP language to the user during SSO
+                      login
+                  verification:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        description: DNS verification code. Add this entire string to the DNS TXT record
+                          of the email domain to validate ownership.
+                      status:
+                        type: string
+                        enum:
+                          - awaiting
+                          - pending
+                          - failed
+                          - verified
+                        description: The status of the verification code from the verification process.
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteSso
+      description: "Delete SSO connector  @example ```ts const sso = await
+        client.iam.sso.delete( '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: ssoConnectorId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+                required:
+                  - id
+      x-distilled-response-path: result
+  /accounts/{account_id}/sso_connectors:
+    get:
+      operationId: listSsos
+      description: "Get all SSO connectors  @example ```ts // Automatically fetches
+        more pages as needed. for await (const ssoListResponse of
+        client.iam.sso.list({ account_id: '023e105f4ecef8ad9ca31a8372d0c353',
+        })) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: SSO Connector identifier tag.
+                  created_on:
+                    type: string
+                    description: Timestamp for the creation of the SSO connector
+                  email_domain:
+                    type: string
+                  enabled:
+                    type: boolean
+                  updated_on:
+                    type: string
+                    description: Timestamp for the last update of the SSO connector
+                  use_fedramp_language:
+                    type: boolean
+                    description: Controls the display of FedRAMP language to the user during SSO
+                      login
+                  verification:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        description: DNS verification code. Add this entire string to the DNS TXT record
+                          of the email domain to validate ownership.
+                      status:
+                        type: string
+                        enum:
+                          - awaiting
+                          - pending
+                          - failed
+                          - verified
+                        description: The status of the verification code from the verification process.
+      x-distilled-pagination-class: SSOListResponsesSinglePage
+    post:
+      operationId: createSso
+      description: "Initialize new SSO connector  @example ```ts const sso = await
+        client.iam.sso.create({ account_id: '023e105f4ecef8ad9ca31a8372d0c353',
+        email_domain: 'example.com', }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email_domain:
+                  type: string
+                  description: "Body param: Email domain of the new SSO connector"
+                begin_verification:
+                  type: boolean
+                  description: "Body param: Begin the verification process after creation"
+                use_fedramp_language:
+                  type: boolean
+                  description: "Body param: Controls the display of FedRAMP language to the user
+                    during SSO login"
+              required:
+                - email_domain
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: SSO Connector identifier tag.
+                  created_on:
+                    type: string
+                    description: Timestamp for the creation of the SSO connector
+                  email_domain:
+                    type: string
+                  enabled:
+                    type: boolean
+                  updated_on:
+                    type: string
+                    description: Timestamp for the last update of the SSO connector
+                  use_fedramp_language:
+                    type: boolean
+                    description: Controls the display of FedRAMP language to the user during SSO
+                      login
+                  verification:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        description: DNS verification code. Add this entire string to the DNS TXT record
+                          of the email domain to validate ownership.
+                      status:
+                        type: string
+                        enum:
+                          - awaiting
+                          - pending
+                          - failed
+                          - verified
+                        description: The status of the verification code from the verification process.
+      x-distilled-response-path: result
+  /accounts/{account_id}/iam/user_groups/{userGroupId}:
+    get:
+      operationId: getUserGroup
+      description: "Get information about a specific user group in an
+        account.  @example ```ts const userGroup = await
+        client.iam.userGroups.get( '023e105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: userGroupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: User Group identifier tag.
+                  created_on:
+                    type: string
+                    description: Timestamp for the creation of the user group
+                  modified_on:
+                    type: string
+                    description: Last time the user group was modified.
+                  name:
+                    type: string
+                    description: Name of the user group.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        access:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Permission Group identifier tag.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resource_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Resource Group identifier tag.
+                            required:
+                              - id
+                          description: A list of resource groups that the policy applies to.
+                    description: Policies attached to the User group
+                required:
+                  - id
+                  - created_on
+                  - modified_on
+                  - name
+      x-distilled-response-path: result
+    put:
+      operationId: updateUserGroup
+      description: "Modify an existing user group.  @example ```ts const userGroup =
+        await client.iam.userGroups.update( '023e105f4ecef8ad9ca31a8372d0c353',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: userGroupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: Name of the User group."
+                policies:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Policy identifier.
+                      access:
+                        type: string
+                        enum:
+                          - allow
+                          - deny
+                        description: Allow or deny operations against the resources.
+                      permission_groups:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Permission Group identifier tag.
+                          required:
+                            - id
+                        description: A set of permission groups that are specified to the policy.
+                      resource_groups:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Resource Group identifier tag.
+                          required:
+                            - id
+                        description: A set of resource groups that are specified to the policy.
+                    required:
+                      - id
+                      - access
+                      - permission_groups
+                      - resource_groups
+                  description: "Body param: Policies attached to the User group"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: User Group identifier tag.
+                  created_on:
+                    type: string
+                    description: Timestamp for the creation of the user group
+                  modified_on:
+                    type: string
+                    description: Last time the user group was modified.
+                  name:
+                    type: string
+                    description: Name of the user group.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        access:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Permission Group identifier tag.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resource_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Resource Group identifier tag.
+                            required:
+                              - id
+                          description: A list of resource groups that the policy applies to.
+                    description: Policies attached to the User group
+                required:
+                  - id
+                  - created_on
+                  - modified_on
+                  - name
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteUserGroup
+      description: "Remove a user group from an account.  @example ```ts const
+        userGroup = await client.iam.userGroups.delete(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: userGroupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier
+                required:
+                  - id
+      x-distilled-response-path: result
+  /accounts/{account_id}/iam/user_groups:
+    get:
+      operationId: listUserGroups
+      description: "List all the user groups for an account.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        userGroupListResponse of client.iam.userGroups.list( { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+        - name: id
+          in: query
+          required: false
+          description: "Query param: ID of the user group to be fetched."
+          schema:
+            type: string
+        - name: direction
+          in: query
+          required: false
+          description: 'Query param: The sort order of returned user groups by name.
+            Default sort order is ascending. To switch to descending, set this
+            parameter to "desc"'
+          schema:
+            type: string
+        - name: fuzzyName
+          in: query
+          required: false
+          description: "Query param: A string used for searching for user groups
+            containing that substring."
+          schema:
+            type: string
+        - name: name
+          in: query
+          required: false
+          description: "Query param: Name of the user group to be fetched."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: User Group identifier tag.
+                  created_on:
+                    type: string
+                    description: Timestamp for the creation of the user group
+                  modified_on:
+                    type: string
+                    description: Last time the user group was modified.
+                  name:
+                    type: string
+                    description: Name of the user group.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        access:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Permission Group identifier tag.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resource_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Resource Group identifier tag.
+                            required:
+                              - id
+                          description: A list of resource groups that the policy applies to.
+                    description: Policies attached to the User group
+                required:
+                  - id
+                  - created_on
+                  - modified_on
+                  - name
+      x-distilled-pagination-class: UserGroupListResponsesV4PagePaginationArray
+    post:
+      operationId: createUserGroup
+      description: "Create a new user group under the specified account.  @example
+        ```ts const userGroup = await client.iam.userGroups.create({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', name: 'My New User Group', policies:
+        [ { access: 'allow', permission_groups: [ { id:
+        'c8fed203ed3043cba015a93ad1616f1f' }, { id:
+        '82e64a83756745bbbb1c9c2701bf816b' }, ], resource_groups: [ { id:
+        '6d7f2f5f5b1d4a0e9081fdc98d432fd1' }, ], }, ], }); ```"
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Body param: Name of the User group."
+                policies:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      access:
+                        type: string
+                        enum:
+                          - allow
+                          - deny
+                        description: Allow or deny operations against the resources.
+                      permission_groups:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Permission Group identifier tag.
+                          required:
+                            - id
+                        description: A set of permission groups that are specified to the policy.
+                      resource_groups:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Resource Group identifier tag.
+                          required:
+                            - id
+                        description: A set of resource groups that are specified to the policy.
+                    required:
+                      - access
+                      - permission_groups
+                      - resource_groups
+                  description: "Body param: Policies attached to the User group"
+              required:
+                - name
+                - policies
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: User Group identifier tag.
+                  created_on:
+                    type: string
+                    description: Timestamp for the creation of the user group
+                  modified_on:
+                    type: string
+                    description: Last time the user group was modified.
+                  name:
+                    type: string
+                    description: Name of the user group.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        access:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Permission Group identifier tag.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resource_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Resource Group identifier tag.
+                            required:
+                              - id
+                          description: A list of resource groups that the policy applies to.
+                    description: Policies attached to the User group
+                required:
+                  - id
+                  - created_on
+                  - modified_on
+                  - name
+      x-distilled-response-path: result
+  /accounts/{account_id}/iam/user_groups/{userGroupId}/members:
+    get:
+      operationId: listUserGroupMembers
+      description: "List all the members attached to a user group.  @example ```ts //
+        Automatically fetches more pages as needed. for await (const
+        memberListResponse of client.iam.userGroups.members.list(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: userGroupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Account member identifier.
+                  email:
+                    type: string
+                    description: The contact email address of the user.
+                  status:
+                    type: string
+                    enum:
+                      - accepted
+                      - pending
+                    description: The member's status in the account.
+                required:
+                  - id
+      x-distilled-pagination-class: MemberListResponsesV4PagePaginationArray
+    post:
+      operationId: createUserGroupMember
+      description: "Add members to a User Group.  @example ```ts const member = await
+        client.iam.userGroups.members.create(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', body: [{ id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }], }, ); ```"
+      parameters:
+        - name: userGroupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The identifier of an existing account Member.
+                required:
+                  - id
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Account member identifier.
+                  email:
+                    type: string
+                    description: The contact email address of the user.
+                  status:
+                    type: string
+                    enum:
+                      - accepted
+                      - pending
+                    description: The member's status in the account.
+                required:
+                  - id
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidMember:
+          - code: 400
+    put:
+      operationId: updateUserGroupMember
+      description: "Replace the set of members attached to a User Group.  @example
+        ```ts // Automatically fetches more pages as needed. for await (const
+        memberUpdateResponse of client.iam.userGroups.members.update(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', body: [{ id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }], }, )) { // ... } ```"
+      parameters:
+        - name: userGroupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: Account identifier tag."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The identifier of an existing account Member.
+                required:
+                  - id
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Account member identifier.
+                  email:
+                    type: string
+                    description: The contact email address of the user.
+                  status:
+                    type: string
+                    enum:
+                      - accepted
+                      - pending
+                    description: The member's status in the account.
+                required:
+                  - id
+      x-distilled-pagination-class: MemberUpdateResponsesSinglePage
+  /accounts/{account_id}/iam/user_groups/{userGroupId}/members/{memberId}:
+    delete:
+      operationId: deleteUserGroupMember
+      description: "Remove a member from User Group  @example ```ts const member =
+        await client.iam.userGroups.members.delete(
+        '023e105f4ecef8ad9ca31a8372d0c353', '023e105f4ecef8ad9ca31a8372d0c353',
+        { account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: userGroupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: memberId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Account member identifier.
+                  email:
+                    type: string
+                    description: The contact email address of the user.
+                  status:
+                    type: string
+                    enum:
+                      - accepted
+                      - pending
+                    description: The member's status in the account.
+                required:
+                  - id
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidMember:
+          - code: 400
+  /accounts/{account_id}/sso_connectors/{ssoConnectorId}/begin_verification:
+    post:
+      operationId: beginVerificationSso
+      description: "Begin SSO connector verification  @example ```ts const response =
+        await client.iam.sso.beginVerification(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: ssoConnectorId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account identifier tag.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
+                  success:
+                    type: boolean
+                    enum:
+                      - true
+                    description: Whether the API call was successful.
+                required:
+                  - errors
+                  - messages
+                  - success

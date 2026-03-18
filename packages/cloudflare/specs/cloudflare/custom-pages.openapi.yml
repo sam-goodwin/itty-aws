@@ -1,0 +1,183 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare CUSTOM-PAGES API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: custom-pages
+paths:
+  /{accountOrZone}/{accountOrZoneId}/custom_pages/{identifier}:
+    get:
+      operationId: getCustomPage
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - 1000_errors
+              - 500_errors
+              - basic_challenge
+              - country_challenge
+              - ip_block
+              - managed_challenge
+              - ratelimit_block
+              - under_attack
+              - waf_block
+              - waf_challenge
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  created_on:
+                    type: string
+                  description:
+                    type: string
+                  modified_on:
+                    type: string
+                  preview_target:
+                    type: string
+                  required_tokens:
+                    type: array
+                    items:
+                      type: string
+                  state:
+                    type: string
+                    enum:
+                      - default
+                      - customized
+                    description: The custom page state.
+                  url:
+                    type: string
+                    description: The URL associated with the custom page.
+      x-distilled-response-path: result
+    put:
+      operationId: putCustomPage
+      description: "Updates the configuration of an existing custom page.  @example
+        ```ts const customPage = await client.customPages.update(
+        'ratelimit_block', { state: 'default', url: 'http://www.example.com',
+        account_id: 'account_id', }, ); ```"
+      parameters:
+        - name: identifier
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - 1000_errors
+              - 500_errors
+              - basic_challenge
+              - country_challenge
+              - ip_block
+              - managed_challenge
+              - ratelimit_block
+              - under_attack
+              - waf_block
+              - waf_challenge
+        - name: account_id
+          in: path
+          required: true
+          description: "Path param: The Account ID to use for this endpoint. Mutually
+            exclusive with the Zone ID."
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: The Zone ID to use for this endpoint. Mutually
+            exclusive with the Account ID."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: string
+                  enum:
+                    - default
+                    - customized
+                  description: "Body param: The custom page state."
+                url:
+                  type: string
+                  description: "Body param: The URL associated with the custom page."
+              required:
+                - state
+                - url
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  created_on:
+                    type: string
+                  description:
+                    type: string
+                  modified_on:
+                    type: string
+                  preview_target:
+                    type: string
+                  required_tokens:
+                    type: array
+                    items:
+                      type: string
+                  state:
+                    type: string
+                    enum:
+                      - default
+                      - customized
+                    description: The custom page state.
+                  url:
+                    type: string
+                    description: The URL associated with the custom page.
+      x-distilled-response-path: result
+  /{accountOrZone}/{accountOrZoneId}/custom_pages:
+    get:
+      operationId: listCustomPages
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  created_on:
+                    type: string
+                  description:
+                    type: string
+                  modified_on:
+                    type: string
+                  preview_target:
+                    type: string
+                  required_tokens:
+                    type: array
+                    items:
+                      type: string
+                  state:
+                    type: string
+                    enum:
+                      - default
+                      - customized
+                    description: The custom page state.
+                  url:
+                    type: string
+                    description: The URL associated with the custom page.
+      x-distilled-pagination-class: CustomPageListResponsesSinglePage

@@ -1,0 +1,736 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare ORIGIN-TLS-CLIENT-AUTH API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: origin-tls-client-auth
+paths:
+  /zones/{zone_id}/origin_tls_client_auth/hostnames/{hostname}:
+    get:
+      operationId: getHostname
+      description: "Get the Hostname Status for Client Authentication  @example ```ts
+        const authenticatedOriginPull = await
+        client.originTLSClientAuth.hostnames.get( 'app.example.com', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: hostname
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cert_id:
+                    type: string
+                    description: Identifier.
+                  cert_status:
+                    type: string
+                    enum:
+                      - initializing
+                      - pending_deployment
+                      - pending_deletion
+                      - active
+                      - deleted
+                      - deployment_timed_out
+                      - deletion_timed_out
+                    description: Status of the certificate or the association.
+                  cert_updated_at:
+                    type: string
+                    description: The time when the certificate was updated.
+                  cert_uploaded_on:
+                    type: string
+                    description: The time when the certificate was uploaded.
+                  certificate:
+                    type: string
+                    description: The hostname certificate.
+                  created_at:
+                    type: string
+                    description: The time when the certificate was created.
+                  enabled:
+                    oneOf:
+                      - type: boolean
+                    nullable: true
+                    description: Indicates whether hostname-level authenticated origin pulls is
+                      enabled. A null value voids the association.
+                  expires_on:
+                    type: string
+                    description: The date when the certificate expires.
+                  hostname:
+                    type: string
+                    description: The hostname on the origin for which the client certificate
+                      uploaded will be used.
+                  issuer:
+                    type: string
+                    description: The certificate authority that issued the certificate.
+                  serial_number:
+                    type: string
+                    description: The serial number on the uploaded certificate.
+                  signature:
+                    type: string
+                    description: The type of hash used for the certificate.
+                  status:
+                    type: string
+                    enum:
+                      - initializing
+                      - pending_deployment
+                      - pending_deletion
+                      - active
+                      - deleted
+                      - deployment_timed_out
+                      - deletion_timed_out
+                    description: Status of the certificate or the association.
+                  updated_at:
+                    type: string
+                    description: The time when the certificate was updated.
+      x-distilled-response-path: result
+  /zones/{zone_id}/origin_tls_client_auth/hostnames:
+    put:
+      operationId: putHostname
+      description: "Associate a hostname to a certificate and enable, disable or
+        invalidate the association. If disabled, client certificate will not be
+        sent to the hostname even if activated at the zone level. 100 maximum
+        associations on a single certificate are allowed. Note: Use a null value
+        for parameter _enabled_ to invalidate the association.  @example ```ts
+        // Automatically fetches more pages as needed. for await (const
+        hostnameUpdateResponse of client.originTLSClientAuth.hostnames.update( {
+        zone_id: '023e105f4ecef8ad9ca31a8372d0c353', config: [{}], }, )) { //
+        ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                config:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      cert_id:
+                        type: string
+                        description: Certificate identifier tag.
+                      enabled:
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                        description: Indicates whether hostname-level authenticated origin pulls is
+                          enabled. A null value voids the association.
+                      hostname:
+                        type: string
+                        description: The hostname on the origin for which the client certificate
+                          uploaded will be used.
+                  description: "Body param:"
+              required:
+                - config
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  cert_id:
+                    type: string
+                    description: Identifier.
+                  certificate:
+                    type: string
+                    description: The hostname certificate.
+                  enabled:
+                    oneOf:
+                      - type: boolean
+                    nullable: true
+                    description: Indicates whether hostname-level authenticated origin pulls is
+                      enabled. A null value voids the association.
+                  hostname:
+                    type: string
+                    description: The hostname on the origin for which the client certificate
+                      uploaded will be used.
+                  private_key:
+                    type: string
+                    description: The hostname certificate's private key.
+      x-distilled-pagination-class: HostnameUpdateResponsesSinglePage
+  /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates/{certificateId}:
+    get:
+      operationId: getHostnameCertificate
+      description: "Get the certificate by ID to be used for client authentication on
+        a hostname.  @example ```ts const certificate = await
+        client.originTLSClientAuth.hostnames.certificates.get(
+        '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: certificateId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  certificate:
+                    type: string
+                    description: The hostname certificate.
+                  expires_on:
+                    type: string
+                    description: The date when the certificate expires.
+                  issuer:
+                    type: string
+                    description: The certificate authority that issued the certificate.
+                  serial_number:
+                    type: string
+                    description: The serial number on the uploaded certificate.
+                  signature:
+                    type: string
+                    description: The type of hash used for the certificate.
+                  status:
+                    type: string
+                    enum:
+                      - initializing
+                      - pending_deployment
+                      - pending_deletion
+                      - active
+                      - deleted
+                      - deployment_timed_out
+                      - deletion_timed_out
+                    description: Status of the certificate or the association.
+                  uploaded_on:
+                    type: string
+                    description: The time when the certificate was uploaded.
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteHostnameCertificate
+      description: "Delete Hostname Client Certificate  @example ```ts const
+        certificate = await
+        client.originTLSClientAuth.hostnames.certificates.delete(
+        '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: certificateId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  certificate:
+                    type: string
+                    description: The hostname certificate.
+                  expires_on:
+                    type: string
+                    description: The date when the certificate expires.
+                  issuer:
+                    type: string
+                    description: The certificate authority that issued the certificate.
+                  serial_number:
+                    type: string
+                    description: The serial number on the uploaded certificate.
+                  signature:
+                    type: string
+                    description: The type of hash used for the certificate.
+                  status:
+                    type: string
+                    enum:
+                      - initializing
+                      - pending_deployment
+                      - pending_deletion
+                      - active
+                      - deleted
+                      - deployment_timed_out
+                      - deletion_timed_out
+                    description: Status of the certificate or the association.
+                  uploaded_on:
+                    type: string
+                    description: The time when the certificate was uploaded.
+      x-distilled-response-path: result
+  /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates:
+    get:
+      operationId: listHostnameCertificates
+      description: "List Certificates  @example ```ts // Automatically fetches more
+        pages as needed. for await (const certificateListResponse of
+        client.originTLSClientAuth.hostnames.certificates.list( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  cert_id:
+                    type: string
+                    description: Identifier.
+                  certificate:
+                    type: string
+                    description: The hostname certificate.
+                  enabled:
+                    oneOf:
+                      - type: boolean
+                    nullable: true
+                    description: Indicates whether hostname-level authenticated origin pulls is
+                      enabled. A null value voids the association.
+                  hostname:
+                    type: string
+                    description: The hostname on the origin for which the client certificate
+                      uploaded will be used.
+                  private_key:
+                    type: string
+                    description: The hostname certificate's private key.
+      x-distilled-pagination-class: CertificateListResponsesSinglePage
+    post:
+      operationId: createHostnameCertificate
+      description: "Upload a certificate to be used for client authentication on a
+        hostname. 10 hostname certificates per zone are allowed.  @example ```ts
+        const certificate = await
+        client.originTLSClientAuth.hostnames.certificates.create( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', certificate: '-----BEGIN
+        CERTIFICATE-----\\nMIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUA\
+        MEUxCzAJBgNV\\nBAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRl\
+        cm5ldCBX\\naWRnaXRzIFB0eSBMdGQwHhcNMTYwODI0MTY0MzAxWhcNMTYxMTIyMTY0MzAx\
+        WjBF\\nMQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50\
+        \\nZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\\nC\
+        gKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmGdtcGbg/1\\nCGZu0\
+        jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKnabIRuGvB\\nKwzESIXgK\
+        k2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpidtnKX/a+5\\n0GjB79CJH4ER2\
+        lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+pyFxIXjbEI\\ndZliWRkRMtzrHOJIh\
+        rmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pEewooaeO2\\nizNTERcG9HzAacbVRn2Y2\
+        SWIyT/18QIDAQABo4GnMIGkMB0GA1UdDgQWBBT/LbE4\\n9rWf288N6sJA5BRb6FJIGDB1B\
+        gNVHSMEbjBsgBT/LbE49rWf288N6sJA5BRb6FJI\\nGKFJpEcwRTELMAkGA1UEBhMCQVUxE\
+        zARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV\\nBAoTGEludGVybmV0IFdpZGdpdHMgUHR5I\
+        Ex0ZIIJAMHAwfXZ5/PWMAwGA1UdEwQF\\nMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHHFw\
+        l0tH0quUYZYO0dZYt4R7SJ0pCm2\\n2satiyzHl4OnXcHDpekAo7/a09c6Lz6AU83cKy/+x\
+        3/djYHXWba7HpEu0dR3ugQP\\nMlr4zrhd9xKZ0KZKiYmtJH+ak4OM4L3FbT0owUZPyjLSl\
+        hMtJVcoRp5CJsjAMBUG\\nSvD8RX+T01wzox/Qb+lnnNnOlaWpqu8eoOenybxKp1a9ULzIV\
+        vN/LAcc+14vioFq\\n2swRWtmocBAs8QR9n4uvbpiYvS8eYueDCWMM4fvFfBhaDZ3N9Ibty\
+        Sh3SpFdQDhw\\nYbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=\
+        \\n-----END CERTIFICATE-----\\n', private_key: '-----BEGIN RSA PRIVATE
+        KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgv\
+        ddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\
+        \\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\nt\
+        nKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXj\
+        bEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2i\
+        zNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nL\
+        Gf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox\
+        0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC\
+        0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznD\
+        fHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3\
+        fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7c\
+        eaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3\
+        mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtG\
+        eRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7\
+        +uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMz\
+        qh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc\
+        4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNS\
+        KeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43Ja\
+        WB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\
+        \\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nP\
+        G19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqa\
+        QKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6\
+        raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1\
+        yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE
+        KEY-----\\n', }, ); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                certificate:
+                  type: string
+                  description: "Body param: The hostname certificate."
+                private_key:
+                  type: string
+                  description: "Body param: The hostname certificate's private key."
+              required:
+                - certificate
+                - private_key
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  certificate:
+                    type: string
+                    description: The hostname certificate.
+                  expires_on:
+                    type: string
+                    description: The date when the certificate expires.
+                  issuer:
+                    type: string
+                    description: The certificate authority that issued the certificate.
+                  serial_number:
+                    type: string
+                    description: The serial number on the uploaded certificate.
+                  signature:
+                    type: string
+                    description: The type of hash used for the certificate.
+                  status:
+                    type: string
+                    enum:
+                      - initializing
+                      - pending_deployment
+                      - pending_deletion
+                      - active
+                      - deleted
+                      - deployment_timed_out
+                      - deletion_timed_out
+                    description: Status of the certificate or the association.
+                  uploaded_on:
+                    type: string
+                    description: The time when the certificate was uploaded.
+      x-distilled-response-path: result
+  /zones/{zone_id}/origin_tls_client_auth/{certificateId}:
+    get:
+      operationId: getOriginTlsClientAuth
+      description: "Get Certificate Details  @example ```ts const originTLSClientAuth
+        = await client.originTLSClientAuth.get(
+        '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: certificateId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  certificate:
+                    type: string
+                    description: The zone's leaf certificate.
+                  enabled:
+                    type: boolean
+                    description: Indicates whether zone-level authenticated origin pulls is enabled.
+                  private_key:
+                    type: string
+                    description: The zone's private key.
+      x-distilled-response-path: result
+    delete:
+      operationId: deleteOriginTlsClientAuth
+      description: "Delete Certificate  @example ```ts const originTLSClientAuth =
+        await client.originTLSClientAuth.delete(
+        '023e105f4ecef8ad9ca31a8372d0c353', { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: certificateId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  certificate:
+                    type: string
+                    description: The zone's leaf certificate.
+                  enabled:
+                    type: boolean
+                    description: Indicates whether zone-level authenticated origin pulls is enabled.
+                  private_key:
+                    type: string
+                    description: The zone's private key.
+      x-distilled-response-path: result
+  /zones/{zone_id}/origin_tls_client_auth:
+    get:
+      operationId: listOriginTlsClientAuths
+      description: "List Certificates  @example ```ts // Automatically fetches more
+        pages as needed. for await (const originTLSClientAuthListResponse of
+        client.originTLSClientAuth.list( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  certificate:
+                    type: string
+                    description: The zone's leaf certificate.
+                  enabled:
+                    type: boolean
+                    description: Indicates whether zone-level authenticated origin pulls is enabled.
+                  private_key:
+                    type: string
+                    description: The zone's private key.
+      x-distilled-pagination-class: OriginTLSClientAuthListResponsesSinglePage
+    post:
+      operationId: createOriginTlsClientAuth
+      description: "Upload your own certificate you want Cloudflare to use for
+        edge-to-origin communication to override the shared certificate. Please
+        note that it is important to keep only one certificate active. Also,
+        make sure to enable zone-level authenticated origin pulls by making a
+        PUT call to settings endpoint to see the uploaded certificate in
+        use.  @example ```ts const originTLSClientAuth = await
+        client.originTLSClientAuth.create({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', certificate: '-----BEGIN
+        CERTIFICATE-----\\nMIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUA\
+        MEUxCzAJBgNV\\nBAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRl\
+        cm5ldCBX\\naWRnaXRzIFB0eSBMdGQwHhcNMTYwODI0MTY0MzAxWhcNMTYxMTIyMTY0MzAx\
+        WjBF\\nMQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50\
+        \\nZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\\nC\
+        gKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmGdtcGbg/1\\nCGZu0\
+        jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKnabIRuGvB\\nKwzESIXgK\
+        k2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpidtnKX/a+5\\n0GjB79CJH4ER2\
+        lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+pyFxIXjbEI\\ndZliWRkRMtzrHOJIh\
+        rmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pEewooaeO2\\nizNTERcG9HzAacbVRn2Y2\
+        SWIyT/18QIDAQABo4GnMIGkMB0GA1UdDgQWBBT/LbE4\\n9rWf288N6sJA5BRb6FJIGDB1B\
+        gNVHSMEbjBsgBT/LbE49rWf288N6sJA5BRb6FJI\\nGKFJpEcwRTELMAkGA1UEBhMCQVUxE\
+        zARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV\\nBAoTGEludGVybmV0IFdpZGdpdHMgUHR5I\
+        Ex0ZIIJAMHAwfXZ5/PWMAwGA1UdEwQF\\nMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHHFw\
+        l0tH0quUYZYO0dZYt4R7SJ0pCm2\\n2satiyzHl4OnXcHDpekAo7/a09c6Lz6AU83cKy/+x\
+        3/djYHXWba7HpEu0dR3ugQP\\nMlr4zrhd9xKZ0KZKiYmtJH+ak4OM4L3FbT0owUZPyjLSl\
+        hMtJVcoRp5CJsjAMBUG\\nSvD8RX+T01wzox/Qb+lnnNnOlaWpqu8eoOenybxKp1a9ULzIV\
+        vN/LAcc+14vioFq\\n2swRWtmocBAs8QR9n4uvbpiYvS8eYueDCWMM4fvFfBhaDZ3N9Ibty\
+        Sh3SpFdQDhw\\nYbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=\
+        \\n-----END CERTIFICATE-----\\n', private_key: '-----BEGIN RSA PRIVATE
+        KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgv\
+        ddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\
+        \\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\nt\
+        nKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXj\
+        bEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2i\
+        zNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nL\
+        Gf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox\
+        0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC\
+        0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznD\
+        fHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3\
+        fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7c\
+        eaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3\
+        mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtG\
+        eRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7\
+        +uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMz\
+        qh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc\
+        4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNS\
+        KeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43Ja\
+        WB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\
+        \\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nP\
+        G19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqa\
+        QKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6\
+        raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1\
+        yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE
+        KEY-----\\n', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                certificate:
+                  type: string
+                  description: "Body param: The zone's leaf certificate."
+                private_key:
+                  type: string
+                  description: "Body param: The zone's private key."
+              required:
+                - certificate
+                - private_key
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  certificate:
+                    type: string
+                    description: The zone's leaf certificate.
+                  enabled:
+                    type: boolean
+                    description: Indicates whether zone-level authenticated origin pulls is enabled.
+                  private_key:
+                    type: string
+                    description: The zone's private key.
+      x-distilled-response-path: result
+  /zones/{zone_id}/origin_tls_client_auth/settings:
+    get:
+      operationId: getSetting
+      description: "Get whether zone-level authenticated origin pulls is enabled or
+        not. It is false by default.  @example ```ts const setting = await
+        client.originTLSClientAuth.settings.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    description: Indicates whether zone-level authenticated origin pulls is enabled.
+      x-distilled-response-path: result
+    put:
+      operationId: putSetting
+      description: "Enable or disable zone-level authenticated origin pulls. 'enabled'
+        should be set true either before/after the certificate is uploaded to
+        see the certificate in use.  @example ```ts const setting = await
+        client.originTLSClientAuth.settings.update({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', enabled: true, }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                  description: "Body param: Indicates whether zone-level authenticated origin
+                    pulls is enabled."
+              required:
+                - enabled
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    description: Indicates whether zone-level authenticated origin pulls is enabled.
+      x-distilled-response-path: result
