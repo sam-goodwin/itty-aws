@@ -11,6 +11,11 @@ paths:
     get:
       operationId: listContainerApplications
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+            message:
+              includes: Could not route
       summary: List container applications
       parameters:
         - $ref: "#/components/parameters/AccountId"
@@ -26,6 +31,15 @@ paths:
     post:
       operationId: createContainerApplication
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+            message:
+              includes: Could not route
+        DurableObjectAlreadyHasApplication:
+          - code: 1608
+            message:
+              includes: DURABLE_OBJECT_ALREADY_HAS_APPLICATION
       summary: Create container application
       parameters:
         - $ref: "#/components/parameters/AccountId"
@@ -47,6 +61,18 @@ paths:
     get:
       operationId: getContainerApplication
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+            message:
+              includes: Could not route
+        ContainerApplicationNotFound:
+          - code: 1609
+            message:
+              includes: Container application not found
+          - code: 1609
+            message:
+              includes: APPLICATION_NOT_FOUND
       summary: Get container application
       parameters:
         - $ref: "#/components/parameters/AccountId"
@@ -61,6 +87,15 @@ paths:
     patch:
       operationId: updateContainerApplication
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+            message:
+              includes: Could not route
+        ContainerApplicationNotFound:
+          - code: 1609
+            message:
+              includes: APPLICATION_NOT_FOUND
       summary: Update container application
       parameters:
         - $ref: "#/components/parameters/AccountId"
@@ -81,6 +116,15 @@ paths:
     delete:
       operationId: deleteContainerApplication
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+            message:
+              includes: Could not route
+        ContainerApplicationNotFound:
+          - code: 1609
+            message:
+              includes: APPLICATION_NOT_FOUND
       summary: Delete container application
       parameters:
         - $ref: "#/components/parameters/AccountId"
@@ -98,6 +142,15 @@ paths:
     post:
       operationId: createContainerApplicationRollout
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+            message:
+              includes: Could not route
+        ContainerApplicationNotFound:
+          - code: 1609
+            message:
+              includes: APPLICATION_NOT_FOUND
       summary: Create container application rollout
       parameters:
         - $ref: "#/components/parameters/AccountId"
@@ -120,6 +173,11 @@ paths:
     post:
       operationId: createContainerRegistryCredentials
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+            message:
+              includes: Could not route
       summary: Create registry credentials
       parameters:
         - $ref: "#/components/parameters/AccountId"
@@ -142,6 +200,11 @@ paths:
     get:
       operationId: getContainerIdentity
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+            message:
+              includes: Could not route
       summary: Get container identity
       parameters:
         - $ref: "#/components/parameters/AccountId"
@@ -186,10 +249,8 @@ components:
         - max_instances
         - constraints
         - configuration
-        - durable_objects
         - created_at
         - version
-        - durable_object_namespace_id
         - health
       properties:
         id:
@@ -420,10 +481,8 @@ components:
     ContainerIdentity:
       type: object
       required:
-        - account_id
         - external_account_id
         - legacy_identity
-        - capabilities
         - limits
         - locations
         - defaults

@@ -14,6 +14,38 @@ import { type DefaultErrors } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // =============================================================================
+// Errors
+// =============================================================================
+
+export class ContainerApplicationNotFound extends Schema.TaggedErrorClass<ContainerApplicationNotFound>()(
+  "ContainerApplicationNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ContainerApplicationNotFound, [
+  { code: 1609, message: { includes: "Container application not found" } },
+  { code: 1609, message: { includes: "APPLICATION_NOT_FOUND" } },
+]);
+
+export class DurableObjectAlreadyHasApplication extends Schema.TaggedErrorClass<DurableObjectAlreadyHasApplication>()(
+  "DurableObjectAlreadyHasApplication",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DurableObjectAlreadyHasApplication, [
+  {
+    code: 1608,
+    message: { includes: "DURABLE_OBJECT_ALREADY_HAS_APPLICATION" },
+  },
+]);
+
+export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
+  "InvalidRoute",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(InvalidRoute, [
+  { code: 7003, message: { includes: "Could not route" } },
+]);
+
+// =============================================================================
 // ContainerApplication
 // =============================================================================
 
@@ -98,10 +130,10 @@ export interface GetContainerApplicationResponse {
         }[]
       | null;
   };
-  durableObjects: { namespaceId: string };
+  durableObjects?: { namespaceId: string } | null;
   createdAt: string;
   version: number;
-  durableObjectNamespaceId: string;
+  durableObjectNamespaceId?: string | null;
   health: { instances: unknown };
 }
 
@@ -341,12 +373,19 @@ export const GetContainerApplicationResponse =
         checks: "checks",
       }),
     ),
-    durableObjects: Schema.Struct({
-      namespaceId: Schema.String,
-    }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
+    durableObjects: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          namespaceId: Schema.String,
+        }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
+        Schema.Null,
+      ]),
+    ),
     createdAt: Schema.String,
     version: Schema.Number,
-    durableObjectNamespaceId: Schema.String,
+    durableObjectNamespaceId: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
     health: Schema.Struct({
       instances: Schema.Unknown,
     }),
@@ -373,7 +412,10 @@ export const GetContainerApplicationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetContainerApplicationResponse>;
 
-export type GetContainerApplicationError = DefaultErrors;
+export type GetContainerApplicationError =
+  | DefaultErrors
+  | InvalidRoute
+  | ContainerApplicationNotFound;
 
 export const getContainerApplication: API.OperationMethod<
   GetContainerApplicationRequest,
@@ -383,7 +425,7 @@ export const getContainerApplication: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContainerApplicationRequest,
   output: GetContainerApplicationResponse,
-  errors: [],
+  errors: [InvalidRoute, ContainerApplicationNotFound],
 }));
 
 export interface ListContainerApplicationsRequest {
@@ -465,10 +507,10 @@ export type ListContainerApplicationsResponse = {
         }[]
       | null;
   };
-  durableObjects: { namespaceId: string };
+  durableObjects?: { namespaceId: string } | null;
   createdAt: string;
   version: number;
-  durableObjectNamespaceId: string;
+  durableObjectNamespaceId?: string | null;
   health: { instances: unknown };
 }[];
 
@@ -715,12 +757,19 @@ export const ListContainerApplicationsResponse =
           checks: "checks",
         }),
       ),
-      durableObjects: Schema.Struct({
-        namespaceId: Schema.String,
-      }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
+      durableObjects: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            namespaceId: Schema.String,
+          }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
+          Schema.Null,
+        ]),
+      ),
       createdAt: Schema.String,
       version: Schema.Number,
-      durableObjectNamespaceId: Schema.String,
+      durableObjectNamespaceId: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
       health: Schema.Struct({
         instances: Schema.Unknown,
       }),
@@ -746,7 +795,7 @@ export const ListContainerApplicationsResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ListContainerApplicationsResponse>;
 
-export type ListContainerApplicationsError = DefaultErrors;
+export type ListContainerApplicationsError = DefaultErrors | InvalidRoute;
 
 export const listContainerApplications: API.OperationMethod<
   ListContainerApplicationsRequest,
@@ -756,7 +805,7 @@ export const listContainerApplications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListContainerApplicationsRequest,
   output: ListContainerApplicationsResponse,
-  errors: [],
+  errors: [InvalidRoute],
 }));
 
 export interface CreateContainerApplicationRequest {
@@ -1069,10 +1118,10 @@ export interface CreateContainerApplicationResponse {
         }[]
       | null;
   };
-  durableObjects: { namespaceId: string };
+  durableObjects?: { namespaceId: string } | null;
   createdAt: string;
   version: number;
-  durableObjectNamespaceId: string;
+  durableObjectNamespaceId?: string | null;
   health: { instances: unknown };
 }
 
@@ -1312,12 +1361,19 @@ export const CreateContainerApplicationResponse =
         checks: "checks",
       }),
     ),
-    durableObjects: Schema.Struct({
-      namespaceId: Schema.String,
-    }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
+    durableObjects: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          namespaceId: Schema.String,
+        }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
+        Schema.Null,
+      ]),
+    ),
     createdAt: Schema.String,
     version: Schema.Number,
-    durableObjectNamespaceId: Schema.String,
+    durableObjectNamespaceId: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
     health: Schema.Struct({
       instances: Schema.Unknown,
     }),
@@ -1344,7 +1400,10 @@ export const CreateContainerApplicationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateContainerApplicationResponse>;
 
-export type CreateContainerApplicationError = DefaultErrors;
+export type CreateContainerApplicationError =
+  | DefaultErrors
+  | InvalidRoute
+  | DurableObjectAlreadyHasApplication;
 
 export const createContainerApplication: API.OperationMethod<
   CreateContainerApplicationRequest,
@@ -1354,7 +1413,7 @@ export const createContainerApplication: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateContainerApplicationRequest,
   output: CreateContainerApplicationResponse,
-  errors: [],
+  errors: [InvalidRoute, DurableObjectAlreadyHasApplication],
 }));
 
 export interface UpdateContainerApplicationRequest {
@@ -1738,10 +1797,10 @@ export interface UpdateContainerApplicationResponse {
         }[]
       | null;
   };
-  durableObjects: { namespaceId: string };
+  durableObjects?: { namespaceId: string } | null;
   createdAt: string;
   version: number;
-  durableObjectNamespaceId: string;
+  durableObjectNamespaceId?: string | null;
   health: { instances: unknown };
 }
 
@@ -1981,12 +2040,19 @@ export const UpdateContainerApplicationResponse =
         checks: "checks",
       }),
     ),
-    durableObjects: Schema.Struct({
-      namespaceId: Schema.String,
-    }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
+    durableObjects: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          namespaceId: Schema.String,
+        }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
+        Schema.Null,
+      ]),
+    ),
     createdAt: Schema.String,
     version: Schema.Number,
-    durableObjectNamespaceId: Schema.String,
+    durableObjectNamespaceId: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
     health: Schema.Struct({
       instances: Schema.Unknown,
     }),
@@ -2013,7 +2079,10 @@ export const UpdateContainerApplicationResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<UpdateContainerApplicationResponse>;
 
-export type UpdateContainerApplicationError = DefaultErrors;
+export type UpdateContainerApplicationError =
+  | DefaultErrors
+  | InvalidRoute
+  | ContainerApplicationNotFound;
 
 export const updateContainerApplication: API.OperationMethod<
   UpdateContainerApplicationRequest,
@@ -2023,7 +2092,7 @@ export const updateContainerApplication: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateContainerApplicationRequest,
   output: UpdateContainerApplicationResponse,
-  errors: [],
+  errors: [InvalidRoute, ContainerApplicationNotFound],
 }));
 
 export interface DeleteContainerApplicationRequest {
@@ -2049,7 +2118,10 @@ export const DeleteContainerApplicationResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteContainerApplicationResponse>;
 
-export type DeleteContainerApplicationError = DefaultErrors;
+export type DeleteContainerApplicationError =
+  | DefaultErrors
+  | InvalidRoute
+  | ContainerApplicationNotFound;
 
 export const deleteContainerApplication: API.OperationMethod<
   DeleteContainerApplicationRequest,
@@ -2059,7 +2131,7 @@ export const deleteContainerApplication: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteContainerApplicationRequest,
   output: DeleteContainerApplicationResponse,
-  errors: [],
+  errors: [InvalidRoute, ContainerApplicationNotFound],
 }));
 
 // =============================================================================
@@ -2689,7 +2761,10 @@ export const CreateContainerApplicationRolloutResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<CreateContainerApplicationRolloutResponse>;
 
-export type CreateContainerApplicationRolloutError = DefaultErrors;
+export type CreateContainerApplicationRolloutError =
+  | DefaultErrors
+  | InvalidRoute
+  | ContainerApplicationNotFound;
 
 export const createContainerApplicationRollout: API.OperationMethod<
   CreateContainerApplicationRolloutRequest,
@@ -2699,7 +2774,7 @@ export const createContainerApplicationRollout: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateContainerApplicationRolloutRequest,
   output: CreateContainerApplicationRolloutResponse,
-  errors: [],
+  errors: [InvalidRoute, ContainerApplicationNotFound],
 }));
 
 // =============================================================================
@@ -2718,10 +2793,10 @@ export const GetContainerIdentityRequest =
   ) as unknown as Schema.Schema<GetContainerIdentityRequest>;
 
 export interface GetContainerIdentityResponse {
-  accountId: string;
+  accountId?: string | null;
   externalAccountId: string;
   legacyIdentity: string;
-  capabilities: string[];
+  capabilities?: string[] | null;
   limits: {
     accountId: string;
     vcpuPerDeployment: number;
@@ -2748,10 +2823,12 @@ export interface GetContainerIdentityResponse {
 
 export const GetContainerIdentityResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String,
+    accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     externalAccountId: Schema.String,
     legacyIdentity: Schema.String,
-    capabilities: Schema.Array(Schema.String),
+    capabilities: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
     limits: Schema.Struct({
       accountId: Schema.String,
       vcpuPerDeployment: Schema.Number,
@@ -2813,7 +2890,7 @@ export const GetContainerIdentityResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetContainerIdentityResponse>;
 
-export type GetContainerIdentityError = DefaultErrors;
+export type GetContainerIdentityError = DefaultErrors | InvalidRoute;
 
 export const getContainerIdentity: API.OperationMethod<
   GetContainerIdentityRequest,
@@ -2823,7 +2900,7 @@ export const getContainerIdentity: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContainerIdentityRequest,
   output: GetContainerIdentityResponse,
-  errors: [],
+  errors: [InvalidRoute],
 }));
 
 // =============================================================================
@@ -2869,7 +2946,9 @@ export const CreateContainerRegistryCredentialsResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateContainerRegistryCredentialsResponse>;
 
-export type CreateContainerRegistryCredentialsError = DefaultErrors;
+export type CreateContainerRegistryCredentialsError =
+  | DefaultErrors
+  | InvalidRoute;
 
 export const createContainerRegistryCredentials: API.OperationMethod<
   CreateContainerRegistryCredentialsRequest,
@@ -2879,5 +2958,5 @@ export const createContainerRegistryCredentials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateContainerRegistryCredentialsRequest,
   output: CreateContainerRegistryCredentialsResponse,
-  errors: [],
+  errors: [InvalidRoute],
 }));

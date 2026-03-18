@@ -1,7 +1,8 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare CONTAINERS API
+  title: Cloudflare Containers API
   version: 0.0.0
+  description: Reverse-engineered low-level Cloudflare Containers API.
 servers:
   - url: https://api.cloudflare.com/client/v4
 x-distilled-service: containers
@@ -272,12 +273,22 @@ paths:
                   - max_instances
                   - constraints
                   - configuration
-                  - durable_objects
                   - created_at
                   - version
-                  - durable_object_namespace_id
                   - health
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+            message:
+              includes: Could not route
+        ContainerApplicationNotFound:
+          - code: 1609
+            message:
+              includes: Container application not found
+          - code: 1609
+            message:
+              includes: APPLICATION_NOT_FOUND
     patch:
       operationId: updateContainerApplication
       summary: Update container application
@@ -799,12 +810,19 @@ paths:
                   - max_instances
                   - constraints
                   - configuration
-                  - durable_objects
                   - created_at
                   - version
-                  - durable_object_namespace_id
                   - health
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+            message:
+              includes: Could not route
+        ContainerApplicationNotFound:
+          - code: 1609
+            message:
+              includes: APPLICATION_NOT_FOUND
     delete:
       operationId: deleteContainerApplication
       summary: Delete container application
@@ -823,6 +841,15 @@ paths:
         "200":
           description: Deletion result
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+            message:
+              includes: Could not route
+        ContainerApplicationNotFound:
+          - code: 1609
+            message:
+              includes: APPLICATION_NOT_FOUND
   /accounts/{account_id}/containers/applications:
     get:
       operationId: listContainerApplications
@@ -1086,12 +1113,15 @@ paths:
                     - max_instances
                     - constraints
                     - configuration
-                    - durable_objects
                     - created_at
                     - version
-                    - durable_object_namespace_id
                     - health
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+            message:
+              includes: Could not route
     post:
       operationId: createContainerApplication
       summary: Create container application
@@ -1581,12 +1611,19 @@ paths:
                   - max_instances
                   - constraints
                   - configuration
-                  - durable_objects
                   - created_at
                   - version
-                  - durable_object_namespace_id
                   - health
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+            message:
+              includes: Could not route
+        DurableObjectAlreadyHasApplication:
+          - code: 1608
+            message:
+              includes: DURABLE_OBJECT_ALREADY_HAS_APPLICATION
   /accounts/{account_id}/containers/applications/{application_id}/rollouts:
     post:
       operationId: createContainerApplicationRollout
@@ -2130,6 +2167,15 @@ paths:
                   - steps
                   - progress
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+            message:
+              includes: Could not route
+        ContainerApplicationNotFound:
+          - code: 1609
+            message:
+              includes: APPLICATION_NOT_FOUND
   /accounts/{account_id}/containers/me:
     get:
       operationId: getContainerIdentity
@@ -2223,14 +2269,17 @@ paths:
                       - memory
                       - disk_mb
                 required:
-                  - account_id
                   - external_account_id
                   - legacy_identity
-                  - capabilities
                   - limits
                   - locations
                   - defaults
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+            message:
+              includes: Could not route
   /accounts/{account_id}/containers/registries/{registry_id}/credentials:
     post:
       operationId: createContainerRegistryCredentials
@@ -2282,3 +2331,8 @@ paths:
                 required:
                   - password
       x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+            message:
+              includes: Could not route
