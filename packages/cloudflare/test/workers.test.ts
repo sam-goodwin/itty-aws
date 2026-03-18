@@ -504,29 +504,29 @@ describe("Workers", () => {
         }),
       ));
 
-    test("error - WorkerNotFound for non-existent versionId", () =>
+    test("error - WorkerVersionNotFound for non-existent versionId", () =>
       withBetaWorker(scriptName("beta-ver-get-404"), (workerId) =>
         Workers.getBetaWorkerVersion({
           accountId: accountId(),
           workerId,
-          versionId: "00000000-0000-0000-0000-000000000000",
+          versionId: crypto.randomUUID(),
         }).pipe(
           Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("WorkerNotFound")),
+          Effect.map((e) => expect(e._tag).toBe("WorkerVersionNotFound")),
         ),
       ));
   });
 
   describe("deleteBetaWorkerVersion", () => {
-    test("error - WorkerNotFound for non-existent versionId", () =>
+    test("error - WorkerVersionNotFound for non-existent versionId", () =>
       withBetaWorker(scriptName("beta-ver-del"), (workerId) =>
         Workers.deleteBetaWorkerVersion({
           accountId: accountId(),
           workerId,
-          versionId: "00000000-0000-0000-0000-000000000000",
+          versionId: crypto.randomUUID(),
         }).pipe(
           Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("WorkerNotFound")),
+          Effect.map((e) => expect(e._tag).toBe("WorkerVersionNotFound")),
         ),
       ));
   });
@@ -1170,7 +1170,7 @@ describe("Workers", () => {
         Workers.getScriptDeployment({
           accountId: accountId(),
           scriptName: name,
-          deploymentId: "00000000-0000-0000-0000-000000000000",
+          deploymentId: crypto.randomUUID(),
         }).pipe(
           Effect.flip,
           Effect.map((e) => expect(e._tag).toBe("DeploymentNotFound")),
@@ -1239,15 +1239,15 @@ describe("Workers", () => {
   });
 
   describe("deleteScriptDeployment", () => {
-    test("error - WorkerNotFound for non-existent deploymentId", () =>
+    test("error - DeploymentNotFound for non-existent deploymentId", () =>
       withScript(scriptName("del-deploy"), (name) =>
         Workers.deleteScriptDeployment({
           accountId: accountId(),
           scriptName: name,
-          deploymentId: "00000000-0000-0000-0000-000000000000",
+          deploymentId: crypto.randomUUID(),
         }).pipe(
           Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("WorkerNotFound")),
+          Effect.map((e) => expect(e._tag).toBe("DeploymentNotFound")),
         ),
       ));
   });

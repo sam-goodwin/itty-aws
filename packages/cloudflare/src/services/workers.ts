@@ -78,6 +78,12 @@ export class WorkerNotFound extends Schema.TaggedErrorClass<WorkerNotFound>()(
 ) {}
 T.applyErrorMatchers(WorkerNotFound, [{ code: 10007 }, { code: 10013 }]);
 
+export class WorkerVersionNotFound extends Schema.TaggedErrorClass<WorkerVersionNotFound>()(
+  "WorkerVersionNotFound",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(WorkerVersionNotFound, [{ code: 10071 }]);
+
 // =============================================================================
 // AccountSetting
 // =============================================================================
@@ -1444,7 +1450,10 @@ export const GetBetaWorkerVersionResponse =
       T.ResponsePath("result"),
     ) as unknown as Schema.Schema<GetBetaWorkerVersionResponse>;
 
-export type GetBetaWorkerVersionError = DefaultErrors | WorkerNotFound;
+export type GetBetaWorkerVersionError =
+  | DefaultErrors
+  | WorkerNotFound
+  | WorkerVersionNotFound;
 
 export const getBetaWorkerVersion: API.OperationMethod<
   GetBetaWorkerVersionRequest,
@@ -1454,7 +1463,7 @@ export const getBetaWorkerVersion: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBetaWorkerVersionRequest,
   output: GetBetaWorkerVersionResponse,
-  errors: [WorkerNotFound],
+  errors: [WorkerNotFound, WorkerVersionNotFound],
 }));
 
 export interface ListBetaWorkerVersionsRequest {
@@ -3447,7 +3456,10 @@ export const DeleteBetaWorkerVersionResponse =
     success: Schema.Literal(true),
   }) as unknown as Schema.Schema<DeleteBetaWorkerVersionResponse>;
 
-export type DeleteBetaWorkerVersionError = DefaultErrors | WorkerNotFound;
+export type DeleteBetaWorkerVersionError =
+  | DefaultErrors
+  | WorkerNotFound
+  | WorkerVersionNotFound;
 
 export const deleteBetaWorkerVersion: API.OperationMethod<
   DeleteBetaWorkerVersionRequest,
@@ -3457,7 +3469,7 @@ export const deleteBetaWorkerVersion: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBetaWorkerVersionRequest,
   output: DeleteBetaWorkerVersionResponse,
-  errors: [WorkerNotFound],
+  errors: [WorkerNotFound, WorkerVersionNotFound],
 }));
 
 // =============================================================================
@@ -7810,7 +7822,10 @@ export const DeleteScriptDeploymentResponse =
     success: Schema.Literal(true),
   }) as unknown as Schema.Schema<DeleteScriptDeploymentResponse>;
 
-export type DeleteScriptDeploymentError = DefaultErrors | WorkerNotFound;
+export type DeleteScriptDeploymentError =
+  | DefaultErrors
+  | WorkerNotFound
+  | DeploymentNotFound;
 
 export const deleteScriptDeployment: API.OperationMethod<
   DeleteScriptDeploymentRequest,
@@ -7820,7 +7835,7 @@ export const deleteScriptDeployment: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteScriptDeploymentRequest,
   output: DeleteScriptDeploymentResponse,
-  errors: [WorkerNotFound],
+  errors: [WorkerNotFound, DeploymentNotFound],
 }));
 
 // =============================================================================
