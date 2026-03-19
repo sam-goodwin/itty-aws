@@ -94,10 +94,10 @@ paths:
                       certificate_authority:
                         type: string
                         enum:
+                          - digicert
                           - google
                           - lets_encrypt
                           - ssl_com
-                          - digicert
                         description: The Certificate Authority that will issue the certificate
                       custom_certificate:
                         type: string
@@ -415,10 +415,10 @@ paths:
                       certificate_authority:
                         type: string
                         enum:
+                          - digicert
                           - google
                           - lets_encrypt
                           - ssl_com
-                          - digicert
                         description: The Certificate Authority that will issue the certificate
                       custom_certificate:
                         type: string
@@ -706,10 +706,10 @@ paths:
                     certificate_authority:
                       type: string
                       enum:
+                        - digicert
                         - google
                         - lets_encrypt
                         - ssl_com
-                        - digicert
                       description: The Certificate Authority that will issue the certificate
                     cloudflare_branding:
                       type: boolean
@@ -825,10 +825,10 @@ paths:
                       certificate_authority:
                         type: string
                         enum:
+                          - digicert
                           - google
                           - lets_encrypt
                           - ssl_com
-                          - digicert
                         description: The Certificate Authority that will issue the certificate
                       custom_certificate:
                         type: string
@@ -1171,10 +1171,10 @@ paths:
                       certificate_authority:
                         type: string
                         enum:
+                          - digicert
                           - google
                           - lets_encrypt
                           - ssl_com
-                          - digicert
                         description: The Certificate Authority that will issue the certificate
                       custom_certificate:
                         type: string
@@ -1452,10 +1452,10 @@ paths:
                     certificate_authority:
                       type: string
                       enum:
+                        - digicert
                         - google
                         - lets_encrypt
                         - ssl_com
-                        - digicert
                       description: The Certificate Authority that will issue the certificate
                     cloudflare_branding:
                       type: boolean
@@ -1573,10 +1573,10 @@ paths:
                       certificate_authority:
                         type: string
                         enum:
+                          - digicert
                           - google
                           - lets_encrypt
                           - ssl_com
-                          - digicert
                         description: The Certificate Authority that will issue the certificate
                       custom_certificate:
                         type: string

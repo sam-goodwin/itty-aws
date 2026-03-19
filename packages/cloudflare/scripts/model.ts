@@ -381,7 +381,7 @@ export interface PropertyInfo {
 export interface ErrorMatcherInfo {
   code?: number;
   status?: number;
-  message?: string | { includes: string };
+  message?: string | { includes?: string; matches?: string };
 }
 
 export interface OperationErrorInfo {

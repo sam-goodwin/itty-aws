@@ -495,23 +495,33 @@ export type GetAppResponse =
   | {
       id: string;
       createdOn: string;
-      dns: unknown;
+      dns: { name?: string | null; type?: "CNAME" | "ADDRESS" | null };
       modifiedOn: string;
       protocol: string;
       trafficType: "direct" | "http" | "https";
       argoSmartRouting?: boolean | null;
-      edgeIps?: unknown | null;
+      edgeIps?:
+        | {
+            connectivity?: "all" | "ipv4" | "ipv6" | null;
+            type?: "dynamic" | null;
+          }
+        | { ips?: string[] | null; type?: "static" | null }
+        | null;
       ipFirewall?: boolean | null;
       originDirect?: string[] | null;
-      originDns?: unknown | null;
-      originPort?: string | number | null;
+      originDns?: {
+        name?: string | null;
+        ttl?: number | null;
+        type?: "" | "A" | "AAAA" | "SRV" | null;
+      } | null;
+      originPort?: number | string | null;
       proxyProtocol?: "off" | "v1" | "v2" | "simple" | null;
       tls?: "off" | "flexible" | "full" | "strict" | null;
     }
   | {
       id: string;
       createdOn: string;
-      dns: unknown;
+      dns: { name?: string | null; type?: "CNAME" | "ADDRESS" | null };
       modifiedOn: string;
       protocol: string;
       originDirect?: string[] | null;
@@ -521,21 +531,65 @@ export const GetAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.String,
     createdOn: Schema.String,
-    dns: Schema.Unknown,
+    dns: Schema.Struct({
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literals(["CNAME", "ADDRESS"]), Schema.Null]),
+      ),
+    }),
     modifiedOn: Schema.String,
     protocol: Schema.String,
     trafficType: Schema.Literals(["direct", "http", "https"]),
     argoSmartRouting: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
     ),
-    edgeIps: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    edgeIps: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Struct({
+            connectivity: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["all", "ipv4", "ipv6"]),
+                Schema.Null,
+              ]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("dynamic"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            ips: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("static"), Schema.Null]),
+            ),
+          }),
+        ]),
+        Schema.Null,
+      ]),
+    ),
     ipFirewall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     originDirect: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
-    originDns: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    originDns: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          type: Schema.optional(
+            Schema.Union([
+              Schema.Literals(["", "A", "AAAA", "SRV"]),
+              Schema.Null,
+            ]),
+          ),
+        }),
+        Schema.Null,
+      ]),
+    ),
     originPort: Schema.optional(
-      Schema.Union([Schema.Union([Schema.String, Schema.Number]), Schema.Null]),
+      Schema.Union([Schema.Union([Schema.Number, Schema.String]), Schema.Null]),
     ),
     proxyProtocol: Schema.optional(
       Schema.Union([
@@ -570,7 +624,12 @@ export const GetAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.String,
     createdOn: Schema.String,
-    dns: Schema.Unknown,
+    dns: Schema.Struct({
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literals(["CNAME", "ADDRESS"]), Schema.Null]),
+      ),
+    }),
     modifiedOn: Schema.String,
     protocol: Schema.String,
     originDirect: Schema.optional(
@@ -627,23 +686,33 @@ export interface ListAppsResponse {
     | {
         id: string;
         createdOn: string;
-        dns: unknown;
+        dns: { name?: string | null; type?: "CNAME" | "ADDRESS" | null };
         modifiedOn: string;
         protocol: string;
         trafficType: "direct" | "http" | "https";
         argoSmartRouting?: boolean | null;
-        edgeIps?: unknown | null;
+        edgeIps?:
+          | {
+              connectivity?: "all" | "ipv4" | "ipv6" | null;
+              type?: "dynamic" | null;
+            }
+          | { ips?: string[] | null; type?: "static" | null }
+          | null;
         ipFirewall?: boolean | null;
         originDirect?: string[] | null;
-        originDns?: unknown | null;
-        originPort?: string | number | null;
+        originDns?: {
+          name?: string | null;
+          ttl?: number | null;
+          type?: "" | "A" | "AAAA" | "SRV" | null;
+        } | null;
+        originPort?: number | string | null;
         proxyProtocol?: "off" | "v1" | "v2" | "simple" | null;
         tls?: "off" | "flexible" | "full" | "strict" | null;
       }
     | {
         id: string;
         createdOn: string;
-        dns: unknown;
+        dns: { name?: string | null; type?: "CNAME" | "ADDRESS" | null };
         modifiedOn: string;
         protocol: string;
         originDirect?: string[] | null;
@@ -663,24 +732,68 @@ export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         id: Schema.String,
         createdOn: Schema.String,
-        dns: Schema.Unknown,
+        dns: Schema.Struct({
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          type: Schema.optional(
+            Schema.Union([Schema.Literals(["CNAME", "ADDRESS"]), Schema.Null]),
+          ),
+        }),
         modifiedOn: Schema.String,
         protocol: Schema.String,
         trafficType: Schema.Literals(["direct", "http", "https"]),
         argoSmartRouting: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
         ),
-        edgeIps: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+        edgeIps: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Struct({
+                connectivity: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["all", "ipv4", "ipv6"]),
+                    Schema.Null,
+                  ]),
+                ),
+                type: Schema.optional(
+                  Schema.Union([Schema.Literal("dynamic"), Schema.Null]),
+                ),
+              }),
+              Schema.Struct({
+                ips: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                type: Schema.optional(
+                  Schema.Union([Schema.Literal("static"), Schema.Null]),
+                ),
+              }),
+            ]),
+            Schema.Null,
+          ]),
+        ),
         ipFirewall: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
         ),
         originDirect: Schema.optional(
           Schema.Union([Schema.Array(Schema.String), Schema.Null]),
         ),
-        originDns: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+        originDns: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              type: Schema.optional(
+                Schema.Union([
+                  Schema.Literals(["", "A", "AAAA", "SRV"]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
         originPort: Schema.optional(
           Schema.Union([
-            Schema.Union([Schema.String, Schema.Number]),
+            Schema.Union([Schema.Number, Schema.String]),
             Schema.Null,
           ]),
         ),
@@ -717,7 +830,12 @@ export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         id: Schema.String,
         createdOn: Schema.String,
-        dns: Schema.Unknown,
+        dns: Schema.Struct({
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          type: Schema.optional(
+            Schema.Union([Schema.Literals(["CNAME", "ADDRESS"]), Schema.Null]),
+          ),
+        }),
         modifiedOn: Schema.String,
         protocol: Schema.String,
         originDirect: Schema.optional(
@@ -767,27 +885,39 @@ export const listApps: API.PaginatedOperationMethod<
     ListAppsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListAppsRequest) => stream.Stream<
+  items: (
+    input: ListAppsRequest,
+  ) => stream.Stream<
     | {
         id: string;
         createdOn: string;
-        dns: unknown;
+        dns: { name?: string | null; type?: "CNAME" | "ADDRESS" | null };
         modifiedOn: string;
         protocol: string;
         trafficType: "direct" | "http" | "https";
         argoSmartRouting?: boolean | null;
-        edgeIps?: unknown | null;
+        edgeIps?:
+          | {
+              connectivity?: "all" | "ipv4" | "ipv6" | null;
+              type?: "dynamic" | null;
+            }
+          | { ips?: string[] | null; type?: "static" | null }
+          | null;
         ipFirewall?: boolean | null;
         originDirect?: string[] | null;
-        originDns?: unknown | null;
-        originPort?: string | number | null;
+        originDns?: {
+          name?: string | null;
+          ttl?: number | null;
+          type?: "" | "A" | "AAAA" | "SRV" | null;
+        } | null;
+        originPort?: number | string | null;
         proxyProtocol?: "off" | "v1" | "v2" | "simple" | null;
         tls?: "off" | "flexible" | "full" | "strict" | null;
       }
     | {
         id: string;
         createdOn: string;
-        dns: unknown;
+        dns: { name?: string | null; type?: "CNAME" | "ADDRESS" | null };
         modifiedOn: string;
         protocol: string;
         originDirect?: string[] | null;
@@ -812,7 +942,7 @@ export interface CreateAppRequest {
   /** Path param: Zone identifier. */
   zoneId: string;
   /** Body param: The name and type of DNS record for the Spectrum application. */
-  dns: unknown;
+  dns: { name?: string; type?: "CNAME" | "ADDRESS" };
   /** Body param: The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`. */
   protocol: string;
   /** Body param: Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol */
@@ -820,15 +950,17 @@ export interface CreateAppRequest {
   /** Body param: Enables Argo Smart Routing for this application. Notes: Only available for TCP applications with traffic_type set to "direct". */
   argoSmartRouting?: boolean;
   /** Body param: The anycast edge IP configuration for the hostname of this application. */
-  edgeIps?: unknown;
+  edgeIps?:
+    | { connectivity?: "all" | "ipv4" | "ipv6"; type?: "dynamic" }
+    | { ips?: string[]; type?: "static" };
   /** Body param: Enables IP Access Rules for this application. Notes: Only available for TCP applications. */
   ipFirewall?: boolean;
   /** Body param: List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
   originDirect?: string[];
   /** Body param: The name and type of DNS record for the Spectrum application. */
-  originDns?: unknown;
+  originDns?: { name?: string; ttl?: number; type?: "" | "A" | "AAAA" | "SRV" };
   /** Body param: The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of */
-  originPort?: string | number;
+  originPort?: number | string;
   /** Body param: Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Proto */
   proxyProtocol?: "off" | "v1" | "v2" | "simple";
   /** Body param: The type of TLS termination associated with the application. */
@@ -837,15 +969,35 @@ export interface CreateAppRequest {
 
 export const CreateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  dns: Schema.Unknown,
+  dns: Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.Literals(["CNAME", "ADDRESS"])),
+  }),
   protocol: Schema.String,
   trafficType: Schema.Literals(["direct", "http", "https"]),
   argoSmartRouting: Schema.optional(Schema.Boolean),
-  edgeIps: Schema.optional(Schema.Unknown),
+  edgeIps: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        connectivity: Schema.optional(Schema.Literals(["all", "ipv4", "ipv6"])),
+        type: Schema.optional(Schema.Literal("dynamic")),
+      }),
+      Schema.Struct({
+        ips: Schema.optional(Schema.Array(Schema.String)),
+        type: Schema.optional(Schema.Literal("static")),
+      }),
+    ]),
+  ),
   ipFirewall: Schema.optional(Schema.Boolean),
   originDirect: Schema.optional(Schema.Array(Schema.String)),
-  originDns: Schema.optional(Schema.Unknown),
-  originPort: Schema.optional(Schema.Union([Schema.String, Schema.Number])),
+  originDns: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      ttl: Schema.optional(Schema.Number),
+      type: Schema.optional(Schema.Literals(["", "A", "AAAA", "SRV"])),
+    }),
+  ),
+  originPort: Schema.optional(Schema.Union([Schema.Number, Schema.String])),
   proxyProtocol: Schema.optional(
     Schema.Literals(["off", "v1", "v2", "simple"]),
   ),
@@ -871,23 +1023,33 @@ export type CreateAppResponse =
   | {
       id: string;
       createdOn: string;
-      dns: unknown;
+      dns: { name?: string | null; type?: "CNAME" | "ADDRESS" | null };
       modifiedOn: string;
       protocol: string;
       trafficType: "direct" | "http" | "https";
       argoSmartRouting?: boolean | null;
-      edgeIps?: unknown | null;
+      edgeIps?:
+        | {
+            connectivity?: "all" | "ipv4" | "ipv6" | null;
+            type?: "dynamic" | null;
+          }
+        | { ips?: string[] | null; type?: "static" | null }
+        | null;
       ipFirewall?: boolean | null;
       originDirect?: string[] | null;
-      originDns?: unknown | null;
-      originPort?: string | number | null;
+      originDns?: {
+        name?: string | null;
+        ttl?: number | null;
+        type?: "" | "A" | "AAAA" | "SRV" | null;
+      } | null;
+      originPort?: number | string | null;
       proxyProtocol?: "off" | "v1" | "v2" | "simple" | null;
       tls?: "off" | "flexible" | "full" | "strict" | null;
     }
   | {
       id: string;
       createdOn: string;
-      dns: unknown;
+      dns: { name?: string | null; type?: "CNAME" | "ADDRESS" | null };
       modifiedOn: string;
       protocol: string;
       originDirect?: string[] | null;
@@ -897,21 +1059,65 @@ export const CreateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.String,
     createdOn: Schema.String,
-    dns: Schema.Unknown,
+    dns: Schema.Struct({
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literals(["CNAME", "ADDRESS"]), Schema.Null]),
+      ),
+    }),
     modifiedOn: Schema.String,
     protocol: Schema.String,
     trafficType: Schema.Literals(["direct", "http", "https"]),
     argoSmartRouting: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
     ),
-    edgeIps: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    edgeIps: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Struct({
+            connectivity: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["all", "ipv4", "ipv6"]),
+                Schema.Null,
+              ]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("dynamic"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            ips: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("static"), Schema.Null]),
+            ),
+          }),
+        ]),
+        Schema.Null,
+      ]),
+    ),
     ipFirewall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     originDirect: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
-    originDns: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    originDns: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          type: Schema.optional(
+            Schema.Union([
+              Schema.Literals(["", "A", "AAAA", "SRV"]),
+              Schema.Null,
+            ]),
+          ),
+        }),
+        Schema.Null,
+      ]),
+    ),
     originPort: Schema.optional(
-      Schema.Union([Schema.Union([Schema.String, Schema.Number]), Schema.Null]),
+      Schema.Union([Schema.Union([Schema.Number, Schema.String]), Schema.Null]),
     ),
     proxyProtocol: Schema.optional(
       Schema.Union([
@@ -946,7 +1152,12 @@ export const CreateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.String,
     createdOn: Schema.String,
-    dns: Schema.Unknown,
+    dns: Schema.Struct({
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literals(["CNAME", "ADDRESS"]), Schema.Null]),
+      ),
+    }),
     modifiedOn: Schema.String,
     protocol: Schema.String,
     originDirect: Schema.optional(
@@ -984,7 +1195,7 @@ export interface UpdateAppRequest {
   /** Path param: Zone identifier. */
   zoneId: string;
   /** Body param: The name and type of DNS record for the Spectrum application. */
-  dns: unknown;
+  dns: { name?: string; type?: "CNAME" | "ADDRESS" };
   /** Body param: The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`. */
   protocol: string;
   /** Body param: Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol */
@@ -992,15 +1203,17 @@ export interface UpdateAppRequest {
   /** Body param: Enables Argo Smart Routing for this application. Notes: Only available for TCP applications with traffic_type set to "direct". */
   argoSmartRouting?: boolean;
   /** Body param: The anycast edge IP configuration for the hostname of this application. */
-  edgeIps?: unknown;
+  edgeIps?:
+    | { connectivity?: "all" | "ipv4" | "ipv6"; type?: "dynamic" }
+    | { ips?: string[]; type?: "static" };
   /** Body param: Enables IP Access Rules for this application. Notes: Only available for TCP applications. */
   ipFirewall?: boolean;
   /** Body param: List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
   originDirect?: string[];
   /** Body param: The name and type of DNS record for the Spectrum application. */
-  originDns?: unknown;
+  originDns?: { name?: string; ttl?: number; type?: "" | "A" | "AAAA" | "SRV" };
   /** Body param: The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of */
-  originPort?: string | number;
+  originPort?: number | string;
   /** Body param: Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Proto */
   proxyProtocol?: "off" | "v1" | "v2" | "simple";
   /** Body param: The type of TLS termination associated with the application. */
@@ -1010,15 +1223,35 @@ export interface UpdateAppRequest {
 export const UpdateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   appId: Schema.String.pipe(T.HttpPath("appId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  dns: Schema.Unknown,
+  dns: Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.Literals(["CNAME", "ADDRESS"])),
+  }),
   protocol: Schema.String,
   trafficType: Schema.Literals(["direct", "http", "https"]),
   argoSmartRouting: Schema.optional(Schema.Boolean),
-  edgeIps: Schema.optional(Schema.Unknown),
+  edgeIps: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        connectivity: Schema.optional(Schema.Literals(["all", "ipv4", "ipv6"])),
+        type: Schema.optional(Schema.Literal("dynamic")),
+      }),
+      Schema.Struct({
+        ips: Schema.optional(Schema.Array(Schema.String)),
+        type: Schema.optional(Schema.Literal("static")),
+      }),
+    ]),
+  ),
   ipFirewall: Schema.optional(Schema.Boolean),
   originDirect: Schema.optional(Schema.Array(Schema.String)),
-  originDns: Schema.optional(Schema.Unknown),
-  originPort: Schema.optional(Schema.Union([Schema.String, Schema.Number])),
+  originDns: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      ttl: Schema.optional(Schema.Number),
+      type: Schema.optional(Schema.Literals(["", "A", "AAAA", "SRV"])),
+    }),
+  ),
+  originPort: Schema.optional(Schema.Union([Schema.Number, Schema.String])),
   proxyProtocol: Schema.optional(
     Schema.Literals(["off", "v1", "v2", "simple"]),
   ),
@@ -1044,23 +1277,33 @@ export type UpdateAppResponse =
   | {
       id: string;
       createdOn: string;
-      dns: unknown;
+      dns: { name?: string | null; type?: "CNAME" | "ADDRESS" | null };
       modifiedOn: string;
       protocol: string;
       trafficType: "direct" | "http" | "https";
       argoSmartRouting?: boolean | null;
-      edgeIps?: unknown | null;
+      edgeIps?:
+        | {
+            connectivity?: "all" | "ipv4" | "ipv6" | null;
+            type?: "dynamic" | null;
+          }
+        | { ips?: string[] | null; type?: "static" | null }
+        | null;
       ipFirewall?: boolean | null;
       originDirect?: string[] | null;
-      originDns?: unknown | null;
-      originPort?: string | number | null;
+      originDns?: {
+        name?: string | null;
+        ttl?: number | null;
+        type?: "" | "A" | "AAAA" | "SRV" | null;
+      } | null;
+      originPort?: number | string | null;
       proxyProtocol?: "off" | "v1" | "v2" | "simple" | null;
       tls?: "off" | "flexible" | "full" | "strict" | null;
     }
   | {
       id: string;
       createdOn: string;
-      dns: unknown;
+      dns: { name?: string | null; type?: "CNAME" | "ADDRESS" | null };
       modifiedOn: string;
       protocol: string;
       originDirect?: string[] | null;
@@ -1070,21 +1313,65 @@ export const UpdateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.String,
     createdOn: Schema.String,
-    dns: Schema.Unknown,
+    dns: Schema.Struct({
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literals(["CNAME", "ADDRESS"]), Schema.Null]),
+      ),
+    }),
     modifiedOn: Schema.String,
     protocol: Schema.String,
     trafficType: Schema.Literals(["direct", "http", "https"]),
     argoSmartRouting: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
     ),
-    edgeIps: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    edgeIps: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Struct({
+            connectivity: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["all", "ipv4", "ipv6"]),
+                Schema.Null,
+              ]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("dynamic"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            ips: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("static"), Schema.Null]),
+            ),
+          }),
+        ]),
+        Schema.Null,
+      ]),
+    ),
     ipFirewall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     originDirect: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
-    originDns: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    originDns: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          type: Schema.optional(
+            Schema.Union([
+              Schema.Literals(["", "A", "AAAA", "SRV"]),
+              Schema.Null,
+            ]),
+          ),
+        }),
+        Schema.Null,
+      ]),
+    ),
     originPort: Schema.optional(
-      Schema.Union([Schema.Union([Schema.String, Schema.Number]), Schema.Null]),
+      Schema.Union([Schema.Union([Schema.Number, Schema.String]), Schema.Null]),
     ),
     proxyProtocol: Schema.optional(
       Schema.Union([
@@ -1119,7 +1406,12 @@ export const UpdateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.String,
     createdOn: Schema.String,
-    dns: Schema.Unknown,
+    dns: Schema.Struct({
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literals(["CNAME", "ADDRESS"]), Schema.Null]),
+      ),
+    }),
     modifiedOn: Schema.String,
     protocol: Schema.String,
     originDirect: Schema.optional(

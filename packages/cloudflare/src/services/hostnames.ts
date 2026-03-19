@@ -41,7 +41,7 @@ export interface GetSettingTlsResponse {
     hostname?: string | null;
     status?: string | null;
     updatedAt?: string | null;
-    value?: string | number | unknown | null;
+    value?: number | string | string[] | null;
   }[];
 }
 
@@ -54,7 +54,11 @@ export const GetSettingTlsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       value: Schema.optional(
         Schema.Union([
-          Schema.Union([Schema.String, Schema.Number, Schema.Unknown]),
+          Schema.Union([
+            Schema.Number,
+            Schema.String,
+            Schema.Array(Schema.String),
+          ]),
           Schema.Null,
         ]),
       ),
@@ -85,13 +89,15 @@ export const getSettingTls: API.PaginatedOperationMethod<
     GetSettingTlsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: GetSettingTlsRequest) => stream.Stream<
+  items: (
+    input: GetSettingTlsRequest,
+  ) => stream.Stream<
     {
       createdAt?: string | null;
       hostname?: string | null;
       status?: string | null;
       updatedAt?: string | null;
-      value?: string | number | unknown | null;
+      value?: number | string | string[] | null;
     },
     GetSettingTlsError,
     Credentials | HttpClient.HttpClient
@@ -112,7 +118,7 @@ export interface PutSettingTlsRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: The tls setting value. */
-  value: string | number | unknown;
+  value: number | string | string[];
 }
 
 export const PutSettingTlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -121,7 +127,11 @@ export const PutSettingTlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   hostname: Schema.String.pipe(T.HttpPath("hostname")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  value: Schema.Union([Schema.String, Schema.Number, Schema.Unknown]),
+  value: Schema.Union([
+    Schema.Number,
+    Schema.String,
+    Schema.Array(Schema.String),
+  ]),
 }).pipe(
   T.Http({
     method: "PUT",
@@ -139,7 +149,7 @@ export interface PutSettingTlsResponse {
   /** This is the time the tls setting was updated. */
   updatedAt?: string | null;
   /** The tls setting value. */
-  value?: string | number | unknown | null;
+  value?: number | string | string[] | null;
 }
 
 export const PutSettingTlsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -149,7 +159,7 @@ export const PutSettingTlsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   value: Schema.optional(
     Schema.Union([
-      Schema.Union([Schema.String, Schema.Number, Schema.Unknown]),
+      Schema.Union([Schema.Number, Schema.String, Schema.Array(Schema.String)]),
       Schema.Null,
     ]),
   ),
@@ -211,7 +221,7 @@ export interface DeleteSettingTlsResponse {
   /** This is the time the tls setting was updated. */
   updatedAt?: string | null;
   /** The tls setting value. */
-  value?: string | number | unknown | null;
+  value?: number | string | string[] | null;
 }
 
 export const DeleteSettingTlsResponse =
@@ -222,7 +232,11 @@ export const DeleteSettingTlsResponse =
     updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     value: Schema.optional(
       Schema.Union([
-        Schema.Union([Schema.String, Schema.Number, Schema.Unknown]),
+        Schema.Union([
+          Schema.Number,
+          Schema.String,
+          Schema.Array(Schema.String),
+        ]),
         Schema.Null,
       ]),
     ),

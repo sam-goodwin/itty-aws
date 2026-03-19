@@ -32,7 +32,120 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Define configurations using a unique string identifier.
+                  name:
+                    type: string
+                    description: The name of the Hyperdrive configuration. Used to identify the
+                      configuration in the Cloudflare dashboard and API.
+                  origin:
+                    oneOf:
+                      - type: object
+                        properties:
+                          database:
+                            type: string
+                            description: Set the name of your origin database.
+                          host:
+                            type: string
+                            description: Defines the host (hostname or IP) of your origin database.
+                          port:
+                            type: number
+                            description: Defines the port of your origin database. Defaults to 5432 for
+                              PostgreSQL or 3306 for MySQL if not specified.
+                          scheme:
+                            type: string
+                            enum:
+                              - postgres
+                              - postgresql
+                              - mysql
+                            description: Specifies the URL scheme used to connect to your origin database.
+                          user:
+                            type: string
+                            description: Set the user of your origin database.
+                        required:
+                          - database
+                          - host
+                          - port
+                          - scheme
+                          - user
+                      - type: object
+                        properties:
+                          access_client_id:
+                            type: string
+                            description: Defines the Client ID of the Access token to use when connecting to
+                              the origin database.
+                          database:
+                            type: string
+                            description: Set the name of your origin database.
+                          host:
+                            type: string
+                            description: Defines the host (hostname or IP) of your origin database.
+                          scheme:
+                            type: string
+                            enum:
+                              - postgres
+                              - postgresql
+                              - mysql
+                            description: Specifies the URL scheme used to connect to your origin database.
+                          user:
+                            type: string
+                            description: Set the user of your origin database.
+                        required:
+                          - access_client_id
+                          - database
+                          - host
+                          - scheme
+                          - user
+                  caching:
+                    oneOf:
+                      - type: object
+                        properties:
+                          disabled:
+                            type: boolean
+                            description: Set to true to disable caching of SQL responses. Default is false.
+                      - type: object
+                        properties:
+                          disabled:
+                            type: boolean
+                            description: Set to true to disable caching of SQL responses. Default is false.
+                          max_age:
+                            type: number
+                            description: Specify the maximum duration (in seconds) items should persist in
+                              the cache. Defaults to 60 seconds if not
+                              specified.
+                          stale_while_revalidate:
+                            type: number
+                            description: Specify the number of seconds the cache may serve a stale response.
+                              Defaults to 15 seconds if not specified.
+                  created_on:
+                    type: string
+                    description: Defines the creation time of the Hyperdrive configuration.
+                  modified_on:
+                    type: string
+                    description: Defines the last modified time of the Hyperdrive configuration.
+                  mtls:
+                    type: object
+                    properties:
+                      ca_certificate_id:
+                        type: string
+                        description: Define CA certificate ID obtained after uploading CA cert.
+                      mtls_certificate_id:
+                        type: string
+                        description: Define mTLS certificate ID obtained after uploading client cert.
+                      sslmode:
+                        type: string
+                        description: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify
+                          the CA.
+                  origin_connection_limit:
+                    type: number
+                    description: The (soft) maximum number of connections the Hyperdrive is allowed
+                      to make to the origin database.
+                required:
+                  - id
+                  - name
+                  - origin
       x-distilled-response-path: result
       x-distilled-errors:
         PrivateHostNotAllowed:
@@ -198,7 +311,120 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Define configurations using a unique string identifier.
+                  name:
+                    type: string
+                    description: The name of the Hyperdrive configuration. Used to identify the
+                      configuration in the Cloudflare dashboard and API.
+                  origin:
+                    oneOf:
+                      - type: object
+                        properties:
+                          database:
+                            type: string
+                            description: Set the name of your origin database.
+                          host:
+                            type: string
+                            description: Defines the host (hostname or IP) of your origin database.
+                          port:
+                            type: number
+                            description: Defines the port of your origin database. Defaults to 5432 for
+                              PostgreSQL or 3306 for MySQL if not specified.
+                          scheme:
+                            type: string
+                            enum:
+                              - postgres
+                              - postgresql
+                              - mysql
+                            description: Specifies the URL scheme used to connect to your origin database.
+                          user:
+                            type: string
+                            description: Set the user of your origin database.
+                        required:
+                          - database
+                          - host
+                          - port
+                          - scheme
+                          - user
+                      - type: object
+                        properties:
+                          access_client_id:
+                            type: string
+                            description: Defines the Client ID of the Access token to use when connecting to
+                              the origin database.
+                          database:
+                            type: string
+                            description: Set the name of your origin database.
+                          host:
+                            type: string
+                            description: Defines the host (hostname or IP) of your origin database.
+                          scheme:
+                            type: string
+                            enum:
+                              - postgres
+                              - postgresql
+                              - mysql
+                            description: Specifies the URL scheme used to connect to your origin database.
+                          user:
+                            type: string
+                            description: Set the user of your origin database.
+                        required:
+                          - access_client_id
+                          - database
+                          - host
+                          - scheme
+                          - user
+                  caching:
+                    oneOf:
+                      - type: object
+                        properties:
+                          disabled:
+                            type: boolean
+                            description: Set to true to disable caching of SQL responses. Default is false.
+                      - type: object
+                        properties:
+                          disabled:
+                            type: boolean
+                            description: Set to true to disable caching of SQL responses. Default is false.
+                          max_age:
+                            type: number
+                            description: Specify the maximum duration (in seconds) items should persist in
+                              the cache. Defaults to 60 seconds if not
+                              specified.
+                          stale_while_revalidate:
+                            type: number
+                            description: Specify the number of seconds the cache may serve a stale response.
+                              Defaults to 15 seconds if not specified.
+                  created_on:
+                    type: string
+                    description: Defines the creation time of the Hyperdrive configuration.
+                  modified_on:
+                    type: string
+                    description: Defines the last modified time of the Hyperdrive configuration.
+                  mtls:
+                    type: object
+                    properties:
+                      ca_certificate_id:
+                        type: string
+                        description: Define CA certificate ID obtained after uploading CA cert.
+                      mtls_certificate_id:
+                        type: string
+                        description: Define mTLS certificate ID obtained after uploading client cert.
+                      sslmode:
+                        type: string
+                        description: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify
+                          the CA.
+                  origin_connection_limit:
+                    type: number
+                    description: The (soft) maximum number of connections the Hyperdrive is allowed
+                      to make to the origin database.
+                required:
+                  - id
+                  - name
+                  - origin
       x-distilled-response-path: result
       x-distilled-errors:
         PrivateHostNotAllowed:
@@ -343,7 +569,120 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Define configurations using a unique string identifier.
+                  name:
+                    type: string
+                    description: The name of the Hyperdrive configuration. Used to identify the
+                      configuration in the Cloudflare dashboard and API.
+                  origin:
+                    oneOf:
+                      - type: object
+                        properties:
+                          database:
+                            type: string
+                            description: Set the name of your origin database.
+                          host:
+                            type: string
+                            description: Defines the host (hostname or IP) of your origin database.
+                          port:
+                            type: number
+                            description: Defines the port of your origin database. Defaults to 5432 for
+                              PostgreSQL or 3306 for MySQL if not specified.
+                          scheme:
+                            type: string
+                            enum:
+                              - postgres
+                              - postgresql
+                              - mysql
+                            description: Specifies the URL scheme used to connect to your origin database.
+                          user:
+                            type: string
+                            description: Set the user of your origin database.
+                        required:
+                          - database
+                          - host
+                          - port
+                          - scheme
+                          - user
+                      - type: object
+                        properties:
+                          access_client_id:
+                            type: string
+                            description: Defines the Client ID of the Access token to use when connecting to
+                              the origin database.
+                          database:
+                            type: string
+                            description: Set the name of your origin database.
+                          host:
+                            type: string
+                            description: Defines the host (hostname or IP) of your origin database.
+                          scheme:
+                            type: string
+                            enum:
+                              - postgres
+                              - postgresql
+                              - mysql
+                            description: Specifies the URL scheme used to connect to your origin database.
+                          user:
+                            type: string
+                            description: Set the user of your origin database.
+                        required:
+                          - access_client_id
+                          - database
+                          - host
+                          - scheme
+                          - user
+                  caching:
+                    oneOf:
+                      - type: object
+                        properties:
+                          disabled:
+                            type: boolean
+                            description: Set to true to disable caching of SQL responses. Default is false.
+                      - type: object
+                        properties:
+                          disabled:
+                            type: boolean
+                            description: Set to true to disable caching of SQL responses. Default is false.
+                          max_age:
+                            type: number
+                            description: Specify the maximum duration (in seconds) items should persist in
+                              the cache. Defaults to 60 seconds if not
+                              specified.
+                          stale_while_revalidate:
+                            type: number
+                            description: Specify the number of seconds the cache may serve a stale response.
+                              Defaults to 15 seconds if not specified.
+                  created_on:
+                    type: string
+                    description: Defines the creation time of the Hyperdrive configuration.
+                  modified_on:
+                    type: string
+                    description: Defines the last modified time of the Hyperdrive configuration.
+                  mtls:
+                    type: object
+                    properties:
+                      ca_certificate_id:
+                        type: string
+                        description: Define CA certificate ID obtained after uploading CA cert.
+                      mtls_certificate_id:
+                        type: string
+                        description: Define mTLS certificate ID obtained after uploading client cert.
+                      sslmode:
+                        type: string
+                        description: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify
+                          the CA.
+                  origin_connection_limit:
+                    type: number
+                    description: The (soft) maximum number of connections the Hyperdrive is allowed
+                      to make to the origin database.
+                required:
+                  - id
+                  - name
+                  - origin
       x-distilled-response-path: result
       x-distilled-errors:
         PrivateHostNotAllowed:
@@ -419,7 +758,120 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Define configurations using a unique string identifier.
+                  name:
+                    type: string
+                    description: The name of the Hyperdrive configuration. Used to identify the
+                      configuration in the Cloudflare dashboard and API.
+                  origin:
+                    oneOf:
+                      - type: object
+                        properties:
+                          database:
+                            type: string
+                            description: Set the name of your origin database.
+                          host:
+                            type: string
+                            description: Defines the host (hostname or IP) of your origin database.
+                          port:
+                            type: number
+                            description: Defines the port of your origin database. Defaults to 5432 for
+                              PostgreSQL or 3306 for MySQL if not specified.
+                          scheme:
+                            type: string
+                            enum:
+                              - postgres
+                              - postgresql
+                              - mysql
+                            description: Specifies the URL scheme used to connect to your origin database.
+                          user:
+                            type: string
+                            description: Set the user of your origin database.
+                        required:
+                          - database
+                          - host
+                          - port
+                          - scheme
+                          - user
+                      - type: object
+                        properties:
+                          access_client_id:
+                            type: string
+                            description: Defines the Client ID of the Access token to use when connecting to
+                              the origin database.
+                          database:
+                            type: string
+                            description: Set the name of your origin database.
+                          host:
+                            type: string
+                            description: Defines the host (hostname or IP) of your origin database.
+                          scheme:
+                            type: string
+                            enum:
+                              - postgres
+                              - postgresql
+                              - mysql
+                            description: Specifies the URL scheme used to connect to your origin database.
+                          user:
+                            type: string
+                            description: Set the user of your origin database.
+                        required:
+                          - access_client_id
+                          - database
+                          - host
+                          - scheme
+                          - user
+                  caching:
+                    oneOf:
+                      - type: object
+                        properties:
+                          disabled:
+                            type: boolean
+                            description: Set to true to disable caching of SQL responses. Default is false.
+                      - type: object
+                        properties:
+                          disabled:
+                            type: boolean
+                            description: Set to true to disable caching of SQL responses. Default is false.
+                          max_age:
+                            type: number
+                            description: Specify the maximum duration (in seconds) items should persist in
+                              the cache. Defaults to 60 seconds if not
+                              specified.
+                          stale_while_revalidate:
+                            type: number
+                            description: Specify the number of seconds the cache may serve a stale response.
+                              Defaults to 15 seconds if not specified.
+                  created_on:
+                    type: string
+                    description: Defines the creation time of the Hyperdrive configuration.
+                  modified_on:
+                    type: string
+                    description: Defines the last modified time of the Hyperdrive configuration.
+                  mtls:
+                    type: object
+                    properties:
+                      ca_certificate_id:
+                        type: string
+                        description: Define CA certificate ID obtained after uploading CA cert.
+                      mtls_certificate_id:
+                        type: string
+                        description: Define mTLS certificate ID obtained after uploading client cert.
+                      sslmode:
+                        type: string
+                        description: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify
+                          the CA.
+                  origin_connection_limit:
+                    type: number
+                    description: The (soft) maximum number of connections the Hyperdrive is allowed
+                      to make to the origin database.
+                required:
+                  - id
+                  - name
+                  - origin
       x-distilled-pagination-class: HyperdrivesSinglePage
       x-distilled-errors:
         PrivateHostNotAllowed:
@@ -577,7 +1029,120 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Define configurations using a unique string identifier.
+                  name:
+                    type: string
+                    description: The name of the Hyperdrive configuration. Used to identify the
+                      configuration in the Cloudflare dashboard and API.
+                  origin:
+                    oneOf:
+                      - type: object
+                        properties:
+                          database:
+                            type: string
+                            description: Set the name of your origin database.
+                          host:
+                            type: string
+                            description: Defines the host (hostname or IP) of your origin database.
+                          port:
+                            type: number
+                            description: Defines the port of your origin database. Defaults to 5432 for
+                              PostgreSQL or 3306 for MySQL if not specified.
+                          scheme:
+                            type: string
+                            enum:
+                              - postgres
+                              - postgresql
+                              - mysql
+                            description: Specifies the URL scheme used to connect to your origin database.
+                          user:
+                            type: string
+                            description: Set the user of your origin database.
+                        required:
+                          - database
+                          - host
+                          - port
+                          - scheme
+                          - user
+                      - type: object
+                        properties:
+                          access_client_id:
+                            type: string
+                            description: Defines the Client ID of the Access token to use when connecting to
+                              the origin database.
+                          database:
+                            type: string
+                            description: Set the name of your origin database.
+                          host:
+                            type: string
+                            description: Defines the host (hostname or IP) of your origin database.
+                          scheme:
+                            type: string
+                            enum:
+                              - postgres
+                              - postgresql
+                              - mysql
+                            description: Specifies the URL scheme used to connect to your origin database.
+                          user:
+                            type: string
+                            description: Set the user of your origin database.
+                        required:
+                          - access_client_id
+                          - database
+                          - host
+                          - scheme
+                          - user
+                  caching:
+                    oneOf:
+                      - type: object
+                        properties:
+                          disabled:
+                            type: boolean
+                            description: Set to true to disable caching of SQL responses. Default is false.
+                      - type: object
+                        properties:
+                          disabled:
+                            type: boolean
+                            description: Set to true to disable caching of SQL responses. Default is false.
+                          max_age:
+                            type: number
+                            description: Specify the maximum duration (in seconds) items should persist in
+                              the cache. Defaults to 60 seconds if not
+                              specified.
+                          stale_while_revalidate:
+                            type: number
+                            description: Specify the number of seconds the cache may serve a stale response.
+                              Defaults to 15 seconds if not specified.
+                  created_on:
+                    type: string
+                    description: Defines the creation time of the Hyperdrive configuration.
+                  modified_on:
+                    type: string
+                    description: Defines the last modified time of the Hyperdrive configuration.
+                  mtls:
+                    type: object
+                    properties:
+                      ca_certificate_id:
+                        type: string
+                        description: Define CA certificate ID obtained after uploading CA cert.
+                      mtls_certificate_id:
+                        type: string
+                        description: Define mTLS certificate ID obtained after uploading client cert.
+                      sslmode:
+                        type: string
+                        description: Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify
+                          the CA.
+                  origin_connection_limit:
+                    type: number
+                    description: The (soft) maximum number of connections the Hyperdrive is allowed
+                      to make to the origin database.
+                required:
+                  - id
+                  - name
+                  - origin
       x-distilled-response-path: result
       x-distilled-errors:
         PrivateHostNotAllowed:

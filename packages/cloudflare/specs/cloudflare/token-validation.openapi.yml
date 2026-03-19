@@ -855,8 +855,24 @@ paths:
                 type: object
                 properties:
                   errors:
-                    type: object
-                    additionalProperties: true
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
                   keys:
                     type: array
                     items:
@@ -960,8 +976,24 @@ paths:
                             - x
                             - y
                   messages:
-                    type: object
-                    additionalProperties: true
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
                   success:
                     type: boolean
                     enum:

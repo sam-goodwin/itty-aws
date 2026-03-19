@@ -32,10 +32,10 @@ export const GetResponsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<GetResponsRequest>;
 
-export type GetResponsResponse = unknown;
+export type GetResponsResponse = string;
 
 export const GetResponsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetResponsResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Schema<GetResponsResponse>;
 
 export type GetResponsError = DefaultErrors;
 
@@ -100,13 +100,38 @@ export interface GetScanResponse {
     }[];
     requests: {
       request: {
-        initialPriority: string;
-        isSameSite: boolean;
-        method: string;
-        mixedContentType: string;
-        referrerPolicy: string;
-        url: string;
-        headers?: unknown | null;
+        documentURL: string;
+        hasUserGesture: boolean;
+        initiator: { host: string; type: string; url: string };
+        redirectHasExtraInfo: boolean;
+        request: {
+          initialPriority: string;
+          isSameSite: boolean;
+          method: string;
+          mixedContentType: string;
+          referrerPolicy: string;
+          url: string;
+          headers?: unknown | null;
+        };
+        requestId: string;
+        type: string;
+        wallTime: number;
+        frameId?: string | null;
+        loaderId?: string | null;
+        primaryRequest?: boolean | null;
+        redirectResponse?: {
+          charset: string;
+          mimeType: string;
+          protocol: string;
+          remoteIPAddress: string;
+          remotePort: number;
+          securityHeaders: { name: string; value: string }[];
+          securityState: string;
+          status: number;
+          statusText: string;
+          url: string;
+          headers?: unknown | null;
+        } | null;
       };
       response: {
         asn: {
@@ -457,13 +482,58 @@ export const GetScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.Array(
       Schema.Struct({
         request: Schema.Struct({
-          initialPriority: Schema.String,
-          isSameSite: Schema.Boolean,
-          method: Schema.String,
-          mixedContentType: Schema.String,
-          referrerPolicy: Schema.String,
-          url: Schema.String,
-          headers: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+          documentURL: Schema.String,
+          hasUserGesture: Schema.Boolean,
+          initiator: Schema.Struct({
+            host: Schema.String,
+            type: Schema.String,
+            url: Schema.String,
+          }),
+          redirectHasExtraInfo: Schema.Boolean,
+          request: Schema.Struct({
+            initialPriority: Schema.String,
+            isSameSite: Schema.Boolean,
+            method: Schema.String,
+            mixedContentType: Schema.String,
+            referrerPolicy: Schema.String,
+            url: Schema.String,
+            headers: Schema.optional(
+              Schema.Union([Schema.Unknown, Schema.Null]),
+            ),
+          }),
+          requestId: Schema.String,
+          type: Schema.String,
+          wallTime: Schema.Number,
+          frameId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          loaderId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          primaryRequest: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          redirectResponse: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                charset: Schema.String,
+                mimeType: Schema.String,
+                protocol: Schema.String,
+                remoteIPAddress: Schema.String,
+                remotePort: Schema.Number,
+                securityHeaders: Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    value: Schema.String,
+                  }),
+                ),
+                securityState: Schema.String,
+                status: Schema.Number,
+                statusText: Schema.String,
+                url: Schema.String,
+                headers: Schema.optional(
+                  Schema.Union([Schema.Unknown, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
         }),
         response: Schema.Struct({
           asn: Schema.Struct({
@@ -1612,10 +1682,10 @@ export const DomScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<DomScanRequest>;
 
-export type DomScanResponse = unknown;
+export type DomScanResponse = string;
 
 export const DomScanResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DomScanResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Schema<DomScanResponse>;
 
 export type DomScanError = DefaultErrors;
 

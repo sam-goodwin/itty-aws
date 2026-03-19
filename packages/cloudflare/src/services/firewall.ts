@@ -335,7 +335,9 @@ export const listAccessRules: API.PaginatedOperationMethod<
     ListAccessRulesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListAccessRulesRequest) => stream.Stream<
+  items: (
+    input: ListAccessRulesRequest,
+  ) => stream.Stream<
     {
       id: string;
       allowedModes: (
@@ -852,7 +854,10 @@ export interface GetLockdownResponse {
   /** The unique identifier of the Zone Lockdown rule. */
   id: string;
   /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: unknown;
+  configurations: (
+    | { target?: "ip" | null; value?: string | null }
+    | { target?: "ip_range" | null; value?: string | null }
+  )[];
   /** The timestamp of when the rule was created. */
   createdOn: string;
   /** An informative summary of the rule. */
@@ -867,7 +872,22 @@ export interface GetLockdownResponse {
 
 export const GetLockdownResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  configurations: Schema.Unknown,
+  configurations: Schema.Array(
+    Schema.Union([
+      Schema.Struct({
+        target: Schema.optional(
+          Schema.Union([Schema.Literal("ip"), Schema.Null]),
+        ),
+        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }),
+      Schema.Struct({
+        target: Schema.optional(
+          Schema.Union([Schema.Literal("ip_range"), Schema.Null]),
+        ),
+        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }),
+    ]),
+  ),
   createdOn: Schema.String,
   description: Schema.String,
   modifiedOn: Schema.String,
@@ -947,7 +967,10 @@ export const ListLockdownsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ListLockdownsResponse {
   result: {
     id: string;
-    configurations: unknown;
+    configurations: (
+      | { target?: "ip" | null; value?: string | null }
+      | { target?: "ip_range" | null; value?: string | null }
+    )[];
     createdOn: string;
     description: string;
     modifiedOn: string;
@@ -966,7 +989,22 @@ export const ListLockdownsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
-      configurations: Schema.Unknown,
+      configurations: Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            target: Schema.optional(
+              Schema.Union([Schema.Literal("ip"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            target: Schema.optional(
+              Schema.Union([Schema.Literal("ip_range"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+        ]),
+      ),
       createdOn: Schema.String,
       description: Schema.String,
       modifiedOn: Schema.String,
@@ -1016,10 +1054,15 @@ export const listLockdowns: API.PaginatedOperationMethod<
     ListLockdownsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListLockdownsRequest) => stream.Stream<
+  items: (
+    input: ListLockdownsRequest,
+  ) => stream.Stream<
     {
       id: string;
-      configurations: unknown;
+      configurations: (
+        | { target?: "ip" | null; value?: string | null }
+        | { target?: "ip_range" | null; value?: string | null }
+      )[];
       createdOn: string;
       description: string;
       modifiedOn: string;
@@ -1046,7 +1089,10 @@ export interface CreateLockdownRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
   /** Body param: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: unknown;
+  configurations: (
+    | { target?: "ip"; value?: string }
+    | { target?: "ip_range"; value?: string }
+  )[];
   /** Body param: The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls: string[];
   /** Body param: An informative summary of the rule. This value is sanitized and any tags will be removed. */
@@ -1059,7 +1105,18 @@ export interface CreateLockdownRequest {
 
 export const CreateLockdownRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  configurations: Schema.Unknown,
+  configurations: Schema.Array(
+    Schema.Union([
+      Schema.Struct({
+        target: Schema.optional(Schema.Literal("ip")),
+        value: Schema.optional(Schema.String),
+      }),
+      Schema.Struct({
+        target: Schema.optional(Schema.Literal("ip_range")),
+        value: Schema.optional(Schema.String),
+      }),
+    ]),
+  ),
   urls: Schema.Array(Schema.String),
   description: Schema.optional(Schema.String),
   paused: Schema.optional(Schema.Boolean),
@@ -1072,7 +1129,10 @@ export interface CreateLockdownResponse {
   /** The unique identifier of the Zone Lockdown rule. */
   id: string;
   /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: unknown;
+  configurations: (
+    | { target?: "ip" | null; value?: string | null }
+    | { target?: "ip_range" | null; value?: string | null }
+  )[];
   /** The timestamp of when the rule was created. */
   createdOn: string;
   /** An informative summary of the rule. */
@@ -1088,7 +1148,22 @@ export interface CreateLockdownResponse {
 export const CreateLockdownResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String,
-    configurations: Schema.Unknown,
+    configurations: Schema.Array(
+      Schema.Union([
+        Schema.Struct({
+          target: Schema.optional(
+            Schema.Union([Schema.Literal("ip"), Schema.Null]),
+          ),
+          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
+        Schema.Struct({
+          target: Schema.optional(
+            Schema.Union([Schema.Literal("ip_range"), Schema.Null]),
+          ),
+          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
+      ]),
+    ),
     createdOn: Schema.String,
     description: Schema.String,
     modifiedOn: Schema.String,
@@ -1129,7 +1204,10 @@ export interface UpdateLockdownRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
   /** Body param: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: unknown;
+  configurations: (
+    | { target?: "ip"; value?: string }
+    | { target?: "ip_range"; value?: string }
+  )[];
   /** Body param: The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls: string[];
 }
@@ -1137,7 +1215,18 @@ export interface UpdateLockdownRequest {
 export const UpdateLockdownRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   lockDownsId: Schema.String.pipe(T.HttpPath("lockDownsId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  configurations: Schema.Unknown,
+  configurations: Schema.Array(
+    Schema.Union([
+      Schema.Struct({
+        target: Schema.optional(Schema.Literal("ip")),
+        value: Schema.optional(Schema.String),
+      }),
+      Schema.Struct({
+        target: Schema.optional(Schema.Literal("ip_range")),
+        value: Schema.optional(Schema.String),
+      }),
+    ]),
+  ),
   urls: Schema.Array(Schema.String),
 }).pipe(
   T.Http({
@@ -1150,7 +1239,10 @@ export interface UpdateLockdownResponse {
   /** The unique identifier of the Zone Lockdown rule. */
   id: string;
   /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: unknown;
+  configurations: (
+    | { target?: "ip" | null; value?: string | null }
+    | { target?: "ip_range" | null; value?: string | null }
+  )[];
   /** The timestamp of when the rule was created. */
   createdOn: string;
   /** An informative summary of the rule. */
@@ -1166,7 +1258,22 @@ export interface UpdateLockdownResponse {
 export const UpdateLockdownResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String,
-    configurations: Schema.Unknown,
+    configurations: Schema.Array(
+      Schema.Union([
+        Schema.Struct({
+          target: Schema.optional(
+            Schema.Union([Schema.Literal("ip"), Schema.Null]),
+          ),
+          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
+        Schema.Struct({
+          target: Schema.optional(
+            Schema.Union([Schema.Literal("ip_range"), Schema.Null]),
+          ),
+          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
+      ]),
+    ),
     createdOn: Schema.String,
     description: Schema.String,
     modifiedOn: Schema.String,
@@ -1275,7 +1382,16 @@ export interface BulkPutRulesResponse {
       | "bypass"
       | null;
     description?: string | null;
-    filter?: unknown | { id: string; deleted: boolean } | null;
+    filter?:
+      | {
+          id?: string | null;
+          description?: string | null;
+          expression?: string | null;
+          paused?: boolean | null;
+          ref?: string | null;
+        }
+      | { id: string; deleted: boolean }
+      | null;
     paused?: boolean | null;
     priority?: number | null;
     products?:
@@ -1315,7 +1431,19 @@ export const BulkPutRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       filter: Schema.optional(
         Schema.Union([
           Schema.Union([
-            Schema.Unknown,
+            Schema.Struct({
+              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              description: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              expression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              paused: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            }),
             Schema.Struct({
               id: Schema.String,
               deleted: Schema.Boolean,
@@ -1362,7 +1490,9 @@ export const bulkPutRules: API.PaginatedOperationMethod<
     BulkPutRulesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: BulkPutRulesRequest) => stream.Stream<
+  items: (
+    input: BulkPutRulesRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       action?:
@@ -1375,7 +1505,16 @@ export const bulkPutRules: API.PaginatedOperationMethod<
         | "bypass"
         | null;
       description?: string | null;
-      filter?: unknown | { id: string; deleted: boolean } | null;
+      filter?:
+        | {
+            id?: string | null;
+            description?: string | null;
+            expression?: string | null;
+            paused?: boolean | null;
+            ref?: string | null;
+          }
+        | { id: string; deleted: boolean }
+        | null;
       paused?: boolean | null;
       priority?: number | null;
       products?:
@@ -1436,7 +1575,16 @@ export interface GetRuleResponse {
     | null;
   /** An informative summary of the firewall rule. */
   description?: string | null;
-  filter?: unknown | { id: string; deleted: boolean } | null;
+  filter?:
+    | {
+        id?: string | null;
+        description?: string | null;
+        expression?: string | null;
+        paused?: boolean | null;
+        ref?: string | null;
+      }
+    | { id: string; deleted: boolean }
+    | null;
   /** When true, indicates that the firewall rule is currently paused. */
   paused?: boolean | null;
   /** The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules  */
@@ -1476,7 +1624,17 @@ export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   filter: Schema.optional(
     Schema.Union([
       Schema.Union([
-        Schema.Unknown,
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          expression: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
         Schema.Struct({
           id: Schema.String,
           deleted: Schema.Boolean,
@@ -1555,7 +1713,16 @@ export interface ListRulesResponse {
       | "bypass"
       | null;
     description?: string | null;
-    filter?: unknown | { id: string; deleted: boolean } | null;
+    filter?:
+      | {
+          id?: string | null;
+          description?: string | null;
+          expression?: string | null;
+          paused?: boolean | null;
+          ref?: string | null;
+        }
+      | { id: string; deleted: boolean }
+      | null;
     paused?: boolean | null;
     priority?: number | null;
     products?:
@@ -1601,7 +1768,19 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       filter: Schema.optional(
         Schema.Union([
           Schema.Union([
-            Schema.Unknown,
+            Schema.Struct({
+              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              description: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              expression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              paused: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            }),
             Schema.Struct({
               id: Schema.String,
               deleted: Schema.Boolean,
@@ -1663,7 +1842,9 @@ export const listRules: API.PaginatedOperationMethod<
     ListRulesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListRulesRequest) => stream.Stream<
+  items: (
+    input: ListRulesRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       action?:
@@ -1676,7 +1857,16 @@ export const listRules: API.PaginatedOperationMethod<
         | "bypass"
         | null;
       description?: string | null;
-      filter?: unknown | { id: string; deleted: boolean } | null;
+      filter?:
+        | {
+            id?: string | null;
+            description?: string | null;
+            expression?: string | null;
+            paused?: boolean | null;
+            ref?: string | null;
+          }
+        | { id: string; deleted: boolean }
+        | null;
       paused?: boolean | null;
       priority?: number | null;
       products?:
@@ -1723,7 +1913,12 @@ export interface CreateRuleRequest {
     timeout?: number;
   };
   /** Body param: */
-  filter: unknown;
+  filter: {
+    description?: string;
+    expression?: string;
+    paused?: boolean;
+    ref?: string;
+  };
 }
 
 export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1746,7 +1941,12 @@ export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
     timeout: Schema.optional(Schema.Number),
   }),
-  filter: Schema.Unknown,
+  filter: Schema.Struct({
+    description: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+    paused: Schema.optional(Schema.Boolean),
+    ref: Schema.optional(Schema.String),
+  }),
 }).pipe(
   T.Http({ method: "POST", path: "/zones/{zone_id}/firewall/rules" }),
 ) as unknown as Schema.Schema<CreateRuleRequest>;
@@ -1764,7 +1964,16 @@ export interface CreateRuleResponse {
       | "bypass"
       | null;
     description?: string | null;
-    filter?: unknown | { id: string; deleted: boolean } | null;
+    filter?:
+      | {
+          id?: string | null;
+          description?: string | null;
+          expression?: string | null;
+          paused?: boolean | null;
+          ref?: string | null;
+        }
+      | { id: string; deleted: boolean }
+      | null;
     paused?: boolean | null;
     priority?: number | null;
     products?:
@@ -1804,7 +2013,19 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       filter: Schema.optional(
         Schema.Union([
           Schema.Union([
-            Schema.Unknown,
+            Schema.Struct({
+              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              description: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              expression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              paused: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            }),
             Schema.Struct({
               id: Schema.String,
               deleted: Schema.Boolean,
@@ -1851,7 +2072,9 @@ export const createRule: API.PaginatedOperationMethod<
     CreateRuleError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: CreateRuleRequest) => stream.Stream<
+  items: (
+    input: CreateRuleRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       action?:
@@ -1864,7 +2087,16 @@ export const createRule: API.PaginatedOperationMethod<
         | "bypass"
         | null;
       description?: string | null;
-      filter?: unknown | { id: string; deleted: boolean } | null;
+      filter?:
+        | {
+            id?: string | null;
+            description?: string | null;
+            expression?: string | null;
+            paused?: boolean | null;
+            ref?: string | null;
+          }
+        | { id: string; deleted: boolean }
+        | null;
       paused?: boolean | null;
       priority?: number | null;
       products?:
@@ -1909,7 +2141,12 @@ export interface UpdateRuleRequest {
     timeout?: number;
   };
   /** Body param: */
-  filter: unknown;
+  filter: {
+    description?: string;
+    expression?: string;
+    paused?: boolean;
+    ref?: string;
+  };
 }
 
 export const UpdateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1933,7 +2170,12 @@ export const UpdateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
     timeout: Schema.optional(Schema.Number),
   }),
-  filter: Schema.Unknown,
+  filter: Schema.Struct({
+    description: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+    paused: Schema.optional(Schema.Boolean),
+    ref: Schema.optional(Schema.String),
+  }),
 }).pipe(
   T.Http({ method: "PUT", path: "/zones/{zone_id}/firewall/rules/{ruleId}" }),
 ) as unknown as Schema.Schema<UpdateRuleRequest>;
@@ -1953,7 +2195,16 @@ export interface UpdateRuleResponse {
     | null;
   /** An informative summary of the firewall rule. */
   description?: string | null;
-  filter?: unknown | { id: string; deleted: boolean } | null;
+  filter?:
+    | {
+        id?: string | null;
+        description?: string | null;
+        expression?: string | null;
+        paused?: boolean | null;
+        ref?: string | null;
+      }
+    | { id: string; deleted: boolean }
+    | null;
   /** When true, indicates that the firewall rule is currently paused. */
   paused?: boolean | null;
   /** The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules  */
@@ -1993,7 +2244,17 @@ export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   filter: Schema.optional(
     Schema.Union([
       Schema.Union([
-        Schema.Unknown,
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          expression: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
         Schema.Struct({
           id: Schema.String,
           deleted: Schema.Boolean,
@@ -2064,7 +2325,16 @@ export interface PatchRuleResponse {
       | "bypass"
       | null;
     description?: string | null;
-    filter?: unknown | { id: string; deleted: boolean } | null;
+    filter?:
+      | {
+          id?: string | null;
+          description?: string | null;
+          expression?: string | null;
+          paused?: boolean | null;
+          ref?: string | null;
+        }
+      | { id: string; deleted: boolean }
+      | null;
     paused?: boolean | null;
     priority?: number | null;
     products?:
@@ -2104,7 +2374,19 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       filter: Schema.optional(
         Schema.Union([
           Schema.Union([
-            Schema.Unknown,
+            Schema.Struct({
+              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              description: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              expression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              paused: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            }),
             Schema.Struct({
               id: Schema.String,
               deleted: Schema.Boolean,
@@ -2151,7 +2433,9 @@ export const patchRule: API.PaginatedOperationMethod<
     PatchRuleError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: PatchRuleRequest) => stream.Stream<
+  items: (
+    input: PatchRuleRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       action?:
@@ -2164,7 +2448,16 @@ export const patchRule: API.PaginatedOperationMethod<
         | "bypass"
         | null;
       description?: string | null;
-      filter?: unknown | { id: string; deleted: boolean } | null;
+      filter?:
+        | {
+            id?: string | null;
+            description?: string | null;
+            expression?: string | null;
+            paused?: boolean | null;
+            ref?: string | null;
+          }
+        | { id: string; deleted: boolean }
+        | null;
       paused?: boolean | null;
       priority?: number | null;
       products?:
@@ -2224,7 +2517,16 @@ export interface DeleteRuleResponse {
     | null;
   /** An informative summary of the firewall rule. */
   description?: string | null;
-  filter?: unknown | { id: string; deleted: boolean } | null;
+  filter?:
+    | {
+        id?: string | null;
+        description?: string | null;
+        expression?: string | null;
+        paused?: boolean | null;
+        ref?: string | null;
+      }
+    | { id: string; deleted: boolean }
+    | null;
   /** When true, indicates that the firewall rule is currently paused. */
   paused?: boolean | null;
   /** The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules  */
@@ -2264,7 +2566,17 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   filter: Schema.optional(
     Schema.Union([
       Schema.Union([
-        Schema.Unknown,
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          expression: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
         Schema.Struct({
           id: Schema.String,
           deleted: Schema.Boolean,
@@ -2336,7 +2648,16 @@ export interface BulkPatchRulesResponse {
       | "bypass"
       | null;
     description?: string | null;
-    filter?: unknown | { id: string; deleted: boolean } | null;
+    filter?:
+      | {
+          id?: string | null;
+          description?: string | null;
+          expression?: string | null;
+          paused?: boolean | null;
+          ref?: string | null;
+        }
+      | { id: string; deleted: boolean }
+      | null;
     paused?: boolean | null;
     priority?: number | null;
     products?:
@@ -2379,7 +2700,21 @@ export const BulkPatchRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         filter: Schema.optional(
           Schema.Union([
             Schema.Union([
-              Schema.Unknown,
+              Schema.Struct({
+                id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+                description: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                expression: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                paused: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                ref: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
               Schema.Struct({
                 id: Schema.String,
                 deleted: Schema.Boolean,
@@ -2427,7 +2762,9 @@ export const bulkPatchRules: API.PaginatedOperationMethod<
     BulkPatchRulesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: BulkPatchRulesRequest) => stream.Stream<
+  items: (
+    input: BulkPatchRulesRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       action?:
@@ -2440,7 +2777,16 @@ export const bulkPatchRules: API.PaginatedOperationMethod<
         | "bypass"
         | null;
       description?: string | null;
-      filter?: unknown | { id: string; deleted: boolean } | null;
+      filter?:
+        | {
+            id?: string | null;
+            description?: string | null;
+            expression?: string | null;
+            paused?: boolean | null;
+            ref?: string | null;
+          }
+        | { id: string; deleted: boolean }
+        | null;
       paused?: boolean | null;
       priority?: number | null;
       products?:
@@ -2495,7 +2841,16 @@ export interface BulkDeleteRulesResponse {
       | "bypass"
       | null;
     description?: string | null;
-    filter?: unknown | { id: string; deleted: boolean } | null;
+    filter?:
+      | {
+          id?: string | null;
+          description?: string | null;
+          expression?: string | null;
+          paused?: boolean | null;
+          ref?: string | null;
+        }
+      | { id: string; deleted: boolean }
+      | null;
     paused?: boolean | null;
     priority?: number | null;
     products?:
@@ -2538,7 +2893,21 @@ export const BulkDeleteRulesResponse =
         filter: Schema.optional(
           Schema.Union([
             Schema.Union([
-              Schema.Unknown,
+              Schema.Struct({
+                id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+                description: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                expression: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                paused: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                ref: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
               Schema.Struct({
                 id: Schema.String,
                 deleted: Schema.Boolean,
@@ -2585,7 +2954,9 @@ export const bulkDeleteRules: API.PaginatedOperationMethod<
     BulkDeleteRulesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: BulkDeleteRulesRequest) => stream.Stream<
+  items: (
+    input: BulkDeleteRulesRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       action?:
@@ -2598,7 +2969,16 @@ export const bulkDeleteRules: API.PaginatedOperationMethod<
         | "bypass"
         | null;
       description?: string | null;
-      filter?: unknown | { id: string; deleted: boolean } | null;
+      filter?:
+        | {
+            id?: string | null;
+            description?: string | null;
+            expression?: string | null;
+            paused?: boolean | null;
+            ref?: string | null;
+          }
+        | { id: string; deleted: boolean }
+        | null;
       paused?: boolean | null;
       priority?: number | null;
       products?:
@@ -2797,7 +3177,9 @@ export const listUaRules: API.PaginatedOperationMethod<
     ListUaRulesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListUaRulesRequest) => stream.Stream<
+  items: (
+    input: ListUaRulesRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       configuration?: { target?: string | null; value?: string | null } | null;
@@ -2922,7 +3304,12 @@ export interface UpdateUaRuleRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
   /** Body param: The rule configuration. */
-  configuration: unknown;
+  configuration:
+    | { target?: "ip"; value?: string }
+    | { target?: "ip6"; value?: string }
+    | { target?: "ip_range"; value?: string }
+    | { target?: "asn"; value?: string }
+    | { target?: "country"; value?: string };
   /** Body param: The action to apply to a matched request. */
   mode:
     | "block"
@@ -2939,7 +3326,28 @@ export interface UpdateUaRuleRequest {
 export const UpdateUaRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   uaRuleId: Schema.String.pipe(T.HttpPath("uaRuleId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  configuration: Schema.Unknown,
+  configuration: Schema.Union([
+    Schema.Struct({
+      target: Schema.optional(Schema.Literal("ip")),
+      value: Schema.optional(Schema.String),
+    }),
+    Schema.Struct({
+      target: Schema.optional(Schema.Literal("ip6")),
+      value: Schema.optional(Schema.String),
+    }),
+    Schema.Struct({
+      target: Schema.optional(Schema.Literal("ip_range")),
+      value: Schema.optional(Schema.String),
+    }),
+    Schema.Struct({
+      target: Schema.optional(Schema.Literal("asn")),
+      value: Schema.optional(Schema.String),
+    }),
+    Schema.Struct({
+      target: Schema.optional(Schema.Literal("country")),
+      value: Schema.optional(Schema.String),
+    }),
+  ]),
   mode: Schema.Literals([
     "block",
     "challenge",
@@ -3132,7 +3540,7 @@ export interface GetWafOverrideResponse {
       | null;
   } | null;
   /** An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule */
-  rules?: unknown | null;
+  rules?: Record<string, unknown> | null;
   /** The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls?: string[] | null;
 }
@@ -3211,7 +3619,7 @@ export const GetWafOverrideResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.Null,
       ]),
     ),
-    rules: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    rules: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
     urls: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
@@ -3296,7 +3704,7 @@ export interface ListWafOverridesResponse {
         | "default"
         | null;
     } | null;
-    rules?: unknown | null;
+    rules?: Record<string, unknown> | null;
     urls?: string[] | null;
   }[];
   resultInfo: {
@@ -3385,7 +3793,7 @@ export const ListWafOverridesResponse =
             Schema.Null,
           ]),
         ),
-        rules: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+        rules: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
         urls: Schema.optional(
           Schema.Union([Schema.Array(Schema.String), Schema.Null]),
         ),
@@ -3434,7 +3842,9 @@ export const listWafOverrides: API.PaginatedOperationMethod<
     ListWafOverridesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListWafOverridesRequest) => stream.Stream<
+  items: (
+    input: ListWafOverridesRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       description?: string | null;
@@ -3478,7 +3888,7 @@ export const listWafOverrides: API.PaginatedOperationMethod<
           | "default"
           | null;
       } | null;
-      rules?: unknown | null;
+      rules?: Record<string, unknown> | null;
       urls?: string[] | null;
     },
     ListWafOverridesError,
@@ -3544,7 +3954,7 @@ export interface CreateWafOverrideResponse {
       | null;
   } | null;
   /** An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule */
-  rules?: unknown | null;
+  rules?: Record<string, unknown> | null;
   /** The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls?: string[] | null;
 }
@@ -3623,7 +4033,7 @@ export const CreateWafOverrideResponse =
         Schema.Null,
       ]),
     ),
-    rules: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    rules: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
     urls: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
@@ -3672,7 +4082,7 @@ export interface UpdateWafOverrideRequest {
     simulate?: "challenge" | "block" | "simulate" | "disable" | "default";
   };
   /** Body param: An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disa */
-  rules: unknown;
+  rules: Record<string, unknown>;
   /** Body param: The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls: string[];
 }
@@ -3729,7 +4139,7 @@ export const UpdateWafOverrideRequest =
         ]),
       ),
     }),
-    rules: Schema.Unknown,
+    rules: Schema.Struct({}),
     urls: Schema.Array(Schema.String),
   }).pipe(
     Schema.encodeKeys({
@@ -3776,7 +4186,7 @@ export interface UpdateWafOverrideResponse {
       | null;
   } | null;
   /** An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule */
-  rules?: unknown | null;
+  rules?: Record<string, unknown> | null;
   /** The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls?: string[] | null;
 }
@@ -3855,7 +4265,7 @@ export const UpdateWafOverrideResponse =
         Schema.Null,
       ]),
     ),
-    rules: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    rules: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
     urls: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
@@ -3953,8 +4363,18 @@ export const GetWafPackageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetWafPackageResponse =
   | {
-      errors: unknown[];
-      messages: unknown[];
+      errors: {
+        code: number;
+        message: string;
+        documentationUrl?: string | null;
+        source?: { pointer?: string | null } | null;
+      }[];
+      messages: {
+        code: number;
+        message: string;
+        documentationUrl?: string | null;
+        source?: { pointer?: string | null } | null;
+      }[];
       result: string | null;
       success: true;
     }
@@ -3962,8 +4382,58 @@ export type GetWafPackageResponse =
 
 export const GetWafPackageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
-    errors: Schema.Array(Schema.Unknown),
-    messages: Schema.Array(Schema.Unknown),
+    errors: Schema.Array(
+      Schema.Struct({
+        code: Schema.Number,
+        message: Schema.String,
+        documentationUrl: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        source: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              pointer: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          code: "code",
+          message: "message",
+          documentationUrl: "documentation_url",
+          source: "source",
+        }),
+      ),
+    ),
+    messages: Schema.Array(
+      Schema.Struct({
+        code: Schema.Number,
+        message: Schema.String,
+        documentationUrl: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        source: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              pointer: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          code: "code",
+          message: "message",
+          documentationUrl: "documentation_url",
+          source: "source",
+        }),
+      ),
+    ),
     result: Schema.Union([Schema.String, Schema.Null]),
     success: Schema.Literal(true),
   }),
@@ -4248,7 +4718,9 @@ export const listWafPackageGroups: API.PaginatedOperationMethod<
     ListWafPackageGroupsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListWafPackageGroupsRequest) => stream.Stream<
+  items: (
+    input: ListWafPackageGroupsRequest,
+  ) => stream.Stream<
     {
       id: string;
       description: string | null;
@@ -4414,7 +4886,7 @@ export interface ListWafPackageRulesResponse {
         id: string;
         allowedModes: ("on" | "off")[];
         description: string;
-        group: unknown;
+        group: { id?: string | null; name?: string | null };
         mode: "on" | "off";
         packageId: string;
         priority: string;
@@ -4430,7 +4902,7 @@ export interface ListWafPackageRulesResponse {
         )[];
         defaultMode: "disable" | "simulate" | "block" | "challenge";
         description: string;
-        group: unknown;
+        group: { id?: string | null; name?: string | null };
         mode: "default" | "disable" | "simulate" | "block" | "challenge";
         packageId: string;
         priority: string;
@@ -4452,7 +4924,10 @@ export const ListWafPackageRulesResponse =
           id: Schema.String,
           allowedModes: Schema.Array(Schema.Literals(["on", "off"])),
           description: Schema.String,
-          group: Schema.Unknown,
+          group: Schema.Struct({
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
           mode: Schema.Literals(["on", "off"]),
           packageId: Schema.String,
           priority: Schema.String,
@@ -4485,7 +4960,10 @@ export const ListWafPackageRulesResponse =
             "challenge",
           ]),
           description: Schema.String,
-          group: Schema.Unknown,
+          group: Schema.Struct({
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
           mode: Schema.Literals([
             "default",
             "disable",
@@ -4541,12 +5019,14 @@ export const listWafPackageRules: API.PaginatedOperationMethod<
     ListWafPackageRulesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListWafPackageRulesRequest) => stream.Stream<
+  items: (
+    input: ListWafPackageRulesRequest,
+  ) => stream.Stream<
     | {
         id: string;
         allowedModes: ("on" | "off")[];
         description: string;
-        group: unknown;
+        group: { id?: string | null; name?: string | null };
         mode: "on" | "off";
         packageId: string;
         priority: string;
@@ -4562,7 +5042,7 @@ export const listWafPackageRules: API.PaginatedOperationMethod<
         )[];
         defaultMode: "disable" | "simulate" | "block" | "challenge";
         description: string;
-        group: unknown;
+        group: { id?: string | null; name?: string | null };
         mode: "default" | "disable" | "simulate" | "block" | "challenge";
         packageId: string;
         priority: string;
@@ -4627,7 +5107,7 @@ export type PatchWafPackageRuleResponse =
       id: string;
       allowedModes: ("on" | "off")[];
       description: string;
-      group: unknown;
+      group: { id?: string | null; name?: string | null };
       mode: "on" | "off";
       packageId: string;
       priority: string;
@@ -4643,7 +5123,7 @@ export type PatchWafPackageRuleResponse =
       )[];
       defaultMode: "disable" | "simulate" | "block" | "challenge";
       description: string;
-      group: unknown;
+      group: { id?: string | null; name?: string | null };
       mode: "default" | "disable" | "simulate" | "block" | "challenge";
       packageId: string;
       priority: string;
@@ -4655,7 +5135,10 @@ export const PatchWafPackageRuleResponse =
       id: Schema.String,
       allowedModes: Schema.Array(Schema.Literals(["on", "off"])),
       description: Schema.String,
-      group: Schema.Unknown,
+      group: Schema.Struct({
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }),
       mode: Schema.Literals(["on", "off"]),
       packageId: Schema.String,
       priority: Schema.String,
@@ -4688,7 +5171,10 @@ export const PatchWafPackageRuleResponse =
         "challenge",
       ]),
       description: Schema.String,
-      group: Schema.Unknown,
+      group: Schema.Struct({
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }),
       mode: Schema.Literals([
         "default",
         "disable",

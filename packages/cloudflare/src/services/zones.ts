@@ -645,7 +645,9 @@ export const listPlans: API.PaginatedOperationMethod<
     ListPlansError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListPlansRequest) => stream.Stream<
+  items: (
+    input: ListPlansRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       canSubscribe?: boolean | null;
@@ -772,7 +774,9 @@ export const getRatePlan: API.PaginatedOperationMethod<
     GetRatePlanError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: GetRatePlanRequest) => stream.Stream<
+  items: (
+    input: GetRatePlanRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       components?:
@@ -1134,7 +1138,14 @@ export type GetSettingResponse =
     }
   | {
       id: "automatic_platform_optimization";
-      value: unknown;
+      value: {
+        cacheByDeviceType: boolean;
+        cf: boolean;
+        enabled: boolean;
+        hostnames: string[];
+        wordpress: boolean;
+        wpPlugin: boolean;
+      };
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -1938,7 +1949,23 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("automatic_platform_optimization"),
-    value: Schema.Unknown,
+    value: Schema.Struct({
+      cacheByDeviceType: Schema.Boolean,
+      cf: Schema.Boolean,
+      enabled: Schema.Boolean,
+      hostnames: Schema.Array(Schema.String),
+      wordpress: Schema.Boolean,
+      wpPlugin: Schema.Boolean,
+    }).pipe(
+      Schema.encodeKeys({
+        cacheByDeviceType: "cache_by_device_type",
+        cf: "cf",
+        enabled: "enabled",
+        hostnames: "hostnames",
+        wordpress: "wordpress",
+        wpPlugin: "wp_plugin",
+      }),
+    ),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -2567,7 +2594,14 @@ export type PatchSettingResponse =
     }
   | {
       id: "automatic_platform_optimization";
-      value: unknown;
+      value: {
+        cacheByDeviceType: boolean;
+        cf: boolean;
+        enabled: boolean;
+        hostnames: string[];
+        wordpress: boolean;
+        wpPlugin: boolean;
+      };
       editable?: true | false | null;
       modifiedOn?: string | null;
     }
@@ -3371,7 +3405,23 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   ),
   Schema.Struct({
     id: Schema.Literal("automatic_platform_optimization"),
-    value: Schema.Unknown,
+    value: Schema.Struct({
+      cacheByDeviceType: Schema.Boolean,
+      cf: Schema.Boolean,
+      enabled: Schema.Boolean,
+      hostnames: Schema.Array(Schema.String),
+      wordpress: Schema.Boolean,
+      wpPlugin: Schema.Boolean,
+    }).pipe(
+      Schema.encodeKeys({
+        cacheByDeviceType: "cache_by_device_type",
+        cf: "cf",
+        enabled: "enabled",
+        hostnames: "hostnames",
+        wordpress: "wordpress",
+        wpPlugin: "wp_plugin",
+      }),
+    ),
     editable: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
@@ -3709,7 +3759,26 @@ export interface GetSubscriptionResponse {
   /** The price of the subscription that will be billed, in US dollars. */
   price?: number | null;
   /** The rate plan applied to the subscription. */
-  ratePlan?: unknown | null;
+  ratePlan?: {
+    id?:
+      | "free"
+      | "lite"
+      | "pro"
+      | "pro_plus"
+      | "business"
+      | "enterprise"
+      | "partners_free"
+      | "partners_pro"
+      | "partners_business"
+      | "partners_enterprise"
+      | null;
+    currency?: string | null;
+    externallyManaged?: boolean | null;
+    isContract?: boolean | null;
+    publicName?: string | null;
+    scope?: string | null;
+    sets?: string[] | null;
+  } | null;
   /** The state that the subscription is in. */
   state?:
     | "Trial"
@@ -3745,7 +3814,54 @@ export const GetSubscriptionResponse =
       ]),
     ),
     price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    ratePlan: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    ratePlan: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          id: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "free",
+                "lite",
+                "pro",
+                "pro_plus",
+                "business",
+                "enterprise",
+                "partners_free",
+                "partners_pro",
+                "partners_business",
+                "partners_enterprise",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+          currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          externallyManaged: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          isContract: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          publicName: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          sets: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            currency: "currency",
+            externallyManaged: "externally_managed",
+            isContract: "is_contract",
+            publicName: "public_name",
+            scope: "scope",
+            sets: "sets",
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
     state: Schema.optional(
       Schema.Union([
         Schema.Literals([
@@ -3796,7 +3912,25 @@ export interface CreateSubscriptionRequest {
   /** Body param: How often the subscription is renewed automatically. */
   frequency?: "weekly" | "monthly" | "quarterly" | "yearly";
   /** Body param: The rate plan applied to the subscription. */
-  ratePlan?: unknown;
+  ratePlan?: {
+    id?:
+      | "free"
+      | "lite"
+      | "pro"
+      | "pro_plus"
+      | "business"
+      | "enterprise"
+      | "partners_free"
+      | "partners_pro"
+      | "partners_business"
+      | "partners_enterprise";
+    currency?: string;
+    externallyManaged?: boolean;
+    isContract?: boolean;
+    publicName?: string;
+    scope?: string;
+    sets?: string[];
+  };
 }
 
 export const CreateSubscriptionRequest =
@@ -3805,7 +3939,40 @@ export const CreateSubscriptionRequest =
     frequency: Schema.optional(
       Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
     ),
-    ratePlan: Schema.optional(Schema.Unknown),
+    ratePlan: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(
+          Schema.Literals([
+            "free",
+            "lite",
+            "pro",
+            "pro_plus",
+            "business",
+            "enterprise",
+            "partners_free",
+            "partners_pro",
+            "partners_business",
+            "partners_enterprise",
+          ]),
+        ),
+        currency: Schema.optional(Schema.String),
+        externallyManaged: Schema.optional(Schema.Boolean),
+        isContract: Schema.optional(Schema.Boolean),
+        publicName: Schema.optional(Schema.String),
+        scope: Schema.optional(Schema.String),
+        sets: Schema.optional(Schema.Array(Schema.String)),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          currency: "currency",
+          externallyManaged: "externally_managed",
+          isContract: "is_contract",
+          publicName: "public_name",
+          scope: "scope",
+          sets: "sets",
+        }),
+      ),
+    ),
   }).pipe(
     Schema.encodeKeys({ frequency: "frequency", ratePlan: "rate_plan" }),
     T.Http({ method: "POST", path: "/zones/{zone_id}/subscription" }),
@@ -3831,7 +3998,26 @@ export interface CreateSubscriptionResponse {
   /** The price of the subscription that will be billed, in US dollars. */
   price?: number | null;
   /** The rate plan applied to the subscription. */
-  ratePlan?: unknown | null;
+  ratePlan?: {
+    id?:
+      | "free"
+      | "lite"
+      | "pro"
+      | "pro_plus"
+      | "business"
+      | "enterprise"
+      | "partners_free"
+      | "partners_pro"
+      | "partners_business"
+      | "partners_enterprise"
+      | null;
+    currency?: string | null;
+    externallyManaged?: boolean | null;
+    isContract?: boolean | null;
+    publicName?: string | null;
+    scope?: string | null;
+    sets?: string[] | null;
+  } | null;
   /** The state that the subscription is in. */
   state?:
     | "Trial"
@@ -3867,7 +4053,54 @@ export const CreateSubscriptionResponse =
       ]),
     ),
     price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    ratePlan: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    ratePlan: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          id: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "free",
+                "lite",
+                "pro",
+                "pro_plus",
+                "business",
+                "enterprise",
+                "partners_free",
+                "partners_pro",
+                "partners_business",
+                "partners_enterprise",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+          currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          externallyManaged: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          isContract: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          publicName: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          sets: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            currency: "currency",
+            externallyManaged: "externally_managed",
+            isContract: "is_contract",
+            publicName: "public_name",
+            scope: "scope",
+            sets: "sets",
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
     state: Schema.optional(
       Schema.Union([
         Schema.Literals([
@@ -3918,7 +4151,25 @@ export interface UpdateSubscriptionRequest {
   /** Body param: How often the subscription is renewed automatically. */
   frequency?: "weekly" | "monthly" | "quarterly" | "yearly";
   /** Body param: The rate plan applied to the subscription. */
-  ratePlan?: unknown;
+  ratePlan?: {
+    id?:
+      | "free"
+      | "lite"
+      | "pro"
+      | "pro_plus"
+      | "business"
+      | "enterprise"
+      | "partners_free"
+      | "partners_pro"
+      | "partners_business"
+      | "partners_enterprise";
+    currency?: string;
+    externallyManaged?: boolean;
+    isContract?: boolean;
+    publicName?: string;
+    scope?: string;
+    sets?: string[];
+  };
 }
 
 export const UpdateSubscriptionRequest =
@@ -3927,7 +4178,40 @@ export const UpdateSubscriptionRequest =
     frequency: Schema.optional(
       Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
     ),
-    ratePlan: Schema.optional(Schema.Unknown),
+    ratePlan: Schema.optional(
+      Schema.Struct({
+        id: Schema.optional(
+          Schema.Literals([
+            "free",
+            "lite",
+            "pro",
+            "pro_plus",
+            "business",
+            "enterprise",
+            "partners_free",
+            "partners_pro",
+            "partners_business",
+            "partners_enterprise",
+          ]),
+        ),
+        currency: Schema.optional(Schema.String),
+        externallyManaged: Schema.optional(Schema.Boolean),
+        isContract: Schema.optional(Schema.Boolean),
+        publicName: Schema.optional(Schema.String),
+        scope: Schema.optional(Schema.String),
+        sets: Schema.optional(Schema.Array(Schema.String)),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          currency: "currency",
+          externallyManaged: "externally_managed",
+          isContract: "is_contract",
+          publicName: "public_name",
+          scope: "scope",
+          sets: "sets",
+        }),
+      ),
+    ),
   }).pipe(
     Schema.encodeKeys({ frequency: "frequency", ratePlan: "rate_plan" }),
     T.Http({ method: "PUT", path: "/zones/{zone_id}/subscription" }),
@@ -3953,7 +4237,26 @@ export interface UpdateSubscriptionResponse {
   /** The price of the subscription that will be billed, in US dollars. */
   price?: number | null;
   /** The rate plan applied to the subscription. */
-  ratePlan?: unknown | null;
+  ratePlan?: {
+    id?:
+      | "free"
+      | "lite"
+      | "pro"
+      | "pro_plus"
+      | "business"
+      | "enterprise"
+      | "partners_free"
+      | "partners_pro"
+      | "partners_business"
+      | "partners_enterprise"
+      | null;
+    currency?: string | null;
+    externallyManaged?: boolean | null;
+    isContract?: boolean | null;
+    publicName?: string | null;
+    scope?: string | null;
+    sets?: string[] | null;
+  } | null;
   /** The state that the subscription is in. */
   state?:
     | "Trial"
@@ -3989,7 +4292,54 @@ export const UpdateSubscriptionResponse =
       ]),
     ),
     price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    ratePlan: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    ratePlan: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          id: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "free",
+                "lite",
+                "pro",
+                "pro_plus",
+                "business",
+                "enterprise",
+                "partners_free",
+                "partners_pro",
+                "partners_business",
+                "partners_enterprise",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+          currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          externallyManaged: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          isContract: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          publicName: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          sets: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            currency: "currency",
+            externallyManaged: "externally_managed",
+            isContract: "is_contract",
+            publicName: "public_name",
+            scope: "scope",
+            sets: "sets",
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
     state: Schema.optional(
       Schema.Union([
         Schema.Literals([
@@ -4516,7 +4866,9 @@ export const listZones: API.PaginatedOperationMethod<
     ListZonesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListZonesRequest) => stream.Stream<
+  items: (
+    input: ListZonesRequest,
+  ) => stream.Stream<
     {
       id: string;
       account: { id?: string | null; name?: string | null };

@@ -194,7 +194,7 @@ export interface GetAddressMapResponse {
   /** Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
   enabled?: boolean | null;
   /** The set of IPs on the Address Map. */
-  ips?: unknown | null;
+  ips?: { createdAt?: string | null; ip?: string | null }[] | null;
   /** Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership. */
   memberships?:
     | {
@@ -215,7 +215,19 @@ export const GetAddressMapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   defaultSni: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  ips: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+  ips: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          createdAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(Schema.encodeKeys({ createdAt: "created_at", ip: "ip" })),
+      ),
+      Schema.Null,
+    ]),
+  ),
   memberships: Schema.optional(
     Schema.Union([
       Schema.Array(
@@ -355,7 +367,9 @@ export const listAddressMaps: API.PaginatedOperationMethod<
     ListAddressMapsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListAddressMapsRequest) => stream.Stream<
+  items: (
+    input: ListAddressMapsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       canDelete?: boolean | null;
@@ -428,7 +442,7 @@ export interface CreateAddressMapResponse {
   /** Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
   enabled?: boolean | null;
   /** The set of IPs on the Address Map. */
-  ips?: unknown | null;
+  ips?: { createdAt?: string | null; ip?: string | null }[] | null;
   /** Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership. */
   memberships?:
     | {
@@ -450,7 +464,19 @@ export const CreateAddressMapResponse =
     defaultSni: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    ips: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    ips: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            createdAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }).pipe(Schema.encodeKeys({ createdAt: "created_at", ip: "ip" })),
+        ),
+        Schema.Null,
+      ]),
+    ),
     memberships: Schema.optional(
       Schema.Union([
         Schema.Array(
@@ -2010,7 +2036,9 @@ export const listPrefixes: API.PaginatedOperationMethod<
     ListPrefixesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListPrefixesRequest) => stream.Stream<
+  items: (
+    input: ListPrefixesRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       accountId?: string | null;
@@ -2814,7 +2842,9 @@ export const listPrefixBgpPrefixes: API.PaginatedOperationMethod<
     ListPrefixBgpPrefixesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListPrefixBgpPrefixesRequest) => stream.Stream<
+  items: (
+    input: ListPrefixBgpPrefixesRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       asn?: number | null;
@@ -3201,7 +3231,9 @@ export const listPrefixDelegations: API.PaginatedOperationMethod<
     ListPrefixDelegationsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListPrefixDelegationsRequest) => stream.Stream<
+  items: (
+    input: ListPrefixDelegationsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       cidr?: string | null;
@@ -3515,7 +3547,9 @@ export const listPrefixServiceBindings: API.PaginatedOperationMethod<
     ListPrefixServiceBindingsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListPrefixServiceBindingsRequest) => stream.Stream<
+  items: (
+    input: ListPrefixServiceBindingsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       cidr?: string | null;
@@ -3858,7 +3892,9 @@ export const listRegionalHostnames: API.PaginatedOperationMethod<
     ListRegionalHostnamesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListRegionalHostnamesRequest) => stream.Stream<
+  items: (
+    input: ListRegionalHostnamesRequest,
+  ) => stream.Stream<
     {
       createdOn: string;
       hostname: string;

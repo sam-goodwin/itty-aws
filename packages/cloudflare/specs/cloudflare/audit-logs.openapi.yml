@@ -100,5 +100,71 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: A string that uniquely identifies the audit log.
+                  action:
+                    type: object
+                    properties:
+                      result:
+                        type: boolean
+                        description: A boolean that indicates if the action attempted was successful.
+                      type:
+                        type: string
+                        description: A short string that describes the action that was performed.
+                  actor:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The ID of the actor that performed the action. If a user performed
+                          the action, this will be their User ID.
+                      email:
+                        type: string
+                        description: The email of the user that performed the action.
+                      ip:
+                        type: string
+                        description: The IP address of the request that performed the action.
+                      type:
+                        type: string
+                        enum:
+                          - user
+                          - admin
+                          - Cloudflare
+                        description: The type of actor, whether a User, Cloudflare Admin, or an
+                          Automated System.
+                  interface:
+                    type: string
+                    description: The source of the event.
+                  metadata:
+                    description: An object which can lend more context to the action being logged.
+                      This is a flexible value and varies between different
+                      actions.
+                  newValue:
+                    type: string
+                    description: The new value of the resource that was modified.
+                  oldValue:
+                    type: string
+                    description: The value of the resource before it was modified.
+                  owner:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Identifier
+                  resource:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: An identifier for the resource that was affected by the action.
+                      type:
+                        type: string
+                        description: A short string that describes the resource that was affected by the
+                          action.
+                  when:
+                    type: string
+                    description: A UTC RFC3339 timestamp that specifies when the action being logged
+                      occured.
       x-distilled-pagination-class: AuditLogsV4PagePaginationArray

@@ -12862,6 +12862,10 @@ paths:
       responses:
         "200":
           description: Success
+          content:
+            application/json:
+              schema:
+                type: string
   /radar/datasets:
     get:
       operationId: listDatasets
@@ -14562,7 +14566,20 @@ paths:
                     description: Metadata for the results.
                   summary_0:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      FAIL:
+                        type: string
+                        description: A numeric string.
+                      NONE:
+                        type: string
+                        description: A numeric string.
+                      PASS:
+                        type: string
+                        description: A numeric string.
+                    required:
+                      - FAIL
+                      - NONE
+                      - PASS
                 required:
                   - meta
                   - summary_0
@@ -14707,7 +14724,20 @@ paths:
                     description: Metadata for the results.
                   summary_0:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      FAIL:
+                        type: string
+                        description: A numeric string.
+                      NONE:
+                        type: string
+                        description: A numeric string.
+                      PASS:
+                        type: string
+                        description: A numeric string.
+                    required:
+                      - FAIL
+                      - NONE
+                      - PASS
                 required:
                   - meta
                   - summary_0
@@ -14852,7 +14882,20 @@ paths:
                     description: Metadata for the results.
                   summary_0:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      FAIL:
+                        type: string
+                        description: A numeric string.
+                      NONE:
+                        type: string
+                        description: A numeric string.
+                      PASS:
+                        type: string
+                        description: A numeric string.
+                    required:
+                      - FAIL
+                      - NONE
+                      - PASS
                 required:
                   - meta
                   - summary_0
@@ -15151,7 +15194,20 @@ paths:
                     description: Metadata for the results.
                   summary_0:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      FAIL:
+                        type: string
+                        description: A numeric string.
+                      NONE:
+                        type: string
+                        description: A numeric string.
+                      PASS:
+                        type: string
+                        description: A numeric string.
+                    required:
+                      - FAIL
+                      - NONE
+                      - PASS
                 required:
                   - meta
                   - summary_0
@@ -15308,7 +15364,23 @@ paths:
                     description: Metadata for the results.
                   serie_0:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      FAIL:
+                        type: array
+                        items:
+                          type: string
+                      NONE:
+                        type: array
+                        items:
+                          type: string
+                      PASS:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - FAIL
+                      - NONE
+                      - PASS
                 required:
                   - meta
                   - serie_0
@@ -15465,7 +15537,23 @@ paths:
                     description: Metadata for the results.
                   serie_0:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      FAIL:
+                        type: array
+                        items:
+                          type: string
+                      NONE:
+                        type: array
+                        items:
+                          type: string
+                      PASS:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - FAIL
+                      - NONE
+                      - PASS
                 required:
                   - meta
                   - serie_0
@@ -15622,7 +15710,23 @@ paths:
                     description: Metadata for the results.
                   serie_0:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      FAIL:
+                        type: array
+                        items:
+                          type: string
+                      NONE:
+                        type: array
+                        items:
+                          type: string
+                      PASS:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - FAIL
+                      - NONE
+                      - PASS
                 required:
                   - meta
                   - serie_0
@@ -15947,7 +16051,23 @@ paths:
                     description: Metadata for the results.
                   serie_0:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      FAIL:
+                        type: array
+                        items:
+                          type: string
+                      NONE:
+                        type: array
+                        items:
+                          type: string
+                      PASS:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - FAIL
+                      - NONE
+                      - PASS
                 required:
                   - meta
                   - serie_0
@@ -16092,7 +16212,20 @@ paths:
                     description: Metadata for the results.
                   summary_0:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      FAIL:
+                        type: string
+                        description: A numeric string.
+                      NONE:
+                        type: string
+                        description: A numeric string.
+                      PASS:
+                        type: string
+                        description: A numeric string.
+                    required:
+                      - FAIL
+                      - NONE
+                      - PASS
                 required:
                   - meta
                   - summary_0
@@ -16237,7 +16370,20 @@ paths:
                     description: Metadata for the results.
                   summary_0:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      FAIL:
+                        type: string
+                        description: A numeric string.
+                      NONE:
+                        type: string
+                        description: A numeric string.
+                      PASS:
+                        type: string
+                        description: A numeric string.
+                    required:
+                      - FAIL
+                      - NONE
+                      - PASS
                 required:
                   - meta
                   - summary_0
@@ -16382,7 +16528,20 @@ paths:
                     description: Metadata for the results.
                   summary_0:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      FAIL:
+                        type: string
+                        description: A numeric string.
+                      NONE:
+                        type: string
+                        description: A numeric string.
+                      PASS:
+                        type: string
+                        description: A numeric string.
+                    required:
+                      - FAIL
+                      - NONE
+                      - PASS
                 required:
                   - meta
                   - summary_0
@@ -16835,7 +16994,20 @@ paths:
                     description: Metadata for the results.
                   summary_0:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      FAIL:
+                        type: string
+                        description: A numeric string.
+                      NONE:
+                        type: string
+                        description: A numeric string.
+                      PASS:
+                        type: string
+                        description: A numeric string.
+                    required:
+                      - FAIL
+                      - NONE
+                      - PASS
                 required:
                   - meta
                   - summary_0
@@ -17146,7 +17318,23 @@ paths:
                     description: Metadata for the results.
                   serie_0:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      FAIL:
+                        type: array
+                        items:
+                          type: string
+                      NONE:
+                        type: array
+                        items:
+                          type: string
+                      PASS:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - FAIL
+                      - NONE
+                      - PASS
                 required:
                   - meta
                   - serie_0
@@ -17303,7 +17491,23 @@ paths:
                     description: Metadata for the results.
                   serie_0:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      FAIL:
+                        type: array
+                        items:
+                          type: string
+                      NONE:
+                        type: array
+                        items:
+                          type: string
+                      PASS:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - FAIL
+                      - NONE
+                      - PASS
                 required:
                   - meta
                   - serie_0
@@ -17460,7 +17664,23 @@ paths:
                     description: Metadata for the results.
                   serie_0:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      FAIL:
+                        type: array
+                        items:
+                          type: string
+                      NONE:
+                        type: array
+                        items:
+                          type: string
+                      PASS:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - FAIL
+                      - NONE
+                      - PASS
                 required:
                   - meta
                   - serie_0
@@ -17953,7 +18173,23 @@ paths:
                     description: Metadata for the results.
                   serie_0:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      FAIL:
+                        type: array
+                        items:
+                          type: string
+                      NONE:
+                        type: array
+                        items:
+                          type: string
+                      PASS:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - FAIL
+                      - NONE
+                      - PASS
                 required:
                   - meta
                   - serie_0

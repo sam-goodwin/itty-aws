@@ -624,7 +624,7 @@ export interface ScanListRecordResponse {
         proxied: boolean;
         settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
         tags: string[];
-        ttl: number;
+        ttl: number | "1";
         type: "OPENPGPKEY";
         commentModifiedOn?: string | null;
         tagsModifiedOn?: string | null;
@@ -680,7 +680,7 @@ export const ScanListRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
           ),
           tags: Schema.Array(Schema.String),
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("OPENPGPKEY"),
           commentModifiedOn: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
@@ -727,7 +727,9 @@ export const scanListRecord: API.PaginatedOperationMethod<
     ScanListRecordError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ScanListRecordRequest) => stream.Stream<
+  items: (
+    input: ScanListRecordRequest,
+  ) => stream.Stream<
     | {
         id: string;
         createdOn: string;
@@ -749,7 +751,7 @@ export const scanListRecord: API.PaginatedOperationMethod<
         proxied: boolean;
         settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
         tags: string[];
-        ttl: number;
+        ttl: number | "1";
         type: "OPENPGPKEY";
         commentModifiedOn?: string | null;
         tagsModifiedOn?: string | null;
@@ -848,7 +850,7 @@ export type GetRecordResponse =
       proxied: boolean;
       settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
       tags: string[];
-      ttl: number;
+      ttl: number | "1";
       type: "OPENPGPKEY";
       commentModifiedOn?: string | null;
       tagsModifiedOn?: string | null;
@@ -893,7 +895,7 @@ export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
     ),
     tags: Schema.Array(Schema.String),
-    ttl: Schema.Number,
+    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
     type: Schema.Literal("OPENPGPKEY"),
     commentModifiedOn: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -1111,7 +1113,7 @@ export interface ListRecordsResponse {
         proxied: boolean;
         settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
         tags: string[];
-        ttl: number;
+        ttl: number | "1";
         type: "OPENPGPKEY";
         commentModifiedOn?: string | null;
         tagsModifiedOn?: string | null;
@@ -1172,7 +1174,7 @@ export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
         ),
         tags: Schema.Array(Schema.String),
-        ttl: Schema.Number,
+        ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
         type: Schema.Literal("OPENPGPKEY"),
         commentModifiedOn: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
@@ -1233,7 +1235,9 @@ export const listRecords: API.PaginatedOperationMethod<
     ListRecordsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListRecordsRequest) => stream.Stream<
+  items: (
+    input: ListRecordsRequest,
+  ) => stream.Stream<
     | {
         id: string;
         createdOn: string;
@@ -1255,7 +1259,7 @@ export const listRecords: API.PaginatedOperationMethod<
         proxied: boolean;
         settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
         tags: string[];
-        ttl: number;
+        ttl: number | "1";
         type: "OPENPGPKEY";
         commentModifiedOn?: string | null;
         tagsModifiedOn?: string | null;
@@ -1282,7 +1286,7 @@ export interface CreateRecordRequest {
   /** Body param: Complete DNS record name, including the zone name, in Punycode. */
   name: string;
   /** Body param: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
+  ttl: number | "1";
   /** Body param: Record type. */
   type: "A";
   /** Body param: Comments or notes about the DNS record. This field has no effect on DNS responses. */
@@ -1300,7 +1304,7 @@ export interface CreateRecordRequest {
 export const CreateRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   name: Schema.String,
-  ttl: Schema.Number,
+  ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
   type: Schema.Literal("A"),
   comment: Schema.optional(Schema.String),
   content: Schema.optional(Schema.String),
@@ -1340,7 +1344,7 @@ export type CreateRecordResponse =
       proxied: boolean;
       settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
       tags: string[];
-      ttl: number;
+      ttl: number | "1";
       type: "OPENPGPKEY";
       commentModifiedOn?: string | null;
       tagsModifiedOn?: string | null;
@@ -1385,7 +1389,7 @@ export const CreateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
     ),
     tags: Schema.Array(Schema.String),
-    ttl: Schema.Number,
+    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
     type: Schema.Literal("OPENPGPKEY"),
     commentModifiedOn: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -1434,7 +1438,7 @@ export interface UpdateRecordRequest {
   /** Body param: Complete DNS record name, including the zone name, in Punycode. */
   name: string;
   /** Body param: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
+  ttl: number | "1";
   /** Body param: Record type. */
   type: "A";
   /** Body param: Comments or notes about the DNS record. This field has no effect on DNS responses. */
@@ -1453,7 +1457,7 @@ export const UpdateRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dnsRecordId: Schema.String.pipe(T.HttpPath("dnsRecordId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   name: Schema.String,
-  ttl: Schema.Number,
+  ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
   type: Schema.Literal("A"),
   comment: Schema.optional(Schema.String),
   content: Schema.optional(Schema.String),
@@ -1493,7 +1497,7 @@ export type UpdateRecordResponse =
       proxied: boolean;
       settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
       tags: string[];
-      ttl: number;
+      ttl: number | "1";
       type: "OPENPGPKEY";
       commentModifiedOn?: string | null;
       tagsModifiedOn?: string | null;
@@ -1538,7 +1542,7 @@ export const UpdateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
     ),
     tags: Schema.Array(Schema.String),
-    ttl: Schema.Number,
+    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
     type: Schema.Literal("OPENPGPKEY"),
     commentModifiedOn: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -1587,7 +1591,7 @@ export interface PatchRecordRequest {
   /** Body param: Complete DNS record name, including the zone name, in Punycode. */
   name: string;
   /** Body param: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones. */
-  ttl: number;
+  ttl: number | "1";
   /** Body param: Record type. */
   type: "A";
   /** Body param: Comments or notes about the DNS record. This field has no effect on DNS responses. */
@@ -1606,7 +1610,7 @@ export const PatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dnsRecordId: Schema.String.pipe(T.HttpPath("dnsRecordId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   name: Schema.String,
-  ttl: Schema.Number,
+  ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
   type: Schema.Literal("A"),
   comment: Schema.optional(Schema.String),
   content: Schema.optional(Schema.String),
@@ -1649,7 +1653,7 @@ export type PatchRecordResponse =
       proxied: boolean;
       settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
       tags: string[];
-      ttl: number;
+      ttl: number | "1";
       type: "OPENPGPKEY";
       commentModifiedOn?: string | null;
       tagsModifiedOn?: string | null;
@@ -1694,7 +1698,7 @@ export const PatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
     ),
     tags: Schema.Array(Schema.String),
-    ttl: Schema.Number,
+    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
     type: Schema.Literal("OPENPGPKEY"),
     commentModifiedOn: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -1783,289 +1787,14 @@ export interface BatchRecordRequest {
   deletes?: { id: string }[];
   /** Body param: */
   patches?: (
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "A";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "AAAA";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "CNAME";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: {
-          flattenCname?: boolean;
-          ipv4Only?: boolean;
-          ipv6Only?: boolean;
-        };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "MX";
-        comment?: string;
-        content?: string;
-        priority?: number;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "NS";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
+    | { id: string }
     | {
         id: string;
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "OPENPGPKEY";
         comment?: string;
         content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "PTR";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "TXT";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "CAA";
-        comment?: string;
-        data?: { flags?: number; tag?: string; value?: string };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "CERT";
-        comment?: string;
-        data?: {
-          algorithm?: number;
-          certificate?: string;
-          keyTag?: number;
-          type?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "DNSKEY";
-        comment?: string;
-        data?: {
-          algorithm?: number;
-          flags?: number;
-          protocol?: number;
-          publicKey?: string;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "DS";
-        comment?: string;
-        data?: {
-          algorithm?: number;
-          digest?: string;
-          digestType?: number;
-          keyTag?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "HTTPS";
-        comment?: string;
-        data?: { priority?: number; target?: string; value?: string };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "LOC";
-        comment?: string;
-        data?: {
-          altitude?: number;
-          latDegrees?: number;
-          latDirection?: "N" | "S";
-          latMinutes?: number;
-          latSeconds?: number;
-          longDegrees?: number;
-          longDirection?: "E" | "W";
-          longMinutes?: number;
-          longSeconds?: number;
-          precisionHorz?: number;
-          precisionVert?: number;
-          size?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "NAPTR";
-        comment?: string;
-        data?: {
-          flags?: string;
-          order?: number;
-          preference?: number;
-          regex?: string;
-          replacement?: string;
-          service?: string;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "SMIMEA";
-        comment?: string;
-        data?: {
-          certificate?: string;
-          matchingType?: number;
-          selector?: number;
-          usage?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "SRV";
-        comment?: string;
-        data?: {
-          port?: number;
-          priority?: number;
-          target?: string;
-          weight?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "SSHFP";
-        comment?: string;
-        data?: { algorithm?: number; fingerprint?: string; type?: number };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "SVCB";
-        comment?: string;
-        data?: { priority?: number; target?: string; value?: string };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "TLSA";
-        comment?: string;
-        data?: {
-          certificate?: string;
-          matchingType?: number;
-          selector?: number;
-          usage?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "URI";
-        comment?: string;
-        data?: { target?: string; weight?: number };
-        priority?: number;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -2075,7 +1804,7 @@ export interface BatchRecordRequest {
   posts?: (
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "A";
         comment?: string;
         content?: string;
@@ -2085,7 +1814,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "AAAA";
         comment?: string;
         content?: string;
@@ -2095,7 +1824,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "CNAME";
         comment?: string;
         content?: string;
@@ -2109,7 +1838,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "MX";
         comment?: string;
         content?: string;
@@ -2120,7 +1849,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "NS";
         comment?: string;
         content?: string;
@@ -2130,7 +1859,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "OPENPGPKEY";
         comment?: string;
         content?: string;
@@ -2140,7 +1869,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "PTR";
         comment?: string;
         content?: string;
@@ -2150,7 +1879,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "TXT";
         comment?: string;
         content?: string;
@@ -2160,7 +1889,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "CAA";
         comment?: string;
         data?: { flags?: number; tag?: string; value?: string };
@@ -2170,7 +1899,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "CERT";
         comment?: string;
         data?: {
@@ -2185,7 +1914,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "DNSKEY";
         comment?: string;
         data?: {
@@ -2200,7 +1929,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "DS";
         comment?: string;
         data?: {
@@ -2215,7 +1944,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "HTTPS";
         comment?: string;
         data?: { priority?: number; target?: string; value?: string };
@@ -2225,7 +1954,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "LOC";
         comment?: string;
         data?: {
@@ -2248,7 +1977,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "NAPTR";
         comment?: string;
         data?: {
@@ -2265,7 +1994,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "SMIMEA";
         comment?: string;
         data?: {
@@ -2280,7 +2009,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "SRV";
         comment?: string;
         data?: {
@@ -2295,7 +2024,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "SSHFP";
         comment?: string;
         data?: { algorithm?: number; fingerprint?: string; type?: number };
@@ -2305,7 +2034,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "SVCB";
         comment?: string;
         data?: { priority?: number; target?: string; value?: string };
@@ -2315,7 +2044,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "TLSA";
         comment?: string;
         data?: {
@@ -2330,7 +2059,7 @@ export interface BatchRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "URI";
         comment?: string;
         data?: { target?: string; weight?: number };
@@ -2342,289 +2071,14 @@ export interface BatchRecordRequest {
   )[];
   /** Body param: */
   puts?: (
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "A";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "AAAA";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "CNAME";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: {
-          flattenCname?: boolean;
-          ipv4Only?: boolean;
-          ipv6Only?: boolean;
-        };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "MX";
-        comment?: string;
-        content?: string;
-        priority?: number;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "NS";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
+    | { id: string }
     | {
         id: string;
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "OPENPGPKEY";
         comment?: string;
         content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "PTR";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "TXT";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "CAA";
-        comment?: string;
-        data?: { flags?: number; tag?: string; value?: string };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "CERT";
-        comment?: string;
-        data?: {
-          algorithm?: number;
-          certificate?: string;
-          keyTag?: number;
-          type?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "DNSKEY";
-        comment?: string;
-        data?: {
-          algorithm?: number;
-          flags?: number;
-          protocol?: number;
-          publicKey?: string;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "DS";
-        comment?: string;
-        data?: {
-          algorithm?: number;
-          digest?: string;
-          digestType?: number;
-          keyTag?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "HTTPS";
-        comment?: string;
-        data?: { priority?: number; target?: string; value?: string };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "LOC";
-        comment?: string;
-        data?: {
-          altitude?: number;
-          latDegrees?: number;
-          latDirection?: "N" | "S";
-          latMinutes?: number;
-          latSeconds?: number;
-          longDegrees?: number;
-          longDirection?: "E" | "W";
-          longMinutes?: number;
-          longSeconds?: number;
-          precisionHorz?: number;
-          precisionVert?: number;
-          size?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "NAPTR";
-        comment?: string;
-        data?: {
-          flags?: string;
-          order?: number;
-          preference?: number;
-          regex?: string;
-          replacement?: string;
-          service?: string;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "SMIMEA";
-        comment?: string;
-        data?: {
-          certificate?: string;
-          matchingType?: number;
-          selector?: number;
-          usage?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "SRV";
-        comment?: string;
-        data?: {
-          port?: number;
-          priority?: number;
-          target?: string;
-          weight?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "SSHFP";
-        comment?: string;
-        data?: { algorithm?: number; fingerprint?: string; type?: number };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "SVCB";
-        comment?: string;
-        data?: { priority?: number; target?: string; value?: string };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "TLSA";
-        comment?: string;
-        data?: {
-          certificate?: string;
-          matchingType?: number;
-          selector?: number;
-          usage?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        zoneId: string;
-        name: string;
-        ttl: number;
-        type: "URI";
-        comment?: string;
-        data?: { target?: string; weight?: number };
-        priority?: number;
         proxied?: boolean;
         settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
         tags?: string[];
@@ -2645,178 +2099,12 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Array(
       Schema.Union([
         Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("A"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            content: "content",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("AAAA"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            content: "content",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("CNAME"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              flattenCname: Schema.optional(Schema.Boolean),
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                flattenCname: "flatten_cname",
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            content: "content",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("MX"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          priority: Schema.optional(Schema.Number),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            content: "content",
-            priority: "priority",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("NS"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            content: "content",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
+          id: Schema.String,
+        }),
         Schema.Struct({
           id: Schema.String,
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("OPENPGPKEY"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
@@ -2834,648 +2122,6 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           tags: Schema.optional(Schema.Array(Schema.String)),
         }),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("PTR"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            content: "content",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("TXT"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            content: "content",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("CAA"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              flags: Schema.optional(Schema.Number),
-              tag: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("CERT"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              algorithm: Schema.optional(Schema.Number),
-              certificate: Schema.optional(Schema.String),
-              keyTag: Schema.optional(Schema.Number),
-              type: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                algorithm: "algorithm",
-                certificate: "certificate",
-                keyTag: "key_tag",
-                type: "type",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("DNSKEY"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              algorithm: Schema.optional(Schema.Number),
-              flags: Schema.optional(Schema.Number),
-              protocol: Schema.optional(Schema.Number),
-              publicKey: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                algorithm: "algorithm",
-                flags: "flags",
-                protocol: "protocol",
-                publicKey: "public_key",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("DS"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              algorithm: Schema.optional(Schema.Number),
-              digest: Schema.optional(Schema.String),
-              digestType: Schema.optional(Schema.Number),
-              keyTag: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                algorithm: "algorithm",
-                digest: "digest",
-                digestType: "digest_type",
-                keyTag: "key_tag",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("HTTPS"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              priority: Schema.optional(Schema.Number),
-              target: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("LOC"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              altitude: Schema.optional(Schema.Number),
-              latDegrees: Schema.optional(Schema.Number),
-              latDirection: Schema.optional(Schema.Literals(["N", "S"])),
-              latMinutes: Schema.optional(Schema.Number),
-              latSeconds: Schema.optional(Schema.Number),
-              longDegrees: Schema.optional(Schema.Number),
-              longDirection: Schema.optional(Schema.Literals(["E", "W"])),
-              longMinutes: Schema.optional(Schema.Number),
-              longSeconds: Schema.optional(Schema.Number),
-              precisionHorz: Schema.optional(Schema.Number),
-              precisionVert: Schema.optional(Schema.Number),
-              size: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                altitude: "altitude",
-                latDegrees: "lat_degrees",
-                latDirection: "lat_direction",
-                latMinutes: "lat_minutes",
-                latSeconds: "lat_seconds",
-                longDegrees: "long_degrees",
-                longDirection: "long_direction",
-                longMinutes: "long_minutes",
-                longSeconds: "long_seconds",
-                precisionHorz: "precision_horz",
-                precisionVert: "precision_vert",
-                size: "size",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("NAPTR"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              flags: Schema.optional(Schema.String),
-              order: Schema.optional(Schema.Number),
-              preference: Schema.optional(Schema.Number),
-              regex: Schema.optional(Schema.String),
-              replacement: Schema.optional(Schema.String),
-              service: Schema.optional(Schema.String),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("SMIMEA"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              certificate: Schema.optional(Schema.String),
-              matchingType: Schema.optional(Schema.Number),
-              selector: Schema.optional(Schema.Number),
-              usage: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                certificate: "certificate",
-                matchingType: "matching_type",
-                selector: "selector",
-                usage: "usage",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("SRV"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              port: Schema.optional(Schema.Number),
-              priority: Schema.optional(Schema.Number),
-              target: Schema.optional(Schema.String),
-              weight: Schema.optional(Schema.Number),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("SSHFP"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              algorithm: Schema.optional(Schema.Number),
-              fingerprint: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.Number),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("SVCB"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              priority: Schema.optional(Schema.Number),
-              target: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("TLSA"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              certificate: Schema.optional(Schema.String),
-              matchingType: Schema.optional(Schema.Number),
-              selector: Schema.optional(Schema.Number),
-              usage: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                certificate: "certificate",
-                matchingType: "matching_type",
-                selector: "selector",
-                usage: "usage",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("URI"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              target: Schema.optional(Schema.String),
-              weight: Schema.optional(Schema.Number),
-            }),
-          ),
-          priority: Schema.optional(Schema.Number),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            priority: "priority",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
       ]),
     ),
   ),
@@ -3484,7 +2130,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Union([
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("A"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
@@ -3504,7 +2150,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("AAAA"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
@@ -3524,7 +2170,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("CNAME"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
@@ -3546,7 +2192,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("MX"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
@@ -3567,7 +2213,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("NS"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
@@ -3587,7 +2233,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("OPENPGPKEY"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
@@ -3607,7 +2253,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("PTR"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
@@ -3627,7 +2273,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("TXT"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
@@ -3647,7 +2293,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("CAA"),
           comment: Schema.optional(Schema.String),
           data: Schema.optional(
@@ -3673,7 +2319,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("CERT"),
           comment: Schema.optional(Schema.String),
           data: Schema.optional(
@@ -3707,7 +2353,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("DNSKEY"),
           comment: Schema.optional(Schema.String),
           data: Schema.optional(
@@ -3741,7 +2387,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("DS"),
           comment: Schema.optional(Schema.String),
           data: Schema.optional(
@@ -3775,7 +2421,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("HTTPS"),
           comment: Schema.optional(Schema.String),
           data: Schema.optional(
@@ -3801,7 +2447,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("LOC"),
           comment: Schema.optional(Schema.String),
           data: Schema.optional(
@@ -3851,7 +2497,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("NAPTR"),
           comment: Schema.optional(Schema.String),
           data: Schema.optional(
@@ -3880,7 +2526,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("SMIMEA"),
           comment: Schema.optional(Schema.String),
           data: Schema.optional(
@@ -3914,7 +2560,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("SRV"),
           comment: Schema.optional(Schema.String),
           data: Schema.optional(
@@ -3941,7 +2587,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("SSHFP"),
           comment: Schema.optional(Schema.String),
           data: Schema.optional(
@@ -3967,7 +2613,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("SVCB"),
           comment: Schema.optional(Schema.String),
           data: Schema.optional(
@@ -3993,7 +2639,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("TLSA"),
           comment: Schema.optional(Schema.String),
           data: Schema.optional(
@@ -4027,7 +2673,7 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("URI"),
           comment: Schema.optional(Schema.String),
           data: Schema.optional(
@@ -4058,178 +2704,12 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Array(
       Schema.Union([
         Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("A"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            content: "content",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("AAAA"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            content: "content",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("CNAME"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              flattenCname: Schema.optional(Schema.Boolean),
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                flattenCname: "flatten_cname",
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            content: "content",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("MX"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          priority: Schema.optional(Schema.Number),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            content: "content",
-            priority: "priority",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("NS"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            content: "content",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
+          id: Schema.String,
+        }),
         Schema.Struct({
           id: Schema.String,
           name: Schema.String,
-          ttl: Schema.Number,
+          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
           type: Schema.Literal("OPENPGPKEY"),
           comment: Schema.optional(Schema.String),
           content: Schema.optional(Schema.String),
@@ -4247,648 +2727,6 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           tags: Schema.optional(Schema.Array(Schema.String)),
         }),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("PTR"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            content: "content",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("TXT"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            content: "content",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("CAA"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              flags: Schema.optional(Schema.Number),
-              tag: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("CERT"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              algorithm: Schema.optional(Schema.Number),
-              certificate: Schema.optional(Schema.String),
-              keyTag: Schema.optional(Schema.Number),
-              type: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                algorithm: "algorithm",
-                certificate: "certificate",
-                keyTag: "key_tag",
-                type: "type",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("DNSKEY"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              algorithm: Schema.optional(Schema.Number),
-              flags: Schema.optional(Schema.Number),
-              protocol: Schema.optional(Schema.Number),
-              publicKey: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                algorithm: "algorithm",
-                flags: "flags",
-                protocol: "protocol",
-                publicKey: "public_key",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("DS"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              algorithm: Schema.optional(Schema.Number),
-              digest: Schema.optional(Schema.String),
-              digestType: Schema.optional(Schema.Number),
-              keyTag: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                algorithm: "algorithm",
-                digest: "digest",
-                digestType: "digest_type",
-                keyTag: "key_tag",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("HTTPS"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              priority: Schema.optional(Schema.Number),
-              target: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("LOC"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              altitude: Schema.optional(Schema.Number),
-              latDegrees: Schema.optional(Schema.Number),
-              latDirection: Schema.optional(Schema.Literals(["N", "S"])),
-              latMinutes: Schema.optional(Schema.Number),
-              latSeconds: Schema.optional(Schema.Number),
-              longDegrees: Schema.optional(Schema.Number),
-              longDirection: Schema.optional(Schema.Literals(["E", "W"])),
-              longMinutes: Schema.optional(Schema.Number),
-              longSeconds: Schema.optional(Schema.Number),
-              precisionHorz: Schema.optional(Schema.Number),
-              precisionVert: Schema.optional(Schema.Number),
-              size: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                altitude: "altitude",
-                latDegrees: "lat_degrees",
-                latDirection: "lat_direction",
-                latMinutes: "lat_minutes",
-                latSeconds: "lat_seconds",
-                longDegrees: "long_degrees",
-                longDirection: "long_direction",
-                longMinutes: "long_minutes",
-                longSeconds: "long_seconds",
-                precisionHorz: "precision_horz",
-                precisionVert: "precision_vert",
-                size: "size",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("NAPTR"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              flags: Schema.optional(Schema.String),
-              order: Schema.optional(Schema.Number),
-              preference: Schema.optional(Schema.Number),
-              regex: Schema.optional(Schema.String),
-              replacement: Schema.optional(Schema.String),
-              service: Schema.optional(Schema.String),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("SMIMEA"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              certificate: Schema.optional(Schema.String),
-              matchingType: Schema.optional(Schema.Number),
-              selector: Schema.optional(Schema.Number),
-              usage: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                certificate: "certificate",
-                matchingType: "matching_type",
-                selector: "selector",
-                usage: "usage",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("SRV"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              port: Schema.optional(Schema.Number),
-              priority: Schema.optional(Schema.Number),
-              target: Schema.optional(Schema.String),
-              weight: Schema.optional(Schema.Number),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("SSHFP"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              algorithm: Schema.optional(Schema.Number),
-              fingerprint: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.Number),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("SVCB"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              priority: Schema.optional(Schema.Number),
-              target: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("TLSA"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              certificate: Schema.optional(Schema.String),
-              matchingType: Schema.optional(Schema.Number),
-              selector: Schema.optional(Schema.Number),
-              usage: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                certificate: "certificate",
-                matchingType: "matching_type",
-                selector: "selector",
-                usage: "usage",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
-        Schema.Struct({
-          zoneId: Schema.String,
-          name: Schema.String,
-          ttl: Schema.Number,
-          type: Schema.Literal("URI"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              target: Schema.optional(Schema.String),
-              weight: Schema.optional(Schema.Number),
-            }),
-          ),
-          priority: Schema.optional(Schema.Number),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(
-          Schema.encodeKeys({
-            zoneId: "zone_id",
-            name: "name",
-            ttl: "ttl",
-            type: "type",
-            comment: "comment",
-            data: "data",
-            priority: "priority",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-          }),
-        ),
       ]),
     ),
   ),
@@ -4920,7 +2758,7 @@ export interface BatchRecordResponse {
             proxied: boolean;
             settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
             tags: string[];
-            ttl: number;
+            ttl: number | "1";
             type: "OPENPGPKEY";
             commentModifiedOn?: string | null;
             tagsModifiedOn?: string | null;
@@ -4950,7 +2788,7 @@ export interface BatchRecordResponse {
             proxied: boolean;
             settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
             tags: string[];
-            ttl: number;
+            ttl: number | "1";
             type: "OPENPGPKEY";
             commentModifiedOn?: string | null;
             tagsModifiedOn?: string | null;
@@ -4980,7 +2818,7 @@ export interface BatchRecordResponse {
             proxied: boolean;
             settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
             tags: string[];
-            ttl: number;
+            ttl: number | "1";
             type: "OPENPGPKEY";
             commentModifiedOn?: string | null;
             tagsModifiedOn?: string | null;
@@ -5010,7 +2848,7 @@ export interface BatchRecordResponse {
             proxied: boolean;
             settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
             tags: string[];
-            ttl: number;
+            ttl: number | "1";
             type: "OPENPGPKEY";
             commentModifiedOn?: string | null;
             tagsModifiedOn?: string | null;
@@ -5071,7 +2909,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               }),
             ),
             tags: Schema.Array(Schema.String),
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("OPENPGPKEY"),
             commentModifiedOn: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
@@ -5154,7 +2992,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               }),
             ),
             tags: Schema.Array(Schema.String),
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("OPENPGPKEY"),
             commentModifiedOn: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
@@ -5237,7 +3075,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               }),
             ),
             tags: Schema.Array(Schema.String),
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("OPENPGPKEY"),
             commentModifiedOn: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
@@ -5320,7 +3158,7 @@ export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               }),
             ),
             tags: Schema.Array(Schema.String),
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("OPENPGPKEY"),
             commentModifiedOn: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
@@ -5380,10 +3218,10 @@ export const ExportRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "GET", path: "/zones/{zone_id}/dns_records/export" }),
 ) as unknown as Schema.Schema<ExportRecordRequest>;
 
-export type ExportRecordResponse = unknown;
+export type ExportRecordResponse = string;
 
 export const ExportRecordResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<ExportRecordResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Schema<ExportRecordResponse>;
 
 export type ExportRecordError = DefaultErrors;
 
@@ -5516,7 +3354,7 @@ export interface ScanReviewRecordRequest {
   accepts?: (
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "A";
         comment?: string;
         content?: string;
@@ -5526,7 +3364,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "AAAA";
         comment?: string;
         content?: string;
@@ -5536,7 +3374,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "CNAME";
         comment?: string;
         content?: string;
@@ -5550,7 +3388,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "MX";
         comment?: string;
         content?: string;
@@ -5561,7 +3399,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "NS";
         comment?: string;
         content?: string;
@@ -5571,7 +3409,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "OPENPGPKEY";
         comment?: string;
         content?: string;
@@ -5581,7 +3419,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "PTR";
         comment?: string;
         content?: string;
@@ -5591,7 +3429,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "TXT";
         comment?: string;
         content?: string;
@@ -5601,7 +3439,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "CAA";
         comment?: string;
         data?: { flags?: number; tag?: string; value?: string };
@@ -5611,7 +3449,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "CERT";
         comment?: string;
         data?: {
@@ -5626,7 +3464,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "DNSKEY";
         comment?: string;
         data?: {
@@ -5641,7 +3479,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "DS";
         comment?: string;
         data?: {
@@ -5656,7 +3494,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "HTTPS";
         comment?: string;
         data?: { priority?: number; target?: string; value?: string };
@@ -5666,7 +3504,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "LOC";
         comment?: string;
         data?: {
@@ -5689,7 +3527,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "NAPTR";
         comment?: string;
         data?: {
@@ -5706,7 +3544,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "SMIMEA";
         comment?: string;
         data?: {
@@ -5721,7 +3559,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "SRV";
         comment?: string;
         data?: {
@@ -5736,7 +3574,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "SSHFP";
         comment?: string;
         data?: { algorithm?: number; fingerprint?: string; type?: number };
@@ -5746,7 +3584,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "SVCB";
         comment?: string;
         data?: { priority?: number; target?: string; value?: string };
@@ -5756,7 +3594,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "TLSA";
         comment?: string;
         data?: {
@@ -5771,7 +3609,7 @@ export interface ScanReviewRecordRequest {
       }
     | {
         name: string;
-        ttl: number;
+        ttl: number | "1";
         type: "URI";
         comment?: string;
         data?: { target?: string; weight?: number };
@@ -5793,7 +3631,7 @@ export const ScanReviewRecordRequest =
         Schema.Union([
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("A"),
             comment: Schema.optional(Schema.String),
             content: Schema.optional(Schema.String),
@@ -5813,7 +3651,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("AAAA"),
             comment: Schema.optional(Schema.String),
             content: Schema.optional(Schema.String),
@@ -5833,7 +3671,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("CNAME"),
             comment: Schema.optional(Schema.String),
             content: Schema.optional(Schema.String),
@@ -5855,7 +3693,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("MX"),
             comment: Schema.optional(Schema.String),
             content: Schema.optional(Schema.String),
@@ -5876,7 +3714,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("NS"),
             comment: Schema.optional(Schema.String),
             content: Schema.optional(Schema.String),
@@ -5896,7 +3734,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("OPENPGPKEY"),
             comment: Schema.optional(Schema.String),
             content: Schema.optional(Schema.String),
@@ -5916,7 +3754,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("PTR"),
             comment: Schema.optional(Schema.String),
             content: Schema.optional(Schema.String),
@@ -5936,7 +3774,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("TXT"),
             comment: Schema.optional(Schema.String),
             content: Schema.optional(Schema.String),
@@ -5956,7 +3794,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("CAA"),
             comment: Schema.optional(Schema.String),
             data: Schema.optional(
@@ -5982,7 +3820,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("CERT"),
             comment: Schema.optional(Schema.String),
             data: Schema.optional(
@@ -6016,7 +3854,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("DNSKEY"),
             comment: Schema.optional(Schema.String),
             data: Schema.optional(
@@ -6050,7 +3888,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("DS"),
             comment: Schema.optional(Schema.String),
             data: Schema.optional(
@@ -6084,7 +3922,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("HTTPS"),
             comment: Schema.optional(Schema.String),
             data: Schema.optional(
@@ -6110,7 +3948,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("LOC"),
             comment: Schema.optional(Schema.String),
             data: Schema.optional(
@@ -6160,7 +3998,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("NAPTR"),
             comment: Schema.optional(Schema.String),
             data: Schema.optional(
@@ -6189,7 +4027,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("SMIMEA"),
             comment: Schema.optional(Schema.String),
             data: Schema.optional(
@@ -6223,7 +4061,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("SRV"),
             comment: Schema.optional(Schema.String),
             data: Schema.optional(
@@ -6250,7 +4088,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("SSHFP"),
             comment: Schema.optional(Schema.String),
             data: Schema.optional(
@@ -6276,7 +4114,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("SVCB"),
             comment: Schema.optional(Schema.String),
             data: Schema.optional(
@@ -6302,7 +4140,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("TLSA"),
             comment: Schema.optional(Schema.String),
             data: Schema.optional(
@@ -6336,7 +4174,7 @@ export const ScanReviewRecordRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            ttl: Schema.Number,
+            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
             type: Schema.Literal("URI"),
             comment: Schema.optional(Schema.String),
             data: Schema.optional(
@@ -6401,7 +4239,7 @@ export interface ScanReviewRecordResponse {
             proxied: boolean;
             settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
             tags: string[];
-            ttl: number;
+            ttl: number | "1";
             type: "OPENPGPKEY";
             commentModifiedOn?: string | null;
             tagsModifiedOn?: string | null;
@@ -6464,7 +4302,7 @@ export const ScanReviewRecordResponse =
                 }),
               ),
               tags: Schema.Array(Schema.String),
-              ttl: Schema.Number,
+              ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
               type: Schema.Literal("OPENPGPKEY"),
               commentModifiedOn: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
@@ -6539,12 +4377,11 @@ export interface GetSettingAccountResponse {
     internalDns: { referenceZoneId?: string | null };
     multiProvider: boolean;
     nameservers: {
-      type?:
+      type:
         | "cloudflare.standard"
         | "cloudflare.standard.random"
         | "custom.account"
-        | "custom.tenant"
-        | null;
+        | "custom.tenant";
     };
     nsTtl: number;
     secondaryOverrides: boolean;
@@ -6573,17 +4410,12 @@ export const GetSettingAccountResponse =
       }).pipe(Schema.encodeKeys({ referenceZoneId: "reference_zone_id" })),
       multiProvider: Schema.Boolean,
       nameservers: Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "cloudflare.standard",
-              "cloudflare.standard.random",
-              "custom.account",
-              "custom.tenant",
-            ]),
-            Schema.Null,
-          ]),
-        ),
+        type: Schema.Literals([
+          "cloudflare.standard",
+          "cloudflare.standard.random",
+          "custom.account",
+          "custom.tenant",
+        ]),
       }),
       nsTtl: Schema.Number,
       secondaryOverrides: Schema.Boolean,
@@ -6747,12 +4579,11 @@ export interface PatchSettingAccountResponse {
     internalDns: { referenceZoneId?: string | null };
     multiProvider: boolean;
     nameservers: {
-      type?:
+      type:
         | "cloudflare.standard"
         | "cloudflare.standard.random"
         | "custom.account"
-        | "custom.tenant"
-        | null;
+        | "custom.tenant";
     };
     nsTtl: number;
     secondaryOverrides: boolean;
@@ -6781,17 +4612,12 @@ export const PatchSettingAccountResponse =
       }).pipe(Schema.encodeKeys({ referenceZoneId: "reference_zone_id" })),
       multiProvider: Schema.Boolean,
       nameservers: Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "cloudflare.standard",
-              "cloudflare.standard.random",
-              "custom.account",
-              "custom.tenant",
-            ]),
-            Schema.Null,
-          ]),
-        ),
+        type: Schema.Literals([
+          "cloudflare.standard",
+          "cloudflare.standard.random",
+          "custom.account",
+          "custom.tenant",
+        ]),
       }),
       nsTtl: Schema.Number,
       secondaryOverrides: Schema.Boolean,
@@ -7033,7 +4859,9 @@ export const listSettingAccountViews: API.PaginatedOperationMethod<
     ListSettingAccountViewsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSettingAccountViewsRequest) => stream.Stream<
+  items: (
+    input: ListSettingAccountViewsRequest,
+  ) => stream.Stream<
     {
       id: string;
       createdTime: string;
@@ -8633,10 +6461,12 @@ export const GetZoneTransferOutgoingStatusRequest =
     }),
   ) as unknown as Schema.Schema<GetZoneTransferOutgoingStatusRequest>;
 
-export type GetZoneTransferOutgoingStatusResponse = unknown;
+export type GetZoneTransferOutgoingStatusResponse = string;
 
 export const GetZoneTransferOutgoingStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetZoneTransferOutgoingStatusResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetZoneTransferOutgoingStatusResponse>;
 
 export type GetZoneTransferOutgoingStatusError = DefaultErrors;
 
@@ -8786,7 +6616,9 @@ export const listZoneTransferPeers: API.PaginatedOperationMethod<
     ListZoneTransferPeersError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListZoneTransferPeersRequest) => stream.Stream<
+  items: (
+    input: ListZoneTransferPeersRequest,
+  ) => stream.Stream<
     {
       id: string;
       name: string;

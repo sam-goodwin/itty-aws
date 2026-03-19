@@ -237,7 +237,9 @@ export const listV1s: API.PaginatedOperationMethod<
     ListV1sError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListV1sRequest) => stream.Stream<
+  items: (
+    input: ListV1sRequest,
+  ) => stream.Stream<
     {
       images?:
         | {
@@ -1080,7 +1082,17 @@ export const ListV2sRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ListV2sResponse {
   /** Continuation token to fetch next page. Passed as a query param when requesting List V2 api endpoint. */
   continuationToken?: string | null;
-  images?: unknown[] | null;
+  images?:
+    | {
+        id?: string | null;
+        creator?: string | null;
+        filename?: string | null;
+        meta?: unknown | null;
+        requireSignedURLs?: boolean | null;
+        uploaded?: string | null;
+        variants?: string[] | null;
+      }[]
+    | null;
 }
 
 export const ListV2sResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1088,7 +1100,24 @@ export const ListV2sResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([Schema.String, Schema.Null]),
   ),
   images: Schema.optional(
-    Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          filename: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          meta: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+          requireSignedURLs: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          uploaded: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          variants: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+        }),
+      ),
+      Schema.Null,
+    ]),
   ),
 })
   .pipe(

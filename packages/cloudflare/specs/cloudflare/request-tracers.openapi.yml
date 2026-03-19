@@ -118,6 +118,37 @@ paths:
                     type: number
                     description: HTTP Status code of zone response
                   trace:
-                    type: object
-                    additionalProperties: true
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        action:
+                          type: string
+                          description: If step type is rule, then action performed by this rule
+                        action_parameters:
+                          description: If step type is rule, then action parameters of this rule as JSON
+                        description:
+                          type: string
+                          description: If step type is rule or ruleset, the description of this entity
+                        expression:
+                          type: string
+                          description: If step type is rule, then expression used to match for this rule
+                        kind:
+                          type: string
+                          description: If step type is ruleset, then kind of this ruleset
+                        matched:
+                          type: boolean
+                          description: Whether tracing step affected tracing request/response
+                        name:
+                          type: string
+                          description: If step type is ruleset, then name of this ruleset
+                        step_name:
+                          type: string
+                          description: Tracing step identifying name
+                        trace:
+                          type: object
+                          additionalProperties: true
+                        type:
+                          type: string
+                          description: Tracing step type
       x-distilled-response-path: result

@@ -25,11 +25,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties: true
   /zones/{zone_id}/snippets/snippet_rules:
     get:
       operationId: listRules

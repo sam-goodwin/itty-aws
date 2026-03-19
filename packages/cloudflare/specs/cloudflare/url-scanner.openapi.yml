@@ -28,6 +28,10 @@ paths:
       responses:
         "200":
           description: Success
+          content:
+            application/json:
+              schema:
+                type: string
   /accounts/{account_id}/urlscanner/v2/result/{scanId}:
     get:
       operationId: getScan
@@ -175,26 +179,114 @@ paths:
                             request:
                               type: object
                               properties:
-                                initialPriority:
+                                documentURL:
                                   type: string
-                                isSameSite:
+                                hasUserGesture:
                                   type: boolean
-                                method:
+                                initiator:
+                                  type: object
+                                  properties:
+                                    host:
+                                      type: string
+                                    type:
+                                      type: string
+                                    url:
+                                      type: string
+                                  required:
+                                    - host
+                                    - type
+                                    - url
+                                redirectHasExtraInfo:
+                                  type: boolean
+                                request:
+                                  type: object
+                                  properties:
+                                    initialPriority:
+                                      type: string
+                                    isSameSite:
+                                      type: boolean
+                                    method:
+                                      type: string
+                                    mixedContentType:
+                                      type: string
+                                    referrerPolicy:
+                                      type: string
+                                    url:
+                                      type: string
+                                    headers: {}
+                                  required:
+                                    - initialPriority
+                                    - isSameSite
+                                    - method
+                                    - mixedContentType
+                                    - referrerPolicy
+                                    - url
+                                requestId:
                                   type: string
-                                mixedContentType:
+                                type:
                                   type: string
-                                referrerPolicy:
+                                wallTime:
+                                  type: number
+                                frameId:
                                   type: string
-                                url:
+                                loaderId:
                                   type: string
-                                headers: {}
+                                primaryRequest:
+                                  type: boolean
+                                redirectResponse:
+                                  type: object
+                                  properties:
+                                    charset:
+                                      type: string
+                                    mimeType:
+                                      type: string
+                                    protocol:
+                                      type: string
+                                    remoteIPAddress:
+                                      type: string
+                                    remotePort:
+                                      type: number
+                                    securityHeaders:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          name:
+                                            type: string
+                                          value:
+                                            type: string
+                                        required:
+                                          - name
+                                          - value
+                                    securityState:
+                                      type: string
+                                    status:
+                                      type: number
+                                    statusText:
+                                      type: string
+                                    url:
+                                      type: string
+                                    headers: {}
+                                  required:
+                                    - charset
+                                    - mimeType
+                                    - protocol
+                                    - remoteIPAddress
+                                    - remotePort
+                                    - securityHeaders
+                                    - securityState
+                                    - status
+                                    - statusText
+                                    - url
                               required:
-                                - initialPriority
-                                - isSameSite
-                                - method
-                                - mixedContentType
-                                - referrerPolicy
-                                - url
+                                - documentURL
+                                - hasUserGesture
+                                - initiator
+                                - redirectHasExtraInfo
+                                - request
+                                - requestId
+                                - type
+                                - wallTime
                             response:
                               type: object
                               properties:
@@ -1767,6 +1859,10 @@ paths:
       responses:
         "200":
           description: Success
+          content:
+            application/json:
+              schema:
+                type: string
   /accounts/{account_id}/urlscanner/v2/har/{scanId}:
     get:
       operationId: harScan
@@ -2005,8 +2101,3 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties: true

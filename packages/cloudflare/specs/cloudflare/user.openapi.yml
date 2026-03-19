@@ -16,7 +16,73 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: A string that uniquely identifies the audit log.
+                  action:
+                    type: object
+                    properties:
+                      result:
+                        type: boolean
+                        description: A boolean that indicates if the action attempted was successful.
+                      type:
+                        type: string
+                        description: A short string that describes the action that was performed.
+                  actor:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The ID of the actor that performed the action. If a user performed
+                          the action, this will be their User ID.
+                      email:
+                        type: string
+                        description: The email of the user that performed the action.
+                      ip:
+                        type: string
+                        description: The IP address of the request that performed the action.
+                      type:
+                        type: string
+                        enum:
+                          - user
+                          - admin
+                          - Cloudflare
+                        description: The type of actor, whether a User, Cloudflare Admin, or an
+                          Automated System.
+                  interface:
+                    type: string
+                    description: The source of the event.
+                  metadata:
+                    description: An object which can lend more context to the action being logged.
+                      This is a flexible value and varies between different
+                      actions.
+                  newValue:
+                    type: string
+                    description: The new value of the resource that was modified.
+                  oldValue:
+                    type: string
+                    description: The value of the resource before it was modified.
+                  owner:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Identifier
+                  resource:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: An identifier for the resource that was affected by the action.
+                      type:
+                        type: string
+                        description: A short string that describes the resource that was affected by the
+                          action.
+                  when:
+                    type: string
+                    description: A UTC RFC3339 timestamp that specifies when the action being logged
+                      occured.
       x-distilled-pagination-class: AuditLogsV4PagePaginationArray
   /user/billing/history:
     get:
@@ -445,7 +511,83 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Subscription identifier tag.
+                  currency:
+                    type: string
+                    description: The monetary unit in which pricing information is displayed.
+                  current_period_end:
+                    type: string
+                    description: The end of the current period and also when the next billing is
+                      due.
+                  current_period_start:
+                    type: string
+                    description: When the current billing period started. May match
+                      initial_period_start if this is the first period.
+                  frequency:
+                    type: string
+                    enum:
+                      - weekly
+                      - monthly
+                      - quarterly
+                      - yearly
+                    description: How often the subscription is renewed automatically.
+                  price:
+                    type: number
+                    description: The price of the subscription that will be billed, in US dollars.
+                  rate_plan:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        enum:
+                          - free
+                          - lite
+                          - pro
+                          - pro_plus
+                          - business
+                          - enterprise
+                          - partners_free
+                          - partners_pro
+                          - partners_business
+                          - partners_enterprise
+                        description: The ID of the rate plan.
+                      currency:
+                        type: string
+                        description: The currency applied to the rate plan subscription.
+                      externally_managed:
+                        type: boolean
+                        description: Whether this rate plan is managed externally from Cloudflare.
+                      is_contract:
+                        type: boolean
+                        description: Whether a rate plan is enterprise-based (or newly adopted term
+                          contract).
+                      public_name:
+                        type: string
+                        description: The full name of the rate plan.
+                      scope:
+                        type: string
+                        description: The scope that this rate plan applies to.
+                      sets:
+                        type: array
+                        items:
+                          type: string
+                        description: The list of sets this rate plan applies to. Returns array of
+                          strings.
+                    description: The rate plan applied to the subscription.
+                  state:
+                    type: string
+                    enum:
+                      - Trial
+                      - Provisioned
+                      - Paid
+                      - AwaitingPayment
+                      - Cancelled
+                      - Failed
+                      - Expired
+                    description: The state that the subscription is in.
       x-distilled-pagination-class: SubscriptionsSinglePage
   /user/subscriptions/{identifier}:
     put:
@@ -476,7 +618,43 @@ paths:
                   description: How often the subscription is renewed automatically.
                 rate_plan:
                   type: object
-                  additionalProperties: true
+                  properties:
+                    id:
+                      type: string
+                      enum:
+                        - free
+                        - lite
+                        - pro
+                        - pro_plus
+                        - business
+                        - enterprise
+                        - partners_free
+                        - partners_pro
+                        - partners_business
+                        - partners_enterprise
+                      description: The ID of the rate plan.
+                    currency:
+                      type: string
+                      description: The currency applied to the rate plan subscription.
+                    externally_managed:
+                      type: boolean
+                      description: Whether this rate plan is managed externally from Cloudflare.
+                    is_contract:
+                      type: boolean
+                      description: Whether a rate plan is enterprise-based (or newly adopted term
+                        contract).
+                    public_name:
+                      type: string
+                      description: The full name of the rate plan.
+                    scope:
+                      type: string
+                      description: The scope that this rate plan applies to.
+                    sets:
+                      type: array
+                      items:
+                        type: string
+                      description: The list of sets this rate plan applies to. Returns array of
+                        strings.
                   description: The rate plan applied to the subscription.
       responses:
         "200":
@@ -529,7 +707,100 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Token identifier tag.
+                  condition:
+                    type: object
+                    properties:
+                      request_ip:
+                        type: object
+                        properties:
+                          in:
+                            type: array
+                            items:
+                              type: string
+                            description: List of IPv4/IPv6 CIDR addresses.
+                          not_in:
+                            type: array
+                            items:
+                              type: string
+                            description: List of IPv4/IPv6 CIDR addresses.
+                        description: Client IP restrictions.
+                  expires_on:
+                    type: string
+                    description: The expiration time on or after which the JWT MUST NOT be accepted
+                      for processing.
+                  issued_on:
+                    type: string
+                    description: The time on which the token was created.
+                  last_used_on:
+                    type: string
+                    description: Last time the token was used.
+                  modified_on:
+                    type: string
+                    description: Last time the token was modified.
+                  name:
+                    type: string
+                    description: Token name.
+                  not_before:
+                    type: string
+                    description: The time before which the token MUST NOT be accepted for
+                      processing.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        effect:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the permission group.
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the permission group.
+                              name:
+                                type: string
+                                description: Name of the permission group.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resources:
+                          type: object
+                          additionalProperties: true
+                          description: A list of resource names that the policy applies to.
+                      required:
+                        - id
+                        - effect
+                        - permission_groups
+                        - resources
+                    description: List of access policies assigned to the token.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - disabled
+                      - expired
+                    description: Status of the token.
       x-distilled-response-path: result
     put:
       operationId: updateToken
@@ -559,7 +830,40 @@ paths:
                   type: array
                   items:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      effect:
+                        type: string
+                        enum:
+                          - allow
+                          - deny
+                        description: Allow or deny operations against the resources.
+                      permission_groups:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Identifier of the permission group.
+                            meta:
+                              type: object
+                              properties:
+                                key:
+                                  type: string
+                                value:
+                                  type: string
+                              description: Attributes associated to the permission group.
+                          required:
+                            - id
+                        description: A set of permission groups that are specified to the policy.
+                      resources:
+                        type: object
+                        additionalProperties: true
+                        description: A list of resource names that the policy applies to.
+                    required:
+                      - effect
+                      - permission_groups
+                      - resources
                   description: List of access policies assigned to the token.
                 condition:
                   type: object
@@ -603,7 +907,100 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Token identifier tag.
+                  condition:
+                    type: object
+                    properties:
+                      request_ip:
+                        type: object
+                        properties:
+                          in:
+                            type: array
+                            items:
+                              type: string
+                            description: List of IPv4/IPv6 CIDR addresses.
+                          not_in:
+                            type: array
+                            items:
+                              type: string
+                            description: List of IPv4/IPv6 CIDR addresses.
+                        description: Client IP restrictions.
+                  expires_on:
+                    type: string
+                    description: The expiration time on or after which the JWT MUST NOT be accepted
+                      for processing.
+                  issued_on:
+                    type: string
+                    description: The time on which the token was created.
+                  last_used_on:
+                    type: string
+                    description: Last time the token was used.
+                  modified_on:
+                    type: string
+                    description: Last time the token was modified.
+                  name:
+                    type: string
+                    description: Token name.
+                  not_before:
+                    type: string
+                    description: The time before which the token MUST NOT be accepted for
+                      processing.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        effect:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the permission group.
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the permission group.
+                              name:
+                                type: string
+                                description: Name of the permission group.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resources:
+                          type: object
+                          additionalProperties: true
+                          description: A list of resource names that the policy applies to.
+                      required:
+                        - id
+                        - effect
+                        - permission_groups
+                        - resources
+                    description: List of access policies assigned to the token.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - disabled
+                      - expired
+                    description: Status of the token.
       x-distilled-response-path: result
     delete:
       operationId: deleteToken
@@ -639,7 +1036,100 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Token identifier tag.
+                  condition:
+                    type: object
+                    properties:
+                      request_ip:
+                        type: object
+                        properties:
+                          in:
+                            type: array
+                            items:
+                              type: string
+                            description: List of IPv4/IPv6 CIDR addresses.
+                          not_in:
+                            type: array
+                            items:
+                              type: string
+                            description: List of IPv4/IPv6 CIDR addresses.
+                        description: Client IP restrictions.
+                  expires_on:
+                    type: string
+                    description: The expiration time on or after which the JWT MUST NOT be accepted
+                      for processing.
+                  issued_on:
+                    type: string
+                    description: The time on which the token was created.
+                  last_used_on:
+                    type: string
+                    description: Last time the token was used.
+                  modified_on:
+                    type: string
+                    description: Last time the token was modified.
+                  name:
+                    type: string
+                    description: Token name.
+                  not_before:
+                    type: string
+                    description: The time before which the token MUST NOT be accepted for
+                      processing.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        effect:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the permission group.
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the permission group.
+                              name:
+                                type: string
+                                description: Name of the permission group.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resources:
+                          type: object
+                          additionalProperties: true
+                          description: A list of resource names that the policy applies to.
+                      required:
+                        - id
+                        - effect
+                        - permission_groups
+                        - resources
+                    description: List of access policies assigned to the token.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - disabled
+                      - expired
+                    description: Status of the token.
       x-distilled-pagination-class: TokensV4PagePaginationArray
     post:
       operationId: createToken
@@ -663,7 +1153,40 @@ paths:
                   type: array
                   items:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      effect:
+                        type: string
+                        enum:
+                          - allow
+                          - deny
+                        description: Allow or deny operations against the resources.
+                      permission_groups:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Identifier of the permission group.
+                            meta:
+                              type: object
+                              properties:
+                                key:
+                                  type: string
+                                value:
+                                  type: string
+                              description: Attributes associated to the permission group.
+                          required:
+                            - id
+                        description: A set of permission groups that are specified to the policy.
+                      resources:
+                        type: object
+                        additionalProperties: true
+                        description: A list of resource names that the policy applies to.
+                    required:
+                      - effect
+                      - permission_groups
+                      - resources
                   description: List of access policies assigned to the token.
                 condition:
                   type: object
@@ -745,7 +1268,47 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        effect:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the permission group.
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the permission group.
+                              name:
+                                type: string
+                                description: Name of the permission group.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resources:
+                          type: object
+                          additionalProperties: true
+                          description: A list of resource names that the policy applies to.
+                      required:
+                        - id
+                        - effect
+                        - permission_groups
+                        - resources
                     description: List of access policies assigned to the token.
                   status:
                     type: string
@@ -839,8 +1402,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                additionalProperties: true
+                type: string
       x-distilled-response-path: result
   /user:
     get:
@@ -890,7 +1452,30 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        id:
+                          type: string
+                          description: Identifier
+                        name:
+                          type: string
+                          description: Organization name.
+                        permissions:
+                          type: array
+                          items:
+                            type: string
+                          description: Access permissions for this User.
+                        roles:
+                          type: array
+                          items:
+                            type: string
+                          description: List of roles that a user has within an organization.
+                        status:
+                          type: string
+                          enum:
+                            - member
+                            - invited
+                          description: Whether the user is a member of the organization or has an
+                            invitation pending.
                   suspended:
                     type: boolean
                     description: Indicates whether user has been suspended
@@ -993,7 +1578,30 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        id:
+                          type: string
+                          description: Identifier
+                        name:
+                          type: string
+                          description: Organization name.
+                        permissions:
+                          type: array
+                          items:
+                            type: string
+                          description: Access permissions for this User.
+                        roles:
+                          type: array
+                          items:
+                            type: string
+                          description: List of roles that a user has within an organization.
+                        status:
+                          type: string
+                          enum:
+                            - member
+                            - invited
+                          description: Whether the user is a member of the organization or has an
+                            invitation pending.
                   suspended:
                     type: boolean
                     description: Indicates whether user has been suspended

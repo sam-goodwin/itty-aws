@@ -360,7 +360,9 @@ export const listConsumers: API.PaginatedOperationMethod<
     ListConsumersError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListConsumersRequest) => stream.Stream<
+  items: (
+    input: ListConsumersRequest,
+  ) => stream.Stream<
     | {
         consumerId?: string | null;
         createdOn?: string | null;
@@ -805,7 +807,14 @@ export const DeleteConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<DeleteConsumerRequest>;
 
 export interface DeleteConsumerResponse {
-  errors?: unknown[] | null;
+  errors?:
+    | {
+        code: number;
+        message: string;
+        documentationUrl?: string | null;
+        source?: { pointer?: string | null } | null;
+      }[]
+    | null;
   messages?: string[] | null;
   /** Indicates if the API call was successful or not. */
   success?: true | null;
@@ -814,7 +823,35 @@ export interface DeleteConsumerResponse {
 export const DeleteConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     errors: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            code: Schema.Number,
+            message: Schema.String,
+            documentationUrl: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            source: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  pointer: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              code: "code",
+              message: "message",
+              documentationUrl: "documentation_url",
+              source: "source",
+            }),
+          ),
+        ),
+        Schema.Null,
+      ]),
     ),
     messages: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -895,7 +932,14 @@ export const BulkPushMessagesRequest =
   ) as unknown as Schema.Schema<BulkPushMessagesRequest>;
 
 export interface BulkPushMessagesResponse {
-  errors?: unknown[] | null;
+  errors?:
+    | {
+        code: number;
+        message: string;
+        documentationUrl?: string | null;
+        source?: { pointer?: string | null } | null;
+      }[]
+    | null;
   messages?: string[] | null;
   /** Indicates if the API call was successful or not. */
   success?: true | null;
@@ -904,7 +948,35 @@ export interface BulkPushMessagesResponse {
 export const BulkPushMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errors: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            code: Schema.Number,
+            message: Schema.String,
+            documentationUrl: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            source: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  pointer: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              code: "code",
+              message: "message",
+              documentationUrl: "documentation_url",
+              source: "source",
+            }),
+          ),
+        ),
+        Schema.Null,
+      ]),
     ),
     messages: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -1052,7 +1124,14 @@ export const PushMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<PushMessageRequest>;
 
 export interface PushMessageResponse {
-  errors?: unknown[] | null;
+  errors?:
+    | {
+        code: number;
+        message: string;
+        documentationUrl?: string | null;
+        source?: { pointer?: string | null } | null;
+      }[]
+    | null;
   messages?: string[] | null;
   /** Indicates if the API call was successful or not. */
   success?: true | null;
@@ -1060,7 +1139,35 @@ export interface PushMessageResponse {
 
 export const PushMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   errors: Schema.optional(
-    Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
+        ),
+      ),
+      Schema.Null,
+    ]),
   ),
   messages: Schema.optional(
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -1178,10 +1285,242 @@ export const StartPurgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<StartPurgeRequest>;
 
-export type StartPurgeResponse = unknown;
+export interface StartPurgeResponse {
+  consumers?:
+    | (
+        | {
+            consumerId?: string | null;
+            createdOn?: string | null;
+            queueId?: string | null;
+            script?: string | null;
+            settings?: {
+              batchSize?: number | null;
+              maxConcurrency?: number | null;
+              maxRetries?: number | null;
+              maxWaitTimeMs?: number | null;
+              retryDelay?: number | null;
+            } | null;
+            type?: "worker" | null;
+          }
+        | {
+            consumerId?: string | null;
+            createdOn?: string | null;
+            queueId?: string | null;
+            settings?: {
+              batchSize?: number | null;
+              maxRetries?: number | null;
+              retryDelay?: number | null;
+              visibilityTimeoutMs?: number | null;
+            } | null;
+            type?: "http_pull" | null;
+          }
+      )[]
+    | null;
+  consumersTotalCount?: number | null;
+  createdOn?: string | null;
+  modifiedOn?: string | null;
+  producers?:
+    | (
+        | { script?: string | null; type?: "worker" | null }
+        | { bucketName?: string | null; type?: "r2_bucket" | null }
+      )[]
+    | null;
+  producersTotalCount?: number | null;
+  queueId?: string | null;
+  queueName?: string | null;
+  settings?: {
+    deliveryDelay?: number | null;
+    deliveryPaused?: boolean | null;
+    messageRetentionPeriod?: number | null;
+  } | null;
+}
 
-export const StartPurgeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<StartPurgeResponse>;
+export const StartPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consumers: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            consumerId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            createdOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            queueId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            settings: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  batchSize: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxConcurrency: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxRetries: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxWaitTimeMs: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  retryDelay: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    batchSize: "batch_size",
+                    maxConcurrency: "max_concurrency",
+                    maxRetries: "max_retries",
+                    maxWaitTimeMs: "max_wait_time_ms",
+                    retryDelay: "retry_delay",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("worker"), Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              consumerId: "consumer_id",
+              createdOn: "created_on",
+              queueId: "queue_id",
+              script: "script",
+              settings: "settings",
+              type: "type",
+            }),
+          ),
+          Schema.Struct({
+            consumerId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            createdOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            queueId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            settings: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  batchSize: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxRetries: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  retryDelay: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  visibilityTimeoutMs: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    batchSize: "batch_size",
+                    maxRetries: "max_retries",
+                    retryDelay: "retry_delay",
+                    visibilityTimeoutMs: "visibility_timeout_ms",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              consumerId: "consumer_id",
+              createdOn: "created_on",
+              queueId: "queue_id",
+              settings: "settings",
+              type: "type",
+            }),
+          ),
+        ]),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  consumersTotalCount: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  producers: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("worker"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            bucketName: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("r2_bucket"), Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ bucketName: "bucket_name", type: "type" }),
+          ),
+        ]),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  producersTotalCount: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+  queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  settings: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        deliveryDelay: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        deliveryPaused: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        messageRetentionPeriod: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          deliveryDelay: "delivery_delay",
+          deliveryPaused: "delivery_paused",
+          messageRetentionPeriod: "message_retention_period",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      consumers: "consumers",
+      consumersTotalCount: "consumers_total_count",
+      createdOn: "created_on",
+      modifiedOn: "modified_on",
+      producers: "producers",
+      producersTotalCount: "producers_total_count",
+      queueId: "queue_id",
+      queueName: "queue_name",
+      settings: "settings",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<StartPurgeResponse>;
 
 export type StartPurgeError = DefaultErrors;
 
@@ -1259,7 +1598,36 @@ export const GetQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetQueueRequest>;
 
 export interface GetQueueResponse {
-  consumers?: unknown[] | null;
+  consumers?:
+    | (
+        | {
+            consumerId?: string | null;
+            createdOn?: string | null;
+            queueId?: string | null;
+            script?: string | null;
+            settings?: {
+              batchSize?: number | null;
+              maxConcurrency?: number | null;
+              maxRetries?: number | null;
+              maxWaitTimeMs?: number | null;
+              retryDelay?: number | null;
+            } | null;
+            type?: "worker" | null;
+          }
+        | {
+            consumerId?: string | null;
+            createdOn?: string | null;
+            queueId?: string | null;
+            settings?: {
+              batchSize?: number | null;
+              maxRetries?: number | null;
+              retryDelay?: number | null;
+              visibilityTimeoutMs?: number | null;
+            } | null;
+            type?: "http_pull" | null;
+          }
+      )[]
+    | null;
   consumersTotalCount?: number | null;
   createdOn?: string | null;
   modifiedOn?: string | null;
@@ -1281,7 +1649,115 @@ export interface GetQueueResponse {
 
 export const GetQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   consumers: Schema.optional(
-    Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+    Schema.Union([
+      Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            consumerId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            createdOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            queueId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            settings: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  batchSize: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxConcurrency: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxRetries: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxWaitTimeMs: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  retryDelay: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    batchSize: "batch_size",
+                    maxConcurrency: "max_concurrency",
+                    maxRetries: "max_retries",
+                    maxWaitTimeMs: "max_wait_time_ms",
+                    retryDelay: "retry_delay",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("worker"), Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              consumerId: "consumer_id",
+              createdOn: "created_on",
+              queueId: "queue_id",
+              script: "script",
+              settings: "settings",
+              type: "type",
+            }),
+          ),
+          Schema.Struct({
+            consumerId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            createdOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            queueId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            settings: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  batchSize: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxRetries: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  retryDelay: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  visibilityTimeoutMs: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    batchSize: "batch_size",
+                    maxRetries: "max_retries",
+                    retryDelay: "retry_delay",
+                    visibilityTimeoutMs: "visibility_timeout_ms",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              consumerId: "consumer_id",
+              createdOn: "created_on",
+              queueId: "queue_id",
+              settings: "settings",
+              type: "type",
+            }),
+          ),
+        ]),
+      ),
+      Schema.Null,
+    ]),
   ),
   consumersTotalCount: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
@@ -1382,7 +1858,36 @@ export const ListQueuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListQueuesResponse {
   result: {
-    consumers?: unknown[] | null;
+    consumers?:
+      | (
+          | {
+              consumerId?: string | null;
+              createdOn?: string | null;
+              queueId?: string | null;
+              script?: string | null;
+              settings?: {
+                batchSize?: number | null;
+                maxConcurrency?: number | null;
+                maxRetries?: number | null;
+                maxWaitTimeMs?: number | null;
+                retryDelay?: number | null;
+              } | null;
+              type?: "worker" | null;
+            }
+          | {
+              consumerId?: string | null;
+              createdOn?: string | null;
+              queueId?: string | null;
+              settings?: {
+                batchSize?: number | null;
+                maxRetries?: number | null;
+                retryDelay?: number | null;
+                visibilityTimeoutMs?: number | null;
+              } | null;
+              type?: "http_pull" | null;
+            }
+        )[]
+      | null;
     consumersTotalCount?: number | null;
     createdOn?: string | null;
     modifiedOn?: string | null;
@@ -1407,7 +1912,117 @@ export const ListQueuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       consumers: Schema.optional(
-        Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+        Schema.Union([
+          Schema.Array(
+            Schema.Union([
+              Schema.Struct({
+                consumerId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                createdOn: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                queueId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                script: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                settings: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      batchSize: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      maxConcurrency: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      maxRetries: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      maxWaitTimeMs: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      retryDelay: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        batchSize: "batch_size",
+                        maxConcurrency: "max_concurrency",
+                        maxRetries: "max_retries",
+                        maxWaitTimeMs: "max_wait_time_ms",
+                        retryDelay: "retry_delay",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                type: Schema.optional(
+                  Schema.Union([Schema.Literal("worker"), Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  consumerId: "consumer_id",
+                  createdOn: "created_on",
+                  queueId: "queue_id",
+                  script: "script",
+                  settings: "settings",
+                  type: "type",
+                }),
+              ),
+              Schema.Struct({
+                consumerId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                createdOn: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                queueId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                settings: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      batchSize: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      maxRetries: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      retryDelay: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                      visibilityTimeoutMs: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        batchSize: "batch_size",
+                        maxRetries: "max_retries",
+                        retryDelay: "retry_delay",
+                        visibilityTimeoutMs: "visibility_timeout_ms",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                type: Schema.optional(
+                  Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  consumerId: "consumer_id",
+                  createdOn: "created_on",
+                  queueId: "queue_id",
+                  settings: "settings",
+                  type: "type",
+                }),
+              ),
+            ]),
+          ),
+          Schema.Null,
+        ]),
       ),
       consumersTotalCount: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -1499,9 +2114,40 @@ export const listQueues: API.PaginatedOperationMethod<
     ListQueuesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListQueuesRequest) => stream.Stream<
+  items: (
+    input: ListQueuesRequest,
+  ) => stream.Stream<
     {
-      consumers?: unknown[] | null;
+      consumers?:
+        | (
+            | {
+                consumerId?: string | null;
+                createdOn?: string | null;
+                queueId?: string | null;
+                script?: string | null;
+                settings?: {
+                  batchSize?: number | null;
+                  maxConcurrency?: number | null;
+                  maxRetries?: number | null;
+                  maxWaitTimeMs?: number | null;
+                  retryDelay?: number | null;
+                } | null;
+                type?: "worker" | null;
+              }
+            | {
+                consumerId?: string | null;
+                createdOn?: string | null;
+                queueId?: string | null;
+                settings?: {
+                  batchSize?: number | null;
+                  maxRetries?: number | null;
+                  retryDelay?: number | null;
+                  visibilityTimeoutMs?: number | null;
+                } | null;
+                type?: "http_pull" | null;
+              }
+          )[]
+        | null;
       consumersTotalCount?: number | null;
       createdOn?: string | null;
       modifiedOn?: string | null;
@@ -1549,7 +2195,36 @@ export const CreateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<CreateQueueRequest>;
 
 export interface CreateQueueResponse {
-  consumers?: unknown[] | null;
+  consumers?:
+    | (
+        | {
+            consumerId?: string | null;
+            createdOn?: string | null;
+            queueId?: string | null;
+            script?: string | null;
+            settings?: {
+              batchSize?: number | null;
+              maxConcurrency?: number | null;
+              maxRetries?: number | null;
+              maxWaitTimeMs?: number | null;
+              retryDelay?: number | null;
+            } | null;
+            type?: "worker" | null;
+          }
+        | {
+            consumerId?: string | null;
+            createdOn?: string | null;
+            queueId?: string | null;
+            settings?: {
+              batchSize?: number | null;
+              maxRetries?: number | null;
+              retryDelay?: number | null;
+              visibilityTimeoutMs?: number | null;
+            } | null;
+            type?: "http_pull" | null;
+          }
+      )[]
+    | null;
   consumersTotalCount?: number | null;
   createdOn?: string | null;
   modifiedOn?: string | null;
@@ -1571,7 +2246,115 @@ export interface CreateQueueResponse {
 
 export const CreateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   consumers: Schema.optional(
-    Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+    Schema.Union([
+      Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            consumerId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            createdOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            queueId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            settings: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  batchSize: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxConcurrency: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxRetries: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxWaitTimeMs: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  retryDelay: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    batchSize: "batch_size",
+                    maxConcurrency: "max_concurrency",
+                    maxRetries: "max_retries",
+                    maxWaitTimeMs: "max_wait_time_ms",
+                    retryDelay: "retry_delay",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("worker"), Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              consumerId: "consumer_id",
+              createdOn: "created_on",
+              queueId: "queue_id",
+              script: "script",
+              settings: "settings",
+              type: "type",
+            }),
+          ),
+          Schema.Struct({
+            consumerId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            createdOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            queueId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            settings: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  batchSize: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxRetries: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  retryDelay: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  visibilityTimeoutMs: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    batchSize: "batch_size",
+                    maxRetries: "max_retries",
+                    retryDelay: "retry_delay",
+                    visibilityTimeoutMs: "visibility_timeout_ms",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              consumerId: "consumer_id",
+              createdOn: "created_on",
+              queueId: "queue_id",
+              settings: "settings",
+              type: "type",
+            }),
+          ),
+        ]),
+      ),
+      Schema.Null,
+    ]),
   ),
   consumersTotalCount: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
@@ -1698,7 +2481,36 @@ export const UpdateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<UpdateQueueRequest>;
 
 export interface UpdateQueueResponse {
-  consumers?: unknown[] | null;
+  consumers?:
+    | (
+        | {
+            consumerId?: string | null;
+            createdOn?: string | null;
+            queueId?: string | null;
+            script?: string | null;
+            settings?: {
+              batchSize?: number | null;
+              maxConcurrency?: number | null;
+              maxRetries?: number | null;
+              maxWaitTimeMs?: number | null;
+              retryDelay?: number | null;
+            } | null;
+            type?: "worker" | null;
+          }
+        | {
+            consumerId?: string | null;
+            createdOn?: string | null;
+            queueId?: string | null;
+            settings?: {
+              batchSize?: number | null;
+              maxRetries?: number | null;
+              retryDelay?: number | null;
+              visibilityTimeoutMs?: number | null;
+            } | null;
+            type?: "http_pull" | null;
+          }
+      )[]
+    | null;
   consumersTotalCount?: number | null;
   createdOn?: string | null;
   modifiedOn?: string | null;
@@ -1720,7 +2532,115 @@ export interface UpdateQueueResponse {
 
 export const UpdateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   consumers: Schema.optional(
-    Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+    Schema.Union([
+      Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            consumerId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            createdOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            queueId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            settings: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  batchSize: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxConcurrency: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxRetries: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxWaitTimeMs: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  retryDelay: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    batchSize: "batch_size",
+                    maxConcurrency: "max_concurrency",
+                    maxRetries: "max_retries",
+                    maxWaitTimeMs: "max_wait_time_ms",
+                    retryDelay: "retry_delay",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("worker"), Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              consumerId: "consumer_id",
+              createdOn: "created_on",
+              queueId: "queue_id",
+              script: "script",
+              settings: "settings",
+              type: "type",
+            }),
+          ),
+          Schema.Struct({
+            consumerId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            createdOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            queueId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            settings: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  batchSize: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxRetries: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  retryDelay: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  visibilityTimeoutMs: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    batchSize: "batch_size",
+                    maxRetries: "max_retries",
+                    retryDelay: "retry_delay",
+                    visibilityTimeoutMs: "visibility_timeout_ms",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              consumerId: "consumer_id",
+              createdOn: "created_on",
+              queueId: "queue_id",
+              settings: "settings",
+              type: "type",
+            }),
+          ),
+        ]),
+      ),
+      Schema.Null,
+    ]),
   ),
   consumersTotalCount: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
@@ -1847,7 +2767,36 @@ export const PatchQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<PatchQueueRequest>;
 
 export interface PatchQueueResponse {
-  consumers?: unknown[] | null;
+  consumers?:
+    | (
+        | {
+            consumerId?: string | null;
+            createdOn?: string | null;
+            queueId?: string | null;
+            script?: string | null;
+            settings?: {
+              batchSize?: number | null;
+              maxConcurrency?: number | null;
+              maxRetries?: number | null;
+              maxWaitTimeMs?: number | null;
+              retryDelay?: number | null;
+            } | null;
+            type?: "worker" | null;
+          }
+        | {
+            consumerId?: string | null;
+            createdOn?: string | null;
+            queueId?: string | null;
+            settings?: {
+              batchSize?: number | null;
+              maxRetries?: number | null;
+              retryDelay?: number | null;
+              visibilityTimeoutMs?: number | null;
+            } | null;
+            type?: "http_pull" | null;
+          }
+      )[]
+    | null;
   consumersTotalCount?: number | null;
   createdOn?: string | null;
   modifiedOn?: string | null;
@@ -1869,7 +2818,115 @@ export interface PatchQueueResponse {
 
 export const PatchQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   consumers: Schema.optional(
-    Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+    Schema.Union([
+      Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            consumerId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            createdOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            queueId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            settings: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  batchSize: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxConcurrency: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxRetries: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxWaitTimeMs: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  retryDelay: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    batchSize: "batch_size",
+                    maxConcurrency: "max_concurrency",
+                    maxRetries: "max_retries",
+                    maxWaitTimeMs: "max_wait_time_ms",
+                    retryDelay: "retry_delay",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("worker"), Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              consumerId: "consumer_id",
+              createdOn: "created_on",
+              queueId: "queue_id",
+              script: "script",
+              settings: "settings",
+              type: "type",
+            }),
+          ),
+          Schema.Struct({
+            consumerId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            createdOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            queueId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            settings: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  batchSize: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  maxRetries: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  retryDelay: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  visibilityTimeoutMs: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    batchSize: "batch_size",
+                    maxRetries: "max_retries",
+                    retryDelay: "retry_delay",
+                    visibilityTimeoutMs: "visibility_timeout_ms",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            type: Schema.optional(
+              Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              consumerId: "consumer_id",
+              createdOn: "created_on",
+              queueId: "queue_id",
+              settings: "settings",
+              type: "type",
+            }),
+          ),
+        ]),
+      ),
+      Schema.Null,
+    ]),
   ),
   consumersTotalCount: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
@@ -1973,7 +3030,14 @@ export const DeleteQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<DeleteQueueRequest>;
 
 export interface DeleteQueueResponse {
-  errors?: unknown[] | null;
+  errors?:
+    | {
+        code: number;
+        message: string;
+        documentationUrl?: string | null;
+        source?: { pointer?: string | null } | null;
+      }[]
+    | null;
   messages?: string[] | null;
   /** Indicates if the API call was successful or not. */
   success?: true | null;
@@ -1981,7 +3045,35 @@ export interface DeleteQueueResponse {
 
 export const DeleteQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   errors: Schema.optional(
-    Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
+        ),
+      ),
+      Schema.Null,
+    ]),
   ),
   messages: Schema.optional(
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -2311,7 +3403,9 @@ export const listSubscriptions: API.PaginatedOperationMethod<
     ListSubscriptionsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSubscriptionsRequest) => stream.Stream<
+  items: (
+    input: ListSubscriptionsRequest,
+  ) => stream.Stream<
     {
       id: string;
       createdAt: string;

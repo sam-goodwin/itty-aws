@@ -55,10 +55,69 @@ export const GetAnalyticReportRequest =
     }),
   ) as unknown as Schema.Schema<GetAnalyticReportRequest>;
 
-export type GetAnalyticReportResponse = unknown;
+export interface GetAnalyticReportResponse {
+  /** Array with one row per combination of dimension values. */
+  data: { dimensions: string[]; metrics: number[] }[];
+  /** Number of seconds between current time and last processed event, in another words how many seconds of data could be missing. */
+  dataLag: number;
+  /** Maximum results for each metric (object mapping metric names to values). Currently always an empty object. */
+  max: unknown;
+  /** Minimum results for each metric (object mapping metric names to values). Currently always an empty object. */
+  min: unknown;
+  query: {
+    dimensions: string[];
+    limit: number;
+    metrics: string[];
+    since: string;
+    until: string;
+    filters?: string | null;
+    sort?: string[] | null;
+  };
+  /** Total number of rows in the result. */
+  rows: number;
+  /** Total results for metrics across all data (object mapping metric names to values). */
+  totals: unknown;
+}
 
 export const GetAnalyticReportResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetAnalyticReportResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    data: Schema.Array(
+      Schema.Struct({
+        dimensions: Schema.Array(Schema.String),
+        metrics: Schema.Array(Schema.Number),
+      }),
+    ),
+    dataLag: Schema.Number,
+    max: Schema.Unknown,
+    min: Schema.Unknown,
+    query: Schema.Struct({
+      dimensions: Schema.Array(Schema.String),
+      limit: Schema.Number,
+      metrics: Schema.Array(Schema.String),
+      since: Schema.String,
+      until: Schema.String,
+      filters: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      sort: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+    rows: Schema.Number,
+    totals: Schema.Unknown,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        data: "data",
+        dataLag: "data_lag",
+        max: "max",
+        min: "min",
+        query: "query",
+        rows: "rows",
+        totals: "totals",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<GetAnalyticReportResponse>;
 
 export type GetAnalyticReportError = DefaultErrors;
 
@@ -141,10 +200,107 @@ export const GetAnalyticReportBytimeRequest =
     }),
   ) as unknown as Schema.Schema<GetAnalyticReportBytimeRequest>;
 
-export type GetAnalyticReportBytimeResponse = unknown;
+export interface GetAnalyticReportBytimeResponse {
+  /** Array with one row per combination of dimension values. */
+  data: { dimensions: string[]; metrics: number[][] }[];
+  /** Number of seconds between current time and last processed event, in another words how many seconds of data could be missing. */
+  dataLag: number;
+  /** Maximum results for each metric (object mapping metric names to values). Currently always an empty object. */
+  max: unknown;
+  /** Minimum results for each metric (object mapping metric names to values). Currently always an empty object. */
+  min: unknown;
+  query: {
+    dimensions: string[];
+    limit: number;
+    metrics: string[];
+    since: string;
+    timeDelta:
+      | "all"
+      | "auto"
+      | "year"
+      | "quarter"
+      | "month"
+      | "week"
+      | "day"
+      | "hour"
+      | "dekaminute"
+      | "minute";
+    until: string;
+    filters?: string | null;
+    sort?: string[] | null;
+  };
+  /** Total number of rows in the result. */
+  rows: number;
+  /** Array of time intervals in the response data. Each interval is represented as an array containing two values: the start time, and the end time. */
+  timeIntervals: string[][];
+  /** Total results for metrics across all data (object mapping metric names to values). */
+  totals: unknown;
+}
 
 export const GetAnalyticReportBytimeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetAnalyticReportBytimeResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    data: Schema.Array(
+      Schema.Struct({
+        dimensions: Schema.Array(Schema.String),
+        metrics: Schema.Array(Schema.Array(Schema.Number)),
+      }),
+    ),
+    dataLag: Schema.Number,
+    max: Schema.Unknown,
+    min: Schema.Unknown,
+    query: Schema.Struct({
+      dimensions: Schema.Array(Schema.String),
+      limit: Schema.Number,
+      metrics: Schema.Array(Schema.String),
+      since: Schema.String,
+      timeDelta: Schema.Literals([
+        "all",
+        "auto",
+        "year",
+        "quarter",
+        "month",
+        "week",
+        "day",
+        "hour",
+        "dekaminute",
+        "minute",
+      ]),
+      until: Schema.String,
+      filters: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      sort: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        dimensions: "dimensions",
+        limit: "limit",
+        metrics: "metrics",
+        since: "since",
+        timeDelta: "time_delta",
+        until: "until",
+        filters: "filters",
+        sort: "sort",
+      }),
+    ),
+    rows: Schema.Number,
+    timeIntervals: Schema.Array(Schema.Array(Schema.String)),
+    totals: Schema.Unknown,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        data: "data",
+        dataLag: "data_lag",
+        max: "max",
+        min: "min",
+        query: "query",
+        rows: "rows",
+        timeIntervals: "time_intervals",
+        totals: "totals",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<GetAnalyticReportBytimeResponse>;
 
 export type GetAnalyticReportBytimeError = DefaultErrors;
 
@@ -398,7 +554,9 @@ export const listDnsFirewalls: API.PaginatedOperationMethod<
     ListDnsFirewallsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListDnsFirewallsRequest) => stream.Stream<
+  items: (
+    input: ListDnsFirewallsRequest,
+  ) => stream.Stream<
     {
       id: string;
       deprecateAnyRequests: boolean;

@@ -352,7 +352,81 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: UUID.
+                  endpoint:
+                    type: string
+                    description: "The endpoint which can contain path parameter templates in curly
+                      braces, each will be replaced from left to right with
+                      {varN}, starting with {var1}, during insertion. This will
+                      further be Cloudflare-normalized upon insertion. See:
+                      https://developers.cloudflare.com/rules/normalization/how\
+                      -it-works/."
+                  host:
+                    type: string
+                    description: RFC3986-compliant host.
+                  last_updated:
+                    type: string
+                  method:
+                    type: string
+                    enum:
+                      - GET
+                      - POST
+                      - HEAD
+                      - OPTIONS
+                      - PUT
+                      - DELETE
+                      - CONNECT
+                      - PATCH
+                      - TRACE
+                    description: The HTTP method used to access the endpoint.
+                  origin:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                        - ML
+                        - SessionIdentifier
+                        - LabelDiscovery
+                    description: API discovery engine(s) that discovered this operation
+                  state:
+                    type: string
+                    enum:
+                      - review
+                      - saved
+                      - ignored
+                    description: State of operation in API Discovery  - `review` - Operation is not
+                      saved into API Shield Endpoint Management - `saved` -
+                      Operation is saved into API Shield Endpoint Management -
+                      `ignored` - Operation is marked as ignored
+                  features:
+                    type: object
+                    properties:
+                      traffic_stats:
+                        type: object
+                        properties:
+                          last_updated:
+                            type: string
+                          period_seconds:
+                            type: number
+                            description: The period in seconds these statistics were computed over
+                          requests:
+                            type: number
+                            description: The average number of requests seen during this period
+                        required:
+                          - last_updated
+                          - period_seconds
+                          - requests
+                required:
+                  - id
+                  - endpoint
+                  - host
+                  - last_updated
+                  - method
+                  - origin
+                  - state
       x-distilled-pagination-class: DiscoveryOperationsV4PagePaginationArray
     patch:
       operationId: bulkPatchDiscoveryOperations
@@ -753,11 +827,43 @@ paths:
                 type: object
                 properties:
                   errors:
-                    type: object
-                    additionalProperties: true
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
                   messages:
-                    type: object
-                    additionalProperties: true
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
                   success:
                     type: boolean
                     enum:
@@ -1302,11 +1408,43 @@ paths:
                 type: object
                 properties:
                   errors:
-                    type: object
-                    additionalProperties: true
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
                   messages:
-                    type: object
-                    additionalProperties: true
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
                   success:
                     type: boolean
                     enum:
@@ -1800,7 +1938,30 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  validation_default_mitigation_action:
+                    type: string
+                    enum:
+                      - none
+                      - log
+                      - block
+                    description: "The default mitigation action used when there is no mitigation
+                      action defined on the operation  Mitigation actions are as
+                      follows:  - `log` - log request when request does not
+                      conform to schema - `block` - deny access to the site when
+                      request does not conform to schema  A special value of of
+                      `none` will skip running schema validation entirely for
+                      the request when there is no mitigation action defined on
+                      the operation"
+                  validation_override_mitigation_action:
+                    type: string
+                    enum:
+                      - none
+                    nullable: true
+                    description: When set, this overrides both zone level and operation level
+                      mitigation actions.  - `none` will skip running schema
+                      validation entirely for the request - `null` indicates
+                      that no override is in place
       x-distilled-errors:
         InvalidObjectIdentifier:
           - code: 7003
@@ -1858,7 +2019,30 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  validation_default_mitigation_action:
+                    type: string
+                    enum:
+                      - none
+                      - log
+                      - block
+                    description: "The default mitigation action used when there is no mitigation
+                      action defined on the operation  Mitigation actions are as
+                      follows:  - `log` - log request when request does not
+                      conform to schema - `block` - deny access to the site when
+                      request does not conform to schema  A special value of of
+                      `none` will skip running schema validation entirely for
+                      the request when there is no mitigation action defined on
+                      the operation"
+                  validation_override_mitigation_action:
+                    type: string
+                    enum:
+                      - none
+                    nullable: true
+                    description: When set, this overrides both zone level and operation level
+                      mitigation actions.  - `none` will skip running schema
+                      validation entirely for the request - `null` indicates
+                      that no override is in place
       x-distilled-errors:
         InvalidObjectIdentifier:
           - code: 7003
@@ -1915,7 +2099,30 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  validation_default_mitigation_action:
+                    type: string
+                    enum:
+                      - none
+                      - log
+                      - block
+                    description: "The default mitigation action used when there is no mitigation
+                      action defined on the operation  Mitigation actions are as
+                      follows:  - `log` - log request when request does not
+                      conform to schema - `block` - deny access to the site when
+                      request does not conform to schema  A special value of of
+                      `none` will skip running schema validation entirely for
+                      the request when there is no mitigation action defined on
+                      the operation"
+                  validation_override_mitigation_action:
+                    type: string
+                    enum:
+                      - none
+                    nullable: true
+                    description: When set, this overrides both zone level and operation level
+                      mitigation actions.  - `none` will skip running schema
+                      validation entirely for the request - `null` indicates
+                      that no override is in place
       x-distilled-errors:
         InvalidObjectIdentifier:
           - code: 7003
@@ -2076,11 +2283,43 @@ paths:
                 type: object
                 properties:
                   errors:
-                    type: object
-                    additionalProperties: true
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
                   messages:
-                    type: object
-                    additionalProperties: true
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        message:
+                          type: string
+                        documentation_url:
+                          type: string
+                        source:
+                          type: object
+                          properties:
+                            pointer:
+                              type: string
+                      required:
+                        - code
+                        - message
                   success:
                     type: boolean
                     enum:

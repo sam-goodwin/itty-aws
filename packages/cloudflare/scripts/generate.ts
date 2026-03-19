@@ -1385,6 +1385,12 @@ function generateOperationSchemaAst(
     }
   }
 
+  if (!resolvedResponseType && op.responseType.kind !== "unknown") {
+    resolvedResponseType = resolveOperationTypeInfo(op, op.responseType);
+    isTypeAlias =
+      resolvedResponseType.kind !== "object" || !resolvedResponseType.properties;
+  }
+
   if (patch?.responseType === "array" && resolvedResponseType) {
     resolvedResponseType = {
       kind: "array",

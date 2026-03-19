@@ -53,10 +53,11 @@ paths:
                     description: This is the time the tls setting was updated.
                   value:
                     oneOf:
-                      - type: string
                       - type: number
-                      - type: object
-                        additionalProperties: true
+                      - type: string
+                      - type: array
+                        items:
+                          type: string
                     description: The tls setting value.
       x-distilled-pagination-class: TLSGetResponsesSinglePage
   /zones/{zone_id}/hostnames/settings/{settingId}/{hostname}:
@@ -96,10 +97,11 @@ paths:
               properties:
                 value:
                   oneOf:
-                    - type: string
                     - type: number
-                    - type: object
-                      additionalProperties: true
+                    - type: string
+                    - type: array
+                      items:
+                        type: string
                   description: "Body param: The tls setting value."
               required:
                 - value
@@ -126,10 +128,11 @@ paths:
                     description: This is the time the tls setting was updated.
                   value:
                     oneOf:
-                      - type: string
                       - type: number
-                      - type: object
-                        additionalProperties: true
+                      - type: string
+                      - type: array
+                        items:
+                          type: string
                     description: The tls setting value.
       x-distilled-response-path: result
     delete:
@@ -182,9 +185,10 @@ paths:
                     description: This is the time the tls setting was updated.
                   value:
                     oneOf:
-                      - type: string
                       - type: number
-                      - type: object
-                        additionalProperties: true
+                      - type: string
+                      - type: array
+                        items:
+                          type: string
                     description: The tls setting value.
       x-distilled-response-path: result

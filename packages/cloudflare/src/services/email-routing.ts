@@ -158,7 +158,9 @@ export const listAddresses: API.PaginatedOperationMethod<
     ListAddressesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListAddressesRequest) => stream.Stream<
+  items: (
+    input: ListAddressesRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       created?: string | null;
@@ -330,8 +332,65 @@ export type GetDnsResponse =
       }[];
       success: true;
       result?: {
-        errors?: { code?: string | null; missing?: unknown | null }[] | null;
-        record?: unknown[] | null;
+        errors?:
+          | {
+              code?: string | null;
+              missing?: {
+                content?: string | null;
+                name?: string | null;
+                priority?: number | null;
+                ttl?: number | "1" | null;
+                type?:
+                  | "A"
+                  | "AAAA"
+                  | "CNAME"
+                  | "HTTPS"
+                  | "TXT"
+                  | "SRV"
+                  | "LOC"
+                  | "MX"
+                  | "NS"
+                  | "CERT"
+                  | "DNSKEY"
+                  | "DS"
+                  | "NAPTR"
+                  | "SMIMEA"
+                  | "SSHFP"
+                  | "SVCB"
+                  | "TLSA"
+                  | "URI"
+                  | null;
+              } | null;
+            }[]
+          | null;
+        record?:
+          | {
+              content?: string | null;
+              name?: string | null;
+              priority?: number | null;
+              ttl?: number | "1" | null;
+              type?:
+                | "A"
+                | "AAAA"
+                | "CNAME"
+                | "HTTPS"
+                | "TXT"
+                | "SRV"
+                | "LOC"
+                | "MX"
+                | "NS"
+                | "CERT"
+                | "DNSKEY"
+                | "DS"
+                | "NAPTR"
+                | "SMIMEA"
+                | "SSHFP"
+                | "SVCB"
+                | "TLSA"
+                | "URI"
+                | null;
+            }[]
+          | null;
       } | null;
       resultInfo?: {
         count?: number | null;
@@ -354,7 +413,34 @@ export type GetDnsResponse =
         source?: { pointer?: string | null } | null;
       }[];
       success: true;
-      result?: unknown[] | null;
+      result?:
+        | {
+            content?: string | null;
+            name?: string | null;
+            priority?: number | null;
+            ttl?: number | "1" | null;
+            type?:
+              | "A"
+              | "AAAA"
+              | "CNAME"
+              | "HTTPS"
+              | "TXT"
+              | "SRV"
+              | "LOC"
+              | "MX"
+              | "NS"
+              | "CERT"
+              | "DNSKEY"
+              | "DS"
+              | "NAPTR"
+              | "SMIMEA"
+              | "SSHFP"
+              | "SVCB"
+              | "TLSA"
+              | "URI"
+              | null;
+          }[]
+        | null;
       resultInfo?: {
         count?: number | null;
         page?: number | null;
@@ -429,7 +515,51 @@ export const GetDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
                     Schema.Union([Schema.String, Schema.Null]),
                   ),
                   missing: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
+                    Schema.Union([
+                      Schema.Struct({
+                        content: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                        name: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                        priority: Schema.optional(
+                          Schema.Union([Schema.Number, Schema.Null]),
+                        ),
+                        ttl: Schema.optional(
+                          Schema.Union([
+                            Schema.Union([Schema.Number, Schema.Literal("1")]),
+                            Schema.Null,
+                          ]),
+                        ),
+                        type: Schema.optional(
+                          Schema.Union([
+                            Schema.Literals([
+                              "A",
+                              "AAAA",
+                              "CNAME",
+                              "HTTPS",
+                              "TXT",
+                              "SRV",
+                              "LOC",
+                              "MX",
+                              "NS",
+                              "CERT",
+                              "DNSKEY",
+                              "DS",
+                              "NAPTR",
+                              "SMIMEA",
+                              "SSHFP",
+                              "SVCB",
+                              "TLSA",
+                              "URI",
+                            ]),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
                   ),
                 }),
               ),
@@ -437,7 +567,53 @@ export const GetDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
             ]),
           ),
           record: Schema.optional(
-            Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  content: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  name: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  priority: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  ttl: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([Schema.Number, Schema.Literal("1")]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  type: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals([
+                        "A",
+                        "AAAA",
+                        "CNAME",
+                        "HTTPS",
+                        "TXT",
+                        "SRV",
+                        "LOC",
+                        "MX",
+                        "NS",
+                        "CERT",
+                        "DNSKEY",
+                        "DS",
+                        "NAPTR",
+                        "SMIMEA",
+                        "SSHFP",
+                        "SVCB",
+                        "TLSA",
+                        "URI",
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                }),
+              ),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Null,
@@ -527,7 +703,51 @@ export const GetDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     ),
     success: Schema.Literal(true),
     result: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            content: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            priority: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            ttl: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Number, Schema.Literal("1")]),
+                Schema.Null,
+              ]),
+            ),
+            type: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "A",
+                  "AAAA",
+                  "CNAME",
+                  "HTTPS",
+                  "TXT",
+                  "SRV",
+                  "LOC",
+                  "MX",
+                  "NS",
+                  "CERT",
+                  "DNSKEY",
+                  "DS",
+                  "NAPTR",
+                  "SMIMEA",
+                  "SSHFP",
+                  "SVCB",
+                  "TLSA",
+                  "URI",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
     resultInfo: Schema.optional(
       Schema.Union([
@@ -587,10 +807,69 @@ export const CreateDnsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "POST", path: "/zones/{zone_id}/email/routing/dns" }),
 ) as unknown as Schema.Schema<CreateDnsRequest>;
 
-export type CreateDnsResponse = unknown;
+export interface CreateDnsResponse {
+  /** Email Routing settings identifier. */
+  id: string;
+  /** State of the zone settings for Email Routing. */
+  enabled: true | false;
+  /** Domain of your zone. */
+  name: string;
+  /** The date and time the settings have been created. */
+  created?: string | null;
+  /** The date and time the settings have been modified. */
+  modified?: string | null;
+  /** Flag to check if the user skipped the configuration wizard. */
+  skipWizard?: true | false | null;
+  /** Show the state of your account, and the type or configuration error. */
+  status?:
+    | "ready"
+    | "unconfigured"
+    | "misconfigured"
+    | "misconfigured/locked"
+    | "unlocked"
+    | null;
+  /** @deprecated Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
+  tag?: string | null;
+}
 
-export const CreateDnsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<CreateDnsResponse>;
+export const CreateDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  enabled: Schema.Literals([true, false]),
+  name: Schema.String,
+  created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  skipWizard: Schema.optional(
+    Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+  ),
+  status: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "ready",
+        "unconfigured",
+        "misconfigured",
+        "misconfigured/locked",
+        "unlocked",
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      enabled: "enabled",
+      name: "name",
+      created: "created",
+      modified: "modified",
+      skipWizard: "skip_wizard",
+      status: "status",
+      tag: "tag",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateDnsResponse>;
 
 export type CreateDnsError = DefaultErrors;
 
@@ -619,10 +898,67 @@ export const PatchDnsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "PATCH", path: "/zones/{zone_id}/email/routing/dns" }),
 ) as unknown as Schema.Schema<PatchDnsRequest>;
 
-export type PatchDnsResponse = unknown;
+export interface PatchDnsResponse {
+  /** Email Routing settings identifier. */
+  id: string;
+  /** State of the zone settings for Email Routing. */
+  enabled: true | false;
+  /** Domain of your zone. */
+  name: string;
+  /** The date and time the settings have been created. */
+  created?: string | null;
+  /** The date and time the settings have been modified. */
+  modified?: string | null;
+  /** Flag to check if the user skipped the configuration wizard. */
+  skipWizard?: true | false | null;
+  /** Show the state of your account, and the type or configuration error. */
+  status?:
+    | "ready"
+    | "unconfigured"
+    | "misconfigured"
+    | "misconfigured/locked"
+    | "unlocked"
+    | null;
+  /** @deprecated Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
+  tag?: string | null;
+}
 
-export const PatchDnsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<PatchDnsResponse>;
+export const PatchDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  enabled: Schema.Literals([true, false]),
+  name: Schema.String,
+  created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  skipWizard: Schema.optional(
+    Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+  ),
+  status: Schema.optional(
+    Schema.Union([
+      Schema.Literals([
+        "ready",
+        "unconfigured",
+        "misconfigured",
+        "misconfigured/locked",
+        "unlocked",
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      enabled: "enabled",
+      name: "name",
+      created: "created",
+      modified: "modified",
+      skipWizard: "skip_wizard",
+      status: "status",
+      tag: "tag",
+    }),
+  )
+  .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<PatchDnsResponse>;
 
 export type PatchDnsError = DefaultErrors;
 
@@ -733,7 +1069,9 @@ export const deleteDns: API.PaginatedOperationMethod<
     DeleteDnsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: DeleteDnsRequest) => stream.Stream<
+  items: (
+    input: DeleteDnsRequest,
+  ) => stream.Stream<
     {
       content?: string | null;
       name?: string | null;
@@ -1260,7 +1598,9 @@ export const listRules: API.PaginatedOperationMethod<
     ListRulesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListRulesRequest) => stream.Stream<
+  items: (
+    input: ListRulesRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       actions?:

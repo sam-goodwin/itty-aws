@@ -473,7 +473,9 @@ export const listHealthchecks: API.PaginatedOperationMethod<
     ListHealthchecksError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListHealthchecksRequest) => stream.Stream<
+  items: (
+    input: ListHealthchecksRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       address?: string | null;
@@ -1685,10 +1687,191 @@ export const GetPreviewRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<GetPreviewRequest>;
 
-export type GetPreviewResponse = unknown;
+export interface GetPreviewResponse {
+  /** Identifier */
+  id?: string | null;
+  /** The hostname or IP address of the origin server to run health checks on. */
+  address?: string | null;
+  /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
+  checkRegions?:
+    | (
+        | "WNAM"
+        | "ENAM"
+        | "WEU"
+        | "EEU"
+        | "NSAM"
+        | "SSAM"
+        | "OC"
+        | "ME"
+        | "NAF"
+        | "SAF"
+        | "IN"
+        | "SEAS"
+        | "NEAS"
+        | "ALL_REGIONS"
+      )[]
+    | null;
+  /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
+  consecutiveFails?: number | null;
+  /** The number of consecutive successes required from a health check before changing the health to healthy. */
+  consecutiveSuccesses?: number | null;
+  createdOn?: string | null;
+  /** A human-readable description of the health check. */
+  description?: string | null;
+  /** The current failure reason if status is unhealthy. */
+  failureReason?: string | null;
+  /** Parameters specific to an HTTP or HTTPS health check. */
+  httpConfig?: {
+    allowInsecure?: boolean | null;
+    expectedBody?: string | null;
+    expectedCodes?: string[] | null;
+    followRedirects?: boolean | null;
+    header?: Record<string, unknown> | null;
+    method?: "GET" | "HEAD" | null;
+    path?: string | null;
+    port?: number | null;
+  } | null;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
+  interval?: number | null;
+  modifiedOn?: string | null;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
+  name?: string | null;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number | null;
+  /** The current status of the origin server according to the health check. */
+  status?: "unknown" | "healthy" | "unhealthy" | "suspended" | null;
+  /** If suspended, no health checks are sent to the origin. */
+  suspended?: boolean | null;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: {
+    method?: "connection_established" | null;
+    port?: number | null;
+  } | null;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number | null;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
+  type?: string | null;
+}
 
-export const GetPreviewResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetPreviewResponse>;
+export const GetPreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  address: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  checkRegions: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Literals([
+          "WNAM",
+          "ENAM",
+          "WEU",
+          "EEU",
+          "NSAM",
+          "SSAM",
+          "OC",
+          "ME",
+          "NAF",
+          "SAF",
+          "IN",
+          "SEAS",
+          "NEAS",
+          "ALL_REGIONS",
+        ]),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  consecutiveFails: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  consecutiveSuccesses: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  failureReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  httpConfig: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        allowInsecure: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        expectedBody: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        expectedCodes: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        followRedirects: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        header: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+        method: Schema.optional(
+          Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.Null]),
+        ),
+        path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          allowInsecure: "allow_insecure",
+          expectedBody: "expected_body",
+          expectedCodes: "expected_codes",
+          followRedirects: "follow_redirects",
+          header: "header",
+          method: "method",
+          path: "path",
+          port: "port",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  interval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  retries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  status: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+      Schema.Null,
+    ]),
+  ),
+  suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  tcpConfig: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        method: Schema.optional(
+          Schema.Union([Schema.Literal("connection_established"), Schema.Null]),
+        ),
+        port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      address: "address",
+      checkRegions: "check_regions",
+      consecutiveFails: "consecutive_fails",
+      consecutiveSuccesses: "consecutive_successes",
+      createdOn: "created_on",
+      description: "description",
+      failureReason: "failure_reason",
+      httpConfig: "http_config",
+      interval: "interval",
+      modifiedOn: "modified_on",
+      name: "name",
+      retries: "retries",
+      status: "status",
+      suspended: "suspended",
+      tcpConfig: "tcp_config",
+      timeout: "timeout",
+      type: "type",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetPreviewResponse>;
 
 export type GetPreviewError = DefaultErrors;
 
@@ -1736,7 +1919,16 @@ export interface CreatePreviewRequest {
   /** Body param: A human-readable description of the health check. */
   description?: string;
   /** Body param: Parameters specific to an HTTP or HTTPS health check. */
-  httpConfig?: unknown | null;
+  httpConfig?: {
+    allowInsecure?: boolean;
+    expectedBody?: string;
+    expectedCodes?: string[] | null;
+    followRedirects?: boolean;
+    header?: Record<string, unknown> | null;
+    method?: "GET" | "HEAD";
+    path?: string;
+    port?: number;
+  } | null;
   /** Body param: The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locati */
   interval?: number;
   /** Body param: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
@@ -1744,7 +1936,7 @@ export interface CreatePreviewRequest {
   /** Body param: If suspended, no health checks are sent to the origin. */
   suspended?: boolean;
   /** Body param: Parameters specific to TCP health check. */
-  tcpConfig?: unknown | null;
+  tcpConfig?: { method?: "connection_established"; port?: number } | null;
   /** Body param: The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
   /** Body param: The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
@@ -1781,11 +1973,46 @@ export const CreatePreviewRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   consecutiveFails: Schema.optional(Schema.Number),
   consecutiveSuccesses: Schema.optional(Schema.Number),
   description: Schema.optional(Schema.String),
-  httpConfig: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+  httpConfig: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        allowInsecure: Schema.optional(Schema.Boolean),
+        expectedBody: Schema.optional(Schema.String),
+        expectedCodes: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        followRedirects: Schema.optional(Schema.Boolean),
+        header: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+        method: Schema.optional(Schema.Literals(["GET", "HEAD"])),
+        path: Schema.optional(Schema.String),
+        port: Schema.optional(Schema.Number),
+      }).pipe(
+        Schema.encodeKeys({
+          allowInsecure: "allow_insecure",
+          expectedBody: "expected_body",
+          expectedCodes: "expected_codes",
+          followRedirects: "follow_redirects",
+          header: "header",
+          method: "method",
+          path: "path",
+          port: "port",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
   interval: Schema.optional(Schema.Number),
   retries: Schema.optional(Schema.Number),
   suspended: Schema.optional(Schema.Boolean),
-  tcpConfig: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+  tcpConfig: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        method: Schema.optional(Schema.Literal("connection_established")),
+        port: Schema.optional(Schema.Number),
+      }),
+      Schema.Null,
+    ]),
+  ),
   timeout: Schema.optional(Schema.Number),
   type: Schema.optional(Schema.String),
 }).pipe(
@@ -1807,10 +2034,191 @@ export const CreatePreviewRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "POST", path: "/zones/{zone_id}/healthchecks/preview" }),
 ) as unknown as Schema.Schema<CreatePreviewRequest>;
 
-export type CreatePreviewResponse = unknown;
+export interface CreatePreviewResponse {
+  /** Identifier */
+  id?: string | null;
+  /** The hostname or IP address of the origin server to run health checks on. */
+  address?: string | null;
+  /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
+  checkRegions?:
+    | (
+        | "WNAM"
+        | "ENAM"
+        | "WEU"
+        | "EEU"
+        | "NSAM"
+        | "SSAM"
+        | "OC"
+        | "ME"
+        | "NAF"
+        | "SAF"
+        | "IN"
+        | "SEAS"
+        | "NEAS"
+        | "ALL_REGIONS"
+      )[]
+    | null;
+  /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
+  consecutiveFails?: number | null;
+  /** The number of consecutive successes required from a health check before changing the health to healthy. */
+  consecutiveSuccesses?: number | null;
+  createdOn?: string | null;
+  /** A human-readable description of the health check. */
+  description?: string | null;
+  /** The current failure reason if status is unhealthy. */
+  failureReason?: string | null;
+  /** Parameters specific to an HTTP or HTTPS health check. */
+  httpConfig?: {
+    allowInsecure?: boolean | null;
+    expectedBody?: string | null;
+    expectedCodes?: string[] | null;
+    followRedirects?: boolean | null;
+    header?: Record<string, unknown> | null;
+    method?: "GET" | "HEAD" | null;
+    path?: string | null;
+    port?: number | null;
+  } | null;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
+  interval?: number | null;
+  modifiedOn?: string | null;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
+  name?: string | null;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number | null;
+  /** The current status of the origin server according to the health check. */
+  status?: "unknown" | "healthy" | "unhealthy" | "suspended" | null;
+  /** If suspended, no health checks are sent to the origin. */
+  suspended?: boolean | null;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: {
+    method?: "connection_established" | null;
+    port?: number | null;
+  } | null;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number | null;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
+  type?: string | null;
+}
 
-export const CreatePreviewResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<CreatePreviewResponse>;
+export const CreatePreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  address: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  checkRegions: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Literals([
+          "WNAM",
+          "ENAM",
+          "WEU",
+          "EEU",
+          "NSAM",
+          "SSAM",
+          "OC",
+          "ME",
+          "NAF",
+          "SAF",
+          "IN",
+          "SEAS",
+          "NEAS",
+          "ALL_REGIONS",
+        ]),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  consecutiveFails: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  consecutiveSuccesses: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  failureReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  httpConfig: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        allowInsecure: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        expectedBody: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        expectedCodes: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        followRedirects: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        header: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+        method: Schema.optional(
+          Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.Null]),
+        ),
+        path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          allowInsecure: "allow_insecure",
+          expectedBody: "expected_body",
+          expectedCodes: "expected_codes",
+          followRedirects: "follow_redirects",
+          header: "header",
+          method: "method",
+          path: "path",
+          port: "port",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  interval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  retries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  status: Schema.optional(
+    Schema.Union([
+      Schema.Literals(["unknown", "healthy", "unhealthy", "suspended"]),
+      Schema.Null,
+    ]),
+  ),
+  suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  tcpConfig: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        method: Schema.optional(
+          Schema.Union([Schema.Literal("connection_established"), Schema.Null]),
+        ),
+        port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      address: "address",
+      checkRegions: "check_regions",
+      consecutiveFails: "consecutive_fails",
+      consecutiveSuccesses: "consecutive_successes",
+      createdOn: "created_on",
+      description: "description",
+      failureReason: "failure_reason",
+      httpConfig: "http_config",
+      interval: "interval",
+      modifiedOn: "modified_on",
+      name: "name",
+      retries: "retries",
+      status: "status",
+      suspended: "suspended",
+      tcpConfig: "tcp_config",
+      timeout: "timeout",
+      type: "type",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreatePreviewResponse>;
 
 export type CreatePreviewError = DefaultErrors;
 

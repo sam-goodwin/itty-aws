@@ -76,7 +76,34 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        label:
+                          type: string
+                        value:
+                          type: string
+                          enum:
+                            - asia-east1
+                            - asia-northeast1
+                            - asia-northeast2
+                            - asia-south1
+                            - asia-southeast1
+                            - australia-southeast1
+                            - europe-north1
+                            - europe-southwest1
+                            - europe-west1
+                            - europe-west2
+                            - europe-west3
+                            - europe-west4
+                            - europe-west8
+                            - europe-west9
+                            - me-west1
+                            - southamerica-east1
+                            - us-central1
+                            - us-east1
+                            - us-east4
+                            - us-south1
+                            - us-west1
+                          description: A test region.
                   regionsPerPlan:
                     type: object
                     properties:
@@ -84,22 +111,130 @@ paths:
                         type: array
                         items:
                           type: object
-                          additionalProperties: true
+                          properties:
+                            label:
+                              type: string
+                            value:
+                              type: string
+                              enum:
+                                - asia-east1
+                                - asia-northeast1
+                                - asia-northeast2
+                                - asia-south1
+                                - asia-southeast1
+                                - australia-southeast1
+                                - europe-north1
+                                - europe-southwest1
+                                - europe-west1
+                                - europe-west2
+                                - europe-west3
+                                - europe-west4
+                                - europe-west8
+                                - europe-west9
+                                - me-west1
+                                - southamerica-east1
+                                - us-central1
+                                - us-east1
+                                - us-east4
+                                - us-south1
+                                - us-west1
+                              description: A test region.
                       enterprise:
                         type: array
                         items:
                           type: object
-                          additionalProperties: true
+                          properties:
+                            label:
+                              type: string
+                            value:
+                              type: string
+                              enum:
+                                - asia-east1
+                                - asia-northeast1
+                                - asia-northeast2
+                                - asia-south1
+                                - asia-southeast1
+                                - australia-southeast1
+                                - europe-north1
+                                - europe-southwest1
+                                - europe-west1
+                                - europe-west2
+                                - europe-west3
+                                - europe-west4
+                                - europe-west8
+                                - europe-west9
+                                - me-west1
+                                - southamerica-east1
+                                - us-central1
+                                - us-east1
+                                - us-east4
+                                - us-south1
+                                - us-west1
+                              description: A test region.
                       free:
                         type: array
                         items:
                           type: object
-                          additionalProperties: true
+                          properties:
+                            label:
+                              type: string
+                            value:
+                              type: string
+                              enum:
+                                - asia-east1
+                                - asia-northeast1
+                                - asia-northeast2
+                                - asia-south1
+                                - asia-southeast1
+                                - australia-southeast1
+                                - europe-north1
+                                - europe-southwest1
+                                - europe-west1
+                                - europe-west2
+                                - europe-west3
+                                - europe-west4
+                                - europe-west8
+                                - europe-west9
+                                - me-west1
+                                - southamerica-east1
+                                - us-central1
+                                - us-east1
+                                - us-east4
+                                - us-south1
+                                - us-west1
+                              description: A test region.
                       pro:
                         type: array
                         items:
                           type: object
-                          additionalProperties: true
+                          properties:
+                            label:
+                              type: string
+                            value:
+                              type: string
+                              enum:
+                                - asia-east1
+                                - asia-northeast1
+                                - asia-northeast2
+                                - asia-south1
+                                - asia-southeast1
+                                - australia-southeast1
+                                - europe-north1
+                                - europe-southwest1
+                                - europe-west1
+                                - europe-west2
+                                - europe-west3
+                                - europe-west4
+                                - europe-west8
+                                - europe-west9
+                                - me-west1
+                                - southamerica-east1
+                                - us-central1
+                                - us-east1
+                                - us-east4
+                                - us-south1
+                                - us-west1
+                              description: A test region.
                     description: Available regions.
       x-distilled-response-path: result
   /zones/{zone_id}/speed_api/pages:
@@ -126,7 +261,34 @@ paths:
                 properties:
                   region:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: string
+                        enum:
+                          - asia-east1
+                          - asia-northeast1
+                          - asia-northeast2
+                          - asia-south1
+                          - asia-southeast1
+                          - australia-southeast1
+                          - europe-north1
+                          - europe-southwest1
+                          - europe-west1
+                          - europe-west2
+                          - europe-west3
+                          - europe-west4
+                          - europe-west8
+                          - europe-west9
+                          - me-west1
+                          - southamerica-east1
+                          - us-central1
+                          - us-east1
+                          - us-east4
+                          - us-south1
+                          - us-west1
+                        description: A test region.
                     description: A test region with a label.
                   scheduleFrequency:
                     type: string
@@ -138,7 +300,176 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        id:
+                          type: string
+                          description: UUID.
+                        date:
+                          type: string
+                        desktopReport:
+                          type: object
+                          properties:
+                            cls:
+                              type: number
+                              description: Cumulative Layout Shift.
+                            deviceType:
+                              type: string
+                              enum:
+                                - DESKTOP
+                                - MOBILE
+                              description: The type of device.
+                            error:
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  enum:
+                                    - NOT_REACHABLE
+                                    - DNS_FAILURE
+                                    - NOT_HTML
+                                    - LIGHTHOUSE_TIMEOUT
+                                    - UNKNOWN
+                                  description: The error code of the Lighthouse result.
+                                detail:
+                                  type: string
+                                  description: Detailed error message.
+                                finalDisplayedUrl:
+                                  type: string
+                                  description: The final URL displayed to the user.
+                            fcp:
+                              type: number
+                              description: First Contentful Paint.
+                            jsonReportUrl:
+                              type: string
+                              description: The URL to the full Lighthouse JSON report.
+                            lcp:
+                              type: number
+                              description: Largest Contentful Paint.
+                            performanceScore:
+                              type: number
+                              description: The Lighthouse performance score.
+                            si:
+                              type: number
+                              description: Speed Index.
+                            state:
+                              type: string
+                              enum:
+                                - RUNNING
+                                - COMPLETE
+                                - FAILED
+                              description: The state of the Lighthouse report.
+                            tbt:
+                              type: number
+                              description: Total Blocking Time.
+                            ttfb:
+                              type: number
+                              description: Time To First Byte.
+                            tti:
+                              type: number
+                              description: Time To Interactive.
+                          description: The Lighthouse report.
+                        mobileReport:
+                          type: object
+                          properties:
+                            cls:
+                              type: number
+                              description: Cumulative Layout Shift.
+                            deviceType:
+                              type: string
+                              enum:
+                                - DESKTOP
+                                - MOBILE
+                              description: The type of device.
+                            error:
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  enum:
+                                    - NOT_REACHABLE
+                                    - DNS_FAILURE
+                                    - NOT_HTML
+                                    - LIGHTHOUSE_TIMEOUT
+                                    - UNKNOWN
+                                  description: The error code of the Lighthouse result.
+                                detail:
+                                  type: string
+                                  description: Detailed error message.
+                                finalDisplayedUrl:
+                                  type: string
+                                  description: The final URL displayed to the user.
+                            fcp:
+                              type: number
+                              description: First Contentful Paint.
+                            jsonReportUrl:
+                              type: string
+                              description: The URL to the full Lighthouse JSON report.
+                            lcp:
+                              type: number
+                              description: Largest Contentful Paint.
+                            performanceScore:
+                              type: number
+                              description: The Lighthouse performance score.
+                            si:
+                              type: number
+                              description: Speed Index.
+                            state:
+                              type: string
+                              enum:
+                                - RUNNING
+                                - COMPLETE
+                                - FAILED
+                              description: The state of the Lighthouse report.
+                            tbt:
+                              type: number
+                              description: Total Blocking Time.
+                            ttfb:
+                              type: number
+                              description: Time To First Byte.
+                            tti:
+                              type: number
+                              description: Time To Interactive.
+                          description: The Lighthouse report.
+                        region:
+                          type: object
+                          properties:
+                            label:
+                              type: string
+                            value:
+                              type: string
+                              enum:
+                                - asia-east1
+                                - asia-northeast1
+                                - asia-northeast2
+                                - asia-south1
+                                - asia-southeast1
+                                - australia-southeast1
+                                - europe-north1
+                                - europe-southwest1
+                                - europe-west1
+                                - europe-west2
+                                - europe-west3
+                                - europe-west4
+                                - europe-west8
+                                - europe-west9
+                                - me-west1
+                                - southamerica-east1
+                                - us-central1
+                                - us-east1
+                                - us-east4
+                                - us-south1
+                                - us-west1
+                              description: A test region.
+                          description: A test region with a label.
+                        scheduleFrequency:
+                          type: string
+                          enum:
+                            - DAILY
+                            - WEEKLY
+                          description: The frequency of the test.
+                        url:
+                          type: string
+                          description: A URL.
                   url:
                     type: string
                     description: A URL.
@@ -233,7 +564,63 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  cls:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: number
+                      nullable: true
+                    description: Cumulative Layout Shift trend.
+                  fcp:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: number
+                      nullable: true
+                    description: First Contentful Paint trend.
+                  lcp:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: number
+                      nullable: true
+                    description: Largest Contentful Paint trend.
+                  performanceScore:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: number
+                      nullable: true
+                    description: The Lighthouse score trend.
+                  si:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: number
+                      nullable: true
+                    description: Speed Index trend.
+                  tbt:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: number
+                      nullable: true
+                    description: Total Blocking Time trend.
+                  ttfb:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: number
+                      nullable: true
+                    description: Time To First Byte trend.
+                  tti:
+                    type: array
+                    items:
+                      oneOf:
+                        - type: number
+                      nullable: true
+                    description: Time To Interactive trend.
       x-distilled-response-path: result
   /zones/{zone_id}/speed_api/pages/{url}/tests/{testId}:
     get:
@@ -273,15 +660,158 @@ paths:
                     type: string
                   desktopReport:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      cls:
+                        type: number
+                        description: Cumulative Layout Shift.
+                      deviceType:
+                        type: string
+                        enum:
+                          - DESKTOP
+                          - MOBILE
+                        description: The type of device.
+                      error:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            enum:
+                              - NOT_REACHABLE
+                              - DNS_FAILURE
+                              - NOT_HTML
+                              - LIGHTHOUSE_TIMEOUT
+                              - UNKNOWN
+                            description: The error code of the Lighthouse result.
+                          detail:
+                            type: string
+                            description: Detailed error message.
+                          finalDisplayedUrl:
+                            type: string
+                            description: The final URL displayed to the user.
+                      fcp:
+                        type: number
+                        description: First Contentful Paint.
+                      jsonReportUrl:
+                        type: string
+                        description: The URL to the full Lighthouse JSON report.
+                      lcp:
+                        type: number
+                        description: Largest Contentful Paint.
+                      performanceScore:
+                        type: number
+                        description: The Lighthouse performance score.
+                      si:
+                        type: number
+                        description: Speed Index.
+                      state:
+                        type: string
+                        enum:
+                          - RUNNING
+                          - COMPLETE
+                          - FAILED
+                        description: The state of the Lighthouse report.
+                      tbt:
+                        type: number
+                        description: Total Blocking Time.
+                      ttfb:
+                        type: number
+                        description: Time To First Byte.
+                      tti:
+                        type: number
+                        description: Time To Interactive.
                     description: The Lighthouse report.
                   mobileReport:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      cls:
+                        type: number
+                        description: Cumulative Layout Shift.
+                      deviceType:
+                        type: string
+                        enum:
+                          - DESKTOP
+                          - MOBILE
+                        description: The type of device.
+                      error:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            enum:
+                              - NOT_REACHABLE
+                              - DNS_FAILURE
+                              - NOT_HTML
+                              - LIGHTHOUSE_TIMEOUT
+                              - UNKNOWN
+                            description: The error code of the Lighthouse result.
+                          detail:
+                            type: string
+                            description: Detailed error message.
+                          finalDisplayedUrl:
+                            type: string
+                            description: The final URL displayed to the user.
+                      fcp:
+                        type: number
+                        description: First Contentful Paint.
+                      jsonReportUrl:
+                        type: string
+                        description: The URL to the full Lighthouse JSON report.
+                      lcp:
+                        type: number
+                        description: Largest Contentful Paint.
+                      performanceScore:
+                        type: number
+                        description: The Lighthouse performance score.
+                      si:
+                        type: number
+                        description: Speed Index.
+                      state:
+                        type: string
+                        enum:
+                          - RUNNING
+                          - COMPLETE
+                          - FAILED
+                        description: The state of the Lighthouse report.
+                      tbt:
+                        type: number
+                        description: Total Blocking Time.
+                      ttfb:
+                        type: number
+                        description: Time To First Byte.
+                      tti:
+                        type: number
+                        description: Time To Interactive.
                     description: The Lighthouse report.
                   region:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: string
+                        enum:
+                          - asia-east1
+                          - asia-northeast1
+                          - asia-northeast2
+                          - asia-south1
+                          - asia-southeast1
+                          - australia-southeast1
+                          - europe-north1
+                          - europe-southwest1
+                          - europe-west1
+                          - europe-west2
+                          - europe-west3
+                          - europe-west4
+                          - europe-west8
+                          - europe-west9
+                          - me-west1
+                          - southamerica-east1
+                          - us-central1
+                          - us-east1
+                          - us-east4
+                          - us-south1
+                          - us-west1
+                        description: A test region.
                     description: A test region with a label.
                   scheduleFrequency:
                     type: string
@@ -355,15 +885,158 @@ paths:
                     type: string
                   desktopReport:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      cls:
+                        type: number
+                        description: Cumulative Layout Shift.
+                      deviceType:
+                        type: string
+                        enum:
+                          - DESKTOP
+                          - MOBILE
+                        description: The type of device.
+                      error:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            enum:
+                              - NOT_REACHABLE
+                              - DNS_FAILURE
+                              - NOT_HTML
+                              - LIGHTHOUSE_TIMEOUT
+                              - UNKNOWN
+                            description: The error code of the Lighthouse result.
+                          detail:
+                            type: string
+                            description: Detailed error message.
+                          finalDisplayedUrl:
+                            type: string
+                            description: The final URL displayed to the user.
+                      fcp:
+                        type: number
+                        description: First Contentful Paint.
+                      jsonReportUrl:
+                        type: string
+                        description: The URL to the full Lighthouse JSON report.
+                      lcp:
+                        type: number
+                        description: Largest Contentful Paint.
+                      performanceScore:
+                        type: number
+                        description: The Lighthouse performance score.
+                      si:
+                        type: number
+                        description: Speed Index.
+                      state:
+                        type: string
+                        enum:
+                          - RUNNING
+                          - COMPLETE
+                          - FAILED
+                        description: The state of the Lighthouse report.
+                      tbt:
+                        type: number
+                        description: Total Blocking Time.
+                      ttfb:
+                        type: number
+                        description: Time To First Byte.
+                      tti:
+                        type: number
+                        description: Time To Interactive.
                     description: The Lighthouse report.
                   mobileReport:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      cls:
+                        type: number
+                        description: Cumulative Layout Shift.
+                      deviceType:
+                        type: string
+                        enum:
+                          - DESKTOP
+                          - MOBILE
+                        description: The type of device.
+                      error:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            enum:
+                              - NOT_REACHABLE
+                              - DNS_FAILURE
+                              - NOT_HTML
+                              - LIGHTHOUSE_TIMEOUT
+                              - UNKNOWN
+                            description: The error code of the Lighthouse result.
+                          detail:
+                            type: string
+                            description: Detailed error message.
+                          finalDisplayedUrl:
+                            type: string
+                            description: The final URL displayed to the user.
+                      fcp:
+                        type: number
+                        description: First Contentful Paint.
+                      jsonReportUrl:
+                        type: string
+                        description: The URL to the full Lighthouse JSON report.
+                      lcp:
+                        type: number
+                        description: Largest Contentful Paint.
+                      performanceScore:
+                        type: number
+                        description: The Lighthouse performance score.
+                      si:
+                        type: number
+                        description: Speed Index.
+                      state:
+                        type: string
+                        enum:
+                          - RUNNING
+                          - COMPLETE
+                          - FAILED
+                        description: The state of the Lighthouse report.
+                      tbt:
+                        type: number
+                        description: Total Blocking Time.
+                      ttfb:
+                        type: number
+                        description: Time To First Byte.
+                      tti:
+                        type: number
+                        description: Time To Interactive.
                     description: The Lighthouse report.
                   region:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: string
+                        enum:
+                          - asia-east1
+                          - asia-northeast1
+                          - asia-northeast2
+                          - asia-south1
+                          - asia-southeast1
+                          - australia-southeast1
+                          - europe-north1
+                          - europe-southwest1
+                          - europe-west1
+                          - europe-west2
+                          - europe-west3
+                          - europe-west4
+                          - europe-west8
+                          - europe-west9
+                          - me-west1
+                          - southamerica-east1
+                          - us-central1
+                          - us-east1
+                          - us-east4
+                          - us-south1
+                          - us-west1
+                        description: A test region.
                     description: A test region with a label.
                   scheduleFrequency:
                     type: string
@@ -440,15 +1113,158 @@ paths:
                     type: string
                   desktopReport:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      cls:
+                        type: number
+                        description: Cumulative Layout Shift.
+                      deviceType:
+                        type: string
+                        enum:
+                          - DESKTOP
+                          - MOBILE
+                        description: The type of device.
+                      error:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            enum:
+                              - NOT_REACHABLE
+                              - DNS_FAILURE
+                              - NOT_HTML
+                              - LIGHTHOUSE_TIMEOUT
+                              - UNKNOWN
+                            description: The error code of the Lighthouse result.
+                          detail:
+                            type: string
+                            description: Detailed error message.
+                          finalDisplayedUrl:
+                            type: string
+                            description: The final URL displayed to the user.
+                      fcp:
+                        type: number
+                        description: First Contentful Paint.
+                      jsonReportUrl:
+                        type: string
+                        description: The URL to the full Lighthouse JSON report.
+                      lcp:
+                        type: number
+                        description: Largest Contentful Paint.
+                      performanceScore:
+                        type: number
+                        description: The Lighthouse performance score.
+                      si:
+                        type: number
+                        description: Speed Index.
+                      state:
+                        type: string
+                        enum:
+                          - RUNNING
+                          - COMPLETE
+                          - FAILED
+                        description: The state of the Lighthouse report.
+                      tbt:
+                        type: number
+                        description: Total Blocking Time.
+                      ttfb:
+                        type: number
+                        description: Time To First Byte.
+                      tti:
+                        type: number
+                        description: Time To Interactive.
                     description: The Lighthouse report.
                   mobileReport:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      cls:
+                        type: number
+                        description: Cumulative Layout Shift.
+                      deviceType:
+                        type: string
+                        enum:
+                          - DESKTOP
+                          - MOBILE
+                        description: The type of device.
+                      error:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            enum:
+                              - NOT_REACHABLE
+                              - DNS_FAILURE
+                              - NOT_HTML
+                              - LIGHTHOUSE_TIMEOUT
+                              - UNKNOWN
+                            description: The error code of the Lighthouse result.
+                          detail:
+                            type: string
+                            description: Detailed error message.
+                          finalDisplayedUrl:
+                            type: string
+                            description: The final URL displayed to the user.
+                      fcp:
+                        type: number
+                        description: First Contentful Paint.
+                      jsonReportUrl:
+                        type: string
+                        description: The URL to the full Lighthouse JSON report.
+                      lcp:
+                        type: number
+                        description: Largest Contentful Paint.
+                      performanceScore:
+                        type: number
+                        description: The Lighthouse performance score.
+                      si:
+                        type: number
+                        description: Speed Index.
+                      state:
+                        type: string
+                        enum:
+                          - RUNNING
+                          - COMPLETE
+                          - FAILED
+                        description: The state of the Lighthouse report.
+                      tbt:
+                        type: number
+                        description: Total Blocking Time.
+                      ttfb:
+                        type: number
+                        description: Time To First Byte.
+                      tti:
+                        type: number
+                        description: Time To Interactive.
                     description: The Lighthouse report.
                   region:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      label:
+                        type: string
+                      value:
+                        type: string
+                        enum:
+                          - asia-east1
+                          - asia-northeast1
+                          - asia-northeast2
+                          - asia-south1
+                          - asia-southeast1
+                          - australia-southeast1
+                          - europe-north1
+                          - europe-southwest1
+                          - europe-west1
+                          - europe-west2
+                          - europe-west3
+                          - europe-west4
+                          - europe-west8
+                          - europe-west9
+                          - me-west1
+                          - southamerica-east1
+                          - us-central1
+                          - us-east1
+                          - us-east4
+                          - us-south1
+                          - us-west1
+                        description: A test region.
                     description: A test region with a label.
                   scheduleFrequency:
                     type: string
@@ -701,7 +1517,176 @@ paths:
                     description: The test schedule.
                   test:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      id:
+                        type: string
+                        description: UUID.
+                      date:
+                        type: string
+                      desktopReport:
+                        type: object
+                        properties:
+                          cls:
+                            type: number
+                            description: Cumulative Layout Shift.
+                          deviceType:
+                            type: string
+                            enum:
+                              - DESKTOP
+                              - MOBILE
+                            description: The type of device.
+                          error:
+                            type: object
+                            properties:
+                              code:
+                                type: string
+                                enum:
+                                  - NOT_REACHABLE
+                                  - DNS_FAILURE
+                                  - NOT_HTML
+                                  - LIGHTHOUSE_TIMEOUT
+                                  - UNKNOWN
+                                description: The error code of the Lighthouse result.
+                              detail:
+                                type: string
+                                description: Detailed error message.
+                              finalDisplayedUrl:
+                                type: string
+                                description: The final URL displayed to the user.
+                          fcp:
+                            type: number
+                            description: First Contentful Paint.
+                          jsonReportUrl:
+                            type: string
+                            description: The URL to the full Lighthouse JSON report.
+                          lcp:
+                            type: number
+                            description: Largest Contentful Paint.
+                          performanceScore:
+                            type: number
+                            description: The Lighthouse performance score.
+                          si:
+                            type: number
+                            description: Speed Index.
+                          state:
+                            type: string
+                            enum:
+                              - RUNNING
+                              - COMPLETE
+                              - FAILED
+                            description: The state of the Lighthouse report.
+                          tbt:
+                            type: number
+                            description: Total Blocking Time.
+                          ttfb:
+                            type: number
+                            description: Time To First Byte.
+                          tti:
+                            type: number
+                            description: Time To Interactive.
+                        description: The Lighthouse report.
+                      mobileReport:
+                        type: object
+                        properties:
+                          cls:
+                            type: number
+                            description: Cumulative Layout Shift.
+                          deviceType:
+                            type: string
+                            enum:
+                              - DESKTOP
+                              - MOBILE
+                            description: The type of device.
+                          error:
+                            type: object
+                            properties:
+                              code:
+                                type: string
+                                enum:
+                                  - NOT_REACHABLE
+                                  - DNS_FAILURE
+                                  - NOT_HTML
+                                  - LIGHTHOUSE_TIMEOUT
+                                  - UNKNOWN
+                                description: The error code of the Lighthouse result.
+                              detail:
+                                type: string
+                                description: Detailed error message.
+                              finalDisplayedUrl:
+                                type: string
+                                description: The final URL displayed to the user.
+                          fcp:
+                            type: number
+                            description: First Contentful Paint.
+                          jsonReportUrl:
+                            type: string
+                            description: The URL to the full Lighthouse JSON report.
+                          lcp:
+                            type: number
+                            description: Largest Contentful Paint.
+                          performanceScore:
+                            type: number
+                            description: The Lighthouse performance score.
+                          si:
+                            type: number
+                            description: Speed Index.
+                          state:
+                            type: string
+                            enum:
+                              - RUNNING
+                              - COMPLETE
+                              - FAILED
+                            description: The state of the Lighthouse report.
+                          tbt:
+                            type: number
+                            description: Total Blocking Time.
+                          ttfb:
+                            type: number
+                            description: Time To First Byte.
+                          tti:
+                            type: number
+                            description: Time To Interactive.
+                        description: The Lighthouse report.
+                      region:
+                        type: object
+                        properties:
+                          label:
+                            type: string
+                          value:
+                            type: string
+                            enum:
+                              - asia-east1
+                              - asia-northeast1
+                              - asia-northeast2
+                              - asia-south1
+                              - asia-southeast1
+                              - australia-southeast1
+                              - europe-north1
+                              - europe-southwest1
+                              - europe-west1
+                              - europe-west2
+                              - europe-west3
+                              - europe-west4
+                              - europe-west8
+                              - europe-west9
+                              - me-west1
+                              - southamerica-east1
+                              - us-central1
+                              - us-east1
+                              - us-east4
+                              - us-south1
+                              - us-west1
+                            description: A test region.
+                        description: A test region with a label.
+                      scheduleFrequency:
+                        type: string
+                        enum:
+                          - DAILY
+                          - WEEKLY
+                        description: The frequency of the test.
+                      url:
+                        type: string
+                        description: A URL.
       x-distilled-response-path: result
     delete:
       operationId: deleteSchedule

@@ -58,7 +58,18 @@ export interface GetCustomCertificateResponse {
   zoneId: string;
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency whil */
   geoRestrictions?: { label?: "us" | "eu" | "highest_security" | null } | null;
-  keylessServer?: unknown | null;
+  keylessServer?: {
+    id: string;
+    createdOn: string;
+    enabled: boolean;
+    host: string;
+    modifiedOn: string;
+    name: string;
+    permissions: string[];
+    port: number;
+    status: "active" | "deleted";
+    tunnel?: { privateIp: string; vnetId: string } | null;
+  } | null;
   /** Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency whil */
   policy?: string | null;
 }
@@ -95,7 +106,49 @@ export const GetCustomCertificateResponse =
         Schema.Null,
       ]),
     ),
-    keylessServer: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    keylessServer: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          id: Schema.String,
+          createdOn: Schema.String,
+          enabled: Schema.Boolean,
+          host: Schema.String,
+          modifiedOn: Schema.String,
+          name: Schema.String,
+          permissions: Schema.Array(Schema.String),
+          port: Schema.Number,
+          status: Schema.Literals(["active", "deleted"]),
+          tunnel: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                privateIp: Schema.String,
+                vnetId: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  privateIp: "private_ip",
+                  vnetId: "vnet_id",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdOn: "created_on",
+            enabled: "enabled",
+            host: "host",
+            modifiedOn: "modified_on",
+            name: "name",
+            permissions: "permissions",
+            port: "port",
+            status: "status",
+            tunnel: "tunnel",
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
     policy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -177,7 +230,18 @@ export interface ListCustomCertificatesResponse {
     geoRestrictions?: {
       label?: "us" | "eu" | "highest_security" | null;
     } | null;
-    keylessServer?: unknown | null;
+    keylessServer?: {
+      id: string;
+      createdOn: string;
+      enabled: boolean;
+      host: string;
+      modifiedOn: string;
+      name: string;
+      permissions: string[];
+      port: number;
+      status: "active" | "deleted";
+      tunnel?: { privateIp: string; vnetId: string } | null;
+    } | null;
     policy?: string | null;
   }[];
   resultInfo: {
@@ -223,7 +287,47 @@ export const ListCustomCertificatesResponse =
           ]),
         ),
         keylessServer: Schema.optional(
-          Schema.Union([Schema.Unknown, Schema.Null]),
+          Schema.Union([
+            Schema.Struct({
+              id: Schema.String,
+              createdOn: Schema.String,
+              enabled: Schema.Boolean,
+              host: Schema.String,
+              modifiedOn: Schema.String,
+              name: Schema.String,
+              permissions: Schema.Array(Schema.String),
+              port: Schema.Number,
+              status: Schema.Literals(["active", "deleted"]),
+              tunnel: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    privateIp: Schema.String,
+                    vnetId: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      privateIp: "private_ip",
+                      vnetId: "vnet_id",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                id: "id",
+                createdOn: "created_on",
+                enabled: "enabled",
+                host: "host",
+                modifiedOn: "modified_on",
+                name: "name",
+                permissions: "permissions",
+                port: "port",
+                status: "status",
+                tunnel: "tunnel",
+              }),
+            ),
+            Schema.Null,
+          ]),
         ),
         policy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }).pipe(
@@ -277,7 +381,9 @@ export const listCustomCertificates: API.PaginatedOperationMethod<
     ListCustomCertificatesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListCustomCertificatesRequest) => stream.Stream<
+  items: (
+    input: ListCustomCertificatesRequest,
+  ) => stream.Stream<
     {
       id: string;
       bundleMethod: "ubiquitous" | "optimal" | "force";
@@ -293,7 +399,18 @@ export const listCustomCertificates: API.PaginatedOperationMethod<
       geoRestrictions?: {
         label?: "us" | "eu" | "highest_security" | null;
       } | null;
-      keylessServer?: unknown | null;
+      keylessServer?: {
+        id: string;
+        createdOn: string;
+        enabled: boolean;
+        host: string;
+        modifiedOn: string;
+        name: string;
+        permissions: string[];
+        port: number;
+        status: "active" | "deleted";
+        tunnel?: { privateIp: string; vnetId: string } | null;
+      } | null;
       policy?: string | null;
     },
     ListCustomCertificatesError,
@@ -382,7 +499,18 @@ export interface CreateCustomCertificateResponse {
   zoneId: string;
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency whil */
   geoRestrictions?: { label?: "us" | "eu" | "highest_security" | null } | null;
-  keylessServer?: unknown | null;
+  keylessServer?: {
+    id: string;
+    createdOn: string;
+    enabled: boolean;
+    host: string;
+    modifiedOn: string;
+    name: string;
+    permissions: string[];
+    port: number;
+    status: "active" | "deleted";
+    tunnel?: { privateIp: string; vnetId: string } | null;
+  } | null;
   /** Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency whil */
   policy?: string | null;
 }
@@ -419,7 +547,49 @@ export const CreateCustomCertificateResponse =
         Schema.Null,
       ]),
     ),
-    keylessServer: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    keylessServer: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          id: Schema.String,
+          createdOn: Schema.String,
+          enabled: Schema.Boolean,
+          host: Schema.String,
+          modifiedOn: Schema.String,
+          name: Schema.String,
+          permissions: Schema.Array(Schema.String),
+          port: Schema.Number,
+          status: Schema.Literals(["active", "deleted"]),
+          tunnel: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                privateIp: Schema.String,
+                vnetId: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  privateIp: "private_ip",
+                  vnetId: "vnet_id",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdOn: "created_on",
+            enabled: "enabled",
+            host: "host",
+            modifiedOn: "modified_on",
+            name: "name",
+            permissions: "permissions",
+            port: "port",
+            status: "status",
+            tunnel: "tunnel",
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
     policy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -528,7 +698,18 @@ export interface PatchCustomCertificateResponse {
   zoneId: string;
   /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency whil */
   geoRestrictions?: { label?: "us" | "eu" | "highest_security" | null } | null;
-  keylessServer?: unknown | null;
+  keylessServer?: {
+    id: string;
+    createdOn: string;
+    enabled: boolean;
+    host: string;
+    modifiedOn: string;
+    name: string;
+    permissions: string[];
+    port: number;
+    status: "active" | "deleted";
+    tunnel?: { privateIp: string; vnetId: string } | null;
+  } | null;
   /** Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency whil */
   policy?: string | null;
 }
@@ -565,7 +746,49 @@ export const PatchCustomCertificateResponse =
         Schema.Null,
       ]),
     ),
-    keylessServer: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    keylessServer: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          id: Schema.String,
+          createdOn: Schema.String,
+          enabled: Schema.Boolean,
+          host: Schema.String,
+          modifiedOn: Schema.String,
+          name: Schema.String,
+          permissions: Schema.Array(Schema.String),
+          port: Schema.Number,
+          status: Schema.Literals(["active", "deleted"]),
+          tunnel: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                privateIp: Schema.String,
+                vnetId: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  privateIp: "private_ip",
+                  vnetId: "vnet_id",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdOn: "created_on",
+            enabled: "enabled",
+            host: "host",
+            modifiedOn: "modified_on",
+            name: "name",
+            permissions: "permissions",
+            port: "port",
+            status: "status",
+            tunnel: "tunnel",
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
     policy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
     .pipe(
@@ -671,20 +894,192 @@ export const PutPrioritizeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<PutPrioritizeRequest>;
 
-export type PutPrioritizeResponse = unknown;
+export interface PutPrioritizeResponse {
+  result: {
+    id: string;
+    bundleMethod: "ubiquitous" | "optimal" | "force";
+    expiresOn: string;
+    hosts: string[];
+    issuer: string;
+    modifiedOn: string;
+    priority: number;
+    signature: string;
+    status: "active" | "expired" | "deleted" | "pending" | "initializing";
+    uploadedOn: string;
+    zoneId: string;
+    geoRestrictions?: {
+      label?: "us" | "eu" | "highest_security" | null;
+    } | null;
+    keylessServer?: {
+      id: string;
+      createdOn: string;
+      enabled: boolean;
+      host: string;
+      modifiedOn: string;
+      name: string;
+      permissions: string[];
+      port: number;
+      status: "active" | "deleted";
+      tunnel?: { privateIp: string; vnetId: string } | null;
+    } | null;
+    policy?: string | null;
+  }[];
+}
 
-export const PutPrioritizeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<PutPrioritizeResponse>;
+export const PutPrioritizeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      bundleMethod: Schema.Literals(["ubiquitous", "optimal", "force"]),
+      expiresOn: Schema.String,
+      hosts: Schema.Array(Schema.String),
+      issuer: Schema.String,
+      modifiedOn: Schema.String,
+      priority: Schema.Number,
+      signature: Schema.String,
+      status: Schema.Literals([
+        "active",
+        "expired",
+        "deleted",
+        "pending",
+        "initializing",
+      ]),
+      uploadedOn: Schema.String,
+      zoneId: Schema.String,
+      geoRestrictions: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            label: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["us", "eu", "highest_security"]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      keylessServer: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            id: Schema.String,
+            createdOn: Schema.String,
+            enabled: Schema.Boolean,
+            host: Schema.String,
+            modifiedOn: Schema.String,
+            name: Schema.String,
+            permissions: Schema.Array(Schema.String),
+            port: Schema.Number,
+            status: Schema.Literals(["active", "deleted"]),
+            tunnel: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  privateIp: Schema.String,
+                  vnetId: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    privateIp: "private_ip",
+                    vnetId: "vnet_id",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              createdOn: "created_on",
+              enabled: "enabled",
+              host: "host",
+              modifiedOn: "modified_on",
+              name: "name",
+              permissions: "permissions",
+              port: "port",
+              status: "status",
+              tunnel: "tunnel",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      policy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        bundleMethod: "bundle_method",
+        expiresOn: "expires_on",
+        hosts: "hosts",
+        issuer: "issuer",
+        modifiedOn: "modified_on",
+        priority: "priority",
+        signature: "signature",
+        status: "status",
+        uploadedOn: "uploaded_on",
+        zoneId: "zone_id",
+        geoRestrictions: "geo_restrictions",
+        keylessServer: "keyless_server",
+        policy: "policy",
+      }),
+    ),
+  ),
+}) as unknown as Schema.Schema<PutPrioritizeResponse>;
 
 export type PutPrioritizeError = DefaultErrors;
 
-export const putPrioritize: API.OperationMethod<
+export const putPrioritize: API.PaginatedOperationMethod<
   PutPrioritizeRequest,
   PutPrioritizeResponse,
   PutPrioritizeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> & {
+  pages: (
+    input: PutPrioritizeRequest,
+  ) => stream.Stream<
+    PutPrioritizeResponse,
+    PutPrioritizeError,
+    Credentials | HttpClient.HttpClient
+  >;
+  items: (
+    input: PutPrioritizeRequest,
+  ) => stream.Stream<
+    {
+      id: string;
+      bundleMethod: "ubiquitous" | "optimal" | "force";
+      expiresOn: string;
+      hosts: string[];
+      issuer: string;
+      modifiedOn: string;
+      priority: number;
+      signature: string;
+      status: "active" | "expired" | "deleted" | "pending" | "initializing";
+      uploadedOn: string;
+      zoneId: string;
+      geoRestrictions?: {
+        label?: "us" | "eu" | "highest_security" | null;
+      } | null;
+      keylessServer?: {
+        id: string;
+        createdOn: string;
+        enabled: boolean;
+        host: string;
+        modifiedOn: string;
+        name: string;
+        permissions: string[];
+        port: number;
+        status: "active" | "deleted";
+        tunnel?: { privateIp: string; vnetId: string } | null;
+      } | null;
+      policy?: string | null;
+    },
+    PutPrioritizeError,
+    Credentials | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: PutPrioritizeRequest,
   output: PutPrioritizeResponse,
   errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
 }));

@@ -4586,11 +4586,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties: true
   /accounts/{account_id}/magic/cloud/onramps/{onrampId}/plan:
     post:
       operationId: planOnRamp
@@ -6816,11 +6811,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties: true
   /accounts/{account_id}/magic/cloud/providers/{providerId}/initial_setup:
     get:
       operationId: initialSetupCloudIntegration

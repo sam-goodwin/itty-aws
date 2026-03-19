@@ -67,7 +67,11 @@ export interface GetConfigResponse {
   /** Consent management configuration. */
   consent?: {
     enabled: boolean;
-    buttonTextTranslations?: unknown | null;
+    buttonTextTranslations?: {
+      acceptAll: Record<string, unknown>;
+      confirmMyChoices: Record<string, unknown>;
+      rejectAll: Record<string, unknown>;
+    } | null;
     companyEmail?: string | null;
     companyName?: string | null;
     companyStreetAddress?: string | null;
@@ -140,7 +144,20 @@ export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         enabled: Schema.Boolean,
         buttonTextTranslations: Schema.optional(
-          Schema.Union([Schema.Unknown, Schema.Null]),
+          Schema.Union([
+            Schema.Struct({
+              acceptAll: Schema.Struct({}),
+              confirmMyChoices: Schema.Struct({}),
+              rejectAll: Schema.Struct({}),
+            }).pipe(
+              Schema.encodeKeys({
+                acceptAll: "accept_all",
+                confirmMyChoices: "confirm_my_choices",
+                rejectAll: "reject_all",
+              }),
+            ),
+            Schema.Null,
+          ]),
         ),
         companyEmail: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
@@ -238,7 +255,11 @@ export interface PutConfigRequest {
   /** Body param: Consent management configuration. */
   consent?: {
     enabled: boolean;
-    buttonTextTranslations?: unknown;
+    buttonTextTranslations?: {
+      acceptAll: Record<string, unknown>;
+      confirmMyChoices: Record<string, unknown>;
+      rejectAll: Record<string, unknown>;
+    };
     companyEmail?: string;
     companyName?: string;
     companyStreetAddress?: string;
@@ -296,7 +317,19 @@ export const PutConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   consent: Schema.optional(
     Schema.Struct({
       enabled: Schema.Boolean,
-      buttonTextTranslations: Schema.optional(Schema.Unknown),
+      buttonTextTranslations: Schema.optional(
+        Schema.Struct({
+          acceptAll: Schema.Struct({}),
+          confirmMyChoices: Schema.Struct({}),
+          rejectAll: Schema.Struct({}),
+        }).pipe(
+          Schema.encodeKeys({
+            acceptAll: "accept_all",
+            confirmMyChoices: "confirm_my_choices",
+            rejectAll: "reject_all",
+          }),
+        ),
+      ),
       companyEmail: Schema.optional(Schema.String),
       companyName: Schema.optional(Schema.String),
       companyStreetAddress: Schema.optional(Schema.String),
@@ -356,7 +389,11 @@ export interface PutConfigResponse {
   /** Consent management configuration. */
   consent?: {
     enabled: boolean;
-    buttonTextTranslations?: unknown | null;
+    buttonTextTranslations?: {
+      acceptAll: Record<string, unknown>;
+      confirmMyChoices: Record<string, unknown>;
+      rejectAll: Record<string, unknown>;
+    } | null;
     companyEmail?: string | null;
     companyName?: string | null;
     companyStreetAddress?: string | null;
@@ -429,7 +466,20 @@ export const PutConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         enabled: Schema.Boolean,
         buttonTextTranslations: Schema.optional(
-          Schema.Union([Schema.Unknown, Schema.Null]),
+          Schema.Union([
+            Schema.Struct({
+              acceptAll: Schema.Struct({}),
+              confirmMyChoices: Schema.Struct({}),
+              rejectAll: Schema.Struct({}),
+            }).pipe(
+              Schema.encodeKeys({
+                acceptAll: "accept_all",
+                confirmMyChoices: "confirm_my_choices",
+                rejectAll: "reject_all",
+              }),
+            ),
+            Schema.Null,
+          ]),
         ),
         companyEmail: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
@@ -501,10 +551,178 @@ export const GetDefaultRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "GET", path: "/zones/{zone_id}/settings/zaraz/default" }),
 ) as unknown as Schema.Schema<GetDefaultRequest>;
 
-export type GetDefaultResponse = unknown;
+export interface GetDefaultResponse {
+  /** Data layer compatibility mode enabled. */
+  dataLayer: boolean;
+  /** The key for Zaraz debug mode. */
+  debugKey: string;
+  /** General Zaraz settings. */
+  settings: {
+    autoInjectScript: boolean;
+    contextEnricher?: { escapedWorkerName: string; workerTag: string } | null;
+    cookieDomain?: string | null;
+    ecommerce?: boolean | null;
+    eventsApiPath?: string | null;
+    hideExternalReferer?: boolean | null;
+    hideIPAddress?: boolean | null;
+    hideQueryParams?: boolean | null;
+    hideUserAgent?: boolean | null;
+    initPath?: string | null;
+    injectIframes?: boolean | null;
+    mcRootPath?: string | null;
+    scriptPath?: string | null;
+    trackPath?: string | null;
+  };
+  /** Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object. */
+  tools: Record<string, unknown>;
+  /** Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration. */
+  triggers: Record<string, unknown>;
+  /** Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included. */
+  variables: Record<string, unknown>;
+  /** Zaraz internal version of the config. */
+  zarazVersion: number;
+  /** Cloudflare Monitoring settings. */
+  analytics?: {
+    defaultPurpose?: string | null;
+    enabled?: boolean | null;
+    sessionExpTime?: number | null;
+  } | null;
+  /** Consent management configuration. */
+  consent?: {
+    enabled: boolean;
+    buttonTextTranslations?: {
+      acceptAll: Record<string, unknown>;
+      confirmMyChoices: Record<string, unknown>;
+      rejectAll: Record<string, unknown>;
+    } | null;
+    companyEmail?: string | null;
+    companyName?: string | null;
+    companyStreetAddress?: string | null;
+    consentModalIntroHTML?: string | null;
+    consentModalIntroHTMLWithTranslations?: Record<string, unknown> | null;
+    cookieName?: string | null;
+    customCSS?: string | null;
+    customIntroDisclaimerDismissed?: boolean | null;
+    defaultLanguage?: string | null;
+    hideModal?: boolean | null;
+    purposes?: Record<string, unknown> | null;
+    purposesWithTranslations?: Record<string, unknown> | null;
+    tcfCompliant?: boolean | null;
+  } | null;
+  /** Single Page Application support enabled. */
+  historyChange?: boolean | null;
+}
 
-export const GetDefaultResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetDefaultResponse>;
+export const GetDefaultResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataLayer: Schema.Boolean,
+  debugKey: Schema.String,
+  settings: Schema.Struct({
+    autoInjectScript: Schema.Boolean,
+    contextEnricher: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          escapedWorkerName: Schema.String,
+          workerTag: Schema.String,
+        }),
+        Schema.Null,
+      ]),
+    ),
+    cookieDomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    ecommerce: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    eventsApiPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    hideExternalReferer: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    hideIPAddress: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    hideQueryParams: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    hideUserAgent: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    initPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    injectIframes: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    mcRootPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scriptPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    trackPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+  tools: Schema.Struct({}),
+  triggers: Schema.Struct({}),
+  variables: Schema.Struct({}),
+  zarazVersion: Schema.Number,
+  analytics: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        defaultPurpose: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        sessionExpTime: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  consent: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        enabled: Schema.Boolean,
+        buttonTextTranslations: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              acceptAll: Schema.Struct({}),
+              confirmMyChoices: Schema.Struct({}),
+              rejectAll: Schema.Struct({}),
+            }).pipe(
+              Schema.encodeKeys({
+                acceptAll: "accept_all",
+                confirmMyChoices: "confirm_my_choices",
+                rejectAll: "reject_all",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        companyEmail: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        companyName: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        companyStreetAddress: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        consentModalIntroHTML: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        consentModalIntroHTMLWithTranslations: Schema.optional(
+          Schema.Union([Schema.Struct({}), Schema.Null]),
+        ),
+        cookieName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        customCSS: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        customIntroDisclaimerDismissed: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        defaultLanguage: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        hideModal: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        purposes: Schema.optional(
+          Schema.Union([Schema.Struct({}), Schema.Null]),
+        ),
+        purposesWithTranslations: Schema.optional(
+          Schema.Union([Schema.Struct({}), Schema.Null]),
+        ),
+        tcfCompliant: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  historyChange: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<GetDefaultResponse>;
 
 export type GetDefaultError = DefaultErrors;
 
@@ -534,10 +752,176 @@ export const GetExportRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "GET", path: "/zones/{zone_id}/settings/zaraz/export" }),
 ) as unknown as Schema.Schema<GetExportRequest>;
 
-export type GetExportResponse = unknown;
+export interface GetExportResponse {
+  /** Data layer compatibility mode enabled. */
+  dataLayer: boolean;
+  /** The key for Zaraz debug mode. */
+  debugKey: string;
+  /** General Zaraz settings. */
+  settings: {
+    autoInjectScript: boolean;
+    contextEnricher?: { escapedWorkerName: string; workerTag: string } | null;
+    cookieDomain?: string | null;
+    ecommerce?: boolean | null;
+    eventsApiPath?: string | null;
+    hideExternalReferer?: boolean | null;
+    hideIPAddress?: boolean | null;
+    hideQueryParams?: boolean | null;
+    hideUserAgent?: boolean | null;
+    initPath?: string | null;
+    injectIframes?: boolean | null;
+    mcRootPath?: string | null;
+    scriptPath?: string | null;
+    trackPath?: string | null;
+  };
+  /** Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object. */
+  tools: Record<string, unknown>;
+  /** Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration. */
+  triggers: Record<string, unknown>;
+  /** Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included. */
+  variables: Record<string, unknown>;
+  /** Zaraz internal version of the config. */
+  zarazVersion: number;
+  /** Cloudflare Monitoring settings. */
+  analytics?: {
+    defaultPurpose?: string | null;
+    enabled?: boolean | null;
+    sessionExpTime?: number | null;
+  } | null;
+  /** Consent management configuration. */
+  consent?: {
+    enabled: boolean;
+    buttonTextTranslations?: {
+      acceptAll: Record<string, unknown>;
+      confirmMyChoices: Record<string, unknown>;
+      rejectAll: Record<string, unknown>;
+    } | null;
+    companyEmail?: string | null;
+    companyName?: string | null;
+    companyStreetAddress?: string | null;
+    consentModalIntroHTML?: string | null;
+    consentModalIntroHTMLWithTranslations?: Record<string, unknown> | null;
+    cookieName?: string | null;
+    customCSS?: string | null;
+    customIntroDisclaimerDismissed?: boolean | null;
+    defaultLanguage?: string | null;
+    hideModal?: boolean | null;
+    purposes?: Record<string, unknown> | null;
+    purposesWithTranslations?: Record<string, unknown> | null;
+    tcfCompliant?: boolean | null;
+  } | null;
+  /** Single Page Application support enabled. */
+  historyChange?: boolean | null;
+}
 
-export const GetExportResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetExportResponse>;
+export const GetExportResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataLayer: Schema.Boolean,
+  debugKey: Schema.String,
+  settings: Schema.Struct({
+    autoInjectScript: Schema.Boolean,
+    contextEnricher: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          escapedWorkerName: Schema.String,
+          workerTag: Schema.String,
+        }),
+        Schema.Null,
+      ]),
+    ),
+    cookieDomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    ecommerce: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    eventsApiPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    hideExternalReferer: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    hideIPAddress: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    hideQueryParams: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    hideUserAgent: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    initPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    injectIframes: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    mcRootPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scriptPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    trackPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+  tools: Schema.Struct({}),
+  triggers: Schema.Struct({}),
+  variables: Schema.Struct({}),
+  zarazVersion: Schema.Number,
+  analytics: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        defaultPurpose: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        sessionExpTime: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  consent: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        enabled: Schema.Boolean,
+        buttonTextTranslations: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              acceptAll: Schema.Struct({}),
+              confirmMyChoices: Schema.Struct({}),
+              rejectAll: Schema.Struct({}),
+            }).pipe(
+              Schema.encodeKeys({
+                acceptAll: "accept_all",
+                confirmMyChoices: "confirm_my_choices",
+                rejectAll: "reject_all",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        companyEmail: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        companyName: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        companyStreetAddress: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        consentModalIntroHTML: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        consentModalIntroHTMLWithTranslations: Schema.optional(
+          Schema.Union([Schema.Struct({}), Schema.Null]),
+        ),
+        cookieName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        customCSS: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        customIntroDisclaimerDismissed: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        defaultLanguage: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        hideModal: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        purposes: Schema.optional(
+          Schema.Union([Schema.Struct({}), Schema.Null]),
+        ),
+        purposesWithTranslations: Schema.optional(
+          Schema.Union([Schema.Struct({}), Schema.Null]),
+        ),
+        tcfCompliant: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  historyChange: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+}) as unknown as Schema.Schema<GetExportResponse>;
 
 export type GetExportError = DefaultErrors;
 
@@ -626,7 +1010,9 @@ export const listHistories: API.PaginatedOperationMethod<
     ListHistoriesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListHistoriesRequest) => stream.Stream<
+  items: (
+    input: ListHistoriesRequest,
+  ) => stream.Stream<
     {
       id: number;
       createdAt: string;
@@ -661,10 +1047,178 @@ export const PutHistoryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "PUT", path: "/zones/{zone_id}/settings/zaraz/history" }),
 ) as unknown as Schema.Schema<PutHistoryRequest>;
 
-export type PutHistoryResponse = unknown;
+export interface PutHistoryResponse {
+  /** Data layer compatibility mode enabled. */
+  dataLayer: boolean;
+  /** The key for Zaraz debug mode. */
+  debugKey: string;
+  /** General Zaraz settings. */
+  settings: {
+    autoInjectScript: boolean;
+    contextEnricher?: { escapedWorkerName: string; workerTag: string } | null;
+    cookieDomain?: string | null;
+    ecommerce?: boolean | null;
+    eventsApiPath?: string | null;
+    hideExternalReferer?: boolean | null;
+    hideIPAddress?: boolean | null;
+    hideQueryParams?: boolean | null;
+    hideUserAgent?: boolean | null;
+    initPath?: string | null;
+    injectIframes?: boolean | null;
+    mcRootPath?: string | null;
+    scriptPath?: string | null;
+    trackPath?: string | null;
+  };
+  /** Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object. */
+  tools: Record<string, unknown>;
+  /** Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration. */
+  triggers: Record<string, unknown>;
+  /** Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included. */
+  variables: Record<string, unknown>;
+  /** Zaraz internal version of the config. */
+  zarazVersion: number;
+  /** Cloudflare Monitoring settings. */
+  analytics?: {
+    defaultPurpose?: string | null;
+    enabled?: boolean | null;
+    sessionExpTime?: number | null;
+  } | null;
+  /** Consent management configuration. */
+  consent?: {
+    enabled: boolean;
+    buttonTextTranslations?: {
+      acceptAll: Record<string, unknown>;
+      confirmMyChoices: Record<string, unknown>;
+      rejectAll: Record<string, unknown>;
+    } | null;
+    companyEmail?: string | null;
+    companyName?: string | null;
+    companyStreetAddress?: string | null;
+    consentModalIntroHTML?: string | null;
+    consentModalIntroHTMLWithTranslations?: Record<string, unknown> | null;
+    cookieName?: string | null;
+    customCSS?: string | null;
+    customIntroDisclaimerDismissed?: boolean | null;
+    defaultLanguage?: string | null;
+    hideModal?: boolean | null;
+    purposes?: Record<string, unknown> | null;
+    purposesWithTranslations?: Record<string, unknown> | null;
+    tcfCompliant?: boolean | null;
+  } | null;
+  /** Single Page Application support enabled. */
+  historyChange?: boolean | null;
+}
 
-export const PutHistoryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<PutHistoryResponse>;
+export const PutHistoryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataLayer: Schema.Boolean,
+  debugKey: Schema.String,
+  settings: Schema.Struct({
+    autoInjectScript: Schema.Boolean,
+    contextEnricher: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          escapedWorkerName: Schema.String,
+          workerTag: Schema.String,
+        }),
+        Schema.Null,
+      ]),
+    ),
+    cookieDomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    ecommerce: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    eventsApiPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    hideExternalReferer: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    hideIPAddress: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    hideQueryParams: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    hideUserAgent: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    initPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    injectIframes: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    mcRootPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scriptPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    trackPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+  tools: Schema.Struct({}),
+  triggers: Schema.Struct({}),
+  variables: Schema.Struct({}),
+  zarazVersion: Schema.Number,
+  analytics: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        defaultPurpose: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        sessionExpTime: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  consent: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        enabled: Schema.Boolean,
+        buttonTextTranslations: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              acceptAll: Schema.Struct({}),
+              confirmMyChoices: Schema.Struct({}),
+              rejectAll: Schema.Struct({}),
+            }).pipe(
+              Schema.encodeKeys({
+                acceptAll: "accept_all",
+                confirmMyChoices: "confirm_my_choices",
+                rejectAll: "reject_all",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        companyEmail: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        companyName: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        companyStreetAddress: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        consentModalIntroHTML: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        consentModalIntroHTMLWithTranslations: Schema.optional(
+          Schema.Union([Schema.Struct({}), Schema.Null]),
+        ),
+        cookieName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        customCSS: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        customIntroDisclaimerDismissed: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+        defaultLanguage: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        hideModal: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        purposes: Schema.optional(
+          Schema.Union([Schema.Struct({}), Schema.Null]),
+        ),
+        purposesWithTranslations: Schema.optional(
+          Schema.Union([Schema.Struct({}), Schema.Null]),
+        ),
+        tcfCompliant: Schema.optional(
+          Schema.Union([Schema.Boolean, Schema.Null]),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  historyChange: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<PutHistoryResponse>;
 
 export type PutHistoryError = DefaultErrors;
 
@@ -814,10 +1368,12 @@ export const PutZarazRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "PUT", path: "/zones/{zone_id}/settings/zaraz/workflow" }),
 ) as unknown as Schema.Schema<PutZarazRequest>;
 
-export type PutZarazResponse = unknown;
+export type PutZarazResponse = "realtime" | "preview";
 
-export const PutZarazResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<PutZarazResponse>;
+export const PutZarazResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
+  "realtime",
+  "preview",
+]).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<PutZarazResponse>;
 
 export type PutZarazError = DefaultErrors;
 

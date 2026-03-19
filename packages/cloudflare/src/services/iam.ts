@@ -179,7 +179,9 @@ export const listPermissionGroups: API.PaginatedOperationMethod<
     ListPermissionGroupsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListPermissionGroupsRequest) => stream.Stream<
+  items: (
+    input: ListPermissionGroupsRequest,
+  ) => stream.Stream<
     {
       id: string;
       meta?: { key?: string | null; value?: string | null } | null;
@@ -331,7 +333,9 @@ export const listResourceGroups: API.PaginatedOperationMethod<
     ListResourceGroupsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListResourceGroupsRequest) => stream.Stream<
+  items: (
+    input: ListResourceGroupsRequest,
+  ) => stream.Stream<
     {
       id: string;
       scope: { key: string; objects: { key: string }[] }[];
@@ -704,7 +708,9 @@ export const listSsos: API.PaginatedOperationMethod<
     ListSsosError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSsosRequest) => stream.Stream<
+  items: (
+    input: ListSsosRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       createdOn?: string | null;
@@ -991,8 +997,21 @@ export interface GetUserGroupResponse {
     | {
         id?: string | null;
         access?: "allow" | "deny" | null;
-        permissionGroups?: { id: string }[] | null;
-        resourceGroups?: { id: string }[] | null;
+        permissionGroups?:
+          | {
+              id: string;
+              meta?: { key?: string | null; value?: string | null } | null;
+              name?: string | null;
+            }[]
+          | null;
+        resourceGroups?:
+          | {
+              id: string;
+              scope: { key: string; objects: { key: string }[] }[];
+              meta?: { key?: string | null; value?: string | null } | null;
+              name?: string | null;
+            }[]
+          | null;
       }[]
     | null;
 }
@@ -1015,6 +1034,22 @@ export const GetUserGroupResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               Schema.Array(
                 Schema.Struct({
                   id: Schema.String,
+                  meta: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        key: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                        value: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                  name: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
                 }),
               ),
               Schema.Null,
@@ -1025,6 +1060,32 @@ export const GetUserGroupResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               Schema.Array(
                 Schema.Struct({
                   id: Schema.String,
+                  scope: Schema.Array(
+                    Schema.Struct({
+                      key: Schema.String,
+                      objects: Schema.Array(
+                        Schema.Struct({
+                          key: Schema.String,
+                        }),
+                      ),
+                    }),
+                  ),
+                  meta: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        key: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                        value: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                  name: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
                 }),
               ),
               Schema.Null,
@@ -1102,8 +1163,21 @@ export interface ListUserGroupsResponse {
       | {
           id?: string | null;
           access?: "allow" | "deny" | null;
-          permissionGroups?: { id: string }[] | null;
-          resourceGroups?: { id: string }[] | null;
+          permissionGroups?:
+            | {
+                id: string;
+                meta?: { key?: string | null; value?: string | null } | null;
+                name?: string | null;
+              }[]
+            | null;
+          resourceGroups?:
+            | {
+                id: string;
+                scope: { key: string; objects: { key: string }[] }[];
+                meta?: { key?: string | null; value?: string | null } | null;
+                name?: string | null;
+              }[]
+            | null;
         }[]
       | null;
   }[];
@@ -1139,6 +1213,22 @@ export const ListUserGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                     Schema.Array(
                       Schema.Struct({
                         id: Schema.String,
+                        meta: Schema.optional(
+                          Schema.Union([
+                            Schema.Struct({
+                              key: Schema.optional(
+                                Schema.Union([Schema.String, Schema.Null]),
+                              ),
+                              value: Schema.optional(
+                                Schema.Union([Schema.String, Schema.Null]),
+                              ),
+                            }),
+                            Schema.Null,
+                          ]),
+                        ),
+                        name: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
                       }),
                     ),
                     Schema.Null,
@@ -1149,6 +1239,32 @@ export const ListUserGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                     Schema.Array(
                       Schema.Struct({
                         id: Schema.String,
+                        scope: Schema.Array(
+                          Schema.Struct({
+                            key: Schema.String,
+                            objects: Schema.Array(
+                              Schema.Struct({
+                                key: Schema.String,
+                              }),
+                            ),
+                          }),
+                        ),
+                        meta: Schema.optional(
+                          Schema.Union([
+                            Schema.Struct({
+                              key: Schema.optional(
+                                Schema.Union([Schema.String, Schema.Null]),
+                              ),
+                              value: Schema.optional(
+                                Schema.Union([Schema.String, Schema.Null]),
+                              ),
+                            }),
+                            Schema.Null,
+                          ]),
+                        ),
+                        name: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
                       }),
                     ),
                     Schema.Null,
@@ -1209,7 +1325,9 @@ export const listUserGroups: API.PaginatedOperationMethod<
     ListUserGroupsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListUserGroupsRequest) => stream.Stream<
+  items: (
+    input: ListUserGroupsRequest,
+  ) => stream.Stream<
     {
       id: string;
       createdOn: string;
@@ -1219,8 +1337,21 @@ export const listUserGroups: API.PaginatedOperationMethod<
         | {
             id?: string | null;
             access?: "allow" | "deny" | null;
-            permissionGroups?: { id: string }[] | null;
-            resourceGroups?: { id: string }[] | null;
+            permissionGroups?:
+              | {
+                  id: string;
+                  meta?: { key?: string | null; value?: string | null } | null;
+                  name?: string | null;
+                }[]
+              | null;
+            resourceGroups?:
+              | {
+                  id: string;
+                  scope: { key: string; objects: { key: string }[] }[];
+                  meta?: { key?: string | null; value?: string | null } | null;
+                  name?: string | null;
+                }[]
+              | null;
           }[]
         | null;
     },
@@ -1297,8 +1428,21 @@ export interface CreateUserGroupResponse {
     | {
         id?: string | null;
         access?: "allow" | "deny" | null;
-        permissionGroups?: { id: string }[] | null;
-        resourceGroups?: { id: string }[] | null;
+        permissionGroups?:
+          | {
+              id: string;
+              meta?: { key?: string | null; value?: string | null } | null;
+              name?: string | null;
+            }[]
+          | null;
+        resourceGroups?:
+          | {
+              id: string;
+              scope: { key: string; objects: { key: string }[] }[];
+              meta?: { key?: string | null; value?: string | null } | null;
+              name?: string | null;
+            }[]
+          | null;
       }[]
     | null;
 }
@@ -1322,6 +1466,22 @@ export const CreateUserGroupResponse =
                 Schema.Array(
                   Schema.Struct({
                     id: Schema.String,
+                    meta: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          key: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                          value: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }),
+                        Schema.Null,
+                      ]),
+                    ),
+                    name: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
                   }),
                 ),
                 Schema.Null,
@@ -1332,6 +1492,32 @@ export const CreateUserGroupResponse =
                 Schema.Array(
                   Schema.Struct({
                     id: Schema.String,
+                    scope: Schema.Array(
+                      Schema.Struct({
+                        key: Schema.String,
+                        objects: Schema.Array(
+                          Schema.Struct({
+                            key: Schema.String,
+                          }),
+                        ),
+                      }),
+                    ),
+                    meta: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          key: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                          value: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }),
+                        Schema.Null,
+                      ]),
+                    ),
+                    name: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
                   }),
                 ),
                 Schema.Null,
@@ -1443,8 +1629,21 @@ export interface UpdateUserGroupResponse {
     | {
         id?: string | null;
         access?: "allow" | "deny" | null;
-        permissionGroups?: { id: string }[] | null;
-        resourceGroups?: { id: string }[] | null;
+        permissionGroups?:
+          | {
+              id: string;
+              meta?: { key?: string | null; value?: string | null } | null;
+              name?: string | null;
+            }[]
+          | null;
+        resourceGroups?:
+          | {
+              id: string;
+              scope: { key: string; objects: { key: string }[] }[];
+              meta?: { key?: string | null; value?: string | null } | null;
+              name?: string | null;
+            }[]
+          | null;
       }[]
     | null;
 }
@@ -1468,6 +1667,22 @@ export const UpdateUserGroupResponse =
                 Schema.Array(
                   Schema.Struct({
                     id: Schema.String,
+                    meta: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          key: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                          value: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }),
+                        Schema.Null,
+                      ]),
+                    ),
+                    name: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
                   }),
                 ),
                 Schema.Null,
@@ -1478,6 +1693,32 @@ export const UpdateUserGroupResponse =
                 Schema.Array(
                   Schema.Struct({
                     id: Schema.String,
+                    scope: Schema.Array(
+                      Schema.Struct({
+                        key: Schema.String,
+                        objects: Schema.Array(
+                          Schema.Struct({
+                            key: Schema.String,
+                          }),
+                        ),
+                      }),
+                    ),
+                    meta: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          key: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                          value: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }),
+                        Schema.Null,
+                      ]),
+                    ),
+                    name: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
                   }),
                 ),
                 Schema.Null,
@@ -1650,7 +1891,9 @@ export const listUserGroupMembers: API.PaginatedOperationMethod<
     ListUserGroupMembersError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListUserGroupMembersRequest) => stream.Stream<
+  items: (
+    input: ListUserGroupMembersRequest,
+  ) => stream.Stream<
     {
       id: string;
       email?: string | null;
@@ -1789,7 +2032,9 @@ export const updateUserGroupMember: API.PaginatedOperationMethod<
     UpdateUserGroupMemberError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: UpdateUserGroupMemberRequest) => stream.Stream<
+  items: (
+    input: UpdateUserGroupMemberRequest,
+  ) => stream.Stream<
     {
       id: string;
       email?: string | null;

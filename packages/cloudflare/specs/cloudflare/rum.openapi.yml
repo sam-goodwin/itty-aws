@@ -394,7 +394,28 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        id:
+                          type: string
+                          description: The Web Analytics rule identifier.
+                        created:
+                          type: string
+                        host:
+                          type: string
+                          description: The hostname the rule will be applied to.
+                        inclusive:
+                          type: boolean
+                          description: Whether the rule includes or excludes traffic from being measured.
+                        is_paused:
+                          type: boolean
+                          description: Whether the rule is paused or not.
+                        paths:
+                          type: array
+                          items:
+                            type: string
+                          description: The paths the rule will be applied to.
+                        priority:
+                          type: number
                     description: A list of rules.
                   ruleset:
                     type: object
@@ -480,7 +501,28 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        id:
+                          type: string
+                          description: The Web Analytics rule identifier.
+                        created:
+                          type: string
+                        host:
+                          type: string
+                          description: The hostname the rule will be applied to.
+                        inclusive:
+                          type: boolean
+                          description: Whether the rule includes or excludes traffic from being measured.
+                        is_paused:
+                          type: boolean
+                          description: Whether the rule is paused or not.
+                        paths:
+                          type: array
+                          items:
+                            type: string
+                          description: The paths the rule will be applied to.
+                        priority:
+                          type: number
                     description: A list of rules.
                   ruleset:
                     type: object
@@ -577,7 +619,28 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        id:
+                          type: string
+                          description: The Web Analytics rule identifier.
+                        created:
+                          type: string
+                        host:
+                          type: string
+                          description: The hostname the rule will be applied to.
+                        inclusive:
+                          type: boolean
+                          description: Whether the rule includes or excludes traffic from being measured.
+                        is_paused:
+                          type: boolean
+                          description: Whether the rule is paused or not.
+                        paths:
+                          type: array
+                          items:
+                            type: string
+                          description: The paths the rule will be applied to.
+                        priority:
+                          type: number
                     description: A list of rules.
                   ruleset:
                     type: object
@@ -651,7 +714,28 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        id:
+                          type: string
+                          description: The Web Analytics rule identifier.
+                        created:
+                          type: string
+                        host:
+                          type: string
+                          description: The hostname the rule will be applied to.
+                        inclusive:
+                          type: boolean
+                          description: Whether the rule includes or excludes traffic from being measured.
+                        is_paused:
+                          type: boolean
+                          description: Whether the rule is paused or not.
+                        paths:
+                          type: array
+                          items:
+                            type: string
+                          description: The paths the rule will be applied to.
+                        priority:
+                          type: number
                     description: A list of rules.
                   ruleset:
                     type: object

@@ -149,7 +149,40 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  created_at:
+                    type: string
+                    description: Specifies the timestamp the resource was created as an ISO8601
+                      string.
+                  file_size:
+                    type: number
+                    description: The D1 database's size, in bytes.
+                  name:
+                    type: string
+                    description: D1 database name.
+                  num_tables:
+                    type: number
+                  read_replication:
+                    type: object
+                    properties:
+                      mode:
+                        type: string
+                        enum:
+                          - auto
+                          - disabled
+                        description: The read replication mode for the database. Use 'auto' to create
+                          replicas and allow D1 automatically place them around
+                          the world, or 'disabled' to not use any database
+                          replicas (it can take a few hours for all replicas to
+                          be deleted).
+                    required:
+                      - mode
+                    description: Configuration for D1 read replication.
+                  uuid:
+                    type: string
+                    description: D1 database identifier (UUID).
+                  version:
+                    type: string
       x-distilled-response-path: result
       x-distilled-errors:
         InvalidObjectIdentifier:
@@ -181,7 +214,40 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  created_at:
+                    type: string
+                    description: Specifies the timestamp the resource was created as an ISO8601
+                      string.
+                  file_size:
+                    type: number
+                    description: The D1 database's size, in bytes.
+                  name:
+                    type: string
+                    description: D1 database name.
+                  num_tables:
+                    type: number
+                  read_replication:
+                    type: object
+                    properties:
+                      mode:
+                        type: string
+                        enum:
+                          - auto
+                          - disabled
+                        description: The read replication mode for the database. Use 'auto' to create
+                          replicas and allow D1 automatically place them around
+                          the world, or 'disabled' to not use any database
+                          replicas (it can take a few hours for all replicas to
+                          be deleted).
+                    required:
+                      - mode
+                    description: Configuration for D1 read replication.
+                  uuid:
+                    type: string
+                    description: D1 database identifier (UUID).
+                  version:
+                    type: string
       x-distilled-response-path: result
       x-distilled-errors:
         InvalidObjectIdentifier:
@@ -240,7 +306,40 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  created_at:
+                    type: string
+                    description: Specifies the timestamp the resource was created as an ISO8601
+                      string.
+                  file_size:
+                    type: number
+                    description: The D1 database's size, in bytes.
+                  name:
+                    type: string
+                    description: D1 database name.
+                  num_tables:
+                    type: number
+                  read_replication:
+                    type: object
+                    properties:
+                      mode:
+                        type: string
+                        enum:
+                          - auto
+                          - disabled
+                        description: The read replication mode for the database. Use 'auto' to create
+                          replicas and allow D1 automatically place them around
+                          the world, or 'disabled' to not use any database
+                          replicas (it can take a few hours for all replicas to
+                          be deleted).
+                    required:
+                      - mode
+                    description: Configuration for D1 read replication.
+                  uuid:
+                    type: string
+                    description: D1 database identifier (UUID).
+                  version:
+                    type: string
       x-distilled-response-path: result
       x-distilled-errors:
         InvalidObjectIdentifier:
@@ -297,7 +396,40 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  created_at:
+                    type: string
+                    description: Specifies the timestamp the resource was created as an ISO8601
+                      string.
+                  file_size:
+                    type: number
+                    description: The D1 database's size, in bytes.
+                  name:
+                    type: string
+                    description: D1 database name.
+                  num_tables:
+                    type: number
+                  read_replication:
+                    type: object
+                    properties:
+                      mode:
+                        type: string
+                        enum:
+                          - auto
+                          - disabled
+                        description: The read replication mode for the database. Use 'auto' to create
+                          replicas and allow D1 automatically place them around
+                          the world, or 'disabled' to not use any database
+                          replicas (it can take a few hours for all replicas to
+                          be deleted).
+                    required:
+                      - mode
+                    description: Configuration for D1 read replication.
+                  uuid:
+                    type: string
+                    description: D1 database identifier (UUID).
+                  version:
+                    type: string
       x-distilled-response-path: result
       x-distilled-errors:
         InvalidObjectIdentifier:

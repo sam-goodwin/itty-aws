@@ -105,7 +105,6 @@ export interface GetCertificatePackResponse {
   hosts: string[];
   /** Status of certificate pack. */
   status:
-    | "active"
     | "initializing"
     | "pending_validation"
     | "deleted"
@@ -114,6 +113,7 @@ export interface GetCertificatePackResponse {
     | "pending_deletion"
     | "pending_expiration"
     | "expired"
+    | "active"
     | "initializing_timed_out"
     | "validation_timed_out"
     | "issuance_timed_out"
@@ -210,7 +210,6 @@ export const GetCertificatePackResponse =
     ),
     hosts: Schema.Array(Schema.String),
     status: Schema.Literals([
-      "active",
       "initializing",
       "pending_validation",
       "deleted",
@@ -219,6 +218,7 @@ export const GetCertificatePackResponse =
       "pending_deletion",
       "pending_expiration",
       "expired",
+      "active",
       "initializing_timed_out",
       "validation_timed_out",
       "issuance_timed_out",
@@ -374,7 +374,6 @@ export interface ListCertificatePacksResponse {
     }[];
     hosts: string[];
     status:
-      | "active"
       | "initializing"
       | "pending_validation"
       | "deleted"
@@ -383,6 +382,7 @@ export interface ListCertificatePacksResponse {
       | "pending_deletion"
       | "pending_expiration"
       | "expired"
+      | "active"
       | "initializing_timed_out"
       | "validation_timed_out"
       | "issuance_timed_out"
@@ -484,7 +484,6 @@ export const ListCertificatePacksResponse =
         ),
         hosts: Schema.Array(Schema.String),
         status: Schema.Literals([
-          "active",
           "initializing",
           "pending_validation",
           "deleted",
@@ -493,6 +492,7 @@ export const ListCertificatePacksResponse =
           "pending_deletion",
           "pending_expiration",
           "expired",
+          "active",
           "initializing_timed_out",
           "validation_timed_out",
           "issuance_timed_out",
@@ -618,7 +618,9 @@ export const listCertificatePacks: API.PaginatedOperationMethod<
     ListCertificatePacksError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListCertificatePacksRequest) => stream.Stream<
+  items: (
+    input: ListCertificatePacksRequest,
+  ) => stream.Stream<
     {
       id: string;
       certificates: {
@@ -639,7 +641,6 @@ export const listCertificatePacks: API.PaginatedOperationMethod<
       }[];
       hosts: string[];
       status:
-        | "active"
         | "initializing"
         | "pending_validation"
         | "deleted"
@@ -648,6 +649,7 @@ export const listCertificatePacks: API.PaginatedOperationMethod<
         | "pending_deletion"
         | "pending_expiration"
         | "expired"
+        | "active"
         | "initializing_timed_out"
         | "validation_timed_out"
         | "issuance_timed_out"
@@ -767,7 +769,6 @@ export interface CreateCertificatePackResponse {
   hosts: string[];
   /** Status of certificate pack. */
   status:
-    | "active"
     | "initializing"
     | "pending_validation"
     | "deleted"
@@ -776,6 +777,7 @@ export interface CreateCertificatePackResponse {
     | "pending_deletion"
     | "pending_expiration"
     | "expired"
+    | "active"
     | "initializing_timed_out"
     | "validation_timed_out"
     | "issuance_timed_out"
@@ -872,7 +874,6 @@ export const CreateCertificatePackResponse =
     ),
     hosts: Schema.Array(Schema.String),
     status: Schema.Literals([
-      "active",
       "initializing",
       "pending_validation",
       "deleted",
@@ -881,6 +882,7 @@ export const CreateCertificatePackResponse =
       "pending_deletion",
       "pending_expiration",
       "expired",
+      "active",
       "initializing_timed_out",
       "validation_timed_out",
       "issuance_timed_out",
@@ -1045,7 +1047,6 @@ export interface PatchCertificatePackResponse {
   hosts: string[];
   /** Status of certificate pack. */
   status:
-    | "active"
     | "initializing"
     | "pending_validation"
     | "deleted"
@@ -1054,6 +1055,7 @@ export interface PatchCertificatePackResponse {
     | "pending_deletion"
     | "pending_expiration"
     | "expired"
+    | "active"
     | "initializing_timed_out"
     | "validation_timed_out"
     | "issuance_timed_out"
@@ -1150,7 +1152,6 @@ export const PatchCertificatePackResponse =
     ),
     hosts: Schema.Array(Schema.String),
     status: Schema.Literals([
-      "active",
       "initializing",
       "pending_validation",
       "deleted",
@@ -1159,6 +1160,7 @@ export const PatchCertificatePackResponse =
       "pending_deletion",
       "pending_expiration",
       "expired",
+      "active",
       "initializing_timed_out",
       "validation_timed_out",
       "issuance_timed_out",
@@ -1552,7 +1554,7 @@ export type GetVerificationResponse = {
   brandCheck?: boolean | null;
   certPackUuid?: string | null;
   signature?: "ECDSAWithSHA256" | "SHA1WithRSA" | "SHA256WithRSA" | null;
-  validationMethod?: "http" | "txt" | "cname" | null;
+  validationMethod?: "http" | "cname" | "txt" | null;
   verificationInfo?: {
     recordName?: "record_name" | "http_url" | "cname" | "txt_name" | null;
     recordTarget?:
@@ -1586,7 +1588,7 @@ export const GetVerificationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
       ]),
     ),
     validationMethod: Schema.optional(
-      Schema.Union([Schema.Literals(["http", "txt", "cname"]), Schema.Null]),
+      Schema.Union([Schema.Literals(["http", "cname", "txt"]), Schema.Null]),
     ),
     verificationInfo: Schema.optional(
       Schema.Union([

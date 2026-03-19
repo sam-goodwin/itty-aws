@@ -5,6 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service magic-network-monitoring
  */
 
+import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -407,10 +408,40 @@ export const GetConfigFullRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "GET", path: "/accounts/{account_id}/mnm/config/full" }),
 ) as unknown as Schema.Schema<GetConfigFullRequest>;
 
-export type GetConfigFullResponse = unknown;
+export interface GetConfigFullResponse {
+  /** Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router. */
+  defaultSampling: number;
+  /** The account name. */
+  name: string;
+  routerIps: string[];
+  warpDevices: { id: string; name: string; routerIp: string }[];
+}
 
-export const GetConfigFullResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetConfigFullResponse>;
+export const GetConfigFullResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  defaultSampling: Schema.Number,
+  name: Schema.String,
+  routerIps: Schema.Array(Schema.String),
+  warpDevices: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      name: Schema.String,
+      routerIp: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
+    ),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      defaultSampling: "default_sampling",
+      name: "name",
+      routerIps: "router_ips",
+      warpDevices: "warp_devices",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetConfigFullResponse>;
 
 export type GetConfigFullError = DefaultErrors;
 
@@ -545,22 +576,155 @@ export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "GET", path: "/accounts/{account_id}/mnm/rules" }),
 ) as unknown as Schema.Schema<ListRulesRequest>;
 
-export type ListRulesResponse = unknown;
+export interface ListRulesResponse {
+  result: ({
+    automaticAdvertisement: boolean | null;
+    name: string;
+    prefixes: string[];
+    type: "threshold" | "zscore" | "advanced_ddos";
+    id?: string | null;
+    bandwidthThreshold?: number | null;
+    duration?:
+      | "1m"
+      | "5m"
+      | "10m"
+      | "15m"
+      | "20m"
+      | "30m"
+      | "45m"
+      | "60m"
+      | null;
+    packetThreshold?: number | null;
+    prefixMatch?: "exact" | "subnet" | "supernet" | null;
+    zscoreSensitivity?: "low" | "medium" | "high" | null;
+    zscoreTarget?: "bits" | "packets" | null;
+  } | null)[];
+}
 
-export const ListRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<ListRulesResponse>;
+export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Union([
+      Schema.Struct({
+        automaticAdvertisement: Schema.Union([Schema.Boolean, Schema.Null]),
+        name: Schema.String,
+        prefixes: Schema.Array(Schema.String),
+        type: Schema.Literals(["threshold", "zscore", "advanced_ddos"]),
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        bandwidthThreshold: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        duration: Schema.optional(
+          Schema.Union([
+            Schema.Literals([
+              "1m",
+              "5m",
+              "10m",
+              "15m",
+              "20m",
+              "30m",
+              "45m",
+              "60m",
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        packetThreshold: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        prefixMatch: Schema.optional(
+          Schema.Union([
+            Schema.Literal("exact"),
+            Schema.Literal("subnet"),
+            Schema.Literal("supernet"),
+            Schema.Null,
+          ]),
+        ),
+        zscoreSensitivity: Schema.optional(
+          Schema.Union([
+            Schema.Literal("low"),
+            Schema.Literal("medium"),
+            Schema.Literal("high"),
+            Schema.Null,
+          ]),
+        ),
+        zscoreTarget: Schema.optional(
+          Schema.Union([
+            Schema.Literal("bits"),
+            Schema.Literal("packets"),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          automaticAdvertisement: "automatic_advertisement",
+          name: "name",
+          prefixes: "prefixes",
+          type: "type",
+          id: "id",
+          bandwidthThreshold: "bandwidth_threshold",
+          duration: "duration",
+          packetThreshold: "packet_threshold",
+          prefixMatch: "prefix_match",
+          zscoreSensitivity: "zscore_sensitivity",
+          zscoreTarget: "zscore_target",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+}) as unknown as Schema.Schema<ListRulesResponse>;
 
 export type ListRulesError = DefaultErrors;
 
-export const listRules: API.OperationMethod<
+export const listRules: API.PaginatedOperationMethod<
   ListRulesRequest,
   ListRulesResponse,
   ListRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> & {
+  pages: (
+    input: ListRulesRequest,
+  ) => stream.Stream<
+    ListRulesResponse,
+    ListRulesError,
+    Credentials | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRulesRequest,
+  ) => stream.Stream<
+    {
+      automaticAdvertisement: boolean | null;
+      name: string;
+      prefixes: string[];
+      type: "threshold" | "zscore" | "advanced_ddos";
+      id?: string | null;
+      bandwidthThreshold?: number | null;
+      duration?:
+        | "1m"
+        | "5m"
+        | "10m"
+        | "15m"
+        | "20m"
+        | "30m"
+        | "45m"
+        | "60m"
+        | null;
+      packetThreshold?: number | null;
+      prefixMatch?: "exact" | "subnet" | "supernet" | null;
+      zscoreSensitivity?: "low" | "medium" | "high" | null;
+      zscoreTarget?: "bits" | "packets" | null;
+    } | null,
+    ListRulesError,
+    Credentials | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
 }));
 
 export interface CreateRuleRequest {

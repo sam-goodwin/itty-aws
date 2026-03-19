@@ -40,13 +40,51 @@ paths:
                     items:
                       oneOf:
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - always_use_https
+                              description: If enabled, any ` http://`` URL is converted to  `https://` through
+                                a 301 redirect.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - automatic_https_rewrites
+                              description: Turn on or off Automatic HTTPS Rewrites.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Automatic HTTPS Rewrites.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - browser_cache_ttl
+                              description: Control how long resources cached by client browsers remain valid.
+                            value:
+                              type: number
+                              description: The number of seconds to cache resources for. Setting this to 0
+                                enables "Respect Existing Headers".
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - browser_check
+                              description: Inspect the visitor's browser for headers commonly associated with
+                                spammers and certain bots.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Browser Integrity Check.
                         - type: object
                           properties:
                             id:
@@ -190,7 +228,32 @@ paths:
                                   description: Feature fields to add features about the end-user (client) into the
                                     Cache Key.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - cache_level
+                              description: Apply custom caching based on the option selected.
+                            value:
+                              type: string
+                              enum:
+                                - bypass
+                                - basic
+                                - simplified
+                                - aggressive
+                                - cache_everything
+                              description: "- `bypass`: Cloudflare does not cache. - `basic`: Delivers
+                                resources from cache when there is no query
+                                string. - `simplified`: Delivers the same
+                                resource to everyone independent of the query
+                                string. - `aggressive`: Caches all static
+                                content that has a query string. -
+                                `cache_everything`: Treats all content as static
+                                and caches all file types beyond the [Cloudflare
+                                default cached
+                                content](https://developers.cloudflare.com/cach\
+                                e/concepts/default-cache-behavior/#default-cach\
+                                ed-file-extensions)."
                         - type: object
                           properties:
                             id:
@@ -296,7 +359,18 @@ paths:
                             value:
                               type: number
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - email_obfuscation
+                              description: Turn on or off  Email Obfuscation  .
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Email Obfuscation.
                         - type: object
                           properties:
                             id:
@@ -346,15 +420,80 @@ paths:
                               type: string
                               description: The hostname to use in the `Host` header
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - ip_geolocation
+                              description: Cloudflare adds a CF-IPCountry HTTP header containing the country
+                                code that corresponds to the visitor.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of adding the IP Geolocation Header.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - mirage
+                              description: Cloudflare Mirage reduces bandwidth used by images in mobile
+                                browsers. It can accelerate loading of
+                                image-heavy websites on very slow mobile
+                                connections and HTTP/1.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Mirage.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - opportunistic_encryption
+                              description: Opportunistic Encryption allows browsers to access HTTP URIs over
+                                an encrypted TLS channel. It's not a substitute
+                                for HTTPS, but provides additional security for
+                                otherwise vulnerable requests.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Opportunistic Encryption.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - origin_error_page_pass_thru
+                              description: Turn on or off Cloudflare error pages generated from issues sent
+                                from the origin server. If enabled, this setting
+                                triggers error pages issued by the origin.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Origin Error Page Passthru.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - polish
+                              description: Apply options from the Polish feature of the Cloudflare Speed app.
+                            value:
+                              type: string
+                              enum:
+                                - off
+                                - lossless
+                                - lossy
+                              description: The level of Polish you want applied to your origin.
                         - type: object
                           properties:
                             id:
@@ -380,19 +519,114 @@ paths:
                                 - off
                               description: The status of Respect Strong ETags
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - response_buffering
+                              description: Turn on or off whether Cloudflare should wait for an entire file
+                                from the origin server before forwarding it to
+                                the site visitor. By default, Cloudflare sends
+                                packets to the client as they arrive from the
+                                origin server.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Response Buffering
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - rocket_loader
+                              description: Turn on or off Rocket Loader in the Cloudflare Speed app.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Rocket Loader
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - security_level
+                              description: Control options for the  Security Level  feature from
+                                the  Security  app.
+                            value:
+                              type: string
+                              enum:
+                                - off
+                                - essentially_off
+                                - low
+                                - medium
+                                - high
+                                - under_attack
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - sort_query_string_for_cache
+                              description: Turn on or off the reordering of query strings. When query strings
+                                have the same structure, caching improves.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Query String Sort
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - ssl
+                              description: Control options for the SSL feature of the Edge Certificates tab in
+                                the Cloudflare SSL/TLS app.
+                            value:
+                              type: string
+                              enum:
+                                - off
+                                - flexible
+                                - full
+                                - strict
+                                - origin_pull
+                              description: The encryption mode that Cloudflare uses to connect to your origin
+                                server.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - true_client_ip_header
+                              description: Turn on or off the True-Client-IP Header feature of the Cloudflare
+                                Network app.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of True Client IP Header.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - waf
+                              description: Turn on or off [WAF managed rules (previous version,
+                                deprecated)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/).
+                                You cannot enable or disable individual WAF
+                                managed rules via Page Rules.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of WAF managed rules (previous version).
                     description: The set of actions to perform if the targets of this rule match the
                       request. Actions can redirect to another URL or override
                       settings, but not both.
@@ -491,13 +725,51 @@ paths:
                   items:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - always_use_https
+                            description: If enabled, any ` http://`` URL is converted to  `https://` through
+                              a 301 redirect.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - automatic_https_rewrites
+                            description: Turn on or off Automatic HTTPS Rewrites.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Automatic HTTPS Rewrites.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - browser_cache_ttl
+                            description: Control how long resources cached by client browsers remain valid.
+                          value:
+                            type: number
+                            description: The number of seconds to cache resources for. Setting this to 0
+                              enables "Respect Existing Headers".
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - browser_check
+                            description: Inspect the visitor's browser for headers commonly associated with
+                              spammers and certain bots.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Browser Integrity Check.
                       - type: object
                         properties:
                           id:
@@ -640,7 +912,31 @@ paths:
                                 description: Feature fields to add features about the end-user (client) into the
                                   Cache Key.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - cache_level
+                            description: Apply custom caching based on the option selected.
+                          value:
+                            type: string
+                            enum:
+                              - bypass
+                              - basic
+                              - simplified
+                              - aggressive
+                              - cache_everything
+                            description: "- `bypass`: Cloudflare does not cache. - `basic`: Delivers
+                              resources from cache when there is no query
+                              string. - `simplified`: Delivers the same resource
+                              to everyone independent of the query string. -
+                              `aggressive`: Caches all static content that has a
+                              query string. - `cache_everything`: Treats all
+                              content as static and caches all file types beyond
+                              the [Cloudflare default cached
+                              content](https://developers.cloudflare.com/cache/\
+                              concepts/default-cache-behavior/#default-cached-f\
+                              ile-extensions)."
                       - type: object
                         properties:
                           id:
@@ -744,7 +1040,18 @@ paths:
                           value:
                             type: number
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - email_obfuscation
+                            description: Turn on or off  Email Obfuscation  .
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Email Obfuscation.
                       - type: object
                         properties:
                           id:
@@ -794,15 +1101,80 @@ paths:
                             type: string
                             description: The hostname to use in the `Host` header
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - ip_geolocation
+                            description: Cloudflare adds a CF-IPCountry HTTP header containing the country
+                              code that corresponds to the visitor.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of adding the IP Geolocation Header.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - mirage
+                            description: Cloudflare Mirage reduces bandwidth used by images in mobile
+                              browsers. It can accelerate loading of image-heavy
+                              websites on very slow mobile connections and
+                              HTTP/1.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Mirage.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - opportunistic_encryption
+                            description: Opportunistic Encryption allows browsers to access HTTP URIs over
+                              an encrypted TLS channel. It's not a substitute
+                              for HTTPS, but provides additional security for
+                              otherwise vulnerable requests.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Opportunistic Encryption.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - origin_error_page_pass_thru
+                            description: Turn on or off Cloudflare error pages generated from issues sent
+                              from the origin server. If enabled, this setting
+                              triggers error pages issued by the origin.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Origin Error Page Passthru.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - polish
+                            description: Apply options from the Polish feature of the Cloudflare Speed app.
+                          value:
+                            type: string
+                            enum:
+                              - off
+                              - lossless
+                              - lossy
+                            description: The level of Polish you want applied to your origin.
                       - type: object
                         properties:
                           id:
@@ -828,19 +1200,114 @@ paths:
                               - off
                             description: The status of Respect Strong ETags
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - response_buffering
+                            description: Turn on or off whether Cloudflare should wait for an entire file
+                              from the origin server before forwarding it to the
+                              site visitor. By default, Cloudflare sends packets
+                              to the client as they arrive from the origin
+                              server.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Response Buffering
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - rocket_loader
+                            description: Turn on or off Rocket Loader in the Cloudflare Speed app.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Rocket Loader
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - security_level
+                            description: Control options for the  Security Level  feature from
+                              the  Security  app.
+                          value:
+                            type: string
+                            enum:
+                              - off
+                              - essentially_off
+                              - low
+                              - medium
+                              - high
+                              - under_attack
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - sort_query_string_for_cache
+                            description: Turn on or off the reordering of query strings. When query strings
+                              have the same structure, caching improves.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Query String Sort
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - ssl
+                            description: Control options for the SSL feature of the Edge Certificates tab in
+                              the Cloudflare SSL/TLS app.
+                          value:
+                            type: string
+                            enum:
+                              - off
+                              - flexible
+                              - full
+                              - strict
+                              - origin_pull
+                            description: The encryption mode that Cloudflare uses to connect to your origin
+                              server.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - true_client_ip_header
+                            description: Turn on or off the True-Client-IP Header feature of the Cloudflare
+                              Network app.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of True Client IP Header.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - waf
+                            description: Turn on or off [WAF managed rules (previous version,
+                              deprecated)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/).
+                              You cannot enable or disable individual WAF
+                              managed rules via Page Rules.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of WAF managed rules (previous version).
                   description: "Body param: The set of actions to perform if the targets of this
                     rule match the request. Actions can redirect to another URL
                     or override settings, but not both."
@@ -911,13 +1378,51 @@ paths:
                     items:
                       oneOf:
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - always_use_https
+                              description: If enabled, any ` http://`` URL is converted to  `https://` through
+                                a 301 redirect.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - automatic_https_rewrites
+                              description: Turn on or off Automatic HTTPS Rewrites.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Automatic HTTPS Rewrites.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - browser_cache_ttl
+                              description: Control how long resources cached by client browsers remain valid.
+                            value:
+                              type: number
+                              description: The number of seconds to cache resources for. Setting this to 0
+                                enables "Respect Existing Headers".
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - browser_check
+                              description: Inspect the visitor's browser for headers commonly associated with
+                                spammers and certain bots.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Browser Integrity Check.
                         - type: object
                           properties:
                             id:
@@ -1061,7 +1566,32 @@ paths:
                                   description: Feature fields to add features about the end-user (client) into the
                                     Cache Key.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - cache_level
+                              description: Apply custom caching based on the option selected.
+                            value:
+                              type: string
+                              enum:
+                                - bypass
+                                - basic
+                                - simplified
+                                - aggressive
+                                - cache_everything
+                              description: "- `bypass`: Cloudflare does not cache. - `basic`: Delivers
+                                resources from cache when there is no query
+                                string. - `simplified`: Delivers the same
+                                resource to everyone independent of the query
+                                string. - `aggressive`: Caches all static
+                                content that has a query string. -
+                                `cache_everything`: Treats all content as static
+                                and caches all file types beyond the [Cloudflare
+                                default cached
+                                content](https://developers.cloudflare.com/cach\
+                                e/concepts/default-cache-behavior/#default-cach\
+                                ed-file-extensions)."
                         - type: object
                           properties:
                             id:
@@ -1167,7 +1697,18 @@ paths:
                             value:
                               type: number
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - email_obfuscation
+                              description: Turn on or off  Email Obfuscation  .
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Email Obfuscation.
                         - type: object
                           properties:
                             id:
@@ -1217,15 +1758,80 @@ paths:
                               type: string
                               description: The hostname to use in the `Host` header
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - ip_geolocation
+                              description: Cloudflare adds a CF-IPCountry HTTP header containing the country
+                                code that corresponds to the visitor.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of adding the IP Geolocation Header.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - mirage
+                              description: Cloudflare Mirage reduces bandwidth used by images in mobile
+                                browsers. It can accelerate loading of
+                                image-heavy websites on very slow mobile
+                                connections and HTTP/1.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Mirage.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - opportunistic_encryption
+                              description: Opportunistic Encryption allows browsers to access HTTP URIs over
+                                an encrypted TLS channel. It's not a substitute
+                                for HTTPS, but provides additional security for
+                                otherwise vulnerable requests.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Opportunistic Encryption.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - origin_error_page_pass_thru
+                              description: Turn on or off Cloudflare error pages generated from issues sent
+                                from the origin server. If enabled, this setting
+                                triggers error pages issued by the origin.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Origin Error Page Passthru.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - polish
+                              description: Apply options from the Polish feature of the Cloudflare Speed app.
+                            value:
+                              type: string
+                              enum:
+                                - off
+                                - lossless
+                                - lossy
+                              description: The level of Polish you want applied to your origin.
                         - type: object
                           properties:
                             id:
@@ -1251,19 +1857,114 @@ paths:
                                 - off
                               description: The status of Respect Strong ETags
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - response_buffering
+                              description: Turn on or off whether Cloudflare should wait for an entire file
+                                from the origin server before forwarding it to
+                                the site visitor. By default, Cloudflare sends
+                                packets to the client as they arrive from the
+                                origin server.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Response Buffering
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - rocket_loader
+                              description: Turn on or off Rocket Loader in the Cloudflare Speed app.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Rocket Loader
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - security_level
+                              description: Control options for the  Security Level  feature from
+                                the  Security  app.
+                            value:
+                              type: string
+                              enum:
+                                - off
+                                - essentially_off
+                                - low
+                                - medium
+                                - high
+                                - under_attack
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - sort_query_string_for_cache
+                              description: Turn on or off the reordering of query strings. When query strings
+                                have the same structure, caching improves.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Query String Sort
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - ssl
+                              description: Control options for the SSL feature of the Edge Certificates tab in
+                                the Cloudflare SSL/TLS app.
+                            value:
+                              type: string
+                              enum:
+                                - off
+                                - flexible
+                                - full
+                                - strict
+                                - origin_pull
+                              description: The encryption mode that Cloudflare uses to connect to your origin
+                                server.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - true_client_ip_header
+                              description: Turn on or off the True-Client-IP Header feature of the Cloudflare
+                                Network app.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of True Client IP Header.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - waf
+                              description: Turn on or off [WAF managed rules (previous version,
+                                deprecated)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/).
+                                You cannot enable or disable individual WAF
+                                managed rules via Page Rules.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of WAF managed rules (previous version).
                     description: The set of actions to perform if the targets of this rule match the
                       request. Actions can redirect to another URL or override
                       settings, but not both.
@@ -1359,13 +2060,51 @@ paths:
                   items:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - always_use_https
+                            description: If enabled, any ` http://`` URL is converted to  `https://` through
+                              a 301 redirect.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - automatic_https_rewrites
+                            description: Turn on or off Automatic HTTPS Rewrites.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Automatic HTTPS Rewrites.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - browser_cache_ttl
+                            description: Control how long resources cached by client browsers remain valid.
+                          value:
+                            type: number
+                            description: The number of seconds to cache resources for. Setting this to 0
+                              enables "Respect Existing Headers".
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - browser_check
+                            description: Inspect the visitor's browser for headers commonly associated with
+                              spammers and certain bots.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Browser Integrity Check.
                       - type: object
                         properties:
                           id:
@@ -1508,7 +2247,31 @@ paths:
                                 description: Feature fields to add features about the end-user (client) into the
                                   Cache Key.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - cache_level
+                            description: Apply custom caching based on the option selected.
+                          value:
+                            type: string
+                            enum:
+                              - bypass
+                              - basic
+                              - simplified
+                              - aggressive
+                              - cache_everything
+                            description: "- `bypass`: Cloudflare does not cache. - `basic`: Delivers
+                              resources from cache when there is no query
+                              string. - `simplified`: Delivers the same resource
+                              to everyone independent of the query string. -
+                              `aggressive`: Caches all static content that has a
+                              query string. - `cache_everything`: Treats all
+                              content as static and caches all file types beyond
+                              the [Cloudflare default cached
+                              content](https://developers.cloudflare.com/cache/\
+                              concepts/default-cache-behavior/#default-cached-f\
+                              ile-extensions)."
                       - type: object
                         properties:
                           id:
@@ -1612,7 +2375,18 @@ paths:
                           value:
                             type: number
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - email_obfuscation
+                            description: Turn on or off  Email Obfuscation  .
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Email Obfuscation.
                       - type: object
                         properties:
                           id:
@@ -1662,15 +2436,80 @@ paths:
                             type: string
                             description: The hostname to use in the `Host` header
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - ip_geolocation
+                            description: Cloudflare adds a CF-IPCountry HTTP header containing the country
+                              code that corresponds to the visitor.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of adding the IP Geolocation Header.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - mirage
+                            description: Cloudflare Mirage reduces bandwidth used by images in mobile
+                              browsers. It can accelerate loading of image-heavy
+                              websites on very slow mobile connections and
+                              HTTP/1.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Mirage.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - opportunistic_encryption
+                            description: Opportunistic Encryption allows browsers to access HTTP URIs over
+                              an encrypted TLS channel. It's not a substitute
+                              for HTTPS, but provides additional security for
+                              otherwise vulnerable requests.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Opportunistic Encryption.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - origin_error_page_pass_thru
+                            description: Turn on or off Cloudflare error pages generated from issues sent
+                              from the origin server. If enabled, this setting
+                              triggers error pages issued by the origin.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Origin Error Page Passthru.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - polish
+                            description: Apply options from the Polish feature of the Cloudflare Speed app.
+                          value:
+                            type: string
+                            enum:
+                              - off
+                              - lossless
+                              - lossy
+                            description: The level of Polish you want applied to your origin.
                       - type: object
                         properties:
                           id:
@@ -1696,19 +2535,114 @@ paths:
                               - off
                             description: The status of Respect Strong ETags
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - response_buffering
+                            description: Turn on or off whether Cloudflare should wait for an entire file
+                              from the origin server before forwarding it to the
+                              site visitor. By default, Cloudflare sends packets
+                              to the client as they arrive from the origin
+                              server.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Response Buffering
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - rocket_loader
+                            description: Turn on or off Rocket Loader in the Cloudflare Speed app.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Rocket Loader
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - security_level
+                            description: Control options for the  Security Level  feature from
+                              the  Security  app.
+                          value:
+                            type: string
+                            enum:
+                              - off
+                              - essentially_off
+                              - low
+                              - medium
+                              - high
+                              - under_attack
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - sort_query_string_for_cache
+                            description: Turn on or off the reordering of query strings. When query strings
+                              have the same structure, caching improves.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Query String Sort
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - ssl
+                            description: Control options for the SSL feature of the Edge Certificates tab in
+                              the Cloudflare SSL/TLS app.
+                          value:
+                            type: string
+                            enum:
+                              - off
+                              - flexible
+                              - full
+                              - strict
+                              - origin_pull
+                            description: The encryption mode that Cloudflare uses to connect to your origin
+                              server.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - true_client_ip_header
+                            description: Turn on or off the True-Client-IP Header feature of the Cloudflare
+                              Network app.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of True Client IP Header.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - waf
+                            description: Turn on or off [WAF managed rules (previous version,
+                              deprecated)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/).
+                              You cannot enable or disable individual WAF
+                              managed rules via Page Rules.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of WAF managed rules (previous version).
                   description: "Body param: The set of actions to perform if the targets of this
                     rule match the request. Actions can redirect to another URL
                     or override settings, but not both."
@@ -1776,13 +2710,51 @@ paths:
                     items:
                       oneOf:
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - always_use_https
+                              description: If enabled, any ` http://`` URL is converted to  `https://` through
+                                a 301 redirect.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - automatic_https_rewrites
+                              description: Turn on or off Automatic HTTPS Rewrites.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Automatic HTTPS Rewrites.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - browser_cache_ttl
+                              description: Control how long resources cached by client browsers remain valid.
+                            value:
+                              type: number
+                              description: The number of seconds to cache resources for. Setting this to 0
+                                enables "Respect Existing Headers".
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - browser_check
+                              description: Inspect the visitor's browser for headers commonly associated with
+                                spammers and certain bots.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Browser Integrity Check.
                         - type: object
                           properties:
                             id:
@@ -1926,7 +2898,32 @@ paths:
                                   description: Feature fields to add features about the end-user (client) into the
                                     Cache Key.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - cache_level
+                              description: Apply custom caching based on the option selected.
+                            value:
+                              type: string
+                              enum:
+                                - bypass
+                                - basic
+                                - simplified
+                                - aggressive
+                                - cache_everything
+                              description: "- `bypass`: Cloudflare does not cache. - `basic`: Delivers
+                                resources from cache when there is no query
+                                string. - `simplified`: Delivers the same
+                                resource to everyone independent of the query
+                                string. - `aggressive`: Caches all static
+                                content that has a query string. -
+                                `cache_everything`: Treats all content as static
+                                and caches all file types beyond the [Cloudflare
+                                default cached
+                                content](https://developers.cloudflare.com/cach\
+                                e/concepts/default-cache-behavior/#default-cach\
+                                ed-file-extensions)."
                         - type: object
                           properties:
                             id:
@@ -2032,7 +3029,18 @@ paths:
                             value:
                               type: number
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - email_obfuscation
+                              description: Turn on or off  Email Obfuscation  .
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Email Obfuscation.
                         - type: object
                           properties:
                             id:
@@ -2082,15 +3090,80 @@ paths:
                               type: string
                               description: The hostname to use in the `Host` header
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - ip_geolocation
+                              description: Cloudflare adds a CF-IPCountry HTTP header containing the country
+                                code that corresponds to the visitor.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of adding the IP Geolocation Header.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - mirage
+                              description: Cloudflare Mirage reduces bandwidth used by images in mobile
+                                browsers. It can accelerate loading of
+                                image-heavy websites on very slow mobile
+                                connections and HTTP/1.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Mirage.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - opportunistic_encryption
+                              description: Opportunistic Encryption allows browsers to access HTTP URIs over
+                                an encrypted TLS channel. It's not a substitute
+                                for HTTPS, but provides additional security for
+                                otherwise vulnerable requests.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Opportunistic Encryption.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - origin_error_page_pass_thru
+                              description: Turn on or off Cloudflare error pages generated from issues sent
+                                from the origin server. If enabled, this setting
+                                triggers error pages issued by the origin.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Origin Error Page Passthru.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - polish
+                              description: Apply options from the Polish feature of the Cloudflare Speed app.
+                            value:
+                              type: string
+                              enum:
+                                - off
+                                - lossless
+                                - lossy
+                              description: The level of Polish you want applied to your origin.
                         - type: object
                           properties:
                             id:
@@ -2116,19 +3189,114 @@ paths:
                                 - off
                               description: The status of Respect Strong ETags
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - response_buffering
+                              description: Turn on or off whether Cloudflare should wait for an entire file
+                                from the origin server before forwarding it to
+                                the site visitor. By default, Cloudflare sends
+                                packets to the client as they arrive from the
+                                origin server.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Response Buffering
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - rocket_loader
+                              description: Turn on or off Rocket Loader in the Cloudflare Speed app.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Rocket Loader
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - security_level
+                              description: Control options for the  Security Level  feature from
+                                the  Security  app.
+                            value:
+                              type: string
+                              enum:
+                                - off
+                                - essentially_off
+                                - low
+                                - medium
+                                - high
+                                - under_attack
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - sort_query_string_for_cache
+                              description: Turn on or off the reordering of query strings. When query strings
+                                have the same structure, caching improves.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Query String Sort
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - ssl
+                              description: Control options for the SSL feature of the Edge Certificates tab in
+                                the Cloudflare SSL/TLS app.
+                            value:
+                              type: string
+                              enum:
+                                - off
+                                - flexible
+                                - full
+                                - strict
+                                - origin_pull
+                              description: The encryption mode that Cloudflare uses to connect to your origin
+                                server.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - true_client_ip_header
+                              description: Turn on or off the True-Client-IP Header feature of the Cloudflare
+                                Network app.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of True Client IP Header.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - waf
+                              description: Turn on or off [WAF managed rules (previous version,
+                                deprecated)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/).
+                                You cannot enable or disable individual WAF
+                                managed rules via Page Rules.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of WAF managed rules (previous version).
                     description: The set of actions to perform if the targets of this rule match the
                       request. Actions can redirect to another URL or override
                       settings, but not both.
@@ -2294,13 +3462,51 @@ paths:
                       items:
                         oneOf:
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - always_use_https
+                                description: If enabled, any ` http://`` URL is converted to  `https://` through
+                                  a 301 redirect.
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - automatic_https_rewrites
+                                description: Turn on or off Automatic HTTPS Rewrites.
+                              value:
+                                type: string
+                                enum:
+                                  - on
+                                  - off
+                                description: The status of Automatic HTTPS Rewrites.
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - browser_cache_ttl
+                                description: Control how long resources cached by client browsers remain valid.
+                              value:
+                                type: number
+                                description: The number of seconds to cache resources for. Setting this to 0
+                                  enables "Respect Existing Headers".
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - browser_check
+                                description: Inspect the visitor's browser for headers commonly associated with
+                                  spammers and certain bots.
+                              value:
+                                type: string
+                                enum:
+                                  - on
+                                  - off
+                                description: The status of Browser Integrity Check.
                           - type: object
                             properties:
                               id:
@@ -2444,7 +3650,32 @@ paths:
                                     description: Feature fields to add features about the end-user (client) into the
                                       Cache Key.
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - cache_level
+                                description: Apply custom caching based on the option selected.
+                              value:
+                                type: string
+                                enum:
+                                  - bypass
+                                  - basic
+                                  - simplified
+                                  - aggressive
+                                  - cache_everything
+                                description: "- `bypass`: Cloudflare does not cache. - `basic`: Delivers
+                                  resources from cache when there is no query
+                                  string. - `simplified`: Delivers the same
+                                  resource to everyone independent of the query
+                                  string. - `aggressive`: Caches all static
+                                  content that has a query string. -
+                                  `cache_everything`: Treats all content as
+                                  static and caches all file types beyond the
+                                  [Cloudflare default cached
+                                  content](https://developers.cloudflare.com/ca\
+                                  che/concepts/default-cache-behavior/#default-\
+                                  cached-file-extensions)."
                           - type: object
                             properties:
                               id:
@@ -2552,7 +3783,18 @@ paths:
                               value:
                                 type: number
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - email_obfuscation
+                                description: Turn on or off  Email Obfuscation  .
+                              value:
+                                type: string
+                                enum:
+                                  - on
+                                  - off
+                                description: The status of Email Obfuscation.
                           - type: object
                             properties:
                               id:
@@ -2603,15 +3845,81 @@ paths:
                                 type: string
                                 description: The hostname to use in the `Host` header
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - ip_geolocation
+                                description: Cloudflare adds a CF-IPCountry HTTP header containing the country
+                                  code that corresponds to the visitor.
+                              value:
+                                type: string
+                                enum:
+                                  - on
+                                  - off
+                                description: The status of adding the IP Geolocation Header.
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - mirage
+                                description: Cloudflare Mirage reduces bandwidth used by images in mobile
+                                  browsers. It can accelerate loading of
+                                  image-heavy websites on very slow mobile
+                                  connections and HTTP/1.
+                              value:
+                                type: string
+                                enum:
+                                  - on
+                                  - off
+                                description: The status of Mirage.
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - opportunistic_encryption
+                                description: Opportunistic Encryption allows browsers to access HTTP URIs over
+                                  an encrypted TLS channel. It's not a
+                                  substitute for HTTPS, but provides additional
+                                  security for otherwise vulnerable requests.
+                              value:
+                                type: string
+                                enum:
+                                  - on
+                                  - off
+                                description: The status of Opportunistic Encryption.
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - origin_error_page_pass_thru
+                                description: Turn on or off Cloudflare error pages generated from issues sent
+                                  from the origin server. If enabled, this
+                                  setting triggers error pages issued by the
+                                  origin.
+                              value:
+                                type: string
+                                enum:
+                                  - on
+                                  - off
+                                description: The status of Origin Error Page Passthru.
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - polish
+                                description: Apply options from the Polish feature of the Cloudflare Speed app.
+                              value:
+                                type: string
+                                enum:
+                                  - off
+                                  - lossless
+                                  - lossy
+                                description: The level of Polish you want applied to your origin.
                           - type: object
                             properties:
                               id:
@@ -2637,19 +3945,114 @@ paths:
                                   - off
                                 description: The status of Respect Strong ETags
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - response_buffering
+                                description: Turn on or off whether Cloudflare should wait for an entire file
+                                  from the origin server before forwarding it to
+                                  the site visitor. By default, Cloudflare sends
+                                  packets to the client as they arrive from the
+                                  origin server.
+                              value:
+                                type: string
+                                enum:
+                                  - on
+                                  - off
+                                description: The status of Response Buffering
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - rocket_loader
+                                description: Turn on or off Rocket Loader in the Cloudflare Speed app.
+                              value:
+                                type: string
+                                enum:
+                                  - on
+                                  - off
+                                description: The status of Rocket Loader
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - security_level
+                                description: Control options for the  Security Level  feature from
+                                  the  Security  app.
+                              value:
+                                type: string
+                                enum:
+                                  - off
+                                  - essentially_off
+                                  - low
+                                  - medium
+                                  - high
+                                  - under_attack
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - sort_query_string_for_cache
+                                description: Turn on or off the reordering of query strings. When query strings
+                                  have the same structure, caching improves.
+                              value:
+                                type: string
+                                enum:
+                                  - on
+                                  - off
+                                description: The status of Query String Sort
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - ssl
+                                description: Control options for the SSL feature of the Edge Certificates tab in
+                                  the Cloudflare SSL/TLS app.
+                              value:
+                                type: string
+                                enum:
+                                  - off
+                                  - flexible
+                                  - full
+                                  - strict
+                                  - origin_pull
+                                description: The encryption mode that Cloudflare uses to connect to your origin
+                                  server.
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - true_client_ip_header
+                                description: Turn on or off the True-Client-IP Header feature of the Cloudflare
+                                  Network app.
+                              value:
+                                type: string
+                                enum:
+                                  - on
+                                  - off
+                                description: The status of True Client IP Header.
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              id:
+                                type: string
+                                enum:
+                                  - waf
+                                description: Turn on or off [WAF managed rules (previous version,
+                                  deprecated)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/).
+                                  You cannot enable or disable individual WAF
+                                  managed rules via Page Rules.
+                              value:
+                                type: string
+                                enum:
+                                  - on
+                                  - off
+                                description: The status of WAF managed rules (previous version).
                       description: The set of actions to perform if the targets of this rule match the
                         request. Actions can redirect to another URL or override
                         settings, but not both.
@@ -2742,13 +4145,51 @@ paths:
                   items:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - always_use_https
+                            description: If enabled, any ` http://`` URL is converted to  `https://` through
+                              a 301 redirect.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - automatic_https_rewrites
+                            description: Turn on or off Automatic HTTPS Rewrites.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Automatic HTTPS Rewrites.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - browser_cache_ttl
+                            description: Control how long resources cached by client browsers remain valid.
+                          value:
+                            type: number
+                            description: The number of seconds to cache resources for. Setting this to 0
+                              enables "Respect Existing Headers".
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - browser_check
+                            description: Inspect the visitor's browser for headers commonly associated with
+                              spammers and certain bots.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Browser Integrity Check.
                       - type: object
                         properties:
                           id:
@@ -2891,7 +4332,31 @@ paths:
                                 description: Feature fields to add features about the end-user (client) into the
                                   Cache Key.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - cache_level
+                            description: Apply custom caching based on the option selected.
+                          value:
+                            type: string
+                            enum:
+                              - bypass
+                              - basic
+                              - simplified
+                              - aggressive
+                              - cache_everything
+                            description: "- `bypass`: Cloudflare does not cache. - `basic`: Delivers
+                              resources from cache when there is no query
+                              string. - `simplified`: Delivers the same resource
+                              to everyone independent of the query string. -
+                              `aggressive`: Caches all static content that has a
+                              query string. - `cache_everything`: Treats all
+                              content as static and caches all file types beyond
+                              the [Cloudflare default cached
+                              content](https://developers.cloudflare.com/cache/\
+                              concepts/default-cache-behavior/#default-cached-f\
+                              ile-extensions)."
                       - type: object
                         properties:
                           id:
@@ -2995,7 +4460,18 @@ paths:
                           value:
                             type: number
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - email_obfuscation
+                            description: Turn on or off  Email Obfuscation  .
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Email Obfuscation.
                       - type: object
                         properties:
                           id:
@@ -3045,15 +4521,80 @@ paths:
                             type: string
                             description: The hostname to use in the `Host` header
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - ip_geolocation
+                            description: Cloudflare adds a CF-IPCountry HTTP header containing the country
+                              code that corresponds to the visitor.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of adding the IP Geolocation Header.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - mirage
+                            description: Cloudflare Mirage reduces bandwidth used by images in mobile
+                              browsers. It can accelerate loading of image-heavy
+                              websites on very slow mobile connections and
+                              HTTP/1.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Mirage.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - opportunistic_encryption
+                            description: Opportunistic Encryption allows browsers to access HTTP URIs over
+                              an encrypted TLS channel. It's not a substitute
+                              for HTTPS, but provides additional security for
+                              otherwise vulnerable requests.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Opportunistic Encryption.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - origin_error_page_pass_thru
+                            description: Turn on or off Cloudflare error pages generated from issues sent
+                              from the origin server. If enabled, this setting
+                              triggers error pages issued by the origin.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Origin Error Page Passthru.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - polish
+                            description: Apply options from the Polish feature of the Cloudflare Speed app.
+                          value:
+                            type: string
+                            enum:
+                              - off
+                              - lossless
+                              - lossy
+                            description: The level of Polish you want applied to your origin.
                       - type: object
                         properties:
                           id:
@@ -3079,19 +4620,114 @@ paths:
                               - off
                             description: The status of Respect Strong ETags
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - response_buffering
+                            description: Turn on or off whether Cloudflare should wait for an entire file
+                              from the origin server before forwarding it to the
+                              site visitor. By default, Cloudflare sends packets
+                              to the client as they arrive from the origin
+                              server.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Response Buffering
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - rocket_loader
+                            description: Turn on or off Rocket Loader in the Cloudflare Speed app.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Rocket Loader
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - security_level
+                            description: Control options for the  Security Level  feature from
+                              the  Security  app.
+                          value:
+                            type: string
+                            enum:
+                              - off
+                              - essentially_off
+                              - low
+                              - medium
+                              - high
+                              - under_attack
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - sort_query_string_for_cache
+                            description: Turn on or off the reordering of query strings. When query strings
+                              have the same structure, caching improves.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of Query String Sort
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - ssl
+                            description: Control options for the SSL feature of the Edge Certificates tab in
+                              the Cloudflare SSL/TLS app.
+                          value:
+                            type: string
+                            enum:
+                              - off
+                              - flexible
+                              - full
+                              - strict
+                              - origin_pull
+                            description: The encryption mode that Cloudflare uses to connect to your origin
+                              server.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - true_client_ip_header
+                            description: Turn on or off the True-Client-IP Header feature of the Cloudflare
+                              Network app.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of True Client IP Header.
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            enum:
+                              - waf
+                            description: Turn on or off [WAF managed rules (previous version,
+                              deprecated)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/).
+                              You cannot enable or disable individual WAF
+                              managed rules via Page Rules.
+                          value:
+                            type: string
+                            enum:
+                              - on
+                              - off
+                            description: The status of WAF managed rules (previous version).
                   description: "Body param: The set of actions to perform if the targets of this
                     rule match the request. Actions can redirect to another URL
                     or override settings, but not both."
@@ -3162,13 +4798,51 @@ paths:
                     items:
                       oneOf:
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - always_use_https
+                              description: If enabled, any ` http://`` URL is converted to  `https://` through
+                                a 301 redirect.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - automatic_https_rewrites
+                              description: Turn on or off Automatic HTTPS Rewrites.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Automatic HTTPS Rewrites.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - browser_cache_ttl
+                              description: Control how long resources cached by client browsers remain valid.
+                            value:
+                              type: number
+                              description: The number of seconds to cache resources for. Setting this to 0
+                                enables "Respect Existing Headers".
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - browser_check
+                              description: Inspect the visitor's browser for headers commonly associated with
+                                spammers and certain bots.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Browser Integrity Check.
                         - type: object
                           properties:
                             id:
@@ -3312,7 +4986,32 @@ paths:
                                   description: Feature fields to add features about the end-user (client) into the
                                     Cache Key.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - cache_level
+                              description: Apply custom caching based on the option selected.
+                            value:
+                              type: string
+                              enum:
+                                - bypass
+                                - basic
+                                - simplified
+                                - aggressive
+                                - cache_everything
+                              description: "- `bypass`: Cloudflare does not cache. - `basic`: Delivers
+                                resources from cache when there is no query
+                                string. - `simplified`: Delivers the same
+                                resource to everyone independent of the query
+                                string. - `aggressive`: Caches all static
+                                content that has a query string. -
+                                `cache_everything`: Treats all content as static
+                                and caches all file types beyond the [Cloudflare
+                                default cached
+                                content](https://developers.cloudflare.com/cach\
+                                e/concepts/default-cache-behavior/#default-cach\
+                                ed-file-extensions)."
                         - type: object
                           properties:
                             id:
@@ -3418,7 +5117,18 @@ paths:
                             value:
                               type: number
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - email_obfuscation
+                              description: Turn on or off  Email Obfuscation  .
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Email Obfuscation.
                         - type: object
                           properties:
                             id:
@@ -3468,15 +5178,80 @@ paths:
                               type: string
                               description: The hostname to use in the `Host` header
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - ip_geolocation
+                              description: Cloudflare adds a CF-IPCountry HTTP header containing the country
+                                code that corresponds to the visitor.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of adding the IP Geolocation Header.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - mirage
+                              description: Cloudflare Mirage reduces bandwidth used by images in mobile
+                                browsers. It can accelerate loading of
+                                image-heavy websites on very slow mobile
+                                connections and HTTP/1.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Mirage.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - opportunistic_encryption
+                              description: Opportunistic Encryption allows browsers to access HTTP URIs over
+                                an encrypted TLS channel. It's not a substitute
+                                for HTTPS, but provides additional security for
+                                otherwise vulnerable requests.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Opportunistic Encryption.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - origin_error_page_pass_thru
+                              description: Turn on or off Cloudflare error pages generated from issues sent
+                                from the origin server. If enabled, this setting
+                                triggers error pages issued by the origin.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Origin Error Page Passthru.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - polish
+                              description: Apply options from the Polish feature of the Cloudflare Speed app.
+                            value:
+                              type: string
+                              enum:
+                                - off
+                                - lossless
+                                - lossy
+                              description: The level of Polish you want applied to your origin.
                         - type: object
                           properties:
                             id:
@@ -3502,19 +5277,114 @@ paths:
                                 - off
                               description: The status of Respect Strong ETags
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - response_buffering
+                              description: Turn on or off whether Cloudflare should wait for an entire file
+                                from the origin server before forwarding it to
+                                the site visitor. By default, Cloudflare sends
+                                packets to the client as they arrive from the
+                                origin server.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Response Buffering
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - rocket_loader
+                              description: Turn on or off Rocket Loader in the Cloudflare Speed app.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Rocket Loader
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - security_level
+                              description: Control options for the  Security Level  feature from
+                                the  Security  app.
+                            value:
+                              type: string
+                              enum:
+                                - off
+                                - essentially_off
+                                - low
+                                - medium
+                                - high
+                                - under_attack
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - sort_query_string_for_cache
+                              description: Turn on or off the reordering of query strings. When query strings
+                                have the same structure, caching improves.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of Query String Sort
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - ssl
+                              description: Control options for the SSL feature of the Edge Certificates tab in
+                                the Cloudflare SSL/TLS app.
+                            value:
+                              type: string
+                              enum:
+                                - off
+                                - flexible
+                                - full
+                                - strict
+                                - origin_pull
+                              description: The encryption mode that Cloudflare uses to connect to your origin
+                                server.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - true_client_ip_header
+                              description: Turn on or off the True-Client-IP Header feature of the Cloudflare
+                                Network app.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of True Client IP Header.
                         - type: object
-                          additionalProperties: true
+                          properties:
+                            id:
+                              type: string
+                              enum:
+                                - waf
+                              description: Turn on or off [WAF managed rules (previous version,
+                                deprecated)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/).
+                                You cannot enable or disable individual WAF
+                                managed rules via Page Rules.
+                            value:
+                              type: string
+                              enum:
+                                - on
+                                - off
+                              description: The status of WAF managed rules (previous version).
                     description: The set of actions to perform if the targets of this rule match the
                       request. Actions can redirect to another URL or override
                       settings, but not both.

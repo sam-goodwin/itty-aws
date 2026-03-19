@@ -1592,11 +1592,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties: true
   /accounts/{account_id}/browser-rendering/scrape:
     post:
       operationId: createScrape

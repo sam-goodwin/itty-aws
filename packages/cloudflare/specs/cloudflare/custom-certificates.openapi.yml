@@ -105,7 +105,64 @@ paths:
                       datacenters, for optimal performance.
                   keyless_server:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      id:
+                        type: string
+                        description: Keyless certificate identifier tag.
+                      created_on:
+                        type: string
+                        description: When the Keyless SSL was created.
+                      enabled:
+                        type: boolean
+                        description: Whether or not the Keyless SSL is on or off.
+                      host:
+                        type: string
+                        description: The keyless SSL name.
+                      modified_on:
+                        type: string
+                        description: When the Keyless SSL was last modified.
+                      name:
+                        type: string
+                        description: The keyless SSL name.
+                      permissions:
+                        type: array
+                        items:
+                          type: string
+                        description: Available permissions for the Keyless SSL for the current user
+                          requesting the item.
+                      port:
+                        type: number
+                        description: The keyless SSL port used to communicate between Cloudflare and the
+                          client's Keyless SSL server.
+                      status:
+                        type: string
+                        enum:
+                          - active
+                          - deleted
+                        description: Status of the Keyless SSL.
+                      tunnel:
+                        type: object
+                        properties:
+                          private_ip:
+                            type: string
+                            description: Private IP of the Key Server Host
+                          vnet_id:
+                            type: string
+                            description: Cloudflare Tunnel Virtual Network ID
+                        required:
+                          - private_ip
+                          - vnet_id
+                        description: Configuration for using Keyless SSL through a Cloudflare Tunnel
+                    required:
+                      - id
+                      - created_on
+                      - enabled
+                      - host
+                      - modified_on
+                      - name
+                      - permissions
+                      - port
+                      - status
                   policy:
                     type: string
                     description: "Specify the policy that determines the region where your private
@@ -290,7 +347,64 @@ paths:
                       datacenters, for optimal performance.
                   keyless_server:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      id:
+                        type: string
+                        description: Keyless certificate identifier tag.
+                      created_on:
+                        type: string
+                        description: When the Keyless SSL was created.
+                      enabled:
+                        type: boolean
+                        description: Whether or not the Keyless SSL is on or off.
+                      host:
+                        type: string
+                        description: The keyless SSL name.
+                      modified_on:
+                        type: string
+                        description: When the Keyless SSL was last modified.
+                      name:
+                        type: string
+                        description: The keyless SSL name.
+                      permissions:
+                        type: array
+                        items:
+                          type: string
+                        description: Available permissions for the Keyless SSL for the current user
+                          requesting the item.
+                      port:
+                        type: number
+                        description: The keyless SSL port used to communicate between Cloudflare and the
+                          client's Keyless SSL server.
+                      status:
+                        type: string
+                        enum:
+                          - active
+                          - deleted
+                        description: Status of the Keyless SSL.
+                      tunnel:
+                        type: object
+                        properties:
+                          private_ip:
+                            type: string
+                            description: Private IP of the Key Server Host
+                          vnet_id:
+                            type: string
+                            description: Cloudflare Tunnel Virtual Network ID
+                        required:
+                          - private_ip
+                          - vnet_id
+                        description: Configuration for using Keyless SSL through a Cloudflare Tunnel
+                    required:
+                      - id
+                      - created_on
+                      - enabled
+                      - host
+                      - modified_on
+                      - name
+                      - permissions
+                      - port
+                      - status
                   policy:
                     type: string
                     description: "Specify the policy that determines the region where your private
@@ -467,7 +581,64 @@ paths:
                       datacenters, for optimal performance.
                   keyless_server:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      id:
+                        type: string
+                        description: Keyless certificate identifier tag.
+                      created_on:
+                        type: string
+                        description: When the Keyless SSL was created.
+                      enabled:
+                        type: boolean
+                        description: Whether or not the Keyless SSL is on or off.
+                      host:
+                        type: string
+                        description: The keyless SSL name.
+                      modified_on:
+                        type: string
+                        description: When the Keyless SSL was last modified.
+                      name:
+                        type: string
+                        description: The keyless SSL name.
+                      permissions:
+                        type: array
+                        items:
+                          type: string
+                        description: Available permissions for the Keyless SSL for the current user
+                          requesting the item.
+                      port:
+                        type: number
+                        description: The keyless SSL port used to communicate between Cloudflare and the
+                          client's Keyless SSL server.
+                      status:
+                        type: string
+                        enum:
+                          - active
+                          - deleted
+                        description: Status of the Keyless SSL.
+                      tunnel:
+                        type: object
+                        properties:
+                          private_ip:
+                            type: string
+                            description: Private IP of the Key Server Host
+                          vnet_id:
+                            type: string
+                            description: Cloudflare Tunnel Virtual Network ID
+                        required:
+                          - private_ip
+                          - vnet_id
+                        description: Configuration for using Keyless SSL through a Cloudflare Tunnel
+                    required:
+                      - id
+                      - created_on
+                      - enabled
+                      - host
+                      - modified_on
+                      - name
+                      - permissions
+                      - port
+                      - status
                   policy:
                     type: string
                     description: "Specify the policy that determines the region where your private
@@ -699,7 +870,64 @@ paths:
                       datacenters, for optimal performance.
                   keyless_server:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      id:
+                        type: string
+                        description: Keyless certificate identifier tag.
+                      created_on:
+                        type: string
+                        description: When the Keyless SSL was created.
+                      enabled:
+                        type: boolean
+                        description: Whether or not the Keyless SSL is on or off.
+                      host:
+                        type: string
+                        description: The keyless SSL name.
+                      modified_on:
+                        type: string
+                        description: When the Keyless SSL was last modified.
+                      name:
+                        type: string
+                        description: The keyless SSL name.
+                      permissions:
+                        type: array
+                        items:
+                          type: string
+                        description: Available permissions for the Keyless SSL for the current user
+                          requesting the item.
+                      port:
+                        type: number
+                        description: The keyless SSL port used to communicate between Cloudflare and the
+                          client's Keyless SSL server.
+                      status:
+                        type: string
+                        enum:
+                          - active
+                          - deleted
+                        description: Status of the Keyless SSL.
+                      tunnel:
+                        type: object
+                        properties:
+                          private_ip:
+                            type: string
+                            description: Private IP of the Key Server Host
+                          vnet_id:
+                            type: string
+                            description: Cloudflare Tunnel Virtual Network ID
+                        required:
+                          - private_ip
+                          - vnet_id
+                        description: Configuration for using Keyless SSL through a Cloudflare Tunnel
+                    required:
+                      - id
+                      - created_on
+                      - enabled
+                      - host
+                      - modified_on
+                      - name
+                      - permissions
+                      - port
+                      - status
                   policy:
                     type: string
                     description: "Specify the policy that determines the region where your private
@@ -776,5 +1004,161 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Identifier.
+                  bundle_method:
+                    type: string
+                    enum:
+                      - ubiquitous
+                      - optimal
+                      - force
+                    description: A ubiquitous bundle has the highest probability of being verified
+                      everywhere, even by clients using outdated or unusual
+                      trust stores. An optimal bundle uses the shortest chain
+                      and newest intermediates. And the force bundle verifies
+                      the chain, but does not otherwise modify it.
+                  expires_on:
+                    type: string
+                    description: When the certificate from the authority expires.
+                  hosts:
+                    type: array
+                    items:
+                      type: string
+                  issuer:
+                    type: string
+                    description: The certificate authority that issued the certificate.
+                  modified_on:
+                    type: string
+                    description: When the certificate was last modified.
+                  priority:
+                    type: number
+                    description: The order/priority in which the certificate will be used in a
+                      request. The higher priority will break ties across
+                      overlapping 'legacy_custom' certificates, but
+                      'legacy_custom' certificates will always supercede
+                      'sni_custom' certificates.
+                  signature:
+                    type: string
+                    description: The type of hash used for the certificate.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - expired
+                      - deleted
+                      - pending
+                      - initializing
+                    description: Status of the zone's custom SSL.
+                  uploaded_on:
+                    type: string
+                    description: When the certificate was uploaded to Cloudflare.
+                  zone_id:
+                    type: string
+                    description: Identifier.
+                  geo_restrictions:
+                    type: object
+                    properties:
+                      label:
+                        type: string
+                        enum:
+                          - us
+                          - eu
+                          - highest_security
+                    description: Specify the region where your private key can be held locally for
+                      optimal TLS performance. HTTPS connections to any excluded
+                      data center will still be fully encrypted, but will incur
+                      some latency while Keyless SSL is used to complete the
+                      handshake with the nearest allowed data center. Options
+                      allow distribution to only to U.S. data centers, only to
+                      E.U. data centers, or only to highest security data
+                      centers. Default distribution is to all Cloudflare
+                      datacenters, for optimal performance.
+                  keyless_server:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Keyless certificate identifier tag.
+                      created_on:
+                        type: string
+                        description: When the Keyless SSL was created.
+                      enabled:
+                        type: boolean
+                        description: Whether or not the Keyless SSL is on or off.
+                      host:
+                        type: string
+                        description: The keyless SSL name.
+                      modified_on:
+                        type: string
+                        description: When the Keyless SSL was last modified.
+                      name:
+                        type: string
+                        description: The keyless SSL name.
+                      permissions:
+                        type: array
+                        items:
+                          type: string
+                        description: Available permissions for the Keyless SSL for the current user
+                          requesting the item.
+                      port:
+                        type: number
+                        description: The keyless SSL port used to communicate between Cloudflare and the
+                          client's Keyless SSL server.
+                      status:
+                        type: string
+                        enum:
+                          - active
+                          - deleted
+                        description: Status of the Keyless SSL.
+                      tunnel:
+                        type: object
+                        properties:
+                          private_ip:
+                            type: string
+                            description: Private IP of the Key Server Host
+                          vnet_id:
+                            type: string
+                            description: Cloudflare Tunnel Virtual Network ID
+                        required:
+                          - private_ip
+                          - vnet_id
+                        description: Configuration for using Keyless SSL through a Cloudflare Tunnel
+                    required:
+                      - id
+                      - created_on
+                      - enabled
+                      - host
+                      - modified_on
+                      - name
+                      - permissions
+                      - port
+                      - status
+                  policy:
+                    type: string
+                    description: "Specify the policy that determines the region where your private
+                      key will be held locally. HTTPS connections to any
+                      excluded data center will still be fully encrypted, but
+                      will incur some latency while Keyless SSL is used to
+                      complete the handshake with the nearest allowed data
+                      center. Any combination of countries, specified by their
+                      two letter country code
+                      (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officia\
+                      lly_assigned_code_elements) can be chosen, such as
+                      'country: IN', as well as 'region: EU' which refers to the
+                      EU region. If there are too few data centers satisfying
+                      the policy, it will be rejected."
+                required:
+                  - id
+                  - bundle_method
+                  - expires_on
+                  - hosts
+                  - issuer
+                  - modified_on
+                  - priority
+                  - signature
+                  - status
+                  - uploaded_on
+                  - zone_id
       x-distilled-pagination-class: CustomCertificatesSinglePage

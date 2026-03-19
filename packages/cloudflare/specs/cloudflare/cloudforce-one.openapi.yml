@@ -1244,7 +1244,64 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: UUID.
+                  content:
+                    type: string
+                    description: Request content.
+                  created:
+                    type: string
+                  priority:
+                    type: string
+                  request:
+                    type: string
+                    description: Requested information from request.
+                  summary:
+                    type: string
+                    description: Brief description of the request.
+                  tlp:
+                    type: string
+                    enum:
+                      - clear
+                      - amber
+                      - amber-strict
+                      - green
+                      - red
+                    description: The CISA defined Traffic Light Protocol (TLP).
+                  updated:
+                    type: string
+                  completed:
+                    type: string
+                  message_tokens:
+                    type: number
+                    description: Tokens for the request messages.
+                  readable_id:
+                    type: string
+                    description: Readable Request ID.
+                  status:
+                    type: string
+                    enum:
+                      - open
+                      - accepted
+                      - reported
+                      - approved
+                      - completed
+                      - declined
+                    description: Request Status.
+                  tokens:
+                    type: number
+                    description: Tokens for the request.
+                required:
+                  - id
+                  - content
+                  - created
+                  - priority
+                  - request
+                  - summary
+                  - tlp
+                  - updated
       x-distilled-response-path: result
     put:
       operationId: updateRequestPriority
@@ -1304,7 +1361,64 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: UUID.
+                  content:
+                    type: string
+                    description: Request content.
+                  created:
+                    type: string
+                  priority:
+                    type: string
+                  request:
+                    type: string
+                    description: Requested information from request.
+                  summary:
+                    type: string
+                    description: Brief description of the request.
+                  tlp:
+                    type: string
+                    enum:
+                      - clear
+                      - amber
+                      - amber-strict
+                      - green
+                      - red
+                    description: The CISA defined Traffic Light Protocol (TLP).
+                  updated:
+                    type: string
+                  completed:
+                    type: string
+                  message_tokens:
+                    type: number
+                    description: Tokens for the request messages.
+                  readable_id:
+                    type: string
+                    description: Readable Request ID.
+                  status:
+                    type: string
+                    enum:
+                      - open
+                      - accepted
+                      - reported
+                      - approved
+                      - completed
+                      - declined
+                    description: Request Status.
+                  tokens:
+                    type: number
+                    description: Tokens for the request.
+                required:
+                  - id
+                  - content
+                  - created
+                  - priority
+                  - request
+                  - summary
+                  - tlp
+                  - updated
       x-distilled-response-path: result
     delete:
       operationId: deleteRequestPriority
@@ -1492,7 +1606,20 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  anniversary_date:
+                    type: string
+                    description: Anniversary date is when annual quota limit is refreshed.
+                  quarter_anniversary_date:
+                    type: string
+                    description: Quarter anniversary date is when quota limit is refreshed each
+                      quarter.
+                  quota:
+                    type: number
+                    description: Tokens for the quarter.
+                  remaining:
+                    type: number
+                    description: Tokens remaining for the quarter.
       x-distilled-response-path: result
   /accounts/{account_id}/cloudforce-one/scans/config:
     get:

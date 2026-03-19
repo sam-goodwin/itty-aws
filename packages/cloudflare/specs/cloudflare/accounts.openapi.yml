@@ -855,7 +855,189 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Membership identifier tag.
+                  email:
+                    type: string
+                    description: The contact email address of the user.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        access:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the group.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resource_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the group.
+                            required:
+                              - id
+                          description: A list of resource groups that the policy applies to.
+                    description: Access policy for the membership
+                  roles:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Role identifier tag.
+                        description:
+                          type: string
+                          description: Description of role's permissions.
+                        name:
+                          type: string
+                          description: Role name.
+                        permissions:
+                          type: object
+                          properties:
+                            analytics:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            billing:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            cache_purge:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            dns:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            dns_records:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            lb:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            logs:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            organization:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            ssl:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            waf:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            zone_settings:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            zones:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                      required:
+                        - id
+                        - description
+                        - name
+                        - permissions
+                    description: Roles assigned to this Member.
+                  status:
+                    type: string
+                    enum:
+                      - accepted
+                      - pending
+                    description: A member's status in the account.
+                  user:
+                    type: object
+                    properties:
+                      email:
+                        type: string
+                        description: The contact email address of the user.
+                      id:
+                        type: string
+                        description: Identifier
+                      first_name:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: User's first name
+                      last_name:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: User's last name
+                      two_factor_authentication_enabled:
+                        type: boolean
+                        description: Indicates whether two-factor authentication is enabled for the user
+                          account. Does not apply to API authentication.
+                    required:
+                      - email
+                    description: Details of the user associated to the membership.
       x-distilled-response-path: result
       x-distilled-errors:
         MemberNotFound:
@@ -890,7 +1072,12 @@ paths:
                   type: array
                   items:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      id:
+                        type: string
+                        description: Role identifier tag.
+                    required:
+                      - id
                   description: "Body param: Roles assigned to this member."
       responses:
         "200":
@@ -899,7 +1086,189 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Membership identifier tag.
+                  email:
+                    type: string
+                    description: The contact email address of the user.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        access:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the group.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resource_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the group.
+                            required:
+                              - id
+                          description: A list of resource groups that the policy applies to.
+                    description: Access policy for the membership
+                  roles:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Role identifier tag.
+                        description:
+                          type: string
+                          description: Description of role's permissions.
+                        name:
+                          type: string
+                          description: Role name.
+                        permissions:
+                          type: object
+                          properties:
+                            analytics:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            billing:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            cache_purge:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            dns:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            dns_records:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            lb:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            logs:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            organization:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            ssl:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            waf:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            zone_settings:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            zones:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                      required:
+                        - id
+                        - description
+                        - name
+                        - permissions
+                    description: Roles assigned to this Member.
+                  status:
+                    type: string
+                    enum:
+                      - accepted
+                      - pending
+                    description: A member's status in the account.
+                  user:
+                    type: object
+                    properties:
+                      email:
+                        type: string
+                        description: The contact email address of the user.
+                      id:
+                        type: string
+                        description: Identifier
+                      first_name:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: User's first name
+                      last_name:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: User's last name
+                      two_factor_authentication_enabled:
+                        type: boolean
+                        description: Indicates whether two-factor authentication is enabled for the user
+                          account. Does not apply to API authentication.
+                    required:
+                      - email
+                    description: Details of the user associated to the membership.
       x-distilled-response-path: result
       x-distilled-errors:
         MemberNotFound:
@@ -999,7 +1368,189 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Membership identifier tag.
+                  email:
+                    type: string
+                    description: The contact email address of the user.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        access:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the group.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resource_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the group.
+                            required:
+                              - id
+                          description: A list of resource groups that the policy applies to.
+                    description: Access policy for the membership
+                  roles:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Role identifier tag.
+                        description:
+                          type: string
+                          description: Description of role's permissions.
+                        name:
+                          type: string
+                          description: Role name.
+                        permissions:
+                          type: object
+                          properties:
+                            analytics:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            billing:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            cache_purge:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            dns:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            dns_records:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            lb:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            logs:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            organization:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            ssl:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            waf:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            zone_settings:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            zones:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                      required:
+                        - id
+                        - description
+                        - name
+                        - permissions
+                    description: Roles assigned to this Member.
+                  status:
+                    type: string
+                    enum:
+                      - accepted
+                      - pending
+                    description: A member's status in the account.
+                  user:
+                    type: object
+                    properties:
+                      email:
+                        type: string
+                        description: The contact email address of the user.
+                      id:
+                        type: string
+                        description: Identifier
+                      first_name:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: User's first name
+                      last_name:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: User's last name
+                      two_factor_authentication_enabled:
+                        type: boolean
+                        description: Indicates whether two-factor authentication is enabled for the user
+                          account. Does not apply to API authentication.
+                    required:
+                      - email
+                    description: Details of the user associated to the membership.
       x-distilled-pagination-class: MembersV4PagePaginationArray
     post:
       operationId: createMember
@@ -1045,7 +1596,189 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Membership identifier tag.
+                  email:
+                    type: string
+                    description: The contact email address of the user.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        access:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the group.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resource_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the group.
+                            required:
+                              - id
+                          description: A list of resource groups that the policy applies to.
+                    description: Access policy for the membership
+                  roles:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Role identifier tag.
+                        description:
+                          type: string
+                          description: Description of role's permissions.
+                        name:
+                          type: string
+                          description: Role name.
+                        permissions:
+                          type: object
+                          properties:
+                            analytics:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            billing:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            cache_purge:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            dns:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            dns_records:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            lb:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            logs:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            organization:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            ssl:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            waf:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            zone_settings:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                            zones:
+                              type: object
+                              properties:
+                                read:
+                                  type: boolean
+                                write:
+                                  type: boolean
+                      required:
+                        - id
+                        - description
+                        - name
+                        - permissions
+                    description: Roles assigned to this Member.
+                  status:
+                    type: string
+                    enum:
+                      - accepted
+                      - pending
+                    description: A member's status in the account.
+                  user:
+                    type: object
+                    properties:
+                      email:
+                        type: string
+                        description: The contact email address of the user.
+                      id:
+                        type: string
+                        description: Identifier
+                      first_name:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: User's first name
+                      last_name:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: User's last name
+                      two_factor_authentication_enabled:
+                        type: boolean
+                        description: Indicates whether two-factor authentication is enabled for the user
+                          account. Does not apply to API authentication.
+                    required:
+                      - email
+                    description: Details of the user associated to the membership.
       x-distilled-response-path: result
       x-distilled-errors:
         InvalidRoute:
@@ -1078,7 +1811,108 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Role identifier tag.
+                  description:
+                    type: string
+                    description: Description of role's permissions.
+                  name:
+                    type: string
+                    description: Role name.
+                  permissions:
+                    type: object
+                    properties:
+                      analytics:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      billing:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      cache_purge:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      dns:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      dns_records:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      lb:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      logs:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      organization:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      ssl:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      waf:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      zone_settings:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      zones:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                required:
+                  - id
+                  - description
+                  - name
+                  - permissions
       x-distilled-response-path: result
       x-distilled-errors:
         InvalidRoute:
@@ -1104,7 +1938,108 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Role identifier tag.
+                  description:
+                    type: string
+                    description: Description of role's permissions.
+                  name:
+                    type: string
+                    description: Role name.
+                  permissions:
+                    type: object
+                    properties:
+                      analytics:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      billing:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      cache_purge:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      dns:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      dns_records:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      lb:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      logs:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      organization:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      ssl:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      waf:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      zone_settings:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                      zones:
+                        type: object
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
+                required:
+                  - id
+                  - description
+                  - name
+                  - permissions
       x-distilled-pagination-class: RolesV4PagePaginationArray
   /accounts/{account_id}/subscriptions:
     get:
@@ -1127,7 +2062,83 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Subscription identifier tag.
+                  currency:
+                    type: string
+                    description: The monetary unit in which pricing information is displayed.
+                  current_period_end:
+                    type: string
+                    description: The end of the current period and also when the next billing is
+                      due.
+                  current_period_start:
+                    type: string
+                    description: When the current billing period started. May match
+                      initial_period_start if this is the first period.
+                  frequency:
+                    type: string
+                    enum:
+                      - weekly
+                      - monthly
+                      - quarterly
+                      - yearly
+                    description: How often the subscription is renewed automatically.
+                  price:
+                    type: number
+                    description: The price of the subscription that will be billed, in US dollars.
+                  rate_plan:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        enum:
+                          - free
+                          - lite
+                          - pro
+                          - pro_plus
+                          - business
+                          - enterprise
+                          - partners_free
+                          - partners_pro
+                          - partners_business
+                          - partners_enterprise
+                        description: The ID of the rate plan.
+                      currency:
+                        type: string
+                        description: The currency applied to the rate plan subscription.
+                      externally_managed:
+                        type: boolean
+                        description: Whether this rate plan is managed externally from Cloudflare.
+                      is_contract:
+                        type: boolean
+                        description: Whether a rate plan is enterprise-based (or newly adopted term
+                          contract).
+                      public_name:
+                        type: string
+                        description: The full name of the rate plan.
+                      scope:
+                        type: string
+                        description: The scope that this rate plan applies to.
+                      sets:
+                        type: array
+                        items:
+                          type: string
+                        description: The list of sets this rate plan applies to. Returns array of
+                          strings.
+                    description: The rate plan applied to the subscription.
+                  state:
+                    type: string
+                    enum:
+                      - Trial
+                      - Provisioned
+                      - Paid
+                      - AwaitingPayment
+                      - Cancelled
+                      - Failed
+                      - Expired
+                    description: The state that the subscription is in.
       x-distilled-pagination-class: SubscriptionsSinglePage
     post:
       operationId: createSubscription
@@ -1158,7 +2169,43 @@ paths:
                   description: "Body param: How often the subscription is renewed automatically."
                 rate_plan:
                   type: object
-                  additionalProperties: true
+                  properties:
+                    id:
+                      type: string
+                      enum:
+                        - free
+                        - lite
+                        - pro
+                        - pro_plus
+                        - business
+                        - enterprise
+                        - partners_free
+                        - partners_pro
+                        - partners_business
+                        - partners_enterprise
+                      description: The ID of the rate plan.
+                    currency:
+                      type: string
+                      description: The currency applied to the rate plan subscription.
+                    externally_managed:
+                      type: boolean
+                      description: Whether this rate plan is managed externally from Cloudflare.
+                    is_contract:
+                      type: boolean
+                      description: Whether a rate plan is enterprise-based (or newly adopted term
+                        contract).
+                    public_name:
+                      type: string
+                      description: The full name of the rate plan.
+                    scope:
+                      type: string
+                      description: The scope that this rate plan applies to.
+                    sets:
+                      type: array
+                      items:
+                        type: string
+                      description: The list of sets this rate plan applies to. Returns array of
+                        strings.
                   description: "Body param: The rate plan applied to the subscription."
       responses:
         "200":
@@ -1167,7 +2214,83 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Subscription identifier tag.
+                  currency:
+                    type: string
+                    description: The monetary unit in which pricing information is displayed.
+                  current_period_end:
+                    type: string
+                    description: The end of the current period and also when the next billing is
+                      due.
+                  current_period_start:
+                    type: string
+                    description: When the current billing period started. May match
+                      initial_period_start if this is the first period.
+                  frequency:
+                    type: string
+                    enum:
+                      - weekly
+                      - monthly
+                      - quarterly
+                      - yearly
+                    description: How often the subscription is renewed automatically.
+                  price:
+                    type: number
+                    description: The price of the subscription that will be billed, in US dollars.
+                  rate_plan:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        enum:
+                          - free
+                          - lite
+                          - pro
+                          - pro_plus
+                          - business
+                          - enterprise
+                          - partners_free
+                          - partners_pro
+                          - partners_business
+                          - partners_enterprise
+                        description: The ID of the rate plan.
+                      currency:
+                        type: string
+                        description: The currency applied to the rate plan subscription.
+                      externally_managed:
+                        type: boolean
+                        description: Whether this rate plan is managed externally from Cloudflare.
+                      is_contract:
+                        type: boolean
+                        description: Whether a rate plan is enterprise-based (or newly adopted term
+                          contract).
+                      public_name:
+                        type: string
+                        description: The full name of the rate plan.
+                      scope:
+                        type: string
+                        description: The scope that this rate plan applies to.
+                      sets:
+                        type: array
+                        items:
+                          type: string
+                        description: The list of sets this rate plan applies to. Returns array of
+                          strings.
+                    description: The rate plan applied to the subscription.
+                  state:
+                    type: string
+                    enum:
+                      - Trial
+                      - Provisioned
+                      - Paid
+                      - AwaitingPayment
+                      - Cancelled
+                      - Failed
+                      - Expired
+                    description: The state that the subscription is in.
       x-distilled-response-path: result
       x-distilled-errors:
         JsonDecodeFailure:
@@ -1210,7 +2333,43 @@ paths:
                   description: "Body param: How often the subscription is renewed automatically."
                 rate_plan:
                   type: object
-                  additionalProperties: true
+                  properties:
+                    id:
+                      type: string
+                      enum:
+                        - free
+                        - lite
+                        - pro
+                        - pro_plus
+                        - business
+                        - enterprise
+                        - partners_free
+                        - partners_pro
+                        - partners_business
+                        - partners_enterprise
+                      description: The ID of the rate plan.
+                    currency:
+                      type: string
+                      description: The currency applied to the rate plan subscription.
+                    externally_managed:
+                      type: boolean
+                      description: Whether this rate plan is managed externally from Cloudflare.
+                    is_contract:
+                      type: boolean
+                      description: Whether a rate plan is enterprise-based (or newly adopted term
+                        contract).
+                    public_name:
+                      type: string
+                      description: The full name of the rate plan.
+                    scope:
+                      type: string
+                      description: The scope that this rate plan applies to.
+                    sets:
+                      type: array
+                      items:
+                        type: string
+                      description: The list of sets this rate plan applies to. Returns array of
+                        strings.
                   description: "Body param: The rate plan applied to the subscription."
       responses:
         "200":
@@ -1219,7 +2378,83 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Subscription identifier tag.
+                  currency:
+                    type: string
+                    description: The monetary unit in which pricing information is displayed.
+                  current_period_end:
+                    type: string
+                    description: The end of the current period and also when the next billing is
+                      due.
+                  current_period_start:
+                    type: string
+                    description: When the current billing period started. May match
+                      initial_period_start if this is the first period.
+                  frequency:
+                    type: string
+                    enum:
+                      - weekly
+                      - monthly
+                      - quarterly
+                      - yearly
+                    description: How often the subscription is renewed automatically.
+                  price:
+                    type: number
+                    description: The price of the subscription that will be billed, in US dollars.
+                  rate_plan:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        enum:
+                          - free
+                          - lite
+                          - pro
+                          - pro_plus
+                          - business
+                          - enterprise
+                          - partners_free
+                          - partners_pro
+                          - partners_business
+                          - partners_enterprise
+                        description: The ID of the rate plan.
+                      currency:
+                        type: string
+                        description: The currency applied to the rate plan subscription.
+                      externally_managed:
+                        type: boolean
+                        description: Whether this rate plan is managed externally from Cloudflare.
+                      is_contract:
+                        type: boolean
+                        description: Whether a rate plan is enterprise-based (or newly adopted term
+                          contract).
+                      public_name:
+                        type: string
+                        description: The full name of the rate plan.
+                      scope:
+                        type: string
+                        description: The scope that this rate plan applies to.
+                      sets:
+                        type: array
+                        items:
+                          type: string
+                        description: The list of sets this rate plan applies to. Returns array of
+                          strings.
+                    description: The rate plan applied to the subscription.
+                  state:
+                    type: string
+                    enum:
+                      - Trial
+                      - Provisioned
+                      - Paid
+                      - AwaitingPayment
+                      - Cancelled
+                      - Failed
+                      - Expired
+                    description: The state that the subscription is in.
       x-distilled-response-path: result
       x-distilled-errors:
         JsonDecodeFailure:
@@ -1289,7 +2524,100 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Token identifier tag.
+                  condition:
+                    type: object
+                    properties:
+                      request_ip:
+                        type: object
+                        properties:
+                          in:
+                            type: array
+                            items:
+                              type: string
+                            description: List of IPv4/IPv6 CIDR addresses.
+                          not_in:
+                            type: array
+                            items:
+                              type: string
+                            description: List of IPv4/IPv6 CIDR addresses.
+                        description: Client IP restrictions.
+                  expires_on:
+                    type: string
+                    description: The expiration time on or after which the JWT MUST NOT be accepted
+                      for processing.
+                  issued_on:
+                    type: string
+                    description: The time on which the token was created.
+                  last_used_on:
+                    type: string
+                    description: Last time the token was used.
+                  modified_on:
+                    type: string
+                    description: Last time the token was modified.
+                  name:
+                    type: string
+                    description: Token name.
+                  not_before:
+                    type: string
+                    description: The time before which the token MUST NOT be accepted for
+                      processing.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        effect:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the permission group.
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the permission group.
+                              name:
+                                type: string
+                                description: Name of the permission group.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resources:
+                          type: object
+                          additionalProperties: true
+                          description: A list of resource names that the policy applies to.
+                      required:
+                        - id
+                        - effect
+                        - permission_groups
+                        - resources
+                    description: List of access policies assigned to the token.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - disabled
+                      - expired
+                    description: Status of the token.
       x-distilled-response-path: result
       x-distilled-errors:
         InvalidRoute:
@@ -1329,7 +2657,40 @@ paths:
                   type: array
                   items:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      effect:
+                        type: string
+                        enum:
+                          - allow
+                          - deny
+                        description: Allow or deny operations against the resources.
+                      permission_groups:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Identifier of the permission group.
+                            meta:
+                              type: object
+                              properties:
+                                key:
+                                  type: string
+                                value:
+                                  type: string
+                              description: Attributes associated to the permission group.
+                          required:
+                            - id
+                        description: A set of permission groups that are specified to the policy.
+                      resources:
+                        type: object
+                        additionalProperties: true
+                        description: A list of resource names that the policy applies to.
+                    required:
+                      - effect
+                      - permission_groups
+                      - resources
                   description: "Body param: List of access policies assigned to the token."
                 condition:
                   type: object
@@ -1374,7 +2735,100 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Token identifier tag.
+                  condition:
+                    type: object
+                    properties:
+                      request_ip:
+                        type: object
+                        properties:
+                          in:
+                            type: array
+                            items:
+                              type: string
+                            description: List of IPv4/IPv6 CIDR addresses.
+                          not_in:
+                            type: array
+                            items:
+                              type: string
+                            description: List of IPv4/IPv6 CIDR addresses.
+                        description: Client IP restrictions.
+                  expires_on:
+                    type: string
+                    description: The expiration time on or after which the JWT MUST NOT be accepted
+                      for processing.
+                  issued_on:
+                    type: string
+                    description: The time on which the token was created.
+                  last_used_on:
+                    type: string
+                    description: Last time the token was used.
+                  modified_on:
+                    type: string
+                    description: Last time the token was modified.
+                  name:
+                    type: string
+                    description: Token name.
+                  not_before:
+                    type: string
+                    description: The time before which the token MUST NOT be accepted for
+                      processing.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        effect:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the permission group.
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the permission group.
+                              name:
+                                type: string
+                                description: Name of the permission group.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resources:
+                          type: object
+                          additionalProperties: true
+                          description: A list of resource names that the policy applies to.
+                      required:
+                        - id
+                        - effect
+                        - permission_groups
+                        - resources
+                    description: List of access policies assigned to the token.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - disabled
+                      - expired
+                    description: Status of the token.
       x-distilled-response-path: result
       x-distilled-errors:
         InvalidRoute:
@@ -1447,7 +2901,100 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Token identifier tag.
+                  condition:
+                    type: object
+                    properties:
+                      request_ip:
+                        type: object
+                        properties:
+                          in:
+                            type: array
+                            items:
+                              type: string
+                            description: List of IPv4/IPv6 CIDR addresses.
+                          not_in:
+                            type: array
+                            items:
+                              type: string
+                            description: List of IPv4/IPv6 CIDR addresses.
+                        description: Client IP restrictions.
+                  expires_on:
+                    type: string
+                    description: The expiration time on or after which the JWT MUST NOT be accepted
+                      for processing.
+                  issued_on:
+                    type: string
+                    description: The time on which the token was created.
+                  last_used_on:
+                    type: string
+                    description: Last time the token was used.
+                  modified_on:
+                    type: string
+                    description: Last time the token was modified.
+                  name:
+                    type: string
+                    description: Token name.
+                  not_before:
+                    type: string
+                    description: The time before which the token MUST NOT be accepted for
+                      processing.
+                  policies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        effect:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the permission group.
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the permission group.
+                              name:
+                                type: string
+                                description: Name of the permission group.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resources:
+                          type: object
+                          additionalProperties: true
+                          description: A list of resource names that the policy applies to.
+                      required:
+                        - id
+                        - effect
+                        - permission_groups
+                        - resources
+                    description: List of access policies assigned to the token.
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - disabled
+                      - expired
+                    description: Status of the token.
       x-distilled-pagination-class: TokensV4PagePaginationArray
     post:
       operationId: createToken
@@ -1479,7 +3026,40 @@ paths:
                   type: array
                   items:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      effect:
+                        type: string
+                        enum:
+                          - allow
+                          - deny
+                        description: Allow or deny operations against the resources.
+                      permission_groups:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: Identifier of the permission group.
+                            meta:
+                              type: object
+                              properties:
+                                key:
+                                  type: string
+                                value:
+                                  type: string
+                              description: Attributes associated to the permission group.
+                          required:
+                            - id
+                        description: A set of permission groups that are specified to the policy.
+                      resources:
+                        type: object
+                        additionalProperties: true
+                        description: A list of resource names that the policy applies to.
+                    required:
+                      - effect
+                      - permission_groups
+                      - resources
                   description: "Body param: List of access policies assigned to the token."
                 condition:
                   type: object
@@ -1568,7 +3148,47 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        id:
+                          type: string
+                          description: Policy identifier.
+                        effect:
+                          type: string
+                          enum:
+                            - allow
+                            - deny
+                          description: Allow or deny operations against the resources.
+                        permission_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                description: Identifier of the permission group.
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the permission group.
+                              name:
+                                type: string
+                                description: Name of the permission group.
+                            required:
+                              - id
+                          description: A set of permission groups that are specified to the policy.
+                        resources:
+                          type: object
+                          additionalProperties: true
+                          description: A list of resource names that the policy applies to.
+                      required:
+                        - id
+                        - effect
+                        - permission_groups
+                        - resources
                     description: List of access policies assigned to the token.
                   status:
                     type: string
@@ -1720,8 +3340,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                additionalProperties: true
+                type: string
       x-distilled-response-path: result
       x-distilled-errors:
         InvalidRoute:

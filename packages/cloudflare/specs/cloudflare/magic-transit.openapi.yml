@@ -405,7 +405,51 @@ paths:
                         description: The configuration specific to GRE interconnects.
                       health_check:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Determines whether to run healthchecks for a tunnel.
+                          rate:
+                            type: string
+                            enum:
+                              - low
+                              - mid
+                              - high
+                            description: How frequent the health check is run. The default value is `mid`.
+                          target:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  effective:
+                                    type: string
+                                    description: The effective health check target. If 'saved' is empty, then this
+                                      field will be populated with the
+                                      calculated default value on GET requests.
+                                      Ignored in POST, PUT, and PATCH requests.
+                                  saved:
+                                    type: string
+                                    description: The saved health check target. Setting the value to the empty
+                                      string indicates that the calculated
+                                      default value will be used.
+                              - type: string
+                            description: The destination address in a request type health check. After the
+                              healthcheck is decapsulated at the customer end of
+                              the tunnel, the ICMP echo will be forwarded to
+                              this address. This field defaults to
+                              `customer_gre_endpoint address`. This field is
+                              ignored for bidirectional healthchecks as the
+                              interface_address (not assigned to the Cloudflare
+                              side of the tunnel) is used as the target. Must be
+                              in object form if the x-magic-new-hc-target header
+                              is set to true and string form if
+                              x-magic-new-hc-target is absent or set to false.
+                          type:
+                            type: string
+                            enum:
+                              - reply
+                              - request
+                            description: The type of healthcheck to run, reply or request. The default value
+                              is `reply`.
                       interface_address:
                         type: string
                         description: "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one
@@ -485,7 +529,44 @@ paths:
                   description: "Body param: The configuration specific to GRE interconnects."
                 health_check:
                   type: object
-                  additionalProperties: true
+                  properties:
+                    enabled:
+                      type: boolean
+                      description: Determines whether to run healthchecks for a tunnel.
+                    rate:
+                      type: string
+                      enum:
+                        - low
+                        - mid
+                        - high
+                      description: How frequent the health check is run. The default value is `mid`.
+                    target:
+                      oneOf:
+                        - type: object
+                          properties:
+                            saved:
+                              type: string
+                              description: The saved health check target. Setting the value to the empty
+                                string indicates that the calculated default
+                                value will be used.
+                        - type: string
+                      description: The destination address in a request type health check. After the
+                        healthcheck is decapsulated at the customer end of the
+                        tunnel, the ICMP echo will be forwarded to this address.
+                        This field defaults to `customer_gre_endpoint address`.
+                        This field is ignored for bidirectional healthchecks as
+                        the interface_address (not assigned to the Cloudflare
+                        side of the tunnel) is used as the target. Must be in
+                        object form if the x-magic-new-hc-target header is set
+                        to true and string form if x-magic-new-hc-target is
+                        absent or set to false.
+                    type:
+                      type: string
+                      enum:
+                        - reply
+                        - request
+                      description: The type of healthcheck to run, reply or request. The default value
+                        is `reply`.
                   description: "Body param:"
                 interface_address:
                   type: string
@@ -546,7 +627,51 @@ paths:
                         description: The configuration specific to GRE interconnects.
                       health_check:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          enabled:
+                            type: boolean
+                            description: Determines whether to run healthchecks for a tunnel.
+                          rate:
+                            type: string
+                            enum:
+                              - low
+                              - mid
+                              - high
+                            description: How frequent the health check is run. The default value is `mid`.
+                          target:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  effective:
+                                    type: string
+                                    description: The effective health check target. If 'saved' is empty, then this
+                                      field will be populated with the
+                                      calculated default value on GET requests.
+                                      Ignored in POST, PUT, and PATCH requests.
+                                  saved:
+                                    type: string
+                                    description: The saved health check target. Setting the value to the empty
+                                      string indicates that the calculated
+                                      default value will be used.
+                              - type: string
+                            description: The destination address in a request type health check. After the
+                              healthcheck is decapsulated at the customer end of
+                              the tunnel, the ICMP echo will be forwarded to
+                              this address. This field defaults to
+                              `customer_gre_endpoint address`. This field is
+                              ignored for bidirectional healthchecks as the
+                              interface_address (not assigned to the Cloudflare
+                              side of the tunnel) is used as the target. Must be
+                              in object form if the x-magic-new-hc-target header
+                              is set to true and string form if
+                              x-magic-new-hc-target is absent or set to false.
+                          type:
+                            type: string
+                            enum:
+                              - reply
+                              - request
+                            description: The type of healthcheck to run, reply or request. The default value
+                              is `reply`.
                       interface_address:
                         type: string
                         description: "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one
@@ -635,7 +760,53 @@ paths:
                           description: The configuration specific to GRE interconnects.
                         health_check:
                           type: object
-                          additionalProperties: true
+                          properties:
+                            enabled:
+                              type: boolean
+                              description: Determines whether to run healthchecks for a tunnel.
+                            rate:
+                              type: string
+                              enum:
+                                - low
+                                - mid
+                                - high
+                              description: How frequent the health check is run. The default value is `mid`.
+                            target:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    effective:
+                                      type: string
+                                      description: The effective health check target. If 'saved' is empty, then this
+                                        field will be populated with the
+                                        calculated default value on GET
+                                        requests. Ignored in POST, PUT, and
+                                        PATCH requests.
+                                    saved:
+                                      type: string
+                                      description: The saved health check target. Setting the value to the empty
+                                        string indicates that the calculated
+                                        default value will be used.
+                                - type: string
+                              description: The destination address in a request type health check. After the
+                                healthcheck is decapsulated at the customer end
+                                of the tunnel, the ICMP echo will be forwarded
+                                to this address. This field defaults to
+                                `customer_gre_endpoint address`. This field is
+                                ignored for bidirectional healthchecks as the
+                                interface_address (not assigned to the
+                                Cloudflare side of the tunnel) is used as the
+                                target. Must be in object form if the
+                                x-magic-new-hc-target header is set to true and
+                                string form if x-magic-new-hc-target is absent
+                                or set to false.
+                            type:
+                              type: string
+                              enum:
+                                - reply
+                                - request
+                              description: The type of healthcheck to run, reply or request. The default value
+                                is `reply`.
                         interface_address:
                           type: string
                           description: "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one
@@ -732,7 +903,53 @@ paths:
                           description: The configuration specific to GRE interconnects.
                         health_check:
                           type: object
-                          additionalProperties: true
+                          properties:
+                            enabled:
+                              type: boolean
+                              description: Determines whether to run healthchecks for a tunnel.
+                            rate:
+                              type: string
+                              enum:
+                                - low
+                                - mid
+                                - high
+                              description: How frequent the health check is run. The default value is `mid`.
+                            target:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    effective:
+                                      type: string
+                                      description: The effective health check target. If 'saved' is empty, then this
+                                        field will be populated with the
+                                        calculated default value on GET
+                                        requests. Ignored in POST, PUT, and
+                                        PATCH requests.
+                                    saved:
+                                      type: string
+                                      description: The saved health check target. Setting the value to the empty
+                                        string indicates that the calculated
+                                        default value will be used.
+                                - type: string
+                              description: The destination address in a request type health check. After the
+                                healthcheck is decapsulated at the customer end
+                                of the tunnel, the ICMP echo will be forwarded
+                                to this address. This field defaults to
+                                `customer_gre_endpoint address`. This field is
+                                ignored for bidirectional healthchecks as the
+                                interface_address (not assigned to the
+                                Cloudflare side of the tunnel) is used as the
+                                target. Must be in object form if the
+                                x-magic-new-hc-target header is set to true and
+                                string form if x-magic-new-hc-target is absent
+                                or set to false.
+                            type:
+                              type: string
+                              enum:
+                                - reply
+                                - request
+                              description: The type of healthcheck to run, reply or request. The default value
+                                is `reply`.
                         interface_address:
                           type: string
                           description: "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one
@@ -3757,6 +3974,12 @@ paths:
                             oneOf:
                               - type: object
                                 properties:
+                                  effective:
+                                    type: string
+                                    description: The effective health check target. If 'saved' is empty, then this
+                                      field will be populated with the
+                                      calculated default value on GET requests.
+                                      Ignored in POST, PUT, and PATCH requests.
                                   saved:
                                     type: string
                                     description: The saved health check target. Setting the value to the empty
@@ -4073,6 +4296,12 @@ paths:
                             oneOf:
                               - type: object
                                 properties:
+                                  effective:
+                                    type: string
+                                    description: The effective health check target. If 'saved' is empty, then this
+                                      field will be populated with the
+                                      calculated default value on GET requests.
+                                      Ignored in POST, PUT, and PATCH requests.
                                   saved:
                                     type: string
                                     description: The saved health check target. Setting the value to the empty
@@ -4281,6 +4510,12 @@ paths:
                             oneOf:
                               - type: object
                                 properties:
+                                  effective:
+                                    type: string
+                                    description: The effective health check target. If 'saved' is empty, then this
+                                      field will be populated with the
+                                      calculated default value on GET requests.
+                                      Ignored in POST, PUT, and PATCH requests.
                                   saved:
                                     type: string
                                     description: The saved health check target. Setting the value to the empty
@@ -4485,6 +4720,13 @@ paths:
                               oneOf:
                                 - type: object
                                   properties:
+                                    effective:
+                                      type: string
+                                      description: The effective health check target. If 'saved' is empty, then this
+                                        field will be populated with the
+                                        calculated default value on GET
+                                        requests. Ignored in POST, PUT, and
+                                        PATCH requests.
                                     saved:
                                       type: string
                                       description: The saved health check target. Setting the value to the empty
@@ -4822,6 +5064,12 @@ paths:
                         oneOf:
                           - type: object
                             properties:
+                              effective:
+                                type: string
+                                description: The effective health check target. If 'saved' is empty, then this
+                                  field will be populated with the calculated
+                                  default value on GET requests. Ignored in
+                                  POST, PUT, and PATCH requests.
                               saved:
                                 type: string
                                 description: The saved health check target. Setting the value to the empty
@@ -5034,6 +5282,13 @@ paths:
                               oneOf:
                                 - type: object
                                   properties:
+                                    effective:
+                                      type: string
+                                      description: The effective health check target. If 'saved' is empty, then this
+                                        field will be populated with the
+                                        calculated default value on GET
+                                        requests. Ignored in POST, PUT, and
+                                        PATCH requests.
                                     saved:
                                       type: string
                                       description: The saved health check target. Setting the value to the empty
@@ -5259,6 +5514,12 @@ paths:
                             oneOf:
                               - type: object
                                 properties:
+                                  effective:
+                                    type: string
+                                    description: The effective health check target. If 'saved' is empty, then this
+                                      field will be populated with the
+                                      calculated default value on GET requests.
+                                      Ignored in POST, PUT, and PATCH requests.
                                   saved:
                                     type: string
                                     description: The saved health check target. Setting the value to the empty
@@ -5296,7 +5557,10 @@ paths:
                         description: The date and time the tunnel was last modified.
                       psk_metadata:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          last_generated_on:
+                            type: string
+                            description: The date and time the tunnel was last modified.
                         description: The PSK metadata that includes when the PSK was generated.
                       replay_protection:
                         type: boolean
@@ -5640,6 +5904,12 @@ paths:
                             oneOf:
                               - type: object
                                 properties:
+                                  effective:
+                                    type: string
+                                    description: The effective health check target. If 'saved' is empty, then this
+                                      field will be populated with the
+                                      calculated default value on GET requests.
+                                      Ignored in POST, PUT, and PATCH requests.
                                   saved:
                                     type: string
                                     description: The saved health check target. Setting the value to the empty
@@ -5677,7 +5947,10 @@ paths:
                         description: The date and time the tunnel was last modified.
                       psk_metadata:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          last_generated_on:
+                            type: string
+                            description: The date and time the tunnel was last modified.
                         description: The PSK metadata that includes when the PSK was generated.
                       replay_protection:
                         type: boolean
@@ -5867,6 +6140,12 @@ paths:
                             oneOf:
                               - type: object
                                 properties:
+                                  effective:
+                                    type: string
+                                    description: The effective health check target. If 'saved' is empty, then this
+                                      field will be populated with the
+                                      calculated default value on GET requests.
+                                      Ignored in POST, PUT, and PATCH requests.
                                   saved:
                                     type: string
                                     description: The saved health check target. Setting the value to the empty
@@ -5904,7 +6183,10 @@ paths:
                         description: The date and time the tunnel was last modified.
                       psk_metadata:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          last_generated_on:
+                            type: string
+                            description: The date and time the tunnel was last modified.
                         description: The PSK metadata that includes when the PSK was generated.
                       replay_protection:
                         type: boolean
@@ -6091,6 +6373,13 @@ paths:
                               oneOf:
                                 - type: object
                                   properties:
+                                    effective:
+                                      type: string
+                                      description: The effective health check target. If 'saved' is empty, then this
+                                        field will be populated with the
+                                        calculated default value on GET
+                                        requests. Ignored in POST, PUT, and
+                                        PATCH requests.
                                     saved:
                                       type: string
                                       description: The saved health check target. Setting the value to the empty
@@ -6129,7 +6418,10 @@ paths:
                           description: The date and time the tunnel was last modified.
                         psk_metadata:
                           type: object
-                          additionalProperties: true
+                          properties:
+                            last_generated_on:
+                              type: string
+                              description: The date and time the tunnel was last modified.
                           description: The PSK metadata that includes when the PSK was generated.
                         replay_protection:
                           type: boolean
@@ -6460,6 +6752,12 @@ paths:
                         oneOf:
                           - type: object
                             properties:
+                              effective:
+                                type: string
+                                description: The effective health check target. If 'saved' is empty, then this
+                                  field will be populated with the calculated
+                                  default value on GET requests. Ignored in
+                                  POST, PUT, and PATCH requests.
                               saved:
                                 type: string
                                 description: The saved health check target. Setting the value to the empty
@@ -6695,6 +6993,13 @@ paths:
                               oneOf:
                                 - type: object
                                   properties:
+                                    effective:
+                                      type: string
+                                      description: The effective health check target. If 'saved' is empty, then this
+                                        field will be populated with the
+                                        calculated default value on GET
+                                        requests. Ignored in POST, PUT, and
+                                        PATCH requests.
                                     saved:
                                       type: string
                                       description: The saved health check target. Setting the value to the empty
@@ -6733,7 +7038,10 @@ paths:
                           description: The date and time the tunnel was last modified.
                         psk_metadata:
                           type: object
-                          additionalProperties: true
+                          properties:
+                            last_generated_on:
+                              type: string
+                              description: The date and time the tunnel was last modified.
                           description: The PSK metadata that includes when the PSK was generated.
                         replay_protection:
                           type: boolean
@@ -6856,7 +7164,22 @@ paths:
                           field only applies to `full` packet captures.
                       filter_v1:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          destination_address:
+                            type: string
+                            description: The destination IP address of the packet.
+                          destination_port:
+                            type: number
+                            description: The destination port of the packet.
+                          protocol:
+                            type: number
+                            description: The protocol number of the packet.
+                          source_address:
+                            type: string
+                            description: The source IP address of the packet.
+                          source_port:
+                            type: number
+                            description: The source port of the packet.
                         description: The packet capture filter. When this field is empty, all packets
                           are captured.
                       packets_captured:
@@ -7005,7 +7328,22 @@ paths:
                           field only applies to `full` packet captures.
                       filter_v1:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          destination_address:
+                            type: string
+                            description: The destination IP address of the packet.
+                          destination_port:
+                            type: number
+                            description: The destination port of the packet.
+                          protocol:
+                            type: number
+                            description: The protocol number of the packet.
+                          source_address:
+                            type: string
+                            description: The source IP address of the packet.
+                          source_port:
+                            type: number
+                            description: The source port of the packet.
                         description: The packet capture filter. When this field is empty, all packets
                           are captured.
                       packets_captured:
@@ -7209,7 +7547,22 @@ paths:
                           field only applies to `full` packet captures.
                       filter_v1:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          destination_address:
+                            type: string
+                            description: The destination IP address of the packet.
+                          destination_port:
+                            type: number
+                            description: The destination port of the packet.
+                          protocol:
+                            type: number
+                            description: The protocol number of the packet.
+                          source_address:
+                            type: string
+                            description: The source IP address of the packet.
+                          source_port:
+                            type: number
+                            description: The source port of the packet.
                         description: The packet capture filter. When this field is empty, all packets
                           are captured.
                       packets_captured:
@@ -7297,11 +7650,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties: true
   /accounts/{account_id}/pcaps/ownership:
     get:
       operationId: getPcapOwnership
@@ -7566,7 +7914,17 @@ paths:
                         description: An optional human provided description of the static route.
                       scope:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          colo_names:
+                            type: array
+                            items:
+                              type: string
+                            description: List of colo names for the ECMP scope.
+                          colo_regions:
+                            type: array
+                            items:
+                              type: string
+                            description: List of colo regions for the ECMP scope.
                         description: Used only for ECMP routes.
                       weight:
                         type: number
@@ -7617,7 +7975,17 @@ paths:
                           description: When the route was last modified.
                         scope:
                           type: object
-                          additionalProperties: true
+                          properties:
+                            colo_names:
+                              type: array
+                              items:
+                                type: string
+                              description: List of colo names for the ECMP scope.
+                            colo_regions:
+                              type: array
+                              items:
+                                type: string
+                              description: List of colo regions for the ECMP scope.
                           description: Used only for ECMP routes.
                         weight:
                           type: number
@@ -7676,7 +8044,17 @@ paths:
                           description: When the route was last modified.
                         scope:
                           type: object
-                          additionalProperties: true
+                          properties:
+                            colo_names:
+                              type: array
+                              items:
+                                type: string
+                              description: List of colo names for the ECMP scope.
+                            colo_regions:
+                              type: array
+                              items:
+                                type: string
+                              description: List of colo regions for the ECMP scope.
                           description: Used only for ECMP routes.
                         weight:
                           type: number
@@ -7845,7 +8223,17 @@ paths:
                           description: When the route was last modified.
                         scope:
                           type: object
-                          additionalProperties: true
+                          properties:
+                            colo_names:
+                              type: array
+                              items:
+                                type: string
+                              description: List of colo names for the ECMP scope.
+                            colo_regions:
+                              type: array
+                              items:
+                                type: string
+                              description: List of colo regions for the ECMP scope.
                           description: Used only for ECMP routes.
                         weight:
                           type: number
@@ -7909,7 +8297,17 @@ paths:
                         description: When the route was last modified.
                       scope:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          colo_names:
+                            type: array
+                            items:
+                              type: string
+                            description: List of colo names for the ECMP scope.
+                          colo_regions:
+                            type: array
+                            items:
+                              type: string
+                            description: List of colo regions for the ECMP scope.
                         description: Used only for ECMP routes.
                       weight:
                         type: number
@@ -8017,7 +8415,17 @@ paths:
                         description: When the route was last modified.
                       scope:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          colo_names:
+                            type: array
+                            items:
+                              type: string
+                            description: List of colo names for the ECMP scope.
+                          colo_regions:
+                            type: array
+                            items:
+                              type: string
+                            description: List of colo regions for the ECMP scope.
                         description: Used only for ECMP routes.
                       weight:
                         type: number
@@ -8082,7 +8490,17 @@ paths:
                         description: When the route was last modified.
                       scope:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          colo_names:
+                            type: array
+                            items:
+                              type: string
+                            description: List of colo names for the ECMP scope.
+                          colo_regions:
+                            type: array
+                            items:
+                              type: string
+                            description: List of colo regions for the ECMP scope.
                         description: Used only for ECMP routes.
                       weight:
                         type: number

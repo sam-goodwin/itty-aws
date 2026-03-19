@@ -70,8 +70,15 @@ paths:
                       not respond with IP addresses on an Address Map until the
                       map is enabled.
                   ips:
-                    type: object
-                    additionalProperties: true
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        created_at:
+                          type: string
+                        ip:
+                          type: string
+                          description: An IPv4 or IPv6 address.
                     description: The set of IPs on the Address Map.
                   memberships:
                     type: array
@@ -483,8 +490,15 @@ paths:
                       not respond with IP addresses on an Address Map until the
                       map is enabled.
                   ips:
-                    type: object
-                    additionalProperties: true
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        created_at:
+                          type: string
+                        ip:
+                          type: string
+                          description: An IPv4 or IPv6 address.
                     description: The set of IPs on the Address Map.
                   memberships:
                     type: array
@@ -1222,11 +1236,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties: true
       x-distilled-errors:
         LoaDocumentNotFound:
           - code: 1000

@@ -203,7 +203,18 @@ paths:
                           properties:
                             adaptive_routing:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                failover_across_pools:
+                                  type: boolean
+                                  description: Extends zero-downtime failover of requests to healthy origins from
+                                    alternate pools, when no healthy alternate
+                                    exists in the same pool, according to the
+                                    failover order defined by traffic and origin
+                                    steering. When set false (the default)
+                                    zero-downtime failover will only occur
+                                    between origins within the same pool. See
+                                    `session_affinity_attributes` for control
+                                    over when sessions are broken or reassigned.
                               description: Controls features that modify the routing of requests to pools and
                                 origins in response to dynamic conditions, such
                                 as during the interval between active health
@@ -234,7 +245,33 @@ paths:
                               description: The pool ID to use when all other pools are detected as unhealthy.
                             location_strategy:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                mode:
+                                  type: string
+                                  enum:
+                                    - pop
+                                    - resolver_ip
+                                  description: 'Determines the authoritative location when ECS is not preferred,
+                                    does not exist in the request, or its GeoIP
+                                    lookup is unsuccessful.  - `"pop"`: Use the
+                                    Cloudflare PoP location. - `"resolver_ip"`:
+                                    Use the DNS resolver GeoIP location. If the
+                                    GeoIP lookup is unsuccessful, use the
+                                    Cloudflare PoP location.'
+                                prefer_ecs:
+                                  type: string
+                                  enum:
+                                    - always
+                                    - never
+                                    - proximity
+                                    - geo
+                                  description: 'Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as
+                                    the authoritative location.  - `"always"`:
+                                    Always prefer ECS. - `"never"`: Never prefer
+                                    ECS. - `"proximity"`: Prefer ECS only when
+                                    `steering_policy="proximity"`. - `"geo"`:
+                                    Prefer ECS only when
+                                    `steering_policy="geo"`.'
                               description: Controls location-based steering for non-proxied requests. See
                                 `steering_policy` to learn how steering is
                                 affected.
@@ -249,7 +286,16 @@ paths:
                                 mapping if it exists else to default_pools."
                             random_steering:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                default_weight:
+                                  type: number
+                                  description: The default weight for pools in the load balancer that are not
+                                    specified in the pool_weights map.
+                                pool_weights:
+                                  type: object
+                                  additionalProperties: true
+                                  description: A mapping of pool IDs to custom weights. The weight is relative to
+                                    other pools in the load balancer.
                               description: "Configures pool weights.  - `steering_policy=\"random\"`: A random
                                 pool is selected with probability proportional
                                 to pool weights. -
@@ -308,7 +354,91 @@ paths:
                                 required configuration."
                             session_affinity_attributes:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                drain_duration:
+                                  type: number
+                                  description: Configures the drain duration in seconds. This field is only used
+                                    when session affinity is enabled on the load
+                                    balancer.
+                                headers:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: 'Configures the names of HTTP headers to base session affinity on
+                                    when header `session_affinity` is enabled.
+                                    At least one HTTP header name must be
+                                    provided. To specify the exact cookies to be
+                                    used, include an item in the following
+                                    format:
+                                    `"cookie:<cookie-name-1>,<cookie-name-2>"`
+                                    (example) where everything after the colon
+                                    is a comma-separated list of cookie names.
+                                    Providing only `"cookie"` will result in all
+                                    cookies being used. The default max number
+                                    of HTTP header names that can be provided
+                                    depends on your plan: 5 for Enterprise, 1
+                                    for all other plans.'
+                                require_all_headers:
+                                  type: boolean
+                                  description: "When header `session_affinity` is enabled, this option can be used
+                                    to specify how HTTP headers on load
+                                    balancing requests will be used. The
+                                    supported values are: - `\"true\"`: Load
+                                    balancing requests must contain _all_ of the
+                                    HTTP headers specified by the `headers`
+                                    session affinity attribute, otherwise
+                                    sessions aren't created. - `\"false\"`: Load
+                                    balancing requests must contain _at least
+                                    one_ of the HTTP headers specified by the
+                                    `headers` session affinity attribute,
+                                    otherwise sessions aren't created."
+                                samesite:
+                                  type: string
+                                  enum:
+                                    - Auto
+                                    - Lax
+                                    - None
+                                    - Strict
+                                  description: 'Configures the SameSite attribute on session affinity cookie.
+                                    Value "Auto" will be translated to "Lax" or
+                                    "None" depending if Always Use HTTPS is
+                                    enabled. Note: when using value "None", the
+                                    secure attribute can not be set to "Never".'
+                                secure:
+                                  type: string
+                                  enum:
+                                    - Auto
+                                    - Always
+                                    - Never
+                                  description: Configures the Secure attribute on session affinity cookie. Value
+                                    "Always" indicates the Secure attribute will
+                                    be set in the Set-Cookie header, "Never"
+                                    indicates the Secure attribute will not be
+                                    set, and "Auto" will set the Secure
+                                    attribute depending if Always Use HTTPS is
+                                    enabled.
+                                zero_downtime_failover:
+                                  type: string
+                                  enum:
+                                    - none
+                                    - temporary
+                                    - sticky
+                                  description: 'Configures the zero-downtime failover between origins within a
+                                    pool when session affinity is enabled. This
+                                    feature is currently incompatible with Argo,
+                                    Tiered Cache, and Bandwidth Alliance. The
+                                    supported values are: - `"none"`: No
+                                    failover takes place for sessions pinned to
+                                    the origin (default). - `"temporary"`:
+                                    Traffic will be sent to another other
+                                    healthy origin until the originally pinned
+                                    origin is available; note that this can
+                                    potentially result in heavy origin flapping.
+                                    - `"sticky"`: The session affinity cookie is
+                                    updated and subsequent requests are sent to
+                                    the new origin. Note: Zero-downtime failover
+                                    with sticky sessions is currently not
+                                    supported for session affinity by header.'
                               description: Configures attributes for session affinity.
                             session_affinity_ttl:
                               type: number
@@ -329,7 +459,6 @@ paths:
                             steering_policy:
                               type: string
                               enum:
-                                - ""
                                 - off
                                 - geo
                                 - random
@@ -337,6 +466,7 @@ paths:
                                 - proximity
                                 - least_outstanding_requests
                                 - least_connections
+                                - ""
                               description: "Steering Policy for this load balancer.  - `\"off\"`: Use
                                 `default_pools`. - `\"geo\"`: Use
                                 `region_pools`/`country_pools`/`pop_pools`. For
@@ -517,7 +647,6 @@ paths:
                   steering_policy:
                     type: string
                     enum:
-                      - ""
                       - off
                       - geo
                       - random
@@ -525,6 +654,7 @@ paths:
                       - proximity
                       - least_outstanding_requests
                       - least_connections
+                      - ""
                     description: "Steering Policy for this load balancer.  - `\"off\"`: Use
                       `default_pools`. - `\"geo\"`: Use
                       `region_pools`/`country_pools`/`pop_pools`. For
@@ -753,7 +883,18 @@ paths:
                         properties:
                           adaptive_routing:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              failover_across_pools:
+                                type: boolean
+                                description: Extends zero-downtime failover of requests to healthy origins from
+                                  alternate pools, when no healthy alternate
+                                  exists in the same pool, according to the
+                                  failover order defined by traffic and origin
+                                  steering. When set false (the default)
+                                  zero-downtime failover will only occur between
+                                  origins within the same pool. See
+                                  `session_affinity_attributes` for control over
+                                  when sessions are broken or reassigned.
                             description: Controls features that modify the routing of requests to pools and
                               origins in response to dynamic conditions, such as
                               during the interval between active health
@@ -784,7 +925,32 @@ paths:
                             description: The pool ID to use when all other pools are detected as unhealthy.
                           location_strategy:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              mode:
+                                type: string
+                                enum:
+                                  - pop
+                                  - resolver_ip
+                                description: 'Determines the authoritative location when ECS is not preferred,
+                                  does not exist in the request, or its GeoIP
+                                  lookup is unsuccessful.  - `"pop"`: Use the
+                                  Cloudflare PoP location. - `"resolver_ip"`:
+                                  Use the DNS resolver GeoIP location. If the
+                                  GeoIP lookup is unsuccessful, use the
+                                  Cloudflare PoP location.'
+                              prefer_ecs:
+                                type: string
+                                enum:
+                                  - always
+                                  - never
+                                  - proximity
+                                  - geo
+                                description: 'Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as
+                                  the authoritative location.  - `"always"`:
+                                  Always prefer ECS. - `"never"`: Never prefer
+                                  ECS. - `"proximity"`: Prefer ECS only when
+                                  `steering_policy="proximity"`. - `"geo"`:
+                                  Prefer ECS only when `steering_policy="geo"`.'
                             description: Controls location-based steering for non-proxied requests. See
                               `steering_policy` to learn how steering is
                               affected.
@@ -799,7 +965,16 @@ paths:
                               exists else to default_pools."
                           random_steering:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              default_weight:
+                                type: number
+                                description: The default weight for pools in the load balancer that are not
+                                  specified in the pool_weights map.
+                              pool_weights:
+                                type: object
+                                additionalProperties: true
+                                description: A mapping of pool IDs to custom weights. The weight is relative to
+                                  other pools in the load balancer.
                             description: "Configures pool weights.  - `steering_policy=\"random\"`: A random
                               pool is selected with probability proportional to
                               pool weights. -
@@ -855,7 +1030,88 @@ paths:
                               required configuration."
                           session_affinity_attributes:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              drain_duration:
+                                type: number
+                                description: Configures the drain duration in seconds. This field is only used
+                                  when session affinity is enabled on the load
+                                  balancer.
+                              headers:
+                                type: array
+                                items:
+                                  type: string
+                                description: 'Configures the names of HTTP headers to base session affinity on
+                                  when header `session_affinity` is enabled. At
+                                  least one HTTP header name must be provided.
+                                  To specify the exact cookies to be used,
+                                  include an item in the following format:
+                                  `"cookie:<cookie-name-1>,<cookie-name-2>"`
+                                  (example) where everything after the colon is
+                                  a comma-separated list of cookie names.
+                                  Providing only `"cookie"` will result in all
+                                  cookies being used. The default max number of
+                                  HTTP header names that can be provided depends
+                                  on your plan: 5 for Enterprise, 1 for all
+                                  other plans.'
+                              require_all_headers:
+                                type: boolean
+                                description: "When header `session_affinity` is enabled, this option can be used
+                                  to specify how HTTP headers on load balancing
+                                  requests will be used. The supported values
+                                  are: - `\"true\"`: Load balancing requests
+                                  must contain _all_ of the HTTP headers
+                                  specified by the `headers` session affinity
+                                  attribute, otherwise sessions aren't created.
+                                  - `\"false\"`: Load balancing requests must
+                                  contain _at least one_ of the HTTP headers
+                                  specified by the `headers` session affinity
+                                  attribute, otherwise sessions aren't created."
+                              samesite:
+                                type: string
+                                enum:
+                                  - Auto
+                                  - Lax
+                                  - None
+                                  - Strict
+                                description: 'Configures the SameSite attribute on session affinity cookie.
+                                  Value "Auto" will be translated to "Lax" or
+                                  "None" depending if Always Use HTTPS is
+                                  enabled. Note: when using value "None", the
+                                  secure attribute can not be set to "Never".'
+                              secure:
+                                type: string
+                                enum:
+                                  - Auto
+                                  - Always
+                                  - Never
+                                description: Configures the Secure attribute on session affinity cookie. Value
+                                  "Always" indicates the Secure attribute will
+                                  be set in the Set-Cookie header, "Never"
+                                  indicates the Secure attribute will not be
+                                  set, and "Auto" will set the Secure attribute
+                                  depending if Always Use HTTPS is enabled.
+                              zero_downtime_failover:
+                                type: string
+                                enum:
+                                  - none
+                                  - temporary
+                                  - sticky
+                                description: 'Configures the zero-downtime failover between origins within a
+                                  pool when session affinity is enabled. This
+                                  feature is currently incompatible with Argo,
+                                  Tiered Cache, and Bandwidth Alliance. The
+                                  supported values are: - `"none"`: No failover
+                                  takes place for sessions pinned to the origin
+                                  (default). - `"temporary"`: Traffic will be
+                                  sent to another other healthy origin until the
+                                  originally pinned origin is available; note
+                                  that this can potentially result in heavy
+                                  origin flapping. - `"sticky"`: The session
+                                  affinity cookie is updated and subsequent
+                                  requests are sent to the new origin. Note:
+                                  Zero-downtime failover with sticky sessions is
+                                  currently not supported for session affinity
+                                  by header.'
                             description: Configures attributes for session affinity.
                           session_affinity_ttl:
                             type: number
@@ -876,7 +1132,6 @@ paths:
                           steering_policy:
                             type: string
                             enum:
-                              - ""
                               - off
                               - geo
                               - random
@@ -884,6 +1139,7 @@ paths:
                               - proximity
                               - least_outstanding_requests
                               - least_connections
+                              - ""
                             description: "Steering Policy for this load balancer.  - `\"off\"`: Use
                               `default_pools`. - `\"geo\"`: Use
                               `region_pools`/`country_pools`/`pop_pools`. For
@@ -1060,7 +1316,6 @@ paths:
                 steering_policy:
                   type: string
                   enum:
-                    - ""
                     - off
                     - geo
                     - random
@@ -1068,6 +1323,7 @@ paths:
                     - proximity
                     - least_outstanding_requests
                     - least_connections
+                    - ""
                   description: "Body param: Steering Policy for this load balancer.  - `\"off\"`:
                     Use `default_pools`. - `\"geo\"`: Use
                     `region_pools`/`country_pools`/`pop_pools`. For non-proxied
@@ -1279,7 +1535,18 @@ paths:
                           properties:
                             adaptive_routing:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                failover_across_pools:
+                                  type: boolean
+                                  description: Extends zero-downtime failover of requests to healthy origins from
+                                    alternate pools, when no healthy alternate
+                                    exists in the same pool, according to the
+                                    failover order defined by traffic and origin
+                                    steering. When set false (the default)
+                                    zero-downtime failover will only occur
+                                    between origins within the same pool. See
+                                    `session_affinity_attributes` for control
+                                    over when sessions are broken or reassigned.
                               description: Controls features that modify the routing of requests to pools and
                                 origins in response to dynamic conditions, such
                                 as during the interval between active health
@@ -1310,7 +1577,33 @@ paths:
                               description: The pool ID to use when all other pools are detected as unhealthy.
                             location_strategy:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                mode:
+                                  type: string
+                                  enum:
+                                    - pop
+                                    - resolver_ip
+                                  description: 'Determines the authoritative location when ECS is not preferred,
+                                    does not exist in the request, or its GeoIP
+                                    lookup is unsuccessful.  - `"pop"`: Use the
+                                    Cloudflare PoP location. - `"resolver_ip"`:
+                                    Use the DNS resolver GeoIP location. If the
+                                    GeoIP lookup is unsuccessful, use the
+                                    Cloudflare PoP location.'
+                                prefer_ecs:
+                                  type: string
+                                  enum:
+                                    - always
+                                    - never
+                                    - proximity
+                                    - geo
+                                  description: 'Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as
+                                    the authoritative location.  - `"always"`:
+                                    Always prefer ECS. - `"never"`: Never prefer
+                                    ECS. - `"proximity"`: Prefer ECS only when
+                                    `steering_policy="proximity"`. - `"geo"`:
+                                    Prefer ECS only when
+                                    `steering_policy="geo"`.'
                               description: Controls location-based steering for non-proxied requests. See
                                 `steering_policy` to learn how steering is
                                 affected.
@@ -1325,7 +1618,16 @@ paths:
                                 mapping if it exists else to default_pools."
                             random_steering:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                default_weight:
+                                  type: number
+                                  description: The default weight for pools in the load balancer that are not
+                                    specified in the pool_weights map.
+                                pool_weights:
+                                  type: object
+                                  additionalProperties: true
+                                  description: A mapping of pool IDs to custom weights. The weight is relative to
+                                    other pools in the load balancer.
                               description: "Configures pool weights.  - `steering_policy=\"random\"`: A random
                                 pool is selected with probability proportional
                                 to pool weights. -
@@ -1384,7 +1686,91 @@ paths:
                                 required configuration."
                             session_affinity_attributes:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                drain_duration:
+                                  type: number
+                                  description: Configures the drain duration in seconds. This field is only used
+                                    when session affinity is enabled on the load
+                                    balancer.
+                                headers:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: 'Configures the names of HTTP headers to base session affinity on
+                                    when header `session_affinity` is enabled.
+                                    At least one HTTP header name must be
+                                    provided. To specify the exact cookies to be
+                                    used, include an item in the following
+                                    format:
+                                    `"cookie:<cookie-name-1>,<cookie-name-2>"`
+                                    (example) where everything after the colon
+                                    is a comma-separated list of cookie names.
+                                    Providing only `"cookie"` will result in all
+                                    cookies being used. The default max number
+                                    of HTTP header names that can be provided
+                                    depends on your plan: 5 for Enterprise, 1
+                                    for all other plans.'
+                                require_all_headers:
+                                  type: boolean
+                                  description: "When header `session_affinity` is enabled, this option can be used
+                                    to specify how HTTP headers on load
+                                    balancing requests will be used. The
+                                    supported values are: - `\"true\"`: Load
+                                    balancing requests must contain _all_ of the
+                                    HTTP headers specified by the `headers`
+                                    session affinity attribute, otherwise
+                                    sessions aren't created. - `\"false\"`: Load
+                                    balancing requests must contain _at least
+                                    one_ of the HTTP headers specified by the
+                                    `headers` session affinity attribute,
+                                    otherwise sessions aren't created."
+                                samesite:
+                                  type: string
+                                  enum:
+                                    - Auto
+                                    - Lax
+                                    - None
+                                    - Strict
+                                  description: 'Configures the SameSite attribute on session affinity cookie.
+                                    Value "Auto" will be translated to "Lax" or
+                                    "None" depending if Always Use HTTPS is
+                                    enabled. Note: when using value "None", the
+                                    secure attribute can not be set to "Never".'
+                                secure:
+                                  type: string
+                                  enum:
+                                    - Auto
+                                    - Always
+                                    - Never
+                                  description: Configures the Secure attribute on session affinity cookie. Value
+                                    "Always" indicates the Secure attribute will
+                                    be set in the Set-Cookie header, "Never"
+                                    indicates the Secure attribute will not be
+                                    set, and "Auto" will set the Secure
+                                    attribute depending if Always Use HTTPS is
+                                    enabled.
+                                zero_downtime_failover:
+                                  type: string
+                                  enum:
+                                    - none
+                                    - temporary
+                                    - sticky
+                                  description: 'Configures the zero-downtime failover between origins within a
+                                    pool when session affinity is enabled. This
+                                    feature is currently incompatible with Argo,
+                                    Tiered Cache, and Bandwidth Alliance. The
+                                    supported values are: - `"none"`: No
+                                    failover takes place for sessions pinned to
+                                    the origin (default). - `"temporary"`:
+                                    Traffic will be sent to another other
+                                    healthy origin until the originally pinned
+                                    origin is available; note that this can
+                                    potentially result in heavy origin flapping.
+                                    - `"sticky"`: The session affinity cookie is
+                                    updated and subsequent requests are sent to
+                                    the new origin. Note: Zero-downtime failover
+                                    with sticky sessions is currently not
+                                    supported for session affinity by header.'
                               description: Configures attributes for session affinity.
                             session_affinity_ttl:
                               type: number
@@ -1405,7 +1791,6 @@ paths:
                             steering_policy:
                               type: string
                               enum:
-                                - ""
                                 - off
                                 - geo
                                 - random
@@ -1413,6 +1798,7 @@ paths:
                                 - proximity
                                 - least_outstanding_requests
                                 - least_connections
+                                - ""
                               description: "Steering Policy for this load balancer.  - `\"off\"`: Use
                                 `default_pools`. - `\"geo\"`: Use
                                 `region_pools`/`country_pools`/`pop_pools`. For
@@ -1593,7 +1979,6 @@ paths:
                   steering_policy:
                     type: string
                     enum:
-                      - ""
                       - off
                       - geo
                       - random
@@ -1601,6 +1986,7 @@ paths:
                       - proximity
                       - least_outstanding_requests
                       - least_connections
+                      - ""
                     description: "Steering Policy for this load balancer.  - `\"off\"`: Use
                       `default_pools`. - `\"geo\"`: Use
                       `region_pools`/`country_pools`/`pop_pools`. For
@@ -1820,7 +2206,18 @@ paths:
                         properties:
                           adaptive_routing:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              failover_across_pools:
+                                type: boolean
+                                description: Extends zero-downtime failover of requests to healthy origins from
+                                  alternate pools, when no healthy alternate
+                                  exists in the same pool, according to the
+                                  failover order defined by traffic and origin
+                                  steering. When set false (the default)
+                                  zero-downtime failover will only occur between
+                                  origins within the same pool. See
+                                  `session_affinity_attributes` for control over
+                                  when sessions are broken or reassigned.
                             description: Controls features that modify the routing of requests to pools and
                               origins in response to dynamic conditions, such as
                               during the interval between active health
@@ -1851,7 +2248,32 @@ paths:
                             description: The pool ID to use when all other pools are detected as unhealthy.
                           location_strategy:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              mode:
+                                type: string
+                                enum:
+                                  - pop
+                                  - resolver_ip
+                                description: 'Determines the authoritative location when ECS is not preferred,
+                                  does not exist in the request, or its GeoIP
+                                  lookup is unsuccessful.  - `"pop"`: Use the
+                                  Cloudflare PoP location. - `"resolver_ip"`:
+                                  Use the DNS resolver GeoIP location. If the
+                                  GeoIP lookup is unsuccessful, use the
+                                  Cloudflare PoP location.'
+                              prefer_ecs:
+                                type: string
+                                enum:
+                                  - always
+                                  - never
+                                  - proximity
+                                  - geo
+                                description: 'Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as
+                                  the authoritative location.  - `"always"`:
+                                  Always prefer ECS. - `"never"`: Never prefer
+                                  ECS. - `"proximity"`: Prefer ECS only when
+                                  `steering_policy="proximity"`. - `"geo"`:
+                                  Prefer ECS only when `steering_policy="geo"`.'
                             description: Controls location-based steering for non-proxied requests. See
                               `steering_policy` to learn how steering is
                               affected.
@@ -1866,7 +2288,16 @@ paths:
                               exists else to default_pools."
                           random_steering:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              default_weight:
+                                type: number
+                                description: The default weight for pools in the load balancer that are not
+                                  specified in the pool_weights map.
+                              pool_weights:
+                                type: object
+                                additionalProperties: true
+                                description: A mapping of pool IDs to custom weights. The weight is relative to
+                                  other pools in the load balancer.
                             description: "Configures pool weights.  - `steering_policy=\"random\"`: A random
                               pool is selected with probability proportional to
                               pool weights. -
@@ -1922,7 +2353,88 @@ paths:
                               required configuration."
                           session_affinity_attributes:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              drain_duration:
+                                type: number
+                                description: Configures the drain duration in seconds. This field is only used
+                                  when session affinity is enabled on the load
+                                  balancer.
+                              headers:
+                                type: array
+                                items:
+                                  type: string
+                                description: 'Configures the names of HTTP headers to base session affinity on
+                                  when header `session_affinity` is enabled. At
+                                  least one HTTP header name must be provided.
+                                  To specify the exact cookies to be used,
+                                  include an item in the following format:
+                                  `"cookie:<cookie-name-1>,<cookie-name-2>"`
+                                  (example) where everything after the colon is
+                                  a comma-separated list of cookie names.
+                                  Providing only `"cookie"` will result in all
+                                  cookies being used. The default max number of
+                                  HTTP header names that can be provided depends
+                                  on your plan: 5 for Enterprise, 1 for all
+                                  other plans.'
+                              require_all_headers:
+                                type: boolean
+                                description: "When header `session_affinity` is enabled, this option can be used
+                                  to specify how HTTP headers on load balancing
+                                  requests will be used. The supported values
+                                  are: - `\"true\"`: Load balancing requests
+                                  must contain _all_ of the HTTP headers
+                                  specified by the `headers` session affinity
+                                  attribute, otherwise sessions aren't created.
+                                  - `\"false\"`: Load balancing requests must
+                                  contain _at least one_ of the HTTP headers
+                                  specified by the `headers` session affinity
+                                  attribute, otherwise sessions aren't created."
+                              samesite:
+                                type: string
+                                enum:
+                                  - Auto
+                                  - Lax
+                                  - None
+                                  - Strict
+                                description: 'Configures the SameSite attribute on session affinity cookie.
+                                  Value "Auto" will be translated to "Lax" or
+                                  "None" depending if Always Use HTTPS is
+                                  enabled. Note: when using value "None", the
+                                  secure attribute can not be set to "Never".'
+                              secure:
+                                type: string
+                                enum:
+                                  - Auto
+                                  - Always
+                                  - Never
+                                description: Configures the Secure attribute on session affinity cookie. Value
+                                  "Always" indicates the Secure attribute will
+                                  be set in the Set-Cookie header, "Never"
+                                  indicates the Secure attribute will not be
+                                  set, and "Auto" will set the Secure attribute
+                                  depending if Always Use HTTPS is enabled.
+                              zero_downtime_failover:
+                                type: string
+                                enum:
+                                  - none
+                                  - temporary
+                                  - sticky
+                                description: 'Configures the zero-downtime failover between origins within a
+                                  pool when session affinity is enabled. This
+                                  feature is currently incompatible with Argo,
+                                  Tiered Cache, and Bandwidth Alliance. The
+                                  supported values are: - `"none"`: No failover
+                                  takes place for sessions pinned to the origin
+                                  (default). - `"temporary"`: Traffic will be
+                                  sent to another other healthy origin until the
+                                  originally pinned origin is available; note
+                                  that this can potentially result in heavy
+                                  origin flapping. - `"sticky"`: The session
+                                  affinity cookie is updated and subsequent
+                                  requests are sent to the new origin. Note:
+                                  Zero-downtime failover with sticky sessions is
+                                  currently not supported for session affinity
+                                  by header.'
                             description: Configures attributes for session affinity.
                           session_affinity_ttl:
                             type: number
@@ -1943,7 +2455,6 @@ paths:
                           steering_policy:
                             type: string
                             enum:
-                              - ""
                               - off
                               - geo
                               - random
@@ -1951,6 +2462,7 @@ paths:
                               - proximity
                               - least_outstanding_requests
                               - least_connections
+                              - ""
                             description: "Steering Policy for this load balancer.  - `\"off\"`: Use
                               `default_pools`. - `\"geo\"`: Use
                               `region_pools`/`country_pools`/`pop_pools`. For
@@ -2127,7 +2639,6 @@ paths:
                 steering_policy:
                   type: string
                   enum:
-                    - ""
                     - off
                     - geo
                     - random
@@ -2135,6 +2646,7 @@ paths:
                     - proximity
                     - least_outstanding_requests
                     - least_connections
+                    - ""
                   description: "Body param: Steering Policy for this load balancer.  - `\"off\"`:
                     Use `default_pools`. - `\"geo\"`: Use
                     `region_pools`/`country_pools`/`pop_pools`. For non-proxied
@@ -2342,7 +2854,18 @@ paths:
                           properties:
                             adaptive_routing:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                failover_across_pools:
+                                  type: boolean
+                                  description: Extends zero-downtime failover of requests to healthy origins from
+                                    alternate pools, when no healthy alternate
+                                    exists in the same pool, according to the
+                                    failover order defined by traffic and origin
+                                    steering. When set false (the default)
+                                    zero-downtime failover will only occur
+                                    between origins within the same pool. See
+                                    `session_affinity_attributes` for control
+                                    over when sessions are broken or reassigned.
                               description: Controls features that modify the routing of requests to pools and
                                 origins in response to dynamic conditions, such
                                 as during the interval between active health
@@ -2373,7 +2896,33 @@ paths:
                               description: The pool ID to use when all other pools are detected as unhealthy.
                             location_strategy:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                mode:
+                                  type: string
+                                  enum:
+                                    - pop
+                                    - resolver_ip
+                                  description: 'Determines the authoritative location when ECS is not preferred,
+                                    does not exist in the request, or its GeoIP
+                                    lookup is unsuccessful.  - `"pop"`: Use the
+                                    Cloudflare PoP location. - `"resolver_ip"`:
+                                    Use the DNS resolver GeoIP location. If the
+                                    GeoIP lookup is unsuccessful, use the
+                                    Cloudflare PoP location.'
+                                prefer_ecs:
+                                  type: string
+                                  enum:
+                                    - always
+                                    - never
+                                    - proximity
+                                    - geo
+                                  description: 'Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as
+                                    the authoritative location.  - `"always"`:
+                                    Always prefer ECS. - `"never"`: Never prefer
+                                    ECS. - `"proximity"`: Prefer ECS only when
+                                    `steering_policy="proximity"`. - `"geo"`:
+                                    Prefer ECS only when
+                                    `steering_policy="geo"`.'
                               description: Controls location-based steering for non-proxied requests. See
                                 `steering_policy` to learn how steering is
                                 affected.
@@ -2388,7 +2937,16 @@ paths:
                                 mapping if it exists else to default_pools."
                             random_steering:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                default_weight:
+                                  type: number
+                                  description: The default weight for pools in the load balancer that are not
+                                    specified in the pool_weights map.
+                                pool_weights:
+                                  type: object
+                                  additionalProperties: true
+                                  description: A mapping of pool IDs to custom weights. The weight is relative to
+                                    other pools in the load balancer.
                               description: "Configures pool weights.  - `steering_policy=\"random\"`: A random
                                 pool is selected with probability proportional
                                 to pool weights. -
@@ -2447,7 +3005,91 @@ paths:
                                 required configuration."
                             session_affinity_attributes:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                drain_duration:
+                                  type: number
+                                  description: Configures the drain duration in seconds. This field is only used
+                                    when session affinity is enabled on the load
+                                    balancer.
+                                headers:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: 'Configures the names of HTTP headers to base session affinity on
+                                    when header `session_affinity` is enabled.
+                                    At least one HTTP header name must be
+                                    provided. To specify the exact cookies to be
+                                    used, include an item in the following
+                                    format:
+                                    `"cookie:<cookie-name-1>,<cookie-name-2>"`
+                                    (example) where everything after the colon
+                                    is a comma-separated list of cookie names.
+                                    Providing only `"cookie"` will result in all
+                                    cookies being used. The default max number
+                                    of HTTP header names that can be provided
+                                    depends on your plan: 5 for Enterprise, 1
+                                    for all other plans.'
+                                require_all_headers:
+                                  type: boolean
+                                  description: "When header `session_affinity` is enabled, this option can be used
+                                    to specify how HTTP headers on load
+                                    balancing requests will be used. The
+                                    supported values are: - `\"true\"`: Load
+                                    balancing requests must contain _all_ of the
+                                    HTTP headers specified by the `headers`
+                                    session affinity attribute, otherwise
+                                    sessions aren't created. - `\"false\"`: Load
+                                    balancing requests must contain _at least
+                                    one_ of the HTTP headers specified by the
+                                    `headers` session affinity attribute,
+                                    otherwise sessions aren't created."
+                                samesite:
+                                  type: string
+                                  enum:
+                                    - Auto
+                                    - Lax
+                                    - None
+                                    - Strict
+                                  description: 'Configures the SameSite attribute on session affinity cookie.
+                                    Value "Auto" will be translated to "Lax" or
+                                    "None" depending if Always Use HTTPS is
+                                    enabled. Note: when using value "None", the
+                                    secure attribute can not be set to "Never".'
+                                secure:
+                                  type: string
+                                  enum:
+                                    - Auto
+                                    - Always
+                                    - Never
+                                  description: Configures the Secure attribute on session affinity cookie. Value
+                                    "Always" indicates the Secure attribute will
+                                    be set in the Set-Cookie header, "Never"
+                                    indicates the Secure attribute will not be
+                                    set, and "Auto" will set the Secure
+                                    attribute depending if Always Use HTTPS is
+                                    enabled.
+                                zero_downtime_failover:
+                                  type: string
+                                  enum:
+                                    - none
+                                    - temporary
+                                    - sticky
+                                  description: 'Configures the zero-downtime failover between origins within a
+                                    pool when session affinity is enabled. This
+                                    feature is currently incompatible with Argo,
+                                    Tiered Cache, and Bandwidth Alliance. The
+                                    supported values are: - `"none"`: No
+                                    failover takes place for sessions pinned to
+                                    the origin (default). - `"temporary"`:
+                                    Traffic will be sent to another other
+                                    healthy origin until the originally pinned
+                                    origin is available; note that this can
+                                    potentially result in heavy origin flapping.
+                                    - `"sticky"`: The session affinity cookie is
+                                    updated and subsequent requests are sent to
+                                    the new origin. Note: Zero-downtime failover
+                                    with sticky sessions is currently not
+                                    supported for session affinity by header.'
                               description: Configures attributes for session affinity.
                             session_affinity_ttl:
                               type: number
@@ -2468,7 +3110,6 @@ paths:
                             steering_policy:
                               type: string
                               enum:
-                                - ""
                                 - off
                                 - geo
                                 - random
@@ -2476,6 +3117,7 @@ paths:
                                 - proximity
                                 - least_outstanding_requests
                                 - least_connections
+                                - ""
                               description: "Steering Policy for this load balancer.  - `\"off\"`: Use
                                 `default_pools`. - `\"geo\"`: Use
                                 `region_pools`/`country_pools`/`pop_pools`. For
@@ -2656,7 +3298,6 @@ paths:
                   steering_policy:
                     type: string
                     enum:
-                      - ""
                       - off
                       - geo
                       - random
@@ -2664,6 +3305,7 @@ paths:
                       - proximity
                       - least_outstanding_requests
                       - least_connections
+                      - ""
                     description: "Steering Policy for this load balancer.  - `\"off\"`: Use
                       `default_pools`. - `\"geo\"`: Use
                       `region_pools`/`country_pools`/`pop_pools`. For
@@ -2916,7 +3558,18 @@ paths:
                           properties:
                             adaptive_routing:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                failover_across_pools:
+                                  type: boolean
+                                  description: Extends zero-downtime failover of requests to healthy origins from
+                                    alternate pools, when no healthy alternate
+                                    exists in the same pool, according to the
+                                    failover order defined by traffic and origin
+                                    steering. When set false (the default)
+                                    zero-downtime failover will only occur
+                                    between origins within the same pool. See
+                                    `session_affinity_attributes` for control
+                                    over when sessions are broken or reassigned.
                               description: Controls features that modify the routing of requests to pools and
                                 origins in response to dynamic conditions, such
                                 as during the interval between active health
@@ -2947,7 +3600,33 @@ paths:
                               description: The pool ID to use when all other pools are detected as unhealthy.
                             location_strategy:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                mode:
+                                  type: string
+                                  enum:
+                                    - pop
+                                    - resolver_ip
+                                  description: 'Determines the authoritative location when ECS is not preferred,
+                                    does not exist in the request, or its GeoIP
+                                    lookup is unsuccessful.  - `"pop"`: Use the
+                                    Cloudflare PoP location. - `"resolver_ip"`:
+                                    Use the DNS resolver GeoIP location. If the
+                                    GeoIP lookup is unsuccessful, use the
+                                    Cloudflare PoP location.'
+                                prefer_ecs:
+                                  type: string
+                                  enum:
+                                    - always
+                                    - never
+                                    - proximity
+                                    - geo
+                                  description: 'Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as
+                                    the authoritative location.  - `"always"`:
+                                    Always prefer ECS. - `"never"`: Never prefer
+                                    ECS. - `"proximity"`: Prefer ECS only when
+                                    `steering_policy="proximity"`. - `"geo"`:
+                                    Prefer ECS only when
+                                    `steering_policy="geo"`.'
                               description: Controls location-based steering for non-proxied requests. See
                                 `steering_policy` to learn how steering is
                                 affected.
@@ -2962,7 +3641,16 @@ paths:
                                 mapping if it exists else to default_pools."
                             random_steering:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                default_weight:
+                                  type: number
+                                  description: The default weight for pools in the load balancer that are not
+                                    specified in the pool_weights map.
+                                pool_weights:
+                                  type: object
+                                  additionalProperties: true
+                                  description: A mapping of pool IDs to custom weights. The weight is relative to
+                                    other pools in the load balancer.
                               description: "Configures pool weights.  - `steering_policy=\"random\"`: A random
                                 pool is selected with probability proportional
                                 to pool weights. -
@@ -3021,7 +3709,91 @@ paths:
                                 required configuration."
                             session_affinity_attributes:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                drain_duration:
+                                  type: number
+                                  description: Configures the drain duration in seconds. This field is only used
+                                    when session affinity is enabled on the load
+                                    balancer.
+                                headers:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: 'Configures the names of HTTP headers to base session affinity on
+                                    when header `session_affinity` is enabled.
+                                    At least one HTTP header name must be
+                                    provided. To specify the exact cookies to be
+                                    used, include an item in the following
+                                    format:
+                                    `"cookie:<cookie-name-1>,<cookie-name-2>"`
+                                    (example) where everything after the colon
+                                    is a comma-separated list of cookie names.
+                                    Providing only `"cookie"` will result in all
+                                    cookies being used. The default max number
+                                    of HTTP header names that can be provided
+                                    depends on your plan: 5 for Enterprise, 1
+                                    for all other plans.'
+                                require_all_headers:
+                                  type: boolean
+                                  description: "When header `session_affinity` is enabled, this option can be used
+                                    to specify how HTTP headers on load
+                                    balancing requests will be used. The
+                                    supported values are: - `\"true\"`: Load
+                                    balancing requests must contain _all_ of the
+                                    HTTP headers specified by the `headers`
+                                    session affinity attribute, otherwise
+                                    sessions aren't created. - `\"false\"`: Load
+                                    balancing requests must contain _at least
+                                    one_ of the HTTP headers specified by the
+                                    `headers` session affinity attribute,
+                                    otherwise sessions aren't created."
+                                samesite:
+                                  type: string
+                                  enum:
+                                    - Auto
+                                    - Lax
+                                    - None
+                                    - Strict
+                                  description: 'Configures the SameSite attribute on session affinity cookie.
+                                    Value "Auto" will be translated to "Lax" or
+                                    "None" depending if Always Use HTTPS is
+                                    enabled. Note: when using value "None", the
+                                    secure attribute can not be set to "Never".'
+                                secure:
+                                  type: string
+                                  enum:
+                                    - Auto
+                                    - Always
+                                    - Never
+                                  description: Configures the Secure attribute on session affinity cookie. Value
+                                    "Always" indicates the Secure attribute will
+                                    be set in the Set-Cookie header, "Never"
+                                    indicates the Secure attribute will not be
+                                    set, and "Auto" will set the Secure
+                                    attribute depending if Always Use HTTPS is
+                                    enabled.
+                                zero_downtime_failover:
+                                  type: string
+                                  enum:
+                                    - none
+                                    - temporary
+                                    - sticky
+                                  description: 'Configures the zero-downtime failover between origins within a
+                                    pool when session affinity is enabled. This
+                                    feature is currently incompatible with Argo,
+                                    Tiered Cache, and Bandwidth Alliance. The
+                                    supported values are: - `"none"`: No
+                                    failover takes place for sessions pinned to
+                                    the origin (default). - `"temporary"`:
+                                    Traffic will be sent to another other
+                                    healthy origin until the originally pinned
+                                    origin is available; note that this can
+                                    potentially result in heavy origin flapping.
+                                    - `"sticky"`: The session affinity cookie is
+                                    updated and subsequent requests are sent to
+                                    the new origin. Note: Zero-downtime failover
+                                    with sticky sessions is currently not
+                                    supported for session affinity by header.'
                               description: Configures attributes for session affinity.
                             session_affinity_ttl:
                               type: number
@@ -3042,7 +3814,6 @@ paths:
                             steering_policy:
                               type: string
                               enum:
-                                - ""
                                 - off
                                 - geo
                                 - random
@@ -3050,6 +3821,7 @@ paths:
                                 - proximity
                                 - least_outstanding_requests
                                 - least_connections
+                                - ""
                               description: "Steering Policy for this load balancer.  - `\"off\"`: Use
                                 `default_pools`. - `\"geo\"`: Use
                                 `region_pools`/`country_pools`/`pop_pools`. For
@@ -3230,7 +4002,6 @@ paths:
                   steering_policy:
                     type: string
                     enum:
-                      - ""
                       - off
                       - geo
                       - random
@@ -3238,6 +4009,7 @@ paths:
                       - proximity
                       - least_outstanding_requests
                       - least_connections
+                      - ""
                     description: "Steering Policy for this load balancer.  - `\"off\"`: Use
                       `default_pools`. - `\"geo\"`: Use
                       `region_pools`/`country_pools`/`pop_pools`. For
@@ -3457,7 +4229,18 @@ paths:
                         properties:
                           adaptive_routing:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              failover_across_pools:
+                                type: boolean
+                                description: Extends zero-downtime failover of requests to healthy origins from
+                                  alternate pools, when no healthy alternate
+                                  exists in the same pool, according to the
+                                  failover order defined by traffic and origin
+                                  steering. When set false (the default)
+                                  zero-downtime failover will only occur between
+                                  origins within the same pool. See
+                                  `session_affinity_attributes` for control over
+                                  when sessions are broken or reassigned.
                             description: Controls features that modify the routing of requests to pools and
                               origins in response to dynamic conditions, such as
                               during the interval between active health
@@ -3488,7 +4271,32 @@ paths:
                             description: The pool ID to use when all other pools are detected as unhealthy.
                           location_strategy:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              mode:
+                                type: string
+                                enum:
+                                  - pop
+                                  - resolver_ip
+                                description: 'Determines the authoritative location when ECS is not preferred,
+                                  does not exist in the request, or its GeoIP
+                                  lookup is unsuccessful.  - `"pop"`: Use the
+                                  Cloudflare PoP location. - `"resolver_ip"`:
+                                  Use the DNS resolver GeoIP location. If the
+                                  GeoIP lookup is unsuccessful, use the
+                                  Cloudflare PoP location.'
+                              prefer_ecs:
+                                type: string
+                                enum:
+                                  - always
+                                  - never
+                                  - proximity
+                                  - geo
+                                description: 'Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as
+                                  the authoritative location.  - `"always"`:
+                                  Always prefer ECS. - `"never"`: Never prefer
+                                  ECS. - `"proximity"`: Prefer ECS only when
+                                  `steering_policy="proximity"`. - `"geo"`:
+                                  Prefer ECS only when `steering_policy="geo"`.'
                             description: Controls location-based steering for non-proxied requests. See
                               `steering_policy` to learn how steering is
                               affected.
@@ -3503,7 +4311,16 @@ paths:
                               exists else to default_pools."
                           random_steering:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              default_weight:
+                                type: number
+                                description: The default weight for pools in the load balancer that are not
+                                  specified in the pool_weights map.
+                              pool_weights:
+                                type: object
+                                additionalProperties: true
+                                description: A mapping of pool IDs to custom weights. The weight is relative to
+                                  other pools in the load balancer.
                             description: "Configures pool weights.  - `steering_policy=\"random\"`: A random
                               pool is selected with probability proportional to
                               pool weights. -
@@ -3559,7 +4376,88 @@ paths:
                               required configuration."
                           session_affinity_attributes:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              drain_duration:
+                                type: number
+                                description: Configures the drain duration in seconds. This field is only used
+                                  when session affinity is enabled on the load
+                                  balancer.
+                              headers:
+                                type: array
+                                items:
+                                  type: string
+                                description: 'Configures the names of HTTP headers to base session affinity on
+                                  when header `session_affinity` is enabled. At
+                                  least one HTTP header name must be provided.
+                                  To specify the exact cookies to be used,
+                                  include an item in the following format:
+                                  `"cookie:<cookie-name-1>,<cookie-name-2>"`
+                                  (example) where everything after the colon is
+                                  a comma-separated list of cookie names.
+                                  Providing only `"cookie"` will result in all
+                                  cookies being used. The default max number of
+                                  HTTP header names that can be provided depends
+                                  on your plan: 5 for Enterprise, 1 for all
+                                  other plans.'
+                              require_all_headers:
+                                type: boolean
+                                description: "When header `session_affinity` is enabled, this option can be used
+                                  to specify how HTTP headers on load balancing
+                                  requests will be used. The supported values
+                                  are: - `\"true\"`: Load balancing requests
+                                  must contain _all_ of the HTTP headers
+                                  specified by the `headers` session affinity
+                                  attribute, otherwise sessions aren't created.
+                                  - `\"false\"`: Load balancing requests must
+                                  contain _at least one_ of the HTTP headers
+                                  specified by the `headers` session affinity
+                                  attribute, otherwise sessions aren't created."
+                              samesite:
+                                type: string
+                                enum:
+                                  - Auto
+                                  - Lax
+                                  - None
+                                  - Strict
+                                description: 'Configures the SameSite attribute on session affinity cookie.
+                                  Value "Auto" will be translated to "Lax" or
+                                  "None" depending if Always Use HTTPS is
+                                  enabled. Note: when using value "None", the
+                                  secure attribute can not be set to "Never".'
+                              secure:
+                                type: string
+                                enum:
+                                  - Auto
+                                  - Always
+                                  - Never
+                                description: Configures the Secure attribute on session affinity cookie. Value
+                                  "Always" indicates the Secure attribute will
+                                  be set in the Set-Cookie header, "Never"
+                                  indicates the Secure attribute will not be
+                                  set, and "Auto" will set the Secure attribute
+                                  depending if Always Use HTTPS is enabled.
+                              zero_downtime_failover:
+                                type: string
+                                enum:
+                                  - none
+                                  - temporary
+                                  - sticky
+                                description: 'Configures the zero-downtime failover between origins within a
+                                  pool when session affinity is enabled. This
+                                  feature is currently incompatible with Argo,
+                                  Tiered Cache, and Bandwidth Alliance. The
+                                  supported values are: - `"none"`: No failover
+                                  takes place for sessions pinned to the origin
+                                  (default). - `"temporary"`: Traffic will be
+                                  sent to another other healthy origin until the
+                                  originally pinned origin is available; note
+                                  that this can potentially result in heavy
+                                  origin flapping. - `"sticky"`: The session
+                                  affinity cookie is updated and subsequent
+                                  requests are sent to the new origin. Note:
+                                  Zero-downtime failover with sticky sessions is
+                                  currently not supported for session affinity
+                                  by header.'
                             description: Configures attributes for session affinity.
                           session_affinity_ttl:
                             type: number
@@ -3580,7 +4478,6 @@ paths:
                           steering_policy:
                             type: string
                             enum:
-                              - ""
                               - off
                               - geo
                               - random
@@ -3588,6 +4485,7 @@ paths:
                               - proximity
                               - least_outstanding_requests
                               - least_connections
+                              - ""
                             description: "Steering Policy for this load balancer.  - `\"off\"`: Use
                               `default_pools`. - `\"geo\"`: Use
                               `region_pools`/`country_pools`/`pop_pools`. For
@@ -3764,7 +4662,6 @@ paths:
                 steering_policy:
                   type: string
                   enum:
-                    - ""
                     - off
                     - geo
                     - random
@@ -3772,6 +4669,7 @@ paths:
                     - proximity
                     - least_outstanding_requests
                     - least_connections
+                    - ""
                   description: "Body param: Steering Policy for this load balancer.  - `\"off\"`:
                     Use `default_pools`. - `\"geo\"`: Use
                     `region_pools`/`country_pools`/`pop_pools`. For non-proxied
@@ -3983,7 +4881,18 @@ paths:
                           properties:
                             adaptive_routing:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                failover_across_pools:
+                                  type: boolean
+                                  description: Extends zero-downtime failover of requests to healthy origins from
+                                    alternate pools, when no healthy alternate
+                                    exists in the same pool, according to the
+                                    failover order defined by traffic and origin
+                                    steering. When set false (the default)
+                                    zero-downtime failover will only occur
+                                    between origins within the same pool. See
+                                    `session_affinity_attributes` for control
+                                    over when sessions are broken or reassigned.
                               description: Controls features that modify the routing of requests to pools and
                                 origins in response to dynamic conditions, such
                                 as during the interval between active health
@@ -4014,7 +4923,33 @@ paths:
                               description: The pool ID to use when all other pools are detected as unhealthy.
                             location_strategy:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                mode:
+                                  type: string
+                                  enum:
+                                    - pop
+                                    - resolver_ip
+                                  description: 'Determines the authoritative location when ECS is not preferred,
+                                    does not exist in the request, or its GeoIP
+                                    lookup is unsuccessful.  - `"pop"`: Use the
+                                    Cloudflare PoP location. - `"resolver_ip"`:
+                                    Use the DNS resolver GeoIP location. If the
+                                    GeoIP lookup is unsuccessful, use the
+                                    Cloudflare PoP location.'
+                                prefer_ecs:
+                                  type: string
+                                  enum:
+                                    - always
+                                    - never
+                                    - proximity
+                                    - geo
+                                  description: 'Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as
+                                    the authoritative location.  - `"always"`:
+                                    Always prefer ECS. - `"never"`: Never prefer
+                                    ECS. - `"proximity"`: Prefer ECS only when
+                                    `steering_policy="proximity"`. - `"geo"`:
+                                    Prefer ECS only when
+                                    `steering_policy="geo"`.'
                               description: Controls location-based steering for non-proxied requests. See
                                 `steering_policy` to learn how steering is
                                 affected.
@@ -4029,7 +4964,16 @@ paths:
                                 mapping if it exists else to default_pools."
                             random_steering:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                default_weight:
+                                  type: number
+                                  description: The default weight for pools in the load balancer that are not
+                                    specified in the pool_weights map.
+                                pool_weights:
+                                  type: object
+                                  additionalProperties: true
+                                  description: A mapping of pool IDs to custom weights. The weight is relative to
+                                    other pools in the load balancer.
                               description: "Configures pool weights.  - `steering_policy=\"random\"`: A random
                                 pool is selected with probability proportional
                                 to pool weights. -
@@ -4088,7 +5032,91 @@ paths:
                                 required configuration."
                             session_affinity_attributes:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                drain_duration:
+                                  type: number
+                                  description: Configures the drain duration in seconds. This field is only used
+                                    when session affinity is enabled on the load
+                                    balancer.
+                                headers:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: 'Configures the names of HTTP headers to base session affinity on
+                                    when header `session_affinity` is enabled.
+                                    At least one HTTP header name must be
+                                    provided. To specify the exact cookies to be
+                                    used, include an item in the following
+                                    format:
+                                    `"cookie:<cookie-name-1>,<cookie-name-2>"`
+                                    (example) where everything after the colon
+                                    is a comma-separated list of cookie names.
+                                    Providing only `"cookie"` will result in all
+                                    cookies being used. The default max number
+                                    of HTTP header names that can be provided
+                                    depends on your plan: 5 for Enterprise, 1
+                                    for all other plans.'
+                                require_all_headers:
+                                  type: boolean
+                                  description: "When header `session_affinity` is enabled, this option can be used
+                                    to specify how HTTP headers on load
+                                    balancing requests will be used. The
+                                    supported values are: - `\"true\"`: Load
+                                    balancing requests must contain _all_ of the
+                                    HTTP headers specified by the `headers`
+                                    session affinity attribute, otherwise
+                                    sessions aren't created. - `\"false\"`: Load
+                                    balancing requests must contain _at least
+                                    one_ of the HTTP headers specified by the
+                                    `headers` session affinity attribute,
+                                    otherwise sessions aren't created."
+                                samesite:
+                                  type: string
+                                  enum:
+                                    - Auto
+                                    - Lax
+                                    - None
+                                    - Strict
+                                  description: 'Configures the SameSite attribute on session affinity cookie.
+                                    Value "Auto" will be translated to "Lax" or
+                                    "None" depending if Always Use HTTPS is
+                                    enabled. Note: when using value "None", the
+                                    secure attribute can not be set to "Never".'
+                                secure:
+                                  type: string
+                                  enum:
+                                    - Auto
+                                    - Always
+                                    - Never
+                                  description: Configures the Secure attribute on session affinity cookie. Value
+                                    "Always" indicates the Secure attribute will
+                                    be set in the Set-Cookie header, "Never"
+                                    indicates the Secure attribute will not be
+                                    set, and "Auto" will set the Secure
+                                    attribute depending if Always Use HTTPS is
+                                    enabled.
+                                zero_downtime_failover:
+                                  type: string
+                                  enum:
+                                    - none
+                                    - temporary
+                                    - sticky
+                                  description: 'Configures the zero-downtime failover between origins within a
+                                    pool when session affinity is enabled. This
+                                    feature is currently incompatible with Argo,
+                                    Tiered Cache, and Bandwidth Alliance. The
+                                    supported values are: - `"none"`: No
+                                    failover takes place for sessions pinned to
+                                    the origin (default). - `"temporary"`:
+                                    Traffic will be sent to another other
+                                    healthy origin until the originally pinned
+                                    origin is available; note that this can
+                                    potentially result in heavy origin flapping.
+                                    - `"sticky"`: The session affinity cookie is
+                                    updated and subsequent requests are sent to
+                                    the new origin. Note: Zero-downtime failover
+                                    with sticky sessions is currently not
+                                    supported for session affinity by header.'
                               description: Configures attributes for session affinity.
                             session_affinity_ttl:
                               type: number
@@ -4109,7 +5137,6 @@ paths:
                             steering_policy:
                               type: string
                               enum:
-                                - ""
                                 - off
                                 - geo
                                 - random
@@ -4117,6 +5144,7 @@ paths:
                                 - proximity
                                 - least_outstanding_requests
                                 - least_connections
+                                - ""
                               description: "Steering Policy for this load balancer.  - `\"off\"`: Use
                                 `default_pools`. - `\"geo\"`: Use
                                 `region_pools`/`country_pools`/`pop_pools`. For
@@ -4297,7 +5325,6 @@ paths:
                   steering_policy:
                     type: string
                     enum:
-                      - ""
                       - off
                       - geo
                       - random
@@ -4305,6 +5332,7 @@ paths:
                       - proximity
                       - least_outstanding_requests
                       - least_connections
+                      - ""
                     description: "Steering Policy for this load balancer.  - `\"off\"`: Use
                       `default_pools`. - `\"geo\"`: Use
                       `region_pools`/`country_pools`/`pop_pools`. For
@@ -6024,10 +7052,10 @@ paths:
                             - ME
                             - NAF
                             - SAF
+                            - SAS
                             - SEAS
                             - NEAS
                             - ALL_REGIONS
-                            - SAS
                     nullable: true
                     description: A list of regions from which to run health checks. Null means every
                       Cloudflare data center.
@@ -6054,7 +7082,32 @@ paths:
                   load_shedding:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          default_percent:
+                            type: number
+                            description: The percent of traffic to shed from the pool, according to the
+                              default policy. Applies to new sessions and
+                              traffic without session affinity.
+                          default_policy:
+                            type: string
+                            enum:
+                              - random
+                              - hash
+                            description: The default policy to use when load shedding. A random policy
+                              randomly sheds a given percent of requests. A hash
+                              policy computes a hash over the CF-Connecting-IP
+                              address and sheds all requests originating from a
+                              percent of IPs.
+                          session_percent:
+                            type: number
+                            description: The percent of existing sessions to shed from the pool, according
+                              to the session policy.
+                          session_policy:
+                            type: string
+                            enum:
+                              - hash
+                            description: Only the hash policy is supported for existing sessions (to avoid
+                              exponential decay).
                     nullable: true
                     description: Configures load shedding policies and percentages for the pool.
                   longitude:
@@ -6098,14 +7151,72 @@ paths:
                   notification_filter:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          origin:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  disable:
+                                    type: boolean
+                                    description: If set true, disable notifications for this type of resource (pool
+                                      or origin).
+                                  healthy:
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
+                                    description: If present, send notifications only for this health status (e.g.
+                                      false for only DOWN events). Use null to
+                                      reset (all events).
+                            nullable: true
+                            description: Filter options for a particular resource type (pool or origin). Use
+                              null to reset.
+                          pool:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  disable:
+                                    type: boolean
+                                    description: If set true, disable notifications for this type of resource (pool
+                                      or origin).
+                                  healthy:
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
+                                    description: If present, send notifications only for this health status (e.g.
+                                      false for only DOWN events). Use null to
+                                      reset (all events).
+                            nullable: true
+                            description: Filter options for a particular resource type (pool or origin). Use
+                              null to reset.
                     nullable: true
                     description: Filter pool and origin health notifications by resource type or
                       health status. Use null to reset.
                   origin_steering:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          policy:
+                            type: string
+                            enum:
+                              - random
+                              - hash
+                              - least_outstanding_requests
+                              - least_connections
+                            description: "The type of origin steering policy to use.  - `\"random\"`: Select
+                              an origin randomly. - `\"hash\"`: Select an origin
+                              by computing a hash over the CF-Connecting-IP
+                              address. - `\"least_outstanding_requests\"`:
+                              Select an origin by taking into consideration
+                              origin weights, as well as each origin's number of
+                              outstanding requests. Origins with more pending
+                              requests are weighted proportionately less
+                              relative to others. - `\"least_connections\"`:
+                              Select an origin by taking into consideration
+                              origin weights, as well as each origin's number of
+                              open connections. Origins with more open
+                              connections are weighted proportionately less
+                              relative to others. Supported for HTTP/1 and
+                              HTTP/2 connections."
                     nullable: true
                     description: Configures origin steering for the pool. Controls how origins are
                       selected for new sessions and traffic without session
@@ -6114,7 +7225,58 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        address:
+                          type: string
+                          description: The IP address (IPv4 or IPv6) of the origin, or its publicly
+                            addressable hostname. Hostnames entered here should
+                            resolve directly to the origin, and not be a
+                            hostname proxied by Cloudflare. To set an
+                            internal/reserved address, virtual_network_id must
+                            also be set.
+                        disabled_at:
+                          type: string
+                          description: This field shows up only if the origin is disabled. This field is
+                            set with the time the origin was disabled.
+                        enabled:
+                          type: boolean
+                          description: Whether to enable (the default) this origin within the pool.
+                            Disabled origins will not receive traffic and are
+                            excluded from health checks. The origin will only be
+                            disabled for the current pool.
+                        header:
+                          type: object
+                          properties:
+                            Host:
+                              type: array
+                              items:
+                                type: string
+                              description: The 'Host' header allows to override the hostname set in the HTTP
+                                request. Current support is 1 'Host' header
+                                override per origin.
+                          description: The request header is used to pass additional information with an
+                            HTTP request. Currently supported header is 'Host'.
+                        name:
+                          type: string
+                          description: A human-identifiable name for the origin.
+                        port:
+                          type: number
+                          description: The port for upstream connections. A value of 0 means the default
+                            port for the protocol will be used.
+                        virtual_network_id:
+                          type: string
+                          description: The virtual network subnet ID the origin belongs in. Virtual
+                            network must also belong to the account.
+                        weight:
+                          type: number
+                          description: "The weight of this origin relative to other origins in the pool.
+                            Based on the configured weight the total traffic is
+                            distributed among origins within the pool.  -
+                            `origin_steering.policy=\"least_outstanding_requests\
+                            \"`: Use weight to scale the origin's outstanding
+                            requests. -
+                            `origin_steering.policy=\"least_connections\"`: Use
+                            weight to scale the origin's open connections."
                     description: The list of origins within this pool. Traffic directed at this pool
                       is balanced across all currently healthy origins, provided
                       the pool itself is healthy.
@@ -6152,7 +7314,53 @@ paths:
                   type: array
                   items:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      address:
+                        type: string
+                        description: The IP address (IPv4 or IPv6) of the origin, or its publicly
+                          addressable hostname. Hostnames entered here should
+                          resolve directly to the origin, and not be a hostname
+                          proxied by Cloudflare. To set an internal/reserved
+                          address, virtual_network_id must also be set.
+                      enabled:
+                        type: boolean
+                        description: Whether to enable (the default) this origin within the pool.
+                          Disabled origins will not receive traffic and are
+                          excluded from health checks. The origin will only be
+                          disabled for the current pool.
+                      header:
+                        type: object
+                        properties:
+                          Host:
+                            type: array
+                            items:
+                              type: string
+                            description: The 'Host' header allows to override the hostname set in the HTTP
+                              request. Current support is 1 'Host' header
+                              override per origin.
+                        description: The request header is used to pass additional information with an
+                          HTTP request. Currently supported header is 'Host'.
+                      name:
+                        type: string
+                        description: A human-identifiable name for the origin.
+                      port:
+                        type: number
+                        description: The port for upstream connections. A value of 0 means the default
+                          port for the protocol will be used.
+                      virtual_network_id:
+                        type: string
+                        description: The virtual network subnet ID the origin belongs in. Virtual
+                          network must also belong to the account.
+                      weight:
+                        type: number
+                        description: "The weight of this origin relative to other origins in the pool.
+                          Based on the configured weight the total traffic is
+                          distributed among origins within the pool.  -
+                          `origin_steering.policy=\"least_outstanding_requests\
+                          \"`: Use weight to scale the origin's outstanding
+                          requests. -
+                          `origin_steering.policy=\"least_connections\"`: Use
+                          weight to scale the origin's open connections."
                   description: "Body param: The list of origins within this pool. Traffic directed
                     at this pool is balanced across all currently healthy
                     origins, provided the pool itself is healthy."
@@ -6172,10 +7380,10 @@ paths:
                           - ME
                           - NAF
                           - SAF
+                          - SAS
                           - SEAS
                           - NEAS
                           - ALL_REGIONS
-                          - SAS
                   nullable: true
                   description: "Body param: A list of regions from which to run health checks.
                     Null means every Cloudflare data center."
@@ -6196,7 +7404,32 @@ paths:
                 load_shedding:
                   oneOf:
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        default_percent:
+                          type: number
+                          description: The percent of traffic to shed from the pool, according to the
+                            default policy. Applies to new sessions and traffic
+                            without session affinity.
+                        default_policy:
+                          type: string
+                          enum:
+                            - random
+                            - hash
+                          description: The default policy to use when load shedding. A random policy
+                            randomly sheds a given percent of requests. A hash
+                            policy computes a hash over the CF-Connecting-IP
+                            address and sheds all requests originating from a
+                            percent of IPs.
+                        session_percent:
+                          type: number
+                          description: The percent of existing sessions to shed from the pool, according
+                            to the session policy.
+                        session_policy:
+                          type: string
+                          enum:
+                            - hash
+                          description: Only the hash policy is supported for existing sessions (to avoid
+                            exponential decay).
                   nullable: true
                   description: "Body param: Configures load shedding policies and percentages for
                     the pool."
@@ -6230,14 +7463,71 @@ paths:
                 notification_filter:
                   oneOf:
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        origin:
+                          oneOf:
+                            - type: object
+                              properties:
+                                disable:
+                                  type: boolean
+                                  description: If set true, disable notifications for this type of resource (pool
+                                    or origin).
+                                healthy:
+                                  oneOf:
+                                    - type: boolean
+                                  nullable: true
+                                  description: If present, send notifications only for this health status (e.g.
+                                    false for only DOWN events). Use null to
+                                    reset (all events).
+                          nullable: true
+                          description: Filter options for a particular resource type (pool or origin). Use
+                            null to reset.
+                        pool:
+                          oneOf:
+                            - type: object
+                              properties:
+                                disable:
+                                  type: boolean
+                                  description: If set true, disable notifications for this type of resource (pool
+                                    or origin).
+                                healthy:
+                                  oneOf:
+                                    - type: boolean
+                                  nullable: true
+                                  description: If present, send notifications only for this health status (e.g.
+                                    false for only DOWN events). Use null to
+                                    reset (all events).
+                          nullable: true
+                          description: Filter options for a particular resource type (pool or origin). Use
+                            null to reset.
                   nullable: true
                   description: "Body param: Filter pool and origin health notifications by
                     resource type or health status. Use null to reset."
                 origin_steering:
                   oneOf:
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        policy:
+                          type: string
+                          enum:
+                            - random
+                            - hash
+                            - least_outstanding_requests
+                            - least_connections
+                          description: "The type of origin steering policy to use.  - `\"random\"`: Select
+                            an origin randomly. - `\"hash\"`: Select an origin
+                            by computing a hash over the CF-Connecting-IP
+                            address. - `\"least_outstanding_requests\"`: Select
+                            an origin by taking into consideration origin
+                            weights, as well as each origin's number of
+                            outstanding requests. Origins with more pending
+                            requests are weighted proportionately less relative
+                            to others. - `\"least_connections\"`: Select an
+                            origin by taking into consideration origin weights,
+                            as well as each origin's number of open connections.
+                            Origins with more open connections are weighted
+                            proportionately less relative to others. Supported
+                            for HTTP/1 and HTTP/2 connections."
                   nullable: true
                   description: "Body param: Configures origin steering for the pool. Controls how
                     origins are selected for new sessions and traffic without
@@ -6271,10 +7561,10 @@ paths:
                             - ME
                             - NAF
                             - SAF
+                            - SAS
                             - SEAS
                             - NEAS
                             - ALL_REGIONS
-                            - SAS
                     nullable: true
                     description: A list of regions from which to run health checks. Null means every
                       Cloudflare data center.
@@ -6301,7 +7591,32 @@ paths:
                   load_shedding:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          default_percent:
+                            type: number
+                            description: The percent of traffic to shed from the pool, according to the
+                              default policy. Applies to new sessions and
+                              traffic without session affinity.
+                          default_policy:
+                            type: string
+                            enum:
+                              - random
+                              - hash
+                            description: The default policy to use when load shedding. A random policy
+                              randomly sheds a given percent of requests. A hash
+                              policy computes a hash over the CF-Connecting-IP
+                              address and sheds all requests originating from a
+                              percent of IPs.
+                          session_percent:
+                            type: number
+                            description: The percent of existing sessions to shed from the pool, according
+                              to the session policy.
+                          session_policy:
+                            type: string
+                            enum:
+                              - hash
+                            description: Only the hash policy is supported for existing sessions (to avoid
+                              exponential decay).
                     nullable: true
                     description: Configures load shedding policies and percentages for the pool.
                   longitude:
@@ -6345,14 +7660,72 @@ paths:
                   notification_filter:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          origin:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  disable:
+                                    type: boolean
+                                    description: If set true, disable notifications for this type of resource (pool
+                                      or origin).
+                                  healthy:
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
+                                    description: If present, send notifications only for this health status (e.g.
+                                      false for only DOWN events). Use null to
+                                      reset (all events).
+                            nullable: true
+                            description: Filter options for a particular resource type (pool or origin). Use
+                              null to reset.
+                          pool:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  disable:
+                                    type: boolean
+                                    description: If set true, disable notifications for this type of resource (pool
+                                      or origin).
+                                  healthy:
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
+                                    description: If present, send notifications only for this health status (e.g.
+                                      false for only DOWN events). Use null to
+                                      reset (all events).
+                            nullable: true
+                            description: Filter options for a particular resource type (pool or origin). Use
+                              null to reset.
                     nullable: true
                     description: Filter pool and origin health notifications by resource type or
                       health status. Use null to reset.
                   origin_steering:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          policy:
+                            type: string
+                            enum:
+                              - random
+                              - hash
+                              - least_outstanding_requests
+                              - least_connections
+                            description: "The type of origin steering policy to use.  - `\"random\"`: Select
+                              an origin randomly. - `\"hash\"`: Select an origin
+                              by computing a hash over the CF-Connecting-IP
+                              address. - `\"least_outstanding_requests\"`:
+                              Select an origin by taking into consideration
+                              origin weights, as well as each origin's number of
+                              outstanding requests. Origins with more pending
+                              requests are weighted proportionately less
+                              relative to others. - `\"least_connections\"`:
+                              Select an origin by taking into consideration
+                              origin weights, as well as each origin's number of
+                              open connections. Origins with more open
+                              connections are weighted proportionately less
+                              relative to others. Supported for HTTP/1 and
+                              HTTP/2 connections."
                     nullable: true
                     description: Configures origin steering for the pool. Controls how origins are
                       selected for new sessions and traffic without session
@@ -6361,7 +7734,58 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        address:
+                          type: string
+                          description: The IP address (IPv4 or IPv6) of the origin, or its publicly
+                            addressable hostname. Hostnames entered here should
+                            resolve directly to the origin, and not be a
+                            hostname proxied by Cloudflare. To set an
+                            internal/reserved address, virtual_network_id must
+                            also be set.
+                        disabled_at:
+                          type: string
+                          description: This field shows up only if the origin is disabled. This field is
+                            set with the time the origin was disabled.
+                        enabled:
+                          type: boolean
+                          description: Whether to enable (the default) this origin within the pool.
+                            Disabled origins will not receive traffic and are
+                            excluded from health checks. The origin will only be
+                            disabled for the current pool.
+                        header:
+                          type: object
+                          properties:
+                            Host:
+                              type: array
+                              items:
+                                type: string
+                              description: The 'Host' header allows to override the hostname set in the HTTP
+                                request. Current support is 1 'Host' header
+                                override per origin.
+                          description: The request header is used to pass additional information with an
+                            HTTP request. Currently supported header is 'Host'.
+                        name:
+                          type: string
+                          description: A human-identifiable name for the origin.
+                        port:
+                          type: number
+                          description: The port for upstream connections. A value of 0 means the default
+                            port for the protocol will be used.
+                        virtual_network_id:
+                          type: string
+                          description: The virtual network subnet ID the origin belongs in. Virtual
+                            network must also belong to the account.
+                        weight:
+                          type: number
+                          description: "The weight of this origin relative to other origins in the pool.
+                            Based on the configured weight the total traffic is
+                            distributed among origins within the pool.  -
+                            `origin_steering.policy=\"least_outstanding_requests\
+                            \"`: Use weight to scale the origin's outstanding
+                            requests. -
+                            `origin_steering.policy=\"least_connections\"`: Use
+                            weight to scale the origin's open connections."
                     description: The list of origins within this pool. Traffic directed at this pool
                       is balanced across all currently healthy origins, provided
                       the pool itself is healthy.
@@ -6407,10 +7831,10 @@ paths:
                           - ME
                           - NAF
                           - SAF
+                          - SAS
                           - SEAS
                           - NEAS
                           - ALL_REGIONS
-                          - SAS
                   nullable: true
                   description: "Body param: A list of regions from which to run health checks.
                     Null means every Cloudflare data center."
@@ -6431,7 +7855,32 @@ paths:
                 load_shedding:
                   oneOf:
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        default_percent:
+                          type: number
+                          description: The percent of traffic to shed from the pool, according to the
+                            default policy. Applies to new sessions and traffic
+                            without session affinity.
+                        default_policy:
+                          type: string
+                          enum:
+                            - random
+                            - hash
+                          description: The default policy to use when load shedding. A random policy
+                            randomly sheds a given percent of requests. A hash
+                            policy computes a hash over the CF-Connecting-IP
+                            address and sheds all requests originating from a
+                            percent of IPs.
+                        session_percent:
+                          type: number
+                          description: The percent of existing sessions to shed from the pool, according
+                            to the session policy.
+                        session_policy:
+                          type: string
+                          enum:
+                            - hash
+                          description: Only the hash policy is supported for existing sessions (to avoid
+                            exponential decay).
                   nullable: true
                   description: "Body param: Configures load shedding policies and percentages for
                     the pool."
@@ -6469,14 +7918,71 @@ paths:
                 notification_filter:
                   oneOf:
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        origin:
+                          oneOf:
+                            - type: object
+                              properties:
+                                disable:
+                                  type: boolean
+                                  description: If set true, disable notifications for this type of resource (pool
+                                    or origin).
+                                healthy:
+                                  oneOf:
+                                    - type: boolean
+                                  nullable: true
+                                  description: If present, send notifications only for this health status (e.g.
+                                    false for only DOWN events). Use null to
+                                    reset (all events).
+                          nullable: true
+                          description: Filter options for a particular resource type (pool or origin). Use
+                            null to reset.
+                        pool:
+                          oneOf:
+                            - type: object
+                              properties:
+                                disable:
+                                  type: boolean
+                                  description: If set true, disable notifications for this type of resource (pool
+                                    or origin).
+                                healthy:
+                                  oneOf:
+                                    - type: boolean
+                                  nullable: true
+                                  description: If present, send notifications only for this health status (e.g.
+                                    false for only DOWN events). Use null to
+                                    reset (all events).
+                          nullable: true
+                          description: Filter options for a particular resource type (pool or origin). Use
+                            null to reset.
                   nullable: true
                   description: "Body param: Filter pool and origin health notifications by
                     resource type or health status. Use null to reset."
                 origin_steering:
                   oneOf:
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        policy:
+                          type: string
+                          enum:
+                            - random
+                            - hash
+                            - least_outstanding_requests
+                            - least_connections
+                          description: "The type of origin steering policy to use.  - `\"random\"`: Select
+                            an origin randomly. - `\"hash\"`: Select an origin
+                            by computing a hash over the CF-Connecting-IP
+                            address. - `\"least_outstanding_requests\"`: Select
+                            an origin by taking into consideration origin
+                            weights, as well as each origin's number of
+                            outstanding requests. Origins with more pending
+                            requests are weighted proportionately less relative
+                            to others. - `\"least_connections\"`: Select an
+                            origin by taking into consideration origin weights,
+                            as well as each origin's number of open connections.
+                            Origins with more open connections are weighted
+                            proportionately less relative to others. Supported
+                            for HTTP/1 and HTTP/2 connections."
                   nullable: true
                   description: "Body param: Configures origin steering for the pool. Controls how
                     origins are selected for new sessions and traffic without
@@ -6485,7 +7991,53 @@ paths:
                   type: array
                   items:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      address:
+                        type: string
+                        description: The IP address (IPv4 or IPv6) of the origin, or its publicly
+                          addressable hostname. Hostnames entered here should
+                          resolve directly to the origin, and not be a hostname
+                          proxied by Cloudflare. To set an internal/reserved
+                          address, virtual_network_id must also be set.
+                      enabled:
+                        type: boolean
+                        description: Whether to enable (the default) this origin within the pool.
+                          Disabled origins will not receive traffic and are
+                          excluded from health checks. The origin will only be
+                          disabled for the current pool.
+                      header:
+                        type: object
+                        properties:
+                          Host:
+                            type: array
+                            items:
+                              type: string
+                            description: The 'Host' header allows to override the hostname set in the HTTP
+                              request. Current support is 1 'Host' header
+                              override per origin.
+                        description: The request header is used to pass additional information with an
+                          HTTP request. Currently supported header is 'Host'.
+                      name:
+                        type: string
+                        description: A human-identifiable name for the origin.
+                      port:
+                        type: number
+                        description: The port for upstream connections. A value of 0 means the default
+                          port for the protocol will be used.
+                      virtual_network_id:
+                        type: string
+                        description: The virtual network subnet ID the origin belongs in. Virtual
+                          network must also belong to the account.
+                      weight:
+                        type: number
+                        description: "The weight of this origin relative to other origins in the pool.
+                          Based on the configured weight the total traffic is
+                          distributed among origins within the pool.  -
+                          `origin_steering.policy=\"least_outstanding_requests\
+                          \"`: Use weight to scale the origin's outstanding
+                          requests. -
+                          `origin_steering.policy=\"least_connections\"`: Use
+                          weight to scale the origin's open connections."
                   description: "Body param: The list of origins within this pool. Traffic directed
                     at this pool is balanced across all currently healthy
                     origins, provided the pool itself is healthy."
@@ -6515,10 +8067,10 @@ paths:
                             - ME
                             - NAF
                             - SAF
+                            - SAS
                             - SEAS
                             - NEAS
                             - ALL_REGIONS
-                            - SAS
                     nullable: true
                     description: A list of regions from which to run health checks. Null means every
                       Cloudflare data center.
@@ -6545,7 +8097,32 @@ paths:
                   load_shedding:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          default_percent:
+                            type: number
+                            description: The percent of traffic to shed from the pool, according to the
+                              default policy. Applies to new sessions and
+                              traffic without session affinity.
+                          default_policy:
+                            type: string
+                            enum:
+                              - random
+                              - hash
+                            description: The default policy to use when load shedding. A random policy
+                              randomly sheds a given percent of requests. A hash
+                              policy computes a hash over the CF-Connecting-IP
+                              address and sheds all requests originating from a
+                              percent of IPs.
+                          session_percent:
+                            type: number
+                            description: The percent of existing sessions to shed from the pool, according
+                              to the session policy.
+                          session_policy:
+                            type: string
+                            enum:
+                              - hash
+                            description: Only the hash policy is supported for existing sessions (to avoid
+                              exponential decay).
                     nullable: true
                     description: Configures load shedding policies and percentages for the pool.
                   longitude:
@@ -6589,14 +8166,72 @@ paths:
                   notification_filter:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          origin:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  disable:
+                                    type: boolean
+                                    description: If set true, disable notifications for this type of resource (pool
+                                      or origin).
+                                  healthy:
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
+                                    description: If present, send notifications only for this health status (e.g.
+                                      false for only DOWN events). Use null to
+                                      reset (all events).
+                            nullable: true
+                            description: Filter options for a particular resource type (pool or origin). Use
+                              null to reset.
+                          pool:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  disable:
+                                    type: boolean
+                                    description: If set true, disable notifications for this type of resource (pool
+                                      or origin).
+                                  healthy:
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
+                                    description: If present, send notifications only for this health status (e.g.
+                                      false for only DOWN events). Use null to
+                                      reset (all events).
+                            nullable: true
+                            description: Filter options for a particular resource type (pool or origin). Use
+                              null to reset.
                     nullable: true
                     description: Filter pool and origin health notifications by resource type or
                       health status. Use null to reset.
                   origin_steering:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          policy:
+                            type: string
+                            enum:
+                              - random
+                              - hash
+                              - least_outstanding_requests
+                              - least_connections
+                            description: "The type of origin steering policy to use.  - `\"random\"`: Select
+                              an origin randomly. - `\"hash\"`: Select an origin
+                              by computing a hash over the CF-Connecting-IP
+                              address. - `\"least_outstanding_requests\"`:
+                              Select an origin by taking into consideration
+                              origin weights, as well as each origin's number of
+                              outstanding requests. Origins with more pending
+                              requests are weighted proportionately less
+                              relative to others. - `\"least_connections\"`:
+                              Select an origin by taking into consideration
+                              origin weights, as well as each origin's number of
+                              open connections. Origins with more open
+                              connections are weighted proportionately less
+                              relative to others. Supported for HTTP/1 and
+                              HTTP/2 connections."
                     nullable: true
                     description: Configures origin steering for the pool. Controls how origins are
                       selected for new sessions and traffic without session
@@ -6605,7 +8240,58 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        address:
+                          type: string
+                          description: The IP address (IPv4 or IPv6) of the origin, or its publicly
+                            addressable hostname. Hostnames entered here should
+                            resolve directly to the origin, and not be a
+                            hostname proxied by Cloudflare. To set an
+                            internal/reserved address, virtual_network_id must
+                            also be set.
+                        disabled_at:
+                          type: string
+                          description: This field shows up only if the origin is disabled. This field is
+                            set with the time the origin was disabled.
+                        enabled:
+                          type: boolean
+                          description: Whether to enable (the default) this origin within the pool.
+                            Disabled origins will not receive traffic and are
+                            excluded from health checks. The origin will only be
+                            disabled for the current pool.
+                        header:
+                          type: object
+                          properties:
+                            Host:
+                              type: array
+                              items:
+                                type: string
+                              description: The 'Host' header allows to override the hostname set in the HTTP
+                                request. Current support is 1 'Host' header
+                                override per origin.
+                          description: The request header is used to pass additional information with an
+                            HTTP request. Currently supported header is 'Host'.
+                        name:
+                          type: string
+                          description: A human-identifiable name for the origin.
+                        port:
+                          type: number
+                          description: The port for upstream connections. A value of 0 means the default
+                            port for the protocol will be used.
+                        virtual_network_id:
+                          type: string
+                          description: The virtual network subnet ID the origin belongs in. Virtual
+                            network must also belong to the account.
+                        weight:
+                          type: number
+                          description: "The weight of this origin relative to other origins in the pool.
+                            Based on the configured weight the total traffic is
+                            distributed among origins within the pool.  -
+                            `origin_steering.policy=\"least_outstanding_requests\
+                            \"`: Use weight to scale the origin's outstanding
+                            requests. -
+                            `origin_steering.policy=\"least_connections\"`: Use
+                            weight to scale the origin's open connections."
                     description: The list of origins within this pool. Traffic directed at this pool
                       is balanced across all currently healthy origins, provided
                       the pool itself is healthy.
@@ -6685,10 +8371,10 @@ paths:
                             - ME
                             - NAF
                             - SAF
+                            - SAS
                             - SEAS
                             - NEAS
                             - ALL_REGIONS
-                            - SAS
                     nullable: true
                     description: A list of regions from which to run health checks. Null means every
                       Cloudflare data center.
@@ -6715,7 +8401,32 @@ paths:
                   load_shedding:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          default_percent:
+                            type: number
+                            description: The percent of traffic to shed from the pool, according to the
+                              default policy. Applies to new sessions and
+                              traffic without session affinity.
+                          default_policy:
+                            type: string
+                            enum:
+                              - random
+                              - hash
+                            description: The default policy to use when load shedding. A random policy
+                              randomly sheds a given percent of requests. A hash
+                              policy computes a hash over the CF-Connecting-IP
+                              address and sheds all requests originating from a
+                              percent of IPs.
+                          session_percent:
+                            type: number
+                            description: The percent of existing sessions to shed from the pool, according
+                              to the session policy.
+                          session_policy:
+                            type: string
+                            enum:
+                              - hash
+                            description: Only the hash policy is supported for existing sessions (to avoid
+                              exponential decay).
                     nullable: true
                     description: Configures load shedding policies and percentages for the pool.
                   longitude:
@@ -6759,14 +8470,72 @@ paths:
                   notification_filter:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          origin:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  disable:
+                                    type: boolean
+                                    description: If set true, disable notifications for this type of resource (pool
+                                      or origin).
+                                  healthy:
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
+                                    description: If present, send notifications only for this health status (e.g.
+                                      false for only DOWN events). Use null to
+                                      reset (all events).
+                            nullable: true
+                            description: Filter options for a particular resource type (pool or origin). Use
+                              null to reset.
+                          pool:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  disable:
+                                    type: boolean
+                                    description: If set true, disable notifications for this type of resource (pool
+                                      or origin).
+                                  healthy:
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
+                                    description: If present, send notifications only for this health status (e.g.
+                                      false for only DOWN events). Use null to
+                                      reset (all events).
+                            nullable: true
+                            description: Filter options for a particular resource type (pool or origin). Use
+                              null to reset.
                     nullable: true
                     description: Filter pool and origin health notifications by resource type or
                       health status. Use null to reset.
                   origin_steering:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          policy:
+                            type: string
+                            enum:
+                              - random
+                              - hash
+                              - least_outstanding_requests
+                              - least_connections
+                            description: "The type of origin steering policy to use.  - `\"random\"`: Select
+                              an origin randomly. - `\"hash\"`: Select an origin
+                              by computing a hash over the CF-Connecting-IP
+                              address. - `\"least_outstanding_requests\"`:
+                              Select an origin by taking into consideration
+                              origin weights, as well as each origin's number of
+                              outstanding requests. Origins with more pending
+                              requests are weighted proportionately less
+                              relative to others. - `\"least_connections\"`:
+                              Select an origin by taking into consideration
+                              origin weights, as well as each origin's number of
+                              open connections. Origins with more open
+                              connections are weighted proportionately less
+                              relative to others. Supported for HTTP/1 and
+                              HTTP/2 connections."
                     nullable: true
                     description: Configures origin steering for the pool. Controls how origins are
                       selected for new sessions and traffic without session
@@ -6775,7 +8544,58 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        address:
+                          type: string
+                          description: The IP address (IPv4 or IPv6) of the origin, or its publicly
+                            addressable hostname. Hostnames entered here should
+                            resolve directly to the origin, and not be a
+                            hostname proxied by Cloudflare. To set an
+                            internal/reserved address, virtual_network_id must
+                            also be set.
+                        disabled_at:
+                          type: string
+                          description: This field shows up only if the origin is disabled. This field is
+                            set with the time the origin was disabled.
+                        enabled:
+                          type: boolean
+                          description: Whether to enable (the default) this origin within the pool.
+                            Disabled origins will not receive traffic and are
+                            excluded from health checks. The origin will only be
+                            disabled for the current pool.
+                        header:
+                          type: object
+                          properties:
+                            Host:
+                              type: array
+                              items:
+                                type: string
+                              description: The 'Host' header allows to override the hostname set in the HTTP
+                                request. Current support is 1 'Host' header
+                                override per origin.
+                          description: The request header is used to pass additional information with an
+                            HTTP request. Currently supported header is 'Host'.
+                        name:
+                          type: string
+                          description: A human-identifiable name for the origin.
+                        port:
+                          type: number
+                          description: The port for upstream connections. A value of 0 means the default
+                            port for the protocol will be used.
+                        virtual_network_id:
+                          type: string
+                          description: The virtual network subnet ID the origin belongs in. Virtual
+                            network must also belong to the account.
+                        weight:
+                          type: number
+                          description: "The weight of this origin relative to other origins in the pool.
+                            Based on the configured weight the total traffic is
+                            distributed among origins within the pool.  -
+                            `origin_steering.policy=\"least_outstanding_requests\
+                            \"`: Use weight to scale the origin's outstanding
+                            requests. -
+                            `origin_steering.policy=\"least_connections\"`: Use
+                            weight to scale the origin's open connections."
                     description: The list of origins within this pool. Traffic directed at this pool
                       is balanced across all currently healthy origins, provided
                       the pool itself is healthy.
@@ -6808,7 +8628,53 @@ paths:
                   type: array
                   items:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      address:
+                        type: string
+                        description: The IP address (IPv4 or IPv6) of the origin, or its publicly
+                          addressable hostname. Hostnames entered here should
+                          resolve directly to the origin, and not be a hostname
+                          proxied by Cloudflare. To set an internal/reserved
+                          address, virtual_network_id must also be set.
+                      enabled:
+                        type: boolean
+                        description: Whether to enable (the default) this origin within the pool.
+                          Disabled origins will not receive traffic and are
+                          excluded from health checks. The origin will only be
+                          disabled for the current pool.
+                      header:
+                        type: object
+                        properties:
+                          Host:
+                            type: array
+                            items:
+                              type: string
+                            description: The 'Host' header allows to override the hostname set in the HTTP
+                              request. Current support is 1 'Host' header
+                              override per origin.
+                        description: The request header is used to pass additional information with an
+                          HTTP request. Currently supported header is 'Host'.
+                      name:
+                        type: string
+                        description: A human-identifiable name for the origin.
+                      port:
+                        type: number
+                        description: The port for upstream connections. A value of 0 means the default
+                          port for the protocol will be used.
+                      virtual_network_id:
+                        type: string
+                        description: The virtual network subnet ID the origin belongs in. Virtual
+                          network must also belong to the account.
+                      weight:
+                        type: number
+                        description: "The weight of this origin relative to other origins in the pool.
+                          Based on the configured weight the total traffic is
+                          distributed among origins within the pool.  -
+                          `origin_steering.policy=\"least_outstanding_requests\
+                          \"`: Use weight to scale the origin's outstanding
+                          requests. -
+                          `origin_steering.policy=\"least_connections\"`: Use
+                          weight to scale the origin's open connections."
                   description: "Body param: The list of origins within this pool. Traffic directed
                     at this pool is balanced across all currently healthy
                     origins, provided the pool itself is healthy."
@@ -6829,7 +8695,32 @@ paths:
                 load_shedding:
                   oneOf:
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        default_percent:
+                          type: number
+                          description: The percent of traffic to shed from the pool, according to the
+                            default policy. Applies to new sessions and traffic
+                            without session affinity.
+                        default_policy:
+                          type: string
+                          enum:
+                            - random
+                            - hash
+                          description: The default policy to use when load shedding. A random policy
+                            randomly sheds a given percent of requests. A hash
+                            policy computes a hash over the CF-Connecting-IP
+                            address and sheds all requests originating from a
+                            percent of IPs.
+                        session_percent:
+                          type: number
+                          description: The percent of existing sessions to shed from the pool, according
+                            to the session policy.
+                        session_policy:
+                          type: string
+                          enum:
+                            - hash
+                          description: Only the hash policy is supported for existing sessions (to avoid
+                            exponential decay).
                   nullable: true
                   description: "Body param: Configures load shedding policies and percentages for
                     the pool."
@@ -6863,14 +8754,71 @@ paths:
                 notification_filter:
                   oneOf:
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        origin:
+                          oneOf:
+                            - type: object
+                              properties:
+                                disable:
+                                  type: boolean
+                                  description: If set true, disable notifications for this type of resource (pool
+                                    or origin).
+                                healthy:
+                                  oneOf:
+                                    - type: boolean
+                                  nullable: true
+                                  description: If present, send notifications only for this health status (e.g.
+                                    false for only DOWN events). Use null to
+                                    reset (all events).
+                          nullable: true
+                          description: Filter options for a particular resource type (pool or origin). Use
+                            null to reset.
+                        pool:
+                          oneOf:
+                            - type: object
+                              properties:
+                                disable:
+                                  type: boolean
+                                  description: If set true, disable notifications for this type of resource (pool
+                                    or origin).
+                                healthy:
+                                  oneOf:
+                                    - type: boolean
+                                  nullable: true
+                                  description: If present, send notifications only for this health status (e.g.
+                                    false for only DOWN events). Use null to
+                                    reset (all events).
+                          nullable: true
+                          description: Filter options for a particular resource type (pool or origin). Use
+                            null to reset.
                   nullable: true
                   description: "Body param: Filter pool and origin health notifications by
                     resource type or health status. Use null to reset."
                 origin_steering:
                   oneOf:
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        policy:
+                          type: string
+                          enum:
+                            - random
+                            - hash
+                            - least_outstanding_requests
+                            - least_connections
+                          description: "The type of origin steering policy to use.  - `\"random\"`: Select
+                            an origin randomly. - `\"hash\"`: Select an origin
+                            by computing a hash over the CF-Connecting-IP
+                            address. - `\"least_outstanding_requests\"`: Select
+                            an origin by taking into consideration origin
+                            weights, as well as each origin's number of
+                            outstanding requests. Origins with more pending
+                            requests are weighted proportionately less relative
+                            to others. - `\"least_connections\"`: Select an
+                            origin by taking into consideration origin weights,
+                            as well as each origin's number of open connections.
+                            Origins with more open connections are weighted
+                            proportionately less relative to others. Supported
+                            for HTTP/1 and HTTP/2 connections."
                   nullable: true
                   description: "Body param: Configures origin steering for the pool. Controls how
                     origins are selected for new sessions and traffic without
@@ -6904,10 +8852,10 @@ paths:
                             - ME
                             - NAF
                             - SAF
+                            - SAS
                             - SEAS
                             - NEAS
                             - ALL_REGIONS
-                            - SAS
                     nullable: true
                     description: A list of regions from which to run health checks. Null means every
                       Cloudflare data center.
@@ -6934,7 +8882,32 @@ paths:
                   load_shedding:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          default_percent:
+                            type: number
+                            description: The percent of traffic to shed from the pool, according to the
+                              default policy. Applies to new sessions and
+                              traffic without session affinity.
+                          default_policy:
+                            type: string
+                            enum:
+                              - random
+                              - hash
+                            description: The default policy to use when load shedding. A random policy
+                              randomly sheds a given percent of requests. A hash
+                              policy computes a hash over the CF-Connecting-IP
+                              address and sheds all requests originating from a
+                              percent of IPs.
+                          session_percent:
+                            type: number
+                            description: The percent of existing sessions to shed from the pool, according
+                              to the session policy.
+                          session_policy:
+                            type: string
+                            enum:
+                              - hash
+                            description: Only the hash policy is supported for existing sessions (to avoid
+                              exponential decay).
                     nullable: true
                     description: Configures load shedding policies and percentages for the pool.
                   longitude:
@@ -6978,14 +8951,72 @@ paths:
                   notification_filter:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          origin:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  disable:
+                                    type: boolean
+                                    description: If set true, disable notifications for this type of resource (pool
+                                      or origin).
+                                  healthy:
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
+                                    description: If present, send notifications only for this health status (e.g.
+                                      false for only DOWN events). Use null to
+                                      reset (all events).
+                            nullable: true
+                            description: Filter options for a particular resource type (pool or origin). Use
+                              null to reset.
+                          pool:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  disable:
+                                    type: boolean
+                                    description: If set true, disable notifications for this type of resource (pool
+                                      or origin).
+                                  healthy:
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
+                                    description: If present, send notifications only for this health status (e.g.
+                                      false for only DOWN events). Use null to
+                                      reset (all events).
+                            nullable: true
+                            description: Filter options for a particular resource type (pool or origin). Use
+                              null to reset.
                     nullable: true
                     description: Filter pool and origin health notifications by resource type or
                       health status. Use null to reset.
                   origin_steering:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          policy:
+                            type: string
+                            enum:
+                              - random
+                              - hash
+                              - least_outstanding_requests
+                              - least_connections
+                            description: "The type of origin steering policy to use.  - `\"random\"`: Select
+                              an origin randomly. - `\"hash\"`: Select an origin
+                              by computing a hash over the CF-Connecting-IP
+                              address. - `\"least_outstanding_requests\"`:
+                              Select an origin by taking into consideration
+                              origin weights, as well as each origin's number of
+                              outstanding requests. Origins with more pending
+                              requests are weighted proportionately less
+                              relative to others. - `\"least_connections\"`:
+                              Select an origin by taking into consideration
+                              origin weights, as well as each origin's number of
+                              open connections. Origins with more open
+                              connections are weighted proportionately less
+                              relative to others. Supported for HTTP/1 and
+                              HTTP/2 connections."
                     nullable: true
                     description: Configures origin steering for the pool. Controls how origins are
                       selected for new sessions and traffic without session
@@ -6994,7 +9025,58 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        address:
+                          type: string
+                          description: The IP address (IPv4 or IPv6) of the origin, or its publicly
+                            addressable hostname. Hostnames entered here should
+                            resolve directly to the origin, and not be a
+                            hostname proxied by Cloudflare. To set an
+                            internal/reserved address, virtual_network_id must
+                            also be set.
+                        disabled_at:
+                          type: string
+                          description: This field shows up only if the origin is disabled. This field is
+                            set with the time the origin was disabled.
+                        enabled:
+                          type: boolean
+                          description: Whether to enable (the default) this origin within the pool.
+                            Disabled origins will not receive traffic and are
+                            excluded from health checks. The origin will only be
+                            disabled for the current pool.
+                        header:
+                          type: object
+                          properties:
+                            Host:
+                              type: array
+                              items:
+                                type: string
+                              description: The 'Host' header allows to override the hostname set in the HTTP
+                                request. Current support is 1 'Host' header
+                                override per origin.
+                          description: The request header is used to pass additional information with an
+                            HTTP request. Currently supported header is 'Host'.
+                        name:
+                          type: string
+                          description: A human-identifiable name for the origin.
+                        port:
+                          type: number
+                          description: The port for upstream connections. A value of 0 means the default
+                            port for the protocol will be used.
+                        virtual_network_id:
+                          type: string
+                          description: The virtual network subnet ID the origin belongs in. Virtual
+                            network must also belong to the account.
+                        weight:
+                          type: number
+                          description: "The weight of this origin relative to other origins in the pool.
+                            Based on the configured weight the total traffic is
+                            distributed among origins within the pool.  -
+                            `origin_steering.policy=\"least_outstanding_requests\
+                            \"`: Use weight to scale the origin's outstanding
+                            requests. -
+                            `origin_steering.policy=\"least_connections\"`: Use
+                            weight to scale the origin's open connections."
                     description: The list of origins within this pool. Traffic directed at this pool
                       is balanced across all currently healthy origins, provided
                       the pool itself is healthy.
@@ -7056,10 +9138,10 @@ paths:
                             - ME
                             - NAF
                             - SAF
+                            - SAS
                             - SEAS
                             - NEAS
                             - ALL_REGIONS
-                            - SAS
                     nullable: true
                     description: A list of regions from which to run health checks. Null means every
                       Cloudflare data center.
@@ -7086,7 +9168,32 @@ paths:
                   load_shedding:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          default_percent:
+                            type: number
+                            description: The percent of traffic to shed from the pool, according to the
+                              default policy. Applies to new sessions and
+                              traffic without session affinity.
+                          default_policy:
+                            type: string
+                            enum:
+                              - random
+                              - hash
+                            description: The default policy to use when load shedding. A random policy
+                              randomly sheds a given percent of requests. A hash
+                              policy computes a hash over the CF-Connecting-IP
+                              address and sheds all requests originating from a
+                              percent of IPs.
+                          session_percent:
+                            type: number
+                            description: The percent of existing sessions to shed from the pool, according
+                              to the session policy.
+                          session_policy:
+                            type: string
+                            enum:
+                              - hash
+                            description: Only the hash policy is supported for existing sessions (to avoid
+                              exponential decay).
                     nullable: true
                     description: Configures load shedding policies and percentages for the pool.
                   longitude:
@@ -7130,14 +9237,72 @@ paths:
                   notification_filter:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          origin:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  disable:
+                                    type: boolean
+                                    description: If set true, disable notifications for this type of resource (pool
+                                      or origin).
+                                  healthy:
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
+                                    description: If present, send notifications only for this health status (e.g.
+                                      false for only DOWN events). Use null to
+                                      reset (all events).
+                            nullable: true
+                            description: Filter options for a particular resource type (pool or origin). Use
+                              null to reset.
+                          pool:
+                            oneOf:
+                              - type: object
+                                properties:
+                                  disable:
+                                    type: boolean
+                                    description: If set true, disable notifications for this type of resource (pool
+                                      or origin).
+                                  healthy:
+                                    oneOf:
+                                      - type: boolean
+                                    nullable: true
+                                    description: If present, send notifications only for this health status (e.g.
+                                      false for only DOWN events). Use null to
+                                      reset (all events).
+                            nullable: true
+                            description: Filter options for a particular resource type (pool or origin). Use
+                              null to reset.
                     nullable: true
                     description: Filter pool and origin health notifications by resource type or
                       health status. Use null to reset.
                   origin_steering:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          policy:
+                            type: string
+                            enum:
+                              - random
+                              - hash
+                              - least_outstanding_requests
+                              - least_connections
+                            description: "The type of origin steering policy to use.  - `\"random\"`: Select
+                              an origin randomly. - `\"hash\"`: Select an origin
+                              by computing a hash over the CF-Connecting-IP
+                              address. - `\"least_outstanding_requests\"`:
+                              Select an origin by taking into consideration
+                              origin weights, as well as each origin's number of
+                              outstanding requests. Origins with more pending
+                              requests are weighted proportionately less
+                              relative to others. - `\"least_connections\"`:
+                              Select an origin by taking into consideration
+                              origin weights, as well as each origin's number of
+                              open connections. Origins with more open
+                              connections are weighted proportionately less
+                              relative to others. Supported for HTTP/1 and
+                              HTTP/2 connections."
                     nullable: true
                     description: Configures origin steering for the pool. Controls how origins are
                       selected for new sessions and traffic without session
@@ -7146,7 +9311,58 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        address:
+                          type: string
+                          description: The IP address (IPv4 or IPv6) of the origin, or its publicly
+                            addressable hostname. Hostnames entered here should
+                            resolve directly to the origin, and not be a
+                            hostname proxied by Cloudflare. To set an
+                            internal/reserved address, virtual_network_id must
+                            also be set.
+                        disabled_at:
+                          type: string
+                          description: This field shows up only if the origin is disabled. This field is
+                            set with the time the origin was disabled.
+                        enabled:
+                          type: boolean
+                          description: Whether to enable (the default) this origin within the pool.
+                            Disabled origins will not receive traffic and are
+                            excluded from health checks. The origin will only be
+                            disabled for the current pool.
+                        header:
+                          type: object
+                          properties:
+                            Host:
+                              type: array
+                              items:
+                                type: string
+                              description: The 'Host' header allows to override the hostname set in the HTTP
+                                request. Current support is 1 'Host' header
+                                override per origin.
+                          description: The request header is used to pass additional information with an
+                            HTTP request. Currently supported header is 'Host'.
+                        name:
+                          type: string
+                          description: A human-identifiable name for the origin.
+                        port:
+                          type: number
+                          description: The port for upstream connections. A value of 0 means the default
+                            port for the protocol will be used.
+                        virtual_network_id:
+                          type: string
+                          description: The virtual network subnet ID the origin belongs in. Virtual
+                            network must also belong to the account.
+                        weight:
+                          type: number
+                          description: "The weight of this origin relative to other origins in the pool.
+                            Based on the configured weight the total traffic is
+                            distributed among origins within the pool.  -
+                            `origin_steering.policy=\"least_outstanding_requests\
+                            \"`: Use weight to scale the origin's outstanding
+                            requests. -
+                            `origin_steering.policy=\"least_connections\"`: Use
+                            weight to scale the origin's open connections."
                     description: The list of origins within this pool. Traffic directed at this pool
                       is balanced across all currently healthy origins, provided
                       the pool itself is healthy.

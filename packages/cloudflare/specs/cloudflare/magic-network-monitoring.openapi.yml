@@ -451,7 +451,44 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  default_sampling:
+                    type: number
+                    description: Fallback sampling rate of flow messages being sent in packets per
+                      second. This should match the packet sampling rate
+                      configured on the router.
+                  name:
+                    type: string
+                    description: The account name.
+                  router_ips:
+                    type: array
+                    items:
+                      type: string
+                  warp_devices:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Unique identifier for the warp device.
+                        name:
+                          type: string
+                          description: Name of the warp device.
+                        router_ip:
+                          type: string
+                          description: IPv4 CIDR of the router sourcing flow data associated with this
+                            warp device. Only /32 addresses are currently
+                            supported.
+                      required:
+                        - id
+                        - name
+                        - router_ip
+                required:
+                  - default_sampling
+                  - name
+                  - router_ips
+                  - warp_devices
       x-distilled-response-path: result
   /accounts/{account_id}/mnm/rules/{ruleId}:
     get:
@@ -849,6 +886,95 @@ paths:
       responses:
         "200":
           description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      automatic_advertisement:
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                        description: Toggle on if you would like Cloudflare to automatically advertise
+                          the IP Prefixes within the rule via Magic Transit when
+                          the rule is triggered. Only available for users of
+                          Magic Transit.
+                      name:
+                        type: string
+                        description: The name of the rule. Must be unique. Supports characters A-Z, a-z,
+                          0-9, underscore (\_), dash (-), period (.), and tilde
+                          (~). You can’t have a space in the rule name. Max 256
+                          characters.
+                      prefixes:
+                        type: array
+                        items:
+                          type: string
+                      type:
+                        type: string
+                        enum:
+                          - threshold
+                          - zscore
+                          - advanced_ddos
+                        description: MNM rule type.
+                      id:
+                        type: string
+                        description: The id of the rule. Must be unique.
+                      bandwidth_threshold:
+                        type: number
+                        description: The number of bits per second for the rule. When this value is
+                          exceeded for the set duration, an alert notification
+                          is sent. Minimum of 1 and no maximum.
+                      duration:
+                        type: string
+                        enum:
+                          - 1m
+                          - 5m
+                          - 10m
+                          - 15m
+                          - 20m
+                          - 30m
+                          - 45m
+                          - 60m
+                        description: The amount of time that the rule threshold must be exceeded to send
+                          an alert notification. The final value must be
+                          equivalent to one of the following 8 values
+                          ["1m","5m","10m","15m","20m","30m","45m","60m"].
+                      packet_threshold:
+                        type: number
+                        description: The number of packets per second for the rule. When this value is
+                          exceeded for the set duration, an alert notification
+                          is sent. Minimum of 1 and no maximum.
+                      prefix_match:
+                        type: string
+                        enum:
+                          - exact
+                          - subnet
+                          - supernet
+                        nullable: true
+                        description: Prefix match type to be applied for a prefix auto advertisement
+                          when using an advanced_ddos rule.
+                      zscore_sensitivity:
+                        type: string
+                        enum:
+                          - low
+                          - medium
+                          - high
+                        nullable: true
+                        description: Level of sensitivity set for zscore rules.
+                      zscore_target:
+                        type: string
+                        enum:
+                          - bits
+                          - packets
+                        nullable: true
+                        description: Target of the zscore rule analysis.
+                    required:
+                      - automatic_advertisement
+                      - name
+                      - prefixes
+                      - type
+                nullable: true
       x-distilled-pagination-class: MagicNetworkMonitoringRulesSinglePage
     post:
       operationId: createRule

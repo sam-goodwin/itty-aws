@@ -5,6 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service hyperdrive
  */
 
+import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -70,10 +71,142 @@ export const GetConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<GetConfigRequest>;
 
-export type GetConfigResponse = unknown;
+export interface GetConfigResponse {
+  /** Define configurations using a unique string identifier. */
+  id: string;
+  /** The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
+  name: string;
+  origin:
+    | {
+        database: string;
+        host: string;
+        port: number;
+        scheme: "postgres" | "postgresql" | "mysql";
+        user: string;
+      }
+    | {
+        accessClientId: string;
+        database: string;
+        host: string;
+        scheme: "postgres" | "postgresql" | "mysql";
+        user: string;
+      };
+  caching?:
+    | { disabled?: boolean | null }
+    | {
+        disabled?: boolean | null;
+        maxAge?: number | null;
+        staleWhileRevalidate?: number | null;
+      }
+    | null;
+  /** Defines the creation time of the Hyperdrive configuration. */
+  createdOn?: string | null;
+  /** Defines the last modified time of the Hyperdrive configuration. */
+  modifiedOn?: string | null;
+  mtls?: {
+    caCertificateId?: string | null;
+    mtlsCertificateId?: string | null;
+    sslmode?: string | null;
+  } | null;
+  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  originConnectionLimit?: number | null;
+}
 
-export const GetConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetConfigResponse>;
+export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  name: Schema.String,
+  origin: Schema.Union([
+    Schema.Struct({
+      database: Schema.String,
+      host: Schema.String,
+      port: Schema.Number,
+      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      user: Schema.String,
+    }),
+    Schema.Struct({
+      accessClientId: Schema.String,
+      database: Schema.String,
+      host: Schema.String,
+      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      user: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        accessClientId: "access_client_id",
+        database: "database",
+        host: "host",
+        scheme: "scheme",
+        user: "user",
+      }),
+    ),
+  ]),
+  caching: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Struct({
+          disabled: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+        }),
+        Schema.Struct({
+          disabled: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          maxAge: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          staleWhileRevalidate: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            disabled: "disabled",
+            maxAge: "max_age",
+            staleWhileRevalidate: "stale_while_revalidate",
+          }),
+        ),
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  mtls: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        caCertificateId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        mtlsCertificateId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        sslmode: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          caCertificateId: "ca_certificate_id",
+          mtlsCertificateId: "mtls_certificate_id",
+          sslmode: "sslmode",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  originConnectionLimit: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      name: "name",
+      origin: "origin",
+      caching: "caching",
+      createdOn: "created_on",
+      modifiedOn: "modified_on",
+      mtls: "mtls",
+      originConnectionLimit: "origin_connection_limit",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetConfigResponse>;
 
 export type GetConfigError =
   | DefaultErrors
@@ -107,25 +240,211 @@ export const ListConfigsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "GET", path: "/accounts/{account_id}/hyperdrive/configs" }),
 ) as unknown as Schema.Schema<ListConfigsRequest>;
 
-export type ListConfigsResponse = unknown;
+export interface ListConfigsResponse {
+  result: {
+    id: string;
+    name: string;
+    origin:
+      | {
+          database: string;
+          host: string;
+          port: number;
+          scheme: "postgres" | "postgresql" | "mysql";
+          user: string;
+        }
+      | {
+          accessClientId: string;
+          database: string;
+          host: string;
+          scheme: "postgres" | "postgresql" | "mysql";
+          user: string;
+        };
+    caching?:
+      | { disabled?: boolean | null }
+      | {
+          disabled?: boolean | null;
+          maxAge?: number | null;
+          staleWhileRevalidate?: number | null;
+        }
+      | null;
+    createdOn?: string | null;
+    modifiedOn?: string | null;
+    mtls?: {
+      caCertificateId?: string | null;
+      mtlsCertificateId?: string | null;
+      sslmode?: string | null;
+    } | null;
+    originConnectionLimit?: number | null;
+  }[];
+}
 
-export const ListConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<ListConfigsResponse>;
+export const ListConfigsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      name: Schema.String,
+      origin: Schema.Union([
+        Schema.Struct({
+          database: Schema.String,
+          host: Schema.String,
+          port: Schema.Number,
+          scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+          user: Schema.String,
+        }),
+        Schema.Struct({
+          accessClientId: Schema.String,
+          database: Schema.String,
+          host: Schema.String,
+          scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+          user: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            accessClientId: "access_client_id",
+            database: "database",
+            host: "host",
+            scheme: "scheme",
+            user: "user",
+          }),
+        ),
+      ]),
+      caching: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Struct({
+              disabled: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+            }),
+            Schema.Struct({
+              disabled: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              maxAge: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              staleWhileRevalidate: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                disabled: "disabled",
+                maxAge: "max_age",
+                staleWhileRevalidate: "stale_while_revalidate",
+              }),
+            ),
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      mtls: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            caCertificateId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            mtlsCertificateId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            sslmode: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              caCertificateId: "ca_certificate_id",
+              mtlsCertificateId: "mtls_certificate_id",
+              sslmode: "sslmode",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      originConnectionLimit: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        name: "name",
+        origin: "origin",
+        caching: "caching",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        mtls: "mtls",
+        originConnectionLimit: "origin_connection_limit",
+      }),
+    ),
+  ),
+}) as unknown as Schema.Schema<ListConfigsResponse>;
 
 export type ListConfigsError =
   | DefaultErrors
   | PrivateHostNotAllowed
   | InvalidObjectIdentifier;
 
-export const listConfigs: API.OperationMethod<
+export const listConfigs: API.PaginatedOperationMethod<
   ListConfigsRequest,
   ListConfigsResponse,
   ListConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> & {
+  pages: (
+    input: ListConfigsRequest,
+  ) => stream.Stream<
+    ListConfigsResponse,
+    ListConfigsError,
+    Credentials | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListConfigsRequest,
+  ) => stream.Stream<
+    {
+      id: string;
+      name: string;
+      origin:
+        | {
+            database: string;
+            host: string;
+            port: number;
+            scheme: "postgres" | "postgresql" | "mysql";
+            user: string;
+          }
+        | {
+            accessClientId: string;
+            database: string;
+            host: string;
+            scheme: "postgres" | "postgresql" | "mysql";
+            user: string;
+          };
+      caching?:
+        | { disabled?: boolean | null }
+        | {
+            disabled?: boolean | null;
+            maxAge?: number | null;
+            staleWhileRevalidate?: number | null;
+          }
+        | null;
+      createdOn?: string | null;
+      modifiedOn?: string | null;
+      mtls?: {
+        caCertificateId?: string | null;
+        mtlsCertificateId?: string | null;
+        sslmode?: string | null;
+      } | null;
+      originConnectionLimit?: number | null;
+    },
+    ListConfigsError,
+    Credentials | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConfigsRequest,
   output: ListConfigsResponse,
   errors: [PrivateHostNotAllowed, InvalidObjectIdentifier],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
 }));
 
 export interface CreateConfigRequest {
@@ -241,10 +560,142 @@ export const CreateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "POST", path: "/accounts/{account_id}/hyperdrive/configs" }),
 ) as unknown as Schema.Schema<CreateConfigRequest>;
 
-export type CreateConfigResponse = unknown;
+export interface CreateConfigResponse {
+  /** Define configurations using a unique string identifier. */
+  id: string;
+  /** The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
+  name: string;
+  origin:
+    | {
+        database: string;
+        host: string;
+        port: number;
+        scheme: "postgres" | "postgresql" | "mysql";
+        user: string;
+      }
+    | {
+        accessClientId: string;
+        database: string;
+        host: string;
+        scheme: "postgres" | "postgresql" | "mysql";
+        user: string;
+      };
+  caching?:
+    | { disabled?: boolean | null }
+    | {
+        disabled?: boolean | null;
+        maxAge?: number | null;
+        staleWhileRevalidate?: number | null;
+      }
+    | null;
+  /** Defines the creation time of the Hyperdrive configuration. */
+  createdOn?: string | null;
+  /** Defines the last modified time of the Hyperdrive configuration. */
+  modifiedOn?: string | null;
+  mtls?: {
+    caCertificateId?: string | null;
+    mtlsCertificateId?: string | null;
+    sslmode?: string | null;
+  } | null;
+  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  originConnectionLimit?: number | null;
+}
 
-export const CreateConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<CreateConfigResponse>;
+export const CreateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  name: Schema.String,
+  origin: Schema.Union([
+    Schema.Struct({
+      database: Schema.String,
+      host: Schema.String,
+      port: Schema.Number,
+      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      user: Schema.String,
+    }),
+    Schema.Struct({
+      accessClientId: Schema.String,
+      database: Schema.String,
+      host: Schema.String,
+      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      user: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        accessClientId: "access_client_id",
+        database: "database",
+        host: "host",
+        scheme: "scheme",
+        user: "user",
+      }),
+    ),
+  ]),
+  caching: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Struct({
+          disabled: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+        }),
+        Schema.Struct({
+          disabled: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          maxAge: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          staleWhileRevalidate: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            disabled: "disabled",
+            maxAge: "max_age",
+            staleWhileRevalidate: "stale_while_revalidate",
+          }),
+        ),
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  mtls: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        caCertificateId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        mtlsCertificateId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        sslmode: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          caCertificateId: "ca_certificate_id",
+          mtlsCertificateId: "mtls_certificate_id",
+          sslmode: "sslmode",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  originConnectionLimit: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      name: "name",
+      origin: "origin",
+      caching: "caching",
+      createdOn: "created_on",
+      modifiedOn: "modified_on",
+      mtls: "mtls",
+      originConnectionLimit: "origin_connection_limit",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<CreateConfigResponse>;
 
 export type CreateConfigError =
   | DefaultErrors
@@ -385,10 +836,142 @@ export const UpdateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<UpdateConfigRequest>;
 
-export type UpdateConfigResponse = unknown;
+export interface UpdateConfigResponse {
+  /** Define configurations using a unique string identifier. */
+  id: string;
+  /** The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
+  name: string;
+  origin:
+    | {
+        database: string;
+        host: string;
+        port: number;
+        scheme: "postgres" | "postgresql" | "mysql";
+        user: string;
+      }
+    | {
+        accessClientId: string;
+        database: string;
+        host: string;
+        scheme: "postgres" | "postgresql" | "mysql";
+        user: string;
+      };
+  caching?:
+    | { disabled?: boolean | null }
+    | {
+        disabled?: boolean | null;
+        maxAge?: number | null;
+        staleWhileRevalidate?: number | null;
+      }
+    | null;
+  /** Defines the creation time of the Hyperdrive configuration. */
+  createdOn?: string | null;
+  /** Defines the last modified time of the Hyperdrive configuration. */
+  modifiedOn?: string | null;
+  mtls?: {
+    caCertificateId?: string | null;
+    mtlsCertificateId?: string | null;
+    sslmode?: string | null;
+  } | null;
+  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  originConnectionLimit?: number | null;
+}
 
-export const UpdateConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<UpdateConfigResponse>;
+export const UpdateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  name: Schema.String,
+  origin: Schema.Union([
+    Schema.Struct({
+      database: Schema.String,
+      host: Schema.String,
+      port: Schema.Number,
+      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      user: Schema.String,
+    }),
+    Schema.Struct({
+      accessClientId: Schema.String,
+      database: Schema.String,
+      host: Schema.String,
+      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      user: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        accessClientId: "access_client_id",
+        database: "database",
+        host: "host",
+        scheme: "scheme",
+        user: "user",
+      }),
+    ),
+  ]),
+  caching: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Struct({
+          disabled: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+        }),
+        Schema.Struct({
+          disabled: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          maxAge: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          staleWhileRevalidate: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            disabled: "disabled",
+            maxAge: "max_age",
+            staleWhileRevalidate: "stale_while_revalidate",
+          }),
+        ),
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  mtls: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        caCertificateId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        mtlsCertificateId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        sslmode: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          caCertificateId: "ca_certificate_id",
+          mtlsCertificateId: "mtls_certificate_id",
+          sslmode: "sslmode",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  originConnectionLimit: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      name: "name",
+      origin: "origin",
+      caching: "caching",
+      createdOn: "created_on",
+      modifiedOn: "modified_on",
+      mtls: "mtls",
+      originConnectionLimit: "origin_connection_limit",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<UpdateConfigResponse>;
 
 export type UpdateConfigError =
   | DefaultErrors
@@ -520,10 +1103,142 @@ export const PatchConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<PatchConfigRequest>;
 
-export type PatchConfigResponse = unknown;
+export interface PatchConfigResponse {
+  /** Define configurations using a unique string identifier. */
+  id: string;
+  /** The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API. */
+  name: string;
+  origin:
+    | {
+        database: string;
+        host: string;
+        port: number;
+        scheme: "postgres" | "postgresql" | "mysql";
+        user: string;
+      }
+    | {
+        accessClientId: string;
+        database: string;
+        host: string;
+        scheme: "postgres" | "postgresql" | "mysql";
+        user: string;
+      };
+  caching?:
+    | { disabled?: boolean | null }
+    | {
+        disabled?: boolean | null;
+        maxAge?: number | null;
+        staleWhileRevalidate?: number | null;
+      }
+    | null;
+  /** Defines the creation time of the Hyperdrive configuration. */
+  createdOn?: string | null;
+  /** Defines the last modified time of the Hyperdrive configuration. */
+  modifiedOn?: string | null;
+  mtls?: {
+    caCertificateId?: string | null;
+    mtlsCertificateId?: string | null;
+    sslmode?: string | null;
+  } | null;
+  /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database. */
+  originConnectionLimit?: number | null;
+}
 
-export const PatchConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<PatchConfigResponse>;
+export const PatchConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  name: Schema.String,
+  origin: Schema.Union([
+    Schema.Struct({
+      database: Schema.String,
+      host: Schema.String,
+      port: Schema.Number,
+      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      user: Schema.String,
+    }),
+    Schema.Struct({
+      accessClientId: Schema.String,
+      database: Schema.String,
+      host: Schema.String,
+      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      user: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        accessClientId: "access_client_id",
+        database: "database",
+        host: "host",
+        scheme: "scheme",
+        user: "user",
+      }),
+    ),
+  ]),
+  caching: Schema.optional(
+    Schema.Union([
+      Schema.Union([
+        Schema.Struct({
+          disabled: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+        }),
+        Schema.Struct({
+          disabled: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          maxAge: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          staleWhileRevalidate: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            disabled: "disabled",
+            maxAge: "max_age",
+            staleWhileRevalidate: "stale_while_revalidate",
+          }),
+        ),
+      ]),
+      Schema.Null,
+    ]),
+  ),
+  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  mtls: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        caCertificateId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        mtlsCertificateId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        sslmode: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          caCertificateId: "ca_certificate_id",
+          mtlsCertificateId: "mtls_certificate_id",
+          sslmode: "sslmode",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+  originConnectionLimit: Schema.optional(
+    Schema.Union([Schema.Number, Schema.Null]),
+  ),
+})
+  .pipe(
+    Schema.encodeKeys({
+      id: "id",
+      name: "name",
+      origin: "origin",
+      caching: "caching",
+      createdOn: "created_on",
+      modifiedOn: "modified_on",
+      mtls: "mtls",
+      originConnectionLimit: "origin_connection_limit",
+    }),
+  )
+  .pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<PatchConfigResponse>;
 
 export type PatchConfigError =
   | DefaultErrors

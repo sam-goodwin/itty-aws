@@ -132,7 +132,23 @@ paths:
                         type: boolean
                       buttonTextTranslations:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          accept_all:
+                            type: object
+                            additionalProperties: true
+                            description: Object where keys are language codes
+                          confirm_my_choices:
+                            type: object
+                            additionalProperties: true
+                            description: Object where keys are language codes
+                          reject_all:
+                            type: object
+                            additionalProperties: true
+                            description: Object where keys are language codes
+                        required:
+                          - accept_all
+                          - confirm_my_choices
+                          - reject_all
                       companyEmail:
                         type: string
                       companyName:
@@ -306,7 +322,23 @@ paths:
                       type: boolean
                     buttonTextTranslations:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        accept_all:
+                          type: object
+                          additionalProperties: true
+                          description: Object where keys are language codes
+                        confirm_my_choices:
+                          type: object
+                          additionalProperties: true
+                          description: Object where keys are language codes
+                        reject_all:
+                          type: object
+                          additionalProperties: true
+                          description: Object where keys are language codes
+                      required:
+                        - accept_all
+                        - confirm_my_choices
+                        - reject_all
                     companyEmail:
                       type: string
                     companyName:
@@ -464,7 +496,23 @@ paths:
                         type: boolean
                       buttonTextTranslations:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          accept_all:
+                            type: object
+                            additionalProperties: true
+                            description: Object where keys are language codes
+                          confirm_my_choices:
+                            type: object
+                            additionalProperties: true
+                            description: Object where keys are language codes
+                          reject_all:
+                            type: object
+                            additionalProperties: true
+                            description: Object where keys are language codes
+                        required:
+                          - accept_all
+                          - confirm_my_choices
+                          - reject_all
                       companyEmail:
                         type: string
                       companyName:
@@ -532,7 +580,173 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  dataLayer:
+                    type: boolean
+                    description: Data layer compatibility mode enabled.
+                  debugKey:
+                    type: string
+                    description: The key for Zaraz debug mode.
+                  settings:
+                    type: object
+                    properties:
+                      autoInjectScript:
+                        type: boolean
+                        description: Automatic injection of Zaraz scripts enabled.
+                      contextEnricher:
+                        type: object
+                        properties:
+                          escapedWorkerName:
+                            type: string
+                          workerTag:
+                            type: string
+                        required:
+                          - escapedWorkerName
+                          - workerTag
+                        description: Details of the worker that receives and edits Zaraz Context object.
+                      cookieDomain:
+                        type: string
+                        description: The domain Zaraz will use for writing and reading its cookies.
+                      ecommerce:
+                        type: boolean
+                        description: Ecommerce API enabled.
+                      eventsApiPath:
+                        type: string
+                        description: Custom endpoint for server-side track events.
+                      hideExternalReferer:
+                        type: boolean
+                        description: Hiding external referrer URL enabled.
+                      hideIPAddress:
+                        type: boolean
+                        description: Trimming IP address enabled.
+                      hideQueryParams:
+                        type: boolean
+                        description: Removing URL query params enabled.
+                      hideUserAgent:
+                        type: boolean
+                        description: Removing sensitive data from User Aagent string enabled.
+                      initPath:
+                        type: string
+                        description: Custom endpoint for Zaraz init script.
+                      injectIframes:
+                        type: boolean
+                        description: Injection of Zaraz scripts into iframes enabled.
+                      mcRootPath:
+                        type: string
+                        description: Custom path for Managed Components server functionalities.
+                      scriptPath:
+                        type: string
+                        description: Custom endpoint for Zaraz main script.
+                      trackPath:
+                        type: string
+                        description: Custom endpoint for Zaraz tracking requests.
+                    required:
+                      - autoInjectScript
+                    description: General Zaraz settings.
+                  tools:
+                    type: object
+                    additionalProperties: true
+                    description: Tools set up under Zaraz configuration, where key is the
+                      alpha-numeric tool ID and value is the tool configuration
+                      object.
+                  triggers:
+                    type: object
+                    additionalProperties: true
+                    description: Triggers set up under Zaraz configuration, where key is the trigger
+                      alpha-numeric ID and value is the trigger configuration.
+                  variables:
+                    type: object
+                    additionalProperties: true
+                    description: Variables set up under Zaraz configuration, where key is the
+                      variable alpha-numeric ID and value is the variable
+                      configuration. Values of variables of type secret are not
+                      included.
+                  zarazVersion:
+                    type: number
+                    description: Zaraz internal version of the config.
+                  analytics:
+                    type: object
+                    properties:
+                      defaultPurpose:
+                        type: string
+                        description: Consent purpose assigned to Monitoring.
+                      enabled:
+                        type: boolean
+                        description: Whether Advanced Monitoring reports are enabled.
+                      sessionExpTime:
+                        type: number
+                        description: Session expiration time (seconds).
+                    description: Cloudflare Monitoring settings.
+                  consent:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                      buttonTextTranslations:
+                        type: object
+                        properties:
+                          accept_all:
+                            type: object
+                            additionalProperties: true
+                            description: Object where keys are language codes
+                          confirm_my_choices:
+                            type: object
+                            additionalProperties: true
+                            description: Object where keys are language codes
+                          reject_all:
+                            type: object
+                            additionalProperties: true
+                            description: Object where keys are language codes
+                        required:
+                          - accept_all
+                          - confirm_my_choices
+                          - reject_all
+                      companyEmail:
+                        type: string
+                      companyName:
+                        type: string
+                      companyStreetAddress:
+                        type: string
+                      consentModalIntroHTML:
+                        type: string
+                      consentModalIntroHTMLWithTranslations:
+                        type: object
+                        additionalProperties: true
+                        description: Object where keys are language codes
+                      cookieName:
+                        type: string
+                      customCSS:
+                        type: string
+                      customIntroDisclaimerDismissed:
+                        type: boolean
+                      defaultLanguage:
+                        type: string
+                      hideModal:
+                        type: boolean
+                      purposes:
+                        type: object
+                        additionalProperties: true
+                        description: Object where keys are purpose alpha-numeric IDs
+                      purposesWithTranslations:
+                        type: object
+                        additionalProperties: true
+                        description: Object where keys are purpose alpha-numeric IDs
+                      tcfCompliant:
+                        type: boolean
+                    required:
+                      - enabled
+                    description: Consent management configuration.
+                  historyChange:
+                    type: boolean
+                    description: Single Page Application support enabled.
+                required:
+                  - dataLayer
+                  - debugKey
+                  - settings
+                  - tools
+                  - triggers
+                  - variables
+                  - zarazVersion
       x-distilled-response-path: result
   /zones/{zone_id}/settings/zaraz/export:
     get:
@@ -555,7 +769,173 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  dataLayer:
+                    type: boolean
+                    description: Data layer compatibility mode enabled.
+                  debugKey:
+                    type: string
+                    description: The key for Zaraz debug mode.
+                  settings:
+                    type: object
+                    properties:
+                      autoInjectScript:
+                        type: boolean
+                        description: Automatic injection of Zaraz scripts enabled.
+                      contextEnricher:
+                        type: object
+                        properties:
+                          escapedWorkerName:
+                            type: string
+                          workerTag:
+                            type: string
+                        required:
+                          - escapedWorkerName
+                          - workerTag
+                        description: Details of the worker that receives and edits Zaraz Context object.
+                      cookieDomain:
+                        type: string
+                        description: The domain Zaraz will use for writing and reading its cookies.
+                      ecommerce:
+                        type: boolean
+                        description: Ecommerce API enabled.
+                      eventsApiPath:
+                        type: string
+                        description: Custom endpoint for server-side track events.
+                      hideExternalReferer:
+                        type: boolean
+                        description: Hiding external referrer URL enabled.
+                      hideIPAddress:
+                        type: boolean
+                        description: Trimming IP address enabled.
+                      hideQueryParams:
+                        type: boolean
+                        description: Removing URL query params enabled.
+                      hideUserAgent:
+                        type: boolean
+                        description: Removing sensitive data from User Aagent string enabled.
+                      initPath:
+                        type: string
+                        description: Custom endpoint for Zaraz init script.
+                      injectIframes:
+                        type: boolean
+                        description: Injection of Zaraz scripts into iframes enabled.
+                      mcRootPath:
+                        type: string
+                        description: Custom path for Managed Components server functionalities.
+                      scriptPath:
+                        type: string
+                        description: Custom endpoint for Zaraz main script.
+                      trackPath:
+                        type: string
+                        description: Custom endpoint for Zaraz tracking requests.
+                    required:
+                      - autoInjectScript
+                    description: General Zaraz settings.
+                  tools:
+                    type: object
+                    additionalProperties: true
+                    description: Tools set up under Zaraz configuration, where key is the
+                      alpha-numeric tool ID and value is the tool configuration
+                      object.
+                  triggers:
+                    type: object
+                    additionalProperties: true
+                    description: Triggers set up under Zaraz configuration, where key is the trigger
+                      alpha-numeric ID and value is the trigger configuration.
+                  variables:
+                    type: object
+                    additionalProperties: true
+                    description: Variables set up under Zaraz configuration, where key is the
+                      variable alpha-numeric ID and value is the variable
+                      configuration. Values of variables of type secret are not
+                      included.
+                  zarazVersion:
+                    type: number
+                    description: Zaraz internal version of the config.
+                  analytics:
+                    type: object
+                    properties:
+                      defaultPurpose:
+                        type: string
+                        description: Consent purpose assigned to Monitoring.
+                      enabled:
+                        type: boolean
+                        description: Whether Advanced Monitoring reports are enabled.
+                      sessionExpTime:
+                        type: number
+                        description: Session expiration time (seconds).
+                    description: Cloudflare Monitoring settings.
+                  consent:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                      buttonTextTranslations:
+                        type: object
+                        properties:
+                          accept_all:
+                            type: object
+                            additionalProperties: true
+                            description: Object where keys are language codes
+                          confirm_my_choices:
+                            type: object
+                            additionalProperties: true
+                            description: Object where keys are language codes
+                          reject_all:
+                            type: object
+                            additionalProperties: true
+                            description: Object where keys are language codes
+                        required:
+                          - accept_all
+                          - confirm_my_choices
+                          - reject_all
+                      companyEmail:
+                        type: string
+                      companyName:
+                        type: string
+                      companyStreetAddress:
+                        type: string
+                      consentModalIntroHTML:
+                        type: string
+                      consentModalIntroHTMLWithTranslations:
+                        type: object
+                        additionalProperties: true
+                        description: Object where keys are language codes
+                      cookieName:
+                        type: string
+                      customCSS:
+                        type: string
+                      customIntroDisclaimerDismissed:
+                        type: boolean
+                      defaultLanguage:
+                        type: string
+                      hideModal:
+                        type: boolean
+                      purposes:
+                        type: object
+                        additionalProperties: true
+                        description: Object where keys are purpose alpha-numeric IDs
+                      purposesWithTranslations:
+                        type: object
+                        additionalProperties: true
+                        description: Object where keys are purpose alpha-numeric IDs
+                      tcfCompliant:
+                        type: boolean
+                    required:
+                      - enabled
+                    description: Consent management configuration.
+                  historyChange:
+                    type: boolean
+                    description: Single Page Application support enabled.
+                required:
+                  - dataLayer
+                  - debugKey
+                  - settings
+                  - tools
+                  - triggers
+                  - variables
+                  - zarazVersion
   /zones/{zone_id}/settings/zaraz/history:
     get:
       operationId: listHistories
@@ -663,7 +1043,173 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  dataLayer:
+                    type: boolean
+                    description: Data layer compatibility mode enabled.
+                  debugKey:
+                    type: string
+                    description: The key for Zaraz debug mode.
+                  settings:
+                    type: object
+                    properties:
+                      autoInjectScript:
+                        type: boolean
+                        description: Automatic injection of Zaraz scripts enabled.
+                      contextEnricher:
+                        type: object
+                        properties:
+                          escapedWorkerName:
+                            type: string
+                          workerTag:
+                            type: string
+                        required:
+                          - escapedWorkerName
+                          - workerTag
+                        description: Details of the worker that receives and edits Zaraz Context object.
+                      cookieDomain:
+                        type: string
+                        description: The domain Zaraz will use for writing and reading its cookies.
+                      ecommerce:
+                        type: boolean
+                        description: Ecommerce API enabled.
+                      eventsApiPath:
+                        type: string
+                        description: Custom endpoint for server-side track events.
+                      hideExternalReferer:
+                        type: boolean
+                        description: Hiding external referrer URL enabled.
+                      hideIPAddress:
+                        type: boolean
+                        description: Trimming IP address enabled.
+                      hideQueryParams:
+                        type: boolean
+                        description: Removing URL query params enabled.
+                      hideUserAgent:
+                        type: boolean
+                        description: Removing sensitive data from User Aagent string enabled.
+                      initPath:
+                        type: string
+                        description: Custom endpoint for Zaraz init script.
+                      injectIframes:
+                        type: boolean
+                        description: Injection of Zaraz scripts into iframes enabled.
+                      mcRootPath:
+                        type: string
+                        description: Custom path for Managed Components server functionalities.
+                      scriptPath:
+                        type: string
+                        description: Custom endpoint for Zaraz main script.
+                      trackPath:
+                        type: string
+                        description: Custom endpoint for Zaraz tracking requests.
+                    required:
+                      - autoInjectScript
+                    description: General Zaraz settings.
+                  tools:
+                    type: object
+                    additionalProperties: true
+                    description: Tools set up under Zaraz configuration, where key is the
+                      alpha-numeric tool ID and value is the tool configuration
+                      object.
+                  triggers:
+                    type: object
+                    additionalProperties: true
+                    description: Triggers set up under Zaraz configuration, where key is the trigger
+                      alpha-numeric ID and value is the trigger configuration.
+                  variables:
+                    type: object
+                    additionalProperties: true
+                    description: Variables set up under Zaraz configuration, where key is the
+                      variable alpha-numeric ID and value is the variable
+                      configuration. Values of variables of type secret are not
+                      included.
+                  zarazVersion:
+                    type: number
+                    description: Zaraz internal version of the config.
+                  analytics:
+                    type: object
+                    properties:
+                      defaultPurpose:
+                        type: string
+                        description: Consent purpose assigned to Monitoring.
+                      enabled:
+                        type: boolean
+                        description: Whether Advanced Monitoring reports are enabled.
+                      sessionExpTime:
+                        type: number
+                        description: Session expiration time (seconds).
+                    description: Cloudflare Monitoring settings.
+                  consent:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                      buttonTextTranslations:
+                        type: object
+                        properties:
+                          accept_all:
+                            type: object
+                            additionalProperties: true
+                            description: Object where keys are language codes
+                          confirm_my_choices:
+                            type: object
+                            additionalProperties: true
+                            description: Object where keys are language codes
+                          reject_all:
+                            type: object
+                            additionalProperties: true
+                            description: Object where keys are language codes
+                        required:
+                          - accept_all
+                          - confirm_my_choices
+                          - reject_all
+                      companyEmail:
+                        type: string
+                      companyName:
+                        type: string
+                      companyStreetAddress:
+                        type: string
+                      consentModalIntroHTML:
+                        type: string
+                      consentModalIntroHTMLWithTranslations:
+                        type: object
+                        additionalProperties: true
+                        description: Object where keys are language codes
+                      cookieName:
+                        type: string
+                      customCSS:
+                        type: string
+                      customIntroDisclaimerDismissed:
+                        type: boolean
+                      defaultLanguage:
+                        type: string
+                      hideModal:
+                        type: boolean
+                      purposes:
+                        type: object
+                        additionalProperties: true
+                        description: Object where keys are purpose alpha-numeric IDs
+                      purposesWithTranslations:
+                        type: object
+                        additionalProperties: true
+                        description: Object where keys are purpose alpha-numeric IDs
+                      tcfCompliant:
+                        type: boolean
+                    required:
+                      - enabled
+                    description: Consent management configuration.
+                  historyChange:
+                    type: boolean
+                    description: Single Page Application support enabled.
+                required:
+                  - dataLayer
+                  - debugKey
+                  - settings
+                  - tools
+                  - triggers
+                  - variables
+                  - zarazVersion
       x-distilled-response-path: result
   /zones/{zone_id}/settings/zaraz/history/configs:
     get:
@@ -780,6 +1326,8 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                additionalProperties: true
+                type: string
+                enum:
+                  - realtime
+                  - preview
       x-distilled-response-path: result

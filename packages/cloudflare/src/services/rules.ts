@@ -154,7 +154,9 @@ export const listLists: API.PaginatedOperationMethod<
     ListListsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListListsRequest) => stream.Stream<
+  items: (
+    input: ListListsRequest,
+  ) => stream.Stream<
     {
       id: string;
       createdOn: string;
@@ -466,7 +468,7 @@ export type GetListItemResponse =
   | {
       id: string;
       createdOn: string;
-      hostname: unknown;
+      hostname: { urlHostname: string; excludeExactHostname?: boolean | null };
       modifiedOn: string;
       comment?: string | null;
     }
@@ -474,7 +476,15 @@ export type GetListItemResponse =
       id: string;
       createdOn: string;
       modifiedOn: string;
-      redirect: unknown;
+      redirect: {
+        sourceUrl: string;
+        targetUrl: string;
+        includeSubdomains?: boolean | null;
+        preservePathSuffix?: boolean | null;
+        preserveQueryString?: boolean | null;
+        statusCode?: "301" | "302" | "307" | "308" | null;
+        subpathMatching?: boolean | null;
+      };
       comment?: string | null;
     }
   | {
@@ -504,7 +514,17 @@ export const GetListItemResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
   Schema.Struct({
     id: Schema.String,
     createdOn: Schema.String,
-    hostname: Schema.Unknown,
+    hostname: Schema.Struct({
+      urlHostname: Schema.String,
+      excludeExactHostname: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        urlHostname: "url_hostname",
+        excludeExactHostname: "exclude_exact_hostname",
+      }),
+    ),
     modifiedOn: Schema.String,
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(
@@ -520,7 +540,38 @@ export const GetListItemResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     id: Schema.String,
     createdOn: Schema.String,
     modifiedOn: Schema.String,
-    redirect: Schema.Unknown,
+    redirect: Schema.Struct({
+      sourceUrl: Schema.String,
+      targetUrl: Schema.String,
+      includeSubdomains: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      preservePathSuffix: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      preserveQueryString: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      statusCode: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["301", "302", "307", "308"]),
+          Schema.Null,
+        ]),
+      ),
+      subpathMatching: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        sourceUrl: "source_url",
+        targetUrl: "target_url",
+        includeSubdomains: "include_subdomains",
+        preservePathSuffix: "preserve_path_suffix",
+        preserveQueryString: "preserve_query_string",
+        statusCode: "status_code",
+        subpathMatching: "subpath_matching",
+      }),
+    ),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(
     Schema.encodeKeys({
@@ -597,7 +648,10 @@ export interface ListListItemsResponse {
     | {
         id: string;
         createdOn: string;
-        hostname: unknown;
+        hostname: {
+          urlHostname: string;
+          excludeExactHostname?: boolean | null;
+        };
         modifiedOn: string;
         comment?: string | null;
       }
@@ -605,7 +659,15 @@ export interface ListListItemsResponse {
         id: string;
         createdOn: string;
         modifiedOn: string;
-        redirect: unknown;
+        redirect: {
+          sourceUrl: string;
+          targetUrl: string;
+          includeSubdomains?: boolean | null;
+          preservePathSuffix?: boolean | null;
+          preserveQueryString?: boolean | null;
+          statusCode?: "301" | "302" | "307" | "308" | null;
+          subpathMatching?: boolean | null;
+        };
         comment?: string | null;
       }
     | {
@@ -640,7 +702,17 @@ export const ListListItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         id: Schema.String,
         createdOn: Schema.String,
-        hostname: Schema.Unknown,
+        hostname: Schema.Struct({
+          urlHostname: Schema.String,
+          excludeExactHostname: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            urlHostname: "url_hostname",
+            excludeExactHostname: "exclude_exact_hostname",
+          }),
+        ),
         modifiedOn: Schema.String,
         comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }).pipe(
@@ -656,7 +728,38 @@ export const ListListItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         id: Schema.String,
         createdOn: Schema.String,
         modifiedOn: Schema.String,
-        redirect: Schema.Unknown,
+        redirect: Schema.Struct({
+          sourceUrl: Schema.String,
+          targetUrl: Schema.String,
+          includeSubdomains: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          preservePathSuffix: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          preserveQueryString: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          statusCode: Schema.optional(
+            Schema.Union([
+              Schema.Literals(["301", "302", "307", "308"]),
+              Schema.Null,
+            ]),
+          ),
+          subpathMatching: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            sourceUrl: "source_url",
+            targetUrl: "target_url",
+            includeSubdomains: "include_subdomains",
+            preservePathSuffix: "preserve_path_suffix",
+            preserveQueryString: "preserve_query_string",
+            statusCode: "status_code",
+            subpathMatching: "subpath_matching",
+          }),
+        ),
         comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
@@ -713,7 +816,9 @@ export const listListItems: API.PaginatedOperationMethod<
     ListListItemsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListListItemsRequest) => stream.Stream<
+  items: (
+    input: ListListItemsRequest,
+  ) => stream.Stream<
     | {
         id: string;
         createdOn: string;
@@ -724,7 +829,10 @@ export const listListItems: API.PaginatedOperationMethod<
     | {
         id: string;
         createdOn: string;
-        hostname: unknown;
+        hostname: {
+          urlHostname: string;
+          excludeExactHostname?: boolean | null;
+        };
         modifiedOn: string;
         comment?: string | null;
       }
@@ -732,7 +840,15 @@ export const listListItems: API.PaginatedOperationMethod<
         id: string;
         createdOn: string;
         modifiedOn: string;
-        redirect: unknown;
+        redirect: {
+          sourceUrl: string;
+          targetUrl: string;
+          includeSubdomains?: boolean | null;
+          preservePathSuffix?: boolean | null;
+          preserveQueryString?: boolean | null;
+          statusCode?: "301" | "302" | "307" | "308" | null;
+          subpathMatching?: boolean | null;
+        };
         comment?: string | null;
       }
     | {
@@ -764,8 +880,22 @@ export interface CreateListItemRequest {
   /** Body param: */
   body: (
     | { ip: string; comment?: string }
-    | { redirect: unknown; comment?: string }
-    | { hostname: unknown; comment?: string }
+    | {
+        redirect: {
+          sourceUrl: string;
+          targetUrl: string;
+          includeSubdomains?: boolean;
+          preservePathSuffix?: boolean;
+          preserveQueryString?: boolean;
+          statusCode?: "301" | "302" | "307" | "308";
+          subpathMatching?: boolean;
+        };
+        comment?: string;
+      }
+    | {
+        hostname: { urlHostname: string; excludeExactHostname?: boolean };
+        comment?: string;
+      }
     | { asn: number; comment?: string }
   )[];
 }
@@ -780,11 +910,39 @@ export const CreateListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         comment: Schema.optional(Schema.String),
       }),
       Schema.Struct({
-        redirect: Schema.Unknown,
+        redirect: Schema.Struct({
+          sourceUrl: Schema.String,
+          targetUrl: Schema.String,
+          includeSubdomains: Schema.optional(Schema.Boolean),
+          preservePathSuffix: Schema.optional(Schema.Boolean),
+          preserveQueryString: Schema.optional(Schema.Boolean),
+          statusCode: Schema.optional(
+            Schema.Literals(["301", "302", "307", "308"]),
+          ),
+          subpathMatching: Schema.optional(Schema.Boolean),
+        }).pipe(
+          Schema.encodeKeys({
+            sourceUrl: "source_url",
+            targetUrl: "target_url",
+            includeSubdomains: "include_subdomains",
+            preservePathSuffix: "preserve_path_suffix",
+            preserveQueryString: "preserve_query_string",
+            statusCode: "status_code",
+            subpathMatching: "subpath_matching",
+          }),
+        ),
         comment: Schema.optional(Schema.String),
       }),
       Schema.Struct({
-        hostname: Schema.Unknown,
+        hostname: Schema.Struct({
+          urlHostname: Schema.String,
+          excludeExactHostname: Schema.optional(Schema.Boolean),
+        }).pipe(
+          Schema.encodeKeys({
+            urlHostname: "url_hostname",
+            excludeExactHostname: "exclude_exact_hostname",
+          }),
+        ),
         comment: Schema.optional(Schema.String),
       }),
       Schema.Struct({
@@ -835,8 +993,22 @@ export interface UpdateListItemRequest {
   /** Body param: */
   body: (
     | { ip: string; comment?: string }
-    | { redirect: unknown; comment?: string }
-    | { hostname: unknown; comment?: string }
+    | {
+        redirect: {
+          sourceUrl: string;
+          targetUrl: string;
+          includeSubdomains?: boolean;
+          preservePathSuffix?: boolean;
+          preserveQueryString?: boolean;
+          statusCode?: "301" | "302" | "307" | "308";
+          subpathMatching?: boolean;
+        };
+        comment?: string;
+      }
+    | {
+        hostname: { urlHostname: string; excludeExactHostname?: boolean };
+        comment?: string;
+      }
     | { asn: number; comment?: string }
   )[];
 }
@@ -851,11 +1023,39 @@ export const UpdateListItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         comment: Schema.optional(Schema.String),
       }),
       Schema.Struct({
-        redirect: Schema.Unknown,
+        redirect: Schema.Struct({
+          sourceUrl: Schema.String,
+          targetUrl: Schema.String,
+          includeSubdomains: Schema.optional(Schema.Boolean),
+          preservePathSuffix: Schema.optional(Schema.Boolean),
+          preserveQueryString: Schema.optional(Schema.Boolean),
+          statusCode: Schema.optional(
+            Schema.Literals(["301", "302", "307", "308"]),
+          ),
+          subpathMatching: Schema.optional(Schema.Boolean),
+        }).pipe(
+          Schema.encodeKeys({
+            sourceUrl: "source_url",
+            targetUrl: "target_url",
+            includeSubdomains: "include_subdomains",
+            preservePathSuffix: "preserve_path_suffix",
+            preserveQueryString: "preserve_query_string",
+            statusCode: "status_code",
+            subpathMatching: "subpath_matching",
+          }),
+        ),
         comment: Schema.optional(Schema.String),
       }),
       Schema.Struct({
-        hostname: Schema.Unknown,
+        hostname: Schema.Struct({
+          urlHostname: Schema.String,
+          excludeExactHostname: Schema.optional(Schema.Boolean),
+        }).pipe(
+          Schema.encodeKeys({
+            urlHostname: "url_hostname",
+            excludeExactHostname: "exclude_exact_hostname",
+          }),
+        ),
         comment: Schema.optional(Schema.String),
       }),
       Schema.Struct({

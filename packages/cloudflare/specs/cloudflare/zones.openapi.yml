@@ -1785,7 +1785,40 @@ paths:
                         description: ID of the zone setting.
                       value:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          cache_by_device_type:
+                            type: boolean
+                            description: Indicates whether or not [cache by device
+                              type](https://developers.cloudflare.com/automatic-platform-optimization/reference/cache-device-type/)
+                              is enabled.
+                          cf:
+                            type: boolean
+                            description: Indicates whether or not Cloudflare proxy is enabled.
+                          enabled:
+                            type: boolean
+                            description: Indicates whether or not Automatic Platform Optimization is
+                              enabled.
+                          hostnames:
+                            type: array
+                            items:
+                              type: string
+                            description: An array of hostnames where Automatic Platform Optimization for
+                              WordPress is activated.
+                          wordpress:
+                            type: boolean
+                            description: Indicates whether or not site is powered by WordPress.
+                          wp_plugin:
+                            type: boolean
+                            description: Indicates whether or not [Cloudflare for WordPress
+                              plugin](https://wordpress.org/plugins/cloudflare/)
+                              is installed.
+                        required:
+                          - cache_by_device_type
+                          - cf
+                          - enabled
+                          - hostnames
+                          - wordpress
+                          - wp_plugin
                         description: Current value of the zone setting.
                       editable:
                         type: boolean
@@ -3546,7 +3579,40 @@ paths:
                         description: ID of the zone setting.
                       value:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          cache_by_device_type:
+                            type: boolean
+                            description: Indicates whether or not [cache by device
+                              type](https://developers.cloudflare.com/automatic-platform-optimization/reference/cache-device-type/)
+                              is enabled.
+                          cf:
+                            type: boolean
+                            description: Indicates whether or not Cloudflare proxy is enabled.
+                          enabled:
+                            type: boolean
+                            description: Indicates whether or not Automatic Platform Optimization is
+                              enabled.
+                          hostnames:
+                            type: array
+                            items:
+                              type: string
+                            description: An array of hostnames where Automatic Platform Optimization for
+                              WordPress is activated.
+                          wordpress:
+                            type: boolean
+                            description: Indicates whether or not site is powered by WordPress.
+                          wp_plugin:
+                            type: boolean
+                            description: Indicates whether or not [Cloudflare for WordPress
+                              plugin](https://wordpress.org/plugins/cloudflare/)
+                              is installed.
+                        required:
+                          - cache_by_device_type
+                          - cf
+                          - enabled
+                          - hostnames
+                          - wordpress
+                          - wp_plugin
                         description: Current value of the zone setting.
                       editable:
                         type: boolean
@@ -4068,7 +4134,43 @@ paths:
                     description: The price of the subscription that will be billed, in US dollars.
                   rate_plan:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      id:
+                        type: string
+                        enum:
+                          - free
+                          - lite
+                          - pro
+                          - pro_plus
+                          - business
+                          - enterprise
+                          - partners_free
+                          - partners_pro
+                          - partners_business
+                          - partners_enterprise
+                        description: The ID of the rate plan.
+                      currency:
+                        type: string
+                        description: The currency applied to the rate plan subscription.
+                      externally_managed:
+                        type: boolean
+                        description: Whether this rate plan is managed externally from Cloudflare.
+                      is_contract:
+                        type: boolean
+                        description: Whether a rate plan is enterprise-based (or newly adopted term
+                          contract).
+                      public_name:
+                        type: string
+                        description: The full name of the rate plan.
+                      scope:
+                        type: string
+                        description: The scope that this rate plan applies to.
+                      sets:
+                        type: array
+                        items:
+                          type: string
+                        description: The list of sets this rate plan applies to. Returns array of
+                          strings.
                     description: The rate plan applied to the subscription.
                   state:
                     type: string
@@ -4111,7 +4213,43 @@ paths:
                   description: "Body param: How often the subscription is renewed automatically."
                 rate_plan:
                   type: object
-                  additionalProperties: true
+                  properties:
+                    id:
+                      type: string
+                      enum:
+                        - free
+                        - lite
+                        - pro
+                        - pro_plus
+                        - business
+                        - enterprise
+                        - partners_free
+                        - partners_pro
+                        - partners_business
+                        - partners_enterprise
+                      description: The ID of the rate plan.
+                    currency:
+                      type: string
+                      description: The currency applied to the rate plan subscription.
+                    externally_managed:
+                      type: boolean
+                      description: Whether this rate plan is managed externally from Cloudflare.
+                    is_contract:
+                      type: boolean
+                      description: Whether a rate plan is enterprise-based (or newly adopted term
+                        contract).
+                    public_name:
+                      type: string
+                      description: The full name of the rate plan.
+                    scope:
+                      type: string
+                      description: The scope that this rate plan applies to.
+                    sets:
+                      type: array
+                      items:
+                        type: string
+                      description: The list of sets this rate plan applies to. Returns array of
+                        strings.
                   description: "Body param: The rate plan applied to the subscription."
       responses:
         "200":
@@ -4149,7 +4287,43 @@ paths:
                     description: The price of the subscription that will be billed, in US dollars.
                   rate_plan:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      id:
+                        type: string
+                        enum:
+                          - free
+                          - lite
+                          - pro
+                          - pro_plus
+                          - business
+                          - enterprise
+                          - partners_free
+                          - partners_pro
+                          - partners_business
+                          - partners_enterprise
+                        description: The ID of the rate plan.
+                      currency:
+                        type: string
+                        description: The currency applied to the rate plan subscription.
+                      externally_managed:
+                        type: boolean
+                        description: Whether this rate plan is managed externally from Cloudflare.
+                      is_contract:
+                        type: boolean
+                        description: Whether a rate plan is enterprise-based (or newly adopted term
+                          contract).
+                      public_name:
+                        type: string
+                        description: The full name of the rate plan.
+                      scope:
+                        type: string
+                        description: The scope that this rate plan applies to.
+                      sets:
+                        type: array
+                        items:
+                          type: string
+                        description: The list of sets this rate plan applies to. Returns array of
+                          strings.
                     description: The rate plan applied to the subscription.
                   state:
                     type: string
@@ -4192,7 +4366,43 @@ paths:
                   description: "Body param: How often the subscription is renewed automatically."
                 rate_plan:
                   type: object
-                  additionalProperties: true
+                  properties:
+                    id:
+                      type: string
+                      enum:
+                        - free
+                        - lite
+                        - pro
+                        - pro_plus
+                        - business
+                        - enterprise
+                        - partners_free
+                        - partners_pro
+                        - partners_business
+                        - partners_enterprise
+                      description: The ID of the rate plan.
+                    currency:
+                      type: string
+                      description: The currency applied to the rate plan subscription.
+                    externally_managed:
+                      type: boolean
+                      description: Whether this rate plan is managed externally from Cloudflare.
+                    is_contract:
+                      type: boolean
+                      description: Whether a rate plan is enterprise-based (or newly adopted term
+                        contract).
+                    public_name:
+                      type: string
+                      description: The full name of the rate plan.
+                    scope:
+                      type: string
+                      description: The scope that this rate plan applies to.
+                    sets:
+                      type: array
+                      items:
+                        type: string
+                      description: The list of sets this rate plan applies to. Returns array of
+                        strings.
                   description: "Body param: The rate plan applied to the subscription."
       responses:
         "200":
@@ -4230,7 +4440,43 @@ paths:
                     description: The price of the subscription that will be billed, in US dollars.
                   rate_plan:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      id:
+                        type: string
+                        enum:
+                          - free
+                          - lite
+                          - pro
+                          - pro_plus
+                          - business
+                          - enterprise
+                          - partners_free
+                          - partners_pro
+                          - partners_business
+                          - partners_enterprise
+                        description: The ID of the rate plan.
+                      currency:
+                        type: string
+                        description: The currency applied to the rate plan subscription.
+                      externally_managed:
+                        type: boolean
+                        description: Whether this rate plan is managed externally from Cloudflare.
+                      is_contract:
+                        type: boolean
+                        description: Whether a rate plan is enterprise-based (or newly adopted term
+                          contract).
+                      public_name:
+                        type: string
+                        description: The full name of the rate plan.
+                      scope:
+                        type: string
+                        description: The scope that this rate plan applies to.
+                      sets:
+                        type: array
+                        items:
+                          type: string
+                        description: The list of sets this rate plan applies to. Returns array of
+                          strings.
                     description: The rate plan applied to the subscription.
                   state:
                     type: string

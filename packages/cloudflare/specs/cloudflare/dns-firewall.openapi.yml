@@ -84,7 +84,89 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        dimensions:
+                          type: array
+                          items:
+                            type: string
+                          description: Array of dimension values, representing the combination of
+                            dimension values corresponding to this row.
+                        metrics:
+                          type: array
+                          items:
+                            type: number
+                          description: Array with one item per requested metric. Each item is a single
+                            value.
+                      required:
+                        - dimensions
+                        - metrics
+                    description: Array with one row per combination of dimension values.
+                  data_lag:
+                    type: number
+                    description: Number of seconds between current time and last processed event, in
+                      another words how many seconds of data could be missing.
+                  max:
+                    description: Maximum results for each metric (object mapping metric names to
+                      values). Currently always an empty object.
+                  min:
+                    description: Minimum results for each metric (object mapping metric names to
+                      values). Currently always an empty object.
+                  query:
+                    type: object
+                    properties:
+                      dimensions:
+                        type: array
+                        items:
+                          type: string
+                        description: Array of dimension names.
+                      limit:
+                        type: number
+                        description: Limit number of returned metrics.
+                      metrics:
+                        type: array
+                        items:
+                          type: string
+                        description: Array of metric names.
+                      since:
+                        type: string
+                        description: Start date and time of requesting data period in ISO 8601 format.
+                      until:
+                        type: string
+                        description: End date and time of requesting data period in ISO 8601 format.
+                      filters:
+                        type: string
+                        description: Segmentation filter in 'attribute operator value' format.
+                      sort:
+                        type: array
+                        items:
+                          type: string
+                        description: Array of dimensions to sort by, where each dimension may be
+                          prefixed by - (descending) or + (ascending).
+                    required:
+                      - dimensions
+                      - limit
+                      - metrics
+                      - since
+                      - until
+                  rows:
+                    type: number
+                    description: Total number of rows in the result.
+                  totals:
+                    description: Total results for metrics across all data (object mapping metric
+                      names to values).
+                required:
+                  - data
+                  - data_lag
+                  - max
+                  - min
+                  - query
+                  - rows
+                  - totals
       x-distilled-response-path: result
   /accounts/{account_id}/dns_firewall/{dnsFirewallId}/dns_analytics/report/bytime:
     get:
@@ -181,7 +263,116 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        dimensions:
+                          type: array
+                          items:
+                            type: string
+                          description: Array of dimension values, representing the combination of
+                            dimension values corresponding to this row.
+                        metrics:
+                          type: array
+                          items:
+                            type: array
+                            items:
+                              type: number
+                          description: Array with one item per requested metric. Each item is an array of
+                            values, broken down by time interval.
+                      required:
+                        - dimensions
+                        - metrics
+                    description: Array with one row per combination of dimension values.
+                  data_lag:
+                    type: number
+                    description: Number of seconds between current time and last processed event, in
+                      another words how many seconds of data could be missing.
+                  max:
+                    description: Maximum results for each metric (object mapping metric names to
+                      values). Currently always an empty object.
+                  min:
+                    description: Minimum results for each metric (object mapping metric names to
+                      values). Currently always an empty object.
+                  query:
+                    type: object
+                    properties:
+                      dimensions:
+                        type: array
+                        items:
+                          type: string
+                        description: Array of dimension names.
+                      limit:
+                        type: number
+                        description: Limit number of returned metrics.
+                      metrics:
+                        type: array
+                        items:
+                          type: string
+                        description: Array of metric names.
+                      since:
+                        type: string
+                        description: Start date and time of requesting data period in ISO 8601 format.
+                      time_delta:
+                        type: string
+                        enum:
+                          - all
+                          - auto
+                          - year
+                          - quarter
+                          - month
+                          - week
+                          - day
+                          - hour
+                          - dekaminute
+                          - minute
+                        description: Unit of time to group data by.
+                      until:
+                        type: string
+                        description: End date and time of requesting data period in ISO 8601 format.
+                      filters:
+                        type: string
+                        description: Segmentation filter in 'attribute operator value' format.
+                      sort:
+                        type: array
+                        items:
+                          type: string
+                        description: Array of dimensions to sort by, where each dimension may be
+                          prefixed by - (descending) or + (ascending).
+                    required:
+                      - dimensions
+                      - limit
+                      - metrics
+                      - since
+                      - time_delta
+                      - until
+                  rows:
+                    type: number
+                    description: Total number of rows in the result.
+                  time_intervals:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: string
+                    description: "Array of time intervals in the response data. Each interval is
+                      represented as an array containing two values: the start
+                      time, and the end time."
+                  totals:
+                    description: Total results for metrics across all data (object mapping metric
+                      names to values).
+                required:
+                  - data
+                  - data_lag
+                  - max
+                  - min
+                  - query
+                  - rows
+                  - time_intervals
+                  - totals
       x-distilled-response-path: result
   /accounts/{account_id}/dns_firewall/{dnsFirewallId}:
     get:

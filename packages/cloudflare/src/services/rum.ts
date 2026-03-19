@@ -510,7 +510,17 @@ export interface GetSiteInfoResponse {
   autoInstall?: boolean | null;
   created?: string | null;
   /** A list of rules. */
-  rules?: unknown[] | null;
+  rules?:
+    | {
+        id?: string | null;
+        created?: string | null;
+        host?: string | null;
+        inclusive?: boolean | null;
+        isPaused?: boolean | null;
+        paths?: string[] | null;
+        priority?: number | null;
+      }[]
+    | null;
   ruleset?: {
     id?: string | null;
     enabled?: boolean | null;
@@ -529,7 +539,36 @@ export const GetSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   rules: Schema.optional(
-    Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          inclusive: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          isPaused: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          paths: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+          priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            created: "created",
+            host: "host",
+            inclusive: "inclusive",
+            isPaused: "is_paused",
+            paths: "paths",
+            priority: "priority",
+          }),
+        ),
+      ),
+      Schema.Null,
+    ]),
   ),
   ruleset: Schema.optional(
     Schema.Union([
@@ -601,7 +640,17 @@ export interface ListSiteInfosResponse {
   result: {
     autoInstall?: boolean | null;
     created?: string | null;
-    rules?: unknown[] | null;
+    rules?:
+      | {
+          id?: string | null;
+          created?: string | null;
+          host?: string | null;
+          inclusive?: boolean | null;
+          isPaused?: boolean | null;
+          paths?: string[] | null;
+          priority?: number | null;
+        }[]
+      | null;
     ruleset?: {
       id?: string | null;
       enabled?: boolean | null;
@@ -626,7 +675,40 @@ export const ListSiteInfosResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       rules: Schema.optional(
-        Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              created: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              inclusive: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              isPaused: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              paths: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              priority: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                id: "id",
+                created: "created",
+                host: "host",
+                inclusive: "inclusive",
+                isPaused: "is_paused",
+                paths: "paths",
+                priority: "priority",
+              }),
+            ),
+          ),
+          Schema.Null,
+        ]),
       ),
       ruleset: Schema.optional(
         Schema.Union([
@@ -699,11 +781,23 @@ export const listSiteInfos: API.PaginatedOperationMethod<
     ListSiteInfosError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSiteInfosRequest) => stream.Stream<
+  items: (
+    input: ListSiteInfosRequest,
+  ) => stream.Stream<
     {
       autoInstall?: boolean | null;
       created?: string | null;
-      rules?: unknown[] | null;
+      rules?:
+        | {
+            id?: string | null;
+            created?: string | null;
+            host?: string | null;
+            inclusive?: boolean | null;
+            isPaused?: boolean | null;
+            paths?: string[] | null;
+            priority?: number | null;
+          }[]
+        | null;
       ruleset?: {
         id?: string | null;
         enabled?: boolean | null;
@@ -760,7 +854,17 @@ export interface CreateSiteInfoResponse {
   autoInstall?: boolean | null;
   created?: string | null;
   /** A list of rules. */
-  rules?: unknown[] | null;
+  rules?:
+    | {
+        id?: string | null;
+        created?: string | null;
+        host?: string | null;
+        inclusive?: boolean | null;
+        isPaused?: boolean | null;
+        paths?: string[] | null;
+        priority?: number | null;
+      }[]
+    | null;
   ruleset?: {
     id?: string | null;
     enabled?: boolean | null;
@@ -780,7 +884,40 @@ export const CreateSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     rules: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            created: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            inclusive: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            isPaused: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            paths: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            priority: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              created: "created",
+              host: "host",
+              inclusive: "inclusive",
+              isPaused: "is_paused",
+              paths: "paths",
+              priority: "priority",
+            }),
+          ),
+        ),
+        Schema.Null,
+      ]),
     ),
     ruleset: Schema.optional(
       Schema.Union([
@@ -876,7 +1013,17 @@ export interface UpdateSiteInfoResponse {
   autoInstall?: boolean | null;
   created?: string | null;
   /** A list of rules. */
-  rules?: unknown[] | null;
+  rules?:
+    | {
+        id?: string | null;
+        created?: string | null;
+        host?: string | null;
+        inclusive?: boolean | null;
+        isPaused?: boolean | null;
+        paths?: string[] | null;
+        priority?: number | null;
+      }[]
+    | null;
   ruleset?: {
     id?: string | null;
     enabled?: boolean | null;
@@ -896,7 +1043,40 @@ export const UpdateSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     rules: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            created: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            inclusive: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            isPaused: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            paths: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            priority: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              created: "created",
+              host: "host",
+              inclusive: "inclusive",
+              isPaused: "is_paused",
+              paths: "paths",
+              priority: "priority",
+            }),
+          ),
+        ),
+        Schema.Null,
+      ]),
     ),
     ruleset: Schema.optional(
       Schema.Union([

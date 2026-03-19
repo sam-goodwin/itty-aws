@@ -352,11 +352,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties: true
       x-distilled-errors:
         ImagesAccessNotEnabled:
           - code: 5403
@@ -1012,7 +1007,35 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        id:
+                          type: string
+                          description: Image unique identifier.
+                        creator:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: Can set the creator field with an internal user ID.
+                        filename:
+                          type: string
+                          description: Image file name.
+                        meta:
+                          description: User modifiable key-value store. Can be used for keeping references
+                            to another system of record for managing images.
+                            Metadata must not exceed 1024 bytes.
+                        requireSignedURLs:
+                          type: boolean
+                          description: Indicates whether the image can be a accessed only using it's UID.
+                            If set to true, a signed token needs to be generated
+                            with a signing key to view the image.
+                        uploaded:
+                          type: string
+                          description: When the media item was uploaded.
+                        variants:
+                          type: array
+                          items:
+                            type: string
+                          description: Object specifying available variants for an image.
       x-distilled-response-path: result
       x-distilled-errors:
         ImagesAccessNotEnabled:

@@ -300,13 +300,94 @@ paths:
                                   type: string
                                 missing:
                                   type: object
-                                  additionalProperties: true
+                                  properties:
+                                    content:
+                                      type: string
+                                      description: DNS record content.
+                                    name:
+                                      type: string
+                                      description: DNS record name (or @ for the zone apex).
+                                    priority:
+                                      type: number
+                                      description: Required for MX, SRV and URI records. Unused by other record types.
+                                        Records with lower priorities are
+                                        preferred.
+                                    ttl:
+                                      oneOf:
+                                        - type: number
+                                        - type: number
+                                          enum:
+                                            - 1
+                                      description: Time to live, in seconds, of the DNS record. Must be between 60 and
+                                        86400, or 1 for 'automatic'.
+                                    type:
+                                      type: string
+                                      enum:
+                                        - A
+                                        - AAAA
+                                        - CNAME
+                                        - HTTPS
+                                        - TXT
+                                        - SRV
+                                        - LOC
+                                        - MX
+                                        - NS
+                                        - CERT
+                                        - DNSKEY
+                                        - DS
+                                        - NAPTR
+                                        - SMIMEA
+                                        - SSHFP
+                                        - SVCB
+                                        - TLSA
+                                        - URI
+                                      description: DNS record type.
                                   description: List of records needed to enable an Email Routing zone.
                           record:
                             type: array
                             items:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                content:
+                                  type: string
+                                  description: DNS record content.
+                                name:
+                                  type: string
+                                  description: DNS record name (or @ for the zone apex).
+                                priority:
+                                  type: number
+                                  description: Required for MX, SRV and URI records. Unused by other record types.
+                                    Records with lower priorities are preferred.
+                                ttl:
+                                  oneOf:
+                                    - type: number
+                                    - type: number
+                                      enum:
+                                        - 1
+                                  description: Time to live, in seconds, of the DNS record. Must be between 60 and
+                                    86400, or 1 for 'automatic'.
+                                type:
+                                  type: string
+                                  enum:
+                                    - A
+                                    - AAAA
+                                    - CNAME
+                                    - HTTPS
+                                    - TXT
+                                    - SRV
+                                    - LOC
+                                    - MX
+                                    - NS
+                                    - CERT
+                                    - DNSKEY
+                                    - DS
+                                    - NAPTR
+                                    - SMIMEA
+                                    - SSHFP
+                                    - SVCB
+                                    - TLSA
+                                    - URI
+                                  description: DNS record type.
                       result_info:
                         type: object
                         properties:
@@ -375,7 +456,47 @@ paths:
                         type: array
                         items:
                           type: object
-                          additionalProperties: true
+                          properties:
+                            content:
+                              type: string
+                              description: DNS record content.
+                            name:
+                              type: string
+                              description: DNS record name (or @ for the zone apex).
+                            priority:
+                              type: number
+                              description: Required for MX, SRV and URI records. Unused by other record types.
+                                Records with lower priorities are preferred.
+                            ttl:
+                              oneOf:
+                                - type: number
+                                - type: number
+                                  enum:
+                                    - 1
+                              description: Time to live, in seconds, of the DNS record. Must be between 60 and
+                                86400, or 1 for 'automatic'.
+                            type:
+                              type: string
+                              enum:
+                                - A
+                                - AAAA
+                                - CNAME
+                                - HTTPS
+                                - TXT
+                                - SRV
+                                - LOC
+                                - MX
+                                - NS
+                                - CERT
+                                - DNSKEY
+                                - DS
+                                - NAPTR
+                                - SMIMEA
+                                - SSHFP
+                                - SVCB
+                                - TLSA
+                                - URI
+                              description: DNS record type.
                       result_info:
                         type: object
                         properties:
@@ -425,7 +546,49 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Email Routing settings identifier.
+                  enabled:
+                    type: boolean
+                    enum:
+                      - true
+                      - false
+                    description: State of the zone settings for Email Routing.
+                  name:
+                    type: string
+                    description: Domain of your zone.
+                  created:
+                    type: string
+                    description: The date and time the settings have been created.
+                  modified:
+                    type: string
+                    description: The date and time the settings have been modified.
+                  skip_wizard:
+                    type: boolean
+                    enum:
+                      - true
+                      - false
+                    description: Flag to check if the user skipped the configuration wizard.
+                  status:
+                    type: string
+                    enum:
+                      - ready
+                      - unconfigured
+                      - misconfigured
+                      - misconfigured/locked
+                      - unlocked
+                    description: Show the state of your account, and the type or configuration
+                      error.
+                  tag:
+                    type: string
+                    description: "@deprecated Email Routing settings tag. (Deprecated, replaced by
+                      Email Routing settings identifier)"
+                required:
+                  - id
+                  - enabled
+                  - name
       x-distilled-response-path: result
     patch:
       operationId: patchDns
@@ -456,7 +619,49 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
+                properties:
+                  id:
+                    type: string
+                    description: Email Routing settings identifier.
+                  enabled:
+                    type: boolean
+                    enum:
+                      - true
+                      - false
+                    description: State of the zone settings for Email Routing.
+                  name:
+                    type: string
+                    description: Domain of your zone.
+                  created:
+                    type: string
+                    description: The date and time the settings have been created.
+                  modified:
+                    type: string
+                    description: The date and time the settings have been modified.
+                  skip_wizard:
+                    type: boolean
+                    enum:
+                      - true
+                      - false
+                    description: Flag to check if the user skipped the configuration wizard.
+                  status:
+                    type: string
+                    enum:
+                      - ready
+                      - unconfigured
+                      - misconfigured
+                      - misconfigured/locked
+                      - unlocked
+                    description: Show the state of your account, and the type or configuration
+                      error.
+                  tag:
+                    type: string
+                    description: "@deprecated Email Routing settings tag. (Deprecated, replaced by
+                      Email Routing settings identifier)"
+                required:
+                  - id
+                  - enabled
+                  - name
       x-distilled-response-path: result
     delete:
       operationId: deleteDns

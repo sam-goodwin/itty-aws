@@ -50,6 +50,10 @@ paths:
                           max_rows:
                             type: number
                             description: Specifies rough maximum number of rows per file.
+                        required:
+                          - max_bytes
+                          - max_duration_s
+                          - max_rows
                       compression:
                         type: object
                         properties:
@@ -60,6 +64,8 @@ paths:
                               - gzip
                               - deflate
                             description: Specifies the desired compression algorithm and format.
+                        required:
+                          - type
                       format:
                         type: string
                         enum:
@@ -326,6 +332,10 @@ paths:
                           max_rows:
                             type: number
                             description: Specifies rough maximum number of rows per file.
+                        required:
+                          - max_bytes
+                          - max_duration_s
+                          - max_rows
                       compression:
                         type: object
                         properties:
@@ -336,6 +346,8 @@ paths:
                               - gzip
                               - deflate
                             description: Specifies the desired compression algorithm and format.
+                        required:
+                          - type
                       format:
                         type: string
                         enum:
@@ -534,6 +546,10 @@ paths:
                                 max_rows:
                                   type: number
                                   description: Specifies rough maximum number of rows per file.
+                              required:
+                                - max_bytes
+                                - max_duration_s
+                                - max_rows
                             compression:
                               type: object
                               properties:
@@ -544,6 +560,8 @@ paths:
                                     - gzip
                                     - deflate
                                   description: Specifies the desired compression algorithm and format.
+                              required:
+                                - type
                             format:
                               type: string
                               enum:
@@ -808,6 +826,10 @@ paths:
                           max_rows:
                             type: number
                             description: Specifies rough maximum number of rows per file.
+                        required:
+                          - max_bytes
+                          - max_duration_s
+                          - max_rows
                       compression:
                         type: object
                         properties:
@@ -818,6 +840,8 @@ paths:
                               - gzip
                               - deflate
                             description: Specifies the desired compression algorithm and format.
+                        required:
+                          - type
                       format:
                         type: string
                         enum:
@@ -1268,19 +1292,16 @@ paths:
                                   type: string
                                   enum:
                                     - json
-                                decimal_encoding:
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
                                   type: string
-                                  enum:
-                                    - number
-                                    - string
-                                    - bytes
-                                timestamp_format:
-                                  type: string
-                                  enum:
-                                    - rfc3339
-                                    - unix_millis
-                                unstructured:
+                                required:
                                   type: boolean
+                                sql_name:
+                                  type: string
                               required:
                                 - type
                             - type: object
@@ -1295,19 +1316,16 @@ paths:
                                 type: string
                                 enum:
                                   - json
-                              decimal_encoding:
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
                                 type: string
-                                enum:
-                                  - number
-                                  - string
-                                  - bytes
-                              timestamp_format:
-                                type: string
-                                enum:
-                                  - rfc3339
-                                  - unix_millis
-                              unstructured:
+                              required:
                                 type: boolean
+                              sql_name:
+                                type: string
                             required:
                               - type
                           - type: object
@@ -1735,19 +1753,16 @@ paths:
                                   type: string
                                   enum:
                                     - json
-                                decimal_encoding:
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
                                   type: string
-                                  enum:
-                                    - number
-                                    - string
-                                    - bytes
-                                timestamp_format:
-                                  type: string
-                                  enum:
-                                    - rfc3339
-                                    - unix_millis
-                                unstructured:
+                                required:
                                   type: boolean
+                                sql_name:
+                                  type: string
                               required:
                                 - type
                             - type: object
@@ -1762,19 +1777,16 @@ paths:
                                 type: string
                                 enum:
                                   - json
-                              decimal_encoding:
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
                                 type: string
-                                enum:
-                                  - number
-                                  - string
-                                  - bytes
-                              timestamp_format:
-                                type: string
-                                enum:
-                                  - rfc3339
-                                  - unix_millis
-                              unstructured:
+                              required:
                                 type: boolean
+                              sql_name:
+                                type: string
                             required:
                               - type
                           - type: object
@@ -2156,19 +2168,16 @@ paths:
                                 type: string
                                 enum:
                                   - json
-                              decimal_encoding:
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
                                 type: string
-                                enum:
-                                  - number
-                                  - string
-                                  - bytes
-                              timestamp_format:
-                                type: string
-                                enum:
-                                  - rfc3339
-                                  - unix_millis
-                              unstructured:
+                              required:
                                 type: boolean
+                              sql_name:
+                                type: string
                             required:
                               - type
                           - type: object
@@ -2183,19 +2192,16 @@ paths:
                               type: string
                               enum:
                                 - json
-                            decimal_encoding:
+                            metadata_key:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                            name:
                               type: string
-                              enum:
-                                - number
-                                - string
-                                - bytes
-                            timestamp_format:
-                              type: string
-                              enum:
-                                - rfc3339
-                                - unix_millis
-                            unstructured:
+                            required:
                               type: boolean
+                            sql_name:
+                              type: string
                           required:
                             - type
                         - type: object
@@ -2568,19 +2574,16 @@ paths:
                                   type: string
                                   enum:
                                     - json
-                                decimal_encoding:
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
                                   type: string
-                                  enum:
-                                    - number
-                                    - string
-                                    - bytes
-                                timestamp_format:
-                                  type: string
-                                  enum:
-                                    - rfc3339
-                                    - unix_millis
-                                unstructured:
+                                required:
                                   type: boolean
+                                sql_name:
+                                  type: string
                               required:
                                 - type
                             - type: object
@@ -2595,19 +2598,16 @@ paths:
                                 type: string
                                 enum:
                                   - json
-                              decimal_encoding:
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
                                 type: string
-                                enum:
-                                  - number
-                                  - string
-                                  - bytes
-                              timestamp_format:
-                                type: string
-                                enum:
-                                  - rfc3339
-                                  - unix_millis
-                              unstructured:
+                              required:
                                 type: boolean
+                              sql_name:
+                                type: string
                             required:
                               - type
                           - type: object
@@ -3007,19 +3007,16 @@ paths:
                                   type: string
                                   enum:
                                     - json
-                                decimal_encoding:
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
                                   type: string
-                                  enum:
-                                    - number
-                                    - string
-                                    - bytes
-                                timestamp_format:
-                                  type: string
-                                  enum:
-                                    - rfc3339
-                                    - unix_millis
-                                unstructured:
+                                required:
                                   type: boolean
+                                sql_name:
+                                  type: string
                               required:
                                 - type
                             - type: object
@@ -3034,19 +3031,16 @@ paths:
                                 type: string
                                 enum:
                                   - json
-                              decimal_encoding:
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
                                 type: string
-                                enum:
-                                  - number
-                                  - string
-                                  - bytes
-                              timestamp_format:
-                                type: string
-                                enum:
-                                  - rfc3339
-                                  - unix_millis
-                              unstructured:
+                              required:
                                 type: boolean
+                              sql_name:
+                                type: string
                             required:
                               - type
                           - type: object
@@ -3557,19 +3551,16 @@ paths:
                                   type: string
                                   enum:
                                     - json
-                                decimal_encoding:
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
                                   type: string
-                                  enum:
-                                    - number
-                                    - string
-                                    - bytes
-                                timestamp_format:
-                                  type: string
-                                  enum:
-                                    - rfc3339
-                                    - unix_millis
-                                unstructured:
+                                required:
                                   type: boolean
+                                sql_name:
+                                  type: string
                               required:
                                 - type
                             - type: object
@@ -3584,19 +3575,16 @@ paths:
                                 type: string
                                 enum:
                                   - json
-                              decimal_encoding:
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
                                 type: string
-                                enum:
-                                  - number
-                                  - string
-                                  - bytes
-                              timestamp_format:
-                                type: string
-                                enum:
-                                  - rfc3339
-                                  - unix_millis
-                              unstructured:
+                              required:
                                 type: boolean
+                              sql_name:
+                                type: string
                             required:
                               - type
                           - type: object
@@ -3883,19 +3871,16 @@ paths:
                                 type: string
                                 enum:
                                   - json
-                              decimal_encoding:
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
                                 type: string
-                                enum:
-                                  - number
-                                  - string
-                                  - bytes
-                              timestamp_format:
-                                type: string
-                                enum:
-                                  - rfc3339
-                                  - unix_millis
-                              unstructured:
+                              required:
                                 type: boolean
+                              sql_name:
+                                type: string
                             required:
                               - type
                           - type: object
@@ -3910,19 +3895,16 @@ paths:
                               type: string
                               enum:
                                 - json
-                            decimal_encoding:
+                            metadata_key:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                            name:
                               type: string
-                              enum:
-                                - number
-                                - string
-                                - bytes
-                            timestamp_format:
-                              type: string
-                              enum:
-                                - rfc3339
-                                - unix_millis
-                            unstructured:
+                            required:
                               type: boolean
+                            sql_name:
+                              type: string
                           required:
                             - type
                         - type: object
@@ -4220,19 +4202,16 @@ paths:
                                   type: string
                                   enum:
                                     - json
-                                decimal_encoding:
+                                metadata_key:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                name:
                                   type: string
-                                  enum:
-                                    - number
-                                    - string
-                                    - bytes
-                                timestamp_format:
-                                  type: string
-                                  enum:
-                                    - rfc3339
-                                    - unix_millis
-                                unstructured:
+                                required:
                                   type: boolean
+                                sql_name:
+                                  type: string
                               required:
                                 - type
                             - type: object
@@ -4247,19 +4226,16 @@ paths:
                                 type: string
                                 enum:
                                   - json
-                              decimal_encoding:
+                              metadata_key:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              name:
                                 type: string
-                                enum:
-                                  - number
-                                  - string
-                                  - bytes
-                              timestamp_format:
-                                type: string
-                                enum:
-                                  - rfc3339
-                                  - unix_millis
-                              unstructured:
+                              required:
                                 type: boolean
+                              sql_name:
+                                type: string
                             required:
                               - type
                           - type: object

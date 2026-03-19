@@ -167,7 +167,40 @@ paths:
                             description: If the deployment has been skipped.
                           latest_stage:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              ended_on:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                                description: When the stage ended.
+                              name:
+                                type: string
+                                enum:
+                                  - queued
+                                  - initialize
+                                  - clone_repo
+                                  - build
+                                  - deploy
+                                description: The current build stage.
+                              started_on:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                                description: When the stage started.
+                              status:
+                                type: string
+                                enum:
+                                  - success
+                                  - idle
+                                  - active
+                                  - failure
+                                  - canceled
+                                description: State of the current stage.
+                            required:
+                              - ended_on
+                              - name
+                              - started_on
+                              - status
                             description: The status of the deployment.
                           modified_on:
                             type: string
@@ -252,6 +285,20 @@ paths:
                                   repo_name:
                                     type: string
                                     description: The name of the repository.
+                                required:
+                                  - deployments_enabled
+                                  - owner
+                                  - owner_id
+                                  - path_excludes
+                                  - path_includes
+                                  - pr_comments_enabled
+                                  - preview_branch_excludes
+                                  - preview_branch_includes
+                                  - preview_deployment_setting
+                                  - production_branch
+                                  - production_deployments_enabled
+                                  - repo_id
+                                  - repo_name
                               type:
                                 type: string
                                 enum:
@@ -266,7 +313,40 @@ paths:
                             type: array
                             items:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                ended_on:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                  description: When the stage ended.
+                                name:
+                                  type: string
+                                  enum:
+                                    - queued
+                                    - initialize
+                                    - clone_repo
+                                    - build
+                                    - deploy
+                                  description: The current build stage.
+                                started_on:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                  description: When the stage started.
+                                status:
+                                  type: string
+                                  enum:
+                                    - success
+                                    - idle
+                                    - active
+                                    - failure
+                                    - canceled
+                                  description: State of the current stage.
+                              required:
+                                - ended_on
+                                - name
+                                - started_on
+                                - status
                             description: List of past stages.
                           url:
                             type: string
@@ -304,22 +384,10 @@ paths:
                       preview:
                         type: object
                         properties:
-                          ai_bindings:
-                            type: object
-                            additionalProperties: true
-                            description: Constellation bindings used for Pages Functions.
                           always_use_latest_compatibility_date:
                             type: boolean
                             description: Whether to always use the latest compatibility date for Pages
                               Functions.
-                          analytics_engine_datasets:
-                            type: object
-                            additionalProperties: true
-                            description: Analytics Engine bindings used for Pages Functions.
-                          browsers:
-                            type: object
-                            additionalProperties: true
-                            description: Browser bindings used for Pages Functions.
                           build_image_major_version:
                             type: number
                             description: The major version of the build image to use for Pages Functions.
@@ -331,6 +399,34 @@ paths:
                             items:
                               type: string
                             description: Compatibility flags used for Pages Functions.
+                          env_vars:
+                            oneOf:
+                              - type: object
+                                additionalProperties: true
+                            nullable: true
+                            description: Environment variables used for builds and Pages Functions.
+                          fail_open:
+                            type: boolean
+                            description: Whether to fail open when the deployment config cannot be applied.
+                          usage_model:
+                            type: string
+                            enum:
+                              - standard
+                              - bundled
+                              - unbound
+                            description: "@deprecated All new projects now use the Standard usage model."
+                          ai_bindings:
+                            type: object
+                            additionalProperties: true
+                            description: Constellation bindings used for Pages Functions.
+                          analytics_engine_datasets:
+                            type: object
+                            additionalProperties: true
+                            description: Analytics Engine bindings used for Pages Functions.
+                          browsers:
+                            type: object
+                            additionalProperties: true
+                            description: Browser bindings used for Pages Functions.
                           d1_databases:
                             type: object
                             additionalProperties: true
@@ -339,13 +435,6 @@ paths:
                             type: object
                             additionalProperties: true
                             description: Durable Object namespaces used for Pages Functions.
-                          env_vars:
-                            type: object
-                            additionalProperties: true
-                            description: Environment variables used for builds and Pages Functions.
-                          fail_open:
-                            type: boolean
-                            description: Whether to fail open when the deployment config cannot be applied.
                           hyperdrive_bindings:
                             type: object
                             additionalProperties: true
@@ -388,13 +477,6 @@ paths:
                             type: object
                             additionalProperties: true
                             description: Services used for Pages Functions.
-                          usage_model:
-                            type: string
-                            enum:
-                              - standard
-                              - bundled
-                              - unbound
-                            description: "@deprecated All new projects now use the Standard usage model."
                           vectorize_bindings:
                             type: object
                             additionalProperties: true
@@ -402,26 +484,22 @@ paths:
                           wrangler_config_hash:
                             type: string
                             description: Hash of the Wrangler configuration used for the deployment.
+                        required:
+                          - always_use_latest_compatibility_date
+                          - build_image_major_version
+                          - compatibility_date
+                          - compatibility_flags
+                          - env_vars
+                          - fail_open
+                          - usage_model
                         description: Configs for preview deploys.
                       production:
                         type: object
                         properties:
-                          ai_bindings:
-                            type: object
-                            additionalProperties: true
-                            description: Constellation bindings used for Pages Functions.
                           always_use_latest_compatibility_date:
                             type: boolean
                             description: Whether to always use the latest compatibility date for Pages
                               Functions.
-                          analytics_engine_datasets:
-                            type: object
-                            additionalProperties: true
-                            description: Analytics Engine bindings used for Pages Functions.
-                          browsers:
-                            type: object
-                            additionalProperties: true
-                            description: Browser bindings used for Pages Functions.
                           build_image_major_version:
                             type: number
                             description: The major version of the build image to use for Pages Functions.
@@ -433,6 +511,34 @@ paths:
                             items:
                               type: string
                             description: Compatibility flags used for Pages Functions.
+                          env_vars:
+                            oneOf:
+                              - type: object
+                                additionalProperties: true
+                            nullable: true
+                            description: Environment variables used for builds and Pages Functions.
+                          fail_open:
+                            type: boolean
+                            description: Whether to fail open when the deployment config cannot be applied.
+                          usage_model:
+                            type: string
+                            enum:
+                              - standard
+                              - bundled
+                              - unbound
+                            description: "@deprecated All new projects now use the Standard usage model."
+                          ai_bindings:
+                            type: object
+                            additionalProperties: true
+                            description: Constellation bindings used for Pages Functions.
+                          analytics_engine_datasets:
+                            type: object
+                            additionalProperties: true
+                            description: Analytics Engine bindings used for Pages Functions.
+                          browsers:
+                            type: object
+                            additionalProperties: true
+                            description: Browser bindings used for Pages Functions.
                           d1_databases:
                             type: object
                             additionalProperties: true
@@ -441,13 +547,6 @@ paths:
                             type: object
                             additionalProperties: true
                             description: Durable Object namespaces used for Pages Functions.
-                          env_vars:
-                            type: object
-                            additionalProperties: true
-                            description: Environment variables used for builds and Pages Functions.
-                          fail_open:
-                            type: boolean
-                            description: Whether to fail open when the deployment config cannot be applied.
                           hyperdrive_bindings:
                             type: object
                             additionalProperties: true
@@ -490,13 +589,6 @@ paths:
                             type: object
                             additionalProperties: true
                             description: Services used for Pages Functions.
-                          usage_model:
-                            type: string
-                            enum:
-                              - standard
-                              - bundled
-                              - unbound
-                            description: "@deprecated All new projects now use the Standard usage model."
                           vectorize_bindings:
                             type: object
                             additionalProperties: true
@@ -504,6 +596,14 @@ paths:
                           wrangler_config_hash:
                             type: string
                             description: Hash of the Wrangler configuration used for the deployment.
+                        required:
+                          - always_use_latest_compatibility_date
+                          - build_image_major_version
+                          - compatibility_date
+                          - compatibility_flags
+                          - env_vars
+                          - fail_open
+                          - usage_model
                         description: Configs for production deploys.
                     required:
                       - preview
@@ -621,7 +721,40 @@ paths:
                             description: If the deployment has been skipped.
                           latest_stage:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              ended_on:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                                description: When the stage ended.
+                              name:
+                                type: string
+                                enum:
+                                  - queued
+                                  - initialize
+                                  - clone_repo
+                                  - build
+                                  - deploy
+                                description: The current build stage.
+                              started_on:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                                description: When the stage started.
+                              status:
+                                type: string
+                                enum:
+                                  - success
+                                  - idle
+                                  - active
+                                  - failure
+                                  - canceled
+                                description: State of the current stage.
+                            required:
+                              - ended_on
+                              - name
+                              - started_on
+                              - status
                             description: The status of the deployment.
                           modified_on:
                             type: string
@@ -706,6 +839,20 @@ paths:
                                   repo_name:
                                     type: string
                                     description: The name of the repository.
+                                required:
+                                  - deployments_enabled
+                                  - owner
+                                  - owner_id
+                                  - path_excludes
+                                  - path_includes
+                                  - pr_comments_enabled
+                                  - preview_branch_excludes
+                                  - preview_branch_includes
+                                  - preview_deployment_setting
+                                  - production_branch
+                                  - production_deployments_enabled
+                                  - repo_id
+                                  - repo_name
                               type:
                                 type: string
                                 enum:
@@ -720,7 +867,40 @@ paths:
                             type: array
                             items:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                ended_on:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                  description: When the stage ended.
+                                name:
+                                  type: string
+                                  enum:
+                                    - queued
+                                    - initialize
+                                    - clone_repo
+                                    - build
+                                    - deploy
+                                  description: The current build stage.
+                                started_on:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                  description: When the stage started.
+                                status:
+                                  type: string
+                                  enum:
+                                    - success
+                                    - idle
+                                    - active
+                                    - failure
+                                    - canceled
+                                  description: State of the current stage.
+                              required:
+                                - ended_on
+                                - name
+                                - started_on
+                                - status
                             description: List of past stages.
                           url:
                             type: string
@@ -876,6 +1056,20 @@ paths:
                           repo_name:
                             type: string
                             description: The name of the repository.
+                        required:
+                          - deployments_enabled
+                          - owner
+                          - owner_id
+                          - path_excludes
+                          - path_includes
+                          - pr_comments_enabled
+                          - preview_branch_excludes
+                          - preview_branch_includes
+                          - preview_deployment_setting
+                          - production_branch
+                          - production_deployments_enabled
+                          - repo_id
+                          - repo_name
                       type:
                         type: string
                         enum:
@@ -1364,7 +1558,40 @@ paths:
                             description: If the deployment has been skipped.
                           latest_stage:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              ended_on:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                                description: When the stage ended.
+                              name:
+                                type: string
+                                enum:
+                                  - queued
+                                  - initialize
+                                  - clone_repo
+                                  - build
+                                  - deploy
+                                description: The current build stage.
+                              started_on:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                                description: When the stage started.
+                              status:
+                                type: string
+                                enum:
+                                  - success
+                                  - idle
+                                  - active
+                                  - failure
+                                  - canceled
+                                description: State of the current stage.
+                            required:
+                              - ended_on
+                              - name
+                              - started_on
+                              - status
                             description: The status of the deployment.
                           modified_on:
                             type: string
@@ -1449,6 +1676,20 @@ paths:
                                   repo_name:
                                     type: string
                                     description: The name of the repository.
+                                required:
+                                  - deployments_enabled
+                                  - owner
+                                  - owner_id
+                                  - path_excludes
+                                  - path_includes
+                                  - pr_comments_enabled
+                                  - preview_branch_excludes
+                                  - preview_branch_includes
+                                  - preview_deployment_setting
+                                  - production_branch
+                                  - production_deployments_enabled
+                                  - repo_id
+                                  - repo_name
                               type:
                                 type: string
                                 enum:
@@ -1463,7 +1704,40 @@ paths:
                             type: array
                             items:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                ended_on:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                  description: When the stage ended.
+                                name:
+                                  type: string
+                                  enum:
+                                    - queued
+                                    - initialize
+                                    - clone_repo
+                                    - build
+                                    - deploy
+                                  description: The current build stage.
+                                started_on:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                  description: When the stage started.
+                                status:
+                                  type: string
+                                  enum:
+                                    - success
+                                    - idle
+                                    - active
+                                    - failure
+                                    - canceled
+                                  description: State of the current stage.
+                              required:
+                                - ended_on
+                                - name
+                                - started_on
+                                - status
                             description: List of past stages.
                           url:
                             type: string
@@ -1501,22 +1775,10 @@ paths:
                       preview:
                         type: object
                         properties:
-                          ai_bindings:
-                            type: object
-                            additionalProperties: true
-                            description: Constellation bindings used for Pages Functions.
                           always_use_latest_compatibility_date:
                             type: boolean
                             description: Whether to always use the latest compatibility date for Pages
                               Functions.
-                          analytics_engine_datasets:
-                            type: object
-                            additionalProperties: true
-                            description: Analytics Engine bindings used for Pages Functions.
-                          browsers:
-                            type: object
-                            additionalProperties: true
-                            description: Browser bindings used for Pages Functions.
                           build_image_major_version:
                             type: number
                             description: The major version of the build image to use for Pages Functions.
@@ -1528,6 +1790,34 @@ paths:
                             items:
                               type: string
                             description: Compatibility flags used for Pages Functions.
+                          env_vars:
+                            oneOf:
+                              - type: object
+                                additionalProperties: true
+                            nullable: true
+                            description: Environment variables used for builds and Pages Functions.
+                          fail_open:
+                            type: boolean
+                            description: Whether to fail open when the deployment config cannot be applied.
+                          usage_model:
+                            type: string
+                            enum:
+                              - standard
+                              - bundled
+                              - unbound
+                            description: "@deprecated All new projects now use the Standard usage model."
+                          ai_bindings:
+                            type: object
+                            additionalProperties: true
+                            description: Constellation bindings used for Pages Functions.
+                          analytics_engine_datasets:
+                            type: object
+                            additionalProperties: true
+                            description: Analytics Engine bindings used for Pages Functions.
+                          browsers:
+                            type: object
+                            additionalProperties: true
+                            description: Browser bindings used for Pages Functions.
                           d1_databases:
                             type: object
                             additionalProperties: true
@@ -1536,13 +1826,6 @@ paths:
                             type: object
                             additionalProperties: true
                             description: Durable Object namespaces used for Pages Functions.
-                          env_vars:
-                            type: object
-                            additionalProperties: true
-                            description: Environment variables used for builds and Pages Functions.
-                          fail_open:
-                            type: boolean
-                            description: Whether to fail open when the deployment config cannot be applied.
                           hyperdrive_bindings:
                             type: object
                             additionalProperties: true
@@ -1585,13 +1868,6 @@ paths:
                             type: object
                             additionalProperties: true
                             description: Services used for Pages Functions.
-                          usage_model:
-                            type: string
-                            enum:
-                              - standard
-                              - bundled
-                              - unbound
-                            description: "@deprecated All new projects now use the Standard usage model."
                           vectorize_bindings:
                             type: object
                             additionalProperties: true
@@ -1599,26 +1875,22 @@ paths:
                           wrangler_config_hash:
                             type: string
                             description: Hash of the Wrangler configuration used for the deployment.
+                        required:
+                          - always_use_latest_compatibility_date
+                          - build_image_major_version
+                          - compatibility_date
+                          - compatibility_flags
+                          - env_vars
+                          - fail_open
+                          - usage_model
                         description: Configs for preview deploys.
                       production:
                         type: object
                         properties:
-                          ai_bindings:
-                            type: object
-                            additionalProperties: true
-                            description: Constellation bindings used for Pages Functions.
                           always_use_latest_compatibility_date:
                             type: boolean
                             description: Whether to always use the latest compatibility date for Pages
                               Functions.
-                          analytics_engine_datasets:
-                            type: object
-                            additionalProperties: true
-                            description: Analytics Engine bindings used for Pages Functions.
-                          browsers:
-                            type: object
-                            additionalProperties: true
-                            description: Browser bindings used for Pages Functions.
                           build_image_major_version:
                             type: number
                             description: The major version of the build image to use for Pages Functions.
@@ -1630,6 +1902,34 @@ paths:
                             items:
                               type: string
                             description: Compatibility flags used for Pages Functions.
+                          env_vars:
+                            oneOf:
+                              - type: object
+                                additionalProperties: true
+                            nullable: true
+                            description: Environment variables used for builds and Pages Functions.
+                          fail_open:
+                            type: boolean
+                            description: Whether to fail open when the deployment config cannot be applied.
+                          usage_model:
+                            type: string
+                            enum:
+                              - standard
+                              - bundled
+                              - unbound
+                            description: "@deprecated All new projects now use the Standard usage model."
+                          ai_bindings:
+                            type: object
+                            additionalProperties: true
+                            description: Constellation bindings used for Pages Functions.
+                          analytics_engine_datasets:
+                            type: object
+                            additionalProperties: true
+                            description: Analytics Engine bindings used for Pages Functions.
+                          browsers:
+                            type: object
+                            additionalProperties: true
+                            description: Browser bindings used for Pages Functions.
                           d1_databases:
                             type: object
                             additionalProperties: true
@@ -1638,13 +1938,6 @@ paths:
                             type: object
                             additionalProperties: true
                             description: Durable Object namespaces used for Pages Functions.
-                          env_vars:
-                            type: object
-                            additionalProperties: true
-                            description: Environment variables used for builds and Pages Functions.
-                          fail_open:
-                            type: boolean
-                            description: Whether to fail open when the deployment config cannot be applied.
                           hyperdrive_bindings:
                             type: object
                             additionalProperties: true
@@ -1687,13 +1980,6 @@ paths:
                             type: object
                             additionalProperties: true
                             description: Services used for Pages Functions.
-                          usage_model:
-                            type: string
-                            enum:
-                              - standard
-                              - bundled
-                              - unbound
-                            description: "@deprecated All new projects now use the Standard usage model."
                           vectorize_bindings:
                             type: object
                             additionalProperties: true
@@ -1701,6 +1987,14 @@ paths:
                           wrangler_config_hash:
                             type: string
                             description: Hash of the Wrangler configuration used for the deployment.
+                        required:
+                          - always_use_latest_compatibility_date
+                          - build_image_major_version
+                          - compatibility_date
+                          - compatibility_flags
+                          - env_vars
+                          - fail_open
+                          - usage_model
                         description: Configs for production deploys.
                     required:
                       - preview
@@ -1818,7 +2112,40 @@ paths:
                             description: If the deployment has been skipped.
                           latest_stage:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              ended_on:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                                description: When the stage ended.
+                              name:
+                                type: string
+                                enum:
+                                  - queued
+                                  - initialize
+                                  - clone_repo
+                                  - build
+                                  - deploy
+                                description: The current build stage.
+                              started_on:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                                description: When the stage started.
+                              status:
+                                type: string
+                                enum:
+                                  - success
+                                  - idle
+                                  - active
+                                  - failure
+                                  - canceled
+                                description: State of the current stage.
+                            required:
+                              - ended_on
+                              - name
+                              - started_on
+                              - status
                             description: The status of the deployment.
                           modified_on:
                             type: string
@@ -1903,6 +2230,20 @@ paths:
                                   repo_name:
                                     type: string
                                     description: The name of the repository.
+                                required:
+                                  - deployments_enabled
+                                  - owner
+                                  - owner_id
+                                  - path_excludes
+                                  - path_includes
+                                  - pr_comments_enabled
+                                  - preview_branch_excludes
+                                  - preview_branch_includes
+                                  - preview_deployment_setting
+                                  - production_branch
+                                  - production_deployments_enabled
+                                  - repo_id
+                                  - repo_name
                               type:
                                 type: string
                                 enum:
@@ -1917,7 +2258,40 @@ paths:
                             type: array
                             items:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                ended_on:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                  description: When the stage ended.
+                                name:
+                                  type: string
+                                  enum:
+                                    - queued
+                                    - initialize
+                                    - clone_repo
+                                    - build
+                                    - deploy
+                                  description: The current build stage.
+                                started_on:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                  description: When the stage started.
+                                status:
+                                  type: string
+                                  enum:
+                                    - success
+                                    - idle
+                                    - active
+                                    - failure
+                                    - canceled
+                                  description: State of the current stage.
+                              required:
+                                - ended_on
+                                - name
+                                - started_on
+                                - status
                             description: List of past stages.
                           url:
                             type: string
@@ -2073,6 +2447,20 @@ paths:
                           repo_name:
                             type: string
                             description: The name of the repository.
+                        required:
+                          - deployments_enabled
+                          - owner
+                          - owner_id
+                          - path_excludes
+                          - path_includes
+                          - pr_comments_enabled
+                          - preview_branch_excludes
+                          - preview_branch_includes
+                          - preview_deployment_setting
+                          - production_branch
+                          - production_deployments_enabled
+                          - repo_id
+                          - repo_name
                       type:
                         type: string
                         enum:
@@ -2255,7 +2643,40 @@ paths:
                             description: If the deployment has been skipped.
                           latest_stage:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              ended_on:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                                description: When the stage ended.
+                              name:
+                                type: string
+                                enum:
+                                  - queued
+                                  - initialize
+                                  - clone_repo
+                                  - build
+                                  - deploy
+                                description: The current build stage.
+                              started_on:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                                description: When the stage started.
+                              status:
+                                type: string
+                                enum:
+                                  - success
+                                  - idle
+                                  - active
+                                  - failure
+                                  - canceled
+                                description: State of the current stage.
+                            required:
+                              - ended_on
+                              - name
+                              - started_on
+                              - status
                             description: The status of the deployment.
                           modified_on:
                             type: string
@@ -2340,6 +2761,20 @@ paths:
                                   repo_name:
                                     type: string
                                     description: The name of the repository.
+                                required:
+                                  - deployments_enabled
+                                  - owner
+                                  - owner_id
+                                  - path_excludes
+                                  - path_includes
+                                  - pr_comments_enabled
+                                  - preview_branch_excludes
+                                  - preview_branch_includes
+                                  - preview_deployment_setting
+                                  - production_branch
+                                  - production_deployments_enabled
+                                  - repo_id
+                                  - repo_name
                               type:
                                 type: string
                                 enum:
@@ -2354,7 +2789,40 @@ paths:
                             type: array
                             items:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                ended_on:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                  description: When the stage ended.
+                                name:
+                                  type: string
+                                  enum:
+                                    - queued
+                                    - initialize
+                                    - clone_repo
+                                    - build
+                                    - deploy
+                                  description: The current build stage.
+                                started_on:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                  description: When the stage started.
+                                status:
+                                  type: string
+                                  enum:
+                                    - success
+                                    - idle
+                                    - active
+                                    - failure
+                                    - canceled
+                                  description: State of the current stage.
+                              required:
+                                - ended_on
+                                - name
+                                - started_on
+                                - status
                             description: List of past stages.
                           url:
                             type: string
@@ -2392,22 +2860,10 @@ paths:
                       preview:
                         type: object
                         properties:
-                          ai_bindings:
-                            type: object
-                            additionalProperties: true
-                            description: Constellation bindings used for Pages Functions.
                           always_use_latest_compatibility_date:
                             type: boolean
                             description: Whether to always use the latest compatibility date for Pages
                               Functions.
-                          analytics_engine_datasets:
-                            type: object
-                            additionalProperties: true
-                            description: Analytics Engine bindings used for Pages Functions.
-                          browsers:
-                            type: object
-                            additionalProperties: true
-                            description: Browser bindings used for Pages Functions.
                           build_image_major_version:
                             type: number
                             description: The major version of the build image to use for Pages Functions.
@@ -2419,6 +2875,34 @@ paths:
                             items:
                               type: string
                             description: Compatibility flags used for Pages Functions.
+                          env_vars:
+                            oneOf:
+                              - type: object
+                                additionalProperties: true
+                            nullable: true
+                            description: Environment variables used for builds and Pages Functions.
+                          fail_open:
+                            type: boolean
+                            description: Whether to fail open when the deployment config cannot be applied.
+                          usage_model:
+                            type: string
+                            enum:
+                              - standard
+                              - bundled
+                              - unbound
+                            description: "@deprecated All new projects now use the Standard usage model."
+                          ai_bindings:
+                            type: object
+                            additionalProperties: true
+                            description: Constellation bindings used for Pages Functions.
+                          analytics_engine_datasets:
+                            type: object
+                            additionalProperties: true
+                            description: Analytics Engine bindings used for Pages Functions.
+                          browsers:
+                            type: object
+                            additionalProperties: true
+                            description: Browser bindings used for Pages Functions.
                           d1_databases:
                             type: object
                             additionalProperties: true
@@ -2427,13 +2911,6 @@ paths:
                             type: object
                             additionalProperties: true
                             description: Durable Object namespaces used for Pages Functions.
-                          env_vars:
-                            type: object
-                            additionalProperties: true
-                            description: Environment variables used for builds and Pages Functions.
-                          fail_open:
-                            type: boolean
-                            description: Whether to fail open when the deployment config cannot be applied.
                           hyperdrive_bindings:
                             type: object
                             additionalProperties: true
@@ -2476,13 +2953,6 @@ paths:
                             type: object
                             additionalProperties: true
                             description: Services used for Pages Functions.
-                          usage_model:
-                            type: string
-                            enum:
-                              - standard
-                              - bundled
-                              - unbound
-                            description: "@deprecated All new projects now use the Standard usage model."
                           vectorize_bindings:
                             type: object
                             additionalProperties: true
@@ -2490,26 +2960,22 @@ paths:
                           wrangler_config_hash:
                             type: string
                             description: Hash of the Wrangler configuration used for the deployment.
+                        required:
+                          - always_use_latest_compatibility_date
+                          - build_image_major_version
+                          - compatibility_date
+                          - compatibility_flags
+                          - env_vars
+                          - fail_open
+                          - usage_model
                         description: Configs for preview deploys.
                       production:
                         type: object
                         properties:
-                          ai_bindings:
-                            type: object
-                            additionalProperties: true
-                            description: Constellation bindings used for Pages Functions.
                           always_use_latest_compatibility_date:
                             type: boolean
                             description: Whether to always use the latest compatibility date for Pages
                               Functions.
-                          analytics_engine_datasets:
-                            type: object
-                            additionalProperties: true
-                            description: Analytics Engine bindings used for Pages Functions.
-                          browsers:
-                            type: object
-                            additionalProperties: true
-                            description: Browser bindings used for Pages Functions.
                           build_image_major_version:
                             type: number
                             description: The major version of the build image to use for Pages Functions.
@@ -2521,6 +2987,34 @@ paths:
                             items:
                               type: string
                             description: Compatibility flags used for Pages Functions.
+                          env_vars:
+                            oneOf:
+                              - type: object
+                                additionalProperties: true
+                            nullable: true
+                            description: Environment variables used for builds and Pages Functions.
+                          fail_open:
+                            type: boolean
+                            description: Whether to fail open when the deployment config cannot be applied.
+                          usage_model:
+                            type: string
+                            enum:
+                              - standard
+                              - bundled
+                              - unbound
+                            description: "@deprecated All new projects now use the Standard usage model."
+                          ai_bindings:
+                            type: object
+                            additionalProperties: true
+                            description: Constellation bindings used for Pages Functions.
+                          analytics_engine_datasets:
+                            type: object
+                            additionalProperties: true
+                            description: Analytics Engine bindings used for Pages Functions.
+                          browsers:
+                            type: object
+                            additionalProperties: true
+                            description: Browser bindings used for Pages Functions.
                           d1_databases:
                             type: object
                             additionalProperties: true
@@ -2529,13 +3023,6 @@ paths:
                             type: object
                             additionalProperties: true
                             description: Durable Object namespaces used for Pages Functions.
-                          env_vars:
-                            type: object
-                            additionalProperties: true
-                            description: Environment variables used for builds and Pages Functions.
-                          fail_open:
-                            type: boolean
-                            description: Whether to fail open when the deployment config cannot be applied.
                           hyperdrive_bindings:
                             type: object
                             additionalProperties: true
@@ -2578,13 +3065,6 @@ paths:
                             type: object
                             additionalProperties: true
                             description: Services used for Pages Functions.
-                          usage_model:
-                            type: string
-                            enum:
-                              - standard
-                              - bundled
-                              - unbound
-                            description: "@deprecated All new projects now use the Standard usage model."
                           vectorize_bindings:
                             type: object
                             additionalProperties: true
@@ -2592,6 +3072,14 @@ paths:
                           wrangler_config_hash:
                             type: string
                             description: Hash of the Wrangler configuration used for the deployment.
+                        required:
+                          - always_use_latest_compatibility_date
+                          - build_image_major_version
+                          - compatibility_date
+                          - compatibility_flags
+                          - env_vars
+                          - fail_open
+                          - usage_model
                         description: Configs for production deploys.
                     required:
                       - preview
@@ -2709,7 +3197,40 @@ paths:
                             description: If the deployment has been skipped.
                           latest_stage:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              ended_on:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                                description: When the stage ended.
+                              name:
+                                type: string
+                                enum:
+                                  - queued
+                                  - initialize
+                                  - clone_repo
+                                  - build
+                                  - deploy
+                                description: The current build stage.
+                              started_on:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                                description: When the stage started.
+                              status:
+                                type: string
+                                enum:
+                                  - success
+                                  - idle
+                                  - active
+                                  - failure
+                                  - canceled
+                                description: State of the current stage.
+                            required:
+                              - ended_on
+                              - name
+                              - started_on
+                              - status
                             description: The status of the deployment.
                           modified_on:
                             type: string
@@ -2794,6 +3315,20 @@ paths:
                                   repo_name:
                                     type: string
                                     description: The name of the repository.
+                                required:
+                                  - deployments_enabled
+                                  - owner
+                                  - owner_id
+                                  - path_excludes
+                                  - path_includes
+                                  - pr_comments_enabled
+                                  - preview_branch_excludes
+                                  - preview_branch_includes
+                                  - preview_deployment_setting
+                                  - production_branch
+                                  - production_deployments_enabled
+                                  - repo_id
+                                  - repo_name
                               type:
                                 type: string
                                 enum:
@@ -2808,7 +3343,40 @@ paths:
                             type: array
                             items:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                ended_on:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                  description: When the stage ended.
+                                name:
+                                  type: string
+                                  enum:
+                                    - queued
+                                    - initialize
+                                    - clone_repo
+                                    - build
+                                    - deploy
+                                  description: The current build stage.
+                                started_on:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                  description: When the stage started.
+                                status:
+                                  type: string
+                                  enum:
+                                    - success
+                                    - idle
+                                    - active
+                                    - failure
+                                    - canceled
+                                  description: State of the current stage.
+                              required:
+                                - ended_on
+                                - name
+                                - started_on
+                                - status
                             description: List of past stages.
                           url:
                             type: string
@@ -2964,6 +3532,20 @@ paths:
                           repo_name:
                             type: string
                             description: The name of the repository.
+                        required:
+                          - deployments_enabled
+                          - owner
+                          - owner_id
+                          - path_excludes
+                          - path_includes
+                          - pr_comments_enabled
+                          - preview_branch_excludes
+                          - preview_branch_includes
+                          - preview_deployment_setting
+                          - production_branch
+                          - production_deployments_enabled
+                          - repo_id
+                          - repo_name
                       type:
                         type: string
                         enum:
@@ -3449,7 +4031,40 @@ paths:
                             description: If the deployment has been skipped.
                           latest_stage:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              ended_on:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                                description: When the stage ended.
+                              name:
+                                type: string
+                                enum:
+                                  - queued
+                                  - initialize
+                                  - clone_repo
+                                  - build
+                                  - deploy
+                                description: The current build stage.
+                              started_on:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                                description: When the stage started.
+                              status:
+                                type: string
+                                enum:
+                                  - success
+                                  - idle
+                                  - active
+                                  - failure
+                                  - canceled
+                                description: State of the current stage.
+                            required:
+                              - ended_on
+                              - name
+                              - started_on
+                              - status
                             description: The status of the deployment.
                           modified_on:
                             type: string
@@ -3534,6 +4149,20 @@ paths:
                                   repo_name:
                                     type: string
                                     description: The name of the repository.
+                                required:
+                                  - deployments_enabled
+                                  - owner
+                                  - owner_id
+                                  - path_excludes
+                                  - path_includes
+                                  - pr_comments_enabled
+                                  - preview_branch_excludes
+                                  - preview_branch_includes
+                                  - preview_deployment_setting
+                                  - production_branch
+                                  - production_deployments_enabled
+                                  - repo_id
+                                  - repo_name
                               type:
                                 type: string
                                 enum:
@@ -3548,7 +4177,40 @@ paths:
                             type: array
                             items:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                ended_on:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                  description: When the stage ended.
+                                name:
+                                  type: string
+                                  enum:
+                                    - queued
+                                    - initialize
+                                    - clone_repo
+                                    - build
+                                    - deploy
+                                  description: The current build stage.
+                                started_on:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                  description: When the stage started.
+                                status:
+                                  type: string
+                                  enum:
+                                    - success
+                                    - idle
+                                    - active
+                                    - failure
+                                    - canceled
+                                  description: State of the current stage.
+                              required:
+                                - ended_on
+                                - name
+                                - started_on
+                                - status
                             description: List of past stages.
                           url:
                             type: string
@@ -3586,22 +4248,10 @@ paths:
                       preview:
                         type: object
                         properties:
-                          ai_bindings:
-                            type: object
-                            additionalProperties: true
-                            description: Constellation bindings used for Pages Functions.
                           always_use_latest_compatibility_date:
                             type: boolean
                             description: Whether to always use the latest compatibility date for Pages
                               Functions.
-                          analytics_engine_datasets:
-                            type: object
-                            additionalProperties: true
-                            description: Analytics Engine bindings used for Pages Functions.
-                          browsers:
-                            type: object
-                            additionalProperties: true
-                            description: Browser bindings used for Pages Functions.
                           build_image_major_version:
                             type: number
                             description: The major version of the build image to use for Pages Functions.
@@ -3613,6 +4263,34 @@ paths:
                             items:
                               type: string
                             description: Compatibility flags used for Pages Functions.
+                          env_vars:
+                            oneOf:
+                              - type: object
+                                additionalProperties: true
+                            nullable: true
+                            description: Environment variables used for builds and Pages Functions.
+                          fail_open:
+                            type: boolean
+                            description: Whether to fail open when the deployment config cannot be applied.
+                          usage_model:
+                            type: string
+                            enum:
+                              - standard
+                              - bundled
+                              - unbound
+                            description: "@deprecated All new projects now use the Standard usage model."
+                          ai_bindings:
+                            type: object
+                            additionalProperties: true
+                            description: Constellation bindings used for Pages Functions.
+                          analytics_engine_datasets:
+                            type: object
+                            additionalProperties: true
+                            description: Analytics Engine bindings used for Pages Functions.
+                          browsers:
+                            type: object
+                            additionalProperties: true
+                            description: Browser bindings used for Pages Functions.
                           d1_databases:
                             type: object
                             additionalProperties: true
@@ -3621,13 +4299,6 @@ paths:
                             type: object
                             additionalProperties: true
                             description: Durable Object namespaces used for Pages Functions.
-                          env_vars:
-                            type: object
-                            additionalProperties: true
-                            description: Environment variables used for builds and Pages Functions.
-                          fail_open:
-                            type: boolean
-                            description: Whether to fail open when the deployment config cannot be applied.
                           hyperdrive_bindings:
                             type: object
                             additionalProperties: true
@@ -3670,13 +4341,6 @@ paths:
                             type: object
                             additionalProperties: true
                             description: Services used for Pages Functions.
-                          usage_model:
-                            type: string
-                            enum:
-                              - standard
-                              - bundled
-                              - unbound
-                            description: "@deprecated All new projects now use the Standard usage model."
                           vectorize_bindings:
                             type: object
                             additionalProperties: true
@@ -3684,26 +4348,22 @@ paths:
                           wrangler_config_hash:
                             type: string
                             description: Hash of the Wrangler configuration used for the deployment.
+                        required:
+                          - always_use_latest_compatibility_date
+                          - build_image_major_version
+                          - compatibility_date
+                          - compatibility_flags
+                          - env_vars
+                          - fail_open
+                          - usage_model
                         description: Configs for preview deploys.
                       production:
                         type: object
                         properties:
-                          ai_bindings:
-                            type: object
-                            additionalProperties: true
-                            description: Constellation bindings used for Pages Functions.
                           always_use_latest_compatibility_date:
                             type: boolean
                             description: Whether to always use the latest compatibility date for Pages
                               Functions.
-                          analytics_engine_datasets:
-                            type: object
-                            additionalProperties: true
-                            description: Analytics Engine bindings used for Pages Functions.
-                          browsers:
-                            type: object
-                            additionalProperties: true
-                            description: Browser bindings used for Pages Functions.
                           build_image_major_version:
                             type: number
                             description: The major version of the build image to use for Pages Functions.
@@ -3715,6 +4375,34 @@ paths:
                             items:
                               type: string
                             description: Compatibility flags used for Pages Functions.
+                          env_vars:
+                            oneOf:
+                              - type: object
+                                additionalProperties: true
+                            nullable: true
+                            description: Environment variables used for builds and Pages Functions.
+                          fail_open:
+                            type: boolean
+                            description: Whether to fail open when the deployment config cannot be applied.
+                          usage_model:
+                            type: string
+                            enum:
+                              - standard
+                              - bundled
+                              - unbound
+                            description: "@deprecated All new projects now use the Standard usage model."
+                          ai_bindings:
+                            type: object
+                            additionalProperties: true
+                            description: Constellation bindings used for Pages Functions.
+                          analytics_engine_datasets:
+                            type: object
+                            additionalProperties: true
+                            description: Analytics Engine bindings used for Pages Functions.
+                          browsers:
+                            type: object
+                            additionalProperties: true
+                            description: Browser bindings used for Pages Functions.
                           d1_databases:
                             type: object
                             additionalProperties: true
@@ -3723,13 +4411,6 @@ paths:
                             type: object
                             additionalProperties: true
                             description: Durable Object namespaces used for Pages Functions.
-                          env_vars:
-                            type: object
-                            additionalProperties: true
-                            description: Environment variables used for builds and Pages Functions.
-                          fail_open:
-                            type: boolean
-                            description: Whether to fail open when the deployment config cannot be applied.
                           hyperdrive_bindings:
                             type: object
                             additionalProperties: true
@@ -3772,13 +4453,6 @@ paths:
                             type: object
                             additionalProperties: true
                             description: Services used for Pages Functions.
-                          usage_model:
-                            type: string
-                            enum:
-                              - standard
-                              - bundled
-                              - unbound
-                            description: "@deprecated All new projects now use the Standard usage model."
                           vectorize_bindings:
                             type: object
                             additionalProperties: true
@@ -3786,6 +4460,14 @@ paths:
                           wrangler_config_hash:
                             type: string
                             description: Hash of the Wrangler configuration used for the deployment.
+                        required:
+                          - always_use_latest_compatibility_date
+                          - build_image_major_version
+                          - compatibility_date
+                          - compatibility_flags
+                          - env_vars
+                          - fail_open
+                          - usage_model
                         description: Configs for production deploys.
                     required:
                       - preview
@@ -3903,7 +4585,40 @@ paths:
                             description: If the deployment has been skipped.
                           latest_stage:
                             type: object
-                            additionalProperties: true
+                            properties:
+                              ended_on:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                                description: When the stage ended.
+                              name:
+                                type: string
+                                enum:
+                                  - queued
+                                  - initialize
+                                  - clone_repo
+                                  - build
+                                  - deploy
+                                description: The current build stage.
+                              started_on:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                                description: When the stage started.
+                              status:
+                                type: string
+                                enum:
+                                  - success
+                                  - idle
+                                  - active
+                                  - failure
+                                  - canceled
+                                description: State of the current stage.
+                            required:
+                              - ended_on
+                              - name
+                              - started_on
+                              - status
                             description: The status of the deployment.
                           modified_on:
                             type: string
@@ -3988,6 +4703,20 @@ paths:
                                   repo_name:
                                     type: string
                                     description: The name of the repository.
+                                required:
+                                  - deployments_enabled
+                                  - owner
+                                  - owner_id
+                                  - path_excludes
+                                  - path_includes
+                                  - pr_comments_enabled
+                                  - preview_branch_excludes
+                                  - preview_branch_includes
+                                  - preview_deployment_setting
+                                  - production_branch
+                                  - production_deployments_enabled
+                                  - repo_id
+                                  - repo_name
                               type:
                                 type: string
                                 enum:
@@ -4002,7 +4731,40 @@ paths:
                             type: array
                             items:
                               type: object
-                              additionalProperties: true
+                              properties:
+                                ended_on:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                  description: When the stage ended.
+                                name:
+                                  type: string
+                                  enum:
+                                    - queued
+                                    - initialize
+                                    - clone_repo
+                                    - build
+                                    - deploy
+                                  description: The current build stage.
+                                started_on:
+                                  oneOf:
+                                    - type: string
+                                  nullable: true
+                                  description: When the stage started.
+                                status:
+                                  type: string
+                                  enum:
+                                    - success
+                                    - idle
+                                    - active
+                                    - failure
+                                    - canceled
+                                  description: State of the current stage.
+                              required:
+                                - ended_on
+                                - name
+                                - started_on
+                                - status
                             description: List of past stages.
                           url:
                             type: string
@@ -4158,6 +4920,20 @@ paths:
                           repo_name:
                             type: string
                             description: The name of the repository.
+                        required:
+                          - deployments_enabled
+                          - owner
+                          - owner_id
+                          - path_excludes
+                          - path_includes
+                          - pr_comments_enabled
+                          - preview_branch_excludes
+                          - preview_branch_includes
+                          - preview_deployment_setting
+                          - production_branch
+                          - production_deployments_enabled
+                          - repo_id
+                          - repo_name
                       type:
                         type: string
                         enum:
@@ -4319,7 +5095,40 @@ paths:
                     description: If the deployment has been skipped.
                   latest_stage:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      ended_on:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: When the stage ended.
+                      name:
+                        type: string
+                        enum:
+                          - queued
+                          - initialize
+                          - clone_repo
+                          - build
+                          - deploy
+                        description: The current build stage.
+                      started_on:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: When the stage started.
+                      status:
+                        type: string
+                        enum:
+                          - success
+                          - idle
+                          - active
+                          - failure
+                          - canceled
+                        description: State of the current stage.
+                    required:
+                      - ended_on
+                      - name
+                      - started_on
+                      - status
                     description: The status of the deployment.
                   modified_on:
                     type: string
@@ -4428,7 +5237,40 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        ended_on:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: When the stage ended.
+                        name:
+                          type: string
+                          enum:
+                            - queued
+                            - initialize
+                            - clone_repo
+                            - build
+                            - deploy
+                          description: The current build stage.
+                        started_on:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: When the stage started.
+                        status:
+                          type: string
+                          enum:
+                            - success
+                            - idle
+                            - active
+                            - failure
+                            - canceled
+                          description: State of the current stage.
+                      required:
+                        - ended_on
+                        - name
+                        - started_on
+                        - status
                     description: List of past stages.
                   url:
                     type: string
@@ -4625,7 +5467,40 @@ paths:
                     description: If the deployment has been skipped.
                   latest_stage:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      ended_on:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: When the stage ended.
+                      name:
+                        type: string
+                        enum:
+                          - queued
+                          - initialize
+                          - clone_repo
+                          - build
+                          - deploy
+                        description: The current build stage.
+                      started_on:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: When the stage started.
+                      status:
+                        type: string
+                        enum:
+                          - success
+                          - idle
+                          - active
+                          - failure
+                          - canceled
+                        description: State of the current stage.
+                    required:
+                      - ended_on
+                      - name
+                      - started_on
+                      - status
                     description: The status of the deployment.
                   modified_on:
                     type: string
@@ -4734,7 +5609,40 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        ended_on:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: When the stage ended.
+                        name:
+                          type: string
+                          enum:
+                            - queued
+                            - initialize
+                            - clone_repo
+                            - build
+                            - deploy
+                          description: The current build stage.
+                        started_on:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: When the stage started.
+                        status:
+                          type: string
+                          enum:
+                            - success
+                            - idle
+                            - active
+                            - failure
+                            - canceled
+                          description: State of the current stage.
+                      required:
+                        - ended_on
+                        - name
+                        - started_on
+                        - status
                     description: List of past stages.
                   url:
                     type: string
@@ -4957,7 +5865,40 @@ paths:
                     description: If the deployment has been skipped.
                   latest_stage:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      ended_on:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: When the stage ended.
+                      name:
+                        type: string
+                        enum:
+                          - queued
+                          - initialize
+                          - clone_repo
+                          - build
+                          - deploy
+                        description: The current build stage.
+                      started_on:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: When the stage started.
+                      status:
+                        type: string
+                        enum:
+                          - success
+                          - idle
+                          - active
+                          - failure
+                          - canceled
+                        description: State of the current stage.
+                    required:
+                      - ended_on
+                      - name
+                      - started_on
+                      - status
                     description: The status of the deployment.
                   modified_on:
                     type: string
@@ -5066,7 +6007,40 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        ended_on:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: When the stage ended.
+                        name:
+                          type: string
+                          enum:
+                            - queued
+                            - initialize
+                            - clone_repo
+                            - build
+                            - deploy
+                          description: The current build stage.
+                        started_on:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: When the stage started.
+                        status:
+                          type: string
+                          enum:
+                            - success
+                            - idle
+                            - active
+                            - failure
+                            - canceled
+                          description: State of the current stage.
+                      required:
+                        - ended_on
+                        - name
+                        - started_on
+                        - status
                     description: List of past stages.
                   url:
                     type: string
@@ -5228,7 +6202,40 @@ paths:
                     description: If the deployment has been skipped.
                   latest_stage:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      ended_on:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: When the stage ended.
+                      name:
+                        type: string
+                        enum:
+                          - queued
+                          - initialize
+                          - clone_repo
+                          - build
+                          - deploy
+                        description: The current build stage.
+                      started_on:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: When the stage started.
+                      status:
+                        type: string
+                        enum:
+                          - success
+                          - idle
+                          - active
+                          - failure
+                          - canceled
+                        description: State of the current stage.
+                    required:
+                      - ended_on
+                      - name
+                      - started_on
+                      - status
                     description: The status of the deployment.
                   modified_on:
                     type: string
@@ -5337,7 +6344,40 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        ended_on:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: When the stage ended.
+                        name:
+                          type: string
+                          enum:
+                            - queued
+                            - initialize
+                            - clone_repo
+                            - build
+                            - deploy
+                          description: The current build stage.
+                        started_on:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: When the stage started.
+                        status:
+                          type: string
+                          enum:
+                            - success
+                            - idle
+                            - active
+                            - failure
+                            - canceled
+                          description: State of the current stage.
+                      required:
+                        - ended_on
+                        - name
+                        - started_on
+                        - status
                     description: List of past stages.
                   url:
                     type: string
@@ -5500,7 +6540,40 @@ paths:
                     description: If the deployment has been skipped.
                   latest_stage:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      ended_on:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: When the stage ended.
+                      name:
+                        type: string
+                        enum:
+                          - queued
+                          - initialize
+                          - clone_repo
+                          - build
+                          - deploy
+                        description: The current build stage.
+                      started_on:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: When the stage started.
+                      status:
+                        type: string
+                        enum:
+                          - success
+                          - idle
+                          - active
+                          - failure
+                          - canceled
+                        description: State of the current stage.
+                    required:
+                      - ended_on
+                      - name
+                      - started_on
+                      - status
                     description: The status of the deployment.
                   modified_on:
                     type: string
@@ -5609,7 +6682,40 @@ paths:
                     type: array
                     items:
                       type: object
-                      additionalProperties: true
+                      properties:
+                        ended_on:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: When the stage ended.
+                        name:
+                          type: string
+                          enum:
+                            - queued
+                            - initialize
+                            - clone_repo
+                            - build
+                            - deploy
+                          description: The current build stage.
+                        started_on:
+                          oneOf:
+                            - type: string
+                          nullable: true
+                          description: When the stage started.
+                        status:
+                          type: string
+                          enum:
+                            - success
+                            - idle
+                            - active
+                            - failure
+                            - canceled
+                          description: State of the current stage.
+                      required:
+                        - ended_on
+                        - name
+                        - started_on
+                        - status
                     description: List of past stages.
                   url:
                     type: string

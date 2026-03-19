@@ -48,7 +48,6 @@ paths:
                         properties:
                           id:
                             type: string
-                            description: ID of the livestream.
                           created_at:
                             type: string
                             description: Timestamp the object was created at. The time is returned in ISO
@@ -62,7 +61,7 @@ paths:
                               data.
                           meeting_id:
                             type: string
-                            description: The ID of the meeting.
+                            description: ID of the meeting.
                           name:
                             type: string
                             description: Name of the livestream.
@@ -88,7 +87,6 @@ paths:
                         properties:
                           id:
                             type: string
-                            description: ID of the session.
                           created_at:
                             type: string
                             description: Timestamp the object was created at. The time is returned in ISO
@@ -96,7 +94,7 @@ paths:
                           err_message:
                             type: string
                           ingest_seconds:
-                            type: number
+                            type: string
                             description: The time duration for which the input was given or the meeting was
                               streamed.
                           invoked_time:
@@ -118,7 +116,7 @@ paths:
                             description: Timestamp the object was updated at. The time is returned in ISO
                               format.
                           viewer_seconds:
-                            type: number
+                            type: string
                             description: The total view time for which the viewers watched the stream.
                   success:
                     type: boolean
@@ -1623,12 +1621,6 @@ paths:
                                       - gcs
                                       - sftp
                                     description: Type of storage media.
-                                  access_key:
-                                    type: string
-                                    description: Access key of the storage medium. Access key is not required for
-                                      the `gcs` storage media type.  Note that
-                                      this field is not readable by clients,
-                                      only writeable.
                                   auth_method:
                                     type: string
                                     enum:
@@ -2013,12 +2005,6 @@ paths:
                                       - gcs
                                       - sftp
                                     description: Type of storage media.
-                                  access_key:
-                                    type: string
-                                    description: Access key of the storage medium. Access key is not required for
-                                      the `gcs` storage media type.  Note that
-                                      this field is not readable by clients,
-                                      only writeable.
                                   auth_method:
                                     type: string
                                     enum:
@@ -2419,12 +2405,6 @@ paths:
                                       - gcs
                                       - sftp
                                     description: Type of storage media.
-                                  access_key:
-                                    type: string
-                                    description: Access key of the storage medium. Access key is not required for
-                                      the `gcs` storage media type.  Note that
-                                      this field is not readable by clients,
-                                      only writeable.
                                   auth_method:
                                     type: string
                                     enum:
@@ -2981,12 +2961,6 @@ paths:
                                       - gcs
                                       - sftp
                                     description: Type of storage media.
-                                  access_key:
-                                    type: string
-                                    description: Access key of the storage medium. Access key is not required for
-                                      the `gcs` storage media type.  Note that
-                                      this field is not readable by clients,
-                                      only writeable.
                                   auth_method:
                                     type: string
                                     enum:
@@ -4169,34 +4143,453 @@ paths:
                         properties:
                           id:
                             type: string
-                            description: Participant ID. This maps to the corresponding peerId.
                           created_at:
                             type: string
-                            description: timestamp when this participant was created.
                           custom_participant_id:
                             type: string
-                            description: ID passed by client to create this participant.
                           display_name:
                             type: string
-                            description: Display name of participant when joining the session.
                           duration:
                             type: number
-                            description: number of minutes for which the participant was in the session.
                           joined_at:
                             type: string
-                            description: timestamp at which participant joined the session.
                           left_at:
                             type: string
-                            description: timestamp at which participant left the session.
-                          preset_name:
+                          peer_report:
+                            type: object
+                            properties:
+                              metadata:
+                                type: object
+                                properties:
+                                  audio_devices_updates:
+                                    type: array
+                                    items: {}
+                                  browser_metadata:
+                                    type: object
+                                    properties:
+                                      browser:
+                                        type: string
+                                      browser_version:
+                                        type: string
+                                      engine:
+                                        type: string
+                                      user_agent:
+                                        type: string
+                                      webgl_support:
+                                        type: string
+                                  candidate_pairs:
+                                    type: object
+                                    properties:
+                                      consuming_transport:
+                                        type: array
+                                        items: {}
+                                      producing_transport:
+                                        type: array
+                                        items:
+                                          type: object
+                                          properties:
+                                            available_outgoing_bitrate:
+                                              type: number
+                                            bytes_discarded_on_send:
+                                              type: number
+                                            bytes_received:
+                                              type: number
+                                            bytes_sent:
+                                              type: number
+                                            current_round_trip_time:
+                                              type: number
+                                            last_packet_received_timestamp:
+                                              type: number
+                                            last_packet_sent_timestamp:
+                                              type: number
+                                            local_candidate_address:
+                                              type: string
+                                            local_candidate_id:
+                                              type: string
+                                            local_candidate_network_type:
+                                              type: string
+                                            local_candidate_port:
+                                              type: number
+                                            local_candidate_protocol:
+                                              type: string
+                                            local_candidate_related_address:
+                                              type: string
+                                            local_candidate_related_port:
+                                              type: number
+                                            local_candidate_type:
+                                              type: string
+                                            nominated:
+                                              type: boolean
+                                            packets_discarded_on_send:
+                                              type: number
+                                            packets_received:
+                                              type: number
+                                            packets_sent:
+                                              type: number
+                                            remote_candidate_address:
+                                              type: string
+                                            remote_candidate_id:
+                                              type: string
+                                            remote_candidate_port:
+                                              type: number
+                                            remote_candidate_protocol:
+                                              type: string
+                                            remote_candidate_type:
+                                              type: string
+                                            total_round_trip_time:
+                                              type: number
+                                  device_info:
+                                    type: object
+                                    properties:
+                                      cpus:
+                                        type: number
+                                      is_mobile:
+                                        type: boolean
+                                      os:
+                                        type: string
+                                      os_version:
+                                        type: string
+                                  events:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        name:
+                                          type: string
+                                        timestamp:
+                                          type: string
+                                  ip_information:
+                                    type: object
+                                    properties:
+                                      asn:
+                                        type: object
+                                        properties:
+                                          asn:
+                                            type: string
+                                      city:
+                                        type: string
+                                      country:
+                                        type: string
+                                      ipv4:
+                                        type: string
+                                      region:
+                                        type: string
+                                      timezone:
+                                        type: string
+                                  pc_metadata:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        effective_network_type:
+                                          type: string
+                                        reflexive_connectivity:
+                                          type: boolean
+                                        relay_connectivity:
+                                          type: boolean
+                                        timestamp:
+                                          type: string
+                                        turn_connectivity:
+                                          type: boolean
+                                  room_view_type:
+                                    type: string
+                                  sdk_name:
+                                    type: string
+                                  sdk_version:
+                                    type: string
+                                  selected_device_updates:
+                                    type: array
+                                    items: {}
+                                  speaker_devices_updates:
+                                    type: array
+                                    items: {}
+                                  video_devices_updates:
+                                    type: array
+                                    items: {}
+                              quality:
+                                type: object
+                                properties:
+                                  audio_consumer:
+                                    type: array
+                                    items: {}
+                                  audio_consumer_cumulative: {}
+                                  audio_producer:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        bytes_sent:
+                                          type: number
+                                        jitter:
+                                          type: number
+                                        mid:
+                                          type: string
+                                        mos_quality:
+                                          type: number
+                                        packets_lost:
+                                          type: number
+                                        packets_sent:
+                                          type: number
+                                        producer_id:
+                                          type: string
+                                        rtt:
+                                          type: number
+                                        ssrc:
+                                          type: number
+                                        timestamp:
+                                          type: string
+                                  audio_producer_cumulative:
+                                    type: object
+                                    properties:
+                                      packet_loss:
+                                        type: object
+                                        properties:
+                                          10_or_greater_event_fraction:
+                                            type: number
+                                          25_or_greater_event_fraction:
+                                            type: number
+                                          5_or_greater_event_fraction:
+                                            type: number
+                                          50_or_greater_event_fraction:
+                                            type: number
+                                          avg:
+                                            type: number
+                                      quality_mos:
+                                        type: object
+                                        properties:
+                                          avg:
+                                            type: number
+                                          p50:
+                                            type: number
+                                          p75:
+                                            type: number
+                                          p90:
+                                            type: number
+                                      rtt:
+                                        type: object
+                                        properties:
+                                          100ms_or_greater_event_fraction:
+                                            type: number
+                                          250ms_or_greater_event_fraction:
+                                            type: number
+                                          500ms_or_greater_event_fraction:
+                                            type: number
+                                          avg:
+                                            type: number
+                                  screenshare_audio_consumer:
+                                    type: array
+                                    items: {}
+                                  screenshare_audio_consumer_cumulative: {}
+                                  screenshare_audio_producer:
+                                    type: array
+                                    items: {}
+                                  screenshare_audio_producer_cumulative: {}
+                                  screenshare_video_consumer:
+                                    type: array
+                                    items: {}
+                                  screenshare_video_consumer_cumulative: {}
+                                  screenshare_video_producer:
+                                    type: array
+                                    items: {}
+                                  screenshare_video_producer_cumulative: {}
+                                  video_consumer:
+                                    type: array
+                                    items: {}
+                                  video_consumer_cumulative: {}
+                                  video_producer:
+                                    type: array
+                                    items: {}
+                                  video_producer_cumulative: {}
+                          peer_stats:
+                            type: object
+                            properties:
+                              device_info:
+                                type: object
+                                properties:
+                                  browser:
+                                    type: string
+                                  browser_version:
+                                    type: string
+                                  cpus:
+                                    type: number
+                                  engine:
+                                    type: string
+                                  is_mobile:
+                                    type: boolean
+                                  os:
+                                    type: string
+                                  os_version:
+                                    type: string
+                                  sdk_name:
+                                    type: string
+                                  sdk_version:
+                                    type: string
+                                  user_agent:
+                                    type: string
+                                  webgl_support:
+                                    type: string
+                              events:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    metadata:
+                                      type: object
+                                      properties:
+                                        connection_info:
+                                          type: object
+                                          properties:
+                                            backend_r_t_t:
+                                              type: number
+                                            connectivity:
+                                              type: object
+                                              properties:
+                                                host:
+                                                  type: boolean
+                                                reflexive:
+                                                  type: boolean
+                                                relay:
+                                                  type: boolean
+                                            effective_network_type:
+                                              type: string
+                                            fractional_loss:
+                                              type: number
+                                            ip_details:
+                                              type: object
+                                              properties:
+                                                asn:
+                                                  type: object
+                                                  properties:
+                                                    asn:
+                                                      type: string
+                                                city:
+                                                  type: string
+                                                country:
+                                                  type: string
+                                                ip:
+                                                  type: string
+                                                loc:
+                                                  type: string
+                                                postal:
+                                                  type: string
+                                                region:
+                                                  type: string
+                                                timezone:
+                                                  type: string
+                                            jitter:
+                                              type: number
+                                            location:
+                                              type: object
+                                              properties:
+                                                coords:
+                                                  type: object
+                                                  properties:
+                                                    latitude:
+                                                      type: number
+                                                    longitude:
+                                                      type: number
+                                            r_t_t:
+                                              type: number
+                                            throughput:
+                                              type: number
+                                            turn_connectivity:
+                                              type: boolean
+                                    timestamp:
+                                      type: string
+                                    type:
+                                      type: string
+                              ip_information:
+                                type: object
+                                properties:
+                                  asn:
+                                    type: object
+                                    properties:
+                                      asn:
+                                        type: string
+                                  city:
+                                    type: string
+                                  country:
+                                    type: string
+                                  ip_location:
+                                    type: string
+                                  ipv4:
+                                    type: string
+                                  org:
+                                    type: string
+                                  region:
+                                    type: string
+                                  timezone:
+                                    type: string
+                              precall_network_information:
+                                type: object
+                                properties:
+                                  backend_rtt:
+                                    type: number
+                                  effective_networktype:
+                                    type: string
+                                  fractional_loss:
+                                    type: number
+                                  jitter:
+                                    type: number
+                                  reflexive_connectivity:
+                                    type: boolean
+                                  relay_connectivity:
+                                    type: boolean
+                                  rtt:
+                                    type: number
+                                  throughput:
+                                    type: number
+                                  turn_connectivity:
+                                    type: boolean
+                          quality_stats:
+                            type: object
+                            properties:
+                              audio_bandwidth:
+                                type: number
+                              audio_stats:
+                                type: array
+                                items: {}
+                              average_quality:
+                                type: number
+                              end:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              first_audio_packet_received:
+                                type: string
+                              first_video_packet_received:
+                                type: string
+                              last_audio_packet_received:
+                                type: string
+                              last_video_packet_received:
+                                type: string
+                              peer_ids:
+                                type: array
+                                items:
+                                  type: string
+                              start:
+                                oneOf:
+                                  - type: string
+                                nullable: true
+                              total_audio_packets:
+                                type: number
+                              total_audio_packets_lost:
+                                type: number
+                              total_video_packets:
+                                type: number
+                              total_video_packets_lost:
+                                type: number
+                              video_bandwidth:
+                                type: number
+                              video_stats:
+                                type: array
+                                items: {}
+                          role:
                             type: string
-                            description: Name of the preset associated with the participant.
                           updated_at:
                             type: string
-                            description: timestamp when this participant's data was last updated.
                           user_id:
                             type: string
-                            description: User id for this participant.
                   success:
                     type: boolean
   /accounts/{account_id}/realtime/kit/{appId}/meetings/{meetingId}/active-session/kick:
@@ -4570,6 +4963,9 @@ paths:
                         mobile:
                           type: number
                           description: Maximum number of streams visible on mobile devices
+                      required:
+                        - desktop
+                        - mobile
                       description: Maximum number of streams that are visible on a device
                     media:
                       type: object
@@ -4577,25 +4973,50 @@ paths:
                         screenshare:
                           type: object
                           properties:
-                            can_produce:
+                            frame_rate:
+                              type: number
+                              description: Frame rate of screen share
+                            quality:
                               type: string
                               enum:
-                                - ALLOWED
-                                - NOT_ALLOWED
-                                - CAN_REQUEST
-                              description: Can produce screen share video
+                                - hd
+                                - vga
+                                - qvga
+                              description: Quality of screen share
+                          required:
+                            - frame_rate
+                            - quality
                           description: Configuration options for participant screen shares
                         video:
                           type: object
                           properties:
-                            can_produce:
+                            frame_rate:
+                              type: number
+                              description: Frame rate of participants' video
+                            quality:
                               type: string
                               enum:
-                                - ALLOWED
-                                - NOT_ALLOWED
-                                - CAN_REQUEST
-                              description: Can produce video
+                                - hd
+                                - vga
+                                - qvga
+                              description: Video quality of participants
+                          required:
+                            - frame_rate
+                            - quality
                           description: Configuration options for participant videos
+                        audio:
+                          type: object
+                          properties:
+                            enable_high_bitrate:
+                              type: boolean
+                              description: Enable High Quality Audio for your meetings
+                            enable_stereo:
+                              type: boolean
+                              description: Enable Stereo for your meetings
+                          description: Control options for Audio quality.
+                      required:
+                        - screenshare
+                        - video
                       description: "Media configuration options. eg: Video quality"
                     view_type:
                       type: string
@@ -4643,6 +5064,12 @@ paths:
                                   type: string
                                 "1000":
                                   type: string
+                              required:
+                                - "1000"
+                                - "600"
+                                - "700"
+                                - "800"
+                                - "900"
                             brand:
                               type: object
                               properties:
@@ -4656,6 +5083,12 @@ paths:
                                   type: string
                                 "700":
                                   type: string
+                              required:
+                                - "300"
+                                - "400"
+                                - "500"
+                                - "600"
+                                - "700"
                             danger:
                               type: string
                             success:
@@ -4668,6 +5101,15 @@ paths:
                               type: string
                             warning:
                               type: string
+                          required:
+                            - background
+                            - brand
+                            - danger
+                            - success
+                            - text
+                            - text_on_brand
+                            - video_bg
+                            - warning
                         logo:
                           type: string
                         spacing_base:
@@ -4676,6 +5118,13 @@ paths:
                           type: string
                           enum:
                             - dark
+                      required:
+                        - border_radius
+                        - border_width
+                        - colors
+                        - logo
+                        - spacing_base
+                        - theme
                     config_diff: {}
                   required:
                     - design_tokens
@@ -4712,6 +5161,11 @@ paths:
                               type: boolean
                             text:
                               type: boolean
+                          required:
+                            - can_receive
+                            - can_send
+                            - files
+                            - text
                         public:
                           type: object
                           properties:
@@ -4724,6 +5178,13 @@ paths:
                             text:
                               type: boolean
                               description: Can send text messages
+                          required:
+                            - can_send
+                            - files
+                            - text
+                      required:
+                        - private
+                        - public
                       description: Chat permissions
                     connected_meetings:
                       type: object
@@ -4734,6 +5195,10 @@ paths:
                           type: boolean
                         can_switch_to_parent_meeting:
                           type: boolean
+                      required:
+                        - can_alter_connected_meetings
+                        - can_switch_connected_meetings
+                        - can_switch_to_parent_meeting
                     disable_participant_audio:
                       type: boolean
                     disable_participant_screensharing:
@@ -4758,6 +5223,8 @@ paths:
                                 - NOT_ALLOWED
                                 - CAN_REQUEST
                               description: Can produce audio
+                          required:
+                            - can_produce
                           description: Audio permissions
                         screenshare:
                           type: object
@@ -4769,6 +5236,8 @@ paths:
                                 - NOT_ALLOWED
                                 - CAN_REQUEST
                               description: Can produce screen share video
+                          required:
+                            - can_produce
                           description: Screenshare permissions
                         video:
                           type: object
@@ -4780,7 +5249,13 @@ paths:
                                 - NOT_ALLOWED
                                 - CAN_REQUEST
                               description: Can produce video
+                          required:
+                            - can_produce
                           description: Video permissions
+                      required:
+                        - audio
+                        - screenshare
+                        - video
                       description: Media permissions
                     pin_participant:
                       type: boolean
@@ -4808,6 +5283,14 @@ paths:
                                     - VIEW_ONLY
                                 handles_view_only:
                                   type: boolean
+                              required:
+                                - access_control
+                                - handles_view_only
+                      required:
+                        - can_close
+                        - can_edit_config
+                        - can_start
+                        - config
                       description: Plugin permissions
                     polls:
                       type: object
@@ -4821,6 +5304,10 @@ paths:
                         can_vote:
                           type: boolean
                           description: Can vote on polls
+                      required:
+                        - can_create
+                        - can_view
+                        - can_vote
                       description: Poll permissions
                     recorder_type:
                       type: string
@@ -4896,6 +5383,9 @@ paths:
                               mobile:
                                 type: number
                                 description: Maximum number of streams visible on mobile devices
+                            required:
+                              - desktop
+                              - mobile
                             description: Maximum number of streams that are visible on a device
                           media:
                             type: object
@@ -4903,25 +5393,50 @@ paths:
                               screenshare:
                                 type: object
                                 properties:
-                                  can_produce:
+                                  frame_rate:
+                                    type: number
+                                    description: Frame rate of screen share
+                                  quality:
                                     type: string
                                     enum:
-                                      - ALLOWED
-                                      - NOT_ALLOWED
-                                      - CAN_REQUEST
-                                    description: Can produce screen share video
+                                      - hd
+                                      - vga
+                                      - qvga
+                                    description: Quality of screen share
+                                required:
+                                  - frame_rate
+                                  - quality
                                 description: Configuration options for participant screen shares
                               video:
                                 type: object
                                 properties:
-                                  can_produce:
+                                  frame_rate:
+                                    type: number
+                                    description: Frame rate of participants' video
+                                  quality:
                                     type: string
                                     enum:
-                                      - ALLOWED
-                                      - NOT_ALLOWED
-                                      - CAN_REQUEST
-                                    description: Can produce video
+                                      - hd
+                                      - vga
+                                      - qvga
+                                    description: Video quality of participants
+                                required:
+                                  - frame_rate
+                                  - quality
                                 description: Configuration options for participant videos
+                              audio:
+                                type: object
+                                properties:
+                                  enable_high_bitrate:
+                                    type: boolean
+                                    description: Enable High Quality Audio for your meetings
+                                  enable_stereo:
+                                    type: boolean
+                                    description: Enable Stereo for your meetings
+                                description: Control options for Audio quality.
+                            required:
+                              - screenshare
+                              - video
                             description: "Media configuration options. eg: Video quality"
                           view_type:
                             type: string
@@ -4968,6 +5483,12 @@ paths:
                                         type: string
                                       "1000":
                                         type: string
+                                    required:
+                                      - "1000"
+                                      - "600"
+                                      - "700"
+                                      - "800"
+                                      - "900"
                                   brand:
                                     type: object
                                     properties:
@@ -4981,6 +5502,12 @@ paths:
                                         type: string
                                       "700":
                                         type: string
+                                    required:
+                                      - "300"
+                                      - "400"
+                                      - "500"
+                                      - "600"
+                                      - "700"
                                   danger:
                                     type: string
                                   success:
@@ -4993,6 +5520,15 @@ paths:
                                     type: string
                                   warning:
                                     type: string
+                                required:
+                                  - background
+                                  - brand
+                                  - danger
+                                  - success
+                                  - text
+                                  - text_on_brand
+                                  - video_bg
+                                  - warning
                               logo:
                                 type: string
                               spacing_base:
@@ -5001,6 +5537,13 @@ paths:
                                 type: string
                                 enum:
                                   - dark
+                            required:
+                              - border_radius
+                              - border_width
+                              - colors
+                              - logo
+                              - spacing_base
+                              - theme
                           config_diff: {}
                         required:
                           - design_tokens
@@ -5036,6 +5579,11 @@ paths:
                                     type: boolean
                                   text:
                                     type: boolean
+                                required:
+                                  - can_receive
+                                  - can_send
+                                  - files
+                                  - text
                               public:
                                 type: object
                                 properties:
@@ -5048,6 +5596,13 @@ paths:
                                   text:
                                     type: boolean
                                     description: Can send text messages
+                                required:
+                                  - can_send
+                                  - files
+                                  - text
+                            required:
+                              - private
+                              - public
                             description: Chat permissions
                           connected_meetings:
                             type: object
@@ -5058,6 +5613,10 @@ paths:
                                 type: boolean
                               can_switch_to_parent_meeting:
                                 type: boolean
+                            required:
+                              - can_alter_connected_meetings
+                              - can_switch_connected_meetings
+                              - can_switch_to_parent_meeting
                           disable_participant_audio:
                             type: boolean
                           disable_participant_screensharing:
@@ -5082,6 +5641,8 @@ paths:
                                       - NOT_ALLOWED
                                       - CAN_REQUEST
                                     description: Can produce audio
+                                required:
+                                  - can_produce
                                 description: Audio permissions
                               screenshare:
                                 type: object
@@ -5093,6 +5654,8 @@ paths:
                                       - NOT_ALLOWED
                                       - CAN_REQUEST
                                     description: Can produce screen share video
+                                required:
+                                  - can_produce
                                 description: Screenshare permissions
                               video:
                                 type: object
@@ -5104,7 +5667,13 @@ paths:
                                       - NOT_ALLOWED
                                       - CAN_REQUEST
                                     description: Can produce video
+                                required:
+                                  - can_produce
                                 description: Video permissions
+                            required:
+                              - audio
+                              - screenshare
+                              - video
                             description: Media permissions
                           pin_participant:
                             type: boolean
@@ -5132,6 +5701,14 @@ paths:
                                           - VIEW_ONLY
                                       handles_view_only:
                                         type: boolean
+                                    required:
+                                      - access_control
+                                      - handles_view_only
+                            required:
+                              - can_close
+                              - can_edit_config
+                              - can_start
+                              - config
                             description: Plugin permissions
                           polls:
                             type: object
@@ -5145,6 +5722,10 @@ paths:
                               can_vote:
                                 type: boolean
                                 description: Can vote on polls
+                            required:
+                              - can_create
+                              - can_view
+                              - can_vote
                             description: Poll permissions
                           recorder_type:
                             type: string
@@ -5250,24 +5831,30 @@ paths:
                         screenshare:
                           type: object
                           properties:
-                            can_produce:
+                            frame_rate:
+                              type: number
+                              description: Frame rate of screen share
+                            quality:
                               type: string
                               enum:
-                                - ALLOWED
-                                - NOT_ALLOWED
-                                - CAN_REQUEST
-                              description: Can produce screen share video
+                                - hd
+                                - vga
+                                - qvga
+                              description: Quality of screen share
                           description: Configuration options for participant screen shares
                         video:
                           type: object
                           properties:
-                            can_produce:
+                            frame_rate:
+                              type: number
+                              description: Frame rate of participants' video
+                            quality:
                               type: string
                               enum:
-                                - ALLOWED
-                                - NOT_ALLOWED
-                                - CAN_REQUEST
-                              description: Can produce video
+                                - hd
+                                - vga
+                                - qvga
+                              description: Video quality of participants
                           description: Configuration options for participant videos
                       description: "Media configuration options. eg: Video quality"
                     view_type:
@@ -5536,6 +6123,9 @@ paths:
                               mobile:
                                 type: number
                                 description: Maximum number of streams visible on mobile devices
+                            required:
+                              - desktop
+                              - mobile
                             description: Maximum number of streams that are visible on a device
                           media:
                             type: object
@@ -5543,25 +6133,50 @@ paths:
                               screenshare:
                                 type: object
                                 properties:
-                                  can_produce:
+                                  frame_rate:
+                                    type: number
+                                    description: Frame rate of screen share
+                                  quality:
                                     type: string
                                     enum:
-                                      - ALLOWED
-                                      - NOT_ALLOWED
-                                      - CAN_REQUEST
-                                    description: Can produce screen share video
+                                      - hd
+                                      - vga
+                                      - qvga
+                                    description: Quality of screen share
+                                required:
+                                  - frame_rate
+                                  - quality
                                 description: Configuration options for participant screen shares
                               video:
                                 type: object
                                 properties:
-                                  can_produce:
+                                  frame_rate:
+                                    type: number
+                                    description: Frame rate of participants' video
+                                  quality:
                                     type: string
                                     enum:
-                                      - ALLOWED
-                                      - NOT_ALLOWED
-                                      - CAN_REQUEST
-                                    description: Can produce video
+                                      - hd
+                                      - vga
+                                      - qvga
+                                    description: Video quality of participants
+                                required:
+                                  - frame_rate
+                                  - quality
                                 description: Configuration options for participant videos
+                              audio:
+                                type: object
+                                properties:
+                                  enable_high_bitrate:
+                                    type: boolean
+                                    description: Enable High Quality Audio for your meetings
+                                  enable_stereo:
+                                    type: boolean
+                                    description: Enable Stereo for your meetings
+                                description: Control options for Audio quality.
+                            required:
+                              - screenshare
+                              - video
                             description: "Media configuration options. eg: Video quality"
                           view_type:
                             type: string
@@ -5608,6 +6223,12 @@ paths:
                                         type: string
                                       "1000":
                                         type: string
+                                    required:
+                                      - "1000"
+                                      - "600"
+                                      - "700"
+                                      - "800"
+                                      - "900"
                                   brand:
                                     type: object
                                     properties:
@@ -5621,6 +6242,12 @@ paths:
                                         type: string
                                       "700":
                                         type: string
+                                    required:
+                                      - "300"
+                                      - "400"
+                                      - "500"
+                                      - "600"
+                                      - "700"
                                   danger:
                                     type: string
                                   success:
@@ -5633,6 +6260,15 @@ paths:
                                     type: string
                                   warning:
                                     type: string
+                                required:
+                                  - background
+                                  - brand
+                                  - danger
+                                  - success
+                                  - text
+                                  - text_on_brand
+                                  - video_bg
+                                  - warning
                               logo:
                                 type: string
                               spacing_base:
@@ -5641,6 +6277,13 @@ paths:
                                 type: string
                                 enum:
                                   - dark
+                            required:
+                              - border_radius
+                              - border_width
+                              - colors
+                              - logo
+                              - spacing_base
+                              - theme
                           config_diff: {}
                         required:
                           - design_tokens
@@ -5676,6 +6319,11 @@ paths:
                                     type: boolean
                                   text:
                                     type: boolean
+                                required:
+                                  - can_receive
+                                  - can_send
+                                  - files
+                                  - text
                               public:
                                 type: object
                                 properties:
@@ -5688,6 +6336,13 @@ paths:
                                   text:
                                     type: boolean
                                     description: Can send text messages
+                                required:
+                                  - can_send
+                                  - files
+                                  - text
+                            required:
+                              - private
+                              - public
                             description: Chat permissions
                           connected_meetings:
                             type: object
@@ -5698,6 +6353,10 @@ paths:
                                 type: boolean
                               can_switch_to_parent_meeting:
                                 type: boolean
+                            required:
+                              - can_alter_connected_meetings
+                              - can_switch_connected_meetings
+                              - can_switch_to_parent_meeting
                           disable_participant_audio:
                             type: boolean
                           disable_participant_screensharing:
@@ -5722,6 +6381,8 @@ paths:
                                       - NOT_ALLOWED
                                       - CAN_REQUEST
                                     description: Can produce audio
+                                required:
+                                  - can_produce
                                 description: Audio permissions
                               screenshare:
                                 type: object
@@ -5733,6 +6394,8 @@ paths:
                                       - NOT_ALLOWED
                                       - CAN_REQUEST
                                     description: Can produce screen share video
+                                required:
+                                  - can_produce
                                 description: Screenshare permissions
                               video:
                                 type: object
@@ -5744,7 +6407,13 @@ paths:
                                       - NOT_ALLOWED
                                       - CAN_REQUEST
                                     description: Can produce video
+                                required:
+                                  - can_produce
                                 description: Video permissions
+                            required:
+                              - audio
+                              - screenshare
+                              - video
                             description: Media permissions
                           pin_participant:
                             type: boolean
@@ -5772,6 +6441,14 @@ paths:
                                           - VIEW_ONLY
                                       handles_view_only:
                                         type: boolean
+                                    required:
+                                      - access_control
+                                      - handles_view_only
+                            required:
+                              - can_close
+                              - can_edit_config
+                              - can_start
+                              - config
                             description: Plugin permissions
                           polls:
                             type: object
@@ -5785,6 +6462,10 @@ paths:
                               can_vote:
                                 type: boolean
                                 description: Can vote on polls
+                            required:
+                              - can_create
+                              - can_view
+                              - can_vote
                             description: Poll permissions
                           recorder_type:
                             type: string
@@ -5889,6 +6570,9 @@ paths:
                               mobile:
                                 type: number
                                 description: Maximum number of streams visible on mobile devices
+                            required:
+                              - desktop
+                              - mobile
                             description: Maximum number of streams that are visible on a device
                           media:
                             type: object
@@ -5896,25 +6580,50 @@ paths:
                               screenshare:
                                 type: object
                                 properties:
-                                  can_produce:
+                                  frame_rate:
+                                    type: number
+                                    description: Frame rate of screen share
+                                  quality:
                                     type: string
                                     enum:
-                                      - ALLOWED
-                                      - NOT_ALLOWED
-                                      - CAN_REQUEST
-                                    description: Can produce screen share video
+                                      - hd
+                                      - vga
+                                      - qvga
+                                    description: Quality of screen share
+                                required:
+                                  - frame_rate
+                                  - quality
                                 description: Configuration options for participant screen shares
                               video:
                                 type: object
                                 properties:
-                                  can_produce:
+                                  frame_rate:
+                                    type: number
+                                    description: Frame rate of participants' video
+                                  quality:
                                     type: string
                                     enum:
-                                      - ALLOWED
-                                      - NOT_ALLOWED
-                                      - CAN_REQUEST
-                                    description: Can produce video
+                                      - hd
+                                      - vga
+                                      - qvga
+                                    description: Video quality of participants
+                                required:
+                                  - frame_rate
+                                  - quality
                                 description: Configuration options for participant videos
+                              audio:
+                                type: object
+                                properties:
+                                  enable_high_bitrate:
+                                    type: boolean
+                                    description: Enable High Quality Audio for your meetings
+                                  enable_stereo:
+                                    type: boolean
+                                    description: Enable Stereo for your meetings
+                                description: Control options for Audio quality.
+                            required:
+                              - screenshare
+                              - video
                             description: "Media configuration options. eg: Video quality"
                           view_type:
                             type: string
@@ -5961,6 +6670,12 @@ paths:
                                         type: string
                                       "1000":
                                         type: string
+                                    required:
+                                      - "1000"
+                                      - "600"
+                                      - "700"
+                                      - "800"
+                                      - "900"
                                   brand:
                                     type: object
                                     properties:
@@ -5974,6 +6689,12 @@ paths:
                                         type: string
                                       "700":
                                         type: string
+                                    required:
+                                      - "300"
+                                      - "400"
+                                      - "500"
+                                      - "600"
+                                      - "700"
                                   danger:
                                     type: string
                                   success:
@@ -5986,6 +6707,15 @@ paths:
                                     type: string
                                   warning:
                                     type: string
+                                required:
+                                  - background
+                                  - brand
+                                  - danger
+                                  - success
+                                  - text
+                                  - text_on_brand
+                                  - video_bg
+                                  - warning
                               logo:
                                 type: string
                               spacing_base:
@@ -5994,6 +6724,13 @@ paths:
                                 type: string
                                 enum:
                                   - dark
+                            required:
+                              - border_radius
+                              - border_width
+                              - colors
+                              - logo
+                              - spacing_base
+                              - theme
                           config_diff: {}
                         required:
                           - design_tokens
@@ -6029,6 +6766,11 @@ paths:
                                     type: boolean
                                   text:
                                     type: boolean
+                                required:
+                                  - can_receive
+                                  - can_send
+                                  - files
+                                  - text
                               public:
                                 type: object
                                 properties:
@@ -6041,6 +6783,13 @@ paths:
                                   text:
                                     type: boolean
                                     description: Can send text messages
+                                required:
+                                  - can_send
+                                  - files
+                                  - text
+                            required:
+                              - private
+                              - public
                             description: Chat permissions
                           connected_meetings:
                             type: object
@@ -6051,6 +6800,10 @@ paths:
                                 type: boolean
                               can_switch_to_parent_meeting:
                                 type: boolean
+                            required:
+                              - can_alter_connected_meetings
+                              - can_switch_connected_meetings
+                              - can_switch_to_parent_meeting
                           disable_participant_audio:
                             type: boolean
                           disable_participant_screensharing:
@@ -6075,6 +6828,8 @@ paths:
                                       - NOT_ALLOWED
                                       - CAN_REQUEST
                                     description: Can produce audio
+                                required:
+                                  - can_produce
                                 description: Audio permissions
                               screenshare:
                                 type: object
@@ -6086,6 +6841,8 @@ paths:
                                       - NOT_ALLOWED
                                       - CAN_REQUEST
                                     description: Can produce screen share video
+                                required:
+                                  - can_produce
                                 description: Screenshare permissions
                               video:
                                 type: object
@@ -6097,7 +6854,13 @@ paths:
                                       - NOT_ALLOWED
                                       - CAN_REQUEST
                                     description: Can produce video
+                                required:
+                                  - can_produce
                                 description: Video permissions
+                            required:
+                              - audio
+                              - screenshare
+                              - video
                             description: Media permissions
                           pin_participant:
                             type: boolean
@@ -6125,6 +6888,14 @@ paths:
                                           - VIEW_ONLY
                                       handles_view_only:
                                         type: boolean
+                                    required:
+                                      - access_control
+                                      - handles_view_only
+                            required:
+                              - can_close
+                              - can_edit_config
+                              - can_start
+                              - config
                             description: Plugin permissions
                           polls:
                             type: object
@@ -6138,6 +6909,10 @@ paths:
                               can_vote:
                                 type: boolean
                                 description: Can vote on polls
+                            required:
+                              - can_create
+                              - can_view
+                              - can_vote
                             description: Poll permissions
                           recorder_type:
                             type: string
@@ -6243,6 +7018,9 @@ paths:
                               mobile:
                                 type: number
                                 description: Maximum number of streams visible on mobile devices
+                            required:
+                              - desktop
+                              - mobile
                             description: Maximum number of streams that are visible on a device
                           media:
                             type: object
@@ -6250,25 +7028,50 @@ paths:
                               screenshare:
                                 type: object
                                 properties:
-                                  can_produce:
+                                  frame_rate:
+                                    type: number
+                                    description: Frame rate of screen share
+                                  quality:
                                     type: string
                                     enum:
-                                      - ALLOWED
-                                      - NOT_ALLOWED
-                                      - CAN_REQUEST
-                                    description: Can produce screen share video
+                                      - hd
+                                      - vga
+                                      - qvga
+                                    description: Quality of screen share
+                                required:
+                                  - frame_rate
+                                  - quality
                                 description: Configuration options for participant screen shares
                               video:
                                 type: object
                                 properties:
-                                  can_produce:
+                                  frame_rate:
+                                    type: number
+                                    description: Frame rate of participants' video
+                                  quality:
                                     type: string
                                     enum:
-                                      - ALLOWED
-                                      - NOT_ALLOWED
-                                      - CAN_REQUEST
-                                    description: Can produce video
+                                      - hd
+                                      - vga
+                                      - qvga
+                                    description: Video quality of participants
+                                required:
+                                  - frame_rate
+                                  - quality
                                 description: Configuration options for participant videos
+                              audio:
+                                type: object
+                                properties:
+                                  enable_high_bitrate:
+                                    type: boolean
+                                    description: Enable High Quality Audio for your meetings
+                                  enable_stereo:
+                                    type: boolean
+                                    description: Enable Stereo for your meetings
+                                description: Control options for Audio quality.
+                            required:
+                              - screenshare
+                              - video
                             description: "Media configuration options. eg: Video quality"
                           view_type:
                             type: string
@@ -6315,6 +7118,12 @@ paths:
                                         type: string
                                       "1000":
                                         type: string
+                                    required:
+                                      - "1000"
+                                      - "600"
+                                      - "700"
+                                      - "800"
+                                      - "900"
                                   brand:
                                     type: object
                                     properties:
@@ -6328,6 +7137,12 @@ paths:
                                         type: string
                                       "700":
                                         type: string
+                                    required:
+                                      - "300"
+                                      - "400"
+                                      - "500"
+                                      - "600"
+                                      - "700"
                                   danger:
                                     type: string
                                   success:
@@ -6340,6 +7155,15 @@ paths:
                                     type: string
                                   warning:
                                     type: string
+                                required:
+                                  - background
+                                  - brand
+                                  - danger
+                                  - success
+                                  - text
+                                  - text_on_brand
+                                  - video_bg
+                                  - warning
                               logo:
                                 type: string
                               spacing_base:
@@ -6348,6 +7172,13 @@ paths:
                                 type: string
                                 enum:
                                   - dark
+                            required:
+                              - border_radius
+                              - border_width
+                              - colors
+                              - logo
+                              - spacing_base
+                              - theme
                           config_diff: {}
                         required:
                           - design_tokens
@@ -6383,6 +7214,11 @@ paths:
                                     type: boolean
                                   text:
                                     type: boolean
+                                required:
+                                  - can_receive
+                                  - can_send
+                                  - files
+                                  - text
                               public:
                                 type: object
                                 properties:
@@ -6395,6 +7231,13 @@ paths:
                                   text:
                                     type: boolean
                                     description: Can send text messages
+                                required:
+                                  - can_send
+                                  - files
+                                  - text
+                            required:
+                              - private
+                              - public
                             description: Chat permissions
                           connected_meetings:
                             type: object
@@ -6405,6 +7248,10 @@ paths:
                                 type: boolean
                               can_switch_to_parent_meeting:
                                 type: boolean
+                            required:
+                              - can_alter_connected_meetings
+                              - can_switch_connected_meetings
+                              - can_switch_to_parent_meeting
                           disable_participant_audio:
                             type: boolean
                           disable_participant_screensharing:
@@ -6429,6 +7276,8 @@ paths:
                                       - NOT_ALLOWED
                                       - CAN_REQUEST
                                     description: Can produce audio
+                                required:
+                                  - can_produce
                                 description: Audio permissions
                               screenshare:
                                 type: object
@@ -6440,6 +7289,8 @@ paths:
                                       - NOT_ALLOWED
                                       - CAN_REQUEST
                                     description: Can produce screen share video
+                                required:
+                                  - can_produce
                                 description: Screenshare permissions
                               video:
                                 type: object
@@ -6451,7 +7302,13 @@ paths:
                                       - NOT_ALLOWED
                                       - CAN_REQUEST
                                     description: Can produce video
+                                required:
+                                  - can_produce
                                 description: Video permissions
+                            required:
+                              - audio
+                              - screenshare
+                              - video
                             description: Media permissions
                           pin_participant:
                             type: boolean
@@ -6479,6 +7336,14 @@ paths:
                                           - VIEW_ONLY
                                       handles_view_only:
                                         type: boolean
+                                    required:
+                                      - access_control
+                                      - handles_view_only
+                            required:
+                              - can_close
+                              - can_edit_config
+                              - can_start
+                              - config
                             description: Plugin permissions
                           polls:
                             type: object
@@ -6492,6 +7357,10 @@ paths:
                               can_vote:
                                 type: boolean
                                 description: Can vote on polls
+                            required:
+                              - can_create
+                              - can_view
+                              - can_vote
                             description: Poll permissions
                           recorder_type:
                             type: string
@@ -7510,9 +8379,149 @@ paths:
                           left_at:
                             type: string
                             description: timestamp at which participant left the session.
+                          peer_stats:
+                            type: object
+                            properties:
+                              config:
+                                type: string
+                              device_info:
+                                type: object
+                                properties:
+                                  browser:
+                                    type: string
+                                  browser_version:
+                                    type: string
+                                  cpus:
+                                    type: number
+                                  engine:
+                                    type: string
+                                  is_mobile:
+                                    type: boolean
+                                  memory:
+                                    type: number
+                                  os:
+                                    type: string
+                                  os_version:
+                                    type: string
+                                  sdk_name:
+                                    type: string
+                                  sdk_version:
+                                    type: string
+                                  user_agent:
+                                    type: string
+                                  webgl_support:
+                                    type: string
+                              events:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    timestamp:
+                                      type: string
+                                    type:
+                                      type: string
+                              ip_information:
+                                type: object
+                                properties:
+                                  city:
+                                    type: string
+                                  country:
+                                    type: string
+                                  ip_location:
+                                    type: string
+                                  ipv4:
+                                    type: string
+                                  org:
+                                    type: string
+                                  portal:
+                                    type: string
+                                  region:
+                                    type: string
+                                  timezone:
+                                    type: string
+                              precall_network_information:
+                                type: object
+                                properties:
+                                  backend_rtt:
+                                    type: number
+                                  effective_networktype:
+                                    type: string
+                                  fractional_loss:
+                                    type: number
+                                  jitter:
+                                    type: number
+                                  reflexive_connectivity:
+                                    type: boolean
+                                  relay_connectivity:
+                                    type: boolean
+                                  rtt:
+                                    type: number
+                                  throughtput:
+                                    type: number
+                                  turn_connectivity:
+                                    type: boolean
+                              status:
+                                type: string
                           preset_name:
                             type: string
                             description: Name of the preset associated with the participant.
+                          quality_stats:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                audio_bandwidth:
+                                  type: number
+                                audio_packet_loss:
+                                  type: number
+                                audio_stats:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      concealment_events:
+                                        type: number
+                                      jitter:
+                                        type: number
+                                      packets_lost:
+                                        type: number
+                                      quality:
+                                        type: number
+                                      timestamp:
+                                        type: string
+                                average_quality:
+                                  type: number
+                                end:
+                                  type: string
+                                peer_id:
+                                  type: string
+                                start:
+                                  type: string
+                                video_bandwidth:
+                                  type: number
+                                video_packet_loss:
+                                  type: number
+                                video_stats:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      frame_height:
+                                        type: number
+                                      frame_width:
+                                        type: number
+                                      frames_dropped:
+                                        type: number
+                                      frames_per_second:
+                                        type: number
+                                      jitter:
+                                        type: number
+                                      packets_lost:
+                                        type: number
+                                      quality:
+                                        type: number
+                                      timestamp:
+                                        type: string
                           updated_at:
                             type: string
                             description: timestamp when this participant's data was last updated.

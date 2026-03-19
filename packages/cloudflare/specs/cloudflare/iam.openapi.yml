@@ -776,7 +776,18 @@ paths:
                             properties:
                               id:
                                 type: string
-                                description: Permission Group identifier tag.
+                                description: Identifier of the permission group.
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the permission group.
+                              name:
+                                type: string
+                                description: Name of the permission group.
                             required:
                               - id
                           description: A set of permission groups that are specified to the policy.
@@ -787,9 +798,46 @@ paths:
                             properties:
                               id:
                                 type: string
-                                description: Resource Group identifier tag.
+                                description: Identifier of the resource group.
+                              scope:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    key:
+                                      type: string
+                                      description: This is a combination of pre-defined resource name and identifier
+                                        (like Account ID etc.)
+                                    objects:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          key:
+                                            type: string
+                                            description: This is a combination of pre-defined resource name and identifier
+                                              (like Zone ID etc.)
+                                        required:
+                                          - key
+                                      description: A list of scope objects for additional context.
+                                  required:
+                                    - key
+                                    - objects
+                                description: The scope associated to the resource group
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the resource group.
+                              name:
+                                type: string
+                                description: Name of the resource group.
                             required:
                               - id
+                              - scope
                           description: A list of resource groups that the policy applies to.
                     description: Policies attached to the User group
                 required:
@@ -908,7 +956,18 @@ paths:
                             properties:
                               id:
                                 type: string
-                                description: Permission Group identifier tag.
+                                description: Identifier of the permission group.
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the permission group.
+                              name:
+                                type: string
+                                description: Name of the permission group.
                             required:
                               - id
                           description: A set of permission groups that are specified to the policy.
@@ -919,9 +978,46 @@ paths:
                             properties:
                               id:
                                 type: string
-                                description: Resource Group identifier tag.
+                                description: Identifier of the resource group.
+                              scope:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    key:
+                                      type: string
+                                      description: This is a combination of pre-defined resource name and identifier
+                                        (like Account ID etc.)
+                                    objects:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          key:
+                                            type: string
+                                            description: This is a combination of pre-defined resource name and identifier
+                                              (like Zone ID etc.)
+                                        required:
+                                          - key
+                                      description: A list of scope objects for additional context.
+                                  required:
+                                    - key
+                                    - objects
+                                description: The scope associated to the resource group
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the resource group.
+                              name:
+                                type: string
+                                description: Name of the resource group.
                             required:
                               - id
+                              - scope
                           description: A list of resource groups that the policy applies to.
                     description: Policies attached to the User group
                 required:
@@ -1044,7 +1140,18 @@ paths:
                             properties:
                               id:
                                 type: string
-                                description: Permission Group identifier tag.
+                                description: Identifier of the permission group.
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the permission group.
+                              name:
+                                type: string
+                                description: Name of the permission group.
                             required:
                               - id
                           description: A set of permission groups that are specified to the policy.
@@ -1055,9 +1162,46 @@ paths:
                             properties:
                               id:
                                 type: string
-                                description: Resource Group identifier tag.
+                                description: Identifier of the resource group.
+                              scope:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    key:
+                                      type: string
+                                      description: This is a combination of pre-defined resource name and identifier
+                                        (like Account ID etc.)
+                                    objects:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          key:
+                                            type: string
+                                            description: This is a combination of pre-defined resource name and identifier
+                                              (like Zone ID etc.)
+                                        required:
+                                          - key
+                                      description: A list of scope objects for additional context.
+                                  required:
+                                    - key
+                                    - objects
+                                description: The scope associated to the resource group
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the resource group.
+                              name:
+                                type: string
+                                description: Name of the resource group.
                             required:
                               - id
+                              - scope
                           description: A list of resource groups that the policy applies to.
                     description: Policies attached to the User group
                 required:
@@ -1174,7 +1318,18 @@ paths:
                             properties:
                               id:
                                 type: string
-                                description: Permission Group identifier tag.
+                                description: Identifier of the permission group.
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the permission group.
+                              name:
+                                type: string
+                                description: Name of the permission group.
                             required:
                               - id
                           description: A set of permission groups that are specified to the policy.
@@ -1185,9 +1340,46 @@ paths:
                             properties:
                               id:
                                 type: string
-                                description: Resource Group identifier tag.
+                                description: Identifier of the resource group.
+                              scope:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    key:
+                                      type: string
+                                      description: This is a combination of pre-defined resource name and identifier
+                                        (like Account ID etc.)
+                                    objects:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          key:
+                                            type: string
+                                            description: This is a combination of pre-defined resource name and identifier
+                                              (like Zone ID etc.)
+                                        required:
+                                          - key
+                                      description: A list of scope objects for additional context.
+                                  required:
+                                    - key
+                                    - objects
+                                description: The scope associated to the resource group
+                              meta:
+                                type: object
+                                properties:
+                                  key:
+                                    type: string
+                                  value:
+                                    type: string
+                                description: Attributes associated to the resource group.
+                              name:
+                                type: string
+                                description: Name of the resource group.
                             required:
                               - id
+                              - scope
                           description: A list of resource groups that the policy applies to.
                     description: Policies attached to the User group
                 required:

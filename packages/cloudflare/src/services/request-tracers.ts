@@ -135,12 +135,62 @@ export const CreateTraceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface CreateTraceResponse {
   /** HTTP Status code of zone response */
   statusCode?: number | null;
-  trace?: unknown | null;
+  trace?:
+    | {
+        action?: string | null;
+        actionParameters?: unknown | null;
+        description?: string | null;
+        expression?: string | null;
+        kind?: string | null;
+        matched?: boolean | null;
+        name?: string | null;
+        stepName?: string | null;
+        trace?: unknown | null;
+        type?: string | null;
+      }[]
+    | null;
 }
 
 export const CreateTraceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   statusCode: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  trace: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+  trace: Schema.optional(
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          action: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          actionParameters: Schema.optional(
+            Schema.Union([Schema.Unknown, Schema.Null]),
+          ),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          expression: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          kind: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          matched: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          stepName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          trace: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+          type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            action: "action",
+            actionParameters: "action_parameters",
+            description: "description",
+            expression: "expression",
+            kind: "kind",
+            matched: "matched",
+            name: "name",
+            stepName: "step_name",
+            trace: "trace",
+            type: "type",
+          }),
+        ),
+      ),
+      Schema.Null,
+    ]),
+  ),
 })
   .pipe(Schema.encodeKeys({ statusCode: "status_code", trace: "trace" }))
   .pipe(

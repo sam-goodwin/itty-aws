@@ -26,8 +26,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                additionalProperties: true
+                type: number
       x-distilled-response-path: result
   /accounts/{account_id}/intel/asn/{asn}/subnets:
     get:
@@ -1359,6 +1358,10 @@ paths:
       responses:
         "200":
           description: Success
+          content:
+            application/json:
+              schema:
+                type: string
   /accounts/{account_id}/intel/indicator-feeds/permissions/view:
     get:
       operationId: listIndicatorFeedPermissions

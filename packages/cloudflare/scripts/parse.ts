@@ -53,7 +53,7 @@ interface SerializedServiceInfo {
 }
 
 interface CacheData {
-  version: 3;
+  version: number;
   hash: string;
   timestamp: number;
   services: SerializedServiceInfo[];
@@ -100,7 +100,9 @@ function deserializeServices(data: SerializedServiceInfo[]): ServiceInfo[] {
 // =============================================================================
 
 const CACHE_DIR = ".distilled/cache";
+const CACHE_VERSION = 4;
 const OPENAPI_SPEC_REGEX = /\.openapi\.(json|ya?ml)$/i;
+const LOCAL_PARSE_INPUT_FILES = ["parse.ts", "model.ts"] as const;
 
 interface OpenApiSpec {
   openapi?: string;
@@ -250,14 +252,33 @@ const getOpenApiContentHash = (openapiBasePath?: string) =>
     return hash.digest("hex");
   });
 
+const getLocalParserHash = () =>
+  Effect.gen(function* () {
+    const fs = yield* FileSystem.FileSystem;
+    const hash = createHash("sha1");
+    const scriptsDir = path.dirname(new URL(import.meta.url).pathname);
+
+    for (const file of LOCAL_PARSE_INPUT_FILES) {
+      const filePath = path.join(scriptsDir, file);
+      const content = yield* fs.readFileString(filePath).pipe(Effect.orDie);
+      hash.update(file);
+      hash.update("\0");
+      hash.update(content);
+      hash.update("\0");
+    }
+
+    return hash.digest("hex");
+  });
+
 const getCacheKey = (repoPath: string, openapiBasePath?: string) =>
   Effect.gen(function* () {
     const gitHash = yield* getGitHash(repoPath);
     const openapiHash = yield* getOpenApiContentHash(openapiBasePath);
-    if (!gitHash && !openapiHash) {
+    const parserHash = yield* getLocalParserHash();
+    if (!gitHash && !openapiHash && !parserHash) {
       return "";
     }
-    return hashString(`${gitHash}:${openapiHash}`);
+    return hashString(`${CACHE_VERSION}:${gitHash}:${openapiHash}:${parserHash}`);
   });
 
 /**
@@ -276,7 +297,7 @@ const loadCache = (hash: string) =>
     const content = yield* fs.readFileString(cachePath);
     const data = JSON.parse(content) as CacheData;
 
-    if (data.version !== 3 || data.hash !== hash) {
+    if (data.version !== CACHE_VERSION || data.hash !== hash) {
       return undefined;
     }
 
@@ -297,7 +318,7 @@ const saveCache = (hash: string, services: ServiceInfo[]) =>
     yield* fs.makeDirectory(CACHE_DIR, { recursive: true });
 
     const data: CacheData = {
-      version: 3,
+      version: CACHE_VERSION,
       hash,
       timestamp: Date.now(),
       services: serializeServices(services),
@@ -450,6 +471,138 @@ function parseParamLocation(
   return undefined;
 }
 
+function typeCacheKey(type: ts.Type, checker: ts.TypeChecker): string {
+  const symbol = type.aliasSymbol ?? type.getSymbol();
+  const declaration = symbol?.declarations?.[0];
+  return declaration
+    ? `${declaration.getSourceFile().fileName}:${declaration.pos}:${declaration.end}`
+    : checker.typeToString(type);
+}
+
+function tsTypeToTypeInfo(
+  type: ts.Type,
+  checker: ts.TypeChecker,
+  depth: number = 0,
+  seen: Set<string> = new Set(),
+): TypeInfo {
+  if (depth > 10) {
+    return { kind: "unknown" };
+  }
+
+  if (type.isStringLiteral()) {
+    return { kind: "literal", value: type.value };
+  }
+
+  if (type.isNumberLiteral()) {
+    return { kind: "literal", value: String(type.value) };
+  }
+
+  const flags = type.getFlags();
+
+  if (flags & ts.TypeFlags.BooleanLiteral) {
+    return { kind: "literal", value: checker.typeToString(type) };
+  }
+  if (flags & ts.TypeFlags.Null) {
+    return { kind: "null" };
+  }
+  if (flags & ts.TypeFlags.Undefined) {
+    return { kind: "unknown" };
+  }
+  if (flags & ts.TypeFlags.StringLike) {
+    return { kind: "primitive", value: "string" };
+  }
+  if (flags & ts.TypeFlags.NumberLike) {
+    return { kind: "primitive", value: "number" };
+  }
+  if (flags & ts.TypeFlags.BooleanLike) {
+    return { kind: "primitive", value: "boolean" };
+  }
+  if (flags & (ts.TypeFlags.Any | ts.TypeFlags.Unknown)) {
+    return { kind: "unknown" };
+  }
+
+  if (type.isUnion()) {
+    const values = type.types
+      .filter((member) => !(member.getFlags() & ts.TypeFlags.Undefined))
+      .map((member) => tsTypeToTypeInfo(member, checker, depth + 1, seen));
+
+    const knownValues = values.filter((value) => value.kind !== "unknown");
+    const candidates = knownValues.length > 0 ? knownValues : values;
+    const deduped = candidates.filter((value, index) => {
+      const key = JSON.stringify(value);
+      return index === candidates.findIndex((other) => JSON.stringify(other) === key);
+    });
+
+    if (deduped.length === 0) {
+      return { kind: "unknown" };
+    }
+    if (deduped.length === 1) {
+      return deduped[0];
+    }
+    return { kind: "union", values: deduped };
+  }
+
+  if (checker.isArrayType(type)) {
+    const typeRef = type as ts.TypeReference;
+    const [elementType] = checker.getTypeArguments(typeRef);
+    return {
+      kind: "array",
+      elementType: elementType
+        ? tsTypeToTypeInfo(elementType, checker, depth + 1, seen)
+        : { kind: "unknown" },
+    };
+  }
+
+  if (checker.isTupleType(type)) {
+    const tupleRef = type as ts.TypeReference;
+    const elementTypes = checker.getTypeArguments(tupleRef);
+    const tupleElementType =
+      elementTypes.length === 0
+        ? { kind: "unknown" as const }
+        : elementTypes.length === 1
+          ? tsTypeToTypeInfo(elementTypes[0], checker, depth + 1, seen)
+          : ({
+              kind: "union" as const,
+              values: elementTypes.map((elementType) =>
+                tsTypeToTypeInfo(elementType, checker, depth + 1, seen),
+              ),
+            } satisfies TypeInfo);
+    return { kind: "array", elementType: tupleElementType };
+  }
+
+  const key = typeCacheKey(type, checker);
+  if (seen.has(key)) {
+    return { kind: "object", name: checker.typeToString(type) };
+  }
+
+  const properties = checker.getPropertiesOfType(type);
+  if (properties.length > 0) {
+    const nextSeen = new Set(seen);
+    nextSeen.add(key);
+
+    return {
+      kind: "object",
+      name: checker.typeToString(type),
+      properties: properties.map((property) => {
+        const declaration = property.valueDeclaration ?? property.declarations?.[0];
+        const propertyType = declaration
+          ? checker.getTypeOfSymbolAtLocation(property, declaration)
+          : checker.getTypeOfSymbol(property);
+        const description = declaration ? getJsDocComment(declaration) : undefined;
+
+        return {
+          name: property.getName(),
+          type: tsTypeToTypeInfo(propertyType, checker, depth + 1, nextSeen),
+          required: (property.flags & ts.SymbolFlags.Optional) === 0,
+          description,
+        };
+      }),
+    };
+  }
+
+  return { kind: "object", name: checker.typeToString(type) };
+}
+
 /**
  * Convert TypeScript type node to TypeInfo
  */
@@ -457,6 +610,7 @@ function typeNodeToTypeInfo(
   typeNode: ts.TypeNode | undefined,
   checker: ts.TypeChecker,
   registry?: TypeRegistry,
+  seenTypeRefs: Set<string> = new Set(),
 ): TypeInfo {
   if (!typeNode) {
     return { kind: "unknown" };
@@ -504,7 +658,7 @@ function typeNodeToTypeInfo(
   // Union type
   if (ts.isUnionTypeNode(typeNode)) {
     const values = typeNode.types.map((t) =>
-      typeNodeToTypeInfo(t, checker, registry),
+      typeNodeToTypeInfo(t, checker, registry, seenTypeRefs),
     );
 
     // De-duplicate and simplify unions
@@ -537,7 +691,12 @@ function typeNodeToTypeInfo(
   if (ts.isArrayTypeNode(typeNode)) {
     return {
       kind: "array",
-      elementType: typeNodeToTypeInfo(typeNode.elementType, checker, registry),
+      elementType: typeNodeToTypeInfo(
+        typeNode.elementType,
+        checker,
+        registry,
+        seenTypeRefs,
+      ),
     };
   }
 
@@ -553,6 +712,7 @@ function typeNodeToTypeInfo(
           typeNode.typeArguments[0],
           checker,
           registry,
+          seenTypeRefs,
         ),
       };
     }
@@ -575,69 +735,56 @@ function typeNodeToTypeInfo(
       }
     }
 
-    // Use TypeChecker to resolve type aliases (like SippyAPI.Provider = 'r2')
+    const symbolAtLocation = checker.getSymbolAtLocation(typeNode.typeName);
+    const resolvedSymbol =
+      symbolAtLocation && symbolAtLocation.flags & ts.SymbolFlags.Alias
+        ? checker.getAliasedSymbol(symbolAtLocation)
+        : symbolAtLocation;
+    const declarations = resolvedSymbol?.declarations ?? [];
+    const refDeclaration = declarations[0];
+    const refKey = refDeclaration
+      ? `${refDeclaration.getSourceFile().fileName}:${refDeclaration.pos}:${refDeclaration.end}`
+      : typeName;
+    if (seenTypeRefs.has(refKey)) {
+      return { kind: "object", name: typeName };
+    }
+    const nextSeenTypeRefs = new Set(seenTypeRefs);
+    nextSeenTypeRefs.add(refKey);
+
+    const interfaceDeclaration = declarations.find(ts.isInterfaceDeclaration);
+    if (interfaceDeclaration) {
+      const parsed = parseInterface(
+        interfaceDeclaration,
+        checker,
+        registry,
+        nextSeenTypeRefs,
+      );
+      return {
+        kind: "object",
+        name: interfaceDeclaration.name.text,
+        properties: parsed.properties,
+      };
+    }
+
+    const typeAliasDeclaration = declarations.find(ts.isTypeAliasDeclaration);
+    if (typeAliasDeclaration) {
+      return typeNodeToTypeInfo(
+        typeAliasDeclaration.type,
+        checker,
+        registry,
+        nextSeenTypeRefs,
+      );
+    }
+
+    // Use TypeChecker to resolve imported interfaces/type aliases and literal unions.
     const type = checker.getTypeAtLocation(typeNode);
     if (type) {
-      // Check if it's a string literal type
-      if (type.isStringLiteral()) {
-        return { kind: "literal", value: type.value };
-      }
-      // Check if it's a union of literals
-      if (type.isUnion()) {
-        const unionTypes = type.types.map((t): TypeInfo => {
-          if (t.isStringLiteral()) {
-            return { kind: "literal" as const, value: t.value };
-          }
-          if (t.isNumberLiteral()) {
-            return { kind: "literal" as const, value: String(t.value) };
-          }
-          // Check for null/undefined in union
-          const flags = t.getFlags();
-          if (flags & ts.TypeFlags.Null) {
-            return { kind: "null" as const };
-          }
-          if (flags & ts.TypeFlags.Undefined) {
-            return { kind: "null" as const }; // treat undefined as null for schema purposes
-          }
-          if (flags & ts.TypeFlags.String) {
-            return { kind: "primitive" as const, value: "string" };
-          }
-          if (flags & ts.TypeFlags.Number) {
-            return { kind: "primitive" as const, value: "number" };
-          }
-          if (flags & ts.TypeFlags.Boolean) {
-            return { kind: "primitive" as const, value: "boolean" };
-          }
-          // Check for object/interface types - get the type name
-          if (flags & ts.TypeFlags.Object) {
-            const typeName = checker.typeToString(t);
-            // Skip anonymous types like __type or { ... }
-            if (
-              typeName &&
-              !typeName.startsWith("{") &&
-              !typeName.startsWith("__")
-            ) {
-              return { kind: "object" as const, name: typeName };
-            }
-          }
-          return { kind: "unknown" as const };
-        });
-        // Filter out unknowns if we have other types
-        const knownTypes = unionTypes.filter((t) => t.kind !== "unknown");
-        if (knownTypes.length > 0) {
-          return { kind: "union", values: knownTypes };
-        }
-      }
-      // Check if it's a primitive type
-      const flags = type.getFlags();
-      if (flags & ts.TypeFlags.String) {
-        return { kind: "primitive", value: "string" };
-      }
-      if (flags & ts.TypeFlags.Number) {
-        return { kind: "primitive", value: "number" };
-      }
-      if (flags & ts.TypeFlags.Boolean) {
-        return { kind: "primitive", value: "boolean" };
+      const resolvedFromChecker = tsTypeToTypeInfo(type, checker);
+      if (
+        resolvedFromChecker.kind !== "unknown" &&
+        !(resolvedFromChecker.kind === "object" && resolvedFromChecker.name === "Record")
+      ) {
+        return resolvedFromChecker;
       }
     }
 
@@ -653,7 +800,7 @@ function typeNodeToTypeInfo(
       if (ts.isPropertySignature(member) && member.name) {
         const rawName = member.name.getText();
         const name = rawName.replace(/^["']|["']$/g, "");
-        const type = typeNodeToTypeInfo(member.type, checker, registry);
+        const type = typeNodeToTypeInfo(member.type, checker, registry, seenTypeRefs);
         const required = !member.questionToken;
         const comment = getJsDocComment(member);
 
@@ -989,6 +1136,7 @@ function parseInterface(
   node: ts.InterfaceDeclaration,
   checker: ts.TypeChecker,
   registry?: TypeRegistry,
+  seenTypeRefs: Set<string> = new Set(),
 ): ParsedInterface {
   const name = node.name.getText();
   const properties: ParsedProperty[] = [];
@@ -999,7 +1147,7 @@ function parseInterface(
       // e.g., '"CF-WORKER-BODY-PART"' — strip them to get the raw name
       const rawText = member.name.getText();
       const propName = rawText.replace(/^["']|["']$/g, "");
-      const type = typeNodeToTypeInfo(member.type, checker, registry);
+      const type = typeNodeToTypeInfo(member.type, checker, registry, seenTypeRefs);
       const required = !member.questionToken;
       const comment = getJsDocComment(member);
       const location = parseParamLocation(comment);
@@ -1134,6 +1282,7 @@ function parseMethod(
   // Also extract leading positional parameters (like `bucketName: string`)
   let paramsTypeName: string | undefined;
   let responseTypeName: string | undefined;
+  let responseType: TypeInfo = { kind: "unknown" };
   const leadingPathParams: ParamInfo[] = [];
 
   for (const param of method.parameters) {
@@ -1172,6 +1321,7 @@ function parseMethod(
       returnType.typeArguments.length >= 2
     ) {
       const itemType = returnType.typeArguments[1];
+      responseType = typeNodeToTypeInfo(itemType, checker, registry);
       if (ts.isTypeReferenceNode(itemType)) {
         responseTypeName = itemType.typeName.getText();
       }
@@ -1179,6 +1329,7 @@ function parseMethod(
     // Handle Core.APIPromise<T>
     else if (returnType.typeArguments?.[0]) {
       const innerType = returnType.typeArguments[0];
+      responseType = typeNodeToTypeInfo(innerType, checker, registry);
       if (ts.isTypeReferenceNode(innerType)) {
         responseTypeName = innerType.typeName.getText();
       } else if (ts.isUnionTypeNode(innerType)) {
@@ -1260,12 +1411,6 @@ function parseMethod(
       }
     }
   }
-
-  // Parse response type. For paginated operations, the generator synthesizes the
-  // page envelope from the pagination class and item type.
-  const responseType: TypeInfo = responseTypeName
-    ? { kind: "object", name: responseTypeName }
-    : { kind: "unknown" };
 
   // Compute derived identifiers
   const operationName = computeOperationName(

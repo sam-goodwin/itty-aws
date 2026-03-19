@@ -997,7 +997,30 @@ export interface GetBetaWorkerVersionResponse {
   /** The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler). */
   mainModule?: string | null;
   /** Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed. */
-  migrations?: unknown | null;
+  migrations?:
+    | unknown
+    | {
+        newTag?: string | null;
+        oldTag?: string | null;
+        steps?:
+          | {
+              deletedClasses?: string[] | null;
+              newClasses?: string[] | null;
+              newSqliteClasses?: string[] | null;
+              renamedClasses?:
+                | { from?: string | null; to?: string | null }[]
+                | null;
+              transferredClasses?:
+                | {
+                    from?: string | null;
+                    fromScript?: string | null;
+                    to?: string | null;
+                  }[]
+                | null;
+            }[]
+          | null;
+      }
+    | null;
   /** Code, sourcemaps, and other content used at runtime.  This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and [`_redirects`](https://developers. */
   modules?:
     | { contentBase64: string; contentType: string; name: string }[]
@@ -1388,7 +1411,89 @@ export const GetBetaWorkerVersionResponse =
       ]),
     ),
     mainModule: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    migrations: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    migrations: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Unknown,
+          Schema.Struct({
+            newTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            oldTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            steps: Schema.optional(
+              Schema.Union([
+                Schema.Array(
+                  Schema.Struct({
+                    deletedClasses: Schema.optional(
+                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                    ),
+                    newClasses: Schema.optional(
+                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                    ),
+                    newSqliteClasses: Schema.optional(
+                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                    ),
+                    renamedClasses: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            from: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            to: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    transferredClasses: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            from: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            fromScript: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            to: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              from: "from",
+                              fromScript: "from_script",
+                              to: "to",
+                            }),
+                          ),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      deletedClasses: "deleted_classes",
+                      newClasses: "new_classes",
+                      newSqliteClasses: "new_sqlite_classes",
+                      renamedClasses: "renamed_classes",
+                      transferredClasses: "transferred_classes",
+                    }),
+                  ),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              newTag: "new_tag",
+              oldTag: "old_tag",
+              steps: "steps",
+            }),
+          ),
+        ]),
+        Schema.Null,
+      ]),
+    ),
     modules: Schema.optional(
       Schema.Union([
         Schema.Array(
@@ -1611,7 +1716,30 @@ export interface ListBetaWorkerVersionsResponse {
     compatibilityFlags?: string[] | null;
     limits?: { cpuMs: number } | null;
     mainModule?: string | null;
-    migrations?: unknown | null;
+    migrations?:
+      | unknown
+      | {
+          newTag?: string | null;
+          oldTag?: string | null;
+          steps?:
+            | {
+                deletedClasses?: string[] | null;
+                newClasses?: string[] | null;
+                newSqliteClasses?: string[] | null;
+                renamedClasses?:
+                  | { from?: string | null; to?: string | null }[]
+                  | null;
+                transferredClasses?:
+                  | {
+                      from?: string | null;
+                      fromScript?: string | null;
+                      to?: string | null;
+                    }[]
+                  | null;
+              }[]
+            | null;
+        }
+      | null;
     modules?:
       | { contentBase64: string; contentType: string; name: string }[]
       | null;
@@ -2017,7 +2145,100 @@ export const ListBetaWorkerVersionsResponse =
         ),
         mainModule: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         migrations: Schema.optional(
-          Schema.Union([Schema.Unknown, Schema.Null]),
+          Schema.Union([
+            Schema.Union([
+              Schema.Unknown,
+              Schema.Struct({
+                newTag: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                oldTag: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                steps: Schema.optional(
+                  Schema.Union([
+                    Schema.Array(
+                      Schema.Struct({
+                        deletedClasses: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                        newClasses: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                        newSqliteClasses: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                        renamedClasses: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(
+                              Schema.Struct({
+                                from: Schema.optional(
+                                  Schema.Union([Schema.String, Schema.Null]),
+                                ),
+                                to: Schema.optional(
+                                  Schema.Union([Schema.String, Schema.Null]),
+                                ),
+                              }),
+                            ),
+                            Schema.Null,
+                          ]),
+                        ),
+                        transferredClasses: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(
+                              Schema.Struct({
+                                from: Schema.optional(
+                                  Schema.Union([Schema.String, Schema.Null]),
+                                ),
+                                fromScript: Schema.optional(
+                                  Schema.Union([Schema.String, Schema.Null]),
+                                ),
+                                to: Schema.optional(
+                                  Schema.Union([Schema.String, Schema.Null]),
+                                ),
+                              }).pipe(
+                                Schema.encodeKeys({
+                                  from: "from",
+                                  fromScript: "from_script",
+                                  to: "to",
+                                }),
+                              ),
+                            ),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          deletedClasses: "deleted_classes",
+                          newClasses: "new_classes",
+                          newSqliteClasses: "new_sqlite_classes",
+                          renamedClasses: "renamed_classes",
+                          transferredClasses: "transferred_classes",
+                        }),
+                      ),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  newTag: "new_tag",
+                  oldTag: "old_tag",
+                  steps: "steps",
+                }),
+              ),
+            ]),
+            Schema.Null,
+          ]),
         ),
         modules: Schema.optional(
           Schema.Union([
@@ -2110,7 +2331,9 @@ export const listBetaWorkerVersions: API.PaginatedOperationMethod<
     ListBetaWorkerVersionsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListBetaWorkerVersionsRequest) => stream.Stream<
+  items: (
+    input: ListBetaWorkerVersionsRequest,
+  ) => stream.Stream<
     {
       id: string;
       createdOn: string;
@@ -2238,7 +2461,30 @@ export const listBetaWorkerVersions: API.PaginatedOperationMethod<
       compatibilityFlags?: string[] | null;
       limits?: { cpuMs: number } | null;
       mainModule?: string | null;
-      migrations?: unknown | null;
+      migrations?:
+        | unknown
+        | {
+            newTag?: string | null;
+            oldTag?: string | null;
+            steps?:
+              | {
+                  deletedClasses?: string[] | null;
+                  newClasses?: string[] | null;
+                  newSqliteClasses?: string[] | null;
+                  renamedClasses?:
+                    | { from?: string | null; to?: string | null }[]
+                    | null;
+                  transferredClasses?:
+                    | {
+                        from?: string | null;
+                        fromScript?: string | null;
+                        to?: string | null;
+                      }[]
+                    | null;
+                }[]
+              | null;
+          }
+        | null;
       modules?:
         | { contentBase64: string; contentType: string; name: string }[]
         | null;
@@ -2379,8 +2625,34 @@ export interface CreateBetaWorkerVersionRequest {
   mainModule?: string;
   /** Body param: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed. */
   migrations?:
-    | unknown
-    | { newTag?: string; oldTag?: string; steps?: unknown[] };
+    | {
+        deletedClasses?: string[];
+        newClasses?: string[];
+        newSqliteClasses?: string[];
+        newTag?: string;
+        oldTag?: string;
+        renamedClasses?: { from?: string; to?: string }[];
+        transferredClasses?: {
+          from?: string;
+          fromScript?: string;
+          to?: string;
+        }[];
+      }
+    | {
+        newTag?: string;
+        oldTag?: string;
+        steps?: {
+          deletedClasses?: string[];
+          newClasses?: string[];
+          newSqliteClasses?: string[];
+          renamedClasses?: { from?: string; to?: string }[];
+          transferredClasses?: {
+            from?: string;
+            fromScript?: string;
+            to?: string;
+          }[];
+        }[];
+      };
   /** Body param: Code, sourcemaps, and other content used at runtime.  This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and [`_redirects`](https:/ */
   modules?: { contentBase64: string; contentType: string; name: string }[];
   /** Body param: Placement settings for the version. */
@@ -2706,11 +2978,89 @@ export const CreateBetaWorkerVersionRequest =
     mainModule: Schema.optional(Schema.String),
     migrations: Schema.optional(
       Schema.Union([
-        Schema.Unknown,
+        Schema.Struct({
+          deletedClasses: Schema.optional(Schema.Array(Schema.String)),
+          newClasses: Schema.optional(Schema.Array(Schema.String)),
+          newSqliteClasses: Schema.optional(Schema.Array(Schema.String)),
+          newTag: Schema.optional(Schema.String),
+          oldTag: Schema.optional(Schema.String),
+          renamedClasses: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                from: Schema.optional(Schema.String),
+                to: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          transferredClasses: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                from: Schema.optional(Schema.String),
+                fromScript: Schema.optional(Schema.String),
+                to: Schema.optional(Schema.String),
+              }).pipe(
+                Schema.encodeKeys({
+                  from: "from",
+                  fromScript: "from_script",
+                  to: "to",
+                }),
+              ),
+            ),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            deletedClasses: "deleted_classes",
+            newClasses: "new_classes",
+            newSqliteClasses: "new_sqlite_classes",
+            newTag: "new_tag",
+            oldTag: "old_tag",
+            renamedClasses: "renamed_classes",
+            transferredClasses: "transferred_classes",
+          }),
+        ),
         Schema.Struct({
           newTag: Schema.optional(Schema.String),
           oldTag: Schema.optional(Schema.String),
-          steps: Schema.optional(Schema.Array(Schema.Unknown)),
+          steps: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                deletedClasses: Schema.optional(Schema.Array(Schema.String)),
+                newClasses: Schema.optional(Schema.Array(Schema.String)),
+                newSqliteClasses: Schema.optional(Schema.Array(Schema.String)),
+                renamedClasses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      from: Schema.optional(Schema.String),
+                      to: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                transferredClasses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      from: Schema.optional(Schema.String),
+                      fromScript: Schema.optional(Schema.String),
+                      to: Schema.optional(Schema.String),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        from: "from",
+                        fromScript: "from_script",
+                        to: "to",
+                      }),
+                    ),
+                  ),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  deletedClasses: "deleted_classes",
+                  newClasses: "new_classes",
+                  newSqliteClasses: "new_sqlite_classes",
+                  renamedClasses: "renamed_classes",
+                  transferredClasses: "transferred_classes",
+                }),
+              ),
+            ),
+          ),
         }).pipe(
           Schema.encodeKeys({
             newTag: "new_tag",
@@ -2897,7 +3247,30 @@ export interface CreateBetaWorkerVersionResponse {
   /** The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler). */
   mainModule?: string | null;
   /** Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed. */
-  migrations?: unknown | null;
+  migrations?:
+    | unknown
+    | {
+        newTag?: string | null;
+        oldTag?: string | null;
+        steps?:
+          | {
+              deletedClasses?: string[] | null;
+              newClasses?: string[] | null;
+              newSqliteClasses?: string[] | null;
+              renamedClasses?:
+                | { from?: string | null; to?: string | null }[]
+                | null;
+              transferredClasses?:
+                | {
+                    from?: string | null;
+                    fromScript?: string | null;
+                    to?: string | null;
+                  }[]
+                | null;
+            }[]
+          | null;
+      }
+    | null;
   /** Code, sourcemaps, and other content used at runtime.  This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and [`_redirects`](https://developers. */
   modules?:
     | { contentBase64: string; contentType: string; name: string }[]
@@ -3288,7 +3661,89 @@ export const CreateBetaWorkerVersionResponse =
       ]),
     ),
     mainModule: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    migrations: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    migrations: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Unknown,
+          Schema.Struct({
+            newTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            oldTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            steps: Schema.optional(
+              Schema.Union([
+                Schema.Array(
+                  Schema.Struct({
+                    deletedClasses: Schema.optional(
+                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                    ),
+                    newClasses: Schema.optional(
+                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                    ),
+                    newSqliteClasses: Schema.optional(
+                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                    ),
+                    renamedClasses: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            from: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            to: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    transferredClasses: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            from: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            fromScript: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            to: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              from: "from",
+                              fromScript: "from_script",
+                              to: "to",
+                            }),
+                          ),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      deletedClasses: "deleted_classes",
+                      newClasses: "new_classes",
+                      newSqliteClasses: "new_sqlite_classes",
+                      renamedClasses: "renamed_classes",
+                      transferredClasses: "transferred_classes",
+                    }),
+                  ),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              newTag: "new_tag",
+              oldTag: "old_tag",
+              steps: "steps",
+            }),
+          ),
+        ]),
+        Schema.Null,
+      ]),
+    ),
     modules: Schema.optional(
       Schema.Union([
         Schema.Array(
@@ -3616,7 +4071,9 @@ export const listDomains: API.PaginatedOperationMethod<
     ListDomainsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListDomainsRequest) => stream.Stream<
+  items: (
+    input: ListDomainsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       environment?: string | null;
@@ -4396,7 +4853,9 @@ export interface QueryObservabilityTelemetryResponse {
         series: {
           data: {
             count: number;
+            firstSeen: string;
             interval: number;
+            lastSeen: string;
             sampleInterval: number;
             value: number;
             groups?: { key: string; value: string | number | boolean }[] | null;
@@ -4419,7 +4878,9 @@ export interface QueryObservabilityTelemetryResponse {
         series: {
           data: {
             count: number;
+            firstSeen: string;
             interval: number;
+            lastSeen: string;
             sampleInterval: number;
             value: number;
             groups?: { key: string; value: string | number | boolean }[] | null;
@@ -4536,11 +4997,18 @@ export interface QueryObservabilityTelemetryResponse {
     series?:
       | {
           data: {
+            aggregates: {
+              count: number;
+              firstSeen: string;
+              interval: number;
+              lastSeen: string;
+              bin?: unknown | null;
+            };
             count: number;
             interval: number;
             sampleInterval: number;
-            value?: number | null;
-            groups?: { key: string; value: string | number | boolean }[] | null;
+            errors?: number | null;
+            groups?: Record<string, unknown> | null;
           }[];
           time: string;
         }[]
@@ -4857,7 +5325,9 @@ export const QueryObservabilityTelemetryResponse =
                 data: Schema.Array(
                   Schema.Struct({
                     count: Schema.Number,
+                    firstSeen: Schema.String,
                     interval: Schema.Number,
+                    lastSeen: Schema.String,
                     sampleInterval: Schema.Number,
                     value: Schema.Number,
                     groups: Schema.optional(
@@ -4919,7 +5389,9 @@ export const QueryObservabilityTelemetryResponse =
                 data: Schema.Array(
                   Schema.Struct({
                     count: Schema.Number,
+                    firstSeen: Schema.String,
                     interval: Schema.Number,
+                    lastSeen: Schema.String,
                     sampleInterval: Schema.Number,
                     value: Schema.Number,
                     groups: Schema.optional(
@@ -5205,26 +5677,31 @@ export const QueryObservabilityTelemetryResponse =
                 Schema.Struct({
                   data: Schema.Array(
                     Schema.Struct({
+                      aggregates: Schema.Struct({
+                        count: Schema.Number,
+                        firstSeen: Schema.String,
+                        interval: Schema.Number,
+                        lastSeen: Schema.String,
+                        bin: Schema.optional(
+                          Schema.Union([Schema.Unknown, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          count: "_count",
+                          firstSeen: "_firstSeen",
+                          interval: "_interval",
+                          lastSeen: "_lastSeen",
+                          bin: "bin",
+                        }),
+                      ),
                       count: Schema.Number,
                       interval: Schema.Number,
                       sampleInterval: Schema.Number,
-                      value: Schema.optional(
+                      errors: Schema.optional(
                         Schema.Union([Schema.Number, Schema.Null]),
                       ),
                       groups: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              value: Schema.Union([
-                                Schema.String,
-                                Schema.Number,
-                                Schema.Boolean,
-                              ]),
-                            }),
-                          ),
-                          Schema.Null,
-                        ]),
+                        Schema.Union([Schema.Struct({}), Schema.Null]),
                       ),
                     }),
                   ),
@@ -5474,7 +5951,9 @@ export const valuesObservabilityTelemetry: API.PaginatedOperationMethod<
     ValuesObservabilityTelemetryError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ValuesObservabilityTelemetryRequest) => stream.Stream<
+  items: (
+    input: ValuesObservabilityTelemetryRequest,
+  ) => stream.Stream<
     {
       dataset: string;
       key: string;
@@ -5758,10 +6237,10 @@ export const GetScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<GetScriptRequest>;
 
-export type GetScriptResponse = unknown;
+export type GetScriptResponse = string;
 
 export const GetScriptResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetScriptResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Schema<GetScriptResponse>;
 
 export type GetScriptError = DefaultErrors | WorkerNotFound | InvalidRoute;
 
@@ -5865,7 +6344,13 @@ export interface ListScriptsResponse {
     routes?: { id: string; pattern: string; script?: string | null }[] | null;
     tag?: string | null;
     tags?: string[] | null;
-    tailConsumers?: unknown[] | null;
+    tailConsumers?:
+      | {
+          service: string;
+          environment?: string | null;
+          namespace?: string | null;
+        }[]
+      | null;
     usageModel?: "standard" | "bundled" | "unbound" | null;
   }[];
 }
@@ -6076,7 +6561,20 @@ export const ListScriptsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
       tailConsumers: Schema.optional(
-        Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              service: Schema.String,
+              environment: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              namespace: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+          ),
+          Schema.Null,
+        ]),
       ),
       usageModel: Schema.optional(
         Schema.Union([
@@ -6128,7 +6626,9 @@ export const listScripts: API.PaginatedOperationMethod<
     ListScriptsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListScriptsRequest) => stream.Stream<
+  items: (
+    input: ListScriptsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       compatibilityDate?: string | null;
@@ -6203,7 +6703,13 @@ export const listScripts: API.PaginatedOperationMethod<
       routes?: { id: string; pattern: string; script?: string | null }[] | null;
       tag?: string | null;
       tags?: string[] | null;
-      tailConsumers?: unknown[] | null;
+      tailConsumers?:
+        | {
+            service: string;
+            environment?: string | null;
+            namespace?: string | null;
+          }[]
+        | null;
       usageModel?: "standard" | "bundled" | "unbound" | null;
     },
     ListScriptsError,
@@ -6333,8 +6839,34 @@ export interface PutScriptRequest {
     logpush?: boolean;
     mainModule?: string;
     migrations?:
-      | unknown
-      | { newTag?: string; oldTag?: string; steps?: unknown[] };
+      | {
+          deletedClasses?: string[];
+          newClasses?: string[];
+          newSqliteClasses?: string[];
+          newTag?: string;
+          oldTag?: string;
+          renamedClasses?: { from?: string; to?: string }[];
+          transferredClasses?: {
+            from?: string;
+            fromScript?: string;
+            to?: string;
+          }[];
+        }
+      | {
+          newTag?: string;
+          oldTag?: string;
+          steps?: {
+            deletedClasses?: string[];
+            newClasses?: string[];
+            newSqliteClasses?: string[];
+            renamedClasses?: { from?: string; to?: string }[];
+            transferredClasses?: {
+              from?: string;
+              fromScript?: string;
+              to?: string;
+            }[];
+          }[];
+        };
     observability?: {
       enabled: boolean;
       headSamplingRate?: number | null;
@@ -6352,7 +6884,9 @@ export interface PutScriptRequest {
       | { hostname: string }
       | { host: string };
     tags?: string[];
-    tailConsumers?: unknown[] | null;
+    tailConsumers?:
+      | { service: string; environment?: string; namespace?: string }[]
+      | null;
     usageModel?: "standard" | "bundled" | "unbound";
   };
   /** Body param: An array of modules (often JavaScript files) comprising a Worker script. At least one module must be present and referenced in the metadata as `main_module` or `body_part` by filename.<br/ */
@@ -6674,11 +7208,89 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mainModule: Schema.optional(Schema.String),
     migrations: Schema.optional(
       Schema.Union([
-        Schema.Unknown,
+        Schema.Struct({
+          deletedClasses: Schema.optional(Schema.Array(Schema.String)),
+          newClasses: Schema.optional(Schema.Array(Schema.String)),
+          newSqliteClasses: Schema.optional(Schema.Array(Schema.String)),
+          newTag: Schema.optional(Schema.String),
+          oldTag: Schema.optional(Schema.String),
+          renamedClasses: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                from: Schema.optional(Schema.String),
+                to: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+          transferredClasses: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                from: Schema.optional(Schema.String),
+                fromScript: Schema.optional(Schema.String),
+                to: Schema.optional(Schema.String),
+              }).pipe(
+                Schema.encodeKeys({
+                  from: "from",
+                  fromScript: "from_script",
+                  to: "to",
+                }),
+              ),
+            ),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            deletedClasses: "deleted_classes",
+            newClasses: "new_classes",
+            newSqliteClasses: "new_sqlite_classes",
+            newTag: "new_tag",
+            oldTag: "old_tag",
+            renamedClasses: "renamed_classes",
+            transferredClasses: "transferred_classes",
+          }),
+        ),
         Schema.Struct({
           newTag: Schema.optional(Schema.String),
           oldTag: Schema.optional(Schema.String),
-          steps: Schema.optional(Schema.Array(Schema.Unknown)),
+          steps: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                deletedClasses: Schema.optional(Schema.Array(Schema.String)),
+                newClasses: Schema.optional(Schema.Array(Schema.String)),
+                newSqliteClasses: Schema.optional(Schema.Array(Schema.String)),
+                renamedClasses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      from: Schema.optional(Schema.String),
+                      to: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                transferredClasses: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      from: Schema.optional(Schema.String),
+                      fromScript: Schema.optional(Schema.String),
+                      to: Schema.optional(Schema.String),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        from: "from",
+                        fromScript: "from_script",
+                        to: "to",
+                      }),
+                    ),
+                  ),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  deletedClasses: "deleted_classes",
+                  newClasses: "new_classes",
+                  newSqliteClasses: "new_sqlite_classes",
+                  renamedClasses: "renamed_classes",
+                  transferredClasses: "transferred_classes",
+                }),
+              ),
+            ),
+          ),
         }).pipe(
           Schema.encodeKeys({
             newTag: "new_tag",
@@ -6742,7 +7354,16 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
     tags: Schema.optional(Schema.Array(Schema.String)),
     tailConsumers: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            service: Schema.String,
+            environment: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
     usageModel: Schema.optional(
       Schema.Literals(["standard", "bundled", "unbound"]),
@@ -6872,7 +7493,13 @@ export interface PutScriptResponse {
   /** Tags associated with the Worker. */
   tags?: string[] | null;
   /** List of Workers that will consume logs from the attached Worker. */
-  tailConsumers?: unknown[] | null;
+  tailConsumers?:
+    | {
+        service: string;
+        environment?: string | null;
+        namespace?: string | null;
+      }[]
+    | null;
   /** Usage model for the Worker invocations. */
   usageModel?: "standard" | "bundled" | "unbound" | null;
 }
@@ -7067,7 +7694,20 @@ export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
   ),
   tailConsumers: Schema.optional(
-    Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+    Schema.Union([
+      Schema.Array(
+        Schema.Struct({
+          service: Schema.String,
+          environment: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          namespace: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }),
+      ),
+      Schema.Null,
+    ]),
   ),
   usageModel: Schema.optional(
     Schema.Union([
@@ -7375,10 +8015,349 @@ export const PutScriptContentRequest =
     }),
   ) as unknown as Schema.Schema<PutScriptContentRequest>;
 
-export type PutScriptContentResponse = unknown;
+export interface PutScriptContentResponse {
+  /** The name used to identify the script. */
+  id?: string | null;
+  /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
+  compatibilityDate?: string | null;
+  /** Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`. */
+  compatibilityFlags?: string[] | null;
+  /** When the script was created. */
+  createdOn?: string | null;
+  /** Hashed script content, can be used in a If-None-Match header when updating. */
+  etag?: string | null;
+  /** The names of handlers exported as part of the default export. */
+  handlers?: string[] | null;
+  /** Whether a Worker contains assets. */
+  hasAssets?: boolean | null;
+  /** Whether a Worker contains modules. */
+  hasModules?: boolean | null;
+  /** The client most recently used to deploy this Worker. */
+  lastDeployedFrom?: string | null;
+  /** Whether Logpush is turned on for the Worker. */
+  logpush?: boolean | null;
+  /** The tag of the Durable Object migration that was most recently applied for this Worker. */
+  migrationTag?: string | null;
+  /** When the script was last modified. */
+  modifiedOn?: string | null;
+  /** Named exports, such as Durable Object class implementations and named entrypoints. */
+  namedHandlers?: { handlers?: string[] | null; name?: string | null }[] | null;
+  /** Observability settings for the Worker. */
+  observability?: {
+    enabled: boolean;
+    headSamplingRate?: number | null;
+    logs?: {
+      enabled: boolean;
+      invocationLogs: boolean;
+      destinations?: string[] | null;
+      headSamplingRate?: number | null;
+      persist?: boolean | null;
+    } | null;
+  } | null;
+  /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted place */
+  placement?:
+    | {
+        mode: "smart";
+        lastAnalyzedAt?: string | null;
+        status?:
+          | "SUCCESS"
+          | "UNSUPPORTED_APPLICATION"
+          | "INSUFFICIENT_INVOCATIONS"
+          | null;
+      }
+    | {
+        region: string;
+        lastAnalyzedAt?: string | null;
+        status?:
+          | "SUCCESS"
+          | "UNSUPPORTED_APPLICATION"
+          | "INSUFFICIENT_INVOCATIONS"
+          | null;
+      }
+    | {
+        hostname: string;
+        lastAnalyzedAt?: string | null;
+        status?:
+          | "SUCCESS"
+          | "UNSUPPORTED_APPLICATION"
+          | "INSUFFICIENT_INVOCATIONS"
+          | null;
+      }
+    | {
+        host: string;
+        lastAnalyzedAt?: string | null;
+        status?:
+          | "SUCCESS"
+          | "UNSUPPORTED_APPLICATION"
+          | "INSUFFICIENT_INVOCATIONS"
+          | null;
+      }
+    | null;
+  /** @deprecated Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  placementMode?: "smart" | null;
+  /** @deprecated Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
+  placementStatus?:
+    | "SUCCESS"
+    | "UNSUPPORTED_APPLICATION"
+    | "INSUFFICIENT_INVOCATIONS"
+    | null;
+  /** The immutable ID of the script. */
+  tag?: string | null;
+  /** Tags associated with the Worker. */
+  tags?: string[] | null;
+  /** List of Workers that will consume logs from the attached Worker. */
+  tailConsumers?:
+    | {
+        service: string;
+        environment?: string | null;
+        namespace?: string | null;
+      }[]
+    | null;
+  /** Usage model for the Worker invocations. */
+  usageModel?: "standard" | "bundled" | "unbound" | null;
+}
 
 export const PutScriptContentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<PutScriptContentResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    compatibilityDate: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    compatibilityFlags: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    etag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    handlers: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    hasAssets: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    hasModules: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    lastDeployedFrom: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    migrationTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    namedHandlers: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            handlers: Schema.optional(
+              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+            ),
+            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    observability: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          enabled: Schema.Boolean,
+          headSamplingRate: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          logs: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                enabled: Schema.Boolean,
+                invocationLogs: Schema.Boolean,
+                destinations: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                headSamplingRate: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                persist: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  enabled: "enabled",
+                  invocationLogs: "invocation_logs",
+                  destinations: "destinations",
+                  headSamplingRate: "head_sampling_rate",
+                  persist: "persist",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            enabled: "enabled",
+            headSamplingRate: "head_sampling_rate",
+            logs: "logs",
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    placement: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Struct({
+            mode: Schema.Literal("smart"),
+            lastAnalyzedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            status: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              mode: "mode",
+              lastAnalyzedAt: "last_analyzed_at",
+              status: "status",
+            }),
+          ),
+          Schema.Struct({
+            region: Schema.String,
+            lastAnalyzedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            status: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              region: "region",
+              lastAnalyzedAt: "last_analyzed_at",
+              status: "status",
+            }),
+          ),
+          Schema.Struct({
+            hostname: Schema.String,
+            lastAnalyzedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            status: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              hostname: "hostname",
+              lastAnalyzedAt: "last_analyzed_at",
+              status: "status",
+            }),
+          ),
+          Schema.Struct({
+            host: Schema.String,
+            lastAnalyzedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            status: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "SUCCESS",
+                  "UNSUPPORTED_APPLICATION",
+                  "INSUFFICIENT_INVOCATIONS",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              host: "host",
+              lastAnalyzedAt: "last_analyzed_at",
+              status: "status",
+            }),
+          ),
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    placementMode: Schema.optional(
+      Schema.Union([Schema.Literal("smart"), Schema.Null]),
+    ),
+    placementStatus: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "SUCCESS",
+          "UNSUPPORTED_APPLICATION",
+          "INSUFFICIENT_INVOCATIONS",
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    tags: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    tailConsumers: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            service: Schema.String,
+            environment: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            namespace: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    usageModel: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        compatibilityDate: "compatibility_date",
+        compatibilityFlags: "compatibility_flags",
+        createdOn: "created_on",
+        etag: "etag",
+        handlers: "handlers",
+        hasAssets: "has_assets",
+        hasModules: "has_modules",
+        lastDeployedFrom: "last_deployed_from",
+        logpush: "logpush",
+        migrationTag: "migration_tag",
+        modifiedOn: "modified_on",
+        namedHandlers: "named_handlers",
+        observability: "observability",
+        placement: "placement",
+        placementMode: "placement_mode",
+        placementStatus: "placement_status",
+        tag: "tag",
+        tags: "tags",
+        tailConsumers: "tail_consumers",
+        usageModel: "usage_model",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<PutScriptContentResponse>;
 
 export type PutScriptContentError =
   | DefaultErrors
@@ -8108,7 +9087,13 @@ export interface GetScriptScriptAndVersionSettingResponse {
   /** Tags associated with the Worker. */
   tags?: string[] | null;
   /** List of Workers that will consume logs from the attached Worker. */
-  tailConsumers?: unknown[] | null;
+  tailConsumers?:
+    | {
+        service: string;
+        environment?: string | null;
+        namespace?: string | null;
+      }[]
+    | null;
   /** Usage model for the Worker invocations. */
   usageModel?: "standard" | "bundled" | "unbound" | null;
 }
@@ -8464,7 +9449,20 @@ export const GetScriptScriptAndVersionSettingResponse =
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
     tailConsumers: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            service: Schema.String,
+            environment: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            namespace: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
     usageModel: Schema.optional(
       Schema.Union([
@@ -8601,8 +9599,34 @@ export interface PatchScriptScriptAndVersionSettingRequest {
     limits?: { cpuMs?: number };
     logpush?: boolean;
     migrations?:
-      | unknown
-      | { newTag?: string; oldTag?: string; steps?: unknown[] };
+      | {
+          deletedClasses?: string[];
+          newClasses?: string[];
+          newSqliteClasses?: string[];
+          newTag?: string;
+          oldTag?: string;
+          renamedClasses?: { from?: string; to?: string }[];
+          transferredClasses?: {
+            from?: string;
+            fromScript?: string;
+            to?: string;
+          }[];
+        }
+      | {
+          newTag?: string;
+          oldTag?: string;
+          steps?: {
+            deletedClasses?: string[];
+            newClasses?: string[];
+            newSqliteClasses?: string[];
+            renamedClasses?: { from?: string; to?: string }[];
+            transferredClasses?: {
+              from?: string;
+              fromScript?: string;
+              to?: string;
+            }[];
+          }[];
+        };
     observability?: {
       enabled: boolean;
       headSamplingRate?: number | null;
@@ -8620,7 +9644,9 @@ export interface PatchScriptScriptAndVersionSettingRequest {
       | { hostname: string }
       | { host: string };
     tags?: string[] | null;
-    tailConsumers?: unknown[] | null;
+    tailConsumers?:
+      | { service: string; environment?: string; namespace?: string }[]
+      | null;
     usageModel?: "standard" | "bundled" | "unbound";
   };
 }
@@ -8905,11 +9931,93 @@ export const PatchScriptScriptAndVersionSettingRequest =
         logpush: Schema.optional(Schema.Boolean),
         migrations: Schema.optional(
           Schema.Union([
-            Schema.Unknown,
+            Schema.Struct({
+              deletedClasses: Schema.optional(Schema.Array(Schema.String)),
+              newClasses: Schema.optional(Schema.Array(Schema.String)),
+              newSqliteClasses: Schema.optional(Schema.Array(Schema.String)),
+              newTag: Schema.optional(Schema.String),
+              oldTag: Schema.optional(Schema.String),
+              renamedClasses: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    from: Schema.optional(Schema.String),
+                    to: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              transferredClasses: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    from: Schema.optional(Schema.String),
+                    fromScript: Schema.optional(Schema.String),
+                    to: Schema.optional(Schema.String),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      from: "from",
+                      fromScript: "from_script",
+                      to: "to",
+                    }),
+                  ),
+                ),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                deletedClasses: "deleted_classes",
+                newClasses: "new_classes",
+                newSqliteClasses: "new_sqlite_classes",
+                newTag: "new_tag",
+                oldTag: "old_tag",
+                renamedClasses: "renamed_classes",
+                transferredClasses: "transferred_classes",
+              }),
+            ),
             Schema.Struct({
               newTag: Schema.optional(Schema.String),
               oldTag: Schema.optional(Schema.String),
-              steps: Schema.optional(Schema.Array(Schema.Unknown)),
+              steps: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    deletedClasses: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                    newClasses: Schema.optional(Schema.Array(Schema.String)),
+                    newSqliteClasses: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                    renamedClasses: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          from: Schema.optional(Schema.String),
+                          to: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    transferredClasses: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          from: Schema.optional(Schema.String),
+                          fromScript: Schema.optional(Schema.String),
+                          to: Schema.optional(Schema.String),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            from: "from",
+                            fromScript: "from_script",
+                            to: "to",
+                          }),
+                        ),
+                      ),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      deletedClasses: "deleted_classes",
+                      newClasses: "new_classes",
+                      newSqliteClasses: "new_sqlite_classes",
+                      renamedClasses: "renamed_classes",
+                      transferredClasses: "transferred_classes",
+                    }),
+                  ),
+                ),
+              ),
             }).pipe(
               Schema.encodeKeys({
                 newTag: "new_tag",
@@ -8975,7 +10083,16 @@ export const PatchScriptScriptAndVersionSettingRequest =
           Schema.Union([Schema.Array(Schema.String), Schema.Null]),
         ),
         tailConsumers: Schema.optional(
-          Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                service: Schema.String,
+                environment: Schema.optional(Schema.String),
+                namespace: Schema.optional(Schema.String),
+              }),
+            ),
+            Schema.Null,
+          ]),
         ),
         usageModel: Schema.optional(
           Schema.Literals(["standard", "bundled", "unbound"]),
@@ -9128,7 +10245,13 @@ export interface PatchScriptScriptAndVersionSettingResponse {
   /** Tags associated with the Worker. */
   tags?: string[] | null;
   /** List of Workers that will consume logs from the attached Worker. */
-  tailConsumers?: unknown[] | null;
+  tailConsumers?:
+    | {
+        service: string;
+        environment?: string | null;
+        namespace?: string | null;
+      }[]
+    | null;
   /** Usage model for the Worker invocations. */
   usageModel?: "standard" | "bundled" | "unbound" | null;
 }
@@ -9484,7 +10607,20 @@ export const PatchScriptScriptAndVersionSettingResponse =
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
     tailConsumers: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            service: Schema.String,
+            environment: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            namespace: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
     usageModel: Schema.optional(
       Schema.Union([
@@ -9704,7 +10840,9 @@ export const listScriptSecrets: API.PaginatedOperationMethod<
     ListScriptSecretsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListScriptSecretsRequest) => stream.Stream<
+  items: (
+    input: ListScriptSecretsRequest,
+  ) => stream.Stream<
     | { name: string; type: "secret_text" }
     | {
         algorithm: unknown;
@@ -9891,10 +11029,110 @@ export const GetScriptSettingRequest =
     }),
   ) as unknown as Schema.Schema<GetScriptSettingRequest>;
 
-export type GetScriptSettingResponse = unknown;
+export interface GetScriptSettingResponse {
+  /** Whether Logpush is turned on for the Worker. */
+  logpush?: boolean | null;
+  /** Observability settings for the Worker. */
+  observability?: {
+    enabled: boolean;
+    headSamplingRate?: number | null;
+    logs?: {
+      enabled: boolean;
+      invocationLogs: boolean;
+      destinations?: string[] | null;
+      headSamplingRate?: number | null;
+      persist?: boolean | null;
+    } | null;
+  } | null;
+  /** Tags associated with the Worker. */
+  tags?: string[] | null;
+  /** List of Workers that will consume logs from the attached Worker. */
+  tailConsumers?:
+    | {
+        service: string;
+        environment?: string | null;
+        namespace?: string | null;
+      }[]
+    | null;
+}
 
 export const GetScriptSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetScriptSettingResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    observability: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          enabled: Schema.Boolean,
+          headSamplingRate: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          logs: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                enabled: Schema.Boolean,
+                invocationLogs: Schema.Boolean,
+                destinations: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                headSamplingRate: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                persist: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  enabled: "enabled",
+                  invocationLogs: "invocation_logs",
+                  destinations: "destinations",
+                  headSamplingRate: "head_sampling_rate",
+                  persist: "persist",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            enabled: "enabled",
+            headSamplingRate: "head_sampling_rate",
+            logs: "logs",
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    tags: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    tailConsumers: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            service: Schema.String,
+            environment: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            namespace: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        logpush: "logpush",
+        observability: "observability",
+        tags: "tags",
+        tailConsumers: "tail_consumers",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<GetScriptSettingResponse>;
 
 export type GetScriptSettingError = DefaultErrors | WorkerNotFound;
 
@@ -9930,7 +11168,9 @@ export interface PatchScriptSettingRequest {
   /** Body param: Tags associated with the Worker. */
   tags?: string[] | null;
   /** Body param: List of Workers that will consume logs from the attached Worker. */
-  tailConsumers?: unknown[] | null;
+  tailConsumers?:
+    | { service: string; environment?: string; namespace?: string }[]
+    | null;
 }
 
 export const PatchScriptSettingRequest =
@@ -9981,7 +11221,16 @@ export const PatchScriptSettingRequest =
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
     tailConsumers: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            service: Schema.String,
+            environment: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({
@@ -9996,10 +11245,110 @@ export const PatchScriptSettingRequest =
     }),
   ) as unknown as Schema.Schema<PatchScriptSettingRequest>;
 
-export type PatchScriptSettingResponse = unknown;
+export interface PatchScriptSettingResponse {
+  /** Whether Logpush is turned on for the Worker. */
+  logpush?: boolean | null;
+  /** Observability settings for the Worker. */
+  observability?: {
+    enabled: boolean;
+    headSamplingRate?: number | null;
+    logs?: {
+      enabled: boolean;
+      invocationLogs: boolean;
+      destinations?: string[] | null;
+      headSamplingRate?: number | null;
+      persist?: boolean | null;
+    } | null;
+  } | null;
+  /** Tags associated with the Worker. */
+  tags?: string[] | null;
+  /** List of Workers that will consume logs from the attached Worker. */
+  tailConsumers?:
+    | {
+        service: string;
+        environment?: string | null;
+        namespace?: string | null;
+      }[]
+    | null;
+}
 
 export const PatchScriptSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<PatchScriptSettingResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    observability: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          enabled: Schema.Boolean,
+          headSamplingRate: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          logs: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                enabled: Schema.Boolean,
+                invocationLogs: Schema.Boolean,
+                destinations: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                headSamplingRate: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                persist: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  enabled: "enabled",
+                  invocationLogs: "invocation_logs",
+                  destinations: "destinations",
+                  headSamplingRate: "head_sampling_rate",
+                  persist: "persist",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            enabled: "enabled",
+            headSamplingRate: "head_sampling_rate",
+            logs: "logs",
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    tags: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    tailConsumers: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            service: Schema.String,
+            environment: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            namespace: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        logpush: "logpush",
+        observability: "observability",
+        tags: "tags",
+        tailConsumers: "tail_consumers",
+      }),
+    )
+    .pipe(
+      T.ResponsePath("result"),
+    ) as unknown as Schema.Schema<PatchScriptSettingResponse>;
 
 export type PatchScriptSettingError = DefaultErrors | WorkerNotFound;
 
@@ -11153,7 +12502,9 @@ export const listScriptVersions: API.PaginatedOperationMethod<
     ListScriptVersionsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListScriptVersionsRequest) => stream.Stream<
+  items: (
+    input: ListScriptVersionsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       metadata?: {

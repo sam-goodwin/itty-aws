@@ -28,10 +28,11 @@ export const GetAsnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "GET", path: "/accounts/{account_id}/intel/asn/{asn}" }),
 ) as unknown as Schema.Schema<GetAsnRequest>;
 
-export type GetAsnResponse = unknown;
+export type GetAsnResponse = number;
 
-export const GetAsnResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<GetAsnResponse>;
+export const GetAsnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Number.pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<GetAsnResponse>;
 
 export type GetAsnError = DefaultErrors;
 
@@ -399,7 +400,9 @@ export const listAttackSurfaceReportIssues: API.PaginatedOperationMethod<
     ListAttackSurfaceReportIssuesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListAttackSurfaceReportIssuesRequest) => stream.Stream<
+  items: (
+    input: ListAttackSurfaceReportIssuesRequest,
+  ) => stream.Stream<
     {
       count?: number | null;
       issues?:
@@ -1128,7 +1131,9 @@ export const listDns: API.PaginatedOperationMethod<
     ListDnsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListDnsRequest) => stream.Stream<
+  items: (
+    input: ListDnsRequest,
+  ) => stream.Stream<
     {
       count?: number | null;
       page?: number | null;
@@ -1842,7 +1847,9 @@ export const listIndicatorFeeds: API.PaginatedOperationMethod<
     ListIndicatorFeedsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListIndicatorFeedsRequest) => stream.Stream<
+  items: (
+    input: ListIndicatorFeedsRequest,
+  ) => stream.Stream<
     {
       id?: number | null;
       createdOn?: string | null;
@@ -2069,10 +2076,10 @@ export const DataIndicatorFeedRequest =
     }),
   ) as unknown as Schema.Schema<DataIndicatorFeedRequest>;
 
-export type DataIndicatorFeedResponse = unknown;
+export type DataIndicatorFeedResponse = string;
 
 export const DataIndicatorFeedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DataIndicatorFeedResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Schema<DataIndicatorFeedResponse>;
 
 export type DataIndicatorFeedError = DefaultErrors;
 
@@ -2685,7 +2692,9 @@ export const listSinkholes: API.PaginatedOperationMethod<
     ListSinkholesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSinkholesRequest) => stream.Stream<
+  items: (
+    input: ListSinkholesRequest,
+  ) => stream.Stream<
     {
       id?: number | null;
       accountTag?: string | null;

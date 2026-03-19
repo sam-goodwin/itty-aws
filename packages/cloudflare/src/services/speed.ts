@@ -54,13 +54,148 @@ export interface ListAvailabilitiesResponse {
       } | null;
     } | null;
   } | null;
-  regions?: unknown[] | null;
+  regions?:
+    | {
+        label?: string | null;
+        value?:
+          | "asia-east1"
+          | "asia-northeast1"
+          | "asia-northeast2"
+          | "asia-south1"
+          | "asia-southeast1"
+          | "australia-southeast1"
+          | "europe-north1"
+          | "europe-southwest1"
+          | "europe-west1"
+          | "europe-west2"
+          | "europe-west3"
+          | "europe-west4"
+          | "europe-west8"
+          | "europe-west9"
+          | "me-west1"
+          | "southamerica-east1"
+          | "us-central1"
+          | "us-east1"
+          | "us-east4"
+          | "us-south1"
+          | "us-west1"
+          | null;
+      }[]
+    | null;
   /** Available regions. */
   regionsPerPlan?: {
-    business?: unknown[] | null;
-    enterprise?: unknown[] | null;
-    free?: unknown[] | null;
-    pro?: unknown[] | null;
+    business?:
+      | {
+          label?: string | null;
+          value?:
+            | "asia-east1"
+            | "asia-northeast1"
+            | "asia-northeast2"
+            | "asia-south1"
+            | "asia-southeast1"
+            | "australia-southeast1"
+            | "europe-north1"
+            | "europe-southwest1"
+            | "europe-west1"
+            | "europe-west2"
+            | "europe-west3"
+            | "europe-west4"
+            | "europe-west8"
+            | "europe-west9"
+            | "me-west1"
+            | "southamerica-east1"
+            | "us-central1"
+            | "us-east1"
+            | "us-east4"
+            | "us-south1"
+            | "us-west1"
+            | null;
+        }[]
+      | null;
+    enterprise?:
+      | {
+          label?: string | null;
+          value?:
+            | "asia-east1"
+            | "asia-northeast1"
+            | "asia-northeast2"
+            | "asia-south1"
+            | "asia-southeast1"
+            | "australia-southeast1"
+            | "europe-north1"
+            | "europe-southwest1"
+            | "europe-west1"
+            | "europe-west2"
+            | "europe-west3"
+            | "europe-west4"
+            | "europe-west8"
+            | "europe-west9"
+            | "me-west1"
+            | "southamerica-east1"
+            | "us-central1"
+            | "us-east1"
+            | "us-east4"
+            | "us-south1"
+            | "us-west1"
+            | null;
+        }[]
+      | null;
+    free?:
+      | {
+          label?: string | null;
+          value?:
+            | "asia-east1"
+            | "asia-northeast1"
+            | "asia-northeast2"
+            | "asia-south1"
+            | "asia-southeast1"
+            | "australia-southeast1"
+            | "europe-north1"
+            | "europe-southwest1"
+            | "europe-west1"
+            | "europe-west2"
+            | "europe-west3"
+            | "europe-west4"
+            | "europe-west8"
+            | "europe-west9"
+            | "me-west1"
+            | "southamerica-east1"
+            | "us-central1"
+            | "us-east1"
+            | "us-east4"
+            | "us-south1"
+            | "us-west1"
+            | null;
+        }[]
+      | null;
+    pro?:
+      | {
+          label?: string | null;
+          value?:
+            | "asia-east1"
+            | "asia-northeast1"
+            | "asia-northeast2"
+            | "asia-south1"
+            | "asia-southeast1"
+            | "australia-southeast1"
+            | "europe-north1"
+            | "europe-southwest1"
+            | "europe-west1"
+            | "europe-west2"
+            | "europe-west3"
+            | "europe-west4"
+            | "europe-west8"
+            | "europe-west9"
+            | "me-west1"
+            | "southamerica-east1"
+            | "us-central1"
+            | "us-east1"
+            | "us-east4"
+            | "us-south1"
+            | "us-west1"
+            | null;
+        }[]
+      | null;
   } | null;
 }
 
@@ -133,22 +268,205 @@ export const ListAvailabilitiesResponse =
       ]),
     ),
     regions: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "asia-east1",
+                  "asia-northeast1",
+                  "asia-northeast2",
+                  "asia-south1",
+                  "asia-southeast1",
+                  "australia-southeast1",
+                  "europe-north1",
+                  "europe-southwest1",
+                  "europe-west1",
+                  "europe-west2",
+                  "europe-west3",
+                  "europe-west4",
+                  "europe-west8",
+                  "europe-west9",
+                  "me-west1",
+                  "southamerica-east1",
+                  "us-central1",
+                  "us-east1",
+                  "us-east4",
+                  "us-south1",
+                  "us-west1",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
     regionsPerPlan: Schema.optional(
       Schema.Union([
         Schema.Struct({
           business: Schema.optional(
-            Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  label: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  value: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals([
+                        "asia-east1",
+                        "asia-northeast1",
+                        "asia-northeast2",
+                        "asia-south1",
+                        "asia-southeast1",
+                        "australia-southeast1",
+                        "europe-north1",
+                        "europe-southwest1",
+                        "europe-west1",
+                        "europe-west2",
+                        "europe-west3",
+                        "europe-west4",
+                        "europe-west8",
+                        "europe-west9",
+                        "me-west1",
+                        "southamerica-east1",
+                        "us-central1",
+                        "us-east1",
+                        "us-east4",
+                        "us-south1",
+                        "us-west1",
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                }),
+              ),
+              Schema.Null,
+            ]),
           ),
           enterprise: Schema.optional(
-            Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  label: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  value: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals([
+                        "asia-east1",
+                        "asia-northeast1",
+                        "asia-northeast2",
+                        "asia-south1",
+                        "asia-southeast1",
+                        "australia-southeast1",
+                        "europe-north1",
+                        "europe-southwest1",
+                        "europe-west1",
+                        "europe-west2",
+                        "europe-west3",
+                        "europe-west4",
+                        "europe-west8",
+                        "europe-west9",
+                        "me-west1",
+                        "southamerica-east1",
+                        "us-central1",
+                        "us-east1",
+                        "us-east4",
+                        "us-south1",
+                        "us-west1",
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                }),
+              ),
+              Schema.Null,
+            ]),
           ),
           free: Schema.optional(
-            Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  label: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  value: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals([
+                        "asia-east1",
+                        "asia-northeast1",
+                        "asia-northeast2",
+                        "asia-south1",
+                        "asia-southeast1",
+                        "australia-southeast1",
+                        "europe-north1",
+                        "europe-southwest1",
+                        "europe-west1",
+                        "europe-west2",
+                        "europe-west3",
+                        "europe-west4",
+                        "europe-west8",
+                        "europe-west9",
+                        "me-west1",
+                        "southamerica-east1",
+                        "us-central1",
+                        "us-east1",
+                        "us-east4",
+                        "us-south1",
+                        "us-west1",
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                }),
+              ),
+              Schema.Null,
+            ]),
           ),
           pro: Schema.optional(
-            Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  label: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  value: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals([
+                        "asia-east1",
+                        "asia-northeast1",
+                        "asia-northeast2",
+                        "asia-south1",
+                        "asia-southeast1",
+                        "australia-southeast1",
+                        "europe-north1",
+                        "europe-southwest1",
+                        "europe-west1",
+                        "europe-west2",
+                        "europe-west3",
+                        "europe-west4",
+                        "europe-west8",
+                        "europe-west9",
+                        "me-west1",
+                        "southamerica-east1",
+                        "us-central1",
+                        "us-east1",
+                        "us-east4",
+                        "us-south1",
+                        "us-west1",
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                }),
+              ),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Null,
@@ -188,9 +506,115 @@ export const ListPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPagesResponse {
   result: {
-    region?: unknown | null;
+    region?: {
+      label?: string | null;
+      value?:
+        | "asia-east1"
+        | "asia-northeast1"
+        | "asia-northeast2"
+        | "asia-south1"
+        | "asia-southeast1"
+        | "australia-southeast1"
+        | "europe-north1"
+        | "europe-southwest1"
+        | "europe-west1"
+        | "europe-west2"
+        | "europe-west3"
+        | "europe-west4"
+        | "europe-west8"
+        | "europe-west9"
+        | "me-west1"
+        | "southamerica-east1"
+        | "us-central1"
+        | "us-east1"
+        | "us-east4"
+        | "us-south1"
+        | "us-west1"
+        | null;
+    } | null;
     scheduleFrequency?: "DAILY" | "WEEKLY" | null;
-    tests?: unknown[] | null;
+    tests?:
+      | {
+          id?: string | null;
+          date?: string | null;
+          desktopReport?: {
+            cls?: number | null;
+            deviceType?: "DESKTOP" | "MOBILE" | null;
+            error?: {
+              code?:
+                | "NOT_REACHABLE"
+                | "DNS_FAILURE"
+                | "NOT_HTML"
+                | "LIGHTHOUSE_TIMEOUT"
+                | "UNKNOWN"
+                | null;
+              detail?: string | null;
+              finalDisplayedUrl?: string | null;
+            } | null;
+            fcp?: number | null;
+            jsonReportUrl?: string | null;
+            lcp?: number | null;
+            performanceScore?: number | null;
+            si?: number | null;
+            state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+            tbt?: number | null;
+            ttfb?: number | null;
+            tti?: number | null;
+          } | null;
+          mobileReport?: {
+            cls?: number | null;
+            deviceType?: "DESKTOP" | "MOBILE" | null;
+            error?: {
+              code?:
+                | "NOT_REACHABLE"
+                | "DNS_FAILURE"
+                | "NOT_HTML"
+                | "LIGHTHOUSE_TIMEOUT"
+                | "UNKNOWN"
+                | null;
+              detail?: string | null;
+              finalDisplayedUrl?: string | null;
+            } | null;
+            fcp?: number | null;
+            jsonReportUrl?: string | null;
+            lcp?: number | null;
+            performanceScore?: number | null;
+            si?: number | null;
+            state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+            tbt?: number | null;
+            ttfb?: number | null;
+            tti?: number | null;
+          } | null;
+          region?: {
+            label?: string | null;
+            value?:
+              | "asia-east1"
+              | "asia-northeast1"
+              | "asia-northeast2"
+              | "asia-south1"
+              | "asia-southeast1"
+              | "australia-southeast1"
+              | "europe-north1"
+              | "europe-southwest1"
+              | "europe-west1"
+              | "europe-west2"
+              | "europe-west3"
+              | "europe-west4"
+              | "europe-west8"
+              | "europe-west9"
+              | "me-west1"
+              | "southamerica-east1"
+              | "us-central1"
+              | "us-east1"
+              | "us-east4"
+              | "us-south1"
+              | "us-west1"
+              | null;
+          } | null;
+          scheduleFrequency?: "DAILY" | "WEEKLY" | null;
+          url?: string | null;
+        }[]
+      | null;
     url?: string | null;
   }[];
 }
@@ -198,12 +622,242 @@ export interface ListPagesResponse {
 export const ListPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
-      region: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+      region: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "asia-east1",
+                  "asia-northeast1",
+                  "asia-northeast2",
+                  "asia-south1",
+                  "asia-southeast1",
+                  "australia-southeast1",
+                  "europe-north1",
+                  "europe-southwest1",
+                  "europe-west1",
+                  "europe-west2",
+                  "europe-west3",
+                  "europe-west4",
+                  "europe-west8",
+                  "europe-west9",
+                  "me-west1",
+                  "southamerica-east1",
+                  "us-central1",
+                  "us-east1",
+                  "us-east4",
+                  "us-south1",
+                  "us-west1",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
       scheduleFrequency: Schema.optional(
         Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.Null]),
       ),
       tests: Schema.optional(
-        Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              date: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              desktopReport: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    cls: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    deviceType: Schema.optional(
+                      Schema.Union([
+                        Schema.Literals(["DESKTOP", "MOBILE"]),
+                        Schema.Null,
+                      ]),
+                    ),
+                    error: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          code: Schema.optional(
+                            Schema.Union([
+                              Schema.Literals([
+                                "NOT_REACHABLE",
+                                "DNS_FAILURE",
+                                "NOT_HTML",
+                                "LIGHTHOUSE_TIMEOUT",
+                                "UNKNOWN",
+                              ]),
+                              Schema.Null,
+                            ]),
+                          ),
+                          detail: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                          finalDisplayedUrl: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }),
+                        Schema.Null,
+                      ]),
+                    ),
+                    fcp: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    jsonReportUrl: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                    lcp: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    performanceScore: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    si: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    state: Schema.optional(
+                      Schema.Union([
+                        Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                        Schema.Null,
+                      ]),
+                    ),
+                    tbt: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    ttfb: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    tti: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+              mobileReport: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    cls: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    deviceType: Schema.optional(
+                      Schema.Union([
+                        Schema.Literals(["DESKTOP", "MOBILE"]),
+                        Schema.Null,
+                      ]),
+                    ),
+                    error: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          code: Schema.optional(
+                            Schema.Union([
+                              Schema.Literals([
+                                "NOT_REACHABLE",
+                                "DNS_FAILURE",
+                                "NOT_HTML",
+                                "LIGHTHOUSE_TIMEOUT",
+                                "UNKNOWN",
+                              ]),
+                              Schema.Null,
+                            ]),
+                          ),
+                          detail: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                          finalDisplayedUrl: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }),
+                        Schema.Null,
+                      ]),
+                    ),
+                    fcp: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    jsonReportUrl: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                    lcp: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    performanceScore: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    si: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    state: Schema.optional(
+                      Schema.Union([
+                        Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                        Schema.Null,
+                      ]),
+                    ),
+                    tbt: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    ttfb: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    tti: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+              region: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    label: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                    value: Schema.optional(
+                      Schema.Union([
+                        Schema.Literals([
+                          "asia-east1",
+                          "asia-northeast1",
+                          "asia-northeast2",
+                          "asia-south1",
+                          "asia-southeast1",
+                          "australia-southeast1",
+                          "europe-north1",
+                          "europe-southwest1",
+                          "europe-west1",
+                          "europe-west2",
+                          "europe-west3",
+                          "europe-west4",
+                          "europe-west8",
+                          "europe-west9",
+                          "me-west1",
+                          "southamerica-east1",
+                          "us-central1",
+                          "us-east1",
+                          "us-east4",
+                          "us-south1",
+                          "us-west1",
+                        ]),
+                        Schema.Null,
+                      ]),
+                    ),
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+              scheduleFrequency: Schema.optional(
+                Schema.Union([
+                  Schema.Literals(["DAILY", "WEEKLY"]),
+                  Schema.Null,
+                ]),
+              ),
+              url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            }),
+          ),
+          Schema.Null,
+        ]),
       ),
       url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
@@ -225,11 +879,119 @@ export const listPages: API.PaginatedOperationMethod<
     ListPagesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListPagesRequest) => stream.Stream<
+  items: (
+    input: ListPagesRequest,
+  ) => stream.Stream<
     {
-      region?: unknown | null;
+      region?: {
+        label?: string | null;
+        value?:
+          | "asia-east1"
+          | "asia-northeast1"
+          | "asia-northeast2"
+          | "asia-south1"
+          | "asia-southeast1"
+          | "australia-southeast1"
+          | "europe-north1"
+          | "europe-southwest1"
+          | "europe-west1"
+          | "europe-west2"
+          | "europe-west3"
+          | "europe-west4"
+          | "europe-west8"
+          | "europe-west9"
+          | "me-west1"
+          | "southamerica-east1"
+          | "us-central1"
+          | "us-east1"
+          | "us-east4"
+          | "us-south1"
+          | "us-west1"
+          | null;
+      } | null;
       scheduleFrequency?: "DAILY" | "WEEKLY" | null;
-      tests?: unknown[] | null;
+      tests?:
+        | {
+            id?: string | null;
+            date?: string | null;
+            desktopReport?: {
+              cls?: number | null;
+              deviceType?: "DESKTOP" | "MOBILE" | null;
+              error?: {
+                code?:
+                  | "NOT_REACHABLE"
+                  | "DNS_FAILURE"
+                  | "NOT_HTML"
+                  | "LIGHTHOUSE_TIMEOUT"
+                  | "UNKNOWN"
+                  | null;
+                detail?: string | null;
+                finalDisplayedUrl?: string | null;
+              } | null;
+              fcp?: number | null;
+              jsonReportUrl?: string | null;
+              lcp?: number | null;
+              performanceScore?: number | null;
+              si?: number | null;
+              state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+              tbt?: number | null;
+              ttfb?: number | null;
+              tti?: number | null;
+            } | null;
+            mobileReport?: {
+              cls?: number | null;
+              deviceType?: "DESKTOP" | "MOBILE" | null;
+              error?: {
+                code?:
+                  | "NOT_REACHABLE"
+                  | "DNS_FAILURE"
+                  | "NOT_HTML"
+                  | "LIGHTHOUSE_TIMEOUT"
+                  | "UNKNOWN"
+                  | null;
+                detail?: string | null;
+                finalDisplayedUrl?: string | null;
+              } | null;
+              fcp?: number | null;
+              jsonReportUrl?: string | null;
+              lcp?: number | null;
+              performanceScore?: number | null;
+              si?: number | null;
+              state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+              tbt?: number | null;
+              ttfb?: number | null;
+              tti?: number | null;
+            } | null;
+            region?: {
+              label?: string | null;
+              value?:
+                | "asia-east1"
+                | "asia-northeast1"
+                | "asia-northeast2"
+                | "asia-south1"
+                | "asia-southeast1"
+                | "australia-southeast1"
+                | "europe-north1"
+                | "europe-southwest1"
+                | "europe-west1"
+                | "europe-west2"
+                | "europe-west3"
+                | "europe-west4"
+                | "europe-west8"
+                | "europe-west9"
+                | "me-west1"
+                | "southamerica-east1"
+                | "us-central1"
+                | "us-east1"
+                | "us-east4"
+                | "us-south1"
+                | "us-west1"
+                | null;
+            } | null;
+            scheduleFrequency?: "DAILY" | "WEEKLY" | null;
+            url?: string | null;
+          }[]
+        | null;
       url?: string | null;
     },
     ListPagesError,
@@ -324,10 +1086,77 @@ export const TrendPageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<TrendPageRequest>;
 
-export type TrendPageResponse = unknown;
+export interface TrendPageResponse {
+  /** Cumulative Layout Shift trend. */
+  cls?: (number | null)[] | null;
+  /** First Contentful Paint trend. */
+  fcp?: (number | null)[] | null;
+  /** Largest Contentful Paint trend. */
+  lcp?: (number | null)[] | null;
+  /** The Lighthouse score trend. */
+  performanceScore?: (number | null)[] | null;
+  /** Speed Index trend. */
+  si?: (number | null)[] | null;
+  /** Total Blocking Time trend. */
+  tbt?: (number | null)[] | null;
+  /** Time To First Byte trend. */
+  ttfb?: (number | null)[] | null;
+  /** Time To Interactive trend. */
+  tti?: (number | null)[] | null;
+}
 
-export const TrendPageResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<TrendPageResponse>;
+export const TrendPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cls: Schema.optional(
+    Schema.Union([
+      Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
+      Schema.Null,
+    ]),
+  ),
+  fcp: Schema.optional(
+    Schema.Union([
+      Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
+      Schema.Null,
+    ]),
+  ),
+  lcp: Schema.optional(
+    Schema.Union([
+      Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
+      Schema.Null,
+    ]),
+  ),
+  performanceScore: Schema.optional(
+    Schema.Union([
+      Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
+      Schema.Null,
+    ]),
+  ),
+  si: Schema.optional(
+    Schema.Union([
+      Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
+      Schema.Null,
+    ]),
+  ),
+  tbt: Schema.optional(
+    Schema.Union([
+      Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
+      Schema.Null,
+    ]),
+  ),
+  ttfb: Schema.optional(
+    Schema.Union([
+      Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
+      Schema.Null,
+    ]),
+  ),
+  tti: Schema.optional(
+    Schema.Union([
+      Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<TrendPageResponse>;
 
 export type TrendPageError = DefaultErrors;
 
@@ -369,11 +1198,82 @@ export interface GetPageTestResponse {
   id?: string | null;
   date?: string | null;
   /** The Lighthouse report. */
-  desktopReport?: unknown | null;
+  desktopReport?: {
+    cls?: number | null;
+    deviceType?: "DESKTOP" | "MOBILE" | null;
+    error?: {
+      code?:
+        | "NOT_REACHABLE"
+        | "DNS_FAILURE"
+        | "NOT_HTML"
+        | "LIGHTHOUSE_TIMEOUT"
+        | "UNKNOWN"
+        | null;
+      detail?: string | null;
+      finalDisplayedUrl?: string | null;
+    } | null;
+    fcp?: number | null;
+    jsonReportUrl?: string | null;
+    lcp?: number | null;
+    performanceScore?: number | null;
+    si?: number | null;
+    state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+    tbt?: number | null;
+    ttfb?: number | null;
+    tti?: number | null;
+  } | null;
   /** The Lighthouse report. */
-  mobileReport?: unknown | null;
+  mobileReport?: {
+    cls?: number | null;
+    deviceType?: "DESKTOP" | "MOBILE" | null;
+    error?: {
+      code?:
+        | "NOT_REACHABLE"
+        | "DNS_FAILURE"
+        | "NOT_HTML"
+        | "LIGHTHOUSE_TIMEOUT"
+        | "UNKNOWN"
+        | null;
+      detail?: string | null;
+      finalDisplayedUrl?: string | null;
+    } | null;
+    fcp?: number | null;
+    jsonReportUrl?: string | null;
+    lcp?: number | null;
+    performanceScore?: number | null;
+    si?: number | null;
+    state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+    tbt?: number | null;
+    ttfb?: number | null;
+    tti?: number | null;
+  } | null;
   /** A test region with a label. */
-  region?: unknown | null;
+  region?: {
+    label?: string | null;
+    value?:
+      | "asia-east1"
+      | "asia-northeast1"
+      | "asia-northeast2"
+      | "asia-south1"
+      | "asia-southeast1"
+      | "australia-southeast1"
+      | "europe-north1"
+      | "europe-southwest1"
+      | "europe-west1"
+      | "europe-west2"
+      | "europe-west3"
+      | "europe-west4"
+      | "europe-west8"
+      | "europe-west9"
+      | "me-west1"
+      | "southamerica-east1"
+      | "us-central1"
+      | "us-east1"
+      | "us-east4"
+      | "us-south1"
+      | "us-west1"
+      | null;
+  } | null;
   /** The frequency of the test. */
   scheduleFrequency?: "DAILY" | "WEEKLY" | null;
   /** A URL. */
@@ -383,9 +1283,150 @@ export interface GetPageTestResponse {
 export const GetPageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   date: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  desktopReport: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
-  mobileReport: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
-  region: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+  desktopReport: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        deviceType: Schema.optional(
+          Schema.Union([Schema.Literals(["DESKTOP", "MOBILE"]), Schema.Null]),
+        ),
+        error: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              code: Schema.optional(
+                Schema.Union([
+                  Schema.Literals([
+                    "NOT_REACHABLE",
+                    "DNS_FAILURE",
+                    "NOT_HTML",
+                    "LIGHTHOUSE_TIMEOUT",
+                    "UNKNOWN",
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              detail: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              finalDisplayedUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        fcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        jsonReportUrl: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        lcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        performanceScore: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        state: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+            Schema.Null,
+          ]),
+        ),
+        tbt: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        ttfb: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        tti: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  mobileReport: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        deviceType: Schema.optional(
+          Schema.Union([Schema.Literals(["DESKTOP", "MOBILE"]), Schema.Null]),
+        ),
+        error: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              code: Schema.optional(
+                Schema.Union([
+                  Schema.Literals([
+                    "NOT_REACHABLE",
+                    "DNS_FAILURE",
+                    "NOT_HTML",
+                    "LIGHTHOUSE_TIMEOUT",
+                    "UNKNOWN",
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              detail: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              finalDisplayedUrl: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        fcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        jsonReportUrl: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        lcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        performanceScore: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Null]),
+        ),
+        si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        state: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+            Schema.Null,
+          ]),
+        ),
+        tbt: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        ttfb: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        tti: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }),
+      Schema.Null,
+    ]),
+  ),
+  region: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        value: Schema.optional(
+          Schema.Union([
+            Schema.Literals([
+              "asia-east1",
+              "asia-northeast1",
+              "asia-northeast2",
+              "asia-south1",
+              "asia-southeast1",
+              "australia-southeast1",
+              "europe-north1",
+              "europe-southwest1",
+              "europe-west1",
+              "europe-west2",
+              "europe-west3",
+              "europe-west4",
+              "europe-west8",
+              "europe-west9",
+              "me-west1",
+              "southamerica-east1",
+              "us-central1",
+              "us-east1",
+              "us-east4",
+              "us-south1",
+              "us-west1",
+            ]),
+            Schema.Null,
+          ]),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
   scheduleFrequency: Schema.optional(
     Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.Null]),
   ),
@@ -475,9 +1516,80 @@ export interface ListPageTestsResponse {
   result: {
     id?: string | null;
     date?: string | null;
-    desktopReport?: unknown | null;
-    mobileReport?: unknown | null;
-    region?: unknown | null;
+    desktopReport?: {
+      cls?: number | null;
+      deviceType?: "DESKTOP" | "MOBILE" | null;
+      error?: {
+        code?:
+          | "NOT_REACHABLE"
+          | "DNS_FAILURE"
+          | "NOT_HTML"
+          | "LIGHTHOUSE_TIMEOUT"
+          | "UNKNOWN"
+          | null;
+        detail?: string | null;
+        finalDisplayedUrl?: string | null;
+      } | null;
+      fcp?: number | null;
+      jsonReportUrl?: string | null;
+      lcp?: number | null;
+      performanceScore?: number | null;
+      si?: number | null;
+      state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+      tbt?: number | null;
+      ttfb?: number | null;
+      tti?: number | null;
+    } | null;
+    mobileReport?: {
+      cls?: number | null;
+      deviceType?: "DESKTOP" | "MOBILE" | null;
+      error?: {
+        code?:
+          | "NOT_REACHABLE"
+          | "DNS_FAILURE"
+          | "NOT_HTML"
+          | "LIGHTHOUSE_TIMEOUT"
+          | "UNKNOWN"
+          | null;
+        detail?: string | null;
+        finalDisplayedUrl?: string | null;
+      } | null;
+      fcp?: number | null;
+      jsonReportUrl?: string | null;
+      lcp?: number | null;
+      performanceScore?: number | null;
+      si?: number | null;
+      state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+      tbt?: number | null;
+      ttfb?: number | null;
+      tti?: number | null;
+    } | null;
+    region?: {
+      label?: string | null;
+      value?:
+        | "asia-east1"
+        | "asia-northeast1"
+        | "asia-northeast2"
+        | "asia-south1"
+        | "asia-southeast1"
+        | "australia-southeast1"
+        | "europe-north1"
+        | "europe-southwest1"
+        | "europe-west1"
+        | "europe-west2"
+        | "europe-west3"
+        | "europe-west4"
+        | "europe-west8"
+        | "europe-west9"
+        | "me-west1"
+        | "southamerica-east1"
+        | "us-central1"
+        | "us-east1"
+        | "us-east4"
+        | "us-south1"
+        | "us-west1"
+        | null;
+    } | null;
     scheduleFrequency?: "DAILY" | "WEEKLY" | null;
     url?: string | null;
   }[];
@@ -495,12 +1607,155 @@ export const ListPageTestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       date: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       desktopReport: Schema.optional(
-        Schema.Union([Schema.Unknown, Schema.Null]),
+        Schema.Union([
+          Schema.Struct({
+            cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            deviceType: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["DESKTOP", "MOBILE"]),
+                Schema.Null,
+              ]),
+            ),
+            error: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  code: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals([
+                        "NOT_REACHABLE",
+                        "DNS_FAILURE",
+                        "NOT_HTML",
+                        "LIGHTHOUSE_TIMEOUT",
+                        "UNKNOWN",
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  detail: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  finalDisplayedUrl: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            fcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            jsonReportUrl: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            performanceScore: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            state: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                Schema.Null,
+              ]),
+            ),
+            tbt: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            ttfb: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            tti: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
       ),
       mobileReport: Schema.optional(
-        Schema.Union([Schema.Unknown, Schema.Null]),
+        Schema.Union([
+          Schema.Struct({
+            cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            deviceType: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["DESKTOP", "MOBILE"]),
+                Schema.Null,
+              ]),
+            ),
+            error: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  code: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals([
+                        "NOT_REACHABLE",
+                        "DNS_FAILURE",
+                        "NOT_HTML",
+                        "LIGHTHOUSE_TIMEOUT",
+                        "UNKNOWN",
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  detail: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  finalDisplayedUrl: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            fcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            jsonReportUrl: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            performanceScore: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            state: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                Schema.Null,
+              ]),
+            ),
+            tbt: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            ttfb: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            tti: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
       ),
-      region: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+      region: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "asia-east1",
+                  "asia-northeast1",
+                  "asia-northeast2",
+                  "asia-south1",
+                  "asia-southeast1",
+                  "australia-southeast1",
+                  "europe-north1",
+                  "europe-southwest1",
+                  "europe-west1",
+                  "europe-west2",
+                  "europe-west3",
+                  "europe-west4",
+                  "europe-west8",
+                  "europe-west9",
+                  "me-west1",
+                  "southamerica-east1",
+                  "us-central1",
+                  "us-east1",
+                  "us-east4",
+                  "us-south1",
+                  "us-west1",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
       scheduleFrequency: Schema.optional(
         Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.Null]),
       ),
@@ -539,13 +1794,86 @@ export const listPageTests: API.PaginatedOperationMethod<
     ListPageTestsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListPageTestsRequest) => stream.Stream<
+  items: (
+    input: ListPageTestsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       date?: string | null;
-      desktopReport?: unknown | null;
-      mobileReport?: unknown | null;
-      region?: unknown | null;
+      desktopReport?: {
+        cls?: number | null;
+        deviceType?: "DESKTOP" | "MOBILE" | null;
+        error?: {
+          code?:
+            | "NOT_REACHABLE"
+            | "DNS_FAILURE"
+            | "NOT_HTML"
+            | "LIGHTHOUSE_TIMEOUT"
+            | "UNKNOWN"
+            | null;
+          detail?: string | null;
+          finalDisplayedUrl?: string | null;
+        } | null;
+        fcp?: number | null;
+        jsonReportUrl?: string | null;
+        lcp?: number | null;
+        performanceScore?: number | null;
+        si?: number | null;
+        state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+        tbt?: number | null;
+        ttfb?: number | null;
+        tti?: number | null;
+      } | null;
+      mobileReport?: {
+        cls?: number | null;
+        deviceType?: "DESKTOP" | "MOBILE" | null;
+        error?: {
+          code?:
+            | "NOT_REACHABLE"
+            | "DNS_FAILURE"
+            | "NOT_HTML"
+            | "LIGHTHOUSE_TIMEOUT"
+            | "UNKNOWN"
+            | null;
+          detail?: string | null;
+          finalDisplayedUrl?: string | null;
+        } | null;
+        fcp?: number | null;
+        jsonReportUrl?: string | null;
+        lcp?: number | null;
+        performanceScore?: number | null;
+        si?: number | null;
+        state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+        tbt?: number | null;
+        ttfb?: number | null;
+        tti?: number | null;
+      } | null;
+      region?: {
+        label?: string | null;
+        value?:
+          | "asia-east1"
+          | "asia-northeast1"
+          | "asia-northeast2"
+          | "asia-south1"
+          | "asia-southeast1"
+          | "australia-southeast1"
+          | "europe-north1"
+          | "europe-southwest1"
+          | "europe-west1"
+          | "europe-west2"
+          | "europe-west3"
+          | "europe-west4"
+          | "europe-west8"
+          | "europe-west9"
+          | "me-west1"
+          | "southamerica-east1"
+          | "us-central1"
+          | "us-east1"
+          | "us-east4"
+          | "us-south1"
+          | "us-west1"
+          | null;
+      } | null;
       scheduleFrequency?: "DAILY" | "WEEKLY" | null;
       url?: string | null;
     },
@@ -634,11 +1962,82 @@ export interface CreatePageTestResponse {
   id?: string | null;
   date?: string | null;
   /** The Lighthouse report. */
-  desktopReport?: unknown | null;
+  desktopReport?: {
+    cls?: number | null;
+    deviceType?: "DESKTOP" | "MOBILE" | null;
+    error?: {
+      code?:
+        | "NOT_REACHABLE"
+        | "DNS_FAILURE"
+        | "NOT_HTML"
+        | "LIGHTHOUSE_TIMEOUT"
+        | "UNKNOWN"
+        | null;
+      detail?: string | null;
+      finalDisplayedUrl?: string | null;
+    } | null;
+    fcp?: number | null;
+    jsonReportUrl?: string | null;
+    lcp?: number | null;
+    performanceScore?: number | null;
+    si?: number | null;
+    state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+    tbt?: number | null;
+    ttfb?: number | null;
+    tti?: number | null;
+  } | null;
   /** The Lighthouse report. */
-  mobileReport?: unknown | null;
+  mobileReport?: {
+    cls?: number | null;
+    deviceType?: "DESKTOP" | "MOBILE" | null;
+    error?: {
+      code?:
+        | "NOT_REACHABLE"
+        | "DNS_FAILURE"
+        | "NOT_HTML"
+        | "LIGHTHOUSE_TIMEOUT"
+        | "UNKNOWN"
+        | null;
+      detail?: string | null;
+      finalDisplayedUrl?: string | null;
+    } | null;
+    fcp?: number | null;
+    jsonReportUrl?: string | null;
+    lcp?: number | null;
+    performanceScore?: number | null;
+    si?: number | null;
+    state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+    tbt?: number | null;
+    ttfb?: number | null;
+    tti?: number | null;
+  } | null;
   /** A test region with a label. */
-  region?: unknown | null;
+  region?: {
+    label?: string | null;
+    value?:
+      | "asia-east1"
+      | "asia-northeast1"
+      | "asia-northeast2"
+      | "asia-south1"
+      | "asia-southeast1"
+      | "australia-southeast1"
+      | "europe-north1"
+      | "europe-southwest1"
+      | "europe-west1"
+      | "europe-west2"
+      | "europe-west3"
+      | "europe-west4"
+      | "europe-west8"
+      | "europe-west9"
+      | "me-west1"
+      | "southamerica-east1"
+      | "us-central1"
+      | "us-east1"
+      | "us-east4"
+      | "us-south1"
+      | "us-west1"
+      | null;
+  } | null;
   /** The frequency of the test. */
   scheduleFrequency?: "DAILY" | "WEEKLY" | null;
   /** A URL. */
@@ -649,9 +2048,150 @@ export const CreatePageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     date: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    desktopReport: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
-    mobileReport: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
-    region: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    desktopReport: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          deviceType: Schema.optional(
+            Schema.Union([Schema.Literals(["DESKTOP", "MOBILE"]), Schema.Null]),
+          ),
+          error: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                code: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals([
+                      "NOT_REACHABLE",
+                      "DNS_FAILURE",
+                      "NOT_HTML",
+                      "LIGHTHOUSE_TIMEOUT",
+                      "UNKNOWN",
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                detail: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                finalDisplayedUrl: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          fcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          jsonReportUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          lcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          performanceScore: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          state: Schema.optional(
+            Schema.Union([
+              Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+              Schema.Null,
+            ]),
+          ),
+          tbt: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          ttfb: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          tti: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        }),
+        Schema.Null,
+      ]),
+    ),
+    mobileReport: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          deviceType: Schema.optional(
+            Schema.Union([Schema.Literals(["DESKTOP", "MOBILE"]), Schema.Null]),
+          ),
+          error: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                code: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals([
+                      "NOT_REACHABLE",
+                      "DNS_FAILURE",
+                      "NOT_HTML",
+                      "LIGHTHOUSE_TIMEOUT",
+                      "UNKNOWN",
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                detail: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                finalDisplayedUrl: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          fcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          jsonReportUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          lcp: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          performanceScore: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          state: Schema.optional(
+            Schema.Union([
+              Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+              Schema.Null,
+            ]),
+          ),
+          tbt: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          ttfb: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          tti: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        }),
+        Schema.Null,
+      ]),
+    ),
+    region: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          value: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "asia-east1",
+                "asia-northeast1",
+                "asia-northeast2",
+                "asia-south1",
+                "asia-southeast1",
+                "australia-southeast1",
+                "europe-north1",
+                "europe-southwest1",
+                "europe-west1",
+                "europe-west2",
+                "europe-west3",
+                "europe-west4",
+                "europe-west8",
+                "europe-west9",
+                "me-west1",
+                "southamerica-east1",
+                "us-central1",
+                "us-east1",
+                "us-east4",
+                "us-south1",
+                "us-west1",
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }),
+        Schema.Null,
+      ]),
+    ),
     scheduleFrequency: Schema.optional(
       Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.Null]),
     ),
@@ -1000,7 +2540,86 @@ export interface CreateScheduleResponse {
       | null;
     url?: string | null;
   } | null;
-  test?: unknown | null;
+  test?: {
+    id?: string | null;
+    date?: string | null;
+    desktopReport?: {
+      cls?: number | null;
+      deviceType?: "DESKTOP" | "MOBILE" | null;
+      error?: {
+        code?:
+          | "NOT_REACHABLE"
+          | "DNS_FAILURE"
+          | "NOT_HTML"
+          | "LIGHTHOUSE_TIMEOUT"
+          | "UNKNOWN"
+          | null;
+        detail?: string | null;
+        finalDisplayedUrl?: string | null;
+      } | null;
+      fcp?: number | null;
+      jsonReportUrl?: string | null;
+      lcp?: number | null;
+      performanceScore?: number | null;
+      si?: number | null;
+      state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+      tbt?: number | null;
+      ttfb?: number | null;
+      tti?: number | null;
+    } | null;
+    mobileReport?: {
+      cls?: number | null;
+      deviceType?: "DESKTOP" | "MOBILE" | null;
+      error?: {
+        code?:
+          | "NOT_REACHABLE"
+          | "DNS_FAILURE"
+          | "NOT_HTML"
+          | "LIGHTHOUSE_TIMEOUT"
+          | "UNKNOWN"
+          | null;
+        detail?: string | null;
+        finalDisplayedUrl?: string | null;
+      } | null;
+      fcp?: number | null;
+      jsonReportUrl?: string | null;
+      lcp?: number | null;
+      performanceScore?: number | null;
+      si?: number | null;
+      state?: "RUNNING" | "COMPLETE" | "FAILED" | null;
+      tbt?: number | null;
+      ttfb?: number | null;
+      tti?: number | null;
+    } | null;
+    region?: {
+      label?: string | null;
+      value?:
+        | "asia-east1"
+        | "asia-northeast1"
+        | "asia-northeast2"
+        | "asia-south1"
+        | "asia-southeast1"
+        | "australia-southeast1"
+        | "europe-north1"
+        | "europe-southwest1"
+        | "europe-west1"
+        | "europe-west2"
+        | "europe-west3"
+        | "europe-west4"
+        | "europe-west8"
+        | "europe-west9"
+        | "me-west1"
+        | "southamerica-east1"
+        | "us-central1"
+        | "us-east1"
+        | "us-east4"
+        | "us-south1"
+        | "us-west1"
+        | null;
+    } | null;
+    scheduleFrequency?: "DAILY" | "WEEKLY" | null;
+    url?: string | null;
+  } | null;
 }
 
 export const CreateScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1044,7 +2663,195 @@ export const CreateScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.Null,
       ]),
     ),
-    test: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    test: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          date: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          desktopReport: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                cls: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                deviceType: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["DESKTOP", "MOBILE"]),
+                    Schema.Null,
+                  ]),
+                ),
+                error: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      code: Schema.optional(
+                        Schema.Union([
+                          Schema.Literals([
+                            "NOT_REACHABLE",
+                            "DNS_FAILURE",
+                            "NOT_HTML",
+                            "LIGHTHOUSE_TIMEOUT",
+                            "UNKNOWN",
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      detail: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      finalDisplayedUrl: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                fcp: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                jsonReportUrl: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                lcp: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                performanceScore: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+                state: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                    Schema.Null,
+                  ]),
+                ),
+                tbt: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                ttfb: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                tti: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          mobileReport: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                cls: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                deviceType: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["DESKTOP", "MOBILE"]),
+                    Schema.Null,
+                  ]),
+                ),
+                error: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      code: Schema.optional(
+                        Schema.Union([
+                          Schema.Literals([
+                            "NOT_REACHABLE",
+                            "DNS_FAILURE",
+                            "NOT_HTML",
+                            "LIGHTHOUSE_TIMEOUT",
+                            "UNKNOWN",
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      detail: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      finalDisplayedUrl: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                fcp: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                jsonReportUrl: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                lcp: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                performanceScore: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                si: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+                state: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["RUNNING", "COMPLETE", "FAILED"]),
+                    Schema.Null,
+                  ]),
+                ),
+                tbt: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                ttfb: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                tti: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          region: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                label: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                value: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals([
+                      "asia-east1",
+                      "asia-northeast1",
+                      "asia-northeast2",
+                      "asia-south1",
+                      "asia-southeast1",
+                      "australia-southeast1",
+                      "europe-north1",
+                      "europe-southwest1",
+                      "europe-west1",
+                      "europe-west2",
+                      "europe-west3",
+                      "europe-west4",
+                      "europe-west8",
+                      "europe-west9",
+                      "me-west1",
+                      "southamerica-east1",
+                      "us-central1",
+                      "us-east1",
+                      "us-east4",
+                      "us-south1",
+                      "us-west1",
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          scheduleFrequency: Schema.optional(
+            Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.Null]),
+          ),
+          url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
+        Schema.Null,
+      ]),
+    ),
   },
 ).pipe(
   T.ResponsePath("result"),

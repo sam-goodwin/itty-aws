@@ -30,7 +30,46 @@ paths:
                     description: Membership identifier tag.
                   account:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      id:
+                        type: string
+                        description: Identifier
+                      name:
+                        type: string
+                        description: Account name
+                      type:
+                        type: string
+                        enum:
+                          - standard
+                          - enterprise
+                      created_on:
+                        type: string
+                        description: Timestamp for the creation of the account
+                      managed_by:
+                        type: object
+                        properties:
+                          parent_org_id:
+                            type: string
+                            description: ID of the parent Organization, if one exists
+                          parent_org_name:
+                            type: string
+                            description: Name of the parent Organization, if one exists
+                        description: Parent container details
+                      settings:
+                        type: object
+                        properties:
+                          abuse_contact_email:
+                            type: string
+                            description: Sets an abuse contact email to notify for abuse reports.
+                          enforce_twofactor:
+                            type: boolean
+                            description: Indicates whether membership in this account requires that
+                              Two-Factor Authentication is enabled
+                        description: Account settings
+                    required:
+                      - id
+                      - name
+                      - type
                   api_access_enabled:
                     oneOf:
                       - type: boolean
@@ -42,40 +81,88 @@ paths:
                     properties:
                       analytics:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       billing:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       cache_purge:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       dns:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       dns_records:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       lb:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       logs:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       organization:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       ssl:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       waf:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       zone_settings:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       zones:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                     description: All access permissions for the user at the account.
                   policies:
                     type: array
@@ -214,7 +301,46 @@ paths:
                     description: Membership identifier tag.
                   account:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      id:
+                        type: string
+                        description: Identifier
+                      name:
+                        type: string
+                        description: Account name
+                      type:
+                        type: string
+                        enum:
+                          - standard
+                          - enterprise
+                      created_on:
+                        type: string
+                        description: Timestamp for the creation of the account
+                      managed_by:
+                        type: object
+                        properties:
+                          parent_org_id:
+                            type: string
+                            description: ID of the parent Organization, if one exists
+                          parent_org_name:
+                            type: string
+                            description: Name of the parent Organization, if one exists
+                        description: Parent container details
+                      settings:
+                        type: object
+                        properties:
+                          abuse_contact_email:
+                            type: string
+                            description: Sets an abuse contact email to notify for abuse reports.
+                          enforce_twofactor:
+                            type: boolean
+                            description: Indicates whether membership in this account requires that
+                              Two-Factor Authentication is enabled
+                        description: Account settings
+                    required:
+                      - id
+                      - name
+                      - type
                   api_access_enabled:
                     oneOf:
                       - type: boolean
@@ -226,40 +352,88 @@ paths:
                     properties:
                       analytics:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       billing:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       cache_purge:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       dns:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       dns_records:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       lb:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       logs:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       organization:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       ssl:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       waf:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       zone_settings:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       zones:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                     description: All access permissions for the user at the account.
                   policies:
                     type: array
@@ -398,7 +572,46 @@ paths:
                     description: Membership identifier tag.
                   account:
                     type: object
-                    additionalProperties: true
+                    properties:
+                      id:
+                        type: string
+                        description: Identifier
+                      name:
+                        type: string
+                        description: Account name
+                      type:
+                        type: string
+                        enum:
+                          - standard
+                          - enterprise
+                      created_on:
+                        type: string
+                        description: Timestamp for the creation of the account
+                      managed_by:
+                        type: object
+                        properties:
+                          parent_org_id:
+                            type: string
+                            description: ID of the parent Organization, if one exists
+                          parent_org_name:
+                            type: string
+                            description: Name of the parent Organization, if one exists
+                        description: Parent container details
+                      settings:
+                        type: object
+                        properties:
+                          abuse_contact_email:
+                            type: string
+                            description: Sets an abuse contact email to notify for abuse reports.
+                          enforce_twofactor:
+                            type: boolean
+                            description: Indicates whether membership in this account requires that
+                              Two-Factor Authentication is enabled
+                        description: Account settings
+                    required:
+                      - id
+                      - name
+                      - type
                   api_access_enabled:
                     oneOf:
                       - type: boolean
@@ -410,40 +623,88 @@ paths:
                     properties:
                       analytics:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       billing:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       cache_purge:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       dns:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       dns_records:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       lb:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       logs:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       organization:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       ssl:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       waf:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       zone_settings:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                       zones:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          read:
+                            type: boolean
+                          write:
+                            type: boolean
                     description: All access permissions for the user at the account.
                   roles:
                     type: array

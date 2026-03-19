@@ -654,7 +654,16 @@ paths:
                         description: When the Application was created.
                       dns:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the DNS record associated with the application.
+                          type:
+                            type: string
+                            enum:
+                              - CNAME
+                              - ADDRESS
+                            description: The type of DNS record associated with the application.
                         description: The name and type of DNS record for the Spectrum application.
                       modified_on:
                         type: string
@@ -685,9 +694,39 @@ paths:
                       edge_ips:
                         oneOf:
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              connectivity:
+                                type: string
+                                enum:
+                                  - all
+                                  - ipv4
+                                  - ipv6
+                                description: The IP versions supported for inbound connections on Spectrum
+                                  anycast IPs.
+                              type:
+                                type: string
+                                enum:
+                                  - dynamic
+                                description: The type of edge IP configuration specified. Dynamically allocated
+                                  edge IPs use Spectrum anycast IPs in
+                                  accordance with the connectivity you specify.
+                                  Only valid with CNAME DNS names.
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              ips:
+                                type: array
+                                items:
+                                  type: string
+                                description: The array of customer owned IPs we broadcast via anycast for this
+                                  hostname and application.
+                              type:
+                                type: string
+                                enum:
+                                  - static
+                                description: The type of edge IP configuration specified. Statically allocated
+                                  edge IPs use customer IPs in accordance with
+                                  the ips array you specify. Only valid with
+                                  ADDRESS DNS names.
                         description: The anycast edge IP configuration for the hostname of this
                           application.
                       ip_firewall:
@@ -702,12 +741,27 @@ paths:
                           addresses for load balancing.
                       origin_dns:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the DNS record associated with the origin.
+                          ttl:
+                            type: number
+                            description: The TTL of our resolution of your DNS record in seconds.
+                          type:
+                            type: string
+                            enum:
+                              - ""
+                              - A
+                              - AAAA
+                              - SRV
+                            description: The type of DNS record associated with the origin. "" is used to
+                              specify a combination of A/AAAA records.
                         description: The name and type of DNS record for the Spectrum application.
                       origin_port:
                         oneOf:
-                          - type: string
                           - type: number
+                          - type: string
                         description: 'The destination port at the origin. Only specified in conjunction
                           with origin_dns. May use an integer to specify a
                           single origin port, for example `1000`, or a string to
@@ -751,7 +805,16 @@ paths:
                         description: When the Application was created.
                       dns:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the DNS record associated with the application.
+                          type:
+                            type: string
+                            enum:
+                              - CNAME
+                              - ADDRESS
+                            description: The type of DNS record associated with the application.
                         description: The name and type of DNS record for the Spectrum application.
                       modified_on:
                         type: string
@@ -802,7 +865,16 @@ paths:
               properties:
                 dns:
                   type: object
-                  additionalProperties: true
+                  properties:
+                    name:
+                      type: string
+                      description: The name of the DNS record associated with the application.
+                    type:
+                      type: string
+                      enum:
+                        - CNAME
+                        - ADDRESS
+                      description: The type of DNS record associated with the application.
                   description: "Body param: The name and type of DNS record for the Spectrum
                     application."
                 protocol:
@@ -831,9 +903,39 @@ paths:
                 edge_ips:
                   oneOf:
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        connectivity:
+                          type: string
+                          enum:
+                            - all
+                            - ipv4
+                            - ipv6
+                          description: The IP versions supported for inbound connections on Spectrum
+                            anycast IPs.
+                        type:
+                          type: string
+                          enum:
+                            - dynamic
+                          description: The type of edge IP configuration specified. Dynamically allocated
+                            edge IPs use Spectrum anycast IPs in accordance with
+                            the connectivity you specify. Only valid with CNAME
+                            DNS names.
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        ips:
+                          type: array
+                          items:
+                            type: string
+                          description: The array of customer owned IPs we broadcast via anycast for this
+                            hostname and application.
+                        type:
+                          type: string
+                          enum:
+                            - static
+                          description: The type of edge IP configuration specified. Statically allocated
+                            edge IPs use customer IPs in accordance with the ips
+                            array you specify. Only valid with ADDRESS DNS
+                            names.
                   description: "Body param: The anycast edge IP configuration for the hostname of
                     this application."
                 ip_firewall:
@@ -848,13 +950,28 @@ paths:
                     multiple IP addresses for load balancing."
                 origin_dns:
                   type: object
-                  additionalProperties: true
+                  properties:
+                    name:
+                      type: string
+                      description: The name of the DNS record associated with the origin.
+                    ttl:
+                      type: number
+                      description: The TTL of our resolution of your DNS record in seconds.
+                    type:
+                      type: string
+                      enum:
+                        - ""
+                        - A
+                        - AAAA
+                        - SRV
+                      description: The type of DNS record associated with the origin. "" is used to
+                        specify a combination of A/AAAA records.
                   description: "Body param: The name and type of DNS record for the Spectrum
                     application."
                 origin_port:
                   oneOf:
-                    - type: string
                     - type: number
+                    - type: string
                   description: 'Body param: The destination port at the origin. Only specified in
                     conjunction with origin_dns. May use an integer to specify a
                     single origin port, for example `1000`, or a string to
@@ -905,7 +1022,16 @@ paths:
                         description: When the Application was created.
                       dns:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the DNS record associated with the application.
+                          type:
+                            type: string
+                            enum:
+                              - CNAME
+                              - ADDRESS
+                            description: The type of DNS record associated with the application.
                         description: The name and type of DNS record for the Spectrum application.
                       modified_on:
                         type: string
@@ -936,9 +1062,39 @@ paths:
                       edge_ips:
                         oneOf:
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              connectivity:
+                                type: string
+                                enum:
+                                  - all
+                                  - ipv4
+                                  - ipv6
+                                description: The IP versions supported for inbound connections on Spectrum
+                                  anycast IPs.
+                              type:
+                                type: string
+                                enum:
+                                  - dynamic
+                                description: The type of edge IP configuration specified. Dynamically allocated
+                                  edge IPs use Spectrum anycast IPs in
+                                  accordance with the connectivity you specify.
+                                  Only valid with CNAME DNS names.
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              ips:
+                                type: array
+                                items:
+                                  type: string
+                                description: The array of customer owned IPs we broadcast via anycast for this
+                                  hostname and application.
+                              type:
+                                type: string
+                                enum:
+                                  - static
+                                description: The type of edge IP configuration specified. Statically allocated
+                                  edge IPs use customer IPs in accordance with
+                                  the ips array you specify. Only valid with
+                                  ADDRESS DNS names.
                         description: The anycast edge IP configuration for the hostname of this
                           application.
                       ip_firewall:
@@ -953,12 +1109,27 @@ paths:
                           addresses for load balancing.
                       origin_dns:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the DNS record associated with the origin.
+                          ttl:
+                            type: number
+                            description: The TTL of our resolution of your DNS record in seconds.
+                          type:
+                            type: string
+                            enum:
+                              - ""
+                              - A
+                              - AAAA
+                              - SRV
+                            description: The type of DNS record associated with the origin. "" is used to
+                              specify a combination of A/AAAA records.
                         description: The name and type of DNS record for the Spectrum application.
                       origin_port:
                         oneOf:
-                          - type: string
                           - type: number
+                          - type: string
                         description: 'The destination port at the origin. Only specified in conjunction
                           with origin_dns. May use an integer to specify a
                           single origin port, for example `1000`, or a string to
@@ -1002,7 +1173,16 @@ paths:
                         description: When the Application was created.
                       dns:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the DNS record associated with the application.
+                          type:
+                            type: string
+                            enum:
+                              - CNAME
+                              - ADDRESS
+                            description: The type of DNS record associated with the application.
                         description: The name and type of DNS record for the Spectrum application.
                       modified_on:
                         type: string
@@ -1104,7 +1284,16 @@ paths:
                         description: When the Application was created.
                       dns:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the DNS record associated with the application.
+                          type:
+                            type: string
+                            enum:
+                              - CNAME
+                              - ADDRESS
+                            description: The type of DNS record associated with the application.
                         description: The name and type of DNS record for the Spectrum application.
                       modified_on:
                         type: string
@@ -1135,9 +1324,39 @@ paths:
                       edge_ips:
                         oneOf:
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              connectivity:
+                                type: string
+                                enum:
+                                  - all
+                                  - ipv4
+                                  - ipv6
+                                description: The IP versions supported for inbound connections on Spectrum
+                                  anycast IPs.
+                              type:
+                                type: string
+                                enum:
+                                  - dynamic
+                                description: The type of edge IP configuration specified. Dynamically allocated
+                                  edge IPs use Spectrum anycast IPs in
+                                  accordance with the connectivity you specify.
+                                  Only valid with CNAME DNS names.
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              ips:
+                                type: array
+                                items:
+                                  type: string
+                                description: The array of customer owned IPs we broadcast via anycast for this
+                                  hostname and application.
+                              type:
+                                type: string
+                                enum:
+                                  - static
+                                description: The type of edge IP configuration specified. Statically allocated
+                                  edge IPs use customer IPs in accordance with
+                                  the ips array you specify. Only valid with
+                                  ADDRESS DNS names.
                         description: The anycast edge IP configuration for the hostname of this
                           application.
                       ip_firewall:
@@ -1152,12 +1371,27 @@ paths:
                           addresses for load balancing.
                       origin_dns:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the DNS record associated with the origin.
+                          ttl:
+                            type: number
+                            description: The TTL of our resolution of your DNS record in seconds.
+                          type:
+                            type: string
+                            enum:
+                              - ""
+                              - A
+                              - AAAA
+                              - SRV
+                            description: The type of DNS record associated with the origin. "" is used to
+                              specify a combination of A/AAAA records.
                         description: The name and type of DNS record for the Spectrum application.
                       origin_port:
                         oneOf:
-                          - type: string
                           - type: number
+                          - type: string
                         description: 'The destination port at the origin. Only specified in conjunction
                           with origin_dns. May use an integer to specify a
                           single origin port, for example `1000`, or a string to
@@ -1201,7 +1435,16 @@ paths:
                         description: When the Application was created.
                       dns:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the DNS record associated with the application.
+                          type:
+                            type: string
+                            enum:
+                              - CNAME
+                              - ADDRESS
+                            description: The type of DNS record associated with the application.
                         description: The name and type of DNS record for the Spectrum application.
                       modified_on:
                         type: string
@@ -1247,7 +1490,16 @@ paths:
               properties:
                 dns:
                   type: object
-                  additionalProperties: true
+                  properties:
+                    name:
+                      type: string
+                      description: The name of the DNS record associated with the application.
+                    type:
+                      type: string
+                      enum:
+                        - CNAME
+                        - ADDRESS
+                      description: The type of DNS record associated with the application.
                   description: "Body param: The name and type of DNS record for the Spectrum
                     application."
                 protocol:
@@ -1276,9 +1528,39 @@ paths:
                 edge_ips:
                   oneOf:
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        connectivity:
+                          type: string
+                          enum:
+                            - all
+                            - ipv4
+                            - ipv6
+                          description: The IP versions supported for inbound connections on Spectrum
+                            anycast IPs.
+                        type:
+                          type: string
+                          enum:
+                            - dynamic
+                          description: The type of edge IP configuration specified. Dynamically allocated
+                            edge IPs use Spectrum anycast IPs in accordance with
+                            the connectivity you specify. Only valid with CNAME
+                            DNS names.
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        ips:
+                          type: array
+                          items:
+                            type: string
+                          description: The array of customer owned IPs we broadcast via anycast for this
+                            hostname and application.
+                        type:
+                          type: string
+                          enum:
+                            - static
+                          description: The type of edge IP configuration specified. Statically allocated
+                            edge IPs use customer IPs in accordance with the ips
+                            array you specify. Only valid with ADDRESS DNS
+                            names.
                   description: "Body param: The anycast edge IP configuration for the hostname of
                     this application."
                 ip_firewall:
@@ -1293,13 +1575,28 @@ paths:
                     multiple IP addresses for load balancing."
                 origin_dns:
                   type: object
-                  additionalProperties: true
+                  properties:
+                    name:
+                      type: string
+                      description: The name of the DNS record associated with the origin.
+                    ttl:
+                      type: number
+                      description: The TTL of our resolution of your DNS record in seconds.
+                    type:
+                      type: string
+                      enum:
+                        - ""
+                        - A
+                        - AAAA
+                        - SRV
+                      description: The type of DNS record associated with the origin. "" is used to
+                        specify a combination of A/AAAA records.
                   description: "Body param: The name and type of DNS record for the Spectrum
                     application."
                 origin_port:
                   oneOf:
-                    - type: string
                     - type: number
+                    - type: string
                   description: 'Body param: The destination port at the origin. Only specified in
                     conjunction with origin_dns. May use an integer to specify a
                     single origin port, for example `1000`, or a string to
@@ -1350,7 +1647,16 @@ paths:
                         description: When the Application was created.
                       dns:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the DNS record associated with the application.
+                          type:
+                            type: string
+                            enum:
+                              - CNAME
+                              - ADDRESS
+                            description: The type of DNS record associated with the application.
                         description: The name and type of DNS record for the Spectrum application.
                       modified_on:
                         type: string
@@ -1381,9 +1687,39 @@ paths:
                       edge_ips:
                         oneOf:
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              connectivity:
+                                type: string
+                                enum:
+                                  - all
+                                  - ipv4
+                                  - ipv6
+                                description: The IP versions supported for inbound connections on Spectrum
+                                  anycast IPs.
+                              type:
+                                type: string
+                                enum:
+                                  - dynamic
+                                description: The type of edge IP configuration specified. Dynamically allocated
+                                  edge IPs use Spectrum anycast IPs in
+                                  accordance with the connectivity you specify.
+                                  Only valid with CNAME DNS names.
                           - type: object
-                            additionalProperties: true
+                            properties:
+                              ips:
+                                type: array
+                                items:
+                                  type: string
+                                description: The array of customer owned IPs we broadcast via anycast for this
+                                  hostname and application.
+                              type:
+                                type: string
+                                enum:
+                                  - static
+                                description: The type of edge IP configuration specified. Statically allocated
+                                  edge IPs use customer IPs in accordance with
+                                  the ips array you specify. Only valid with
+                                  ADDRESS DNS names.
                         description: The anycast edge IP configuration for the hostname of this
                           application.
                       ip_firewall:
@@ -1398,12 +1734,27 @@ paths:
                           addresses for load balancing.
                       origin_dns:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the DNS record associated with the origin.
+                          ttl:
+                            type: number
+                            description: The TTL of our resolution of your DNS record in seconds.
+                          type:
+                            type: string
+                            enum:
+                              - ""
+                              - A
+                              - AAAA
+                              - SRV
+                            description: The type of DNS record associated with the origin. "" is used to
+                              specify a combination of A/AAAA records.
                         description: The name and type of DNS record for the Spectrum application.
                       origin_port:
                         oneOf:
-                          - type: string
                           - type: number
+                          - type: string
                         description: 'The destination port at the origin. Only specified in conjunction
                           with origin_dns. May use an integer to specify a
                           single origin port, for example `1000`, or a string to
@@ -1447,7 +1798,16 @@ paths:
                         description: When the Application was created.
                       dns:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the DNS record associated with the application.
+                          type:
+                            type: string
+                            enum:
+                              - CNAME
+                              - ADDRESS
+                            description: The type of DNS record associated with the application.
                         description: The name and type of DNS record for the Spectrum application.
                       modified_on:
                         type: string

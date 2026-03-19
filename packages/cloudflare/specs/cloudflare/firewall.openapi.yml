@@ -809,8 +809,35 @@ paths:
                     type: string
                     description: The unique identifier of the Zone Lockdown rule.
                   configurations:
-                    type: object
-                    additionalProperties: true
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            target:
+                              type: string
+                              enum:
+                                - ip
+                              description: The configuration target. You must set the target to `ip` when
+                                specifying an IP address in the Zone Lockdown
+                                rule.
+                            value:
+                              type: string
+                              description: The IP address to match. This address will be compared to the IP
+                                address of incoming requests.
+                        - type: object
+                          properties:
+                            target:
+                              type: string
+                              enum:
+                                - ip_range
+                              description: The configuration target. You must set the target to `ip_range`
+                                when specifying an IP address range in the Zone
+                                Lockdown rule.
+                            value:
+                              type: string
+                              description: The IP address range to match. You can only use prefix lengths
+                                `/16` and `/24`.
                     description: A list of IP addresses or CIDR ranges that will be allowed to
                       access the URLs specified in the Zone Lockdown rule. You
                       can include any number of `ip` or `ip_range`
@@ -870,8 +897,35 @@ paths:
               type: object
               properties:
                 configurations:
-                  type: object
-                  additionalProperties: true
+                  type: array
+                  items:
+                    oneOf:
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - ip
+                            description: The configuration target. You must set the target to `ip` when
+                              specifying an IP address in the Zone Lockdown
+                              rule.
+                          value:
+                            type: string
+                            description: The IP address to match. This address will be compared to the IP
+                              address of incoming requests.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - ip_range
+                            description: The configuration target. You must set the target to `ip_range`
+                              when specifying an IP address range in the Zone
+                              Lockdown rule.
+                          value:
+                            type: string
+                            description: The IP address range to match. You can only use prefix lengths
+                              `/16` and `/24`.
                   description: "Body param: A list of IP addresses or CIDR ranges that will be
                     allowed to access the URLs specified in the Zone Lockdown
                     rule. You can include any number of `ip` or `ip_range`
@@ -898,8 +952,35 @@ paths:
                     type: string
                     description: The unique identifier of the Zone Lockdown rule.
                   configurations:
-                    type: object
-                    additionalProperties: true
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            target:
+                              type: string
+                              enum:
+                                - ip
+                              description: The configuration target. You must set the target to `ip` when
+                                specifying an IP address in the Zone Lockdown
+                                rule.
+                            value:
+                              type: string
+                              description: The IP address to match. This address will be compared to the IP
+                                address of incoming requests.
+                        - type: object
+                          properties:
+                            target:
+                              type: string
+                              enum:
+                                - ip_range
+                              description: The configuration target. You must set the target to `ip_range`
+                                when specifying an IP address range in the Zone
+                                Lockdown rule.
+                            value:
+                              type: string
+                              description: The IP address range to match. You can only use prefix lengths
+                                `/16` and `/24`.
                     description: A list of IP addresses or CIDR ranges that will be allowed to
                       access the URLs specified in the Zone Lockdown rule. You
                       can include any number of `ip` or `ip_range`
@@ -1050,8 +1131,35 @@ paths:
                     type: string
                     description: The unique identifier of the Zone Lockdown rule.
                   configurations:
-                    type: object
-                    additionalProperties: true
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            target:
+                              type: string
+                              enum:
+                                - ip
+                              description: The configuration target. You must set the target to `ip` when
+                                specifying an IP address in the Zone Lockdown
+                                rule.
+                            value:
+                              type: string
+                              description: The IP address to match. This address will be compared to the IP
+                                address of incoming requests.
+                        - type: object
+                          properties:
+                            target:
+                              type: string
+                              enum:
+                                - ip_range
+                              description: The configuration target. You must set the target to `ip_range`
+                                when specifying an IP address range in the Zone
+                                Lockdown rule.
+                            value:
+                              type: string
+                              description: The IP address range to match. You can only use prefix lengths
+                                `/16` and `/24`.
                     description: A list of IP addresses or CIDR ranges that will be allowed to
                       access the URLs specified in the Zone Lockdown rule. You
                       can include any number of `ip` or `ip_range`
@@ -1105,8 +1213,35 @@ paths:
               type: object
               properties:
                 configurations:
-                  type: object
-                  additionalProperties: true
+                  type: array
+                  items:
+                    oneOf:
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - ip
+                            description: The configuration target. You must set the target to `ip` when
+                              specifying an IP address in the Zone Lockdown
+                              rule.
+                          value:
+                            type: string
+                            description: The IP address to match. This address will be compared to the IP
+                              address of incoming requests.
+                      - type: object
+                        properties:
+                          target:
+                            type: string
+                            enum:
+                              - ip_range
+                            description: The configuration target. You must set the target to `ip_range`
+                              when specifying an IP address range in the Zone
+                              Lockdown rule.
+                          value:
+                            type: string
+                            description: The IP address range to match. You can only use prefix lengths
+                              `/16` and `/24`.
                   description: "Body param: A list of IP addresses or CIDR ranges that will be
                     allowed to access the URLs specified in the Zone Lockdown
                     rule. You can include any number of `ip` or `ip_range`
@@ -1147,8 +1282,35 @@ paths:
                     type: string
                     description: The unique identifier of the Zone Lockdown rule.
                   configurations:
-                    type: object
-                    additionalProperties: true
+                    type: array
+                    items:
+                      oneOf:
+                        - type: object
+                          properties:
+                            target:
+                              type: string
+                              enum:
+                                - ip
+                              description: The configuration target. You must set the target to `ip` when
+                                specifying an IP address in the Zone Lockdown
+                                rule.
+                            value:
+                              type: string
+                              description: The IP address to match. This address will be compared to the IP
+                                address of incoming requests.
+                        - type: object
+                          properties:
+                            target:
+                              type: string
+                              enum:
+                                - ip_range
+                              description: The configuration target. You must set the target to `ip_range`
+                                when specifying an IP address range in the Zone
+                                Lockdown rule.
+                            value:
+                              type: string
+                              description: The IP address range to match. You can only use prefix lengths
+                                `/16` and `/24`.
                     description: A list of IP addresses or CIDR ranges that will be allowed to
                       access the URLs specified in the Zone Lockdown rule. You
                       can include any number of `ip` or `ip_range`
@@ -1230,7 +1392,23 @@ paths:
                   filter:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          description:
+                            type: string
+                            description: An informative summary of the filter.
+                          expression:
+                            type: string
+                            description: The filter expression. For more information, refer to
+                              [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+                          paused:
+                            type: boolean
+                            description: When true, indicates that the filter is currently paused.
+                          ref:
+                            type: string
+                            description: A short reference tag. Allows you to select related filters.
                       - type: object
                         properties:
                           id:
@@ -1335,7 +1513,23 @@ paths:
                   filter:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          description:
+                            type: string
+                            description: An informative summary of the filter.
+                          expression:
+                            type: string
+                            description: The filter expression. For more information, refer to
+                              [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+                          paused:
+                            type: boolean
+                            description: When true, indicates that the filter is currently paused.
+                          ref:
+                            type: string
+                            description: A short reference tag. Allows you to select related filters.
                       - type: object
                         properties:
                           id:
@@ -1436,7 +1630,20 @@ paths:
                     traffic within the configured period is exceeded."
                 filter:
                   type: object
-                  additionalProperties: true
+                  properties:
+                    description:
+                      type: string
+                      description: An informative summary of the filter.
+                    expression:
+                      type: string
+                      description: The filter expression. For more information, refer to
+                        [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+                    paused:
+                      type: boolean
+                      description: When true, indicates that the filter is currently paused.
+                    ref:
+                      type: string
+                      description: A short reference tag. Allows you to select related filters.
                   description: "Body param:"
               required:
                 - action
@@ -1470,7 +1677,23 @@ paths:
                   filter:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          description:
+                            type: string
+                            description: An informative summary of the filter.
+                          expression:
+                            type: string
+                            description: The filter expression. For more information, refer to
+                              [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+                          paused:
+                            type: boolean
+                            description: When true, indicates that the filter is currently paused.
+                          ref:
+                            type: string
+                            description: A short reference tag. Allows you to select related filters.
                       - type: object
                         properties:
                           id:
@@ -1555,7 +1778,23 @@ paths:
                   filter:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          description:
+                            type: string
+                            description: An informative summary of the filter.
+                          expression:
+                            type: string
+                            description: The filter expression. For more information, refer to
+                              [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+                          paused:
+                            type: boolean
+                            description: When true, indicates that the filter is currently paused.
+                          ref:
+                            type: string
+                            description: A short reference tag. Allows you to select related filters.
                       - type: object
                         properties:
                           id:
@@ -1634,7 +1873,23 @@ paths:
                   filter:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          description:
+                            type: string
+                            description: An informative summary of the filter.
+                          expression:
+                            type: string
+                            description: The filter expression. For more information, refer to
+                              [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+                          paused:
+                            type: boolean
+                            description: When true, indicates that the filter is currently paused.
+                          ref:
+                            type: string
+                            description: A short reference tag. Allows you to select related filters.
                       - type: object
                         properties:
                           id:
@@ -1719,7 +1974,23 @@ paths:
                   filter:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          description:
+                            type: string
+                            description: An informative summary of the filter.
+                          expression:
+                            type: string
+                            description: The filter expression. For more information, refer to
+                              [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+                          paused:
+                            type: boolean
+                            description: When true, indicates that the filter is currently paused.
+                          ref:
+                            type: string
+                            description: A short reference tag. Allows you to select related filters.
                       - type: object
                         properties:
                           id:
@@ -1825,7 +2096,20 @@ paths:
                     traffic within the configured period is exceeded."
                 filter:
                   type: object
-                  additionalProperties: true
+                  properties:
+                    description:
+                      type: string
+                      description: An informative summary of the filter.
+                    expression:
+                      type: string
+                      description: The filter expression. For more information, refer to
+                        [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+                    paused:
+                      type: boolean
+                      description: When true, indicates that the filter is currently paused.
+                    ref:
+                      type: string
+                      description: A short reference tag. Allows you to select related filters.
                   description: "Body param:"
               required:
                 - action
@@ -1859,7 +2143,23 @@ paths:
                   filter:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          description:
+                            type: string
+                            description: An informative summary of the filter.
+                          expression:
+                            type: string
+                            description: The filter expression. For more information, refer to
+                              [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+                          paused:
+                            type: boolean
+                            description: When true, indicates that the filter is currently paused.
+                          ref:
+                            type: string
+                            description: A short reference tag. Allows you to select related filters.
                       - type: object
                         properties:
                           id:
@@ -1944,7 +2244,23 @@ paths:
                   filter:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          description:
+                            type: string
+                            description: An informative summary of the filter.
+                          expression:
+                            type: string
+                            description: The filter expression. For more information, refer to
+                              [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+                          paused:
+                            type: boolean
+                            description: When true, indicates that the filter is currently paused.
+                          ref:
+                            type: string
+                            description: A short reference tag. Allows you to select related filters.
                       - type: object
                         properties:
                           id:
@@ -2028,7 +2344,23 @@ paths:
                   filter:
                     oneOf:
                       - type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier of the filter.
+                          description:
+                            type: string
+                            description: An informative summary of the filter.
+                          expression:
+                            type: string
+                            description: The filter expression. For more information, refer to
+                              [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+                          paused:
+                            type: boolean
+                            description: When true, indicates that the filter is currently paused.
+                          ref:
+                            type: string
+                            description: A short reference tag. Allows you to select related filters.
                       - type: object
                         properties:
                           id:
@@ -2151,15 +2483,67 @@ paths:
                 configuration:
                   oneOf:
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        target:
+                          type: string
+                          enum:
+                            - ip
+                          description: The configuration target. You must set the target to `ip` when
+                            specifying an IP address in the rule.
+                        value:
+                          type: string
+                          description: The IP address to match. This address will be compared to the IP
+                            address of incoming requests.
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        target:
+                          type: string
+                          enum:
+                            - ip6
+                          description: The configuration target. You must set the target to `ip6` when
+                            specifying an IPv6 address in the rule.
+                        value:
+                          type: string
+                          description: The IPv6 address to match.
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        target:
+                          type: string
+                          enum:
+                            - ip_range
+                          description: The configuration target. You must set the target to `ip_range`
+                            when specifying an IP address range in the rule.
+                        value:
+                          type: string
+                          description: The IP address range to match. You can only use prefix lengths
+                            `/16` and `/24` for IPv4 ranges, and prefix lengths
+                            `/32`, `/48`, and `/64` for IPv6 ranges.
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        target:
+                          type: string
+                          enum:
+                            - asn
+                          description: The configuration target. You must set the target to `asn` when
+                            specifying an Autonomous System Number (ASN) in the
+                            rule.
+                        value:
+                          type: string
+                          description: The AS number to match.
                     - type: object
-                      additionalProperties: true
+                      properties:
+                        target:
+                          type: string
+                          enum:
+                            - country
+                          description: The configuration target. You must set the target to `country` when
+                            specifying a country code in the rule.
+                        value:
+                          type: string
+                          description: "The two-letter ISO-3166-1 alpha-2 code to match. For more
+                            information, refer to [IP Access rules:
+                            Parameters](https://developers.cloudflare.com/waf/t\
+                            ools/ip-access-rules/parameters/#country)."
                   description: "Body param: The rule configuration."
                 mode:
                   type: string
@@ -3079,12 +3463,40 @@ paths:
                         type: array
                         items:
                           type: object
-                          additionalProperties: true
+                          properties:
+                            code:
+                              type: number
+                            message:
+                              type: string
+                            documentation_url:
+                              type: string
+                            source:
+                              type: object
+                              properties:
+                                pointer:
+                                  type: string
+                          required:
+                            - code
+                            - message
                       messages:
                         type: array
                         items:
                           type: object
-                          additionalProperties: true
+                          properties:
+                            code:
+                              type: number
+                            message:
+                              type: string
+                            documentation_url:
+                              type: string
+                            source:
+                              type: object
+                              properties:
+                                pointer:
+                                  type: string
+                          required:
+                            - code
+                            - message
                       result:
                         oneOf:
                           - type: string
@@ -3471,7 +3883,13 @@ paths:
                         description: Defines the public description of the WAF rule.
                       group:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            description: Defines the unique identifier of the rule group.
+                          name:
+                            type: string
+                            description: Defines the name of the rule group.
                         description: Defines the rule group to which the current WAF rule belongs.
                       mode:
                         type: string
@@ -3526,7 +3944,13 @@ paths:
                         description: Defines the public description of the WAF rule.
                       group:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            description: Defines the unique identifier of the rule group.
+                          name:
+                            type: string
+                            description: Defines the name of the rule group.
                         description: Defines the rule group to which the current WAF rule belongs.
                       mode:
                         type: string
@@ -3572,7 +3996,13 @@ paths:
                         description: Defines the public description of the WAF rule.
                       group:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            description: Defines the unique identifier of the rule group.
+                          name:
+                            type: string
+                            description: Defines the name of the rule group.
                         description: Defines the rule group to which the current WAF rule belongs.
                       mode:
                         type: string
@@ -3704,7 +4134,13 @@ paths:
                         description: Defines the public description of the WAF rule.
                       group:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            description: Defines the unique identifier of the rule group.
+                          name:
+                            type: string
+                            description: Defines the name of the rule group.
                         description: Defines the rule group to which the current WAF rule belongs.
                       mode:
                         type: string
@@ -3759,7 +4195,13 @@ paths:
                         description: Defines the public description of the WAF rule.
                       group:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            description: Defines the unique identifier of the rule group.
+                          name:
+                            type: string
+                            description: Defines the name of the rule group.
                         description: Defines the rule group to which the current WAF rule belongs.
                       mode:
                         type: string
@@ -3805,7 +4247,13 @@ paths:
                         description: Defines the public description of the WAF rule.
                       group:
                         type: object
-                        additionalProperties: true
+                        properties:
+                          id:
+                            type: string
+                            description: Defines the unique identifier of the rule group.
+                          name:
+                            type: string
+                            description: Defines the name of the rule group.
                         description: Defines the rule group to which the current WAF rule belongs.
                       mode:
                         type: string

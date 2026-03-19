@@ -144,7 +144,6 @@ paths:
                   status:
                     type: string
                     enum:
-                      - active
                       - initializing
                       - pending_validation
                       - deleted
@@ -153,6 +152,7 @@ paths:
                       - pending_deletion
                       - pending_expiration
                       - expired
+                      - active
                       - initializing_timed_out
                       - validation_timed_out
                       - issuance_timed_out
@@ -363,7 +363,6 @@ paths:
                   status:
                     type: string
                     enum:
-                      - active
                       - initializing
                       - pending_validation
                       - deleted
@@ -372,6 +371,7 @@ paths:
                       - pending_deletion
                       - pending_expiration
                       - expired
+                      - active
                       - initializing_timed_out
                       - validation_timed_out
                       - issuance_timed_out
@@ -603,7 +603,6 @@ paths:
                   status:
                     type: string
                     enum:
-                      - active
                       - initializing
                       - pending_validation
                       - deleted
@@ -612,6 +611,7 @@ paths:
                       - pending_deletion
                       - pending_expiration
                       - expired
+                      - active
                       - initializing_timed_out
                       - validation_timed_out
                       - issuance_timed_out
@@ -862,7 +862,6 @@ paths:
                   status:
                     type: string
                     enum:
-                      - active
                       - initializing
                       - pending_validation
                       - deleted
@@ -871,6 +870,7 @@ paths:
                       - pending_deletion
                       - pending_expiration
                       - expired
+                      - active
                       - initializing_timed_out
                       - validation_timed_out
                       - issuance_timed_out
@@ -1224,8 +1224,8 @@ paths:
                       type: string
                       enum:
                         - http
-                        - txt
                         - cname
+                        - txt
                       description: Validation method in use for a certificate pack order.
                     verification_info:
                       type: object

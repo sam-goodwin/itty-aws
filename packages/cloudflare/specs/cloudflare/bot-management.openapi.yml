@@ -28,248 +28,300 @@ paths:
                 oneOf:
                   - type: object
                     properties:
-                      zone_id:
-                        type: string
-                        description: "Path param: Identifier."
                       ai_bots_protection:
                         type: string
                         enum:
                           - block
                           - disabled
                           - only_on_ad_pages
-                        description: "Body param: Enable rule to block AI Scrapers and Crawlers. Please
-                          note the value `only_on_ad_pages` is currently not
-                          available for Enterprise customers."
+                        description: Enable rule to block AI Scrapers and Crawlers. Please note the
+                          value `only_on_ad_pages` is currently not available
+                          for Enterprise customers.
                       cf_robots_variant:
                         type: string
                         enum:
                           - off
                           - policy_only
-                        description: "Body param: Specifies the Robots Access Control License variant to
-                          use."
+                        description: Specifies the Robots Access Control License variant to use.
                       crawler_protection:
                         type: string
                         enum:
                           - enabled
                           - disabled
-                        description: "Body param: Enable rule to punish AI Scrapers and Crawlers via a
-                          link maze."
+                        description: Enable rule to punish AI Scrapers and Crawlers via a link maze.
                       enable_js:
                         type: boolean
-                        description: "Body param: Use lightweight, invisible JavaScript detections to
-                          improve Bot Management. [Learn more about JavaScript
-                          Detections](https://developers.cloudflare.com/bots/re\
-                          ference/javascript-detections/)."
+                        description: Use lightweight, invisible JavaScript detections to improve Bot
+                          Management. [Learn more about JavaScript
+                          Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
                       fight_mode:
                         type: boolean
-                        description: "Body param: Whether to enable Bot Fight Mode."
+                        description: Whether to enable Bot Fight Mode.
                       is_robots_txt_managed:
                         type: boolean
-                        description: "Body param: Enable cloudflare managed robots.txt. If an existing
-                          robots.txt is detected, then managed robots.txt will
-                          be prepended to the existing robots.txt."
-                    required:
-                      - zone_id
+                        description: Enable cloudflare managed robots.txt. If an existing robots.txt is
+                          detected, then managed robots.txt will be prepended to
+                          the existing robots.txt.
+                      stale_zone_configuration:
+                        type: object
+                        properties:
+                          optimize_wordpress:
+                            type: boolean
+                            description: Indicates that the zone's wordpress optimization for SBFM is turned
+                              on.
+                          sbfm_definitely_automated:
+                            type: string
+                            description: Indicates that the zone's definitely automated requests are being
+                              blocked or challenged.
+                          sbfm_likely_automated:
+                            type: string
+                            description: Indicates that the zone's likely automated requests are being
+                              blocked or challenged.
+                          sbfm_static_resource_protection:
+                            type: string
+                            description: Indicates that the zone's static resource protection is turned on.
+                          sbfm_verified_bots:
+                            type: string
+                            description: Indicates that the zone's verified bot requests are being blocked.
+                          suppress_session_score:
+                            type: boolean
+                            description: Indicates that the zone's session score tracking is disabled.
+                        description: A read-only field that shows which unauthorized settings are
+                          currently active on the zone. These settings typically
+                          result from upgrades or downgrades.
+                      using_latest_model:
+                        type: boolean
+                        description: A read-only field that indicates whether the zone currently is
+                          running the latest ML model.
                   - type: object
                     properties:
-                      zone_id:
-                        type: string
-                        description: "Path param: Identifier."
                       ai_bots_protection:
                         type: string
                         enum:
                           - block
                           - disabled
                           - only_on_ad_pages
-                        description: "Body param: Enable rule to block AI Scrapers and Crawlers. Please
-                          note the value `only_on_ad_pages` is currently not
-                          available for Enterprise customers."
+                        description: Enable rule to block AI Scrapers and Crawlers. Please note the
+                          value `only_on_ad_pages` is currently not available
+                          for Enterprise customers.
                       cf_robots_variant:
                         type: string
                         enum:
                           - off
                           - policy_only
-                        description: "Body param: Specifies the Robots Access Control License variant to
-                          use."
+                        description: Specifies the Robots Access Control License variant to use.
                       crawler_protection:
                         type: string
                         enum:
                           - enabled
                           - disabled
-                        description: "Body param: Enable rule to punish AI Scrapers and Crawlers via a
-                          link maze."
+                        description: Enable rule to punish AI Scrapers and Crawlers via a link maze.
                       enable_js:
                         type: boolean
-                        description: "Body param: Use lightweight, invisible JavaScript detections to
-                          improve Bot Management. [Learn more about JavaScript
-                          Detections](https://developers.cloudflare.com/bots/re\
-                          ference/javascript-detections/)."
+                        description: Use lightweight, invisible JavaScript detections to improve Bot
+                          Management. [Learn more about JavaScript
+                          Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
                       is_robots_txt_managed:
                         type: boolean
-                        description: "Body param: Enable cloudflare managed robots.txt. If an existing
-                          robots.txt is detected, then managed robots.txt will
-                          be prepended to the existing robots.txt."
+                        description: Enable cloudflare managed robots.txt. If an existing robots.txt is
+                          detected, then managed robots.txt will be prepended to
+                          the existing robots.txt.
                       optimize_wordpress:
                         type: boolean
-                        description: "Body param: Whether to optimize Super Bot Fight Mode protections
-                          for Wordpress."
+                        description: Whether to optimize Super Bot Fight Mode protections for Wordpress.
                       sbfm_definitely_automated:
                         type: string
                         enum:
                           - allow
                           - block
                           - managed_challenge
-                        description: "Body param: Super Bot Fight Mode (SBFM) action to take on
-                          definitely automated requests."
+                        description: Super Bot Fight Mode (SBFM) action to take on definitely automated
+                          requests.
                       sbfm_static_resource_protection:
                         type: boolean
-                        description: "Body param: Super Bot Fight Mode (SBFM) to enable static resource
-                          protection. Enable if static resources on your
-                          application need bot protection. Note: Static resource
-                          protection can also result in legitimate traffic being
-                          blocked."
+                        description: "Super Bot Fight Mode (SBFM) to enable static resource protection.
+                          Enable if static resources on your application need
+                          bot protection. Note: Static resource protection can
+                          also result in legitimate traffic being blocked."
                       sbfm_verified_bots:
                         type: string
                         enum:
                           - allow
                           - block
-                        description: "Body param: Super Bot Fight Mode (SBFM) action to take on verified
-                          bots requests."
-                    required:
-                      - zone_id
+                        description: Super Bot Fight Mode (SBFM) action to take on verified bots
+                          requests.
+                      stale_zone_configuration:
+                        type: object
+                        properties:
+                          fight_mode:
+                            type: boolean
+                            description: Indicates that the zone's Bot Fight Mode is turned on.
+                          sbfm_likely_automated:
+                            type: string
+                            description: Indicates that the zone's likely automated requests are being
+                              blocked or challenged.
+                        description: A read-only field that shows which unauthorized settings are
+                          currently active on the zone. These settings typically
+                          result from upgrades or downgrades.
+                      using_latest_model:
+                        type: boolean
+                        description: A read-only field that indicates whether the zone currently is
+                          running the latest ML model.
                   - type: object
                     properties:
-                      zone_id:
-                        type: string
-                        description: "Path param: Identifier."
                       ai_bots_protection:
                         type: string
                         enum:
                           - block
                           - disabled
                           - only_on_ad_pages
-                        description: "Body param: Enable rule to block AI Scrapers and Crawlers. Please
-                          note the value `only_on_ad_pages` is currently not
-                          available for Enterprise customers."
+                        description: Enable rule to block AI Scrapers and Crawlers. Please note the
+                          value `only_on_ad_pages` is currently not available
+                          for Enterprise customers.
                       cf_robots_variant:
                         type: string
                         enum:
                           - off
                           - policy_only
-                        description: "Body param: Specifies the Robots Access Control License variant to
-                          use."
+                        description: Specifies the Robots Access Control License variant to use.
                       crawler_protection:
                         type: string
                         enum:
                           - enabled
                           - disabled
-                        description: "Body param: Enable rule to punish AI Scrapers and Crawlers via a
-                          link maze."
+                        description: Enable rule to punish AI Scrapers and Crawlers via a link maze.
                       enable_js:
                         type: boolean
-                        description: "Body param: Use lightweight, invisible JavaScript detections to
-                          improve Bot Management. [Learn more about JavaScript
-                          Detections](https://developers.cloudflare.com/bots/re\
-                          ference/javascript-detections/)."
+                        description: Use lightweight, invisible JavaScript detections to improve Bot
+                          Management. [Learn more about JavaScript
+                          Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
                       is_robots_txt_managed:
                         type: boolean
-                        description: "Body param: Enable cloudflare managed robots.txt. If an existing
-                          robots.txt is detected, then managed robots.txt will
-                          be prepended to the existing robots.txt."
+                        description: Enable cloudflare managed robots.txt. If an existing robots.txt is
+                          detected, then managed robots.txt will be prepended to
+                          the existing robots.txt.
                       optimize_wordpress:
                         type: boolean
-                        description: "Body param: Whether to optimize Super Bot Fight Mode protections
-                          for Wordpress."
+                        description: Whether to optimize Super Bot Fight Mode protections for Wordpress.
                       sbfm_definitely_automated:
                         type: string
                         enum:
                           - allow
                           - block
                           - managed_challenge
-                        description: "Body param: Super Bot Fight Mode (SBFM) action to take on
-                          definitely automated requests."
+                        description: Super Bot Fight Mode (SBFM) action to take on definitely automated
+                          requests.
                       sbfm_likely_automated:
                         type: string
                         enum:
                           - allow
                           - block
                           - managed_challenge
-                        description: "Body param: Super Bot Fight Mode (SBFM) action to take on likely
-                          automated requests."
+                        description: Super Bot Fight Mode (SBFM) action to take on likely automated
+                          requests.
                       sbfm_static_resource_protection:
                         type: boolean
-                        description: "Body param: Super Bot Fight Mode (SBFM) to enable static resource
-                          protection. Enable if static resources on your
-                          application need bot protection. Note: Static resource
-                          protection can also result in legitimate traffic being
-                          blocked."
+                        description: "Super Bot Fight Mode (SBFM) to enable static resource protection.
+                          Enable if static resources on your application need
+                          bot protection. Note: Static resource protection can
+                          also result in legitimate traffic being blocked."
                       sbfm_verified_bots:
                         type: string
                         enum:
                           - allow
                           - block
-                        description: "Body param: Super Bot Fight Mode (SBFM) action to take on verified
-                          bots requests."
-                    required:
-                      - zone_id
+                        description: Super Bot Fight Mode (SBFM) action to take on verified bots
+                          requests.
+                      stale_zone_configuration:
+                        type: object
+                        properties:
+                          fight_mode:
+                            type: boolean
+                            description: Indicates that the zone's Bot Fight Mode is turned on.
+                        description: A read-only field that shows which unauthorized settings are
+                          currently active on the zone. These settings typically
+                          result from upgrades or downgrades.
+                      using_latest_model:
+                        type: boolean
+                        description: A read-only field that indicates whether the zone currently is
+                          running the latest ML model.
                   - type: object
                     properties:
-                      zone_id:
-                        type: string
-                        description: "Path param: Identifier."
                       ai_bots_protection:
                         type: string
                         enum:
                           - block
                           - disabled
                           - only_on_ad_pages
-                        description: "Body param: Enable rule to block AI Scrapers and Crawlers. Please
-                          note the value `only_on_ad_pages` is currently not
-                          available for Enterprise customers."
+                        description: Enable rule to block AI Scrapers and Crawlers. Please note the
+                          value `only_on_ad_pages` is currently not available
+                          for Enterprise customers.
                       auto_update_model:
                         type: boolean
-                        description: "Body param: Automatically update to the newest bot detection
-                          models created by Cloudflare as they are released.
-                          [Learn
-                          more.](https://developers.cloudflare.com/bots/referen\
-                          ce/machine-learning-models#model-versions-and-release\
-                          -notes)"
+                        description: Automatically update to the newest bot detection models created by
+                          Cloudflare as they are released. [Learn
+                          more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
                       bm_cookie_enabled:
                         type: boolean
-                        description: "Body param: Indicates that the bot management cookie can be placed
-                          on end user devices accessing the site. Defaults to
-                          true"
+                        description: Indicates that the bot management cookie can be placed on end user
+                          devices accessing the site. Defaults to true
                       cf_robots_variant:
                         type: string
                         enum:
                           - off
                           - policy_only
-                        description: "Body param: Specifies the Robots Access Control License variant to
-                          use."
+                        description: Specifies the Robots Access Control License variant to use.
                       crawler_protection:
                         type: string
                         enum:
                           - enabled
                           - disabled
-                        description: "Body param: Enable rule to punish AI Scrapers and Crawlers via a
-                          link maze."
+                        description: Enable rule to punish AI Scrapers and Crawlers via a link maze.
                       enable_js:
                         type: boolean
-                        description: "Body param: Use lightweight, invisible JavaScript detections to
-                          improve Bot Management. [Learn more about JavaScript
-                          Detections](https://developers.cloudflare.com/bots/re\
-                          ference/javascript-detections/)."
+                        description: Use lightweight, invisible JavaScript detections to improve Bot
+                          Management. [Learn more about JavaScript
+                          Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
                       is_robots_txt_managed:
                         type: boolean
-                        description: "Body param: Enable cloudflare managed robots.txt. If an existing
-                          robots.txt is detected, then managed robots.txt will
-                          be prepended to the existing robots.txt."
+                        description: Enable cloudflare managed robots.txt. If an existing robots.txt is
+                          detected, then managed robots.txt will be prepended to
+                          the existing robots.txt.
+                      stale_zone_configuration:
+                        type: object
+                        properties:
+                          fight_mode:
+                            type: boolean
+                            description: Indicates that the zone's Bot Fight Mode is turned on.
+                          optimize_wordpress:
+                            type: boolean
+                            description: Indicates that the zone's wordpress optimization for SBFM is turned
+                              on.
+                          sbfm_definitely_automated:
+                            type: string
+                            description: Indicates that the zone's definitely automated requests are being
+                              blocked or challenged.
+                          sbfm_likely_automated:
+                            type: string
+                            description: Indicates that the zone's likely automated requests are being
+                              blocked or challenged.
+                          sbfm_static_resource_protection:
+                            type: string
+                            description: Indicates that the zone's static resource protection is turned on.
+                          sbfm_verified_bots:
+                            type: string
+                            description: Indicates that the zone's verified bot requests are being blocked.
+                        description: A read-only field that shows which unauthorized settings are
+                          currently active on the zone. These settings typically
+                          result from upgrades or downgrades.
                       suppress_session_score:
                         type: boolean
-                        description: "Body param: Whether to disable tracking the highest bot score for
-                          a session in the Bot Management cookie."
-                    required:
-                      - zone_id
+                        description: Whether to disable tracking the highest bot score for a session in
+                          the Bot Management cookie.
+                      using_latest_model:
+                        type: boolean
+                        description: A read-only field that indicates whether the zone currently is
+                          running the latest ML model.
       x-distilled-response-path: result
     put:
       operationId: putBotManagement
@@ -361,246 +413,298 @@ paths:
                 oneOf:
                   - type: object
                     properties:
-                      zone_id:
-                        type: string
-                        description: "Path param: Identifier."
                       ai_bots_protection:
                         type: string
                         enum:
                           - block
                           - disabled
                           - only_on_ad_pages
-                        description: "Body param: Enable rule to block AI Scrapers and Crawlers. Please
-                          note the value `only_on_ad_pages` is currently not
-                          available for Enterprise customers."
+                        description: Enable rule to block AI Scrapers and Crawlers. Please note the
+                          value `only_on_ad_pages` is currently not available
+                          for Enterprise customers.
                       cf_robots_variant:
                         type: string
                         enum:
                           - off
                           - policy_only
-                        description: "Body param: Specifies the Robots Access Control License variant to
-                          use."
+                        description: Specifies the Robots Access Control License variant to use.
                       crawler_protection:
                         type: string
                         enum:
                           - enabled
                           - disabled
-                        description: "Body param: Enable rule to punish AI Scrapers and Crawlers via a
-                          link maze."
+                        description: Enable rule to punish AI Scrapers and Crawlers via a link maze.
                       enable_js:
                         type: boolean
-                        description: "Body param: Use lightweight, invisible JavaScript detections to
-                          improve Bot Management. [Learn more about JavaScript
-                          Detections](https://developers.cloudflare.com/bots/re\
-                          ference/javascript-detections/)."
+                        description: Use lightweight, invisible JavaScript detections to improve Bot
+                          Management. [Learn more about JavaScript
+                          Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
                       fight_mode:
                         type: boolean
-                        description: "Body param: Whether to enable Bot Fight Mode."
+                        description: Whether to enable Bot Fight Mode.
                       is_robots_txt_managed:
                         type: boolean
-                        description: "Body param: Enable cloudflare managed robots.txt. If an existing
-                          robots.txt is detected, then managed robots.txt will
-                          be prepended to the existing robots.txt."
-                    required:
-                      - zone_id
+                        description: Enable cloudflare managed robots.txt. If an existing robots.txt is
+                          detected, then managed robots.txt will be prepended to
+                          the existing robots.txt.
+                      stale_zone_configuration:
+                        type: object
+                        properties:
+                          optimize_wordpress:
+                            type: boolean
+                            description: Indicates that the zone's wordpress optimization for SBFM is turned
+                              on.
+                          sbfm_definitely_automated:
+                            type: string
+                            description: Indicates that the zone's definitely automated requests are being
+                              blocked or challenged.
+                          sbfm_likely_automated:
+                            type: string
+                            description: Indicates that the zone's likely automated requests are being
+                              blocked or challenged.
+                          sbfm_static_resource_protection:
+                            type: string
+                            description: Indicates that the zone's static resource protection is turned on.
+                          sbfm_verified_bots:
+                            type: string
+                            description: Indicates that the zone's verified bot requests are being blocked.
+                          suppress_session_score:
+                            type: boolean
+                            description: Indicates that the zone's session score tracking is disabled.
+                        description: A read-only field that shows which unauthorized settings are
+                          currently active on the zone. These settings typically
+                          result from upgrades or downgrades.
+                      using_latest_model:
+                        type: boolean
+                        description: A read-only field that indicates whether the zone currently is
+                          running the latest ML model.
                   - type: object
                     properties:
-                      zone_id:
-                        type: string
-                        description: "Path param: Identifier."
                       ai_bots_protection:
                         type: string
                         enum:
                           - block
                           - disabled
                           - only_on_ad_pages
-                        description: "Body param: Enable rule to block AI Scrapers and Crawlers. Please
-                          note the value `only_on_ad_pages` is currently not
-                          available for Enterprise customers."
+                        description: Enable rule to block AI Scrapers and Crawlers. Please note the
+                          value `only_on_ad_pages` is currently not available
+                          for Enterprise customers.
                       cf_robots_variant:
                         type: string
                         enum:
                           - off
                           - policy_only
-                        description: "Body param: Specifies the Robots Access Control License variant to
-                          use."
+                        description: Specifies the Robots Access Control License variant to use.
                       crawler_protection:
                         type: string
                         enum:
                           - enabled
                           - disabled
-                        description: "Body param: Enable rule to punish AI Scrapers and Crawlers via a
-                          link maze."
+                        description: Enable rule to punish AI Scrapers and Crawlers via a link maze.
                       enable_js:
                         type: boolean
-                        description: "Body param: Use lightweight, invisible JavaScript detections to
-                          improve Bot Management. [Learn more about JavaScript
-                          Detections](https://developers.cloudflare.com/bots/re\
-                          ference/javascript-detections/)."
+                        description: Use lightweight, invisible JavaScript detections to improve Bot
+                          Management. [Learn more about JavaScript
+                          Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
                       is_robots_txt_managed:
                         type: boolean
-                        description: "Body param: Enable cloudflare managed robots.txt. If an existing
-                          robots.txt is detected, then managed robots.txt will
-                          be prepended to the existing robots.txt."
+                        description: Enable cloudflare managed robots.txt. If an existing robots.txt is
+                          detected, then managed robots.txt will be prepended to
+                          the existing robots.txt.
                       optimize_wordpress:
                         type: boolean
-                        description: "Body param: Whether to optimize Super Bot Fight Mode protections
-                          for Wordpress."
+                        description: Whether to optimize Super Bot Fight Mode protections for Wordpress.
                       sbfm_definitely_automated:
                         type: string
                         enum:
                           - allow
                           - block
                           - managed_challenge
-                        description: "Body param: Super Bot Fight Mode (SBFM) action to take on
-                          definitely automated requests."
+                        description: Super Bot Fight Mode (SBFM) action to take on definitely automated
+                          requests.
                       sbfm_static_resource_protection:
                         type: boolean
-                        description: "Body param: Super Bot Fight Mode (SBFM) to enable static resource
-                          protection. Enable if static resources on your
-                          application need bot protection. Note: Static resource
-                          protection can also result in legitimate traffic being
-                          blocked."
+                        description: "Super Bot Fight Mode (SBFM) to enable static resource protection.
+                          Enable if static resources on your application need
+                          bot protection. Note: Static resource protection can
+                          also result in legitimate traffic being blocked."
                       sbfm_verified_bots:
                         type: string
                         enum:
                           - allow
                           - block
-                        description: "Body param: Super Bot Fight Mode (SBFM) action to take on verified
-                          bots requests."
-                    required:
-                      - zone_id
+                        description: Super Bot Fight Mode (SBFM) action to take on verified bots
+                          requests.
+                      stale_zone_configuration:
+                        type: object
+                        properties:
+                          fight_mode:
+                            type: boolean
+                            description: Indicates that the zone's Bot Fight Mode is turned on.
+                          sbfm_likely_automated:
+                            type: string
+                            description: Indicates that the zone's likely automated requests are being
+                              blocked or challenged.
+                        description: A read-only field that shows which unauthorized settings are
+                          currently active on the zone. These settings typically
+                          result from upgrades or downgrades.
+                      using_latest_model:
+                        type: boolean
+                        description: A read-only field that indicates whether the zone currently is
+                          running the latest ML model.
                   - type: object
                     properties:
-                      zone_id:
-                        type: string
-                        description: "Path param: Identifier."
                       ai_bots_protection:
                         type: string
                         enum:
                           - block
                           - disabled
                           - only_on_ad_pages
-                        description: "Body param: Enable rule to block AI Scrapers and Crawlers. Please
-                          note the value `only_on_ad_pages` is currently not
-                          available for Enterprise customers."
+                        description: Enable rule to block AI Scrapers and Crawlers. Please note the
+                          value `only_on_ad_pages` is currently not available
+                          for Enterprise customers.
                       cf_robots_variant:
                         type: string
                         enum:
                           - off
                           - policy_only
-                        description: "Body param: Specifies the Robots Access Control License variant to
-                          use."
+                        description: Specifies the Robots Access Control License variant to use.
                       crawler_protection:
                         type: string
                         enum:
                           - enabled
                           - disabled
-                        description: "Body param: Enable rule to punish AI Scrapers and Crawlers via a
-                          link maze."
+                        description: Enable rule to punish AI Scrapers and Crawlers via a link maze.
                       enable_js:
                         type: boolean
-                        description: "Body param: Use lightweight, invisible JavaScript detections to
-                          improve Bot Management. [Learn more about JavaScript
-                          Detections](https://developers.cloudflare.com/bots/re\
-                          ference/javascript-detections/)."
+                        description: Use lightweight, invisible JavaScript detections to improve Bot
+                          Management. [Learn more about JavaScript
+                          Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
                       is_robots_txt_managed:
                         type: boolean
-                        description: "Body param: Enable cloudflare managed robots.txt. If an existing
-                          robots.txt is detected, then managed robots.txt will
-                          be prepended to the existing robots.txt."
+                        description: Enable cloudflare managed robots.txt. If an existing robots.txt is
+                          detected, then managed robots.txt will be prepended to
+                          the existing robots.txt.
                       optimize_wordpress:
                         type: boolean
-                        description: "Body param: Whether to optimize Super Bot Fight Mode protections
-                          for Wordpress."
+                        description: Whether to optimize Super Bot Fight Mode protections for Wordpress.
                       sbfm_definitely_automated:
                         type: string
                         enum:
                           - allow
                           - block
                           - managed_challenge
-                        description: "Body param: Super Bot Fight Mode (SBFM) action to take on
-                          definitely automated requests."
+                        description: Super Bot Fight Mode (SBFM) action to take on definitely automated
+                          requests.
                       sbfm_likely_automated:
                         type: string
                         enum:
                           - allow
                           - block
                           - managed_challenge
-                        description: "Body param: Super Bot Fight Mode (SBFM) action to take on likely
-                          automated requests."
+                        description: Super Bot Fight Mode (SBFM) action to take on likely automated
+                          requests.
                       sbfm_static_resource_protection:
                         type: boolean
-                        description: "Body param: Super Bot Fight Mode (SBFM) to enable static resource
-                          protection. Enable if static resources on your
-                          application need bot protection. Note: Static resource
-                          protection can also result in legitimate traffic being
-                          blocked."
+                        description: "Super Bot Fight Mode (SBFM) to enable static resource protection.
+                          Enable if static resources on your application need
+                          bot protection. Note: Static resource protection can
+                          also result in legitimate traffic being blocked."
                       sbfm_verified_bots:
                         type: string
                         enum:
                           - allow
                           - block
-                        description: "Body param: Super Bot Fight Mode (SBFM) action to take on verified
-                          bots requests."
-                    required:
-                      - zone_id
+                        description: Super Bot Fight Mode (SBFM) action to take on verified bots
+                          requests.
+                      stale_zone_configuration:
+                        type: object
+                        properties:
+                          fight_mode:
+                            type: boolean
+                            description: Indicates that the zone's Bot Fight Mode is turned on.
+                        description: A read-only field that shows which unauthorized settings are
+                          currently active on the zone. These settings typically
+                          result from upgrades or downgrades.
+                      using_latest_model:
+                        type: boolean
+                        description: A read-only field that indicates whether the zone currently is
+                          running the latest ML model.
                   - type: object
                     properties:
-                      zone_id:
-                        type: string
-                        description: "Path param: Identifier."
                       ai_bots_protection:
                         type: string
                         enum:
                           - block
                           - disabled
                           - only_on_ad_pages
-                        description: "Body param: Enable rule to block AI Scrapers and Crawlers. Please
-                          note the value `only_on_ad_pages` is currently not
-                          available for Enterprise customers."
+                        description: Enable rule to block AI Scrapers and Crawlers. Please note the
+                          value `only_on_ad_pages` is currently not available
+                          for Enterprise customers.
                       auto_update_model:
                         type: boolean
-                        description: "Body param: Automatically update to the newest bot detection
-                          models created by Cloudflare as they are released.
-                          [Learn
-                          more.](https://developers.cloudflare.com/bots/referen\
-                          ce/machine-learning-models#model-versions-and-release\
-                          -notes)"
+                        description: Automatically update to the newest bot detection models created by
+                          Cloudflare as they are released. [Learn
+                          more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
                       bm_cookie_enabled:
                         type: boolean
-                        description: "Body param: Indicates that the bot management cookie can be placed
-                          on end user devices accessing the site. Defaults to
-                          true"
+                        description: Indicates that the bot management cookie can be placed on end user
+                          devices accessing the site. Defaults to true
                       cf_robots_variant:
                         type: string
                         enum:
                           - off
                           - policy_only
-                        description: "Body param: Specifies the Robots Access Control License variant to
-                          use."
+                        description: Specifies the Robots Access Control License variant to use.
                       crawler_protection:
                         type: string
                         enum:
                           - enabled
                           - disabled
-                        description: "Body param: Enable rule to punish AI Scrapers and Crawlers via a
-                          link maze."
+                        description: Enable rule to punish AI Scrapers and Crawlers via a link maze.
                       enable_js:
                         type: boolean
-                        description: "Body param: Use lightweight, invisible JavaScript detections to
-                          improve Bot Management. [Learn more about JavaScript
-                          Detections](https://developers.cloudflare.com/bots/re\
-                          ference/javascript-detections/)."
+                        description: Use lightweight, invisible JavaScript detections to improve Bot
+                          Management. [Learn more about JavaScript
+                          Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
                       is_robots_txt_managed:
                         type: boolean
-                        description: "Body param: Enable cloudflare managed robots.txt. If an existing
-                          robots.txt is detected, then managed robots.txt will
-                          be prepended to the existing robots.txt."
+                        description: Enable cloudflare managed robots.txt. If an existing robots.txt is
+                          detected, then managed robots.txt will be prepended to
+                          the existing robots.txt.
+                      stale_zone_configuration:
+                        type: object
+                        properties:
+                          fight_mode:
+                            type: boolean
+                            description: Indicates that the zone's Bot Fight Mode is turned on.
+                          optimize_wordpress:
+                            type: boolean
+                            description: Indicates that the zone's wordpress optimization for SBFM is turned
+                              on.
+                          sbfm_definitely_automated:
+                            type: string
+                            description: Indicates that the zone's definitely automated requests are being
+                              blocked or challenged.
+                          sbfm_likely_automated:
+                            type: string
+                            description: Indicates that the zone's likely automated requests are being
+                              blocked or challenged.
+                          sbfm_static_resource_protection:
+                            type: string
+                            description: Indicates that the zone's static resource protection is turned on.
+                          sbfm_verified_bots:
+                            type: string
+                            description: Indicates that the zone's verified bot requests are being blocked.
+                        description: A read-only field that shows which unauthorized settings are
+                          currently active on the zone. These settings typically
+                          result from upgrades or downgrades.
                       suppress_session_score:
                         type: boolean
-                        description: "Body param: Whether to disable tracking the highest bot score for
-                          a session in the Bot Management cookie."
-                    required:
-                      - zone_id
+                        description: Whether to disable tracking the highest bot score for a session in
+                          the Bot Management cookie.
+                      using_latest_model:
+                        type: boolean
+                        description: A read-only field that indicates whether the zone currently is
+                          running the latest ML model.
       x-distilled-response-path: result

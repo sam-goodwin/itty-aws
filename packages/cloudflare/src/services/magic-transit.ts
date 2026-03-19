@@ -107,7 +107,9 @@ export const listApps: API.PaginatedOperationMethod<
     ListAppsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListAppsRequest) => stream.Stream<
+  items: (
+    input: ListAppsRequest,
+  ) => stream.Stream<
     | {
         accountAppId: string;
         hostnames?: string[] | null;
@@ -480,7 +482,15 @@ export interface GetCfInterconnectResponse {
     createdOn?: string | null;
     description?: string | null;
     gre?: { cloudflareEndpoint?: string | null } | null;
-    healthCheck?: unknown | null;
+    healthCheck?: {
+      enabled?: boolean | null;
+      rate?: "low" | "mid" | "high" | null;
+      target?:
+        | { effective?: string | null; saved?: string | null }
+        | string
+        | null;
+      type?: "reply" | "request" | null;
+    } | null;
     interfaceAddress?: string | null;
     interfaceAddress6?: string | null;
     modifiedOn?: string | null;
@@ -520,7 +530,42 @@ export const GetCfInterconnectResponse =
             ]),
           ),
           healthCheck: Schema.optional(
-            Schema.Union([Schema.Unknown, Schema.Null]),
+            Schema.Union([
+              Schema.Struct({
+                enabled: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                rate: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["low", "mid", "high"]),
+                    Schema.Null,
+                  ]),
+                ),
+                target: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Struct({
+                        effective: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                        saved: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                      }),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                type: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["reply", "request"]),
+                    Schema.Null,
+                  ]),
+                ),
+              }),
+              Schema.Null,
+            ]),
           ),
           interfaceAddress: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
@@ -598,7 +643,15 @@ export interface ListCfInterconnectsResponse {
         createdOn?: string | null;
         description?: string | null;
         gre?: { cloudflareEndpoint?: string | null } | null;
-        healthCheck?: unknown | null;
+        healthCheck?: {
+          enabled?: boolean | null;
+          rate?: "low" | "mid" | "high" | null;
+          target?:
+            | { effective?: string | null; saved?: string | null }
+            | string
+            | null;
+          type?: "reply" | "request" | null;
+        } | null;
         interfaceAddress?: string | null;
         interfaceAddress6?: string | null;
         modifiedOn?: string | null;
@@ -642,7 +695,42 @@ export const ListCfInterconnectsResponse =
               ]),
             ),
             healthCheck: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  rate: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals(["low", "mid", "high"]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  target: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Struct({
+                          effective: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                          saved: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  type: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals(["reply", "request"]),
+                      Schema.Null,
+                    ]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
             ),
             interfaceAddress: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
@@ -705,7 +793,12 @@ export interface PutCfInterconnectRequest {
   /** Body param: The configuration specific to GRE interconnects. */
   gre?: { cloudflareEndpoint?: string };
   /** Body param: */
-  healthCheck?: unknown;
+  healthCheck?: {
+    enabled?: boolean;
+    rate?: "low" | "mid" | "high";
+    target?: { saved?: string } | string;
+    type?: "reply" | "request";
+  };
   /** Body param: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172 */
   interfaceAddress?: string;
   /** Body param: A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 i */
@@ -728,7 +821,21 @@ export const PutCfInterconnectRequest =
         cloudflareEndpoint: Schema.optional(Schema.String),
       }).pipe(Schema.encodeKeys({ cloudflareEndpoint: "cloudflare_endpoint" })),
     ),
-    healthCheck: Schema.optional(Schema.Unknown),
+    healthCheck: Schema.optional(
+      Schema.Struct({
+        enabled: Schema.optional(Schema.Boolean),
+        rate: Schema.optional(Schema.Literals(["low", "mid", "high"])),
+        target: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              saved: Schema.optional(Schema.String),
+            }),
+            Schema.String,
+          ]),
+        ),
+        type: Schema.optional(Schema.Literals(["reply", "request"])),
+      }),
+    ),
     interfaceAddress: Schema.optional(Schema.String),
     interfaceAddress6: Schema.optional(Schema.String),
     mtu: Schema.optional(Schema.Number),
@@ -757,7 +864,15 @@ export interface PutCfInterconnectResponse {
     createdOn?: string | null;
     description?: string | null;
     gre?: { cloudflareEndpoint?: string | null } | null;
-    healthCheck?: unknown | null;
+    healthCheck?: {
+      enabled?: boolean | null;
+      rate?: "low" | "mid" | "high" | null;
+      target?:
+        | { effective?: string | null; saved?: string | null }
+        | string
+        | null;
+      type?: "reply" | "request" | null;
+    } | null;
     interfaceAddress?: string | null;
     interfaceAddress6?: string | null;
     modifiedOn?: string | null;
@@ -798,7 +913,42 @@ export const PutCfInterconnectResponse =
             ]),
           ),
           healthCheck: Schema.optional(
-            Schema.Union([Schema.Unknown, Schema.Null]),
+            Schema.Union([
+              Schema.Struct({
+                enabled: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                rate: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["low", "mid", "high"]),
+                    Schema.Null,
+                  ]),
+                ),
+                target: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Struct({
+                        effective: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                        saved: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                      }),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                type: Schema.optional(
+                  Schema.Union([
+                    Schema.Literals(["reply", "request"]),
+                    Schema.Null,
+                  ]),
+                ),
+              }),
+              Schema.Null,
+            ]),
           ),
           interfaceAddress: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
@@ -1035,7 +1185,9 @@ export const listConnectors: API.PaginatedOperationMethod<
     ListConnectorsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListConnectorsRequest) => stream.Stream<
+  items: (
+    input: ListConnectorsRequest,
+  ) => stream.Stream<
     {
       id: string;
       activated: boolean;
@@ -4627,7 +4779,10 @@ export interface GetGreTunnelResponse {
       direction?: "unidirectional" | "bidirectional" | null;
       enabled?: boolean | null;
       rate?: "low" | "mid" | "high" | null;
-      target?: { saved?: string | null } | string | null;
+      target?:
+        | { effective?: string | null; saved?: string | null }
+        | string
+        | null;
       type?: "reply" | "request" | null;
     } | null;
     interfaceAddress6?: string | null;
@@ -4735,6 +4890,9 @@ export const GetGreTunnelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Union([
                   Schema.Union([
                     Schema.Struct({
+                      effective: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
                       saved: Schema.optional(
                         Schema.Union([Schema.String, Schema.Null]),
                       ),
@@ -4847,7 +5005,10 @@ export interface ListGreTunnelsResponse {
           direction?: "unidirectional" | "bidirectional" | null;
           enabled?: boolean | null;
           rate?: "low" | "mid" | "high" | null;
-          target?: { saved?: string | null } | string | null;
+          target?:
+            | { effective?: string | null; saved?: string | null }
+            | string
+            | null;
           type?: "reply" | "request" | null;
         } | null;
         interfaceAddress6?: string | null;
@@ -4960,6 +5121,9 @@ export const ListGreTunnelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                     Schema.Union([
                       Schema.Union([
                         Schema.Struct({
+                          effective: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
                           saved: Schema.optional(
                             Schema.Union([Schema.String, Schema.Null]),
                           ),
@@ -5165,7 +5329,10 @@ export interface CreateGreTunnelResponse {
     direction?: "unidirectional" | "bidirectional" | null;
     enabled?: boolean | null;
     rate?: "low" | "mid" | "high" | null;
-    target?: { saved?: string | null } | string | null;
+    target?:
+      | { effective?: string | null; saved?: string | null }
+      | string
+      | null;
     type?: "reply" | "request" | null;
   } | null;
   /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1: */
@@ -5262,6 +5429,9 @@ export const CreateGreTunnelResponse =
             Schema.Union([
               Schema.Union([
                 Schema.Struct({
+                  effective: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
                   saved: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
                   ),
@@ -5439,7 +5609,10 @@ export interface UpdateGreTunnelResponse {
       direction?: "unidirectional" | "bidirectional" | null;
       enabled?: boolean | null;
       rate?: "low" | "mid" | "high" | null;
-      target?: { saved?: string | null } | string | null;
+      target?:
+        | { effective?: string | null; saved?: string | null }
+        | string
+        | null;
       type?: "reply" | "request" | null;
     } | null;
     interfaceAddress6?: string | null;
@@ -5551,6 +5724,9 @@ export const UpdateGreTunnelResponse =
                   Schema.Union([
                     Schema.Union([
                       Schema.Struct({
+                        effective: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
                         saved: Schema.optional(
                           Schema.Union([Schema.String, Schema.Null]),
                         ),
@@ -5677,7 +5853,10 @@ export interface DeleteGreTunnelResponse {
       direction?: "unidirectional" | "bidirectional" | null;
       enabled?: boolean | null;
       rate?: "low" | "mid" | "high" | null;
-      target?: { saved?: string | null } | string | null;
+      target?:
+        | { effective?: string | null; saved?: string | null }
+        | string
+        | null;
       type?: "reply" | "request" | null;
     } | null;
     interfaceAddress6?: string | null;
@@ -5789,6 +5968,9 @@ export const DeleteGreTunnelResponse =
                   Schema.Union([
                     Schema.Union([
                       Schema.Struct({
+                        effective: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
                         saved: Schema.optional(
                           Schema.Union([Schema.String, Schema.Null]),
                         ),
@@ -5918,12 +6100,15 @@ export interface GetIpsecTunnelResponse {
       direction?: "unidirectional" | "bidirectional" | null;
       enabled?: boolean | null;
       rate?: "low" | "mid" | "high" | null;
-      target?: { saved?: string | null } | string | null;
+      target?:
+        | { effective?: string | null; saved?: string | null }
+        | string
+        | null;
       type?: "reply" | "request" | null;
     } | null;
     interfaceAddress6?: string | null;
     modifiedOn?: string | null;
-    pskMetadata?: unknown | null;
+    pskMetadata?: { lastGeneratedOn?: string | null } | null;
     replayProtection?: boolean | null;
   } | null;
 }
@@ -6044,6 +6229,9 @@ export const GetIpsecTunnelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   Schema.Union([
                     Schema.Union([
                       Schema.Struct({
+                        effective: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
                         saved: Schema.optional(
                           Schema.Union([Schema.String, Schema.Null]),
                         ),
@@ -6070,7 +6258,16 @@ export const GetIpsecTunnelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.String, Schema.Null]),
           ),
           pskMetadata: Schema.optional(
-            Schema.Union([Schema.Unknown, Schema.Null]),
+            Schema.Union([
+              Schema.Struct({
+                lastGeneratedOn: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({ lastGeneratedOn: "last_generated_on" }),
+              ),
+              Schema.Null,
+            ]),
           ),
           replayProtection: Schema.optional(
             Schema.Union([Schema.Boolean, Schema.Null]),
@@ -6171,12 +6368,15 @@ export interface ListIpsecTunnelsResponse {
           direction?: "unidirectional" | "bidirectional" | null;
           enabled?: boolean | null;
           rate?: "low" | "mid" | "high" | null;
-          target?: { saved?: string | null } | string | null;
+          target?:
+            | { effective?: string | null; saved?: string | null }
+            | string
+            | null;
           type?: "reply" | "request" | null;
         } | null;
         interfaceAddress6?: string | null;
         modifiedOn?: string | null;
-        pskMetadata?: unknown | null;
+        pskMetadata?: { lastGeneratedOn?: string | null } | null;
         replayProtection?: boolean | null;
       }[]
     | null;
@@ -6299,6 +6499,9 @@ export const ListIpsecTunnelsResponse =
                     Schema.Union([
                       Schema.Union([
                         Schema.Struct({
+                          effective: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
                           saved: Schema.optional(
                             Schema.Union([Schema.String, Schema.Null]),
                           ),
@@ -6325,7 +6528,16 @@ export const ListIpsecTunnelsResponse =
               Schema.Union([Schema.String, Schema.Null]),
             ),
             pskMetadata: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
+              Schema.Union([
+                Schema.Struct({
+                  lastGeneratedOn: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({ lastGeneratedOn: "last_generated_on" }),
+                ),
+                Schema.Null,
+              ]),
             ),
             replayProtection: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
@@ -6522,7 +6734,10 @@ export interface CreateIpsecTunnelResponse {
     direction?: "unidirectional" | "bidirectional" | null;
     enabled?: boolean | null;
     rate?: "low" | "mid" | "high" | null;
-    target?: { saved?: string | null } | string | null;
+    target?:
+      | { effective?: string | null; saved?: string | null }
+      | string
+      | null;
     type?: "reply" | "request" | null;
   } | null;
   /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1: */
@@ -6632,6 +6847,9 @@ export const CreateIpsecTunnelResponse =
             Schema.Union([
               Schema.Union([
                 Schema.Struct({
+                  effective: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
                   saved: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
                   ),
@@ -6847,12 +7065,15 @@ export interface UpdateIpsecTunnelResponse {
       direction?: "unidirectional" | "bidirectional" | null;
       enabled?: boolean | null;
       rate?: "low" | "mid" | "high" | null;
-      target?: { saved?: string | null } | string | null;
+      target?:
+        | { effective?: string | null; saved?: string | null }
+        | string
+        | null;
       type?: "reply" | "request" | null;
     } | null;
     interfaceAddress6?: string | null;
     modifiedOn?: string | null;
-    pskMetadata?: unknown | null;
+    pskMetadata?: { lastGeneratedOn?: string | null } | null;
     replayProtection?: boolean | null;
   } | null;
 }
@@ -6974,6 +7195,9 @@ export const UpdateIpsecTunnelResponse =
                   Schema.Union([
                     Schema.Union([
                       Schema.Struct({
+                        effective: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
                         saved: Schema.optional(
                           Schema.Union([Schema.String, Schema.Null]),
                         ),
@@ -7000,7 +7224,16 @@ export const UpdateIpsecTunnelResponse =
             Schema.Union([Schema.String, Schema.Null]),
           ),
           pskMetadata: Schema.optional(
-            Schema.Union([Schema.Unknown, Schema.Null]),
+            Schema.Union([
+              Schema.Struct({
+                lastGeneratedOn: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({ lastGeneratedOn: "last_generated_on" }),
+              ),
+              Schema.Null,
+            ]),
           ),
           replayProtection: Schema.optional(
             Schema.Union([Schema.Boolean, Schema.Null]),
@@ -7107,12 +7340,15 @@ export interface DeleteIpsecTunnelResponse {
       direction?: "unidirectional" | "bidirectional" | null;
       enabled?: boolean | null;
       rate?: "low" | "mid" | "high" | null;
-      target?: { saved?: string | null } | string | null;
+      target?:
+        | { effective?: string | null; saved?: string | null }
+        | string
+        | null;
       type?: "reply" | "request" | null;
     } | null;
     interfaceAddress6?: string | null;
     modifiedOn?: string | null;
-    pskMetadata?: unknown | null;
+    pskMetadata?: { lastGeneratedOn?: string | null } | null;
     replayProtection?: boolean | null;
   } | null;
 }
@@ -7234,6 +7470,9 @@ export const DeleteIpsecTunnelResponse =
                   Schema.Union([
                     Schema.Union([
                       Schema.Struct({
+                        effective: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
                         saved: Schema.optional(
                           Schema.Union([Schema.String, Schema.Null]),
                         ),
@@ -7260,7 +7499,16 @@ export const DeleteIpsecTunnelResponse =
             Schema.Union([Schema.String, Schema.Null]),
           ),
           pskMetadata: Schema.optional(
-            Schema.Union([Schema.Unknown, Schema.Null]),
+            Schema.Union([
+              Schema.Struct({
+                lastGeneratedOn: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({ lastGeneratedOn: "last_generated_on" }),
+              ),
+              Schema.Null,
+            ]),
           ),
           replayProtection: Schema.optional(
             Schema.Union([Schema.Boolean, Schema.Null]),
@@ -7362,7 +7610,13 @@ export type GetPcapResponse =
       coloName?: string | null;
       destinationConf?: string | null;
       errorMessage?: string | null;
-      filterV1?: unknown | null;
+      filterV1?: {
+        destinationAddress?: string | null;
+        destinationPort?: number | null;
+        protocol?: number | null;
+        sourceAddress?: string | null;
+        sourcePort?: number | null;
+      } | null;
       packetsCaptured?: number | null;
       status?:
         | "unknown"
@@ -7456,7 +7710,34 @@ export const GetPcapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       Schema.Union([Schema.String, Schema.Null]),
     ),
     errorMessage: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    filterV1: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    filterV1: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          destinationAddress: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          destinationPort: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          protocol: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          sourceAddress: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          sourcePort: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            destinationAddress: "destination_address",
+            destinationPort: "destination_port",
+            protocol: "protocol",
+            sourceAddress: "source_address",
+            sourcePort: "source_port",
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
     packetsCaptured: Schema.optional(
       Schema.Union([Schema.Number, Schema.Null]),
     ),
@@ -7560,7 +7841,13 @@ export interface ListPcapsResponse {
         coloName?: string | null;
         destinationConf?: string | null;
         errorMessage?: string | null;
-        filterV1?: unknown | null;
+        filterV1?: {
+          destinationAddress?: string | null;
+          destinationPort?: number | null;
+          protocol?: number | null;
+          sourceAddress?: string | null;
+          sourcePort?: number | null;
+        } | null;
         packetsCaptured?: number | null;
         status?:
           | "unknown"
@@ -7662,7 +7949,36 @@ export const ListPcapsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         errorMessage: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
         ),
-        filterV1: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+        filterV1: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              destinationAddress: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              destinationPort: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              protocol: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              sourceAddress: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              sourcePort: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                destinationAddress: "destination_address",
+                destinationPort: "destination_port",
+                protocol: "protocol",
+                sourceAddress: "source_address",
+                sourcePort: "source_port",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
         packetsCaptured: Schema.optional(
           Schema.Union([Schema.Number, Schema.Null]),
         ),
@@ -7728,7 +8044,9 @@ export const listPcaps: API.PaginatedOperationMethod<
     ListPcapsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListPcapsRequest) => stream.Stream<
+  items: (
+    input: ListPcapsRequest,
+  ) => stream.Stream<
     | {
         id?: string | null;
         filterV1?: {
@@ -7760,7 +8078,13 @@ export const listPcaps: API.PaginatedOperationMethod<
         coloName?: string | null;
         destinationConf?: string | null;
         errorMessage?: string | null;
-        filterV1?: unknown | null;
+        filterV1?: {
+          destinationAddress?: string | null;
+          destinationPort?: number | null;
+          protocol?: number | null;
+          sourceAddress?: string | null;
+          sourcePort?: number | null;
+        } | null;
         packetsCaptured?: number | null;
         status?:
           | "unknown"
@@ -7882,7 +8206,13 @@ export type CreatePcapResponse =
       coloName?: string | null;
       destinationConf?: string | null;
       errorMessage?: string | null;
-      filterV1?: unknown | null;
+      filterV1?: {
+        destinationAddress?: string | null;
+        destinationPort?: number | null;
+        protocol?: number | null;
+        sourceAddress?: string | null;
+        sourcePort?: number | null;
+      } | null;
       packetsCaptured?: number | null;
       status?:
         | "unknown"
@@ -7976,7 +8306,34 @@ export const CreatePcapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       Schema.Union([Schema.String, Schema.Null]),
     ),
     errorMessage: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    filterV1: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    filterV1: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          destinationAddress: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          destinationPort: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          protocol: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          sourceAddress: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          sourcePort: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            destinationAddress: "destination_address",
+            destinationPort: "destination_port",
+            protocol: "protocol",
+            sourceAddress: "source_address",
+            sourcePort: "source_port",
+          }),
+        ),
+        Schema.Null,
+      ]),
+    ),
     packetsCaptured: Schema.optional(
       Schema.Union([Schema.Number, Schema.Null]),
     ),
@@ -8174,7 +8531,9 @@ export const getPcapOwnership: API.PaginatedOperationMethod<
     GetPcapOwnershipError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: GetPcapOwnershipRequest) => stream.Stream<
+  items: (
+    input: GetPcapOwnershipRequest,
+  ) => stream.Stream<
     {
       id: string;
       destinationConf: string;
@@ -8411,7 +8770,15 @@ export interface BulkPutCfInterconnectsResponse {
         createdOn?: string | null;
         description?: string | null;
         gre?: { cloudflareEndpoint?: string | null } | null;
-        healthCheck?: unknown | null;
+        healthCheck?: {
+          enabled?: boolean | null;
+          rate?: "low" | "mid" | "high" | null;
+          target?:
+            | { effective?: string | null; saved?: string | null }
+            | string
+            | null;
+          type?: "reply" | "request" | null;
+        } | null;
         interfaceAddress?: string | null;
         interfaceAddress6?: string | null;
         modifiedOn?: string | null;
@@ -8456,7 +8823,42 @@ export const BulkPutCfInterconnectsResponse =
               ]),
             ),
             healthCheck: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
+              Schema.Union([
+                Schema.Struct({
+                  enabled: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  rate: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals(["low", "mid", "high"]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  target: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Struct({
+                          effective: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                          saved: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                        }),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  type: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals(["reply", "request"]),
+                      Schema.Null,
+                    ]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
             ),
             interfaceAddress: Schema.optional(
               Schema.Union([Schema.String, Schema.Null]),
@@ -8568,7 +8970,10 @@ export interface BulkPutGreTunnelsResponse {
           direction?: "unidirectional" | "bidirectional" | null;
           enabled?: boolean | null;
           rate?: "low" | "mid" | "high" | null;
-          target?: { saved?: string | null } | string | null;
+          target?:
+            | { effective?: string | null; saved?: string | null }
+            | string
+            | null;
           type?: "reply" | "request" | null;
         } | null;
         interfaceAddress6?: string | null;
@@ -8682,6 +9087,9 @@ export const BulkPutGreTunnelsResponse =
                     Schema.Union([
                       Schema.Union([
                         Schema.Struct({
+                          effective: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
                           saved: Schema.optional(
                             Schema.Union([Schema.String, Schema.Null]),
                           ),
@@ -8816,12 +9224,15 @@ export interface BulkPutIpsecTunnelsResponse {
           direction?: "unidirectional" | "bidirectional" | null;
           enabled?: boolean | null;
           rate?: "low" | "mid" | "high" | null;
-          target?: { saved?: string | null } | string | null;
+          target?:
+            | { effective?: string | null; saved?: string | null }
+            | string
+            | null;
           type?: "reply" | "request" | null;
         } | null;
         interfaceAddress6?: string | null;
         modifiedOn?: string | null;
-        pskMetadata?: unknown | null;
+        pskMetadata?: { lastGeneratedOn?: string | null } | null;
         replayProtection?: boolean | null;
       }[]
     | null;
@@ -8945,6 +9356,9 @@ export const BulkPutIpsecTunnelsResponse =
                     Schema.Union([
                       Schema.Union([
                         Schema.Struct({
+                          effective: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
                           saved: Schema.optional(
                             Schema.Union([Schema.String, Schema.Null]),
                           ),
@@ -8971,7 +9385,16 @@ export const BulkPutIpsecTunnelsResponse =
               Schema.Union([Schema.String, Schema.Null]),
             ),
             pskMetadata: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
+              Schema.Union([
+                Schema.Struct({
+                  lastGeneratedOn: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({ lastGeneratedOn: "last_generated_on" }),
+                ),
+                Schema.Null,
+              ]),
             ),
             replayProtection: Schema.optional(
               Schema.Union([Schema.Boolean, Schema.Null]),
@@ -9039,7 +9462,7 @@ export interface BulkPutRoutesRequest {
     prefix: string;
     priority: number;
     description?: string;
-    scope?: unknown;
+    scope?: { coloNames?: string[]; coloRegions?: string[] };
     weight?: number;
   }[];
 }
@@ -9053,7 +9476,17 @@ export const BulkPutRoutesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       prefix: Schema.String,
       priority: Schema.Number,
       description: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.Unknown),
+      scope: Schema.optional(
+        Schema.Struct({
+          coloNames: Schema.optional(Schema.Array(Schema.String)),
+          coloRegions: Schema.optional(Schema.Array(Schema.String)),
+        }).pipe(
+          Schema.encodeKeys({
+            coloNames: "colo_names",
+            coloRegions: "colo_regions",
+          }),
+        ),
+      ),
       weight: Schema.optional(Schema.Number),
     }),
   ),
@@ -9072,7 +9505,10 @@ export interface BulkPutRoutesResponse {
         createdOn?: string | null;
         description?: string | null;
         modifiedOn?: string | null;
-        scope?: unknown | null;
+        scope?: {
+          coloNames?: string[] | null;
+          coloRegions?: string[] | null;
+        } | null;
         weight?: number | null;
       }[]
     | null;
@@ -9097,7 +9533,24 @@ export const BulkPutRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           modifiedOn: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
-          scope: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+          scope: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                coloNames: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                coloRegions: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  coloNames: "colo_names",
+                  coloRegions: "colo_regions",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
           weight: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         }).pipe(
           Schema.encodeKeys({
@@ -9169,7 +9622,10 @@ export interface GetRouteResponse {
     createdOn?: string | null;
     description?: string | null;
     modifiedOn?: string | null;
-    scope?: unknown | null;
+    scope?: {
+      coloNames?: string[] | null;
+      coloRegions?: string[] | null;
+    } | null;
     weight?: number | null;
   } | null;
 }
@@ -9187,7 +9643,24 @@ export const GetRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.String, Schema.Null]),
         ),
         modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        scope: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+        scope: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              coloNames: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              coloRegions: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                coloNames: "colo_names",
+                coloRegions: "colo_regions",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
         weight: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
@@ -9241,7 +9714,10 @@ export interface ListRoutesResponse {
         createdOn?: string | null;
         description?: string | null;
         modifiedOn?: string | null;
-        scope?: unknown | null;
+        scope?: {
+          coloNames?: string[] | null;
+          coloRegions?: string[] | null;
+        } | null;
         weight?: number | null;
       }[]
     | null;
@@ -9265,7 +9741,24 @@ export const ListRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           modifiedOn: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
-          scope: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+          scope: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                coloNames: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                coloRegions: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  coloNames: "colo_names",
+                  coloRegions: "colo_regions",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
           weight: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         }).pipe(
           Schema.encodeKeys({
@@ -9473,7 +9966,10 @@ export interface UpdateRouteResponse {
     createdOn?: string | null;
     description?: string | null;
     modifiedOn?: string | null;
-    scope?: unknown | null;
+    scope?: {
+      coloNames?: string[] | null;
+      coloRegions?: string[] | null;
+    } | null;
     weight?: number | null;
   } | null;
 }
@@ -9492,7 +9988,24 @@ export const UpdateRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.String, Schema.Null]),
         ),
         modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        scope: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+        scope: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              coloNames: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              coloRegions: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                coloNames: "colo_names",
+                coloRegions: "colo_regions",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
         weight: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
@@ -9560,7 +10073,10 @@ export interface DeleteRouteResponse {
     createdOn?: string | null;
     description?: string | null;
     modifiedOn?: string | null;
-    scope?: unknown | null;
+    scope?: {
+      coloNames?: string[] | null;
+      coloRegions?: string[] | null;
+    } | null;
     weight?: number | null;
   } | null;
 }
@@ -9579,7 +10095,24 @@ export const DeleteRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.String, Schema.Null]),
         ),
         modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        scope: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+        scope: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              coloNames: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              coloRegions: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                coloNames: "colo_names",
+                coloRegions: "colo_regions",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
         weight: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
@@ -9640,7 +10173,10 @@ export interface EmptyRouteResponse {
         createdOn?: string | null;
         description?: string | null;
         modifiedOn?: string | null;
-        scope?: unknown | null;
+        scope?: {
+          coloNames?: string[] | null;
+          coloRegions?: string[] | null;
+        } | null;
         weight?: number | null;
       }[]
     | null;
@@ -9665,7 +10201,24 @@ export const EmptyRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           modifiedOn: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
           ),
-          scope: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+          scope: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                coloNames: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                coloRegions: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  coloNames: "colo_names",
+                  coloRegions: "colo_regions",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
           weight: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         }).pipe(
           Schema.encodeKeys({
@@ -9866,7 +10419,9 @@ export const listSites: API.PaginatedOperationMethod<
     ListSitesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSitesRequest) => stream.Stream<
+  items: (
+    input: ListSitesRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       connectorId?: string | null;
@@ -10574,7 +11129,9 @@ export const listSiteAcls: API.PaginatedOperationMethod<
     ListSiteAclsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSiteAclsRequest) => stream.Stream<
+  items: (
+    input: ListSiteAclsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       description?: string | null;
@@ -11775,7 +12332,9 @@ export const listSiteLans: API.PaginatedOperationMethod<
     ListSiteLansError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSiteLansRequest) => stream.Stream<
+  items: (
+    input: ListSiteLansRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       haLink?: boolean | null;
@@ -12111,7 +12670,9 @@ export const createSiteLan: API.PaginatedOperationMethod<
     CreateSiteLanError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: CreateSiteLanRequest) => stream.Stream<
+  items: (
+    input: CreateSiteLanRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       haLink?: boolean | null;
@@ -13118,7 +13679,9 @@ export const listSiteWans: API.PaginatedOperationMethod<
     ListSiteWansError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSiteWansRequest) => stream.Stream<
+  items: (
+    input: ListSiteWansRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       healthCheckRate?: "low" | "mid" | "high" | null;
@@ -13277,7 +13840,9 @@ export const createSiteWan: API.PaginatedOperationMethod<
     CreateSiteWanError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: CreateSiteWanRequest) => stream.Stream<
+  items: (
+    input: CreateSiteWanRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       healthCheckRate?: "low" | "mid" | "high" | null;
