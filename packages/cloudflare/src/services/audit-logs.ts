@@ -185,9 +185,7 @@ export const listAuditLogs: API.PaginatedOperationMethod<
     ListAuditLogsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListAuditLogsRequest,
-  ) => stream.Stream<
+  items: (input: ListAuditLogsRequest) => stream.Stream<
     {
       id?: string | null;
       action?: { result?: boolean | null; type?: string | null } | null;

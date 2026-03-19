@@ -3,6 +3,7 @@ import { Effect, FileSystem } from "effect";
 import * as path from "node:path";
 import { execSync } from "node:child_process";
 import { createHash } from "node:crypto";
+import { fileURLToPath } from "node:url";
 import * as ts from "typescript";
 import { parse as parseYaml } from "yaml";
 import {
@@ -256,7 +257,7 @@ const getLocalParserHash = () =>
   Effect.gen(function* () {
     const fs = yield* FileSystem.FileSystem;
     const hash = createHash("sha1");
-    const scriptsDir = path.dirname(new URL(import.meta.url).pathname);
+    const scriptsDir = path.dirname(fileURLToPath(import.meta.url));
 
     for (const file of LOCAL_PARSE_INPUT_FILES) {
       const filePath = path.join(scriptsDir, file);
