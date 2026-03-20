@@ -424,9 +424,7 @@ export const listDiscoveryOperations: API.PaginatedOperationMethod<
     ListDiscoveryOperationsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListDiscoveryOperationsRequest,
-  ) => stream.Stream<
+  items: (input: ListDiscoveryOperationsRequest) => stream.Stream<
     {
       id: string;
       endpoint: string;
@@ -1431,9 +1429,7 @@ export const listOperations: API.PaginatedOperationMethod<
     ListOperationsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListOperationsRequest,
-  ) => stream.Stream<
+  items: (input: ListOperationsRequest) => stream.Stream<
     {
       endpoint: string;
       host: string;
@@ -2462,9 +2458,7 @@ export const bulkCreateOperations: API.PaginatedOperationMethod<
     BulkCreateOperationsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: BulkCreateOperationsRequest,
-  ) => stream.Stream<
+  items: (input: BulkCreateOperationsRequest) => stream.Stream<
     {
       endpoint: string;
       host: string;
@@ -3255,9 +3249,7 @@ export const listUserSchemas: API.PaginatedOperationMethod<
     ListUserSchemasError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListUserSchemasRequest,
-  ) => stream.Stream<
+  items: (input: ListUserSchemasRequest) => stream.Stream<
     {
       createdAt: string;
       kind: "openapi_v3";
@@ -4169,9 +4161,7 @@ export const listUserSchemaOperations: API.PaginatedOperationMethod<
     ListUserSchemaOperationsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListUserSchemaOperationsRequest,
-  ) => stream.Stream<
+  items: (input: ListUserSchemaOperationsRequest) => stream.Stream<
     | {
         endpoint: string;
         host: string;

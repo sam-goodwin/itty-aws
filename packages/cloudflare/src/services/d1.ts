@@ -205,9 +205,7 @@ export const listDatabases: API.PaginatedOperationMethod<
     ListDatabasesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListDatabasesRequest,
-  ) => stream.Stream<
+  items: (input: ListDatabasesRequest) => stream.Stream<
     {
       createdAt?: string | null;
       name?: string | null;
@@ -1068,9 +1066,7 @@ export const queryDatabase: API.PaginatedOperationMethod<
     QueryDatabaseError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: QueryDatabaseRequest,
-  ) => stream.Stream<
+  items: (input: QueryDatabaseRequest) => stream.Stream<
     {
       meta?: {
         changedDb?: boolean | null;
@@ -1260,9 +1256,7 @@ export const rawDatabase: API.PaginatedOperationMethod<
     RawDatabaseError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: RawDatabaseRequest,
-  ) => stream.Stream<
+  items: (input: RawDatabaseRequest) => stream.Stream<
     {
       meta?: {
         changedDb?: boolean | null;

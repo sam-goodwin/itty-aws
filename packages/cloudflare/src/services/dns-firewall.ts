@@ -554,9 +554,7 @@ export const listDnsFirewalls: API.PaginatedOperationMethod<
     ListDnsFirewallsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListDnsFirewallsRequest,
-  ) => stream.Stream<
+  items: (input: ListDnsFirewallsRequest) => stream.Stream<
     {
       id: string;
       deprecateAnyRequests: boolean;

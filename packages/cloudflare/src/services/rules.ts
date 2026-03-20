@@ -154,9 +154,7 @@ export const listLists: API.PaginatedOperationMethod<
     ListListsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListListsRequest,
-  ) => stream.Stream<
+  items: (input: ListListsRequest) => stream.Stream<
     {
       id: string;
       createdOn: string;
@@ -816,9 +814,7 @@ export const listListItems: API.PaginatedOperationMethod<
     ListListItemsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListListItemsRequest,
-  ) => stream.Stream<
+  items: (input: ListListItemsRequest) => stream.Stream<
     | {
         id: string;
         createdOn: string;

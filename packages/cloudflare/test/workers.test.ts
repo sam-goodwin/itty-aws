@@ -21,7 +21,8 @@ const zoneId = () => {
  * in parallel test runs.
  * Follows the convention: distilled-cf-workers-{testname}-{testRunId}
  */
-const scriptName = (name: string) => `distilled-cf-workers-${name}-${testRunId}`;
+const scriptName = (name: string) =>
+  `distilled-cf-workers-${name}-${testRunId}`;
 
 /**
  * Minimal Worker module source for uploads.
@@ -900,7 +901,8 @@ describe("Workers", () => {
             // headSamplingRate inside logs can be number or null
             expect(
               result.observability.logs.headSamplingRate === null ||
-                typeof result.observability.logs.headSamplingRate === "number" ||
+                typeof result.observability.logs.headSamplingRate ===
+                  "number" ||
                 result.observability.logs.headSamplingRate === undefined,
             ).toBe(true);
           }
@@ -1200,9 +1202,7 @@ describe("Workers", () => {
               accountId: accountId(),
               scriptName: name,
               strategy: "percentage",
-              versions: [
-                { percentage: 100, versionId: currentVersionId },
-              ],
+              versions: [{ percentage: 100, versionId: currentVersionId }],
               annotations: {
                 workersMessage: "Test deployment from distilled tests",
               },
@@ -1791,11 +1791,9 @@ describe("Workers", () => {
     test("happy path - creates a new version of a script", () =>
       withScript(scriptName("create-version"), (name) =>
         Effect.gen(function* () {
-          const scriptFile = new File(
-            [workerModuleSource],
-            "index.mjs",
-            { type: "application/javascript+module" },
-          );
+          const scriptFile = new File([workerModuleSource], "index.mjs", {
+            type: "application/javascript+module",
+          });
 
           const result = yield* Workers.createScriptVersion({
             accountId: accountId(),
@@ -1905,11 +1903,9 @@ describe("Workers", () => {
 
           expect(typeof upload.jwt).toBe("string");
 
-          const scriptFile = new File(
-            [workerModuleSource],
-            "index.mjs",
-            { type: "application/javascript+module" },
-          );
+          const scriptFile = new File([workerModuleSource], "index.mjs", {
+            type: "application/javascript+module",
+          });
 
           const result = yield* Workers.putScript({
             accountId: accountId(),

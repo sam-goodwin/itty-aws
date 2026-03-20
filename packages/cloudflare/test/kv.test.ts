@@ -29,12 +29,12 @@ const findNamespaceByTitle = (
 
     const response = yield* Effect.tryPromise({
       try: async () => {
-      const resp = await fetch(
-        `https://api.cloudflare.com/client/v4/accounts/${accountId()}/storage/kv/namespaces?per_page=100`,
-        {
-          headers,
-        },
-      );
+        const resp = await fetch(
+          `https://api.cloudflare.com/client/v4/accounts/${accountId()}/storage/kv/namespaces?per_page=100`,
+          {
+            headers,
+          },
+        );
         const data = (await resp.json()) as any;
         const ns = data?.result?.find((n: any) => n.title === title);
         return ns?.id as string | undefined;

@@ -296,9 +296,7 @@ export const listConfigurations: API.PaginatedOperationMethod<
     ListConfigurationsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListConfigurationsRequest,
-  ) => stream.Stream<
+  items: (input: ListConfigurationsRequest) => stream.Stream<
     {
       id: string;
       createdAt: string;
@@ -1148,9 +1146,7 @@ export const listRules: API.PaginatedOperationMethod<
     ListRulesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
+  items: (input: ListRulesRequest) => stream.Stream<
     {
       action: "log" | "block";
       description: string;
@@ -1668,9 +1664,7 @@ export const bulkCreateRules: API.PaginatedOperationMethod<
     BulkCreateRulesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: BulkCreateRulesRequest,
-  ) => stream.Stream<
+  items: (input: BulkCreateRulesRequest) => stream.Stream<
     {
       action: "log" | "block";
       description: string;
@@ -1862,9 +1856,7 @@ export const bulkPatchRules: API.PaginatedOperationMethod<
     BulkPatchRulesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: BulkPatchRulesRequest,
-  ) => stream.Stream<
+  items: (input: BulkPatchRulesRequest) => stream.Stream<
     {
       action: "log" | "block";
       description: string;

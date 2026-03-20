@@ -13,13 +13,15 @@ const accountId = () => getAccountId();
  * Deterministic variant name for tests with a random suffix to avoid parallel collisions.
  * Follows the convention: distilled-cf-images-{testname}-{testRunId}
  */
-const variantName = (name: string) => `distilled-cf-images-${name}-${testRunId}`;
+const variantName = (name: string) =>
+  `distilled-cf-images-${name}-${testRunId}`;
 
 /**
  * Deterministic signing key name for tests with a random suffix to avoid parallel collisions.
  * Follows the convention: distilled-cf-images-key-{testname}-{testRunId}
  */
-const keyName = (name: string) => `distilled-cf-images-key-${name}-${testRunId}`;
+const keyName = (name: string) =>
+  `distilled-cf-images-key-${name}-${testRunId}`;
 
 /**
  * A small 1x1 transparent PNG as a Blob for image upload tests.

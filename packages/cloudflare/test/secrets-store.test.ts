@@ -13,7 +13,8 @@ const accountId = () => getAccountId();
 /**
  * Deterministic secret name for tests with a random suffix so parallel runs don't collide.
  */
-const secretName = (name: string) => `distilled-cf-ss-secret-${name}-${testRunId}`;
+const secretName = (name: string) =>
+  `distilled-cf-ss-secret-${name}-${testRunId}`;
 
 /**
  * Get the default store ID. The account only allows 1 store (the default),
@@ -446,7 +447,9 @@ describe("SecretsStore", () => {
           expect(typeof result.result[0]!.created).toBe("string");
           expect(typeof result.result[0]!.modified).toBe("string");
           expect(typeof result.result[0]!.storeId).toBe("string");
-          expect(["pending", "active", "deleted"]).toContain(result.result[0]!.status);
+          expect(["pending", "active", "deleted"]).toContain(
+            result.result[0]!.status,
+          );
         }),
       ));
 
@@ -558,9 +561,7 @@ describe("SecretsStore", () => {
             body: [{ name, scopes: ["workers"], value: "second" }],
           }).pipe(
             Effect.flip,
-            Effect.map((e) =>
-              expect(e._tag).toBe("SecretNameAlreadyExists"),
-            ),
+            Effect.map((e) => expect(e._tag).toBe("SecretNameAlreadyExists")),
           );
         }),
       ));
@@ -590,24 +591,22 @@ describe("SecretsStore", () => {
   // --------------------------------------------------------------------------
   describe("getStoreSecret", () => {
     test("happy path - retrieves a secret by ID", () =>
-      withDefaultStoreAndSecret(
-        secretName("get-happy"),
-        (storeId, secretId) =>
-          Effect.gen(function* () {
-            const result = yield* SecretsStore.getStoreSecret({
-              storeId,
-              secretId,
-              accountId: accountId(),
-            });
+      withDefaultStoreAndSecret(secretName("get-happy"), (storeId, secretId) =>
+        Effect.gen(function* () {
+          const result = yield* SecretsStore.getStoreSecret({
+            storeId,
+            secretId,
+            accountId: accountId(),
+          });
 
-            expect(result).toBeDefined();
-            expect(result.id).toBe(secretId);
-            expect(result.name).toBe(secretName("get-happy"));
-            expect(typeof result.created).toBe("string");
-            expect(typeof result.modified).toBe("string");
-            expect(typeof result.storeId).toBe("string");
-            expect(["pending", "active", "deleted"]).toContain(result.status);
-          }),
+          expect(result).toBeDefined();
+          expect(result.id).toBe(secretId);
+          expect(result.name).toBe(secretName("get-happy"));
+          expect(typeof result.created).toBe("string");
+          expect(typeof result.modified).toBe("string");
+          expect(typeof result.storeId).toBe("string");
+          expect(["pending", "active", "deleted"]).toContain(result.status);
+        }),
       ));
 
     test("error - non-existent secretId in valid store", () =>
@@ -707,23 +706,21 @@ describe("SecretsStore", () => {
       ));
 
     test("happy path - updates both comment and scopes", () =>
-      withDefaultStoreAndSecret(
-        secretName("patch-both"),
-        (storeId, secretId) =>
-          Effect.gen(function* () {
-            const result = yield* SecretsStore.patchStoreSecret({
-              storeId,
-              secretId,
-              accountId: accountId(),
-              comment: "Updated comment and scopes",
-              scopes: ["workers"],
-            });
+      withDefaultStoreAndSecret(secretName("patch-both"), (storeId, secretId) =>
+        Effect.gen(function* () {
+          const result = yield* SecretsStore.patchStoreSecret({
+            storeId,
+            secretId,
+            accountId: accountId(),
+            comment: "Updated comment and scopes",
+            scopes: ["workers"],
+          });
 
-            expect(result).toBeDefined();
-            expect(result.id).toBe(secretId);
-            expect(typeof result.created).toBe("string");
-            expect(typeof result.modified).toBe("string");
-          }),
+          expect(result).toBeDefined();
+          expect(result.id).toBe(secretId);
+          expect(typeof result.created).toBe("string");
+          expect(typeof result.modified).toBe("string");
+        }),
       ));
 
     test("error - non-existent secretId in valid store", () =>

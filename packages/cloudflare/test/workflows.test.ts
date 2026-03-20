@@ -16,14 +16,16 @@ const accountId = () => getAccountId();
  * between parallel test runs.
  * Follows the convention: distilled-cf-workflows-{testname}-{testRunId}
  */
-const workflowName = (name: string) => `distilled-cf-workflows-${name}-${testRunId}`;
+const workflowName = (name: string) =>
+  `distilled-cf-workflows-${name}-${testRunId}`;
 
 /**
  * Deterministic script name for workflow worker scripts with a random suffix
  * to avoid collisions between parallel test runs.
  * Follows the convention: distilled-cf-workflows-worker-{testname}-{testRunId}
  */
-const scriptName = (name: string) => `distilled-cf-workflows-worker-${name}-${testRunId}`;
+const scriptName = (name: string) =>
+  `distilled-cf-workflows-worker-${name}-${testRunId}`;
 
 /**
  * Minimal Worker module source that exports a Workflow class.
@@ -895,7 +897,9 @@ describe("Workflows", () => {
 
           if (result.ok) {
             // If the API accepts it, great
-            expect(result.value !== undefined || result.value === undefined).toBe(true);
+            expect(
+              result.value !== undefined || result.value === undefined,
+            ).toBe(true);
           } else {
             // Simple workflows without waitForEvent steps return InvalidBody
             expect(result.tag).toBe("InvalidBody");
@@ -996,9 +1000,10 @@ describe("Workflows", () => {
             expect(typeof result.value.timestamp).toBe("string");
           } else {
             // Workflow already completed — cannot modify its status
-            expect(["InstanceCannotTerminate", "UnknownCloudflareError"]).toContain(
-              result.tag,
-            );
+            expect([
+              "InstanceCannotTerminate",
+              "UnknownCloudflareError",
+            ]).toContain(result.tag);
           }
         }),
       ));

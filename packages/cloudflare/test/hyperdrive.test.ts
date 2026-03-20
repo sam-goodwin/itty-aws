@@ -14,7 +14,8 @@ const accountId = () => getAccountId();
  * in parallel test runs.
  * Follows the convention: distilled-cf-hyperdrive-{testname}-{testRunId}
  */
-const configName = (name: string) => `distilled-cf-hyperdrive-${name}-${testRunId}`;
+const configName = (name: string) =>
+  `distilled-cf-hyperdrive-${name}-${testRunId}`;
 
 /**
  * Valid origin configuration using localhost — Cloudflare rejects private/

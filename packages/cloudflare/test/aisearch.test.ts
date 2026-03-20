@@ -25,9 +25,12 @@ const getTokenCredentials = async (): Promise<{
 
   if (credentials.type === "apiToken" || credentials.type === "oauth") {
     // Bearer auth — fetch token ID from verify endpoint
-    const resp = await fetch("https://api.cloudflare.com/client/v4/user/tokens/verify", {
-      headers: formatHeaders(credentials),
-    });
+    const resp = await fetch(
+      "https://api.cloudflare.com/client/v4/user/tokens/verify",
+      {
+        headers: formatHeaders(credentials),
+      },
+    );
     const data = (await resp.json()) as {
       result: { id: string };
       success: boolean;

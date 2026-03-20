@@ -147,8 +147,9 @@ describe("ACM", () => {
           }
         }).pipe(
           // ACM subscription may not be active — skip gracefully
-          Effect.catchTag("AdvancedCertificateManagerRequired", () =>
-            Effect.void,
+          Effect.catchTag(
+            "AdvancedCertificateManagerRequired",
+            () => Effect.void,
           ),
           Effect.ensuring(
             ACM.createTotalTl({
@@ -215,8 +216,9 @@ describe("ACM", () => {
           // A previous TLS job may still be in progress from an earlier test.
           // ACM subscription may also not be active.
           Effect.catchTag("PreviousJobInProgress", () => Effect.void),
-          Effect.catchTag("AdvancedCertificateManagerRequired", () =>
-            Effect.void,
+          Effect.catchTag(
+            "AdvancedCertificateManagerRequired",
+            () => Effect.void,
           ),
           Effect.ensuring(
             ACM.createTotalTl({
@@ -241,8 +243,7 @@ describe("ACM", () => {
         }).pipe(
           Effect.matchEffect({
             // Zone may have ACM enabled — success is acceptable
-            onSuccess: (result) =>
-              Effect.succeed(expect(result).toBeDefined()),
+            onSuccess: (result) => Effect.succeed(expect(result).toBeDefined()),
             onFailure: (e) =>
               Effect.succeed(
                 expect([

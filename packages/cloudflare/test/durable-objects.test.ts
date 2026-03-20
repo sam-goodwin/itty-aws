@@ -94,11 +94,9 @@ describe("DurableObjects", () => {
     test("happy path - lists objects in an existing namespace", () =>
       Effect.gen(function* () {
         // First, get the list of namespaces to find a valid one
-        const namespaces = (
-          yield* DurableObjects.listNamespaces({
-            accountId: accountId(),
-          })
-        ).result;
+        const namespaces = (yield* DurableObjects.listNamespaces({
+          accountId: accountId(),
+        })).result;
 
         // Skip if no namespaces exist (can't test without a DO namespace)
         if (namespaces.length === 0 || !namespaces[0].id) {
@@ -127,11 +125,9 @@ describe("DurableObjects", () => {
 
     test("error - MalformedParameter for limit that is too low", () =>
       Effect.gen(function* () {
-        const namespaces = (
-          yield* DurableObjects.listNamespaces({
-            accountId: accountId(),
-          })
-        ).result;
+        const namespaces = (yield* DurableObjects.listNamespaces({
+          accountId: accountId(),
+        })).result;
 
         if (namespaces.length === 0 || !namespaces[0].id) {
           return;
@@ -228,11 +224,9 @@ describe("DurableObjects", () => {
 
     test("error - MalformedParameter for limit of 0", () =>
       Effect.gen(function* () {
-        const namespaces = (
-          yield* DurableObjects.listNamespaces({
-            accountId: accountId(),
-          })
-        ).result;
+        const namespaces = (yield* DurableObjects.listNamespaces({
+          accountId: accountId(),
+        })).result;
 
         if (namespaces.length === 0 || !namespaces[0].id) {
           return;

@@ -73,12 +73,12 @@ describe("ApiGateway", () => {
         }).pipe(
           Effect.matchEffect({
             onSuccess: (result) =>
-              Effect.succeed(
-                expect(result).toHaveProperty("timestamp"),
-              ),
+              Effect.succeed(expect(result).toHaveProperty("timestamp")),
             onFailure: (e) =>
               Effect.succeed(
-                expect(["NotEntitled", "CloudflareHttpError"]).toContain(e._tag),
+                expect(["NotEntitled", "CloudflareHttpError"]).toContain(
+                  e._tag,
+                ),
               ),
           }),
         ));

@@ -138,9 +138,7 @@ export const listAuditLogs: API.PaginatedOperationMethod<
     ListAuditLogsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListAuditLogsRequest,
-  ) => stream.Stream<
+  items: (input: ListAuditLogsRequest) => stream.Stream<
     {
       id?: string | null;
       action?: { result?: boolean | null; type?: string | null } | null;
@@ -263,9 +261,7 @@ export const listBillingHistories: API.PaginatedOperationMethod<
     ListBillingHistoriesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListBillingHistoriesRequest,
-  ) => stream.Stream<
+  items: (input: ListBillingHistoriesRequest) => stream.Stream<
     {
       id: string;
       action: string;
@@ -638,9 +634,7 @@ export const listInvites: API.PaginatedOperationMethod<
     ListInvitesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListInvitesRequest,
-  ) => stream.Stream<
+  items: (input: ListInvitesRequest) => stream.Stream<
     {
       invitedMemberId: string | null;
       organizationId: string;
@@ -868,9 +862,7 @@ export const listOrganizations: API.PaginatedOperationMethod<
     ListOrganizationsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListOrganizationsRequest,
-  ) => stream.Stream<
+  items: (input: ListOrganizationsRequest) => stream.Stream<
     {
       id?: string | null;
       name?: string | null;
@@ -1095,9 +1087,7 @@ export const getSubscription: API.PaginatedOperationMethod<
     GetSubscriptionError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: GetSubscriptionRequest,
-  ) => stream.Stream<
+  items: (input: GetSubscriptionRequest) => stream.Stream<
     {
       id?: string | null;
       currency?: string | null;
@@ -1593,9 +1583,7 @@ export const listTokens: API.PaginatedOperationMethod<
     ListTokensError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListTokensRequest,
-  ) => stream.Stream<
+  items: (input: ListTokensRequest) => stream.Stream<
     {
       id?: string | null;
       condition?: {
@@ -2201,9 +2189,7 @@ export const listTokenPermissionGroups: API.PaginatedOperationMethod<
     ListTokenPermissionGroupsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListTokenPermissionGroupsRequest,
-  ) => stream.Stream<
+  items: (input: ListTokenPermissionGroupsRequest) => stream.Stream<
     {
       id?: string | null;
       name?: string | null;

@@ -9,7 +9,8 @@ import type {
 } from "~/services/containers";
 
 const accountId = () => getAccountId();
-const containerName = (name: string) => `distilled-cf-containers-${name}-${testRunId}`;
+const containerName = (name: string) =>
+  `distilled-cf-containers-${name}-${testRunId}`;
 type ExistingContainerApplication = ListContainerApplicationsResponse[number];
 
 const getFirstContainerApplication = () =>
@@ -86,23 +87,27 @@ const toUpdateConfiguration = (
 
 const getCreateContainerInput = (name: string, namespaceId?: string) =>
   getFirstContainerApplication().pipe(
-    Effect.map((base): CreateContainerApplicationRequest => ({
-      accountId: accountId(),
-      name,
-      instances: 1,
-      maxInstances: 1,
-      schedulingPolicy: base.schedulingPolicy,
-      configuration: toCreateConfiguration(base.configuration),
-      durableObjects: namespaceId ? { namespaceId } : undefined,
-      constraints: {
-        tier: base.constraints.tier ?? undefined,
-      },
-    })),
+    Effect.map(
+      (base): CreateContainerApplicationRequest => ({
+        accountId: accountId(),
+        name,
+        instances: 1,
+        maxInstances: 1,
+        schedulingPolicy: base.schedulingPolicy,
+        configuration: toCreateConfiguration(base.configuration),
+        durableObjects: namespaceId ? { namespaceId } : undefined,
+        constraints: {
+          tier: base.constraints.tier ?? undefined,
+        },
+      }),
+    ),
   );
 
 const withContainerApplication = <A, E, R>(
   name: string,
-  fn: (application: Containers.CreateContainerApplicationResponse) => Effect.Effect<A, E, R>,
+  fn: (
+    application: Containers.CreateContainerApplicationResponse,
+  ) => Effect.Effect<A, E, R>,
 ): Effect.Effect<A, E | any, R | any> =>
   Effect.gen(function* () {
     yield* deleteContainerApplicationByName(name);
@@ -117,27 +122,24 @@ const withContainerApplication = <A, E, R>(
 
 describe("Containers", () => {
   describe("listContainerApplications", () => {
-    test(
-      "happy path - lists container applications",
-      { timeout: 30_000 },
-      () =>
-        Effect.gen(function* () {
-          const result = yield* Containers.listContainerApplications({
-            accountId: accountId(),
-          });
+    test("happy path - lists container applications", { timeout: 30_000 }, () =>
+      Effect.gen(function* () {
+        const result = yield* Containers.listContainerApplications({
+          accountId: accountId(),
+        });
 
-          expect(Array.isArray(result)).toBe(true);
-          expect(result.length).toBeGreaterThan(0);
+        expect(Array.isArray(result)).toBe(true);
+        expect(result.length).toBeGreaterThan(0);
 
-          const first = result[0]!;
-          expect(typeof first.id).toBe("string");
-          expect(typeof first.accountId).toBe("string");
-          expect(typeof first.name).toBe("string");
-          expect(typeof first.version).toBe("number");
-          expect(["moon", "gpu", "regional", "fill_metals", "default"]).toContain(
-            first.schedulingPolicy,
-          );
-        }),
+        const first = result[0]!;
+        expect(typeof first.id).toBe("string");
+        expect(typeof first.accountId).toBe("string");
+        expect(typeof first.name).toBe("string");
+        expect(typeof first.version).toBe("number");
+        expect(["moon", "gpu", "regional", "fill_metals", "default"]).toContain(
+          first.schedulingPolicy,
+        );
+      }),
     );
 
     test(
@@ -186,7 +188,9 @@ describe("Containers", () => {
               base.durableObjects?.namespaceId,
             ),
           ),
-          Effect.flatMap((input) => Containers.createContainerApplication(input)),
+          Effect.flatMap((input) =>
+            Containers.createContainerApplication(input),
+          ),
           Effect.flip,
           Effect.map((e) =>
             expect((e as { _tag?: string })._tag).toBe(
@@ -305,23 +309,20 @@ describe("Containers", () => {
   });
 
   describe("getContainerIdentity", () => {
-    test(
-      "happy path - retrieves container identity",
-      { timeout: 30_000 },
-      () =>
-        Effect.gen(function* () {
-          const result = yield* Containers.getContainerIdentity({
-            accountId: accountId(),
-          });
+    test("happy path - retrieves container identity", { timeout: 30_000 }, () =>
+      Effect.gen(function* () {
+        const result = yield* Containers.getContainerIdentity({
+          accountId: accountId(),
+        });
 
-          expect(typeof result.externalAccountId).toBe("string");
-          expect(typeof result.legacyIdentity).toBe("string");
-          expect(Array.isArray(result.locations)).toBe(true);
-          expect(typeof result.defaults.vcpus).toBe("number");
-          expect(typeof result.defaults.memoryMib).toBe("number");
-          expect(typeof result.limits.totalVcpu).toBe("number");
-          expect(Array.isArray(result.limits.networkModes)).toBe(true);
-        }),
+        expect(typeof result.externalAccountId).toBe("string");
+        expect(typeof result.legacyIdentity).toBe("string");
+        expect(Array.isArray(result.locations)).toBe(true);
+        expect(typeof result.defaults.vcpus).toBe("number");
+        expect(typeof result.defaults.memoryMib).toBe("number");
+        expect(typeof result.limits.totalVcpu).toBe("number");
+        expect(Array.isArray(result.limits.networkModes)).toBe(true);
+      }),
     );
 
     test(

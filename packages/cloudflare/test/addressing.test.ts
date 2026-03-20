@@ -497,7 +497,9 @@ describe("Addressing", () => {
       }).pipe(
         Effect.flip,
         Effect.map((e) =>
-          expect(["InvalidLoaForm", "UnknownCloudflareError"]).toContain(e._tag),
+          expect(["InvalidLoaForm", "UnknownCloudflareError"]).toContain(
+            e._tag,
+          ),
         ),
       ));
 

@@ -433,9 +433,7 @@ export const getDatasetJob: API.PaginatedOperationMethod<
     GetDatasetJobError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: GetDatasetJobRequest,
-  ) => stream.Stream<
+  items: (input: GetDatasetJobRequest) => stream.Stream<
     {
       id?: number | null;
       dataset?:
@@ -575,9 +573,7 @@ export const getEdge: API.PaginatedOperationMethod<
     GetEdgeError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: GetEdgeRequest,
-  ) => stream.Stream<
+  items: (input: GetEdgeRequest) => stream.Stream<
     {
       destinationConf?: string | null;
       fields?: string | null;
@@ -1210,9 +1206,7 @@ export const listJobs: API.PaginatedOperationMethod<
     ListJobsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListJobsRequest,
-  ) => stream.Stream<
+  items: (input: ListJobsRequest) => stream.Stream<
     {
       id?: number | null;
       dataset?:

@@ -1020,9 +1020,7 @@ export const listCatalogSyncs: API.PaginatedOperationMethod<
     ListCatalogSyncsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListCatalogSyncsRequest,
-  ) => stream.Stream<
+  items: (input: ListCatalogSyncsRequest) => stream.Stream<
     {
       id: string;
       description: string;
@@ -1524,9 +1522,7 @@ export const listCatalogSyncPrebuiltPolicies: API.PaginatedOperationMethod<
     ListCatalogSyncPrebuiltPoliciesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListCatalogSyncPrebuiltPoliciesRequest,
-  ) => stream.Stream<
+  items: (input: ListCatalogSyncPrebuiltPoliciesRequest) => stream.Stream<
     {
       applicableDestinations: ("NONE" | "ZERO_TRUST_LIST")[];
       policyDescription: string;
@@ -2031,9 +2027,7 @@ export const listCloudIntegrations: API.PaginatedOperationMethod<
     ListCloudIntegrationsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListCloudIntegrationsRequest,
-  ) => stream.Stream<
+  items: (input: ListCloudIntegrationsRequest) => stream.Stream<
     {
       id: string;
       cloudType: "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
@@ -4697,9 +4691,7 @@ export const listOnRamps: API.PaginatedOperationMethod<
     ListOnRampsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListOnRampsRequest,
-  ) => stream.Stream<
+  items: (input: ListOnRampsRequest) => stream.Stream<
     {
       id: string;
       cloudType: "AWS" | "AZURE" | "GOOGLE";
@@ -10223,9 +10215,7 @@ export const listResources: API.PaginatedOperationMethod<
     ListResourcesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListResourcesRequest,
-  ) => stream.Stream<
+  items: (input: ListResourcesRequest) => stream.Stream<
     {
       id: string;
       accountId: string;

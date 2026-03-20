@@ -1287,9 +1287,7 @@ export const listCustomHostnames: API.PaginatedOperationMethod<
     ListCustomHostnamesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (
-    input: ListCustomHostnamesRequest,
-  ) => stream.Stream<
+  items: (input: ListCustomHostnamesRequest) => stream.Stream<
     {
       id: string;
       hostname: string;

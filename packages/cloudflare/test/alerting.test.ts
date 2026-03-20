@@ -13,7 +13,8 @@ const accountId = () => getAccountId();
  * Deterministic name for test resources with a random suffix to avoid collisions in parallel runs.
  * Follows the convention: distilled-cf-alerting-{testname}-{testRunId}
  */
-const resourceName = (name: string) => `distilled-cf-alerting-${name}-${testRunId}`;
+const resourceName = (name: string) =>
+  `distilled-cf-alerting-${name}-${testRunId}`;
 
 /**
  * Create an alerting policy, run `fn`, then delete the policy.
@@ -397,9 +398,7 @@ describe("Alerting", () => {
           }).pipe(
             Effect.map(() => "ok" as const),
             Effect.catchTag("CloudflareHttpError", (e) =>
-              e.status === 200
-                ? Effect.succeed("ok" as const)
-                : Effect.fail(e),
+              e.status === 200 ? Effect.succeed("ok" as const) : Effect.fail(e),
             ),
           );
 
