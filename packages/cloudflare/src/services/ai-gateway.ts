@@ -143,7 +143,7 @@ export const GetAiGatewayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Array(
         Schema.Struct({
           authorization: Schema.String,
-          headers: Schema.Struct({}),
+          headers: Schema.Record(Schema.String, Schema.Unknown),
           url: Schema.String,
         }),
       ),
@@ -349,7 +349,7 @@ export const ListAiGatewaysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Array(
               Schema.Struct({
                 authorization: Schema.String,
-                headers: Schema.Struct({}),
+                headers: Schema.Record(Schema.String, Schema.Unknown),
                 url: Schema.String,
               }),
             ),
@@ -437,7 +437,9 @@ export const listAiGateways: API.PaginatedOperationMethod<
     ListAiGatewaysError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListAiGatewaysRequest) => stream.Stream<
+  items: (
+    input: ListAiGatewaysRequest,
+  ) => stream.Stream<
     {
       id: string;
       accountId: string;
@@ -682,7 +684,7 @@ export const CreateAiGatewayResponse =
         Schema.Array(
           Schema.Struct({
             authorization: Schema.String,
-            headers: Schema.Struct({}),
+            headers: Schema.Record(Schema.String, Schema.Unknown),
             url: Schema.String,
           }),
         ),
@@ -857,7 +859,7 @@ export const UpdateAiGatewayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.Array(
           Schema.Struct({
             authorization: Schema.String,
-            headers: Schema.Struct({}),
+            headers: Schema.Record(Schema.String, Schema.Unknown),
             url: Schema.String,
           }),
         ),
@@ -1011,7 +1013,7 @@ export const UpdateAiGatewayResponse =
         Schema.Array(
           Schema.Struct({
             authorization: Schema.String,
-            headers: Schema.Struct({}),
+            headers: Schema.Record(Schema.String, Schema.Unknown),
             url: Schema.String,
           }),
         ),
@@ -1200,7 +1202,7 @@ export const DeleteAiGatewayResponse =
         Schema.Array(
           Schema.Struct({
             authorization: Schema.String,
-            headers: Schema.Struct({}),
+            headers: Schema.Record(Schema.String, Schema.Unknown),
             url: Schema.String,
           }),
         ),
@@ -1528,7 +1530,9 @@ export const listDatasets: API.PaginatedOperationMethod<
     ListDatasetsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListDatasetsRequest) => stream.Stream<
+  items: (
+    input: ListDatasetsRequest,
+  ) => stream.Stream<
     {
       id: string;
       accountId: string;
@@ -2406,7 +2410,9 @@ export const listEvaluations: API.PaginatedOperationMethod<
     ListEvaluationsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListEvaluationsRequest) => stream.Stream<
+  items: (
+    input: ListEvaluationsRequest,
+  ) => stream.Stream<
     {
       id: string;
       accountId: string;
@@ -2961,7 +2967,9 @@ export const listEvaluationTypes: API.PaginatedOperationMethod<
     ListEvaluationTypesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListEvaluationTypesRequest) => stream.Stream<
+  items: (
+    input: ListEvaluationTypesRequest,
+  ) => stream.Stream<
     {
       id: string;
       createdAt: string;
@@ -3432,7 +3440,9 @@ export const listLogs: API.PaginatedOperationMethod<
     ListLogsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListLogsRequest) => stream.Stream<
+  items: (
+    input: ListLogsRequest,
+  ) => stream.Stream<
     {
       id: string;
       cached: boolean;
@@ -3488,7 +3498,9 @@ export const PatchLogRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.HttpPath("id")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   feedback: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  metadata: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+  metadata: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
   score: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
 }).pipe(
   T.Http({

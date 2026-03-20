@@ -378,7 +378,9 @@ export const listRequests: API.PaginatedOperationMethod<
     ListRequestsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListRequestsRequest) => stream.Stream<
+  items: (
+    input: ListRequestsRequest,
+  ) => stream.Stream<
     {
       id: string;
       created: string;
@@ -1041,7 +1043,9 @@ export const getRequestAsset: API.PaginatedOperationMethod<
     GetRequestAssetError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: GetRequestAssetRequest) => stream.Stream<
+  items: (
+    input: GetRequestAssetRequest,
+  ) => stream.Stream<
     {
       id: number;
       name: string;
@@ -1134,7 +1138,9 @@ export const createRequestAsset: API.PaginatedOperationMethod<
     CreateRequestAssetError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: CreateRequestAssetRequest) => stream.Stream<
+  items: (
+    input: CreateRequestAssetRequest,
+  ) => stream.Stream<
     {
       id: number;
       name: string;
@@ -1431,7 +1437,9 @@ export const getRequestMessage: API.PaginatedOperationMethod<
     GetRequestMessageError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: GetRequestMessageRequest) => stream.Stream<
+  items: (
+    input: GetRequestMessageRequest,
+  ) => stream.Stream<
     {
       code: number;
       message: string;
@@ -2235,7 +2243,9 @@ export const listScanConfigs: API.PaginatedOperationMethod<
     ListScanConfigsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListScanConfigsRequest) => stream.Stream<
+  items: (
+    input: ListScanConfigsRequest,
+  ) => stream.Stream<
     {
       id: string;
       accountId: string;
@@ -2792,7 +2802,10 @@ export const CreateThreatEventRequest =
     date: Schema.String,
     event: Schema.String,
     raw: Schema.Struct({
-      data: Schema.Union([Schema.Struct({}), Schema.Null]),
+      data: Schema.Union([
+        Schema.Record(Schema.String, Schema.Unknown),
+        Schema.Null,
+      ]),
       source: Schema.optional(Schema.String),
       tlp: Schema.optional(Schema.String),
     }),
@@ -2948,7 +2961,12 @@ export const PatchThreatEventRequest =
     insight: Schema.optional(Schema.String),
     raw: Schema.optional(
       Schema.Struct({
-        data: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+        data: Schema.optional(
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
+        ),
         source: Schema.optional(Schema.String),
         tlp: Schema.optional(Schema.String),
       }),
@@ -3116,7 +3134,10 @@ export const BulkCreateThreatEventsRequest =
         date: Schema.String,
         event: Schema.String,
         raw: Schema.Struct({
-          data: Schema.Union([Schema.Struct({}), Schema.Null]),
+          data: Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
           source: Schema.optional(Schema.String),
           tlp: Schema.optional(Schema.String),
         }),

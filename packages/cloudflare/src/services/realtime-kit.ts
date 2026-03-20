@@ -11612,7 +11612,7 @@ export const StartTrackRecordingRecordingRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appId: Schema.String.pipe(T.HttpPath("appId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    layers: Schema.Struct({}),
+    layers: Schema.Record(Schema.String, Schema.Unknown),
     meetingId: Schema.String,
     maxSeconds: Schema.optional(Schema.Number),
   }).pipe(

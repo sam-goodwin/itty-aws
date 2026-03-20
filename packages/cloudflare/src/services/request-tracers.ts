@@ -112,8 +112,8 @@ export const CreateTraceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-  cookies: Schema.optional(Schema.Struct({})),
-  headers: Schema.optional(Schema.Struct({})),
+  cookies: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  headers: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   protocol: Schema.optional(Schema.String),
   skipResponse: Schema.optional(Schema.Boolean),
 }).pipe(

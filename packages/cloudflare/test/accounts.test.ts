@@ -344,18 +344,14 @@ describe("Accounts", () => {
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
-    test("happy path - empty roleId returns all roles", () =>
-      Effect.gen(function* () {
-        const result = yield* Accounts.getRole({
-          accountId: accountId(),
-          roleId: "",
-        });
-
-        expect(result).toBeDefined();
-        // Schema.Unknown response returns the full Cloudflare envelope
-        const envelope = result as any;
-        expect(Array.isArray(envelope.result)).toBe(true);
-      }));
+    test("error - empty roleId returns CloudflareHttpError", () =>
+      Accounts.getRole({
+        accountId: accountId(),
+        roleId: "",
+      }).pipe(
+        Effect.flip,
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+      ));
   });
 
   // --------------------------------------------------------------------------
@@ -593,7 +589,7 @@ describe("Accounts", () => {
               resources: {
                 [`com.cloudflare.api.account.${accountId()}`]: "*",
               },
-              permission_groups: [{ id: readGroup.id }],
+              permissionGroups: [{ id: readGroup.id }],
             },
           ],
         }).pipe(
@@ -675,18 +671,14 @@ describe("Accounts", () => {
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
-    test("happy path - empty tokenId returns all tokens", () =>
-      Effect.gen(function* () {
-        const result = yield* Accounts.getToken({
-          accountId: accountId(),
-          tokenId: "",
-        });
-
-        expect(result).toBeDefined();
-        // Schema.Unknown response returns the full Cloudflare envelope
-        const envelope = result as any;
-        expect(Array.isArray(envelope.result)).toBe(true);
-      }));
+    test("error - empty tokenId returns CloudflareHttpError", () =>
+      Accounts.getToken({
+        accountId: accountId(),
+        tokenId: "",
+      }).pipe(
+        Effect.flip,
+        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+      ));
   });
 
   // --------------------------------------------------------------------------

@@ -1022,7 +1022,7 @@ function typeInfoToSchema(
           : "";
         return `Schema.Struct({\n${props}\n${indent}})${encodeKeysPipe}`;
       }
-      return "Schema.Struct({})";
+      return "Schema.Record(Schema.String, Schema.Unknown)";
 
     case "file":
       // File upload schema with trait annotation

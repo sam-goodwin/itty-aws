@@ -5392,9 +5392,7 @@ paths:
                                         description: "@deprecated"
                                     required:
                                       - _count
-                                      - _firstSeen
                                       - _interval
-                                      - _lastSeen
                                   count:
                                     type: number
                                   interval:

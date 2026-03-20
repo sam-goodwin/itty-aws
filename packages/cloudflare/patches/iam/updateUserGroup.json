@@ -1,0 +1,8 @@
+{
+  "errors": {},
+  "response": {
+    "properties": {
+      "policies[].resource_groups[].scope": { "type": "unknown" }
+    }
+  }
+}

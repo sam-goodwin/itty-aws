@@ -2184,7 +2184,9 @@ export const listSinks: API.PaginatedOperationMethod<
     ListSinksError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSinksRequest) => stream.Stream<
+  items: (
+    input: ListSinksRequest,
+  ) => stream.Stream<
     {
       id: string;
       createdAt: string;
@@ -3590,7 +3592,7 @@ export interface ValidateSqlPipelineResponse {
 
 export const ValidateSqlPipelineResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tables: Schema.Struct({}),
+    tables: Schema.Record(Schema.String, Schema.Unknown),
     graph: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -4788,7 +4790,9 @@ export const listStreams: API.PaginatedOperationMethod<
     ListStreamsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListStreamsRequest) => stream.Stream<
+  items: (
+    input: ListStreamsRequest,
+  ) => stream.Stream<
     {
       id: string;
       createdAt: string;
@@ -6278,7 +6282,9 @@ export const listV1Pipeline: API.PaginatedOperationMethod<
     ListV1PipelineError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListV1PipelineRequest) => stream.Stream<
+  items: (
+    input: ListV1PipelineRequest,
+  ) => stream.Stream<
     {
       id: string;
       createdAt: string;

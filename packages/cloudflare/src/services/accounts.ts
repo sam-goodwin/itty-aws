@@ -334,7 +334,9 @@ export const listAccounts: API.PaginatedOperationMethod<
     ListAccountsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListAccountsRequest) => stream.Stream<
+  items: (
+    input: ListAccountsRequest,
+  ) => stream.Stream<
     {
       id: string;
       name: string;
@@ -1071,7 +1073,9 @@ export const listLogAudits: API.PaginatedOperationMethod<
     ListLogAuditsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListLogAuditsRequest) => stream.Stream<
+  items: (
+    input: ListLogAuditsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       account?: { id?: string | null; name?: string | null } | null;
@@ -1859,7 +1863,9 @@ export const listMembers: API.PaginatedOperationMethod<
     ListMembersError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListMembersRequest) => stream.Stream<
+  items: (
+    input: ListMembersRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       email?: string | null;
@@ -3106,7 +3112,9 @@ export const listRoles: API.PaginatedOperationMethod<
     ListRolesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListRolesRequest) => stream.Stream<
+  items: (
+    input: ListRolesRequest,
+  ) => stream.Stream<
     {
       id: string;
       description: string;
@@ -3314,7 +3322,9 @@ export const getSubscription: API.PaginatedOperationMethod<
     GetSubscriptionError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: GetSubscriptionRequest) => stream.Stream<
+  items: (
+    input: GetSubscriptionRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       currency?: string | null;
@@ -3987,7 +3997,7 @@ export const GetTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             }),
           ),
-          resources: Schema.Struct({}),
+          resources: Schema.Record(Schema.String, Schema.Unknown),
         }).pipe(
           Schema.encodeKeys({
             id: "id",
@@ -4143,7 +4153,7 @@ export const ListTokensResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ),
                 }),
               ),
-              resources: Schema.Struct({}),
+              resources: Schema.Record(Schema.String, Schema.Unknown),
             }).pipe(
               Schema.encodeKeys({
                 id: "id",
@@ -4209,7 +4219,9 @@ export const listTokens: API.PaginatedOperationMethod<
     ListTokensError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListTokensRequest) => stream.Stream<
+  items: (
+    input: ListTokensRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       condition?: {
@@ -4287,7 +4299,7 @@ export const CreateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
         }),
       ),
-      resources: Schema.Struct({}),
+      resources: Schema.Record(Schema.String, Schema.Unknown),
     }).pipe(
       Schema.encodeKeys({
         effect: "effect",
@@ -4409,7 +4421,7 @@ export const CreateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             }),
           ),
-          resources: Schema.Struct({}),
+          resources: Schema.Record(Schema.String, Schema.Unknown),
         }).pipe(
           Schema.encodeKeys({
             id: "id",
@@ -4502,7 +4514,7 @@ export const UpdateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
         }),
       ),
-      resources: Schema.Struct({}),
+      resources: Schema.Record(Schema.String, Schema.Unknown),
     }).pipe(
       Schema.encodeKeys({
         effect: "effect",
@@ -4624,7 +4636,7 @@ export const UpdateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
             }),
           ),
-          resources: Schema.Struct({}),
+          resources: Schema.Record(Schema.String, Schema.Unknown),
         }).pipe(
           Schema.encodeKeys({
             id: "id",
@@ -4916,7 +4928,9 @@ export const listTokenPermissionGroups: API.PaginatedOperationMethod<
     ListTokenPermissionGroupsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListTokenPermissionGroupsRequest) => stream.Stream<
+  items: (
+    input: ListTokenPermissionGroupsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       name?: string | null;

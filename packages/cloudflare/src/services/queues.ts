@@ -360,7 +360,9 @@ export const listConsumers: API.PaginatedOperationMethod<
     ListConsumersError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListConsumersRequest) => stream.Stream<
+  items: (
+    input: ListConsumersRequest,
+  ) => stream.Stream<
     | {
         consumerId?: string | null;
         createdOn?: string | null;
@@ -2112,7 +2114,9 @@ export const listQueues: API.PaginatedOperationMethod<
     ListQueuesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListQueuesRequest) => stream.Stream<
+  items: (
+    input: ListQueuesRequest,
+  ) => stream.Stream<
     {
       consumers?:
         | (
@@ -3399,7 +3403,9 @@ export const listSubscriptions: API.PaginatedOperationMethod<
     ListSubscriptionsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSubscriptionsRequest) => stream.Stream<
+  items: (
+    input: ListSubscriptionsRequest,
+  ) => stream.Stream<
     {
       id: string;
       createdAt: string;

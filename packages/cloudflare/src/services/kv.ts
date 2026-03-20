@@ -451,7 +451,9 @@ export type BulkGetNamespacesResponse = {
 
 export const BulkGetNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    values: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+    values: Schema.optional(
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+    ),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<BulkGetNamespacesResponse>;
@@ -667,7 +669,9 @@ export type BulkGetNamespaceKeysResponse = {
 
 export const BulkGetNamespaceKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    values: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+    values: Schema.optional(
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+    ),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<BulkGetNamespaceKeysResponse>;

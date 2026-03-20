@@ -498,7 +498,10 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     Schema.Union([
                       Schema.Struct({
                         includeHeaders: Schema.optional(
-                          Schema.Union([Schema.Struct({}), Schema.Null]),
+                          Schema.Union([
+                            Schema.Record(Schema.String, Schema.Unknown),
+                            Schema.Null,
+                          ]),
                         ),
                         includeImages: Schema.optional(
                           Schema.Union([Schema.Boolean, Schema.Null]),
@@ -697,7 +700,9 @@ export const listInstances: API.PaginatedOperationMethod<
     ListInstancesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListInstancesRequest) => stream.Stream<
+  items: (
+    input: ListInstancesRequest,
+  ) => stream.Stream<
     {
       id: string;
       accountId: string;
@@ -1173,7 +1178,9 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           parseOptions: Schema.optional(
             Schema.Struct({
-              includeHeaders: Schema.optional(Schema.Struct({})),
+              includeHeaders: Schema.optional(
+                Schema.Record(Schema.String, Schema.Unknown),
+              ),
               includeImages: Schema.optional(Schema.Boolean),
               useBrowserRendering: Schema.optional(Schema.Boolean),
             }).pipe(
@@ -1660,7 +1667,10 @@ export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   Schema.Union([
                     Schema.Struct({
                       includeHeaders: Schema.optional(
-                        Schema.Union([Schema.Struct({}), Schema.Null]),
+                        Schema.Union([
+                          Schema.Record(Schema.String, Schema.Unknown),
+                          Schema.Null,
+                        ]),
                       ),
                       includeImages: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -2178,7 +2188,9 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Struct({
           parseOptions: Schema.optional(
             Schema.Struct({
-              includeHeaders: Schema.optional(Schema.Struct({})),
+              includeHeaders: Schema.optional(
+                Schema.Record(Schema.String, Schema.Unknown),
+              ),
               includeImages: Schema.optional(Schema.Boolean),
               useBrowserRendering: Schema.optional(Schema.Boolean),
             }).pipe(
@@ -2705,7 +2717,10 @@ export const UpdateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   Schema.Union([
                     Schema.Struct({
                       includeHeaders: Schema.optional(
-                        Schema.Union([Schema.Struct({}), Schema.Null]),
+                        Schema.Union([
+                          Schema.Record(Schema.String, Schema.Unknown),
+                          Schema.Null,
+                        ]),
                       ),
                       includeImages: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -3317,7 +3332,10 @@ export const DeleteInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   Schema.Union([
                     Schema.Struct({
                       includeHeaders: Schema.optional(
-                        Schema.Union([Schema.Struct({}), Schema.Null]),
+                        Schema.Union([
+                          Schema.Record(Schema.String, Schema.Unknown),
+                          Schema.Null,
+                        ]),
                       ),
                       includeImages: Schema.optional(
                         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -3926,7 +3944,10 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Union([
                   Schema.Struct({
                     includeHeaders: Schema.optional(
-                      Schema.Union([Schema.Struct({}), Schema.Null]),
+                      Schema.Union([
+                        Schema.Record(Schema.String, Schema.Unknown),
+                        Schema.Null,
+                      ]),
                     ),
                     includeImages: Schema.optional(
                       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -4137,10 +4158,10 @@ export const StatsInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   completed: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   error: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   fileEmbedErrors: Schema.optional(
-    Schema.Union([Schema.Struct({}), Schema.Null]),
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
   ),
   indexSourceErrors: Schema.optional(
-    Schema.Union([Schema.Struct({}), Schema.Null]),
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
   ),
   lastActivity: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   queued: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -4366,7 +4387,9 @@ export const listInstanceItems: API.PaginatedOperationMethod<
     ListInstanceItemsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListInstanceItemsRequest) => stream.Stream<
+  items: (
+    input: ListInstanceItemsRequest,
+  ) => stream.Stream<
     {
       id: string;
       key: string;
@@ -4556,7 +4579,9 @@ export const listInstanceJobs: API.PaginatedOperationMethod<
     ListInstanceJobsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListInstanceJobsRequest) => stream.Stream<
+  items: (
+    input: ListInstanceJobsRequest,
+  ) => stream.Stream<
     {
       id: string;
       source: "user" | "schedule";
@@ -4832,7 +4857,9 @@ export const listTokens: API.PaginatedOperationMethod<
     ListTokensError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListTokensRequest) => stream.Stream<
+  items: (
+    input: ListTokensRequest,
+  ) => stream.Stream<
     {
       id: string;
       accountId: string;

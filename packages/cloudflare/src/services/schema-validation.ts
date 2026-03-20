@@ -177,7 +177,9 @@ export const listSchemas: API.PaginatedOperationMethod<
     ListSchemasError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSchemasRequest) => stream.Stream<
+  items: (
+    input: ListSchemasRequest,
+  ) => stream.Stream<
     {
       createdAt: string;
       kind: "openapi_v3";
@@ -840,7 +842,7 @@ export interface BulkPatchSettingOperationsRequest {
 export const BulkPatchSettingOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    body: Schema.Struct({}).pipe(T.HttpBody()),
+    body: Schema.Record(Schema.String, Schema.Unknown).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -851,7 +853,7 @@ export const BulkPatchSettingOperationsRequest =
 export type BulkPatchSettingOperationsResponse = Record<string, unknown>;
 
 export const BulkPatchSettingOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<BulkPatchSettingOperationsResponse>;
 

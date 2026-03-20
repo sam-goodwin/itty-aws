@@ -323,7 +323,7 @@ export const PutCertificatePackCertificateResponse =
     ),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     customMetadata: Schema.optional(
-      Schema.Union([Schema.Struct({}), Schema.Null]),
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
     ),
     customOriginServer: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -753,7 +753,7 @@ export const GetCustomHostnameResponse =
     ),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     customMetadata: Schema.optional(
-      Schema.Union([Schema.Struct({}), Schema.Null]),
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
     ),
     customOriginServer: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -1173,7 +1173,10 @@ export const ListCustomHostnamesResponse =
         ),
         createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         customMetadata: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
         customOriginServer: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
@@ -1284,7 +1287,9 @@ export const listCustomHostnames: API.PaginatedOperationMethod<
     ListCustomHostnamesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListCustomHostnamesRequest) => stream.Stream<
+  items: (
+    input: ListCustomHostnamesRequest,
+  ) => stream.Stream<
     {
       id: string;
       hostname: string;
@@ -1431,7 +1436,9 @@ export const CreateCustomHostnameRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     hostname: Schema.String,
-    customMetadata: Schema.optional(Schema.Struct({})),
+    customMetadata: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
     ssl: Schema.optional(
       Schema.Struct({
         bundleMethod: Schema.optional(
@@ -1777,7 +1784,7 @@ export const CreateCustomHostnameResponse =
     ),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     customMetadata: Schema.optional(
-      Schema.Union([Schema.Struct({}), Schema.Null]),
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
     ),
     customOriginServer: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -1902,7 +1909,9 @@ export const PatchCustomHostnameRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customHostnameId: Schema.String.pipe(T.HttpPath("customHostnameId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    customMetadata: Schema.optional(Schema.Struct({})),
+    customMetadata: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
     customOriginServer: Schema.optional(Schema.String),
     customOriginSni: Schema.optional(Schema.String),
     ssl: Schema.optional(
@@ -2254,7 +2263,7 @@ export const PatchCustomHostnameResponse =
     ),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     customMetadata: Schema.optional(
-      Schema.Union([Schema.Struct({}), Schema.Null]),
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
     ),
     customOriginServer: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),

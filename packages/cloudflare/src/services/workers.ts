@@ -220,7 +220,7 @@ export const CreateAssetUploadRequest =
     jwtToken: Schema.optional(Schema.String).pipe(
       T.HttpHeader("Authorization"),
     ),
-    body: Schema.Struct({}).pipe(T.HttpBody()),
+    body: Schema.Record(Schema.String, Schema.Unknown).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2331,7 +2331,9 @@ export const listBetaWorkerVersions: API.PaginatedOperationMethod<
     ListBetaWorkerVersionsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListBetaWorkerVersionsRequest) => stream.Stream<
+  items: (
+    input: ListBetaWorkerVersionsRequest,
+  ) => stream.Stream<
     {
       id: string;
       createdOn: string;
@@ -4069,7 +4071,9 @@ export const listDomains: API.PaginatedOperationMethod<
     ListDomainsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListDomainsRequest) => stream.Stream<
+  items: (
+    input: ListDomainsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       environment?: string | null;
@@ -4995,9 +4999,9 @@ export interface QueryObservabilityTelemetryResponse {
           data: {
             aggregates: {
               count: number;
-              firstSeen: string;
+              firstSeen?: string | null;
               interval: number;
-              lastSeen: string;
+              lastSeen?: string | null;
               bin?: unknown | null;
             };
             count: number;
@@ -5548,7 +5552,10 @@ export const QueryObservabilityTelemetryResponse =
                             Schema.Union([Schema.String, Schema.Null]),
                           ),
                           event: Schema.optional(
-                            Schema.Union([Schema.Struct({}), Schema.Null]),
+                            Schema.Union([
+                              Schema.Record(Schema.String, Schema.Unknown),
+                              Schema.Null,
+                            ]),
                           ),
                           executionModel: Schema.optional(
                             Schema.Union([
@@ -5619,7 +5626,10 @@ export const QueryObservabilityTelemetryResponse =
                             Schema.Union([Schema.String, Schema.Null]),
                           ),
                           event: Schema.optional(
-                            Schema.Union([Schema.Struct({}), Schema.Null]),
+                            Schema.Union([
+                              Schema.Record(Schema.String, Schema.Unknown),
+                              Schema.Null,
+                            ]),
                           ),
                           executionModel: Schema.optional(
                             Schema.Union([
@@ -5675,9 +5685,13 @@ export const QueryObservabilityTelemetryResponse =
                     Schema.Struct({
                       aggregates: Schema.Struct({
                         count: Schema.Number,
-                        firstSeen: Schema.String,
+                        firstSeen: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
                         interval: Schema.Number,
-                        lastSeen: Schema.String,
+                        lastSeen: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
                         bin: Schema.optional(
                           Schema.Union([Schema.Unknown, Schema.Null]),
                         ),
@@ -5697,7 +5711,10 @@ export const QueryObservabilityTelemetryResponse =
                         Schema.Union([Schema.Number, Schema.Null]),
                       ),
                       groups: Schema.optional(
-                        Schema.Union([Schema.Struct({}), Schema.Null]),
+                        Schema.Union([
+                          Schema.Record(Schema.String, Schema.Unknown),
+                          Schema.Null,
+                        ]),
                       ),
                     }),
                   ),
@@ -5712,7 +5729,7 @@ export const QueryObservabilityTelemetryResponse =
       ]),
     ),
     invocations: Schema.optional(
-      Schema.Union([Schema.Struct({}), Schema.Null]),
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
     ),
     patterns: Schema.optional(
       Schema.Union([
@@ -5947,7 +5964,9 @@ export const valuesObservabilityTelemetry: API.PaginatedOperationMethod<
     ValuesObservabilityTelemetryError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ValuesObservabilityTelemetryRequest) => stream.Stream<
+  items: (
+    input: ValuesObservabilityTelemetryRequest,
+  ) => stream.Stream<
     {
       dataset: string;
       key: string;
@@ -6620,7 +6639,9 @@ export const listScripts: API.PaginatedOperationMethod<
     ListScriptsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListScriptsRequest) => stream.Stream<
+  items: (
+    input: ListScriptsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       compatibilityDate?: string | null;
@@ -7889,7 +7910,7 @@ export const CreateScriptAssetUploadRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    manifest: Schema.Struct({}),
+    manifest: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.Http({
       method: "POST",
@@ -10832,7 +10853,9 @@ export const listScriptSecrets: API.PaginatedOperationMethod<
     ListScriptSecretsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListScriptSecretsRequest) => stream.Stream<
+  items: (
+    input: ListScriptSecretsRequest,
+  ) => stream.Stream<
     | { name: string; type: "secret_text" }
     | {
         algorithm: unknown;
@@ -12492,7 +12515,9 @@ export const listScriptVersions: API.PaginatedOperationMethod<
     ListScriptVersionsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListScriptVersionsRequest) => stream.Stream<
+  items: (
+    input: ListScriptVersionsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       metadata?: {

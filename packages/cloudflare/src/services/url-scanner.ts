@@ -1533,7 +1533,7 @@ export const CreateScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   customagent: Schema.optional(Schema.String),
-  customHeaders: Schema.optional(Schema.Struct({})),
+  customHeaders: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   referer: Schema.optional(Schema.String),
   screenshotsResolutions: Schema.optional(
     Schema.Array(Schema.Literals(["desktop", "mobile", "tablet"])),
@@ -1610,7 +1610,9 @@ export const BulkCreateScansRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         Schema.Struct({
           url: Schema.String,
           customagent: Schema.optional(Schema.String),
-          customHeaders: Schema.optional(Schema.Struct({})),
+          customHeaders: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           referer: Schema.optional(Schema.String),
           screenshotsResolutions: Schema.optional(
             Schema.Array(Schema.Literals(["desktop", "mobile", "tablet"])),

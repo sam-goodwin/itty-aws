@@ -151,7 +151,10 @@ export const GetHealthcheckResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Boolean, Schema.Null]),
           ),
           header: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           method: Schema.optional(
             Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.Null]),
@@ -369,7 +372,10 @@ export const ListHealthchecksResponse =
                 Schema.Union([Schema.Boolean, Schema.Null]),
               ),
               header: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               method: Schema.optional(
                 Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.Null]),
@@ -473,7 +479,9 @@ export const listHealthchecks: API.PaginatedOperationMethod<
     ListHealthchecksError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListHealthchecksRequest) => stream.Stream<
+  items: (
+    input: ListHealthchecksRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       address?: string | null;
@@ -637,7 +645,10 @@ export const CreateHealthcheckRequest =
           ),
           followRedirects: Schema.optional(Schema.Boolean),
           header: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           method: Schema.optional(Schema.Literals(["GET", "HEAD"])),
           path: Schema.optional(Schema.String),
@@ -808,7 +819,10 @@ export const CreateHealthcheckResponse =
             Schema.Union([Schema.Boolean, Schema.Null]),
           ),
           header: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           method: Schema.optional(
             Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.Null]),
@@ -997,7 +1011,10 @@ export const UpdateHealthcheckRequest =
           ),
           followRedirects: Schema.optional(Schema.Boolean),
           header: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           method: Schema.optional(Schema.Literals(["GET", "HEAD"])),
           path: Schema.optional(Schema.String),
@@ -1171,7 +1188,10 @@ export const UpdateHealthcheckResponse =
             Schema.Union([Schema.Boolean, Schema.Null]),
           ),
           header: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           method: Schema.optional(
             Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.Null]),
@@ -1360,7 +1380,10 @@ export const PatchHealthcheckRequest =
           ),
           followRedirects: Schema.optional(Schema.Boolean),
           header: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           method: Schema.optional(Schema.Literals(["GET", "HEAD"])),
           path: Schema.optional(Schema.String),
@@ -1534,7 +1557,10 @@ export const PatchHealthcheckResponse =
             Schema.Union([Schema.Boolean, Schema.Null]),
           ),
           header: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           method: Schema.optional(
             Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.Null]),
@@ -1799,7 +1825,12 @@ export const GetPreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         followRedirects: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
         ),
-        header: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+        header: Schema.optional(
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
+        ),
         method: Schema.optional(
           Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.Null]),
         ),
@@ -1980,7 +2011,12 @@ export const CreatePreviewRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.Array(Schema.String), Schema.Null]),
         ),
         followRedirects: Schema.optional(Schema.Boolean),
-        header: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+        header: Schema.optional(
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
+        ),
         method: Schema.optional(Schema.Literals(["GET", "HEAD"])),
         path: Schema.optional(Schema.String),
         port: Schema.optional(Schema.Number),
@@ -2146,7 +2182,12 @@ export const CreatePreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         followRedirects: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
         ),
-        header: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+        header: Schema.optional(
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
+        ),
         method: Schema.optional(
           Schema.Union([Schema.Literals(["GET", "HEAD"]), Schema.Null]),
         ),

@@ -107,7 +107,9 @@ export const listApps: API.PaginatedOperationMethod<
     ListAppsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListAppsRequest) => stream.Stream<
+  items: (
+    input: ListAppsRequest,
+  ) => stream.Stream<
     | {
         accountAppId: string;
         hostnames?: string[] | null;
@@ -1183,7 +1185,9 @@ export const listConnectors: API.PaginatedOperationMethod<
     ListConnectorsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListConnectorsRequest) => stream.Stream<
+  items: (
+    input: ListConnectorsRequest,
+  ) => stream.Stream<
     {
       id: string;
       activated: boolean;
@@ -8040,7 +8044,9 @@ export const listPcaps: API.PaginatedOperationMethod<
     ListPcapsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListPcapsRequest) => stream.Stream<
+  items: (
+    input: ListPcapsRequest,
+  ) => stream.Stream<
     | {
         id?: string | null;
         filterV1?: {
@@ -8525,7 +8531,9 @@ export const getPcapOwnership: API.PaginatedOperationMethod<
     GetPcapOwnershipError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: GetPcapOwnershipRequest) => stream.Stream<
+  items: (
+    input: GetPcapOwnershipRequest,
+  ) => stream.Stream<
     {
       id: string;
       destinationConf: string;
@@ -10411,7 +10419,9 @@ export const listSites: API.PaginatedOperationMethod<
     ListSitesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSitesRequest) => stream.Stream<
+  items: (
+    input: ListSitesRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       connectorId?: string | null;
@@ -11119,7 +11129,9 @@ export const listSiteAcls: API.PaginatedOperationMethod<
     ListSiteAclsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSiteAclsRequest) => stream.Stream<
+  items: (
+    input: ListSiteAclsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       description?: string | null;
@@ -12067,7 +12079,10 @@ export const GetSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Union([Schema.Array(Schema.String), Schema.Null]),
               ),
               reservations: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
             }).pipe(
               Schema.encodeKeys({
@@ -12256,7 +12271,10 @@ export const ListSiteLansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
                   ),
                   reservations: Schema.optional(
-                    Schema.Union([Schema.Struct({}), Schema.Null]),
+                    Schema.Union([
+                      Schema.Record(Schema.String, Schema.Unknown),
+                      Schema.Null,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({
@@ -12320,7 +12338,9 @@ export const listSiteLans: API.PaginatedOperationMethod<
     ListSiteLansError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSiteLansRequest) => stream.Stream<
+  items: (
+    input: ListSiteLansRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       haLink?: boolean | null;
@@ -12443,7 +12463,9 @@ export const CreateSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           dhcpPoolStart: Schema.optional(Schema.String),
           dnsServer: Schema.optional(Schema.String),
           dnsServers: Schema.optional(Schema.Array(Schema.String)),
-          reservations: Schema.optional(Schema.Struct({})),
+          reservations: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
         }).pipe(
           Schema.encodeKeys({
             dhcpPoolEnd: "dhcp_pool_end",
@@ -12592,7 +12614,10 @@ export const CreateSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
                   ),
                   reservations: Schema.optional(
-                    Schema.Union([Schema.Struct({}), Schema.Null]),
+                    Schema.Union([
+                      Schema.Record(Schema.String, Schema.Unknown),
+                      Schema.Null,
+                    ]),
                   ),
                 }).pipe(
                   Schema.encodeKeys({
@@ -12656,7 +12681,9 @@ export const createSiteLan: API.PaginatedOperationMethod<
     CreateSiteLanError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: CreateSiteLanRequest) => stream.Stream<
+  items: (
+    input: CreateSiteLanRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       haLink?: boolean | null;
@@ -12778,7 +12805,9 @@ export const UpdateSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           dhcpPoolStart: Schema.optional(Schema.String),
           dnsServer: Schema.optional(Schema.String),
           dnsServers: Schema.optional(Schema.Array(Schema.String)),
-          reservations: Schema.optional(Schema.Struct({})),
+          reservations: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
         }).pipe(
           Schema.encodeKeys({
             dhcpPoolEnd: "dhcp_pool_end",
@@ -12925,7 +12954,10 @@ export const UpdateSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Union([Schema.Array(Schema.String), Schema.Null]),
               ),
               reservations: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
             }).pipe(
               Schema.encodeKeys({
@@ -13068,7 +13100,9 @@ export const PatchSiteLanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           dhcpPoolStart: Schema.optional(Schema.String),
           dnsServer: Schema.optional(Schema.String),
           dnsServers: Schema.optional(Schema.Array(Schema.String)),
-          reservations: Schema.optional(Schema.Struct({})),
+          reservations: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
         }).pipe(
           Schema.encodeKeys({
             dhcpPoolEnd: "dhcp_pool_end",
@@ -13215,7 +13249,10 @@ export const PatchSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Union([Schema.Array(Schema.String), Schema.Null]),
               ),
               reservations: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
             }).pipe(
               Schema.encodeKeys({
@@ -13405,7 +13442,10 @@ export const DeleteSiteLanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Union([Schema.Array(Schema.String), Schema.Null]),
               ),
               reservations: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
             }).pipe(
               Schema.encodeKeys({
@@ -13663,7 +13703,9 @@ export const listSiteWans: API.PaginatedOperationMethod<
     ListSiteWansError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSiteWansRequest) => stream.Stream<
+  items: (
+    input: ListSiteWansRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       healthCheckRate?: "low" | "mid" | "high" | null;
@@ -13822,7 +13864,9 @@ export const createSiteWan: API.PaginatedOperationMethod<
     CreateSiteWanError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: CreateSiteWanRequest) => stream.Stream<
+  items: (
+    input: CreateSiteWanRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       healthCheckRate?: "low" | "mid" | "high" | null;

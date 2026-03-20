@@ -40,10 +40,16 @@ export interface SubmitBrandProtectionResponse {
 export const SubmitBrandProtectionResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     skippedUrls: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Struct({})), Schema.Null]),
+      Schema.Union([
+        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+        Schema.Null,
+      ]),
     ),
     submittedUrls: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Struct({})), Schema.Null]),
+      Schema.Union([
+        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({
@@ -89,7 +95,7 @@ export interface UrlInfoBrandProtectionResponse {
 
 export const UrlInfoBrandProtectionResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(Schema.Struct({})),
+    result: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
   }) as unknown as Schema.Schema<UrlInfoBrandProtectionResponse>;
 
 export type UrlInfoBrandProtectionError = DefaultErrors;
@@ -251,7 +257,10 @@ export interface GetLogoMatchResponse {
 
 export const GetLogoMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   matches: Schema.optional(
-    Schema.Union([Schema.Array(Schema.Struct({})), Schema.Null]),
+    Schema.Union([
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+      Schema.Null,
+    ]),
   ),
   total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
 }) as unknown as Schema.Schema<GetLogoMatchResponse>;
@@ -303,7 +312,10 @@ export interface DownloadLogoMatchResponse {
 export const DownloadLogoMatchResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     matches: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Struct({})), Schema.Null]),
+      Schema.Union([
+        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+        Schema.Null,
+      ]),
     ),
     total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   }) as unknown as Schema.Schema<DownloadLogoMatchResponse>;
@@ -360,7 +372,10 @@ export interface GetMatchResponse {
 
 export const GetMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   matches: Schema.optional(
-    Schema.Union([Schema.Array(Schema.Struct({})), Schema.Null]),
+    Schema.Union([
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+      Schema.Null,
+    ]),
   ),
   total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
 }) as unknown as Schema.Schema<GetMatchResponse>;
@@ -413,7 +428,10 @@ export interface DownloadMatchResponse {
 
 export const DownloadMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   matches: Schema.optional(
-    Schema.Union([Schema.Array(Schema.Struct({})), Schema.Null]),
+    Schema.Union([
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+      Schema.Null,
+    ]),
   ),
   total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
 }) as unknown as Schema.Schema<DownloadMatchResponse>;
@@ -548,7 +566,9 @@ export interface BulkQueryRequest {
 
 export const BulkQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  queries: Schema.optional(Schema.Array(Schema.Struct({}))),
+  queries: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
 }).pipe(
   T.Http({
     method: "POST",

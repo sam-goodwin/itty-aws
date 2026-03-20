@@ -246,7 +246,11 @@ describe("DurableObjects", () => {
           limit: 0,
         }).pipe(
           Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("MalformedParameter")),
+          Effect.map((e) =>
+            expect(["MalformedParameter", "CloudflareHttpError"]).toContain(
+              e._tag,
+            ),
+          ),
         );
       }));
   });

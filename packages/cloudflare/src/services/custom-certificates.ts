@@ -381,7 +381,9 @@ export const listCustomCertificates: API.PaginatedOperationMethod<
     ListCustomCertificatesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListCustomCertificatesRequest) => stream.Stream<
+  items: (
+    input: ListCustomCertificatesRequest,
+  ) => stream.Stream<
     {
       id: string;
       bundleMethod: "ubiquitous" | "optimal" | "force";
@@ -1037,7 +1039,9 @@ export const putPrioritize: API.PaginatedOperationMethod<
     PutPrioritizeError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: PutPrioritizeRequest) => stream.Stream<
+  items: (
+    input: PutPrioritizeRequest,
+  ) => stream.Stream<
     {
       id: string;
       bundleMethod: "ubiquitous" | "optimal" | "force";

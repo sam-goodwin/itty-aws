@@ -160,7 +160,7 @@ export const UserAgentAiBotSummaryResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<UserAgentAiBotSummaryResponse>;
@@ -685,7 +685,7 @@ export const ModelAiInferenceSummaryResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ModelAiInferenceSummaryResponse>;
@@ -846,7 +846,7 @@ export const TaskAiInferenceSummaryResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<TaskAiInferenceSummaryResponse>;
@@ -1382,7 +1382,7 @@ export const SummaryAiTimeseriesGroupResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<SummaryAiTimeseriesGroupResponse>;
@@ -1626,7 +1626,9 @@ export const createAiToMarkdown: API.PaginatedOperationMethod<
     CreateAiToMarkdownError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: CreateAiToMarkdownRequest) => stream.Stream<
+  items: (
+    input: CreateAiToMarkdownRequest,
+  ) => stream.Stream<
     {
       data: string;
       format: string;
@@ -4705,7 +4707,7 @@ export const IndustryAttackLayer3SummaryResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<IndustryAttackLayer3SummaryResponse>;
@@ -5034,7 +5036,7 @@ export const VectorAttackLayer3SummaryResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<VectorAttackLayer3SummaryResponse>;
@@ -5195,7 +5197,7 @@ export const VerticalAttackLayer3SummaryResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<VerticalAttackLayer3SummaryResponse>;
@@ -7560,7 +7562,7 @@ export const IndustryAttackLayer7SummaryResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<IndustryAttackLayer7SummaryResponse>;
@@ -7721,7 +7723,7 @@ export const VerticalAttackLayer7SummaryResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<VerticalAttackLayer7SummaryResponse>;
@@ -9829,7 +9831,9 @@ export const listBgpHijackEvents: API.PaginatedOperationMethod<
     ListBgpHijackEventsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListBgpHijackEventsRequest) => stream.Stream<
+  items: (
+    input: ListBgpHijackEventsRequest,
+  ) => stream.Stream<
     {
       asnInfo: { asn: number; countryCode: string; orgName: string }[];
       events: {
@@ -10245,7 +10249,9 @@ export const listBgpLeakEvents: API.PaginatedOperationMethod<
     ListBgpLeakEventsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListBgpLeakEventsRequest) => stream.Stream<
+  items: (
+    input: ListBgpLeakEventsRequest,
+  ) => stream.Stream<
     {
       asnInfo: { asn: number; countryCode: string; orgName: string }[];
       events: {
@@ -11138,7 +11144,7 @@ export const SummaryBotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   }),
-  summary_0: Schema.Struct({}),
+  summary_0: Schema.Record(Schema.String, Schema.Unknown),
 }).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<SummaryBotResponse>;
@@ -11492,7 +11498,7 @@ export const SummaryBotWebCrawlerResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<SummaryBotWebCrawlerResponse>;
@@ -12919,7 +12925,7 @@ export const ResponseCodeDnsSummaryResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ResponseCodeDnsSummaryResponse>;
@@ -13267,7 +13273,7 @@ export const ResponseCodesAs112SummaryResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ResponseCodesAs112SummaryResponse>;
@@ -13667,7 +13673,7 @@ export const SummaryCtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   }),
   summary_0: Schema.Union([
-    Schema.Struct({}),
+    Schema.Record(Schema.String, Schema.Unknown),
     Schema.Struct({
       rfc6962: Schema.String,
       static: Schema.String,
@@ -30851,7 +30857,7 @@ export const HttpMethodAttackLayer7SummaryResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<HttpMethodAttackLayer7SummaryResponse>;
@@ -31899,7 +31905,7 @@ export const MitigationProductAttackLayer7SummaryResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<MitigationProductAttackLayer7SummaryResponse>;
@@ -34567,7 +34573,7 @@ export const ManagedRulesAttackLayer7SummaryResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ManagedRulesAttackLayer7SummaryResponse>;
@@ -35842,7 +35848,7 @@ export const QueryTypeAs112SummaryResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<QueryTypeAs112SummaryResponse>;
@@ -36190,7 +36196,7 @@ export const QueryTypeDnsSummaryResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<QueryTypeDnsSummaryResponse>;
@@ -36903,7 +36909,7 @@ export const SummaryV2AiBotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   },
 ).pipe(
   T.ResponsePath("result"),
@@ -37073,7 +37079,7 @@ export const SummaryV2AiInferenceResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<SummaryV2AiInferenceResponse>;
@@ -37254,7 +37260,7 @@ export const SummaryV2As112Response = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   },
 ).pipe(
   T.ResponsePath("result"),
@@ -37442,7 +37448,7 @@ export const SummaryV2AttackLayer3Response =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<SummaryV2AttackLayer3Response>;
@@ -37629,7 +37635,7 @@ export const SummaryV2AttackLayer7Response =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<SummaryV2AttackLayer7Response>;
@@ -37821,7 +37827,7 @@ export const SummaryV2DnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   }),
-  summary_0: Schema.Struct({}),
+  summary_0: Schema.Record(Schema.String, Schema.Unknown),
 }).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<SummaryV2DnsResponse>;
@@ -37997,7 +38003,7 @@ export const SummaryV2EmailRoutingResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<SummaryV2EmailRoutingResponse>;
@@ -38188,7 +38194,7 @@ export const SummaryV2EmailSecurityResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<SummaryV2EmailSecurityResponse>;
@@ -38378,7 +38384,7 @@ export const SummaryV2HttpResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   }),
-  summary_0: Schema.Struct({}),
+  summary_0: Schema.Record(Schema.String, Schema.Unknown),
 }).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<SummaryV2HttpResponse>;
@@ -38552,7 +38558,7 @@ export const SummaryV2LeakedCredentialResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<SummaryV2LeakedCredentialResponse>;
@@ -38723,7 +38729,7 @@ export const SummaryV2NetflowResponse =
         }),
       ),
     }),
-    summary_0: Schema.Struct({}),
+    summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<SummaryV2NetflowResponse>;

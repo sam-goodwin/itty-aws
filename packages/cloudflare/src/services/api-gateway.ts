@@ -424,7 +424,9 @@ export const listDiscoveryOperations: API.PaginatedOperationMethod<
     ListDiscoveryOperationsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListDiscoveryOperationsRequest) => stream.Stream<
+  items: (
+    input: ListDiscoveryOperationsRequest,
+  ) => stream.Stream<
     {
       id: string;
       endpoint: string;
@@ -529,7 +531,7 @@ export interface BulkPatchDiscoveryOperationsRequest {
 export const BulkPatchDiscoveryOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    body: Schema.Struct({}).pipe(T.HttpBody()),
+    body: Schema.Record(Schema.String, Schema.Unknown).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -540,7 +542,7 @@ export const BulkPatchDiscoveryOperationsRequest =
 export type BulkPatchDiscoveryOperationsResponse = Record<string, unknown>;
 
 export const BulkPatchDiscoveryOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<BulkPatchDiscoveryOperationsResponse>;
 
@@ -1429,7 +1431,9 @@ export const listOperations: API.PaginatedOperationMethod<
     ListOperationsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListOperationsRequest) => stream.Stream<
+  items: (
+    input: ListOperationsRequest,
+  ) => stream.Stream<
     {
       endpoint: string;
       host: string;
@@ -2458,7 +2462,9 @@ export const bulkCreateOperations: API.PaginatedOperationMethod<
     BulkCreateOperationsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: BulkCreateOperationsRequest) => stream.Stream<
+  items: (
+    input: BulkCreateOperationsRequest,
+  ) => stream.Stream<
     {
       endpoint: string;
       host: string;
@@ -2786,7 +2792,7 @@ export interface PatchOperationSchemaValidationRequest {
 export const PatchOperationSchemaValidationRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    settingsMultipleRequest: Schema.Struct({}),
+    settingsMultipleRequest: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
     Schema.encodeKeys({ settingsMultipleRequest: "settings_multiple_request" }),
     T.Http({
@@ -2798,7 +2804,7 @@ export const PatchOperationSchemaValidationRequest =
 export type PatchOperationSchemaValidationResponse = Record<string, unknown>;
 
 export const PatchOperationSchemaValidationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PatchOperationSchemaValidationResponse>;
 
@@ -3249,7 +3255,9 @@ export const listUserSchemas: API.PaginatedOperationMethod<
     ListUserSchemasError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListUserSchemasRequest) => stream.Stream<
+  items: (
+    input: ListUserSchemasRequest,
+  ) => stream.Stream<
     {
       createdAt: string;
       kind: "openapi_v3";
@@ -4161,7 +4169,9 @@ export const listUserSchemaOperations: API.PaginatedOperationMethod<
     ListUserSchemaOperationsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListUserSchemaOperationsRequest) => stream.Stream<
+  items: (
+    input: ListUserSchemaOperationsRequest,
+  ) => stream.Stream<
     | {
         endpoint: string;
         host: string;

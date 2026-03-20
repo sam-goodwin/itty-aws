@@ -341,7 +341,12 @@ export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         id: Schema.optional(
           Schema.Union([Schema.Literal("cache_ttl_by_status"), Schema.Null]),
         ),
-        value: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+        value: Schema.optional(
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(
@@ -962,7 +967,10 @@ export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             Schema.Union([Schema.Literal("cache_ttl_by_status"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -1448,7 +1456,7 @@ export const CreatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("cache_ttl_by_status")),
-        value: Schema.optional(Schema.Struct({})),
+        value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("disable_apps")),
@@ -1914,7 +1922,10 @@ export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("cache_ttl_by_status"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -2404,7 +2415,7 @@ export const UpdatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("cache_ttl_by_status")),
-        value: Schema.optional(Schema.Struct({})),
+        value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
       }),
       Schema.Struct({
         id: Schema.optional(Schema.Literal("disable_apps")),
@@ -2870,7 +2881,10 @@ export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([Schema.Literal("cache_ttl_by_status"), Schema.Null]),
           ),
           value: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
         }),
         Schema.Struct({
@@ -3361,7 +3375,7 @@ export const PatchPageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("cache_ttl_by_status")),
-          value: Schema.optional(Schema.Struct({})),
+          value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
         }),
         Schema.Struct({
           id: Schema.optional(Schema.Literal("disable_apps")),
@@ -3815,7 +3829,12 @@ export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         id: Schema.optional(
           Schema.Union([Schema.Literal("cache_ttl_by_status"), Schema.Null]),
         ),
-        value: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+        value: Schema.optional(
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
+        ),
       }),
       Schema.Struct({
         id: Schema.optional(

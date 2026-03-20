@@ -121,9 +121,9 @@ export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scriptPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     trackPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
-  tools: Schema.Struct({}),
-  triggers: Schema.Struct({}),
-  variables: Schema.Struct({}),
+  tools: Schema.Record(Schema.String, Schema.Unknown),
+  triggers: Schema.Record(Schema.String, Schema.Unknown),
+  variables: Schema.Record(Schema.String, Schema.Unknown),
   zarazVersion: Schema.Number,
   analytics: Schema.optional(
     Schema.Union([
@@ -146,9 +146,9 @@ export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         buttonTextTranslations: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              acceptAll: Schema.Struct({}),
-              confirmMyChoices: Schema.Struct({}),
-              rejectAll: Schema.Struct({}),
+              acceptAll: Schema.Record(Schema.String, Schema.Unknown),
+              confirmMyChoices: Schema.Record(Schema.String, Schema.Unknown),
+              rejectAll: Schema.Record(Schema.String, Schema.Unknown),
             }).pipe(
               Schema.encodeKeys({
                 acceptAll: "accept_all",
@@ -172,7 +172,10 @@ export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.String, Schema.Null]),
         ),
         consentModalIntroHTMLWithTranslations: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
         cookieName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         customCSS: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -184,10 +187,16 @@ export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         hideModal: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
         purposes: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
         purposesWithTranslations: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
         tcfCompliant: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
@@ -303,9 +312,9 @@ export const PutConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scriptPath: Schema.optional(Schema.String),
     trackPath: Schema.optional(Schema.String),
   }),
-  tools: Schema.Struct({}),
-  triggers: Schema.Struct({}),
-  variables: Schema.Struct({}),
+  tools: Schema.Record(Schema.String, Schema.Unknown),
+  triggers: Schema.Record(Schema.String, Schema.Unknown),
+  variables: Schema.Record(Schema.String, Schema.Unknown),
   zarazVersion: Schema.Number,
   analytics: Schema.optional(
     Schema.Struct({
@@ -319,9 +328,9 @@ export const PutConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       enabled: Schema.Boolean,
       buttonTextTranslations: Schema.optional(
         Schema.Struct({
-          acceptAll: Schema.Struct({}),
-          confirmMyChoices: Schema.Struct({}),
-          rejectAll: Schema.Struct({}),
+          acceptAll: Schema.Record(Schema.String, Schema.Unknown),
+          confirmMyChoices: Schema.Record(Schema.String, Schema.Unknown),
+          rejectAll: Schema.Record(Schema.String, Schema.Unknown),
         }).pipe(
           Schema.encodeKeys({
             acceptAll: "accept_all",
@@ -334,14 +343,18 @@ export const PutConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       companyName: Schema.optional(Schema.String),
       companyStreetAddress: Schema.optional(Schema.String),
       consentModalIntroHTML: Schema.optional(Schema.String),
-      consentModalIntroHTMLWithTranslations: Schema.optional(Schema.Struct({})),
+      consentModalIntroHTMLWithTranslations: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
       cookieName: Schema.optional(Schema.String),
       customCSS: Schema.optional(Schema.String),
       customIntroDisclaimerDismissed: Schema.optional(Schema.Boolean),
       defaultLanguage: Schema.optional(Schema.String),
       hideModal: Schema.optional(Schema.Boolean),
-      purposes: Schema.optional(Schema.Struct({})),
-      purposesWithTranslations: Schema.optional(Schema.Struct({})),
+      purposes: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      purposesWithTranslations: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
       tcfCompliant: Schema.optional(Schema.Boolean),
     }),
   ),
@@ -443,9 +456,9 @@ export const PutConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scriptPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     trackPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
-  tools: Schema.Struct({}),
-  triggers: Schema.Struct({}),
-  variables: Schema.Struct({}),
+  tools: Schema.Record(Schema.String, Schema.Unknown),
+  triggers: Schema.Record(Schema.String, Schema.Unknown),
+  variables: Schema.Record(Schema.String, Schema.Unknown),
   zarazVersion: Schema.Number,
   analytics: Schema.optional(
     Schema.Union([
@@ -468,9 +481,9 @@ export const PutConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         buttonTextTranslations: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              acceptAll: Schema.Struct({}),
-              confirmMyChoices: Schema.Struct({}),
-              rejectAll: Schema.Struct({}),
+              acceptAll: Schema.Record(Schema.String, Schema.Unknown),
+              confirmMyChoices: Schema.Record(Schema.String, Schema.Unknown),
+              rejectAll: Schema.Record(Schema.String, Schema.Unknown),
             }).pipe(
               Schema.encodeKeys({
                 acceptAll: "accept_all",
@@ -494,7 +507,10 @@ export const PutConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.String, Schema.Null]),
         ),
         consentModalIntroHTMLWithTranslations: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
         cookieName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         customCSS: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -506,10 +522,16 @@ export const PutConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         hideModal: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
         purposes: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
         purposesWithTranslations: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
         tcfCompliant: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
@@ -644,9 +666,9 @@ export const GetDefaultResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scriptPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     trackPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
-  tools: Schema.Struct({}),
-  triggers: Schema.Struct({}),
-  variables: Schema.Struct({}),
+  tools: Schema.Record(Schema.String, Schema.Unknown),
+  triggers: Schema.Record(Schema.String, Schema.Unknown),
+  variables: Schema.Record(Schema.String, Schema.Unknown),
   zarazVersion: Schema.Number,
   analytics: Schema.optional(
     Schema.Union([
@@ -669,9 +691,9 @@ export const GetDefaultResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         buttonTextTranslations: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              acceptAll: Schema.Struct({}),
-              confirmMyChoices: Schema.Struct({}),
-              rejectAll: Schema.Struct({}),
+              acceptAll: Schema.Record(Schema.String, Schema.Unknown),
+              confirmMyChoices: Schema.Record(Schema.String, Schema.Unknown),
+              rejectAll: Schema.Record(Schema.String, Schema.Unknown),
             }).pipe(
               Schema.encodeKeys({
                 acceptAll: "accept_all",
@@ -695,7 +717,10 @@ export const GetDefaultResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.String, Schema.Null]),
         ),
         consentModalIntroHTMLWithTranslations: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
         cookieName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         customCSS: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -707,10 +732,16 @@ export const GetDefaultResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         hideModal: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
         purposes: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
         purposesWithTranslations: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
         tcfCompliant: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
@@ -845,9 +876,9 @@ export const GetExportResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scriptPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     trackPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
-  tools: Schema.Struct({}),
-  triggers: Schema.Struct({}),
-  variables: Schema.Struct({}),
+  tools: Schema.Record(Schema.String, Schema.Unknown),
+  triggers: Schema.Record(Schema.String, Schema.Unknown),
+  variables: Schema.Record(Schema.String, Schema.Unknown),
   zarazVersion: Schema.Number,
   analytics: Schema.optional(
     Schema.Union([
@@ -870,9 +901,9 @@ export const GetExportResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         buttonTextTranslations: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              acceptAll: Schema.Struct({}),
-              confirmMyChoices: Schema.Struct({}),
-              rejectAll: Schema.Struct({}),
+              acceptAll: Schema.Record(Schema.String, Schema.Unknown),
+              confirmMyChoices: Schema.Record(Schema.String, Schema.Unknown),
+              rejectAll: Schema.Record(Schema.String, Schema.Unknown),
             }).pipe(
               Schema.encodeKeys({
                 acceptAll: "accept_all",
@@ -896,7 +927,10 @@ export const GetExportResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.String, Schema.Null]),
         ),
         consentModalIntroHTMLWithTranslations: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
         cookieName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         customCSS: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -908,10 +942,16 @@ export const GetExportResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         hideModal: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
         purposes: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
         purposesWithTranslations: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
         tcfCompliant: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
@@ -1010,7 +1050,9 @@ export const listHistories: API.PaginatedOperationMethod<
     ListHistoriesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListHistoriesRequest) => stream.Stream<
+  items: (
+    input: ListHistoriesRequest,
+  ) => stream.Stream<
     {
       id: number;
       createdAt: string;
@@ -1138,9 +1180,9 @@ export const PutHistoryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scriptPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     trackPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
-  tools: Schema.Struct({}),
-  triggers: Schema.Struct({}),
-  variables: Schema.Struct({}),
+  tools: Schema.Record(Schema.String, Schema.Unknown),
+  triggers: Schema.Record(Schema.String, Schema.Unknown),
+  variables: Schema.Record(Schema.String, Schema.Unknown),
   zarazVersion: Schema.Number,
   analytics: Schema.optional(
     Schema.Union([
@@ -1163,9 +1205,9 @@ export const PutHistoryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         buttonTextTranslations: Schema.optional(
           Schema.Union([
             Schema.Struct({
-              acceptAll: Schema.Struct({}),
-              confirmMyChoices: Schema.Struct({}),
-              rejectAll: Schema.Struct({}),
+              acceptAll: Schema.Record(Schema.String, Schema.Unknown),
+              confirmMyChoices: Schema.Record(Schema.String, Schema.Unknown),
+              rejectAll: Schema.Record(Schema.String, Schema.Unknown),
             }).pipe(
               Schema.encodeKeys({
                 acceptAll: "accept_all",
@@ -1189,7 +1231,10 @@ export const PutHistoryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([Schema.String, Schema.Null]),
         ),
         consentModalIntroHTMLWithTranslations: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
         cookieName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         customCSS: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1201,10 +1246,16 @@ export const PutHistoryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         hideModal: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
         purposes: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
         purposesWithTranslations: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
         tcfCompliant: Schema.optional(
           Schema.Union([Schema.Boolean, Schema.Null]),
@@ -1256,7 +1307,7 @@ export const GetHistoryConfigRequest =
 export type GetHistoryConfigResponse = Record<string, unknown>;
 
 export const GetHistoryConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetHistoryConfigResponse>;
 

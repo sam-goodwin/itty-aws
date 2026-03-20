@@ -179,7 +179,9 @@ export const listPermissionGroups: API.PaginatedOperationMethod<
     ListPermissionGroupsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListPermissionGroupsRequest) => stream.Stream<
+  items: (
+    input: ListPermissionGroupsRequest,
+  ) => stream.Stream<
     {
       id: string;
       meta?: { key?: string | null; value?: string | null } | null;
@@ -331,7 +333,9 @@ export const listResourceGroups: API.PaginatedOperationMethod<
     ListResourceGroupsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListResourceGroupsRequest) => stream.Stream<
+  items: (
+    input: ListResourceGroupsRequest,
+  ) => stream.Stream<
     {
       id: string;
       scope: { key: string; objects: { key: string }[] }[];
@@ -704,7 +708,9 @@ export const listSsos: API.PaginatedOperationMethod<
     ListSsosError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListSsosRequest) => stream.Stream<
+  items: (
+    input: ListSsosRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       createdOn?: string | null;
@@ -1001,7 +1007,7 @@ export interface GetUserGroupResponse {
         resourceGroups?:
           | {
               id: string;
-              scope: { key: string; objects: { key: string }[] }[];
+              scope: unknown;
               meta?: { key?: string | null; value?: string | null } | null;
               name?: string | null;
             }[]
@@ -1054,16 +1060,7 @@ export const GetUserGroupResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               Schema.Array(
                 Schema.Struct({
                   id: Schema.String,
-                  scope: Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      objects: Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                        }),
-                      ),
-                    }),
-                  ),
+                  scope: Schema.Unknown,
                   meta: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
@@ -1167,7 +1164,7 @@ export interface ListUserGroupsResponse {
           resourceGroups?:
             | {
                 id: string;
-                scope: { key: string; objects: { key: string }[] }[];
+                scope: unknown;
                 meta?: { key?: string | null; value?: string | null } | null;
                 name?: string | null;
               }[]
@@ -1175,12 +1172,12 @@ export interface ListUserGroupsResponse {
         }[]
       | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListUserGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1233,16 +1230,7 @@ export const ListUserGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                     Schema.Array(
                       Schema.Struct({
                         id: Schema.String,
-                        scope: Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            objects: Schema.Array(
-                              Schema.Struct({
-                                key: Schema.String,
-                              }),
-                            ),
-                          }),
-                        ),
+                        scope: Schema.Unknown,
                         meta: Schema.optional(
                           Schema.Union([
                             Schema.Struct({
@@ -1286,18 +1274,25 @@ export const ListUserGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         }),
       ),
     ),
-    resultInfo: Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          totalCount: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            page: "page",
+            perPage: "per_page",
+            totalCount: "total_count",
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
   },
 ).pipe(
@@ -1319,7 +1314,9 @@ export const listUserGroups: API.PaginatedOperationMethod<
     ListUserGroupsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListUserGroupsRequest) => stream.Stream<
+  items: (
+    input: ListUserGroupsRequest,
+  ) => stream.Stream<
     {
       id: string;
       createdOn: string;
@@ -1430,7 +1427,7 @@ export interface CreateUserGroupResponse {
         resourceGroups?:
           | {
               id: string;
-              scope: { key: string; objects: { key: string }[] }[];
+              scope: unknown;
               meta?: { key?: string | null; value?: string | null } | null;
               name?: string | null;
             }[]
@@ -1484,16 +1481,7 @@ export const CreateUserGroupResponse =
                 Schema.Array(
                   Schema.Struct({
                     id: Schema.String,
-                    scope: Schema.Array(
-                      Schema.Struct({
-                        key: Schema.String,
-                        objects: Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                          }),
-                        ),
-                      }),
-                    ),
+                    scope: Schema.Unknown,
                     meta: Schema.optional(
                       Schema.Union([
                         Schema.Struct({
@@ -1631,7 +1619,7 @@ export interface UpdateUserGroupResponse {
         resourceGroups?:
           | {
               id: string;
-              scope: { key: string; objects: { key: string }[] }[];
+              scope: unknown;
               meta?: { key?: string | null; value?: string | null } | null;
               name?: string | null;
             }[]
@@ -1685,16 +1673,7 @@ export const UpdateUserGroupResponse =
                 Schema.Array(
                   Schema.Struct({
                     id: Schema.String,
-                    scope: Schema.Array(
-                      Schema.Struct({
-                        key: Schema.String,
-                        objects: Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                          }),
-                        ),
-                      }),
-                    ),
+                    scope: Schema.Unknown,
                     meta: Schema.optional(
                       Schema.Union([
                         Schema.Struct({
@@ -1883,7 +1862,9 @@ export const listUserGroupMembers: API.PaginatedOperationMethod<
     ListUserGroupMembersError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListUserGroupMembersRequest) => stream.Stream<
+  items: (
+    input: ListUserGroupMembersRequest,
+  ) => stream.Stream<
     {
       id: string;
       email?: string | null;
@@ -2022,7 +2003,9 @@ export const updateUserGroupMember: API.PaginatedOperationMethod<
     UpdateUserGroupMemberError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: UpdateUserGroupMemberRequest) => stream.Stream<
+  items: (
+    input: UpdateUserGroupMemberRequest,
+  ) => stream.Stream<
     {
       id: string;
       email?: string | null;

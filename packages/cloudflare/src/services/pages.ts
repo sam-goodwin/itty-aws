@@ -349,7 +349,10 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
       }),
-      envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+      envVars: Schema.Union([
+        Schema.Record(Schema.String, Schema.Unknown),
+        Schema.Null,
+      ]),
       environment: Schema.Literals(["preview", "production"]),
       isSkipped: Schema.Boolean,
       latestStage: Schema.Struct({
@@ -476,27 +479,53 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       buildImageMajorVersion: Schema.Number,
       compatibilityDate: Schema.String,
       compatibilityFlags: Schema.Array(Schema.String),
-      envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+      envVars: Schema.Union([
+        Schema.Record(Schema.String, Schema.Unknown),
+        Schema.Null,
+      ]),
       failOpen: Schema.Boolean,
       usageModel: Schema.Literals(["standard", "bundled", "unbound"]),
       aiBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       analyticsEngineDatasets: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
-      browsers: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+      browsers: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
       d1Databases: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       durableObjectNamespaces: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       hyperdriveBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       kvNamespaces: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       limits: Schema.optional(
         Schema.Union([
@@ -507,7 +536,10 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       mtlsCertificates: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       placement: Schema.optional(
         Schema.Union([
@@ -518,14 +550,28 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       queueProducers: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       r2Buckets: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
-      services: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+      services: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
       vectorizeBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       wranglerConfigHash: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -562,27 +608,53 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       buildImageMajorVersion: Schema.Number,
       compatibilityDate: Schema.String,
       compatibilityFlags: Schema.Array(Schema.String),
-      envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+      envVars: Schema.Union([
+        Schema.Record(Schema.String, Schema.Unknown),
+        Schema.Null,
+      ]),
       failOpen: Schema.Boolean,
       usageModel: Schema.Literals(["standard", "bundled", "unbound"]),
       aiBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       analyticsEngineDatasets: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
-      browsers: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+      browsers: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
       d1Databases: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       durableObjectNamespaces: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       hyperdriveBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       kvNamespaces: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       limits: Schema.optional(
         Schema.Union([
@@ -593,7 +665,10 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       mtlsCertificates: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       placement: Schema.optional(
         Schema.Union([
@@ -604,14 +679,28 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       queueProducers: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       r2Buckets: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
-      services: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+      services: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
       vectorizeBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       wranglerConfigHash: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -690,7 +779,10 @@ export const GetProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
       }),
-      envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+      envVars: Schema.Union([
+        Schema.Record(Schema.String, Schema.Unknown),
+        Schema.Null,
+      ]),
       environment: Schema.Literals(["preview", "production"]),
       isSkipped: Schema.Boolean,
       latestStage: Schema.Struct({
@@ -1205,7 +1297,10 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
             type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
           }),
-          envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+          envVars: Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
           environment: Schema.Literals(["preview", "production"]),
           isSkipped: Schema.Boolean,
           latestStage: Schema.Struct({
@@ -1336,29 +1431,53 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           buildImageMajorVersion: Schema.Number,
           compatibilityDate: Schema.String,
           compatibilityFlags: Schema.Array(Schema.String),
-          envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+          envVars: Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
           failOpen: Schema.Boolean,
           usageModel: Schema.Literals(["standard", "bundled", "unbound"]),
           aiBindings: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           analyticsEngineDatasets: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           browsers: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           d1Databases: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           durableObjectNamespaces: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           hyperdriveBindings: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           kvNamespaces: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           limits: Schema.optional(
             Schema.Union([
@@ -1369,7 +1488,10 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ]),
           ),
           mtlsCertificates: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           placement: Schema.optional(
             Schema.Union([
@@ -1380,16 +1502,28 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ]),
           ),
           queueProducers: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           r2Buckets: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           services: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           vectorizeBindings: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           wranglerConfigHash: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
@@ -1426,29 +1560,53 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           buildImageMajorVersion: Schema.Number,
           compatibilityDate: Schema.String,
           compatibilityFlags: Schema.Array(Schema.String),
-          envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+          envVars: Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
           failOpen: Schema.Boolean,
           usageModel: Schema.Literals(["standard", "bundled", "unbound"]),
           aiBindings: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           analyticsEngineDatasets: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           browsers: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           d1Databases: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           durableObjectNamespaces: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           hyperdriveBindings: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           kvNamespaces: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           limits: Schema.optional(
             Schema.Union([
@@ -1459,7 +1617,10 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ]),
           ),
           mtlsCertificates: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           placement: Schema.optional(
             Schema.Union([
@@ -1470,16 +1631,28 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ]),
           ),
           queueProducers: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           r2Buckets: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           services: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           vectorizeBindings: Schema.optional(
-            Schema.Union([Schema.Struct({}), Schema.Null]),
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
           ),
           wranglerConfigHash: Schema.optional(
             Schema.Union([Schema.String, Schema.Null]),
@@ -1560,7 +1733,10 @@ export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
             type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
           }),
-          envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+          envVars: Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
           environment: Schema.Literals(["preview", "production"]),
           isSkipped: Schema.Boolean,
           latestStage: Schema.Struct({
@@ -1819,7 +1995,9 @@ export const listProjects: API.PaginatedOperationMethod<
     ListProjectsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListProjectsRequest) => stream.Stream<
+  items: (
+    input: ListProjectsRequest,
+  ) => stream.Stream<
     {
       id: string;
       canonicalDeployment: {
@@ -2166,37 +2344,63 @@ export const CreateProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       preview: Schema.optional(
         Schema.Struct({
-          aiBindings: Schema.optional(Schema.Struct({})),
+          aiBindings: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           alwaysUseLatestCompatibilityDate: Schema.optional(Schema.Boolean),
-          analyticsEngineDatasets: Schema.optional(Schema.Struct({})),
-          browsers: Schema.optional(Schema.Struct({})),
+          analyticsEngineDatasets: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          browsers: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           buildImageMajorVersion: Schema.optional(Schema.Number),
           compatibilityDate: Schema.optional(Schema.String),
           compatibilityFlags: Schema.optional(Schema.Array(Schema.String)),
-          d1Databases: Schema.optional(Schema.Struct({})),
-          durableObjectNamespaces: Schema.optional(Schema.Struct({})),
-          envVars: Schema.optional(Schema.Struct({})),
+          d1Databases: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          durableObjectNamespaces: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          envVars: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           failOpen: Schema.optional(Schema.Boolean),
-          hyperdriveBindings: Schema.optional(Schema.Struct({})),
-          kvNamespaces: Schema.optional(Schema.Struct({})),
+          hyperdriveBindings: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          kvNamespaces: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           limits: Schema.optional(
             Schema.Struct({
               cpuMs: Schema.Number,
             }).pipe(Schema.encodeKeys({ cpuMs: "cpu_ms" })),
           ),
-          mtlsCertificates: Schema.optional(Schema.Struct({})),
+          mtlsCertificates: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           placement: Schema.optional(
             Schema.Struct({
               mode: Schema.String,
             }),
           ),
-          queueProducers: Schema.optional(Schema.Struct({})),
-          r2Buckets: Schema.optional(Schema.Struct({})),
-          services: Schema.optional(Schema.Struct({})),
+          queueProducers: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          r2Buckets: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          services: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           usageModel: Schema.optional(
             Schema.Literals(["standard", "bundled", "unbound"]),
           ),
-          vectorizeBindings: Schema.optional(Schema.Struct({})),
+          vectorizeBindings: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           wranglerConfigHash: Schema.optional(Schema.String),
         }).pipe(
           Schema.encodeKeys({
@@ -2228,37 +2432,63 @@ export const CreateProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       production: Schema.optional(
         Schema.Struct({
-          aiBindings: Schema.optional(Schema.Struct({})),
+          aiBindings: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           alwaysUseLatestCompatibilityDate: Schema.optional(Schema.Boolean),
-          analyticsEngineDatasets: Schema.optional(Schema.Struct({})),
-          browsers: Schema.optional(Schema.Struct({})),
+          analyticsEngineDatasets: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          browsers: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           buildImageMajorVersion: Schema.optional(Schema.Number),
           compatibilityDate: Schema.optional(Schema.String),
           compatibilityFlags: Schema.optional(Schema.Array(Schema.String)),
-          d1Databases: Schema.optional(Schema.Struct({})),
-          durableObjectNamespaces: Schema.optional(Schema.Struct({})),
-          envVars: Schema.optional(Schema.Struct({})),
+          d1Databases: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          durableObjectNamespaces: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          envVars: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           failOpen: Schema.optional(Schema.Boolean),
-          hyperdriveBindings: Schema.optional(Schema.Struct({})),
-          kvNamespaces: Schema.optional(Schema.Struct({})),
+          hyperdriveBindings: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          kvNamespaces: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           limits: Schema.optional(
             Schema.Struct({
               cpuMs: Schema.Number,
             }).pipe(Schema.encodeKeys({ cpuMs: "cpu_ms" })),
           ),
-          mtlsCertificates: Schema.optional(Schema.Struct({})),
+          mtlsCertificates: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           placement: Schema.optional(
             Schema.Struct({
               mode: Schema.String,
             }),
           ),
-          queueProducers: Schema.optional(Schema.Struct({})),
-          r2Buckets: Schema.optional(Schema.Struct({})),
-          services: Schema.optional(Schema.Struct({})),
+          queueProducers: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          r2Buckets: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          services: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           usageModel: Schema.optional(
             Schema.Literals(["standard", "bundled", "unbound"]),
           ),
-          vectorizeBindings: Schema.optional(Schema.Struct({})),
+          vectorizeBindings: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           wranglerConfigHash: Schema.optional(Schema.String),
         }).pipe(
           Schema.encodeKeys({
@@ -2613,7 +2843,10 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
       }),
-      envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+      envVars: Schema.Union([
+        Schema.Record(Schema.String, Schema.Unknown),
+        Schema.Null,
+      ]),
       environment: Schema.Literals(["preview", "production"]),
       isSkipped: Schema.Boolean,
       latestStage: Schema.Struct({
@@ -2740,27 +2973,53 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       buildImageMajorVersion: Schema.Number,
       compatibilityDate: Schema.String,
       compatibilityFlags: Schema.Array(Schema.String),
-      envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+      envVars: Schema.Union([
+        Schema.Record(Schema.String, Schema.Unknown),
+        Schema.Null,
+      ]),
       failOpen: Schema.Boolean,
       usageModel: Schema.Literals(["standard", "bundled", "unbound"]),
       aiBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       analyticsEngineDatasets: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
-      browsers: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+      browsers: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
       d1Databases: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       durableObjectNamespaces: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       hyperdriveBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       kvNamespaces: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       limits: Schema.optional(
         Schema.Union([
@@ -2771,7 +3030,10 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       mtlsCertificates: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       placement: Schema.optional(
         Schema.Union([
@@ -2782,14 +3044,28 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       queueProducers: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       r2Buckets: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
-      services: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+      services: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
       vectorizeBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       wranglerConfigHash: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -2826,27 +3102,53 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       buildImageMajorVersion: Schema.Number,
       compatibilityDate: Schema.String,
       compatibilityFlags: Schema.Array(Schema.String),
-      envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+      envVars: Schema.Union([
+        Schema.Record(Schema.String, Schema.Unknown),
+        Schema.Null,
+      ]),
       failOpen: Schema.Boolean,
       usageModel: Schema.Literals(["standard", "bundled", "unbound"]),
       aiBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       analyticsEngineDatasets: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
-      browsers: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+      browsers: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
       d1Databases: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       durableObjectNamespaces: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       hyperdriveBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       kvNamespaces: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       limits: Schema.optional(
         Schema.Union([
@@ -2857,7 +3159,10 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       mtlsCertificates: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       placement: Schema.optional(
         Schema.Union([
@@ -2868,14 +3173,28 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       queueProducers: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       r2Buckets: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
-      services: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+      services: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
       vectorizeBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       wranglerConfigHash: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -2954,7 +3273,10 @@ export const CreateProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
       }),
-      envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+      envVars: Schema.Union([
+        Schema.Record(Schema.String, Schema.Unknown),
+        Schema.Null,
+      ]),
       environment: Schema.Literals(["preview", "production"]),
       isSkipped: Schema.Boolean,
       latestStage: Schema.Struct({
@@ -3307,37 +3629,63 @@ export const PatchProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       preview: Schema.optional(
         Schema.Struct({
-          aiBindings: Schema.optional(Schema.Struct({})),
+          aiBindings: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           alwaysUseLatestCompatibilityDate: Schema.optional(Schema.Boolean),
-          analyticsEngineDatasets: Schema.optional(Schema.Struct({})),
-          browsers: Schema.optional(Schema.Struct({})),
+          analyticsEngineDatasets: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          browsers: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           buildImageMajorVersion: Schema.optional(Schema.Number),
           compatibilityDate: Schema.optional(Schema.String),
           compatibilityFlags: Schema.optional(Schema.Array(Schema.String)),
-          d1Databases: Schema.optional(Schema.Struct({})),
-          durableObjectNamespaces: Schema.optional(Schema.Struct({})),
-          envVars: Schema.optional(Schema.Struct({})),
+          d1Databases: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          durableObjectNamespaces: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          envVars: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           failOpen: Schema.optional(Schema.Boolean),
-          hyperdriveBindings: Schema.optional(Schema.Struct({})),
-          kvNamespaces: Schema.optional(Schema.Struct({})),
+          hyperdriveBindings: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          kvNamespaces: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           limits: Schema.optional(
             Schema.Struct({
               cpuMs: Schema.Number,
             }).pipe(Schema.encodeKeys({ cpuMs: "cpu_ms" })),
           ),
-          mtlsCertificates: Schema.optional(Schema.Struct({})),
+          mtlsCertificates: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           placement: Schema.optional(
             Schema.Struct({
               mode: Schema.String,
             }),
           ),
-          queueProducers: Schema.optional(Schema.Struct({})),
-          r2Buckets: Schema.optional(Schema.Struct({})),
-          services: Schema.optional(Schema.Struct({})),
+          queueProducers: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          r2Buckets: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          services: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           usageModel: Schema.optional(
             Schema.Literals(["standard", "bundled", "unbound"]),
           ),
-          vectorizeBindings: Schema.optional(Schema.Struct({})),
+          vectorizeBindings: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           wranglerConfigHash: Schema.optional(Schema.String),
         }).pipe(
           Schema.encodeKeys({
@@ -3369,37 +3717,63 @@ export const PatchProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       production: Schema.optional(
         Schema.Struct({
-          aiBindings: Schema.optional(Schema.Struct({})),
+          aiBindings: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           alwaysUseLatestCompatibilityDate: Schema.optional(Schema.Boolean),
-          analyticsEngineDatasets: Schema.optional(Schema.Struct({})),
-          browsers: Schema.optional(Schema.Struct({})),
+          analyticsEngineDatasets: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          browsers: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           buildImageMajorVersion: Schema.optional(Schema.Number),
           compatibilityDate: Schema.optional(Schema.String),
           compatibilityFlags: Schema.optional(Schema.Array(Schema.String)),
-          d1Databases: Schema.optional(Schema.Struct({})),
-          durableObjectNamespaces: Schema.optional(Schema.Struct({})),
-          envVars: Schema.optional(Schema.Struct({})),
+          d1Databases: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          durableObjectNamespaces: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          envVars: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           failOpen: Schema.optional(Schema.Boolean),
-          hyperdriveBindings: Schema.optional(Schema.Struct({})),
-          kvNamespaces: Schema.optional(Schema.Struct({})),
+          hyperdriveBindings: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          kvNamespaces: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           limits: Schema.optional(
             Schema.Struct({
               cpuMs: Schema.Number,
             }).pipe(Schema.encodeKeys({ cpuMs: "cpu_ms" })),
           ),
-          mtlsCertificates: Schema.optional(Schema.Struct({})),
+          mtlsCertificates: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           placement: Schema.optional(
             Schema.Struct({
               mode: Schema.String,
             }),
           ),
-          queueProducers: Schema.optional(Schema.Struct({})),
-          r2Buckets: Schema.optional(Schema.Struct({})),
-          services: Schema.optional(Schema.Struct({})),
+          queueProducers: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          r2Buckets: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+          services: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           usageModel: Schema.optional(
             Schema.Literals(["standard", "bundled", "unbound"]),
           ),
-          vectorizeBindings: Schema.optional(Schema.Struct({})),
+          vectorizeBindings: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
           wranglerConfigHash: Schema.optional(Schema.String),
         }).pipe(
           Schema.encodeKeys({
@@ -3759,7 +4133,10 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
       }),
-      envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+      envVars: Schema.Union([
+        Schema.Record(Schema.String, Schema.Unknown),
+        Schema.Null,
+      ]),
       environment: Schema.Literals(["preview", "production"]),
       isSkipped: Schema.Boolean,
       latestStage: Schema.Struct({
@@ -3886,27 +4263,53 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       buildImageMajorVersion: Schema.Number,
       compatibilityDate: Schema.String,
       compatibilityFlags: Schema.Array(Schema.String),
-      envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+      envVars: Schema.Union([
+        Schema.Record(Schema.String, Schema.Unknown),
+        Schema.Null,
+      ]),
       failOpen: Schema.Boolean,
       usageModel: Schema.Literals(["standard", "bundled", "unbound"]),
       aiBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       analyticsEngineDatasets: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
-      browsers: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+      browsers: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
       d1Databases: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       durableObjectNamespaces: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       hyperdriveBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       kvNamespaces: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       limits: Schema.optional(
         Schema.Union([
@@ -3917,7 +4320,10 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       mtlsCertificates: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       placement: Schema.optional(
         Schema.Union([
@@ -3928,14 +4334,28 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       queueProducers: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       r2Buckets: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
-      services: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+      services: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
       vectorizeBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       wranglerConfigHash: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -3972,27 +4392,53 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       buildImageMajorVersion: Schema.Number,
       compatibilityDate: Schema.String,
       compatibilityFlags: Schema.Array(Schema.String),
-      envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+      envVars: Schema.Union([
+        Schema.Record(Schema.String, Schema.Unknown),
+        Schema.Null,
+      ]),
       failOpen: Schema.Boolean,
       usageModel: Schema.Literals(["standard", "bundled", "unbound"]),
       aiBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       analyticsEngineDatasets: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
-      browsers: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+      browsers: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
       d1Databases: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       durableObjectNamespaces: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       hyperdriveBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       kvNamespaces: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       limits: Schema.optional(
         Schema.Union([
@@ -4003,7 +4449,10 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       mtlsCertificates: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       placement: Schema.optional(
         Schema.Union([
@@ -4014,14 +4463,28 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       queueProducers: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       r2Buckets: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
-      services: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+      services: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
       vectorizeBindings: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       wranglerConfigHash: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -4100,7 +4563,10 @@ export const PatchProjectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
       }),
-      envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+      envVars: Schema.Union([
+        Schema.Record(Schema.String, Schema.Unknown),
+        Schema.Null,
+      ]),
       environment: Schema.Literals(["preview", "production"]),
       isSkipped: Schema.Boolean,
       latestStage: Schema.Struct({
@@ -4514,7 +4980,10 @@ export const GetProjectDeploymentResponse =
       ),
       type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
     }),
-    envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+    envVars: Schema.Union([
+      Schema.Record(Schema.String, Schema.Unknown),
+      Schema.Null,
+    ]),
     environment: Schema.Literals(["preview", "production"]),
     isSkipped: Schema.Boolean,
     latestStage: Schema.Struct({
@@ -4786,7 +5255,10 @@ export const ListProjectDeploymentsResponse =
           ),
           type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
         }),
-        envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+        envVars: Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
         environment: Schema.Literals(["preview", "production"]),
         isSkipped: Schema.Boolean,
         latestStage: Schema.Struct({
@@ -4941,7 +5413,9 @@ export const listProjectDeployments: API.PaginatedOperationMethod<
     ListProjectDeploymentsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListProjectDeploymentsRequest) => stream.Stream<
+  items: (
+    input: ListProjectDeploymentsRequest,
+  ) => stream.Stream<
     {
       id: string;
       aliases: string[] | null;
@@ -5215,7 +5689,10 @@ export const CreateProjectDeploymentResponse =
       ),
       type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
     }),
-    envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+    envVars: Schema.Union([
+      Schema.Record(Schema.String, Schema.Unknown),
+      Schema.Null,
+    ]),
     environment: Schema.Literals(["preview", "production"]),
     isSkipped: Schema.Boolean,
     latestStage: Schema.Struct({
@@ -5528,7 +6005,10 @@ export const RetryProjectDeploymentResponse =
       ),
       type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
     }),
-    envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+    envVars: Schema.Union([
+      Schema.Record(Schema.String, Schema.Unknown),
+      Schema.Null,
+    ]),
     environment: Schema.Literals(["preview", "production"]),
     isSkipped: Schema.Boolean,
     latestStage: Schema.Struct({
@@ -5802,7 +6282,10 @@ export const RollbackProjectDeploymentResponse =
       ),
       type: Schema.Literals(["github:push", "ad_hoc", "deploy_hook"]),
     }),
-    envVars: Schema.Union([Schema.Struct({}), Schema.Null]),
+    envVars: Schema.Union([
+      Schema.Record(Schema.String, Schema.Unknown),
+      Schema.Null,
+    ]),
     environment: Schema.Literals(["preview", "production"]),
     isSkipped: Schema.Boolean,
     latestStage: Schema.Struct({
@@ -6266,7 +6749,9 @@ export const listProjectDomains: API.PaginatedOperationMethod<
     ListProjectDomainsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListProjectDomainsRequest) => stream.Stream<
+  items: (
+    input: ListProjectDomainsRequest,
+  ) => stream.Stream<
     {
       id: string;
       certificateAuthority: "google" | "lets_encrypt";

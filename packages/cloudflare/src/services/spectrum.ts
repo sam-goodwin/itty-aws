@@ -213,8 +213,8 @@ export const GetAnalyticEventBytimeResponse =
       }),
     ),
     dataLag: Schema.Number,
-    max: Schema.Struct({}),
-    min: Schema.Struct({}),
+    max: Schema.Record(Schema.String, Schema.Unknown),
+    min: Schema.Record(Schema.String, Schema.Unknown),
     query: Schema.Struct({
       dimensions: Schema.optional(
         Schema.Union([
@@ -249,7 +249,7 @@ export const GetAnalyticEventBytimeResponse =
       until: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
     rows: Schema.Number,
-    totals: Schema.Struct({}),
+    totals: Schema.Record(Schema.String, Schema.Unknown),
     timeIntervals: Schema.optional(
       Schema.Union([Schema.Array(Schema.Array(Schema.String)), Schema.Null]),
     ),
@@ -404,8 +404,8 @@ export const GetAnalyticEventSummaryResponse =
       }),
     ),
     dataLag: Schema.Number,
-    max: Schema.Struct({}),
-    min: Schema.Struct({}),
+    max: Schema.Record(Schema.String, Schema.Unknown),
+    min: Schema.Record(Schema.String, Schema.Unknown),
     query: Schema.Struct({
       dimensions: Schema.optional(
         Schema.Union([
@@ -440,7 +440,7 @@ export const GetAnalyticEventSummaryResponse =
       until: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
     rows: Schema.Number,
-    totals: Schema.Struct({}),
+    totals: Schema.Record(Schema.String, Schema.Unknown),
     timeIntervals: Schema.optional(
       Schema.Union([Schema.Array(Schema.Array(Schema.String)), Schema.Null]),
     ),
@@ -885,7 +885,9 @@ export const listApps: API.PaginatedOperationMethod<
     ListAppsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListAppsRequest) => stream.Stream<
+  items: (
+    input: ListAppsRequest,
+  ) => stream.Stream<
     | {
         id: string;
         createdOn: string;

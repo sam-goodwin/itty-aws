@@ -554,7 +554,9 @@ export const listDnsFirewalls: API.PaginatedOperationMethod<
     ListDnsFirewallsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListDnsFirewallsRequest) => stream.Stream<
+  items: (
+    input: ListDnsFirewallsRequest,
+  ) => stream.Stream<
     {
       id: string;
       deprecateAnyRequests: boolean;
@@ -996,7 +998,7 @@ export interface GetReverseDnResponse {
 }
 
 export const GetReverseDnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  ptr: Schema.Struct({}),
+  ptr: Schema.Record(Schema.String, Schema.Unknown),
 }).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetReverseDnResponse>;
@@ -1025,7 +1027,7 @@ export interface PatchReverseDnRequest {
 export const PatchReverseDnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dnsFirewallId: Schema.String.pipe(T.HttpPath("dnsFirewallId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  ptr: Schema.optional(Schema.Struct({})),
+  ptr: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -1040,7 +1042,7 @@ export interface PatchReverseDnResponse {
 
 export const PatchReverseDnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    ptr: Schema.Struct({}),
+    ptr: Schema.Record(Schema.String, Schema.Unknown),
   },
 ).pipe(
   T.ResponsePath("result"),

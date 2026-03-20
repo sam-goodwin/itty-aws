@@ -268,7 +268,9 @@ export const CreateContentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
-  setExtraHTTPHeaders: Schema.optional(Schema.Struct({})),
+  setExtraHTTPHeaders: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
   setJavaScriptEnabled: Schema.optional(Schema.Boolean),
   userAgent: Schema.optional(Schema.String),
   viewport: Schema.optional(
@@ -594,11 +596,16 @@ export const CreateJsonRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       type: Schema.String,
       jsonSchema: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
     }).pipe(Schema.encodeKeys({ type: "type", jsonSchema: "json_schema" })),
   ),
-  setExtraHTTPHeaders: Schema.optional(Schema.Struct({})),
+  setExtraHTTPHeaders: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
   setJavaScriptEnabled: Schema.optional(Schema.Boolean),
   userAgent: Schema.optional(Schema.String),
   viewport: Schema.optional(
@@ -653,8 +660,9 @@ export const CreateJsonRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type CreateJsonResponse = Record<string, unknown>;
 
-export const CreateJsonResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+export const CreateJsonResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+  Schema.String,
+  Schema.Unknown,
 ).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<CreateJsonResponse>;
@@ -932,7 +940,9 @@ export const CreateLinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
-  setExtraHTTPHeaders: Schema.optional(Schema.Struct({})),
+  setExtraHTTPHeaders: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
   setJavaScriptEnabled: Schema.optional(Schema.Boolean),
   userAgent: Schema.optional(Schema.String),
   viewport: Schema.optional(
@@ -1238,7 +1248,9 @@ export const CreateMarkdownRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
-  setExtraHTTPHeaders: Schema.optional(Schema.Struct({})),
+  setExtraHTTPHeaders: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
   setJavaScriptEnabled: Schema.optional(Schema.Boolean),
   userAgent: Schema.optional(Schema.String),
   viewport: Schema.optional(
@@ -1618,7 +1630,9 @@ export const CreatePdfRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
-  setExtraHTTPHeaders: Schema.optional(Schema.Struct({})),
+  setExtraHTTPHeaders: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
   setJavaScriptEnabled: Schema.optional(Schema.Boolean),
   userAgent: Schema.optional(Schema.String),
   viewport: Schema.optional(
@@ -1927,7 +1941,9 @@ export const CreateScrapeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
-  setExtraHTTPHeaders: Schema.optional(Schema.Struct({})),
+  setExtraHTTPHeaders: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
   setJavaScriptEnabled: Schema.optional(Schema.Boolean),
   userAgent: Schema.optional(Schema.String),
   viewport: Schema.optional(
@@ -2305,7 +2321,9 @@ export const CreateScreenshotRequest =
     ),
     scrollPage: Schema.optional(Schema.Boolean),
     selector: Schema.optional(Schema.String),
-    setExtraHTTPHeaders: Schema.optional(Schema.Struct({})),
+    setExtraHTTPHeaders: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
     setJavaScriptEnabled: Schema.optional(Schema.Boolean),
     userAgent: Schema.optional(Schema.String),
     viewport: Schema.optional(
@@ -2661,7 +2679,9 @@ export const CreateSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       type: Schema.optional(Schema.Literals(["png", "jpeg", "webp"])),
     }),
   ),
-  setExtraHTTPHeaders: Schema.optional(Schema.Struct({})),
+  setExtraHTTPHeaders: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
   setJavaScriptEnabled: Schema.optional(Schema.Boolean),
   userAgent: Schema.optional(Schema.String),
   viewport: Schema.optional(

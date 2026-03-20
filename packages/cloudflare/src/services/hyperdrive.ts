@@ -396,7 +396,9 @@ export const listConfigs: API.PaginatedOperationMethod<
     ListConfigsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListConfigsRequest) => stream.Stream<
+  items: (
+    input: ListConfigsRequest,
+  ) => stream.Stream<
     {
       id: string;
       name: string;

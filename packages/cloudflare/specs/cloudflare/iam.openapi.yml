@@ -800,29 +800,6 @@ paths:
                                 type: string
                                 description: Identifier of the resource group.
                               scope:
-                                type: array
-                                items:
-                                  type: object
-                                  properties:
-                                    key:
-                                      type: string
-                                      description: This is a combination of pre-defined resource name and identifier
-                                        (like Account ID etc.)
-                                    objects:
-                                      type: array
-                                      items:
-                                        type: object
-                                        properties:
-                                          key:
-                                            type: string
-                                            description: This is a combination of pre-defined resource name and identifier
-                                              (like Zone ID etc.)
-                                        required:
-                                          - key
-                                      description: A list of scope objects for additional context.
-                                  required:
-                                    - key
-                                    - objects
                                 description: The scope associated to the resource group
                               meta:
                                 type: object
@@ -980,29 +957,6 @@ paths:
                                 type: string
                                 description: Identifier of the resource group.
                               scope:
-                                type: array
-                                items:
-                                  type: object
-                                  properties:
-                                    key:
-                                      type: string
-                                      description: This is a combination of pre-defined resource name and identifier
-                                        (like Account ID etc.)
-                                    objects:
-                                      type: array
-                                      items:
-                                        type: object
-                                        properties:
-                                          key:
-                                            type: string
-                                            description: This is a combination of pre-defined resource name and identifier
-                                              (like Zone ID etc.)
-                                        required:
-                                          - key
-                                      description: A list of scope objects for additional context.
-                                  required:
-                                    - key
-                                    - objects
                                 description: The scope associated to the resource group
                               meta:
                                 type: object
@@ -1342,29 +1296,6 @@ paths:
                                 type: string
                                 description: Identifier of the resource group.
                               scope:
-                                type: array
-                                items:
-                                  type: object
-                                  properties:
-                                    key:
-                                      type: string
-                                      description: This is a combination of pre-defined resource name and identifier
-                                        (like Account ID etc.)
-                                    objects:
-                                      type: array
-                                      items:
-                                        type: object
-                                        properties:
-                                          key:
-                                            type: string
-                                            description: This is a combination of pre-defined resource name and identifier
-                                              (like Zone ID etc.)
-                                        required:
-                                          - key
-                                      description: A list of scope objects for additional context.
-                                  required:
-                                    - key
-                                    - objects
                                 description: The scope associated to the resource group
                               meta:
                                 type: object

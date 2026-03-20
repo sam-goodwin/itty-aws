@@ -6,6 +6,8 @@
     "properties": {
       "events.events[].source": { "type": "unknown" },
       "events.series[].data[].value": { "optional": true },
+      "events.series[].data[].aggregates._firstSeen": { "optional": true },
+      "events.series[].data[].aggregates._lastSeen": { "optional": true },
       "run.statistics": { "optional": true },
       "run.created": { "optional": true }
     }

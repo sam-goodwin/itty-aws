@@ -881,7 +881,9 @@ export const GetCatalogSyncResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String,
     policy: Schema.String,
     updateMode: Schema.Literals(["AUTO", "MANUAL"]),
-    errors: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+    errors: Schema.optional(
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+    ),
     includesDiscoveriesUntil: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
     ),
@@ -969,7 +971,12 @@ export const ListCatalogSyncsResponse =
         name: Schema.String,
         policy: Schema.String,
         updateMode: Schema.Literals(["AUTO", "MANUAL"]),
-        errors: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+        errors: Schema.optional(
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
+        ),
         includesDiscoveriesUntil: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
         ),
@@ -1013,7 +1020,9 @@ export const listCatalogSyncs: API.PaginatedOperationMethod<
     ListCatalogSyncsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListCatalogSyncsRequest) => stream.Stream<
+  items: (
+    input: ListCatalogSyncsRequest,
+  ) => stream.Stream<
     {
       id: string;
       description: string;
@@ -1106,7 +1115,9 @@ export const CreateCatalogSyncResponse =
     name: Schema.String,
     policy: Schema.String,
     updateMode: Schema.Literals(["AUTO", "MANUAL"]),
-    errors: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+    errors: Schema.optional(
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+    ),
     includesDiscoveriesUntil: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
     ),
@@ -1210,7 +1221,9 @@ export const UpdateCatalogSyncResponse =
     name: Schema.String,
     policy: Schema.String,
     updateMode: Schema.Literals(["AUTO", "MANUAL"]),
-    errors: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+    errors: Schema.optional(
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+    ),
     includesDiscoveriesUntil: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
     ),
@@ -1314,7 +1327,9 @@ export const PatchCatalogSyncResponse =
     name: Schema.String,
     policy: Schema.String,
     updateMode: Schema.Literals(["AUTO", "MANUAL"]),
-    errors: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+    errors: Schema.optional(
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+    ),
     includesDiscoveriesUntil: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
     ),
@@ -1509,7 +1524,9 @@ export const listCatalogSyncPrebuiltPolicies: API.PaginatedOperationMethod<
     ListCatalogSyncPrebuiltPoliciesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListCatalogSyncPrebuiltPoliciesRequest) => stream.Stream<
+  items: (
+    input: ListCatalogSyncPrebuiltPoliciesRequest,
+  ) => stream.Stream<
     {
       applicableDestinations: ("NONE" | "ZERO_TRUST_LIST")[];
       policyDescription: string;
@@ -2014,7 +2031,9 @@ export const listCloudIntegrations: API.PaginatedOperationMethod<
     ListCloudIntegrationsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListCloudIntegrationsRequest) => stream.Stream<
+  items: (
+    input: ListCloudIntegrationsRequest,
+  ) => stream.Stream<
     {
       id: string;
       cloudType: "AWS" | "AZURE" | "GOOGLE" | "CLOUDFLARE";
@@ -4081,7 +4100,7 @@ export const GetOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   postApplyResources: Schema.optional(
-    Schema.Union([Schema.Struct({}), Schema.Null]),
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
   ),
   postApplyResourcesUnavailable: Schema.optional(
     Schema.Union([Schema.Boolean, Schema.Null]),
@@ -4115,7 +4134,10 @@ export const GetOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         routes: Schema.Array(Schema.String),
         tunnels: Schema.Array(Schema.String),
         lifecycleErrors: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -4131,7 +4153,9 @@ export const GetOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   vpc: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  vpcsById: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+  vpcsById: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
   vpcsByIdUnavailable: Schema.optional(
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
   ),
@@ -4557,7 +4581,10 @@ export const ListOnRampsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       postApplyResources: Schema.optional(
-        Schema.Union([Schema.Struct({}), Schema.Null]),
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
       ),
       postApplyResourcesUnavailable: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -4591,7 +4618,10 @@ export const ListOnRampsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             routes: Schema.Array(Schema.String),
             tunnels: Schema.Array(Schema.String),
             lifecycleErrors: Schema.optional(
-              Schema.Union([Schema.Struct({}), Schema.Null]),
+              Schema.Union([
+                Schema.Record(Schema.String, Schema.Unknown),
+                Schema.Null,
+              ]),
             ),
           }).pipe(
             Schema.encodeKeys({
@@ -4607,7 +4637,12 @@ export const ListOnRampsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ]),
       ),
       vpc: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      vpcsById: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+      vpcsById: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
       vpcsByIdUnavailable: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
@@ -4662,7 +4697,9 @@ export const listOnRamps: API.PaginatedOperationMethod<
     ListOnRampsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListOnRampsRequest) => stream.Stream<
+  items: (
+    input: ListOnRampsRequest,
+  ) => stream.Stream<
     {
       id: string;
       cloudType: "AWS" | "AZURE" | "GOOGLE";
@@ -5244,7 +5281,7 @@ export const CreateOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   postApplyResources: Schema.optional(
-    Schema.Union([Schema.Struct({}), Schema.Null]),
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
   ),
   postApplyResourcesUnavailable: Schema.optional(
     Schema.Union([Schema.Boolean, Schema.Null]),
@@ -5278,7 +5315,10 @@ export const CreateOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         routes: Schema.Array(Schema.String),
         tunnels: Schema.Array(Schema.String),
         lifecycleErrors: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -5294,7 +5334,9 @@ export const CreateOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   vpc: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  vpcsById: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+  vpcsById: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
   vpcsByIdUnavailable: Schema.optional(
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
   ),
@@ -5742,7 +5784,7 @@ export const UpdateOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   postApplyResources: Schema.optional(
-    Schema.Union([Schema.Struct({}), Schema.Null]),
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
   ),
   postApplyResourcesUnavailable: Schema.optional(
     Schema.Union([Schema.Boolean, Schema.Null]),
@@ -5776,7 +5818,10 @@ export const UpdateOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         routes: Schema.Array(Schema.String),
         tunnels: Schema.Array(Schema.String),
         lifecycleErrors: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -5792,7 +5837,9 @@ export const UpdateOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   vpc: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  vpcsById: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+  vpcsById: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
   vpcsByIdUnavailable: Schema.optional(
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
   ),
@@ -6240,7 +6287,7 @@ export const PatchOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   postApplyResources: Schema.optional(
-    Schema.Union([Schema.Struct({}), Schema.Null]),
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
   ),
   postApplyResourcesUnavailable: Schema.optional(
     Schema.Union([Schema.Boolean, Schema.Null]),
@@ -6274,7 +6321,10 @@ export const PatchOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         routes: Schema.Array(Schema.String),
         tunnels: Schema.Array(Schema.String),
         lifecycleErrors: Schema.optional(
-          Schema.Union([Schema.Struct({}), Schema.Null]),
+          Schema.Union([
+            Schema.Record(Schema.String, Schema.Unknown),
+            Schema.Null,
+          ]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -6290,7 +6340,9 @@ export const PatchOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   vpc: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  vpcsById: Schema.optional(Schema.Union([Schema.Struct({}), Schema.Null])),
+  vpcsById: Schema.optional(
+    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+  ),
   vpcsByIdUnavailable: Schema.optional(
     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
   ),
@@ -8550,7 +8602,7 @@ export const GetResourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   accountId: Schema.String,
   cloudType: Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
-  config: Schema.Struct({}),
+  config: Schema.Record(Schema.String, Schema.Unknown),
   deploymentProvider: Schema.String,
   managed: Schema.Boolean,
   monthlyCostEstimate: Schema.Struct({
@@ -8561,9 +8613,9 @@ export const GetResourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   name: Schema.String,
   nativeId: Schema.String,
-  observations: Schema.Struct({}),
+  observations: Schema.Record(Schema.String, Schema.Unknown),
   providerIds: Schema.Array(Schema.String),
-  providerNamesById: Schema.Struct({}),
+  providerNamesById: Schema.Record(Schema.String, Schema.Unknown),
   region: Schema.String,
   resourceGroup: Schema.String,
   resourceType: Schema.Literals([
@@ -9128,8 +9180,8 @@ export const GetResourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-  state: Schema.Struct({}),
-  tags: Schema.Struct({}),
+  state: Schema.Record(Schema.String, Schema.Unknown),
+  tags: Schema.Record(Schema.String, Schema.Unknown),
   updatedAt: Schema.String,
   url: Schema.String,
   managedBy: Schema.optional(
@@ -9652,7 +9704,7 @@ export const ListResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       id: Schema.String,
       accountId: Schema.String,
       cloudType: Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
-      config: Schema.Struct({}),
+      config: Schema.Record(Schema.String, Schema.Unknown),
       deploymentProvider: Schema.String,
       managed: Schema.Boolean,
       monthlyCostEstimate: Schema.Struct({
@@ -9666,9 +9718,9 @@ export const ListResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       name: Schema.String,
       nativeId: Schema.String,
-      observations: Schema.Struct({}),
+      observations: Schema.Record(Schema.String, Schema.Unknown),
       providerIds: Schema.Array(Schema.String),
-      providerNamesById: Schema.Struct({}),
+      providerNamesById: Schema.Record(Schema.String, Schema.Unknown),
       region: Schema.String,
       resourceGroup: Schema.String,
       resourceType: Schema.Literals([
@@ -10091,8 +10143,8 @@ export const ListResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           }),
         ),
       ),
-      state: Schema.Struct({}),
-      tags: Schema.Struct({}),
+      state: Schema.Record(Schema.String, Schema.Unknown),
+      tags: Schema.Record(Schema.String, Schema.Unknown),
       updatedAt: Schema.String,
       url: Schema.String,
       managedBy: Schema.optional(
@@ -10171,7 +10223,9 @@ export const listResources: API.PaginatedOperationMethod<
     ListResourcesError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListResourcesRequest) => stream.Stream<
+  items: (
+    input: ListResourcesRequest,
+  ) => stream.Stream<
     {
       id: string;
       accountId: string;

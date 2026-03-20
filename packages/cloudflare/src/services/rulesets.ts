@@ -2184,7 +2184,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Struct({
               headers: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               uri: Schema.optional(
                 Schema.Union([
@@ -2765,7 +2768,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                                 ),
                                 contains: Schema.optional(
                                   Schema.Union([
-                                    Schema.Struct({}),
+                                    Schema.Record(
+                                      Schema.String,
+                                      Schema.Unknown,
+                                    ),
                                     Schema.Null,
                                   ]),
                                 ),
@@ -3373,7 +3379,10 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ]),
               ),
               rules: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               ruleset: Schema.optional(
                 Schema.Union([Schema.Literal("current"), Schema.Null]),
@@ -5011,7 +5020,9 @@ export const PutPhasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           action: Schema.optional(Schema.Literal("rewrite")),
           actionParameters: Schema.optional(
             Schema.Struct({
-              headers: Schema.optional(Schema.Struct({})),
+              headers: Schema.optional(
+                Schema.Record(Schema.String, Schema.Unknown),
+              ),
               uri: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
@@ -5378,7 +5389,9 @@ export const PutPhasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                           checkPresence: Schema.optional(
                             Schema.Array(Schema.String),
                           ),
-                          contains: Schema.optional(Schema.Struct({})),
+                          contains: Schema.optional(
+                            Schema.Record(Schema.String, Schema.Unknown),
+                          ),
                           excludeOrigin: Schema.optional(Schema.Boolean),
                           include: Schema.optional(Schema.Array(Schema.String)),
                         }).pipe(
@@ -5765,7 +5778,9 @@ export const PutPhasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ]),
                 ),
               ),
-              rules: Schema.optional(Schema.Struct({})),
+              rules: Schema.optional(
+                Schema.Record(Schema.String, Schema.Unknown),
+              ),
               ruleset: Schema.optional(Schema.Literal("current")),
               rulesets: Schema.optional(Schema.Array(Schema.String)),
             }),
@@ -7992,7 +8007,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Struct({
               headers: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               uri: Schema.optional(
                 Schema.Union([
@@ -8573,7 +8591,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                                 ),
                                 contains: Schema.optional(
                                   Schema.Union([
-                                    Schema.Struct({}),
+                                    Schema.Record(
+                                      Schema.String,
+                                      Schema.Unknown,
+                                    ),
                                     Schema.Null,
                                   ]),
                                 ),
@@ -9181,7 +9202,10 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ]),
               ),
               rules: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               ruleset: Schema.optional(
                 Schema.Union([Schema.Literal("current"), Schema.Null]),
@@ -11509,7 +11533,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.Union([
               Schema.Struct({
                 headers: Schema.optional(
-                  Schema.Union([Schema.Struct({}), Schema.Null]),
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
                 ),
                 uri: Schema.optional(
                   Schema.Union([
@@ -12098,7 +12125,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                                   ),
                                   contains: Schema.optional(
                                     Schema.Union([
-                                      Schema.Struct({}),
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.Unknown,
+                                      ),
                                       Schema.Null,
                                     ]),
                                   ),
@@ -12721,7 +12751,10 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   ]),
                 ),
                 rules: Schema.optional(
-                  Schema.Union([Schema.Struct({}), Schema.Null]),
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
                 ),
                 ruleset: Schema.optional(
                   Schema.Union([Schema.Literal("current"), Schema.Null]),
@@ -12967,7 +13000,9 @@ export const listPhasVersions: API.PaginatedOperationMethod<
     ListPhasVersionsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListPhasVersionsRequest) => stream.Stream<
+  items: (
+    input: ListPhasVersionsRequest,
+  ) => stream.Stream<
     {
       id: string;
       kind: "managed" | "custom" | "root" | "zone";
@@ -15315,7 +15350,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Struct({
               headers: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               uri: Schema.optional(
                 Schema.Union([
@@ -15896,7 +15934,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                                 ),
                                 contains: Schema.optional(
                                   Schema.Union([
-                                    Schema.Struct({}),
+                                    Schema.Record(
+                                      Schema.String,
+                                      Schema.Unknown,
+                                    ),
                                     Schema.Null,
                                   ]),
                                 ),
@@ -16504,7 +16545,10 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ]),
               ),
               rules: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               ruleset: Schema.optional(
                 Schema.Union([Schema.Literal("current"), Schema.Null]),
@@ -18936,7 +18980,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Struct({
               headers: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               uri: Schema.optional(
                 Schema.Union([
@@ -19517,7 +19564,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                                 ),
                                 contains: Schema.optional(
                                   Schema.Union([
-                                    Schema.Struct({}),
+                                    Schema.Record(
+                                      Schema.String,
+                                      Schema.Unknown,
+                                    ),
                                     Schema.Null,
                                   ]),
                                 ),
@@ -20125,7 +20175,10 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ]),
               ),
               rules: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               ruleset: Schema.optional(
                 Schema.Union([Schema.Literal("current"), Schema.Null]),
@@ -22427,7 +22480,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Struct({
               headers: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               uri: Schema.optional(
                 Schema.Union([
@@ -23008,7 +23064,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                                 ),
                                 contains: Schema.optional(
                                   Schema.Union([
-                                    Schema.Struct({}),
+                                    Schema.Record(
+                                      Schema.String,
+                                      Schema.Unknown,
+                                    ),
                                     Schema.Null,
                                   ]),
                                 ),
@@ -23616,7 +23675,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ]),
               ),
               rules: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               ruleset: Schema.optional(
                 Schema.Union([Schema.Literal("current"), Schema.Null]),
@@ -25920,7 +25982,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Struct({
               headers: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               uri: Schema.optional(
                 Schema.Union([
@@ -26501,7 +26566,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                                 ),
                                 contains: Schema.optional(
                                   Schema.Union([
-                                    Schema.Struct({}),
+                                    Schema.Record(
+                                      Schema.String,
+                                      Schema.Unknown,
+                                    ),
                                     Schema.Null,
                                   ]),
                                 ),
@@ -27109,7 +27177,10 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ]),
               ),
               rules: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               ruleset: Schema.optional(
                 Schema.Union([Schema.Literal("current"), Schema.Null]),
@@ -27368,7 +27439,9 @@ export const listRulesets: API.PaginatedOperationMethod<
     ListRulesetsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListRulesetsRequest) => stream.Stream<
+  items: (
+    input: ListRulesetsRequest,
+  ) => stream.Stream<
     {
       id: string;
       kind: "managed" | "custom" | "root" | "zone";
@@ -28978,7 +29051,9 @@ export const CreateRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           action: Schema.optional(Schema.Literal("rewrite")),
           actionParameters: Schema.optional(
             Schema.Struct({
-              headers: Schema.optional(Schema.Struct({})),
+              headers: Schema.optional(
+                Schema.Record(Schema.String, Schema.Unknown),
+              ),
               uri: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
@@ -29345,7 +29420,9 @@ export const CreateRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                           checkPresence: Schema.optional(
                             Schema.Array(Schema.String),
                           ),
-                          contains: Schema.optional(Schema.Struct({})),
+                          contains: Schema.optional(
+                            Schema.Record(Schema.String, Schema.Unknown),
+                          ),
                           excludeOrigin: Schema.optional(Schema.Boolean),
                           include: Schema.optional(Schema.Array(Schema.String)),
                         }).pipe(
@@ -29732,7 +29809,9 @@ export const CreateRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ]),
                 ),
               ),
-              rules: Schema.optional(Schema.Struct({})),
+              rules: Schema.optional(
+                Schema.Record(Schema.String, Schema.Unknown),
+              ),
               ruleset: Schema.optional(Schema.Literal("current")),
               rulesets: Schema.optional(Schema.Array(Schema.String)),
             }),
@@ -31959,7 +32038,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Struct({
               headers: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               uri: Schema.optional(
                 Schema.Union([
@@ -32540,7 +32622,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                                 ),
                                 contains: Schema.optional(
                                   Schema.Union([
-                                    Schema.Struct({}),
+                                    Schema.Record(
+                                      Schema.String,
+                                      Schema.Unknown,
+                                    ),
                                     Schema.Null,
                                   ]),
                                 ),
@@ -33148,7 +33233,10 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ]),
               ),
               rules: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               ruleset: Schema.optional(
                 Schema.Union([Schema.Literal("current"), Schema.Null]),
@@ -34845,7 +34933,9 @@ export const UpdateRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           action: Schema.optional(Schema.Literal("rewrite")),
           actionParameters: Schema.optional(
             Schema.Struct({
-              headers: Schema.optional(Schema.Struct({})),
+              headers: Schema.optional(
+                Schema.Record(Schema.String, Schema.Unknown),
+              ),
               uri: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
@@ -35212,7 +35302,9 @@ export const UpdateRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                           checkPresence: Schema.optional(
                             Schema.Array(Schema.String),
                           ),
-                          contains: Schema.optional(Schema.Struct({})),
+                          contains: Schema.optional(
+                            Schema.Record(Schema.String, Schema.Unknown),
+                          ),
                           excludeOrigin: Schema.optional(Schema.Boolean),
                           include: Schema.optional(Schema.Array(Schema.String)),
                         }).pipe(
@@ -35599,7 +35691,9 @@ export const UpdateRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                   ]),
                 ),
               ),
-              rules: Schema.optional(Schema.Struct({})),
+              rules: Schema.optional(
+                Schema.Record(Schema.String, Schema.Unknown),
+              ),
               ruleset: Schema.optional(Schema.Literal("current")),
               rulesets: Schema.optional(Schema.Array(Schema.String)),
             }),
@@ -37826,7 +37920,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Struct({
               headers: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               uri: Schema.optional(
                 Schema.Union([
@@ -38407,7 +38504,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                                 ),
                                 contains: Schema.optional(
                                   Schema.Union([
-                                    Schema.Struct({}),
+                                    Schema.Record(
+                                      Schema.String,
+                                      Schema.Unknown,
+                                    ),
                                     Schema.Null,
                                   ]),
                                 ),
@@ -39015,7 +39115,10 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ]),
               ),
               rules: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               ruleset: Schema.optional(
                 Schema.Union([Schema.Literal("current"), Schema.Null]),
@@ -41352,7 +41455,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Union([
             Schema.Struct({
               headers: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               uri: Schema.optional(
                 Schema.Union([
@@ -41933,7 +42039,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                                 ),
                                 contains: Schema.optional(
                                   Schema.Union([
-                                    Schema.Struct({}),
+                                    Schema.Record(
+                                      Schema.String,
+                                      Schema.Unknown,
+                                    ),
                                     Schema.Null,
                                   ]),
                                 ),
@@ -42541,7 +42650,10 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 ]),
               ),
               rules: Schema.optional(
-                Schema.Union([Schema.Struct({}), Schema.Null]),
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
               ),
               ruleset: Schema.optional(
                 Schema.Union([Schema.Literal("current"), Schema.Null]),
@@ -42784,7 +42896,9 @@ export const listVersions: API.PaginatedOperationMethod<
     ListVersionsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListVersionsRequest) => stream.Stream<
+  items: (
+    input: ListVersionsRequest,
+  ) => stream.Stream<
     {
       id: string;
       kind: "managed" | "custom" | "root" | "zone";
