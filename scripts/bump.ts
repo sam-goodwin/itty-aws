@@ -1,3 +1,5 @@
+import { execSync } from "node:child_process";
+import { existsSync } from "node:fs";
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
@@ -160,6 +162,182 @@ try {
 } catch {
   // bun.lock may not exist (e.g. fresh clone before install)
   console.log(`  Skipped bun.lock update (file not found)`);
+}
+
+// --- Update CHANGELOG.md ---
+
+/**
+ * Parse conventional commits since the last git tag and generate a changelog
+ * entry matching the format used in CHANGELOG.md (mirroring changelogithub output).
+ */
+function generateChangelogEntry(version: string): string {
+  // Find the previous tag
+  let prevTag = "";
+  try {
+    prevTag = execSync("git describe --tags --abbrev=0 HEAD", {
+      encoding: "utf-8",
+    }).trim();
+  } catch {
+    // No previous tag — include all commits
+  }
+
+  // Get commits since last tag (or all commits if no tag)
+  const range = prevTag ? `${prevTag}...HEAD` : "HEAD";
+  let logOutput = "";
+  try {
+    logOutput = execSync(
+      `git log ${range} --no-merges --format="%H %s" -- .`,
+      { encoding: "utf-8" },
+    ).trim();
+  } catch {
+    // git log failed — empty changelog
+  }
+
+  if (!logOutput) {
+    const date = new Date().toISOString().slice(0, 10);
+    return `## [v${version}](https://github.com/${REPO}/releases/tag/v${version}) (${date})\n\n*No significant changes*\n`;
+  }
+
+  const features: string[] = [];
+  const fixes: string[] = [];
+
+  for (const line of logOutput.split("\n")) {
+    if (!line.trim()) continue;
+
+    const spaceIdx = line.indexOf(" ");
+    const hash = line.slice(0, spaceIdx);
+    const shortHash = hash.slice(0, 7);
+    const subject = line.slice(spaceIdx + 1);
+
+    // Skip release commits
+    if (subject.startsWith("chore(release)")) continue;
+    // Skip non-feat/fix commits (chore, ci, docs, etc.)
+    if (
+      !subject.startsWith("feat") &&
+      !subject.startsWith("fix") &&
+      !subject.startsWith("perf")
+    )
+      continue;
+
+    // Parse conventional commit: type(scope): description (#PR)
+    const match = subject.match(
+      /^(feat|fix|perf)(?:\(([^)]*)\))?\s*:\s*(.+)$/,
+    );
+    if (!match) continue;
+
+    const [, type, scope, description] = match;
+
+    // Extract PR number if present
+    const prMatch = description.match(/\(#(\d+)\)\s*$/);
+    const prNum = prMatch ? prMatch[1] : null;
+    const descClean = prMatch
+      ? description.slice(0, prMatch.index).trim()
+      : description.trim();
+
+    // Extract author from git log
+    let author = "";
+    try {
+      author = execSync(`git log -1 --format="%an" ${hash}`, {
+        encoding: "utf-8",
+      }).trim();
+    } catch {
+      // skip author
+    }
+
+    // Build the line
+    let entry = scope ? `- **${scope}**: ${descClean}` : `- ${descClean}`;
+
+    if (author) {
+      // Try to get GitHub username from commit
+      let ghUser = "";
+      try {
+        const email = execSync(`git log -1 --format="%ae" ${hash}`, {
+          encoding: "utf-8",
+        }).trim();
+        // GitHub noreply emails have the format: user@users.noreply.github.com or ID+user@...
+        const noreplyMatch = email.match(
+          /(?:\d+\+)?([^@]+)@users\.noreply\.github\.com/,
+        );
+        if (noreplyMatch) {
+          ghUser = noreplyMatch[1];
+        }
+      } catch {
+        // skip
+      }
+
+      if (ghUser) {
+        entry += ` - by @${ghUser}`;
+      } else {
+        entry += ` - by ${author}`;
+      }
+    }
+
+    if (prNum) {
+      entry += ` in [#${prNum}](https://github.com/${REPO}/pull/${prNum})`;
+    }
+
+    entry += ` [(${shortHash})](https://github.com/${REPO}/commit/${hash})`;
+
+    if (type === "feat") {
+      features.push(entry);
+    } else {
+      fixes.push(entry);
+    }
+  }
+
+  const date = new Date().toISOString().slice(0, 10);
+  const parts: string[] = [
+    `## [v${version}](https://github.com/${REPO}/releases/tag/v${version}) (${date})`,
+  ];
+
+  if (features.length === 0 && fixes.length === 0) {
+    parts.push("", "*No significant changes*");
+  } else {
+    if (features.length > 0) {
+      parts.push("", "### Features", "", ...features);
+    }
+    if (fixes.length > 0) {
+      parts.push("", "### Bug Fixes", "", ...fixes);
+    }
+  }
+
+  return parts.join("\n") + "\n";
+}
+
+const changelogPath = join(process.cwd(), "CHANGELOG.md");
+const changelogEntry = generateChangelogEntry(newVersion);
+
+try {
+  if (existsSync(changelogPath)) {
+    const existing = await readFile(changelogPath, "utf-8");
+    // Insert new entry after the "# Changelog" header
+    const headerEnd = existing.indexOf("\n\n");
+    if (headerEnd !== -1) {
+      const header = existing.slice(0, headerEnd);
+      const rest = existing.slice(headerEnd + 2);
+      await writeFile(
+        changelogPath,
+        `${header}\n\n${changelogEntry}\n${rest}`,
+      );
+    } else {
+      // No double newline found — just prepend after first line
+      const firstNewline = existing.indexOf("\n");
+      const header = existing.slice(0, firstNewline);
+      const rest = existing.slice(firstNewline + 1);
+      await writeFile(
+        changelogPath,
+        `${header}\n\n${changelogEntry}\n${rest}`,
+      );
+    }
+  } else {
+    await writeFile(
+      changelogPath,
+      `# Changelog\n\n${changelogEntry}`,
+    );
+  }
+  console.log(`  Updated CHANGELOG.md`);
+} catch (err) {
+  console.error(`  Failed to update CHANGELOG.md: ${err}`);
 }
 
 console.log(`\nUpdated all packages to version ${newVersion}`);
