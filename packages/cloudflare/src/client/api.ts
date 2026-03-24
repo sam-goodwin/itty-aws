@@ -68,7 +68,7 @@ function httpStatusError(status: number, body?: string): unknown {
     status,
     statusText: String(status),
     body,
-    message
+    message,
   });
 }
 
@@ -186,9 +186,7 @@ const matchError = (
     const message = String((errorBody as any).body);
     // For 5xx errors, return a properly categorized error so retries work
     if (status >= 500) {
-      return Effect.fail(
-        httpStatusError(status, message),
-      );
+      return Effect.fail(httpStatusError(status, message));
     }
     return Effect.fail(
       new CloudflareHttpError({
@@ -310,9 +308,7 @@ const matchError = (
 class CloudflareDecodeError extends CloudflareHttpError {
   constructor(props: { body: unknown; cause: unknown }) {
     const message =
-      typeof props.body === "string"
-        ? props.body
-        : JSON.stringify(props.body);
+      typeof props.body === "string" ? props.body : JSON.stringify(props.body);
     super({
       status: 200,
       statusText: "Schema decode failed",
