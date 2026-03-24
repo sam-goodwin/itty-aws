@@ -183,17 +183,19 @@ const matchError = (
     errorBody !== null &&
     "_nonJsonError" in errorBody;
   if (isNonJsonError) {
+    const message = String((errorBody as any).body);
     // For 5xx errors, return a properly categorized error so retries work
     if (status >= 500) {
       return Effect.fail(
-        httpStatusError(status, String((errorBody as any).body)),
+        httpStatusError(status, message),
       );
     }
     return Effect.fail(
       new CloudflareHttpError({
         status,
         statusText: String(status),
-        body: String((errorBody as any).body),
+        body: message,
+        message,
       }),
     );
   }
@@ -236,6 +238,7 @@ const matchError = (
         status,
         statusText: String(status),
         body: bodyStr,
+        message: bodyStr,
       }),
     );
   }
@@ -306,13 +309,15 @@ const matchError = (
  */
 class CloudflareDecodeError extends CloudflareHttpError {
   constructor(props: { body: unknown; cause: unknown }) {
+    const message =
+      typeof props.body === "string"
+        ? props.body
+        : JSON.stringify(props.body);
     super({
       status: 200,
       statusText: "Schema decode failed",
-      body:
-        typeof props.body === "string"
-          ? props.body
-          : JSON.stringify(props.body),
+      body: message,
+      message,
     });
   }
 }
