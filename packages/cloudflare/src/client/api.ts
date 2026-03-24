@@ -55,18 +55,20 @@ const GLOBAL_ERROR_CODE_MAP: Record<number, (message: string) => unknown> = {
  */
 function httpStatusError(status: number, body?: string): unknown {
   const ErrorClass = HTTP_STATUS_MAP[status as keyof typeof HTTP_STATUS_MAP];
+  const message = body ?? String(status);
   if (ErrorClass) {
-    return new ErrorClass({ message: body ?? String(status) });
+    return new ErrorClass({ message });
   }
   // For unmapped 5xx codes (e.g., Cloudflare-specific 520-530), use
   // InternalServerError so they get ServerError + Retryable categories
   if (status >= 500) {
-    return new InternalServerError({ message: body ?? String(status) });
+    return new InternalServerError({ message });
   }
   return new CloudflareHttpError({
     status,
     statusText: String(status),
     body,
+    message
   });
 }
 

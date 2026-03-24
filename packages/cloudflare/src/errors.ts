@@ -52,6 +52,7 @@ export class CloudflareHttpError extends Schema.TaggedErrorClass<CloudflareHttpE
   {
     status: Schema.Number,
     statusText: Schema.String,
+    message: Schema.String,
     body: Schema.optional(Schema.String),
   },
 ) {}
