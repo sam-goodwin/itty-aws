@@ -1,5 +1,12 @@
 # Changelog
 
+## [v0.7.3](https://github.com/alchemy-run/distilled/releases/tag/v0.7.3) (2026-03-25)
+
+### Bug Fixes
+
+- **cloudflare**: Include error message in CloudflareHttpError - by @sam-goodwin in [#169](https://github.com/alchemy-run/distilled/pull/169) [(8db73)](https://github.com/alchemy-run/distilled/commit/8db73185)
+- **cloudflare**: Patch listContainerApplications.constraints to be optional - by @sam-goodwin in [#172](https://github.com/alchemy-run/distilled/pull/172) [(e732d)](https://github.com/alchemy-run/distilled/commit/e732df33)
+
 ## [v0.7.2](https://github.com/alchemy-run/distilled/releases/tag/v0.7.2) (2026-03-24)
 
 *No significant changes*
