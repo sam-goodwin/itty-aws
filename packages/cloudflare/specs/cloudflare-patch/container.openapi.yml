@@ -247,7 +247,6 @@ components:
         - scheduling_policy
         - instances
         - max_instances
-        - constraints
         - configuration
         - created_at
         - version

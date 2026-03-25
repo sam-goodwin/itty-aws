@@ -72,7 +72,7 @@ export interface GetContainerApplicationResponse {
   schedulingPolicy: "moon" | "gpu" | "regional" | "fill_metals" | "default";
   instances: number;
   maxInstances: number;
-  constraints: { tier?: number | null };
+  constraints?: { tier?: number | null } | null;
   affinities?: { colocation?: "datacenter" | null } | null;
   configuration: {
     image: string;
@@ -151,9 +151,14 @@ export const GetContainerApplicationResponse =
     ]),
     instances: Schema.Number,
     maxInstances: Schema.Number,
-    constraints: Schema.Struct({
-      tier: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }),
+    constraints: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          tier: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        }),
+        Schema.Null,
+      ]),
+    ),
     affinities: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -449,7 +454,7 @@ export type ListContainerApplicationsResponse = {
   schedulingPolicy: "moon" | "gpu" | "regional" | "fill_metals" | "default";
   instances: number;
   maxInstances: number;
-  constraints: { tier?: number | null };
+  constraints?: { tier?: number | null } | null;
   affinities?: { colocation?: "datacenter" | null } | null;
   configuration: {
     image: string;
@@ -529,9 +534,14 @@ export const ListContainerApplicationsResponse =
       ]),
       instances: Schema.Number,
       maxInstances: Schema.Number,
-      constraints: Schema.Struct({
-        tier: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
+      constraints: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            tier: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
+      ),
       affinities: Schema.optional(
         Schema.Union([
           Schema.Struct({
@@ -1060,7 +1070,7 @@ export interface CreateContainerApplicationResponse {
   schedulingPolicy: "moon" | "gpu" | "regional" | "fill_metals" | "default";
   instances: number;
   maxInstances: number;
-  constraints: { tier?: number | null };
+  constraints?: { tier?: number | null } | null;
   affinities?: { colocation?: "datacenter" | null } | null;
   configuration: {
     image: string;
@@ -1139,9 +1149,14 @@ export const CreateContainerApplicationResponse =
     ]),
     instances: Schema.Number,
     maxInstances: Schema.Number,
-    constraints: Schema.Struct({
-      tier: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }),
+    constraints: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          tier: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        }),
+        Schema.Null,
+      ]),
+    ),
     affinities: Schema.optional(
       Schema.Union([
         Schema.Struct({
@@ -1739,7 +1754,7 @@ export interface UpdateContainerApplicationResponse {
   schedulingPolicy: "moon" | "gpu" | "regional" | "fill_metals" | "default";
   instances: number;
   maxInstances: number;
-  constraints: { tier?: number | null };
+  constraints?: { tier?: number | null } | null;
   affinities?: { colocation?: "datacenter" | null } | null;
   configuration: {
     image: string;
@@ -1818,9 +1833,14 @@ export const UpdateContainerApplicationResponse =
     ]),
     instances: Schema.Number,
     maxInstances: Schema.Number,
-    constraints: Schema.Struct({
-      tier: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }),
+    constraints: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          tier: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        }),
+        Schema.Null,
+      ]),
+    ),
     affinities: Schema.optional(
       Schema.Union([
         Schema.Struct({
