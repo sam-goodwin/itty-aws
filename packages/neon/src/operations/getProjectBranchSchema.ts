@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound } from "../errors";
 
 // Input Schema
 export const GetProjectBranchSchemaInput =
@@ -84,5 +85,6 @@ export const getProjectBranchSchema = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: GetProjectBranchSchemaInput,
     outputSchema: GetProjectBranchSchemaOutput,
+    errors: [NotFound] as const,
   }),
 );

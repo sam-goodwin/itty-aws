@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound, UnprocessableEntity } from "../errors";
 
 // Input Schema
 export const DeleteProjectBranchInput =
@@ -141,4 +142,5 @@ export type DeleteProjectBranchOutput = typeof DeleteProjectBranchOutput.Type;
 export const deleteProjectBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeleteProjectBranchInput,
   outputSchema: DeleteProjectBranchOutput,
+  errors: [NotFound, UnprocessableEntity] as const,
 }));

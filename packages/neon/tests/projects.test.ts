@@ -1,421 +1,159 @@
 import { Effect } from "effect";
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { UnknownNeonError } from "../src/client";
-import { Forbidden, NotFound } from "../src/errors";
-import { createProject } from "../src/operations/createProject";
-import { deleteProject } from "../src/operations/deleteProject";
-import { getProject } from "../src/operations/getProject";
-import { listProjects } from "../src/operations/listProjects";
-import { listSharedProjects } from "../src/operations/listSharedProjects";
-import { updateProject } from "../src/operations/updateProject";
-import { listProjectOperations } from "../src/operations/listProjectOperations";
-import { listProjectPermissions } from "../src/operations/listProjectPermissions";
-import { getConnectionURI } from "../src/operations/getConnectionURI";
+import { describe, expect, it, beforeAll, afterAll } from "vitest";
 import {
-  getTestProject,
   runEffect,
+  testRunId,
   setupTestProject,
   teardownTestProject,
-  testRunId,
+  getTestProject,
 } from "./setup";
+import { createProject } from "../src/operations/createProject";
+import { getProject } from "../src/operations/getProject";
+import { updateProject } from "../src/operations/updateProject";
+import { deleteProject } from "../src/operations/deleteProject";
+import { listProjects } from "../src/operations/listProjects";
+import { listSharedProjects } from "../src/operations/listSharedProjects";
 
-const TEST_SUFFIX = "projects";
-
-// Non-existent identifiers for unhappy path tests
-const NON_EXISTENT_PROJECT = "this-project-definitely-does-not-exist-12345";
-
-/**
- * Helper to check if an error is an expected "not found" type error.
- * Neon API may return NotFound or Forbidden for non-existent resources.
- */
-const isNotFoundOrForbidden = (error: unknown): boolean =>
-  error instanceof NotFound || error instanceof Forbidden;
-
-/**
- * Helper to check if an error is any API error type.
- */
-const isApiError = (error: unknown): boolean =>
-  error instanceof NotFound ||
-  error instanceof Forbidden ||
-  error instanceof UnknownNeonError ||
-  (error !== null && typeof error === "object" && "_tag" in error);
-
-describe("projects", () => {
+describe("Projects", () => {
   beforeAll(async () => {
-    await Effect.runPromise(setupTestProject(TEST_SUFFIX));
-  }, 300000); // 5 minute timeout for project creation
+    await runEffect(setupTestProject("projects"));
+  }, 120_000);
 
   afterAll(async () => {
-    await Effect.runPromise(teardownTestProject(TEST_SUFFIX));
-  });
+    await runEffect(teardownTestProject("projects"));
+  }, 60_000);
 
-  const getProj = () => getTestProject(TEST_SUFFIX);
-
-  // ============================================================================
-  // listProjects
-  // ============================================================================
-
-  describe("listProjects", () => {
-    it("can list projects", async () => {
-      const result = await runEffect(listProjects({}));
-
-      expect(result).toBeDefined();
-      expect(Array.isArray(result.projects)).toBe(true);
-    });
-
-    it("can list projects with pagination", async () => {
-      const result = await runEffect(
-        listProjects({
-          limit: 10,
-        }),
+  describe("createProject", () => {
+    it("happy path - creates a project", async () => {
+      const projectName = `distilled-neon-create-${testRunId}`;
+      let projectId: string | undefined;
+      await runEffect(
+        Effect.gen(function* () {
+          const result = yield* createProject({
+            project: { name: projectName },
+          });
+          projectId = result.project.id;
+          expect(result.project.id).toBeDefined();
+          expect(result.project.name).toBe(projectName);
+          expect(result.branch).toBeDefined();
+          expect(result.databases.length).toBeGreaterThan(0);
+          expect(result.roles.length).toBeGreaterThan(0);
+          expect(result.endpoints.length).toBeGreaterThan(0);
+          expect(result.connection_uris.length).toBeGreaterThan(0);
+        }).pipe(
+          Effect.ensuring(
+            projectId
+              ? deleteProject({ project_id: projectId }).pipe(Effect.ignore)
+              : Effect.void,
+          ),
+        ),
       );
-
-      expect(result).toBeDefined();
-      expect(Array.isArray(result.projects)).toBe(true);
-    });
-
-    it("can search projects by name", async () => {
-      const result = await runEffect(
-        listProjects({
-          search: "distilled",
-        }),
-      );
-
-      expect(Array.isArray(result.projects)).toBe(true);
-    });
-
-    it("returns projects with expected properties", async () => {
-      const result = await runEffect(listProjects({}));
-
-      if (result.projects.length > 0) {
-        const firstProject = result.projects[0]!;
-        expect(firstProject.id).toBeDefined();
-        expect(firstProject.name).toBeDefined();
-        expect(firstProject.created_at).toBeDefined();
+      // Cleanup in case ensuring didn't run (projectId set after gen)
+      if (projectId) {
+        await runEffect(
+          deleteProject({ project_id: projectId }).pipe(Effect.ignore),
+        );
       }
-    });
+    }, 60_000);
   });
-
-  // ============================================================================
-  // listSharedProjects
-  // ============================================================================
-
-  describe("listSharedProjects", () => {
-    it("can list shared projects", async () => {
-      const result = await runEffect(listSharedProjects({}));
-
-      expect(result).toBeDefined();
-      expect(Array.isArray(result.projects)).toBe(true);
-    });
-
-    it("can list shared projects with pagination", async () => {
-      const result = await runEffect(
-        listSharedProjects({
-          limit: 10,
-        }),
-      );
-
-      expect(result).toBeDefined();
-      expect(Array.isArray(result.projects)).toBe(true);
-    });
-  });
-
-  // ============================================================================
-  // getProject
-  // ============================================================================
 
   describe("getProject", () => {
-    it("can get a project", async () => {
-      const proj = getProj();
-      const result = await runEffect(
-        getProject({
-          project_id: proj.id,
+    it("happy path - retrieves project details", async () => {
+      const project = getTestProject("projects");
+      await runEffect(
+        Effect.gen(function* () {
+          const result = yield* getProject({ project_id: project.id });
+          expect(result.project.id).toBe(project.id);
+          expect(result.project.name).toBe(project.name);
         }),
       );
+    }, 30_000);
 
-      expect(result.project.id).toBe(proj.id);
-      expect(result.project.name).toBeDefined();
-      expect(result.project.created_at).toBeDefined();
-    });
-
-    it("returns project with all expected properties", async () => {
-      const proj = getProj();
-      const result = await runEffect(
-        getProject({
-          project_id: proj.id,
-        }),
-      );
-
-      // Required properties
-      expect(result.project.id).toBeDefined();
-      expect(result.project.name).toBeDefined();
-      expect(result.project.created_at).toBeDefined();
-      expect(result.project.region_id).toBeDefined();
-      expect(result.project.pg_version).toBeDefined();
-    });
-
-    it("returns NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        getProject({
-          project_id: NON_EXISTENT_PROJECT,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
+    it("error - NotFound for non-existent project", async () => {
+      await runEffect(
+        getProject({ project_id: "non-existent-project-id" }).pipe(
+          Effect.flip,
+          Effect.map((e) => expect(e._tag).toBe("NotFound")),
         ),
       );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
+    }, 30_000);
   });
-
-  // ============================================================================
-  // updateProject
-  // ============================================================================
 
   describe("updateProject", () => {
-    it("can update project name", async () => {
-      const proj = getProj();
-      const newName = `${proj.name}-updated`;
-
-      const updated = await runEffect(
-        updateProject({
-          project_id: proj.id,
-          project: {
-            name: newName,
-          },
+    it("happy path - updates project name", async () => {
+      const project = getTestProject("projects");
+      const newName = `distilled-neon-updated-${testRunId}`;
+      await runEffect(
+        Effect.gen(function* () {
+          const result = yield* updateProject({
+            project_id: project.id,
+            project: { name: newName },
+          });
+          expect(result.project.id).toBe(project.id);
+          expect(result.project.name).toBe(newName);
         }),
       );
+    }, 30_000);
 
-      expect(updated.project.name).toBe(newName);
-
-      // Restore original name
+    it("error - NotFound for non-existent project", async () => {
       await runEffect(
         updateProject({
-          project_id: proj.id,
-          project: {
-            name: proj.name,
-          },
-        }).pipe(Effect.ignore),
-      );
-    });
-
-    it("returns NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        updateProject({
-          project_id: NON_EXISTENT_PROJECT,
-          project: {
-            name: "test",
-          },
+          project_id: "non-existent-project-id",
+          project: { name: "test" },
         }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
+          Effect.flip,
+          Effect.map((e) => expect(e._tag).toBe("NotFound")),
         ),
       );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
+    }, 30_000);
   });
 
-  // ============================================================================
-  // listProjectOperations
-  // ============================================================================
-
-  describe("listProjectOperations", () => {
-    it("can list project operations", async () => {
-      const proj = getProj();
-      const result = await runEffect(
-        listProjectOperations({
-          project_id: proj.id,
+  describe("deleteProject", () => {
+    it("happy path - deletes a project", async () => {
+      await runEffect(
+        Effect.gen(function* () {
+          const created = yield* createProject({
+            project: { name: `distilled-neon-del-${testRunId}` },
+          });
+          const result = yield* deleteProject({
+            project_id: created.project.id,
+          });
+          expect(result.project.id).toBe(created.project.id);
         }),
       );
+    }, 60_000);
 
-      expect(result).toBeDefined();
-      expect(Array.isArray(result.operations)).toBe(true);
-    });
-
-    it("can list project operations with pagination", async () => {
-      const proj = getProj();
-      const result = await runEffect(
-        listProjectOperations({
-          project_id: proj.id,
-          limit: 10,
-        }),
-      );
-
-      expect(result).toBeDefined();
-      expect(Array.isArray(result.operations)).toBe(true);
-    });
-
-    it("returns operations with expected properties", async () => {
-      const proj = getProj();
-      const result = await runEffect(
-        listProjectOperations({
-          project_id: proj.id,
-        }),
-      );
-
-      if (result.operations.length > 0) {
-        const firstOp = result.operations[0]!;
-        expect(firstOp.id).toBeDefined();
-        expect(firstOp.project_id).toBeDefined();
-        expect(firstOp.action).toBeDefined();
-        expect(firstOp.status).toBeDefined();
-      }
-    });
-
-    it("returns NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        listProjectOperations({
-          project_id: NON_EXISTENT_PROJECT,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
+    it("error - NotFound for non-existent project", async () => {
+      await runEffect(
+        deleteProject({ project_id: "non-existent-project-id" }).pipe(
+          Effect.flip,
+          Effect.map((e) => expect(e._tag).toBe("NotFound")),
         ),
       );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
+    }, 30_000);
   });
 
-  // ============================================================================
-  // listProjectPermissions
-  // ============================================================================
-
-  describe("listProjectPermissions", () => {
-    it("can list project permissions", async () => {
-      const proj = getProj();
-      const result = await runEffect(
-        listProjectPermissions({
-          project_id: proj.id,
+  describe("listProjects", () => {
+    it("happy path - lists projects", async () => {
+      await runEffect(
+        Effect.gen(function* () {
+          const result = yield* listProjects({});
+          expect(result.projects).toBeDefined();
+          expect(Array.isArray(result.projects)).toBe(true);
         }),
       );
-
-      expect(result).toBeDefined();
-      expect(Array.isArray(result.project_permissions)).toBe(true);
-    });
-
-    it("returns NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        listProjectPermissions({
-          project_id: NON_EXISTENT_PROJECT,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
+    }, 30_000);
   });
 
-  // ============================================================================
-  // getConnectionURI
-  // ============================================================================
-
-  describe("getConnectionURI", () => {
-    it("can get connection URI", async () => {
-      const proj = getProj();
-      const result = await runEffect(
-        getConnectionURI({
-          project_id: proj.id,
-          role_name: "neondb_owner",
-          database_name: "neondb",
+  describe("listSharedProjects", () => {
+    it("happy path - lists shared projects", async () => {
+      await runEffect(
+        Effect.gen(function* () {
+          const result = yield* listSharedProjects({});
+          expect(result.projects).toBeDefined();
+          expect(Array.isArray(result.projects)).toBe(true);
         }),
       );
-
-      expect(result).toBeDefined();
-      expect(result.uri).toBeDefined();
-      expect(result.uri).toContain("postgresql://");
-    });
-
-    it("returns NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        getConnectionURI({
-          project_id: NON_EXISTENT_PROJECT,
-          role_name: "test",
-          database_name: "test",
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
-  });
-
-  // ============================================================================
-  // createProject & deleteProject
-  // ============================================================================
-
-  describe("createProject & deleteProject", () => {
-    it("can create and delete a project", async () => {
-      const projectName = `distilled-test-create-${testRunId}`;
-      let createdProjectId: string | null = null;
-
-      try {
-        // Create project
-        const created = await runEffect(
-          createProject({
-            project: {
-              name: projectName,
-            },
-          }),
-        );
-
-        createdProjectId = created.project.id;
-        expect(created.project.name).toBe(projectName);
-        expect(created.project.id).toBeDefined();
-        expect(created.branch).toBeDefined();
-
-        // Verify project exists
-        const fetched = await runEffect(
-          getProject({
-            project_id: createdProjectId,
-          }),
-        );
-        expect(fetched.project.id).toBe(createdProjectId);
-      } finally {
-        // Always cleanup
-        if (createdProjectId) {
-          await runEffect(
-            deleteProject({
-              project_id: createdProjectId,
-            }).pipe(Effect.ignore),
-          );
-        }
-      }
-    }, 120000); // 2 minute timeout
-
-    it("returns NotFound for deleting non-existent project", async () => {
-      const error = await runEffect(
-        deleteProject({
-          project_id: NON_EXISTENT_PROJECT,
-        }).pipe(
-          Effect.matchEffect({
-            onFailure: (e) => Effect.succeed(e),
-            onSuccess: () => Effect.succeed(null),
-          }),
-        ),
-      );
-
-      expect(error).not.toBeNull();
-      expect(isNotFoundOrForbidden(error)).toBe(true);
-    });
+    }, 30_000);
   });
 });

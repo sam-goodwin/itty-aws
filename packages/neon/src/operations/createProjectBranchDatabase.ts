@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, NotFound, Conflict, UnprocessableEntity } from "../errors";
 
 // Input Schema
 export const CreateProjectBranchDatabaseInput =
@@ -107,5 +108,6 @@ export const createProjectBranchDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateProjectBranchDatabaseInput,
     outputSchema: CreateProjectBranchDatabaseOutput,
+    errors: [BadRequest, NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );

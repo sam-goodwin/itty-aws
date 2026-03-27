@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound } from "../errors";
 import { SensitiveString } from "../sensitive";
 
 // Input Schema
@@ -44,4 +45,5 @@ export const getProjectBranchRolePassword =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: GetProjectBranchRolePasswordInput,
     outputSchema: GetProjectBranchRolePasswordOutput,
+    errors: [NotFound] as const,
   }));

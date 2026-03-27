@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound } from "../errors";
 
 // Input Schema
 export const GetProjectOperationInput =
@@ -89,4 +90,5 @@ export type GetProjectOperationOutput = typeof GetProjectOperationOutput.Type;
 export const getProjectOperation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetProjectOperationInput,
   outputSchema: GetProjectOperationOutput,
+  errors: [NotFound] as const,
 }));

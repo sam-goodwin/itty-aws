@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, NotFound } from "../errors";
 
 // Input Schema
 export const UpdateProjectBranchInput =
@@ -140,4 +141,5 @@ export type UpdateProjectBranchOutput = typeof UpdateProjectBranchOutput.Type;
 export const updateProjectBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UpdateProjectBranchInput,
   outputSchema: UpdateProjectBranchOutput,
+  errors: [BadRequest, NotFound] as const,
 }));

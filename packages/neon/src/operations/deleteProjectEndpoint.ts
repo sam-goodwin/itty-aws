@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound } from "../errors";
 
 // Input Schema
 export const DeleteProjectEndpointInput =
@@ -140,5 +141,6 @@ export const deleteProjectEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteProjectEndpointInput,
     outputSchema: DeleteProjectEndpointOutput,
+    errors: [NotFound] as const,
   }),
 );

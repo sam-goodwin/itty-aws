@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound, UnprocessableEntity } from "../errors";
 import { SensitiveString } from "../sensitive";
 
 // Input Schema
@@ -107,5 +108,6 @@ export const deleteProjectBranchRole = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteProjectBranchRoleInput,
     outputSchema: DeleteProjectBranchRoleOutput,
+    errors: [NotFound, UnprocessableEntity] as const,
   }),
 );

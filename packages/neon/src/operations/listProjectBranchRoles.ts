@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound } from "../errors";
 import { SensitiveString } from "../sensitive";
 
 // Input Schema
@@ -51,5 +52,6 @@ export const listProjectBranchRoles = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ListProjectBranchRolesInput,
     outputSchema: ListProjectBranchRolesOutput,
+    errors: [NotFound] as const,
   }),
 );
