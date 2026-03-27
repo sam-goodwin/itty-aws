@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateApiextensionsV1CustomResourceDefinitionInput =
@@ -273,6 +274,7 @@ export const createApiextensionsV1CustomResourceDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: CreateApiextensionsV1CustomResourceDefinitionOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteApiextensionsV1CollectionCustomResourceDefinitionInput =
@@ -409,6 +411,7 @@ export const deleteApiextensionsV1CustomResourceDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: DeleteApiextensionsV1CustomResourceDefinitionOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetApiextensionsAPIGroupInput =
@@ -1047,6 +1050,7 @@ export const patchApiextensionsV1CustomResourceDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: PatchApiextensionsV1CustomResourceDefinitionOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchApiextensionsV1CustomResourceDefinitionStatusInput =
@@ -1313,6 +1317,7 @@ export const patchApiextensionsV1CustomResourceDefinitionStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchApiextensionsV1CustomResourceDefinitionStatusInput,
     outputSchema: PatchApiextensionsV1CustomResourceDefinitionStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadApiextensionsV1CustomResourceDefinitionInput =
@@ -1573,6 +1578,7 @@ export const readApiextensionsV1CustomResourceDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: ReadApiextensionsV1CustomResourceDefinitionOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadApiextensionsV1CustomResourceDefinitionStatusInput =
@@ -1833,6 +1839,7 @@ export const readApiextensionsV1CustomResourceDefinitionStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadApiextensionsV1CustomResourceDefinitionStatusInput,
     outputSchema: ReadApiextensionsV1CustomResourceDefinitionStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceApiextensionsV1CustomResourceDefinitionInput =
@@ -2099,6 +2106,7 @@ export const replaceApiextensionsV1CustomResourceDefinition =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: ReplaceApiextensionsV1CustomResourceDefinitionOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceApiextensionsV1CustomResourceDefinitionStatusInput =
@@ -2365,6 +2373,7 @@ export const replaceApiextensionsV1CustomResourceDefinitionStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceApiextensionsV1CustomResourceDefinitionStatusInput,
     outputSchema: ReplaceApiextensionsV1CustomResourceDefinitionStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchApiextensionsV1CustomResourceDefinitionInput =

@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateAuthorizationV1NamespacedLocalSubjectAccessReviewInput =
@@ -141,6 +142,7 @@ export const createAuthorizationV1NamespacedLocalSubjectAccessReview =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateAuthorizationV1NamespacedLocalSubjectAccessReviewInput,
     outputSchema: CreateAuthorizationV1NamespacedLocalSubjectAccessReviewOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAuthorizationV1SelfSubjectAccessReviewInput =
@@ -269,6 +271,7 @@ export const createAuthorizationV1SelfSubjectAccessReview =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateAuthorizationV1SelfSubjectAccessReviewInput,
     outputSchema: CreateAuthorizationV1SelfSubjectAccessReviewOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAuthorizationV1SelfSubjectRulesReviewInput =
@@ -365,6 +368,7 @@ export const createAuthorizationV1SelfSubjectRulesReview =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateAuthorizationV1SelfSubjectRulesReviewInput,
     outputSchema: CreateAuthorizationV1SelfSubjectRulesReviewOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAuthorizationV1SubjectAccessReviewInput =
@@ -499,6 +503,7 @@ export const createAuthorizationV1SubjectAccessReview =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateAuthorizationV1SubjectAccessReviewInput,
     outputSchema: CreateAuthorizationV1SubjectAccessReviewOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const GetAuthorizationAPIGroupInput =

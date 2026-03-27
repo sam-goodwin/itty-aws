@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateInternalApiserverV1alpha1StorageVersionInput =
@@ -110,6 +111,7 @@ export const createInternalApiserverV1alpha1StorageVersion =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateInternalApiserverV1alpha1StorageVersionInput,
     outputSchema: CreateInternalApiserverV1alpha1StorageVersionOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteInternalApiserverV1alpha1CollectionStorageVersionInput =
@@ -246,6 +248,7 @@ export const deleteInternalApiserverV1alpha1StorageVersion =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteInternalApiserverV1alpha1StorageVersionInput,
     outputSchema: DeleteInternalApiserverV1alpha1StorageVersionOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetInternalApiserverAPIGroupInput =
@@ -558,6 +561,7 @@ export const patchInternalApiserverV1alpha1StorageVersion =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchInternalApiserverV1alpha1StorageVersionInput,
     outputSchema: PatchInternalApiserverV1alpha1StorageVersionOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchInternalApiserverV1alpha1StorageVersionStatusInput =
@@ -661,6 +665,7 @@ export const patchInternalApiserverV1alpha1StorageVersionStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchInternalApiserverV1alpha1StorageVersionStatusInput,
     outputSchema: PatchInternalApiserverV1alpha1StorageVersionStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadInternalApiserverV1alpha1StorageVersionInput =
@@ -758,6 +763,7 @@ export const readInternalApiserverV1alpha1StorageVersion =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadInternalApiserverV1alpha1StorageVersionInput,
     outputSchema: ReadInternalApiserverV1alpha1StorageVersionOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadInternalApiserverV1alpha1StorageVersionStatusInput =
@@ -855,6 +861,7 @@ export const readInternalApiserverV1alpha1StorageVersionStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadInternalApiserverV1alpha1StorageVersionStatusInput,
     outputSchema: ReadInternalApiserverV1alpha1StorageVersionStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceInternalApiserverV1alpha1StorageVersionInput =
@@ -958,6 +965,7 @@ export const replaceInternalApiserverV1alpha1StorageVersion =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceInternalApiserverV1alpha1StorageVersionInput,
     outputSchema: ReplaceInternalApiserverV1alpha1StorageVersionOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceInternalApiserverV1alpha1StorageVersionStatusInput =
@@ -1061,6 +1069,7 @@ export const replaceInternalApiserverV1alpha1StorageVersionStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceInternalApiserverV1alpha1StorageVersionStatusInput,
     outputSchema: ReplaceInternalApiserverV1alpha1StorageVersionStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchInternalApiserverV1alpha1StorageVersionInput =

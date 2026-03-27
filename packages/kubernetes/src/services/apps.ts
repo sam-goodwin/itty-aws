@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateAppsV1NamespacedControllerRevisionInput =
@@ -88,6 +89,7 @@ export const createAppsV1NamespacedControllerRevision =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateAppsV1NamespacedControllerRevisionInput,
     outputSchema: CreateAppsV1NamespacedControllerRevisionOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAppsV1NamespacedDaemonSetInput =
@@ -2627,6 +2629,7 @@ export const createAppsV1NamespacedDaemonSet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateAppsV1NamespacedDaemonSetInput,
     outputSchema: CreateAppsV1NamespacedDaemonSetOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAppsV1NamespacedDeploymentInput =
@@ -5169,6 +5172,7 @@ export const createAppsV1NamespacedDeployment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateAppsV1NamespacedDeploymentInput,
     outputSchema: CreateAppsV1NamespacedDeploymentOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAppsV1NamespacedReplicaSetInput =
@@ -7754,6 +7758,7 @@ export const createAppsV1NamespacedReplicaSet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateAppsV1NamespacedReplicaSetInput,
     outputSchema: CreateAppsV1NamespacedReplicaSetOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAppsV1NamespacedStatefulSetInput =
@@ -10451,6 +10456,7 @@ export const createAppsV1NamespacedStatefulSet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateAppsV1NamespacedStatefulSetInput,
     outputSchema: CreateAppsV1NamespacedStatefulSetOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteAppsV1CollectionNamespacedControllerRevisionInput =
@@ -10859,6 +10865,7 @@ export const deleteAppsV1NamespacedControllerRevision =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1NamespacedControllerRevisionInput,
     outputSchema: DeleteAppsV1NamespacedControllerRevisionOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAppsV1NamespacedDaemonSetInput =
@@ -10927,6 +10934,7 @@ export const deleteAppsV1NamespacedDaemonSet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1NamespacedDaemonSetInput,
     outputSchema: DeleteAppsV1NamespacedDaemonSetOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAppsV1NamespacedDeploymentInput =
@@ -10995,6 +11003,7 @@ export const deleteAppsV1NamespacedDeployment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1NamespacedDeploymentInput,
     outputSchema: DeleteAppsV1NamespacedDeploymentOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAppsV1NamespacedReplicaSetInput =
@@ -11063,6 +11072,7 @@ export const deleteAppsV1NamespacedReplicaSet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1NamespacedReplicaSetInput,
     outputSchema: DeleteAppsV1NamespacedReplicaSetOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAppsV1NamespacedStatefulSetInput =
@@ -11131,6 +11141,7 @@ export const deleteAppsV1NamespacedStatefulSet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1NamespacedStatefulSetInput,
     outputSchema: DeleteAppsV1NamespacedStatefulSetOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetAppsAPIGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -33258,6 +33269,7 @@ export const patchAppsV1NamespacedControllerRevision =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedControllerRevisionInput,
     outputSchema: PatchAppsV1NamespacedControllerRevisionOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedDaemonSetInput =
@@ -35797,6 +35809,7 @@ export const patchAppsV1NamespacedDaemonSet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedDaemonSetInput,
     outputSchema: PatchAppsV1NamespacedDaemonSetOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedDaemonSetStatusInput =
@@ -38336,6 +38349,7 @@ export const patchAppsV1NamespacedDaemonSetStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedDaemonSetStatusInput,
     outputSchema: PatchAppsV1NamespacedDaemonSetStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedDeploymentInput =
@@ -40878,6 +40892,7 @@ export const patchAppsV1NamespacedDeployment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedDeploymentInput,
     outputSchema: PatchAppsV1NamespacedDeploymentOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedDeploymentScaleInput =
@@ -40968,6 +40983,7 @@ export const patchAppsV1NamespacedDeploymentScale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedDeploymentScaleInput,
     outputSchema: PatchAppsV1NamespacedDeploymentScaleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedDeploymentStatusInput =
@@ -43510,6 +43526,7 @@ export const patchAppsV1NamespacedDeploymentStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedDeploymentStatusInput,
     outputSchema: PatchAppsV1NamespacedDeploymentStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedReplicaSetInput =
@@ -46095,6 +46112,7 @@ export const patchAppsV1NamespacedReplicaSet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedReplicaSetInput,
     outputSchema: PatchAppsV1NamespacedReplicaSetOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedReplicaSetScaleInput =
@@ -46185,6 +46203,7 @@ export const patchAppsV1NamespacedReplicaSetScale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedReplicaSetScaleInput,
     outputSchema: PatchAppsV1NamespacedReplicaSetScaleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedReplicaSetStatusInput =
@@ -48770,6 +48789,7 @@ export const patchAppsV1NamespacedReplicaSetStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedReplicaSetStatusInput,
     outputSchema: PatchAppsV1NamespacedReplicaSetStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedStatefulSetInput =
@@ -51467,6 +51487,7 @@ export const patchAppsV1NamespacedStatefulSet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedStatefulSetInput,
     outputSchema: PatchAppsV1NamespacedStatefulSetOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedStatefulSetScaleInput =
@@ -51557,6 +51578,7 @@ export const patchAppsV1NamespacedStatefulSetScale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedStatefulSetScaleInput,
     outputSchema: PatchAppsV1NamespacedStatefulSetScaleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAppsV1NamespacedStatefulSetStatusInput =
@@ -54254,6 +54276,7 @@ export const patchAppsV1NamespacedStatefulSetStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedStatefulSetStatusInput,
     outputSchema: PatchAppsV1NamespacedStatefulSetStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedControllerRevisionInput =
@@ -54329,6 +54352,7 @@ export const readAppsV1NamespacedControllerRevision =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedControllerRevisionInput,
     outputSchema: ReadAppsV1NamespacedControllerRevisionOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedDaemonSetInput =
@@ -56862,6 +56886,7 @@ export const readAppsV1NamespacedDaemonSet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedDaemonSetInput,
     outputSchema: ReadAppsV1NamespacedDaemonSetOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedDaemonSetStatusInput =
@@ -59395,6 +59420,7 @@ export const readAppsV1NamespacedDaemonSetStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedDaemonSetStatusInput,
     outputSchema: ReadAppsV1NamespacedDaemonSetStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedDeploymentInput =
@@ -61931,6 +61957,7 @@ export const readAppsV1NamespacedDeployment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedDeploymentInput,
     outputSchema: ReadAppsV1NamespacedDeploymentOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedDeploymentScaleInput =
@@ -62015,6 +62042,7 @@ export const readAppsV1NamespacedDeploymentScale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedDeploymentScaleInput,
     outputSchema: ReadAppsV1NamespacedDeploymentScaleOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedDeploymentStatusInput =
@@ -64551,6 +64579,7 @@ export const readAppsV1NamespacedDeploymentStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedDeploymentStatusInput,
     outputSchema: ReadAppsV1NamespacedDeploymentStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedReplicaSetInput =
@@ -67130,6 +67159,7 @@ export const readAppsV1NamespacedReplicaSet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedReplicaSetInput,
     outputSchema: ReadAppsV1NamespacedReplicaSetOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedReplicaSetScaleInput =
@@ -67214,6 +67244,7 @@ export const readAppsV1NamespacedReplicaSetScale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedReplicaSetScaleInput,
     outputSchema: ReadAppsV1NamespacedReplicaSetScaleOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedReplicaSetStatusInput =
@@ -69793,6 +69824,7 @@ export const readAppsV1NamespacedReplicaSetStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedReplicaSetStatusInput,
     outputSchema: ReadAppsV1NamespacedReplicaSetStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedStatefulSetInput =
@@ -72484,6 +72516,7 @@ export const readAppsV1NamespacedStatefulSet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedStatefulSetInput,
     outputSchema: ReadAppsV1NamespacedStatefulSetOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedStatefulSetScaleInput =
@@ -72568,6 +72601,7 @@ export const readAppsV1NamespacedStatefulSetScale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedStatefulSetScaleInput,
     outputSchema: ReadAppsV1NamespacedStatefulSetScaleOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAppsV1NamespacedStatefulSetStatusInput =
@@ -75259,6 +75293,7 @@ export const readAppsV1NamespacedStatefulSetStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedStatefulSetStatusInput,
     outputSchema: ReadAppsV1NamespacedStatefulSetStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedControllerRevisionInput =
@@ -75340,6 +75375,7 @@ export const replaceAppsV1NamespacedControllerRevision =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedControllerRevisionInput,
     outputSchema: ReplaceAppsV1NamespacedControllerRevisionOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedDaemonSetInput =
@@ -77879,6 +77915,7 @@ export const replaceAppsV1NamespacedDaemonSet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedDaemonSetInput,
     outputSchema: ReplaceAppsV1NamespacedDaemonSetOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedDaemonSetStatusInput =
@@ -80418,6 +80455,7 @@ export const replaceAppsV1NamespacedDaemonSetStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedDaemonSetStatusInput,
     outputSchema: ReplaceAppsV1NamespacedDaemonSetStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedDeploymentInput =
@@ -82960,6 +82998,7 @@ export const replaceAppsV1NamespacedDeployment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedDeploymentInput,
     outputSchema: ReplaceAppsV1NamespacedDeploymentOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedDeploymentScaleInput =
@@ -83050,6 +83089,7 @@ export const replaceAppsV1NamespacedDeploymentScale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedDeploymentScaleInput,
     outputSchema: ReplaceAppsV1NamespacedDeploymentScaleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedDeploymentStatusInput =
@@ -85592,6 +85632,7 @@ export const replaceAppsV1NamespacedDeploymentStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedDeploymentStatusInput,
     outputSchema: ReplaceAppsV1NamespacedDeploymentStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedReplicaSetInput =
@@ -88177,6 +88218,7 @@ export const replaceAppsV1NamespacedReplicaSet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedReplicaSetInput,
     outputSchema: ReplaceAppsV1NamespacedReplicaSetOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedReplicaSetScaleInput =
@@ -88267,6 +88309,7 @@ export const replaceAppsV1NamespacedReplicaSetScale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedReplicaSetScaleInput,
     outputSchema: ReplaceAppsV1NamespacedReplicaSetScaleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedReplicaSetStatusInput =
@@ -90852,6 +90895,7 @@ export const replaceAppsV1NamespacedReplicaSetStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedReplicaSetStatusInput,
     outputSchema: ReplaceAppsV1NamespacedReplicaSetStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedStatefulSetInput =
@@ -93549,6 +93593,7 @@ export const replaceAppsV1NamespacedStatefulSet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedStatefulSetInput,
     outputSchema: ReplaceAppsV1NamespacedStatefulSetOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedStatefulSetScaleInput =
@@ -93639,6 +93684,7 @@ export const replaceAppsV1NamespacedStatefulSetScale =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedStatefulSetScaleInput,
     outputSchema: ReplaceAppsV1NamespacedStatefulSetScaleOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAppsV1NamespacedStatefulSetStatusInput =
@@ -96336,6 +96382,7 @@ export const replaceAppsV1NamespacedStatefulSetStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedStatefulSetStatusInput,
     outputSchema: ReplaceAppsV1NamespacedStatefulSetStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchAppsV1ControllerRevisionListForAllNamespacesInput =

@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
@@ -105,6 +106,7 @@ export const createAutoscalingV1NamespacedHorizontalPodAutoscaler =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateAutoscalingV1NamespacedHorizontalPodAutoscalerInput,
     outputSchema: CreateAutoscalingV1NamespacedHorizontalPodAutoscalerOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
@@ -499,6 +501,7 @@ export const createAutoscalingV2NamespacedHorizontalPodAutoscaler =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateAutoscalingV2NamespacedHorizontalPodAutoscalerInput,
     outputSchema: CreateAutoscalingV2NamespacedHorizontalPodAutoscalerOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerInput =
@@ -637,6 +640,7 @@ export const deleteAutoscalingV1NamespacedHorizontalPodAutoscaler =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerInput,
     outputSchema: DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerInput =
@@ -775,6 +779,7 @@ export const deleteAutoscalingV2NamespacedHorizontalPodAutoscaler =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerInput,
     outputSchema: DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetAutoscalingAPIGroupInput =
@@ -2049,6 +2054,7 @@ export const patchAutoscalingV1NamespacedHorizontalPodAutoscaler =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput,
     outputSchema: PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput =
@@ -2148,6 +2154,7 @@ export const patchAutoscalingV1NamespacedHorizontalPodAutoscalerStatus =
     inputSchema: PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput,
     outputSchema:
       PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
@@ -2542,6 +2549,7 @@ export const patchAutoscalingV2NamespacedHorizontalPodAutoscaler =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput,
     outputSchema: PatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
@@ -2937,6 +2945,7 @@ export const patchAutoscalingV2NamespacedHorizontalPodAutoscalerStatus =
     inputSchema: PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput,
     outputSchema:
       PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
@@ -3029,6 +3038,7 @@ export const readAutoscalingV1NamespacedHorizontalPodAutoscaler =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerInput,
     outputSchema: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput =
@@ -3122,6 +3132,7 @@ export const readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus =
     inputSchema: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput,
     outputSchema:
       ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
@@ -3510,6 +3521,7 @@ export const readAutoscalingV2NamespacedHorizontalPodAutoscaler =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAutoscalingV2NamespacedHorizontalPodAutoscalerInput,
     outputSchema: ReadAutoscalingV2NamespacedHorizontalPodAutoscalerOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
@@ -3899,6 +3911,7 @@ export const readAutoscalingV2NamespacedHorizontalPodAutoscalerStatus =
     inputSchema: ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput,
     outputSchema:
       ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
@@ -3997,6 +4010,7 @@ export const replaceAutoscalingV1NamespacedHorizontalPodAutoscaler =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerInput,
     outputSchema: ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput =
@@ -4097,6 +4111,7 @@ export const replaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatus =
       ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput,
     outputSchema:
       ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
@@ -4491,6 +4506,7 @@ export const replaceAutoscalingV2NamespacedHorizontalPodAutoscaler =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerInput,
     outputSchema: ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
@@ -4887,6 +4903,7 @@ export const replaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatus =
       ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput,
     outputSchema:
       ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesInput =

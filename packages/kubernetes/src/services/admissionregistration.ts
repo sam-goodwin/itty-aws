@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateAdmissionregistrationV1MutatingAdmissionPolicyInput =
@@ -192,6 +193,7 @@ export const createAdmissionregistrationV1MutatingAdmissionPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: CreateAdmissionregistrationV1MutatingAdmissionPolicyOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
@@ -362,6 +364,7 @@ export const createAdmissionregistrationV1MutatingAdmissionPolicyBinding =
       CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1MutatingWebhookConfigurationInput =
@@ -518,6 +521,7 @@ export const createAdmissionregistrationV1MutatingWebhookConfiguration =
     inputSchema: CreateAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema:
       CreateAdmissionregistrationV1MutatingWebhookConfigurationOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyInput =
@@ -732,6 +736,7 @@ export const createAdmissionregistrationV1ValidatingAdmissionPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: CreateAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
@@ -901,6 +906,7 @@ export const createAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
       CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
       CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationInput =
@@ -1057,6 +1063,7 @@ export const createAdmissionregistrationV1ValidatingWebhookConfiguration =
       CreateAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
       CreateAdmissionregistrationV1ValidatingWebhookConfigurationOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
@@ -1244,6 +1251,7 @@ export const createAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
       CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
       CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
@@ -1414,6 +1422,7 @@ export const createAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
       CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
@@ -1600,6 +1609,7 @@ export const createAdmissionregistrationV1beta1MutatingAdmissionPolicy =
     inputSchema: CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema:
       CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
@@ -1770,6 +1780,7 @@ export const createAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
       CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyInput =
@@ -2258,6 +2269,7 @@ export const deleteAdmissionregistrationV1MutatingAdmissionPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: DeleteAdmissionregistrationV1MutatingAdmissionPolicyOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
@@ -2328,6 +2340,7 @@ export const deleteAdmissionregistrationV1MutatingAdmissionPolicyBinding =
       DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1MutatingWebhookConfigurationInput =
@@ -2397,6 +2410,7 @@ export const deleteAdmissionregistrationV1MutatingWebhookConfiguration =
     inputSchema: DeleteAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema:
       DeleteAdmissionregistrationV1MutatingWebhookConfigurationOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyInput =
@@ -2465,6 +2479,7 @@ export const deleteAdmissionregistrationV1ValidatingAdmissionPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: DeleteAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
@@ -2535,6 +2550,7 @@ export const deleteAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
       DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
       DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1ValidatingWebhookConfigurationInput =
@@ -2605,6 +2621,7 @@ export const deleteAdmissionregistrationV1ValidatingWebhookConfiguration =
       DeleteAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
       DeleteAdmissionregistrationV1ValidatingWebhookConfigurationOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyInput =
@@ -2815,6 +2832,7 @@ export const deleteAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
       DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
       DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
@@ -2885,6 +2903,7 @@ export const deleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
       DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyInput =
@@ -3094,6 +3113,7 @@ export const deleteAdmissionregistrationV1beta1MutatingAdmissionPolicy =
     inputSchema: DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema:
       DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
@@ -3164,6 +3184,7 @@ export const deleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
       DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetAdmissionregistrationAPIGroupInput =
@@ -5461,6 +5482,7 @@ export const patchAdmissionregistrationV1MutatingAdmissionPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: PatchAdmissionregistrationV1MutatingAdmissionPolicyOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
@@ -5631,6 +5653,7 @@ export const patchAdmissionregistrationV1MutatingAdmissionPolicyBinding =
       PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1MutatingWebhookConfigurationInput =
@@ -5787,6 +5810,7 @@ export const patchAdmissionregistrationV1MutatingWebhookConfiguration =
     inputSchema: PatchAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema:
       PatchAdmissionregistrationV1MutatingWebhookConfigurationOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyInput =
@@ -6001,6 +6025,7 @@ export const patchAdmissionregistrationV1ValidatingAdmissionPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: PatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
@@ -6170,6 +6195,7 @@ export const patchAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
       PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
       PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
@@ -6386,6 +6412,7 @@ export const patchAdmissionregistrationV1ValidatingAdmissionPolicyStatus =
       PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput,
     outputSchema:
       PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1ValidatingWebhookConfigurationInput =
@@ -6542,6 +6569,7 @@ export const patchAdmissionregistrationV1ValidatingWebhookConfiguration =
       PatchAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
       PatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
@@ -6728,6 +6756,7 @@ export const patchAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
     inputSchema: PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
       PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
@@ -6898,6 +6927,7 @@ export const patchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
       PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
@@ -7084,6 +7114,7 @@ export const patchAdmissionregistrationV1beta1MutatingAdmissionPolicy =
     inputSchema: PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema:
       PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
@@ -7254,6 +7285,7 @@ export const patchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
       PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1MutatingAdmissionPolicyInput =
@@ -7433,6 +7465,7 @@ export const readAdmissionregistrationV1MutatingAdmissionPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: ReadAdmissionregistrationV1MutatingAdmissionPolicyOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
@@ -7596,6 +7629,7 @@ export const readAdmissionregistrationV1MutatingAdmissionPolicyBinding =
     inputSchema: ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1MutatingWebhookConfigurationInput =
@@ -7745,6 +7779,7 @@ export const readAdmissionregistrationV1MutatingWebhookConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema: ReadAdmissionregistrationV1MutatingWebhookConfigurationOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyInput =
@@ -7953,6 +7988,7 @@ export const readAdmissionregistrationV1ValidatingAdmissionPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: ReadAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
@@ -8116,6 +8152,7 @@ export const readAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
       ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
       ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
@@ -8326,6 +8363,7 @@ export const readAdmissionregistrationV1ValidatingAdmissionPolicyStatus =
       ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput,
     outputSchema:
       ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1ValidatingWebhookConfigurationInput =
@@ -8475,6 +8513,7 @@ export const readAdmissionregistrationV1ValidatingWebhookConfiguration =
     inputSchema: ReadAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
       ReadAdmissionregistrationV1ValidatingWebhookConfigurationOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
@@ -8655,6 +8694,7 @@ export const readAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
     inputSchema: ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
       ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
@@ -8819,6 +8859,7 @@ export const readAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
       ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
@@ -8998,6 +9039,7 @@ export const readAdmissionregistrationV1beta1MutatingAdmissionPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema: ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
@@ -9162,6 +9204,7 @@ export const readAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
       ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyInput =
@@ -9347,6 +9390,7 @@ export const replaceAdmissionregistrationV1MutatingAdmissionPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAdmissionregistrationV1MutatingAdmissionPolicyInput,
     outputSchema: ReplaceAdmissionregistrationV1MutatingAdmissionPolicyOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
@@ -9517,6 +9561,7 @@ export const replaceAdmissionregistrationV1MutatingAdmissionPolicyBinding =
       ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationInput =
@@ -9674,6 +9719,7 @@ export const replaceAdmissionregistrationV1MutatingWebhookConfiguration =
       ReplaceAdmissionregistrationV1MutatingWebhookConfigurationInput,
     outputSchema:
       ReplaceAdmissionregistrationV1MutatingWebhookConfigurationOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyInput =
@@ -9888,6 +9934,7 @@ export const replaceAdmissionregistrationV1ValidatingAdmissionPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyInput,
     outputSchema: ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
@@ -10057,6 +10104,7 @@ export const replaceAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
       ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput,
     outputSchema:
       ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
@@ -10273,6 +10321,7 @@ export const replaceAdmissionregistrationV1ValidatingAdmissionPolicyStatus =
       ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput,
     outputSchema:
       ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationInput =
@@ -10429,6 +10478,7 @@ export const replaceAdmissionregistrationV1ValidatingWebhookConfiguration =
       ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationInput,
     outputSchema:
       ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
@@ -10616,6 +10666,7 @@ export const replaceAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
       ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput,
     outputSchema:
       ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
@@ -10786,6 +10837,7 @@ export const replaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding 
       ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
@@ -10973,6 +11025,7 @@ export const replaceAdmissionregistrationV1beta1MutatingAdmissionPolicy =
       ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyInput,
     outputSchema:
       ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
@@ -11143,6 +11196,7 @@ export const replaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
       ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput,
     outputSchema:
       ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyInput =

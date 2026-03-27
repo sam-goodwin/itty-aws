@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateAuthenticationV1SelfSubjectReviewInput =
@@ -94,6 +95,7 @@ export const createAuthenticationV1SelfSubjectReview =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateAuthenticationV1SelfSubjectReviewInput,
     outputSchema: CreateAuthenticationV1SelfSubjectReviewOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateAuthenticationV1TokenReviewInput =
@@ -188,6 +190,7 @@ export const createAuthenticationV1TokenReview =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateAuthenticationV1TokenReviewInput,
     outputSchema: CreateAuthenticationV1TokenReviewOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const GetAuthenticationAPIGroupInput =

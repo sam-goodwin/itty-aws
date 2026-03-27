@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateNetworkingV1IPAddressInput =
@@ -91,6 +92,7 @@ export const createNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateNetworkingV1IPAddressInput,
     outputSchema: CreateNetworkingV1IPAddressOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -185,6 +187,7 @@ export const createNetworkingV1IngressClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateNetworkingV1IngressClassInput,
     outputSchema: CreateNetworkingV1IngressClassOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateNetworkingV1NamespacedIngressInput =
@@ -361,6 +364,7 @@ export const createNetworkingV1NamespacedIngress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateNetworkingV1NamespacedIngressInput,
     outputSchema: CreateNetworkingV1NamespacedIngressOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateNetworkingV1NamespacedNetworkPolicyInput =
@@ -587,6 +591,7 @@ export const createNetworkingV1NamespacedNetworkPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: CreateNetworkingV1NamespacedNetworkPolicyOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateNetworkingV1ServiceCIDRInput =
@@ -684,6 +689,7 @@ export const createNetworkingV1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateNetworkingV1ServiceCIDRInput,
     outputSchema: CreateNetworkingV1ServiceCIDROutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateNetworkingV1beta1IPAddressInput =
@@ -771,6 +777,7 @@ export const createNetworkingV1beta1IPAddress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateNetworkingV1beta1IPAddressInput,
     outputSchema: CreateNetworkingV1beta1IPAddressOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateNetworkingV1beta1ServiceCIDRInput =
@@ -871,6 +878,7 @@ export const createNetworkingV1beta1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateNetworkingV1beta1ServiceCIDRInput,
     outputSchema: CreateNetworkingV1beta1ServiceCIDROutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteNetworkingV1CollectionIPAddressInput =
@@ -1279,6 +1287,7 @@ export const deleteNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteNetworkingV1IPAddressInput,
     outputSchema: DeleteNetworkingV1IPAddressOutput,
+    errors: [NotFound, Conflict] as const,
   }),
 );
 // Input Schema
@@ -1348,6 +1357,7 @@ export const deleteNetworkingV1IngressClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1IngressClassInput,
     outputSchema: DeleteNetworkingV1IngressClassOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteNetworkingV1NamespacedIngressInput =
@@ -1416,6 +1426,7 @@ export const deleteNetworkingV1NamespacedIngress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1NamespacedIngressInput,
     outputSchema: DeleteNetworkingV1NamespacedIngressOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteNetworkingV1NamespacedNetworkPolicyInput =
@@ -1484,6 +1495,7 @@ export const deleteNetworkingV1NamespacedNetworkPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: DeleteNetworkingV1NamespacedNetworkPolicyOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteNetworkingV1ServiceCIDRInput =
@@ -1552,6 +1564,7 @@ export const deleteNetworkingV1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1ServiceCIDRInput,
     outputSchema: DeleteNetworkingV1ServiceCIDROutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteNetworkingV1beta1CollectionIPAddressInput =
@@ -1756,6 +1769,7 @@ export const deleteNetworkingV1beta1IPAddress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1beta1IPAddressInput,
     outputSchema: DeleteNetworkingV1beta1IPAddressOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteNetworkingV1beta1ServiceCIDRInput =
@@ -1824,6 +1838,7 @@ export const deleteNetworkingV1beta1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1beta1ServiceCIDRInput,
     outputSchema: DeleteNetworkingV1beta1ServiceCIDROutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetNetworkingAPIGroupInput =
@@ -3448,6 +3463,7 @@ export const patchNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: PatchNetworkingV1IPAddressInput,
     outputSchema: PatchNetworkingV1IPAddressOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -3542,6 +3558,7 @@ export const patchNetworkingV1IngressClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchNetworkingV1IngressClassInput,
     outputSchema: PatchNetworkingV1IngressClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchNetworkingV1NamespacedIngressInput =
@@ -3718,6 +3735,7 @@ export const patchNetworkingV1NamespacedIngress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchNetworkingV1NamespacedIngressInput,
     outputSchema: PatchNetworkingV1NamespacedIngressOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchNetworkingV1NamespacedIngressStatusInput =
@@ -3894,6 +3912,7 @@ export const patchNetworkingV1NamespacedIngressStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchNetworkingV1NamespacedIngressStatusInput,
     outputSchema: PatchNetworkingV1NamespacedIngressStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchNetworkingV1NamespacedNetworkPolicyInput =
@@ -4120,6 +4139,7 @@ export const patchNetworkingV1NamespacedNetworkPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: PatchNetworkingV1NamespacedNetworkPolicyOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchNetworkingV1ServiceCIDRInput =
@@ -4220,6 +4240,7 @@ export const patchNetworkingV1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchNetworkingV1ServiceCIDRInput,
     outputSchema: PatchNetworkingV1ServiceCIDROutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchNetworkingV1ServiceCIDRStatusInput =
@@ -4320,6 +4341,7 @@ export const patchNetworkingV1ServiceCIDRStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchNetworkingV1ServiceCIDRStatusInput,
     outputSchema: PatchNetworkingV1ServiceCIDRStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchNetworkingV1beta1IPAddressInput =
@@ -4407,6 +4429,7 @@ export const patchNetworkingV1beta1IPAddress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchNetworkingV1beta1IPAddressInput,
     outputSchema: PatchNetworkingV1beta1IPAddressOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchNetworkingV1beta1ServiceCIDRInput =
@@ -4507,6 +4530,7 @@ export const patchNetworkingV1beta1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchNetworkingV1beta1ServiceCIDRInput,
     outputSchema: PatchNetworkingV1beta1ServiceCIDROutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchNetworkingV1beta1ServiceCIDRStatusInput =
@@ -4607,6 +4631,7 @@ export const patchNetworkingV1beta1ServiceCIDRStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchNetworkingV1beta1ServiceCIDRStatusInput,
     outputSchema: PatchNetworkingV1beta1ServiceCIDRStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadNetworkingV1IPAddressInput =
@@ -4688,6 +4713,7 @@ export const readNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadNetworkingV1IPAddressInput,
     outputSchema: ReadNetworkingV1IPAddressOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -4776,6 +4802,7 @@ export const readNetworkingV1IngressClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadNetworkingV1IngressClassInput,
     outputSchema: ReadNetworkingV1IngressClassOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadNetworkingV1NamespacedIngressInput =
@@ -4946,6 +4973,7 @@ export const readNetworkingV1NamespacedIngress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadNetworkingV1NamespacedIngressInput,
     outputSchema: ReadNetworkingV1NamespacedIngressOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadNetworkingV1NamespacedIngressStatusInput =
@@ -5116,6 +5144,7 @@ export const readNetworkingV1NamespacedIngressStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadNetworkingV1NamespacedIngressStatusInput,
     outputSchema: ReadNetworkingV1NamespacedIngressStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadNetworkingV1NamespacedNetworkPolicyInput =
@@ -5336,6 +5365,7 @@ export const readNetworkingV1NamespacedNetworkPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: ReadNetworkingV1NamespacedNetworkPolicyOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadNetworkingV1ServiceCIDRInput =
@@ -5430,6 +5460,7 @@ export const readNetworkingV1ServiceCIDR = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadNetworkingV1ServiceCIDRInput,
     outputSchema: ReadNetworkingV1ServiceCIDROutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -5525,6 +5556,7 @@ export const readNetworkingV1ServiceCIDRStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadNetworkingV1ServiceCIDRStatusInput,
     outputSchema: ReadNetworkingV1ServiceCIDRStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadNetworkingV1beta1IPAddressInput =
@@ -5606,6 +5638,7 @@ export const readNetworkingV1beta1IPAddress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadNetworkingV1beta1IPAddressInput,
     outputSchema: ReadNetworkingV1beta1IPAddressOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadNetworkingV1beta1ServiceCIDRInput =
@@ -5700,6 +5733,7 @@ export const readNetworkingV1beta1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadNetworkingV1beta1ServiceCIDRInput,
     outputSchema: ReadNetworkingV1beta1ServiceCIDROutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadNetworkingV1beta1ServiceCIDRStatusInput =
@@ -5794,6 +5828,7 @@ export const readNetworkingV1beta1ServiceCIDRStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadNetworkingV1beta1ServiceCIDRStatusInput,
     outputSchema: ReadNetworkingV1beta1ServiceCIDRStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceNetworkingV1IPAddressInput =
@@ -5881,6 +5916,7 @@ export const replaceNetworkingV1IPAddress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1IPAddressInput,
     outputSchema: ReplaceNetworkingV1IPAddressOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceNetworkingV1IngressClassInput =
@@ -5974,6 +6010,7 @@ export const replaceNetworkingV1IngressClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1IngressClassInput,
     outputSchema: ReplaceNetworkingV1IngressClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceNetworkingV1NamespacedIngressInput =
@@ -6150,6 +6187,7 @@ export const replaceNetworkingV1NamespacedIngress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1NamespacedIngressInput,
     outputSchema: ReplaceNetworkingV1NamespacedIngressOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceNetworkingV1NamespacedIngressStatusInput =
@@ -6326,6 +6364,7 @@ export const replaceNetworkingV1NamespacedIngressStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1NamespacedIngressStatusInput,
     outputSchema: ReplaceNetworkingV1NamespacedIngressStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceNetworkingV1NamespacedNetworkPolicyInput =
@@ -6552,6 +6591,7 @@ export const replaceNetworkingV1NamespacedNetworkPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: ReplaceNetworkingV1NamespacedNetworkPolicyOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceNetworkingV1ServiceCIDRInput =
@@ -6652,6 +6692,7 @@ export const replaceNetworkingV1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1ServiceCIDRInput,
     outputSchema: ReplaceNetworkingV1ServiceCIDROutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceNetworkingV1ServiceCIDRStatusInput =
@@ -6752,6 +6793,7 @@ export const replaceNetworkingV1ServiceCIDRStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1ServiceCIDRStatusInput,
     outputSchema: ReplaceNetworkingV1ServiceCIDRStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceNetworkingV1beta1IPAddressInput =
@@ -6839,6 +6881,7 @@ export const replaceNetworkingV1beta1IPAddress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1beta1IPAddressInput,
     outputSchema: ReplaceNetworkingV1beta1IPAddressOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceNetworkingV1beta1ServiceCIDRInput =
@@ -6939,6 +6982,7 @@ export const replaceNetworkingV1beta1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1beta1ServiceCIDRInput,
     outputSchema: ReplaceNetworkingV1beta1ServiceCIDROutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceNetworkingV1beta1ServiceCIDRStatusInput =
@@ -7039,6 +7083,7 @@ export const replaceNetworkingV1beta1ServiceCIDRStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1beta1ServiceCIDRStatusInput,
     outputSchema: ReplaceNetworkingV1beta1ServiceCIDRStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchNetworkingV1IPAddressInput =

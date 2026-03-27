@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateCoordinationV1NamespacedLeaseInput =
@@ -97,6 +98,7 @@ export const createCoordinationV1NamespacedLease =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoordinationV1NamespacedLeaseInput,
     outputSchema: CreateCoordinationV1NamespacedLeaseOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoordinationV1alpha2NamespacedLeaseCandidateInput =
@@ -184,6 +186,7 @@ export const createCoordinationV1alpha2NamespacedLeaseCandidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: CreateCoordinationV1alpha2NamespacedLeaseCandidateOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateCoordinationV1beta1NamespacedLeaseCandidateInput =
@@ -271,6 +274,7 @@ export const createCoordinationV1beta1NamespacedLeaseCandidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: CreateCoordinationV1beta1NamespacedLeaseCandidateOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteCoordinationV1CollectionNamespacedLeaseInput =
@@ -407,6 +411,7 @@ export const deleteCoordinationV1NamespacedLease =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoordinationV1NamespacedLeaseInput,
     outputSchema: DeleteCoordinationV1NamespacedLeaseOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateInput =
@@ -545,6 +550,7 @@ export const deleteCoordinationV1alpha2NamespacedLeaseCandidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: DeleteCoordinationV1alpha2NamespacedLeaseCandidateOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateInput =
@@ -683,6 +689,7 @@ export const deleteCoordinationV1beta1NamespacedLeaseCandidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: DeleteCoordinationV1beta1NamespacedLeaseCandidateOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetCoordinationAPIGroupInput =
@@ -1559,6 +1566,7 @@ export const patchCoordinationV1NamespacedLease =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoordinationV1NamespacedLeaseInput,
     outputSchema: PatchCoordinationV1NamespacedLeaseOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoordinationV1alpha2NamespacedLeaseCandidateInput =
@@ -1646,6 +1654,7 @@ export const patchCoordinationV1alpha2NamespacedLeaseCandidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: PatchCoordinationV1alpha2NamespacedLeaseCandidateOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchCoordinationV1beta1NamespacedLeaseCandidateInput =
@@ -1733,6 +1742,7 @@ export const patchCoordinationV1beta1NamespacedLeaseCandidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: PatchCoordinationV1beta1NamespacedLeaseCandidateOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadCoordinationV1NamespacedLeaseInput =
@@ -1817,6 +1827,7 @@ export const readCoordinationV1NamespacedLease =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoordinationV1NamespacedLeaseInput,
     outputSchema: ReadCoordinationV1NamespacedLeaseOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoordinationV1alpha2NamespacedLeaseCandidateInput =
@@ -1898,6 +1909,7 @@ export const readCoordinationV1alpha2NamespacedLeaseCandidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: ReadCoordinationV1alpha2NamespacedLeaseCandidateOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadCoordinationV1beta1NamespacedLeaseCandidateInput =
@@ -1979,6 +1991,7 @@ export const readCoordinationV1beta1NamespacedLeaseCandidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: ReadCoordinationV1beta1NamespacedLeaseCandidateOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceCoordinationV1NamespacedLeaseInput =
@@ -2069,6 +2082,7 @@ export const replaceCoordinationV1NamespacedLease =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoordinationV1NamespacedLeaseInput,
     outputSchema: ReplaceCoordinationV1NamespacedLeaseOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoordinationV1alpha2NamespacedLeaseCandidateInput =
@@ -2156,6 +2170,7 @@ export const replaceCoordinationV1alpha2NamespacedLeaseCandidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoordinationV1alpha2NamespacedLeaseCandidateInput,
     outputSchema: ReplaceCoordinationV1alpha2NamespacedLeaseCandidateOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceCoordinationV1beta1NamespacedLeaseCandidateInput =
@@ -2243,6 +2258,7 @@ export const replaceCoordinationV1beta1NamespacedLeaseCandidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceCoordinationV1beta1NamespacedLeaseCandidateInput,
     outputSchema: ReplaceCoordinationV1beta1NamespacedLeaseCandidateOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchCoordinationV1LeaseListForAllNamespacesInput =

@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateApiregistrationV1APIServiceInput =
@@ -118,6 +119,7 @@ export const createApiregistrationV1APIService =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateApiregistrationV1APIServiceInput,
     outputSchema: CreateApiregistrationV1APIServiceOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteApiregistrationV1APIServiceInput =
@@ -186,6 +188,7 @@ export const deleteApiregistrationV1APIService =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteApiregistrationV1APIServiceInput,
     outputSchema: DeleteApiregistrationV1APIServiceOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteApiregistrationV1CollectionAPIServiceInput =
@@ -580,6 +583,7 @@ export const patchApiregistrationV1APIService =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchApiregistrationV1APIServiceInput,
     outputSchema: PatchApiregistrationV1APIServiceOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchApiregistrationV1APIServiceStatusInput =
@@ -691,6 +695,7 @@ export const patchApiregistrationV1APIServiceStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchApiregistrationV1APIServiceStatusInput,
     outputSchema: PatchApiregistrationV1APIServiceStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadApiregistrationV1APIServiceInput =
@@ -796,6 +801,7 @@ export const readApiregistrationV1APIService =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadApiregistrationV1APIServiceInput,
     outputSchema: ReadApiregistrationV1APIServiceOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadApiregistrationV1APIServiceStatusInput =
@@ -901,6 +907,7 @@ export const readApiregistrationV1APIServiceStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadApiregistrationV1APIServiceStatusInput,
     outputSchema: ReadApiregistrationV1APIServiceStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceApiregistrationV1APIServiceInput =
@@ -1012,6 +1019,7 @@ export const replaceApiregistrationV1APIService =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceApiregistrationV1APIServiceInput,
     outputSchema: ReplaceApiregistrationV1APIServiceOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceApiregistrationV1APIServiceStatusInput =
@@ -1123,6 +1131,7 @@ export const replaceApiregistrationV1APIServiceStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceApiregistrationV1APIServiceStatusInput,
     outputSchema: ReplaceApiregistrationV1APIServiceStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchApiregistrationV1APIServiceInput =

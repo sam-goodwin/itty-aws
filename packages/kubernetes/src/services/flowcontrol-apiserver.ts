@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateFlowcontrolApiserverV1FlowSchemaInput =
@@ -160,6 +161,7 @@ export const createFlowcontrolApiserverV1FlowSchema =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateFlowcontrolApiserverV1FlowSchemaInput,
     outputSchema: CreateFlowcontrolApiserverV1FlowSchemaOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const CreateFlowcontrolApiserverV1PriorityLevelConfigurationInput =
@@ -284,6 +286,7 @@ export const createFlowcontrolApiserverV1PriorityLevelConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateFlowcontrolApiserverV1PriorityLevelConfigurationInput,
     outputSchema: CreateFlowcontrolApiserverV1PriorityLevelConfigurationOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const DeleteFlowcontrolApiserverV1CollectionFlowSchemaInput =
@@ -490,6 +493,7 @@ export const deleteFlowcontrolApiserverV1FlowSchema =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteFlowcontrolApiserverV1FlowSchemaInput,
     outputSchema: DeleteFlowcontrolApiserverV1FlowSchemaOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const DeleteFlowcontrolApiserverV1PriorityLevelConfigurationInput =
@@ -558,6 +562,7 @@ export const deleteFlowcontrolApiserverV1PriorityLevelConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: DeleteFlowcontrolApiserverV1PriorityLevelConfigurationInput,
     outputSchema: DeleteFlowcontrolApiserverV1PriorityLevelConfigurationOutput,
+    errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export const GetFlowcontrolApiserverAPIGroupInput =
@@ -1108,6 +1113,7 @@ export const patchFlowcontrolApiserverV1FlowSchema =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchFlowcontrolApiserverV1FlowSchemaInput,
     outputSchema: PatchFlowcontrolApiserverV1FlowSchemaOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchFlowcontrolApiserverV1FlowSchemaStatusInput =
@@ -1261,6 +1267,7 @@ export const patchFlowcontrolApiserverV1FlowSchemaStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchFlowcontrolApiserverV1FlowSchemaStatusInput,
     outputSchema: PatchFlowcontrolApiserverV1FlowSchemaStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationInput =
@@ -1385,6 +1392,7 @@ export const patchFlowcontrolApiserverV1PriorityLevelConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchFlowcontrolApiserverV1PriorityLevelConfigurationInput,
     outputSchema: PatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput =
@@ -1511,6 +1519,7 @@ export const patchFlowcontrolApiserverV1PriorityLevelConfigurationStatus =
       PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput,
     outputSchema:
       PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReadFlowcontrolApiserverV1FlowSchemaInput =
@@ -1658,6 +1667,7 @@ export const readFlowcontrolApiserverV1FlowSchema =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadFlowcontrolApiserverV1FlowSchemaInput,
     outputSchema: ReadFlowcontrolApiserverV1FlowSchemaOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadFlowcontrolApiserverV1FlowSchemaStatusInput =
@@ -1805,6 +1815,7 @@ export const readFlowcontrolApiserverV1FlowSchemaStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadFlowcontrolApiserverV1FlowSchemaStatusInput,
     outputSchema: ReadFlowcontrolApiserverV1FlowSchemaStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationInput =
@@ -1923,6 +1934,7 @@ export const readFlowcontrolApiserverV1PriorityLevelConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReadFlowcontrolApiserverV1PriorityLevelConfigurationInput,
     outputSchema: ReadFlowcontrolApiserverV1PriorityLevelConfigurationOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput =
@@ -2043,6 +2055,7 @@ export const readFlowcontrolApiserverV1PriorityLevelConfigurationStatus =
       ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput,
     outputSchema:
       ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput,
+    errors: [NotFound] as const,
   }));
 // Input Schema
 export const ReplaceFlowcontrolApiserverV1FlowSchemaInput =
@@ -2196,6 +2209,7 @@ export const replaceFlowcontrolApiserverV1FlowSchema =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceFlowcontrolApiserverV1FlowSchemaInput,
     outputSchema: ReplaceFlowcontrolApiserverV1FlowSchemaOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceFlowcontrolApiserverV1FlowSchemaStatusInput =
@@ -2349,6 +2363,7 @@ export const replaceFlowcontrolApiserverV1FlowSchemaStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceFlowcontrolApiserverV1FlowSchemaStatusInput,
     outputSchema: ReplaceFlowcontrolApiserverV1FlowSchemaStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationInput =
@@ -2473,6 +2488,7 @@ export const replaceFlowcontrolApiserverV1PriorityLevelConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationInput,
     outputSchema: ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput =
@@ -2599,6 +2615,7 @@ export const replaceFlowcontrolApiserverV1PriorityLevelConfigurationStatus =
       ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput,
     outputSchema:
       ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
 export const WatchFlowcontrolApiserverV1FlowSchemaInput =

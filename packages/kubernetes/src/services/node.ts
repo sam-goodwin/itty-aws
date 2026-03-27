@@ -7,6 +7,7 @@
 import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const CreateNodeV1RuntimeClassInput =
@@ -107,6 +108,7 @@ export const createNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateNodeV1RuntimeClassInput,
     outputSchema: CreateNodeV1RuntimeClassOutput,
+    errors: [Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -241,6 +243,7 @@ export const deleteNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteNodeV1RuntimeClassInput,
     outputSchema: DeleteNodeV1RuntimeClassOutput,
+    errors: [NotFound, Conflict] as const,
   }),
 );
 // Input Schema
@@ -546,6 +549,7 @@ export const patchNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: PatchNodeV1RuntimeClassInput,
     outputSchema: PatchNodeV1RuntimeClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
@@ -644,6 +648,7 @@ export const readNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReadNodeV1RuntimeClassInput,
     outputSchema: ReadNodeV1RuntimeClassOutput,
+    errors: [NotFound] as const,
   }),
 );
 // Input Schema
@@ -748,6 +753,7 @@ export const replaceNodeV1RuntimeClass = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ReplaceNodeV1RuntimeClassInput,
     outputSchema: ReplaceNodeV1RuntimeClassOutput,
+    errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }),
 );
 // Input Schema
