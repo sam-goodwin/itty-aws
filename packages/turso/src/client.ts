@@ -19,9 +19,10 @@ export { UnknownTursoError } from "./errors.ts";
 import { Credentials } from "./credentials.ts";
 
 // API Error Response Schema
+// Turso returns { error: string, code?: string }
 const ApiErrorResponse = Schema.Struct({
+  error: Schema.String,
   code: Schema.optional(Schema.String),
-  message: Schema.String,
 });
 
 /**
@@ -35,12 +36,12 @@ const matchError = (
     const parsed = Schema.decodeUnknownSync(ApiErrorResponse)(errorBody);
     const ErrorClass = (HTTP_STATUS_MAP as any)[status];
     if (ErrorClass) {
-      return Effect.fail(new ErrorClass({ message: parsed.message ?? "" }));
+      return Effect.fail(new ErrorClass({ message: parsed.error }));
     }
     return Effect.fail(
       new UnknownTursoError({
         code: parsed.code,
-        message: parsed.message,
+        message: parsed.error,
         body: errorBody,
       }),
     );

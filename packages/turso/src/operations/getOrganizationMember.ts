@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound } from "../errors";
 
 // Input Schema
 export const GetOrganizationMemberInput =
@@ -44,5 +45,6 @@ export const getOrganizationMember = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: GetOrganizationMemberInput,
     outputSchema: GetOrganizationMemberOutput,
+    errors: [NotFound] as const,
   }),
 );

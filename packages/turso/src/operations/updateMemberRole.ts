@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const UpdateMemberRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -41,4 +42,5 @@ export type UpdateMemberRoleOutput = typeof UpdateMemberRoleOutput.Type;
 export const updateMemberRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UpdateMemberRoleInput,
   outputSchema: UpdateMemberRoleOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

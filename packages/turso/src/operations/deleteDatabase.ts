@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound } from "../errors";
 
 // Input Schema
 export const DeleteDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -32,4 +33,5 @@ export type DeleteDatabaseOutput = typeof DeleteDatabaseOutput.Type;
 export const deleteDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeleteDatabaseInput,
   outputSchema: DeleteDatabaseOutput,
+  errors: [NotFound] as const,
 }));

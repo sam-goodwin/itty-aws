@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, NotFound } from "../errors";
 
 // Input Schema
 export const AddLocationToGroupInput =
@@ -45,4 +46,5 @@ export type AddLocationToGroupOutput = typeof AddLocationToGroupOutput.Type;
 export const addLocationToGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AddLocationToGroupInput,
   outputSchema: AddLocationToGroupOutput,
+  errors: [BadRequest, NotFound] as const,
 }));

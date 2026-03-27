@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, NotFound } from "../errors";
 
 // Input Schema
 export const CreateGroupTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -47,4 +48,5 @@ export type CreateGroupTokenOutput = typeof CreateGroupTokenOutput.Type;
 export const createGroupToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CreateGroupTokenInput,
   outputSchema: CreateGroupTokenOutput,
+  errors: [BadRequest, NotFound] as const,
 }));

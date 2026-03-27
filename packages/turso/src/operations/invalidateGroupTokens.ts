@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound } from "../errors";
 
 // Input Schema
 export const InvalidateGroupTokensInput =
@@ -34,5 +35,6 @@ export const invalidateGroupTokens = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: InvalidateGroupTokensInput,
     outputSchema: InvalidateGroupTokensOutput,
+    errors: [NotFound] as const,
   }),
 );

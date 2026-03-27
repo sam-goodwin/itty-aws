@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound } from "../errors";
 
 // Input Schema
 export const UpdateDatabaseConfigurationInput =
@@ -46,5 +47,6 @@ export const updateDatabaseConfiguration = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: UpdateDatabaseConfigurationInput,
     outputSchema: UpdateDatabaseConfigurationOutput,
+    errors: [NotFound] as const,
   }),
 );

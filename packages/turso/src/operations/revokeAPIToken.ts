@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound } from "../errors";
 
 // Input Schema
 export const RevokeAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -25,4 +26,5 @@ export type RevokeAPITokenOutput = typeof RevokeAPITokenOutput.Type;
 export const revokeAPIToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RevokeAPITokenInput,
   outputSchema: RevokeAPITokenOutput,
+  errors: [NotFound] as const,
 }));
