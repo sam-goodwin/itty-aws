@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const TokensRequestKmsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -21,4 +22,5 @@ export type TokensRequestKmsOutput = typeof TokensRequestKmsOutput.Type;
 export const TokensRequestKms = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TokensRequestKmsInput,
   outputSchema: TokensRequestKmsOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

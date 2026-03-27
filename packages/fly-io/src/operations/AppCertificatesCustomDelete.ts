@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const AppCertificatesCustomDeleteInput =
@@ -105,5 +106,6 @@ export const AppCertificatesCustomDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: AppCertificatesCustomDeleteInput,
     outputSchema: AppCertificatesCustomDeleteOutput,
+    errors: [Forbidden, NotFound] as const,
   }),
 );

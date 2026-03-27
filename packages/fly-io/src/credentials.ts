@@ -4,7 +4,7 @@ import * as Redacted from "effect/Redacted";
 import * as Context from "effect/Context";
 import { ConfigError } from "@distilled.cloud/core/errors";
 
-export const DEFAULT_API_BASE_URL = "https://api.fly-io.com";
+export const DEFAULT_API_BASE_URL = "https://api.machines.dev/v1";
 
 export interface Config {
   readonly apiKey: Redacted.Redacted<string>;

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -53,4 +54,5 @@ export type VolumesUpdateOutput = typeof VolumesUpdateOutput.Type;
 export const VolumesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VolumesUpdateInput,
   outputSchema: VolumesUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

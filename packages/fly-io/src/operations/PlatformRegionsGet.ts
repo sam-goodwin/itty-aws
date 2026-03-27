@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden } from "../errors";
 
 // Input Schema
 export const PlatformRegionsGetInput =
@@ -39,4 +40,5 @@ export type PlatformRegionsGetOutput = typeof PlatformRegionsGetOutput.Type;
 export const PlatformRegionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PlatformRegionsGetInput,
   outputSchema: PlatformRegionsGetOutput,
+  errors: [Forbidden] as const,
 }));

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const MachinesSignalInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -48,4 +49,5 @@ export type MachinesSignalOutput = typeof MachinesSignalOutput.Type;
 export const MachinesSignal = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MachinesSignalInput,
   outputSchema: MachinesSignalOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

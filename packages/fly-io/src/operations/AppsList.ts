@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden } from "../errors";
 
 // Input Schema
 export const AppsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -47,4 +48,5 @@ export type AppsListOutput = typeof AppsListOutput.Type;
 export const AppsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsListInput,
   outputSchema: AppsListOutput,
+  errors: [Forbidden] as const,
 }));

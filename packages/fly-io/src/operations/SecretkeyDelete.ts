@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const SecretkeyDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -31,4 +32,5 @@ export type SecretkeyDeleteOutput = typeof SecretkeyDeleteOutput.Type;
 export const SecretkeyDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SecretkeyDeleteInput,
   outputSchema: SecretkeyDeleteOutput,
+  errors: [Forbidden, NotFound] as const,
 }));

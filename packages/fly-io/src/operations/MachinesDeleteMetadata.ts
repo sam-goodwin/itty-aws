@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const MachinesDeleteMetadataInput =
@@ -37,5 +38,6 @@ export const MachinesDeleteMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: MachinesDeleteMetadataInput,
     outputSchema: MachinesDeleteMetadataOutput,
+    errors: [Forbidden, NotFound] as const,
   }),
 );

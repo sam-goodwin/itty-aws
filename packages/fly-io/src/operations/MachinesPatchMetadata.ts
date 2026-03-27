@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const MachinesPatchMetadataInput =
@@ -35,5 +36,6 @@ export const MachinesPatchMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: MachinesPatchMetadataInput,
     outputSchema: MachinesPatchMetadataOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

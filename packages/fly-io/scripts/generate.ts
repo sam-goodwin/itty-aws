@@ -18,6 +18,14 @@ generateFromOpenAPI({
   traitsImport: "../traits",
   sensitiveImport: "../sensitive",
   errorsImport: "../errors",
-  includeOperationErrors: false, // Fly-io handles errors globally by HTTP status
+  includeOperationErrors: true,
+  statusToErrorClass: {
+    "400": "BadRequest",
+    "403": "Forbidden",
+    "404": "NotFound",
+    "409": "Conflict",
+    "422": "UnprocessableEntity",
+  },
+  defaultErrorStatuses: new Set(["401", "429", "500", "502", "503", "504"]),
   skipDeprecated: true,
 });
