@@ -44,6 +44,7 @@
         "@types/node": "catalog:",
         "archiver": "catalog:",
         "dedent": "catalog:",
+        "dotenv": "catalog:",
         "pathe": "catalog:",
         "vitest": "catalog:",
       },
@@ -82,7 +83,6 @@
         "@types/node": "catalog:",
         "dotenv": "catalog:",
         "typescript": "^5.9.3",
-        "vite": "catalog:",
         "vitest": "catalog:",
       },
       "peerDependencies": {
@@ -116,6 +116,8 @@
       "devDependencies": {
         "@types/bun": "catalog:",
         "@types/node": "catalog:",
+        "dotenv": "catalog:",
+        "vitest": "catalog:",
       },
       "peerDependencies": {
         "effect": "catalog:",
@@ -148,6 +150,8 @@
       "devDependencies": {
         "@types/bun": "catalog:",
         "@types/node": "catalog:",
+        "dotenv": "catalog:",
+        "vitest": "catalog:",
       },
       "peerDependencies": {
         "effect": "catalog:",
