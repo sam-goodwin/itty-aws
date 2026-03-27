@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1UpgradePostgresVersionInput =
@@ -39,5 +40,6 @@ export const v1UpgradePostgresVersion = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1UpgradePostgresVersionInput,
     outputSchema: V1UpgradePostgresVersionOutput,
+    errors: [BadRequest, Forbidden] as const,
   }),
 );

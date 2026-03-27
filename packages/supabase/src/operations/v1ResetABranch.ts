@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const V1ResetABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -29,4 +30,5 @@ export type V1ResetABranchOutput = typeof V1ResetABranchOutput.Type;
 export const v1ResetABranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1ResetABranchInput,
   outputSchema: V1ResetABranchOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

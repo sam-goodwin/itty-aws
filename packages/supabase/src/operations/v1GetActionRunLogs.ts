@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const V1GetActionRunLogsInput =
@@ -28,4 +29,5 @@ export type V1GetActionRunLogsOutput = typeof V1GetActionRunLogsOutput.Type;
 export const v1GetActionRunLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1GetActionRunLogsInput,
   outputSchema: V1GetActionRunLogsOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1GetPostgresConfigInput =
@@ -56,4 +57,5 @@ export type V1GetPostgresConfigOutput = typeof V1GetPostgresConfigOutput.Type;
 export const v1GetPostgresConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1GetPostgresConfigInput,
   outputSchema: V1GetPostgresConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

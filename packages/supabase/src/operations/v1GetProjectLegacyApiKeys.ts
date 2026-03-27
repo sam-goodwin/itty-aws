@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1GetProjectLegacyApiKeysInput =
@@ -30,5 +31,6 @@ export const v1GetProjectLegacyApiKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1GetProjectLegacyApiKeysInput,
     outputSchema: V1GetProjectLegacyApiKeysOutput,
+    errors: [BadRequest, Forbidden] as const,
   }),
 );

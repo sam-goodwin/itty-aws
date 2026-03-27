@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 import { SensitiveString } from "../sensitive";
 
 // Input Schema
@@ -44,5 +45,6 @@ export const v1GetProjectPgbouncerConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1GetProjectPgbouncerConfigInput,
     outputSchema: V1GetProjectPgbouncerConfigOutput,
+    errors: [BadRequest, Forbidden] as const,
   }),
 );

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 import { SensitiveNullableString } from "../sensitive";
 
 // Input Schema
@@ -43,4 +44,5 @@ export type V1GetProjectApiKeysOutput = typeof V1GetProjectApiKeysOutput.Type;
 export const v1GetProjectApiKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1GetProjectApiKeysInput,
   outputSchema: V1GetProjectApiKeysOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

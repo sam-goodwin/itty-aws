@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden } from "../errors";
 
 // Input Schema
 export const V1AuthorizeUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -33,4 +34,5 @@ export type V1AuthorizeUserOutput = typeof V1AuthorizeUserOutput.Type;
 export const v1AuthorizeUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1AuthorizeUserInput,
   outputSchema: V1AuthorizeUserOutput,
+  errors: [Forbidden] as const,
 }));

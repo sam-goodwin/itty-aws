@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden } from "../errors";
 
 // Input Schema
 export const V1OauthAuthorizeProjectClaimInput =
@@ -37,4 +38,5 @@ export const v1OauthAuthorizeProjectClaim =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: V1OauthAuthorizeProjectClaimInput,
     outputSchema: V1OauthAuthorizeProjectClaimOutput,
+    errors: [Forbidden] as const,
   }));

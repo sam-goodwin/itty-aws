@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const V1GetActionRunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -57,4 +58,5 @@ export type V1GetActionRunOutput = typeof V1GetActionRunOutput.Type;
 export const v1GetActionRun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1GetActionRunInput,
   outputSchema: V1GetActionRunOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

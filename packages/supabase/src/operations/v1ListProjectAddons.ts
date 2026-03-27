@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1ListProjectAddonsInput =
@@ -77,4 +78,5 @@ export type V1ListProjectAddonsOutput = typeof V1ListProjectAddonsOutput.Type;
 export const v1ListProjectAddons = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1ListProjectAddonsInput,
   outputSchema: V1ListProjectAddonsOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

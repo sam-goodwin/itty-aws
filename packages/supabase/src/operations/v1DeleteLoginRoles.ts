@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1DeleteLoginRolesInput =
@@ -27,4 +28,5 @@ export type V1DeleteLoginRolesOutput = typeof V1DeleteLoginRolesOutput.Type;
 export const v1DeleteLoginRoles = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1DeleteLoginRolesInput,
   outputSchema: V1DeleteLoginRolesOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

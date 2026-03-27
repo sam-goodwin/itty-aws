@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 import { SensitiveString } from "../sensitive";
 
 // Input Schema
@@ -30,4 +31,5 @@ export type V1CreateLoginRoleOutput = typeof V1CreateLoginRoleOutput.Type;
 export const v1CreateLoginRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1CreateLoginRoleInput,
   outputSchema: V1CreateLoginRoleOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

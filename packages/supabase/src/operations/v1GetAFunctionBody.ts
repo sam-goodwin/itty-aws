@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const V1GetAFunctionBodyInput =
@@ -32,4 +33,5 @@ export type V1GetAFunctionBodyOutput = typeof V1GetAFunctionBodyOutput.Type;
 export const v1GetAFunctionBody = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1GetAFunctionBodyInput,
   outputSchema: V1GetAFunctionBodyOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

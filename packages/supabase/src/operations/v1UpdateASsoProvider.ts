@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const V1UpdateASsoProviderInput =
@@ -97,5 +98,6 @@ export const v1UpdateASsoProvider = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1UpdateASsoProviderInput,
     outputSchema: V1UpdateASsoProviderOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

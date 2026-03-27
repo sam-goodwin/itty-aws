@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1VerifyDnsConfigInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -71,4 +72,5 @@ export type V1VerifyDnsConfigOutput = typeof V1VerifyDnsConfigOutput.Type;
 export const v1VerifyDnsConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1VerifyDnsConfigInput,
   outputSchema: V1VerifyDnsConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

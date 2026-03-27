@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1SetupAReadReplicaInput =
@@ -45,4 +46,5 @@ export type V1SetupAReadReplicaOutput = typeof V1SetupAReadReplicaOutput.Type;
 export const v1SetupAReadReplica = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1SetupAReadReplicaInput,
   outputSchema: V1SetupAReadReplicaOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

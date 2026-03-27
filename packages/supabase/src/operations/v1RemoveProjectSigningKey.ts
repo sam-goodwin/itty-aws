@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const V1RemoveProjectSigningKeyInput =
@@ -44,5 +45,6 @@ export const v1RemoveProjectSigningKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1RemoveProjectSigningKeyInput,
     outputSchema: V1RemoveProjectSigningKeyOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

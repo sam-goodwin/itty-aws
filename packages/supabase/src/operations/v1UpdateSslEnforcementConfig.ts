@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1UpdateSslEnforcementConfigInput =
@@ -36,4 +37,5 @@ export const v1UpdateSslEnforcementConfig =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: V1UpdateSslEnforcementConfigInput,
     outputSchema: V1UpdateSslEnforcementConfigOutput,
+    errors: [BadRequest, Forbidden] as const,
   }));

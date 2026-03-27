@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1GetProjectUsageRequestCountInput =
@@ -40,4 +41,5 @@ export const v1GetProjectUsageRequestCount =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: V1GetProjectUsageRequestCountInput,
     outputSchema: V1GetProjectUsageRequestCountOutput,
+    errors: [BadRequest, Forbidden] as const,
   }));

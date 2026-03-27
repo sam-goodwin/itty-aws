@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1GetJitAccessConfigInput =
@@ -50,5 +51,6 @@ export const v1GetJitAccessConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1GetJitAccessConfigInput,
     outputSchema: V1GetJitAccessConfigOutput,
+    errors: [BadRequest, Forbidden] as const,
   }),
 );

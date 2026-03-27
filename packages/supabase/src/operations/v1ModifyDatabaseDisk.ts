@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1ModifyDatabaseDiskInput =
@@ -25,5 +26,6 @@ export const v1ModifyDatabaseDisk = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1ModifyDatabaseDiskInput,
     outputSchema: V1ModifyDatabaseDiskOutput,
+    errors: [BadRequest, Forbidden] as const,
   }),
 );

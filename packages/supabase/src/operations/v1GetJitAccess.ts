@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1GetJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -49,4 +50,5 @@ export type V1GetJitAccessOutput = typeof V1GetJitAccessOutput.Type;
 export const v1GetJitAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1GetJitAccessInput,
   outputSchema: V1GetJitAccessOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

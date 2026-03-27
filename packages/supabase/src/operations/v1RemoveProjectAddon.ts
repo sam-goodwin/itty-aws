@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const V1RemoveProjectAddonInput =
@@ -32,5 +33,6 @@ export const v1RemoveProjectAddon = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1RemoveProjectAddonInput,
     outputSchema: V1RemoveProjectAddonOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

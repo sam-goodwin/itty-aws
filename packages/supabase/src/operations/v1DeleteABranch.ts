@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const V1DeleteABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27,4 +28,5 @@ export type V1DeleteABranchOutput = typeof V1DeleteABranchOutput.Type;
 export const v1DeleteABranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1DeleteABranchInput,
   outputSchema: V1DeleteABranchOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

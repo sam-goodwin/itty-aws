@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1ListAllBackupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -45,4 +46,5 @@ export type V1ListAllBackupsOutput = typeof V1ListAllBackupsOutput.Type;
 export const v1ListAllBackups = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1ListAllBackupsInput,
   outputSchema: V1ListAllBackupsOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

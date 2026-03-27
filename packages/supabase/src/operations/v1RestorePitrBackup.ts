@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1RestorePitrBackupInput =
@@ -29,4 +30,5 @@ export type V1RestorePitrBackupOutput = typeof V1RestorePitrBackupOutput.Type;
 export const v1RestorePitrBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1RestorePitrBackupInput,
   outputSchema: V1RestorePitrBackupOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

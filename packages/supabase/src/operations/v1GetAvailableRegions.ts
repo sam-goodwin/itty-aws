@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden } from "../errors";
 
 // Input Schema
 export const V1GetAvailableRegionsInput =
@@ -126,5 +127,6 @@ export const v1GetAvailableRegions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1GetAvailableRegionsInput,
     outputSchema: V1GetAvailableRegionsOutput,
+    errors: [Forbidden] as const,
   }),
 );

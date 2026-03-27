@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1GetRealtimeConfigInput =
@@ -37,4 +38,5 @@ export type V1GetRealtimeConfigOutput = typeof V1GetRealtimeConfigOutput.Type;
 export const v1GetRealtimeConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: V1GetRealtimeConfigInput,
   outputSchema: V1GetRealtimeConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
 }));

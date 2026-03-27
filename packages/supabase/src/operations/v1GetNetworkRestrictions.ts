@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden } from "../errors";
 
 // Input Schema
 export const V1GetNetworkRestrictionsInput =
@@ -43,5 +44,6 @@ export const v1GetNetworkRestrictions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: V1GetNetworkRestrictionsInput,
     outputSchema: V1GetNetworkRestrictionsOutput,
+    errors: [BadRequest, Forbidden] as const,
   }),
 );
