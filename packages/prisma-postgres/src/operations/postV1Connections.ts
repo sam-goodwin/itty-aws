@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound, UnprocessableEntity } from "../errors";
 import { SensitiveString } from "../sensitive";
 
 // Input Schema
@@ -76,4 +77,5 @@ export type PostV1ConnectionsOutput = typeof PostV1ConnectionsOutput.Type;
 export const postV1Connections = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: PostV1ConnectionsInput,
   outputSchema: PostV1ConnectionsOutput,
+  errors: [NotFound, UnprocessableEntity] as const,
 }));

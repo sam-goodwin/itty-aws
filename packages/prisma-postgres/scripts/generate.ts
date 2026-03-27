@@ -21,6 +21,6 @@ generateFromOpenAPI({
   traitsImport: "../traits",
   sensitiveImport: "../sensitive",
   errorsImport: "../errors",
-  includeOperationErrors: false, // Prisma Postgres handles errors globally by HTTP status
+  includeOperationErrors: true,
   skipDeprecated: true,
 });

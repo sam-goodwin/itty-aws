@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound, UnprocessableEntity } from "../errors";
 
 // Input Schema
 export const PatchV1DatabasesByDatabaseIdInput =
@@ -99,4 +100,5 @@ export const patchV1DatabasesByDatabaseId =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PatchV1DatabasesByDatabaseIdInput,
     outputSchema: PatchV1DatabasesByDatabaseIdOutput,
+    errors: [Forbidden, NotFound, UnprocessableEntity] as const,
   }));

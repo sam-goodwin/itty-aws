@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { NotFound, UnprocessableEntity } from "../errors";
 import { SensitiveString } from "../sensitive";
 
 // Input Schema
@@ -80,4 +81,5 @@ export const postV1DatabasesByDatabaseIdConnections =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: PostV1DatabasesByDatabaseIdConnectionsInput,
     outputSchema: PostV1DatabasesByDatabaseIdConnectionsOutput,
+    errors: [NotFound, UnprocessableEntity] as const,
   }));

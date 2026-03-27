@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, NotFound, UnprocessableEntity } from "../errors";
 
 // Input Schema
 export const DeleteV1ProjectsByIdInput =
@@ -24,5 +25,6 @@ export const deleteV1ProjectsById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteV1ProjectsByIdInput,
     outputSchema: DeleteV1ProjectsByIdOutput,
+    errors: [BadRequest, NotFound, UnprocessableEntity] as const,
   }),
 );
