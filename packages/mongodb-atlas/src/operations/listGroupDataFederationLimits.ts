@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const ListGroupDataFederationLimitsInput =
@@ -41,4 +42,5 @@ export const listGroupDataFederationLimits =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ListGroupDataFederationLimitsInput,
     outputSchema: ListGroupDataFederationLimitsOutput,
+    errors: [Forbidden, NotFound] as const,
   }));

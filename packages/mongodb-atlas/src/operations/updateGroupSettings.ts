@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const UpdateGroupSettingsInput =
@@ -36,4 +37,5 @@ export type UpdateGroupSettingsOutput = typeof UpdateGroupSettingsOutput.Type;
 export const updateGroupSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UpdateGroupSettingsInput,
   outputSchema: UpdateGroupSettingsOutput,
+  errors: [Forbidden, NotFound] as const,
 }));

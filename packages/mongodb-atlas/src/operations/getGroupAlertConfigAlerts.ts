@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetGroupAlertConfigAlertsInput =
@@ -48,5 +49,6 @@ export const getGroupAlertConfigAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: GetGroupAlertConfigAlertsInput,
     outputSchema: GetGroupAlertConfigAlertsOutput,
+    errors: [Forbidden, NotFound] as const,
   }),
 );

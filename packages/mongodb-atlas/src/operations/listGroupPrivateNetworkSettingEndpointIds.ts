@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const ListGroupPrivateNetworkSettingEndpointIdsInput =
@@ -45,4 +46,5 @@ export const listGroupPrivateNetworkSettingEndpointIds =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ListGroupPrivateNetworkSettingEndpointIdsInput,
     outputSchema: ListGroupPrivateNetworkSettingEndpointIdsOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

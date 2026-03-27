@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const ListGroupProcessPerformanceAdvisorNamespacesInput =
@@ -51,4 +52,5 @@ export const listGroupProcessPerformanceAdvisorNamespaces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ListGroupProcessPerformanceAdvisorNamespacesInput,
     outputSchema: ListGroupProcessPerformanceAdvisorNamespacesOutput,
+    errors: [Forbidden, NotFound] as const,
   }));

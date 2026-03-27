@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const CreateGroupContainerInput =
@@ -37,5 +38,6 @@ export const createGroupContainer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateGroupContainerInput,
     outputSchema: CreateGroupContainerOutput,
+    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
   }),
 );

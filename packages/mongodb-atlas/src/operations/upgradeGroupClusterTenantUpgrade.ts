@@ -1,6 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import {
+  BadRequest,
+  PaymentRequired,
+  Forbidden,
+  NotFound,
+  Conflict,
+} from "../errors";
 
 // Input Schema
 export const UpgradeGroupClusterTenantUpgradeInput =
@@ -40,4 +47,11 @@ export const upgradeGroupClusterTenantUpgrade =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: UpgradeGroupClusterTenantUpgradeInput,
     outputSchema: UpgradeGroupClusterTenantUpgradeOutput,
+    errors: [
+      BadRequest,
+      PaymentRequired,
+      Forbidden,
+      NotFound,
+      Conflict,
+    ] as const,
   }));

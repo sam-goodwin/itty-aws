@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetGroupProcessCollStatNamespacesInput =
@@ -45,4 +46,5 @@ export const getGroupProcessCollStatNamespaces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: GetGroupProcessCollStatNamespacesInput,
     outputSchema: GetGroupProcessCollStatNamespacesOutput,
+    errors: [Forbidden, NotFound] as const,
   }));

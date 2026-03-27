@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const DeleteOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -34,4 +35,5 @@ export type DeleteOrgApiKeyOutput = typeof DeleteOrgApiKeyOutput.Type;
 export const deleteOrgApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeleteOrgApiKeyInput,
   outputSchema: DeleteOrgApiKeyOutput,
+  errors: [Forbidden, NotFound] as const,
 }));

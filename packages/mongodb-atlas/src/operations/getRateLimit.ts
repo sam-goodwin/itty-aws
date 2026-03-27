@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetRateLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -37,4 +38,5 @@ export type GetRateLimitOutput = typeof GetRateLimitOutput.Type;
 export const getRateLimit = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetRateLimitInput,
   outputSchema: GetRateLimitOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetOrgServiceAccountInput =
@@ -37,5 +38,6 @@ export const getOrgServiceAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: GetOrgServiceAccountInput,
     outputSchema: GetOrgServiceAccountOutput,
+    errors: [Forbidden, NotFound] as const,
   }),
 );

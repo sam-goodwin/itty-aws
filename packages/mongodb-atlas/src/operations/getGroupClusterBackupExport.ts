@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetGroupClusterBackupExportInput =
@@ -41,5 +42,6 @@ export const getGroupClusterBackupExport = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: GetGroupClusterBackupExportInput,
     outputSchema: GetGroupClusterBackupExportOutput,
+    errors: [Forbidden, NotFound] as const,
   }),
 );

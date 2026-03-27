@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const CreateGroupClusterSearchIndexInput =
@@ -41,4 +42,5 @@ export const createGroupClusterSearchIndex =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupClusterSearchIndexInput,
     outputSchema: CreateGroupClusterSearchIndexOutput,
+    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
   }));

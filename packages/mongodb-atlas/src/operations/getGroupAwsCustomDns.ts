@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetGroupAwsCustomDnsInput =
@@ -37,5 +38,6 @@ export const getGroupAwsCustomDns = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: GetGroupAwsCustomDnsInput,
     outputSchema: GetGroupAwsCustomDnsOutput,
+    errors: [Forbidden, NotFound] as const,
   }),
 );

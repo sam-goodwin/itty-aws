@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const ValidateOrgResourcePoliciesInput =
@@ -37,5 +38,6 @@ export const validateOrgResourcePolicies = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ValidateOrgResourcePoliciesInput,
     outputSchema: ValidateOrgResourcePoliciesOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

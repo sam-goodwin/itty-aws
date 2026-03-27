@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetSkuInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27,4 +28,5 @@ export type GetSkuOutput = typeof GetSkuOutput.Type;
 export const getSku = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetSkuInput,
   outputSchema: GetSkuOutput,
+  errors: [Forbidden, NotFound] as const,
 }));

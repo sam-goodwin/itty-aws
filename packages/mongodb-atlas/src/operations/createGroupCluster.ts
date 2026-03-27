@@ -1,6 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import {
+  BadRequest,
+  PaymentRequired,
+  Forbidden,
+  NotFound,
+  Conflict,
+} from "../errors";
 
 // Input Schema
 export const CreateGroupClusterInput =
@@ -35,4 +42,5 @@ export type CreateGroupClusterOutput = typeof CreateGroupClusterOutput.Type;
 export const createGroupCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CreateGroupClusterInput,
   outputSchema: CreateGroupClusterOutput,
+  errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict] as const,
 }));

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const ListGroupClusterQueryShapesInput =
@@ -49,5 +50,6 @@ export const listGroupClusterQueryShapes = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ListGroupClusterQueryShapesInput,
     outputSchema: ListGroupClusterQueryShapesOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

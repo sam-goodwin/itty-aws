@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetFederationSettingIdentityProviderInput =
@@ -37,4 +38,5 @@ export const getFederationSettingIdentityProvider =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: GetFederationSettingIdentityProviderInput,
     outputSchema: GetFederationSettingIdentityProviderOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

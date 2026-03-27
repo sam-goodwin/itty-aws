@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden } from "../errors";
 
 // Input Schema
 export const ListClusterDetailsInput =
@@ -32,4 +33,5 @@ export type ListClusterDetailsOutput = typeof ListClusterDetailsOutput.Type;
 export const listClusterDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListClusterDetailsInput,
   outputSchema: ListClusterDetailsOutput,
+  errors: [Forbidden] as const,
 }));

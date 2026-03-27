@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetGroupCustomDbRoleRoleInput =
@@ -41,5 +42,6 @@ export const getGroupCustomDbRoleRole = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: GetGroupCustomDbRoleRoleInput,
     outputSchema: GetGroupCustomDbRoleRoleOutput,
+    errors: [Forbidden, NotFound] as const,
   }),
 );

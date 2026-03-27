@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const GetGroupLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -66,4 +67,5 @@ export type GetGroupLimitOutput = typeof GetGroupLimitOutput.Type;
 export const getGroupLimit = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetGroupLimitInput,
   outputSchema: GetGroupLimitOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
 }));

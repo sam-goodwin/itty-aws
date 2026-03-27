@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const RemoveOrgUserRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -38,4 +39,5 @@ export type RemoveOrgUserRoleOutput = typeof RemoveOrgUserRoleOutput.Type;
 export const removeOrgUserRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RemoveOrgUserRoleInput,
   outputSchema: RemoveOrgUserRoleOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

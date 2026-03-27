@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const UpdateOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -34,4 +35,5 @@ export type UpdateOrgApiKeyOutput = typeof UpdateOrgApiKeyOutput.Type;
 export const updateOrgApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UpdateOrgApiKeyInput,
   outputSchema: UpdateOrgApiKeyOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

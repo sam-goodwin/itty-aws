@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const EnableGroupManagedSlowMsInput =
@@ -39,5 +40,6 @@ export const enableGroupManagedSlowMs = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: EnableGroupManagedSlowMsInput,
     outputSchema: EnableGroupManagedSlowMsOutput,
+    errors: [Forbidden, NotFound] as const,
   }),
 );

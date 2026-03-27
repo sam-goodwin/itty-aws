@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const DeleteGroupIntegrationInput =
@@ -52,5 +53,6 @@ export const deleteGroupIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteGroupIntegrationInput,
     outputSchema: DeleteGroupIntegrationOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const ListGroupIntegrationsInput =
@@ -44,5 +45,6 @@ export const listGroupIntegrations = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ListGroupIntegrationsInput,
     outputSchema: ListGroupIntegrationsOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

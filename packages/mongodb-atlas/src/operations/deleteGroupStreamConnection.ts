@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const DeleteGroupStreamConnectionInput =
@@ -43,5 +44,6 @@ export const deleteGroupStreamConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: DeleteGroupStreamConnectionInput,
     outputSchema: DeleteGroupStreamConnectionOutput,
+    errors: [Forbidden, NotFound, Conflict] as const,
   }),
 );

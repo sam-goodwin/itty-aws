@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const GetGroupMongoDbVersionsInput =
@@ -51,5 +52,6 @@ export const getGroupMongoDbVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: GetGroupMongoDbVersionsInput,
     outputSchema: GetGroupMongoDbVersionsOutput,
+    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
   }),
 );

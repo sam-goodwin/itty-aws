@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const RemoveGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -38,4 +39,5 @@ export type RemoveGroupApiKeyOutput = typeof RemoveGroupApiKeyOutput.Type;
 export const removeGroupApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RemoveGroupApiKeyInput,
   outputSchema: RemoveGroupApiKeyOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

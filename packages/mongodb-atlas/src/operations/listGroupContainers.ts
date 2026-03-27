@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const ListGroupContainersInput =
@@ -44,4 +45,5 @@ export type ListGroupContainersOutput = typeof ListGroupContainersOutput.Type;
 export const listGroupContainers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListGroupContainersInput,
   outputSchema: ListGroupContainersOutput,
+  errors: [Forbidden, NotFound] as const,
 }));

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const DeleteGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -36,4 +37,5 @@ export type DeleteGroupPeerOutput = typeof DeleteGroupPeerOutput.Type;
 export const deleteGroupPeer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeleteGroupPeerInput,
   outputSchema: DeleteGroupPeerOutput,
+  errors: [Forbidden, NotFound, Conflict] as const,
 }));

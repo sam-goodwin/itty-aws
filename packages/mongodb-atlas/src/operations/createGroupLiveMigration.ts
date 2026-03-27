@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const CreateGroupLiveMigrationInput =
@@ -42,5 +43,6 @@ export const createGroupLiveMigration = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateGroupLiveMigrationInput,
     outputSchema: CreateGroupLiveMigrationOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

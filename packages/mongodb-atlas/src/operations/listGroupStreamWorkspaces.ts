@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const ListGroupStreamWorkspacesInput =
@@ -40,5 +41,6 @@ export const listGroupStreamWorkspaces = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ListGroupStreamWorkspacesInput,
     outputSchema: ListGroupStreamWorkspacesOutput,
+    errors: [Forbidden, NotFound] as const,
   }),
 );

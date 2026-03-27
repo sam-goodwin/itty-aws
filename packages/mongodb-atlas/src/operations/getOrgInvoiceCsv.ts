@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetOrgInvoiceCsvInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -35,4 +36,5 @@ export type GetOrgInvoiceCsvOutput = typeof GetOrgInvoiceCsvOutput.Type;
 export const getOrgInvoiceCsv = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetOrgInvoiceCsvInput,
   outputSchema: GetOrgInvoiceCsvOutput,
+  errors: [Forbidden, NotFound] as const,
 }));

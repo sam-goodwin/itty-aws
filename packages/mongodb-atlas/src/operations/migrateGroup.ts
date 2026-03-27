@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const MigrateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -29,4 +30,5 @@ export type MigrateGroupOutput = typeof MigrateGroupOutput.Type;
 export const migrateGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MigrateGroupInput,
   outputSchema: MigrateGroupOutput,
+  errors: [Forbidden, NotFound] as const,
 }));

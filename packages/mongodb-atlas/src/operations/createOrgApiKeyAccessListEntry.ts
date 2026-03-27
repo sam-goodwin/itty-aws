@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const CreateOrgApiKeyAccessListEntryInput =
@@ -45,4 +46,5 @@ export const createOrgApiKeyAccessListEntry =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CreateOrgApiKeyAccessListEntryInput,
     outputSchema: CreateOrgApiKeyAccessListEntryOutput,
+    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
   }));

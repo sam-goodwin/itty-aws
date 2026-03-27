@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const UpdateGroupServiceAccountInput =
@@ -41,5 +42,6 @@ export const updateGroupServiceAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: UpdateGroupServiceAccountInput,
     outputSchema: UpdateGroupServiceAccountOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

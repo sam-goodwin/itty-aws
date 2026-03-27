@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const GetGroupByNameInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -29,4 +30,5 @@ export type GetGroupByNameOutput = typeof GetGroupByNameOutput.Type;
 export const getGroupByName = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetGroupByNameInput,
   outputSchema: GetGroupByNameOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
 }));

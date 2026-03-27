@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const RenameOrgTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -34,4 +35,5 @@ export type RenameOrgTeamOutput = typeof RenameOrgTeamOutput.Type;
 export const renameOrgTeam = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RenameOrgTeamInput,
   outputSchema: RenameOrgTeamOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
 }));

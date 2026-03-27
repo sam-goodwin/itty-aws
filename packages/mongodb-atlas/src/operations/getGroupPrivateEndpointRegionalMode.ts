@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const GetGroupPrivateEndpointRegionalModeInput =
@@ -39,4 +40,5 @@ export const getGroupPrivateEndpointRegionalMode =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: GetGroupPrivateEndpointRegionalModeInput,
     outputSchema: GetGroupPrivateEndpointRegionalModeOutput,
+    errors: [Forbidden, NotFound] as const,
   }));

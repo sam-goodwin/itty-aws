@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const GetGroupClusterInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -39,4 +40,5 @@ export type GetGroupClusterOutput = typeof GetGroupClusterOutput.Type;
 export const getGroupCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetGroupClusterInput,
   outputSchema: GetGroupClusterOutput,
+  errors: [Forbidden, NotFound, Conflict] as const,
 }));

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const GetOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27,4 +28,5 @@ export type GetOrgOutput = typeof GetOrgOutput.Type;
 export const getOrg = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetOrgInput,
   outputSchema: GetOrgOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
 }));

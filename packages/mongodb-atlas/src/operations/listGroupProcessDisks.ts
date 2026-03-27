@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden, NotFound } from "../errors";
 
 // Input Schema
 export const ListGroupProcessDisksInput =
@@ -46,5 +47,6 @@ export const listGroupProcessDisks = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ListGroupProcessDisksInput,
     outputSchema: ListGroupProcessDisksOutput,
+    errors: [Forbidden, NotFound] as const,
   }),
 );

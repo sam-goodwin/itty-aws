@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { Forbidden } from "../errors";
 
 // Input Schema
 export const ListAlertConfigMatcherFieldNamesInput =
@@ -35,4 +36,5 @@ export const listAlertConfigMatcherFieldNames =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ListAlertConfigMatcherFieldNamesInput,
     outputSchema: ListAlertConfigMatcherFieldNamesOutput,
+    errors: [Forbidden] as const,
   }));

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client";
 import * as T from "../traits";
+import { BadRequest, Forbidden, NotFound, Conflict } from "../errors";
 
 // Input Schema
 export const UpdateGroupDatabaseUserInput =
@@ -56,5 +57,6 @@ export const updateGroupDatabaseUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: UpdateGroupDatabaseUserInput,
     outputSchema: UpdateGroupDatabaseUserOutput,
+    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
   }),
 );
