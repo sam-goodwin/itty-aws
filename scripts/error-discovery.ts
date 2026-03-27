@@ -2,174 +2,235 @@
 /**
  * Error Discovery Agent
  *
- * Uses the Claude Agent SDK to autonomously discover, document, and patch
- * missing API behavior from vendor specifications.
+ * Uses the Claude Agent SDK to autonomously discover undocumented API errors
+ * by making real requests to production APIs, then patches the SDK specs
+ * to add the newly discovered error types.
  *
  * Authentication: uses your Claude Max plan via the Claude Code CLI auth.
  * Make sure you're logged in with `claude` before running.
  *
  * Usage:
- *   bun scripts/error-discovery.ts
+ *   bun scripts/error-discovery.ts <package-name>
+ *
+ * Examples:
+ *   bun scripts/error-discovery.ts neon
+ *   bun scripts/error-discovery.ts cloudflare
+ *   bun scripts/error-discovery.ts stripe
  */
 
-import { query } from "@anthropic-ai/claude-agent-sdk";
+import { BunRuntime, BunServices } from "@effect/platform-bun";
+import { Console, Effect } from "effect";
+import * as FileSystem from "effect/FileSystem";
+import * as Path from "effect/Path";
+import { Argument, Command } from "effect/unstable/cli";
+import { AgentError, BOLD, GREEN, RESET, runAgent } from "./lib/agent.ts";
 
-const prompt = `What is the license used in this repository? Look at the LICENSE file or package.json files to determine this.`;
+// ============================================================================
+// Prompt Construction
+// ============================================================================
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
+function buildPrompt(name: string, root: string): string {
+  const pkgDir = `packages/${name}`;
 
-const DIM = "\x1b[2m";
-const RESET = "\x1b[0m";
-const BOLD = "\x1b[1m";
-const CYAN = "\x1b[36m";
-const YELLOW = "\x1b[33m";
-const GREEN = "\x1b[32m";
-const MAGENTA = "\x1b[35m";
-const BLUE = "\x1b[34m";
+  return `
+You are an error discovery agent for the ${name} SDK in the Distilled monorepo.
 
-/** Indent every line of `text` by `n` spaces. */
-function indent(text: string, n = 2): string {
-  const pad = " ".repeat(n);
-  return text
-    .split("\n")
-    .map((l) => pad + l)
-    .join("\n");
+Your goal is to discover undocumented API errors by examining the SDK's operations,
+making real API requests that trigger error conditions, and then patching the SDK
+to add typed error classes for any errors that currently fall through to the
+Unknown*Error fallback.
+
+## Repository Structure
+
+The monorepo root is: ${root}
+The SDK package is at: ${pkgDir}/
+
+Key files:
+- ${pkgDir}/src/operations/ — generated operations (DO NOT hand-edit these)
+- ${pkgDir}/src/errors.ts — error type definitions
+- ${pkgDir}/src/client.ts — API client with error matching
+- ${pkgDir}/tests/ — test files that exercise the API
+- ${pkgDir}/patches/ — patch files that fix vendor spec inaccuracies
+- ${pkgDir}/specs/ — vendor API specifications (git submodules)
+
+## How Patches Work
+
+Different SDKs use different patch formats:
+
+### OpenAPI-based SDKs (neon, planetscale, prisma-postgres, stripe, etc.)
+- Patches are JSON Patch (RFC 6902) files at \`patches/*.patch.json\`
+- They modify the OpenAPI spec to add error responses, fix nullable fields, etc.
+- After patching, run \`bun run generate\` to regenerate operations
+
+### Cloudflare
+- Patches are per-operation JSON files at \`patches/{service}/{operation}.json\`
+- They map error class names to Cloudflare error code matchers
+- Example: \`{ "errors": { "BucketAlreadyExists": [{ "code": 10004 }] } }\`
+- After patching, run \`bun run generate\` to regenerate services
+
+### AWS
+- Patches are per-service JSON files at \`patches/{service}.json\`
+- They map operation names to additional error class arrays
+- Example: \`{ "operations": { "createBucket": { "errors": ["BucketNotEmpty"] } } }\`
+- After patching, run \`bun run generate\` to regenerate services
+
+## Your Workflow
+
+### Step 1: Understand the current state
+1. Read ${pkgDir}/src/errors.ts to understand existing error types
+2. Read ${pkgDir}/src/client.ts to understand error matching
+3. List ${pkgDir}/src/operations/ to see available operations
+4. List ${pkgDir}/patches/ to see existing patches
+5. Read a few test files in ${pkgDir}/tests/ to see how errors are tested
+6. Identify the patch format this SDK uses (OpenAPI JSON Patch, Cloudflare-style, or AWS-style)
+
+### Step 2: Identify operations with weak error typing
+Look for operations that only have generic errors (DefaultErrors) and no
+operation-specific error types. These are candidates for error discovery.
+Also look for tests that assert \`UnknownXxxError\` — these are known gaps.
+
+### Step 3: Trigger errors via real API requests
+For each candidate operation, write and run a test script that triggers
+common error conditions:
+- Invalid/missing required parameters
+- Non-existent resources (404-type errors)
+- Duplicate creation (conflict errors)
+- Invalid input values (validation errors)
+- Permission/auth edge cases
+
+Run the test with \`DEBUG=1\` to see the raw HTTP response, which reveals
+the actual error shape (status code, error code, message format).
+
+Use the existing test infrastructure:
+- \`bun run test\` from ${pkgDir}/ runs vitest
+- Write temporary test files in ${pkgDir}/tests/ or use .ai-workspace/
+- Import credentials and client setup from the existing test helpers
+
+### Step 4: Add patches for discovered errors
+Based on the raw error responses you observe:
+1. Determine the appropriate patch format for this SDK
+2. Add new error entries to the patch files
+3. Run \`bun run generate\` from ${pkgDir}/ to regenerate
+4. Verify the new typed error classes appear in the generated code
+
+### Step 5: Verify
+1. Run \`bun run typecheck\` from ${pkgDir}/ — must pass
+2. Run any existing tests to make sure nothing is broken
+3. Summarize what errors you discovered and what patches you added
+
+## Rules
+- DO NOT hand-edit files in src/operations/ — they are generated
+- DO edit patch files, errors.ts, client.ts, and test files
+- Use .ai-workspace/ for scratch/temporary files
+- Always run \`bun run generate\` after modifying patches
+- Always run \`bun run typecheck\` after regenerating
+- Be methodical: discover one error at a time, patch it, verify, move on
+- If an API requires credentials you don't have, skip it and note why
+`.trim();
 }
 
-/** Truncate long strings for display. */
-function truncate(s: string, max = 500): string {
-  if (s.length <= max) return s;
-  return s.slice(0, max) + `${DIM}... (${s.length - max} more chars)${RESET}`;
-}
+// ============================================================================
+// Package Validation
+// ============================================================================
 
-/** Pretty-print a JSON-ish value, truncating large strings inside it. */
-function formatInput(input: unknown): string {
-  if (input == null) return "";
-  if (typeof input === "string") return truncate(input);
-  try {
-    const obj = input as Record<string, unknown>;
-    const parts: string[] = [];
-    for (const [k, v] of Object.entries(obj)) {
-      const val = typeof v === "string" ? truncate(v, 200) : JSON.stringify(v);
-      parts.push(`${DIM}${k}:${RESET} ${val}`);
+const validatePackage = (root: string, name: string) =>
+  Effect.gen(function* () {
+    const path = yield* Path.Path;
+    const fs = yield* FileSystem.FileSystem;
+    const pkgDir = path.join(root, "packages", name);
+
+    const exists = yield* fs.exists(pkgDir);
+    if (!exists) {
+      const packagesDir = path.join(root, "packages");
+      const entries = yield* fs
+        .readDirectory(packagesDir)
+        .pipe(Effect.catch(() => Effect.succeed([] as string[])));
+      return yield* new AgentError({
+        message: `Package "${name}" not found at ${pkgDir}. Available packages: ${entries.join(", ")}`,
+      });
     }
-    return parts.join("\n");
-  } catch {
-    return truncate(JSON.stringify(input, null, 2));
-  }
-}
 
-// ---------------------------------------------------------------------------
-// Main
-// ---------------------------------------------------------------------------
+    const srcDir = path.join(pkgDir, "src");
+    const srcExists = yield* fs.exists(srcDir);
+    if (!srcExists) {
+      return yield* new AgentError({
+        message: `Package "${name}" has no src/ directory — is it scaffolded?`,
+      });
+    }
 
-console.log(`${BOLD}Starting error-discovery agent...${RESET}\n`);
+    const opsDir = path.join(pkgDir, "src", "operations");
+    const servicesDir = path.join(pkgDir, "src", "services");
+    const hasOps = yield* fs.exists(opsDir);
+    const hasServices = yield* fs.exists(servicesDir);
+    if (!hasOps && !hasServices) {
+      return yield* new AgentError({
+        message: `Package "${name}" has no operations/ or services/ directory — run code generation first.`,
+      });
+    }
+  });
 
-for await (const message of query({
-  prompt,
-  options: {
-    allowedTools: [
-      "Read",
-      "Write",
-      "Edit",
-      "Bash",
-      "Glob",
-      "Grep",
-      "WebSearch",
-      "WebFetch",
-      "Agent",
-      "TodoWrite",
-      "NotebookEdit",
-    ],
-    model: "claude-opus-4-6",
-    permissionMode: "bypassPermissions",
-    allowDangerouslySkipPermissions: true,
+// ============================================================================
+// CLI Command
+// ============================================================================
+
+const errorDiscovery = Command.make(
+  "error-discovery",
+  {
+    name: Argument.string("name").pipe(
+      Argument.withDescription(
+        "SDK package name (e.g. neon, cloudflare, stripe)",
+      ),
+    ),
   },
-})) {
-  switch (message.type) {
-    // ----- system init -----
-    case "system": {
-      if (message.subtype === "init") {
-        console.log(`${DIM}Session:  ${message.session_id}${RESET}`);
-        console.log(`${DIM}Model:    ${message.model}${RESET}`);
-        console.log(`${DIM}Tools:    ${message.tools.join(", ")}${RESET}`);
-        console.log(
-          `${DIM}Auth:     ${(message as any).apiKeySource ?? "unknown"}${RESET}`,
-        );
-        console.log("");
-      }
-      break;
-    }
+  (config) =>
+    Effect.gen(function* () {
+      const path = yield* Path.Path;
+      const root = path.resolve(import.meta.dir, "..");
 
-    // ----- assistant turn -----
-    case "assistant": {
-      for (const block of message.message.content) {
-        if (block.type === "thinking" && "thinking" in block) {
-          console.log(`\n${MAGENTA}[thinking]${RESET}`);
-          console.log(indent((block as any).thinking));
-        } else if (block.type === "text" && "text" in block) {
-          console.log(`\n${BOLD}${block.text}${RESET}`);
-        } else if (block.type === "tool_use") {
-          const b = block as any;
-          console.log(
-            `\n${CYAN}[tool_use] ${b.name}${RESET} ${DIM}(${b.id})${RESET}`,
-          );
-          if (b.input) {
-            console.log(indent(formatInput(b.input)));
-          }
-        }
-      }
-      break;
-    }
-
-    // ----- tool results (user messages with tool_use_result) -----
-    case "user": {
-      const msg = message as any;
-      // Tool results come back as synthetic user messages
-      if (msg.tool_use_result != null) {
-        const result = msg.tool_use_result;
-        const text =
-          typeof result === "string"
-            ? result
-            : typeof result === "object" && result !== null
-              ? JSON.stringify(result, null, 2)
-              : String(result);
-        console.log(`${YELLOW}[tool_result]${RESET}`);
-        console.log(indent(truncate(text, 1000)));
-      }
-      break;
-    }
-
-    // ----- final result -----
-    case "result": {
-      console.log(`\n${GREEN}${"=".repeat(60)}${RESET}`);
-      console.log(`${GREEN}${BOLD}Result: ${message.subtype}${RESET}`);
-      console.log(`${GREEN}${"=".repeat(60)}${RESET}`);
-      if (message.subtype === "success") {
-        console.log(message.result);
-      } else {
-        console.log("Errors:", (message as any).errors);
-      }
-      console.log(
-        `\n${DIM}Duration: ${(message.duration_ms / 1000).toFixed(1)}s${RESET}`,
+      yield* Console.log(
+        `\n${BOLD}Error Discovery: @distilled.cloud/${config.name}${RESET}`,
       );
-      console.log(
-        `${DIM}Cost:     $${message.total_cost_usd.toFixed(4)}${RESET}`,
-      );
-      console.log(`${DIM}Turns:    ${message.num_turns}${RESET}`);
-      break;
-    }
 
-    // ----- everything else (for debugging) -----
-    default: {
-      const m = message as any;
-      if (m.type === "stream_event") break; // skip partial streaming noise
-      console.log(
-        `${BLUE}[${m.type}${m.subtype ? `:${m.subtype}` : ""}]${RESET}`,
+      yield* validatePackage(root, config.name);
+
+      yield* runAgent({
+        prompt: buildPrompt(config.name, root),
+        cwd: root,
+        systemPromptAppend:
+          "You are an error discovery agent. Your job is to find undocumented API errors " +
+          "and add typed error classes to the SDK. Be methodical and thorough. " +
+          "When looking for files, prefer direct file reads over broad searches. " +
+          "Always start by reading files at the repo root or package root directly.",
+      });
+
+      yield* Console.log(
+        `\n${GREEN}${BOLD}Error discovery complete for ${config.name}.${RESET}`,
       );
-      break;
-    }
-  }
-}
+    }),
+).pipe(
+  Command.withDescription(
+    "Discover undocumented API errors and patch the SDK to add typed error classes",
+  ),
+  Command.withExamples([
+    {
+      command: "bun scripts/error-discovery.ts neon",
+      description: "Discover errors in the Neon SDK",
+    },
+    {
+      command: "bun scripts/error-discovery.ts cloudflare",
+      description: "Discover errors in the Cloudflare SDK",
+    },
+    {
+      command: "bun scripts/error-discovery.ts stripe",
+      description: "Discover errors in the Stripe SDK",
+    },
+  ]),
+);
+
+// ============================================================================
+// Entry Point
+// ============================================================================
+
+const program = Command.run(errorDiscovery, { version: "1.0.0" });
+
+BunRuntime.runMain(Effect.provide(program, BunServices.layer));
