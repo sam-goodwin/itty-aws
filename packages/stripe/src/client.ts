@@ -121,7 +121,9 @@ const matchError = (
           ...(err.charge !== undefined ? { charge: err.charge } : {}),
           ...(err.param !== undefined ? { param: err.param } : {}),
           ...(err.doc_url !== undefined ? { doc_url: err.doc_url } : {}),
-          ...(err.request_log_url !== undefined ? { request_log_url: err.request_log_url } : {}),
+          ...(err.request_log_url !== undefined
+            ? { request_log_url: err.request_log_url }
+            : {}),
         }),
       );
     }

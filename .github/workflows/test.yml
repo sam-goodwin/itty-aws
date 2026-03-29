@@ -90,7 +90,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run check
         working-directory: packages/core
 
@@ -110,7 +110,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::391965393224:role/distilled-github-oidc-role
           aws-region: us-west-2
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - name: Fetch AWS specs submodules
@@ -138,7 +138,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - run: bun run check
@@ -162,7 +162,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       # disable until we can optimize because its wayyy to big rn 
@@ -178,7 +178,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - run: bun run check
@@ -197,7 +197,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - run: bun run check
@@ -218,7 +218,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - run: bun run check
@@ -233,7 +233,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - run: bun run check
@@ -248,7 +248,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - run: bun run check
@@ -263,7 +263,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - run: bun run check
@@ -278,7 +278,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - run: bun run check
@@ -293,7 +293,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - run: bun run check
@@ -308,7 +308,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - run: bun run check
@@ -323,7 +323,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - run: bun run check
@@ -338,7 +338,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - run: bun run check

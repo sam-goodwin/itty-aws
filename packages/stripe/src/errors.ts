@@ -99,16 +99,13 @@ export class InvalidRequestError extends Schema.TaggedErrorClass<InvalidRequestE
  * API error — returned when something goes wrong on Stripe's end (HTTP 500+).
  * Stripe error type: "api_error"
  */
-export class ApiError extends Schema.TaggedErrorClass<ApiError>()(
-  "ApiError",
-  {
-    message: Schema.optional(Schema.String),
-    code: Schema.optional(Schema.String),
-    param: Schema.optional(Schema.String),
-    doc_url: Schema.optional(Schema.String),
-    request_log_url: Schema.optional(Schema.String),
-  },
-).pipe(Category.withServerError, Category.withRetryable()) {}
+export class ApiError extends Schema.TaggedErrorClass<ApiError>()("ApiError", {
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.String),
+  param: Schema.optional(Schema.String),
+  doc_url: Schema.optional(Schema.String),
+  request_log_url: Schema.optional(Schema.String),
+}).pipe(Category.withServerError, Category.withRetryable()) {}
 
 /**
  * External dependency failed — returned when an external dependency fails (HTTP 424).

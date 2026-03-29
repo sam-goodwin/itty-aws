@@ -153,7 +153,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - name: Run nuke script
@@ -172,7 +172,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - name: Run nuke script
@@ -192,7 +192,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - name: Run nuke script
@@ -212,7 +212,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - name: Run nuke script
@@ -231,7 +231,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - name: Run nuke script
@@ -250,7 +250,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - name: Run nuke script
@@ -269,7 +269,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - run: bun install
+      - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
       - name: Run nuke script
@@ -288,7 +288,7 @@ jobs:
   #     - uses: oven-sh/setup-bun@v2
   #       with:
   #         bun-version: latest
-  #     - run: bun install
+  #     - run: bun install --frozen-lockfile
   #     - run: bun run build
   #       working-directory: packages/core
   #     - name: Run nuke script
