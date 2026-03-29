@@ -356,8 +356,9 @@ every single operation in the SDK.
 - The HTTP method (GET, POST, PUT, PATCH, DELETE)
 - What non-generic errors it can produce (from \`errors: [...]\` array if present,
   or from the client-level matchError for SDKs without per-operation errors)
-- What test file it should go in (group related operations by resource type,
-  e.g. customers.test.ts, projects.test.ts)
+- The test file: use ONE file per operation, named after the operation.
+  Use the same directory as existing tests (tests/ or test/).
+  Example: \`tests/getProject.test.ts\`, \`tests/createProject.test.ts\`, \`test/createBucket.test.ts\`
 
 ### Step 4: Write the manifest
 Write a JSON file to ${manifestPath} with this structure:
@@ -369,17 +370,19 @@ Write a JSON file to ${manifestPath} with this structure:
     "file": "src/operations/getProject.ts",
     "httpMethod": "GET",
     "errors": ["NotFound", "BadRequest"],
-    "testFile": "tests/projects.test.ts"
+    "testFile": "tests/getProject.test.ts"
   },
   {
     "name": "createProject",
     "file": "src/operations/createProject.ts",
     "httpMethod": "POST",
     "errors": ["BadRequest", "Conflict"],
-    "testFile": "tests/projects.test.ts"
+    "testFile": "tests/createProject.test.ts"
   }
 ]
 \`\`\`
+
+IMPORTANT: Each operation gets its OWN test file. Do NOT group operations together.
 
 For SDKs WITHOUT per-operation errors (like Stripe), list the client-level
 error classes that could reasonably be triggered (e.g. InvalidRequestError
@@ -390,7 +393,7 @@ Include EVERY operation. Do not skip any.
 ### Rules
 - Do NOT write any test files yet — only the manifest
 - Make sure .ai-workspace/ directory exists before writing
-- Group operations into test files by resource type
+- One test file per operation — do NOT group multiple operations into one file
 `.trim();
 }
 
@@ -413,10 +416,13 @@ function buildOperationPrompt(
 Generate tests for the \`${operation.name}\` operation (${operation.httpMethod}) in the ${provider} SDK.
 
 Source: ${pkgDir}/${operation.file}
-Test file: ${pkgDir}/${operation.testFile}
+Test file: ${pkgDir}/${operation.testFile} (this file is DEDICATED to this operation only)
 ${errorsDesc}
 
-${reset ? `If ${pkgDir}/${operation.testFile} already has tests for ${operation.name}, remove them first.` : `If ${pkgDir}/${operation.testFile} already has tests for ${operation.name}, skip this operation.`}
+${reset ? `Delete ${pkgDir}/${operation.testFile} if it exists and recreate it from scratch.` : ""}
+
+Write a complete test file at ${pkgDir}/${operation.testFile} with all necessary
+imports, describe block, and both happy path + error tests.
 
 You MUST generate:
 1. At least 1 happy path test
@@ -517,10 +523,14 @@ const generateTests = Command.make(
 
         if (dir) {
           if (op) {
-            // Single operation: we don't know which file it's in, so tell the agent
-            yield* Console.log(
-              `${YELLOW}--reset with --operation: agent will remove existing tests for ${op} before regenerating${RESET}`,
-            );
+            // Single operation: delete its specific test file
+            const testFile = path.join(dir, `${op}.test.ts`);
+            if (yield* fs.exists(testFile)) {
+              yield* fs.remove(testFile);
+              yield* Console.log(
+                `${YELLOW}Removed ${op}.test.ts (--reset)${RESET}`,
+              );
+            }
           } else {
             // All operations: delete all *.test.ts files (keep setup.ts / test.ts)
             const entries = yield* fs.readDirectory(dir);
@@ -612,16 +622,31 @@ const generateTests = Command.make(
           return;
         }
 
+        // Filter out operations whose test files already exist (unless --reset)
+        let skipped = 0;
+        const toGenerate: typeof operations = [];
+        for (const operation of operations) {
+          const testFilePath = path.join(root, "packages", config.provider, operation.testFile);
+          const testExists = yield* fs.exists(testFilePath);
+          if (testExists && !config.reset) {
+            skipped++;
+          } else {
+            toGenerate.push(operation);
+          }
+        }
+
         yield* Console.log(
-          `\n${BOLD}Found ${operations.length} operations to test${RESET}\n`,
+          `\n${BOLD}Found ${operations.length} operations:${RESET} ` +
+            `${toGenerate.length} to generate` +
+            (skipped > 0 ? `, ${DIM}${skipped} skipped (test file exists)${RESET}` : ""),
         );
 
         // Phase 2: generate tests per operation, resuming the same session
         let completed = 0;
-        for (const operation of operations) {
+        for (const operation of toGenerate) {
           completed++;
           yield* Console.log(
-            `\n${CYAN}[${completed}/${operations.length}]${RESET} ${BOLD}${operation.name}${RESET} ${DIM}→ ${operation.testFile}${RESET}`,
+            `\n${CYAN}[${completed}/${toGenerate.length}]${RESET} ${BOLD}${operation.name}${RESET} ${DIM}→ ${operation.testFile}${RESET}`,
           );
 
           yield* runAgent({

@@ -26,3 +26,25 @@ export const runEffect = <A, E>(effect: Effect.Effect<A, E, any>): Promise<A> =>
   Effect.runPromise(
     effect.pipe(Effect.provide(TestLayer)) as Effect.Effect<A, E, never>,
   );
+
+/**
+ * Cached check for whether the token can manage apps (create/list/delete).
+ * Resolves once and caches. Use with `ctx.skip()` in tests that need app access.
+ */
+let _canManageApps: boolean | undefined;
+export async function canManageApps(): Promise<boolean> {
+  if (_canManageApps !== undefined) return _canManageApps;
+  try {
+    // Dynamic import to avoid circular dependencies
+    const { AppsList } = await import("../src/operations/AppsList");
+    await Effect.runPromise(
+      AppsList({ org_slug: "personal" }).pipe(
+        Effect.provide(TestLayer),
+      ) as Effect.Effect<unknown, unknown, never>,
+    );
+    _canManageApps = true;
+  } catch {
+    _canManageApps = false;
+  }
+  return _canManageApps;
+}
