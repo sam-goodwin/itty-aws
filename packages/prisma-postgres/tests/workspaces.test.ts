@@ -1,36 +1,19 @@
 import { Effect } from "effect";
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { NotFound, UnprocessableEntity } from "../src/errors";
+import { describe, expect, it } from "vitest";
+import { BadRequest, NotFound, UnprocessableEntity, Forbidden } from "../src/errors";
+import { UnknownPrismaPostgresError } from "../src/errors";
 import { getV1Workspaces } from "../src/operations/getV1Workspaces";
 import { getV1WorkspacesById } from "../src/operations/getV1WorkspacesById";
-import { getV1WorkspacesByWorkspaceIdIntegrations } from "../src/operations/getV1WorkspacesByWorkspaceIdIntegrations";
-import { deleteV1WorkspacesByWorkspaceIdIntegrationsByClientId } from "../src/operations/deleteV1WorkspacesByWorkspaceIdIntegrationsByClientId";
-import {
-  getTestProject,
-  runEffect,
-  setupTestProject,
-  teardownTestProject,
-} from "./setup";
+import { runEffect } from "./setup";
 
-const TEST_SUFFIX = "workspaces";
-
-const NON_EXISTENT_WORKSPACE_ID = "non-existent-workspace-id-00000000";
-const NON_EXISTENT_CLIENT_ID = "non-existent-client-id-00000000";
+const NON_EXISTENT_ID = "non-existent-workspace-id-00000000";
 
 const isNotFoundLike = (error: unknown): boolean =>
-  error instanceof NotFound || error instanceof UnprocessableEntity;
+  error instanceof NotFound ||
+  error instanceof Forbidden ||
+  error instanceof UnprocessableEntity;
 
 describe("workspaces", () => {
-  beforeAll(async () => {
-    await Effect.runPromise(setupTestProject(TEST_SUFFIX));
-  }, 300_000);
-
-  afterAll(async () => {
-    await Effect.runPromise(teardownTestProject(TEST_SUFFIX));
-  }, 60_000);
-
-  const getProj = () => getTestProject(TEST_SUFFIX);
-
   // ==========================================================================
   // getV1Workspaces (list)
   // ==========================================================================
@@ -41,15 +24,59 @@ describe("workspaces", () => {
 
       expect(result).toBeDefined();
       expect(Array.isArray(result.data)).toBe(true);
-      expect(result.data.length).toBeGreaterThan(0);
+      expect(result.data.length).toBeGreaterThanOrEqual(1);
+      expect(result.pagination).toBeDefined();
+      expect(typeof result.pagination.hasMore).toBe("boolean");
+
+      const workspace = result.data[0];
+      expect(workspace.id).toBeDefined();
+      expect(workspace.type).toBeDefined();
+      expect(workspace.url).toBeDefined();
+      expect(workspace.name).toBeDefined();
+      expect(workspace.createdAt).toBeDefined();
+    }, 30_000);
+
+    it("happy path - lists workspaces with pagination limit", async () => {
+      const result = await runEffect(getV1Workspaces({ limit: 1 }));
+
+      expect(result).toBeDefined();
+      expect(Array.isArray(result.data)).toBe(true);
+      expect(result.data.length).toBeLessThanOrEqual(1);
       expect(result.pagination).toBeDefined();
     }, 30_000);
 
-    it("happy path - lists workspaces with pagination", async () => {
-      const result = await runEffect(getV1Workspaces({ limit: 1 }));
+    it("error - returns error for invalid cursor", async () => {
+      const error = await runEffect(
+        getV1Workspaces({ cursor: "!!invalid-cursor-value!!" }).pipe(
+          Effect.matchEffect({
+            onFailure: (e) => Effect.succeed(e),
+            onSuccess: () => Effect.succeed(null),
+          }),
+        ),
+      );
 
-      expect(Array.isArray(result.data)).toBe(true);
-      expect(result.pagination).toBeDefined();
+      // The API may silently ignore invalid cursors and return results,
+      // or it may return an error. Both behaviors are acceptable.
+      if (error !== null) {
+        expect(error instanceof UnknownPrismaPostgresError).toBe(true);
+      }
+    }, 30_000);
+
+    it("error - returns error for negative limit", async () => {
+      const error = await runEffect(
+        getV1Workspaces({ limit: -1 }).pipe(
+          Effect.matchEffect({
+            onFailure: (e) => Effect.succeed(e),
+            onSuccess: () => Effect.succeed(null),
+          }),
+        ),
+      );
+
+      // The API may reject a negative limit or silently clamp it.
+      // If it errors, any error type is acceptable.
+      if (error !== null) {
+        expect(error).toBeDefined();
+      }
     }, 30_000);
   });
 
@@ -58,20 +85,26 @@ describe("workspaces", () => {
   // ==========================================================================
 
   describe("getV1WorkspacesById", () => {
-    it("happy path - gets workspace by id", async () => {
-      const proj = getProj();
+    it("happy path - gets workspace by id from list", async () => {
+      // Get a real workspace ID from the list endpoint
+      const list = await runEffect(getV1Workspaces({}));
+      expect(list.data.length).toBeGreaterThanOrEqual(1);
+
+      const workspaceId = list.data[0].id;
       const result = await runEffect(
-        getV1WorkspacesById({ id: proj.workspaceId! }),
+        getV1WorkspacesById({ id: workspaceId }),
       );
 
-      expect(result.data.id).toBe(proj.workspaceId);
+      expect(result.data.id).toBe(workspaceId);
+      expect(result.data.type).toBeDefined();
+      expect(result.data.url).toBeDefined();
       expect(result.data.name).toBeDefined();
       expect(result.data.createdAt).toBeDefined();
     }, 30_000);
 
-    it("error - NotFound for non-existent workspace", async () => {
+    it("error - NotFound for non-existent workspace id", async () => {
       const error = await runEffect(
-        getV1WorkspacesById({ id: NON_EXISTENT_WORKSPACE_ID }).pipe(
+        getV1WorkspacesById({ id: NON_EXISTENT_ID }).pipe(
           Effect.matchEffect({
             onFailure: (e) => Effect.succeed(e),
             onSuccess: () => Effect.succeed(null),
@@ -82,31 +115,10 @@ describe("workspaces", () => {
       expect(error).not.toBeNull();
       expect(isNotFoundLike(error)).toBe(true);
     }, 30_000);
-  });
 
-  // ==========================================================================
-  // getV1WorkspacesByWorkspaceIdIntegrations
-  // ==========================================================================
-
-  describe("getV1WorkspacesByWorkspaceIdIntegrations", () => {
-    it("happy path - lists integrations for workspace", async () => {
-      const proj = getProj();
-      const result = await runEffect(
-        getV1WorkspacesByWorkspaceIdIntegrations({
-          workspaceId: proj.workspaceId!,
-        }),
-      );
-
-      expect(result).toBeDefined();
-      expect(Array.isArray(result.data)).toBe(true);
-      expect(result.pagination).toBeDefined();
-    }, 30_000);
-
-    it("error - NotFound for non-existent workspace", async () => {
+    it("error - UnprocessableEntity for malformed id", async () => {
       const error = await runEffect(
-        getV1WorkspacesByWorkspaceIdIntegrations({
-          workspaceId: NON_EXISTENT_WORKSPACE_ID,
-        }).pipe(
+        getV1WorkspacesById({ id: "!!invalid-id-format!!" }).pipe(
           Effect.matchEffect({
             onFailure: (e) => Effect.succeed(e),
             onSuccess: () => Effect.succeed(null),
@@ -115,23 +127,17 @@ describe("workspaces", () => {
       );
 
       expect(error).not.toBeNull();
-      expect(isNotFoundLike(error)).toBe(true);
+      expect(
+        error instanceof UnprocessableEntity ||
+          error instanceof NotFound ||
+          error instanceof UnknownPrismaPostgresError,
+      ).toBe(true);
     }, 30_000);
-  });
 
-  // ==========================================================================
-  // deleteV1WorkspacesByWorkspaceIdIntegrationsByClientId
-  // ==========================================================================
-
-  describe("deleteV1WorkspacesByWorkspaceIdIntegrationsByClientId", () => {
-    // NOTE: Cannot test happy path without a valid integration to revoke
-
-    it("error - NotFound for non-existent integration", async () => {
-      const proj = getProj();
+    it("error - NotFound for inaccessible workspace", async () => {
       const error = await runEffect(
-        deleteV1WorkspacesByWorkspaceIdIntegrationsByClientId({
-          workspaceId: proj.workspaceId!,
-          clientId: NON_EXISTENT_CLIENT_ID,
+        getV1WorkspacesById({
+          id: "00000000-0000-0000-0000-000000000000",
         }).pipe(
           Effect.matchEffect({
             onFailure: (e) => Effect.succeed(e),

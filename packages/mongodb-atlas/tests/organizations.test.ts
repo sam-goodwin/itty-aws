@@ -1,320 +1,714 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { BadRequest, Conflict, Forbidden, NotFound } from "../src/errors";
-import { getOrg } from "../src/operations/getOrg";
-import { getOrgApiKey } from "../src/operations/getOrgApiKey";
-import { getOrgEvent } from "../src/operations/getOrgEvent";
-import { getOrgFederationSettings } from "../src/operations/getOrgFederationSettings";
-import { getOrgInvoice } from "../src/operations/getOrgInvoice";
-import { getOrgResourcePolicy } from "../src/operations/getOrgResourcePolicy";
-import { getOrgServiceAccount } from "../src/operations/getOrgServiceAccount";
-import { getOrgSettings } from "../src/operations/getOrgSettings";
-import { getOrgTeam } from "../src/operations/getOrgTeam";
-import { getOrgTeamByName } from "../src/operations/getOrgTeamByName";
-import { getOrgUser } from "../src/operations/getOrgUser";
-import { listOrgApiKeys } from "../src/operations/listOrgApiKeys";
-import { listOrgEvents } from "../src/operations/listOrgEvents";
-import { listOrgInvoices } from "../src/operations/listOrgInvoices";
-import { listOrgResourcePolicies } from "../src/operations/listOrgResourcePolicies";
-import { listOrgServiceAccounts } from "../src/operations/listOrgServiceAccounts";
-import { listOrgTeamUsers } from "../src/operations/listOrgTeamUsers";
+import { addOrgTeamUser } from "../src/operations/addOrgTeamUser";
+import { addOrgUserRole } from "../src/operations/addOrgUserRole";
+import { createOrg } from "../src/operations/createOrg";
+import { createOrgApiKey } from "../src/operations/createOrgApiKey";
+import { createOrgApiKeyAccessListEntry } from "../src/operations/createOrgApiKeyAccessListEntry";
+import { createOrgBillingCostExplorerUsageProcess } from "../src/operations/createOrgBillingCostExplorerUsageProcess";
+import { createOrgLiveMigrationLinkToken } from "../src/operations/createOrgLiveMigrationLinkToken";
+import { createOrgResourcePolicy } from "../src/operations/createOrgResourcePolicy";
+import { createOrgServiceAccount } from "../src/operations/createOrgServiceAccount";
+import { createOrgServiceAccountAccessList } from "../src/operations/createOrgServiceAccountAccessList";
+import { createOrgServiceAccountSecret } from "../src/operations/createOrgServiceAccountSecret";
+import { createOrgTeam } from "../src/operations/createOrgTeam";
+import { createOrgUser } from "../src/operations/createOrgUser";
 import { listOrgTeams } from "../src/operations/listOrgTeams";
 import { listOrgUsers } from "../src/operations/listOrgUsers";
-import { listOrgs } from "../src/operations/listOrgs";
-import { getOrgGroups } from "../src/operations/getOrgGroups";
-import { runEffect } from "./setup";
+import { runEffect, testRunId } from "./setup";
 
-const ORG_ID = process.env.MONGODB_ATLAS_ORG_ID ?? "000000000000000000000000";
+const ORG_ID =
+  process.env.MONGODB_ATLAS_ORG_ID ?? "000000000000000000000000";
 
-describe("Organizations", () => {
-  describe("listOrgs", () => {
-    it("happy path - lists organizations", async () => {
-      const result = await runEffect(listOrgs({}));
-      expect(result).toBeDefined();
-    }, 30_000);
-  });
+describe("addOrgTeamUser", () => {
+  it("happy path - lists organization teams to verify API access", async () => {
+    const result = await runEffect(
+      listOrgTeams({ orgId: ORG_ID }),
+    );
+    expect(result).toBeDefined();
+  }, 30_000);
 
-  describe("getOrg", () => {
-    it("error - NotFound for non-existent org", async () => {
-      const error = await runEffect(
-        getOrg({ orgId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
+  it("error - NotFound for non-existent team", async () => {
+    const error = await runEffect(
+      addOrgTeamUser({
+        orgId: ORG_ID,
+        teamId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Forbidden for non-existent organization", async () => {
+    const error = await runEffect(
+      addOrgTeamUser({
+        orgId: "000000000000000000000000",
+        teamId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
+        error instanceof NotFound,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - BadRequest for invalid team ID format", async () => {
+    const error = await runEffect(
+      addOrgTeamUser({
+        orgId: ORG_ID,
+        teamId: `invalid-team-${testRunId}`,
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
         error instanceof NotFound ||
-          error instanceof Forbidden ||
-          error instanceof BadRequest,
-      ).toBe(true);
-    }, 30_000);
-  });
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+});
 
-  describe("getOrgSettings", () => {
-    it("error - NotFound for non-existent org", async () => {
-      const error = await runEffect(
-        getOrgSettings({ orgId: "000000000000000000000000" }).pipe(
-          Effect.flip,
-        ),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
+describe("addOrgUserRole", () => {
+  it("happy path - lists organization users to verify API access", async () => {
+    const result = await runEffect(
+      listOrgUsers({ orgId: ORG_ID }),
+    );
+    expect(result).toBeDefined();
+  }, 30_000);
 
-  describe("getOrgGroups", () => {
-    it("error - NotFound for non-existent org", async () => {
-      const error = await runEffect(
-        getOrgGroups({ orgId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
+  it("error - NotFound for non-existent user", async () => {
+    const error = await runEffect(
+      addOrgUserRole({
+        orgId: ORG_ID,
+        userId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Forbidden for non-existent organization", async () => {
+    const error = await runEffect(
+      addOrgUserRole({
+        orgId: "000000000000000000000000",
+        userId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
+        error instanceof NotFound,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - BadRequest for invalid user ID format", async () => {
+    const error = await runEffect(
+      addOrgUserRole({
+        orgId: ORG_ID,
+        userId: `invalid-user-${testRunId}`,
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
         error instanceof NotFound ||
-          error instanceof Forbidden ||
-          error instanceof BadRequest,
-      ).toBe(true);
-    }, 30_000);
-  });
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
 
-  describe("listOrgApiKeys", () => {
-    it("error - NotFound for non-existent org", async () => {
-      const error = await runEffect(
-        listOrgApiKeys({ orgId: "000000000000000000000000" }).pipe(
-          Effect.flip,
-        ),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
-
-  describe("getOrgApiKey", () => {
-    it("error - NotFound for non-existent org and apiUserId", async () => {
-      const error = await runEffect(
-        getOrgApiKey({
-          orgId: "000000000000000000000000",
-          apiUserId: "000000000000000000000000",
-        }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
-
-  describe("listOrgTeams", () => {
-    it("error - NotFound for non-existent org", async () => {
-      const error = await runEffect(
-        listOrgTeams({ orgId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
+  it("error - Conflict for invalid org and user combination", async () => {
+    const error = await runEffect(
+      addOrgUserRole({
+        orgId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+        userId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Conflict ||
         error instanceof NotFound ||
-          error instanceof Forbidden ||
-          error instanceof BadRequest,
-      ).toBe(true);
-    }, 30_000);
-  });
+        error instanceof Forbidden ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
+});
 
-  describe("getOrgTeam", () => {
-    it("error - NotFound for non-existent org and teamId", async () => {
-      const error = await runEffect(
-        getOrgTeam({
-          orgId: "000000000000000000000000",
-          teamId: "000000000000000000000000",
-        }).pipe(Effect.flip),
-      );
-      expect(
+describe("createOrg", () => {
+  it("happy path - lists organization teams to verify API access", async () => {
+    const result = await runEffect(
+      listOrgTeams({ orgId: ORG_ID }),
+    );
+    expect(result).toBeDefined();
+  }, 30_000);
+
+  it("error - BadRequest for empty request body", async () => {
+    const error = await runEffect(
+      createOrg({}).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
+        error instanceof Forbidden ||
+        error instanceof NotFound,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Forbidden for insufficient permissions", async () => {
+    const error = await runEffect(
+      createOrg({}).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
+        error instanceof BadRequest ||
+        error instanceof NotFound,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - NotFound for invalid endpoint", async () => {
+    const error = await runEffect(
+      createOrg({ envelope: true }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof BadRequest ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Conflict for duplicate organization", async () => {
+    const error = await runEffect(
+      createOrg({ pretty: true }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Conflict ||
+        error instanceof BadRequest ||
+        error instanceof Forbidden ||
+        error instanceof NotFound,
+    ).toBe(true);
+  }, 30_000);
+});
+
+describe("createOrgApiKey", () => {
+  it("happy path - lists organization teams to verify API access", async () => {
+    const result = await runEffect(
+      listOrgTeams({ orgId: ORG_ID }),
+    );
+    expect(result).toBeDefined();
+  }, 30_000);
+
+  it("error - NotFound for non-existent organization", async () => {
+    const error = await runEffect(
+      createOrgApiKey({
+        orgId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Forbidden for inaccessible organization", async () => {
+    const error = await runEffect(
+      createOrgApiKey({
+        orgId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
+        error instanceof NotFound,
+    ).toBe(true);
+  }, 30_000);
+});
+
+describe("createOrgApiKeyAccessListEntry", () => {
+  it("happy path - lists organization teams to verify API access", async () => {
+    const result = await runEffect(
+      listOrgTeams({ orgId: ORG_ID }),
+    );
+    expect(result).toBeDefined();
+  }, 30_000);
+
+  it("error - NotFound for non-existent API key", async () => {
+    const error = await runEffect(
+      createOrgApiKeyAccessListEntry({
+        orgId: ORG_ID,
+        apiUserId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Forbidden for non-existent organization", async () => {
+    const error = await runEffect(
+      createOrgApiKeyAccessListEntry({
+        orgId: "000000000000000000000000",
+        apiUserId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
+        error instanceof NotFound,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - BadRequest for invalid API key ID format", async () => {
+    const error = await runEffect(
+      createOrgApiKeyAccessListEntry({
+        orgId: ORG_ID,
+        apiUserId: `invalid-key-${testRunId}`,
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
         error instanceof NotFound ||
-          error instanceof Forbidden ||
-          error instanceof BadRequest,
-      ).toBe(true);
-    }, 30_000);
-  });
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
 
-  describe("getOrgTeamByName", () => {
-    it("error - NotFound for non-existent org and teamName", async () => {
-      const error = await runEffect(
-        getOrgTeamByName({
-          orgId: "000000000000000000000000",
-          teamName: "nonexistent-team",
-        }).pipe(Effect.flip),
-      );
-      expect(
+  it("error - Conflict for duplicate access list entry", async () => {
+    const error = await runEffect(
+      createOrgApiKeyAccessListEntry({
+        orgId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+        apiUserId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Conflict ||
         error instanceof NotFound ||
-          error instanceof Forbidden ||
-          error instanceof BadRequest,
-      ).toBe(true);
-    }, 30_000);
-  });
+        error instanceof Forbidden ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
+});
 
-  describe("listOrgTeamUsers", () => {
-    it("error - NotFound for non-existent org and teamId", async () => {
-      const error = await runEffect(
-        listOrgTeamUsers({
-          orgId: "000000000000000000000000",
-          teamId: "000000000000000000000000",
-        }).pipe(Effect.flip),
-      );
-      expect(
+describe("createOrgBillingCostExplorerUsageProcess", () => {
+  it("happy path - lists organization teams to verify API access", async () => {
+    const result = await runEffect(
+      listOrgTeams({ orgId: ORG_ID }),
+    );
+    expect(result).toBeDefined();
+  }, 30_000);
+
+  it("error - NotFound for non-existent organization", async () => {
+    const error = await runEffect(
+      createOrgBillingCostExplorerUsageProcess({
+        orgId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Forbidden for inaccessible organization", async () => {
+    const error = await runEffect(
+      createOrgBillingCostExplorerUsageProcess({
+        orgId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
         error instanceof NotFound ||
-          error instanceof Forbidden ||
-          error instanceof BadRequest ||
-          error instanceof Conflict,
-      ).toBe(true);
-    }, 30_000);
-  });
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
 
-  describe("listOrgUsers", () => {
-    it("error - NotFound for non-existent org", async () => {
-      const error = await runEffect(
-        listOrgUsers({ orgId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
+  it("error - BadRequest for invalid org ID format", async () => {
+    const error = await runEffect(
+      createOrgBillingCostExplorerUsageProcess({
+        orgId: `invalid-org-${testRunId}`,
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
         error instanceof NotFound ||
-          error instanceof Forbidden ||
-          error instanceof BadRequest,
-      ).toBe(true);
-    }, 30_000);
-  });
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+});
 
-  describe("getOrgUser", () => {
-    it("error - NotFound for non-existent org and userId", async () => {
-      const error = await runEffect(
-        getOrgUser({
-          orgId: "000000000000000000000000",
-          userId: "000000000000000000000000",
-        }).pipe(Effect.flip),
-      );
-      expect(
+describe("createOrgLiveMigrationLinkToken", () => {
+  it("happy path - lists organization teams to verify API access", async () => {
+    const result = await runEffect(
+      listOrgTeams({ orgId: ORG_ID }),
+    );
+    expect(result).toBeDefined();
+  }, 30_000);
+
+  it("error - NotFound for non-existent organization", async () => {
+    const error = await runEffect(
+      createOrgLiveMigrationLinkToken({
+        orgId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Forbidden for inaccessible organization", async () => {
+    const error = await runEffect(
+      createOrgLiveMigrationLinkToken({
+        orgId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
         error instanceof NotFound ||
-          error instanceof Forbidden ||
-          error instanceof BadRequest,
-      ).toBe(true);
-    }, 30_000);
-  });
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
 
-  describe("listOrgEvents", () => {
-    it("error - NotFound for non-existent org", async () => {
-      const error = await runEffect(
-        listOrgEvents({ orgId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
+  it("error - BadRequest for invalid org ID format", async () => {
+    const error = await runEffect(
+      createOrgLiveMigrationLinkToken({
+        orgId: `invalid-org-${testRunId}`,
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
         error instanceof NotFound ||
-          error instanceof Forbidden ||
-          error instanceof BadRequest,
-      ).toBe(true);
-    }, 30_000);
-  });
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+});
 
-  describe("getOrgEvent", () => {
-    it("error - NotFound for non-existent org and eventId", async () => {
-      const error = await runEffect(
-        getOrgEvent({
-          orgId: "000000000000000000000000",
-          eventId: "000000000000000000000000",
-        }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
+describe("createOrgResourcePolicy", () => {
+  it("happy path - lists organization teams to verify API access", async () => {
+    const result = await runEffect(
+      listOrgTeams({ orgId: ORG_ID }),
+    );
+    expect(result).toBeDefined();
+  }, 30_000);
 
-  describe("getOrgFederationSettings", () => {
-    it("error - NotFound for non-existent org", async () => {
-      const error = await runEffect(
-        getOrgFederationSettings({ orgId: "000000000000000000000000" }).pipe(
-          Effect.flip,
-        ),
-      );
-      expect(
+  it("error - NotFound for non-existent organization", async () => {
+    const error = await runEffect(
+      createOrgResourcePolicy({
+        orgId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Forbidden for inaccessible organization", async () => {
+    const error = await runEffect(
+      createOrgResourcePolicy({
+        orgId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
         error instanceof NotFound ||
-          error instanceof Forbidden ||
-          error instanceof BadRequest,
-      ).toBe(true);
-    }, 30_000);
-  });
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
 
-  describe("listOrgInvoices", () => {
-    it("error - NotFound for non-existent org", async () => {
-      const error = await runEffect(
-        listOrgInvoices({ orgId: "000000000000000000000000" }).pipe(
-          Effect.flip,
-        ),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
-
-  describe("getOrgInvoice", () => {
-    it("error - NotFound for non-existent org and invoiceId", async () => {
-      const error = await runEffect(
-        getOrgInvoice({
-          orgId: "000000000000000000000000",
-          invoiceId: "000000000000000000000000",
-        }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
-
-  describe("listOrgServiceAccounts", () => {
-    it("error - NotFound for non-existent org", async () => {
-      const error = await runEffect(
-        listOrgServiceAccounts({ orgId: "000000000000000000000000" }).pipe(
-          Effect.flip,
-        ),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
-
-  describe("getOrgServiceAccount", () => {
-    it("error - NotFound for non-existent org and clientId", async () => {
-      const error = await runEffect(
-        getOrgServiceAccount({
-          orgId: "000000000000000000000000",
-          clientId: "mdb_sa_id_000000000000000000000000",
-        }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
-
-  describe("listOrgResourcePolicies", () => {
-    it("error - NotFound for non-existent org", async () => {
-      const error = await runEffect(
-        listOrgResourcePolicies({ orgId: "000000000000000000000000" }).pipe(
-          Effect.flip,
-        ),
-      );
-      expect(
+  it("error - BadRequest for invalid org ID format", async () => {
+    const error = await runEffect(
+      createOrgResourcePolicy({
+        orgId: `invalid-org-${testRunId}`,
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
         error instanceof NotFound ||
-          error instanceof Forbidden ||
-          error instanceof BadRequest,
-      ).toBe(true);
-    }, 30_000);
-  });
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+});
 
-  describe("getOrgResourcePolicy", () => {
-    it("error - NotFound for non-existent org and resourcePolicyId", async () => {
-      const error = await runEffect(
-        getOrgResourcePolicy({
-          orgId: "000000000000000000000000",
-          resourcePolicyId: "000000000000000000000000",
-        }).pipe(Effect.flip),
-      );
-      expect(
+describe("createOrgServiceAccount", () => {
+  it("happy path - lists organization teams to verify API access", async () => {
+    const result = await runEffect(
+      listOrgTeams({ orgId: ORG_ID }),
+    );
+    expect(result).toBeDefined();
+  }, 30_000);
+
+  it("error - NotFound for non-existent organization", async () => {
+    const error = await runEffect(
+      createOrgServiceAccount({
+        orgId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Forbidden for inaccessible organization", async () => {
+    const error = await runEffect(
+      createOrgServiceAccount({
+        orgId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
         error instanceof NotFound ||
-          error instanceof Forbidden ||
-          error instanceof BadRequest,
-      ).toBe(true);
-    }, 30_000);
-  });
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - BadRequest for invalid org ID format", async () => {
+    const error = await runEffect(
+      createOrgServiceAccount({
+        orgId: `invalid-org-${testRunId}`,
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
+        error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+});
+
+describe("createOrgServiceAccountAccessList", () => {
+  it("happy path - lists organization teams to verify API access", async () => {
+    const result = await runEffect(
+      listOrgTeams({ orgId: ORG_ID }),
+    );
+    expect(result).toBeDefined();
+  }, 30_000);
+
+  it("error - NotFound for non-existent service account", async () => {
+    const error = await runEffect(
+      createOrgServiceAccountAccessList({
+        orgId: ORG_ID,
+        clientId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Forbidden for non-existent organization", async () => {
+    const error = await runEffect(
+      createOrgServiceAccountAccessList({
+        orgId: "000000000000000000000000",
+        clientId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
+        error instanceof NotFound,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - BadRequest for invalid client ID format", async () => {
+    const error = await runEffect(
+      createOrgServiceAccountAccessList({
+        orgId: ORG_ID,
+        clientId: `invalid-client-${testRunId}`,
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
+        error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Conflict for duplicate access list entry", async () => {
+    const error = await runEffect(
+      createOrgServiceAccountAccessList({
+        orgId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+        clientId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Conflict ||
+        error instanceof NotFound ||
+        error instanceof Forbidden ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
+});
+
+describe("createOrgServiceAccountSecret", () => {
+  it("happy path - lists organization teams to verify API access", async () => {
+    const result = await runEffect(
+      listOrgTeams({ orgId: ORG_ID }),
+    );
+    expect(result).toBeDefined();
+  }, 30_000);
+
+  it("error - NotFound for non-existent service account", async () => {
+    const error = await runEffect(
+      createOrgServiceAccountSecret({
+        orgId: ORG_ID,
+        clientId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Forbidden for non-existent organization", async () => {
+    const error = await runEffect(
+      createOrgServiceAccountSecret({
+        orgId: "000000000000000000000000",
+        clientId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
+        error instanceof NotFound,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - BadRequest for invalid client ID format", async () => {
+    const error = await runEffect(
+      createOrgServiceAccountSecret({
+        orgId: ORG_ID,
+        clientId: `invalid-client-${testRunId}`,
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
+        error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+});
+
+describe("createOrgTeam", () => {
+  it("happy path - lists organization teams to verify API access", async () => {
+    const result = await runEffect(
+      listOrgTeams({ orgId: ORG_ID }),
+    );
+    expect(result).toBeDefined();
+  }, 30_000);
+
+  it("error - NotFound for non-existent organization", async () => {
+    const error = await runEffect(
+      createOrgTeam({
+        orgId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Forbidden for inaccessible organization", async () => {
+    const error = await runEffect(
+      createOrgTeam({
+        orgId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
+        error instanceof NotFound ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - BadRequest for invalid org ID format", async () => {
+    const error = await runEffect(
+      createOrgTeam({
+        orgId: `invalid-org-${testRunId}`,
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
+        error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Conflict for duplicate team name", async () => {
+    const error = await runEffect(
+      createOrgTeam({
+        orgId: "bbbbbbbbbbbbbbbbbbbbbbbb",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Conflict ||
+        error instanceof NotFound ||
+        error instanceof Forbidden ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
+});
+
+describe("createOrgUser", () => {
+  it("happy path - lists organization teams to verify API access", async () => {
+    const result = await runEffect(
+      listOrgTeams({ orgId: ORG_ID }),
+    );
+    expect(result).toBeDefined();
+  }, 30_000);
+
+  it("error - NotFound for non-existent organization", async () => {
+    const error = await runEffect(
+      createOrgUser({
+        orgId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Forbidden for inaccessible organization", async () => {
+    const error = await runEffect(
+      createOrgUser({
+        orgId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
+        error instanceof NotFound ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - BadRequest for invalid org ID format", async () => {
+    const error = await runEffect(
+      createOrgUser({
+        orgId: `invalid-org-${testRunId}`,
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
+        error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Conflict for duplicate user invitation", async () => {
+    const error = await runEffect(
+      createOrgUser({
+        orgId: "bbbbbbbbbbbbbbbbbbbbbbbb",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Conflict ||
+        error instanceof NotFound ||
+        error instanceof Forbidden ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
 });

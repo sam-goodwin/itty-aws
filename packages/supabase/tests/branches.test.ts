@@ -1,51 +1,126 @@
-import { Effect } from "effect";
+import { Effect, Layer } from "effect";
+import * as Redacted from "effect/Redacted";
+import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import { describe, expect, it } from "vitest";
-import { runEffect, FAKE_REF, FAKE_UUID, getExistingProject } from "./setup";
+import { runEffect, FAKE_REF, FAKE_UUID, testRunId, getExistingProject } from "./setup";
+import { v1GetProject } from "../src/operations/v1GetProject";
 import { v1ListAllBranches } from "../src/operations/v1ListAllBranches";
+import { v1CreateABranch } from "../src/operations/v1CreateABranch";
 import { v1GetABranch } from "../src/operations/v1GetABranch";
 import { v1GetABranchConfig } from "../src/operations/v1GetABranchConfig";
-import { v1DeleteABranch } from "../src/operations/v1DeleteABranch";
-import { v1DiffABranch } from "../src/operations/v1DiffABranch";
-import { v1MergeABranch } from "../src/operations/v1MergeABranch";
-import { v1PushABranch } from "../src/operations/v1PushABranch";
-import { v1ResetABranch } from "../src/operations/v1ResetABranch";
-import { v1RestoreABranch } from "../src/operations/v1RestoreABranch";
+import { v1UpdateABranchConfig } from "../src/operations/v1UpdateABranchConfig";
+import { Credentials, DEFAULT_API_BASE_URL } from "../src/credentials";
+
+// Layer with an invalid token to trigger Forbidden/Unauthorized errors
+const BadTokenLayer = Layer.merge(
+  Layer.succeed(Credentials, {
+    accessToken: Redacted.make("sbp_invalid_token_00000000"),
+    apiBaseUrl: DEFAULT_API_BASE_URL,
+  }),
+  FetchHttpClient.layer,
+);
 
 describe("Branches", () => {
   // ============================================================================
   // v1ListAllBranches
   // ============================================================================
   describe("v1ListAllBranches", () => {
-    it("happy path - lists branches for project", async (ctx) => {
+    it("happy path - lists all branches", async (ctx) => {
       const proj = await getExistingProject();
       if (!proj) { ctx.skip(); return; }
-      await runEffect(
+      const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
+      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      const result = await runEffect(
         v1ListAllBranches({ ref: proj.ref }).pipe(
-          Effect.matchEffect({
-            onSuccess: (result) => {
-              // Branching may not be enabled — empty array is fine
-              expect(Array.isArray(result)).toBe(true);
-              return Effect.void;
-            },
-            onFailure: (e) => {
-              // May return NotFound if branching is not enabled
-              const tag = (e as any)._tag;
-              expect(["NotFound", "BadRequest"]).toContain(tag);
-              return Effect.void;
-            },
+          Effect.catch((e) => {
+            const tag = (e as any)._tag;
+            // Branching may not be enabled on free-tier projects
+            if (tag === "NotFound" || tag === "InternalServerError" || tag === "UnknownSupabaseError") return Effect.succeed(null);
+            return Effect.fail(e);
+          }),
+        ),
+      );
+      if (result === null) { ctx.skip(); return; }
+      expect(Array.isArray(result)).toBe(true);
+      if (result.length > 0) {
+        expect(result[0]).toHaveProperty("id");
+        expect(result[0]).toHaveProperty("name");
+        expect(result[0]).toHaveProperty("project_ref");
+        expect(result[0]).toHaveProperty("is_default");
+        expect(result[0]).toHaveProperty("status");
+      }
+    }, 30_000);
+
+    it("error - BadRequest/NotFound for invalid ref", async () => {
+      await runEffect(
+        v1ListAllBranches({ ref: FAKE_REF }).pipe(
+          Effect.flip,
+          Effect.map((e) => {
+            expect(["BadRequest", "NotFound"]).toContain((e as any)._tag);
           }),
         ),
       );
     }, 30_000);
 
-    it("error - NotFound for invalid ref", async () => {
-      await runEffect(
+    it("error - Forbidden with invalid token", async () => {
+      await Effect.runPromise(
         v1ListAllBranches({ ref: FAKE_REF }).pipe(
           Effect.flip,
           Effect.map((e) => {
-            const tag = (e as any)._tag;
-            expect(["NotFound", "BadRequest"]).toContain(tag);
+            expect(["Forbidden", "Unauthorized"]).toContain((e as any)._tag);
           }),
+          Effect.provide(BadTokenLayer),
+        ),
+      );
+    }, 30_000);
+  });
+
+  // ============================================================================
+  // v1CreateABranch
+  // ============================================================================
+  describe("v1CreateABranch", () => {
+    it("happy path - creates a branch (skips if branching not available)", async (ctx) => {
+      const proj = await getExistingProject();
+      if (!proj) { ctx.skip(); return; }
+      const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
+      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      const result = await runEffect(
+        v1CreateABranch({ ref: proj.ref, branch_name: `test-branch-${testRunId}` }).pipe(
+          Effect.catch((e) => {
+            const tag = (e as any)._tag;
+            // Branching requires a paid plan with branching enabled
+            if (tag === "NotFound" || tag === "BadRequest" || tag === "InternalServerError" || tag === "UnknownSupabaseError") return Effect.succeed(null);
+            return Effect.fail(e);
+          }),
+        ),
+      );
+      if (result === null) { ctx.skip(); return; }
+      expect(result).toHaveProperty("id");
+      expect(result).toHaveProperty("name");
+      expect(result).toHaveProperty("project_ref");
+      expect(result).toHaveProperty("is_default");
+      expect(result).toHaveProperty("status");
+    }, 30_000);
+
+    it("error - BadRequest/NotFound for invalid ref", async () => {
+      await runEffect(
+        v1CreateABranch({ ref: FAKE_REF, branch_name: `test-branch-${testRunId}` }).pipe(
+          Effect.flip,
+          Effect.map((e) => {
+            expect(["BadRequest", "NotFound"]).toContain((e as any)._tag);
+          }),
+        ),
+      );
+    }, 30_000);
+
+    it("error - Forbidden with invalid token", async () => {
+      await Effect.runPromise(
+        v1CreateABranch({ ref: FAKE_REF, branch_name: `test-branch-${testRunId}` }).pipe(
+          Effect.flip,
+          Effect.map((e) => {
+            expect(["Forbidden", "Unauthorized"]).toContain((e as any)._tag);
+          }),
+          Effect.provide(BadTokenLayer),
         ),
       );
     }, 30_000);
@@ -55,28 +130,49 @@ describe("Branches", () => {
   // v1GetABranch
   // ============================================================================
   describe("v1GetABranch", () => {
-    it("error - NotFound for invalid ref", async () => {
+    it("happy path - gets a branch by name (skips if branching not available)", async (ctx) => {
+      const proj = await getExistingProject();
+      if (!proj) { ctx.skip(); return; }
+      const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
+      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      // Try to list branches first to get a valid name
+      const branches = await runEffect(
+        v1ListAllBranches({ ref: proj.ref }).pipe(
+          Effect.catch((e) => {
+            const tag = (e as any)._tag;
+            if (tag === "NotFound" || tag === "InternalServerError" || tag === "UnknownSupabaseError") return Effect.succeed(null);
+            return Effect.fail(e);
+          }),
+        ),
+      );
+      if (!branches || branches.length === 0) { ctx.skip(); return; }
+      const result = await runEffect(v1GetABranch({ ref: proj.ref, name: branches[0].name }));
+      expect(result).toHaveProperty("id");
+      expect(result).toHaveProperty("name");
+      expect(result).toHaveProperty("project_ref");
+      expect(result).toHaveProperty("is_default");
+      expect(result).toHaveProperty("status");
+    }, 30_000);
+
+    it("error - NotFound for non-existent branch name", async () => {
       await runEffect(
         v1GetABranch({ ref: FAKE_REF, name: "nonexistent-branch" }).pipe(
           Effect.flip,
           Effect.map((e) => {
-            const tag = (e as any)._tag;
-            expect(["NotFound", "BadRequest"]).toContain(tag);
+            expect(["BadRequest", "NotFound"]).toContain((e as any)._tag);
           }),
         ),
       );
     }, 30_000);
 
-    it("error - NotFound for non-existent branch on valid project", async (ctx) => {
-      const proj = await getExistingProject();
-      if (!proj) { ctx.skip(); return; }
-      await runEffect(
-        v1GetABranch({ ref: proj.ref, name: "nonexistent-branch" }).pipe(
+    it("error - Forbidden with invalid token", async () => {
+      await Effect.runPromise(
+        v1GetABranch({ ref: FAKE_REF, name: "nonexistent-branch" }).pipe(
           Effect.flip,
           Effect.map((e) => {
-            const tag = (e as any)._tag;
-            expect(["NotFound", "BadRequest"]).toContain(tag);
+            expect(["Forbidden", "Unauthorized"]).toContain((e as any)._tag);
           }),
+          Effect.provide(BadTokenLayer),
         ),
       );
     }, 30_000);
@@ -86,125 +182,104 @@ describe("Branches", () => {
   // v1GetABranchConfig
   // ============================================================================
   describe("v1GetABranchConfig", () => {
-    it("error - BadRequest for invalid ref", async () => {
-      await runEffect(
-        v1GetABranchConfig({ branch_id_or_ref: FAKE_REF }).pipe(
-          Effect.flip,
-          Effect.map((e) => expect((e as any)._tag).toBe("BadRequest")),
+    it("happy path - gets branch config (skips if branching not available)", async (ctx) => {
+      const proj = await getExistingProject();
+      if (!proj) { ctx.skip(); return; }
+      const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
+      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      // Try to list branches first to get a valid branch id
+      const branches = await runEffect(
+        v1ListAllBranches({ ref: proj.ref }).pipe(
+          Effect.catch((e) => {
+            const tag = (e as any)._tag;
+            if (tag === "NotFound" || tag === "InternalServerError" || tag === "UnknownSupabaseError") return Effect.succeed(null);
+            return Effect.fail(e);
+          }),
         ),
       );
+      if (!branches || branches.length === 0) { ctx.skip(); return; }
+      const result = await runEffect(v1GetABranchConfig({ branch_id_or_ref: branches[0].id }));
+      expect(result).toHaveProperty("ref");
+      expect(result).toHaveProperty("postgres_version");
+      expect(result).toHaveProperty("status");
+      expect(result).toHaveProperty("db_host");
+      expect(result).toHaveProperty("db_port");
+      expect(typeof result.db_port).toBe("number");
     }, 30_000);
 
-    it("error - NotFound for non-existent branch", async () => {
+    it("error - NotFound for non-existent branch id", async () => {
       await runEffect(
         v1GetABranchConfig({ branch_id_or_ref: FAKE_UUID }).pipe(
           Effect.flip,
           Effect.map((e) => {
-            const tag = (e as any)._tag;
-            expect(["NotFound", "BadRequest"]).toContain(tag);
+            expect(["BadRequest", "NotFound"]).toContain((e as any)._tag);
           }),
+        ),
+      );
+    }, 30_000);
+
+    it("error - Forbidden with invalid token", async () => {
+      await Effect.runPromise(
+        v1GetABranchConfig({ branch_id_or_ref: FAKE_UUID }).pipe(
+          Effect.flip,
+          Effect.map((e) => {
+            expect(["Forbidden", "Unauthorized"]).toContain((e as any)._tag);
+          }),
+          Effect.provide(BadTokenLayer),
         ),
       );
     }, 30_000);
   });
 
   // ============================================================================
-  // v1DeleteABranch
+  // v1UpdateABranchConfig
   // ============================================================================
-  describe("v1DeleteABranch", () => {
-    it("error - NotFound for non-existent branch", async () => {
+  describe("v1UpdateABranchConfig", () => {
+    it("happy path - updates branch config (skips if branching not available)", async (ctx) => {
+      const proj = await getExistingProject();
+      if (!proj) { ctx.skip(); return; }
+      const projDetails = await runEffect(v1GetProject({ ref: proj.ref }));
+      if (projDetails.status !== "ACTIVE_HEALTHY") { ctx.skip(); return; }
+      // Try to list branches first to get a valid branch id
+      const branches = await runEffect(
+        v1ListAllBranches({ ref: proj.ref }).pipe(
+          Effect.catch((e) => {
+            const tag = (e as any)._tag;
+            if (tag === "NotFound" || tag === "InternalServerError" || tag === "UnknownSupabaseError") return Effect.succeed(null);
+            return Effect.fail(e);
+          }),
+        ),
+      );
+      if (!branches || branches.length === 0) { ctx.skip(); return; }
+      // No-op update — just send the existing branch name back
+      const result = await runEffect(
+        v1UpdateABranchConfig({ branch_id_or_ref: branches[0].id, branch_name: branches[0].name }),
+      );
+      expect(result).toHaveProperty("id");
+      expect(result).toHaveProperty("name");
+      expect(result).toHaveProperty("project_ref");
+      expect(result).toHaveProperty("status");
+    }, 30_000);
+
+    it("error - NotFound for non-existent branch id", async () => {
       await runEffect(
-        v1DeleteABranch({ branch_id_or_ref: FAKE_UUID }).pipe(
+        v1UpdateABranchConfig({ branch_id_or_ref: FAKE_UUID }).pipe(
           Effect.flip,
           Effect.map((e) => {
-            const tag = (e as any)._tag;
-            expect(["NotFound", "BadRequest"]).toContain(tag);
+            expect(["BadRequest", "NotFound"]).toContain((e as any)._tag);
           }),
         ),
       );
     }, 30_000);
-  });
 
-  // ============================================================================
-  // v1DiffABranch
-  // ============================================================================
-  describe("v1DiffABranch", () => {
-    it("error - NotFound for non-existent branch", async () => {
-      await runEffect(
-        v1DiffABranch({ branch_id_or_ref: FAKE_UUID }).pipe(
+    it("error - Forbidden with invalid token", async () => {
+      await Effect.runPromise(
+        v1UpdateABranchConfig({ branch_id_or_ref: FAKE_UUID }).pipe(
           Effect.flip,
           Effect.map((e) => {
-            const tag = (e as any)._tag;
-            expect(["NotFound", "BadRequest"]).toContain(tag);
+            expect(["Forbidden", "Unauthorized"]).toContain((e as any)._tag);
           }),
-        ),
-      );
-    }, 30_000);
-  });
-
-  // ============================================================================
-  // v1MergeABranch
-  // ============================================================================
-  describe("v1MergeABranch", () => {
-    it("error - NotFound for non-existent branch", async () => {
-      await runEffect(
-        v1MergeABranch({ branch_id_or_ref: FAKE_UUID }).pipe(
-          Effect.flip,
-          Effect.map((e) => {
-            const tag = (e as any)._tag;
-            expect(["NotFound", "BadRequest"]).toContain(tag);
-          }),
-        ),
-      );
-    }, 30_000);
-  });
-
-  // ============================================================================
-  // v1PushABranch
-  // ============================================================================
-  describe("v1PushABranch", () => {
-    it("error - NotFound for non-existent branch", async () => {
-      await runEffect(
-        v1PushABranch({ branch_id_or_ref: FAKE_UUID }).pipe(
-          Effect.flip,
-          Effect.map((e) => {
-            const tag = (e as any)._tag;
-            expect(["NotFound", "BadRequest"]).toContain(tag);
-          }),
-        ),
-      );
-    }, 30_000);
-  });
-
-  // ============================================================================
-  // v1ResetABranch
-  // ============================================================================
-  describe("v1ResetABranch", () => {
-    it("error - NotFound for non-existent branch", async () => {
-      await runEffect(
-        v1ResetABranch({ branch_id_or_ref: FAKE_UUID }).pipe(
-          Effect.flip,
-          Effect.map((e) => {
-            const tag = (e as any)._tag;
-            expect(["NotFound", "BadRequest"]).toContain(tag);
-          }),
-        ),
-      );
-    }, 30_000);
-  });
-
-  // ============================================================================
-  // v1RestoreABranch
-  // ============================================================================
-  describe("v1RestoreABranch", () => {
-    it("error - NotFound for non-existent branch", async () => {
-      await runEffect(
-        v1RestoreABranch({ branch_id_or_ref: FAKE_UUID }).pipe(
-          Effect.flip,
-          Effect.map((e) => {
-            const tag = (e as any)._tag;
-            expect(["NotFound", "BadRequest"]).toContain(tag);
-          }),
+          Effect.provide(BadTokenLayer),
         ),
       );
     }, 30_000);

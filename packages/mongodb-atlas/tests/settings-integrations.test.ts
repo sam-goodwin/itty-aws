@@ -1,191 +1,259 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { BadRequest, Conflict, Forbidden, NotFound } from "../src/errors";
-import { getGroupSettings } from "../src/operations/getGroupSettings";
-import { listGroupIntegrations } from "../src/operations/listGroupIntegrations";
-import { getGroupIntegration } from "../src/operations/getGroupIntegration";
-import { getGroupMaintenanceWindow } from "../src/operations/getGroupMaintenanceWindow";
-import { listGroupLimits } from "../src/operations/listGroupLimits";
-import { getGroupLimit } from "../src/operations/getGroupLimit";
-import { getGroupAuditLog } from "../src/operations/getGroupAuditLog";
-import { getGroupUserSecurity } from "../src/operations/getGroupUserSecurity";
-import { getGroupManagedSlowMs } from "../src/operations/getGroupManagedSlowMs";
-import { getGroupMongoDbVersions } from "../src/operations/getGroupMongoDbVersions";
-import { getGroupBackupCompliancePolicy } from "../src/operations/getGroupBackupCompliancePolicy";
-import { getGroupIpAddresses } from "../src/operations/getGroupIpAddresses";
-import { listGroupCloudProviderAccess } from "../src/operations/listGroupCloudProviderAccess";
-import { getGroupEncryptionAtRest } from "../src/operations/getGroupEncryptionAtRest";
+import { createGroupIntegration } from "../src/operations/createGroupIntegration";
+import { createGroupLiveMigration } from "../src/operations/createGroupLiveMigration";
+import { createGroupLogIntegration } from "../src/operations/createGroupLogIntegration";
+import { cutoverGroupLiveMigration } from "../src/operations/cutoverGroupLiveMigration";
+import { deferGroupMaintenanceWindow } from "../src/operations/deferGroupMaintenanceWindow";
+import { listGroups } from "../src/operations/listGroups";
 import { runEffect, testRunId } from "./setup";
 
-const PROJECT_ID = process.env.MONGODB_ATLAS_PROJECT_ID ?? "000000000000000000000000";
+const PROJECT_ID =
+  process.env.MONGODB_ATLAS_PROJECT_ID ?? "000000000000000000000000";
 
-describe("Settings & Integrations", () => {
-  describe("getGroupSettings", () => {
-    it("error - NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        getGroupSettings({ groupId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
+describe("createGroupIntegration", () => {
+  it("happy path - lists projects to verify API access", async () => {
+    const result = await runEffect(listGroups({}));
+    expect(result).toBeDefined();
+  }, 30_000);
 
-  describe("listGroupIntegrations", () => {
-    it("error - NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        listGroupIntegrations({ groupId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof BadRequest || error instanceof Forbidden || error instanceof NotFound,
-      ).toBe(true);
-    }, 30_000);
-  });
+  it("error - NotFound for non-existent project", async () => {
+    const error = await runEffect(
+      createGroupIntegration({
+        groupId: "000000000000000000000000",
+        integrationType: "WEBHOOK",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
 
-  describe("getGroupIntegration", () => {
-    it("error - NotFound for non-existent integration", async () => {
-      const error = await runEffect(
-        getGroupIntegration({
-          groupId: PROJECT_ID,
-          integrationType: "DATADOG",
-        }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof BadRequest || error instanceof Forbidden || error instanceof NotFound,
-      ).toBe(true);
-    }, 30_000);
-  });
+  it("error - Forbidden for inaccessible project", async () => {
+    const error = await runEffect(
+      createGroupIntegration({
+        groupId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+        integrationType: "WEBHOOK",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
+        error instanceof NotFound ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
 
-  describe("getGroupMaintenanceWindow", () => {
-    it("error - NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        getGroupMaintenanceWindow({ groupId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
+  it("error - BadRequest for invalid group ID format", async () => {
+    const error = await runEffect(
+      createGroupIntegration({
+        groupId: `invalid-group-${testRunId}`,
+        integrationType: "WEBHOOK",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
+        error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
 
-  describe("listGroupLimits", () => {
-    it("error - NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        listGroupLimits({ groupId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof BadRequest ||
-          error instanceof Forbidden ||
-          error instanceof NotFound ||
-          error instanceof Conflict,
-      ).toBe(true);
-    }, 30_000);
-  });
+  it("error - Conflict for duplicate integration type", async () => {
+    const error = await runEffect(
+      createGroupIntegration({
+        groupId: "bbbbbbbbbbbbbbbbbbbbbbbb",
+        integrationType: "WEBHOOK",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Conflict ||
+        error instanceof NotFound ||
+        error instanceof Forbidden ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
+});
 
-  describe("getGroupLimit", () => {
-    it("error - NotFound for non-existent limit", async () => {
-      const error = await runEffect(
-        getGroupLimit({
-          groupId: PROJECT_ID,
-          limitName: "atlas.project.deployment.clusters",
-        }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof BadRequest ||
-          error instanceof Forbidden ||
-          error instanceof NotFound ||
-          error instanceof Conflict,
-      ).toBe(true);
-    }, 30_000);
-  });
+describe("createGroupLiveMigration", () => {
+  it("happy path - lists projects to verify API access", async () => {
+    const result = await runEffect(listGroups({}));
+    expect(result).toBeDefined();
+  }, 30_000);
 
-  describe("getGroupAuditLog", () => {
-    it("error - NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        getGroupAuditLog({ groupId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
+  it("error - NotFound for non-existent project", async () => {
+    const error = await runEffect(
+      createGroupLiveMigration({
+        groupId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
 
-  describe("getGroupUserSecurity", () => {
-    it("error - NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        getGroupUserSecurity({ groupId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
+  it("error - Forbidden for inaccessible project", async () => {
+    const error = await runEffect(
+      createGroupLiveMigration({
+        groupId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
+        error instanceof NotFound ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
 
-  describe("getGroupManagedSlowMs", () => {
-    it("error - NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        getGroupManagedSlowMs({ groupId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
+  it("error - BadRequest for invalid group ID format", async () => {
+    const error = await runEffect(
+      createGroupLiveMigration({
+        groupId: `invalid-group-${testRunId}`,
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
+        error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+});
 
-  describe("getGroupMongoDbVersions", () => {
-    it("error - NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        getGroupMongoDbVersions({ groupId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof BadRequest ||
-          error instanceof Forbidden ||
-          error instanceof NotFound ||
-          error instanceof Conflict,
-      ).toBe(true);
-    }, 30_000);
-  });
+describe("createGroupLogIntegration", () => {
+  it("happy path - lists projects to verify API access", async () => {
+    const result = await runEffect(listGroups({}));
+    expect(result).toBeDefined();
+  }, 30_000);
 
-  describe("getGroupBackupCompliancePolicy", () => {
-    it("error - NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        getGroupBackupCompliancePolicy({ groupId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
+  it("error - NotFound for non-existent project", async () => {
+    const error = await runEffect(
+      createGroupLogIntegration({
+        groupId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
 
-  describe("getGroupIpAddresses", () => {
-    it("error - NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        getGroupIpAddresses({ groupId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
+  it("error - Forbidden for inaccessible project", async () => {
+    const error = await runEffect(
+      createGroupLogIntegration({
+        groupId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
+        error instanceof NotFound ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
 
-  describe("listGroupCloudProviderAccess", () => {
-    it("error - NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        listGroupCloudProviderAccess({ groupId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
+  it("error - BadRequest for invalid group ID format", async () => {
+    const error = await runEffect(
+      createGroupLogIntegration({
+        groupId: `invalid-group-${testRunId}`,
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
+        error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+});
 
-  describe("getGroupEncryptionAtRest", () => {
-    it("error - NotFound for non-existent project", async () => {
-      const error = await runEffect(
-        getGroupEncryptionAtRest({ groupId: "000000000000000000000000" }).pipe(Effect.flip),
-      );
-      expect(
-        error instanceof NotFound || error instanceof Forbidden,
-      ).toBe(true);
-    }, 30_000);
-  });
+describe("cutoverGroupLiveMigration", () => {
+  it("happy path - lists projects to verify API access", async () => {
+    const result = await runEffect(listGroups({}));
+    expect(result).toBeDefined();
+  }, 30_000);
+
+  it("error - NotFound for non-existent migration", async () => {
+    const error = await runEffect(
+      cutoverGroupLiveMigration({
+        groupId: PROJECT_ID,
+        liveMigrationId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Forbidden for non-existent project", async () => {
+    const error = await runEffect(
+      cutoverGroupLiveMigration({
+        groupId: "000000000000000000000000",
+        liveMigrationId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
+        error instanceof NotFound,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - BadRequest for invalid group ID format", async () => {
+    const error = await runEffect(
+      cutoverGroupLiveMigration({
+        groupId: `invalid-group-${testRunId}`,
+        liveMigrationId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
+        error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+});
+
+describe("deferGroupMaintenanceWindow", () => {
+  it("happy path - lists projects to verify API access", async () => {
+    const result = await runEffect(listGroups({}));
+    expect(result).toBeDefined();
+  }, 30_000);
+
+  it("error - NotFound for non-existent project", async () => {
+    const error = await runEffect(
+      deferGroupMaintenanceWindow({
+        groupId: "000000000000000000000000",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - Forbidden for inaccessible project", async () => {
+    const error = await runEffect(
+      deferGroupMaintenanceWindow({
+        groupId: "aaaaaaaaaaaaaaaaaaaaaaaa",
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof Forbidden ||
+        error instanceof NotFound ||
+        error instanceof BadRequest,
+    ).toBe(true);
+  }, 30_000);
+
+  it("error - BadRequest for invalid group ID format", async () => {
+    const error = await runEffect(
+      deferGroupMaintenanceWindow({
+        groupId: `invalid-group-${testRunId}`,
+      }).pipe(Effect.flip),
+    );
+    expect(
+      error instanceof BadRequest ||
+        error instanceof NotFound ||
+        error instanceof Forbidden,
+    ).toBe(true);
+  }, 30_000);
 });

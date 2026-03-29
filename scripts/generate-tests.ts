@@ -24,7 +24,7 @@ import { Console, Effect, Option } from "effect";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import { Argument, Command, Flag } from "effect/unstable/cli";
-import { AgentError, BOLD, DIM, GREEN, RESET, YELLOW, runAgent } from "./lib/agent.ts";
+import { AgentError, BOLD, CYAN, DIM, GREEN, RED, RESET, YELLOW, runAgent } from "./lib/agent.ts";
 
 // ============================================================================
 // Prompt Construction
@@ -35,7 +35,10 @@ function buildPrompt(provider: string, root: string, operation?: string, reset?:
 
   const scopeDescription = operation
     ? `Your goal is to generate comprehensive tests for the \`${operation}\` operation.`
-    : `Your goal is to generate comprehensive tests for ALL operations in the ${provider} SDK.`;
+    : `Your goal is to generate comprehensive tests for the ${provider} SDK, covering
+as many operations as possible. For large SDKs (100+ operations), focus on CRUD
+operations for every major resource type rather than trying to test every single
+endpoint. Prioritize operations that create, read, update, delete, and list resources.`;
 
   const scopeWorkflow = operation
     ? `
@@ -52,15 +55,22 @@ bun run test -- --run ${operation}
 \`\`\`
 from ${pkgDir}/. If tests fail, fix and re-run.`
     : `
-### Step 3: Generate tests for each operation
+### Step 3: Generate tests for each resource type
 ${reset ? `**RESET MODE**: All existing test files (*.test.ts) have been deleted. Regenerate
 tests from scratch for every operation. The setup/helper file has been preserved.` : ""}
-Go through ALL operations systematically. For each one:
-1. Read its source to find input/output schemas and error types
-2. ${reset ? "Generate tests (all old tests have been cleared)" : "Check if tests already exist for it (skip if fully covered)"}
-3. Generate tests following the rules below
-4. Group related operations into the same test file (e.g. all project operations
-   in projects.test.ts, all branch operations in branches.test.ts)
+
+**For small SDKs (<50 operations):** test every operation.
+**For large SDKs (50+ operations):** identify every distinct resource type
+(e.g. customers, products, invoices, projects, branches, buckets, workers)
+and generate a FULL CRUD test suite for each one.
+
+For each resource type, generate a test file (e.g. \`customers.test.ts\`) with:
+1. Happy path: create, get/show, update, list, delete (where applicable)
+2. Error path: at least 1 error test PER operation (non-existent ID, invalid input, etc.)
+3. ${reset ? "Generate tests (all old tests have been cleared)" : "Check if tests already exist (skip if fully covered)"}
+
+**IMPORTANT: EVERY test file MUST have both happy path AND error tests.
+If you write a test file with only happy paths, go back and add error tests.**
 
 After writing all tests, run the full test suite to verify:
 \`\`\`
@@ -73,9 +83,13 @@ You are a test generation agent for the ${provider} SDK in the Distilled monorep
 
 ${scopeDescription}
 
-For each operation you must generate:
+For each operation you MUST generate BOTH:
 1. At least 1 happy path test (successful API call with assertions on the response)
-2. At least 1 error test for EVERY non-generic error the operation can return
+2. At least 1 error test — triggering a real API error and asserting the SDK maps
+   it to the correct typed error class (NOT just testing happy paths!)
+
+**CRITICAL: Every test file MUST have error tests. A file with only happy path tests
+is INCOMPLETE and UNACCEPTABLE.**
 
 ## Repository Structure
 
@@ -220,26 +234,72 @@ someOperation({ ... }).pipe(
 
 ## What Errors to Test
 
-For each operation, test EVERY non-generic error.
+There are TWO levels of error typing in these SDKs. You must handle both.
 
-**Generic errors** (from DefaultErrors) do NOT need dedicated tests:
-- Unauthorized, TooManyRequests, InternalServerError, ServiceUnavailable, etc.
+### Level 1: Per-operation errors (Neon, PlanetScale, Cloudflare, AWS)
+Some SDKs define \`errors: [NotFound, BadRequest]\` in each operation.
+For these, test every non-generic error in the array. Generic errors
+(Unauthorized, TooManyRequests, InternalServerError) don't need tests.
 
-**Non-generic errors** MUST have at least 1 test each. These are:
-- Operation-specific errors defined in the operation's error type
-- Service-specific errors defined in the service file
-- Errors in the operation's \`errors: [...]\` array
+### Level 2: Client-level error mapping (Stripe, Supabase, etc.)
+Some SDKs have NO per-operation error arrays. Instead, errors are mapped
+by the \`matchError\` function in \`client.ts\` based on HTTP status codes
+and the error response body shape. **You MUST still test errors for these SDKs!**
 
-To find them:
-1. Read the operation source to find its error type union
-2. Subtract the generic DefaultErrors
-3. What remains are the non-generic errors that need tests
+To find what errors to test:
+1. Read \`${pkgDir}/src/errors.ts\` — find all custom error classes beyond the
+   generic ones (e.g. \`InvalidRequestError\`, \`CardError\`, \`IdempotencyError\`)
+2. Read \`${pkgDir}/src/client.ts\` — find the \`matchError\` function to see how
+   errors are dispatched (by error type string, HTTP status code, etc.)
+3. For each custom error class, write a test that triggers it via a real API call
 
-For each non-generic error, figure out what input would trigger it:
-- NotFound -> use a non-existent resource ID
-- InvalidBucketName -> use an invalid name (empty, uppercase, special chars)
-- BucketAlreadyExists -> create the same resource twice
-- Forbidden -> use an unauthorized resource ID (sometimes returns for non-existent too)
+### How to trigger common errors via API calls
+
+For EVERY operation that takes a resource ID, test with a non-existent ID:
+\`\`\`typescript
+// GET /resource/:id with bad ID → NotFound or InvalidRequestError
+getResource({ id: "nonexistent_00000000" }).pipe(
+  Effect.flip,
+  Effect.map((e) => expect(e._tag).toBe("NotFound")),
+)
+\`\`\`
+
+For EVERY operation that creates a resource, test with invalid input:
+\`\`\`typescript
+// POST with invalid/missing required fields → BadRequest or InvalidRequestError
+createResource({ name: "" }).pipe(
+  Effect.flip,
+  Effect.map((e) => expect(e._tag).toBe("InvalidRequestError")),
+)
+\`\`\`
+
+For EVERY operation that deletes a resource, test with a non-existent ID:
+\`\`\`typescript
+deleteResource({ id: "nonexistent_00000000" }).pipe(
+  Effect.flip,
+  Effect.map((e) => expect(e._tag).toBe("NotFound")),
+)
+\`\`\`
+
+Other common error triggers:
+- **Duplicate creation**: create the same resource twice (Conflict/AlreadyExists)
+- **Invalid parameters**: negative amounts, invalid currencies, malformed IDs
+- **Missing required fields**: omit required fields to trigger validation errors
+
+### Stripe-specific error testing
+Stripe has these custom error classes in errors.ts:
+- \`InvalidRequestError\` — triggered by bad parameters, non-existent resources
+- \`CardError\` — triggered by declined cards (use test card \`tok_chargeDeclined\`)
+- \`IdempotencyError\` — conflicting idempotency keys
+- \`PaymentError\` — HTTP 402
+
+At minimum, test \`InvalidRequestError\` for every resource type by using
+non-existent IDs (e.g. \`cus_nonexistent000\`, \`pi_nonexistent000\`).
+
+### Cloudflare-specific error testing
+Cloudflare has per-operation errors with numeric codes. Each error class
+uses \`T.applyErrorMatchers\` with codes like \`{ code: 10004 }\`. Test them
+by triggering the condition (invalid names, duplicate resources, etc.).
 
 ## Where to Write Tests
 
@@ -258,6 +318,121 @@ For each non-generic error, figure out what input would trigger it:
 - Only use dependencies already installed — do NOT run \`bun add\`
 - Skip operations that require resources you can't create (e.g. billing, admin-only)
   but note them in a comment
+- **EVERY test file MUST have error tests, not just happy paths**
+- **After writing each test file, review it and count: if there are 0 error tests, ADD SOME**
+- Read errors.ts and client.ts to understand the SDK's error mapping before writing tests
+`.trim();
+}
+
+// ============================================================================
+// Phase 1: Research Prompt
+// ============================================================================
+
+function buildResearchPrompt(provider: string, root: string, manifestPath: string): string {
+  const pkgDir = `packages/${provider}`;
+
+  return `
+You are a test generation agent for the ${provider} SDK. Your task right now is
+RESEARCH ONLY — do NOT write any test files yet.
+
+## Your Task
+
+Study the SDK thoroughly and produce a JSON manifest of all operations that need tests.
+
+### Step 1: Read the test infrastructure
+1. Read ${pkgDir}/tests/setup.ts or ${pkgDir}/test/test.ts (the test helper)
+2. Read at least 2 existing test files to understand the exact patterns
+3. Read ${pkgDir}/src/errors.ts to understand all error classes
+4. Read ${pkgDir}/src/client.ts to understand error matching (the matchError function)
+5. Read ${pkgDir}/src/credentials.ts to understand auth
+
+### Step 2: List ALL operations
+Read ${pkgDir}/src/operations/index.ts or list ${pkgDir}/src/services/ to enumerate
+every single operation in the SDK.
+
+### Step 3: For each operation, determine:
+- The operation name (export name)
+- The source file path
+- The HTTP method (GET, POST, PUT, PATCH, DELETE)
+- What non-generic errors it can produce (from \`errors: [...]\` array if present,
+  or from the client-level matchError for SDKs without per-operation errors)
+- What test file it should go in (group related operations by resource type,
+  e.g. customers.test.ts, projects.test.ts)
+
+### Step 4: Write the manifest
+Write a JSON file to ${manifestPath} with this structure:
+
+\`\`\`json
+[
+  {
+    "name": "getProject",
+    "file": "src/operations/getProject.ts",
+    "httpMethod": "GET",
+    "errors": ["NotFound", "BadRequest"],
+    "testFile": "tests/projects.test.ts"
+  },
+  {
+    "name": "createProject",
+    "file": "src/operations/createProject.ts",
+    "httpMethod": "POST",
+    "errors": ["BadRequest", "Conflict"],
+    "testFile": "tests/projects.test.ts"
+  }
+]
+\`\`\`
+
+For SDKs WITHOUT per-operation errors (like Stripe), list the client-level
+error classes that could reasonably be triggered (e.g. InvalidRequestError
+for any operation that takes an ID).
+
+Include EVERY operation. Do not skip any.
+
+### Rules
+- Do NOT write any test files yet — only the manifest
+- Make sure .ai-workspace/ directory exists before writing
+- Group operations into test files by resource type
+`.trim();
+}
+
+// ============================================================================
+// Phase 2: Per-Operation Prompt
+// ============================================================================
+
+function buildOperationPrompt(
+  provider: string,
+  root: string,
+  operation: { name: string; file: string; errors: string[]; httpMethod: string; testFile: string },
+  reset?: boolean,
+): string {
+  const pkgDir = `packages/${provider}`;
+  const errorsDesc = operation.errors.length > 0
+    ? `Non-generic errors to test: ${operation.errors.join(", ")}`
+    : "No per-operation errors — test client-level errors (e.g. InvalidRequestError for bad IDs)";
+
+  return `
+Generate tests for the \`${operation.name}\` operation (${operation.httpMethod}) in the ${provider} SDK.
+
+Source: ${pkgDir}/${operation.file}
+Test file: ${pkgDir}/${operation.testFile}
+${errorsDesc}
+
+${reset ? `If ${pkgDir}/${operation.testFile} already has tests for ${operation.name}, remove them first.` : `If ${pkgDir}/${operation.testFile} already has tests for ${operation.name}, skip this operation.`}
+
+You MUST generate:
+1. At least 1 happy path test
+2. At least 1 error test for EACH error listed above
+
+If no specific errors are listed, generate at minimum:
+- 1 error test using a non-existent resource ID (expect NotFound or InvalidRequestError)
+- 1 error test using invalid input parameters (expect BadRequest or InvalidRequestError)
+
+Use the EXACT test patterns you learned during research. Match imports, layer
+provision, describe/it nesting, timeouts, and cleanup patterns exactly.
+
+Include testRunId in all resource names. Clean up resources with Effect.ensuring.
+
+After writing, do a quick sanity check — if the test file has ZERO error tests,
+that is WRONG. Go back and add error tests.
 `.trim();
 }
 
@@ -365,20 +540,109 @@ const generateTests = Command.make(
         }
       }
 
-      yield* Console.log(
-        `${DIM}Generating happy path + error tests for ${scope}...${RESET}\n`,
-      );
+      const systemPromptAppend =
+        "You are a test generation agent. Your job is to write thorough tests — " +
+        "BOTH happy path AND error tests for every operation. A test file with only " +
+        "happy paths is INCOMPLETE. You must read errors.ts and client.ts to understand " +
+        "what error classes exist, then trigger real API errors (non-existent IDs, " +
+        "invalid input, duplicates) and assert the SDK maps them to typed error classes. " +
+        "ALWAYS read existing test files first to match the exact patterns. " +
+        "When looking for files, prefer direct file reads over broad searches. " +
+        "Always start by reading files at the package root directly.";
 
-      yield* runAgent({
-        prompt: buildPrompt(config.provider, root, op, config.reset),
-        cwd: root,
-        systemPromptAppend:
-          "You are a test generation agent. Your job is to write thorough tests — " +
-          "at least 1 happy path and 1 test per non-generic error for each operation. " +
-          "ALWAYS read existing test files first to match the exact patterns. " +
-          "When looking for files, prefer direct file reads over broad searches. " +
-          "Always start by reading files at the package root directly.",
-      });
+      if (op) {
+        // Single operation mode — one agent call
+        yield* Console.log(
+          `${DIM}Generating tests for ${op}...${RESET}\n`,
+        );
+
+        yield* runAgent({
+          prompt: buildPrompt(config.provider, root, op, config.reset),
+          cwd: root,
+          systemPromptAppend,
+        });
+      } else {
+        // All operations mode — two phases:
+        // Phase 1: research & produce manifest
+        // Phase 2: resume session per-operation
+        const pkgDir = `packages/${config.provider}`;
+        const manifestPath = `.ai-workspace/${config.provider}-test-manifest.json`;
+
+        yield* Console.log(
+          `${DIM}Phase 1: Researching SDK and building operation manifest...${RESET}\n`,
+        );
+
+        const sessionId = yield* runAgent({
+          prompt: buildResearchPrompt(config.provider, root, manifestPath),
+          cwd: root,
+          systemPromptAppend,
+        });
+
+        // Read the manifest
+        const manifestRaw = yield* fs
+          .readFileString(path.join(root, manifestPath))
+          .pipe(
+            Effect.catch(() =>
+              Effect.succeed("[]"),
+            ),
+          );
+
+        let operations: Array<{
+          name: string;
+          file: string;
+          errors: string[];
+          httpMethod: string;
+          testFile: string;
+        }>;
+        try {
+          const parsed = JSON.parse(manifestRaw);
+          operations = Array.isArray(parsed) ? parsed : parsed.operations ?? [];
+        } catch {
+          yield* Console.log(
+            `${RED}Failed to parse manifest — falling back to single agent call${RESET}\n`,
+          );
+          yield* runAgent({
+            prompt: buildPrompt(config.provider, root, undefined, config.reset),
+            cwd: root,
+            systemPromptAppend,
+          });
+          yield* Console.log(
+            `\n${GREEN}${BOLD}Test generation complete for ${config.provider} / ${scope}.${RESET}`,
+          );
+          return;
+        }
+
+        yield* Console.log(
+          `\n${BOLD}Found ${operations.length} operations to test${RESET}\n`,
+        );
+
+        // Phase 2: generate tests per operation, resuming the same session
+        let completed = 0;
+        for (const operation of operations) {
+          completed++;
+          yield* Console.log(
+            `\n${CYAN}[${completed}/${operations.length}]${RESET} ${BOLD}${operation.name}${RESET} ${DIM}→ ${operation.testFile}${RESET}`,
+          );
+
+          yield* runAgent({
+            prompt: buildOperationPrompt(config.provider, root, operation, config.reset),
+            cwd: root,
+            resume: sessionId,
+            systemPromptAppend,
+          });
+        }
+
+        // Phase 3: run the full test suite
+        yield* Console.log(
+          `\n${DIM}Running full test suite to verify...${RESET}\n`,
+        );
+        yield* runAgent({
+          prompt: `Run the full test suite for ${pkgDir}/ with \`bun run test\` from that directory. If any tests fail, fix them and re-run until they pass. Report a summary of total tests, passed, and failed.`,
+          cwd: root,
+          resume: sessionId,
+          systemPromptAppend,
+        });
+      }
 
       yield* Console.log(
         `\n${GREEN}${BOLD}Test generation complete for ${config.provider} / ${scope}.${RESET}`,

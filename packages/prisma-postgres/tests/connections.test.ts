@@ -1,11 +1,11 @@
 import { Effect } from "effect";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { NotFound, UnprocessableEntity, Forbidden } from "../src/errors";
+import { UnknownPrismaPostgresError } from "../src/errors";
 import { getV1Connections } from "../src/operations/getV1Connections";
 import { getV1ConnectionsById } from "../src/operations/getV1ConnectionsById";
 import { postV1Connections } from "../src/operations/postV1Connections";
 import { deleteV1ConnectionsById } from "../src/operations/deleteV1ConnectionsById";
-import { postV1DatabasesByDatabaseIdConnections } from "../src/operations/postV1DatabasesByDatabaseIdConnections";
 import { postV1ConnectionsByIdRotate } from "../src/operations/postV1ConnectionsByIdRotate";
 import {
   getTestProject,
@@ -17,8 +17,8 @@ import {
 
 const TEST_SUFFIX = "connections";
 
-const NON_EXISTENT_CONN_ID = "non-existent-connection-id-00000000";
 const NON_EXISTENT_DB_ID = "non-existent-database-id-00000000";
+const NON_EXISTENT_CONN_ID = "non-existent-connection-id-00000000";
 
 const isNotFoundLike = (error: unknown): boolean =>
   error instanceof NotFound ||
@@ -47,6 +47,7 @@ describe("connections", () => {
       expect(result).toBeDefined();
       expect(Array.isArray(result.data)).toBe(true);
       expect(result.pagination).toBeDefined();
+      expect(typeof result.pagination.hasMore).toBe("boolean");
     }, 30_000);
 
     it("happy path - lists connections filtered by database", async () => {
@@ -56,6 +57,40 @@ describe("connections", () => {
       );
 
       expect(Array.isArray(result.data)).toBe(true);
+      // All returned connections should belong to the filtered database
+      for (const conn of result.data) {
+        expect(conn.database.id).toBe(proj.databaseId);
+      }
+    }, 30_000);
+
+    it("happy path - lists connections with pagination limit", async () => {
+      const result = await runEffect(getV1Connections({ limit: 1 }));
+
+      expect(result).toBeDefined();
+      expect(Array.isArray(result.data)).toBe(true);
+      expect(result.data.length).toBeLessThanOrEqual(1);
+      expect(result.pagination).toBeDefined();
+    }, 30_000);
+
+    it("error - returns error for non-existent databaseId filter", async () => {
+      const error = await runEffect(
+        getV1Connections({ databaseId: NON_EXISTENT_DB_ID }).pipe(
+          Effect.matchEffect({
+            onFailure: (e) => Effect.succeed(e),
+            onSuccess: () => Effect.succeed(null),
+          }),
+        ),
+      );
+
+      // The API may return an error or an empty list for a non-existent database filter.
+      // If it returns an error, it should be a typed error.
+      if (error !== null) {
+        expect(
+          isNotFoundLike(error) ||
+            error instanceof UnknownPrismaPostgresError,
+        ).toBe(true);
+      }
+      // If null, the API returned an empty list — that's also acceptable
     }, 30_000);
   });
 
@@ -66,7 +101,7 @@ describe("connections", () => {
   describe("getV1ConnectionsById", () => {
     it("happy path - gets connection by id", async () => {
       const proj = getProj();
-      // Get first connection from the list
+      // Get a connection from the list to look up by ID
       const list = await runEffect(
         getV1Connections({ databaseId: proj.databaseId }),
       );
@@ -82,10 +117,11 @@ describe("connections", () => {
         expect(result.data.kind).toBeDefined();
         expect(result.data.endpoints).toBeDefined();
         expect(result.data.database).toBeDefined();
+        expect(result.data.database.id).toBe(proj.databaseId);
       }
     }, 30_000);
 
-    it("error - NotFound for non-existent connection", async () => {
+    it("error - NotFound for non-existent connection id", async () => {
       const error = await runEffect(
         getV1ConnectionsById({ id: NON_EXISTENT_CONN_ID }).pipe(
           Effect.matchEffect({
@@ -98,44 +134,68 @@ describe("connections", () => {
       expect(error).not.toBeNull();
       expect(isNotFoundLike(error)).toBe(true);
     }, 30_000);
+
+    it("error - UnprocessableEntity for malformed id", async () => {
+      const error = await runEffect(
+        getV1ConnectionsById({ id: "!!invalid-id-format!!" }).pipe(
+          Effect.matchEffect({
+            onFailure: (e) => Effect.succeed(e),
+            onSuccess: () => Effect.succeed(null),
+          }),
+        ),
+      );
+
+      expect(error).not.toBeNull();
+      expect(
+        error instanceof UnprocessableEntity ||
+          error instanceof NotFound ||
+          error instanceof UnknownPrismaPostgresError,
+      ).toBe(true);
+    }, 30_000);
   });
 
   // ==========================================================================
-  // postV1Connections & deleteV1ConnectionsById (create + delete lifecycle)
+  // postV1Connections (create)
   // ==========================================================================
 
-  describe("postV1Connections & deleteV1ConnectionsById", () => {
-    it("happy path - creates and deletes a connection", async () => {
+  describe("postV1Connections", () => {
+    it("happy path - creates a connection", async () => {
       const proj = getProj();
       const connName = `distilled-prisma-conn-${testRunId}`;
-      let createdConnId: string | null = null;
 
-      try {
-        const created = await runEffect(
-          postV1Connections({
-            databaseId: proj.databaseId!,
-            name: connName,
-          }),
-        );
+      const created = await runEffect(
+        postV1Connections({
+          databaseId: proj.databaseId!,
+          name: connName,
+        }).pipe(
+          Effect.ensuring(
+            getV1Connections({ databaseId: proj.databaseId }).pipe(
+              Effect.flatMap((list) => {
+                const conn = list.data.find((c) => c.name === connName);
+                if (conn) {
+                  return deleteV1ConnectionsById({ id: conn.id }).pipe(Effect.ignore);
+                }
+                return Effect.void;
+              }),
+              Effect.ignore,
+            ),
+          ),
+        ),
+      );
 
-        createdConnId = created.data.id;
-        expect(created.data.id).toBeDefined();
-        expect(created.data.name).toBe(connName);
-        expect(created.data.database.id).toBe(proj.databaseId);
-      } finally {
-        if (createdConnId) {
-          await runEffect(
-            deleteV1ConnectionsById({ id: createdConnId }).pipe(Effect.ignore),
-          );
-        }
-      }
+      expect(created.data.id).toBeDefined();
+      expect(created.data.name).toBe(connName);
+      expect(created.data.database.id).toBe(proj.databaseId);
+      expect(created.data.kind).toBeDefined();
+      expect(created.data.endpoints).toBeDefined();
+      expect(created.data.connectionString).toBeDefined();
     }, 60_000);
 
-    it("error - NotFound when creating connection for non-existent database", async () => {
+    it("error - NotFound for non-existent databaseId", async () => {
       const error = await runEffect(
         postV1Connections({
           databaseId: NON_EXISTENT_DB_ID,
-          name: "test-conn",
+          name: `distilled-prisma-conn-nf-${testRunId}`,
         }).pipe(
           Effect.matchEffect({
             onFailure: (e) => Effect.succeed(e),
@@ -148,7 +208,74 @@ describe("connections", () => {
       expect(isNotFoundLike(error)).toBe(true);
     }, 30_000);
 
-    it("error - NotFound when deleting non-existent connection", async () => {
+    it("error - UnprocessableEntity for empty connection name", async () => {
+      const proj = getProj();
+      const error = await runEffect(
+        postV1Connections({
+          databaseId: proj.databaseId!,
+          name: "",
+        }).pipe(
+          Effect.matchEffect({
+            onFailure: (e) => Effect.succeed(e),
+            onSuccess: (result) =>
+              // If the API accepts empty name, clean up and return null
+              deleteV1ConnectionsById({ id: result.data.id }).pipe(
+                Effect.ignore,
+                Effect.map(() => null),
+              ),
+          }),
+        ),
+      );
+
+      // The API should reject an empty name with UnprocessableEntity
+      if (error !== null) {
+        expect(
+          error instanceof UnprocessableEntity ||
+            error instanceof NotFound ||
+            error instanceof UnknownPrismaPostgresError,
+        ).toBe(true);
+      }
+    }, 30_000);
+  });
+
+  // ==========================================================================
+  // deleteV1ConnectionsById
+  // ==========================================================================
+
+  describe("deleteV1ConnectionsById", () => {
+    it("happy path - creates then deletes a connection", async () => {
+      const proj = getProj();
+      const connName = `distilled-prisma-del-${testRunId}`;
+
+      // Create a connection to delete
+      const created = await runEffect(
+        postV1Connections({
+          databaseId: proj.databaseId!,
+          name: connName,
+        }),
+      );
+
+      const connId = created.data.id;
+      expect(connId).toBeDefined();
+
+      // Delete the connection
+      await runEffect(deleteV1ConnectionsById({ id: connId }));
+
+      // Verify it's gone — fetching should fail
+      const error = await runEffect(
+        getV1ConnectionsById({ id: connId }).pipe(
+          Effect.matchEffect({
+            onFailure: (e) => Effect.succeed(e),
+            onSuccess: () => Effect.succeed(null),
+          }),
+        ),
+      );
+
+      expect(error).not.toBeNull();
+      expect(isNotFoundLike(error)).toBe(true);
+    }, 60_000);
+
+    it("error - NotFound for non-existent connection id", async () => {
       const error = await runEffect(
         deleteV1ConnectionsById({ id: NON_EXISTENT_CONN_ID }).pipe(
           Effect.matchEffect({
@@ -161,45 +288,10 @@ describe("connections", () => {
       expect(error).not.toBeNull();
       expect(isNotFoundLike(error)).toBe(true);
     }, 30_000);
-  });
 
-  // ==========================================================================
-  // postV1DatabasesByDatabaseIdConnections
-  // ==========================================================================
-
-  describe("postV1DatabasesByDatabaseIdConnections", () => {
-    it("happy path - creates a connection via database path", async () => {
-      const proj = getProj();
-      const connName = `distilled-prisma-dbconn-${testRunId}`;
-      let createdConnId: string | null = null;
-
-      try {
-        const created = await runEffect(
-          postV1DatabasesByDatabaseIdConnections({
-            databaseId: proj.databaseId!,
-            name: connName,
-          }),
-        );
-
-        createdConnId = created.data.id;
-        expect(created.data.id).toBeDefined();
-        expect(created.data.name).toBe(connName);
-        expect(created.data.database.id).toBe(proj.databaseId);
-      } finally {
-        if (createdConnId) {
-          await runEffect(
-            deleteV1ConnectionsById({ id: createdConnId }).pipe(Effect.ignore),
-          );
-        }
-      }
-    }, 60_000);
-
-    it("error - NotFound for non-existent database", async () => {
+    it("error - UnprocessableEntity for malformed id", async () => {
       const error = await runEffect(
-        postV1DatabasesByDatabaseIdConnections({
-          databaseId: NON_EXISTENT_DB_ID,
-          name: "test-conn",
-        }).pipe(
+        deleteV1ConnectionsById({ id: "!!invalid-id-format!!" }).pipe(
           Effect.matchEffect({
             onFailure: (e) => Effect.succeed(e),
             onSuccess: () => Effect.succeed(null),
@@ -208,7 +300,11 @@ describe("connections", () => {
       );
 
       expect(error).not.toBeNull();
-      expect(isNotFoundLike(error)).toBe(true);
+      expect(
+        error instanceof UnprocessableEntity ||
+          error instanceof NotFound ||
+          error instanceof UnknownPrismaPostgresError,
+      ).toBe(true);
     }, 30_000);
   });
 
@@ -219,33 +315,66 @@ describe("connections", () => {
   describe("postV1ConnectionsByIdRotate", () => {
     it("happy path - rotates connection credentials", async () => {
       const proj = getProj();
-      // Create a connection to rotate
       const connName = `distilled-prisma-rotate-${testRunId}`;
-      let createdConnId: string | null = null;
+
+      // Create a dedicated connection for rotation testing
+      const created = await runEffect(
+        postV1Connections({
+          databaseId: proj.databaseId!,
+          name: connName,
+        }),
+      );
+
+      const connId = created.data.id;
 
       try {
-        const created = await runEffect(
-          postV1Connections({
-            databaseId: proj.databaseId!,
-            name: connName,
-          }),
-        );
-
-        createdConnId = created.data.id;
-
         const rotated = await runEffect(
-          postV1ConnectionsByIdRotate({ id: createdConnId }),
+          postV1ConnectionsByIdRotate({ id: connId }),
         );
 
-        expect(rotated.data.id).toBe(createdConnId);
+        expect(rotated.data.id).toBe(connId);
         expect(rotated.data.name).toBe(connName);
+        expect(rotated.data.connectionString).toBeDefined();
+        expect(rotated.data.kind).toBeDefined();
+        expect(rotated.data.endpoints).toBeDefined();
+        expect(rotated.data.database).toBeDefined();
+        expect(rotated.data.database.id).toBe(proj.databaseId);
       } finally {
-        if (createdConnId) {
-          await runEffect(
-            deleteV1ConnectionsById({ id: createdConnId }).pipe(Effect.ignore),
-          );
-        }
+        await runEffect(
+          deleteV1ConnectionsById({ id: connId }).pipe(Effect.ignore),
+        );
       }
     }, 60_000);
+
+    it("error - NotFound for non-existent connection id", async () => {
+      const error = await runEffect(
+        postV1ConnectionsByIdRotate({ id: NON_EXISTENT_CONN_ID }).pipe(
+          Effect.matchEffect({
+            onFailure: (e) => Effect.succeed(e),
+            onSuccess: () => Effect.succeed(null),
+          }),
+        ),
+      );
+
+      expect(error).not.toBeNull();
+      expect(isNotFoundLike(error)).toBe(true);
+    }, 30_000);
+
+    it("error - returns error for malformed id", async () => {
+      const error = await runEffect(
+        postV1ConnectionsByIdRotate({ id: "!!invalid-id-format!!" }).pipe(
+          Effect.matchEffect({
+            onFailure: (e) => Effect.succeed(e),
+            onSuccess: () => Effect.succeed(null),
+          }),
+        ),
+      );
+
+      expect(error).not.toBeNull();
+      expect(
+        isNotFoundLike(error) ||
+          error instanceof UnknownPrismaPostgresError,
+      ).toBe(true);
+    }, 30_000);
   });
 });

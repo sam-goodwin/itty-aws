@@ -246,17 +246,22 @@ export interface AgentOptions {
   readonly model?: string;
   /** Extra text appended to the Claude Code system prompt. */
   readonly systemPromptAppend?: string;
+  /** Resume a previous session by ID. */
+  readonly resume?: string;
+  /** Maximum agentic turns. */
+  readonly maxTurns?: number;
 }
 
 /**
  * Run a Claude Agent SDK query with all tools enabled, logging all messages
- * to the console. Returns an Effect that resolves when the agent is done.
+ * to the console. Returns the session ID so callers can resume it.
  */
 export const runAgent = (
   opts: AgentOptions,
-): Effect.Effect<void, AgentError> =>
+): Effect.Effect<string, AgentError> =>
   Effect.tryPromise({
     try: async () => {
+      let sessionId = "";
       for await (const message of query({
         prompt: opts.prompt,
         options: {
@@ -283,10 +288,19 @@ export const runAgent = (
           settingSources: ["project"],
           permissionMode: "bypassPermissions",
           allowDangerouslySkipPermissions: true,
+          ...(opts.resume ? { resume: opts.resume } : {}),
+          ...(opts.maxTurns ? { maxTurns: opts.maxTurns } : {}),
         },
       })) {
+        if (
+          message.type === "system" &&
+          (message as any).subtype === "init"
+        ) {
+          sessionId = (message as any).session_id;
+        }
         logMessage(message);
       }
+      return sessionId;
     },
     catch: (err) =>
       new AgentError({
