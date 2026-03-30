@@ -497,6 +497,24 @@ by triggering the condition (invalid names, duplicate resources, etc.).
 - If no, create a new test file following the naming convention of existing files
 - Group related operations together (e.g. all CRUD operations for the same resource)
 
+## These Are Tests — Destructive Operations Are Fine
+
+All tests run against TEST data. Every resource is created by the test, owned
+by the test, and cleaned up by the test. There is NO production data at risk.
+
+- **Destructive operations** (delete, restore, overwrite, purge, destroy) are
+  not just fine — they MUST be tested. Never skip a happy path because the
+  operation is "destructive" or "risky."
+- **If an operation needs a prerequisite resource** (e.g. a backup to test restore,
+  a database to test delete, a snapshot to test revert), create it as part of the
+  test setup. This is normal test infrastructure.
+- **Never write a "conditional" or "best-effort" happy path** that doesn't actually
+  call the operation. If the happy path says "creates a backup and restores it",
+  then the test must actually create a backup and restore it.
+- **Never skip a happy path test** because you think it might be dangerous. The
+  only reason to skip is if the operation requires credentials or tier access
+  that the test environment doesn't have (e.g. enterprise-only features).
+
 ## Rules
 - Match the EXACT test style used in existing test files for this package
 - Use the same imports, layer provision, and helpers as existing tests
@@ -505,8 +523,8 @@ by triggering the condition (invalid names, duplicate resources, etc.).
 - Always include testRunId in resource names
 - If tests fail, read the error output, fix the tests, and re-run
 - Only use dependencies already installed — do NOT run \`bun add\`
-- Skip operations that require resources you can't create (e.g. billing, admin-only)
-  but note them in a comment
+- Skip operations that require credentials or tier access you don't have (e.g.
+  enterprise-only, billing, admin-only) but note them in a comment
 - **EVERY test file MUST have error tests, not just happy paths**
 - **After writing each test file, review it and count: if there are 0 error tests, ADD SOME**
 - **The word "Unknown" must NEVER appear in any test file** — no assertions, no arrays, no catchTag. Fix the client's matchError or add a patch instead.
@@ -618,12 +636,17 @@ Write a complete test file at ${pkgDir}/${operation.testFile} with all necessary
 imports, describe block, and both happy path + error tests.
 
 You MUST generate:
-1. At least 1 happy path test
+1. At least 1 happy path test that ACTUALLY CALLS the operation and asserts the result
 2. At least 1 error test for EACH error listed above
 
 If no specific errors are listed, generate at minimum:
 - 1 error test using a non-existent resource ID (expect NotFound or InvalidRequestError)
 - 1 error test using invalid input parameters (expect BadRequest or InvalidRequestError)
+
+**All tests run on test data — destructive operations are fine.** If the operation
+is a delete, restore, overwrite, or destroy — test it. If it needs a prerequisite
+resource (backup, snapshot, database), create it in the test setup. Never skip a
+happy path because the operation is "destructive" or "risky."
 
 Use the EXACT test patterns you learned during research. Match imports, layer
 provision, describe/it nesting, timeouts, and cleanup patterns exactly.
@@ -775,6 +798,9 @@ const generateTests = Command.make(
         "NEVER use Effect.catchTag + Effect.succeed(undefined) to swallow errors in test " +
         "bodies. Happy path tests must let errors propagate. Error tests use Effect.flip. " +
         "Transient errors use Effect.retry. Effect.ignore is only for cleanup in Effect.ensuring. " +
+        "All tests run on TEST data — destructive operations (delete, restore, overwrite) " +
+        "are fine and MUST be tested. Never skip a happy path because it's 'destructive'. " +
+        "If an operation needs a prerequisite resource, create it in the test setup. " +
         "ALWAYS read existing test files first to match the exact patterns. " +
         "When looking for files, prefer direct file reads over broad searches. " +
         "Always start by reading files at the package root directly.";
