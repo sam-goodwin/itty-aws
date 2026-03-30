@@ -51,6 +51,13 @@ const matchError = (
       }),
     );
   } catch {
+    // Non-JSON responses (e.g. plain-text 401/403) — fall back to status code matching
+    const ErrorClass = (HTTP_STATUS_MAP as any)[status];
+    if (ErrorClass) {
+      const message =
+        typeof errorBody === "string" ? errorBody : String(errorBody ?? "");
+      return Effect.fail(new ErrorClass({ message }));
+    }
     return Effect.fail(new UnknownPrismaPostgresError({ body: errorBody }));
   }
 };
