@@ -9,7 +9,14 @@
  *   bun packages/prisma-postgres/scripts/nuke.ts --dry-run
  *   bun packages/prisma-postgres/scripts/nuke.ts
  */
-import "dotenv/config";
+import { config } from "dotenv";
+import * as nodePath from "node:path";
+
+// Load .env from repo root (three levels up from scripts/)
+const envPath = nodePath.resolve(import.meta.dir, "../../../.env");
+config({ path: envPath });
+// Also try CWD/.env as fallback
+config();
 import { BunRuntime, BunServices } from "@effect/platform-bun";
 import { Console, Effect } from "effect";
 import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";

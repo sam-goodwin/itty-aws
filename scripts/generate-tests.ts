@@ -232,6 +232,97 @@ someOperation({ ... }).pipe(
 )
 \`\`\`
 
+## CRITICAL: NEVER Swallow Errors In Happy Path Tests
+
+**The following pattern is BANNED. Never write this:**
+
+\`\`\`typescript
+// BAD — silently passes the test when the operation fails
+const result = yield* someOperation({ ... }).pipe(
+  Effect.catchTag("NotFound", () => Effect.succeed(undefined)),
+  Effect.catchTag("BadRequest", () => Effect.succeed(undefined)),
+  Effect.catchTag("UnknownNeonError", () => Effect.succeed(undefined)),
+);
+if (result === undefined) return; // <-- test passes even though the operation failed!
+expect(result).toBeDefined();
+\`\`\`
+
+This is wrong because:
+- The test passes even when the API call fails
+- Errors are silently swallowed — you will never know the test is broken
+- It defeats the entire purpose of having a test
+
+**Instead, use these patterns:**
+
+### Happy path tests: let errors propagate
+\`\`\`typescript
+// GOOD — if the operation fails, the test fails
+it("happy path - creates a project", async () => {
+  await runEffect(
+    Effect.gen(function* () {
+      const result = yield* createProject({ name: \`test-\${testRunId}\` });
+      expect(result.id).toBeDefined();
+    }).pipe(
+      Effect.ensuring(
+        deleteProject({ project_id: result.id }).pipe(Effect.ignore),
+      ),
+    ),
+  );
+}, 30_000);
+\`\`\`
+
+### Error tests: use Effect.flip
+\`\`\`typescript
+// GOOD — explicitly tests that the operation fails with the expected error
+it("error - NotFound for non-existent project", async () => {
+  await runEffect(
+    getProject({ project_id: "nonexistent" }).pipe(
+      Effect.flip,
+      Effect.map((e) => expect(e._tag).toBe("NotFound")),
+    ),
+  );
+}, 30_000);
+\`\`\`
+
+### Transient/eventual-consistency errors: use Effect.retry
+\`\`\`typescript
+// GOOD — retries on eventual consistency, fails on unexpected errors
+it("happy path - gets queue after creation", async () => {
+  await runEffect(
+    Effect.gen(function* () {
+      yield* createQueue({ name: \`test-\${testRunId}\` });
+      const result = yield* getQueue({ name: \`test-\${testRunId}\` }).pipe(
+        Effect.retry({
+          while: (err) => err._tag === "QueueDoesNotExist",
+          schedule: Schedule.spaced("1 second").pipe(
+            Schedule.both(Schedule.recurs(10)),
+          ),
+        }),
+      );
+      expect(result).toBeDefined();
+    }),
+  );
+}, 30_000);
+\`\`\`
+
+### Beta/tier-restricted endpoints: skip the test
+\`\`\`typescript
+// GOOD — skip if the feature isn't available, don't silently pass
+it("happy path - enables beta feature", async (ctx) => {
+  // This endpoint requires enterprise tier
+  if (!hasEnterpriseTier) return ctx.skip();
+  await runEffect(/* ... */);
+}, 30_000);
+\`\`\`
+
+### Summary of rules:
+- **Happy path**: NO catchTag at all. Let errors propagate and fail the test.
+- **Error path**: Use Effect.flip + assert the \_tag. Never catch-and-succeed.
+- **Transient errors**: Use Effect.retry with a \`while\` predicate and schedule.
+- **Unavailable features**: Skip the test, don't silently pass it.
+- **Cleanup code**: Effect.ignore is fine ONLY in cleanup/teardown (Effect.ensuring),
+  never in the test body itself.
+
 ## What Errors to Test
 
 There are TWO levels of error typing in these SDKs. You must handle both.
@@ -252,6 +343,86 @@ To find what errors to test:
 2. Read \`${pkgDir}/src/client.ts\` — find the \`matchError\` function to see how
    errors are dispatched (by error type string, HTTP status code, etc.)
 3. For each custom error class, write a test that triggers it via a real API call
+
+## CRITICAL: UnknownXxxError Is ALWAYS A Bug — Fix It, Never Accept It
+
+**The string "Unknown" must NEVER appear in any test file.** This includes:
+
+- \`expect(e._tag).toBe("UnknownXxxError")\` — BANNED
+- \`["Unauthorized", "UnknownFlyIoError"].toContain(e._tag)\` — BANNED
+- \`Effect.catchTag("UnknownNeonError", ...)\` — BANNED
+- Any assertion, array, or catchTag that references an Unknown error — BANNED
+
+An \`UnknownXxxError\` (e.g. \`UnknownCloudflareError\`, \`UnknownNeonError\`,
+\`UnknownFlyIoError\`, \`UnknownStripeError\`) means the API returned an error
+that the SDK's \`matchError\` function in \`client.ts\` does not handle.
+This is a BUG in the SDK, not expected behavior. Your job is to FIX it.
+
+### When you encounter UnknownXxxError, STOP generating tests and fix the bug:
+
+1. **Run with \`DEBUG=1\`** to see the raw HTTP error response:
+   \`\`\`
+   DEBUG=1 bun run test -- --run operationName 2>&1 | head -100
+   \`\`\`
+
+2. **Identify the root cause** — common causes:
+   - **Non-JSON error response**: The API returns plain text (e.g. "Unauthorized"),
+     HTML, or an empty body on 401/403/404/etc. The \`matchError\` function only
+     handles JSON responses and falls through to UnknownXxxError for non-JSON.
+   - **Unexpected JSON shape**: The error JSON has a different structure than
+     what \`matchError\` expects (e.g. \`{ "error": "msg" }\` vs \`{ "message": "msg" }\`)
+   - **Missing status code handling**: The \`matchError\` function doesn't have a
+     case for this HTTP status code
+
+3. **Fix the \`matchError\` function** in \`${pkgDir}/src/client.ts\`:
+   - Add handling for non-JSON responses by checking Content-Type or catching
+     JSON parse failures and mapping based on HTTP status code alone
+   - Add cases for missing status codes (e.g. map 401 → Unauthorized, 403 → Forbidden)
+   - Example fix for non-JSON 401:
+     \`\`\`typescript
+     // In matchError, before trying to parse JSON:
+     if (status === 401) return new Unauthorized({ ... });
+     if (status === 403) return new Forbidden({ ... });
+     \`\`\`
+
+4. **OR create a patch** if the error is operation-specific:
+   - For OpenAPI SDKs: add a JSON Patch entry to \`patches/*.patch.json\`
+   - For Cloudflare: add an error matcher to \`patches/{service}/{operation}.json\`
+   - For AWS: add the error to \`patches/{service}.json\`
+
+5. **Regenerate** if you modified patches: \`bun run generate\`
+
+6. **Verify the fix**: re-run the failing test and confirm the error now comes
+   back as a typed error (e.g. \`Unauthorized\`, \`NotFound\`, \`BadRequest\`)
+
+7. **THEN write the test** asserting the NEW typed error class
+
+Example workflow:
+\`\`\`
+# 1. You try to trigger a 401 error for a Forbidden test
+getToken({ token_id: "bad" })  →  UnknownFlyIoError
+
+# 2. DEBUG=1 shows: HTTP 401, body is plain text "Unauthorized" (not JSON)
+
+# 3. Fix matchError in client.ts to handle non-JSON 401 responses:
+#    if (status === 401) return new Unauthorized({ message: body, statusCode: 401 });
+
+# 4. Re-run: getToken({ token_id: "bad" })  →  Unauthorized  ✓
+
+# 5. Write the test:
+getToken({ token_id: "bad" }).pipe(
+  Effect.flip,
+  Effect.map((e) => expect(e._tag).toBe("Unauthorized")),
+)
+\`\`\`
+
+### IMPORTANT: Fix the client, not the test
+
+The correct fix is ALWAYS to improve the SDK's error handling so that
+\`UnknownXxxError\` never occurs for standard HTTP error codes (400, 401,
+403, 404, 409, 422, 429, 500, 502, 503). The test should assert a
+properly typed error class. If you find yourself wanting to write
+\`UnknownXxxError\` in a test, you have found a bug — fix it first.
 
 ### How to trigger common errors via API calls
 
@@ -320,6 +491,9 @@ by triggering the condition (invalid names, duplicate resources, etc.).
   but note them in a comment
 - **EVERY test file MUST have error tests, not just happy paths**
 - **After writing each test file, review it and count: if there are 0 error tests, ADD SOME**
+- **The word "Unknown" must NEVER appear in any test file** — no assertions, no arrays, no catchTag. Fix the client's matchError or add a patch instead.
+- **NEVER use catchTag + succeed(undefined) in test bodies** — this swallows errors and makes tests meaninglessly pass
+- **Happy paths: let errors propagate.** Error paths: use Effect.flip. Transient: use Effect.retry.
 - Read errors.ts and client.ts to understand the SDK's error mapping before writing tests
 `.trim();
 }
@@ -437,8 +611,25 @@ provision, describe/it nesting, timeouts, and cleanup patterns exactly.
 
 Include testRunId in all resource names. Clean up resources with Effect.ensuring.
 
-After writing, do a quick sanity check — if the test file has ZERO error tests,
-that is WRONG. Go back and add error tests.
+**CRITICAL RULES:**
+- **The word "Unknown" must NEVER appear in the test file.** Not in assertions,
+  not in arrays like \`["Unauthorized", "UnknownFlyIoError"]\`, not in catchTag,
+  not in comments explaining expected behavior. If you encounter an UnknownXxxError
+  when running a test, STOP — fix the SDK's matchError in client.ts to handle
+  that error response (often non-JSON 401/403 responses that need status-code-based
+  matching), then write the test against the properly typed error.
+- **NEVER use \`Effect.catchTag("...", () => Effect.succeed(undefined))\` in test bodies.**
+  This silently swallows errors and makes tests pass when they should fail.
+  Happy path tests must let errors propagate. Error tests must use Effect.flip.
+  Only use Effect.ignore in cleanup code inside Effect.ensuring.
+- **Transient errors** (eventual consistency, recently deleted resources): use
+  Effect.retry with a \`while\` predicate and schedule, not catch-and-succeed.
+
+After writing, review the test file and check:
+1. Are there ZERO error tests? That is WRONG — add error tests.
+2. Does the word "Unknown" appear anywhere? That is WRONG — fix client.ts first.
+3. Is there any \`Effect.catchTag(..., () => Effect.succeed(undefined))\` in the
+   test body (not cleanup)? That is WRONG — remove it and let errors propagate.
 `.trim();
 }
 
@@ -556,6 +747,13 @@ const generateTests = Command.make(
         "happy paths is INCOMPLETE. You must read errors.ts and client.ts to understand " +
         "what error classes exist, then trigger real API errors (non-existent IDs, " +
         "invalid input, duplicates) and assert the SDK maps them to typed error classes. " +
+        "The word 'Unknown' must NEVER appear in any test file — not in assertions, " +
+        "not in arrays, not in catchTag. If you encounter UnknownXxxError, STOP and fix " +
+        "the matchError function in client.ts (common cause: non-JSON 401/403 responses " +
+        "that need status-code-based matching), then test the properly typed error. " +
+        "NEVER use Effect.catchTag + Effect.succeed(undefined) to swallow errors in test " +
+        "bodies. Happy path tests must let errors propagate. Error tests use Effect.flip. " +
+        "Transient errors use Effect.retry. Effect.ignore is only for cleanup in Effect.ensuring. " +
         "ALWAYS read existing test files first to match the exact patterns. " +
         "When looking for files, prefer direct file reads over broad searches. " +
         "Always start by reading files at the package root directly.";
