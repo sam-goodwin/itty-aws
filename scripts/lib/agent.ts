@@ -252,16 +252,59 @@ export interface AgentOptions {
   readonly maxTurns?: number;
 }
 
+/** Stats from a single agent run, extracted from the SDK result message. */
+export interface AgentRunStats {
+  readonly sessionId: string;
+  readonly durationMs: number;
+  readonly costUsd: number;
+  readonly turns: number;
+}
+
+/** Mutable accumulator for tracking stats across multiple agent runs. */
+export class AgentStatsAccumulator {
+  runs = 0;
+  totalDurationMs = 0;
+  totalCostUsd = 0;
+  totalTurns = 0;
+
+  add(stats: AgentRunStats): void {
+    this.runs++;
+    this.totalDurationMs += stats.durationMs;
+    this.totalCostUsd += stats.costUsd;
+    this.totalTurns += stats.turns;
+  }
+
+  /** Print a formatted summary line. */
+  print(): void {
+    console.log(
+      `\n${DIM}${"─".repeat(60)}${RESET}`,
+    );
+    console.log(
+      `${BOLD}Totals:${RESET}  ` +
+        `${this.runs} run${this.runs !== 1 ? "s" : ""}  |  ` +
+        `${(this.totalDurationMs / 1000).toFixed(1)}s  |  ` +
+        `$${this.totalCostUsd.toFixed(4)}  |  ` +
+        `${this.totalTurns} turns`,
+    );
+  }
+}
+
 /**
  * Run a Claude Agent SDK query with all tools enabled, logging all messages
- * to the console. Returns the session ID so callers can resume it.
+ * to the console. Returns stats from the run. Optionally accumulates into
+ * a shared stats tracker.
  */
 export const runAgent = (
   opts: AgentOptions,
-): Effect.Effect<string, AgentError> =>
+  stats?: AgentStatsAccumulator,
+): Effect.Effect<AgentRunStats, AgentError> =>
   Effect.tryPromise({
     try: async () => {
       let sessionId = "";
+      let durationMs = 0;
+      let costUsd = 0;
+      let turns = 0;
+
       for await (const message of query({
         prompt: opts.prompt,
         options: {
@@ -298,9 +341,18 @@ export const runAgent = (
         ) {
           sessionId = (message as any).session_id;
         }
+        if (message.type === "result") {
+          const m = message as any;
+          durationMs = m.duration_ms ?? 0;
+          costUsd = m.total_cost_usd ?? 0;
+          turns = m.num_turns ?? 0;
+        }
         logMessage(message);
       }
-      return sessionId;
+
+      const result: AgentRunStats = { sessionId, durationMs, costUsd, turns };
+      stats?.add(result);
+      return result;
     },
     catch: (err) =>
       new AgentError({

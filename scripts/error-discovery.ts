@@ -23,7 +23,7 @@ import { Console, Effect } from "effect";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import { Argument, Command } from "effect/unstable/cli";
-import { AgentError, BOLD, GREEN, RESET, runAgent } from "./lib/agent.ts";
+import { AgentError, AgentStatsAccumulator, BOLD, GREEN, RESET, runAgent } from "./lib/agent.ts";
 
 // ============================================================================
 // Prompt Construction
@@ -193,6 +193,8 @@ const errorDiscovery = Command.make(
 
       yield* validatePackage(root, config.name);
 
+      const stats = new AgentStatsAccumulator();
+
       yield* runAgent({
         prompt: buildPrompt(config.name, root),
         cwd: root,
@@ -201,11 +203,12 @@ const errorDiscovery = Command.make(
           "and add typed error classes to the SDK. Be methodical and thorough. " +
           "When looking for files, prefer direct file reads over broad searches. " +
           "Always start by reading files at the repo root or package root directly.",
-      });
+      }, stats);
 
       yield* Console.log(
         `\n${GREEN}${BOLD}Error discovery complete for ${config.name}.${RESET}`,
       );
+      stats.print();
     }),
 ).pipe(
   Command.withDescription(

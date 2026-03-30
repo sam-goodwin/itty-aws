@@ -29,7 +29,7 @@ import { Console, Effect } from "effect";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import { Argument, Command, Flag } from "effect/unstable/cli";
-import { AgentError, BOLD, DIM, GREEN, RESET, YELLOW, runAgent } from "./lib/agent.ts";
+import { AgentError, AgentStatsAccumulator, BOLD, DIM, GREEN, RESET, YELLOW, runAgent } from "./lib/agent.ts";
 
 // ============================================================================
 // Prompt Construction
@@ -368,6 +368,8 @@ const generateNuke = Command.make(
 
       yield* validateProvider(root, config.provider);
 
+      const stats = new AgentStatsAccumulator();
+
       yield* runAgent({
         prompt: buildPrompt(config.provider, root),
         cwd: root,
@@ -377,7 +379,7 @@ const generateNuke = Command.make(
           "before writing the script. The script must be complete and runnable. " +
           "When looking for files, prefer direct file reads over broad searches. " +
           "Always start by reading files at the package root directly.",
-      });
+      }, stats);
 
       // Verify it was created
       const created = yield* fs.exists(nukeScript);
@@ -402,6 +404,7 @@ const generateNuke = Command.make(
           `${DIM}Check .ai-workspace/ or the agent output for what was generated.${RESET}`,
         );
       }
+      stats.print();
     }),
 ).pipe(
   Command.withDescription(

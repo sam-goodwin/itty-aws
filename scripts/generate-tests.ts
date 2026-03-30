@@ -24,7 +24,7 @@ import { Console, Effect, Option } from "effect";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import { Argument, Command, Flag } from "effect/unstable/cli";
-import { AgentError, BOLD, CYAN, DIM, GREEN, RED, RESET, YELLOW, runAgent } from "./lib/agent.ts";
+import { AgentError, AgentStatsAccumulator, BOLD, CYAN, DIM, GREEN, RED, RESET, YELLOW, runAgent } from "./lib/agent.ts";
 
 // ============================================================================
 // Prompt Construction
@@ -216,20 +216,38 @@ yield* testFn().pipe(
 \`\`\`
 
 ### Error testing patterns
+
+**ALWAYS check errors using \`_tag\`.** This is the canonical way to identify
+errors in this codebase. Never use \`instanceof\`, \`rejects.toThrow()\`,
+or other patterns.
+
 \`\`\`typescript
-// Pattern 1: Effect.flip (simplest, for single error assertion)
+// GOOD — check _tag with Effect.flip
 someOperation({ ... }).pipe(
   Effect.flip,
-  Effect.map((e) => expect(e._tag).toBe("SpecificError")),
+  Effect.map((e) => expect(e._tag).toBe("NotFound")),
 )
 
-// Pattern 2: matchEffect (when you need to assert success doesn't happen)
+// GOOD — matchEffect when you need to assert success doesn't happen
 someOperation({ ... }).pipe(
   Effect.matchEffect({
-    onFailure: (e) => Effect.succeed(expect(e._tag).toBe("SpecificError")),
+    onFailure: (e) => Effect.succeed(expect(e._tag).toBe("NotFound")),
     onSuccess: () => Effect.succeed(expect.fail("should have failed")),
   }),
 )
+\`\`\`
+
+**BANNED patterns — never use these:**
+\`\`\`typescript
+// BAD — instanceof is fragile and verbose
+expect(error).toBeInstanceOf(NotFound);
+expect((error as NotFound)._tag).toBe("NotFound"); // redundant double-check
+
+// BAD — rejects.toThrow doesn't work with Effect error channels
+expect(promise).rejects.toThrow(NotFound);
+
+// BAD — checking error.name or error.message instead of _tag
+expect(error.name).toBe("NotFound");
 \`\`\`
 
 ## CRITICAL: NEVER Swallow Errors In Happy Path Tests
@@ -493,7 +511,8 @@ by triggering the condition (invalid names, duplicate resources, etc.).
 - **After writing each test file, review it and count: if there are 0 error tests, ADD SOME**
 - **The word "Unknown" must NEVER appear in any test file** — no assertions, no arrays, no catchTag. Fix the client's matchError or add a patch instead.
 - **NEVER use catchTag + succeed(undefined) in test bodies** — this swallows errors and makes tests meaninglessly pass
-- **Happy paths: let errors propagate.** Error paths: use Effect.flip. Transient: use Effect.retry.
+- **Happy paths: let errors propagate.** Error paths: use Effect.flip + check \`_tag\`. Transient: use Effect.retry.
+- **ALWAYS check errors via \`_tag\`** — never use \`instanceof\`, \`rejects.toThrow()\`, or \`error.name\`
 - Read errors.ts and client.ts to understand the SDK's error mapping before writing tests
 `.trim();
 }
@@ -628,7 +647,9 @@ Include testRunId in all resource names. Clean up resources with Effect.ensuring
 After writing, review the test file and check:
 1. Are there ZERO error tests? That is WRONG — add error tests.
 2. Does the word "Unknown" appear anywhere? That is WRONG — fix client.ts first.
-3. Is there any \`Effect.catchTag(..., () => Effect.succeed(undefined))\` in the
+3. Is there any \`instanceof\`, \`rejects.toThrow\`, or \`error.name\` check?
+   That is WRONG — always use \`Effect.flip\` + \`expect(e._tag).toBe("...")\`.
+4. Is there any \`Effect.catchTag(..., () => Effect.succeed(undefined))\` in the
    test body (not cleanup)? That is WRONG — remove it and let errors propagate.
 `.trim();
 }
@@ -758,6 +779,8 @@ const generateTests = Command.make(
         "When looking for files, prefer direct file reads over broad searches. " +
         "Always start by reading files at the package root directly.";
 
+      const stats = new AgentStatsAccumulator();
+
       if (op) {
         // Single operation mode — one agent call
         yield* Console.log(
@@ -768,7 +791,7 @@ const generateTests = Command.make(
           prompt: buildPrompt(config.provider, root, op, config.reset),
           cwd: root,
           systemPromptAppend,
-        });
+        }, stats);
       } else {
         // All operations mode — two phases:
         // Phase 1: research & produce manifest
@@ -780,11 +803,13 @@ const generateTests = Command.make(
           `${DIM}Phase 1: Researching SDK and building operation manifest...${RESET}\n`,
         );
 
-        const sessionId = yield* runAgent({
+        const researchResult = yield* runAgent({
           prompt: buildResearchPrompt(config.provider, root, manifestPath),
           cwd: root,
           systemPromptAppend,
-        });
+        }, stats);
+
+        const sessionId = researchResult.sessionId;
 
         // Read the manifest
         const manifestRaw = yield* fs
@@ -813,10 +838,11 @@ const generateTests = Command.make(
             prompt: buildPrompt(config.provider, root, undefined, config.reset),
             cwd: root,
             systemPromptAppend,
-          });
+          }, stats);
           yield* Console.log(
             `\n${GREEN}${BOLD}Test generation complete for ${config.provider} / ${scope}.${RESET}`,
           );
+          stats.print();
           return;
         }
 
@@ -852,7 +878,7 @@ const generateTests = Command.make(
             cwd: root,
             resume: sessionId,
             systemPromptAppend,
-          });
+          }, stats);
         }
 
         // Phase 3: run the full test suite
@@ -864,12 +890,13 @@ const generateTests = Command.make(
           cwd: root,
           resume: sessionId,
           systemPromptAppend,
-        });
+        }, stats);
       }
 
       yield* Console.log(
         `\n${GREEN}${BOLD}Test generation complete for ${config.provider} / ${scope}.${RESET}`,
       );
+      stats.print();
     }),
 ).pipe(
   Command.withDescription(
