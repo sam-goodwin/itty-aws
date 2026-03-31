@@ -14,6 +14,2020 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Account {
+  id?: string | null;
+  name?: string | null;
+}
+
+export const Account: Schema.Schema<Account> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Account>;
+
+export interface AdvancedDDoS {
+  id: "advanced_ddos";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const AdvancedDDoS: Schema.Schema<AdvancedDDoS> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("advanced_ddos"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<AdvancedDDoS>;
+
+export interface AlwaysOnline {
+  id: "always_online";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const AlwaysOnline: Schema.Schema<AlwaysOnline> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("always_online"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<AlwaysOnline>;
+
+export interface AutomaticPlatformOptimization {
+  cacheByDeviceType: boolean;
+  cf: boolean;
+  enabled: boolean;
+  hostnames: string[];
+  wordpress: boolean;
+  wpPlugin: boolean;
+}
+
+export const AutomaticPlatformOptimization: Schema.Schema<AutomaticPlatformOptimization> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      cacheByDeviceType: Schema.Boolean,
+      cf: Schema.Boolean,
+      enabled: Schema.Boolean,
+      hostnames: Schema.Array(Schema.String),
+      wordpress: Schema.Boolean,
+      wpPlugin: Schema.Boolean,
+    }).pipe(
+      Schema.encodeKeys({
+        cacheByDeviceType: "cache_by_device_type",
+        cf: "cf",
+        enabled: "enabled",
+        hostnames: "hostnames",
+        wordpress: "wordpress",
+        wpPlugin: "wp_plugin",
+      }),
+    ),
+  ) as unknown as Schema.Schema<AutomaticPlatformOptimization>;
+
+export interface Brotli {
+  id: "brotli";
+  value: "off" | "on";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const Brotli: Schema.Schema<Brotli> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("brotli"),
+      value: Schema.Literals(["off", "on"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Brotli>;
+
+export interface ChallengeTTL {
+  id: "challenge_ttl";
+  value:
+    | "300"
+    | "900"
+    | "1800"
+    | "2700"
+    | "3600"
+    | "7200"
+    | "10800"
+    | "14400"
+    | "28800"
+    | "57600"
+    | "86400"
+    | "604800"
+    | "2592000"
+    | "31536000";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ChallengeTTL: Schema.Schema<ChallengeTTL> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("challenge_ttl"),
+      value: Schema.Literals([
+        "300",
+        "900",
+        "1800",
+        "2700",
+        "3600",
+        "7200",
+        "10800",
+        "14400",
+        "28800",
+        "57600",
+        "86400",
+        "604800",
+        "2592000",
+        "31536000",
+      ]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ChallengeTTL>;
+
+export interface Ciphers {
+  id: "ciphers";
+  value: string[];
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const Ciphers: Schema.Schema<Ciphers> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("ciphers"),
+      value: Schema.Array(Schema.String),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Ciphers>;
+
+export interface DevelopmentMode {
+  id: "development_mode";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+  timeRemaining?: number | null;
+}
+
+export const DevelopmentMode: Schema.Schema<DevelopmentMode> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("development_mode"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      timeRemaining: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+        timeRemaining: "time_remaining",
+      }),
+    ),
+  ) as unknown as Schema.Schema<DevelopmentMode>;
+
+export interface EarlyHints {
+  id: "early_hints";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const EarlyHints: Schema.Schema<EarlyHints> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("early_hints"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<EarlyHints>;
+
+export interface H2Prioritization {
+  id: "h2_prioritization";
+  value: "on" | "off" | "custom";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const H2Prioritization: Schema.Schema<H2Prioritization> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("h2_prioritization"),
+      value: Schema.Literals(["on", "off", "custom"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<H2Prioritization>;
+
+export interface HotlinkProtection {
+  id: "hotlink_protection";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const HotlinkProtection: Schema.Schema<HotlinkProtection> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("hotlink_protection"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<HotlinkProtection>;
+
+export interface Http2 {
+  id: "http2";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const Http2: Schema.Schema<Http2> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("http2"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Http2>;
+
+export interface Http3 {
+  id: "http3";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const Http3: Schema.Schema<Http3> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("http3"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Http3>;
+
+export interface ImageResizing {
+  id: "image_resizing";
+  value: "on" | "off" | "open";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ImageResizing: Schema.Schema<ImageResizing> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("image_resizing"),
+      value: Schema.Literals(["on", "off", "open"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ImageResizing>;
+
+export interface Ipv6 {
+  id: "ipv6";
+  value: "off" | "on";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const Ipv6: Schema.Schema<Ipv6> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("ipv6"),
+      value: Schema.Literals(["off", "on"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Ipv6>;
+
+export interface Meta {
+  cdnOnly?: boolean | null;
+  customCertificateQuota?: number | null;
+  dnsOnly?: boolean | null;
+  foundationDns?: boolean | null;
+  pageRuleQuota?: number | null;
+  phishingDetected?: boolean | null;
+  step?: number | null;
+}
+
+export const Meta: Schema.Schema<Meta> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      cdnOnly: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      customCertificateQuota: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      dnsOnly: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      foundationDns: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      pageRuleQuota: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      phishingDetected: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      step: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        cdnOnly: "cdn_only",
+        customCertificateQuota: "custom_certificate_quota",
+        dnsOnly: "dns_only",
+        foundationDns: "foundation_dns",
+        pageRuleQuota: "page_rule_quota",
+        phishingDetected: "phishing_detected",
+        step: "step",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Meta>;
+
+export interface MinTLSVersion {
+  id: "min_tls_version";
+  value: "1.0" | "1.1" | "1.2" | "1.3";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const MinTLSVersion: Schema.Schema<MinTLSVersion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("min_tls_version"),
+      value: Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<MinTLSVersion>;
+
+export interface Nel {
+  id: "nel";
+  value: { enabled?: boolean | null };
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const Nel: Schema.Schema<Nel> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("nel"),
+      value: Schema.Struct({
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      }),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Nel>;
+
+export interface OpportunisticOnion {
+  id: "opportunistic_onion";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const OpportunisticOnion: Schema.Schema<OpportunisticOnion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("opportunistic_onion"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<OpportunisticOnion>;
+
+export interface OrangeToOrange {
+  id: "orange_to_orange";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const OrangeToOrange: Schema.Schema<OrangeToOrange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("orange_to_orange"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<OrangeToOrange>;
+
+export interface Owner {
+  id?: string | null;
+  name?: string | null;
+  type?: string | null;
+}
+
+export const Owner: Schema.Schema<Owner> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Owner>;
+
+export interface Plan {
+  id?: string | null;
+  canSubscribe?: boolean | null;
+  currency?: string | null;
+  externallyManaged?: boolean | null;
+  frequency?: string | null;
+  isSubscribed?: boolean | null;
+  legacyDiscount?: boolean | null;
+  legacyId?: string | null;
+  name?: string | null;
+  price?: number | null;
+}
+
+export const Plan: Schema.Schema<Plan> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      canSubscribe: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      externallyManaged: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      frequency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      isSubscribed: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      legacyDiscount: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      legacyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        canSubscribe: "can_subscribe",
+        currency: "currency",
+        externallyManaged: "externally_managed",
+        frequency: "frequency",
+        isSubscribed: "is_subscribed",
+        legacyDiscount: "legacy_discount",
+        legacyId: "legacy_id",
+        name: "name",
+        price: "price",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Plan>;
+
+export interface PrefetchPreload {
+  id: "prefetch_preload";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const PrefetchPreload: Schema.Schema<PrefetchPreload> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("prefetch_preload"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<PrefetchPreload>;
+
+export interface ProxyReadTimeout {
+  id: "proxy_read_timeout";
+  value: number;
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ProxyReadTimeout: Schema.Schema<ProxyReadTimeout> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("proxy_read_timeout"),
+      value: Schema.Number,
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ProxyReadTimeout>;
+
+export interface PseudoIPV4 {
+  id: "pseudo_ipv4";
+  value: "off" | "add_header" | "overwrite_header";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const PseudoIPV4: Schema.Schema<PseudoIPV4> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("pseudo_ipv4"),
+      value: Schema.Literals(["off", "add_header", "overwrite_header"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<PseudoIPV4>;
+
+export interface RatePlan {
+  id?:
+    | "free"
+    | "lite"
+    | "pro"
+    | "pro_plus"
+    | "business"
+    | "enterprise"
+    | "partners_free"
+    | "partners_pro"
+    | "partners_business"
+    | "partners_enterprise"
+    | null;
+  currency?: string | null;
+  externallyManaged?: boolean | null;
+  isContract?: boolean | null;
+  publicName?: string | null;
+  scope?: string | null;
+  sets?: string[] | null;
+}
+
+export const RatePlan: Schema.Schema<RatePlan> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "free",
+            "lite",
+            "pro",
+            "pro_plus",
+            "business",
+            "enterprise",
+            "partners_free",
+            "partners_pro",
+            "partners_business",
+            "partners_enterprise",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      externallyManaged: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      isContract: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      publicName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      sets: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        currency: "currency",
+        externallyManaged: "externally_managed",
+        isContract: "is_contract",
+        publicName: "public_name",
+        scope: "scope",
+        sets: "sets",
+      }),
+    ),
+  ) as unknown as Schema.Schema<RatePlan>;
+
+export interface RatePlanParam {
+  id?:
+    | "free"
+    | "lite"
+    | "pro"
+    | "pro_plus"
+    | "business"
+    | "enterprise"
+    | "partners_free"
+    | "partners_pro"
+    | "partners_business"
+    | "partners_enterprise"
+    | null;
+  currency?: string | null;
+  externallyManaged?: boolean | null;
+  isContract?: boolean | null;
+  publicName?: string | null;
+  scope?: string | null;
+  sets?: string[] | null;
+}
+
+export const RatePlanParam: Schema.Schema<RatePlanParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "free",
+            "lite",
+            "pro",
+            "pro_plus",
+            "business",
+            "enterprise",
+            "partners_free",
+            "partners_pro",
+            "partners_business",
+            "partners_enterprise",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      externallyManaged: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      isContract: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      publicName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      sets: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        currency: "currency",
+        externallyManaged: "externally_managed",
+        isContract: "is_contract",
+        publicName: "public_name",
+        scope: "scope",
+        sets: "sets",
+      }),
+    ),
+  ) as unknown as Schema.Schema<RatePlanParam>;
+
+export interface SecurityHeaders {
+  id: "security_header";
+  value: { strictTransportSecurity?: StrictTransportSecurity | null };
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const SecurityHeaders: Schema.Schema<SecurityHeaders> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("security_header"),
+      value: Schema.Struct({
+        strictTransportSecurity: Schema.optional(
+          Schema.Union([StrictTransportSecurity, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          strictTransportSecurity: "strict_transport_security",
+        }),
+      ),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<SecurityHeaders>;
+
+export interface ServerSideExcludes {
+  id: "server_side_exclude";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ServerSideExcludes: Schema.Schema<ServerSideExcludes> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("server_side_exclude"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ServerSideExcludes>;
+
+export interface Sslrecommender {
+  id?: "ssl_recommender" | null;
+  enabled?: boolean | null;
+}
+
+export const Sslrecommender: Schema.Schema<Sslrecommender> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(
+        Schema.Union([Schema.Literal("ssl_recommender"), Schema.Null]),
+      ),
+      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Sslrecommender>;
+
+export interface StrictTransportSecurity {
+  enabled?: boolean | null;
+  includeSubdomains?: boolean | null;
+  maxAge?: number | null;
+  nosniff?: boolean | null;
+  preload?: boolean | null;
+}
+
+export const StrictTransportSecurity: Schema.Schema<StrictTransportSecurity> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      includeSubdomains: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      maxAge: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      nosniff: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      preload: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        enabled: "enabled",
+        includeSubdomains: "include_subdomains",
+        maxAge: "max_age",
+        nosniff: "nosniff",
+        preload: "preload",
+      }),
+    ),
+  ) as unknown as Schema.Schema<StrictTransportSecurity>;
+
+export interface Tenant {
+  id?: string | null;
+  name?: string | null;
+}
+
+export const Tenant: Schema.Schema<Tenant> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Tenant>;
+
+export interface TenantUnit {
+  id?: string | null;
+}
+
+export const TenantUnit: Schema.Schema<TenantUnit> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<TenantUnit>;
+
+export interface Tls1_3 {
+  id: "tls_1_3";
+  value: "on" | "off" | "zrt";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const Tls1_3: Schema.Schema<Tls1_3> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("tls_1_3"),
+      value: Schema.Literals(["on", "off", "zrt"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Tls1_3>;
+
+export interface TlsclientAuth {
+  id: "tls_client_auth";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const TlsclientAuth: Schema.Schema<TlsclientAuth> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("tls_client_auth"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<TlsclientAuth>;
+
+export interface Value {
+  enabled?: boolean | null;
+  poolId?: string | null;
+}
+
+export const Value: Schema.Schema<Value> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      poolId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ enabled: "enabled", poolId: "pool_id" })),
+  ) as unknown as Schema.Schema<Value>;
+
+export interface WebP {
+  id: "webp";
+  value: "off" | "on";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const WebP: Schema.Schema<WebP> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("webp"),
+      value: Schema.Literals(["off", "on"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<WebP>;
+
+export interface Websocket {
+  id: "websockets";
+  value: "off" | "on";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const Websocket: Schema.Schema<Websocket> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("websockets"),
+      value: Schema.Literals(["off", "on"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Websocket>;
+
+export interface ZeroRTT {
+  id: "0rtt";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZeroRTT: Schema.Schema<ZeroRTT> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("0rtt"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZeroRTT>;
+
+export interface ZonesCacheRulesAegis {
+  id: "aegis";
+  modifiedOn?: string | null;
+  value?: Value | null;
+}
+
+export const ZonesCacheRulesAegis: Schema.Schema<ZonesCacheRulesAegis> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("aegis"),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      value: Schema.optional(Schema.Union([Value, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        modifiedOn: "modified_on",
+        value: "value",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesCacheRulesAegis>;
+
+export interface ZonesCacheRulesOriginH2MaxStreams {
+  id: "origin_h2_max_streams";
+  modifiedOn?: string | null;
+  value?: number | null;
+}
+
+export const ZonesCacheRulesOriginH2MaxStreams: Schema.Schema<ZonesCacheRulesOriginH2MaxStreams> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("origin_h2_max_streams"),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        modifiedOn: "modified_on",
+        value: "value",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesCacheRulesOriginH2MaxStreams>;
+
+export interface ZonesCacheRulesOriginMaxHTTPVersion {
+  id: "origin_max_http_version";
+  modifiedOn?: string | null;
+  value?: "2" | "1" | null;
+}
+
+export const ZonesCacheRulesOriginMaxHTTPVersion: Schema.Schema<ZonesCacheRulesOriginMaxHTTPVersion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("origin_max_http_version"),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      value: Schema.optional(
+        Schema.Union([Schema.Literals(["2", "1"]), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        modifiedOn: "modified_on",
+        value: "value",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesCacheRulesOriginMaxHTTPVersion>;
+
+export interface ZonesChinaNetworkEnabled {
+  id: "china_network_enabled";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesChinaNetworkEnabled: Schema.Schema<ZonesChinaNetworkEnabled> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("china_network_enabled"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesChinaNetworkEnabled>;
+
+export interface ZonesCNAMEFlattening {
+  id: "cname_flattening";
+  value: "flatten_at_root" | "flatten_all";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesCNAMEFlattening: Schema.Schema<ZonesCNAMEFlattening> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("cname_flattening"),
+      value: Schema.Literals(["flatten_at_root", "flatten_all"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesCNAMEFlattening>;
+
+export interface ZonesMaxUpload {
+  id: "max_upload";
+  value:
+    | "100"
+    | "125"
+    | "150"
+    | "175"
+    | "200"
+    | "225"
+    | "250"
+    | "275"
+    | "300"
+    | "325"
+    | "350"
+    | "375"
+    | "400"
+    | "425"
+    | "450"
+    | "475"
+    | "500"
+    | "1000";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesMaxUpload: Schema.Schema<ZonesMaxUpload> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("max_upload"),
+      value: Schema.Literals([
+        "100",
+        "125",
+        "150",
+        "175",
+        "200",
+        "225",
+        "250",
+        "275",
+        "300",
+        "325",
+        "350",
+        "375",
+        "400",
+        "425",
+        "450",
+        "475",
+        "500",
+        "1000",
+      ]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesMaxUpload>;
+
+export interface ZonesPrivacyPass {
+  id: "privacy_pass";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesPrivacyPass: Schema.Schema<ZonesPrivacyPass> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("privacy_pass"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesPrivacyPass>;
+
+export interface ZonesReplaceInsecureJS {
+  id: "replace_insecure_js";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesReplaceInsecureJS: Schema.Schema<ZonesReplaceInsecureJS> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("replace_insecure_js"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesReplaceInsecureJS>;
+
+export interface ZonesSchemasAlwaysUseHTTPS {
+  id: "always_use_https";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasAlwaysUseHTTPS: Schema.Schema<ZonesSchemasAlwaysUseHTTPS> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("always_use_https"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasAlwaysUseHTTPS>;
+
+export interface ZonesSchemasAutomaticHTTPSRewrites {
+  id: "automatic_https_rewrites";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasAutomaticHTTPSRewrites: Schema.Schema<ZonesSchemasAutomaticHTTPSRewrites> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("automatic_https_rewrites"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasAutomaticHTTPSRewrites>;
+
+export interface ZonesSchemasAutomaticPlatformOptimization {
+  id: "automatic_platform_optimization";
+  value: AutomaticPlatformOptimization;
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasAutomaticPlatformOptimization: Schema.Schema<ZonesSchemasAutomaticPlatformOptimization> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("automatic_platform_optimization"),
+      value: AutomaticPlatformOptimization,
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasAutomaticPlatformOptimization>;
+
+export interface ZonesSchemasBrowserCacheTTL {
+  id: "browser_cache_ttl";
+  value: number;
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasBrowserCacheTTL: Schema.Schema<ZonesSchemasBrowserCacheTTL> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("browser_cache_ttl"),
+      value: Schema.Number,
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasBrowserCacheTTL>;
+
+export interface ZonesSchemasBrowserCheck {
+  id: "browser_check";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasBrowserCheck: Schema.Schema<ZonesSchemasBrowserCheck> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("browser_check"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasBrowserCheck>;
+
+export interface ZonesSchemasCacheLevel {
+  id: "cache_level";
+  value: "aggressive" | "basic" | "simplified";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasCacheLevel: Schema.Schema<ZonesSchemasCacheLevel> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("cache_level"),
+      value: Schema.Literals(["aggressive", "basic", "simplified"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasCacheLevel>;
+
+export interface ZonesSchemasEdgeCacheTTL {
+  id: "edge_cache_ttl";
+  value:
+    | "30"
+    | "60"
+    | "300"
+    | "1200"
+    | "1800"
+    | "3600"
+    | "7200"
+    | "10800"
+    | "14400"
+    | "18000"
+    | "28800"
+    | "43200"
+    | "57600"
+    | "72000"
+    | "86400"
+    | "172800"
+    | "259200"
+    | "345600"
+    | "432000"
+    | "518400"
+    | "604800";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasEdgeCacheTTL: Schema.Schema<ZonesSchemasEdgeCacheTTL> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("edge_cache_ttl"),
+      value: Schema.Literals([
+        "30",
+        "60",
+        "300",
+        "1200",
+        "1800",
+        "3600",
+        "7200",
+        "10800",
+        "14400",
+        "18000",
+        "28800",
+        "43200",
+        "57600",
+        "72000",
+        "86400",
+        "172800",
+        "259200",
+        "345600",
+        "432000",
+        "518400",
+        "604800",
+      ]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasEdgeCacheTTL>;
+
+export interface ZonesSchemasEmailObfuscation {
+  id: "email_obfuscation";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasEmailObfuscation: Schema.Schema<ZonesSchemasEmailObfuscation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("email_obfuscation"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasEmailObfuscation>;
+
+export interface ZonesSchemasIPGeolocation {
+  id: "ip_geolocation";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasIPGeolocation: Schema.Schema<ZonesSchemasIPGeolocation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("ip_geolocation"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasIPGeolocation>;
+
+export interface ZonesSchemasMirage {
+  id: "mirage";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasMirage: Schema.Schema<ZonesSchemasMirage> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("mirage"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasMirage>;
+
+export interface ZonesSchemasOpportunisticEncryption {
+  id: "opportunistic_encryption";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasOpportunisticEncryption: Schema.Schema<ZonesSchemasOpportunisticEncryption> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("opportunistic_encryption"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasOpportunisticEncryption>;
+
+export interface ZonesSchemasOriginErrorPagePassThru {
+  id: "origin_error_page_pass_thru";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasOriginErrorPagePassThru: Schema.Schema<ZonesSchemasOriginErrorPagePassThru> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("origin_error_page_pass_thru"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasOriginErrorPagePassThru>;
+
+export interface ZonesSchemasPolish {
+  id: "polish";
+  value: "off" | "lossless" | "lossy";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasPolish: Schema.Schema<ZonesSchemasPolish> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("polish"),
+      value: Schema.Literals(["off", "lossless", "lossy"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasPolish>;
+
+export interface ZonesSchemasResponseBuffering {
+  id: "response_buffering";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasResponseBuffering: Schema.Schema<ZonesSchemasResponseBuffering> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("response_buffering"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasResponseBuffering>;
+
+export interface ZonesSchemasRocketLoader {
+  id: "rocket_loader";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasRocketLoader: Schema.Schema<ZonesSchemasRocketLoader> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("rocket_loader"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasRocketLoader>;
+
+export interface ZonesSchemasSecurityLevel {
+  id: "security_level";
+  value: "off" | "essentially_off" | "low" | "medium" | "high" | "under_attack";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasSecurityLevel: Schema.Schema<ZonesSchemasSecurityLevel> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("security_level"),
+      value: Schema.Literals([
+        "off",
+        "essentially_off",
+        "low",
+        "medium",
+        "high",
+        "under_attack",
+      ]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasSecurityLevel>;
+
+export interface ZonesSchemasSortQueryStringForCache {
+  id: "sort_query_string_for_cache";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasSortQueryStringForCache: Schema.Schema<ZonesSchemasSortQueryStringForCache> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("sort_query_string_for_cache"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasSortQueryStringForCache>;
+
+export interface ZonesSchemasSSL {
+  id: "ssl";
+  value: "off" | "flexible" | "full" | "strict";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasSSL: Schema.Schema<ZonesSchemasSSL> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("ssl"),
+      value: Schema.Literals(["off", "flexible", "full", "strict"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasSSL>;
+
+export interface ZonesSchemasTrueClientIPHeader {
+  id: "true_client_ip_header";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasTrueClientIPHeader: Schema.Schema<ZonesSchemasTrueClientIPHeader> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("true_client_ip_header"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasTrueClientIPHeader>;
+
+export interface ZonesSchemasWAF {
+  id: "waf";
+  value: "on" | "off";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSchemasWAF: Schema.Schema<ZonesSchemasWAF> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("waf"),
+      value: Schema.Literals(["on", "off"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSchemasWAF>;
+
+export interface ZonesSha1Support {
+  id: "sha1_support";
+  value: "off" | "on";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesSha1Support: Schema.Schema<ZonesSha1Support> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("sha1_support"),
+      value: Schema.Literals(["off", "on"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesSha1Support>;
+
+export interface ZonesTLS1_2Only {
+  id: "tls_1_2_only";
+  value: "off" | "on";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesTLS1_2Only: Schema.Schema<ZonesTLS1_2Only> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("tls_1_2_only"),
+      value: Schema.Literals(["off", "on"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesTLS1_2Only>;
+
+export interface ZonesTransformations {
+  id: "transformations";
+  value: "on" | "off" | "open";
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesTransformations: Schema.Schema<ZonesTransformations> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("transformations"),
+      value: Schema.Literals(["on", "off", "open"]),
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesTransformations>;
+
+export interface ZonesTransformationsAllowedOrigins {
+  id: "transformations_allowed_origins";
+  value: string;
+  editable?: true | false | null;
+  modifiedOn?: string | null;
+}
+
+export const ZonesTransformationsAllowedOrigins: Schema.Schema<ZonesTransformationsAllowedOrigins> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("transformations_allowed_origins"),
+      value: Schema.String,
+      editable: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        value: "value",
+        editable: "editable",
+        modifiedOn: "modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZonesTransformationsAllowedOrigins>;
+
+// =============================================================================
 // ActivationCheck
 // =============================================================================
 
@@ -823,1428 +2837,128 @@ export const GetSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetSettingRequest>;
 
 export type GetSettingResponse =
-  | {
-      id: "0rtt";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "advanced_ddos";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "aegis";
-      modifiedOn?: string | null;
-      value?: { enabled?: boolean | null; poolId?: string | null } | null;
-    }
-  | {
-      id: "always_online";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "always_use_https";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "automatic_https_rewrites";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "brotli";
-      value: "off" | "on";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "browser_cache_ttl";
-      value: number;
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "browser_check";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "cache_level";
-      value: "aggressive" | "basic" | "simplified";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "challenge_ttl";
-      value:
-        | "300"
-        | "900"
-        | "1800"
-        | "2700"
-        | "3600"
-        | "7200"
-        | "10800"
-        | "14400"
-        | "28800"
-        | "57600"
-        | "86400"
-        | "604800"
-        | "2592000"
-        | "31536000";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "china_network_enabled";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "ciphers";
-      value: string[];
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "cname_flattening";
-      value: "flatten_at_root" | "flatten_all";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "development_mode";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-      timeRemaining?: number | null;
-    }
-  | {
-      id: "early_hints";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "edge_cache_ttl";
-      value:
-        | "30"
-        | "60"
-        | "300"
-        | "1200"
-        | "1800"
-        | "3600"
-        | "7200"
-        | "10800"
-        | "14400"
-        | "18000"
-        | "28800"
-        | "43200"
-        | "57600"
-        | "72000"
-        | "86400"
-        | "172800"
-        | "259200"
-        | "345600"
-        | "432000"
-        | "518400"
-        | "604800";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "email_obfuscation";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "h2_prioritization";
-      value: "on" | "off" | "custom";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "hotlink_protection";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "http2";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "http3";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "image_resizing";
-      value: "on" | "off" | "open";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "ip_geolocation";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "ipv6";
-      value: "off" | "on";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "max_upload";
-      value:
-        | "100"
-        | "125"
-        | "150"
-        | "175"
-        | "200"
-        | "225"
-        | "250"
-        | "275"
-        | "300"
-        | "325"
-        | "350"
-        | "375"
-        | "400"
-        | "425"
-        | "450"
-        | "475"
-        | "500"
-        | "1000";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "min_tls_version";
-      value: "1.0" | "1.1" | "1.2" | "1.3";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "mirage";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "nel";
-      value: { enabled?: boolean | null };
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "opportunistic_encryption";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "opportunistic_onion";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "orange_to_orange";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "origin_error_page_pass_thru";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "origin_h2_max_streams";
-      modifiedOn?: string | null;
-      value?: number | null;
-    }
-  | {
-      id: "origin_max_http_version";
-      modifiedOn?: string | null;
-      value?: "2" | "1" | null;
-    }
-  | {
-      id: "polish";
-      value: "off" | "lossless" | "lossy";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "prefetch_preload";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "privacy_pass";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "proxy_read_timeout";
-      value: number;
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "pseudo_ipv4";
-      value: "off" | "add_header" | "overwrite_header";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "replace_insecure_js";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "response_buffering";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "rocket_loader";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "automatic_platform_optimization";
-      value: {
-        cacheByDeviceType: boolean;
-        cf: boolean;
-        enabled: boolean;
-        hostnames: string[];
-        wordpress: boolean;
-        wpPlugin: boolean;
-      };
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "security_header";
-      value: {
-        strictTransportSecurity?: {
-          enabled?: boolean | null;
-          includeSubdomains?: boolean | null;
-          maxAge?: number | null;
-          nosniff?: boolean | null;
-          preload?: boolean | null;
-        } | null;
-      };
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "security_level";
-      value:
-        | "off"
-        | "essentially_off"
-        | "low"
-        | "medium"
-        | "high"
-        | "under_attack";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "server_side_exclude";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "sha1_support";
-      value: "off" | "on";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "sort_query_string_for_cache";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "ssl";
-      value: "off" | "flexible" | "full" | "strict";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | { id?: "ssl_recommender" | null; enabled?: boolean | null }
-  | {
-      id: "tls_1_2_only";
-      value: "off" | "on";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "tls_1_3";
-      value: "on" | "off" | "zrt";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "tls_client_auth";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "transformations";
-      value: "on" | "off" | "open";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "transformations_allowed_origins";
-      value: string;
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "true_client_ip_header";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "waf";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "webp";
-      value: "off" | "on";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "websockets";
-      value: "off" | "on";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    };
+  | ZeroRTT
+  | AdvancedDDoS
+  | ZonesCacheRulesAegis
+  | AlwaysOnline
+  | ZonesSchemasAlwaysUseHTTPS
+  | ZonesSchemasAutomaticHTTPSRewrites
+  | Brotli
+  | ZonesSchemasBrowserCacheTTL
+  | ZonesSchemasBrowserCheck
+  | ZonesSchemasCacheLevel
+  | ChallengeTTL
+  | ZonesChinaNetworkEnabled
+  | Ciphers
+  | ZonesCNAMEFlattening
+  | DevelopmentMode
+  | EarlyHints
+  | ZonesSchemasEdgeCacheTTL
+  | ZonesSchemasEmailObfuscation
+  | H2Prioritization
+  | HotlinkProtection
+  | Http2
+  | Http3
+  | ImageResizing
+  | ZonesSchemasIPGeolocation
+  | Ipv6
+  | ZonesMaxUpload
+  | MinTLSVersion
+  | ZonesSchemasMirage
+  | Nel
+  | ZonesSchemasOpportunisticEncryption
+  | OpportunisticOnion
+  | OrangeToOrange
+  | ZonesSchemasOriginErrorPagePassThru
+  | ZonesCacheRulesOriginH2MaxStreams
+  | ZonesCacheRulesOriginMaxHTTPVersion
+  | ZonesSchemasPolish
+  | PrefetchPreload
+  | ZonesPrivacyPass
+  | ProxyReadTimeout
+  | PseudoIPV4
+  | ZonesReplaceInsecureJS
+  | ZonesSchemasResponseBuffering
+  | ZonesSchemasRocketLoader
+  | ZonesSchemasAutomaticPlatformOptimization
+  | SecurityHeaders
+  | ZonesSchemasSecurityLevel
+  | ServerSideExcludes
+  | ZonesSha1Support
+  | ZonesSchemasSortQueryStringForCache
+  | ZonesSchemasSSL
+  | Sslrecommender
+  | ZonesTLS1_2Only
+  | Tls1_3
+  | TlsclientAuth
+  | ZonesTransformations
+  | ZonesTransformationsAllowedOrigins
+  | ZonesSchemasTrueClientIPHeader
+  | ZonesSchemasWAF
+  | WebP
+  | Websocket;
 
 export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-  Schema.Struct({
-    id: Schema.Literal("0rtt"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("advanced_ddos"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("aegis"),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    value: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          poolId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(Schema.encodeKeys({ enabled: "enabled", poolId: "pool_id" })),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("always_online"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("always_use_https"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("automatic_https_rewrites"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("brotli"),
-    value: Schema.Literals(["off", "on"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("browser_cache_ttl"),
-    value: Schema.Number,
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("browser_check"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("cache_level"),
-    value: Schema.Literals(["aggressive", "basic", "simplified"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("challenge_ttl"),
-    value: Schema.Literals([
-      "300",
-      "900",
-      "1800",
-      "2700",
-      "3600",
-      "7200",
-      "10800",
-      "14400",
-      "28800",
-      "57600",
-      "86400",
-      "604800",
-      "2592000",
-      "31536000",
-    ]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("china_network_enabled"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("ciphers"),
-    value: Schema.Array(Schema.String),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("cname_flattening"),
-    value: Schema.Literals(["flatten_at_root", "flatten_all"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("development_mode"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    timeRemaining: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-      timeRemaining: "time_remaining",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("early_hints"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("edge_cache_ttl"),
-    value: Schema.Literals([
-      "30",
-      "60",
-      "300",
-      "1200",
-      "1800",
-      "3600",
-      "7200",
-      "10800",
-      "14400",
-      "18000",
-      "28800",
-      "43200",
-      "57600",
-      "72000",
-      "86400",
-      "172800",
-      "259200",
-      "345600",
-      "432000",
-      "518400",
-      "604800",
-    ]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("email_obfuscation"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("h2_prioritization"),
-    value: Schema.Literals(["on", "off", "custom"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("hotlink_protection"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("http2"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("http3"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("image_resizing"),
-    value: Schema.Literals(["on", "off", "open"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("ip_geolocation"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("ipv6"),
-    value: Schema.Literals(["off", "on"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("max_upload"),
-    value: Schema.Literals([
-      "100",
-      "125",
-      "150",
-      "175",
-      "200",
-      "225",
-      "250",
-      "275",
-      "300",
-      "325",
-      "350",
-      "375",
-      "400",
-      "425",
-      "450",
-      "475",
-      "500",
-      "1000",
-    ]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("min_tls_version"),
-    value: Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("mirage"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("nel"),
-    value: Schema.Struct({
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("opportunistic_encryption"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("opportunistic_onion"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("orange_to_orange"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("origin_error_page_pass_thru"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("origin_h2_max_streams"),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("origin_max_http_version"),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    value: Schema.optional(
-      Schema.Union([Schema.Literals(["2", "1"]), Schema.Null]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("polish"),
-    value: Schema.Literals(["off", "lossless", "lossy"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("prefetch_preload"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("privacy_pass"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("proxy_read_timeout"),
-    value: Schema.Number,
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("pseudo_ipv4"),
-    value: Schema.Literals(["off", "add_header", "overwrite_header"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("replace_insecure_js"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("response_buffering"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("rocket_loader"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("automatic_platform_optimization"),
-    value: Schema.Struct({
-      cacheByDeviceType: Schema.Boolean,
-      cf: Schema.Boolean,
-      enabled: Schema.Boolean,
-      hostnames: Schema.Array(Schema.String),
-      wordpress: Schema.Boolean,
-      wpPlugin: Schema.Boolean,
-    }).pipe(
-      Schema.encodeKeys({
-        cacheByDeviceType: "cache_by_device_type",
-        cf: "cf",
-        enabled: "enabled",
-        hostnames: "hostnames",
-        wordpress: "wordpress",
-        wpPlugin: "wp_plugin",
-      }),
-    ),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("security_header"),
-    value: Schema.Struct({
-      strictTransportSecurity: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            enabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            includeSubdomains: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            maxAge: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            nosniff: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            preload: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              enabled: "enabled",
-              includeSubdomains: "include_subdomains",
-              maxAge: "max_age",
-              nosniff: "nosniff",
-              preload: "preload",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        strictTransportSecurity: "strict_transport_security",
-      }),
-    ),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("security_level"),
-    value: Schema.Literals([
-      "off",
-      "essentially_off",
-      "low",
-      "medium",
-      "high",
-      "under_attack",
-    ]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("server_side_exclude"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("sha1_support"),
-    value: Schema.Literals(["off", "on"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("sort_query_string_for_cache"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("ssl"),
-    value: Schema.Literals(["off", "flexible", "full", "strict"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.optional(
-      Schema.Union([Schema.Literal("ssl_recommender"), Schema.Null]),
-    ),
-    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  }),
-  Schema.Struct({
-    id: Schema.Literal("tls_1_2_only"),
-    value: Schema.Literals(["off", "on"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("tls_1_3"),
-    value: Schema.Literals(["on", "off", "zrt"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("tls_client_auth"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("transformations"),
-    value: Schema.Literals(["on", "off", "open"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("transformations_allowed_origins"),
-    value: Schema.String,
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("true_client_ip_header"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("waf"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("webp"),
-    value: Schema.Literals(["off", "on"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("websockets"),
-    value: Schema.Literals(["off", "on"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
+  ZeroRTT,
+  AdvancedDDoS,
+  ZonesCacheRulesAegis,
+  AlwaysOnline,
+  ZonesSchemasAlwaysUseHTTPS,
+  ZonesSchemasAutomaticHTTPSRewrites,
+  Brotli,
+  ZonesSchemasBrowserCacheTTL,
+  ZonesSchemasBrowserCheck,
+  ZonesSchemasCacheLevel,
+  ChallengeTTL,
+  ZonesChinaNetworkEnabled,
+  Ciphers,
+  ZonesCNAMEFlattening,
+  DevelopmentMode,
+  EarlyHints,
+  ZonesSchemasEdgeCacheTTL,
+  ZonesSchemasEmailObfuscation,
+  H2Prioritization,
+  HotlinkProtection,
+  Http2,
+  Http3,
+  ImageResizing,
+  ZonesSchemasIPGeolocation,
+  Ipv6,
+  ZonesMaxUpload,
+  MinTLSVersion,
+  ZonesSchemasMirage,
+  Nel,
+  ZonesSchemasOpportunisticEncryption,
+  OpportunisticOnion,
+  OrangeToOrange,
+  ZonesSchemasOriginErrorPagePassThru,
+  ZonesCacheRulesOriginH2MaxStreams,
+  ZonesCacheRulesOriginMaxHTTPVersion,
+  ZonesSchemasPolish,
+  PrefetchPreload,
+  ZonesPrivacyPass,
+  ProxyReadTimeout,
+  PseudoIPV4,
+  ZonesReplaceInsecureJS,
+  ZonesSchemasResponseBuffering,
+  ZonesSchemasRocketLoader,
+  ZonesSchemasAutomaticPlatformOptimization,
+  SecurityHeaders,
+  ZonesSchemasSecurityLevel,
+  ServerSideExcludes,
+  ZonesSha1Support,
+  ZonesSchemasSortQueryStringForCache,
+  ZonesSchemasSSL,
+  Sslrecommender,
+  ZonesTLS1_2Only,
+  Tls1_3,
+  TlsclientAuth,
+  ZonesTransformations,
+  ZonesTransformationsAllowedOrigins,
+  ZonesSchemasTrueClientIPHeader,
+  ZonesSchemasWAF,
+  WebP,
+  Websocket,
 ]).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetSettingResponse>;
@@ -2279,1428 +2993,128 @@ export const PatchSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<PatchSettingRequest>;
 
 export type PatchSettingResponse =
-  | {
-      id: "0rtt";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "advanced_ddos";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "aegis";
-      modifiedOn?: string | null;
-      value?: { enabled?: boolean | null; poolId?: string | null } | null;
-    }
-  | {
-      id: "always_online";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "always_use_https";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "automatic_https_rewrites";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "brotli";
-      value: "off" | "on";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "browser_cache_ttl";
-      value: number;
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "browser_check";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "cache_level";
-      value: "aggressive" | "basic" | "simplified";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "challenge_ttl";
-      value:
-        | "300"
-        | "900"
-        | "1800"
-        | "2700"
-        | "3600"
-        | "7200"
-        | "10800"
-        | "14400"
-        | "28800"
-        | "57600"
-        | "86400"
-        | "604800"
-        | "2592000"
-        | "31536000";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "china_network_enabled";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "ciphers";
-      value: string[];
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "cname_flattening";
-      value: "flatten_at_root" | "flatten_all";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "development_mode";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-      timeRemaining?: number | null;
-    }
-  | {
-      id: "early_hints";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "edge_cache_ttl";
-      value:
-        | "30"
-        | "60"
-        | "300"
-        | "1200"
-        | "1800"
-        | "3600"
-        | "7200"
-        | "10800"
-        | "14400"
-        | "18000"
-        | "28800"
-        | "43200"
-        | "57600"
-        | "72000"
-        | "86400"
-        | "172800"
-        | "259200"
-        | "345600"
-        | "432000"
-        | "518400"
-        | "604800";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "email_obfuscation";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "h2_prioritization";
-      value: "on" | "off" | "custom";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "hotlink_protection";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "http2";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "http3";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "image_resizing";
-      value: "on" | "off" | "open";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "ip_geolocation";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "ipv6";
-      value: "off" | "on";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "max_upload";
-      value:
-        | "100"
-        | "125"
-        | "150"
-        | "175"
-        | "200"
-        | "225"
-        | "250"
-        | "275"
-        | "300"
-        | "325"
-        | "350"
-        | "375"
-        | "400"
-        | "425"
-        | "450"
-        | "475"
-        | "500"
-        | "1000";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "min_tls_version";
-      value: "1.0" | "1.1" | "1.2" | "1.3";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "mirage";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "nel";
-      value: { enabled?: boolean | null };
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "opportunistic_encryption";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "opportunistic_onion";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "orange_to_orange";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "origin_error_page_pass_thru";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "origin_h2_max_streams";
-      modifiedOn?: string | null;
-      value?: number | null;
-    }
-  | {
-      id: "origin_max_http_version";
-      modifiedOn?: string | null;
-      value?: "2" | "1" | null;
-    }
-  | {
-      id: "polish";
-      value: "off" | "lossless" | "lossy";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "prefetch_preload";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "privacy_pass";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "proxy_read_timeout";
-      value: number;
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "pseudo_ipv4";
-      value: "off" | "add_header" | "overwrite_header";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "replace_insecure_js";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "response_buffering";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "rocket_loader";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "automatic_platform_optimization";
-      value: {
-        cacheByDeviceType: boolean;
-        cf: boolean;
-        enabled: boolean;
-        hostnames: string[];
-        wordpress: boolean;
-        wpPlugin: boolean;
-      };
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "security_header";
-      value: {
-        strictTransportSecurity?: {
-          enabled?: boolean | null;
-          includeSubdomains?: boolean | null;
-          maxAge?: number | null;
-          nosniff?: boolean | null;
-          preload?: boolean | null;
-        } | null;
-      };
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "security_level";
-      value:
-        | "off"
-        | "essentially_off"
-        | "low"
-        | "medium"
-        | "high"
-        | "under_attack";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "server_side_exclude";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "sha1_support";
-      value: "off" | "on";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "sort_query_string_for_cache";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "ssl";
-      value: "off" | "flexible" | "full" | "strict";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | { id?: "ssl_recommender" | null; enabled?: boolean | null }
-  | {
-      id: "tls_1_2_only";
-      value: "off" | "on";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "tls_1_3";
-      value: "on" | "off" | "zrt";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "tls_client_auth";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "transformations";
-      value: "on" | "off" | "open";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "transformations_allowed_origins";
-      value: string;
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "true_client_ip_header";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "waf";
-      value: "on" | "off";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "webp";
-      value: "off" | "on";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    }
-  | {
-      id: "websockets";
-      value: "off" | "on";
-      editable?: true | false | null;
-      modifiedOn?: string | null;
-    };
+  | ZeroRTT
+  | AdvancedDDoS
+  | ZonesCacheRulesAegis
+  | AlwaysOnline
+  | ZonesSchemasAlwaysUseHTTPS
+  | ZonesSchemasAutomaticHTTPSRewrites
+  | Brotli
+  | ZonesSchemasBrowserCacheTTL
+  | ZonesSchemasBrowserCheck
+  | ZonesSchemasCacheLevel
+  | ChallengeTTL
+  | ZonesChinaNetworkEnabled
+  | Ciphers
+  | ZonesCNAMEFlattening
+  | DevelopmentMode
+  | EarlyHints
+  | ZonesSchemasEdgeCacheTTL
+  | ZonesSchemasEmailObfuscation
+  | H2Prioritization
+  | HotlinkProtection
+  | Http2
+  | Http3
+  | ImageResizing
+  | ZonesSchemasIPGeolocation
+  | Ipv6
+  | ZonesMaxUpload
+  | MinTLSVersion
+  | ZonesSchemasMirage
+  | Nel
+  | ZonesSchemasOpportunisticEncryption
+  | OpportunisticOnion
+  | OrangeToOrange
+  | ZonesSchemasOriginErrorPagePassThru
+  | ZonesCacheRulesOriginH2MaxStreams
+  | ZonesCacheRulesOriginMaxHTTPVersion
+  | ZonesSchemasPolish
+  | PrefetchPreload
+  | ZonesPrivacyPass
+  | ProxyReadTimeout
+  | PseudoIPV4
+  | ZonesReplaceInsecureJS
+  | ZonesSchemasResponseBuffering
+  | ZonesSchemasRocketLoader
+  | ZonesSchemasAutomaticPlatformOptimization
+  | SecurityHeaders
+  | ZonesSchemasSecurityLevel
+  | ServerSideExcludes
+  | ZonesSha1Support
+  | ZonesSchemasSortQueryStringForCache
+  | ZonesSchemasSSL
+  | Sslrecommender
+  | ZonesTLS1_2Only
+  | Tls1_3
+  | TlsclientAuth
+  | ZonesTransformations
+  | ZonesTransformationsAllowedOrigins
+  | ZonesSchemasTrueClientIPHeader
+  | ZonesSchemasWAF
+  | WebP
+  | Websocket;
 
 export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-  Schema.Struct({
-    id: Schema.Literal("0rtt"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("advanced_ddos"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("aegis"),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    value: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          poolId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(Schema.encodeKeys({ enabled: "enabled", poolId: "pool_id" })),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("always_online"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("always_use_https"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("automatic_https_rewrites"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("brotli"),
-    value: Schema.Literals(["off", "on"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("browser_cache_ttl"),
-    value: Schema.Number,
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("browser_check"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("cache_level"),
-    value: Schema.Literals(["aggressive", "basic", "simplified"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("challenge_ttl"),
-    value: Schema.Literals([
-      "300",
-      "900",
-      "1800",
-      "2700",
-      "3600",
-      "7200",
-      "10800",
-      "14400",
-      "28800",
-      "57600",
-      "86400",
-      "604800",
-      "2592000",
-      "31536000",
-    ]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("china_network_enabled"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("ciphers"),
-    value: Schema.Array(Schema.String),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("cname_flattening"),
-    value: Schema.Literals(["flatten_at_root", "flatten_all"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("development_mode"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    timeRemaining: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-      timeRemaining: "time_remaining",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("early_hints"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("edge_cache_ttl"),
-    value: Schema.Literals([
-      "30",
-      "60",
-      "300",
-      "1200",
-      "1800",
-      "3600",
-      "7200",
-      "10800",
-      "14400",
-      "18000",
-      "28800",
-      "43200",
-      "57600",
-      "72000",
-      "86400",
-      "172800",
-      "259200",
-      "345600",
-      "432000",
-      "518400",
-      "604800",
-    ]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("email_obfuscation"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("h2_prioritization"),
-    value: Schema.Literals(["on", "off", "custom"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("hotlink_protection"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("http2"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("http3"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("image_resizing"),
-    value: Schema.Literals(["on", "off", "open"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("ip_geolocation"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("ipv6"),
-    value: Schema.Literals(["off", "on"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("max_upload"),
-    value: Schema.Literals([
-      "100",
-      "125",
-      "150",
-      "175",
-      "200",
-      "225",
-      "250",
-      "275",
-      "300",
-      "325",
-      "350",
-      "375",
-      "400",
-      "425",
-      "450",
-      "475",
-      "500",
-      "1000",
-    ]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("min_tls_version"),
-    value: Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("mirage"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("nel"),
-    value: Schema.Struct({
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("opportunistic_encryption"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("opportunistic_onion"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("orange_to_orange"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("origin_error_page_pass_thru"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("origin_h2_max_streams"),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("origin_max_http_version"),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    value: Schema.optional(
-      Schema.Union([Schema.Literals(["2", "1"]), Schema.Null]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("polish"),
-    value: Schema.Literals(["off", "lossless", "lossy"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("prefetch_preload"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("privacy_pass"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("proxy_read_timeout"),
-    value: Schema.Number,
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("pseudo_ipv4"),
-    value: Schema.Literals(["off", "add_header", "overwrite_header"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("replace_insecure_js"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("response_buffering"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("rocket_loader"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("automatic_platform_optimization"),
-    value: Schema.Struct({
-      cacheByDeviceType: Schema.Boolean,
-      cf: Schema.Boolean,
-      enabled: Schema.Boolean,
-      hostnames: Schema.Array(Schema.String),
-      wordpress: Schema.Boolean,
-      wpPlugin: Schema.Boolean,
-    }).pipe(
-      Schema.encodeKeys({
-        cacheByDeviceType: "cache_by_device_type",
-        cf: "cf",
-        enabled: "enabled",
-        hostnames: "hostnames",
-        wordpress: "wordpress",
-        wpPlugin: "wp_plugin",
-      }),
-    ),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("security_header"),
-    value: Schema.Struct({
-      strictTransportSecurity: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            enabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            includeSubdomains: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            maxAge: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            nosniff: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            preload: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              enabled: "enabled",
-              includeSubdomains: "include_subdomains",
-              maxAge: "max_age",
-              nosniff: "nosniff",
-              preload: "preload",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        strictTransportSecurity: "strict_transport_security",
-      }),
-    ),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("security_level"),
-    value: Schema.Literals([
-      "off",
-      "essentially_off",
-      "low",
-      "medium",
-      "high",
-      "under_attack",
-    ]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("server_side_exclude"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("sha1_support"),
-    value: Schema.Literals(["off", "on"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("sort_query_string_for_cache"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("ssl"),
-    value: Schema.Literals(["off", "flexible", "full", "strict"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.optional(
-      Schema.Union([Schema.Literal("ssl_recommender"), Schema.Null]),
-    ),
-    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  }),
-  Schema.Struct({
-    id: Schema.Literal("tls_1_2_only"),
-    value: Schema.Literals(["off", "on"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("tls_1_3"),
-    value: Schema.Literals(["on", "off", "zrt"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("tls_client_auth"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("transformations"),
-    value: Schema.Literals(["on", "off", "open"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("transformations_allowed_origins"),
-    value: Schema.String,
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("true_client_ip_header"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("waf"),
-    value: Schema.Literals(["on", "off"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("webp"),
-    value: Schema.Literals(["off", "on"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("websockets"),
-    value: Schema.Literals(["off", "on"]),
-    editable: Schema.optional(
-      Schema.Union([Schema.Literals([true, false]), Schema.Null]),
-    ),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      value: "value",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  ),
+  ZeroRTT,
+  AdvancedDDoS,
+  ZonesCacheRulesAegis,
+  AlwaysOnline,
+  ZonesSchemasAlwaysUseHTTPS,
+  ZonesSchemasAutomaticHTTPSRewrites,
+  Brotli,
+  ZonesSchemasBrowserCacheTTL,
+  ZonesSchemasBrowserCheck,
+  ZonesSchemasCacheLevel,
+  ChallengeTTL,
+  ZonesChinaNetworkEnabled,
+  Ciphers,
+  ZonesCNAMEFlattening,
+  DevelopmentMode,
+  EarlyHints,
+  ZonesSchemasEdgeCacheTTL,
+  ZonesSchemasEmailObfuscation,
+  H2Prioritization,
+  HotlinkProtection,
+  Http2,
+  Http3,
+  ImageResizing,
+  ZonesSchemasIPGeolocation,
+  Ipv6,
+  ZonesMaxUpload,
+  MinTLSVersion,
+  ZonesSchemasMirage,
+  Nel,
+  ZonesSchemasOpportunisticEncryption,
+  OpportunisticOnion,
+  OrangeToOrange,
+  ZonesSchemasOriginErrorPagePassThru,
+  ZonesCacheRulesOriginH2MaxStreams,
+  ZonesCacheRulesOriginMaxHTTPVersion,
+  ZonesSchemasPolish,
+  PrefetchPreload,
+  ZonesPrivacyPass,
+  ProxyReadTimeout,
+  PseudoIPV4,
+  ZonesReplaceInsecureJS,
+  ZonesSchemasResponseBuffering,
+  ZonesSchemasRocketLoader,
+  ZonesSchemasAutomaticPlatformOptimization,
+  SecurityHeaders,
+  ZonesSchemasSecurityLevel,
+  ServerSideExcludes,
+  ZonesSha1Support,
+  ZonesSchemasSortQueryStringForCache,
+  ZonesSchemasSSL,
+  Sslrecommender,
+  ZonesTLS1_2Only,
+  Tls1_3,
+  TlsclientAuth,
+  ZonesTransformations,
+  ZonesTransformationsAllowedOrigins,
+  ZonesSchemasTrueClientIPHeader,
+  ZonesSchemasWAF,
+  WebP,
+  Websocket,
 ]).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<PatchSettingResponse>;
@@ -3755,26 +3169,7 @@ export interface GetSubscriptionResponse {
   /** The price of the subscription that will be billed, in US dollars. */
   price?: number | null;
   /** The rate plan applied to the subscription. */
-  ratePlan?: {
-    id?:
-      | "free"
-      | "lite"
-      | "pro"
-      | "pro_plus"
-      | "business"
-      | "enterprise"
-      | "partners_free"
-      | "partners_pro"
-      | "partners_business"
-      | "partners_enterprise"
-      | null;
-    currency?: string | null;
-    externallyManaged?: boolean | null;
-    isContract?: boolean | null;
-    publicName?: string | null;
-    scope?: string | null;
-    sets?: string[] | null;
-  } | null;
+  ratePlan?: RatePlan | null;
   /** The state that the subscription is in. */
   state?:
     | "Trial"
@@ -3810,54 +3205,7 @@ export const GetSubscriptionResponse =
       ]),
     ),
     price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    ratePlan: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "free",
-                "lite",
-                "pro",
-                "pro_plus",
-                "business",
-                "enterprise",
-                "partners_free",
-                "partners_pro",
-                "partners_business",
-                "partners_enterprise",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          externallyManaged: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          isContract: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          publicName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          sets: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            currency: "currency",
-            externallyManaged: "externally_managed",
-            isContract: "is_contract",
-            publicName: "public_name",
-            scope: "scope",
-            sets: "sets",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    ratePlan: Schema.optional(Schema.Union([RatePlan, Schema.Null])),
     state: Schema.optional(
       Schema.Union([
         Schema.Literals([
@@ -3908,25 +3256,7 @@ export interface CreateSubscriptionRequest {
   /** Body param: How often the subscription is renewed automatically. */
   frequency?: "weekly" | "monthly" | "quarterly" | "yearly";
   /** Body param: The rate plan applied to the subscription. */
-  ratePlan?: {
-    id?:
-      | "free"
-      | "lite"
-      | "pro"
-      | "pro_plus"
-      | "business"
-      | "enterprise"
-      | "partners_free"
-      | "partners_pro"
-      | "partners_business"
-      | "partners_enterprise";
-    currency?: string;
-    externallyManaged?: boolean;
-    isContract?: boolean;
-    publicName?: string;
-    scope?: string;
-    sets?: string[];
-  };
+  ratePlan?: RatePlan;
 }
 
 export const CreateSubscriptionRequest =
@@ -3935,40 +3265,7 @@ export const CreateSubscriptionRequest =
     frequency: Schema.optional(
       Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
     ),
-    ratePlan: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Literals([
-            "free",
-            "lite",
-            "pro",
-            "pro_plus",
-            "business",
-            "enterprise",
-            "partners_free",
-            "partners_pro",
-            "partners_business",
-            "partners_enterprise",
-          ]),
-        ),
-        currency: Schema.optional(Schema.String),
-        externallyManaged: Schema.optional(Schema.Boolean),
-        isContract: Schema.optional(Schema.Boolean),
-        publicName: Schema.optional(Schema.String),
-        scope: Schema.optional(Schema.String),
-        sets: Schema.optional(Schema.Array(Schema.String)),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          currency: "currency",
-          externallyManaged: "externally_managed",
-          isContract: "is_contract",
-          publicName: "public_name",
-          scope: "scope",
-          sets: "sets",
-        }),
-      ),
-    ),
+    ratePlan: Schema.optional(RatePlan),
   }).pipe(
     Schema.encodeKeys({ frequency: "frequency", ratePlan: "rate_plan" }),
     T.Http({ method: "POST", path: "/zones/{zone_id}/subscription" }),
@@ -3994,26 +3291,7 @@ export interface CreateSubscriptionResponse {
   /** The price of the subscription that will be billed, in US dollars. */
   price?: number | null;
   /** The rate plan applied to the subscription. */
-  ratePlan?: {
-    id?:
-      | "free"
-      | "lite"
-      | "pro"
-      | "pro_plus"
-      | "business"
-      | "enterprise"
-      | "partners_free"
-      | "partners_pro"
-      | "partners_business"
-      | "partners_enterprise"
-      | null;
-    currency?: string | null;
-    externallyManaged?: boolean | null;
-    isContract?: boolean | null;
-    publicName?: string | null;
-    scope?: string | null;
-    sets?: string[] | null;
-  } | null;
+  ratePlan?: RatePlan | null;
   /** The state that the subscription is in. */
   state?:
     | "Trial"
@@ -4049,54 +3327,7 @@ export const CreateSubscriptionResponse =
       ]),
     ),
     price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    ratePlan: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "free",
-                "lite",
-                "pro",
-                "pro_plus",
-                "business",
-                "enterprise",
-                "partners_free",
-                "partners_pro",
-                "partners_business",
-                "partners_enterprise",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          externallyManaged: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          isContract: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          publicName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          sets: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            currency: "currency",
-            externallyManaged: "externally_managed",
-            isContract: "is_contract",
-            publicName: "public_name",
-            scope: "scope",
-            sets: "sets",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    ratePlan: Schema.optional(Schema.Union([RatePlan, Schema.Null])),
     state: Schema.optional(
       Schema.Union([
         Schema.Literals([
@@ -4147,25 +3378,7 @@ export interface UpdateSubscriptionRequest {
   /** Body param: How often the subscription is renewed automatically. */
   frequency?: "weekly" | "monthly" | "quarterly" | "yearly";
   /** Body param: The rate plan applied to the subscription. */
-  ratePlan?: {
-    id?:
-      | "free"
-      | "lite"
-      | "pro"
-      | "pro_plus"
-      | "business"
-      | "enterprise"
-      | "partners_free"
-      | "partners_pro"
-      | "partners_business"
-      | "partners_enterprise";
-    currency?: string;
-    externallyManaged?: boolean;
-    isContract?: boolean;
-    publicName?: string;
-    scope?: string;
-    sets?: string[];
-  };
+  ratePlan?: RatePlan;
 }
 
 export const UpdateSubscriptionRequest =
@@ -4174,40 +3387,7 @@ export const UpdateSubscriptionRequest =
     frequency: Schema.optional(
       Schema.Literals(["weekly", "monthly", "quarterly", "yearly"]),
     ),
-    ratePlan: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Literals([
-            "free",
-            "lite",
-            "pro",
-            "pro_plus",
-            "business",
-            "enterprise",
-            "partners_free",
-            "partners_pro",
-            "partners_business",
-            "partners_enterprise",
-          ]),
-        ),
-        currency: Schema.optional(Schema.String),
-        externallyManaged: Schema.optional(Schema.Boolean),
-        isContract: Schema.optional(Schema.Boolean),
-        publicName: Schema.optional(Schema.String),
-        scope: Schema.optional(Schema.String),
-        sets: Schema.optional(Schema.Array(Schema.String)),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          currency: "currency",
-          externallyManaged: "externally_managed",
-          isContract: "is_contract",
-          publicName: "public_name",
-          scope: "scope",
-          sets: "sets",
-        }),
-      ),
-    ),
+    ratePlan: Schema.optional(RatePlan),
   }).pipe(
     Schema.encodeKeys({ frequency: "frequency", ratePlan: "rate_plan" }),
     T.Http({ method: "PUT", path: "/zones/{zone_id}/subscription" }),
@@ -4233,26 +3413,7 @@ export interface UpdateSubscriptionResponse {
   /** The price of the subscription that will be billed, in US dollars. */
   price?: number | null;
   /** The rate plan applied to the subscription. */
-  ratePlan?: {
-    id?:
-      | "free"
-      | "lite"
-      | "pro"
-      | "pro_plus"
-      | "business"
-      | "enterprise"
-      | "partners_free"
-      | "partners_pro"
-      | "partners_business"
-      | "partners_enterprise"
-      | null;
-    currency?: string | null;
-    externallyManaged?: boolean | null;
-    isContract?: boolean | null;
-    publicName?: string | null;
-    scope?: string | null;
-    sets?: string[] | null;
-  } | null;
+  ratePlan?: RatePlan | null;
   /** The state that the subscription is in. */
   state?:
     | "Trial"
@@ -4288,54 +3449,7 @@ export const UpdateSubscriptionResponse =
       ]),
     ),
     price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    ratePlan: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "free",
-                "lite",
-                "pro",
-                "pro_plus",
-                "business",
-                "enterprise",
-                "partners_free",
-                "partners_pro",
-                "partners_business",
-                "partners_enterprise",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          externallyManaged: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          isContract: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          publicName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          sets: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            currency: "currency",
-            externallyManaged: "externally_managed",
-            isContract: "is_contract",
-            publicName: "public_name",
-            scope: "scope",
-            sets: "sets",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    ratePlan: Schema.optional(Schema.Union([RatePlan, Schema.Null])),
     state: Schema.optional(
       Schema.Union([
         Schema.Literals([
@@ -4399,7 +3513,7 @@ export interface GetZoneResponse {
   /** Identifier */
   id: string;
   /** The account the zone belongs to. */
-  account: { id?: string | null; name?: string | null };
+  account: Tenant;
   /** The last time proof of ownership was detected and the zone was made active. */
   activatedOn: string | null;
   /** When the zone was created. */
@@ -4407,15 +3521,7 @@ export interface GetZoneResponse {
   /** The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is 0. */
   developmentMode: number;
   /** Metadata about the zone. */
-  meta: {
-    cdnOnly?: boolean | null;
-    customCertificateQuota?: number | null;
-    dnsOnly?: boolean | null;
-    foundationDns?: boolean | null;
-    pageRuleQuota?: number | null;
-    phishingDetected?: boolean | null;
-    step?: number | null;
-  };
+  meta: Meta;
   /** When the zone was last modified. */
   modifiedOn: string;
   /** The domain name. */
@@ -4429,20 +3535,9 @@ export interface GetZoneResponse {
   /** Registrar for the domain at the time of switching to Cloudflare. */
   originalRegistrar: string | null;
   /** The owner of the zone. */
-  owner: { id?: string | null; name?: string | null; type?: string | null };
+  owner: Owner;
   /** @deprecated Please use the `/zones/{zone_id}/subscription` API to update a zone's plan. Changing this value will create/cancel associated subscriptions. To view available plans for this zone, see [Zon */
-  plan: {
-    id?: string | null;
-    canSubscribe?: boolean | null;
-    currency?: string | null;
-    externallyManaged?: boolean | null;
-    frequency?: string | null;
-    isSubscribed?: boolean | null;
-    legacyDiscount?: boolean | null;
-    legacyId?: string | null;
-    name?: string | null;
-    price?: number | null;
-  };
+  plan: Plan;
   /** Allows the customer to use a custom apex. _Tenants Only Configuration_. */
   cnameSuffix?: string | null;
   /** Indicates whether the zone is only using Cloudflare DNS services. A true value means the zone will not receive security or performance benefits. */
@@ -4452,9 +3547,9 @@ export interface GetZoneResponse {
   /** The zone status on Cloudflare. */
   status?: "initializing" | "pending" | "active" | "moved" | null;
   /** The root organizational unit that this zone belongs to (such as a tenant or organization). */
-  tenant?: { id?: string | null; name?: string | null } | null;
+  tenant?: Tenant | null;
   /** The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization). */
-  tenantUnit?: { id?: string | null } | null;
+  tenantUnit?: TenantUnit | null;
   /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. */
   type?: "full" | "partial" | "secondary" | "internal" | null;
   /** An array of domains used for custom name servers. This is only available for Business and Enterprise plans. */
@@ -4465,76 +3560,19 @@ export interface GetZoneResponse {
 
 export const GetZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  account: Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }),
+  account: Tenant,
   activatedOn: Schema.Union([Schema.String, Schema.Null]),
   createdOn: Schema.String,
   developmentMode: Schema.Number,
-  meta: Schema.Struct({
-    cdnOnly: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    customCertificateQuota: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    dnsOnly: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    foundationDns: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    pageRuleQuota: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    phishingDetected: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    step: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      cdnOnly: "cdn_only",
-      customCertificateQuota: "custom_certificate_quota",
-      dnsOnly: "dns_only",
-      foundationDns: "foundation_dns",
-      pageRuleQuota: "page_rule_quota",
-      phishingDetected: "phishing_detected",
-      step: "step",
-    }),
-  ),
+  meta: Meta,
   modifiedOn: Schema.String,
   name: Schema.String,
   nameServers: Schema.Array(Schema.String),
   originalDnshost: Schema.Union([Schema.String, Schema.Null]),
   originalNameServers: Schema.Union([Schema.Array(Schema.String), Schema.Null]),
   originalRegistrar: Schema.Union([Schema.String, Schema.Null]),
-  owner: Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }),
-  plan: Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    canSubscribe: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    externallyManaged: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    frequency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    isSubscribed: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    legacyDiscount: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    legacyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      canSubscribe: "can_subscribe",
-      currency: "currency",
-      externallyManaged: "externally_managed",
-      frequency: "frequency",
-      isSubscribed: "is_subscribed",
-      legacyDiscount: "legacy_discount",
-      legacyId: "legacy_id",
-      name: "name",
-      price: "price",
-    }),
-  ),
+  owner: Owner,
+  plan: Plan,
   cnameSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   permissions: Schema.optional(
@@ -4546,23 +3584,8 @@ export const GetZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Null,
     ]),
   ),
-  tenant: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
-  tenantUnit: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  tenant: Schema.optional(Schema.Union([Tenant, Schema.Null])),
+  tenantUnit: Schema.optional(Schema.Union([TenantUnit, Schema.Null])),
   type: Schema.optional(
     Schema.Union([
       Schema.Literals(["full", "partial", "secondary", "internal"]),
@@ -4627,44 +3650,25 @@ export const ListZonesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface ListZonesResponse {
   result: {
     id: string;
-    account: { id?: string | null; name?: string | null };
+    account: Tenant;
     activatedOn: string | null;
     createdOn: string;
     developmentMode: number;
-    meta: {
-      cdnOnly?: boolean | null;
-      customCertificateQuota?: number | null;
-      dnsOnly?: boolean | null;
-      foundationDns?: boolean | null;
-      pageRuleQuota?: number | null;
-      phishingDetected?: boolean | null;
-      step?: number | null;
-    };
+    meta: Meta;
     modifiedOn: string;
     name: string;
     nameServers: string[];
     originalDnshost: string | null;
     originalNameServers: string[] | null;
     originalRegistrar: string | null;
-    owner: { id?: string | null; name?: string | null; type?: string | null };
-    plan: {
-      id?: string | null;
-      canSubscribe?: boolean | null;
-      currency?: string | null;
-      externallyManaged?: boolean | null;
-      frequency?: string | null;
-      isSubscribed?: boolean | null;
-      legacyDiscount?: boolean | null;
-      legacyId?: string | null;
-      name?: string | null;
-      price?: number | null;
-    };
+    owner: Owner;
+    plan: Plan;
     cnameSuffix?: string | null;
     paused?: boolean | null;
     permissions?: string[] | null;
     status?: "initializing" | "pending" | "active" | "moved" | null;
-    tenant?: { id?: string | null; name?: string | null } | null;
-    tenantUnit?: { id?: string | null } | null;
+    tenant?: Tenant | null;
+    tenantUnit?: TenantUnit | null;
     type?: "full" | "partial" | "secondary" | "internal" | null;
     vanityNameServers?: string[] | null;
     verificationKey?: string | null;
@@ -4681,40 +3685,11 @@ export const ListZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       id: Schema.String,
-      account: Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
+      account: Tenant,
       activatedOn: Schema.Union([Schema.String, Schema.Null]),
       createdOn: Schema.String,
       developmentMode: Schema.Number,
-      meta: Schema.Struct({
-        cdnOnly: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        customCertificateQuota: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        dnsOnly: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        foundationDns: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        pageRuleQuota: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        phishingDetected: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        step: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          cdnOnly: "cdn_only",
-          customCertificateQuota: "custom_certificate_quota",
-          dnsOnly: "dns_only",
-          foundationDns: "foundation_dns",
-          pageRuleQuota: "page_rule_quota",
-          phishingDetected: "phishing_detected",
-          step: "step",
-        }),
-      ),
+      meta: Meta,
       modifiedOn: Schema.String,
       name: Schema.String,
       nameServers: Schema.Array(Schema.String),
@@ -4724,44 +3699,8 @@ export const ListZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Null,
       ]),
       originalRegistrar: Schema.Union([Schema.String, Schema.Null]),
-      owner: Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      plan: Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        canSubscribe: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        externallyManaged: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        frequency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        isSubscribed: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        legacyDiscount: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        legacyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          canSubscribe: "can_subscribe",
-          currency: "currency",
-          externallyManaged: "externally_managed",
-          frequency: "frequency",
-          isSubscribed: "is_subscribed",
-          legacyDiscount: "legacy_discount",
-          legacyId: "legacy_id",
-          name: "name",
-          price: "price",
-        }),
-      ),
+      owner: Owner,
+      plan: Plan,
       cnameSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       permissions: Schema.optional(
@@ -4773,23 +3712,8 @@ export const ListZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Null,
         ]),
       ),
-      tenant: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      tenantUnit: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      tenant: Schema.optional(Schema.Union([Tenant, Schema.Null])),
+      tenantUnit: Schema.optional(Schema.Union([TenantUnit, Schema.Null])),
       type: Schema.optional(
         Schema.Union([
           Schema.Literals(["full", "partial", "secondary", "internal"]),
@@ -4865,44 +3789,25 @@ export const listZones: API.PaginatedOperationMethod<
   items: (input: ListZonesRequest) => stream.Stream<
     {
       id: string;
-      account: { id?: string | null; name?: string | null };
+      account: Tenant;
       activatedOn: string | null;
       createdOn: string;
       developmentMode: number;
-      meta: {
-        cdnOnly?: boolean | null;
-        customCertificateQuota?: number | null;
-        dnsOnly?: boolean | null;
-        foundationDns?: boolean | null;
-        pageRuleQuota?: number | null;
-        phishingDetected?: boolean | null;
-        step?: number | null;
-      };
+      meta: Meta;
       modifiedOn: string;
       name: string;
       nameServers: string[];
       originalDnshost: string | null;
       originalNameServers: string[] | null;
       originalRegistrar: string | null;
-      owner: { id?: string | null; name?: string | null; type?: string | null };
-      plan: {
-        id?: string | null;
-        canSubscribe?: boolean | null;
-        currency?: string | null;
-        externallyManaged?: boolean | null;
-        frequency?: string | null;
-        isSubscribed?: boolean | null;
-        legacyDiscount?: boolean | null;
-        legacyId?: string | null;
-        name?: string | null;
-        price?: number | null;
-      };
+      owner: Owner;
+      plan: Plan;
       cnameSuffix?: string | null;
       paused?: boolean | null;
       permissions?: string[] | null;
       status?: "initializing" | "pending" | "active" | "moved" | null;
-      tenant?: { id?: string | null; name?: string | null } | null;
-      tenantUnit?: { id?: string | null } | null;
+      tenant?: Tenant | null;
+      tenantUnit?: TenantUnit | null;
       type?: "full" | "partial" | "secondary" | "internal" | null;
       vanityNameServers?: string[] | null;
       verificationKey?: string | null;
@@ -4924,7 +3829,7 @@ export const listZones: API.PaginatedOperationMethod<
 }));
 
 export interface CreateZoneRequest {
-  account: { id?: string };
+  account: TenantUnit;
   /** The domain name. */
   name: string;
   /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. */
@@ -4932,9 +3837,7 @@ export interface CreateZoneRequest {
 }
 
 export const CreateZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  account: Schema.Struct({
-    id: Schema.optional(Schema.String),
-  }),
+  account: TenantUnit,
   name: Schema.String,
   type: Schema.optional(
     Schema.Literals(["full", "partial", "secondary", "internal"]),
@@ -4947,7 +3850,7 @@ export interface CreateZoneResponse {
   /** Identifier */
   id: string;
   /** The account the zone belongs to. */
-  account: { id?: string | null; name?: string | null };
+  account: Tenant;
   /** The last time proof of ownership was detected and the zone was made active. */
   activatedOn: string | null;
   /** When the zone was created. */
@@ -4955,15 +3858,7 @@ export interface CreateZoneResponse {
   /** The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is 0. */
   developmentMode: number;
   /** Metadata about the zone. */
-  meta: {
-    cdnOnly?: boolean | null;
-    customCertificateQuota?: number | null;
-    dnsOnly?: boolean | null;
-    foundationDns?: boolean | null;
-    pageRuleQuota?: number | null;
-    phishingDetected?: boolean | null;
-    step?: number | null;
-  };
+  meta: Meta;
   /** When the zone was last modified. */
   modifiedOn: string;
   /** The domain name. */
@@ -4977,20 +3872,9 @@ export interface CreateZoneResponse {
   /** Registrar for the domain at the time of switching to Cloudflare. */
   originalRegistrar: string | null;
   /** The owner of the zone. */
-  owner: { id?: string | null; name?: string | null; type?: string | null };
+  owner: Owner;
   /** @deprecated Please use the `/zones/{zone_id}/subscription` API to update a zone's plan. Changing this value will create/cancel associated subscriptions. To view available plans for this zone, see [Zon */
-  plan: {
-    id?: string | null;
-    canSubscribe?: boolean | null;
-    currency?: string | null;
-    externallyManaged?: boolean | null;
-    frequency?: string | null;
-    isSubscribed?: boolean | null;
-    legacyDiscount?: boolean | null;
-    legacyId?: string | null;
-    name?: string | null;
-    price?: number | null;
-  };
+  plan: Plan;
   /** Allows the customer to use a custom apex. _Tenants Only Configuration_. */
   cnameSuffix?: string | null;
   /** Indicates whether the zone is only using Cloudflare DNS services. A true value means the zone will not receive security or performance benefits. */
@@ -5000,9 +3884,9 @@ export interface CreateZoneResponse {
   /** The zone status on Cloudflare. */
   status?: "initializing" | "pending" | "active" | "moved" | null;
   /** The root organizational unit that this zone belongs to (such as a tenant or organization). */
-  tenant?: { id?: string | null; name?: string | null } | null;
+  tenant?: Tenant | null;
   /** The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization). */
-  tenantUnit?: { id?: string | null } | null;
+  tenantUnit?: TenantUnit | null;
   /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. */
   type?: "full" | "partial" | "secondary" | "internal" | null;
   /** An array of domains used for custom name servers. This is only available for Business and Enterprise plans. */
@@ -5013,76 +3897,19 @@ export interface CreateZoneResponse {
 
 export const CreateZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  account: Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }),
+  account: Tenant,
   activatedOn: Schema.Union([Schema.String, Schema.Null]),
   createdOn: Schema.String,
   developmentMode: Schema.Number,
-  meta: Schema.Struct({
-    cdnOnly: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    customCertificateQuota: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    dnsOnly: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    foundationDns: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    pageRuleQuota: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    phishingDetected: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    step: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      cdnOnly: "cdn_only",
-      customCertificateQuota: "custom_certificate_quota",
-      dnsOnly: "dns_only",
-      foundationDns: "foundation_dns",
-      pageRuleQuota: "page_rule_quota",
-      phishingDetected: "phishing_detected",
-      step: "step",
-    }),
-  ),
+  meta: Meta,
   modifiedOn: Schema.String,
   name: Schema.String,
   nameServers: Schema.Array(Schema.String),
   originalDnshost: Schema.Union([Schema.String, Schema.Null]),
   originalNameServers: Schema.Union([Schema.Array(Schema.String), Schema.Null]),
   originalRegistrar: Schema.Union([Schema.String, Schema.Null]),
-  owner: Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }),
-  plan: Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    canSubscribe: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    externallyManaged: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    frequency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    isSubscribed: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    legacyDiscount: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    legacyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      canSubscribe: "can_subscribe",
-      currency: "currency",
-      externallyManaged: "externally_managed",
-      frequency: "frequency",
-      isSubscribed: "is_subscribed",
-      legacyDiscount: "legacy_discount",
-      legacyId: "legacy_id",
-      name: "name",
-      price: "price",
-    }),
-  ),
+  owner: Owner,
+  plan: Plan,
   cnameSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   permissions: Schema.optional(
@@ -5094,23 +3921,8 @@ export const CreateZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Null,
     ]),
   ),
-  tenant: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
-  tenantUnit: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  tenant: Schema.optional(Schema.Union([Tenant, Schema.Null])),
+  tenantUnit: Schema.optional(Schema.Union([TenantUnit, Schema.Null])),
   type: Schema.optional(
     Schema.Union([
       Schema.Literals(["full", "partial", "secondary", "internal"]),
@@ -5197,7 +4009,7 @@ export interface PatchZoneResponse {
   /** Identifier */
   id: string;
   /** The account the zone belongs to. */
-  account: { id?: string | null; name?: string | null };
+  account: Tenant;
   /** The last time proof of ownership was detected and the zone was made active. */
   activatedOn: string | null;
   /** When the zone was created. */
@@ -5205,15 +4017,7 @@ export interface PatchZoneResponse {
   /** The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is 0. */
   developmentMode: number;
   /** Metadata about the zone. */
-  meta: {
-    cdnOnly?: boolean | null;
-    customCertificateQuota?: number | null;
-    dnsOnly?: boolean | null;
-    foundationDns?: boolean | null;
-    pageRuleQuota?: number | null;
-    phishingDetected?: boolean | null;
-    step?: number | null;
-  };
+  meta: Meta;
   /** When the zone was last modified. */
   modifiedOn: string;
   /** The domain name. */
@@ -5227,20 +4031,9 @@ export interface PatchZoneResponse {
   /** Registrar for the domain at the time of switching to Cloudflare. */
   originalRegistrar: string | null;
   /** The owner of the zone. */
-  owner: { id?: string | null; name?: string | null; type?: string | null };
+  owner: Owner;
   /** @deprecated Please use the `/zones/{zone_id}/subscription` API to update a zone's plan. Changing this value will create/cancel associated subscriptions. To view available plans for this zone, see [Zon */
-  plan: {
-    id?: string | null;
-    canSubscribe?: boolean | null;
-    currency?: string | null;
-    externallyManaged?: boolean | null;
-    frequency?: string | null;
-    isSubscribed?: boolean | null;
-    legacyDiscount?: boolean | null;
-    legacyId?: string | null;
-    name?: string | null;
-    price?: number | null;
-  };
+  plan: Plan;
   /** Allows the customer to use a custom apex. _Tenants Only Configuration_. */
   cnameSuffix?: string | null;
   /** Indicates whether the zone is only using Cloudflare DNS services. A true value means the zone will not receive security or performance benefits. */
@@ -5250,9 +4043,9 @@ export interface PatchZoneResponse {
   /** The zone status on Cloudflare. */
   status?: "initializing" | "pending" | "active" | "moved" | null;
   /** The root organizational unit that this zone belongs to (such as a tenant or organization). */
-  tenant?: { id?: string | null; name?: string | null } | null;
+  tenant?: Tenant | null;
   /** The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization). */
-  tenantUnit?: { id?: string | null } | null;
+  tenantUnit?: TenantUnit | null;
   /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. */
   type?: "full" | "partial" | "secondary" | "internal" | null;
   /** An array of domains used for custom name servers. This is only available for Business and Enterprise plans. */
@@ -5263,76 +4056,19 @@ export interface PatchZoneResponse {
 
 export const PatchZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  account: Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }),
+  account: Tenant,
   activatedOn: Schema.Union([Schema.String, Schema.Null]),
   createdOn: Schema.String,
   developmentMode: Schema.Number,
-  meta: Schema.Struct({
-    cdnOnly: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    customCertificateQuota: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    dnsOnly: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    foundationDns: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    pageRuleQuota: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    phishingDetected: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    step: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      cdnOnly: "cdn_only",
-      customCertificateQuota: "custom_certificate_quota",
-      dnsOnly: "dns_only",
-      foundationDns: "foundation_dns",
-      pageRuleQuota: "page_rule_quota",
-      phishingDetected: "phishing_detected",
-      step: "step",
-    }),
-  ),
+  meta: Meta,
   modifiedOn: Schema.String,
   name: Schema.String,
   nameServers: Schema.Array(Schema.String),
   originalDnshost: Schema.Union([Schema.String, Schema.Null]),
   originalNameServers: Schema.Union([Schema.Array(Schema.String), Schema.Null]),
   originalRegistrar: Schema.Union([Schema.String, Schema.Null]),
-  owner: Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }),
-  plan: Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    canSubscribe: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    externallyManaged: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    frequency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    isSubscribed: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    legacyDiscount: Schema.optional(
-      Schema.Union([Schema.Boolean, Schema.Null]),
-    ),
-    legacyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    price: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      canSubscribe: "can_subscribe",
-      currency: "currency",
-      externallyManaged: "externally_managed",
-      frequency: "frequency",
-      isSubscribed: "is_subscribed",
-      legacyDiscount: "legacy_discount",
-      legacyId: "legacy_id",
-      name: "name",
-      price: "price",
-    }),
-  ),
+  owner: Owner,
+  plan: Plan,
   cnameSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   permissions: Schema.optional(
@@ -5344,23 +4080,8 @@ export const PatchZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Null,
     ]),
   ),
-  tenant: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
-  tenantUnit: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  tenant: Schema.optional(Schema.Union([Tenant, Schema.Null])),
+  tenantUnit: Schema.optional(Schema.Union([TenantUnit, Schema.Null])),
   type: Schema.optional(
     Schema.Union([
       Schema.Literals(["full", "partial", "secondary", "internal"]),

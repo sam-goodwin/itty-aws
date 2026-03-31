@@ -14,6 +14,279 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface CustomCERTBundle {
+  customCertificate: string;
+  customKey: string;
+}
+
+export const CustomCERTBundle: Schema.Schema<CustomCERTBundle> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      customCertificate: Schema.String,
+      customKey: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        customCertificate: "custom_certificate",
+        customKey: "custom_key",
+      }),
+    ),
+  ) as unknown as Schema.Schema<CustomCERTBundle>;
+
+export interface OwnershipVerification {
+  name?: string | null;
+  type?: "txt" | null;
+  value?: string | null;
+}
+
+export const OwnershipVerification: Schema.Schema<OwnershipVerification> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(Schema.Union([Schema.Literal("txt"), Schema.Null])),
+      value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<OwnershipVerification>;
+
+export interface OwnershipVerificationHTTP {
+  httpBody?: string | null;
+  httpUrl?: string | null;
+}
+
+export const OwnershipVerificationHTTP: Schema.Schema<OwnershipVerificationHTTP> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      httpBody: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      httpUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ httpBody: "http_body", httpUrl: "http_url" })),
+  ) as unknown as Schema.Schema<OwnershipVerificationHTTP>;
+
+export interface Settings {
+  ciphers?: string[] | null;
+  earlyHints?: "on" | "off" | null;
+  http2?: "on" | "off" | null;
+  minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | null;
+  tls_1_3?: "on" | "off" | null;
+}
+
+export const Settings: Schema.Schema<Settings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      ciphers: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      earlyHints: Schema.optional(
+        Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+      ),
+      http2: Schema.optional(
+        Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+      ),
+      minTlsVersion: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
+          Schema.Null,
+        ]),
+      ),
+      tls_1_3: Schema.optional(
+        Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        ciphers: "ciphers",
+        earlyHints: "early_hints",
+        http2: "http2",
+        minTlsVersion: "min_tls_version",
+        tls_1_3: "tls_1_3",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Settings>;
+
+export interface Ssl {
+  id?: string | null;
+  bundleMethod?: "ubiquitous" | "optimal" | "force" | null;
+  certificateAuthority?:
+    | "digicert"
+    | "google"
+    | "lets_encrypt"
+    | "ssl_com"
+    | null;
+  customCertificate?: string | null;
+  customCsrId?: string | null;
+  customKey?: string | null;
+  expiresOn?: string | null;
+  hosts?: string[] | null;
+  issuer?: string | null;
+  method?: "http" | "txt" | "email" | null;
+  serialNumber?: string | null;
+  settings?: Settings | null;
+  signature?: string | null;
+  status?:
+    | "initializing"
+    | "pending_validation"
+    | "deleted"
+    | "pending_issuance"
+    | "pending_deployment"
+    | "pending_deletion"
+    | "pending_expiration"
+    | "expired"
+    | "active"
+    | "initializing_timed_out"
+    | "validation_timed_out"
+    | "issuance_timed_out"
+    | "deployment_timed_out"
+    | "deletion_timed_out"
+    | "pending_cleanup"
+    | "staging_deployment"
+    | "staging_active"
+    | "deactivating"
+    | "inactive"
+    | "backup_issued"
+    | "holding_deployment"
+    | null;
+  type?: "dv" | null;
+  uploadedOn?: string | null;
+  validationErrors?: ValidationError[] | null;
+  validationRecords?: ValidationRecord[] | null;
+  wildcard?: boolean | null;
+}
+
+export const Ssl: Schema.Schema<Ssl> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      bundleMethod: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["ubiquitous", "optimal", "force"]),
+          Schema.Null,
+        ]),
+      ),
+      certificateAuthority: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["digicert", "google", "lets_encrypt", "ssl_com"]),
+          Schema.Null,
+        ]),
+      ),
+      customCertificate: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      customCsrId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      customKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      hosts: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      method: Schema.optional(
+        Schema.Union([Schema.Literals(["http", "txt", "email"]), Schema.Null]),
+      ),
+      serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      settings: Schema.optional(Schema.Union([Settings, Schema.Null])),
+      signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_validation",
+            "deleted",
+            "pending_issuance",
+            "pending_deployment",
+            "pending_deletion",
+            "pending_expiration",
+            "expired",
+            "active",
+            "initializing_timed_out",
+            "validation_timed_out",
+            "issuance_timed_out",
+            "deployment_timed_out",
+            "deletion_timed_out",
+            "pending_cleanup",
+            "staging_deployment",
+            "staging_active",
+            "deactivating",
+            "inactive",
+            "backup_issued",
+            "holding_deployment",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      type: Schema.optional(Schema.Union([Schema.Literal("dv"), Schema.Null])),
+      uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      validationErrors: Schema.optional(
+        Schema.Union([Schema.Array(ValidationError), Schema.Null]),
+      ),
+      validationRecords: Schema.optional(
+        Schema.Union([Schema.Array(ValidationRecord), Schema.Null]),
+      ),
+      wildcard: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        bundleMethod: "bundle_method",
+        certificateAuthority: "certificate_authority",
+        customCertificate: "custom_certificate",
+        customCsrId: "custom_csr_id",
+        customKey: "custom_key",
+        expiresOn: "expires_on",
+        hosts: "hosts",
+        issuer: "issuer",
+        method: "method",
+        serialNumber: "serial_number",
+        settings: "settings",
+        signature: "signature",
+        status: "status",
+        type: "type",
+        uploadedOn: "uploaded_on",
+        validationErrors: "validation_errors",
+        validationRecords: "validation_records",
+        wildcard: "wildcard",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Ssl>;
+
+export interface ValidationError {
+  message?: string | null;
+}
+
+export const ValidationError: Schema.Schema<ValidationError> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      message: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<ValidationError>;
+
+export interface ValidationRecord {
+  emails?: string[] | null;
+  httpBody?: string | null;
+  httpUrl?: string | null;
+  txtName?: string | null;
+  txtValue?: string | null;
+}
+
+export const ValidationRecord: Schema.Schema<ValidationRecord> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      emails: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      httpBody: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      httpUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      txtName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      txtValue: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        emails: "emails",
+        httpBody: "http_body",
+        httpUrl: "http_url",
+        txtName: "txt_name",
+        txtValue: "txt_value",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ValidationRecord>;
+
+// =============================================================================
 // CertificatePackCertificate
 // =============================================================================
 
@@ -53,68 +326,7 @@ export interface PutCertificatePackCertificateResponse {
   id: string;
   /** The custom hostname that will point to your hostname via CNAME. */
   hostname: string;
-  ssl: {
-    id?: string | null;
-    bundleMethod?: "ubiquitous" | "optimal" | "force" | null;
-    certificateAuthority?:
-      | "digicert"
-      | "google"
-      | "lets_encrypt"
-      | "ssl_com"
-      | null;
-    customCertificate?: string | null;
-    customCsrId?: string | null;
-    customKey?: string | null;
-    expiresOn?: string | null;
-    hosts?: string[] | null;
-    issuer?: string | null;
-    method?: "http" | "txt" | "email" | null;
-    serialNumber?: string | null;
-    settings?: {
-      ciphers?: string[] | null;
-      earlyHints?: "on" | "off" | null;
-      http2?: "on" | "off" | null;
-      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | null;
-      tls_1_3?: "on" | "off" | null;
-    } | null;
-    signature?: string | null;
-    status?:
-      | "initializing"
-      | "pending_validation"
-      | "deleted"
-      | "pending_issuance"
-      | "pending_deployment"
-      | "pending_deletion"
-      | "pending_expiration"
-      | "expired"
-      | "active"
-      | "initializing_timed_out"
-      | "validation_timed_out"
-      | "issuance_timed_out"
-      | "deployment_timed_out"
-      | "deletion_timed_out"
-      | "pending_cleanup"
-      | "staging_deployment"
-      | "staging_active"
-      | "deactivating"
-      | "inactive"
-      | "backup_issued"
-      | "holding_deployment"
-      | null;
-    type?: "dv" | null;
-    uploadedOn?: string | null;
-    validationErrors?: { message?: string | null }[] | null;
-    validationRecords?:
-      | {
-          emails?: string[] | null;
-          httpBody?: string | null;
-          httpUrl?: string | null;
-          txtName?: string | null;
-          txtValue?: string | null;
-        }[]
-      | null;
-    wildcard?: boolean | null;
-  };
+  ssl: Ssl;
   /** This is the time the hostname was created. */
   createdAt?: string | null;
   /** Unique key/value metadata for this hostname. These are per-hostname (customer) settings. */
@@ -124,16 +336,9 @@ export interface PutCertificatePackCertificateResponse {
   /** A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request_host_header:' which w */
   customOriginSni?: string | null;
   /** This is a record which can be placed to activate a hostname. */
-  ownershipVerification?: {
-    name?: string | null;
-    type?: "txt" | null;
-    value?: string | null;
-  } | null;
+  ownershipVerification?: OwnershipVerification | null;
   /** This presents the token to be served by the given http url to activate a hostname. */
-  ownershipVerificationHttp?: {
-    httpBody?: string | null;
-    httpUrl?: string | null;
-  } | null;
+  ownershipVerificationHttp?: OwnershipVerificationHTTP | null;
   /** Status of the hostname's activation. */
   status?:
     | "active"
@@ -161,166 +366,7 @@ export const PutCertificatePackCertificateResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     hostname: Schema.String,
-    ssl: Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      bundleMethod: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["ubiquitous", "optimal", "force"]),
-          Schema.Null,
-        ]),
-      ),
-      certificateAuthority: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["digicert", "google", "lets_encrypt", "ssl_com"]),
-          Schema.Null,
-        ]),
-      ),
-      customCertificate: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      customCsrId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      customKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      hosts: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      method: Schema.optional(
-        Schema.Union([Schema.Literals(["http", "txt", "email"]), Schema.Null]),
-      ),
-      serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      settings: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            ciphers: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            earlyHints: Schema.optional(
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
-            ),
-            http2: Schema.optional(
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
-            ),
-            minTlsVersion: Schema.optional(
-              Schema.Union([
-                Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
-                Schema.Null,
-              ]),
-            ),
-            tls_1_3: Schema.optional(
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              ciphers: "ciphers",
-              earlyHints: "early_hints",
-              http2: "http2",
-              minTlsVersion: "min_tls_version",
-              tls_1_3: "tls_1_3",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "initializing",
-            "pending_validation",
-            "deleted",
-            "pending_issuance",
-            "pending_deployment",
-            "pending_deletion",
-            "pending_expiration",
-            "expired",
-            "active",
-            "initializing_timed_out",
-            "validation_timed_out",
-            "issuance_timed_out",
-            "deployment_timed_out",
-            "deletion_timed_out",
-            "pending_cleanup",
-            "staging_deployment",
-            "staging_active",
-            "deactivating",
-            "inactive",
-            "backup_issued",
-            "holding_deployment",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      type: Schema.optional(Schema.Union([Schema.Literal("dv"), Schema.Null])),
-      uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      validationErrors: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              message: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      validationRecords: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              emails: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              httpBody: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              httpUrl: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              txtName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              txtValue: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                emails: "emails",
-                httpBody: "http_body",
-                httpUrl: "http_url",
-                txtName: "txt_name",
-                txtValue: "txt_value",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      wildcard: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        bundleMethod: "bundle_method",
-        certificateAuthority: "certificate_authority",
-        customCertificate: "custom_certificate",
-        customCsrId: "custom_csr_id",
-        customKey: "custom_key",
-        expiresOn: "expires_on",
-        hosts: "hosts",
-        issuer: "issuer",
-        method: "method",
-        serialNumber: "serial_number",
-        settings: "settings",
-        signature: "signature",
-        status: "status",
-        type: "type",
-        uploadedOn: "uploaded_on",
-        validationErrors: "validation_errors",
-        validationRecords: "validation_records",
-        wildcard: "wildcard",
-      }),
-    ),
+    ssl: Ssl,
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     customMetadata: Schema.optional(
       Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
@@ -332,27 +378,10 @@ export const PutCertificatePackCertificateResponse =
       Schema.Union([Schema.String, Schema.Null]),
     ),
     ownershipVerification: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("txt"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
+      Schema.Union([OwnershipVerification, Schema.Null]),
     ),
     ownershipVerificationHttp: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          httpBody: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          httpUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({ httpBody: "http_body", httpUrl: "http_url" }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([OwnershipVerificationHTTP, Schema.Null]),
     ),
     status: Schema.optional(
       Schema.Union([
@@ -483,68 +512,7 @@ export interface GetCustomHostnameResponse {
   id: string;
   /** The custom hostname that will point to your hostname via CNAME. */
   hostname: string;
-  ssl: {
-    id?: string | null;
-    bundleMethod?: "ubiquitous" | "optimal" | "force" | null;
-    certificateAuthority?:
-      | "digicert"
-      | "google"
-      | "lets_encrypt"
-      | "ssl_com"
-      | null;
-    customCertificate?: string | null;
-    customCsrId?: string | null;
-    customKey?: string | null;
-    expiresOn?: string | null;
-    hosts?: string[] | null;
-    issuer?: string | null;
-    method?: "http" | "txt" | "email" | null;
-    serialNumber?: string | null;
-    settings?: {
-      ciphers?: string[] | null;
-      earlyHints?: "on" | "off" | null;
-      http2?: "on" | "off" | null;
-      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | null;
-      tls_1_3?: "on" | "off" | null;
-    } | null;
-    signature?: string | null;
-    status?:
-      | "initializing"
-      | "pending_validation"
-      | "deleted"
-      | "pending_issuance"
-      | "pending_deployment"
-      | "pending_deletion"
-      | "pending_expiration"
-      | "expired"
-      | "active"
-      | "initializing_timed_out"
-      | "validation_timed_out"
-      | "issuance_timed_out"
-      | "deployment_timed_out"
-      | "deletion_timed_out"
-      | "pending_cleanup"
-      | "staging_deployment"
-      | "staging_active"
-      | "deactivating"
-      | "inactive"
-      | "backup_issued"
-      | "holding_deployment"
-      | null;
-    type?: "dv" | null;
-    uploadedOn?: string | null;
-    validationErrors?: { message?: string | null }[] | null;
-    validationRecords?:
-      | {
-          emails?: string[] | null;
-          httpBody?: string | null;
-          httpUrl?: string | null;
-          txtName?: string | null;
-          txtValue?: string | null;
-        }[]
-      | null;
-    wildcard?: boolean | null;
-  };
+  ssl: Ssl;
   /** This is the time the hostname was created. */
   createdAt?: string | null;
   /** Unique key/value metadata for this hostname. These are per-hostname (customer) settings. */
@@ -554,16 +522,9 @@ export interface GetCustomHostnameResponse {
   /** A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request_host_header:' which w */
   customOriginSni?: string | null;
   /** This is a record which can be placed to activate a hostname. */
-  ownershipVerification?: {
-    name?: string | null;
-    type?: "txt" | null;
-    value?: string | null;
-  } | null;
+  ownershipVerification?: OwnershipVerification | null;
   /** This presents the token to be served by the given http url to activate a hostname. */
-  ownershipVerificationHttp?: {
-    httpBody?: string | null;
-    httpUrl?: string | null;
-  } | null;
+  ownershipVerificationHttp?: OwnershipVerificationHTTP | null;
   /** Status of the hostname's activation. */
   status?:
     | "active"
@@ -591,166 +552,7 @@ export const GetCustomHostnameResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     hostname: Schema.String,
-    ssl: Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      bundleMethod: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["ubiquitous", "optimal", "force"]),
-          Schema.Null,
-        ]),
-      ),
-      certificateAuthority: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["digicert", "google", "lets_encrypt", "ssl_com"]),
-          Schema.Null,
-        ]),
-      ),
-      customCertificate: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      customCsrId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      customKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      hosts: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      method: Schema.optional(
-        Schema.Union([Schema.Literals(["http", "txt", "email"]), Schema.Null]),
-      ),
-      serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      settings: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            ciphers: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            earlyHints: Schema.optional(
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
-            ),
-            http2: Schema.optional(
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
-            ),
-            minTlsVersion: Schema.optional(
-              Schema.Union([
-                Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
-                Schema.Null,
-              ]),
-            ),
-            tls_1_3: Schema.optional(
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              ciphers: "ciphers",
-              earlyHints: "early_hints",
-              http2: "http2",
-              minTlsVersion: "min_tls_version",
-              tls_1_3: "tls_1_3",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "initializing",
-            "pending_validation",
-            "deleted",
-            "pending_issuance",
-            "pending_deployment",
-            "pending_deletion",
-            "pending_expiration",
-            "expired",
-            "active",
-            "initializing_timed_out",
-            "validation_timed_out",
-            "issuance_timed_out",
-            "deployment_timed_out",
-            "deletion_timed_out",
-            "pending_cleanup",
-            "staging_deployment",
-            "staging_active",
-            "deactivating",
-            "inactive",
-            "backup_issued",
-            "holding_deployment",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      type: Schema.optional(Schema.Union([Schema.Literal("dv"), Schema.Null])),
-      uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      validationErrors: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              message: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      validationRecords: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              emails: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              httpBody: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              httpUrl: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              txtName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              txtValue: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                emails: "emails",
-                httpBody: "http_body",
-                httpUrl: "http_url",
-                txtName: "txt_name",
-                txtValue: "txt_value",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      wildcard: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        bundleMethod: "bundle_method",
-        certificateAuthority: "certificate_authority",
-        customCertificate: "custom_certificate",
-        customCsrId: "custom_csr_id",
-        customKey: "custom_key",
-        expiresOn: "expires_on",
-        hosts: "hosts",
-        issuer: "issuer",
-        method: "method",
-        serialNumber: "serial_number",
-        settings: "settings",
-        signature: "signature",
-        status: "status",
-        type: "type",
-        uploadedOn: "uploaded_on",
-        validationErrors: "validation_errors",
-        validationRecords: "validation_records",
-        wildcard: "wildcard",
-      }),
-    ),
+    ssl: Ssl,
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     customMetadata: Schema.optional(
       Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
@@ -762,27 +564,10 @@ export const GetCustomHostnameResponse =
       Schema.Union([Schema.String, Schema.Null]),
     ),
     ownershipVerification: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("txt"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
+      Schema.Union([OwnershipVerification, Schema.Null]),
     ),
     ownershipVerificationHttp: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          httpBody: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          httpUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({ httpBody: "http_body", httpUrl: "http_url" }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([OwnershipVerificationHTTP, Schema.Null]),
     ),
     status: Schema.optional(
       Schema.Union([
@@ -878,81 +663,13 @@ export interface ListCustomHostnamesResponse {
   result: {
     id: string;
     hostname: string;
-    ssl: {
-      id?: string | null;
-      bundleMethod?: "ubiquitous" | "optimal" | "force" | null;
-      certificateAuthority?:
-        | "digicert"
-        | "google"
-        | "lets_encrypt"
-        | "ssl_com"
-        | null;
-      customCertificate?: string | null;
-      customCsrId?: string | null;
-      customKey?: string | null;
-      expiresOn?: string | null;
-      hosts?: string[] | null;
-      issuer?: string | null;
-      method?: "http" | "txt" | "email" | null;
-      serialNumber?: string | null;
-      settings?: {
-        ciphers?: string[] | null;
-        earlyHints?: "on" | "off" | null;
-        http2?: "on" | "off" | null;
-        minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | null;
-        tls_1_3?: "on" | "off" | null;
-      } | null;
-      signature?: string | null;
-      status?:
-        | "initializing"
-        | "pending_validation"
-        | "deleted"
-        | "pending_issuance"
-        | "pending_deployment"
-        | "pending_deletion"
-        | "pending_expiration"
-        | "expired"
-        | "active"
-        | "initializing_timed_out"
-        | "validation_timed_out"
-        | "issuance_timed_out"
-        | "deployment_timed_out"
-        | "deletion_timed_out"
-        | "pending_cleanup"
-        | "staging_deployment"
-        | "staging_active"
-        | "deactivating"
-        | "inactive"
-        | "backup_issued"
-        | "holding_deployment"
-        | null;
-      type?: "dv" | null;
-      uploadedOn?: string | null;
-      validationErrors?: { message?: string | null }[] | null;
-      validationRecords?:
-        | {
-            emails?: string[] | null;
-            httpBody?: string | null;
-            httpUrl?: string | null;
-            txtName?: string | null;
-            txtValue?: string | null;
-          }[]
-        | null;
-      wildcard?: boolean | null;
-    };
+    ssl: Ssl;
     createdAt?: string | null;
     customMetadata?: Record<string, unknown> | null;
     customOriginServer?: string | null;
     customOriginSni?: string | null;
-    ownershipVerification?: {
-      name?: string | null;
-      type?: "txt" | null;
-      value?: string | null;
-    } | null;
-    ownershipVerificationHttp?: {
-      httpBody?: string | null;
-      httpUrl?: string | null;
-    } | null;
+    ownershipVerification?: OwnershipVerification | null;
+    ownershipVerificationHttp?: OwnershipVerificationHTTP | null;
     status?:
       | "active"
       | "pending"
@@ -987,190 +704,7 @@ export const ListCustomHostnamesResponse =
       Schema.Struct({
         id: Schema.String,
         hostname: Schema.String,
-        ssl: Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          bundleMethod: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["ubiquitous", "optimal", "force"]),
-              Schema.Null,
-            ]),
-          ),
-          certificateAuthority: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "digicert",
-                "google",
-                "lets_encrypt",
-                "ssl_com",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          customCertificate: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          customCsrId: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          customKey: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          expiresOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          hosts: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          method: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["http", "txt", "email"]),
-              Schema.Null,
-            ]),
-          ),
-          serialNumber: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          settings: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                ciphers: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-                earlyHints: Schema.optional(
-                  Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
-                ),
-                http2: Schema.optional(
-                  Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
-                ),
-                minTlsVersion: Schema.optional(
-                  Schema.Union([
-                    Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
-                    Schema.Null,
-                  ]),
-                ),
-                tls_1_3: Schema.optional(
-                  Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  ciphers: "ciphers",
-                  earlyHints: "early_hints",
-                  http2: "http2",
-                  minTlsVersion: "min_tls_version",
-                  tls_1_3: "tls_1_3",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          signature: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          status: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "initializing",
-                "pending_validation",
-                "deleted",
-                "pending_issuance",
-                "pending_deployment",
-                "pending_deletion",
-                "pending_expiration",
-                "expired",
-                "active",
-                "initializing_timed_out",
-                "validation_timed_out",
-                "issuance_timed_out",
-                "deployment_timed_out",
-                "deletion_timed_out",
-                "pending_cleanup",
-                "staging_deployment",
-                "staging_active",
-                "deactivating",
-                "inactive",
-                "backup_issued",
-                "holding_deployment",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("dv"), Schema.Null]),
-          ),
-          uploadedOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          validationErrors: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          validationRecords: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  emails: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                  httpBody: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  httpUrl: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  txtName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  txtValue: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    emails: "emails",
-                    httpBody: "http_body",
-                    httpUrl: "http_url",
-                    txtName: "txt_name",
-                    txtValue: "txt_value",
-                  }),
-                ),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          wildcard: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            bundleMethod: "bundle_method",
-            certificateAuthority: "certificate_authority",
-            customCertificate: "custom_certificate",
-            customCsrId: "custom_csr_id",
-            customKey: "custom_key",
-            expiresOn: "expires_on",
-            hosts: "hosts",
-            issuer: "issuer",
-            method: "method",
-            serialNumber: "serial_number",
-            settings: "settings",
-            signature: "signature",
-            status: "status",
-            type: "type",
-            uploadedOn: "uploaded_on",
-            validationErrors: "validation_errors",
-            validationRecords: "validation_records",
-            wildcard: "wildcard",
-          }),
-        ),
+        ssl: Ssl,
         createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         customMetadata: Schema.optional(
           Schema.Union([
@@ -1185,33 +719,10 @@ export const ListCustomHostnamesResponse =
           Schema.Union([Schema.String, Schema.Null]),
         ),
         ownershipVerification: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              type: Schema.optional(
-                Schema.Union([Schema.Literal("txt"), Schema.Null]),
-              ),
-              value: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
+          Schema.Union([OwnershipVerification, Schema.Null]),
         ),
         ownershipVerificationHttp: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              httpBody: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              httpUrl: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({ httpBody: "http_body", httpUrl: "http_url" }),
-            ),
-            Schema.Null,
-          ]),
+          Schema.Union([OwnershipVerificationHTTP, Schema.Null]),
         ),
         status: Schema.optional(
           Schema.Union([
@@ -1291,81 +802,13 @@ export const listCustomHostnames: API.PaginatedOperationMethod<
     {
       id: string;
       hostname: string;
-      ssl: {
-        id?: string | null;
-        bundleMethod?: "ubiquitous" | "optimal" | "force" | null;
-        certificateAuthority?:
-          | "digicert"
-          | "google"
-          | "lets_encrypt"
-          | "ssl_com"
-          | null;
-        customCertificate?: string | null;
-        customCsrId?: string | null;
-        customKey?: string | null;
-        expiresOn?: string | null;
-        hosts?: string[] | null;
-        issuer?: string | null;
-        method?: "http" | "txt" | "email" | null;
-        serialNumber?: string | null;
-        settings?: {
-          ciphers?: string[] | null;
-          earlyHints?: "on" | "off" | null;
-          http2?: "on" | "off" | null;
-          minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | null;
-          tls_1_3?: "on" | "off" | null;
-        } | null;
-        signature?: string | null;
-        status?:
-          | "initializing"
-          | "pending_validation"
-          | "deleted"
-          | "pending_issuance"
-          | "pending_deployment"
-          | "pending_deletion"
-          | "pending_expiration"
-          | "expired"
-          | "active"
-          | "initializing_timed_out"
-          | "validation_timed_out"
-          | "issuance_timed_out"
-          | "deployment_timed_out"
-          | "deletion_timed_out"
-          | "pending_cleanup"
-          | "staging_deployment"
-          | "staging_active"
-          | "deactivating"
-          | "inactive"
-          | "backup_issued"
-          | "holding_deployment"
-          | null;
-        type?: "dv" | null;
-        uploadedOn?: string | null;
-        validationErrors?: { message?: string | null }[] | null;
-        validationRecords?:
-          | {
-              emails?: string[] | null;
-              httpBody?: string | null;
-              httpUrl?: string | null;
-              txtName?: string | null;
-              txtValue?: string | null;
-            }[]
-          | null;
-        wildcard?: boolean | null;
-      };
+      ssl: Ssl;
       createdAt?: string | null;
       customMetadata?: Record<string, unknown> | null;
       customOriginServer?: string | null;
       customOriginSni?: string | null;
-      ownershipVerification?: {
-        name?: string | null;
-        type?: "txt" | null;
-        value?: string | null;
-      } | null;
-      ownershipVerificationHttp?: {
-        httpBody?: string | null;
-        httpUrl?: string | null;
-      } | null;
+      ownershipVerification?: OwnershipVerification | null;
+      ownershipVerificationHttp?: OwnershipVerificationHTTP | null;
       status?:
         | "active"
         | "pending"
@@ -1414,17 +857,11 @@ export interface CreateCustomHostnameRequest {
     bundleMethod?: "ubiquitous" | "optimal" | "force";
     certificateAuthority?: "digicert" | "google" | "lets_encrypt" | "ssl_com";
     cloudflareBranding?: boolean;
-    customCertBundle?: { customCertificate: string; customKey: string }[];
+    customCertBundle?: CustomCERTBundle[];
     customCertificate?: string;
     customKey?: string;
     method?: "http" | "txt" | "email";
-    settings?: {
-      ciphers?: string[];
-      earlyHints?: "on" | "off";
-      http2?: "on" | "off";
-      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3";
-      tls_1_3?: "on" | "off";
-    };
+    settings?: Settings;
     type?: "dv";
     wildcard?: boolean;
   };
@@ -1446,41 +883,11 @@ export const CreateCustomHostnameRequest =
           Schema.Literals(["digicert", "google", "lets_encrypt", "ssl_com"]),
         ),
         cloudflareBranding: Schema.optional(Schema.Boolean),
-        customCertBundle: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              customCertificate: Schema.String,
-              customKey: Schema.String,
-            }).pipe(
-              Schema.encodeKeys({
-                customCertificate: "custom_certificate",
-                customKey: "custom_key",
-              }),
-            ),
-          ),
-        ),
+        customCertBundle: Schema.optional(Schema.Array(CustomCERTBundle)),
         customCertificate: Schema.optional(Schema.String),
         customKey: Schema.optional(Schema.String),
         method: Schema.optional(Schema.Literals(["http", "txt", "email"])),
-        settings: Schema.optional(
-          Schema.Struct({
-            ciphers: Schema.optional(Schema.Array(Schema.String)),
-            earlyHints: Schema.optional(Schema.Literals(["on", "off"])),
-            http2: Schema.optional(Schema.Literals(["on", "off"])),
-            minTlsVersion: Schema.optional(
-              Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
-            ),
-            tls_1_3: Schema.optional(Schema.Literals(["on", "off"])),
-          }).pipe(
-            Schema.encodeKeys({
-              ciphers: "ciphers",
-              earlyHints: "early_hints",
-              http2: "http2",
-              minTlsVersion: "min_tls_version",
-              tls_1_3: "tls_1_3",
-            }),
-          ),
-        ),
+        settings: Schema.optional(Settings),
         type: Schema.optional(Schema.Literal("dv")),
         wildcard: Schema.optional(Schema.Boolean),
       }).pipe(
@@ -1512,68 +919,7 @@ export interface CreateCustomHostnameResponse {
   id: string;
   /** The custom hostname that will point to your hostname via CNAME. */
   hostname: string;
-  ssl: {
-    id?: string | null;
-    bundleMethod?: "ubiquitous" | "optimal" | "force" | null;
-    certificateAuthority?:
-      | "digicert"
-      | "google"
-      | "lets_encrypt"
-      | "ssl_com"
-      | null;
-    customCertificate?: string | null;
-    customCsrId?: string | null;
-    customKey?: string | null;
-    expiresOn?: string | null;
-    hosts?: string[] | null;
-    issuer?: string | null;
-    method?: "http" | "txt" | "email" | null;
-    serialNumber?: string | null;
-    settings?: {
-      ciphers?: string[] | null;
-      earlyHints?: "on" | "off" | null;
-      http2?: "on" | "off" | null;
-      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | null;
-      tls_1_3?: "on" | "off" | null;
-    } | null;
-    signature?: string | null;
-    status?:
-      | "initializing"
-      | "pending_validation"
-      | "deleted"
-      | "pending_issuance"
-      | "pending_deployment"
-      | "pending_deletion"
-      | "pending_expiration"
-      | "expired"
-      | "active"
-      | "initializing_timed_out"
-      | "validation_timed_out"
-      | "issuance_timed_out"
-      | "deployment_timed_out"
-      | "deletion_timed_out"
-      | "pending_cleanup"
-      | "staging_deployment"
-      | "staging_active"
-      | "deactivating"
-      | "inactive"
-      | "backup_issued"
-      | "holding_deployment"
-      | null;
-    type?: "dv" | null;
-    uploadedOn?: string | null;
-    validationErrors?: { message?: string | null }[] | null;
-    validationRecords?:
-      | {
-          emails?: string[] | null;
-          httpBody?: string | null;
-          httpUrl?: string | null;
-          txtName?: string | null;
-          txtValue?: string | null;
-        }[]
-      | null;
-    wildcard?: boolean | null;
-  };
+  ssl: Ssl;
   /** This is the time the hostname was created. */
   createdAt?: string | null;
   /** Unique key/value metadata for this hostname. These are per-hostname (customer) settings. */
@@ -1583,16 +929,9 @@ export interface CreateCustomHostnameResponse {
   /** A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request_host_header:' which w */
   customOriginSni?: string | null;
   /** This is a record which can be placed to activate a hostname. */
-  ownershipVerification?: {
-    name?: string | null;
-    type?: "txt" | null;
-    value?: string | null;
-  } | null;
+  ownershipVerification?: OwnershipVerification | null;
   /** This presents the token to be served by the given http url to activate a hostname. */
-  ownershipVerificationHttp?: {
-    httpBody?: string | null;
-    httpUrl?: string | null;
-  } | null;
+  ownershipVerificationHttp?: OwnershipVerificationHTTP | null;
   /** Status of the hostname's activation. */
   status?:
     | "active"
@@ -1620,166 +959,7 @@ export const CreateCustomHostnameResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     hostname: Schema.String,
-    ssl: Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      bundleMethod: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["ubiquitous", "optimal", "force"]),
-          Schema.Null,
-        ]),
-      ),
-      certificateAuthority: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["digicert", "google", "lets_encrypt", "ssl_com"]),
-          Schema.Null,
-        ]),
-      ),
-      customCertificate: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      customCsrId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      customKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      hosts: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      method: Schema.optional(
-        Schema.Union([Schema.Literals(["http", "txt", "email"]), Schema.Null]),
-      ),
-      serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      settings: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            ciphers: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            earlyHints: Schema.optional(
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
-            ),
-            http2: Schema.optional(
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
-            ),
-            minTlsVersion: Schema.optional(
-              Schema.Union([
-                Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
-                Schema.Null,
-              ]),
-            ),
-            tls_1_3: Schema.optional(
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              ciphers: "ciphers",
-              earlyHints: "early_hints",
-              http2: "http2",
-              minTlsVersion: "min_tls_version",
-              tls_1_3: "tls_1_3",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "initializing",
-            "pending_validation",
-            "deleted",
-            "pending_issuance",
-            "pending_deployment",
-            "pending_deletion",
-            "pending_expiration",
-            "expired",
-            "active",
-            "initializing_timed_out",
-            "validation_timed_out",
-            "issuance_timed_out",
-            "deployment_timed_out",
-            "deletion_timed_out",
-            "pending_cleanup",
-            "staging_deployment",
-            "staging_active",
-            "deactivating",
-            "inactive",
-            "backup_issued",
-            "holding_deployment",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      type: Schema.optional(Schema.Union([Schema.Literal("dv"), Schema.Null])),
-      uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      validationErrors: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              message: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      validationRecords: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              emails: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              httpBody: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              httpUrl: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              txtName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              txtValue: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                emails: "emails",
-                httpBody: "http_body",
-                httpUrl: "http_url",
-                txtName: "txt_name",
-                txtValue: "txt_value",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      wildcard: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        bundleMethod: "bundle_method",
-        certificateAuthority: "certificate_authority",
-        customCertificate: "custom_certificate",
-        customCsrId: "custom_csr_id",
-        customKey: "custom_key",
-        expiresOn: "expires_on",
-        hosts: "hosts",
-        issuer: "issuer",
-        method: "method",
-        serialNumber: "serial_number",
-        settings: "settings",
-        signature: "signature",
-        status: "status",
-        type: "type",
-        uploadedOn: "uploaded_on",
-        validationErrors: "validation_errors",
-        validationRecords: "validation_records",
-        wildcard: "wildcard",
-      }),
-    ),
+    ssl: Ssl,
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     customMetadata: Schema.optional(
       Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
@@ -1791,27 +971,10 @@ export const CreateCustomHostnameResponse =
       Schema.Union([Schema.String, Schema.Null]),
     ),
     ownershipVerification: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("txt"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
+      Schema.Union([OwnershipVerification, Schema.Null]),
     ),
     ownershipVerificationHttp: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          httpBody: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          httpUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({ httpBody: "http_body", httpUrl: "http_url" }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([OwnershipVerificationHTTP, Schema.Null]),
     ),
     status: Schema.optional(
       Schema.Union([
@@ -1887,17 +1050,11 @@ export interface PatchCustomHostnameRequest {
     bundleMethod?: "ubiquitous" | "optimal" | "force";
     certificateAuthority?: "digicert" | "google" | "lets_encrypt" | "ssl_com";
     cloudflareBranding?: boolean;
-    customCertBundle?: { customCertificate: string; customKey: string }[];
+    customCertBundle?: CustomCERTBundle[];
     customCertificate?: string;
     customKey?: string;
     method?: "http" | "txt" | "email";
-    settings?: {
-      ciphers?: string[];
-      earlyHints?: "on" | "off";
-      http2?: "on" | "off";
-      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3";
-      tls_1_3?: "on" | "off";
-    };
+    settings?: Settings;
     type?: "dv";
     wildcard?: boolean;
   };
@@ -1921,41 +1078,11 @@ export const PatchCustomHostnameRequest =
           Schema.Literals(["digicert", "google", "lets_encrypt", "ssl_com"]),
         ),
         cloudflareBranding: Schema.optional(Schema.Boolean),
-        customCertBundle: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              customCertificate: Schema.String,
-              customKey: Schema.String,
-            }).pipe(
-              Schema.encodeKeys({
-                customCertificate: "custom_certificate",
-                customKey: "custom_key",
-              }),
-            ),
-          ),
-        ),
+        customCertBundle: Schema.optional(Schema.Array(CustomCERTBundle)),
         customCertificate: Schema.optional(Schema.String),
         customKey: Schema.optional(Schema.String),
         method: Schema.optional(Schema.Literals(["http", "txt", "email"])),
-        settings: Schema.optional(
-          Schema.Struct({
-            ciphers: Schema.optional(Schema.Array(Schema.String)),
-            earlyHints: Schema.optional(Schema.Literals(["on", "off"])),
-            http2: Schema.optional(Schema.Literals(["on", "off"])),
-            minTlsVersion: Schema.optional(
-              Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
-            ),
-            tls_1_3: Schema.optional(Schema.Literals(["on", "off"])),
-          }).pipe(
-            Schema.encodeKeys({
-              ciphers: "ciphers",
-              earlyHints: "early_hints",
-              http2: "http2",
-              minTlsVersion: "min_tls_version",
-              tls_1_3: "tls_1_3",
-            }),
-          ),
-        ),
+        settings: Schema.optional(Settings),
         type: Schema.optional(Schema.Literal("dv")),
         wildcard: Schema.optional(Schema.Boolean),
       }).pipe(
@@ -1991,68 +1118,7 @@ export interface PatchCustomHostnameResponse {
   id: string;
   /** The custom hostname that will point to your hostname via CNAME. */
   hostname: string;
-  ssl: {
-    id?: string | null;
-    bundleMethod?: "ubiquitous" | "optimal" | "force" | null;
-    certificateAuthority?:
-      | "digicert"
-      | "google"
-      | "lets_encrypt"
-      | "ssl_com"
-      | null;
-    customCertificate?: string | null;
-    customCsrId?: string | null;
-    customKey?: string | null;
-    expiresOn?: string | null;
-    hosts?: string[] | null;
-    issuer?: string | null;
-    method?: "http" | "txt" | "email" | null;
-    serialNumber?: string | null;
-    settings?: {
-      ciphers?: string[] | null;
-      earlyHints?: "on" | "off" | null;
-      http2?: "on" | "off" | null;
-      minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | null;
-      tls_1_3?: "on" | "off" | null;
-    } | null;
-    signature?: string | null;
-    status?:
-      | "initializing"
-      | "pending_validation"
-      | "deleted"
-      | "pending_issuance"
-      | "pending_deployment"
-      | "pending_deletion"
-      | "pending_expiration"
-      | "expired"
-      | "active"
-      | "initializing_timed_out"
-      | "validation_timed_out"
-      | "issuance_timed_out"
-      | "deployment_timed_out"
-      | "deletion_timed_out"
-      | "pending_cleanup"
-      | "staging_deployment"
-      | "staging_active"
-      | "deactivating"
-      | "inactive"
-      | "backup_issued"
-      | "holding_deployment"
-      | null;
-    type?: "dv" | null;
-    uploadedOn?: string | null;
-    validationErrors?: { message?: string | null }[] | null;
-    validationRecords?:
-      | {
-          emails?: string[] | null;
-          httpBody?: string | null;
-          httpUrl?: string | null;
-          txtName?: string | null;
-          txtValue?: string | null;
-        }[]
-      | null;
-    wildcard?: boolean | null;
-  };
+  ssl: Ssl;
   /** This is the time the hostname was created. */
   createdAt?: string | null;
   /** Unique key/value metadata for this hostname. These are per-hostname (customer) settings. */
@@ -2062,16 +1128,9 @@ export interface PatchCustomHostnameResponse {
   /** A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request_host_header:' which w */
   customOriginSni?: string | null;
   /** This is a record which can be placed to activate a hostname. */
-  ownershipVerification?: {
-    name?: string | null;
-    type?: "txt" | null;
-    value?: string | null;
-  } | null;
+  ownershipVerification?: OwnershipVerification | null;
   /** This presents the token to be served by the given http url to activate a hostname. */
-  ownershipVerificationHttp?: {
-    httpBody?: string | null;
-    httpUrl?: string | null;
-  } | null;
+  ownershipVerificationHttp?: OwnershipVerificationHTTP | null;
   /** Status of the hostname's activation. */
   status?:
     | "active"
@@ -2099,166 +1158,7 @@ export const PatchCustomHostnameResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     hostname: Schema.String,
-    ssl: Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      bundleMethod: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["ubiquitous", "optimal", "force"]),
-          Schema.Null,
-        ]),
-      ),
-      certificateAuthority: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["digicert", "google", "lets_encrypt", "ssl_com"]),
-          Schema.Null,
-        ]),
-      ),
-      customCertificate: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      customCsrId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      customKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      hosts: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      method: Schema.optional(
-        Schema.Union([Schema.Literals(["http", "txt", "email"]), Schema.Null]),
-      ),
-      serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      settings: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            ciphers: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            earlyHints: Schema.optional(
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
-            ),
-            http2: Schema.optional(
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
-            ),
-            minTlsVersion: Schema.optional(
-              Schema.Union([
-                Schema.Literals(["1.0", "1.1", "1.2", "1.3"]),
-                Schema.Null,
-              ]),
-            ),
-            tls_1_3: Schema.optional(
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              ciphers: "ciphers",
-              earlyHints: "early_hints",
-              http2: "http2",
-              minTlsVersion: "min_tls_version",
-              tls_1_3: "tls_1_3",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "initializing",
-            "pending_validation",
-            "deleted",
-            "pending_issuance",
-            "pending_deployment",
-            "pending_deletion",
-            "pending_expiration",
-            "expired",
-            "active",
-            "initializing_timed_out",
-            "validation_timed_out",
-            "issuance_timed_out",
-            "deployment_timed_out",
-            "deletion_timed_out",
-            "pending_cleanup",
-            "staging_deployment",
-            "staging_active",
-            "deactivating",
-            "inactive",
-            "backup_issued",
-            "holding_deployment",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      type: Schema.optional(Schema.Union([Schema.Literal("dv"), Schema.Null])),
-      uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      validationErrors: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              message: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      validationRecords: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              emails: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              httpBody: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              httpUrl: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              txtName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              txtValue: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                emails: "emails",
-                httpBody: "http_body",
-                httpUrl: "http_url",
-                txtName: "txt_name",
-                txtValue: "txt_value",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      wildcard: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        bundleMethod: "bundle_method",
-        certificateAuthority: "certificate_authority",
-        customCertificate: "custom_certificate",
-        customCsrId: "custom_csr_id",
-        customKey: "custom_key",
-        expiresOn: "expires_on",
-        hosts: "hosts",
-        issuer: "issuer",
-        method: "method",
-        serialNumber: "serial_number",
-        settings: "settings",
-        signature: "signature",
-        status: "status",
-        type: "type",
-        uploadedOn: "uploaded_on",
-        validationErrors: "validation_errors",
-        validationRecords: "validation_records",
-        wildcard: "wildcard",
-      }),
-    ),
+    ssl: Ssl,
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     customMetadata: Schema.optional(
       Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
@@ -2270,27 +1170,10 @@ export const PatchCustomHostnameResponse =
       Schema.Union([Schema.String, Schema.Null]),
     ),
     ownershipVerification: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("txt"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
+      Schema.Union([OwnershipVerification, Schema.Null]),
     ),
     ownershipVerificationHttp: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          httpBody: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          httpUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({ httpBody: "http_body", httpUrl: "http_url" }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([OwnershipVerificationHTTP, Schema.Null]),
     ),
     status: Schema.optional(
       Schema.Union([

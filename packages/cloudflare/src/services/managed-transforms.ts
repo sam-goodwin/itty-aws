@@ -13,6 +13,62 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface ManagedRequestHeader {
+  id: string;
+  enabled: boolean;
+  hasConflict: boolean;
+  conflictsWith?: string[] | null;
+}
+
+export const ManagedRequestHeader: Schema.Schema<ManagedRequestHeader> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      enabled: Schema.Boolean,
+      hasConflict: Schema.Boolean,
+      conflictsWith: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        enabled: "enabled",
+        hasConflict: "has_conflict",
+        conflictsWith: "conflicts_with",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ManagedRequestHeader>;
+
+export interface ManagedResponseHeader {
+  id: string;
+  enabled: boolean;
+  hasConflict: boolean;
+  conflictsWith?: string[] | null;
+}
+
+export const ManagedResponseHeader: Schema.Schema<ManagedResponseHeader> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      enabled: Schema.Boolean,
+      hasConflict: Schema.Boolean,
+      conflictsWith: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        enabled: "enabled",
+        hasConflict: "has_conflict",
+        conflictsWith: "conflicts_with",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ManagedResponseHeader>;
+
+// =============================================================================
 // ManagedTransform
 // =============================================================================
 
@@ -30,57 +86,15 @@ export const ListManagedTransformsRequest =
 
 export interface ListManagedTransformsResponse {
   /** The list of Managed Request Transforms. */
-  managedRequestHeaders: {
-    id: string;
-    enabled: boolean;
-    hasConflict: boolean;
-    conflictsWith?: string[] | null;
-  }[];
+  managedRequestHeaders: ManagedResponseHeader[];
   /** The list of Managed Response Transforms. */
-  managedResponseHeaders: {
-    id: string;
-    enabled: boolean;
-    hasConflict: boolean;
-    conflictsWith?: string[] | null;
-  }[];
+  managedResponseHeaders: ManagedResponseHeader[];
 }
 
 export const ListManagedTransformsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedRequestHeaders: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        enabled: Schema.Boolean,
-        hasConflict: Schema.Boolean,
-        conflictsWith: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          enabled: "enabled",
-          hasConflict: "has_conflict",
-          conflictsWith: "conflicts_with",
-        }),
-      ),
-    ),
-    managedResponseHeaders: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        enabled: Schema.Boolean,
-        hasConflict: Schema.Boolean,
-        conflictsWith: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          enabled: "enabled",
-          hasConflict: "has_conflict",
-          conflictsWith: "conflicts_with",
-        }),
-      ),
-    ),
+    managedRequestHeaders: Schema.Array(ManagedResponseHeader),
+    managedResponseHeaders: Schema.Array(ManagedResponseHeader),
   })
     .pipe(
       Schema.encodeKeys({
@@ -139,57 +153,15 @@ export const PatchManagedTransformRequest =
 
 export interface PatchManagedTransformResponse {
   /** The list of Managed Request Transforms. */
-  managedRequestHeaders: {
-    id: string;
-    enabled: boolean;
-    hasConflict: boolean;
-    conflictsWith?: string[] | null;
-  }[];
+  managedRequestHeaders: ManagedResponseHeader[];
   /** The list of Managed Response Transforms. */
-  managedResponseHeaders: {
-    id: string;
-    enabled: boolean;
-    hasConflict: boolean;
-    conflictsWith?: string[] | null;
-  }[];
+  managedResponseHeaders: ManagedResponseHeader[];
 }
 
 export const PatchManagedTransformResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    managedRequestHeaders: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        enabled: Schema.Boolean,
-        hasConflict: Schema.Boolean,
-        conflictsWith: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          enabled: "enabled",
-          hasConflict: "has_conflict",
-          conflictsWith: "conflicts_with",
-        }),
-      ),
-    ),
-    managedResponseHeaders: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        enabled: Schema.Boolean,
-        hasConflict: Schema.Boolean,
-        conflictsWith: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          enabled: "enabled",
-          hasConflict: "has_conflict",
-          conflictsWith: "conflicts_with",
-        }),
-      ),
-    ),
+    managedRequestHeaders: Schema.Array(ManagedResponseHeader),
+    managedResponseHeaders: Schema.Array(ManagedResponseHeader),
   })
     .pipe(
       Schema.encodeKeys({

@@ -14,6 +14,122 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface AttackMitigation {
+  enabled?: boolean | null;
+  onlyWhenUpstreamUnhealthy?: boolean | null;
+}
+
+export const AttackMitigation: Schema.Schema<AttackMitigation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      onlyWhenUpstreamUnhealthy: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        enabled: "enabled",
+        onlyWhenUpstreamUnhealthy: "only_when_upstream_unhealthy",
+      }),
+    ),
+  ) as unknown as Schema.Schema<AttackMitigation>;
+
+export interface AttackMitigationParam {
+  enabled?: boolean | null;
+  onlyWhenUpstreamUnhealthy?: boolean | null;
+}
+
+export const AttackMitigationParam: Schema.Schema<AttackMitigationParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      onlyWhenUpstreamUnhealthy: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        enabled: "enabled",
+        onlyWhenUpstreamUnhealthy: "only_when_upstream_unhealthy",
+      }),
+    ),
+  ) as unknown as Schema.Schema<AttackMitigationParam>;
+
+export interface Data {
+  dimensions: string[];
+  metrics: number[][];
+}
+
+export const Data: Schema.Schema<Data> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      dimensions: Schema.Array(Schema.String),
+      metrics: Schema.Array(Schema.Array(Schema.Number)),
+    }),
+  ) as unknown as Schema.Schema<Data>;
+
+export interface Query {
+  dimensions: string[];
+  limit: number;
+  metrics: string[];
+  since: string;
+  timeDelta:
+    | "all"
+    | "auto"
+    | "year"
+    | "quarter"
+    | "month"
+    | "week"
+    | "day"
+    | "hour"
+    | "dekaminute"
+    | "minute";
+  until: string;
+  filters?: string | null;
+  sort?: string[] | null;
+}
+
+export const Query: Schema.Schema<Query> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      dimensions: Schema.Array(Schema.String),
+      limit: Schema.Number,
+      metrics: Schema.Array(Schema.String),
+      since: Schema.String,
+      timeDelta: Schema.Literals([
+        "all",
+        "auto",
+        "year",
+        "quarter",
+        "month",
+        "week",
+        "day",
+        "hour",
+        "dekaminute",
+        "minute",
+      ]),
+      until: Schema.String,
+      filters: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      sort: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        dimensions: "dimensions",
+        limit: "limit",
+        metrics: "metrics",
+        since: "since",
+        timeDelta: "time_delta",
+        until: "until",
+        filters: "filters",
+        sort: "sort",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Query>;
+
+// =============================================================================
 // AnalyticReport
 // =============================================================================
 
@@ -202,33 +318,14 @@ export const GetAnalyticReportBytimeRequest =
 
 export interface GetAnalyticReportBytimeResponse {
   /** Array with one row per combination of dimension values. */
-  data: { dimensions: string[]; metrics: number[][] }[];
+  data: Data[];
   /** Number of seconds between current time and last processed event, in another words how many seconds of data could be missing. */
   dataLag: number;
   /** Maximum results for each metric (object mapping metric names to values). Currently always an empty object. */
   max: unknown;
   /** Minimum results for each metric (object mapping metric names to values). Currently always an empty object. */
   min: unknown;
-  query: {
-    dimensions: string[];
-    limit: number;
-    metrics: string[];
-    since: string;
-    timeDelta:
-      | "all"
-      | "auto"
-      | "year"
-      | "quarter"
-      | "month"
-      | "week"
-      | "day"
-      | "hour"
-      | "dekaminute"
-      | "minute";
-    until: string;
-    filters?: string | null;
-    sort?: string[] | null;
-  };
+  query: Query;
   /** Total number of rows in the result. */
   rows: number;
   /** Array of time intervals in the response data. Each interval is represented as an array containing two values: the start time, and the end time. */
@@ -239,49 +336,11 @@ export interface GetAnalyticReportBytimeResponse {
 
 export const GetAnalyticReportBytimeResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        dimensions: Schema.Array(Schema.String),
-        metrics: Schema.Array(Schema.Array(Schema.Number)),
-      }),
-    ),
+    data: Schema.Array(Data),
     dataLag: Schema.Number,
     max: Schema.Unknown,
     min: Schema.Unknown,
-    query: Schema.Struct({
-      dimensions: Schema.Array(Schema.String),
-      limit: Schema.Number,
-      metrics: Schema.Array(Schema.String),
-      since: Schema.String,
-      timeDelta: Schema.Literals([
-        "all",
-        "auto",
-        "year",
-        "quarter",
-        "month",
-        "week",
-        "day",
-        "hour",
-        "dekaminute",
-        "minute",
-      ]),
-      until: Schema.String,
-      filters: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sort: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        dimensions: "dimensions",
-        limit: "limit",
-        metrics: "metrics",
-        since: "since",
-        timeDelta: "time_delta",
-        until: "until",
-        filters: "filters",
-        sort: "sort",
-      }),
-    ),
+    query: Query,
     rows: Schema.Number,
     timeIntervals: Schema.Array(Schema.Array(Schema.String)),
     totals: Schema.Unknown,
@@ -359,10 +418,7 @@ export interface GetDnsFirewallResponse {
   retries: number;
   upstreamIps: string[];
   /** Attack mitigation settings */
-  attackMitigation?: {
-    enabled?: boolean | null;
-    onlyWhenUpstreamUnhealthy?: boolean | null;
-  } | null;
+  attackMitigation?: AttackMitigation | null;
 }
 
 export const GetDnsFirewallResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -380,20 +436,7 @@ export const GetDnsFirewallResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     retries: Schema.Number,
     upstreamIps: Schema.Array(Schema.String),
     attackMitigation: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          onlyWhenUpstreamUnhealthy: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            enabled: "enabled",
-            onlyWhenUpstreamUnhealthy: "only_when_upstream_unhealthy",
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([AttackMitigation, Schema.Null]),
     ),
   },
 )
@@ -457,10 +500,7 @@ export interface ListDnsFirewallsResponse {
     ratelimit: number | null;
     retries: number;
     upstreamIps: string[];
-    attackMitigation?: {
-      enabled?: boolean | null;
-      onlyWhenUpstreamUnhealthy?: boolean | null;
-    } | null;
+    attackMitigation?: AttackMitigation | null;
   }[];
   resultInfo: {
     count?: number | null;
@@ -487,22 +527,7 @@ export const ListDnsFirewallsResponse =
         retries: Schema.Number,
         upstreamIps: Schema.Array(Schema.String),
         attackMitigation: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              enabled: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              onlyWhenUpstreamUnhealthy: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                enabled: "enabled",
-                onlyWhenUpstreamUnhealthy: "only_when_upstream_unhealthy",
-              }),
-            ),
-            Schema.Null,
-          ]),
+          Schema.Union([AttackMitigation, Schema.Null]),
         ),
       }).pipe(
         Schema.encodeKeys({
@@ -568,10 +593,7 @@ export const listDnsFirewalls: API.PaginatedOperationMethod<
       ratelimit: number | null;
       retries: number;
       upstreamIps: string[];
-      attackMitigation?: {
-        enabled?: boolean | null;
-        onlyWhenUpstreamUnhealthy?: boolean | null;
-      } | null;
+      attackMitigation?: AttackMitigation | null;
     },
     ListDnsFirewallsError,
     Credentials | HttpClient.HttpClient
@@ -597,10 +619,7 @@ export interface CreateDnsFirewallRequest {
   /** Body param: */
   upstreamIps: string[];
   /** Body param: Attack mitigation settings */
-  attackMitigation?: {
-    enabled?: boolean;
-    onlyWhenUpstreamUnhealthy?: boolean;
-  } | null;
+  attackMitigation?: AttackMitigation | null;
   /** Body param: Whether to refuse to answer queries for the ANY type */
   deprecateAnyRequests?: boolean;
   /** Body param: Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
@@ -623,18 +642,7 @@ export const CreateDnsFirewallRequest =
     name: Schema.String,
     upstreamIps: Schema.Array(Schema.String),
     attackMitigation: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          enabled: Schema.optional(Schema.Boolean),
-          onlyWhenUpstreamUnhealthy: Schema.optional(Schema.Boolean),
-        }).pipe(
-          Schema.encodeKeys({
-            enabled: "enabled",
-            onlyWhenUpstreamUnhealthy: "only_when_upstream_unhealthy",
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([AttackMitigation, Schema.Null]),
     ),
     deprecateAnyRequests: Schema.optional(Schema.Boolean),
     ecsFallback: Schema.optional(Schema.Boolean),
@@ -685,10 +693,7 @@ export interface CreateDnsFirewallResponse {
   retries: number;
   upstreamIps: string[];
   /** Attack mitigation settings */
-  attackMitigation?: {
-    enabled?: boolean | null;
-    onlyWhenUpstreamUnhealthy?: boolean | null;
-  } | null;
+  attackMitigation?: AttackMitigation | null;
 }
 
 export const CreateDnsFirewallResponse =
@@ -706,20 +711,7 @@ export const CreateDnsFirewallResponse =
     retries: Schema.Number,
     upstreamIps: Schema.Array(Schema.String),
     attackMitigation: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          onlyWhenUpstreamUnhealthy: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            enabled: "enabled",
-            onlyWhenUpstreamUnhealthy: "only_when_upstream_unhealthy",
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([AttackMitigation, Schema.Null]),
     ),
   })
     .pipe(
@@ -761,10 +753,7 @@ export interface PatchDnsFirewallRequest {
   /** Path param: Identifier. */
   accountId: string;
   /** Body param: Attack mitigation settings */
-  attackMitigation?: {
-    enabled?: boolean;
-    onlyWhenUpstreamUnhealthy?: boolean;
-  } | null;
+  attackMitigation?: AttackMitigation | null;
   /** Body param: Whether to refuse to answer queries for the ANY type */
   deprecateAnyRequests?: boolean;
   /** Body param: Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
@@ -790,18 +779,7 @@ export const PatchDnsFirewallRequest =
     dnsFirewallId: Schema.String.pipe(T.HttpPath("dnsFirewallId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     attackMitigation: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          enabled: Schema.optional(Schema.Boolean),
-          onlyWhenUpstreamUnhealthy: Schema.optional(Schema.Boolean),
-        }).pipe(
-          Schema.encodeKeys({
-            enabled: "enabled",
-            onlyWhenUpstreamUnhealthy: "only_when_upstream_unhealthy",
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([AttackMitigation, Schema.Null]),
     ),
     deprecateAnyRequests: Schema.optional(Schema.Boolean),
     ecsFallback: Schema.optional(Schema.Boolean),
@@ -857,10 +835,7 @@ export interface PatchDnsFirewallResponse {
   retries: number;
   upstreamIps: string[];
   /** Attack mitigation settings */
-  attackMitigation?: {
-    enabled?: boolean | null;
-    onlyWhenUpstreamUnhealthy?: boolean | null;
-  } | null;
+  attackMitigation?: AttackMitigation | null;
 }
 
 export const PatchDnsFirewallResponse =
@@ -878,20 +853,7 @@ export const PatchDnsFirewallResponse =
     retries: Schema.Number,
     upstreamIps: Schema.Array(Schema.String),
     attackMitigation: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          onlyWhenUpstreamUnhealthy: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            enabled: "enabled",
-            onlyWhenUpstreamUnhealthy: "only_when_upstream_unhealthy",
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([AttackMitigation, Schema.Null]),
     ),
   })
     .pipe(

@@ -14,6 +14,162 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Caption {
+  generated?: boolean | null;
+  label?: string | null;
+  language?: string | null;
+  status?: "ready" | "inprogress" | "error" | null;
+}
+
+export const Caption: Schema.Schema<Caption> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      generated: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      language: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["ready", "inprogress", "error"]),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Caption>;
+
+export interface Input {
+  height?: number | null;
+  width?: number | null;
+}
+
+export const Input: Schema.Schema<Input> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Input>;
+
+export interface Playback {
+  dash?: string | null;
+  hls?: string | null;
+}
+
+export const Playback: Schema.Schema<Playback> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      dash: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      hls: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Playback>;
+
+export interface Recording {
+  allowedOrigins?: string[] | null;
+  hideLiveViewerCount?: boolean | null;
+  mode?: "off" | "automatic" | null;
+  requireSignedURLs?: boolean | null;
+  timeoutSeconds?: number | null;
+}
+
+export const Recording: Schema.Schema<Recording> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      allowedOrigins: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      hideLiveViewerCount: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      mode: Schema.optional(
+        Schema.Union([Schema.Literals(["off", "automatic"]), Schema.Null]),
+      ),
+      requireSignedURLs: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      timeoutSeconds: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Recording>;
+
+export interface Status {
+  errorReasonCode?: string | null;
+  errorReasonText?: string | null;
+  pctComplete?: string | null;
+  state?:
+    | "pendingupload"
+    | "downloading"
+    | "queued"
+    | "inprogress"
+    | "ready"
+    | "error"
+    | "live-inprogress"
+    | null;
+}
+
+export const Status: Schema.Schema<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errorReasonCode: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      errorReasonText: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      pctComplete: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      state: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "pendingupload",
+            "downloading",
+            "queued",
+            "inprogress",
+            "ready",
+            "error",
+            "live-inprogress",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Status>;
+
+export interface Watermark {
+  created?: string | null;
+  downloadedFrom?: string | null;
+  height?: number | null;
+  name?: string | null;
+  opacity?: number | null;
+  padding?: number | null;
+  position?: string | null;
+  scale?: number | null;
+  size?: number | null;
+  uid?: string | null;
+  width?: number | null;
+}
+
+export const Watermark: Schema.Schema<Watermark> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      downloadedFrom: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      opacity: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      padding: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      position: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      scale: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Watermark>;
+
+// =============================================================================
 // AudioTrack
 // =============================================================================
 
@@ -664,7 +820,7 @@ export interface CreateClipResponse {
   meta?: unknown | null;
   /** The date and time the live input was last modified. */
   modified?: string | null;
-  playback?: { dash?: string | null; hls?: string | null } | null;
+  playback?: Playback | null;
   /** The video's preview page URI. This field is omitted until encoding is complete. */
   preview?: string | null;
   /** Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video. */
@@ -701,15 +857,7 @@ export const CreateClipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   meta: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
   modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  playback: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        dash: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        hls: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  playback: Schema.optional(Schema.Union([Playback, Schema.Null])),
   preview: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   requireSignedURLs: Schema.optional(
     Schema.Union([Schema.Boolean, Schema.Null]),
@@ -814,7 +962,7 @@ export interface CreateCopyResponse {
   creator?: string | null;
   /** The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready. */
   duration?: number | null;
-  input?: { height?: number | null; width?: number | null } | null;
+  input?: Input | null;
   /** The live input ID used to upload a video with Stream Live. */
   liveInput?: string | null;
   /** The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A val */
@@ -823,7 +971,7 @@ export interface CreateCopyResponse {
   meta?: unknown | null;
   /** The date and time the media item was last modified. */
   modified?: string | null;
-  playback?: { dash?: string | null; hls?: string | null } | null;
+  playback?: Playback | null;
   /** The video's preview page URI. This field is omitted until encoding is complete. */
   preview?: string | null;
   /** Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress. */
@@ -837,20 +985,7 @@ export interface CreateCopyResponse {
   /** The size of the media item in bytes. */
   size?: number | null;
   /** Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number be */
-  status?: {
-    errorReasonCode?: string | null;
-    errorReasonText?: string | null;
-    pctComplete?: string | null;
-    state?:
-      | "pendingupload"
-      | "downloading"
-      | "queued"
-      | "inprogress"
-      | "ready"
-      | "error"
-      | "live-inprogress"
-      | null;
-  } | null;
+  status?: Status | null;
   /** The media item's thumbnail URI. This field is omitted until encoding is complete. */
   thumbnail?: string | null;
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duratio */
@@ -861,19 +996,7 @@ export interface CreateCopyResponse {
   uploaded?: string | null;
   /** The date and time when the video upload URL is no longer valid for direct user uploads. */
   uploadExpiry?: string | null;
-  watermark?: {
-    created?: string | null;
-    downloadedFrom?: string | null;
-    height?: number | null;
-    name?: string | null;
-    opacity?: number | null;
-    padding?: number | null;
-    position?: string | null;
-    scale?: number | null;
-    size?: number | null;
-    uid?: string | null;
-    width?: number | null;
-  } | null;
+  watermark?: Watermark | null;
 }
 
 export const CreateCopyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -883,30 +1006,14 @@ export const CreateCopyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   duration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  input: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  input: Schema.optional(Schema.Union([Input, Schema.Null])),
   liveInput: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   maxDurationSeconds: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
   ),
   meta: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
   modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  playback: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        dash: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        hls: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  playback: Schema.optional(Schema.Union([Playback, Schema.Null])),
   preview: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   readyToStream: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   readyToStreamAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -917,36 +1024,7 @@ export const CreateCopyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([Schema.String, Schema.Null]),
   ),
   size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  status: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        errorReasonCode: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        errorReasonText: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        pctComplete: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        state: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "pendingupload",
-              "downloading",
-              "queued",
-              "inprogress",
-              "ready",
-              "error",
-              "live-inprogress",
-            ]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  status: Schema.optional(Schema.Union([Status, Schema.Null])),
   thumbnail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   thumbnailTimestampPct: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
@@ -954,26 +1032,7 @@ export const CreateCopyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   uploaded: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   uploadExpiry: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  watermark: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        downloadedFrom: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        opacity: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        padding: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        position: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        scale: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  watermark: Schema.optional(Schema.Union([Watermark, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<CreateCopyResponse>;
@@ -1053,19 +1112,7 @@ export interface CreateDirectUploadResponse {
   uid?: string | null;
   /** The URL an unauthenticated upload can use for a single `HTTP POST multipart/form-data` request. */
   uploadURL?: string | null;
-  watermark?: {
-    created?: string | null;
-    downloadedFrom?: string | null;
-    height?: number | null;
-    name?: string | null;
-    opacity?: number | null;
-    padding?: number | null;
-    position?: string | null;
-    scale?: number | null;
-    size?: number | null;
-    uid?: string | null;
-    width?: number | null;
-  } | null;
+  watermark?: Watermark | null;
 }
 
 export const CreateDirectUploadResponse =
@@ -1075,26 +1122,7 @@ export const CreateDirectUploadResponse =
     ),
     uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     uploadURL: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    watermark: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          downloadedFrom: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          opacity: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          padding: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          position: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          scale: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
+    watermark: Schema.optional(Schema.Union([Watermark, Schema.Null])),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateDirectUploadResponse>;
@@ -1615,13 +1643,7 @@ export interface CreateLiveInputRequest {
   /** Body param: A user modifiable key-value store used to reference other systems of record for managing live inputs. */
   meta?: unknown;
   /** Body param: Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condit */
-  recording?: {
-    allowedOrigins?: string[];
-    hideLiveViewerCount?: boolean;
-    mode?: "off" | "automatic";
-    requireSignedURLs?: boolean;
-    timeoutSeconds?: number;
-  };
+  recording?: Recording;
 }
 
 export const CreateLiveInputRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1630,15 +1652,7 @@ export const CreateLiveInputRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     defaultCreator: Schema.optional(Schema.String),
     deleteRecordingAfterDays: Schema.optional(Schema.Number),
     meta: Schema.optional(Schema.Unknown),
-    recording: Schema.optional(
-      Schema.Struct({
-        allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
-        hideLiveViewerCount: Schema.optional(Schema.Boolean),
-        mode: Schema.optional(Schema.Literals(["off", "automatic"])),
-        requireSignedURLs: Schema.optional(Schema.Boolean),
-        timeoutSeconds: Schema.optional(Schema.Number),
-      }),
-    ),
+    recording: Schema.optional(Recording),
   },
 ).pipe(
   T.Http({ method: "POST", path: "/accounts/{account_id}/stream/live_inputs" }),
@@ -1694,13 +1708,7 @@ export interface UpdateLiveInputRequest {
   /** Body param: A user modifiable key-value store used to reference other systems of record for managing live inputs. */
   meta?: unknown;
   /** Body param: Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condit */
-  recording?: {
-    allowedOrigins?: string[];
-    hideLiveViewerCount?: boolean;
-    mode?: "off" | "automatic";
-    requireSignedURLs?: boolean;
-    timeoutSeconds?: number;
-  };
+  recording?: Recording;
 }
 
 export const UpdateLiveInputRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1710,15 +1718,7 @@ export const UpdateLiveInputRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     defaultCreator: Schema.optional(Schema.String),
     deleteRecordingAfterDays: Schema.optional(Schema.Number),
     meta: Schema.optional(Schema.Unknown),
-    recording: Schema.optional(
-      Schema.Struct({
-        allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
-        hideLiveViewerCount: Schema.optional(Schema.Boolean),
-        mode: Schema.optional(Schema.Literals(["off", "automatic"])),
-        requireSignedURLs: Schema.optional(Schema.Boolean),
-        timeoutSeconds: Schema.optional(Schema.Number),
-      }),
-    ),
+    recording: Schema.optional(Recording),
   },
 ).pipe(
   T.Http({
@@ -2058,7 +2058,7 @@ export interface GetStreamResponse {
   creator?: string | null;
   /** The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready. */
   duration?: number | null;
-  input?: { height?: number | null; width?: number | null } | null;
+  input?: Input | null;
   /** The live input ID used to upload a video with Stream Live. */
   liveInput?: string | null;
   /** The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A val */
@@ -2067,7 +2067,7 @@ export interface GetStreamResponse {
   meta?: unknown | null;
   /** The date and time the media item was last modified. */
   modified?: string | null;
-  playback?: { dash?: string | null; hls?: string | null } | null;
+  playback?: Playback | null;
   /** The video's preview page URI. This field is omitted until encoding is complete. */
   preview?: string | null;
   /** Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress. */
@@ -2081,20 +2081,7 @@ export interface GetStreamResponse {
   /** The size of the media item in bytes. */
   size?: number | null;
   /** Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number be */
-  status?: {
-    errorReasonCode?: string | null;
-    errorReasonText?: string | null;
-    pctComplete?: string | null;
-    state?:
-      | "pendingupload"
-      | "downloading"
-      | "queued"
-      | "inprogress"
-      | "ready"
-      | "error"
-      | "live-inprogress"
-      | null;
-  } | null;
+  status?: Status | null;
   /** The media item's thumbnail URI. This field is omitted until encoding is complete. */
   thumbnail?: string | null;
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duratio */
@@ -2105,19 +2092,7 @@ export interface GetStreamResponse {
   uploaded?: string | null;
   /** The date and time when the video upload URL is no longer valid for direct user uploads. */
   uploadExpiry?: string | null;
-  watermark?: {
-    created?: string | null;
-    downloadedFrom?: string | null;
-    height?: number | null;
-    name?: string | null;
-    opacity?: number | null;
-    padding?: number | null;
-    position?: string | null;
-    scale?: number | null;
-    size?: number | null;
-    uid?: string | null;
-    width?: number | null;
-  } | null;
+  watermark?: Watermark | null;
 }
 
 export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2127,30 +2102,14 @@ export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   duration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  input: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  input: Schema.optional(Schema.Union([Input, Schema.Null])),
   liveInput: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   maxDurationSeconds: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
   ),
   meta: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
   modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  playback: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        dash: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        hls: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  playback: Schema.optional(Schema.Union([Playback, Schema.Null])),
   preview: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   readyToStream: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   readyToStreamAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2161,36 +2120,7 @@ export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([Schema.String, Schema.Null]),
   ),
   size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  status: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        errorReasonCode: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        errorReasonText: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        pctComplete: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        state: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "pendingupload",
-              "downloading",
-              "queued",
-              "inprogress",
-              "ready",
-              "error",
-              "live-inprogress",
-            ]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  status: Schema.optional(Schema.Union([Status, Schema.Null])),
   thumbnail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   thumbnailTimestampPct: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
@@ -2198,26 +2128,7 @@ export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   uploaded: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   uploadExpiry: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  watermark: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        downloadedFrom: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        opacity: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        padding: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        position: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        scale: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  watermark: Schema.optional(Schema.Union([Watermark, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetStreamResponse>;
@@ -2298,50 +2209,25 @@ export interface ListStreamsResponse {
     created?: string | null;
     creator?: string | null;
     duration?: number | null;
-    input?: { height?: number | null; width?: number | null } | null;
+    input?: Input | null;
     liveInput?: string | null;
     maxDurationSeconds?: number | null;
     meta?: unknown | null;
     modified?: string | null;
-    playback?: { dash?: string | null; hls?: string | null } | null;
+    playback?: Playback | null;
     preview?: string | null;
     readyToStream?: boolean | null;
     readyToStreamAt?: string | null;
     requireSignedURLs?: boolean | null;
     scheduledDeletion?: string | null;
     size?: number | null;
-    status?: {
-      errorReasonCode?: string | null;
-      errorReasonText?: string | null;
-      pctComplete?: string | null;
-      state?:
-        | "pendingupload"
-        | "downloading"
-        | "queued"
-        | "inprogress"
-        | "ready"
-        | "error"
-        | "live-inprogress"
-        | null;
-    } | null;
+    status?: Status | null;
     thumbnail?: string | null;
     thumbnailTimestampPct?: number | null;
     uid?: string | null;
     uploaded?: string | null;
     uploadExpiry?: string | null;
-    watermark?: {
-      created?: string | null;
-      downloadedFrom?: string | null;
-      height?: number | null;
-      name?: string | null;
-      opacity?: number | null;
-      padding?: number | null;
-      position?: string | null;
-      scale?: number | null;
-      size?: number | null;
-      uid?: string | null;
-      width?: number | null;
-    } | null;
+    watermark?: Watermark | null;
   }[];
 }
 
@@ -2354,30 +2240,14 @@ export const ListStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       duration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      input: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      input: Schema.optional(Schema.Union([Input, Schema.Null])),
       liveInput: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       maxDurationSeconds: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
       ),
       meta: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
       modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      playback: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            dash: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            hls: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      playback: Schema.optional(Schema.Union([Playback, Schema.Null])),
       preview: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       readyToStream: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -2392,36 +2262,7 @@ export const ListStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Union([Schema.String, Schema.Null]),
       ),
       size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            errorReasonCode: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            errorReasonText: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            pctComplete: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            state: Schema.optional(
-              Schema.Union([
-                Schema.Literals([
-                  "pendingupload",
-                  "downloading",
-                  "queued",
-                  "inprogress",
-                  "ready",
-                  "error",
-                  "live-inprogress",
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      status: Schema.optional(Schema.Union([Status, Schema.Null])),
       thumbnail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       thumbnailTimestampPct: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -2429,34 +2270,7 @@ export const ListStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uploaded: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uploadExpiry: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      watermark: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            created: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            downloadedFrom: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            opacity: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            padding: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            position: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            scale: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      watermark: Schema.optional(Schema.Union([Watermark, Schema.Null])),
     }),
   ),
 }) as unknown as Schema.Schema<ListStreamsResponse>;
@@ -2482,50 +2296,25 @@ export const listStreams: API.PaginatedOperationMethod<
       created?: string | null;
       creator?: string | null;
       duration?: number | null;
-      input?: { height?: number | null; width?: number | null } | null;
+      input?: Input | null;
       liveInput?: string | null;
       maxDurationSeconds?: number | null;
       meta?: unknown | null;
       modified?: string | null;
-      playback?: { dash?: string | null; hls?: string | null } | null;
+      playback?: Playback | null;
       preview?: string | null;
       readyToStream?: boolean | null;
       readyToStreamAt?: string | null;
       requireSignedURLs?: boolean | null;
       scheduledDeletion?: string | null;
       size?: number | null;
-      status?: {
-        errorReasonCode?: string | null;
-        errorReasonText?: string | null;
-        pctComplete?: string | null;
-        state?:
-          | "pendingupload"
-          | "downloading"
-          | "queued"
-          | "inprogress"
-          | "ready"
-          | "error"
-          | "live-inprogress"
-          | null;
-      } | null;
+      status?: Status | null;
       thumbnail?: string | null;
       thumbnailTimestampPct?: number | null;
       uid?: string | null;
       uploaded?: string | null;
       uploadExpiry?: string | null;
-      watermark?: {
-        created?: string | null;
-        downloadedFrom?: string | null;
-        height?: number | null;
-        name?: string | null;
-        opacity?: number | null;
-        padding?: number | null;
-        position?: string | null;
-        scale?: number | null;
-        size?: number | null;
-        uid?: string | null;
-        width?: number | null;
-      } | null;
+      watermark?: Watermark | null;
     },
     ListStreamsError,
     Credentials | HttpClient.HttpClient
@@ -2674,7 +2463,7 @@ export interface EditStreamResponse {
   creator?: string | null;
   /** The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready. */
   duration?: number | null;
-  input?: { height?: number | null; width?: number | null } | null;
+  input?: Input | null;
   /** The live input ID used to upload a video with Stream Live. */
   liveInput?: string | null;
   /** The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A val */
@@ -2683,7 +2472,7 @@ export interface EditStreamResponse {
   meta?: unknown | null;
   /** The date and time the media item was last modified. */
   modified?: string | null;
-  playback?: { dash?: string | null; hls?: string | null } | null;
+  playback?: Playback | null;
   /** The video's preview page URI. This field is omitted until encoding is complete. */
   preview?: string | null;
   /** Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress. */
@@ -2697,20 +2486,7 @@ export interface EditStreamResponse {
   /** The size of the media item in bytes. */
   size?: number | null;
   /** Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number be */
-  status?: {
-    errorReasonCode?: string | null;
-    errorReasonText?: string | null;
-    pctComplete?: string | null;
-    state?:
-      | "pendingupload"
-      | "downloading"
-      | "queued"
-      | "inprogress"
-      | "ready"
-      | "error"
-      | "live-inprogress"
-      | null;
-  } | null;
+  status?: Status | null;
   /** The media item's thumbnail URI. This field is omitted until encoding is complete. */
   thumbnail?: string | null;
   /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duratio */
@@ -2721,19 +2497,7 @@ export interface EditStreamResponse {
   uploaded?: string | null;
   /** The date and time when the video upload URL is no longer valid for direct user uploads. */
   uploadExpiry?: string | null;
-  watermark?: {
-    created?: string | null;
-    downloadedFrom?: string | null;
-    height?: number | null;
-    name?: string | null;
-    opacity?: number | null;
-    padding?: number | null;
-    position?: string | null;
-    scale?: number | null;
-    size?: number | null;
-    uid?: string | null;
-    width?: number | null;
-  } | null;
+  watermark?: Watermark | null;
 }
 
 export const EditStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2743,30 +2507,14 @@ export const EditStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   duration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  input: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  input: Schema.optional(Schema.Union([Input, Schema.Null])),
   liveInput: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   maxDurationSeconds: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
   ),
   meta: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
   modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  playback: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        dash: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        hls: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  playback: Schema.optional(Schema.Union([Playback, Schema.Null])),
   preview: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   readyToStream: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   readyToStreamAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2777,36 +2525,7 @@ export const EditStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([Schema.String, Schema.Null]),
   ),
   size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  status: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        errorReasonCode: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        errorReasonText: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        pctComplete: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        state: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "pendingupload",
-              "downloading",
-              "queued",
-              "inprogress",
-              "ready",
-              "error",
-              "live-inprogress",
-            ]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  status: Schema.optional(Schema.Union([Status, Schema.Null])),
   thumbnail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   thumbnailTimestampPct: Schema.optional(
     Schema.Union([Schema.Number, Schema.Null]),
@@ -2814,26 +2533,7 @@ export const EditStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   uploaded: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   uploadExpiry: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  watermark: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        downloadedFrom: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        opacity: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        padding: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        position: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        scale: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  watermark: Schema.optional(Schema.Union([Watermark, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<EditStreamResponse>;

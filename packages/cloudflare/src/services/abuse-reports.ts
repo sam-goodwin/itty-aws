@@ -36,6 +36,54 @@ export class InvalidRequest extends Schema.TaggedErrorClass<InvalidRequest>()(
 T.applyErrorMatchers(InvalidRequest, [{ code: 7003 }]);
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface MitigationSummary {
+  acceptedUrlCount: number;
+  activeCount: number;
+  externalHostNotified: boolean;
+  inReviewCount: number;
+  pendingCount: number;
+}
+
+export const MitigationSummary: Schema.Schema<MitigationSummary> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      acceptedUrlCount: Schema.Number,
+      activeCount: Schema.Number,
+      externalHostNotified: Schema.Boolean,
+      inReviewCount: Schema.Number,
+      pendingCount: Schema.Number,
+    }).pipe(
+      Schema.encodeKeys({
+        acceptedUrlCount: "accepted_url_count",
+        activeCount: "active_count",
+        externalHostNotified: "external_host_notified",
+        inReviewCount: "in_review_count",
+        pendingCount: "pending_count",
+      }),
+    ),
+  ) as unknown as Schema.Schema<MitigationSummary>;
+
+export interface Submitter {
+  company?: string | null;
+  email?: string | null;
+  name?: string | null;
+  telephone?: string | null;
+}
+
+export const Submitter: Schema.Schema<Submitter> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      company: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      telephone: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Submitter>;
+
+// =============================================================================
 // AbuseReport
 // =============================================================================
 
@@ -63,13 +111,7 @@ export interface GetAbuseReportResponse {
   /** Domain that relates to the report. */
   domain: string;
   /** A summary of the mitigations related to this report. */
-  mitigationSummary: {
-    acceptedUrlCount: number;
-    activeCount: number;
-    externalHostNotified: boolean;
-    inReviewCount: number;
-    pendingCount: number;
-  };
+  mitigationSummary: MitigationSummary;
   /** An enum value that represents the status of an abuse record */
   status: "accepted" | "in_review";
   /** The abuse report type */
@@ -88,12 +130,7 @@ export interface GetAbuseReportResponse {
   /** Original work / Targeted brand in the alleged abuse. */
   originalWork?: string | null;
   /** Information about the submitter of the report. */
-  submitter?: {
-    company?: string | null;
-    email?: string | null;
-    name?: string | null;
-    telephone?: string | null;
-  } | null;
+  submitter?: Submitter | null;
   urls?: string[] | null;
 }
 
@@ -102,21 +139,7 @@ export const GetAbuseReportResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     id: Schema.String,
     cdate: Schema.String,
     domain: Schema.String,
-    mitigationSummary: Schema.Struct({
-      acceptedUrlCount: Schema.Number,
-      activeCount: Schema.Number,
-      externalHostNotified: Schema.Boolean,
-      inReviewCount: Schema.Number,
-      pendingCount: Schema.Number,
-    }).pipe(
-      Schema.encodeKeys({
-        acceptedUrlCount: "accepted_url_count",
-        activeCount: "active_count",
-        externalHostNotified: "external_host_notified",
-        inReviewCount: "in_review_count",
-        pendingCount: "pending_count",
-      }),
-    ),
+    mitigationSummary: MitigationSummary,
     status: Schema.Literals(["accepted", "in_review"]),
     type: Schema.Literals([
       "PHISH",
@@ -131,19 +154,7 @@ export const GetAbuseReportResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ]),
     justification: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     originalWork: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    submitter: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          company: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          telephone: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
+    submitter: Schema.optional(Schema.Union([Submitter, Schema.Null])),
     urls: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
@@ -264,13 +275,7 @@ export interface ListAbuseReportsResponse {
             id: string;
             cdate: string;
             domain: string;
-            mitigationSummary: {
-              acceptedUrlCount: number;
-              activeCount: number;
-              externalHostNotified: boolean;
-              inReviewCount: number;
-              pendingCount: number;
-            };
+            mitigationSummary: MitigationSummary;
             status: "accepted" | "in_review";
             type:
               | "PHISH"
@@ -284,12 +289,7 @@ export interface ListAbuseReportsResponse {
               | "NETWORK";
             justification?: string | null;
             originalWork?: string | null;
-            submitter?: {
-              company?: string | null;
-              email?: string | null;
-              name?: string | null;
-              telephone?: string | null;
-            } | null;
+            submitter?: Submitter | null;
             urls?: string[] | null;
           }[];
         }[]
@@ -315,21 +315,7 @@ export const ListAbuseReportsResponse =
                   id: Schema.String,
                   cdate: Schema.String,
                   domain: Schema.String,
-                  mitigationSummary: Schema.Struct({
-                    acceptedUrlCount: Schema.Number,
-                    activeCount: Schema.Number,
-                    externalHostNotified: Schema.Boolean,
-                    inReviewCount: Schema.Number,
-                    pendingCount: Schema.Number,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      acceptedUrlCount: "accepted_url_count",
-                      activeCount: "active_count",
-                      externalHostNotified: "external_host_notified",
-                      inReviewCount: "in_review_count",
-                      pendingCount: "pending_count",
-                    }),
-                  ),
+                  mitigationSummary: MitigationSummary,
                   status: Schema.Literals(["accepted", "in_review"]),
                   type: Schema.Literals([
                     "PHISH",
@@ -349,23 +335,7 @@ export const ListAbuseReportsResponse =
                     Schema.Union([Schema.String, Schema.Null]),
                   ),
                   submitter: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        company: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        email: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        name: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        telephone: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                      }),
-                      Schema.Null,
-                    ]),
+                    Schema.Union([Submitter, Schema.Null]),
                   ),
                   urls: Schema.optional(
                     Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -429,13 +399,7 @@ export const listAbuseReports: API.PaginatedOperationMethod<
         id: string;
         cdate: string;
         domain: string;
-        mitigationSummary: {
-          acceptedUrlCount: number;
-          activeCount: number;
-          externalHostNotified: boolean;
-          inReviewCount: number;
-          pendingCount: number;
-        };
+        mitigationSummary: MitigationSummary;
         status: "accepted" | "in_review";
         type:
           | "PHISH"
@@ -449,12 +413,7 @@ export const listAbuseReports: API.PaginatedOperationMethod<
           | "NETWORK";
         justification?: string | null;
         originalWork?: string | null;
-        submitter?: {
-          company?: string | null;
-          email?: string | null;
-          name?: string | null;
-          telephone?: string | null;
-        } | null;
+        submitter?: Submitter | null;
         urls?: string[] | null;
       }[];
     },

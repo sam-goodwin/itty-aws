@@ -14,6 +14,97 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface InfraDualStackHost {
+  ipv4: string;
+  ipv6: string;
+  network: Network;
+}
+
+export const InfraDualStackHost: Schema.Schema<InfraDualStackHost> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      ipv4: Schema.String,
+      ipv6: Schema.String,
+      network: Network,
+    }),
+  ) as unknown as Schema.Schema<InfraDualStackHost>;
+
+export interface InfraHostnameHost {
+  hostname: string;
+  resolverNetwork: ResolverNetwork;
+}
+
+export const InfraHostnameHost: Schema.Schema<InfraHostnameHost> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      hostname: Schema.String,
+      resolverNetwork: ResolverNetwork,
+    }).pipe(
+      Schema.encodeKeys({
+        hostname: "hostname",
+        resolverNetwork: "resolver_network",
+      }),
+    ),
+  ) as unknown as Schema.Schema<InfraHostnameHost>;
+
+export interface InfraIPv4Host {
+  ipv4: string;
+  network: Network;
+}
+
+export const InfraIPv4Host: Schema.Schema<InfraIPv4Host> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      ipv4: Schema.String,
+      network: Network,
+    }),
+  ) as unknown as Schema.Schema<InfraIPv4Host>;
+
+export interface InfraIPv6Host {
+  ipv6: string;
+  network: Network;
+}
+
+export const InfraIPv6Host: Schema.Schema<InfraIPv6Host> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      ipv6: Schema.String,
+      network: Network,
+    }),
+  ) as unknown as Schema.Schema<InfraIPv6Host>;
+
+export interface Network {
+  tunnelId: string;
+}
+
+export const Network: Schema.Schema<Network> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      tunnelId: Schema.String,
+    }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
+  ) as unknown as Schema.Schema<Network>;
+
+export interface ResolverNetwork {
+  tunnelId: string;
+  resolverIps?: string[] | null;
+}
+
+export const ResolverNetwork: Schema.Schema<ResolverNetwork> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      tunnelId: Schema.String,
+      resolverIps: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({ tunnelId: "tunnel_id", resolverIps: "resolver_ips" }),
+    ),
+  ) as unknown as Schema.Schema<ResolverNetwork>;
+
+// =============================================================================
 // DirectoryService
 // =============================================================================
 
@@ -34,14 +125,7 @@ export const GetDirectoryServiceRequest =
   ) as unknown as Schema.Schema<GetDirectoryServiceRequest>;
 
 export interface GetDirectoryServiceResponse {
-  host:
-    | { ipv4: string; network: { tunnelId: string } }
-    | { ipv6: string; network: { tunnelId: string } }
-    | { ipv4: string; ipv6: string; network: { tunnelId: string } }
-    | {
-        hostname: string;
-        resolverNetwork: { tunnelId: string; resolverIps?: string[] | null };
-      };
+  host: InfraIPv4Host | InfraIPv6Host | InfraDualStackHost | InfraHostnameHost;
   name: string;
   type: "http";
   createdAt?: string | null;
@@ -54,44 +138,10 @@ export interface GetDirectoryServiceResponse {
 export const GetDirectoryServiceResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     host: Schema.Union([
-      Schema.Struct({
-        ipv4: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
-        ipv6: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
-        ipv4: Schema.String,
-        ipv6: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
-        hostname: Schema.String,
-        resolverNetwork: Schema.Struct({
-          tunnelId: Schema.String,
-          resolverIps: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            tunnelId: "tunnel_id",
-            resolverIps: "resolver_ips",
-          }),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          hostname: "hostname",
-          resolverNetwork: "resolver_network",
-        }),
-      ),
+      InfraIPv4Host,
+      InfraIPv6Host,
+      InfraDualStackHost,
+      InfraHostnameHost,
     ]),
     name: Schema.String,
     type: Schema.Literal("http"),
@@ -153,13 +203,10 @@ export const ListDirectoryServicesRequest =
 export interface ListDirectoryServicesResponse {
   result: {
     host:
-      | { ipv4: string; network: { tunnelId: string } }
-      | { ipv6: string; network: { tunnelId: string } }
-      | { ipv4: string; ipv6: string; network: { tunnelId: string } }
-      | {
-          hostname: string;
-          resolverNetwork: { tunnelId: string; resolverIps?: string[] | null };
-        };
+      | InfraIPv4Host
+      | InfraIPv6Host
+      | InfraDualStackHost
+      | InfraHostnameHost;
     name: string;
     type: "http";
     createdAt?: string | null;
@@ -181,44 +228,10 @@ export const ListDirectoryServicesResponse =
     result: Schema.Array(
       Schema.Struct({
         host: Schema.Union([
-          Schema.Struct({
-            ipv4: Schema.String,
-            network: Schema.Struct({
-              tunnelId: Schema.String,
-            }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-          }),
-          Schema.Struct({
-            ipv6: Schema.String,
-            network: Schema.Struct({
-              tunnelId: Schema.String,
-            }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-          }),
-          Schema.Struct({
-            ipv4: Schema.String,
-            ipv6: Schema.String,
-            network: Schema.Struct({
-              tunnelId: Schema.String,
-            }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-          }),
-          Schema.Struct({
-            hostname: Schema.String,
-            resolverNetwork: Schema.Struct({
-              tunnelId: Schema.String,
-              resolverIps: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                tunnelId: "tunnel_id",
-                resolverIps: "resolver_ips",
-              }),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              hostname: "hostname",
-              resolverNetwork: "resolver_network",
-            }),
-          ),
+          InfraIPv4Host,
+          InfraIPv6Host,
+          InfraDualStackHost,
+          InfraHostnameHost,
         ]),
         name: Schema.String,
         type: Schema.Literal("http"),
@@ -275,16 +288,10 @@ export const listDirectoryServices: API.PaginatedOperationMethod<
   items: (input: ListDirectoryServicesRequest) => stream.Stream<
     {
       host:
-        | { ipv4: string; network: { tunnelId: string } }
-        | { ipv6: string; network: { tunnelId: string } }
-        | { ipv4: string; ipv6: string; network: { tunnelId: string } }
-        | {
-            hostname: string;
-            resolverNetwork: {
-              tunnelId: string;
-              resolverIps?: string[] | null;
-            };
-          };
+        | InfraIPv4Host
+        | InfraIPv6Host
+        | InfraDualStackHost
+        | InfraHostnameHost;
       name: string;
       type: "http";
       createdAt?: string | null;
@@ -313,14 +320,7 @@ export interface CreateDirectoryServiceRequest {
   /** Path param: Account identifier */
   accountId: string;
   /** Body param: */
-  host:
-    | { ipv4: string; network: { tunnelId: string } }
-    | { ipv6: string; network: { tunnelId: string } }
-    | { ipv4: string; ipv6: string; network: { tunnelId: string } }
-    | {
-        hostname: string;
-        resolverNetwork: { tunnelId: string; resolverIps?: string[] | null };
-      };
+  host: InfraIPv4Host | InfraIPv6Host | InfraDualStackHost | InfraHostnameHost;
   /** Body param: */
   name: string;
   /** Body param: */
@@ -335,44 +335,10 @@ export const CreateDirectoryServiceRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     host: Schema.Union([
-      Schema.Struct({
-        ipv4: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
-        ipv6: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
-        ipv4: Schema.String,
-        ipv6: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
-        hostname: Schema.String,
-        resolverNetwork: Schema.Struct({
-          tunnelId: Schema.String,
-          resolverIps: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            tunnelId: "tunnel_id",
-            resolverIps: "resolver_ips",
-          }),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          hostname: "hostname",
-          resolverNetwork: "resolver_network",
-        }),
-      ),
+      InfraIPv4Host,
+      InfraIPv6Host,
+      InfraDualStackHost,
+      InfraHostnameHost,
     ]),
     name: Schema.String,
     type: Schema.Literal("http"),
@@ -393,14 +359,7 @@ export const CreateDirectoryServiceRequest =
   ) as unknown as Schema.Schema<CreateDirectoryServiceRequest>;
 
 export interface CreateDirectoryServiceResponse {
-  host:
-    | { ipv4: string; network: { tunnelId: string } }
-    | { ipv6: string; network: { tunnelId: string } }
-    | { ipv4: string; ipv6: string; network: { tunnelId: string } }
-    | {
-        hostname: string;
-        resolverNetwork: { tunnelId: string; resolverIps?: string[] | null };
-      };
+  host: InfraIPv4Host | InfraIPv6Host | InfraDualStackHost | InfraHostnameHost;
   name: string;
   type: "http";
   createdAt?: string | null;
@@ -413,44 +372,10 @@ export interface CreateDirectoryServiceResponse {
 export const CreateDirectoryServiceResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     host: Schema.Union([
-      Schema.Struct({
-        ipv4: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
-        ipv6: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
-        ipv4: Schema.String,
-        ipv6: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
-        hostname: Schema.String,
-        resolverNetwork: Schema.Struct({
-          tunnelId: Schema.String,
-          resolverIps: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            tunnelId: "tunnel_id",
-            resolverIps: "resolver_ips",
-          }),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          hostname: "hostname",
-          resolverNetwork: "resolver_network",
-        }),
-      ),
+      InfraIPv4Host,
+      InfraIPv6Host,
+      InfraDualStackHost,
+      InfraHostnameHost,
     ]),
     name: Schema.String,
     type: Schema.Literal("http"),
@@ -494,14 +419,7 @@ export interface UpdateDirectoryServiceRequest {
   /** Path param: */
   accountId: string;
   /** Body param: */
-  host:
-    | { ipv4: string; network: { tunnelId: string } }
-    | { ipv6: string; network: { tunnelId: string } }
-    | { ipv4: string; ipv6: string; network: { tunnelId: string } }
-    | {
-        hostname: string;
-        resolverNetwork: { tunnelId: string; resolverIps?: string[] | null };
-      };
+  host: InfraIPv4Host | InfraIPv6Host | InfraDualStackHost | InfraHostnameHost;
   /** Body param: */
   name: string;
   /** Body param: */
@@ -517,44 +435,10 @@ export const UpdateDirectoryServiceRequest =
     serviceId: Schema.String.pipe(T.HttpPath("serviceId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     host: Schema.Union([
-      Schema.Struct({
-        ipv4: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
-        ipv6: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
-        ipv4: Schema.String,
-        ipv6: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
-        hostname: Schema.String,
-        resolverNetwork: Schema.Struct({
-          tunnelId: Schema.String,
-          resolverIps: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            tunnelId: "tunnel_id",
-            resolverIps: "resolver_ips",
-          }),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          hostname: "hostname",
-          resolverNetwork: "resolver_network",
-        }),
-      ),
+      InfraIPv4Host,
+      InfraIPv6Host,
+      InfraDualStackHost,
+      InfraHostnameHost,
     ]),
     name: Schema.String,
     type: Schema.Literal("http"),
@@ -575,14 +459,7 @@ export const UpdateDirectoryServiceRequest =
   ) as unknown as Schema.Schema<UpdateDirectoryServiceRequest>;
 
 export interface UpdateDirectoryServiceResponse {
-  host:
-    | { ipv4: string; network: { tunnelId: string } }
-    | { ipv6: string; network: { tunnelId: string } }
-    | { ipv4: string; ipv6: string; network: { tunnelId: string } }
-    | {
-        hostname: string;
-        resolverNetwork: { tunnelId: string; resolverIps?: string[] | null };
-      };
+  host: InfraIPv4Host | InfraIPv6Host | InfraDualStackHost | InfraHostnameHost;
   name: string;
   type: "http";
   createdAt?: string | null;
@@ -595,44 +472,10 @@ export interface UpdateDirectoryServiceResponse {
 export const UpdateDirectoryServiceResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     host: Schema.Union([
-      Schema.Struct({
-        ipv4: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
-        ipv6: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
-        ipv4: Schema.String,
-        ipv6: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
-        hostname: Schema.String,
-        resolverNetwork: Schema.Struct({
-          tunnelId: Schema.String,
-          resolverIps: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            tunnelId: "tunnel_id",
-            resolverIps: "resolver_ips",
-          }),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          hostname: "hostname",
-          resolverNetwork: "resolver_network",
-        }),
-      ),
+      InfraIPv4Host,
+      InfraIPv6Host,
+      InfraDualStackHost,
+      InfraHostnameHost,
     ]),
     name: Schema.String,
     type: Schema.Literal("http"),

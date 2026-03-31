@@ -14,6 +14,25 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Dnsrecord {
+  type?: "A" | "AAAA" | null;
+  value?: string | null;
+}
+
+export const Dnsrecord: Schema.Schema<Dnsrecord> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literals(["A", "AAAA"]), Schema.Null]),
+      ),
+      value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Dnsrecord>;
+
+// =============================================================================
 // CustomNameserver
 // =============================================================================
 
@@ -31,7 +50,7 @@ export const GetCustomNameserverRequest =
 
 export interface GetCustomNameserverResponse {
   result: {
-    dnsRecords: { type?: "A" | "AAAA" | null; value?: string | null }[];
+    dnsRecords: Dnsrecord[];
     nsName: string;
     status: "moved" | "pending" | "verified";
     zoneTag: string;
@@ -43,14 +62,7 @@ export const GetCustomNameserverResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
-        dnsRecords: Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(
-              Schema.Union([Schema.Literals(["A", "AAAA"]), Schema.Null]),
-            ),
-            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-        ),
+        dnsRecords: Schema.Array(Dnsrecord),
         nsName: Schema.String,
         status: Schema.Literals(["moved", "pending", "verified"]),
         zoneTag: Schema.String,
@@ -84,7 +96,7 @@ export const getCustomNameserver: API.PaginatedOperationMethod<
   >;
   items: (input: GetCustomNameserverRequest) => stream.Stream<
     {
-      dnsRecords: { type?: "A" | "AAAA" | null; value?: string | null }[];
+      dnsRecords: Dnsrecord[];
       nsName: string;
       status: "moved" | "pending" | "verified";
       zoneTag: string;
@@ -124,7 +136,7 @@ export const CreateCustomNameserverRequest =
 
 export interface CreateCustomNameserverResponse {
   /** A and AAAA records associated with the nameserver. */
-  dnsRecords: { type?: "A" | "AAAA" | null; value?: string | null }[];
+  dnsRecords: Dnsrecord[];
   /** The FQDN of the name server. */
   nsName: string;
   /** @deprecated Verification status of the nameserver. */
@@ -137,14 +149,7 @@ export interface CreateCustomNameserverResponse {
 
 export const CreateCustomNameserverResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dnsRecords: Schema.Array(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Union([Schema.Literals(["A", "AAAA"]), Schema.Null]),
-        ),
-        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ),
+    dnsRecords: Schema.Array(Dnsrecord),
     nsName: Schema.String,
     status: Schema.Literals(["moved", "pending", "verified"]),
     zoneTag: Schema.String,

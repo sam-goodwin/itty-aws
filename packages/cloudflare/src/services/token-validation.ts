@@ -14,6 +14,207 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface ApishieldAfter {
+  after?: string | null;
+}
+
+export const ApishieldAfter: Schema.Schema<ApishieldAfter> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<ApishieldAfter>;
+
+export interface ApishieldBefore {
+  before?: string | null;
+}
+
+export const ApishieldBefore: Schema.Schema<ApishieldBefore> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      before: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<ApishieldBefore>;
+
+export interface ApishieldCredentialsJWTKeyEcEs256 {
+  alg: "ES256";
+  crv: "P-256";
+  kid: string;
+  kty: "EC";
+  x: string;
+  y: string;
+}
+
+export const ApishieldCredentialsJWTKeyEcEs256: Schema.Schema<ApishieldCredentialsJWTKeyEcEs256> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      alg: Schema.Literal("ES256"),
+      crv: Schema.Literal("P-256"),
+      kid: Schema.String,
+      kty: Schema.Literal("EC"),
+      x: Schema.String,
+      y: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<ApishieldCredentialsJWTKeyEcEs256>;
+
+export interface ApishieldCredentialsJWTKeyEcEs384 {
+  alg: "ES384";
+  crv: "P-384";
+  kid: string;
+  kty: "EC";
+  x: string;
+  y: string;
+}
+
+export const ApishieldCredentialsJWTKeyEcEs384: Schema.Schema<ApishieldCredentialsJWTKeyEcEs384> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      alg: Schema.Literal("ES384"),
+      crv: Schema.Literal("P-384"),
+      kid: Schema.String,
+      kty: Schema.Literal("EC"),
+      x: Schema.String,
+      y: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<ApishieldCredentialsJWTKeyEcEs384>;
+
+export interface ApishieldCredentialsJWTKeyRSA {
+  alg: "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
+  e: string;
+  kid: string;
+  kty: "RSA";
+  n: string;
+}
+
+export const ApishieldCredentialsJWTKeyRSA: Schema.Schema<ApishieldCredentialsJWTKeyRSA> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      alg: Schema.Literals([
+        "RS256",
+        "RS384",
+        "RS512",
+        "PS256",
+        "PS384",
+        "PS512",
+      ]),
+      e: Schema.String,
+      kid: Schema.String,
+      kty: Schema.Literal("RSA"),
+      n: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<ApishieldCredentialsJWTKeyRSA>;
+
+export interface ApishieldIndex {
+  index: number;
+}
+
+export const ApishieldIndex: Schema.Schema<ApishieldIndex> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      index: Schema.Number,
+    }),
+  ) as unknown as Schema.Schema<ApishieldIndex>;
+
+export interface Body {
+  id: string;
+  action?: "log" | "block" | null;
+  description?: string | null;
+  enabled?: boolean | null;
+  expression?: string | null;
+  position?: ApishieldIndex | ApishieldBefore | ApishieldAfter | null;
+  selector?: Selector | null;
+  title?: string | null;
+}
+
+export const Body: Schema.Schema<Body> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      action: Schema.optional(
+        Schema.Union([Schema.Literals(["log", "block"]), Schema.Null]),
+      ),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      position: Schema.optional(
+        Schema.Union([
+          Schema.Union([ApishieldIndex, ApishieldBefore, ApishieldAfter]),
+          Schema.Null,
+        ]),
+      ),
+      selector: Schema.optional(Schema.Union([Selector, Schema.Null])),
+      title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Body>;
+
+export interface Credentials2 {
+  keys: (
+    | ApishieldCredentialsJWTKeyRSA
+    | ApishieldCredentialsJWTKeyEcEs256
+    | ApishieldCredentialsJWTKeyEcEs384
+  )[];
+}
+
+export const Credentials2: Schema.Schema<Credentials2> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      keys: Schema.Array(
+        Schema.Union([
+          ApishieldCredentialsJWTKeyRSA,
+          ApishieldCredentialsJWTKeyEcEs256,
+          ApishieldCredentialsJWTKeyEcEs384,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Credentials2>;
+
+export interface Exclude {
+  operationIds?: string[] | null;
+}
+
+export const Exclude: Schema.Schema<Exclude> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      operationIds: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
+  ) as unknown as Schema.Schema<Exclude>;
+
+export interface Include {
+  host?: string[] | null;
+}
+
+export const Include: Schema.Schema<Include> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      host: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Include>;
+
+export interface Selector {
+  exclude?: Exclude[] | null;
+  include?: Include[] | null;
+}
+
+export const Selector: Schema.Schema<Selector> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      exclude: Schema.optional(
+        Schema.Union([Schema.Array(Exclude), Schema.Null]),
+      ),
+      include: Schema.optional(
+        Schema.Union([Schema.Array(Include), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Selector>;
+
+// =============================================================================
 // Configuration
 // =============================================================================
 
@@ -38,33 +239,7 @@ export interface GetConfigurationResponse {
   /** UUID. */
   id: string;
   createdAt: string;
-  credentials: {
-    keys: (
-      | {
-          alg: "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
-          e: string;
-          kid: string;
-          kty: "RSA";
-          n: string;
-        }
-      | {
-          alg: "ES256";
-          crv: "P-256";
-          kid: string;
-          kty: "EC";
-          x: string;
-          y: string;
-        }
-      | {
-          alg: "ES384";
-          crv: "P-384";
-          kid: string;
-          kty: "EC";
-          x: string;
-          y: string;
-        }
-    )[];
-  };
+  credentials: Credentials2;
   description: string;
   lastUpdated: string;
   title: string;
@@ -76,42 +251,7 @@ export const GetConfigurationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
-    credentials: Schema.Struct({
-      keys: Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            alg: Schema.Literals([
-              "RS256",
-              "RS384",
-              "RS512",
-              "PS256",
-              "PS384",
-              "PS512",
-            ]),
-            e: Schema.String,
-            kid: Schema.String,
-            kty: Schema.Literal("RSA"),
-            n: Schema.String,
-          }),
-          Schema.Struct({
-            alg: Schema.Literal("ES256"),
-            crv: Schema.Literal("P-256"),
-            kid: Schema.String,
-            kty: Schema.Literal("EC"),
-            x: Schema.String,
-            y: Schema.String,
-          }),
-          Schema.Struct({
-            alg: Schema.Literal("ES384"),
-            crv: Schema.Literal("P-384"),
-            kid: Schema.String,
-            kty: Schema.Literal("EC"),
-            x: Schema.String,
-            y: Schema.String,
-          }),
-        ]),
-      ),
-    }),
+    credentials: Credentials2,
     description: Schema.String,
     lastUpdated: Schema.String,
     title: Schema.String,
@@ -163,33 +303,7 @@ export interface ListConfigurationsResponse {
   result: {
     id: string;
     createdAt: string;
-    credentials: {
-      keys: (
-        | {
-            alg: "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
-            e: string;
-            kid: string;
-            kty: "RSA";
-            n: string;
-          }
-        | {
-            alg: "ES256";
-            crv: "P-256";
-            kid: string;
-            kty: "EC";
-            x: string;
-            y: string;
-          }
-        | {
-            alg: "ES384";
-            crv: "P-384";
-            kid: string;
-            kty: "EC";
-            x: string;
-            y: string;
-          }
-      )[];
-    };
+    credentials: Credentials2;
     description: string;
     lastUpdated: string;
     title: string;
@@ -210,42 +324,7 @@ export const ListConfigurationsResponse =
       Schema.Struct({
         id: Schema.String,
         createdAt: Schema.String,
-        credentials: Schema.Struct({
-          keys: Schema.Array(
-            Schema.Union([
-              Schema.Struct({
-                alg: Schema.Literals([
-                  "RS256",
-                  "RS384",
-                  "RS512",
-                  "PS256",
-                  "PS384",
-                  "PS512",
-                ]),
-                e: Schema.String,
-                kid: Schema.String,
-                kty: Schema.Literal("RSA"),
-                n: Schema.String,
-              }),
-              Schema.Struct({
-                alg: Schema.Literal("ES256"),
-                crv: Schema.Literal("P-256"),
-                kid: Schema.String,
-                kty: Schema.Literal("EC"),
-                x: Schema.String,
-                y: Schema.String,
-              }),
-              Schema.Struct({
-                alg: Schema.Literal("ES384"),
-                crv: Schema.Literal("P-384"),
-                kid: Schema.String,
-                kty: Schema.Literal("EC"),
-                x: Schema.String,
-                y: Schema.String,
-              }),
-            ]),
-          ),
-        }),
+        credentials: Credentials2,
         description: Schema.String,
         lastUpdated: Schema.String,
         title: Schema.String,
@@ -300,33 +379,7 @@ export const listConfigurations: API.PaginatedOperationMethod<
     {
       id: string;
       createdAt: string;
-      credentials: {
-        keys: (
-          | {
-              alg: "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
-              e: string;
-              kid: string;
-              kty: "RSA";
-              n: string;
-            }
-          | {
-              alg: "ES256";
-              crv: "P-256";
-              kid: string;
-              kty: "EC";
-              x: string;
-              y: string;
-            }
-          | {
-              alg: "ES384";
-              crv: "P-384";
-              kid: string;
-              kty: "EC";
-              x: string;
-              y: string;
-            }
-        )[];
-      };
+      credentials: Credentials2;
       description: string;
       lastUpdated: string;
       title: string;
@@ -353,33 +406,7 @@ export interface CreateConfigurationRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: */
-  credentials: {
-    keys: (
-      | {
-          alg: "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
-          e: string;
-          kid: string;
-          kty: "RSA";
-          n: string;
-        }
-      | {
-          alg: "ES256";
-          crv: "P-256";
-          kid: string;
-          kty: "EC";
-          x: string;
-          y: string;
-        }
-      | {
-          alg: "ES384";
-          crv: "P-384";
-          kid: string;
-          kty: "EC";
-          x: string;
-          y: string;
-        }
-    )[];
-  };
+  credentials: Credentials2;
   /** Body param: */
   description: string;
   /** Body param: */
@@ -393,42 +420,7 @@ export interface CreateConfigurationRequest {
 export const CreateConfigurationRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    credentials: Schema.Struct({
-      keys: Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            alg: Schema.Literals([
-              "RS256",
-              "RS384",
-              "RS512",
-              "PS256",
-              "PS384",
-              "PS512",
-            ]),
-            e: Schema.String,
-            kid: Schema.String,
-            kty: Schema.Literal("RSA"),
-            n: Schema.String,
-          }),
-          Schema.Struct({
-            alg: Schema.Literal("ES256"),
-            crv: Schema.Literal("P-256"),
-            kid: Schema.String,
-            kty: Schema.Literal("EC"),
-            x: Schema.String,
-            y: Schema.String,
-          }),
-          Schema.Struct({
-            alg: Schema.Literal("ES384"),
-            crv: Schema.Literal("P-384"),
-            kid: Schema.String,
-            kty: Schema.Literal("EC"),
-            x: Schema.String,
-            y: Schema.String,
-          }),
-        ]),
-      ),
-    }),
+    credentials: Credentials2,
     description: Schema.String,
     title: Schema.String,
     tokenSources: Schema.Array(Schema.String),
@@ -451,33 +443,7 @@ export interface CreateConfigurationResponse {
   /** UUID. */
   id: string;
   createdAt: string;
-  credentials: {
-    keys: (
-      | {
-          alg: "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
-          e: string;
-          kid: string;
-          kty: "RSA";
-          n: string;
-        }
-      | {
-          alg: "ES256";
-          crv: "P-256";
-          kid: string;
-          kty: "EC";
-          x: string;
-          y: string;
-        }
-      | {
-          alg: "ES384";
-          crv: "P-384";
-          kid: string;
-          kty: "EC";
-          x: string;
-          y: string;
-        }
-    )[];
-  };
+  credentials: Credentials2;
   description: string;
   lastUpdated: string;
   title: string;
@@ -489,42 +455,7 @@ export const CreateConfigurationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
-    credentials: Schema.Struct({
-      keys: Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            alg: Schema.Literals([
-              "RS256",
-              "RS384",
-              "RS512",
-              "PS256",
-              "PS384",
-              "PS512",
-            ]),
-            e: Schema.String,
-            kid: Schema.String,
-            kty: Schema.Literal("RSA"),
-            n: Schema.String,
-          }),
-          Schema.Struct({
-            alg: Schema.Literal("ES256"),
-            crv: Schema.Literal("P-256"),
-            kid: Schema.String,
-            kty: Schema.Literal("EC"),
-            x: Schema.String,
-            y: Schema.String,
-          }),
-          Schema.Struct({
-            alg: Schema.Literal("ES384"),
-            crv: Schema.Literal("P-384"),
-            kid: Schema.String,
-            kty: Schema.Literal("EC"),
-            x: Schema.String,
-            y: Schema.String,
-          }),
-        ]),
-      ),
-    }),
+    credentials: Credentials2,
     description: Schema.String,
     lastUpdated: Schema.String,
     title: Schema.String,
@@ -681,29 +612,9 @@ export interface PutConfigurationCredentialRequest {
   zoneId: string;
   /** Body param: */
   keys: (
-    | {
-        alg: "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
-        e: string;
-        kid: string;
-        kty: "RSA";
-        n: string;
-      }
-    | {
-        alg: "ES256";
-        crv: "P-256";
-        kid: string;
-        kty: "EC";
-        x: string;
-        y: string;
-      }
-    | {
-        alg: "ES384";
-        crv: "P-384";
-        kid: string;
-        kty: "EC";
-        x: string;
-        y: string;
-      }
+    | ApishieldCredentialsJWTKeyRSA
+    | ApishieldCredentialsJWTKeyEcEs256
+    | ApishieldCredentialsJWTKeyEcEs384
   )[];
 }
 
@@ -713,36 +624,9 @@ export const PutConfigurationCredentialRequest =
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     keys: Schema.Array(
       Schema.Union([
-        Schema.Struct({
-          alg: Schema.Literals([
-            "RS256",
-            "RS384",
-            "RS512",
-            "PS256",
-            "PS384",
-            "PS512",
-          ]),
-          e: Schema.String,
-          kid: Schema.String,
-          kty: Schema.Literal("RSA"),
-          n: Schema.String,
-        }),
-        Schema.Struct({
-          alg: Schema.Literal("ES256"),
-          crv: Schema.Literal("P-256"),
-          kid: Schema.String,
-          kty: Schema.Literal("EC"),
-          x: Schema.String,
-          y: Schema.String,
-        }),
-        Schema.Struct({
-          alg: Schema.Literal("ES384"),
-          crv: Schema.Literal("P-384"),
-          kid: Schema.String,
-          kty: Schema.Literal("EC"),
-          x: Schema.String,
-          y: Schema.String,
-        }),
+        ApishieldCredentialsJWTKeyRSA,
+        ApishieldCredentialsJWTKeyEcEs256,
+        ApishieldCredentialsJWTKeyEcEs384,
       ]),
     ),
   }).pipe(
@@ -760,29 +644,9 @@ export interface PutConfigurationCredentialResponse {
     source?: { pointer?: string | null } | null;
   }[];
   keys: (
-    | {
-        alg: "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
-        e: string;
-        kid: string;
-        kty: "RSA";
-        n: string;
-      }
-    | {
-        alg: "ES256";
-        crv: "P-256";
-        kid: string;
-        kty: "EC";
-        x: string;
-        y: string;
-      }
-    | {
-        alg: "ES384";
-        crv: "P-384";
-        kid: string;
-        kty: "EC";
-        x: string;
-        y: string;
-      }
+    | ApishieldCredentialsJWTKeyRSA
+    | ApishieldCredentialsJWTKeyEcEs256
+    | ApishieldCredentialsJWTKeyEcEs384
   )[];
   messages: {
     code: number;
@@ -824,36 +688,9 @@ export const PutConfigurationCredentialResponse =
     ),
     keys: Schema.Array(
       Schema.Union([
-        Schema.Struct({
-          alg: Schema.Literals([
-            "RS256",
-            "RS384",
-            "RS512",
-            "PS256",
-            "PS384",
-            "PS512",
-          ]),
-          e: Schema.String,
-          kid: Schema.String,
-          kty: Schema.Literal("RSA"),
-          n: Schema.String,
-        }),
-        Schema.Struct({
-          alg: Schema.Literal("ES256"),
-          crv: Schema.Literal("P-256"),
-          kid: Schema.String,
-          kty: Schema.Literal("EC"),
-          x: Schema.String,
-          y: Schema.String,
-        }),
-        Schema.Struct({
-          alg: Schema.Literal("ES384"),
-          crv: Schema.Literal("P-384"),
-          kid: Schema.String,
-          kty: Schema.Literal("EC"),
-          x: Schema.String,
-          y: Schema.String,
-        }),
+        ApishieldCredentialsJWTKeyRSA,
+        ApishieldCredentialsJWTKeyEcEs256,
+        ApishieldCredentialsJWTKeyEcEs384,
       ]),
     ),
     messages: Schema.Array(
@@ -928,10 +765,7 @@ export interface GetRuleResponse {
   /** Rule expression. Requests that fail to match this expression will be subject to `action`.  For details on expressions, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/j */
   expression: string;
   /** Select operations covered by this rule.  For details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/). */
-  selector: {
-    exclude?: { operationIds?: string[] | null }[] | null;
-    include?: { host?: string[] | null }[] | null;
-  };
+  selector: Selector;
   /** A human-readable name for the rule. */
   title: string;
   /** UUID. */
@@ -945,32 +779,7 @@ export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   description: Schema.String,
   enabled: Schema.Boolean,
   expression: Schema.String,
-  selector: Schema.Struct({
-    exclude: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            operationIds: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-          }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    include: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            host: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  }),
+  selector: Selector,
   title: Schema.String,
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1046,10 +855,7 @@ export interface ListRulesResponse {
     description: string;
     enabled: boolean;
     expression: string;
-    selector: {
-      exclude?: { operationIds?: string[] | null }[] | null;
-      include?: { host?: string[] | null }[] | null;
-    };
+    selector: Selector;
     title: string;
     id?: string | null;
     createdAt?: string | null;
@@ -1070,32 +876,7 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       description: Schema.String,
       enabled: Schema.Boolean,
       expression: Schema.String,
-      selector: Schema.Struct({
-        exclude: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                operationIds: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-              }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        include: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                host: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }),
+      selector: Selector,
       title: Schema.String,
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1152,10 +933,7 @@ export const listRules: API.PaginatedOperationMethod<
       description: string;
       enabled: boolean;
       expression: string;
-      selector: {
-        exclude?: { operationIds?: string[] | null }[] | null;
-        include?: { host?: string[] | null }[] | null;
-      };
+      selector: Selector;
       title: string;
       id?: string | null;
       createdAt?: string | null;
@@ -1189,10 +967,7 @@ export interface CreateRuleRequest {
   /** Body param: Rule expression. Requests that fail to match this expression will be subject to `action`.  For details on expressions, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shiel */
   expression: string;
   /** Body param: Select operations covered by this rule.  For details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/). */
-  selector: {
-    exclude?: { operationIds?: string[] }[] | null;
-    include?: { host?: string[] }[] | null;
-  };
+  selector: Selector;
   /** Body param: A human-readable name for the rule. */
   title: string;
 }
@@ -1203,28 +978,7 @@ export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   description: Schema.String,
   enabled: Schema.Boolean,
   expression: Schema.String,
-  selector: Schema.Struct({
-    exclude: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            operationIds: Schema.optional(Schema.Array(Schema.String)),
-          }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    include: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            host: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  }),
+  selector: Selector,
   title: Schema.String,
 }).pipe(
   T.Http({ method: "POST", path: "/zones/{zone_id}/token_validation/rules" }),
@@ -1240,10 +994,7 @@ export interface CreateRuleResponse {
   /** Rule expression. Requests that fail to match this expression will be subject to `action`.  For details on expressions, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/j */
   expression: string;
   /** Select operations covered by this rule.  For details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/). */
-  selector: {
-    exclude?: { operationIds?: string[] | null }[] | null;
-    include?: { host?: string[] | null }[] | null;
-  };
+  selector: Selector;
   /** A human-readable name for the rule. */
   title: string;
   /** UUID. */
@@ -1257,32 +1008,7 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   description: Schema.String,
   enabled: Schema.Boolean,
   expression: Schema.String,
-  selector: Schema.Struct({
-    exclude: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            operationIds: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-          }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    include: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            host: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  }),
+  selector: Selector,
   title: Schema.String,
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1331,12 +1057,9 @@ export interface PatchRuleRequest {
   /** Body param: Rule expression. Requests that fail to match this expression will be subject to `action`.  For details on expressions, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shiel */
   expression?: string;
   /** Body param: Update rule order among zone rules. */
-  position?: { index: number } | { before?: string } | { after?: string };
+  position?: ApishieldIndex | ApishieldBefore | ApishieldAfter;
   /** Body param: Select operations covered by this rule.  For details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/). */
-  selector?: {
-    exclude?: { operationIds?: string[] }[] | null;
-    include?: { host?: string[] }[] | null;
-  };
+  selector?: Selector;
   /** Body param: A human-readable name for the rule. */
   title?: string;
 }
@@ -1349,42 +1072,9 @@ export const PatchRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   enabled: Schema.optional(Schema.Boolean),
   expression: Schema.optional(Schema.String),
   position: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        index: Schema.Number,
-      }),
-      Schema.Struct({
-        before: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        after: Schema.optional(Schema.String),
-      }),
-    ]),
+    Schema.Union([ApishieldIndex, ApishieldBefore, ApishieldAfter]),
   ),
-  selector: Schema.optional(
-    Schema.Struct({
-      exclude: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              operationIds: Schema.optional(Schema.Array(Schema.String)),
-            }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      include: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              host: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }),
-  ),
+  selector: Schema.optional(Selector),
   title: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -1403,10 +1093,7 @@ export interface PatchRuleResponse {
   /** Rule expression. Requests that fail to match this expression will be subject to `action`.  For details on expressions, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/j */
   expression: string;
   /** Select operations covered by this rule.  For details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/). */
-  selector: {
-    exclude?: { operationIds?: string[] | null }[] | null;
-    include?: { host?: string[] | null }[] | null;
-  };
+  selector: Selector;
   /** A human-readable name for the rule. */
   title: string;
   /** UUID. */
@@ -1420,32 +1107,7 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   description: Schema.String,
   enabled: Schema.Boolean,
   expression: Schema.String,
-  selector: Schema.Struct({
-    exclude: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            operationIds: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-          }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    include: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            host: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  }),
+  selector: Selector,
   title: Schema.String,
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1526,10 +1188,7 @@ export interface BulkCreateRulesRequest {
     description: string;
     enabled: boolean;
     expression: string;
-    selector: {
-      exclude?: { operationIds?: string[] }[] | null;
-      include?: { host?: string[] }[] | null;
-    };
+    selector: Selector;
     title: string;
   }[];
 }
@@ -1543,28 +1202,7 @@ export const BulkCreateRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         description: Schema.String,
         enabled: Schema.Boolean,
         expression: Schema.String,
-        selector: Schema.Struct({
-          exclude: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  operationIds: Schema.optional(Schema.Array(Schema.String)),
-                }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          include: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  host: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }),
+        selector: Selector,
         title: Schema.String,
       }),
     ).pipe(T.HttpBody()),
@@ -1582,10 +1220,7 @@ export interface BulkCreateRulesResponse {
     description: string;
     enabled: boolean;
     expression: string;
-    selector: {
-      exclude?: { operationIds?: string[] | null }[] | null;
-      include?: { host?: string[] | null }[] | null;
-    };
+    selector: Selector;
     title: string;
     id?: string | null;
     createdAt?: string | null;
@@ -1601,32 +1236,7 @@ export const BulkCreateRulesResponse =
         description: Schema.String,
         enabled: Schema.Boolean,
         expression: Schema.String,
-        selector: Schema.Struct({
-          exclude: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  operationIds: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          include: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  host: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }),
+        selector: Selector,
         title: Schema.String,
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1670,10 +1280,7 @@ export const bulkCreateRules: API.PaginatedOperationMethod<
       description: string;
       enabled: boolean;
       expression: string;
-      selector: {
-        exclude?: { operationIds?: string[] | null }[] | null;
-        include?: { host?: string[] | null }[] | null;
-      };
+      selector: Selector;
       title: string;
       id?: string | null;
       createdAt?: string | null;
@@ -1696,70 +1303,12 @@ export interface BulkPatchRulesRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: */
-  body: {
-    id: string;
-    action?: "log" | "block";
-    description?: string;
-    enabled?: boolean;
-    expression?: string;
-    position?: { index: number } | { before?: string } | { after?: string };
-    selector?: {
-      exclude?: { operationIds?: string[] }[] | null;
-      include?: { host?: string[] }[] | null;
-    };
-    title?: string;
-  }[];
+  body: Body[];
 }
 
 export const BulkPatchRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  body: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      action: Schema.optional(Schema.Literals(["log", "block"])),
-      description: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-      expression: Schema.optional(Schema.String),
-      position: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            index: Schema.Number,
-          }),
-          Schema.Struct({
-            before: Schema.optional(Schema.String),
-          }),
-          Schema.Struct({
-            after: Schema.optional(Schema.String),
-          }),
-        ]),
-      ),
-      selector: Schema.optional(
-        Schema.Struct({
-          exclude: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  operationIds: Schema.optional(Schema.Array(Schema.String)),
-                }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          include: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  host: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }),
-      ),
-      title: Schema.optional(Schema.String),
-    }),
-  ).pipe(T.HttpBody()),
+  body: Schema.Array(Body).pipe(T.HttpBody()),
 }).pipe(
   T.Http({
     method: "PATCH",
@@ -1773,10 +1322,7 @@ export interface BulkPatchRulesResponse {
     description: string;
     enabled: boolean;
     expression: string;
-    selector: {
-      exclude?: { operationIds?: string[] | null }[] | null;
-      include?: { host?: string[] | null }[] | null;
-    };
+    selector: Selector;
     title: string;
     id?: string | null;
     createdAt?: string | null;
@@ -1792,32 +1338,7 @@ export const BulkPatchRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         description: Schema.String,
         enabled: Schema.Boolean,
         expression: Schema.String,
-        selector: Schema.Struct({
-          exclude: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  operationIds: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          include: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  host: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }),
+        selector: Selector,
         title: Schema.String,
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1862,10 +1383,7 @@ export const bulkPatchRules: API.PaginatedOperationMethod<
       description: string;
       enabled: boolean;
       expression: string;
-      selector: {
-        exclude?: { operationIds?: string[] | null }[] | null;
-        include?: { host?: string[] | null }[] | null;
-      };
+      selector: Selector;
       title: string;
       id?: string | null;
       createdAt?: string | null;

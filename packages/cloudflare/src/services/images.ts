@@ -61,6 +61,84 @@ export class VariantNotFound extends Schema.TaggedErrorClass<VariantNotFound>()(
 T.applyErrorMatchers(VariantNotFound, [{ code: 5401 }]);
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Image {
+  id?: string | null;
+  creator?: string | null;
+  filename?: string | null;
+  meta?: unknown | null;
+  requireSignedURLs?: boolean | null;
+  uploaded?: string | null;
+  variants?: string[] | null;
+}
+
+export const Image: Schema.Schema<Image> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      filename: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      meta: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+      requireSignedURLs: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      uploaded: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      variants: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Image>;
+
+export interface Key {
+  name?: string | null;
+  value?: string | null;
+}
+
+export const Key: Schema.Schema<Key> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Key>;
+
+export interface Options {
+  fit: "scale-down" | "contain" | "cover" | "crop" | "pad";
+  height: number;
+  metadata: "keep" | "copyright" | "none";
+  width: number;
+}
+
+export const Options: Schema.Schema<Options> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      fit: Schema.Literals(["scale-down", "contain", "cover", "crop", "pad"]),
+      height: Schema.Number,
+      metadata: Schema.Literals(["keep", "copyright", "none"]),
+      width: Schema.Number,
+    }),
+  ) as unknown as Schema.Schema<Options>;
+
+export interface Variant {
+  id: string;
+  options: Options;
+  neverRequireSignedURLs?: boolean | null;
+}
+
+export const Variant: Schema.Schema<Variant> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      options: Options,
+      neverRequireSignedURLs: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Variant>;
+
+// =============================================================================
 // V1
 // =============================================================================
 
@@ -138,23 +216,7 @@ export const ListV1sRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListV1sRequest>;
 
 export interface ListV1sResponse {
-  result: {
-    items?:
-      | {
-          images?:
-            | {
-                id?: string | null;
-                creator?: string | null;
-                filename?: string | null;
-                meta?: unknown | null;
-                requireSignedURLs?: boolean | null;
-                uploaded?: string | null;
-                variants?: string[] | null;
-              }[]
-            | null;
-        }[]
-      | null;
-  };
+  result: { items?: { images?: Image[] | null }[] | null };
   resultInfo: {
     count?: number | null;
     page?: number | null;
@@ -170,34 +232,7 @@ export const ListV1sResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         Schema.Array(
           Schema.Struct({
             images: Schema.optional(
-              Schema.Union([
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    creator: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    filename: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    meta: Schema.optional(
-                      Schema.Union([Schema.Unknown, Schema.Null]),
-                    ),
-                    requireSignedURLs: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    uploaded: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    variants: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                    ),
-                  }),
-                ),
-                Schema.Null,
-              ]),
+              Schema.Union([Schema.Array(Image), Schema.Null]),
             ),
           }),
         ),
@@ -237,20 +272,10 @@ export const listV1s: API.PaginatedOperationMethod<
     ListV1sError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListV1sRequest) => stream.Stream<
-    {
-      images?:
-        | {
-            id?: string | null;
-            creator?: string | null;
-            filename?: string | null;
-            meta?: unknown | null;
-            requireSignedURLs?: boolean | null;
-            uploaded?: string | null;
-            variants?: string[] | null;
-          }[]
-        | null;
-    },
+  items: (
+    input: ListV1sRequest,
+  ) => stream.Stream<
+    { images?: Image[] | null },
     ListV1sError,
     Credentials | HttpClient.HttpClient
   >;
@@ -511,21 +536,11 @@ export const ListV1KeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListV1KeysRequest>;
 
 export interface ListV1KeysResponse {
-  keys?: { name?: string | null; value?: string | null }[] | null;
+  keys?: Key[] | null;
 }
 
 export const ListV1KeysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  keys: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  keys: Schema.optional(Schema.Union([Schema.Array(Key), Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<ListV1KeysResponse>;
@@ -560,21 +575,11 @@ export const PutV1KeyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<PutV1KeyRequest>;
 
 export interface PutV1KeyResponse {
-  keys?: { name?: string | null; value?: string | null }[] | null;
+  keys?: Key[] | null;
 }
 
 export const PutV1KeyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  keys: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  keys: Schema.optional(Schema.Union([Schema.Array(Key), Schema.Null])),
 }).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<PutV1KeyResponse>;
 
 export type PutV1KeyError = DefaultErrors | ImagesAccessNotEnabled;
@@ -607,21 +612,11 @@ export const DeleteV1KeyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<DeleteV1KeyRequest>;
 
 export interface DeleteV1KeyResponse {
-  keys?: { name?: string | null; value?: string | null }[] | null;
+  keys?: Key[] | null;
 }
 
 export const DeleteV1KeyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  keys: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  keys: Schema.optional(Schema.Union([Schema.Array(Key), Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<DeleteV1KeyResponse>;
@@ -709,42 +704,11 @@ export const GetV1VariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetV1VariantRequest>;
 
 export interface GetV1VariantResponse {
-  variant?: {
-    id: string;
-    options: {
-      fit: "scale-down" | "contain" | "cover" | "crop" | "pad";
-      height: number;
-      metadata: "keep" | "copyright" | "none";
-      width: number;
-    };
-    neverRequireSignedURLs?: boolean | null;
-  } | null;
+  variant?: Variant | null;
 }
 
 export const GetV1VariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  variant: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.String,
-        options: Schema.Struct({
-          fit: Schema.Literals([
-            "scale-down",
-            "contain",
-            "cover",
-            "crop",
-            "pad",
-          ]),
-          height: Schema.Number,
-          metadata: Schema.Literals(["keep", "copyright", "none"]),
-          width: Schema.Number,
-        }),
-        neverRequireSignedURLs: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  variant: Schema.optional(Schema.Union([Variant, Schema.Null])),
 }).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetV1VariantResponse>;
@@ -780,12 +744,7 @@ export const ListV1VariantsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ListV1VariantsResponse {
   id: string;
   /** Allows you to define image resizing sizes for different use cases. */
-  options: {
-    fit: "scale-down" | "contain" | "cover" | "crop" | "pad";
-    height: number;
-    metadata: "keep" | "copyright" | "none";
-    width: number;
-  };
+  options: Options;
   /** Indicates whether the variant can access an image without a signature, regardless of image access control. */
   neverRequireSignedURLs?: boolean | null;
 }
@@ -793,12 +752,7 @@ export interface ListV1VariantsResponse {
 export const ListV1VariantsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String,
-    options: Schema.Struct({
-      fit: Schema.Literals(["scale-down", "contain", "cover", "crop", "pad"]),
-      height: Schema.Number,
-      metadata: Schema.Literals(["keep", "copyright", "none"]),
-      width: Schema.Number,
-    }),
+    options: Options,
     neverRequireSignedURLs: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
     ),
@@ -826,12 +780,7 @@ export interface CreateV1VariantRequest {
   /** Body param: */
   id: string;
   /** Body param: Allows you to define image resizing sizes for different use cases. */
-  options: {
-    fit: "scale-down" | "contain" | "cover" | "crop" | "pad";
-    height: number;
-    metadata: "keep" | "copyright" | "none";
-    width: number;
-  };
+  options: Options;
   /** Body param: Indicates whether the variant can access an image without a signature, regardless of image access control. */
   neverRequireSignedURLs?: boolean;
 }
@@ -840,12 +789,7 @@ export const CreateV1VariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     id: Schema.String,
-    options: Schema.Struct({
-      fit: Schema.Literals(["scale-down", "contain", "cover", "crop", "pad"]),
-      height: Schema.Number,
-      metadata: Schema.Literals(["keep", "copyright", "none"]),
-      width: Schema.Number,
-    }),
+    options: Options,
     neverRequireSignedURLs: Schema.optional(Schema.Boolean),
   },
 ).pipe(
@@ -853,43 +797,12 @@ export const CreateV1VariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Schema<CreateV1VariantRequest>;
 
 export interface CreateV1VariantResponse {
-  variant?: {
-    id: string;
-    options: {
-      fit: "scale-down" | "contain" | "cover" | "crop" | "pad";
-      height: number;
-      metadata: "keep" | "copyright" | "none";
-      width: number;
-    };
-    neverRequireSignedURLs?: boolean | null;
-  } | null;
+  variant?: Variant | null;
 }
 
 export const CreateV1VariantResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    variant: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.String,
-          options: Schema.Struct({
-            fit: Schema.Literals([
-              "scale-down",
-              "contain",
-              "cover",
-              "crop",
-              "pad",
-            ]),
-            height: Schema.Number,
-            metadata: Schema.Literals(["keep", "copyright", "none"]),
-            width: Schema.Number,
-          }),
-          neverRequireSignedURLs: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
+    variant: Schema.optional(Schema.Union([Variant, Schema.Null])),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CreateV1VariantResponse>;
@@ -915,12 +828,7 @@ export interface PatchV1VariantRequest {
   /** Path param: Account identifier tag. */
   accountId: string;
   /** Body param: Allows you to define image resizing sizes for different use cases. */
-  options: {
-    fit: "scale-down" | "contain" | "cover" | "crop" | "pad";
-    height: number;
-    metadata: "keep" | "copyright" | "none";
-    width: number;
-  };
+  options: Options;
   /** Body param: Indicates whether the variant can access an image without a signature, regardless of image access control. */
   neverRequireSignedURLs?: boolean;
 }
@@ -928,12 +836,7 @@ export interface PatchV1VariantRequest {
 export const PatchV1VariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   variantId: Schema.String.pipe(T.HttpPath("variantId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  options: Schema.Struct({
-    fit: Schema.Literals(["scale-down", "contain", "cover", "crop", "pad"]),
-    height: Schema.Number,
-    metadata: Schema.Literals(["keep", "copyright", "none"]),
-    width: Schema.Number,
-  }),
+  options: Options,
   neverRequireSignedURLs: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
@@ -943,43 +846,12 @@ export const PatchV1VariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<PatchV1VariantRequest>;
 
 export interface PatchV1VariantResponse {
-  variant?: {
-    id: string;
-    options: {
-      fit: "scale-down" | "contain" | "cover" | "crop" | "pad";
-      height: number;
-      metadata: "keep" | "copyright" | "none";
-      width: number;
-    };
-    neverRequireSignedURLs?: boolean | null;
-  } | null;
+  variant?: Variant | null;
 }
 
 export const PatchV1VariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    variant: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.String,
-          options: Schema.Struct({
-            fit: Schema.Literals([
-              "scale-down",
-              "contain",
-              "cover",
-              "crop",
-              "pad",
-            ]),
-            height: Schema.Number,
-            metadata: Schema.Literals(["keep", "copyright", "none"]),
-            width: Schema.Number,
-          }),
-          neverRequireSignedURLs: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
+    variant: Schema.optional(Schema.Union([Variant, Schema.Null])),
   },
 ).pipe(
   T.ResponsePath("result"),
@@ -1080,43 +952,14 @@ export const ListV2sRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ListV2sResponse {
   /** Continuation token to fetch next page. Passed as a query param when requesting List V2 api endpoint. */
   continuationToken?: string | null;
-  images?:
-    | {
-        id?: string | null;
-        creator?: string | null;
-        filename?: string | null;
-        meta?: unknown | null;
-        requireSignedURLs?: boolean | null;
-        uploaded?: string | null;
-        variants?: string[] | null;
-      }[]
-    | null;
+  images?: Image[] | null;
 }
 
 export const ListV2sResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   continuationToken: Schema.optional(
     Schema.Union([Schema.String, Schema.Null]),
   ),
-  images: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          filename: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          meta: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
-          requireSignedURLs: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          uploaded: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          variants: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  images: Schema.optional(Schema.Union([Schema.Array(Image), Schema.Null])),
 })
   .pipe(
     Schema.encodeKeys({

@@ -14,6 +14,1211 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Annotation {
+  id: string;
+  asns: number[];
+  asnsDetails: AsnsDetail[];
+  dataSource: string;
+  eventType: string;
+  locations: string[];
+  locationsDetails: LocationsDetail[];
+  origins: string[];
+  originsDetails: OriginsDetail[];
+  outage: Outage;
+  startDate: string;
+  description?: string | null;
+  endDate?: string | null;
+  linkedUrl?: string | null;
+  scope?: string | null;
+}
+
+export const Annotation: Schema.Schema<Annotation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      asns: Schema.Array(Schema.Number),
+      asnsDetails: Schema.Array(AsnsDetail),
+      dataSource: Schema.String,
+      eventType: Schema.String,
+      locations: Schema.Array(Schema.String),
+      locationsDetails: Schema.Array(LocationsDetail),
+      origins: Schema.Array(Schema.String),
+      originsDetails: Schema.Array(OriginsDetail),
+      outage: Outage,
+      startDate: Schema.String,
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      endDate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      linkedUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Annotation>;
+
+export interface Asn {
+  asn: number;
+  confidenceLevel: number;
+  country: string;
+  countryName: string;
+  estimatedUsers: EstimatedUsers;
+  name: string;
+  orgName: string;
+  related: {
+    asn: number;
+    name: string;
+    aka?: string | null;
+    estimatedUsers?: number | null;
+  }[];
+  source: string;
+  website: string;
+  aka?: string | null;
+}
+
+export const Asn: Schema.Schema<Asn> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      asn: Schema.Number,
+      confidenceLevel: Schema.Number,
+      country: Schema.String,
+      countryName: Schema.String,
+      estimatedUsers: EstimatedUsers,
+      name: Schema.String,
+      orgName: Schema.String,
+      related: Schema.Array(
+        Schema.Struct({
+          asn: Schema.Number,
+          name: Schema.String,
+          aka: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          estimatedUsers: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }),
+      ),
+      source: Schema.String,
+      website: Schema.String,
+      aka: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Asn>;
+
+export interface Asninfo {
+  asName: string;
+  asn: number;
+  countryCode: string;
+  orgId: string;
+  orgName: string;
+}
+
+export const Asninfo: Schema.Schema<Asninfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      asName: Schema.String,
+      asn: Schema.Number,
+      countryCode: Schema.String,
+      orgId: Schema.String,
+      orgName: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        asName: "as_name",
+        asn: "asn",
+        countryCode: "country_code",
+        orgId: "org_id",
+        orgName: "org_name",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Asninfo>;
+
+export interface AsnsDetail {
+  asn: string;
+  name: string;
+  locations?: LocationsDetail | null;
+}
+
+export const AsnsDetail: Schema.Schema<AsnsDetail> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      asn: Schema.String,
+      name: Schema.String,
+      locations: Schema.optional(Schema.Union([LocationsDetail, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<AsnsDetail>;
+
+export interface Bot {
+  category: string;
+  description: string;
+  kind: string;
+  name: string;
+  operator: string;
+  operatorUrl: string;
+  slug: string;
+  userAgentPatterns: string[];
+  userAgents: string[];
+}
+
+export const Bot: Schema.Schema<Bot> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      category: Schema.String,
+      description: Schema.String,
+      kind: Schema.String,
+      name: Schema.String,
+      operator: Schema.String,
+      operatorUrl: Schema.String,
+      slug: Schema.String,
+      userAgentPatterns: Schema.Array(Schema.String),
+      userAgents: Schema.Array(Schema.String),
+    }),
+  ) as unknown as Schema.Schema<Bot>;
+
+export interface Category {
+  id: number;
+  name: string;
+  superCategoryId: number;
+}
+
+export const Category: Schema.Schema<Category> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Number,
+      name: Schema.String,
+      superCategoryId: Schema.Number,
+    }),
+  ) as unknown as Schema.Schema<Category>;
+
+export interface CertificateAuthority {
+  appleStatus:
+    | "INCLUDED"
+    | "NOT_YET_INCLUDED"
+    | "NOT_INCLUDED"
+    | "NOT_BEFORE"
+    | "REMOVED"
+    | "DISABLED"
+    | "BLOCKED";
+  authorityKeyIdentifier: string;
+  certificateRecordType: "ROOT_CERTIFICATE" | "INTERMEDIATE_CERTIFICATE";
+  chromeStatus:
+    | "INCLUDED"
+    | "NOT_YET_INCLUDED"
+    | "NOT_INCLUDED"
+    | "NOT_BEFORE"
+    | "REMOVED"
+    | "DISABLED"
+    | "BLOCKED";
+  country: string;
+  countryName: string;
+  microsoftStatus:
+    | "INCLUDED"
+    | "NOT_YET_INCLUDED"
+    | "NOT_INCLUDED"
+    | "NOT_BEFORE"
+    | "REMOVED"
+    | "DISABLED"
+    | "BLOCKED";
+  mozillaStatus:
+    | "INCLUDED"
+    | "NOT_YET_INCLUDED"
+    | "NOT_INCLUDED"
+    | "NOT_BEFORE"
+    | "REMOVED"
+    | "DISABLED"
+    | "BLOCKED";
+  name: string;
+  owner: string;
+  parentName: string;
+  parentSha256Fingerprint: string;
+  related: {
+    certificateRecordType: "ROOT_CERTIFICATE" | "INTERMEDIATE_CERTIFICATE";
+    name: string;
+    revocationStatus: "NOT_REVOKED" | "REVOKED" | "PARENT_CERT_REVOKED";
+    sha256Fingerprint: string;
+  }[];
+  revocationStatus: "NOT_REVOKED" | "REVOKED" | "PARENT_CERT_REVOKED";
+  sha256Fingerprint: string;
+  subjectKeyIdentifier: string;
+  validFrom: string;
+  validTo: string;
+}
+
+export const CertificateAuthority: Schema.Schema<CertificateAuthority> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      appleStatus: Schema.Literals([
+        "INCLUDED",
+        "NOT_YET_INCLUDED",
+        "NOT_INCLUDED",
+        "NOT_BEFORE",
+        "REMOVED",
+        "DISABLED",
+        "BLOCKED",
+      ]),
+      authorityKeyIdentifier: Schema.String,
+      certificateRecordType: Schema.Literals([
+        "ROOT_CERTIFICATE",
+        "INTERMEDIATE_CERTIFICATE",
+      ]),
+      chromeStatus: Schema.Literals([
+        "INCLUDED",
+        "NOT_YET_INCLUDED",
+        "NOT_INCLUDED",
+        "NOT_BEFORE",
+        "REMOVED",
+        "DISABLED",
+        "BLOCKED",
+      ]),
+      country: Schema.String,
+      countryName: Schema.String,
+      microsoftStatus: Schema.Literals([
+        "INCLUDED",
+        "NOT_YET_INCLUDED",
+        "NOT_INCLUDED",
+        "NOT_BEFORE",
+        "REMOVED",
+        "DISABLED",
+        "BLOCKED",
+      ]),
+      mozillaStatus: Schema.Literals([
+        "INCLUDED",
+        "NOT_YET_INCLUDED",
+        "NOT_INCLUDED",
+        "NOT_BEFORE",
+        "REMOVED",
+        "DISABLED",
+        "BLOCKED",
+      ]),
+      name: Schema.String,
+      owner: Schema.String,
+      parentName: Schema.String,
+      parentSha256Fingerprint: Schema.String,
+      related: Schema.Array(
+        Schema.Struct({
+          certificateRecordType: Schema.Literals([
+            "ROOT_CERTIFICATE",
+            "INTERMEDIATE_CERTIFICATE",
+          ]),
+          name: Schema.String,
+          revocationStatus: Schema.Literals([
+            "NOT_REVOKED",
+            "REVOKED",
+            "PARENT_CERT_REVOKED",
+          ]),
+          sha256Fingerprint: Schema.String,
+        }),
+      ),
+      revocationStatus: Schema.Literals([
+        "NOT_REVOKED",
+        "REVOKED",
+        "PARENT_CERT_REVOKED",
+      ]),
+      sha256Fingerprint: Schema.String,
+      subjectKeyIdentifier: Schema.String,
+      validFrom: Schema.String,
+      validTo: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<CertificateAuthority>;
+
+export interface CertificateLog {
+  api: "RFC6962" | "STATIC";
+  avgThroughput: number;
+  description: string;
+  endExclusive: string;
+  lastUpdate: string;
+  operator: string;
+  performance: {
+    endpoints: {
+      endpoint:
+        | "add-chain (new)"
+        | "add-chain (old)"
+        | "add-pre-chain (new)"
+        | "add-pre-chain (old)"
+        | "get-entries"
+        | "get-roots"
+        | "get-sth";
+      responseTime: number;
+      uptime: number;
+    }[];
+    responseTime: number;
+    uptime: number;
+  } | null;
+  related: Related[];
+  slug: string;
+  startInclusive: string;
+  state:
+    | "USABLE"
+    | "PENDING"
+    | "QUALIFIED"
+    | "READ_ONLY"
+    | "RETIRED"
+    | "REJECTED";
+  stateTimestamp: string;
+  submittableCertCount: string | null;
+  submittedCertCount: string | null;
+  url: string;
+}
+
+export const CertificateLog: Schema.Schema<CertificateLog> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      api: Schema.Literals(["RFC6962", "STATIC"]),
+      avgThroughput: Schema.Number,
+      description: Schema.String,
+      endExclusive: Schema.String,
+      lastUpdate: Schema.String,
+      operator: Schema.String,
+      performance: Schema.Union([
+        Schema.Struct({
+          endpoints: Schema.Array(
+            Schema.Struct({
+              endpoint: Schema.Literals([
+                "add-chain (new)",
+                "add-chain (old)",
+                "add-pre-chain (new)",
+                "add-pre-chain (old)",
+                "get-entries",
+                "get-roots",
+                "get-sth",
+              ]),
+              responseTime: Schema.Number,
+              uptime: Schema.Number,
+            }),
+          ),
+          responseTime: Schema.Number,
+          uptime: Schema.Number,
+        }),
+        Schema.Null,
+      ]),
+      related: Schema.Array(Related),
+      slug: Schema.String,
+      startInclusive: Schema.String,
+      state: Schema.Literals([
+        "USABLE",
+        "PENDING",
+        "QUALIFIED",
+        "READ_ONLY",
+        "RETIRED",
+        "REJECTED",
+      ]),
+      stateTimestamp: Schema.String,
+      submittableCertCount: Schema.Union([Schema.String, Schema.Null]),
+      submittedCertCount: Schema.Union([Schema.String, Schema.Null]),
+      url: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<CertificateLog>;
+
+export interface ConfidenceInfo {
+  annotations: {
+    dataSource:
+      | "ALL"
+      | "AI_BOTS"
+      | "AI_GATEWAY"
+      | "BGP"
+      | "BOTS"
+      | "CONNECTION_ANOMALY"
+      | "CT"
+      | "DNS"
+      | "DNS_MAGNITUDE"
+      | "DNS_AS112"
+      | "DOS"
+      | "EMAIL_ROUTING"
+      | "EMAIL_SECURITY"
+      | "FW"
+      | "FW_PG"
+      | "HTTP"
+      | "HTTP_CONTROL"
+      | "HTTP_CRAWLER_REFERER"
+      | "HTTP_ORIGINS"
+      | "IQI"
+      | "LEAKED_CREDENTIALS"
+      | "NET"
+      | "ROBOTS_TXT"
+      | "SPEED"
+      | "WORKERS_AI";
+    description: string;
+    endDate: string;
+    eventType:
+      | "EVENT"
+      | "GENERAL"
+      | "OUTAGE"
+      | "PARTIAL_PROJECTION"
+      | "PIPELINE"
+      | "TRAFFIC_ANOMALY";
+    isInstantaneous: boolean;
+    linkedUrl: string;
+    startDate: string;
+  }[];
+  level: number;
+}
+
+export const ConfidenceInfo: Schema.Schema<ConfidenceInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      annotations: Schema.Array(
+        Schema.Struct({
+          dataSource: Schema.Literals([
+            "ALL",
+            "AI_BOTS",
+            "AI_GATEWAY",
+            "BGP",
+            "BOTS",
+            "CONNECTION_ANOMALY",
+            "CT",
+            "DNS",
+            "DNS_MAGNITUDE",
+            "DNS_AS112",
+            "DOS",
+            "EMAIL_ROUTING",
+            "EMAIL_SECURITY",
+            "FW",
+            "FW_PG",
+            "HTTP",
+            "HTTP_CONTROL",
+            "HTTP_CRAWLER_REFERER",
+            "HTTP_ORIGINS",
+            "IQI",
+            "LEAKED_CREDENTIALS",
+            "NET",
+            "ROBOTS_TXT",
+            "SPEED",
+            "WORKERS_AI",
+          ]),
+          description: Schema.String,
+          endDate: Schema.String,
+          eventType: Schema.Literals([
+            "EVENT",
+            "GENERAL",
+            "OUTAGE",
+            "PARTIAL_PROJECTION",
+            "PIPELINE",
+            "TRAFFIC_ANOMALY",
+          ]),
+          isInstantaneous: Schema.Boolean,
+          linkedUrl: Schema.String,
+          startDate: Schema.String,
+        }),
+      ),
+      level: Schema.Number,
+    }),
+  ) as unknown as Schema.Schema<ConfidenceInfo>;
+
+export interface Dataset {
+  id: number;
+  description: string;
+  meta: unknown;
+  tags: string[];
+  title: string;
+  type: string;
+}
+
+export const Dataset: Schema.Schema<Dataset> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Number,
+      description: Schema.String,
+      meta: Schema.Unknown,
+      tags: Schema.Array(Schema.String),
+      title: Schema.String,
+      type: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<Dataset>;
+
+export interface DateRange {
+  endTime: string;
+  startTime: string;
+}
+
+export const DateRange: Schema.Schema<DateRange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      endTime: Schema.String,
+      startTime: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<DateRange>;
+
+export interface EstimatedUsers {
+  locations: {
+    locationAlpha2: string;
+    locationName: string;
+    estimatedUsers?: number | null;
+  }[];
+  estimatedUsers?: number | null;
+}
+
+export const EstimatedUsers: Schema.Schema<EstimatedUsers> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      locations: Schema.Array(
+        Schema.Struct({
+          locationAlpha2: Schema.String,
+          locationName: Schema.String,
+          estimatedUsers: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }),
+      ),
+      estimatedUsers: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<EstimatedUsers>;
+
+export interface Event {
+  id: number;
+  confidenceScore: number;
+  duration: number;
+  eventType: number;
+  hijackMsgsCount: number;
+  hijackerAsn: number;
+  hijackerCountry: string;
+  isStale: boolean;
+  maxHijackTs: string;
+  maxMsgTs: string;
+  minHijackTs: string;
+  onGoingCount: number;
+  peerAsns: number[];
+  peerIpCount: number;
+  prefixes: string[];
+  tags: { name: string; score: number }[];
+  victimAsns: number[];
+  victimCountries: string[];
+}
+
+export const Event: Schema.Schema<Event> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Number,
+      confidenceScore: Schema.Number,
+      duration: Schema.Number,
+      eventType: Schema.Number,
+      hijackMsgsCount: Schema.Number,
+      hijackerAsn: Schema.Number,
+      hijackerCountry: Schema.String,
+      isStale: Schema.Boolean,
+      maxHijackTs: Schema.String,
+      maxMsgTs: Schema.String,
+      minHijackTs: Schema.String,
+      onGoingCount: Schema.Number,
+      peerAsns: Schema.Array(Schema.Number),
+      peerIpCount: Schema.Number,
+      prefixes: Schema.Array(Schema.String),
+      tags: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          score: Schema.Number,
+        }),
+      ),
+      victimAsns: Schema.Array(Schema.Number),
+      victimCountries: Schema.Array(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        confidenceScore: "confidence_score",
+        duration: "duration",
+        eventType: "event_type",
+        hijackMsgsCount: "hijack_msgs_count",
+        hijackerAsn: "hijacker_asn",
+        hijackerCountry: "hijacker_country",
+        isStale: "is_stale",
+        maxHijackTs: "max_hijack_ts",
+        maxMsgTs: "max_msg_ts",
+        minHijackTs: "min_hijack_ts",
+        onGoingCount: "on_going_count",
+        peerAsns: "peer_asns",
+        peerIpCount: "peer_ip_count",
+        prefixes: "prefixes",
+        tags: "tags",
+        victimAsns: "victim_asns",
+        victimCountries: "victim_countries",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Event>;
+
+export interface Geolocation {
+  geoId: string;
+  latitude: string;
+  longitude: string;
+  name: string;
+  parent: Parent;
+  type: "CONTINENT" | "COUNTRY" | "ADM1";
+}
+
+export const Geolocation: Schema.Schema<Geolocation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      geoId: Schema.String,
+      latitude: Schema.String,
+      longitude: Schema.String,
+      name: Schema.String,
+      parent: Parent,
+      type: Schema.Literals(["CONTINENT", "COUNTRY", "ADM1"]),
+    }),
+  ) as unknown as Schema.Schema<Geolocation>;
+
+export interface Location {
+  alpha2: string;
+  confidenceLevel: number;
+  latitude: string;
+  longitude: string;
+  name: string;
+  region: string;
+  subregion: string;
+}
+
+export const Location: Schema.Schema<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      alpha2: Schema.String,
+      confidenceLevel: Schema.Number,
+      latitude: Schema.String,
+      longitude: Schema.String,
+      name: Schema.String,
+      region: Schema.String,
+      subregion: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<Location>;
+
+export interface Locations {
+  code: string;
+  name: string;
+}
+
+export const Locations: Schema.Schema<Locations> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      code: Schema.String,
+      name: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<Locations>;
+
+export interface LocationsDetail {
+  code: string;
+  name: string;
+}
+
+export const LocationsDetail: Schema.Schema<LocationsDetail> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      code: Schema.String,
+      name: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<LocationsDetail>;
+
+export interface Meta {
+  aggInterval:
+    | "FIFTEEN_MINUTES"
+    | "ONE_HOUR"
+    | "ONE_DAY"
+    | "ONE_WEEK"
+    | "ONE_MONTH";
+  confidenceInfo: ConfidenceInfo;
+  dateRange: DateRange[];
+  lastUpdated: string;
+  normalization:
+    | "PERCENTAGE"
+    | "MIN0_MAX"
+    | "MIN_MAX"
+    | "RAW_VALUES"
+    | "PERCENTAGE_CHANGE"
+    | "ROLLING_AVERAGE"
+    | "OVERLAPPED_PERCENTAGE"
+    | "RATIO";
+  units: Unit[];
+  delay?: {
+    asnData: {
+      delaySecs: number;
+      delayStr: string;
+      healthy: boolean;
+      latest: { entriesCount: number; path: string; timestamp: number };
+    };
+    countryData: {
+      delaySecs: number;
+      delayStr: string;
+      healthy: boolean;
+      latest: { count: number; timestamp: number };
+    };
+    healthy: boolean;
+    nowTs: number;
+  } | null;
+}
+
+export const Meta: Schema.Schema<Meta> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      aggInterval: Schema.Literals([
+        "FIFTEEN_MINUTES",
+        "ONE_HOUR",
+        "ONE_DAY",
+        "ONE_WEEK",
+        "ONE_MONTH",
+      ]),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
+      lastUpdated: Schema.String,
+      normalization: Schema.Literals([
+        "PERCENTAGE",
+        "MIN0_MAX",
+        "MIN_MAX",
+        "RAW_VALUES",
+        "PERCENTAGE_CHANGE",
+        "ROLLING_AVERAGE",
+        "OVERLAPPED_PERCENTAGE",
+        "RATIO",
+      ]),
+      units: Schema.Array(Unit),
+      delay: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            asnData: Schema.Struct({
+              delaySecs: Schema.Number,
+              delayStr: Schema.String,
+              healthy: Schema.Boolean,
+              latest: Schema.Struct({
+                entriesCount: Schema.Number,
+                path: Schema.String,
+                timestamp: Schema.Number,
+              }).pipe(
+                Schema.encodeKeys({
+                  entriesCount: "entries_count",
+                  path: "path",
+                  timestamp: "timestamp",
+                }),
+              ),
+            }),
+            countryData: Schema.Struct({
+              delaySecs: Schema.Number,
+              delayStr: Schema.String,
+              healthy: Schema.Boolean,
+              latest: Schema.Struct({
+                count: Schema.Number,
+                timestamp: Schema.Number,
+              }),
+            }),
+            healthy: Schema.Boolean,
+            nowTs: Schema.Number,
+          }).pipe(
+            Schema.encodeKeys({
+              asnData: "asn_data",
+              countryData: "country_data",
+              healthy: "healthy",
+              nowTs: "nowTs",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Meta>;
+
+export interface OriginsDetail {
+  name: string;
+  origin: string;
+}
+
+export const OriginsDetail: Schema.Schema<OriginsDetail> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      origin: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<OriginsDetail>;
+
+export interface Outage {
+  outageCause: string;
+  outageType: string;
+}
+
+export const Outage: Schema.Schema<Outage> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      outageCause: Schema.String,
+      outageType: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<Outage>;
+
+export interface Parent {
+  geoId: string;
+  latitude: string;
+  longitude: string;
+  name: string;
+  parent: {
+    geoId: string;
+    latitude: string;
+    longitude: string;
+    name: string;
+    type: "CONTINENT" | "COUNTRY" | "ADM1";
+  };
+  type: "CONTINENT" | "COUNTRY" | "ADM1";
+}
+
+export const Parent: Schema.Schema<Parent> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      geoId: Schema.String,
+      latitude: Schema.String,
+      longitude: Schema.String,
+      name: Schema.String,
+      parent: Schema.Struct({
+        geoId: Schema.String,
+        latitude: Schema.String,
+        longitude: Schema.String,
+        name: Schema.String,
+        type: Schema.Literals(["CONTINENT", "COUNTRY", "ADM1"]),
+      }),
+      type: Schema.Literals(["CONTINENT", "COUNTRY", "ADM1"]),
+    }),
+  ) as unknown as Schema.Schema<Parent>;
+
+export interface PrefixOrigin {
+  origin: number;
+  prefix: string;
+  rpkiValidation: string;
+  totalPeers: number;
+  totalVisible: number;
+  visibility: number;
+}
+
+export const PrefixOrigin: Schema.Schema<PrefixOrigin> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      origin: Schema.Number,
+      prefix: Schema.String,
+      rpkiValidation: Schema.String,
+      totalPeers: Schema.Number,
+      totalVisible: Schema.Number,
+      visibility: Schema.Number,
+    }).pipe(
+      Schema.encodeKeys({
+        origin: "origin",
+        prefix: "prefix",
+        rpkiValidation: "rpki_validation",
+        totalPeers: "total_peers",
+        totalVisible: "total_visible",
+        visibility: "visibility",
+      }),
+    ),
+  ) as unknown as Schema.Schema<PrefixOrigin>;
+
+export interface RadarEmailSeries {
+  fail: string[];
+  none: string[];
+  pass: string[];
+}
+
+export const RadarEmailSeries: Schema.Schema<RadarEmailSeries> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      fail: Schema.Array(Schema.String),
+      none: Schema.Array(Schema.String),
+      pass: Schema.Array(Schema.String),
+    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+  ) as unknown as Schema.Schema<RadarEmailSeries>;
+
+export interface RadarEmailSummary {
+  fail: string;
+  none: string;
+  pass: string;
+}
+
+export const RadarEmailSummary: Schema.Schema<RadarEmailSummary> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      fail: Schema.String,
+      none: Schema.String,
+      pass: Schema.String,
+    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+  ) as unknown as Schema.Schema<RadarEmailSummary>;
+
+export interface Related {
+  description: string;
+  endExclusive: string;
+  slug: string;
+  startInclusive: string;
+  state:
+    | "USABLE"
+    | "PENDING"
+    | "QUALIFIED"
+    | "READ_ONLY"
+    | "RETIRED"
+    | "REJECTED";
+}
+
+export const Related: Schema.Schema<Related> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      description: Schema.String,
+      endExclusive: Schema.String,
+      slug: Schema.String,
+      startInclusive: Schema.String,
+      state: Schema.Literals([
+        "USABLE",
+        "PENDING",
+        "QUALIFIED",
+        "READ_ONLY",
+        "RETIRED",
+        "REJECTED",
+      ]),
+    }),
+  ) as unknown as Schema.Schema<Related>;
+
+export interface Serie0 {
+  _1HOURTO_3HOURS: string[];
+  _10MINSTO_20MINS: string[];
+  _20MINSTO_40MINS: string[];
+  _40MINSTO_1HOUR: string[];
+  over_3HOURS: string[];
+  timestamps: string[];
+  under_10MINS: string[];
+}
+
+export const Serie0: Schema.Schema<Serie0> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      _1HOURTO_3HOURS: Schema.Array(Schema.String),
+      _10MINSTO_20MINS: Schema.Array(Schema.String),
+      _20MINSTO_40MINS: Schema.Array(Schema.String),
+      _40MINSTO_1HOUR: Schema.Array(Schema.String),
+      over_3HOURS: Schema.Array(Schema.String),
+      timestamps: Schema.Array(Schema.String),
+      under_10MINS: Schema.Array(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        _1HOURTO_3HOURS: "_1_HOUR_TO_3_HOURS",
+        _10MINSTO_20MINS: "_10_MINS_TO_20_MINS",
+        _20MINSTO_40MINS: "_20_MINS_TO_40_MINS",
+        _40MINSTO_1HOUR: "_40_MINS_TO_1_HOUR",
+        over_3HOURS: "OVER_3_HOURS",
+        timestamps: "timestamps",
+        under_10MINS: "UNDER_10_MINS",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Serie0>;
+
+export interface Summary0 {
+  gt_15mLte_1h: string;
+  gt_1dLte_1w: string;
+  gt_1hLte_1d: string;
+  gt_1mLte_5m: string;
+  gt_1w: string;
+  gt_5mLte_15m: string;
+  lte_1m: string;
+}
+
+export const Summary0: Schema.Schema<Summary0> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      gt_15mLte_1h: Schema.String,
+      gt_1dLte_1w: Schema.String,
+      gt_1hLte_1d: Schema.String,
+      gt_1mLte_5m: Schema.String,
+      gt_1w: Schema.String,
+      gt_5mLte_15m: Schema.String,
+      lte_1m: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        gt_15mLte_1h: "gt_15m_lte_1h",
+        gt_1dLte_1w: "gt_1d_lte_1w",
+        gt_1hLte_1d: "gt_1h_lte_1d",
+        gt_1mLte_5m: "gt_1m_lte_5m",
+        gt_1w: "gt_1w",
+        gt_5mLte_15m: "gt_5m_lte_15m",
+        lte_1m: "lte_1m",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Summary0>;
+
+export interface Top0 {
+  bandwidthDownload: string;
+  bandwidthUpload: string;
+  clientASN: number;
+  clientASName: string;
+  jitterIdle: string;
+  jitterLoaded: string;
+  latencyIdle: string;
+  latencyLoaded: string;
+  numTests: number;
+  rankPower: number;
+}
+
+export const Top0: Schema.Schema<Top0> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      bandwidthDownload: Schema.String,
+      bandwidthUpload: Schema.String,
+      clientASN: Schema.Number,
+      clientASName: Schema.String,
+      jitterIdle: Schema.String,
+      jitterLoaded: Schema.String,
+      latencyIdle: Schema.String,
+      latencyLoaded: Schema.String,
+      numTests: Schema.Number,
+      rankPower: Schema.Number,
+    }),
+  ) as unknown as Schema.Schema<Top0>;
+
+export interface TrafficAnomaly {
+  startDate: string;
+  status: string;
+  type: string;
+  uuid: string;
+  asnDetails?: AsnsDetail | null;
+  endDate?: string | null;
+  locationDetails?: LocationsDetail | null;
+  originDetails?: OriginsDetail | null;
+  visibleInDataSources?: string[] | null;
+}
+
+export const TrafficAnomaly: Schema.Schema<TrafficAnomaly> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      startDate: Schema.String,
+      status: Schema.String,
+      type: Schema.String,
+      uuid: Schema.String,
+      asnDetails: Schema.optional(Schema.Union([AsnsDetail, Schema.Null])),
+      endDate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      locationDetails: Schema.optional(
+        Schema.Union([LocationsDetail, Schema.Null]),
+      ),
+      originDetails: Schema.optional(
+        Schema.Union([OriginsDetail, Schema.Null]),
+      ),
+      visibleInDataSources: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<TrafficAnomaly>;
+
+export interface UnionMember1 {
+  rfc6962: string;
+  static: string;
+}
+
+export const UnionMember1: Schema.Schema<UnionMember1> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      rfc6962: Schema.String,
+      static: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<UnionMember1>;
+
+export interface UnionMember2 {
+  gt_121d: string;
+  gt_16dLte_31d: string;
+  gt_31dLte_91d: string;
+  gt_3dLte_16d: string;
+  gt_91dLte_121d: string;
+  lte_3d: string;
+}
+
+export const UnionMember2: Schema.Schema<UnionMember2> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      gt_121d: Schema.String,
+      gt_16dLte_31d: Schema.String,
+      gt_31dLte_91d: Schema.String,
+      gt_3dLte_16d: Schema.String,
+      gt_91dLte_121d: Schema.String,
+      lte_3d: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        gt_121d: "gt_121d",
+        gt_16dLte_31d: "gt_16d_lte_31d",
+        gt_31dLte_91d: "gt_31d_lte_91d",
+        gt_3dLte_16d: "gt_3d_lte_16d",
+        gt_91dLte_121d: "gt_91d_lte_121d",
+        lte_3d: "lte_3d",
+      }),
+    ),
+  ) as unknown as Schema.Schema<UnionMember2>;
+
+export interface UnionMember3 {
+  certificate: string;
+  precertificate: string;
+}
+
+export const UnionMember3: Schema.Schema<UnionMember3> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      certificate: Schema.String,
+      precertificate: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        certificate: "CERTIFICATE",
+        precertificate: "PRECERTIFICATE",
+      }),
+    ),
+  ) as unknown as Schema.Schema<UnionMember3>;
+
+export interface UnionMember4 {
+  expired: string;
+  valid: string;
+}
+
+export const UnionMember4: Schema.Schema<UnionMember4> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      expired: Schema.String,
+      valid: Schema.String,
+    }).pipe(Schema.encodeKeys({ expired: "EXPIRED", valid: "VALID" })),
+  ) as unknown as Schema.Schema<UnionMember4>;
+
+export interface UnionMember5 {
+  negative: string;
+  positive: string;
+}
+
+export const UnionMember5: Schema.Schema<UnionMember5> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      negative: Schema.String,
+      positive: Schema.String,
+    }).pipe(Schema.encodeKeys({ negative: "NEGATIVE", positive: "POSITIVE" })),
+  ) as unknown as Schema.Schema<UnionMember5>;
+
+export interface UnionMember6 {
+  dsa: string;
+  ecdsa: string;
+  rsa: string;
+}
+
+export const UnionMember6: Schema.Schema<UnionMember6> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      dsa: Schema.String,
+      ecdsa: Schema.String,
+      rsa: Schema.String,
+    }).pipe(Schema.encodeKeys({ dsa: "DSA", ecdsa: "ECDSA", rsa: "RSA" })),
+  ) as unknown as Schema.Schema<UnionMember6>;
+
+export interface UnionMember7 {
+  domain: string;
+  extended: string;
+  organization: string;
+  unknown: string;
+}
+
+export const UnionMember7: Schema.Schema<UnionMember7> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      domain: Schema.String,
+      extended: Schema.String,
+      organization: Schema.String,
+      unknown: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<UnionMember7>;
+
+export interface Unit {
+  name: string;
+  value: string;
+}
+
+export const Unit: Schema.Schema<Unit> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      value: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<Unit>;
+
+// =============================================================================
 // AgentAiBotSummary
 // =============================================================================
 
@@ -27,50 +1232,8 @@ export const UserAgentAiBotSummaryRequest =
 export interface UserAgentAiBotSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -81,7 +1244,7 @@ export interface UserAgentAiBotSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -89,59 +1252,8 @@ export interface UserAgentAiBotSummaryResponse {
 export const UserAgentAiBotSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -153,12 +1265,7 @@ export const UserAgentAiBotSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -201,50 +1308,8 @@ export interface UserAgentAiTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -255,7 +1320,7 @@ export interface UserAgentAiTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -270,59 +1335,8 @@ export const UserAgentAiTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -334,12 +1348,7 @@ export const UserAgentAiTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -382,50 +1391,8 @@ export interface TimeseriesAiBotResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -436,7 +1403,7 @@ export interface TimeseriesAiBotResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
 }
 
@@ -450,59 +1417,8 @@ export const TimeseriesAiBotResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -514,12 +1430,7 @@ export const TimeseriesAiBotResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
   }).pipe(
     T.ResponsePath("result"),
@@ -552,50 +1463,8 @@ export const ModelAiInferenceSummaryRequest =
 export interface ModelAiInferenceSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -606,7 +1475,7 @@ export interface ModelAiInferenceSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -614,59 +1483,8 @@ export interface ModelAiInferenceSummaryResponse {
 export const ModelAiInferenceSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -678,12 +1496,7 @@ export const ModelAiInferenceSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -713,50 +1526,8 @@ export const TaskAiInferenceSummaryRequest =
 export interface TaskAiInferenceSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -767,7 +1538,7 @@ export interface TaskAiInferenceSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -775,59 +1546,8 @@ export interface TaskAiInferenceSummaryResponse {
 export const TaskAiInferenceSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -839,12 +1559,7 @@ export const TaskAiInferenceSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -887,50 +1602,8 @@ export interface ModelAiInferenceTimeseriesGroupSummaryResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -941,7 +1614,7 @@ export interface ModelAiInferenceTimeseriesGroupSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -956,59 +1629,8 @@ export const ModelAiInferenceTimeseriesGroupSummaryResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -1020,12 +1642,7 @@ export const ModelAiInferenceTimeseriesGroupSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -1066,50 +1683,8 @@ export interface TaskAiInferenceTimeseriesGroupSummaryResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -1120,7 +1695,7 @@ export interface TaskAiInferenceTimeseriesGroupSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -1135,59 +1710,8 @@ export const TaskAiInferenceTimeseriesGroupSummaryResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -1199,12 +1723,7 @@ export const TaskAiInferenceTimeseriesGroupSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -1249,50 +1768,8 @@ export const SummaryAiTimeseriesGroupRequest =
 export interface SummaryAiTimeseriesGroupResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -1303,7 +1780,7 @@ export interface SummaryAiTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -1311,59 +1788,8 @@ export interface SummaryAiTimeseriesGroupResponse {
 export const SummaryAiTimeseriesGroupResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -1375,12 +1801,7 @@ export const SummaryAiTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -1416,50 +1837,8 @@ export interface TimeseriesAiTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -1470,7 +1849,7 @@ export interface TimeseriesAiTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
 }
 
@@ -1484,59 +1863,8 @@ export const TimeseriesAiTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -1548,12 +1876,7 @@ export const TimeseriesAiTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
   }).pipe(
     T.ResponsePath("result"),
@@ -1660,79 +1983,12 @@ export const ListAnnotationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Schema<ListAnnotationsRequest>;
 
 export interface ListAnnotationsResponse {
-  annotations: {
-    id: string;
-    asns: number[];
-    asnsDetails: {
-      asn: string;
-      name: string;
-      locations?: { code: string; name: string } | null;
-    }[];
-    dataSource: string;
-    eventType: string;
-    locations: string[];
-    locationsDetails: { code: string; name: string }[];
-    origins: string[];
-    originsDetails: { name: string; origin: string }[];
-    outage: { outageCause: string; outageType: string };
-    startDate: string;
-    description?: string | null;
-    endDate?: string | null;
-    linkedUrl?: string | null;
-    scope?: string | null;
-  }[];
+  annotations: Annotation[];
 }
 
 export const ListAnnotationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    annotations: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        asns: Schema.Array(Schema.Number),
-        asnsDetails: Schema.Array(
-          Schema.Struct({
-            asn: Schema.String,
-            name: Schema.String,
-            locations: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  code: Schema.String,
-                  name: Schema.String,
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }),
-        ),
-        dataSource: Schema.String,
-        eventType: Schema.String,
-        locations: Schema.Array(Schema.String),
-        locationsDetails: Schema.Array(
-          Schema.Struct({
-            code: Schema.String,
-            name: Schema.String,
-          }),
-        ),
-        origins: Schema.Array(Schema.String),
-        originsDetails: Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            origin: Schema.String,
-          }),
-        ),
-        outage: Schema.Struct({
-          outageCause: Schema.String,
-          outageType: Schema.String,
-        }),
-        startDate: Schema.String,
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        endDate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        linkedUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ),
+    annotations: Schema.Array(Annotation),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ListAnnotationsResponse>;
@@ -1762,79 +2018,12 @@ export const GetAnnotationOutageRequest =
   ) as unknown as Schema.Schema<GetAnnotationOutageRequest>;
 
 export interface GetAnnotationOutageResponse {
-  annotations: {
-    id: string;
-    asns: number[];
-    asnsDetails: {
-      asn: string;
-      name: string;
-      locations?: { code: string; name: string } | null;
-    }[];
-    dataSource: string;
-    eventType: string;
-    locations: string[];
-    locationsDetails: { code: string; name: string }[];
-    origins: string[];
-    originsDetails: { name: string; origin: string }[];
-    outage: { outageCause: string; outageType: string };
-    startDate: string;
-    description?: string | null;
-    endDate?: string | null;
-    linkedUrl?: string | null;
-    scope?: string | null;
-  }[];
+  annotations: Annotation[];
 }
 
 export const GetAnnotationOutageResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    annotations: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        asns: Schema.Array(Schema.Number),
-        asnsDetails: Schema.Array(
-          Schema.Struct({
-            asn: Schema.String,
-            name: Schema.String,
-            locations: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  code: Schema.String,
-                  name: Schema.String,
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }),
-        ),
-        dataSource: Schema.String,
-        eventType: Schema.String,
-        locations: Schema.Array(Schema.String),
-        locationsDetails: Schema.Array(
-          Schema.Struct({
-            code: Schema.String,
-            name: Schema.String,
-          }),
-        ),
-        origins: Schema.Array(Schema.String),
-        originsDetails: Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            origin: Schema.String,
-          }),
-        ),
-        outage: Schema.Struct({
-          outageCause: Schema.String,
-          outageType: Schema.String,
-        }),
-        startDate: Schema.String,
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        endDate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        linkedUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        scope: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ),
+    annotations: Schema.Array(Annotation),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetAnnotationOutageResponse>;
@@ -1907,50 +2096,8 @@ export const MatchingAnswerDnsSummaryRequest =
 export interface MatchingAnswerDnsSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -1961,67 +2108,16 @@ export interface MatchingAnswerDnsSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  summary_0: { negative: string; positive: string };
+  summary_0: UnionMember5;
 }
 
 export const MatchingAnswerDnsSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -2033,17 +2129,9 @@ export const MatchingAnswerDnsSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    summary_0: Schema.Struct({
-      negative: Schema.String,
-      positive: Schema.String,
-    }).pipe(Schema.encodeKeys({ negative: "NEGATIVE", positive: "POSITIVE" })),
+    summary_0: UnionMember5,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<MatchingAnswerDnsSummaryResponse>;
@@ -2084,50 +2172,8 @@ export interface MatchingAnswerDnsTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -2138,7 +2184,7 @@ export interface MatchingAnswerDnsTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { negative: string[]; positive: string[] };
 }
@@ -2153,59 +2199,8 @@ export const MatchingAnswerDnsTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -2217,12 +2212,7 @@ export const MatchingAnswerDnsTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       negative: Schema.Array(Schema.String),
@@ -2266,50 +2256,8 @@ export interface TimeseriesAs112Response {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -2320,7 +2268,7 @@ export interface TimeseriesAs112Response {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
 }
 
@@ -2334,59 +2282,8 @@ export const TimeseriesAs112Response =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -2398,12 +2295,7 @@ export const TimeseriesAs112Response =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
   }).pipe(
     T.ResponsePath("result"),
@@ -2436,50 +2328,8 @@ export const DnssecAs112SummaryRequest =
 export interface DnssecAs112SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -2490,7 +2340,7 @@ export interface DnssecAs112SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { notsupported: string; supported: string };
 }
@@ -2498,59 +2348,8 @@ export interface DnssecAs112SummaryResponse {
 export const DnssecAs112SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -2562,12 +2361,7 @@ export const DnssecAs112SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       notsupported: Schema.String,
@@ -2605,50 +2399,8 @@ export const EdnsAs112SummaryRequest =
 export interface EdnsAs112SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -2659,7 +2411,7 @@ export interface EdnsAs112SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { notsupported: string; supported: string };
 }
@@ -2667,59 +2419,8 @@ export interface EdnsAs112SummaryResponse {
 export const EdnsAs112SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -2731,12 +2432,7 @@ export const EdnsAs112SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       notsupported: Schema.String,
@@ -2774,50 +2470,8 @@ export const ProtocolAs112SummaryRequest =
 export interface ProtocolAs112SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -2828,7 +2482,7 @@ export interface ProtocolAs112SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { https: string; tcp: string; tls: string; udp: string };
 }
@@ -2836,59 +2490,8 @@ export interface ProtocolAs112SummaryResponse {
 export const ProtocolAs112SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -2900,12 +2503,7 @@ export const ProtocolAs112SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       https: Schema.String,
@@ -2952,50 +2550,8 @@ export interface DnssecAs112TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -3006,7 +2562,7 @@ export interface DnssecAs112TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { notsupported: string[]; supported: string[] };
 }
@@ -3021,59 +2577,8 @@ export const DnssecAs112TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -3085,12 +2590,7 @@ export const DnssecAs112TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       notsupported: Schema.Array(Schema.String),
@@ -3134,50 +2634,8 @@ export interface EdnsAs112TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -3188,7 +2646,7 @@ export interface EdnsAs112TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { notsupported: string[]; supported: string[] };
 }
@@ -3203,59 +2661,8 @@ export const EdnsAs112TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -3267,12 +2674,7 @@ export const EdnsAs112TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       notsupported: Schema.Array(Schema.String),
@@ -3316,50 +2718,8 @@ export interface ProtocolAs112TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -3370,7 +2730,7 @@ export interface ProtocolAs112TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { https: string[]; tcp: string[]; tls: string[]; udp: string[] };
 }
@@ -3385,59 +2745,8 @@ export const ProtocolAs112TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -3449,12 +2758,7 @@ export const ProtocolAs112TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       https: Schema.Array(Schema.String),
@@ -3500,50 +2804,8 @@ export const DnssecAs112TopRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface DnssecAs112TopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -3554,7 +2816,7 @@ export interface DnssecAs112TopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     clientCountryAlpha2: string;
@@ -3566,62 +2828,8 @@ export interface DnssecAs112TopResponse {
 export const DnssecAs112TopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -3633,12 +2841,7 @@ export const DnssecAs112TopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -3680,50 +2883,8 @@ export const EdnsAs112TopRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface EdnsAs112TopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -3734,7 +2895,7 @@ export interface EdnsAs112TopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     clientCountryAlpha2: string;
@@ -3745,62 +2906,8 @@ export interface EdnsAs112TopResponse {
 
 export const EdnsAs112TopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   meta: Schema.Struct({
-    confidenceInfo: Schema.Union([
-      Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      Schema.Null,
-    ]),
-    dateRange: Schema.Array(
-      Schema.Struct({
-        endTime: Schema.String,
-        startTime: Schema.String,
-      }),
-    ),
+    confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+    dateRange: Schema.Array(DateRange),
     lastUpdated: Schema.String,
     normalization: Schema.Literals([
       "PERCENTAGE",
@@ -3812,12 +2919,7 @@ export const EdnsAs112TopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "OVERLAPPED_PERCENTAGE",
       "RATIO",
     ]),
-    units: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    units: Schema.Array(Unit),
   }),
   top_0: Schema.Array(
     Schema.Struct({
@@ -3853,50 +2955,8 @@ export const LocationsAs112TopRequest =
 export interface LocationsAs112TopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -3907,7 +2967,7 @@ export interface LocationsAs112TopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     clientCountryAlpha2: string;
@@ -3919,62 +2979,8 @@ export interface LocationsAs112TopResponse {
 export const LocationsAs112TopResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -3986,12 +2992,7 @@ export const LocationsAs112TopResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -4037,50 +3038,8 @@ export interface TimeseriesAttackLayer3Response {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -4091,7 +3050,7 @@ export interface TimeseriesAttackLayer3Response {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
 }
 
@@ -4105,59 +3064,8 @@ export const TimeseriesAttackLayer3Response =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -4169,12 +3077,7 @@ export const TimeseriesAttackLayer3Response =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
   }).pipe(
     T.ResponsePath("result"),
@@ -4207,50 +3110,8 @@ export const BitrateAttackLayer3SummaryRequest =
 export interface BitrateAttackLayer3SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -4261,7 +3122,7 @@ export interface BitrateAttackLayer3SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: {
     _1GBPSTO_10GBPS: string;
@@ -4275,59 +3136,8 @@ export interface BitrateAttackLayer3SummaryResponse {
 export const BitrateAttackLayer3SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -4339,12 +3149,7 @@ export const BitrateAttackLayer3SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       _1GBPSTO_10GBPS: Schema.String,
@@ -4388,50 +3193,8 @@ export const DurationAttackLayer3SummaryRequest =
 export interface DurationAttackLayer3SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -4442,7 +3205,7 @@ export interface DurationAttackLayer3SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: {
     _1HOURTO_3HOURS: string;
@@ -4457,59 +3220,8 @@ export interface DurationAttackLayer3SummaryResponse {
 export const DurationAttackLayer3SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -4521,12 +3233,7 @@ export const DurationAttackLayer3SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       _1HOURTO_3HOURS: Schema.String,
@@ -4572,50 +3279,8 @@ export const IndustryAttackLayer3SummaryRequest =
 export interface IndustryAttackLayer3SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -4626,7 +3291,7 @@ export interface IndustryAttackLayer3SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -4634,59 +3299,8 @@ export interface IndustryAttackLayer3SummaryResponse {
 export const IndustryAttackLayer3SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -4698,12 +3312,7 @@ export const IndustryAttackLayer3SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -4733,50 +3342,8 @@ export const ProtocolAttackLayer3SummaryRequest =
 export interface ProtocolAttackLayer3SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -4787,7 +3354,7 @@ export interface ProtocolAttackLayer3SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { gre: string; icmp: string; tcp: string; udp: string };
 }
@@ -4795,59 +3362,8 @@ export interface ProtocolAttackLayer3SummaryResponse {
 export const ProtocolAttackLayer3SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -4859,12 +3375,7 @@ export const ProtocolAttackLayer3SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       gre: Schema.String,
@@ -4901,50 +3412,8 @@ export const VectorAttackLayer3SummaryRequest =
 export interface VectorAttackLayer3SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -4955,7 +3424,7 @@ export interface VectorAttackLayer3SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -4963,59 +3432,8 @@ export interface VectorAttackLayer3SummaryResponse {
 export const VectorAttackLayer3SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -5027,12 +3445,7 @@ export const VectorAttackLayer3SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -5062,50 +3475,8 @@ export const VerticalAttackLayer3SummaryRequest =
 export interface VerticalAttackLayer3SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -5116,7 +3487,7 @@ export interface VerticalAttackLayer3SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -5124,59 +3495,8 @@ export interface VerticalAttackLayer3SummaryResponse {
 export const VerticalAttackLayer3SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -5188,12 +3508,7 @@ export const VerticalAttackLayer3SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -5236,50 +3551,8 @@ export interface BitrateAttackLayer3TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -5290,7 +3563,7 @@ export interface BitrateAttackLayer3TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: {
     _1GBPSTO_10GBPS: string[];
@@ -5312,59 +3585,8 @@ export const BitrateAttackLayer3TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -5376,12 +3598,7 @@ export const BitrateAttackLayer3TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       _1GBPSTO_10GBPS: Schema.Array(Schema.String),
@@ -5436,50 +3653,8 @@ export interface DurationAttackLayer3TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -5490,17 +3665,9 @@ export interface DurationAttackLayer3TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  serie_0: {
-    _1HOURTO_3HOURS: string[];
-    _10MINSTO_20MINS: string[];
-    _20MINSTO_40MINS: string[];
-    _40MINSTO_1HOUR: string[];
-    over_3HOURS: string[];
-    timestamps: string[];
-    under_10MINS: string[];
-  };
+  serie_0: Serie0;
 }
 
 export const DurationAttackLayer3TimeseriesGroupResponse =
@@ -5513,59 +3680,8 @@ export const DurationAttackLayer3TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -5577,32 +3693,9 @@ export const DurationAttackLayer3TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    serie_0: Schema.Struct({
-      _1HOURTO_3HOURS: Schema.Array(Schema.String),
-      _10MINSTO_20MINS: Schema.Array(Schema.String),
-      _20MINSTO_40MINS: Schema.Array(Schema.String),
-      _40MINSTO_1HOUR: Schema.Array(Schema.String),
-      over_3HOURS: Schema.Array(Schema.String),
-      timestamps: Schema.Array(Schema.String),
-      under_10MINS: Schema.Array(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        _1HOURTO_3HOURS: "_1_HOUR_TO_3_HOURS",
-        _10MINSTO_20MINS: "_10_MINS_TO_20_MINS",
-        _20MINSTO_40MINS: "_20_MINS_TO_40_MINS",
-        _40MINSTO_1HOUR: "_40_MINS_TO_1_HOUR",
-        over_3HOURS: "OVER_3_HOURS",
-        timestamps: "timestamps",
-        under_10MINS: "UNDER_10_MINS",
-      }),
-    ),
+    serie_0: Serie0,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DurationAttackLayer3TimeseriesGroupResponse>;
@@ -5639,50 +3732,8 @@ export interface IndustryAttackLayer3TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -5693,7 +3744,7 @@ export interface IndustryAttackLayer3TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -5708,59 +3759,8 @@ export const IndustryAttackLayer3TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -5772,12 +3772,7 @@ export const IndustryAttackLayer3TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -5818,50 +3813,8 @@ export interface ProtocolAttackLayer3TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -5872,7 +3825,7 @@ export interface ProtocolAttackLayer3TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: {
     gre: string[];
@@ -5893,59 +3846,8 @@ export const ProtocolAttackLayer3TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -5957,12 +3859,7 @@ export const ProtocolAttackLayer3TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       gre: Schema.Array(Schema.String),
@@ -6015,50 +3912,8 @@ export interface VectorAttackLayer3TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -6069,7 +3924,7 @@ export interface VectorAttackLayer3TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -6084,59 +3939,8 @@ export const VectorAttackLayer3TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -6148,12 +3952,7 @@ export const VectorAttackLayer3TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -6194,50 +3993,8 @@ export interface VerticalAttackLayer3TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -6248,7 +4005,7 @@ export interface VerticalAttackLayer3TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -6263,59 +4020,8 @@ export const VerticalAttackLayer3TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -6327,12 +4033,7 @@ export const VerticalAttackLayer3TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -6368,50 +4069,8 @@ export const AttacksAttackLayer3TopRequest =
 export interface AttacksAttackLayer3TopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -6422,7 +4081,7 @@ export interface AttacksAttackLayer3TopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     originCountryAlpha2: string;
@@ -6434,62 +4093,8 @@ export interface AttacksAttackLayer3TopResponse {
 export const AttacksAttackLayer3TopResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -6501,12 +4106,7 @@ export const AttacksAttackLayer3TopResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -6542,50 +4142,8 @@ export const IndustryAttackLayer3TopRequest =
 export interface IndustryAttackLayer3TopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -6596,70 +4154,16 @@ export interface IndustryAttackLayer3TopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  top_0: { name: string; value: string }[];
+  top_0: Unit[];
 }
 
 export const IndustryAttackLayer3TopResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -6671,19 +4175,9 @@ export const IndustryAttackLayer3TopResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    top_0: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    top_0: Schema.Array(Unit),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<IndustryAttackLayer3TopResponse>;
@@ -6711,50 +4205,8 @@ export const VerticalAttackLayer3TopRequest =
 export interface VerticalAttackLayer3TopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -6765,70 +4217,16 @@ export interface VerticalAttackLayer3TopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  top_0: { name: string; value: string }[];
+  top_0: Unit[];
 }
 
 export const VerticalAttackLayer3TopResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -6840,19 +4238,9 @@ export const VerticalAttackLayer3TopResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    top_0: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    top_0: Schema.Array(Unit),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<VerticalAttackLayer3TopResponse>;
@@ -6887,50 +4275,8 @@ export const OriginAttackLayer3TopLocationRequest =
 export interface OriginAttackLayer3TopLocationResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -6941,7 +4287,7 @@ export interface OriginAttackLayer3TopLocationResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     originCountryAlpha2: string;
@@ -6954,62 +4300,8 @@ export interface OriginAttackLayer3TopLocationResponse {
 export const OriginAttackLayer3TopLocationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -7021,12 +4313,7 @@ export const OriginAttackLayer3TopLocationResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -7066,50 +4353,8 @@ export const TargetAttackLayer3TopLocationRequest =
 export interface TargetAttackLayer3TopLocationResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -7120,7 +4365,7 @@ export interface TargetAttackLayer3TopLocationResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     rank: number;
@@ -7133,62 +4378,8 @@ export interface TargetAttackLayer3TopLocationResponse {
 export const TargetAttackLayer3TopLocationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -7200,12 +4391,7 @@ export const TargetAttackLayer3TopLocationResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -7252,50 +4438,8 @@ export interface TimeseriesAttackLayer7Response {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -7306,7 +4450,7 @@ export interface TimeseriesAttackLayer7Response {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[]; values: string[] };
 }
@@ -7321,59 +4465,8 @@ export const TimeseriesAttackLayer7Response =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -7385,12 +4478,7 @@ export const TimeseriesAttackLayer7Response =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -7427,50 +4515,8 @@ export const IndustryAttackLayer7SummaryRequest =
 export interface IndustryAttackLayer7SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -7481,7 +4527,7 @@ export interface IndustryAttackLayer7SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -7489,59 +4535,8 @@ export interface IndustryAttackLayer7SummaryResponse {
 export const IndustryAttackLayer7SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -7553,12 +4548,7 @@ export const IndustryAttackLayer7SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -7588,50 +4578,8 @@ export const VerticalAttackLayer7SummaryRequest =
 export interface VerticalAttackLayer7SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -7642,7 +4590,7 @@ export interface VerticalAttackLayer7SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -7650,59 +4598,8 @@ export interface VerticalAttackLayer7SummaryResponse {
 export const VerticalAttackLayer7SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -7714,12 +4611,7 @@ export const VerticalAttackLayer7SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -7762,50 +4654,8 @@ export interface IndustryAttackLayer7TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -7816,7 +4666,7 @@ export interface IndustryAttackLayer7TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -7831,59 +4681,8 @@ export const IndustryAttackLayer7TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -7895,12 +4694,7 @@ export const IndustryAttackLayer7TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -7941,50 +4735,8 @@ export interface VerticalAttackLayer7TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -7995,7 +4747,7 @@ export interface VerticalAttackLayer7TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -8010,59 +4762,8 @@ export const VerticalAttackLayer7TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -8074,12 +4775,7 @@ export const VerticalAttackLayer7TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -8115,50 +4811,8 @@ export const AttacksAttackLayer7TopRequest =
 export interface AttacksAttackLayer7TopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -8169,7 +4823,7 @@ export interface AttacksAttackLayer7TopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     originCountryAlpha2: string;
@@ -8183,62 +4837,8 @@ export interface AttacksAttackLayer7TopResponse {
 export const AttacksAttackLayer7TopResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -8250,12 +4850,7 @@ export const AttacksAttackLayer7TopResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -8293,50 +4888,8 @@ export const IndustryAttackLayer7TopRequest =
 export interface IndustryAttackLayer7TopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -8347,70 +4900,16 @@ export interface IndustryAttackLayer7TopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  top_0: { name: string; value: string }[];
+  top_0: Unit[];
 }
 
 export const IndustryAttackLayer7TopResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -8422,19 +4921,9 @@ export const IndustryAttackLayer7TopResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    top_0: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    top_0: Schema.Array(Unit),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<IndustryAttackLayer7TopResponse>;
@@ -8462,50 +4951,8 @@ export const VerticalAttackLayer7TopRequest =
 export interface VerticalAttackLayer7TopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -8516,70 +4963,16 @@ export interface VerticalAttackLayer7TopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  top_0: { name: string; value: string }[];
+  top_0: Unit[];
 }
 
 export const VerticalAttackLayer7TopResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -8591,19 +4984,9 @@ export const VerticalAttackLayer7TopResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    top_0: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    top_0: Schema.Array(Unit),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<VerticalAttackLayer7TopResponse>;
@@ -8635,50 +5018,8 @@ export const OriginAttackLayer7TopAsRequest =
 export interface OriginAttackLayer7TopAsResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -8689,7 +5030,7 @@ export interface OriginAttackLayer7TopAsResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     originAsn: string;
@@ -8702,62 +5043,8 @@ export interface OriginAttackLayer7TopAsResponse {
 export const OriginAttackLayer7TopAsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -8769,12 +5056,7 @@ export const OriginAttackLayer7TopAsResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -8818,50 +5100,8 @@ export const OriginAttackLayer7TopLocationRequest =
 export interface OriginAttackLayer7TopLocationResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -8872,7 +5112,7 @@ export interface OriginAttackLayer7TopLocationResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     originCountryAlpha2: string;
@@ -8885,62 +5125,8 @@ export interface OriginAttackLayer7TopLocationResponse {
 export const OriginAttackLayer7TopLocationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -8952,12 +5138,7 @@ export const OriginAttackLayer7TopLocationResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -8997,50 +5178,8 @@ export const TargetAttackLayer7TopLocationRequest =
 export interface TargetAttackLayer7TopLocationResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -9051,7 +5190,7 @@ export interface TargetAttackLayer7TopLocationResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     rank: number;
@@ -9064,62 +5203,8 @@ export interface TargetAttackLayer7TopLocationResponse {
 export const TargetAttackLayer7TopLocationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -9131,12 +5216,7 @@ export const TargetAttackLayer7TopLocationResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -9177,50 +5257,8 @@ export const DnssecAwareDnsSummaryRequest =
 export interface DnssecAwareDnsSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -9231,7 +5269,7 @@ export interface DnssecAwareDnsSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { notsupported: string; supported: string };
 }
@@ -9239,59 +5277,8 @@ export interface DnssecAwareDnsSummaryResponse {
 export const DnssecAwareDnsSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -9303,12 +5290,7 @@ export const DnssecAwareDnsSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       notsupported: Schema.String,
@@ -9359,50 +5341,8 @@ export interface DnssecAwareDnsTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -9413,7 +5353,7 @@ export interface DnssecAwareDnsTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { notsupported: string[]; supported: string[] };
 }
@@ -9428,59 +5368,8 @@ export const DnssecAwareDnsTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -9492,12 +5381,7 @@ export const DnssecAwareDnsTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       notsupported: Schema.Array(Schema.String),
@@ -9540,50 +5424,8 @@ export const TimeseriesBgpRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface TimeseriesBgpResponse {
   meta: {
     aggInterval: "15m" | "1h" | "1d" | "1w";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
   };
   serie_0: { timestamps: string[]; values: string[] };
@@ -9592,59 +5434,8 @@ export interface TimeseriesBgpResponse {
 export const TimeseriesBgpResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   meta: Schema.Struct({
     aggInterval: Schema.Literals(["15m", "1h", "1d", "1w"]),
-    confidenceInfo: Schema.Struct({
-      annotations: Schema.Array(
-        Schema.Struct({
-          dataSource: Schema.Literals([
-            "ALL",
-            "AI_BOTS",
-            "AI_GATEWAY",
-            "BGP",
-            "BOTS",
-            "CONNECTION_ANOMALY",
-            "CT",
-            "DNS",
-            "DNS_MAGNITUDE",
-            "DNS_AS112",
-            "DOS",
-            "EMAIL_ROUTING",
-            "EMAIL_SECURITY",
-            "FW",
-            "FW_PG",
-            "HTTP",
-            "HTTP_CONTROL",
-            "HTTP_CRAWLER_REFERER",
-            "HTTP_ORIGINS",
-            "IQI",
-            "LEAKED_CREDENTIALS",
-            "NET",
-            "ROBOTS_TXT",
-            "SPEED",
-            "WORKERS_AI",
-          ]),
-          description: Schema.String,
-          endDate: Schema.String,
-          eventType: Schema.Literals([
-            "EVENT",
-            "GENERAL",
-            "OUTAGE",
-            "PARTIAL_PROJECTION",
-            "PIPELINE",
-            "TRAFFIC_ANOMALY",
-          ]),
-          isInstantaneous: Schema.Boolean,
-          linkedUrl: Schema.String,
-          startDate: Schema.String,
-        }),
-      ),
-      level: Schema.Number,
-    }),
-    dateRange: Schema.Array(
-      Schema.Struct({
-        endTime: Schema.String,
-        startTime: Schema.String,
-      }),
-    ),
+    confidenceInfo: ConfidenceInfo,
+    dateRange: Schema.Array(DateRange),
     lastUpdated: Schema.String,
   }),
   serie_0: Schema.Struct({
@@ -9684,26 +5475,7 @@ export interface ListBgpHijackEventsResponse {
     items?:
       | {
           asnInfo: { asn: number; countryCode: string; orgName: string }[];
-          events: {
-            id: number;
-            confidenceScore: number;
-            duration: number;
-            eventType: number;
-            hijackMsgsCount: number;
-            hijackerAsn: number;
-            hijackerCountry: string;
-            isStale: boolean;
-            maxHijackTs: string;
-            maxMsgTs: string;
-            minHijackTs: string;
-            onGoingCount: number;
-            peerAsns: number[];
-            peerIpCount: number;
-            prefixes: string[];
-            tags: { name: string; score: number }[];
-            victimAsns: number[];
-            victimCountries: string[];
-          }[];
+          events: Event[];
           totalMonitors: number;
         }[]
       | null;
@@ -9736,54 +5508,7 @@ export const ListBgpHijackEventsResponse =
                   }),
                 ),
               ),
-              events: Schema.Array(
-                Schema.Struct({
-                  id: Schema.Number,
-                  confidenceScore: Schema.Number,
-                  duration: Schema.Number,
-                  eventType: Schema.Number,
-                  hijackMsgsCount: Schema.Number,
-                  hijackerAsn: Schema.Number,
-                  hijackerCountry: Schema.String,
-                  isStale: Schema.Boolean,
-                  maxHijackTs: Schema.String,
-                  maxMsgTs: Schema.String,
-                  minHijackTs: Schema.String,
-                  onGoingCount: Schema.Number,
-                  peerAsns: Schema.Array(Schema.Number),
-                  peerIpCount: Schema.Number,
-                  prefixes: Schema.Array(Schema.String),
-                  tags: Schema.Array(
-                    Schema.Struct({
-                      name: Schema.String,
-                      score: Schema.Number,
-                    }),
-                  ),
-                  victimAsns: Schema.Array(Schema.Number),
-                  victimCountries: Schema.Array(Schema.String),
-                }).pipe(
-                  Schema.encodeKeys({
-                    id: "id",
-                    confidenceScore: "confidence_score",
-                    duration: "duration",
-                    eventType: "event_type",
-                    hijackMsgsCount: "hijack_msgs_count",
-                    hijackerAsn: "hijacker_asn",
-                    hijackerCountry: "hijacker_country",
-                    isStale: "is_stale",
-                    maxHijackTs: "max_hijack_ts",
-                    maxMsgTs: "max_msg_ts",
-                    minHijackTs: "min_hijack_ts",
-                    onGoingCount: "on_going_count",
-                    peerAsns: "peer_asns",
-                    peerIpCount: "peer_ip_count",
-                    prefixes: "prefixes",
-                    tags: "tags",
-                    victimAsns: "victim_asns",
-                    victimCountries: "victim_countries",
-                  }),
-                ),
-              ),
+              events: Schema.Array(Event),
               totalMonitors: Schema.Number,
             }).pipe(
               Schema.encodeKeys({
@@ -9832,26 +5557,7 @@ export const listBgpHijackEvents: API.PaginatedOperationMethod<
   items: (input: ListBgpHijackEventsRequest) => stream.Stream<
     {
       asnInfo: { asn: number; countryCode: string; orgName: string }[];
-      events: {
-        id: number;
-        confidenceScore: number;
-        duration: number;
-        eventType: number;
-        hijackMsgsCount: number;
-        hijackerAsn: number;
-        hijackerCountry: string;
-        isStale: boolean;
-        maxHijackTs: string;
-        maxMsgTs: string;
-        minHijackTs: string;
-        onGoingCount: number;
-        peerAsns: number[];
-        peerIpCount: number;
-        prefixes: string[];
-        tags: { name: string; score: number }[];
-        victimAsns: number[];
-        victimCountries: string[];
-      }[];
+      events: Event[];
       totalMonitors: number;
     },
     ListBgpHijackEventsError,
@@ -9884,210 +5590,13 @@ export const TimeseriesBgpIpRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface TimeseriesBgpIpResponse {
   /** Metadata for the results. */
-  meta: {
-    aggInterval:
-      | "FIFTEEN_MINUTES"
-      | "ONE_HOUR"
-      | "ONE_DAY"
-      | "ONE_WEEK"
-      | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
-    lastUpdated: string;
-    normalization:
-      | "PERCENTAGE"
-      | "MIN0_MAX"
-      | "MIN_MAX"
-      | "RAW_VALUES"
-      | "PERCENTAGE_CHANGE"
-      | "ROLLING_AVERAGE"
-      | "OVERLAPPED_PERCENTAGE"
-      | "RATIO";
-    units: { name: string; value: string }[];
-    delay?: {
-      asnData: {
-        delaySecs: number;
-        delayStr: string;
-        healthy: boolean;
-        latest: { entriesCount: number; path: string; timestamp: number };
-      };
-      countryData: {
-        delaySecs: number;
-        delayStr: string;
-        healthy: boolean;
-        latest: { count: number; timestamp: number };
-      };
-      healthy: boolean;
-      nowTs: number;
-    } | null;
-  };
+  meta: Meta;
   serie_0: { ipv4: string[]; ipv6: string[]; timestamps: string[] };
 }
 
 export const TimeseriesBgpIpResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    meta: Schema.Struct({
-      aggInterval: Schema.Literals([
-        "FIFTEEN_MINUTES",
-        "ONE_HOUR",
-        "ONE_DAY",
-        "ONE_WEEK",
-        "ONE_MONTH",
-      ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
-      lastUpdated: Schema.String,
-      normalization: Schema.Literals([
-        "PERCENTAGE",
-        "MIN0_MAX",
-        "MIN_MAX",
-        "RAW_VALUES",
-        "PERCENTAGE_CHANGE",
-        "ROLLING_AVERAGE",
-        "OVERLAPPED_PERCENTAGE",
-        "RATIO",
-      ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
-      delay: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            asnData: Schema.Struct({
-              delaySecs: Schema.Number,
-              delayStr: Schema.String,
-              healthy: Schema.Boolean,
-              latest: Schema.Struct({
-                entriesCount: Schema.Number,
-                path: Schema.String,
-                timestamp: Schema.Number,
-              }).pipe(
-                Schema.encodeKeys({
-                  entriesCount: "entries_count",
-                  path: "path",
-                  timestamp: "timestamp",
-                }),
-              ),
-            }),
-            countryData: Schema.Struct({
-              delaySecs: Schema.Number,
-              delayStr: Schema.String,
-              healthy: Schema.Boolean,
-              latest: Schema.Struct({
-                count: Schema.Number,
-                timestamp: Schema.Number,
-              }),
-            }),
-            healthy: Schema.Boolean,
-            nowTs: Schema.Number,
-          }).pipe(
-            Schema.encodeKeys({
-              asnData: "asn_data",
-              countryData: "country_data",
-              healthy: "healthy",
-              nowTs: "nowTs",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }),
+    meta: Meta,
     serie_0: Schema.Struct({
       ipv4: Schema.Array(Schema.String),
       ipv6: Schema.Array(Schema.String),
@@ -10483,13 +5992,7 @@ export const RealtimeBgpRouteRequest =
 
 export interface RealtimeBgpRouteResponse {
   meta: {
-    asnInfo: {
-      asName: string;
-      asn: number;
-      countryCode: string;
-      orgId: string;
-      orgName: string;
-    }[];
+    asnInfo: Asninfo[];
     collectors: {
       collector: string;
       latestRealtimeTs: string;
@@ -10500,14 +6003,7 @@ export interface RealtimeBgpRouteResponse {
       peersV6Count: number;
     }[];
     dataTime: string;
-    prefixOrigins: {
-      origin: number;
-      prefix: string;
-      rpkiValidation: string;
-      totalPeers: number;
-      totalVisible: number;
-      visibility: number;
-    }[];
+    prefixOrigins: PrefixOrigin[];
     queryTime: string;
   };
   routes: {
@@ -10522,23 +6018,7 @@ export interface RealtimeBgpRouteResponse {
 export const RealtimeBgpRouteResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      asnInfo: Schema.Array(
-        Schema.Struct({
-          asName: Schema.String,
-          asn: Schema.Number,
-          countryCode: Schema.String,
-          orgId: Schema.String,
-          orgName: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            asName: "as_name",
-            asn: "asn",
-            countryCode: "country_code",
-            orgId: "org_id",
-            orgName: "org_name",
-          }),
-        ),
-      ),
+      asnInfo: Schema.Array(Asninfo),
       collectors: Schema.Array(
         Schema.Struct({
           collector: Schema.String,
@@ -10561,25 +6041,7 @@ export const RealtimeBgpRouteResponse =
         ),
       ),
       dataTime: Schema.String,
-      prefixOrigins: Schema.Array(
-        Schema.Struct({
-          origin: Schema.Number,
-          prefix: Schema.String,
-          rpkiValidation: Schema.String,
-          totalPeers: Schema.Number,
-          totalVisible: Schema.Number,
-          visibility: Schema.Number,
-        }).pipe(
-          Schema.encodeKeys({
-            origin: "origin",
-            prefix: "prefix",
-            rpkiValidation: "rpki_validation",
-            totalPeers: "total_peers",
-            totalVisible: "total_visible",
-            visibility: "visibility",
-          }),
-        ),
-      ),
+      prefixOrigins: Schema.Array(PrefixOrigin),
       queryTime: Schema.String,
     }).pipe(
       Schema.encodeKeys({
@@ -10739,19 +6201,14 @@ export const PrefixesBgpTopRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Schema<PrefixesBgpTopRequest>;
 
 export interface PrefixesBgpTopResponse {
-  meta: { dateRange: { endTime: string; startTime: string }[] };
+  meta: { dateRange: DateRange[] };
   top_0: { prefix: string; value: string }[];
 }
 
 export const PrefixesBgpTopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     meta: Schema.Struct({
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      dateRange: Schema.Array(DateRange),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -10790,18 +6247,13 @@ export const GetBgpTopAsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Schema<GetBgpTopAsRequest>;
 
 export interface GetBgpTopAsResponse {
-  meta: { dateRange: { endTime: string; startTime: string }[] };
+  meta: { dateRange: DateRange[] };
   top_0: { asn: number; asname: string; value: string }[];
 }
 
 export const GetBgpTopAsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   meta: Schema.Struct({
-    dateRange: Schema.Array(
-      Schema.Struct({
-        endTime: Schema.String,
-        startTime: Schema.String,
-      }),
-    ),
+    dateRange: Schema.Array(DateRange),
   }),
   top_0: Schema.Array(
     Schema.Struct({
@@ -10901,31 +6353,11 @@ export const GetBotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetBotRequest>;
 
 export interface GetBotResponse {
-  bot: {
-    category: string;
-    description: string;
-    kind: string;
-    name: string;
-    operator: string;
-    operatorUrl: string;
-    slug: string;
-    userAgentPatterns: string[];
-    userAgents: string[];
-  };
+  bot: Bot;
 }
 
 export const GetBotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  bot: Schema.Struct({
-    category: Schema.String,
-    description: Schema.String,
-    kind: Schema.String,
-    name: Schema.String,
-    operator: Schema.String,
-    operatorUrl: Schema.String,
-    slug: Schema.String,
-    userAgentPatterns: Schema.Array(Schema.String),
-    userAgents: Schema.Array(Schema.String),
-  }),
+  bot: Bot,
 }).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetBotResponse>;
 
 export type GetBotError = DefaultErrors;
@@ -11006,50 +6438,8 @@ export const SummaryBotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface SummaryBotResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -11060,66 +6450,15 @@ export interface SummaryBotResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
 
 export const SummaryBotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   meta: Schema.Struct({
-    confidenceInfo: Schema.Struct({
-      annotations: Schema.Array(
-        Schema.Struct({
-          dataSource: Schema.Literals([
-            "ALL",
-            "AI_BOTS",
-            "AI_GATEWAY",
-            "BGP",
-            "BOTS",
-            "CONNECTION_ANOMALY",
-            "CT",
-            "DNS",
-            "DNS_MAGNITUDE",
-            "DNS_AS112",
-            "DOS",
-            "EMAIL_ROUTING",
-            "EMAIL_SECURITY",
-            "FW",
-            "FW_PG",
-            "HTTP",
-            "HTTP_CONTROL",
-            "HTTP_CRAWLER_REFERER",
-            "HTTP_ORIGINS",
-            "IQI",
-            "LEAKED_CREDENTIALS",
-            "NET",
-            "ROBOTS_TXT",
-            "SPEED",
-            "WORKERS_AI",
-          ]),
-          description: Schema.String,
-          endDate: Schema.String,
-          eventType: Schema.Literals([
-            "EVENT",
-            "GENERAL",
-            "OUTAGE",
-            "PARTIAL_PROJECTION",
-            "PIPELINE",
-            "TRAFFIC_ANOMALY",
-          ]),
-          isInstantaneous: Schema.Boolean,
-          linkedUrl: Schema.String,
-          startDate: Schema.String,
-        }),
-      ),
-      level: Schema.Number,
-    }),
-    dateRange: Schema.Array(
-      Schema.Struct({
-        endTime: Schema.String,
-        startTime: Schema.String,
-      }),
-    ),
+    confidenceInfo: ConfidenceInfo,
+    dateRange: Schema.Array(DateRange),
     lastUpdated: Schema.String,
     normalization: Schema.Literals([
       "PERCENTAGE",
@@ -11131,12 +6470,7 @@ export const SummaryBotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "OVERLAPPED_PERCENTAGE",
       "RATIO",
     ]),
-    units: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    units: Schema.Array(Unit),
   }),
   summary_0: Schema.Record(Schema.String, Schema.Unknown),
 }).pipe(
@@ -11173,50 +6507,8 @@ export interface TimeseriesBotResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -11227,7 +6519,7 @@ export interface TimeseriesBotResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
 }
 
@@ -11240,59 +6532,8 @@ export const TimeseriesBotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "ONE_WEEK",
       "ONE_MONTH",
     ]),
-    confidenceInfo: Schema.Struct({
-      annotations: Schema.Array(
-        Schema.Struct({
-          dataSource: Schema.Literals([
-            "ALL",
-            "AI_BOTS",
-            "AI_GATEWAY",
-            "BGP",
-            "BOTS",
-            "CONNECTION_ANOMALY",
-            "CT",
-            "DNS",
-            "DNS_MAGNITUDE",
-            "DNS_AS112",
-            "DOS",
-            "EMAIL_ROUTING",
-            "EMAIL_SECURITY",
-            "FW",
-            "FW_PG",
-            "HTTP",
-            "HTTP_CONTROL",
-            "HTTP_CRAWLER_REFERER",
-            "HTTP_ORIGINS",
-            "IQI",
-            "LEAKED_CREDENTIALS",
-            "NET",
-            "ROBOTS_TXT",
-            "SPEED",
-            "WORKERS_AI",
-          ]),
-          description: Schema.String,
-          endDate: Schema.String,
-          eventType: Schema.Literals([
-            "EVENT",
-            "GENERAL",
-            "OUTAGE",
-            "PARTIAL_PROJECTION",
-            "PIPELINE",
-            "TRAFFIC_ANOMALY",
-          ]),
-          isInstantaneous: Schema.Boolean,
-          linkedUrl: Schema.String,
-          startDate: Schema.String,
-        }),
-      ),
-      level: Schema.Number,
-    }),
-    dateRange: Schema.Array(
-      Schema.Struct({
-        endTime: Schema.String,
-        startTime: Schema.String,
-      }),
-    ),
+    confidenceInfo: ConfidenceInfo,
+    dateRange: Schema.Array(DateRange),
     lastUpdated: Schema.String,
     normalization: Schema.Literals([
       "PERCENTAGE",
@@ -11304,12 +6545,7 @@ export const TimeseriesBotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "OVERLAPPED_PERCENTAGE",
       "RATIO",
     ]),
-    units: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    units: Schema.Array(Unit),
   }),
 }).pipe(
   T.ResponsePath("result"),
@@ -11359,50 +6595,8 @@ export const SummaryBotWebCrawlerRequest =
 export interface SummaryBotWebCrawlerResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -11413,7 +6607,7 @@ export interface SummaryBotWebCrawlerResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -11421,59 +6615,8 @@ export interface SummaryBotWebCrawlerResponse {
 export const SummaryBotWebCrawlerResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -11485,12 +6628,7 @@ export const SummaryBotWebCrawlerResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -11524,50 +6662,8 @@ export const DomainCategoriesRobotsTxtTopRequest =
 export interface DomainCategoriesRobotsTxtTopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -11578,7 +6674,7 @@ export interface DomainCategoriesRobotsTxtTopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: { name: string; value: number }[];
 }
@@ -11586,62 +6682,8 @@ export interface DomainCategoriesRobotsTxtTopResponse {
 export const DomainCategoriesRobotsTxtTopResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -11653,12 +6695,7 @@ export const DomainCategoriesRobotsTxtTopResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -11700,50 +6737,8 @@ export const ThreatCategoryEmailSecuritySummaryRequest =
 export interface ThreatCategoryEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -11754,7 +6749,7 @@ export interface ThreatCategoryEmailSecuritySummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: {
     brandImpersonation: string;
@@ -11767,59 +6762,8 @@ export interface ThreatCategoryEmailSecuritySummaryResponse {
 export const ThreatCategoryEmailSecuritySummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -11831,12 +6775,7 @@ export const ThreatCategoryEmailSecuritySummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       brandImpersonation: Schema.String,
@@ -11891,50 +6830,8 @@ export interface ThreatCategoryEmailSecurityTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -11945,7 +6842,7 @@ export interface ThreatCategoryEmailSecurityTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: {
     brandImpersonation: string[];
@@ -11965,59 +6862,8 @@ export const ThreatCategoryEmailSecurityTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -12029,12 +6875,7 @@ export const ThreatCategoryEmailSecurityTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       brandImpersonation: Schema.Array(Schema.String),
@@ -12080,50 +6921,8 @@ export const BotClassHttpSummaryRequest =
 export interface BotClassHttpSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -12134,7 +6933,7 @@ export interface BotClassHttpSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { bot: string; human: string };
 }
@@ -12142,59 +6941,8 @@ export interface BotClassHttpSummaryResponse {
 export const BotClassHttpSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -12206,12 +6954,7 @@ export const BotClassHttpSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       bot: Schema.String,
@@ -12254,50 +6997,8 @@ export interface BotClassHttpTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -12308,7 +7009,7 @@ export interface BotClassHttpTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { bot: string[]; human: string[]; timestamps: string[] };
 }
@@ -12323,59 +7024,8 @@ export const BotClassHttpTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -12387,12 +7037,7 @@ export const BotClassHttpTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       bot: Schema.Array(Schema.String),
@@ -12433,50 +7078,8 @@ export const BotClassLeakedCredentialSummaryRequest =
 export interface BotClassLeakedCredentialSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -12487,7 +7090,7 @@ export interface BotClassLeakedCredentialSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { bot: string; human: string };
 }
@@ -12495,59 +7098,8 @@ export interface BotClassLeakedCredentialSummaryResponse {
 export const BotClassLeakedCredentialSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -12559,12 +7111,7 @@ export const BotClassLeakedCredentialSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       bot: Schema.String,
@@ -12610,50 +7157,8 @@ export interface BotClassLeakedCredentialTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -12664,7 +7169,7 @@ export interface BotClassLeakedCredentialTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { bot: string[]; human: string[]; timestamps: string[] };
 }
@@ -12679,59 +7184,8 @@ export const BotClassLeakedCredentialTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -12743,12 +7197,7 @@ export const BotClassLeakedCredentialTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       bot: Schema.Array(Schema.String),
@@ -12786,50 +7235,8 @@ export const ResponseCodeDnsSummaryRequest =
 export interface ResponseCodeDnsSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -12840,7 +7247,7 @@ export interface ResponseCodeDnsSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -12848,59 +7255,8 @@ export interface ResponseCodeDnsSummaryResponse {
 export const ResponseCodeDnsSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -12912,12 +7268,7 @@ export const ResponseCodeDnsSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -12960,50 +7311,8 @@ export interface ResponseCodeDnsTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -13014,7 +7323,7 @@ export interface ResponseCodeDnsTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -13029,59 +7338,8 @@ export const ResponseCodeDnsTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -13093,12 +7351,7 @@ export const ResponseCodeDnsTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -13134,50 +7387,8 @@ export const ResponseCodesAs112SummaryRequest =
 export interface ResponseCodesAs112SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -13188,7 +7399,7 @@ export interface ResponseCodesAs112SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -13196,59 +7407,8 @@ export interface ResponseCodesAs112SummaryResponse {
 export const ResponseCodesAs112SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -13260,12 +7420,7 @@ export const ResponseCodesAs112SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -13308,50 +7463,8 @@ export interface ResponseCodesAs112TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -13362,7 +7475,7 @@ export interface ResponseCodesAs112TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -13377,59 +7490,8 @@ export const ResponseCodesAs112TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -13441,12 +7503,7 @@ export const ResponseCodesAs112TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -13514,50 +7571,8 @@ export const SummaryCtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface SummaryCtResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -13568,86 +7583,23 @@ export interface SummaryCtResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0:
     | Record<string, unknown>
-    | { rfc6962: string; static: string }
-    | {
-        gt_121d: string;
-        gt_16dLte_31d: string;
-        gt_31dLte_91d: string;
-        gt_3dLte_16d: string;
-        gt_91dLte_121d: string;
-        lte_3d: string;
-      }
-    | { certificate: string; precertificate: string }
-    | { expired: string; valid: string }
-    | { negative: string; positive: string }
-    | { dsa: string; ecdsa: string; rsa: string }
-    | {
-        domain: string;
-        extended: string;
-        organization: string;
-        unknown: string;
-      };
+    | UnionMember1
+    | UnionMember2
+    | UnionMember3
+    | UnionMember4
+    | UnionMember5
+    | UnionMember6
+    | UnionMember7;
 }
 
 export const SummaryCtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   meta: Schema.Struct({
-    confidenceInfo: Schema.Struct({
-      annotations: Schema.Array(
-        Schema.Struct({
-          dataSource: Schema.Literals([
-            "ALL",
-            "AI_BOTS",
-            "AI_GATEWAY",
-            "BGP",
-            "BOTS",
-            "CONNECTION_ANOMALY",
-            "CT",
-            "DNS",
-            "DNS_MAGNITUDE",
-            "DNS_AS112",
-            "DOS",
-            "EMAIL_ROUTING",
-            "EMAIL_SECURITY",
-            "FW",
-            "FW_PG",
-            "HTTP",
-            "HTTP_CONTROL",
-            "HTTP_CRAWLER_REFERER",
-            "HTTP_ORIGINS",
-            "IQI",
-            "LEAKED_CREDENTIALS",
-            "NET",
-            "ROBOTS_TXT",
-            "SPEED",
-            "WORKERS_AI",
-          ]),
-          description: Schema.String,
-          endDate: Schema.String,
-          eventType: Schema.Literals([
-            "EVENT",
-            "GENERAL",
-            "OUTAGE",
-            "PARTIAL_PROJECTION",
-            "PIPELINE",
-            "TRAFFIC_ANOMALY",
-          ]),
-          isInstantaneous: Schema.Boolean,
-          linkedUrl: Schema.String,
-          startDate: Schema.String,
-        }),
-      ),
-      level: Schema.Number,
-    }),
-    dateRange: Schema.Array(
-      Schema.Struct({
-        endTime: Schema.String,
-        startTime: Schema.String,
-      }),
-    ),
+    confidenceInfo: ConfidenceInfo,
+    dateRange: Schema.Array(DateRange),
     lastUpdated: Schema.String,
     normalization: Schema.Literals([
       "PERCENTAGE",
@@ -13659,64 +7611,17 @@ export const SummaryCtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "OVERLAPPED_PERCENTAGE",
       "RATIO",
     ]),
-    units: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    units: Schema.Array(Unit),
   }),
   summary_0: Schema.Union([
     Schema.Record(Schema.String, Schema.Unknown),
-    Schema.Struct({
-      rfc6962: Schema.String,
-      static: Schema.String,
-    }),
-    Schema.Struct({
-      gt_121d: Schema.String,
-      gt_16dLte_31d: Schema.String,
-      gt_31dLte_91d: Schema.String,
-      gt_3dLte_16d: Schema.String,
-      gt_91dLte_121d: Schema.String,
-      lte_3d: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        gt_121d: "gt_121d",
-        gt_16dLte_31d: "gt_16d_lte_31d",
-        gt_31dLte_91d: "gt_31d_lte_91d",
-        gt_3dLte_16d: "gt_3d_lte_16d",
-        gt_91dLte_121d: "gt_91d_lte_121d",
-        lte_3d: "lte_3d",
-      }),
-    ),
-    Schema.Struct({
-      certificate: Schema.String,
-      precertificate: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        certificate: "CERTIFICATE",
-        precertificate: "PRECERTIFICATE",
-      }),
-    ),
-    Schema.Struct({
-      expired: Schema.String,
-      valid: Schema.String,
-    }).pipe(Schema.encodeKeys({ expired: "EXPIRED", valid: "VALID" })),
-    Schema.Struct({
-      negative: Schema.String,
-      positive: Schema.String,
-    }).pipe(Schema.encodeKeys({ negative: "NEGATIVE", positive: "POSITIVE" })),
-    Schema.Struct({
-      dsa: Schema.String,
-      ecdsa: Schema.String,
-      rsa: Schema.String,
-    }).pipe(Schema.encodeKeys({ dsa: "DSA", ecdsa: "ECDSA", rsa: "RSA" })),
-    Schema.Struct({
-      domain: Schema.String,
-      extended: Schema.String,
-      organization: Schema.String,
-      unknown: Schema.String,
-    }),
+    UnionMember1,
+    UnionMember2,
+    UnionMember3,
+    UnionMember4,
+    UnionMember5,
+    UnionMember6,
+    UnionMember7,
   ]),
 }).pipe(
   T.ResponsePath("result"),
@@ -13752,50 +7657,8 @@ export interface TimeseriesCtResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -13806,7 +7669,7 @@ export interface TimeseriesCtResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
 }
 
@@ -13819,59 +7682,8 @@ export const TimeseriesCtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "ONE_WEEK",
       "ONE_MONTH",
     ]),
-    confidenceInfo: Schema.Struct({
-      annotations: Schema.Array(
-        Schema.Struct({
-          dataSource: Schema.Literals([
-            "ALL",
-            "AI_BOTS",
-            "AI_GATEWAY",
-            "BGP",
-            "BOTS",
-            "CONNECTION_ANOMALY",
-            "CT",
-            "DNS",
-            "DNS_MAGNITUDE",
-            "DNS_AS112",
-            "DOS",
-            "EMAIL_ROUTING",
-            "EMAIL_SECURITY",
-            "FW",
-            "FW_PG",
-            "HTTP",
-            "HTTP_CONTROL",
-            "HTTP_CRAWLER_REFERER",
-            "HTTP_ORIGINS",
-            "IQI",
-            "LEAKED_CREDENTIALS",
-            "NET",
-            "ROBOTS_TXT",
-            "SPEED",
-            "WORKERS_AI",
-          ]),
-          description: Schema.String,
-          endDate: Schema.String,
-          eventType: Schema.Literals([
-            "EVENT",
-            "GENERAL",
-            "OUTAGE",
-            "PARTIAL_PROJECTION",
-            "PIPELINE",
-            "TRAFFIC_ANOMALY",
-          ]),
-          isInstantaneous: Schema.Boolean,
-          linkedUrl: Schema.String,
-          startDate: Schema.String,
-        }),
-      ),
-      level: Schema.Number,
-    }),
-    dateRange: Schema.Array(
-      Schema.Struct({
-        endTime: Schema.String,
-        startTime: Schema.String,
-      }),
-    ),
+    confidenceInfo: ConfidenceInfo,
+    dateRange: Schema.Array(DateRange),
     lastUpdated: Schema.String,
     normalization: Schema.Literals([
       "PERCENTAGE",
@@ -13883,12 +7695,7 @@ export const TimeseriesCtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "OVERLAPPED_PERCENTAGE",
       "RATIO",
     ]),
-    units: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    units: Schema.Array(Unit),
   }),
 }).pipe(
   T.ResponsePath("result"),
@@ -13922,136 +7729,12 @@ export const GetCtAuthorityRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetCtAuthorityRequest>;
 
 export interface GetCtAuthorityResponse {
-  certificateAuthority: {
-    appleStatus:
-      | "INCLUDED"
-      | "NOT_YET_INCLUDED"
-      | "NOT_INCLUDED"
-      | "NOT_BEFORE"
-      | "REMOVED"
-      | "DISABLED"
-      | "BLOCKED";
-    authorityKeyIdentifier: string;
-    certificateRecordType: "ROOT_CERTIFICATE" | "INTERMEDIATE_CERTIFICATE";
-    chromeStatus:
-      | "INCLUDED"
-      | "NOT_YET_INCLUDED"
-      | "NOT_INCLUDED"
-      | "NOT_BEFORE"
-      | "REMOVED"
-      | "DISABLED"
-      | "BLOCKED";
-    country: string;
-    countryName: string;
-    microsoftStatus:
-      | "INCLUDED"
-      | "NOT_YET_INCLUDED"
-      | "NOT_INCLUDED"
-      | "NOT_BEFORE"
-      | "REMOVED"
-      | "DISABLED"
-      | "BLOCKED";
-    mozillaStatus:
-      | "INCLUDED"
-      | "NOT_YET_INCLUDED"
-      | "NOT_INCLUDED"
-      | "NOT_BEFORE"
-      | "REMOVED"
-      | "DISABLED"
-      | "BLOCKED";
-    name: string;
-    owner: string;
-    parentName: string;
-    parentSha256Fingerprint: string;
-    related: {
-      certificateRecordType: "ROOT_CERTIFICATE" | "INTERMEDIATE_CERTIFICATE";
-      name: string;
-      revocationStatus: "NOT_REVOKED" | "REVOKED" | "PARENT_CERT_REVOKED";
-      sha256Fingerprint: string;
-    }[];
-    revocationStatus: "NOT_REVOKED" | "REVOKED" | "PARENT_CERT_REVOKED";
-    sha256Fingerprint: string;
-    subjectKeyIdentifier: string;
-    validFrom: string;
-    validTo: string;
-  };
+  certificateAuthority: CertificateAuthority;
 }
 
 export const GetCtAuthorityResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    certificateAuthority: Schema.Struct({
-      appleStatus: Schema.Literals([
-        "INCLUDED",
-        "NOT_YET_INCLUDED",
-        "NOT_INCLUDED",
-        "NOT_BEFORE",
-        "REMOVED",
-        "DISABLED",
-        "BLOCKED",
-      ]),
-      authorityKeyIdentifier: Schema.String,
-      certificateRecordType: Schema.Literals([
-        "ROOT_CERTIFICATE",
-        "INTERMEDIATE_CERTIFICATE",
-      ]),
-      chromeStatus: Schema.Literals([
-        "INCLUDED",
-        "NOT_YET_INCLUDED",
-        "NOT_INCLUDED",
-        "NOT_BEFORE",
-        "REMOVED",
-        "DISABLED",
-        "BLOCKED",
-      ]),
-      country: Schema.String,
-      countryName: Schema.String,
-      microsoftStatus: Schema.Literals([
-        "INCLUDED",
-        "NOT_YET_INCLUDED",
-        "NOT_INCLUDED",
-        "NOT_BEFORE",
-        "REMOVED",
-        "DISABLED",
-        "BLOCKED",
-      ]),
-      mozillaStatus: Schema.Literals([
-        "INCLUDED",
-        "NOT_YET_INCLUDED",
-        "NOT_INCLUDED",
-        "NOT_BEFORE",
-        "REMOVED",
-        "DISABLED",
-        "BLOCKED",
-      ]),
-      name: Schema.String,
-      owner: Schema.String,
-      parentName: Schema.String,
-      parentSha256Fingerprint: Schema.String,
-      related: Schema.Array(
-        Schema.Struct({
-          certificateRecordType: Schema.Literals([
-            "ROOT_CERTIFICATE",
-            "INTERMEDIATE_CERTIFICATE",
-          ]),
-          name: Schema.String,
-          revocationStatus: Schema.Literals([
-            "NOT_REVOKED",
-            "REVOKED",
-            "PARENT_CERT_REVOKED",
-          ]),
-          sha256Fingerprint: Schema.String,
-        }),
-      ),
-      revocationStatus: Schema.Literals([
-        "NOT_REVOKED",
-        "REVOKED",
-        "PARENT_CERT_REVOKED",
-      ]),
-      sha256Fingerprint: Schema.String,
-      subjectKeyIdentifier: Schema.String,
-      validFrom: Schema.String,
-      validTo: Schema.String,
-    }),
+    certificateAuthority: CertificateAuthority,
   },
 ).pipe(
   T.ResponsePath("result"),
@@ -14145,119 +7828,11 @@ export const GetCtLogRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetCtLogRequest>;
 
 export interface GetCtLogResponse {
-  certificateLog: {
-    api: "RFC6962" | "STATIC";
-    avgThroughput: number;
-    description: string;
-    endExclusive: string;
-    lastUpdate: string;
-    operator: string;
-    performance: {
-      endpoints: {
-        endpoint:
-          | "add-chain (new)"
-          | "add-chain (old)"
-          | "add-pre-chain (new)"
-          | "add-pre-chain (old)"
-          | "get-entries"
-          | "get-roots"
-          | "get-sth";
-        responseTime: number;
-        uptime: number;
-      }[];
-      responseTime: number;
-      uptime: number;
-    } | null;
-    related: {
-      description: string;
-      endExclusive: string;
-      slug: string;
-      startInclusive: string;
-      state:
-        | "USABLE"
-        | "PENDING"
-        | "QUALIFIED"
-        | "READ_ONLY"
-        | "RETIRED"
-        | "REJECTED";
-    }[];
-    slug: string;
-    startInclusive: string;
-    state:
-      | "USABLE"
-      | "PENDING"
-      | "QUALIFIED"
-      | "READ_ONLY"
-      | "RETIRED"
-      | "REJECTED";
-    stateTimestamp: string;
-    submittableCertCount: string | null;
-    submittedCertCount: string | null;
-    url: string;
-  };
+  certificateLog: CertificateLog;
 }
 
 export const GetCtLogResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  certificateLog: Schema.Struct({
-    api: Schema.Literals(["RFC6962", "STATIC"]),
-    avgThroughput: Schema.Number,
-    description: Schema.String,
-    endExclusive: Schema.String,
-    lastUpdate: Schema.String,
-    operator: Schema.String,
-    performance: Schema.Union([
-      Schema.Struct({
-        endpoints: Schema.Array(
-          Schema.Struct({
-            endpoint: Schema.Literals([
-              "add-chain (new)",
-              "add-chain (old)",
-              "add-pre-chain (new)",
-              "add-pre-chain (old)",
-              "get-entries",
-              "get-roots",
-              "get-sth",
-            ]),
-            responseTime: Schema.Number,
-            uptime: Schema.Number,
-          }),
-        ),
-        responseTime: Schema.Number,
-        uptime: Schema.Number,
-      }),
-      Schema.Null,
-    ]),
-    related: Schema.Array(
-      Schema.Struct({
-        description: Schema.String,
-        endExclusive: Schema.String,
-        slug: Schema.String,
-        startInclusive: Schema.String,
-        state: Schema.Literals([
-          "USABLE",
-          "PENDING",
-          "QUALIFIED",
-          "READ_ONLY",
-          "RETIRED",
-          "REJECTED",
-        ]),
-      }),
-    ),
-    slug: Schema.String,
-    startInclusive: Schema.String,
-    state: Schema.Literals([
-      "USABLE",
-      "PENDING",
-      "QUALIFIED",
-      "READ_ONLY",
-      "RETIRED",
-      "REJECTED",
-    ]),
-    stateTimestamp: Schema.String,
-    submittableCertCount: Schema.Union([Schema.String, Schema.Null]),
-    submittedCertCount: Schema.Union([Schema.String, Schema.Null]),
-    url: Schema.String,
-  }),
+  certificateLog: CertificateLog,
 }).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetCtLogResponse>;
 
 export type GetCtLogError = DefaultErrors;
@@ -14380,27 +7955,11 @@ export const ListDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Schema<ListDatasetsRequest>;
 
 export interface ListDatasetsResponse {
-  datasets: {
-    id: number;
-    description: string;
-    meta: unknown;
-    tags: string[];
-    title: string;
-    type: string;
-  }[];
+  datasets: Dataset[];
 }
 
 export const ListDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  datasets: Schema.Array(
-    Schema.Struct({
-      id: Schema.Number,
-      description: Schema.String,
-      meta: Schema.Unknown,
-      tags: Schema.Array(Schema.String),
-      title: Schema.String,
-      type: Schema.String,
-    }),
-  ),
+  datasets: Schema.Array(Dataset),
 }).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<ListDatasetsResponse>;
@@ -14483,50 +8042,8 @@ export interface TimeseriesDnsResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -14537,7 +8054,7 @@ export interface TimeseriesDnsResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
 }
 
@@ -14550,59 +8067,8 @@ export const TimeseriesDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "ONE_WEEK",
       "ONE_MONTH",
     ]),
-    confidenceInfo: Schema.Struct({
-      annotations: Schema.Array(
-        Schema.Struct({
-          dataSource: Schema.Literals([
-            "ALL",
-            "AI_BOTS",
-            "AI_GATEWAY",
-            "BGP",
-            "BOTS",
-            "CONNECTION_ANOMALY",
-            "CT",
-            "DNS",
-            "DNS_MAGNITUDE",
-            "DNS_AS112",
-            "DOS",
-            "EMAIL_ROUTING",
-            "EMAIL_SECURITY",
-            "FW",
-            "FW_PG",
-            "HTTP",
-            "HTTP_CONTROL",
-            "HTTP_CRAWLER_REFERER",
-            "HTTP_ORIGINS",
-            "IQI",
-            "LEAKED_CREDENTIALS",
-            "NET",
-            "ROBOTS_TXT",
-            "SPEED",
-            "WORKERS_AI",
-          ]),
-          description: Schema.String,
-          endDate: Schema.String,
-          eventType: Schema.Literals([
-            "EVENT",
-            "GENERAL",
-            "OUTAGE",
-            "PARTIAL_PROJECTION",
-            "PIPELINE",
-            "TRAFFIC_ANOMALY",
-          ]),
-          isInstantaneous: Schema.Boolean,
-          linkedUrl: Schema.String,
-          startDate: Schema.String,
-        }),
-      ),
-      level: Schema.Number,
-    }),
-    dateRange: Schema.Array(
-      Schema.Struct({
-        endTime: Schema.String,
-        startTime: Schema.String,
-      }),
-    ),
+    confidenceInfo: ConfidenceInfo,
+    dateRange: Schema.Array(DateRange),
     lastUpdated: Schema.String,
     normalization: Schema.Literals([
       "PERCENTAGE",
@@ -14614,12 +8080,7 @@ export const TimeseriesDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "OVERLAPPED_PERCENTAGE",
       "RATIO",
     ]),
-    units: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    units: Schema.Array(Unit),
   }),
 }).pipe(
   T.ResponsePath("result"),
@@ -14652,50 +8113,8 @@ export const DnssecDnsSummaryRequest =
 export interface DnssecDnsSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -14706,7 +8125,7 @@ export interface DnssecDnsSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: {
     insecure: string;
@@ -14719,59 +8138,8 @@ export interface DnssecDnsSummaryResponse {
 export const DnssecDnsSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -14783,12 +8151,7 @@ export const DnssecDnsSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       insecure: Schema.String,
@@ -14830,50 +8193,8 @@ export const ProtocolDnsSummaryRequest =
 export interface ProtocolDnsSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -14884,7 +8205,7 @@ export interface ProtocolDnsSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { https: string; tcp: string; tls: string; udp: string };
 }
@@ -14892,59 +8213,8 @@ export interface ProtocolDnsSummaryResponse {
 export const ProtocolDnsSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -14956,12 +8226,7 @@ export const ProtocolDnsSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       https: Schema.String,
@@ -15008,50 +8273,8 @@ export interface DnssecDnsTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -15062,7 +8285,7 @@ export interface DnssecDnsTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: {
     insecure: string[];
@@ -15082,59 +8305,8 @@ export const DnssecDnsTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -15146,12 +8318,7 @@ export const DnssecDnsTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       insecure: Schema.Array(Schema.String),
@@ -15199,50 +8366,8 @@ export interface ProtocolDnsTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -15253,7 +8378,7 @@ export interface ProtocolDnsTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { https: string[]; tcp: string[]; tls: string[]; udp: string[] };
 }
@@ -15268,59 +8393,8 @@ export const ProtocolDnsTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -15332,12 +8406,7 @@ export const ProtocolDnsTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       https: Schema.Array(Schema.String),
@@ -15379,50 +8448,8 @@ export const AsesDnsTopRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface AsesDnsTopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -15433,69 +8460,15 @@ export interface AsesDnsTopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: { clientASN: number; clientASName: string; value: string }[];
 }
 
 export const AsesDnsTopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   meta: Schema.Struct({
-    confidenceInfo: Schema.Union([
-      Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      Schema.Null,
-    ]),
-    dateRange: Schema.Array(
-      Schema.Struct({
-        endTime: Schema.String,
-        startTime: Schema.String,
-      }),
-    ),
+    confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+    dateRange: Schema.Array(DateRange),
     lastUpdated: Schema.String,
     normalization: Schema.Literals([
       "PERCENTAGE",
@@ -15507,12 +8480,7 @@ export const AsesDnsTopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "OVERLAPPED_PERCENTAGE",
       "RATIO",
     ]),
-    units: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    units: Schema.Array(Unit),
   }),
   top_0: Schema.Array(
     Schema.Struct({
@@ -15549,50 +8517,8 @@ export const LocationsDnsTopRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface LocationsDnsTopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -15603,7 +8529,7 @@ export interface LocationsDnsTopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     clientCountryAlpha2: string;
@@ -15615,62 +8541,8 @@ export interface LocationsDnsTopResponse {
 export const LocationsDnsTopResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -15682,12 +8554,7 @@ export const LocationsDnsTopResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -15727,50 +8594,8 @@ export const DnssecE2EDnsSummaryRequest =
 export interface DnssecE2EDnsSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -15781,67 +8606,16 @@ export interface DnssecE2EDnsSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  summary_0: { negative: string; positive: string };
+  summary_0: UnionMember5;
 }
 
 export const DnssecE2EDnsSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -15853,17 +8627,9 @@ export const DnssecE2EDnsSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    summary_0: Schema.Struct({
-      negative: Schema.String,
-      positive: Schema.String,
-    }).pipe(Schema.encodeKeys({ negative: "NEGATIVE", positive: "POSITIVE" })),
+    summary_0: UnionMember5,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DnssecE2EDnsSummaryResponse>;
@@ -15901,50 +8667,8 @@ export interface DnssecE2EDnsTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -15955,7 +8679,7 @@ export interface DnssecE2EDnsTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { negative: string[]; positive: string[] };
 }
@@ -15970,59 +8694,8 @@ export const DnssecE2EDnsTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -16034,12 +8707,7 @@ export const DnssecE2EDnsTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       negative: Schema.Array(Schema.String),
@@ -16076,50 +8744,8 @@ export const ArcEmailRoutingSummaryRequest =
 export interface ArcEmailRoutingSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -16130,67 +8756,16 @@ export interface ArcEmailRoutingSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  summary_0: { fail: string; none: string; pass: string };
+  summary_0: RadarEmailSummary;
 }
 
 export const ArcEmailRoutingSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -16202,18 +8777,9 @@ export const ArcEmailRoutingSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    summary_0: Schema.Struct({
-      fail: Schema.String,
-      none: Schema.String,
-      pass: Schema.String,
-    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+    summary_0: RadarEmailSummary,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ArcEmailRoutingSummaryResponse>;
@@ -16241,50 +8807,8 @@ export const DkimEmailRoutingSummaryRequest =
 export interface DkimEmailRoutingSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -16295,67 +8819,16 @@ export interface DkimEmailRoutingSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  summary_0: { fail: string; none: string; pass: string };
+  summary_0: RadarEmailSummary;
 }
 
 export const DkimEmailRoutingSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -16367,18 +8840,9 @@ export const DkimEmailRoutingSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    summary_0: Schema.Struct({
-      fail: Schema.String,
-      none: Schema.String,
-      pass: Schema.String,
-    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+    summary_0: RadarEmailSummary,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DkimEmailRoutingSummaryResponse>;
@@ -16406,50 +8870,8 @@ export const DmarcEmailRoutingSummaryRequest =
 export interface DmarcEmailRoutingSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -16460,67 +8882,16 @@ export interface DmarcEmailRoutingSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  summary_0: { fail: string; none: string; pass: string };
+  summary_0: RadarEmailSummary;
 }
 
 export const DmarcEmailRoutingSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -16532,18 +8903,9 @@ export const DmarcEmailRoutingSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    summary_0: Schema.Struct({
-      fail: Schema.String,
-      none: Schema.String,
-      pass: Schema.String,
-    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+    summary_0: RadarEmailSummary,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DmarcEmailRoutingSummaryResponse>;
@@ -16571,50 +8933,8 @@ export const EncryptedEmailRoutingSummaryRequest =
 export interface EncryptedEmailRoutingSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -16625,7 +8945,7 @@ export interface EncryptedEmailRoutingSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { encrypted: string; notencrypted: string };
 }
@@ -16633,59 +8953,8 @@ export interface EncryptedEmailRoutingSummaryResponse {
 export const EncryptedEmailRoutingSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -16697,12 +8966,7 @@ export const EncryptedEmailRoutingSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       encrypted: Schema.String,
@@ -16740,50 +9004,8 @@ export const SpfEmailRoutingSummaryRequest =
 export interface SpfEmailRoutingSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -16794,67 +9016,16 @@ export interface SpfEmailRoutingSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  summary_0: { fail: string; none: string; pass: string };
+  summary_0: RadarEmailSummary;
 }
 
 export const SpfEmailRoutingSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -16866,18 +9037,9 @@ export const SpfEmailRoutingSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    summary_0: Schema.Struct({
-      fail: Schema.String,
-      none: Schema.String,
-      pass: Schema.String,
-    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+    summary_0: RadarEmailSummary,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<SpfEmailRoutingSummaryResponse>;
@@ -16918,50 +9080,8 @@ export interface ArcEmailRoutingTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -16972,9 +9092,9 @@ export interface ArcEmailRoutingTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  serie_0: { fail: string[]; none: string[]; pass: string[] };
+  serie_0: RadarEmailSeries;
 }
 
 export const ArcEmailRoutingTimeseriesGroupResponse =
@@ -16987,59 +9107,8 @@ export const ArcEmailRoutingTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -17051,18 +9120,9 @@ export const ArcEmailRoutingTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    serie_0: Schema.Struct({
-      fail: Schema.Array(Schema.String),
-      none: Schema.Array(Schema.String),
-      pass: Schema.Array(Schema.String),
-    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+    serie_0: RadarEmailSeries,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ArcEmailRoutingTimeseriesGroupResponse>;
@@ -17099,50 +9159,8 @@ export interface DkimEmailRoutingTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -17153,9 +9171,9 @@ export interface DkimEmailRoutingTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  serie_0: { fail: string[]; none: string[]; pass: string[] };
+  serie_0: RadarEmailSeries;
 }
 
 export const DkimEmailRoutingTimeseriesGroupResponse =
@@ -17168,59 +9186,8 @@ export const DkimEmailRoutingTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -17232,18 +9199,9 @@ export const DkimEmailRoutingTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    serie_0: Schema.Struct({
-      fail: Schema.Array(Schema.String),
-      none: Schema.Array(Schema.String),
-      pass: Schema.Array(Schema.String),
-    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+    serie_0: RadarEmailSeries,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DkimEmailRoutingTimeseriesGroupResponse>;
@@ -17280,50 +9238,8 @@ export interface DmarcEmailRoutingTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -17334,9 +9250,9 @@ export interface DmarcEmailRoutingTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  serie_0: { fail: string[]; none: string[]; pass: string[] };
+  serie_0: RadarEmailSeries;
 }
 
 export const DmarcEmailRoutingTimeseriesGroupResponse =
@@ -17349,59 +9265,8 @@ export const DmarcEmailRoutingTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -17413,18 +9278,9 @@ export const DmarcEmailRoutingTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    serie_0: Schema.Struct({
-      fail: Schema.Array(Schema.String),
-      none: Schema.Array(Schema.String),
-      pass: Schema.Array(Schema.String),
-    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+    serie_0: RadarEmailSeries,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DmarcEmailRoutingTimeseriesGroupResponse>;
@@ -17461,50 +9317,8 @@ export interface EncryptedEmailRoutingTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -17515,7 +9329,7 @@ export interface EncryptedEmailRoutingTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { encrypted: string[]; notencrypted: string[] };
 }
@@ -17530,59 +9344,8 @@ export const EncryptedEmailRoutingTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -17594,12 +9357,7 @@ export const EncryptedEmailRoutingTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       encrypted: Schema.Array(Schema.String),
@@ -17646,50 +9404,8 @@ export interface SpfEmailRoutingTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -17700,9 +9416,9 @@ export interface SpfEmailRoutingTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  serie_0: { fail: string[]; none: string[]; pass: string[] };
+  serie_0: RadarEmailSeries;
 }
 
 export const SpfEmailRoutingTimeseriesGroupResponse =
@@ -17715,59 +9431,8 @@ export const SpfEmailRoutingTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -17779,18 +9444,9 @@ export const SpfEmailRoutingTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    serie_0: Schema.Struct({
-      fail: Schema.Array(Schema.String),
-      none: Schema.Array(Schema.String),
-      pass: Schema.Array(Schema.String),
-    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+    serie_0: RadarEmailSeries,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<SpfEmailRoutingTimeseriesGroupResponse>;
@@ -17822,50 +9478,8 @@ export const ArcEmailSecuritySummaryRequest =
 export interface ArcEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -17876,67 +9490,16 @@ export interface ArcEmailSecuritySummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  summary_0: { fail: string; none: string; pass: string };
+  summary_0: RadarEmailSummary;
 }
 
 export const ArcEmailSecuritySummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -17948,18 +9511,9 @@ export const ArcEmailSecuritySummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    summary_0: Schema.Struct({
-      fail: Schema.String,
-      none: Schema.String,
-      pass: Schema.String,
-    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+    summary_0: RadarEmailSummary,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ArcEmailSecuritySummaryResponse>;
@@ -17987,50 +9541,8 @@ export const DkimEmailSecuritySummaryRequest =
 export interface DkimEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -18041,67 +9553,16 @@ export interface DkimEmailSecuritySummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  summary_0: { fail: string; none: string; pass: string };
+  summary_0: RadarEmailSummary;
 }
 
 export const DkimEmailSecuritySummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -18113,18 +9574,9 @@ export const DkimEmailSecuritySummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    summary_0: Schema.Struct({
-      fail: Schema.String,
-      none: Schema.String,
-      pass: Schema.String,
-    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+    summary_0: RadarEmailSummary,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DkimEmailSecuritySummaryResponse>;
@@ -18152,50 +9604,8 @@ export const DmarcEmailSecuritySummaryRequest =
 export interface DmarcEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -18206,67 +9616,16 @@ export interface DmarcEmailSecuritySummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  summary_0: { fail: string; none: string; pass: string };
+  summary_0: RadarEmailSummary;
 }
 
 export const DmarcEmailSecuritySummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -18278,18 +9637,9 @@ export const DmarcEmailSecuritySummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    summary_0: Schema.Struct({
-      fail: Schema.String,
-      none: Schema.String,
-      pass: Schema.String,
-    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+    summary_0: RadarEmailSummary,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DmarcEmailSecuritySummaryResponse>;
@@ -18317,50 +9667,8 @@ export const MaliciousEmailSecuritySummaryRequest =
 export interface MaliciousEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -18371,7 +9679,7 @@ export interface MaliciousEmailSecuritySummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { malicious: string; notmalicious: string };
 }
@@ -18379,59 +9687,8 @@ export interface MaliciousEmailSecuritySummaryResponse {
 export const MaliciousEmailSecuritySummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -18443,12 +9700,7 @@ export const MaliciousEmailSecuritySummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       malicious: Schema.String,
@@ -18486,50 +9738,8 @@ export const SpamEmailSecuritySummaryRequest =
 export interface SpamEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -18540,7 +9750,7 @@ export interface SpamEmailSecuritySummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { notspam: string; spam: string };
 }
@@ -18548,59 +9758,8 @@ export interface SpamEmailSecuritySummaryResponse {
 export const SpamEmailSecuritySummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -18612,12 +9771,7 @@ export const SpamEmailSecuritySummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       notspam: Schema.String,
@@ -18650,50 +9804,8 @@ export const SpfEmailSecuritySummaryRequest =
 export interface SpfEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -18704,67 +9816,16 @@ export interface SpfEmailSecuritySummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  summary_0: { fail: string; none: string; pass: string };
+  summary_0: RadarEmailSummary;
 }
 
 export const SpfEmailSecuritySummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -18776,18 +9837,9 @@ export const SpfEmailSecuritySummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    summary_0: Schema.Struct({
-      fail: Schema.String,
-      none: Schema.String,
-      pass: Schema.String,
-    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+    summary_0: RadarEmailSummary,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<SpfEmailSecuritySummaryResponse>;
@@ -18815,50 +9867,8 @@ export const SpoofEmailSecuritySummaryRequest =
 export interface SpoofEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -18869,7 +9879,7 @@ export interface SpoofEmailSecuritySummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { notspoof: string; spoof: string };
 }
@@ -18877,59 +9887,8 @@ export interface SpoofEmailSecuritySummaryResponse {
 export const SpoofEmailSecuritySummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -18941,12 +9900,7 @@ export const SpoofEmailSecuritySummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       notspoof: Schema.String,
@@ -18992,50 +9946,8 @@ export interface ArcEmailSecurityTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -19046,9 +9958,9 @@ export interface ArcEmailSecurityTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  serie_0: { fail: string[]; none: string[]; pass: string[] };
+  serie_0: RadarEmailSeries;
 }
 
 export const ArcEmailSecurityTimeseriesGroupResponse =
@@ -19061,59 +9973,8 @@ export const ArcEmailSecurityTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -19125,18 +9986,9 @@ export const ArcEmailSecurityTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    serie_0: Schema.Struct({
-      fail: Schema.Array(Schema.String),
-      none: Schema.Array(Schema.String),
-      pass: Schema.Array(Schema.String),
-    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+    serie_0: RadarEmailSeries,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ArcEmailSecurityTimeseriesGroupResponse>;
@@ -19173,50 +10025,8 @@ export interface DkimEmailSecurityTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -19227,9 +10037,9 @@ export interface DkimEmailSecurityTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  serie_0: { fail: string[]; none: string[]; pass: string[] };
+  serie_0: RadarEmailSeries;
 }
 
 export const DkimEmailSecurityTimeseriesGroupResponse =
@@ -19242,59 +10052,8 @@ export const DkimEmailSecurityTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -19306,18 +10065,9 @@ export const DkimEmailSecurityTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    serie_0: Schema.Struct({
-      fail: Schema.Array(Schema.String),
-      none: Schema.Array(Schema.String),
-      pass: Schema.Array(Schema.String),
-    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+    serie_0: RadarEmailSeries,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DkimEmailSecurityTimeseriesGroupResponse>;
@@ -19354,50 +10104,8 @@ export interface DmarcEmailSecurityTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -19408,9 +10116,9 @@ export interface DmarcEmailSecurityTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  serie_0: { fail: string[]; none: string[]; pass: string[] };
+  serie_0: RadarEmailSeries;
 }
 
 export const DmarcEmailSecurityTimeseriesGroupResponse =
@@ -19423,59 +10131,8 @@ export const DmarcEmailSecurityTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -19487,18 +10144,9 @@ export const DmarcEmailSecurityTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    serie_0: Schema.Struct({
-      fail: Schema.Array(Schema.String),
-      none: Schema.Array(Schema.String),
-      pass: Schema.Array(Schema.String),
-    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+    serie_0: RadarEmailSeries,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DmarcEmailSecurityTimeseriesGroupResponse>;
@@ -19535,50 +10183,8 @@ export interface MaliciousEmailSecurityTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -19589,7 +10195,7 @@ export interface MaliciousEmailSecurityTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { malicious: string[]; notmalicious: string[] };
 }
@@ -19604,59 +10210,8 @@ export const MaliciousEmailSecurityTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -19668,12 +10223,7 @@ export const MaliciousEmailSecurityTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       malicious: Schema.Array(Schema.String),
@@ -19720,50 +10270,8 @@ export interface SpamEmailSecurityTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -19774,7 +10282,7 @@ export interface SpamEmailSecurityTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { notspam: string[]; spam: string[] };
 }
@@ -19789,59 +10297,8 @@ export const SpamEmailSecurityTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -19853,12 +10310,7 @@ export const SpamEmailSecurityTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       notspam: Schema.Array(Schema.String),
@@ -19900,50 +10352,8 @@ export interface SpfEmailSecurityTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -19954,9 +10364,9 @@ export interface SpfEmailSecurityTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  serie_0: { fail: string[]; none: string[]; pass: string[] };
+  serie_0: RadarEmailSeries;
 }
 
 export const SpfEmailSecurityTimeseriesGroupResponse =
@@ -19969,59 +10379,8 @@ export const SpfEmailSecurityTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -20033,18 +10392,9 @@ export const SpfEmailSecurityTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    serie_0: Schema.Struct({
-      fail: Schema.Array(Schema.String),
-      none: Schema.Array(Schema.String),
-      pass: Schema.Array(Schema.String),
-    }).pipe(Schema.encodeKeys({ fail: "FAIL", none: "NONE", pass: "PASS" })),
+    serie_0: RadarEmailSeries,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<SpfEmailSecurityTimeseriesGroupResponse>;
@@ -20081,50 +10431,8 @@ export interface SpoofEmailSecurityTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -20135,7 +10443,7 @@ export interface SpoofEmailSecurityTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { notspoof: string[]; spoof: string[] };
 }
@@ -20150,59 +10458,8 @@ export const SpoofEmailSecurityTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -20214,12 +10471,7 @@ export const SpoofEmailSecurityTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       notspoof: Schema.Array(Schema.String),
@@ -20256,50 +10508,8 @@ export const GetEmailSecurityTopTldRequest =
 export interface GetEmailSecurityTopTldResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -20310,70 +10520,16 @@ export interface GetEmailSecurityTopTldResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  top_0: { name: string; value: string }[];
+  top_0: Unit[];
 }
 
 export const GetEmailSecurityTopTldResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -20385,19 +10541,9 @@ export const GetEmailSecurityTopTldResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    top_0: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    top_0: Schema.Array(Unit),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetEmailSecurityTopTldResponse>;
@@ -20438,50 +10584,8 @@ export const GetEmailSecurityTopTldMaliciousRequest =
 export interface GetEmailSecurityTopTldMaliciousResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -20492,70 +10596,16 @@ export interface GetEmailSecurityTopTldMaliciousResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  top_0: { name: string; value: string }[];
+  top_0: Unit[];
 }
 
 export const GetEmailSecurityTopTldMaliciousResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -20567,19 +10617,9 @@ export const GetEmailSecurityTopTldMaliciousResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    top_0: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    top_0: Schema.Array(Unit),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetEmailSecurityTopTldMaliciousResponse>;
@@ -20618,50 +10658,8 @@ export const GetEmailSecurityTopTldSpamRequest =
 export interface GetEmailSecurityTopTldSpamResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -20672,70 +10670,16 @@ export interface GetEmailSecurityTopTldSpamResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  top_0: { name: string; value: string }[];
+  top_0: Unit[];
 }
 
 export const GetEmailSecurityTopTldSpamResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -20747,19 +10691,9 @@ export const GetEmailSecurityTopTldSpamResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    top_0: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    top_0: Schema.Array(Unit),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetEmailSecurityTopTldSpamResponse>;
@@ -20798,50 +10732,8 @@ export const GetEmailSecurityTopTldSpoofRequest =
 export interface GetEmailSecurityTopTldSpoofResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -20852,70 +10744,16 @@ export interface GetEmailSecurityTopTldSpoofResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  top_0: { name: string; value: string }[];
+  top_0: Unit[];
 }
 
 export const GetEmailSecurityTopTldSpoofResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -20927,19 +10765,9 @@ export const GetEmailSecurityTopTldSpoofResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    top_0: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    top_0: Schema.Array(Unit),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetEmailSecurityTopTldSpoofResponse>;
@@ -21031,69 +10859,11 @@ export const GetEntityAsnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetEntityAsnRequest>;
 
 export interface GetEntityAsnResponse {
-  asn: {
-    asn: number;
-    confidenceLevel: number;
-    country: string;
-    countryName: string;
-    estimatedUsers: {
-      locations: {
-        locationAlpha2: string;
-        locationName: string;
-        estimatedUsers?: number | null;
-      }[];
-      estimatedUsers?: number | null;
-    };
-    name: string;
-    orgName: string;
-    related: {
-      asn: number;
-      name: string;
-      aka?: string | null;
-      estimatedUsers?: number | null;
-    }[];
-    source: string;
-    website: string;
-    aka?: string | null;
-  };
+  asn: Asn;
 }
 
 export const GetEntityAsnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  asn: Schema.Struct({
-    asn: Schema.Number,
-    confidenceLevel: Schema.Number,
-    country: Schema.String,
-    countryName: Schema.String,
-    estimatedUsers: Schema.Struct({
-      locations: Schema.Array(
-        Schema.Struct({
-          locationAlpha2: Schema.String,
-          locationName: Schema.String,
-          estimatedUsers: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }),
-      ),
-      estimatedUsers: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-    }),
-    name: Schema.String,
-    orgName: Schema.String,
-    related: Schema.Array(
-      Schema.Struct({
-        asn: Schema.Number,
-        name: Schema.String,
-        aka: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        estimatedUsers: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-      }),
-    ),
-    source: Schema.String,
-    website: Schema.String,
-    aka: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }),
+  asn: Asn,
 }).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetEntityAsnResponse>;
@@ -21181,14 +10951,7 @@ export interface IpEntityAsnResponse {
     asn: number;
     country: string;
     countryName: string;
-    estimatedUsers: {
-      locations: {
-        locationAlpha2: string;
-        locationName: string;
-        estimatedUsers?: number | null;
-      }[];
-      estimatedUsers?: number | null;
-    };
+    estimatedUsers: EstimatedUsers;
     name: string;
     orgName: string;
     related: {
@@ -21208,20 +10971,7 @@ export const IpEntityAsnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     asn: Schema.Number,
     country: Schema.String,
     countryName: Schema.String,
-    estimatedUsers: Schema.Struct({
-      locations: Schema.Array(
-        Schema.Struct({
-          locationAlpha2: Schema.String,
-          locationName: Schema.String,
-          estimatedUsers: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }),
-      ),
-      estimatedUsers: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-    }),
+    estimatedUsers: EstimatedUsers,
     name: Schema.String,
     orgName: Schema.String,
     related: Schema.Array(
@@ -21344,28 +11094,12 @@ export const GetEntityLocationRequest =
   ) as unknown as Schema.Schema<GetEntityLocationRequest>;
 
 export interface GetEntityLocationResponse {
-  location: {
-    alpha2: string;
-    confidenceLevel: number;
-    latitude: string;
-    longitude: string;
-    name: string;
-    region: string;
-    subregion: string;
-  };
+  location: Location;
 }
 
 export const GetEntityLocationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    location: Schema.Struct({
-      alpha2: Schema.String,
-      confidenceLevel: Schema.Number,
-      latitude: Schema.String,
-      longitude: Schema.String,
-      name: Schema.String,
-      region: Schema.String,
-      subregion: Schema.String,
-    }),
+    location: Location,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetEntityLocationResponse>;
@@ -21449,50 +11183,8 @@ export interface BrowserFamilyHttpTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -21503,7 +11195,7 @@ export interface BrowserFamilyHttpTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -21518,59 +11210,8 @@ export const BrowserFamilyHttpTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -21582,12 +11223,7 @@ export const BrowserFamilyHttpTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -21623,50 +11259,8 @@ export const BrowserFamilyHttpTopRequest =
 export interface BrowserFamilyHttpTopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -21677,70 +11271,16 @@ export interface BrowserFamilyHttpTopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  top_0: { name: string; value: string }[];
+  top_0: Unit[];
 }
 
 export const BrowserFamilyHttpTopResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -21752,19 +11292,9 @@ export const BrowserFamilyHttpTopResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    top_0: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    top_0: Schema.Array(Unit),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<BrowserFamilyHttpTopResponse>;
@@ -21797,52 +11327,12 @@ export const GetGeolocationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetGeolocationRequest>;
 
 export interface GetGeolocationResponse {
-  geolocation: {
-    geoId: string;
-    latitude: string;
-    longitude: string;
-    name: string;
-    parent: {
-      geoId: string;
-      latitude: string;
-      longitude: string;
-      name: string;
-      parent: {
-        geoId: string;
-        latitude: string;
-        longitude: string;
-        name: string;
-        type: "CONTINENT" | "COUNTRY" | "ADM1";
-      };
-      type: "CONTINENT" | "COUNTRY" | "ADM1";
-    };
-    type: "CONTINENT" | "COUNTRY" | "ADM1";
-  };
+  geolocation: Geolocation;
 }
 
 export const GetGeolocationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    geolocation: Schema.Struct({
-      geoId: Schema.String,
-      latitude: Schema.String,
-      longitude: Schema.String,
-      name: Schema.String,
-      parent: Schema.Struct({
-        geoId: Schema.String,
-        latitude: Schema.String,
-        longitude: Schema.String,
-        name: Schema.String,
-        parent: Schema.Struct({
-          geoId: Schema.String,
-          latitude: Schema.String,
-          longitude: Schema.String,
-          name: Schema.String,
-          type: Schema.Literals(["CONTINENT", "COUNTRY", "ADM1"]),
-        }),
-        type: Schema.Literals(["CONTINENT", "COUNTRY", "ADM1"]),
-      }),
-      type: Schema.Literals(["CONTINENT", "COUNTRY", "ADM1"]),
-    }),
+    geolocation: Geolocation,
   },
 ).pipe(
   T.ResponsePath("result"),
@@ -21869,54 +11359,12 @@ export const ListGeolocationsRequest =
   ) as unknown as Schema.Schema<ListGeolocationsRequest>;
 
 export interface ListGeolocationsResponse {
-  geolocations: {
-    geoId: string;
-    latitude: string;
-    longitude: string;
-    name: string;
-    parent: {
-      geoId: string;
-      latitude: string;
-      longitude: string;
-      name: string;
-      parent: {
-        geoId: string;
-        latitude: string;
-        longitude: string;
-        name: string;
-        type: "CONTINENT" | "COUNTRY" | "ADM1";
-      };
-      type: "CONTINENT" | "COUNTRY" | "ADM1";
-    };
-    type: "CONTINENT" | "COUNTRY" | "ADM1";
-  }[];
+  geolocations: Geolocation[];
 }
 
 export const ListGeolocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    geolocations: Schema.Array(
-      Schema.Struct({
-        geoId: Schema.String,
-        latitude: Schema.String,
-        longitude: Schema.String,
-        name: Schema.String,
-        parent: Schema.Struct({
-          geoId: Schema.String,
-          latitude: Schema.String,
-          longitude: Schema.String,
-          name: Schema.String,
-          parent: Schema.Struct({
-            geoId: Schema.String,
-            latitude: Schema.String,
-            longitude: Schema.String,
-            name: Schema.String,
-            type: Schema.Literals(["CONTINENT", "COUNTRY", "ADM1"]),
-          }),
-          type: Schema.Literals(["CONTINENT", "COUNTRY", "ADM1"]),
-        }),
-        type: Schema.Literals(["CONTINENT", "COUNTRY", "ADM1"]),
-      }),
-    ),
+    geolocations: Schema.Array(Geolocation),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ListGeolocationsResponse>;
@@ -21966,50 +11414,8 @@ export interface TimeseriesGroupsAiBotResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -22020,7 +11426,7 @@ export interface TimeseriesGroupsAiBotResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -22035,59 +11441,8 @@ export const TimeseriesGroupsAiBotResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -22099,12 +11454,7 @@ export const TimeseriesGroupsAiBotResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -22158,50 +11508,8 @@ export interface TimeseriesGroupsAiTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -22212,7 +11520,7 @@ export interface TimeseriesGroupsAiTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -22227,59 +11535,8 @@ export const TimeseriesGroupsAiTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -22291,12 +11548,7 @@ export const TimeseriesGroupsAiTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -22350,50 +11602,8 @@ export interface TimeseriesGroupsBotResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -22404,7 +11614,7 @@ export interface TimeseriesGroupsBotResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -22419,59 +11629,8 @@ export const TimeseriesGroupsBotResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -22483,12 +11642,7 @@ export const TimeseriesGroupsBotResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -22550,50 +11704,8 @@ export interface TimeseriesGroupsBotWebCrawlerResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -22604,7 +11716,7 @@ export interface TimeseriesGroupsBotWebCrawlerResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -22619,59 +11731,8 @@ export const TimeseriesGroupsBotWebCrawlerResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -22683,12 +11744,7 @@ export const TimeseriesGroupsBotWebCrawlerResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -22763,50 +11819,8 @@ export interface TimeseriesGroupsCtResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -22817,7 +11831,7 @@ export interface TimeseriesGroupsCtResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0:
     | { timestamps: string[] }
@@ -22852,59 +11866,8 @@ export const TimeseriesGroupsCtResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -22916,12 +11879,7 @@ export const TimeseriesGroupsCtResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Union([
       Schema.Struct({
@@ -23025,50 +11983,8 @@ export interface TimeseriesGroupsNetflowResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -23079,7 +11995,7 @@ export interface TimeseriesGroupsNetflowResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -23094,59 +12010,8 @@ export const TimeseriesGroupsNetflowResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -23158,12 +12023,7 @@ export const TimeseriesGroupsNetflowResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -23240,50 +12100,8 @@ export interface TimeseriesGroupsQualityIqiResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -23294,7 +12112,7 @@ export interface TimeseriesGroupsQualityIqiResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: {
     p25: string[];
@@ -23314,59 +12132,8 @@ export const TimeseriesGroupsQualityIqiResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -23378,12 +12145,7 @@ export const TimeseriesGroupsQualityIqiResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       p25: Schema.Array(Schema.String),
@@ -23428,50 +12190,8 @@ export interface TimeseriesGroupsRankingResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -23482,7 +12202,7 @@ export interface TimeseriesGroupsRankingResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -23497,59 +12217,8 @@ export const TimeseriesGroupsRankingResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -23561,12 +12230,7 @@ export const TimeseriesGroupsRankingResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -23611,50 +12275,8 @@ export interface TimeseriesGroupsRankingInternetServiceResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -23665,7 +12287,7 @@ export interface TimeseriesGroupsRankingInternetServiceResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -23680,59 +12302,8 @@ export const TimeseriesGroupsRankingInternetServiceResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -23744,12 +12315,7 @@ export const TimeseriesGroupsRankingInternetServiceResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -23794,50 +12360,8 @@ export interface TimeseriesGroupsTcpResetsTimeoutResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -23848,7 +12372,7 @@ export interface TimeseriesGroupsTcpResetsTimeoutResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: {
     laterInFlow: string[];
@@ -23870,59 +12394,8 @@ export const TimeseriesGroupsTcpResetsTimeoutResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -23934,12 +12407,7 @@ export const TimeseriesGroupsTcpResetsTimeoutResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       laterInFlow: Schema.Array(Schema.String),
@@ -24002,50 +12470,8 @@ export interface TimeseriesGroupsV2AiInferenceResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -24056,7 +12482,7 @@ export interface TimeseriesGroupsV2AiInferenceResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -24071,59 +12497,8 @@ export const TimeseriesGroupsV2AiInferenceResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -24135,12 +12510,7 @@ export const TimeseriesGroupsV2AiInferenceResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -24202,50 +12572,8 @@ export interface TimeseriesGroupsV2As112Response {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -24256,7 +12584,7 @@ export interface TimeseriesGroupsV2As112Response {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -24271,59 +12599,8 @@ export const TimeseriesGroupsV2As112Response =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -24335,12 +12612,7 @@ export const TimeseriesGroupsV2As112Response =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -24404,50 +12676,8 @@ export interface TimeseriesGroupsV2AttackLayer3Response {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -24458,7 +12688,7 @@ export interface TimeseriesGroupsV2AttackLayer3Response {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -24473,59 +12703,8 @@ export const TimeseriesGroupsV2AttackLayer3Response =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -24537,12 +12716,7 @@ export const TimeseriesGroupsV2AttackLayer3Response =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -24606,50 +12780,8 @@ export interface TimeseriesGroupsV2AttackLayer7Response {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -24660,7 +12792,7 @@ export interface TimeseriesGroupsV2AttackLayer7Response {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -24675,59 +12807,8 @@ export const TimeseriesGroupsV2AttackLayer7Response =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -24739,12 +12820,7 @@ export const TimeseriesGroupsV2AttackLayer7Response =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -24813,50 +12889,8 @@ export interface TimeseriesGroupsV2DnsResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -24867,7 +12901,7 @@ export interface TimeseriesGroupsV2DnsResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -24882,59 +12916,8 @@ export const TimeseriesGroupsV2DnsResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -24946,12 +12929,7 @@ export const TimeseriesGroupsV2DnsResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -25007,50 +12985,8 @@ export interface TimeseriesGroupsV2EmailRoutingResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -25061,7 +12997,7 @@ export interface TimeseriesGroupsV2EmailRoutingResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -25076,59 +13012,8 @@ export const TimeseriesGroupsV2EmailRoutingResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -25140,12 +13025,7 @@ export const TimeseriesGroupsV2EmailRoutingResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -25213,50 +13093,8 @@ export interface TimeseriesGroupsV2EmailSecurityResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -25267,7 +13105,7 @@ export interface TimeseriesGroupsV2EmailSecurityResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -25282,59 +13120,8 @@ export const TimeseriesGroupsV2EmailSecurityResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -25346,12 +13133,7 @@ export const TimeseriesGroupsV2EmailSecurityResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -25423,50 +13205,8 @@ export interface TimeseriesGroupsV2HttpResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -25477,7 +13217,7 @@ export interface TimeseriesGroupsV2HttpResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -25492,59 +13232,8 @@ export const TimeseriesGroupsV2HttpResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -25556,12 +13245,7 @@ export const TimeseriesGroupsV2HttpResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -25612,50 +13296,8 @@ export interface TimeseriesGroupsV2LeakedCredentialResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -25666,7 +13308,7 @@ export interface TimeseriesGroupsV2LeakedCredentialResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -25681,59 +13323,8 @@ export const TimeseriesGroupsV2LeakedCredentialResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -25745,12 +13336,7 @@ export const TimeseriesGroupsV2LeakedCredentialResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -25786,50 +13372,8 @@ export const CacheHitDnsSummaryRequest =
 export interface CacheHitDnsSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -25840,67 +13384,16 @@ export interface CacheHitDnsSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  summary_0: { negative: string; positive: string };
+  summary_0: UnionMember5;
 }
 
 export const CacheHitDnsSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -25912,17 +13405,9 @@ export const CacheHitDnsSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    summary_0: Schema.Struct({
-      negative: Schema.String,
-      positive: Schema.String,
-    }).pipe(Schema.encodeKeys({ negative: "NEGATIVE", positive: "POSITIVE" })),
+    summary_0: UnionMember5,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<CacheHitDnsSummaryResponse>;
@@ -25960,50 +13445,8 @@ export interface CacheHitDnsTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -26014,7 +13457,7 @@ export interface CacheHitDnsTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { negative: string[]; positive: string[] };
 }
@@ -26029,59 +13472,8 @@ export const CacheHitDnsTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -26093,12 +13485,7 @@ export const CacheHitDnsTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       negative: Schema.Array(Schema.String),
@@ -26142,50 +13529,8 @@ export interface TimeseriesHttpResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -26196,7 +13541,7 @@ export interface TimeseriesHttpResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
 }
 
@@ -26210,59 +13555,8 @@ export const TimeseriesHttpResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -26274,12 +13568,7 @@ export const TimeseriesHttpResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
   },
 ).pipe(
@@ -26314,50 +13603,8 @@ export const GetHttpAsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface GetHttpAsResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -26368,69 +13615,15 @@ export interface GetHttpAsResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: { clientASN: number; clientASName: string; value: string }[];
 }
 
 export const GetHttpAsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   meta: Schema.Struct({
-    confidenceInfo: Schema.Union([
-      Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      Schema.Null,
-    ]),
-    dateRange: Schema.Array(
-      Schema.Struct({
-        endTime: Schema.String,
-        startTime: Schema.String,
-      }),
-    ),
+    confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+    dateRange: Schema.Array(DateRange),
     lastUpdated: Schema.String,
     normalization: Schema.Literals([
       "PERCENTAGE",
@@ -26442,12 +13635,7 @@ export const GetHttpAsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "OVERLAPPED_PERCENTAGE",
       "RATIO",
     ]),
-    units: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    units: Schema.Array(Unit),
   }),
   top_0: Schema.Array(
     Schema.Struct({
@@ -26496,50 +13684,8 @@ export const GetHttpAsBotClassRequest =
 export interface GetHttpAsBotClassResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -26550,7 +13696,7 @@ export interface GetHttpAsBotClassResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: { clientASN: number; clientASName: string; value: string }[];
 }
@@ -26558,62 +13704,8 @@ export interface GetHttpAsBotClassResponse {
 export const GetHttpAsBotClassResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -26625,12 +13717,7 @@ export const GetHttpAsBotClassResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -26682,50 +13769,8 @@ export const GetHttpAsBrowserFamilyRequest =
 export interface GetHttpAsBrowserFamilyResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -26736,7 +13781,7 @@ export interface GetHttpAsBrowserFamilyResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: { clientASN: number; clientASName: string; value: string }[];
 }
@@ -26744,62 +13789,8 @@ export interface GetHttpAsBrowserFamilyResponse {
 export const GetHttpAsBrowserFamilyResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -26811,12 +13802,7 @@ export const GetHttpAsBrowserFamilyResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -26865,50 +13851,8 @@ export const GetHttpAsDeviceTypeRequest =
 export interface GetHttpAsDeviceTypeResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -26919,7 +13863,7 @@ export interface GetHttpAsDeviceTypeResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: { clientASN: number; clientASName: string; value: string }[];
 }
@@ -26927,62 +13871,8 @@ export interface GetHttpAsDeviceTypeResponse {
 export const GetHttpAsDeviceTypeResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -26994,12 +13884,7 @@ export const GetHttpAsDeviceTypeResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -27048,50 +13933,8 @@ export const GetHttpAsHttpMethodRequest =
 export interface GetHttpAsHttpMethodResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -27102,7 +13945,7 @@ export interface GetHttpAsHttpMethodResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: { clientASN: number; clientASName: string; value: string }[];
 }
@@ -27110,62 +13953,8 @@ export interface GetHttpAsHttpMethodResponse {
 export const GetHttpAsHttpMethodResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -27177,12 +13966,7 @@ export const GetHttpAsHttpMethodResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -27231,50 +14015,8 @@ export const GetHttpAsHttpProtocolRequest =
 export interface GetHttpAsHttpProtocolResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -27285,7 +14027,7 @@ export interface GetHttpAsHttpProtocolResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: { clientASN: number; clientASName: string; value: string }[];
 }
@@ -27293,62 +14035,8 @@ export interface GetHttpAsHttpProtocolResponse {
 export const GetHttpAsHttpProtocolResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -27360,12 +14048,7 @@ export const GetHttpAsHttpProtocolResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -27412,50 +14095,8 @@ export const GetHttpAsIpVersionRequest =
 export interface GetHttpAsIpVersionResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -27466,7 +14107,7 @@ export interface GetHttpAsIpVersionResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: { clientASN: number; clientASName: string; value: string }[];
 }
@@ -27474,62 +14115,8 @@ export interface GetHttpAsIpVersionResponse {
 export const GetHttpAsIpVersionResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -27541,12 +14128,7 @@ export const GetHttpAsIpVersionResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -27604,50 +14186,8 @@ export const GetHttpAsOsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface GetHttpAsOsResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -27658,69 +14198,15 @@ export interface GetHttpAsOsResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: { clientASN: number; clientASName: string; value: string }[];
 }
 
 export const GetHttpAsOsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   meta: Schema.Struct({
-    confidenceInfo: Schema.Union([
-      Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      Schema.Null,
-    ]),
-    dateRange: Schema.Array(
-      Schema.Struct({
-        endTime: Schema.String,
-        startTime: Schema.String,
-      }),
-    ),
+    confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+    dateRange: Schema.Array(DateRange),
     lastUpdated: Schema.String,
     normalization: Schema.Literals([
       "PERCENTAGE",
@@ -27732,12 +14218,7 @@ export const GetHttpAsOsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "OVERLAPPED_PERCENTAGE",
       "RATIO",
     ]),
-    units: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    units: Schema.Array(Unit),
   }),
   top_0: Schema.Array(
     Schema.Struct({
@@ -27790,50 +14271,8 @@ export const GetHttpAsTlsVersionRequest =
 export interface GetHttpAsTlsVersionResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -27844,7 +14283,7 @@ export interface GetHttpAsTlsVersionResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: { clientASN: number; clientASName: string; value: string }[];
 }
@@ -27852,62 +14291,8 @@ export interface GetHttpAsTlsVersionResponse {
 export const GetHttpAsTlsVersionResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -27919,12 +14304,7 @@ export const GetHttpAsTlsVersionResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -27965,50 +14345,8 @@ export const GetHttpLocationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface GetHttpLocationResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -28019,7 +14357,7 @@ export interface GetHttpLocationResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     clientCountryAlpha2: string;
@@ -28031,62 +14369,8 @@ export interface GetHttpLocationResponse {
 export const GetHttpLocationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -28098,12 +14382,7 @@ export const GetHttpLocationResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -28152,50 +14431,8 @@ export const GetHttpLocationBotClassRequest =
 export interface GetHttpLocationBotClassResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -28206,7 +14443,7 @@ export interface GetHttpLocationBotClassResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     clientCountryAlpha2: string;
@@ -28218,62 +14455,8 @@ export interface GetHttpLocationBotClassResponse {
 export const GetHttpLocationBotClassResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -28285,12 +14468,7 @@ export const GetHttpLocationBotClassResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -28342,50 +14520,8 @@ export const GetHttpLocationBrowserFamilyRequest =
 export interface GetHttpLocationBrowserFamilyResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -28396,7 +14532,7 @@ export interface GetHttpLocationBrowserFamilyResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     clientCountryAlpha2: string;
@@ -28408,62 +14544,8 @@ export interface GetHttpLocationBrowserFamilyResponse {
 export const GetHttpLocationBrowserFamilyResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -28475,12 +14557,7 @@ export const GetHttpLocationBrowserFamilyResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -28529,50 +14606,8 @@ export const GetHttpLocationDeviceTypeRequest =
 export interface GetHttpLocationDeviceTypeResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -28583,7 +14618,7 @@ export interface GetHttpLocationDeviceTypeResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     clientCountryAlpha2: string;
@@ -28595,62 +14630,8 @@ export interface GetHttpLocationDeviceTypeResponse {
 export const GetHttpLocationDeviceTypeResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -28662,12 +14643,7 @@ export const GetHttpLocationDeviceTypeResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -28716,50 +14692,8 @@ export const GetHttpLocationHttpMethodRequest =
 export interface GetHttpLocationHttpMethodResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -28770,7 +14704,7 @@ export interface GetHttpLocationHttpMethodResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     clientCountryAlpha2: string;
@@ -28782,62 +14716,8 @@ export interface GetHttpLocationHttpMethodResponse {
 export const GetHttpLocationHttpMethodResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -28849,12 +14729,7 @@ export const GetHttpLocationHttpMethodResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -28903,50 +14778,8 @@ export const GetHttpLocationHttpProtocolRequest =
 export interface GetHttpLocationHttpProtocolResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -28957,7 +14790,7 @@ export interface GetHttpLocationHttpProtocolResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     clientCountryAlpha2: string;
@@ -28969,62 +14802,8 @@ export interface GetHttpLocationHttpProtocolResponse {
 export const GetHttpLocationHttpProtocolResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -29036,12 +14815,7 @@ export const GetHttpLocationHttpProtocolResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -29088,50 +14862,8 @@ export const GetHttpLocationIpVersionRequest =
 export interface GetHttpLocationIpVersionResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -29142,7 +14874,7 @@ export interface GetHttpLocationIpVersionResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     clientCountryAlpha2: string;
@@ -29154,62 +14886,8 @@ export interface GetHttpLocationIpVersionResponse {
 export const GetHttpLocationIpVersionResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -29221,12 +14899,7 @@ export const GetHttpLocationIpVersionResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -29285,50 +14958,8 @@ export const GetHttpLocationOsRequest =
 export interface GetHttpLocationOsResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -29339,7 +14970,7 @@ export interface GetHttpLocationOsResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     clientCountryAlpha2: string;
@@ -29351,62 +14982,8 @@ export interface GetHttpLocationOsResponse {
 export const GetHttpLocationOsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -29418,12 +14995,7 @@ export const GetHttpLocationOsResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -29476,50 +15048,8 @@ export const GetHttpLocationTlsVersionRequest =
 export interface GetHttpLocationTlsVersionResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -29530,7 +15060,7 @@ export interface GetHttpLocationTlsVersionResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     clientCountryAlpha2: string;
@@ -29542,62 +15072,8 @@ export interface GetHttpLocationTlsVersionResponse {
 export const GetHttpLocationTlsVersionResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -29609,12 +15085,7 @@ export const GetHttpLocationTlsVersionResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -29655,50 +15126,8 @@ export const OsHttpSummaryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface OsHttpSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -29709,66 +15138,15 @@ export interface OsHttpSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { android: string; ios: string };
 }
 
 export const OsHttpSummaryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   meta: Schema.Struct({
-    confidenceInfo: Schema.Struct({
-      annotations: Schema.Array(
-        Schema.Struct({
-          dataSource: Schema.Literals([
-            "ALL",
-            "AI_BOTS",
-            "AI_GATEWAY",
-            "BGP",
-            "BOTS",
-            "CONNECTION_ANOMALY",
-            "CT",
-            "DNS",
-            "DNS_MAGNITUDE",
-            "DNS_AS112",
-            "DOS",
-            "EMAIL_ROUTING",
-            "EMAIL_SECURITY",
-            "FW",
-            "FW_PG",
-            "HTTP",
-            "HTTP_CONTROL",
-            "HTTP_CRAWLER_REFERER",
-            "HTTP_ORIGINS",
-            "IQI",
-            "LEAKED_CREDENTIALS",
-            "NET",
-            "ROBOTS_TXT",
-            "SPEED",
-            "WORKERS_AI",
-          ]),
-          description: Schema.String,
-          endDate: Schema.String,
-          eventType: Schema.Literals([
-            "EVENT",
-            "GENERAL",
-            "OUTAGE",
-            "PARTIAL_PROJECTION",
-            "PIPELINE",
-            "TRAFFIC_ANOMALY",
-          ]),
-          isInstantaneous: Schema.Boolean,
-          linkedUrl: Schema.String,
-          startDate: Schema.String,
-        }),
-      ),
-      level: Schema.Number,
-    }),
-    dateRange: Schema.Array(
-      Schema.Struct({
-        endTime: Schema.String,
-        startTime: Schema.String,
-      }),
-    ),
+    confidenceInfo: ConfidenceInfo,
+    dateRange: Schema.Array(DateRange),
     lastUpdated: Schema.String,
     normalization: Schema.Literals([
       "PERCENTAGE",
@@ -29780,12 +15158,7 @@ export const OsHttpSummaryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "OVERLAPPED_PERCENTAGE",
       "RATIO",
     ]),
-    units: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    units: Schema.Array(Unit),
   }),
   summary_0: Schema.Struct({
     android: Schema.String,
@@ -29828,50 +15201,8 @@ export interface BrowserHttpTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -29882,7 +15213,7 @@ export interface BrowserHttpTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -29897,59 +15228,8 @@ export const BrowserHttpTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -29961,12 +15241,7 @@ export const BrowserHttpTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -30004,50 +15279,8 @@ export interface OsHttpTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -30058,7 +15291,7 @@ export interface OsHttpTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -30073,59 +15306,8 @@ export const OsHttpTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -30137,12 +15319,7 @@ export const OsHttpTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -30179,50 +15356,8 @@ export const BrowserHttpTopRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface BrowserHttpTopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -30233,70 +15368,16 @@ export interface BrowserHttpTopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  top_0: { name: string; value: string }[];
+  top_0: Unit[];
 }
 
 export const BrowserHttpTopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -30308,19 +15389,9 @@ export const BrowserHttpTopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    top_0: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    top_0: Schema.Array(Unit),
   },
 ).pipe(
   T.ResponsePath("result"),
@@ -30356,50 +15427,8 @@ export const CompromisedLeakedCredentialSummaryRequest =
 export interface CompromisedLeakedCredentialSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -30410,7 +15439,7 @@ export interface CompromisedLeakedCredentialSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { clean: string; compromised: string };
 }
@@ -30418,59 +15447,8 @@ export interface CompromisedLeakedCredentialSummaryResponse {
 export const CompromisedLeakedCredentialSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -30482,12 +15460,7 @@ export const CompromisedLeakedCredentialSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       clean: Schema.String,
@@ -30533,50 +15506,8 @@ export interface CompromisedLeakedCredentialTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -30587,7 +15518,7 @@ export interface CompromisedLeakedCredentialTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { clean: string[]; compromised: string[]; timestamps: string[] };
 }
@@ -30602,59 +15533,8 @@ export const CompromisedLeakedCredentialTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -30666,12 +15546,7 @@ export const CompromisedLeakedCredentialTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       clean: Schema.Array(Schema.String),
@@ -30718,50 +15593,8 @@ export const HttpMethodAttackLayer7SummaryRequest =
 export interface HttpMethodAttackLayer7SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -30772,7 +15605,7 @@ export interface HttpMethodAttackLayer7SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -30780,59 +15613,8 @@ export interface HttpMethodAttackLayer7SummaryResponse {
 export const HttpMethodAttackLayer7SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -30844,12 +15626,7 @@ export const HttpMethodAttackLayer7SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -30892,50 +15669,8 @@ export interface HttpMethodAttackLayer7TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -30946,7 +15681,7 @@ export interface HttpMethodAttackLayer7TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -30961,59 +15696,8 @@ export const HttpMethodAttackLayer7TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -31025,12 +15709,7 @@ export const HttpMethodAttackLayer7TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -31067,50 +15746,8 @@ export const SummaryNetflowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface SummaryNetflowResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -31121,7 +15758,7 @@ export interface SummaryNetflowResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { http: string; other: string };
 }
@@ -31129,59 +15766,8 @@ export interface SummaryNetflowResponse {
 export const SummaryNetflowResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -31193,12 +15779,7 @@ export const SummaryNetflowResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       http: Schema.String,
@@ -31238,50 +15819,8 @@ export interface TimeseriesNetflowResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -31292,7 +15831,7 @@ export interface TimeseriesNetflowResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[]; values: string[] };
 }
@@ -31307,59 +15846,8 @@ export const TimeseriesNetflowResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -31371,12 +15859,7 @@ export const TimeseriesNetflowResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -31414,50 +15897,8 @@ export const AsesNetflowTopRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface AsesNetflowTopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -31468,7 +15909,7 @@ export interface AsesNetflowTopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: { clientASN: number; clientASName: string; value: string }[];
 }
@@ -31476,62 +15917,8 @@ export interface AsesNetflowTopResponse {
 export const AsesNetflowTopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -31543,12 +15930,7 @@ export const AsesNetflowTopResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -31585,50 +15967,8 @@ export const LocationsNetflowTopRequest =
 export interface LocationsNetflowTopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -31639,7 +15979,7 @@ export interface LocationsNetflowTopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     clientCountryAlpha2: string;
@@ -31651,62 +15991,8 @@ export interface LocationsNetflowTopResponse {
 export const LocationsNetflowTopResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -31718,12 +16004,7 @@ export const LocationsNetflowTopResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -31766,50 +16047,8 @@ export const MitigationProductAttackLayer7SummaryRequest =
 export interface MitigationProductAttackLayer7SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -31820,7 +16059,7 @@ export interface MitigationProductAttackLayer7SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -31828,59 +16067,8 @@ export interface MitigationProductAttackLayer7SummaryResponse {
 export const MitigationProductAttackLayer7SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -31892,12 +16080,7 @@ export const MitigationProductAttackLayer7SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -31940,50 +16123,8 @@ export interface MitigationProductAttackLayer7TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -31994,7 +16135,7 @@ export interface MitigationProductAttackLayer7TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -32009,59 +16150,8 @@ export const MitigationProductAttackLayer7TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -32073,12 +16163,7 @@ export const MitigationProductAttackLayer7TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -32114,50 +16199,8 @@ export const HttpProtocolHttpSummaryRequest =
 export interface HttpProtocolHttpSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -32168,7 +16211,7 @@ export interface HttpProtocolHttpSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { http: string; https: string };
 }
@@ -32176,59 +16219,8 @@ export interface HttpProtocolHttpSummaryResponse {
 export const HttpProtocolHttpSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -32240,12 +16232,7 @@ export const HttpProtocolHttpSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       http: Schema.String,
@@ -32291,50 +16278,8 @@ export interface HttpProtocolHttpTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -32345,7 +16290,7 @@ export interface HttpProtocolHttpTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { http: string[]; https: string[]; timestamps: string[] };
 }
@@ -32360,59 +16305,8 @@ export const HttpProtocolHttpTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -32424,12 +16318,7 @@ export const HttpProtocolHttpTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       http: Schema.Array(Schema.String),
@@ -32496,50 +16385,8 @@ export const SummaryQualityIqiRequest =
 export interface SummaryQualityIqiResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -32550,7 +16397,7 @@ export interface SummaryQualityIqiResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { p25: string; p50: string; p75: string };
 }
@@ -32558,59 +16405,8 @@ export interface SummaryQualityIqiResponse {
 export const SummaryQualityIqiResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -32622,12 +16418,7 @@ export const SummaryQualityIqiResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       p25: Schema.String,
@@ -32671,50 +16462,8 @@ export interface HistogramQualitySpeedResponse {
   /** Metadata for the results. */
   meta: {
     bucketSize: number;
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -32726,7 +16475,7 @@ export interface HistogramQualitySpeedResponse {
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
     totalTests: number[];
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
 }
 
@@ -32739,59 +16488,8 @@ export const HistogramQualitySpeedResponse =
     }),
     meta: Schema.Struct({
       bucketSize: Schema.Number,
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -32804,12 +16502,7 @@ export const HistogramQualitySpeedResponse =
         "RATIO",
       ]),
       totalTests: Schema.Array(Schema.Number),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
   }).pipe(
     T.ResponsePath("result"),
@@ -32838,50 +16531,8 @@ export const SummaryQualitySpeedRequest =
 export interface SummaryQualitySpeedResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -32892,7 +16543,7 @@ export interface SummaryQualitySpeedResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: {
     bandwidthDownload: string;
@@ -32908,59 +16559,8 @@ export interface SummaryQualitySpeedResponse {
 export const SummaryQualitySpeedResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -32972,12 +16572,7 @@ export const SummaryQualitySpeedResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       bandwidthDownload: Schema.String,
@@ -33019,50 +16614,8 @@ export const AsesQualitySpeedTopRequest =
 export interface AsesQualitySpeedTopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -33073,81 +16626,16 @@ export interface AsesQualitySpeedTopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  top_0: {
-    bandwidthDownload: string;
-    bandwidthUpload: string;
-    clientASN: number;
-    clientASName: string;
-    jitterIdle: string;
-    jitterLoaded: string;
-    latencyIdle: string;
-    latencyLoaded: string;
-    numTests: number;
-    rankPower: number;
-  }[];
+  top_0: Top0[];
 }
 
 export const AsesQualitySpeedTopResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -33159,27 +16647,9 @@ export const AsesQualitySpeedTopResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    top_0: Schema.Array(
-      Schema.Struct({
-        bandwidthDownload: Schema.String,
-        bandwidthUpload: Schema.String,
-        clientASN: Schema.Number,
-        clientASName: Schema.String,
-        jitterIdle: Schema.String,
-        jitterLoaded: Schema.String,
-        latencyIdle: Schema.String,
-        latencyLoaded: Schema.String,
-        numTests: Schema.Number,
-        rankPower: Schema.Number,
-      }),
-    ),
+    top_0: Schema.Array(Top0),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<AsesQualitySpeedTopResponse>;
@@ -33207,50 +16677,8 @@ export const LocationsQualitySpeedTopRequest =
 export interface LocationsQualitySpeedTopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -33261,7 +16689,7 @@ export interface LocationsQualitySpeedTopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     bandwidthDownload: string;
@@ -33280,62 +16708,8 @@ export interface LocationsQualitySpeedTopResponse {
 export const LocationsQualitySpeedTopResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -33347,12 +16721,7 @@ export const LocationsQualitySpeedTopResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -33399,50 +16768,8 @@ export const PostQuantumHttpSummaryRequest =
 export interface PostQuantumHttpSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -33453,7 +16780,7 @@ export interface PostQuantumHttpSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { notsupported: string; supported: string };
 }
@@ -33461,59 +16788,8 @@ export interface PostQuantumHttpSummaryResponse {
 export const PostQuantumHttpSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -33525,12 +16801,7 @@ export const PostQuantumHttpSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       notsupported: Schema.String,
@@ -33581,50 +16852,8 @@ export interface PostQuantumHttpTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -33635,7 +16864,7 @@ export interface PostQuantumHttpTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: {
     notsupported: string[];
@@ -33654,59 +16883,8 @@ export const PostQuantumHttpTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -33718,12 +16896,7 @@ export const PostQuantumHttpTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       notsupported: Schema.Array(Schema.String),
@@ -33767,50 +16940,8 @@ export const TopRankingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface TopRankingResponse {
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -33821,10 +16952,10 @@ export interface TopRankingResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
-    categories: { id: number; name: string; superCategoryId: number }[];
+    categories: Category[];
     domain: string;
     rank: number;
     pctRankChange?: number | null;
@@ -33833,62 +16964,8 @@ export interface TopRankingResponse {
 
 export const TopRankingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   meta: Schema.Struct({
-    confidenceInfo: Schema.Union([
-      Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      Schema.Null,
-    ]),
-    dateRange: Schema.Array(
-      Schema.Struct({
-        endTime: Schema.String,
-        startTime: Schema.String,
-      }),
-    ),
+    confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+    dateRange: Schema.Array(DateRange),
     lastUpdated: Schema.String,
     normalization: Schema.Literals([
       "PERCENTAGE",
@@ -33900,22 +16977,11 @@ export const TopRankingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "OVERLAPPED_PERCENTAGE",
       "RATIO",
     ]),
-    units: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    units: Schema.Array(Unit),
   }),
   top_0: Schema.Array(
     Schema.Struct({
-      categories: Schema.Array(
-        Schema.Struct({
-          id: Schema.Number,
-          name: Schema.String,
-          superCategoryId: Schema.Number,
-        }),
-      ),
+      categories: Schema.Array(Category),
       domain: Schema.String,
       rank: Schema.Number,
       pctRankChange: Schema.optional(
@@ -33957,26 +17023,20 @@ export const GetRankingDomainRequest =
 
 export interface GetRankingDomainResponse {
   details_0: {
-    categories: { id: number; name: string; superCategoryId: number }[];
+    categories: Category[];
     bucket?: string | null;
     rank?: number | null;
     topLocations?:
       | { locationCode: string; locationName: string; rank: number }[]
       | null;
   };
-  meta: { dateRange: { endTime: string; startTime: string }[] };
+  meta: { dateRange: DateRange[] };
 }
 
 export const GetRankingDomainResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     details_0: Schema.Struct({
-      categories: Schema.Array(
-        Schema.Struct({
-          id: Schema.Number,
-          name: Schema.String,
-          superCategoryId: Schema.Number,
-        }),
-      ),
+      categories: Schema.Array(Category),
       bucket: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       rank: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       topLocations: Schema.optional(
@@ -34000,12 +17060,7 @@ export const GetRankingDomainResponse =
       }),
     ),
     meta: Schema.Struct({
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      dateRange: Schema.Array(DateRange),
     }),
   }).pipe(
     T.ResponsePath("result"),
@@ -34075,50 +17130,8 @@ export const TopRankingInternetServiceRequest =
 
 export interface TopRankingInternetServiceResponse {
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -34129,7 +17142,7 @@ export interface TopRankingInternetServiceResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: { rank: number; service: string }[];
 }
@@ -34137,62 +17150,8 @@ export interface TopRankingInternetServiceResponse {
 export const TopRankingInternetServiceResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -34204,12 +17163,7 @@ export const TopRankingInternetServiceResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -34251,50 +17205,8 @@ export const DirectiveRobotsTxtTopUserAgentRequest =
 export interface DirectiveRobotsTxtTopUserAgentResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -34305,7 +17217,7 @@ export interface DirectiveRobotsTxtTopUserAgentResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     name: string;
@@ -34318,62 +17230,8 @@ export interface DirectiveRobotsTxtTopUserAgentResponse {
 export const DirectiveRobotsTxtTopUserAgentResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -34385,12 +17243,7 @@ export const DirectiveRobotsTxtTopUserAgentResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -34434,50 +17287,8 @@ export const ManagedRulesAttackLayer7SummaryRequest =
 export interface ManagedRulesAttackLayer7SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -34488,7 +17299,7 @@ export interface ManagedRulesAttackLayer7SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -34496,59 +17307,8 @@ export interface ManagedRulesAttackLayer7SummaryResponse {
 export const ManagedRulesAttackLayer7SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -34560,12 +17320,7 @@ export const ManagedRulesAttackLayer7SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -34608,50 +17363,8 @@ export interface ManagedRulesAttackLayer7TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -34662,7 +17375,7 @@ export interface ManagedRulesAttackLayer7TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -34677,59 +17390,8 @@ export const ManagedRulesAttackLayer7TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -34741,12 +17403,7 @@ export const ManagedRulesAttackLayer7TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -34985,50 +17642,8 @@ export const SummaryTcpResetsTimeoutRequest =
 export interface SummaryTcpResetsTimeoutResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -35039,7 +17654,7 @@ export interface SummaryTcpResetsTimeoutResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: {
     laterInFlow: string;
@@ -35053,59 +17668,8 @@ export interface SummaryTcpResetsTimeoutResponse {
 export const SummaryTcpResetsTimeoutResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -35117,12 +17681,7 @@ export const SummaryTcpResetsTimeoutResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       laterInFlow: Schema.String,
@@ -35168,73 +17727,12 @@ export const GetTrafficAnomalyRequest =
   ) as unknown as Schema.Schema<GetTrafficAnomalyRequest>;
 
 export interface GetTrafficAnomalyResponse {
-  trafficAnomalies: {
-    startDate: string;
-    status: string;
-    type: string;
-    uuid: string;
-    asnDetails?: {
-      asn: string;
-      name: string;
-      locations?: { code: string; name: string } | null;
-    } | null;
-    endDate?: string | null;
-    locationDetails?: { code: string; name: string } | null;
-    originDetails?: { name: string; origin: string } | null;
-    visibleInDataSources?: string[] | null;
-  }[];
+  trafficAnomalies: TrafficAnomaly[];
 }
 
 export const GetTrafficAnomalyResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    trafficAnomalies: Schema.Array(
-      Schema.Struct({
-        startDate: Schema.String,
-        status: Schema.String,
-        type: Schema.String,
-        uuid: Schema.String,
-        asnDetails: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              asn: Schema.String,
-              name: Schema.String,
-              locations: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    code: Schema.String,
-                    name: Schema.String,
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        endDate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        locationDetails: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              code: Schema.String,
-              name: Schema.String,
-            }),
-            Schema.Null,
-          ]),
-        ),
-        originDetails: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              name: Schema.String,
-              origin: Schema.String,
-            }),
-            Schema.Null,
-          ]),
-        ),
-        visibleInDataSources: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-      }),
-    ),
+    trafficAnomalies: Schema.Array(TrafficAnomaly),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetTrafficAnomalyResponse>;
@@ -35311,50 +17809,8 @@ export const ResponseTTLDnsSummaryRequest =
 export interface ResponseTTLDnsSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -35365,75 +17821,16 @@ export interface ResponseTTLDnsSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
-  summary_0: {
-    gt_15mLte_1h: string;
-    gt_1dLte_1w: string;
-    gt_1hLte_1d: string;
-    gt_1mLte_5m: string;
-    gt_1w: string;
-    gt_5mLte_15m: string;
-    lte_1m: string;
-  };
+  summary_0: Summary0;
 }
 
 export const ResponseTTLDnsSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -35445,32 +17842,9 @@ export const ResponseTTLDnsSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
-    summary_0: Schema.Struct({
-      gt_15mLte_1h: Schema.String,
-      gt_1dLte_1w: Schema.String,
-      gt_1hLte_1d: Schema.String,
-      gt_1mLte_5m: Schema.String,
-      gt_1w: Schema.String,
-      gt_5mLte_15m: Schema.String,
-      lte_1m: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        gt_15mLte_1h: "gt_15m_lte_1h",
-        gt_1dLte_1w: "gt_1d_lte_1w",
-        gt_1hLte_1d: "gt_1h_lte_1d",
-        gt_1mLte_5m: "gt_1m_lte_5m",
-        gt_1w: "gt_1w",
-        gt_5mLte_15m: "gt_5m_lte_15m",
-        lte_1m: "lte_1m",
-      }),
-    ),
+    summary_0: Summary0,
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ResponseTTLDnsSummaryResponse>;
@@ -35511,50 +17885,8 @@ export interface ResponseTTLDnsTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -35565,7 +17897,7 @@ export interface ResponseTTLDnsTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: {
     gt_15mLte_1h: string[];
@@ -35588,59 +17920,8 @@ export const ResponseTTLDnsTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -35652,12 +17933,7 @@ export const ResponseTTLDnsTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       gt_15mLte_1h: Schema.Array(Schema.String),
@@ -35709,50 +17985,8 @@ export const QueryTypeAs112SummaryRequest =
 export interface QueryTypeAs112SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -35763,7 +17997,7 @@ export interface QueryTypeAs112SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -35771,59 +18005,8 @@ export interface QueryTypeAs112SummaryResponse {
 export const QueryTypeAs112SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -35835,12 +18018,7 @@ export const QueryTypeAs112SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -35883,50 +18061,8 @@ export interface QueryTypeAs112TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -35937,7 +18073,7 @@ export interface QueryTypeAs112TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -35952,59 +18088,8 @@ export const QueryTypeAs112TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -36016,12 +18101,7 @@ export const QueryTypeAs112TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -36057,50 +18137,8 @@ export const QueryTypeDnsSummaryRequest =
 export interface QueryTypeDnsSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -36111,7 +18149,7 @@ export interface QueryTypeDnsSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -36119,59 +18157,8 @@ export interface QueryTypeDnsSummaryResponse {
 export const QueryTypeDnsSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -36183,12 +18170,7 @@ export const QueryTypeDnsSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -36228,50 +18210,8 @@ export interface QueryTypeDnsTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -36282,7 +18222,7 @@ export interface QueryTypeDnsTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { timestamps: string[] };
 }
@@ -36297,59 +18237,8 @@ export const QueryTypeDnsTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -36361,12 +18250,7 @@ export const QueryTypeDnsTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),
@@ -36402,50 +18286,8 @@ export const DeviceTypeHttpSummaryRequest =
 export interface DeviceTypeHttpSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -36456,7 +18298,7 @@ export interface DeviceTypeHttpSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { desktop: string; mobile: string; other: string };
 }
@@ -36464,59 +18306,8 @@ export interface DeviceTypeHttpSummaryResponse {
 export const DeviceTypeHttpSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -36528,12 +18319,7 @@ export const DeviceTypeHttpSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       desktop: Schema.String,
@@ -36580,50 +18366,8 @@ export interface DeviceTypeHttpTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -36634,7 +18378,7 @@ export interface DeviceTypeHttpTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: {
     desktop: string[];
@@ -36654,59 +18398,8 @@ export const DeviceTypeHttpTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -36718,12 +18411,7 @@ export const DeviceTypeHttpTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       desktop: Schema.Array(Schema.String),
@@ -36770,50 +18458,8 @@ export const SummaryV2AiBotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface SummaryV2AiBotResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -36824,7 +18470,7 @@ export interface SummaryV2AiBotResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -36832,59 +18478,8 @@ export interface SummaryV2AiBotResponse {
 export const SummaryV2AiBotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -36896,12 +18491,7 @@ export const SummaryV2AiBotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   },
@@ -36940,50 +18530,8 @@ export const SummaryV2AiInferenceRequest =
 export interface SummaryV2AiInferenceResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -36994,7 +18542,7 @@ export interface SummaryV2AiInferenceResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -37002,59 +18550,8 @@ export interface SummaryV2AiInferenceResponse {
 export const SummaryV2AiInferenceResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -37066,12 +18563,7 @@ export const SummaryV2AiInferenceResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -37121,50 +18613,8 @@ export const SummaryV2As112Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface SummaryV2As112Response {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -37175,7 +18625,7 @@ export interface SummaryV2As112Response {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -37183,59 +18633,8 @@ export interface SummaryV2As112Response {
 export const SummaryV2As112Response = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -37247,12 +18646,7 @@ export const SummaryV2As112Response = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   },
@@ -37309,50 +18703,8 @@ export const SummaryV2AttackLayer3Request =
 export interface SummaryV2AttackLayer3Response {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -37363,7 +18715,7 @@ export interface SummaryV2AttackLayer3Response {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -37371,59 +18723,8 @@ export interface SummaryV2AttackLayer3Response {
 export const SummaryV2AttackLayer3Response =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -37435,12 +18736,7 @@ export const SummaryV2AttackLayer3Response =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -37496,50 +18792,8 @@ export const SummaryV2AttackLayer7Request =
 export interface SummaryV2AttackLayer7Response {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -37550,7 +18804,7 @@ export interface SummaryV2AttackLayer7Response {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -37558,59 +18812,8 @@ export interface SummaryV2AttackLayer7Response {
 export const SummaryV2AttackLayer7Response =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -37622,12 +18825,7 @@ export const SummaryV2AttackLayer7Response =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -37689,50 +18887,8 @@ export const SummaryV2DnsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface SummaryV2DnsResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -37743,66 +18899,15 @@ export interface SummaryV2DnsResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
 
 export const SummaryV2DnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   meta: Schema.Struct({
-    confidenceInfo: Schema.Struct({
-      annotations: Schema.Array(
-        Schema.Struct({
-          dataSource: Schema.Literals([
-            "ALL",
-            "AI_BOTS",
-            "AI_GATEWAY",
-            "BGP",
-            "BOTS",
-            "CONNECTION_ANOMALY",
-            "CT",
-            "DNS",
-            "DNS_MAGNITUDE",
-            "DNS_AS112",
-            "DOS",
-            "EMAIL_ROUTING",
-            "EMAIL_SECURITY",
-            "FW",
-            "FW_PG",
-            "HTTP",
-            "HTTP_CONTROL",
-            "HTTP_CRAWLER_REFERER",
-            "HTTP_ORIGINS",
-            "IQI",
-            "LEAKED_CREDENTIALS",
-            "NET",
-            "ROBOTS_TXT",
-            "SPEED",
-            "WORKERS_AI",
-          ]),
-          description: Schema.String,
-          endDate: Schema.String,
-          eventType: Schema.Literals([
-            "EVENT",
-            "GENERAL",
-            "OUTAGE",
-            "PARTIAL_PROJECTION",
-            "PIPELINE",
-            "TRAFFIC_ANOMALY",
-          ]),
-          isInstantaneous: Schema.Boolean,
-          linkedUrl: Schema.String,
-          startDate: Schema.String,
-        }),
-      ),
-      level: Schema.Number,
-    }),
-    dateRange: Schema.Array(
-      Schema.Struct({
-        endTime: Schema.String,
-        startTime: Schema.String,
-      }),
-    ),
+    confidenceInfo: ConfidenceInfo,
+    dateRange: Schema.Array(DateRange),
     lastUpdated: Schema.String,
     normalization: Schema.Literals([
       "PERCENTAGE",
@@ -37814,12 +18919,7 @@ export const SummaryV2DnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "OVERLAPPED_PERCENTAGE",
       "RATIO",
     ]),
-    units: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    units: Schema.Array(Unit),
   }),
   summary_0: Schema.Record(Schema.String, Schema.Unknown),
 }).pipe(
@@ -37864,50 +18964,8 @@ export const SummaryV2EmailRoutingRequest =
 export interface SummaryV2EmailRoutingResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -37918,7 +18976,7 @@ export interface SummaryV2EmailRoutingResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -37926,59 +18984,8 @@ export interface SummaryV2EmailRoutingResponse {
 export const SummaryV2EmailRoutingResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -37990,12 +18997,7 @@ export const SummaryV2EmailRoutingResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -38055,50 +19057,8 @@ export const SummaryV2EmailSecurityRequest =
 export interface SummaryV2EmailSecurityResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -38109,7 +19069,7 @@ export interface SummaryV2EmailSecurityResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -38117,59 +19077,8 @@ export interface SummaryV2EmailSecurityResponse {
 export const SummaryV2EmailSecurityResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -38181,12 +19090,7 @@ export const SummaryV2EmailSecurityResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -38246,50 +19150,8 @@ export const SummaryV2HttpRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface SummaryV2HttpResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -38300,66 +19162,15 @@ export interface SummaryV2HttpResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
 
 export const SummaryV2HttpResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   meta: Schema.Struct({
-    confidenceInfo: Schema.Struct({
-      annotations: Schema.Array(
-        Schema.Struct({
-          dataSource: Schema.Literals([
-            "ALL",
-            "AI_BOTS",
-            "AI_GATEWAY",
-            "BGP",
-            "BOTS",
-            "CONNECTION_ANOMALY",
-            "CT",
-            "DNS",
-            "DNS_MAGNITUDE",
-            "DNS_AS112",
-            "DOS",
-            "EMAIL_ROUTING",
-            "EMAIL_SECURITY",
-            "FW",
-            "FW_PG",
-            "HTTP",
-            "HTTP_CONTROL",
-            "HTTP_CRAWLER_REFERER",
-            "HTTP_ORIGINS",
-            "IQI",
-            "LEAKED_CREDENTIALS",
-            "NET",
-            "ROBOTS_TXT",
-            "SPEED",
-            "WORKERS_AI",
-          ]),
-          description: Schema.String,
-          endDate: Schema.String,
-          eventType: Schema.Literals([
-            "EVENT",
-            "GENERAL",
-            "OUTAGE",
-            "PARTIAL_PROJECTION",
-            "PIPELINE",
-            "TRAFFIC_ANOMALY",
-          ]),
-          isInstantaneous: Schema.Boolean,
-          linkedUrl: Schema.String,
-          startDate: Schema.String,
-        }),
-      ),
-      level: Schema.Number,
-    }),
-    dateRange: Schema.Array(
-      Schema.Struct({
-        endTime: Schema.String,
-        startTime: Schema.String,
-      }),
-    ),
+    confidenceInfo: ConfidenceInfo,
+    dateRange: Schema.Array(DateRange),
     lastUpdated: Schema.String,
     normalization: Schema.Literals([
       "PERCENTAGE",
@@ -38371,12 +19182,7 @@ export const SummaryV2HttpResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "OVERLAPPED_PERCENTAGE",
       "RATIO",
     ]),
-    units: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-      }),
-    ),
+    units: Schema.Array(Unit),
   }),
   summary_0: Schema.Record(Schema.String, Schema.Unknown),
 }).pipe(
@@ -38419,50 +19225,8 @@ export const SummaryV2LeakedCredentialRequest =
 export interface SummaryV2LeakedCredentialResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -38473,7 +19237,7 @@ export interface SummaryV2LeakedCredentialResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -38481,59 +19245,8 @@ export interface SummaryV2LeakedCredentialResponse {
 export const SummaryV2LeakedCredentialResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -38545,12 +19258,7 @@ export const SummaryV2LeakedCredentialResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -38590,50 +19298,8 @@ export const SummaryV2NetflowRequest =
 export interface SummaryV2NetflowResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -38644,7 +19310,7 @@ export interface SummaryV2NetflowResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: Record<string, unknown>;
 }
@@ -38652,59 +19318,8 @@ export interface SummaryV2NetflowResponse {
 export const SummaryV2NetflowResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -38716,12 +19331,7 @@ export const SummaryV2NetflowResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Record(Schema.String, Schema.Unknown),
   }).pipe(
@@ -38755,50 +19365,8 @@ export const BotsVerifiedBotTopRequest =
 export interface BotsVerifiedBotTopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -38809,7 +19377,7 @@ export interface BotsVerifiedBotTopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     botCategory: string;
@@ -38822,62 +19390,8 @@ export interface BotsVerifiedBotTopResponse {
 export const BotsVerifiedBotTopResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -38889,12 +19403,7 @@ export const BotsVerifiedBotTopResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -38931,50 +19440,8 @@ export const CategoriesVerifiedBotTopRequest =
 export interface CategoriesVerifiedBotTopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -38985,7 +19452,7 @@ export interface CategoriesVerifiedBotTopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: { botCategory: string; value: string }[];
 }
@@ -38993,62 +19460,8 @@ export interface CategoriesVerifiedBotTopResponse {
 export const CategoriesVerifiedBotTopResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -39060,12 +19473,7 @@ export const CategoriesVerifiedBotTopResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -39104,50 +19512,8 @@ export const IpVersionAs112SummaryRequest =
 export interface IpVersionAs112SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -39158,7 +19524,7 @@ export interface IpVersionAs112SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { ipv4: string; ipv6: string };
 }
@@ -39166,59 +19532,8 @@ export interface IpVersionAs112SummaryResponse {
 export const IpVersionAs112SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -39230,12 +19545,7 @@ export const IpVersionAs112SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       ipv4: Schema.String,
@@ -39281,50 +19591,8 @@ export interface IpVersionAs112TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -39335,7 +19603,7 @@ export interface IpVersionAs112TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { ipv4: string[]; ipv6: string[] };
 }
@@ -39350,59 +19618,8 @@ export const IpVersionAs112TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -39414,12 +19631,7 @@ export const IpVersionAs112TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       ipv4: Schema.Array(Schema.String),
@@ -39463,50 +19675,8 @@ export const IpVersionAs112TopRequest =
 export interface IpVersionAs112TopResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    } | null;
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo | null;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -39517,7 +19687,7 @@ export interface IpVersionAs112TopResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   top_0: {
     clientCountryAlpha2: string;
@@ -39529,62 +19699,8 @@ export interface IpVersionAs112TopResponse {
 export const IpVersionAs112TopResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Union([
-        Schema.Struct({
-          annotations: Schema.Array(
-            Schema.Struct({
-              dataSource: Schema.Literals([
-                "ALL",
-                "AI_BOTS",
-                "AI_GATEWAY",
-                "BGP",
-                "BOTS",
-                "CONNECTION_ANOMALY",
-                "CT",
-                "DNS",
-                "DNS_MAGNITUDE",
-                "DNS_AS112",
-                "DOS",
-                "EMAIL_ROUTING",
-                "EMAIL_SECURITY",
-                "FW",
-                "FW_PG",
-                "HTTP",
-                "HTTP_CONTROL",
-                "HTTP_CRAWLER_REFERER",
-                "HTTP_ORIGINS",
-                "IQI",
-                "LEAKED_CREDENTIALS",
-                "NET",
-                "ROBOTS_TXT",
-                "SPEED",
-                "WORKERS_AI",
-              ]),
-              description: Schema.String,
-              endDate: Schema.String,
-              eventType: Schema.Literals([
-                "EVENT",
-                "GENERAL",
-                "OUTAGE",
-                "PARTIAL_PROJECTION",
-                "PIPELINE",
-                "TRAFFIC_ANOMALY",
-              ]),
-              isInstantaneous: Schema.Boolean,
-              linkedUrl: Schema.String,
-              startDate: Schema.String,
-            }),
-          ),
-          level: Schema.Number,
-        }),
-        Schema.Null,
-      ]),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: Schema.Union([ConfidenceInfo, Schema.Null]),
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -39596,12 +19712,7 @@ export const IpVersionAs112TopResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     top_0: Schema.Array(
       Schema.Struct({
@@ -39641,50 +19752,8 @@ export const IpVersionAttackLayer3SummaryRequest =
 export interface IpVersionAttackLayer3SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -39695,7 +19764,7 @@ export interface IpVersionAttackLayer3SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { ipv4: string; ipv6: string };
 }
@@ -39703,59 +19772,8 @@ export interface IpVersionAttackLayer3SummaryResponse {
 export const IpVersionAttackLayer3SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -39767,12 +19785,7 @@ export const IpVersionAttackLayer3SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       ipv4: Schema.String,
@@ -39818,50 +19831,8 @@ export interface IpVersionAttackLayer3TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -39872,7 +19843,7 @@ export interface IpVersionAttackLayer3TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { ipv4: string[]; ipv6: string[]; timestamps: string[] };
 }
@@ -39887,59 +19858,8 @@ export const IpVersionAttackLayer3TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -39951,12 +19871,7 @@ export const IpVersionAttackLayer3TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       ipv4: Schema.Array(Schema.String),
@@ -40003,50 +19918,8 @@ export const HttpVersionAttackLayer7SummaryRequest =
 export interface HttpVersionAttackLayer7SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -40057,7 +19930,7 @@ export interface HttpVersionAttackLayer7SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { "http/1X": string; "http/2": string; "http/3": string };
 }
@@ -40065,59 +19938,8 @@ export interface HttpVersionAttackLayer7SummaryResponse {
 export const HttpVersionAttackLayer7SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -40129,12 +19951,7 @@ export const HttpVersionAttackLayer7SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       "http/1X": Schema.String,
@@ -40174,50 +19991,8 @@ export const IpVersionAttackLayer7SummaryRequest =
 export interface IpVersionAttackLayer7SummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -40228,7 +20003,7 @@ export interface IpVersionAttackLayer7SummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { ipv4: string; ipv6: string };
 }
@@ -40236,59 +20011,8 @@ export interface IpVersionAttackLayer7SummaryResponse {
 export const IpVersionAttackLayer7SummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -40300,12 +20024,7 @@ export const IpVersionAttackLayer7SummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       ipv4: Schema.String,
@@ -40351,50 +20070,8 @@ export interface HttpVersionAttackLayer7TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -40405,7 +20082,7 @@ export interface HttpVersionAttackLayer7TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: {
     "http/1X": string[];
@@ -40425,59 +20102,8 @@ export const HttpVersionAttackLayer7TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -40489,12 +20115,7 @@ export const HttpVersionAttackLayer7TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       "http/1X": Schema.Array(Schema.String),
@@ -40545,50 +20166,8 @@ export interface IpVersionAttackLayer7TimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -40599,7 +20178,7 @@ export interface IpVersionAttackLayer7TimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { ipv4: string[]; ipv6: string[]; timestamps: string[] };
 }
@@ -40614,59 +20193,8 @@ export const IpVersionAttackLayer7TimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -40678,12 +20206,7 @@ export const IpVersionAttackLayer7TimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       ipv4: Schema.Array(Schema.String),
@@ -40727,50 +20250,8 @@ export const IpVersionDnsSummaryRequest =
 export interface IpVersionDnsSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -40781,7 +20262,7 @@ export interface IpVersionDnsSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { ipv4: string; ipv6: string };
 }
@@ -40789,59 +20270,8 @@ export interface IpVersionDnsSummaryResponse {
 export const IpVersionDnsSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -40853,12 +20283,7 @@ export const IpVersionDnsSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       ipv4: Schema.String,
@@ -40901,50 +20326,8 @@ export interface IpVersionDnsTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -40955,7 +20338,7 @@ export interface IpVersionDnsTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { ipv4: string[]; ipv6: string[] };
 }
@@ -40970,59 +20353,8 @@ export const IpVersionDnsTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -41034,12 +20366,7 @@ export const IpVersionDnsTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       ipv4: Schema.Array(Schema.String),
@@ -41076,50 +20403,8 @@ export const IpVersionEmailRoutingSummaryRequest =
 export interface IpVersionEmailRoutingSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -41130,7 +20415,7 @@ export interface IpVersionEmailRoutingSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { ipv4: string; ipv6: string };
 }
@@ -41138,59 +20423,8 @@ export interface IpVersionEmailRoutingSummaryResponse {
 export const IpVersionEmailRoutingSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -41202,12 +20436,7 @@ export const IpVersionEmailRoutingSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       ipv4: Schema.String,
@@ -41253,50 +20482,8 @@ export interface IpVersionEmailRoutingTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -41307,7 +20494,7 @@ export interface IpVersionEmailRoutingTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { ipv4: string[]; ipv6: string[] };
 }
@@ -41322,59 +20509,8 @@ export const IpVersionEmailRoutingTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -41386,12 +20522,7 @@ export const IpVersionEmailRoutingTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       ipv4: Schema.Array(Schema.String),
@@ -41431,50 +20562,8 @@ export const TlsVersionEmailSecuritySummaryRequest =
 export interface TlsVersionEmailSecuritySummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -41485,7 +20574,7 @@ export interface TlsVersionEmailSecuritySummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: {
     "tls 1.0": string;
@@ -41498,59 +20587,8 @@ export interface TlsVersionEmailSecuritySummaryResponse {
 export const TlsVersionEmailSecuritySummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -41562,12 +20600,7 @@ export const TlsVersionEmailSecuritySummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       "tls 1.0": Schema.String,
@@ -41622,50 +20655,8 @@ export interface TlsVersionEmailSecurityTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -41676,7 +20667,7 @@ export interface TlsVersionEmailSecurityTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: {
     "tls 1.0": string[];
@@ -41696,59 +20687,8 @@ export const TlsVersionEmailSecurityTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -41760,12 +20700,7 @@ export const TlsVersionEmailSecurityTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       "tls 1.0": Schema.Array(Schema.String),
@@ -41811,50 +20746,8 @@ export const HttpVersionHttpSummaryRequest =
 export interface HttpVersionHttpSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -41865,7 +20758,7 @@ export interface HttpVersionHttpSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { "http/1X": string; "http/2": string; "http/3": string };
 }
@@ -41873,59 +20766,8 @@ export interface HttpVersionHttpSummaryResponse {
 export const HttpVersionHttpSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -41937,12 +20779,7 @@ export const HttpVersionHttpSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       "http/1X": Schema.String,
@@ -41982,50 +20819,8 @@ export const IpVersionHttpSummaryRequest =
 export interface IpVersionHttpSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -42036,7 +20831,7 @@ export interface IpVersionHttpSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: { ipv4: string; ipv6: string };
 }
@@ -42044,59 +20839,8 @@ export interface IpVersionHttpSummaryResponse {
 export const IpVersionHttpSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -42108,12 +20852,7 @@ export const IpVersionHttpSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       ipv4: Schema.String,
@@ -42146,50 +20885,8 @@ export const TlsVersionHttpSummaryRequest =
 export interface TlsVersionHttpSummaryResponse {
   /** Metadata for the results. */
   meta: {
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -42200,7 +20897,7 @@ export interface TlsVersionHttpSummaryResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   summary_0: {
     "tls 1.0": string;
@@ -42214,59 +20911,8 @@ export interface TlsVersionHttpSummaryResponse {
 export const TlsVersionHttpSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     meta: Schema.Struct({
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -42278,12 +20924,7 @@ export const TlsVersionHttpSummaryResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     summary_0: Schema.Struct({
       "tls 1.0": Schema.String,
@@ -42340,50 +20981,8 @@ export interface HttpVersionHttpTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -42394,7 +20993,7 @@ export interface HttpVersionHttpTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: {
     "http/1X": string[];
@@ -42414,59 +21013,8 @@ export const HttpVersionHttpTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -42478,12 +21026,7 @@ export const HttpVersionHttpTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       "http/1X": Schema.Array(Schema.String),
@@ -42531,50 +21074,8 @@ export interface IpVersionHttpTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -42585,7 +21086,7 @@ export interface IpVersionHttpTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: { ipv4: string[]; ipv6: string[]; timestamps: string[] };
 }
@@ -42600,59 +21101,8 @@ export const IpVersionHttpTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -42664,12 +21114,7 @@ export const IpVersionHttpTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       ipv4: Schema.Array(Schema.String),
@@ -42718,50 +21163,8 @@ export interface TlsVersionHttpTimeseriesGroupResponse {
       | "ONE_DAY"
       | "ONE_WEEK"
       | "ONE_MONTH";
-    confidenceInfo: {
-      annotations: {
-        dataSource:
-          | "ALL"
-          | "AI_BOTS"
-          | "AI_GATEWAY"
-          | "BGP"
-          | "BOTS"
-          | "CONNECTION_ANOMALY"
-          | "CT"
-          | "DNS"
-          | "DNS_MAGNITUDE"
-          | "DNS_AS112"
-          | "DOS"
-          | "EMAIL_ROUTING"
-          | "EMAIL_SECURITY"
-          | "FW"
-          | "FW_PG"
-          | "HTTP"
-          | "HTTP_CONTROL"
-          | "HTTP_CRAWLER_REFERER"
-          | "HTTP_ORIGINS"
-          | "IQI"
-          | "LEAKED_CREDENTIALS"
-          | "NET"
-          | "ROBOTS_TXT"
-          | "SPEED"
-          | "WORKERS_AI";
-        description: string;
-        endDate: string;
-        eventType:
-          | "EVENT"
-          | "GENERAL"
-          | "OUTAGE"
-          | "PARTIAL_PROJECTION"
-          | "PIPELINE"
-          | "TRAFFIC_ANOMALY";
-        isInstantaneous: boolean;
-        linkedUrl: string;
-        startDate: string;
-      }[];
-      level: number;
-    };
-    dateRange: { endTime: string; startTime: string }[];
+    confidenceInfo: ConfidenceInfo;
+    dateRange: DateRange[];
     lastUpdated: string;
     normalization:
       | "PERCENTAGE"
@@ -42772,7 +21175,7 @@ export interface TlsVersionHttpTimeseriesGroupResponse {
       | "ROLLING_AVERAGE"
       | "OVERLAPPED_PERCENTAGE"
       | "RATIO";
-    units: { name: string; value: string }[];
+    units: Unit[];
   };
   serie_0: {
     timestamps: string[];
@@ -42794,59 +21197,8 @@ export const TlsVersionHttpTimeseriesGroupResponse =
         "ONE_WEEK",
         "ONE_MONTH",
       ]),
-      confidenceInfo: Schema.Struct({
-        annotations: Schema.Array(
-          Schema.Struct({
-            dataSource: Schema.Literals([
-              "ALL",
-              "AI_BOTS",
-              "AI_GATEWAY",
-              "BGP",
-              "BOTS",
-              "CONNECTION_ANOMALY",
-              "CT",
-              "DNS",
-              "DNS_MAGNITUDE",
-              "DNS_AS112",
-              "DOS",
-              "EMAIL_ROUTING",
-              "EMAIL_SECURITY",
-              "FW",
-              "FW_PG",
-              "HTTP",
-              "HTTP_CONTROL",
-              "HTTP_CRAWLER_REFERER",
-              "HTTP_ORIGINS",
-              "IQI",
-              "LEAKED_CREDENTIALS",
-              "NET",
-              "ROBOTS_TXT",
-              "SPEED",
-              "WORKERS_AI",
-            ]),
-            description: Schema.String,
-            endDate: Schema.String,
-            eventType: Schema.Literals([
-              "EVENT",
-              "GENERAL",
-              "OUTAGE",
-              "PARTIAL_PROJECTION",
-              "PIPELINE",
-              "TRAFFIC_ANOMALY",
-            ]),
-            isInstantaneous: Schema.Boolean,
-            linkedUrl: Schema.String,
-            startDate: Schema.String,
-          }),
-        ),
-        level: Schema.Number,
-      }),
-      dateRange: Schema.Array(
-        Schema.Struct({
-          endTime: Schema.String,
-          startTime: Schema.String,
-        }),
-      ),
+      confidenceInfo: ConfidenceInfo,
+      dateRange: Schema.Array(DateRange),
       lastUpdated: Schema.String,
       normalization: Schema.Literals([
         "PERCENTAGE",
@@ -42858,12 +21210,7 @@ export const TlsVersionHttpTimeseriesGroupResponse =
         "OVERLAPPED_PERCENTAGE",
         "RATIO",
       ]),
-      units: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-        }),
-      ),
+      units: Schema.Array(Unit),
     }),
     serie_0: Schema.Struct({
       timestamps: Schema.Array(Schema.String),

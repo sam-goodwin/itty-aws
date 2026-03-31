@@ -14,6 +14,82 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface AdditionalRoutes {
+  host?: string | null;
+  path?: string | null;
+}
+
+export const AdditionalRoutes: Schema.Schema<AdditionalRoutes> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<AdditionalRoutes>;
+
+export interface AdditionalRoutesParam {
+  host?: string | null;
+  path?: string | null;
+}
+
+export const AdditionalRoutesParam: Schema.Schema<AdditionalRoutesParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<AdditionalRoutesParam>;
+
+export interface CookieAttributes {
+  samesite?: "auto" | "lax" | "none" | "strict" | null;
+  secure?: "auto" | "always" | "never" | null;
+}
+
+export const CookieAttributes: Schema.Schema<CookieAttributes> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      samesite: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["auto", "lax", "none", "strict"]),
+          Schema.Null,
+        ]),
+      ),
+      secure: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["auto", "always", "never"]),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<CookieAttributes>;
+
+export interface CookieAttributesParam {
+  samesite?: "auto" | "lax" | "none" | "strict" | null;
+  secure?: "auto" | "always" | "never" | null;
+}
+
+export const CookieAttributesParam: Schema.Schema<CookieAttributesParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      samesite: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["auto", "lax", "none", "strict"]),
+          Schema.Null,
+        ]),
+      ),
+      secure: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["auto", "always", "never"]),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<CookieAttributesParam>;
+
+// =============================================================================
 // Event
 // =============================================================================
 
@@ -2004,12 +2080,9 @@ export const GetWaitingRoomRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface GetWaitingRoomResponse {
   id?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. Th */
-  additionalRoutes?: { host?: string | null; path?: string | null }[] | null;
+  additionalRoutes?: AdditionalRoutes[] | null;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: {
-    samesite?: "auto" | "lax" | "none" | "strict" | null;
-    secure?: "auto" | "always" | "never" | null;
-  } | null;
+  cookieAttributes?: CookieAttributes | null;
   /** Appends a '\_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(  cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `  cf_waitingroom_abcd`. This field is req */
   cookieSuffix?: string | null;
   createdOn?: string | null;
@@ -2104,34 +2177,10 @@ export const GetWaitingRoomResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     additionalRoutes: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(AdditionalRoutes), Schema.Null]),
     ),
     cookieAttributes: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          samesite: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["auto", "lax", "none", "strict"]),
-              Schema.Null,
-            ]),
-          ),
-          secure: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["auto", "always", "never"]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
+      Schema.Union([CookieAttributes, Schema.Null]),
     ),
     cookieSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2297,11 +2346,8 @@ export const ListWaitingRoomsRequest =
 export interface ListWaitingRoomsResponse {
   result: {
     id?: string | null;
-    additionalRoutes?: { host?: string | null; path?: string | null }[] | null;
-    cookieAttributes?: {
-      samesite?: "auto" | "lax" | "none" | "strict" | null;
-      secure?: "auto" | "always" | "never" | null;
-    } | null;
+    additionalRoutes?: AdditionalRoutes[] | null;
+    cookieAttributes?: CookieAttributes | null;
     cookieSuffix?: string | null;
     createdOn?: string | null;
     customPageHtml?: string | null;
@@ -2384,38 +2430,10 @@ export const ListWaitingRoomsResponse =
       Schema.Struct({
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         additionalRoutes: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                host: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                path: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-            ),
-            Schema.Null,
-          ]),
+          Schema.Union([Schema.Array(AdditionalRoutes), Schema.Null]),
         ),
         cookieAttributes: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              samesite: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["auto", "lax", "none", "strict"]),
-                  Schema.Null,
-                ]),
-              ),
-              secure: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["auto", "always", "never"]),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Null,
-          ]),
+          Schema.Union([CookieAttributes, Schema.Null]),
         ),
         cookieSuffix: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
@@ -2594,13 +2612,8 @@ export const listWaitingRooms: API.PaginatedOperationMethod<
   items: (input: ListWaitingRoomsRequest) => stream.Stream<
     {
       id?: string | null;
-      additionalRoutes?:
-        | { host?: string | null; path?: string | null }[]
-        | null;
-      cookieAttributes?: {
-        samesite?: "auto" | "lax" | "none" | "strict" | null;
-        secure?: "auto" | "always" | "never" | null;
-      } | null;
+      additionalRoutes?: AdditionalRoutes[] | null;
+      cookieAttributes?: CookieAttributes | null;
       cookieSuffix?: string | null;
       createdOn?: string | null;
       customPageHtml?: string | null;
@@ -2697,12 +2710,9 @@ export interface CreateWaitingRoomRequest {
   /** Body param: Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a basel */
   totalActiveUsers: number;
   /** Body param: Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of  */
-  additionalRoutes?: { host?: string; path?: string }[];
+  additionalRoutes?: AdditionalRoutes[];
   /** Body param: Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: {
-    samesite?: "auto" | "lax" | "none" | "strict";
-    secure?: "auto" | "always" | "never";
-  };
+  cookieAttributes?: CookieAttributes;
   /** Body param: Appends a '\_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(  cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `  cf_waitingroom_abcd`. This  */
   cookieSuffix?: string;
   /** Body param: Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will */
@@ -2784,22 +2794,8 @@ export const CreateWaitingRoomRequest =
     name: Schema.String,
     newUsersPerMinute: Schema.Number,
     totalActiveUsers: Schema.Number,
-    additionalRoutes: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          host: Schema.optional(Schema.String),
-          path: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    cookieAttributes: Schema.optional(
-      Schema.Struct({
-        samesite: Schema.optional(
-          Schema.Literals(["auto", "lax", "none", "strict"]),
-        ),
-        secure: Schema.optional(Schema.Literals(["auto", "always", "never"])),
-      }),
-    ),
+    additionalRoutes: Schema.optional(Schema.Array(AdditionalRoutes)),
+    cookieAttributes: Schema.optional(CookieAttributes),
     cookieSuffix: Schema.optional(Schema.String),
     customPageHtml: Schema.optional(Schema.String),
     defaultTemplateLanguage: Schema.optional(
@@ -2899,12 +2895,9 @@ export const CreateWaitingRoomRequest =
 export interface CreateWaitingRoomResponse {
   id?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. Th */
-  additionalRoutes?: { host?: string | null; path?: string | null }[] | null;
+  additionalRoutes?: AdditionalRoutes[] | null;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: {
-    samesite?: "auto" | "lax" | "none" | "strict" | null;
-    secure?: "auto" | "always" | "never" | null;
-  } | null;
+  cookieAttributes?: CookieAttributes | null;
   /** Appends a '\_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(  cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `  cf_waitingroom_abcd`. This field is req */
   cookieSuffix?: string | null;
   createdOn?: string | null;
@@ -2999,34 +2992,10 @@ export const CreateWaitingRoomResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     additionalRoutes: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(AdditionalRoutes), Schema.Null]),
     ),
     cookieAttributes: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          samesite: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["auto", "lax", "none", "strict"]),
-              Schema.Null,
-            ]),
-          ),
-          secure: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["auto", "always", "never"]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
+      Schema.Union([CookieAttributes, Schema.Null]),
     ),
     cookieSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3191,12 +3160,9 @@ export interface UpdateWaitingRoomRequest {
   /** Body param: Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a basel */
   totalActiveUsers: number;
   /** Body param: Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of  */
-  additionalRoutes?: { host?: string; path?: string }[];
+  additionalRoutes?: AdditionalRoutes[];
   /** Body param: Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: {
-    samesite?: "auto" | "lax" | "none" | "strict";
-    secure?: "auto" | "always" | "never";
-  };
+  cookieAttributes?: CookieAttributes;
   /** Body param: Appends a '\_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(  cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `  cf_waitingroom_abcd`. This  */
   cookieSuffix?: string;
   /** Body param: Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will */
@@ -3279,22 +3245,8 @@ export const UpdateWaitingRoomRequest =
     name: Schema.String,
     newUsersPerMinute: Schema.Number,
     totalActiveUsers: Schema.Number,
-    additionalRoutes: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          host: Schema.optional(Schema.String),
-          path: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    cookieAttributes: Schema.optional(
-      Schema.Struct({
-        samesite: Schema.optional(
-          Schema.Literals(["auto", "lax", "none", "strict"]),
-        ),
-        secure: Schema.optional(Schema.Literals(["auto", "always", "never"])),
-      }),
-    ),
+    additionalRoutes: Schema.optional(Schema.Array(AdditionalRoutes)),
+    cookieAttributes: Schema.optional(CookieAttributes),
     cookieSuffix: Schema.optional(Schema.String),
     customPageHtml: Schema.optional(Schema.String),
     defaultTemplateLanguage: Schema.optional(
@@ -3397,12 +3349,9 @@ export const UpdateWaitingRoomRequest =
 export interface UpdateWaitingRoomResponse {
   id?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. Th */
-  additionalRoutes?: { host?: string | null; path?: string | null }[] | null;
+  additionalRoutes?: AdditionalRoutes[] | null;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: {
-    samesite?: "auto" | "lax" | "none" | "strict" | null;
-    secure?: "auto" | "always" | "never" | null;
-  } | null;
+  cookieAttributes?: CookieAttributes | null;
   /** Appends a '\_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(  cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `  cf_waitingroom_abcd`. This field is req */
   cookieSuffix?: string | null;
   createdOn?: string | null;
@@ -3497,34 +3446,10 @@ export const UpdateWaitingRoomResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     additionalRoutes: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(AdditionalRoutes), Schema.Null]),
     ),
     cookieAttributes: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          samesite: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["auto", "lax", "none", "strict"]),
-              Schema.Null,
-            ]),
-          ),
-          secure: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["auto", "always", "never"]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
+      Schema.Union([CookieAttributes, Schema.Null]),
     ),
     cookieSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3689,12 +3614,9 @@ export interface PatchWaitingRoomRequest {
   /** Body param: Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a basel */
   totalActiveUsers: number;
   /** Body param: Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of  */
-  additionalRoutes?: { host?: string; path?: string }[];
+  additionalRoutes?: AdditionalRoutes[];
   /** Body param: Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: {
-    samesite?: "auto" | "lax" | "none" | "strict";
-    secure?: "auto" | "always" | "never";
-  };
+  cookieAttributes?: CookieAttributes;
   /** Body param: Appends a '\_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(  cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `  cf_waitingroom_abcd`. This  */
   cookieSuffix?: string;
   /** Body param: Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will */
@@ -3777,22 +3699,8 @@ export const PatchWaitingRoomRequest =
     name: Schema.String,
     newUsersPerMinute: Schema.Number,
     totalActiveUsers: Schema.Number,
-    additionalRoutes: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          host: Schema.optional(Schema.String),
-          path: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    cookieAttributes: Schema.optional(
-      Schema.Struct({
-        samesite: Schema.optional(
-          Schema.Literals(["auto", "lax", "none", "strict"]),
-        ),
-        secure: Schema.optional(Schema.Literals(["auto", "always", "never"])),
-      }),
-    ),
+    additionalRoutes: Schema.optional(Schema.Array(AdditionalRoutes)),
+    cookieAttributes: Schema.optional(CookieAttributes),
     cookieSuffix: Schema.optional(Schema.String),
     customPageHtml: Schema.optional(Schema.String),
     defaultTemplateLanguage: Schema.optional(
@@ -3895,12 +3803,9 @@ export const PatchWaitingRoomRequest =
 export interface PatchWaitingRoomResponse {
   id?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. Th */
-  additionalRoutes?: { host?: string | null; path?: string | null }[] | null;
+  additionalRoutes?: AdditionalRoutes[] | null;
   /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: {
-    samesite?: "auto" | "lax" | "none" | "strict" | null;
-    secure?: "auto" | "always" | "never" | null;
-  } | null;
+  cookieAttributes?: CookieAttributes | null;
   /** Appends a '\_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(  cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `  cf_waitingroom_abcd`. This field is req */
   cookieSuffix?: string | null;
   createdOn?: string | null;
@@ -3995,34 +3900,10 @@ export const PatchWaitingRoomResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     additionalRoutes: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(AdditionalRoutes), Schema.Null]),
     ),
     cookieAttributes: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          samesite: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["auto", "lax", "none", "strict"]),
-              Schema.Null,
-            ]),
-          ),
-          secure: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["auto", "always", "never"]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
+      Schema.Union([CookieAttributes, Schema.Null]),
     ),
     cookieSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),

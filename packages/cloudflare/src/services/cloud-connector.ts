@@ -14,6 +14,21 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Parameters {
+  host?: string | null;
+}
+
+export const Parameters: Schema.Schema<Parameters> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Parameters>;
+
+// =============================================================================
 // Rule
 // =============================================================================
 
@@ -34,7 +49,7 @@ export interface ListRulesResponse {
     description?: string | null;
     enabled?: boolean | null;
     expression?: string | null;
-    parameters?: { host?: string | null } | null;
+    parameters?: Parameters | null;
     provider?:
       | "aws_s3"
       | "cloudflare_r2"
@@ -51,14 +66,7 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      parameters: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      parameters: Schema.optional(Schema.Union([Parameters, Schema.Null])),
       provider: Schema.optional(
         Schema.Union([
           Schema.Literals([
@@ -95,7 +103,7 @@ export const listRules: API.PaginatedOperationMethod<
       description?: string | null;
       enabled?: boolean | null;
       expression?: string | null;
-      parameters?: { host?: string | null } | null;
+      parameters?: Parameters | null;
       provider?:
         | "aws_s3"
         | "cloudflare_r2"
@@ -125,7 +133,7 @@ export interface PutRuleRequest {
     description?: string;
     enabled?: boolean;
     expression?: string;
-    parameters?: { host?: string };
+    parameters?: Parameters;
     provider?: "aws_s3" | "cloudflare_r2" | "gcp_storage" | "azure_storage";
   }[];
 }
@@ -139,11 +147,7 @@ export const PutRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         description: Schema.optional(Schema.String),
         enabled: Schema.optional(Schema.Boolean),
         expression: Schema.optional(Schema.String),
-        parameters: Schema.optional(
-          Schema.Struct({
-            host: Schema.optional(Schema.String),
-          }),
-        ),
+        parameters: Schema.optional(Parameters),
         provider: Schema.optional(
           Schema.Literals([
             "aws_s3",
@@ -165,7 +169,7 @@ export interface PutRuleResponse {
     description?: string | null;
     enabled?: boolean | null;
     expression?: string | null;
-    parameters?: { host?: string | null } | null;
+    parameters?: Parameters | null;
     provider?:
       | "aws_s3"
       | "cloudflare_r2"
@@ -182,14 +186,7 @@ export const PutRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      parameters: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      parameters: Schema.optional(Schema.Union([Parameters, Schema.Null])),
       provider: Schema.optional(
         Schema.Union([
           Schema.Literals([
@@ -226,7 +223,7 @@ export const putRule: API.PaginatedOperationMethod<
       description?: string | null;
       enabled?: boolean | null;
       expression?: string | null;
-      parameters?: { host?: string | null } | null;
+      parameters?: Parameters | null;
       provider?:
         | "aws_s3"
         | "cloudflare_r2"

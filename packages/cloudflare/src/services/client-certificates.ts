@@ -14,6 +14,23 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface CertificateAuthority {
+  id?: string | null;
+  name?: string | null;
+}
+
+export const CertificateAuthority: Schema.Schema<CertificateAuthority> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<CertificateAuthority>;
+
+// =============================================================================
 // ClientCertificate
 // =============================================================================
 
@@ -40,7 +57,7 @@ export interface GetClientCertificateResponse {
   /** The Client Certificate PEM */
   certificate?: string | null;
   /** Certificate Authority used to issue the Client Certificate */
-  certificateAuthority?: { id?: string | null; name?: string | null } | null;
+  certificateAuthority?: CertificateAuthority | null;
   /** Common Name of the Client Certificate */
   commonName?: string | null;
   /** Country, provided by the CSR */
@@ -83,13 +100,7 @@ export const GetClientCertificateResponse =
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificateAuthority: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
+      Schema.Union([CertificateAuthority, Schema.Null]),
     ),
     commonName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     country: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -198,7 +209,7 @@ export interface ListClientCertificatesResponse {
   result: {
     id?: string | null;
     certificate?: string | null;
-    certificateAuthority?: { id?: string | null; name?: string | null } | null;
+    certificateAuthority?: CertificateAuthority | null;
     commonName?: string | null;
     country?: string | null;
     csr?: string | null;
@@ -237,13 +248,7 @@ export const ListClientCertificatesResponse =
           Schema.Union([Schema.String, Schema.Null]),
         ),
         certificateAuthority: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }),
-            Schema.Null,
-          ]),
+          Schema.Union([CertificateAuthority, Schema.Null]),
         ),
         commonName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         country: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -339,10 +344,7 @@ export const listClientCertificates: API.PaginatedOperationMethod<
     {
       id?: string | null;
       certificate?: string | null;
-      certificateAuthority?: {
-        id?: string | null;
-        name?: string | null;
-      } | null;
+      certificateAuthority?: CertificateAuthority | null;
       commonName?: string | null;
       country?: string | null;
       csr?: string | null;
@@ -405,7 +407,7 @@ export interface CreateClientCertificateResponse {
   /** The Client Certificate PEM */
   certificate?: string | null;
   /** Certificate Authority used to issue the Client Certificate */
-  certificateAuthority?: { id?: string | null; name?: string | null } | null;
+  certificateAuthority?: CertificateAuthority | null;
   /** Common Name of the Client Certificate */
   commonName?: string | null;
   /** Country, provided by the CSR */
@@ -448,13 +450,7 @@ export const CreateClientCertificateResponse =
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificateAuthority: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
+      Schema.Union([CertificateAuthority, Schema.Null]),
     ),
     commonName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     country: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -551,7 +547,7 @@ export interface PatchClientCertificateResponse {
   /** The Client Certificate PEM */
   certificate?: string | null;
   /** Certificate Authority used to issue the Client Certificate */
-  certificateAuthority?: { id?: string | null; name?: string | null } | null;
+  certificateAuthority?: CertificateAuthority | null;
   /** Common Name of the Client Certificate */
   commonName?: string | null;
   /** Country, provided by the CSR */
@@ -594,13 +590,7 @@ export const PatchClientCertificateResponse =
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificateAuthority: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
+      Schema.Union([CertificateAuthority, Schema.Null]),
     ),
     commonName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     country: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -694,7 +684,7 @@ export interface DeleteClientCertificateResponse {
   /** The Client Certificate PEM */
   certificate?: string | null;
   /** Certificate Authority used to issue the Client Certificate */
-  certificateAuthority?: { id?: string | null; name?: string | null } | null;
+  certificateAuthority?: CertificateAuthority | null;
   /** Common Name of the Client Certificate */
   commonName?: string | null;
   /** Country, provided by the CSR */
@@ -737,13 +727,7 @@ export const DeleteClientCertificateResponse =
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificateAuthority: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
+      Schema.Union([CertificateAuthority, Schema.Null]),
     ),
     commonName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     country: Schema.optional(Schema.Union([Schema.String, Schema.Null])),

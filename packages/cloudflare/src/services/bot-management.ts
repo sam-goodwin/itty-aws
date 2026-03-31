@@ -13,91 +13,22 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
-// BotManagement
+// Shared Types
 // =============================================================================
 
-export interface GetBotManagementRequest {
-  /** Identifier. */
-  zoneId: string;
+export interface BotFightModeConfiguration {
+  aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
+  cfRobotsVariant?: "off" | "policy_only" | null;
+  crawlerProtection?: "enabled" | "disabled" | null;
+  enableJs?: boolean | null;
+  fightMode?: boolean | null;
+  isRobotsTxtManaged?: boolean | null;
+  staleZoneConfiguration?: StaleZoneConfiguration | null;
+  usingLatestModel?: boolean | null;
 }
 
-export const GetBotManagementRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", path: "/zones/{zone_id}/bot_management" }),
-  ) as unknown as Schema.Schema<GetBotManagementRequest>;
-
-export type GetBotManagementResponse =
-  | {
-      aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
-      cfRobotsVariant?: "off" | "policy_only" | null;
-      crawlerProtection?: "enabled" | "disabled" | null;
-      enableJs?: boolean | null;
-      fightMode?: boolean | null;
-      isRobotsTxtManaged?: boolean | null;
-      staleZoneConfiguration?: {
-        optimizeWordpress?: boolean | null;
-        sbfmDefinitelyAutomated?: string | null;
-        sbfmLikelyAutomated?: string | null;
-        sbfmStaticResourceProtection?: string | null;
-        sbfmVerifiedBots?: string | null;
-        suppressSessionScore?: boolean | null;
-      } | null;
-      usingLatestModel?: boolean | null;
-    }
-  | {
-      aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
-      cfRobotsVariant?: "off" | "policy_only" | null;
-      crawlerProtection?: "enabled" | "disabled" | null;
-      enableJs?: boolean | null;
-      isRobotsTxtManaged?: boolean | null;
-      optimizeWordpress?: boolean | null;
-      sbfmDefinitelyAutomated?: "allow" | "block" | "managed_challenge" | null;
-      sbfmStaticResourceProtection?: boolean | null;
-      sbfmVerifiedBots?: "allow" | "block" | null;
-      staleZoneConfiguration?: {
-        fightMode?: boolean | null;
-        sbfmLikelyAutomated?: string | null;
-      } | null;
-      usingLatestModel?: boolean | null;
-    }
-  | {
-      aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
-      cfRobotsVariant?: "off" | "policy_only" | null;
-      crawlerProtection?: "enabled" | "disabled" | null;
-      enableJs?: boolean | null;
-      isRobotsTxtManaged?: boolean | null;
-      optimizeWordpress?: boolean | null;
-      sbfmDefinitelyAutomated?: "allow" | "block" | "managed_challenge" | null;
-      sbfmLikelyAutomated?: "allow" | "block" | "managed_challenge" | null;
-      sbfmStaticResourceProtection?: boolean | null;
-      sbfmVerifiedBots?: "allow" | "block" | null;
-      staleZoneConfiguration?: { fightMode?: boolean | null } | null;
-      usingLatestModel?: boolean | null;
-    }
-  | {
-      aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
-      autoUpdateModel?: boolean | null;
-      bmCookieEnabled?: boolean | null;
-      cfRobotsVariant?: "off" | "policy_only" | null;
-      crawlerProtection?: "enabled" | "disabled" | null;
-      enableJs?: boolean | null;
-      isRobotsTxtManaged?: boolean | null;
-      staleZoneConfiguration?: {
-        fightMode?: boolean | null;
-        optimizeWordpress?: boolean | null;
-        sbfmDefinitelyAutomated?: string | null;
-        sbfmLikelyAutomated?: string | null;
-        sbfmStaticResourceProtection?: string | null;
-        sbfmVerifiedBots?: string | null;
-      } | null;
-      suppressSessionScore?: boolean | null;
-      usingLatestModel?: boolean | null;
-    };
-
-export const GetBotManagementResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+export const BotFightModeConfiguration: Schema.Schema<BotFightModeConfiguration> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aiBotsProtection: Schema.optional(
         Schema.Union([
@@ -117,38 +48,7 @@ export const GetBotManagementResponse =
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
       staleZoneConfiguration: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            optimizeWordpress: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            sbfmDefinitelyAutomated: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            sbfmLikelyAutomated: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            sbfmStaticResourceProtection: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            sbfmVerifiedBots: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            suppressSessionScore: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              optimizeWordpress: "optimize_wordpress",
-              sbfmDefinitelyAutomated: "sbfm_definitely_automated",
-              sbfmLikelyAutomated: "sbfm_likely_automated",
-              sbfmStaticResourceProtection: "sbfm_static_resource_protection",
-              sbfmVerifiedBots: "sbfm_verified_bots",
-              suppressSessionScore: "suppress_session_score",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([StaleZoneConfiguration, Schema.Null]),
       ),
       usingLatestModel: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -165,141 +65,72 @@ export const GetBotManagementResponse =
         usingLatestModel: "using_latest_model",
       }),
     ),
+  ) as unknown as Schema.Schema<BotFightModeConfiguration>;
+
+export interface StaleZoneConfiguration {
+  optimizeWordpress?: boolean | null;
+  sbfmDefinitelyAutomated?: string | null;
+  sbfmLikelyAutomated?: string | null;
+  sbfmStaticResourceProtection?: string | null;
+  sbfmVerifiedBots?: string | null;
+  suppressSessionScore?: boolean | null;
+}
+
+export const StaleZoneConfiguration: Schema.Schema<StaleZoneConfiguration> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      aiBotsProtection: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["block", "disabled", "only_on_ad_pages"]),
-          Schema.Null,
-        ]),
-      ),
-      cfRobotsVariant: Schema.optional(
-        Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.Null]),
-      ),
-      crawlerProtection: Schema.optional(
-        Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
-      ),
-      enableJs: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isRobotsTxtManaged: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
       optimizeWordpress: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
       sbfmDefinitelyAutomated: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["allow", "block", "managed_challenge"]),
-          Schema.Null,
-        ]),
-      ),
-      sbfmStaticResourceProtection: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      sbfmVerifiedBots: Schema.optional(
-        Schema.Union([Schema.Literals(["allow", "block"]), Schema.Null]),
-      ),
-      staleZoneConfiguration: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            fightMode: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            sbfmLikelyAutomated: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              fightMode: "fight_mode",
-              sbfmLikelyAutomated: "sbfm_likely_automated",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      usingLatestModel: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        aiBotsProtection: "ai_bots_protection",
-        cfRobotsVariant: "cf_robots_variant",
-        crawlerProtection: "crawler_protection",
-        enableJs: "enable_js",
-        isRobotsTxtManaged: "is_robots_txt_managed",
-        optimizeWordpress: "optimize_wordpress",
-        sbfmDefinitelyAutomated: "sbfm_definitely_automated",
-        sbfmStaticResourceProtection: "sbfm_static_resource_protection",
-        sbfmVerifiedBots: "sbfm_verified_bots",
-        staleZoneConfiguration: "stale_zone_configuration",
-        usingLatestModel: "using_latest_model",
-      }),
-    ),
-    Schema.Struct({
-      aiBotsProtection: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["block", "disabled", "only_on_ad_pages"]),
-          Schema.Null,
-        ]),
-      ),
-      cfRobotsVariant: Schema.optional(
-        Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.Null]),
-      ),
-      crawlerProtection: Schema.optional(
-        Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
-      ),
-      enableJs: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isRobotsTxtManaged: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      optimizeWordpress: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      sbfmDefinitelyAutomated: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["allow", "block", "managed_challenge"]),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.String, Schema.Null]),
       ),
       sbfmLikelyAutomated: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["allow", "block", "managed_challenge"]),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.String, Schema.Null]),
       ),
       sbfmStaticResourceProtection: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
+        Schema.Union([Schema.String, Schema.Null]),
       ),
       sbfmVerifiedBots: Schema.optional(
-        Schema.Union([Schema.Literals(["allow", "block"]), Schema.Null]),
+        Schema.Union([Schema.String, Schema.Null]),
       ),
-      staleZoneConfiguration: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            fightMode: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }).pipe(Schema.encodeKeys({ fightMode: "fight_mode" })),
-          Schema.Null,
-        ]),
-      ),
-      usingLatestModel: Schema.optional(
+      suppressSessionScore: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
     }).pipe(
       Schema.encodeKeys({
-        aiBotsProtection: "ai_bots_protection",
-        cfRobotsVariant: "cf_robots_variant",
-        crawlerProtection: "crawler_protection",
-        enableJs: "enable_js",
-        isRobotsTxtManaged: "is_robots_txt_managed",
         optimizeWordpress: "optimize_wordpress",
         sbfmDefinitelyAutomated: "sbfm_definitely_automated",
         sbfmLikelyAutomated: "sbfm_likely_automated",
         sbfmStaticResourceProtection: "sbfm_static_resource_protection",
         sbfmVerifiedBots: "sbfm_verified_bots",
-        staleZoneConfiguration: "stale_zone_configuration",
-        usingLatestModel: "using_latest_model",
+        suppressSessionScore: "suppress_session_score",
       }),
     ),
+  ) as unknown as Schema.Schema<StaleZoneConfiguration>;
+
+export interface SubscriptionConfiguration {
+  aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
+  autoUpdateModel?: boolean | null;
+  bmCookieEnabled?: boolean | null;
+  cfRobotsVariant?: "off" | "policy_only" | null;
+  crawlerProtection?: "enabled" | "disabled" | null;
+  enableJs?: boolean | null;
+  isRobotsTxtManaged?: boolean | null;
+  staleZoneConfiguration?: {
+    fightMode?: boolean | null;
+    optimizeWordpress?: boolean | null;
+    sbfmDefinitelyAutomated?: string | null;
+    sbfmLikelyAutomated?: string | null;
+    sbfmStaticResourceProtection?: string | null;
+    sbfmVerifiedBots?: string | null;
+  } | null;
+  suppressSessionScore?: boolean | null;
+  usingLatestModel?: boolean | null;
+}
+
+export const SubscriptionConfiguration: Schema.Schema<SubscriptionConfiguration> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aiBotsProtection: Schema.optional(
         Schema.Union([
@@ -377,6 +208,211 @@ export const GetBotManagementResponse =
         usingLatestModel: "using_latest_model",
       }),
     ),
+  ) as unknown as Schema.Schema<SubscriptionConfiguration>;
+
+export interface SuperBotFightModeDefinitelyConfiguration {
+  aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
+  cfRobotsVariant?: "off" | "policy_only" | null;
+  crawlerProtection?: "enabled" | "disabled" | null;
+  enableJs?: boolean | null;
+  isRobotsTxtManaged?: boolean | null;
+  optimizeWordpress?: boolean | null;
+  sbfmDefinitelyAutomated?: "allow" | "block" | "managed_challenge" | null;
+  sbfmStaticResourceProtection?: boolean | null;
+  sbfmVerifiedBots?: "allow" | "block" | null;
+  staleZoneConfiguration?: {
+    fightMode?: boolean | null;
+    sbfmLikelyAutomated?: string | null;
+  } | null;
+  usingLatestModel?: boolean | null;
+}
+
+export const SuperBotFightModeDefinitelyConfiguration: Schema.Schema<SuperBotFightModeDefinitelyConfiguration> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      aiBotsProtection: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["block", "disabled", "only_on_ad_pages"]),
+          Schema.Null,
+        ]),
+      ),
+      cfRobotsVariant: Schema.optional(
+        Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.Null]),
+      ),
+      crawlerProtection: Schema.optional(
+        Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
+      ),
+      enableJs: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      isRobotsTxtManaged: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      optimizeWordpress: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      sbfmDefinitelyAutomated: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["allow", "block", "managed_challenge"]),
+          Schema.Null,
+        ]),
+      ),
+      sbfmStaticResourceProtection: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      sbfmVerifiedBots: Schema.optional(
+        Schema.Union([Schema.Literals(["allow", "block"]), Schema.Null]),
+      ),
+      staleZoneConfiguration: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            fightMode: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            sbfmLikelyAutomated: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              fightMode: "fight_mode",
+              sbfmLikelyAutomated: "sbfm_likely_automated",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      usingLatestModel: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        aiBotsProtection: "ai_bots_protection",
+        cfRobotsVariant: "cf_robots_variant",
+        crawlerProtection: "crawler_protection",
+        enableJs: "enable_js",
+        isRobotsTxtManaged: "is_robots_txt_managed",
+        optimizeWordpress: "optimize_wordpress",
+        sbfmDefinitelyAutomated: "sbfm_definitely_automated",
+        sbfmStaticResourceProtection: "sbfm_static_resource_protection",
+        sbfmVerifiedBots: "sbfm_verified_bots",
+        staleZoneConfiguration: "stale_zone_configuration",
+        usingLatestModel: "using_latest_model",
+      }),
+    ),
+  ) as unknown as Schema.Schema<SuperBotFightModeDefinitelyConfiguration>;
+
+export interface SuperBotFightModeLikelyConfiguration {
+  aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
+  cfRobotsVariant?: "off" | "policy_only" | null;
+  crawlerProtection?: "enabled" | "disabled" | null;
+  enableJs?: boolean | null;
+  isRobotsTxtManaged?: boolean | null;
+  optimizeWordpress?: boolean | null;
+  sbfmDefinitelyAutomated?: "allow" | "block" | "managed_challenge" | null;
+  sbfmLikelyAutomated?: "allow" | "block" | "managed_challenge" | null;
+  sbfmStaticResourceProtection?: boolean | null;
+  sbfmVerifiedBots?: "allow" | "block" | null;
+  staleZoneConfiguration?: { fightMode?: boolean | null } | null;
+  usingLatestModel?: boolean | null;
+}
+
+export const SuperBotFightModeLikelyConfiguration: Schema.Schema<SuperBotFightModeLikelyConfiguration> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      aiBotsProtection: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["block", "disabled", "only_on_ad_pages"]),
+          Schema.Null,
+        ]),
+      ),
+      cfRobotsVariant: Schema.optional(
+        Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.Null]),
+      ),
+      crawlerProtection: Schema.optional(
+        Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
+      ),
+      enableJs: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      isRobotsTxtManaged: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      optimizeWordpress: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      sbfmDefinitelyAutomated: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["allow", "block", "managed_challenge"]),
+          Schema.Null,
+        ]),
+      ),
+      sbfmLikelyAutomated: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["allow", "block", "managed_challenge"]),
+          Schema.Null,
+        ]),
+      ),
+      sbfmStaticResourceProtection: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      sbfmVerifiedBots: Schema.optional(
+        Schema.Union([Schema.Literals(["allow", "block"]), Schema.Null]),
+      ),
+      staleZoneConfiguration: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            fightMode: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(Schema.encodeKeys({ fightMode: "fight_mode" })),
+          Schema.Null,
+        ]),
+      ),
+      usingLatestModel: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        aiBotsProtection: "ai_bots_protection",
+        cfRobotsVariant: "cf_robots_variant",
+        crawlerProtection: "crawler_protection",
+        enableJs: "enable_js",
+        isRobotsTxtManaged: "is_robots_txt_managed",
+        optimizeWordpress: "optimize_wordpress",
+        sbfmDefinitelyAutomated: "sbfm_definitely_automated",
+        sbfmLikelyAutomated: "sbfm_likely_automated",
+        sbfmStaticResourceProtection: "sbfm_static_resource_protection",
+        sbfmVerifiedBots: "sbfm_verified_bots",
+        staleZoneConfiguration: "stale_zone_configuration",
+        usingLatestModel: "using_latest_model",
+      }),
+    ),
+  ) as unknown as Schema.Schema<SuperBotFightModeLikelyConfiguration>;
+
+// =============================================================================
+// BotManagement
+// =============================================================================
+
+export interface GetBotManagementRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+
+export const GetBotManagementRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/bot_management" }),
+  ) as unknown as Schema.Schema<GetBotManagementRequest>;
+
+export type GetBotManagementResponse =
+  | BotFightModeConfiguration
+  | SuperBotFightModeDefinitelyConfiguration
+  | SuperBotFightModeLikelyConfiguration
+  | SubscriptionConfiguration;
+
+export const GetBotManagementResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+    BotFightModeConfiguration,
+    SuperBotFightModeDefinitelyConfiguration,
+    SuperBotFightModeLikelyConfiguration,
+    SubscriptionConfiguration,
   ]).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<GetBotManagementResponse>;
@@ -437,354 +473,17 @@ export const PutBotManagementRequest =
   ) as unknown as Schema.Schema<PutBotManagementRequest>;
 
 export type PutBotManagementResponse =
-  | {
-      aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
-      cfRobotsVariant?: "off" | "policy_only" | null;
-      crawlerProtection?: "enabled" | "disabled" | null;
-      enableJs?: boolean | null;
-      fightMode?: boolean | null;
-      isRobotsTxtManaged?: boolean | null;
-      staleZoneConfiguration?: {
-        optimizeWordpress?: boolean | null;
-        sbfmDefinitelyAutomated?: string | null;
-        sbfmLikelyAutomated?: string | null;
-        sbfmStaticResourceProtection?: string | null;
-        sbfmVerifiedBots?: string | null;
-        suppressSessionScore?: boolean | null;
-      } | null;
-      usingLatestModel?: boolean | null;
-    }
-  | {
-      aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
-      cfRobotsVariant?: "off" | "policy_only" | null;
-      crawlerProtection?: "enabled" | "disabled" | null;
-      enableJs?: boolean | null;
-      isRobotsTxtManaged?: boolean | null;
-      optimizeWordpress?: boolean | null;
-      sbfmDefinitelyAutomated?: "allow" | "block" | "managed_challenge" | null;
-      sbfmStaticResourceProtection?: boolean | null;
-      sbfmVerifiedBots?: "allow" | "block" | null;
-      staleZoneConfiguration?: {
-        fightMode?: boolean | null;
-        sbfmLikelyAutomated?: string | null;
-      } | null;
-      usingLatestModel?: boolean | null;
-    }
-  | {
-      aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
-      cfRobotsVariant?: "off" | "policy_only" | null;
-      crawlerProtection?: "enabled" | "disabled" | null;
-      enableJs?: boolean | null;
-      isRobotsTxtManaged?: boolean | null;
-      optimizeWordpress?: boolean | null;
-      sbfmDefinitelyAutomated?: "allow" | "block" | "managed_challenge" | null;
-      sbfmLikelyAutomated?: "allow" | "block" | "managed_challenge" | null;
-      sbfmStaticResourceProtection?: boolean | null;
-      sbfmVerifiedBots?: "allow" | "block" | null;
-      staleZoneConfiguration?: { fightMode?: boolean | null } | null;
-      usingLatestModel?: boolean | null;
-    }
-  | {
-      aiBotsProtection?: "block" | "disabled" | "only_on_ad_pages" | null;
-      autoUpdateModel?: boolean | null;
-      bmCookieEnabled?: boolean | null;
-      cfRobotsVariant?: "off" | "policy_only" | null;
-      crawlerProtection?: "enabled" | "disabled" | null;
-      enableJs?: boolean | null;
-      isRobotsTxtManaged?: boolean | null;
-      staleZoneConfiguration?: {
-        fightMode?: boolean | null;
-        optimizeWordpress?: boolean | null;
-        sbfmDefinitelyAutomated?: string | null;
-        sbfmLikelyAutomated?: string | null;
-        sbfmStaticResourceProtection?: string | null;
-        sbfmVerifiedBots?: string | null;
-      } | null;
-      suppressSessionScore?: boolean | null;
-      usingLatestModel?: boolean | null;
-    };
+  | BotFightModeConfiguration
+  | SuperBotFightModeDefinitelyConfiguration
+  | SuperBotFightModeLikelyConfiguration
+  | SubscriptionConfiguration;
 
 export const PutBotManagementResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-    Schema.Struct({
-      aiBotsProtection: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["block", "disabled", "only_on_ad_pages"]),
-          Schema.Null,
-        ]),
-      ),
-      cfRobotsVariant: Schema.optional(
-        Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.Null]),
-      ),
-      crawlerProtection: Schema.optional(
-        Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
-      ),
-      enableJs: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      fightMode: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isRobotsTxtManaged: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      staleZoneConfiguration: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            optimizeWordpress: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            sbfmDefinitelyAutomated: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            sbfmLikelyAutomated: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            sbfmStaticResourceProtection: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            sbfmVerifiedBots: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            suppressSessionScore: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              optimizeWordpress: "optimize_wordpress",
-              sbfmDefinitelyAutomated: "sbfm_definitely_automated",
-              sbfmLikelyAutomated: "sbfm_likely_automated",
-              sbfmStaticResourceProtection: "sbfm_static_resource_protection",
-              sbfmVerifiedBots: "sbfm_verified_bots",
-              suppressSessionScore: "suppress_session_score",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      usingLatestModel: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        aiBotsProtection: "ai_bots_protection",
-        cfRobotsVariant: "cf_robots_variant",
-        crawlerProtection: "crawler_protection",
-        enableJs: "enable_js",
-        fightMode: "fight_mode",
-        isRobotsTxtManaged: "is_robots_txt_managed",
-        staleZoneConfiguration: "stale_zone_configuration",
-        usingLatestModel: "using_latest_model",
-      }),
-    ),
-    Schema.Struct({
-      aiBotsProtection: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["block", "disabled", "only_on_ad_pages"]),
-          Schema.Null,
-        ]),
-      ),
-      cfRobotsVariant: Schema.optional(
-        Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.Null]),
-      ),
-      crawlerProtection: Schema.optional(
-        Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
-      ),
-      enableJs: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isRobotsTxtManaged: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      optimizeWordpress: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      sbfmDefinitelyAutomated: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["allow", "block", "managed_challenge"]),
-          Schema.Null,
-        ]),
-      ),
-      sbfmStaticResourceProtection: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      sbfmVerifiedBots: Schema.optional(
-        Schema.Union([Schema.Literals(["allow", "block"]), Schema.Null]),
-      ),
-      staleZoneConfiguration: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            fightMode: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            sbfmLikelyAutomated: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              fightMode: "fight_mode",
-              sbfmLikelyAutomated: "sbfm_likely_automated",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      usingLatestModel: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        aiBotsProtection: "ai_bots_protection",
-        cfRobotsVariant: "cf_robots_variant",
-        crawlerProtection: "crawler_protection",
-        enableJs: "enable_js",
-        isRobotsTxtManaged: "is_robots_txt_managed",
-        optimizeWordpress: "optimize_wordpress",
-        sbfmDefinitelyAutomated: "sbfm_definitely_automated",
-        sbfmStaticResourceProtection: "sbfm_static_resource_protection",
-        sbfmVerifiedBots: "sbfm_verified_bots",
-        staleZoneConfiguration: "stale_zone_configuration",
-        usingLatestModel: "using_latest_model",
-      }),
-    ),
-    Schema.Struct({
-      aiBotsProtection: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["block", "disabled", "only_on_ad_pages"]),
-          Schema.Null,
-        ]),
-      ),
-      cfRobotsVariant: Schema.optional(
-        Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.Null]),
-      ),
-      crawlerProtection: Schema.optional(
-        Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
-      ),
-      enableJs: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isRobotsTxtManaged: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      optimizeWordpress: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      sbfmDefinitelyAutomated: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["allow", "block", "managed_challenge"]),
-          Schema.Null,
-        ]),
-      ),
-      sbfmLikelyAutomated: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["allow", "block", "managed_challenge"]),
-          Schema.Null,
-        ]),
-      ),
-      sbfmStaticResourceProtection: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      sbfmVerifiedBots: Schema.optional(
-        Schema.Union([Schema.Literals(["allow", "block"]), Schema.Null]),
-      ),
-      staleZoneConfiguration: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            fightMode: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }).pipe(Schema.encodeKeys({ fightMode: "fight_mode" })),
-          Schema.Null,
-        ]),
-      ),
-      usingLatestModel: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        aiBotsProtection: "ai_bots_protection",
-        cfRobotsVariant: "cf_robots_variant",
-        crawlerProtection: "crawler_protection",
-        enableJs: "enable_js",
-        isRobotsTxtManaged: "is_robots_txt_managed",
-        optimizeWordpress: "optimize_wordpress",
-        sbfmDefinitelyAutomated: "sbfm_definitely_automated",
-        sbfmLikelyAutomated: "sbfm_likely_automated",
-        sbfmStaticResourceProtection: "sbfm_static_resource_protection",
-        sbfmVerifiedBots: "sbfm_verified_bots",
-        staleZoneConfiguration: "stale_zone_configuration",
-        usingLatestModel: "using_latest_model",
-      }),
-    ),
-    Schema.Struct({
-      aiBotsProtection: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["block", "disabled", "only_on_ad_pages"]),
-          Schema.Null,
-        ]),
-      ),
-      autoUpdateModel: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      bmCookieEnabled: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      cfRobotsVariant: Schema.optional(
-        Schema.Union([Schema.Literals(["off", "policy_only"]), Schema.Null]),
-      ),
-      crawlerProtection: Schema.optional(
-        Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.Null]),
-      ),
-      enableJs: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isRobotsTxtManaged: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      staleZoneConfiguration: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            fightMode: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            optimizeWordpress: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            sbfmDefinitelyAutomated: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            sbfmLikelyAutomated: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            sbfmStaticResourceProtection: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            sbfmVerifiedBots: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              fightMode: "fight_mode",
-              optimizeWordpress: "optimize_wordpress",
-              sbfmDefinitelyAutomated: "sbfm_definitely_automated",
-              sbfmLikelyAutomated: "sbfm_likely_automated",
-              sbfmStaticResourceProtection: "sbfm_static_resource_protection",
-              sbfmVerifiedBots: "sbfm_verified_bots",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      suppressSessionScore: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      usingLatestModel: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        aiBotsProtection: "ai_bots_protection",
-        autoUpdateModel: "auto_update_model",
-        bmCookieEnabled: "bm_cookie_enabled",
-        cfRobotsVariant: "cf_robots_variant",
-        crawlerProtection: "crawler_protection",
-        enableJs: "enable_js",
-        isRobotsTxtManaged: "is_robots_txt_managed",
-        staleZoneConfiguration: "stale_zone_configuration",
-        suppressSessionScore: "suppress_session_score",
-        usingLatestModel: "using_latest_model",
-      }),
-    ),
+    BotFightModeConfiguration,
+    SuperBotFightModeDefinitelyConfiguration,
+    SuperBotFightModeLikelyConfiguration,
+    SubscriptionConfiguration,
   ]).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<PutBotManagementResponse>;

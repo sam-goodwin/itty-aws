@@ -14,6 +14,27 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Warpdevice {
+  id: string;
+  name: string;
+  routerIp: string;
+}
+
+export const Warpdevice: Schema.Schema<Warpdevice> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      name: Schema.String,
+      routerIp: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
+    ),
+  ) as unknown as Schema.Schema<Warpdevice>;
+
+// =============================================================================
 // Config
 // =============================================================================
 
@@ -33,22 +54,14 @@ export interface GetConfigResponse {
   /** The account name. */
   name: string;
   routerIps: string[];
-  warpDevices: { id: string; name: string; routerIp: string }[];
+  warpDevices: Warpdevice[];
 }
 
 export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   defaultSampling: Schema.Number,
   name: Schema.String,
   routerIps: Schema.Array(Schema.String),
-  warpDevices: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      routerIp: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
-    ),
-  ),
+  warpDevices: Schema.Array(Warpdevice),
 })
   .pipe(
     Schema.encodeKeys({
@@ -85,7 +98,7 @@ export interface CreateConfigRequest {
   /** Body param: */
   routerIps?: string[];
   /** Body param: */
-  warpDevices?: { id: string; name: string; routerIp: string }[];
+  warpDevices?: Warpdevice[];
 }
 
 export const CreateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -93,17 +106,7 @@ export const CreateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   defaultSampling: Schema.Number,
   name: Schema.String,
   routerIps: Schema.optional(Schema.Array(Schema.String)),
-  warpDevices: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        routerIp: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
-      ),
-    ),
-  ),
+  warpDevices: Schema.optional(Schema.Array(Warpdevice)),
 }).pipe(
   Schema.encodeKeys({
     defaultSampling: "default_sampling",
@@ -120,22 +123,14 @@ export interface CreateConfigResponse {
   /** The account name. */
   name: string;
   routerIps: string[];
-  warpDevices: { id: string; name: string; routerIp: string }[];
+  warpDevices: Warpdevice[];
 }
 
 export const CreateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   defaultSampling: Schema.Number,
   name: Schema.String,
   routerIps: Schema.Array(Schema.String),
-  warpDevices: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      routerIp: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
-    ),
-  ),
+  warpDevices: Schema.Array(Warpdevice),
 })
   .pipe(
     Schema.encodeKeys({
@@ -172,7 +167,7 @@ export interface UpdateConfigRequest {
   /** Body param: */
   routerIps?: string[];
   /** Body param: */
-  warpDevices?: { id: string; name: string; routerIp: string }[];
+  warpDevices?: Warpdevice[];
 }
 
 export const UpdateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -180,17 +175,7 @@ export const UpdateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   defaultSampling: Schema.Number,
   name: Schema.String,
   routerIps: Schema.optional(Schema.Array(Schema.String)),
-  warpDevices: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        routerIp: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
-      ),
-    ),
-  ),
+  warpDevices: Schema.optional(Schema.Array(Warpdevice)),
 }).pipe(
   Schema.encodeKeys({
     defaultSampling: "default_sampling",
@@ -207,22 +192,14 @@ export interface UpdateConfigResponse {
   /** The account name. */
   name: string;
   routerIps: string[];
-  warpDevices: { id: string; name: string; routerIp: string }[];
+  warpDevices: Warpdevice[];
 }
 
 export const UpdateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   defaultSampling: Schema.Number,
   name: Schema.String,
   routerIps: Schema.Array(Schema.String),
-  warpDevices: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      routerIp: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
-    ),
-  ),
+  warpDevices: Schema.Array(Warpdevice),
 })
   .pipe(
     Schema.encodeKeys({
@@ -259,7 +236,7 @@ export interface PatchConfigRequest {
   /** Body param: */
   routerIps?: string[];
   /** Body param: */
-  warpDevices?: { id: string; name: string; routerIp: string }[];
+  warpDevices?: Warpdevice[];
 }
 
 export const PatchConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -267,17 +244,7 @@ export const PatchConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   defaultSampling: Schema.optional(Schema.Number),
   name: Schema.optional(Schema.String),
   routerIps: Schema.optional(Schema.Array(Schema.String)),
-  warpDevices: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        routerIp: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
-      ),
-    ),
-  ),
+  warpDevices: Schema.optional(Schema.Array(Warpdevice)),
 }).pipe(
   Schema.encodeKeys({
     defaultSampling: "default_sampling",
@@ -294,22 +261,14 @@ export interface PatchConfigResponse {
   /** The account name. */
   name: string;
   routerIps: string[];
-  warpDevices: { id: string; name: string; routerIp: string }[];
+  warpDevices: Warpdevice[];
 }
 
 export const PatchConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   defaultSampling: Schema.Number,
   name: Schema.String,
   routerIps: Schema.Array(Schema.String),
-  warpDevices: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      routerIp: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
-    ),
-  ),
+  warpDevices: Schema.Array(Warpdevice),
 })
   .pipe(
     Schema.encodeKeys({
@@ -352,22 +311,14 @@ export interface DeleteConfigResponse {
   /** The account name. */
   name: string;
   routerIps: string[];
-  warpDevices: { id: string; name: string; routerIp: string }[];
+  warpDevices: Warpdevice[];
 }
 
 export const DeleteConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   defaultSampling: Schema.Number,
   name: Schema.String,
   routerIps: Schema.Array(Schema.String),
-  warpDevices: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      routerIp: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
-    ),
-  ),
+  warpDevices: Schema.Array(Warpdevice),
 })
   .pipe(
     Schema.encodeKeys({
@@ -414,22 +365,14 @@ export interface GetConfigFullResponse {
   /** The account name. */
   name: string;
   routerIps: string[];
-  warpDevices: { id: string; name: string; routerIp: string }[];
+  warpDevices: Warpdevice[];
 }
 
 export const GetConfigFullResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   defaultSampling: Schema.Number,
   name: Schema.String,
   routerIps: Schema.Array(Schema.String),
-  warpDevices: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      routerIp: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({ id: "id", name: "name", routerIp: "router_ip" }),
-    ),
-  ),
+  warpDevices: Schema.Array(Warpdevice),
 })
   .pipe(
     Schema.encodeKeys({

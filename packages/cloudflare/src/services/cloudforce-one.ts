@@ -15,6 +15,187 @@ import { type DefaultErrors } from "../errors.ts";
 import { UploadableSchema } from "../schemas.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Error2 {
+  code: number;
+  message: string;
+  documentationUrl?: string | null;
+  source?: Source2 | null;
+}
+
+export const Error2: Schema.Schema<Error2> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      code: Schema.Number,
+      message: Schema.String,
+      documentationUrl: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      source: Schema.optional(Schema.Union([Source2, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        code: "code",
+        message: "message",
+        documentationUrl: "documentation_url",
+        source: "source",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Error2>;
+
+export interface Indicator {
+  indicatorType: string;
+  value: string;
+}
+
+export const Indicator: Schema.Schema<Indicator> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      indicatorType: Schema.String,
+      value: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<Indicator>;
+
+export interface Item {
+  id: string;
+  content: string;
+  created: string;
+  priority: string;
+  request: string;
+  summary: string;
+  tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
+  updated: string;
+  completed?: string | null;
+  messageTokens?: number | null;
+  readableId?: string | null;
+  status?:
+    | "open"
+    | "accepted"
+    | "reported"
+    | "approved"
+    | "completed"
+    | "declined"
+    | null;
+  tokens?: number | null;
+}
+
+export const Item: Schema.Schema<Item> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      content: Schema.String,
+      created: Schema.String,
+      priority: Schema.String,
+      request: Schema.String,
+      summary: Schema.String,
+      tlp: Schema.Literals(["clear", "amber", "amber-strict", "green", "red"]),
+      updated: Schema.String,
+      completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      messageTokens: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      readableId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "open",
+            "accepted",
+            "reported",
+            "approved",
+            "completed",
+            "declined",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      tokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        content: "content",
+        created: "created",
+        priority: "priority",
+        request: "request",
+        summary: "summary",
+        tlp: "tlp",
+        updated: "updated",
+        completed: "completed",
+        messageTokens: "message_tokens",
+        readableId: "readable_id",
+        status: "status",
+        tokens: "tokens",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Item>;
+
+export interface Items {
+  type: string;
+}
+
+export const Items: Schema.Schema<Items> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<Items>;
+
+export interface Message {
+  code: number;
+  message: string;
+  documentationUrl?: string | null;
+  source?: Source2 | null;
+}
+
+export const Message: Schema.Schema<Message> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      code: Schema.Number,
+      message: Schema.String,
+      documentationUrl: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      source: Schema.optional(Schema.Union([Source2, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        code: "code",
+        message: "message",
+        documentationUrl: "documentation_url",
+        source: "source",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Message>;
+
+export interface Raw {
+  data: Record<string, unknown> | null;
+  source?: string | null;
+  tlp?: string | null;
+}
+
+export const Raw: Schema.Schema<Raw> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      data: Schema.Union([
+        Schema.Record(Schema.String, Schema.Unknown),
+        Schema.Null,
+      ]),
+      source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      tlp: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Raw>;
+
+export interface Source2 {
+  pointer?: string | null;
+}
+
+export const Source2: Schema.Schema<Source2> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Source2>;
+
+// =============================================================================
 // BinaryStorage
 // =============================================================================
 
@@ -694,75 +875,15 @@ export const DeleteRequestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<DeleteRequestRequest>;
 
 export interface DeleteRequestResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
 }
 
 export const DeleteRequestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  errors: Schema.Array(
-    Schema.Struct({
-      code: Schema.Number,
-      message: Schema.String,
-      documentationUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      source: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            pointer: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        code: "code",
-        message: "message",
-        documentationUrl: "documentation_url",
-        source: "source",
-      }),
-    ),
-  ),
-  messages: Schema.Array(
-    Schema.Struct({
-      code: Schema.Number,
-      message: Schema.String,
-      documentationUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      source: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            pointer: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        code: "code",
-        message: "message",
-        documentationUrl: "documentation_url",
-        source: "source",
-      }),
-    ),
-  ),
+  errors: Schema.Array(Message),
+  messages: Schema.Array(Message),
   success: Schema.Literal(true),
 }) as unknown as Schema.Schema<DeleteRequestResponse>;
 
@@ -1244,76 +1365,16 @@ export const DeleteRequestAssetRequest =
   ) as unknown as Schema.Schema<DeleteRequestAssetRequest>;
 
 export interface DeleteRequestAssetResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
 }
 
 export const DeleteRequestAssetResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
+    errors: Schema.Array(Message),
+    messages: Schema.Array(Message),
     success: Schema.Literal(true),
   }) as unknown as Schema.Schema<DeleteRequestAssetResponse>;
 
@@ -1382,7 +1443,7 @@ export interface GetRequestMessageResponse {
     code: number;
     message: string;
     documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
+    source?: Source2 | null;
   }[];
 }
 
@@ -1395,16 +1456,7 @@ export const GetRequestMessageResponse =
         documentationUrl: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
+        source: Schema.optional(Schema.Union([Source2, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
           code: "code",
@@ -1436,7 +1488,7 @@ export const getRequestMessage: API.PaginatedOperationMethod<
       code: number;
       message: string;
       documentationUrl?: string | null;
-      source?: { pointer?: string | null } | null;
+      source?: Source2 | null;
     },
     GetRequestMessageError,
     Credentials | HttpClient.HttpClient
@@ -1475,7 +1527,7 @@ export interface CreateRequestMessageResponse {
   code: number;
   message: string;
   documentationUrl?: string | null;
-  source?: { pointer?: string | null } | null;
+  source?: Source2 | null;
 }
 
 export const CreateRequestMessageResponse =
@@ -1485,14 +1537,7 @@ export const CreateRequestMessageResponse =
     documentationUrl: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
     ),
-    source: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
+    source: Schema.optional(Schema.Union([Source2, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
@@ -1545,7 +1590,7 @@ export interface UpdateRequestMessageResponse {
   code: number;
   message: string;
   documentationUrl?: string | null;
-  source?: { pointer?: string | null } | null;
+  source?: Source2 | null;
 }
 
 export const UpdateRequestMessageResponse =
@@ -1555,14 +1600,7 @@ export const UpdateRequestMessageResponse =
     documentationUrl: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
     ),
-    source: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
+    source: Schema.optional(Schema.Union([Source2, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
@@ -1609,76 +1647,16 @@ export const DeleteRequestMessageRequest =
   ) as unknown as Schema.Schema<DeleteRequestMessageRequest>;
 
 export interface DeleteRequestMessageResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
 }
 
 export const DeleteRequestMessageResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
+    errors: Schema.Array(Message),
+    messages: Schema.Array(Message),
     success: Schema.Literal(true),
   }) as unknown as Schema.Schema<DeleteRequestMessageResponse>;
 
@@ -2021,76 +1999,16 @@ export const DeleteRequestPriorityRequest =
   ) as unknown as Schema.Schema<DeleteRequestPriorityRequest>;
 
 export interface DeleteRequestPriorityResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
 }
 
 export const DeleteRequestPriorityResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
+    errors: Schema.Array(Message),
+    messages: Schema.Array(Message),
     success: Schema.Literal(true),
   }) as unknown as Schema.Schema<DeleteRequestPriorityResponse>;
 
@@ -2758,7 +2676,7 @@ export interface CreateThreatEventRequest {
   /** Body param: */
   event: string;
   /** Body param: */
-  raw: { data: Record<string, unknown> | null; source?: string; tlp?: string };
+  raw: Raw;
   /** Body param: */
   tlp: string;
   /** Body param: */
@@ -2770,7 +2688,7 @@ export interface CreateThreatEventRequest {
   /** Body param: */
   indicator?: string;
   /** Body param: Array of indicators for this event. Supports multiple indicators per event for complex scenarios. */
-  indicators?: { indicatorType: string; value: string }[];
+  indicators?: Indicator[];
   /** Body param: */
   indicatorType?: string;
   /** Body param: */
@@ -2791,27 +2709,13 @@ export const CreateThreatEventRequest =
     category: Schema.String,
     date: Schema.String,
     event: Schema.String,
-    raw: Schema.Struct({
-      data: Schema.Union([
-        Schema.Record(Schema.String, Schema.Unknown),
-        Schema.Null,
-      ]),
-      source: Schema.optional(Schema.String),
-      tlp: Schema.optional(Schema.String),
-    }),
+    raw: Raw,
     tlp: Schema.String,
     attacker: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     attackerCountry: Schema.optional(Schema.String),
     datasetId: Schema.optional(Schema.String),
     indicator: Schema.optional(Schema.String),
-    indicators: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          indicatorType: Schema.String,
-          value: Schema.String,
-        }),
-      ),
-    ),
+    indicators: Schema.optional(Schema.Array(Indicator)),
     indicatorType: Schema.optional(Schema.String),
     insight: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Array(Schema.String)),
@@ -3090,18 +2994,14 @@ export interface BulkCreateThreatEventsRequest {
     category: string;
     date: string;
     event: string;
-    raw: {
-      data: Record<string, unknown> | null;
-      source?: string;
-      tlp?: string;
-    };
+    raw: Raw;
     tlp: string;
     accountId?: number;
     attacker?: string | null;
     attackerCountry?: string;
     datasetId?: string;
     indicator?: string;
-    indicators?: { indicatorType: string; value: string }[];
+    indicators?: Indicator[];
     indicatorType?: string;
     insight?: string;
     tags?: string[];
@@ -3123,28 +3023,14 @@ export const BulkCreateThreatEventsRequest =
         category: Schema.String,
         date: Schema.String,
         event: Schema.String,
-        raw: Schema.Struct({
-          data: Schema.Union([
-            Schema.Record(Schema.String, Schema.Unknown),
-            Schema.Null,
-          ]),
-          source: Schema.optional(Schema.String),
-          tlp: Schema.optional(Schema.String),
-        }),
+        raw: Raw,
         tlp: Schema.String,
         accountId: Schema.optional(Schema.Number),
         attacker: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         attackerCountry: Schema.optional(Schema.String),
         datasetId: Schema.optional(Schema.String),
         indicator: Schema.optional(Schema.String),
-        indicators: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              indicatorType: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-        ),
+        indicators: Schema.optional(Schema.Array(Indicator)),
         indicatorType: Schema.optional(Schema.String),
         insight: Schema.optional(Schema.String),
         tags: Schema.optional(Schema.Array(Schema.String)),
@@ -3240,15 +3126,13 @@ export const ListThreatEventAttackersRequest =
   ) as unknown as Schema.Schema<ListThreatEventAttackersRequest>;
 
 export interface ListThreatEventAttackersResponse {
-  items: { type: string };
+  items: Items;
   type: string;
 }
 
 export const ListThreatEventAttackersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    items: Schema.Struct({
-      type: Schema.String,
-    }),
+    items: Items,
     type: Schema.String,
   }) as unknown as Schema.Schema<ListThreatEventAttackersResponse>;
 
@@ -3927,15 +3811,13 @@ export const ListThreatEventIndicatorTypesRequest =
   ) as unknown as Schema.Schema<ListThreatEventIndicatorTypesRequest>;
 
 export interface ListThreatEventIndicatorTypesResponse {
-  items: { type: string };
+  items: Items;
   type: string;
 }
 
 export const ListThreatEventIndicatorTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    items: Schema.Struct({
-      type: Schema.String,
-    }),
+    items: Items,
     type: Schema.String,
   }) as unknown as Schema.Schema<ListThreatEventIndicatorTypesResponse>;
 
@@ -4270,15 +4152,13 @@ export const ListThreatEventTargetIndustriesRequest =
   ) as unknown as Schema.Schema<ListThreatEventTargetIndustriesRequest>;
 
 export interface ListThreatEventTargetIndustriesResponse {
-  items: { type: string };
+  items: Items;
   type: string;
 }
 
 export const ListThreatEventTargetIndustriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    items: Schema.Struct({
-      type: Schema.String,
-    }),
+    items: Items,
     type: Schema.String,
   }) as unknown as Schema.Schema<ListThreatEventTargetIndustriesResponse>;
 

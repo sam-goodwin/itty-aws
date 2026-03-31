@@ -67,6 +67,645 @@ export class TableNotFound extends Schema.TaggedErrorClass<TableNotFound>()(
 T.applyErrorMatchers(TableNotFound, [{ code: 1014 }]);
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Batch {
+  maxBytes?: number | null;
+  maxDurationS?: number | null;
+  maxRows?: number | null;
+}
+
+export const Batch: Schema.Schema<Batch> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      maxBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      maxDurationS: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      maxRows: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        maxBytes: "max_bytes",
+        maxDurationS: "max_duration_s",
+        maxRows: "max_rows",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Batch>;
+
+export interface Binary {
+  type: "binary";
+  metadataKey?: string | null;
+  name?: string | null;
+  required?: boolean | null;
+  sqlName?: string | null;
+}
+
+export const Binary: Schema.Schema<Binary> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Literal("binary"),
+      metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      required: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      sqlName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        type: "type",
+        metadataKey: "metadata_key",
+        name: "name",
+        required: "required",
+        sqlName: "sql_name",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Binary>;
+
+export interface Bool {
+  type: "bool";
+  metadataKey?: string | null;
+  name?: string | null;
+  required?: boolean | null;
+  sqlName?: string | null;
+}
+
+export const Bool: Schema.Schema<Bool> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Literal("bool"),
+      metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      required: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      sqlName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        type: "type",
+        metadataKey: "metadata_key",
+        name: "name",
+        required: "required",
+        sqlName: "sql_name",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Bool>;
+
+export interface CloudflarePipelinesR2DataCatalogTable {
+  token: string;
+  accountId: string;
+  bucket: string;
+  tableName: string;
+  namespace?: string | null;
+  rollingPolicy?: RollingPolicy | null;
+}
+
+export const CloudflarePipelinesR2DataCatalogTable: Schema.Schema<CloudflarePipelinesR2DataCatalogTable> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      token: Schema.String,
+      accountId: Schema.String,
+      bucket: Schema.String,
+      tableName: Schema.String,
+      namespace: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      rollingPolicy: Schema.optional(
+        Schema.Union([RollingPolicy, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        token: "token",
+        accountId: "account_id",
+        bucket: "bucket",
+        tableName: "table_name",
+        namespace: "namespace",
+        rollingPolicy: "rolling_policy",
+      }),
+    ),
+  ) as unknown as Schema.Schema<CloudflarePipelinesR2DataCatalogTable>;
+
+export interface CloudflarePipelinesR2Table {
+  accountId: string;
+  bucket: string;
+  credentials: { accessKeyId: string; secretAccessKey: string };
+  fileNaming?: FileNaming | null;
+  jurisdiction?: string | null;
+  partitioning?: Partitioning | null;
+  path?: string | null;
+  rollingPolicy?: RollingPolicy | null;
+}
+
+export const CloudflarePipelinesR2Table: Schema.Schema<CloudflarePipelinesR2Table> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String,
+      bucket: Schema.String,
+      credentials: Schema.Struct({
+        accessKeyId: SensitiveString,
+        secretAccessKey: SensitiveString,
+      }).pipe(
+        Schema.encodeKeys({
+          accessKeyId: "access_key_id",
+          secretAccessKey: "secret_access_key",
+        }),
+      ),
+      fileNaming: Schema.optional(Schema.Union([FileNaming, Schema.Null])),
+      jurisdiction: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      partitioning: Schema.optional(Schema.Union([Partitioning, Schema.Null])),
+      path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      rollingPolicy: Schema.optional(
+        Schema.Union([RollingPolicy, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        accountId: "account_id",
+        bucket: "bucket",
+        credentials: "credentials",
+        fileNaming: "file_naming",
+        jurisdiction: "jurisdiction",
+        partitioning: "partitioning",
+        path: "path",
+        rollingPolicy: "rolling_policy",
+      }),
+    ),
+  ) as unknown as Schema.Schema<CloudflarePipelinesR2Table>;
+
+export interface CloudflarePipelinesWorkersPipelinesBindingSource {
+  format: "json";
+  type: string;
+}
+
+export const CloudflarePipelinesWorkersPipelinesBindingSource: Schema.Schema<CloudflarePipelinesWorkersPipelinesBindingSource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      format: Schema.Literal("json"),
+      type: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<CloudflarePipelinesWorkersPipelinesBindingSource>;
+
+export interface CloudflarePipelinesWorkersPipelinesHTTPSource {
+  format: "json";
+  type: string;
+  authentication?: boolean | null;
+  cors?: Cors | null;
+}
+
+export const CloudflarePipelinesWorkersPipelinesHTTPSource: Schema.Schema<CloudflarePipelinesWorkersPipelinesHTTPSource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      format: Schema.Literal("json"),
+      type: Schema.String,
+      authentication: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      cors: Schema.optional(Schema.Union([Cors, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<CloudflarePipelinesWorkersPipelinesHTTPSource>;
+
+export interface Compression {
+  type?: "none" | "gzip" | "deflate" | null;
+}
+
+export const Compression: Schema.Schema<Compression> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["none", "gzip", "deflate"]),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Compression>;
+
+export interface Cors {
+  origins?: string[] | null;
+}
+
+export const Cors: Schema.Schema<Cors> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      origins: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Cors>;
+
+export interface Credentials2 {
+  accessKeyId: string;
+  endpoint: string;
+  secretAccessKey: string;
+}
+
+export const Credentials2: Schema.Schema<Credentials2> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accessKeyId: SensitiveString,
+      endpoint: Schema.String,
+      secretAccessKey: SensitiveString,
+    }).pipe(
+      Schema.encodeKeys({
+        accessKeyId: "access_key_id",
+        endpoint: "endpoint",
+        secretAccessKey: "secret_access_key",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Credentials2>;
+
+export interface Destination {
+  batch: Batch;
+  compression: Compression;
+  credentials: Credentials2;
+  format: "json";
+  path: Path;
+  type: "r2";
+}
+
+export const Destination: Schema.Schema<Destination> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      batch: Batch,
+      compression: Compression,
+      credentials: Credentials2,
+      format: Schema.Literal("json"),
+      path: Path,
+      type: Schema.Literal("r2"),
+    }),
+  ) as unknown as Schema.Schema<Destination>;
+
+export interface FileNaming {
+  prefix?: string | null;
+  strategy?: "serial" | "uuid" | "uuid_v7" | "ulid" | null;
+  suffix?: string | null;
+}
+
+export const FileNaming: Schema.Schema<FileNaming> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      prefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      strategy: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["serial", "uuid", "uuid_v7", "ulid"]),
+          Schema.Null,
+        ]),
+      ),
+      suffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<FileNaming>;
+
+export interface Float32 {
+  type: "float32";
+  metadataKey?: string | null;
+  name?: string | null;
+  required?: boolean | null;
+  sqlName?: string | null;
+}
+
+export const Float32: Schema.Schema<Float32> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Literal("float32"),
+      metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      required: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      sqlName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        type: "type",
+        metadataKey: "metadata_key",
+        name: "name",
+        required: "required",
+        sqlName: "sql_name",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Float32>;
+
+export interface Float64 {
+  type: "float64";
+  metadataKey?: string | null;
+  name?: string | null;
+  required?: boolean | null;
+  sqlName?: string | null;
+}
+
+export const Float64: Schema.Schema<Float64> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Literal("float64"),
+      metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      required: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      sqlName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        type: "type",
+        metadataKey: "metadata_key",
+        name: "name",
+        required: "required",
+        sqlName: "sql_name",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Float64>;
+
+export interface Http {
+  authentication: boolean;
+  enabled: boolean;
+  cors?: Cors | null;
+}
+
+export const Http: Schema.Schema<Http> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      authentication: Schema.Boolean,
+      enabled: Schema.Boolean,
+      cors: Schema.optional(Schema.Union([Cors, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Http>;
+
+export interface Int32 {
+  type: "int32";
+  metadataKey?: string | null;
+  name?: string | null;
+  required?: boolean | null;
+  sqlName?: string | null;
+}
+
+export const Int32: Schema.Schema<Int32> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Literal("int32"),
+      metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      required: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      sqlName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        type: "type",
+        metadataKey: "metadata_key",
+        name: "name",
+        required: "required",
+        sqlName: "sql_name",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Int32>;
+
+export interface Int64 {
+  type: "int64";
+  metadataKey?: string | null;
+  name?: string | null;
+  required?: boolean | null;
+  sqlName?: string | null;
+}
+
+export const Int64: Schema.Schema<Int64> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Literal("int64"),
+      metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      required: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      sqlName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        type: "type",
+        metadataKey: "metadata_key",
+        name: "name",
+        required: "required",
+        sqlName: "sql_name",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Int64>;
+
+export interface Json {
+  type: "json";
+  metadataKey?: string | null;
+  name?: string | null;
+  required?: boolean | null;
+  sqlName?: string | null;
+}
+
+export const Json: Schema.Schema<Json> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Literal("json"),
+      metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      required: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      sqlName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        type: "type",
+        metadataKey: "metadata_key",
+        name: "name",
+        required: "required",
+        sqlName: "sql_name",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Json>;
+
+export interface Parquet {
+  type: "parquet";
+  compression?: "uncompressed" | "snappy" | "gzip" | "zstd" | "lz4" | null;
+  rowGroupBytes?: number | null;
+}
+
+export const Parquet: Schema.Schema<Parquet> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Literal("parquet"),
+      compression: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["uncompressed", "snappy", "gzip", "zstd", "lz4"]),
+          Schema.Null,
+        ]),
+      ),
+      rowGroupBytes: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        type: "type",
+        compression: "compression",
+        rowGroupBytes: "row_group_bytes",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Parquet>;
+
+export interface Partitioning {
+  timePattern?: string | null;
+}
+
+export const Partitioning: Schema.Schema<Partitioning> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      timePattern: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ timePattern: "time_pattern" })),
+  ) as unknown as Schema.Schema<Partitioning>;
+
+export interface Path {
+  bucket: string;
+  filename?: string | null;
+  filepath?: string | null;
+  prefix?: string | null;
+}
+
+export const Path: Schema.Schema<Path> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      bucket: Schema.String,
+      filename: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      filepath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      prefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Path>;
+
+export interface RollingPolicy {
+  fileSizeBytes?: number | null;
+  inactivitySeconds?: number | null;
+  intervalSeconds?: number | null;
+}
+
+export const RollingPolicy: Schema.Schema<RollingPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      fileSizeBytes: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      inactivitySeconds: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      intervalSeconds: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        fileSizeBytes: "file_size_bytes",
+        inactivitySeconds: "inactivity_seconds",
+        intervalSeconds: "interval_seconds",
+      }),
+    ),
+  ) as unknown as Schema.Schema<RollingPolicy>;
+
+export interface Schema2 {
+  fields?:
+    | (
+        | Int32
+        | Int64
+        | Float32
+        | Float64
+        | Bool
+        | String
+        | Binary
+        | Timestamp
+        | Json
+        | unknown
+      )[]
+    | null;
+  format?: Json | Parquet | null;
+  inferred?: boolean | null;
+}
+
+export const Schema2: Schema.Schema<Schema2> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      fields: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Union([
+              Int32,
+              Int64,
+              Float32,
+              Float64,
+              Bool,
+              String,
+              Binary,
+              Timestamp,
+              Json,
+              Schema.Unknown,
+            ]),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      format: Schema.optional(
+        Schema.Union([Schema.Union([Json, Parquet]), Schema.Null]),
+      ),
+      inferred: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Schema2>;
+
+export interface String {
+  type: "string";
+  metadataKey?: string | null;
+  name?: string | null;
+  required?: boolean | null;
+  sqlName?: string | null;
+}
+
+export const String: Schema.Schema<String> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Literal("string"),
+      metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      required: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      sqlName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        type: "type",
+        metadataKey: "metadata_key",
+        name: "name",
+        required: "required",
+        sqlName: "sql_name",
+      }),
+    ),
+  ) as unknown as Schema.Schema<String>;
+
+export interface Timestamp {
+  type: "timestamp";
+  metadataKey?: string | null;
+  name?: string | null;
+  required?: boolean | null;
+  sqlName?: string | null;
+  unit?: "second" | "millisecond" | "microsecond" | "nanosecond" | null;
+}
+
+export const Timestamp: Schema.Schema<Timestamp> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Literal("timestamp"),
+      metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      required: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      sqlName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      unit: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "second",
+            "millisecond",
+            "microsecond",
+            "nanosecond",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        type: "type",
+        metadataKey: "metadata_key",
+        name: "name",
+        required: "required",
+        sqlName: "sql_name",
+        unit: "unit",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Timestamp>;
+
+export interface WorkerBinding {
+  enabled: boolean;
+}
+
+export const WorkerBinding: Schema.Schema<WorkerBinding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      enabled: Schema.Boolean,
+    }),
+  ) as unknown as Schema.Schema<WorkerBinding>;
+
+// =============================================================================
 // Pipeline
 // =============================================================================
 
@@ -93,12 +732,7 @@ export interface GetPipelineResponse {
     batch: { maxBytes: number; maxDurationS: number; maxRows: number };
     compression: { type: "none" | "gzip" | "deflate" };
     format: "json";
-    path: {
-      bucket: string;
-      filename?: string | null;
-      filepath?: string | null;
-      prefix?: string | null;
-    };
+    path: Path;
     type: "r2";
   };
   /** Indicates the endpoint URL to send traffic. */
@@ -106,13 +740,8 @@ export interface GetPipelineResponse {
   /** Defines the name of the pipeline. */
   name: string;
   source: (
-    | {
-        format: "json";
-        type: string;
-        authentication?: boolean | null;
-        cors?: { origins?: string[] | null } | null;
-      }
-    | { format: "json"; type: string }
+    | CloudflarePipelinesWorkersPipelinesHTTPSource
+    | CloudflarePipelinesWorkersPipelinesBindingSource
   )[];
   /** Indicates the version number of last saved configuration. */
   version: number;
@@ -136,39 +765,15 @@ export const GetPipelineResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       type: Schema.Literals(["none", "gzip", "deflate"]),
     }),
     format: Schema.Literal("json"),
-    path: Schema.Struct({
-      bucket: Schema.String,
-      filename: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      filepath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      prefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
+    path: Path,
     type: Schema.Literal("r2"),
   }),
   endpoint: Schema.String,
   name: Schema.String,
   source: Schema.Array(
     Schema.Union([
-      Schema.Struct({
-        format: Schema.Literal("json"),
-        type: Schema.String,
-        authentication: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        cors: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              origins: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        format: Schema.Literal("json"),
-        type: Schema.String,
-      }),
+      CloudflarePipelinesWorkersPipelinesHTTPSource,
+      CloudflarePipelinesWorkersPipelinesBindingSource,
     ]),
   ),
   version: Schema.Number,
@@ -222,24 +827,14 @@ export interface ListPipelinesResponse {
       batch: { maxBytes: number; maxDurationS: number; maxRows: number };
       compression: { type: "none" | "gzip" | "deflate" };
       format: "json";
-      path: {
-        bucket: string;
-        filename?: string | null;
-        filepath?: string | null;
-        prefix?: string | null;
-      };
+      path: Path;
       type: "r2";
     };
     endpoint: string;
     name: string;
     source: (
-      | {
-          format: "json";
-          type: string;
-          authentication?: boolean | null;
-          cors?: { origins?: string[] | null } | null;
-        }
-      | { format: "json"; type: string }
+      | CloudflarePipelinesWorkersPipelinesHTTPSource
+      | CloudflarePipelinesWorkersPipelinesBindingSource
     )[];
     version: number;
   }[];
@@ -285,39 +880,15 @@ export const ListPipelinesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           type: Schema.Literals(["none", "gzip", "deflate"]),
         }),
         format: Schema.Literal("json"),
-        path: Schema.Struct({
-          bucket: Schema.String,
-          filename: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          filepath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          prefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
+        path: Path,
         type: Schema.Literal("r2"),
       }),
       endpoint: Schema.String,
       name: Schema.String,
       source: Schema.Array(
         Schema.Union([
-          Schema.Struct({
-            format: Schema.Literal("json"),
-            type: Schema.String,
-            authentication: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            cors: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  origins: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Struct({
-            format: Schema.Literal("json"),
-            type: Schema.String,
-          }),
+          CloudflarePipelinesWorkersPipelinesHTTPSource,
+          CloudflarePipelinesWorkersPipelinesBindingSource,
         ]),
       ),
       version: Schema.Number,
@@ -349,91 +920,24 @@ export interface CreatePipelineRequest {
   /** Path param: Specifies the public ID of the account. */
   accountId: string;
   /** Body param: */
-  destination: {
-    batch: { maxBytes?: number; maxDurationS?: number; maxRows?: number };
-    compression: { type?: "none" | "gzip" | "deflate" };
-    credentials: {
-      accessKeyId: string;
-      endpoint: string;
-      secretAccessKey: string;
-    };
-    format: "json";
-    path: {
-      bucket: string;
-      filename?: string;
-      filepath?: string;
-      prefix?: string;
-    };
-    type: "r2";
-  };
+  destination: Destination;
   /** Body param: Defines the name of the pipeline. */
   name: string;
   /** Body param: */
   source: (
-    | {
-        format: "json";
-        type: string;
-        authentication?: boolean;
-        cors?: { origins?: string[] };
-      }
-    | { format: "json"; type: string }
+    | CloudflarePipelinesWorkersPipelinesHTTPSource
+    | CloudflarePipelinesWorkersPipelinesBindingSource
   )[];
 }
 
 export const CreatePipelineRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  destination: Schema.Struct({
-    batch: Schema.Struct({
-      maxBytes: Schema.optional(Schema.Number),
-      maxDurationS: Schema.optional(Schema.Number),
-      maxRows: Schema.optional(Schema.Number),
-    }).pipe(
-      Schema.encodeKeys({
-        maxBytes: "max_bytes",
-        maxDurationS: "max_duration_s",
-        maxRows: "max_rows",
-      }),
-    ),
-    compression: Schema.Struct({
-      type: Schema.optional(Schema.Literals(["none", "gzip", "deflate"])),
-    }),
-    credentials: Schema.Struct({
-      accessKeyId: SensitiveString,
-      endpoint: Schema.String,
-      secretAccessKey: SensitiveString,
-    }).pipe(
-      Schema.encodeKeys({
-        accessKeyId: "access_key_id",
-        endpoint: "endpoint",
-        secretAccessKey: "secret_access_key",
-      }),
-    ),
-    format: Schema.Literal("json"),
-    path: Schema.Struct({
-      bucket: Schema.String,
-      filename: Schema.optional(Schema.String),
-      filepath: Schema.optional(Schema.String),
-      prefix: Schema.optional(Schema.String),
-    }),
-    type: Schema.Literal("r2"),
-  }),
+  destination: Destination,
   name: Schema.String,
   source: Schema.Array(
     Schema.Union([
-      Schema.Struct({
-        format: Schema.Literal("json"),
-        type: Schema.String,
-        authentication: Schema.optional(Schema.Boolean),
-        cors: Schema.optional(
-          Schema.Struct({
-            origins: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
-      Schema.Struct({
-        format: Schema.Literal("json"),
-        type: Schema.String,
-      }),
+      CloudflarePipelinesWorkersPipelinesHTTPSource,
+      CloudflarePipelinesWorkersPipelinesBindingSource,
     ]),
   ),
 }).pipe(
@@ -447,12 +951,7 @@ export interface CreatePipelineResponse {
     batch: { maxBytes: number; maxDurationS: number; maxRows: number };
     compression: { type: "none" | "gzip" | "deflate" };
     format: "json";
-    path: {
-      bucket: string;
-      filename?: string | null;
-      filepath?: string | null;
-      prefix?: string | null;
-    };
+    path: Path;
     type: "r2";
   };
   /** Indicates the endpoint URL to send traffic. */
@@ -460,13 +959,8 @@ export interface CreatePipelineResponse {
   /** Defines the name of the pipeline. */
   name: string;
   source: (
-    | {
-        format: "json";
-        type: string;
-        authentication?: boolean | null;
-        cors?: { origins?: string[] | null } | null;
-      }
-    | { format: "json"; type: string }
+    | CloudflarePipelinesWorkersPipelinesHTTPSource
+    | CloudflarePipelinesWorkersPipelinesBindingSource
   )[];
   /** Indicates the version number of last saved configuration. */
   version: number;
@@ -491,39 +985,15 @@ export const CreatePipelineResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         type: Schema.Literals(["none", "gzip", "deflate"]),
       }),
       format: Schema.Literal("json"),
-      path: Schema.Struct({
-        bucket: Schema.String,
-        filename: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        filepath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        prefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
+      path: Path,
       type: Schema.Literal("r2"),
     }),
     endpoint: Schema.String,
     name: Schema.String,
     source: Schema.Array(
       Schema.Union([
-        Schema.Struct({
-          format: Schema.Literal("json"),
-          type: Schema.String,
-          authentication: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          cors: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                origins: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          format: Schema.Literal("json"),
-          type: Schema.String,
-        }),
+        CloudflarePipelinesWorkersPipelinesHTTPSource,
+        CloudflarePipelinesWorkersPipelinesBindingSource,
       ]),
     ),
     version: Schema.Number,
@@ -551,33 +1021,19 @@ export interface UpdatePipelineRequest {
   accountId: string;
   /** Body param: */
   destination: {
-    batch: { maxBytes?: number; maxDurationS?: number; maxRows?: number };
-    compression: { type?: "none" | "gzip" | "deflate" };
+    batch: Batch;
+    compression: Compression;
     format: "json";
-    path: {
-      bucket: string;
-      filename?: string;
-      filepath?: string;
-      prefix?: string;
-    };
+    path: Path;
     type: "r2";
-    credentials?: {
-      accessKeyId: string;
-      endpoint: string;
-      secretAccessKey: string;
-    };
+    credentials?: Credentials2;
   };
   /** Body param: Defines the name of the pipeline. */
   name: string;
   /** Body param: */
   source: (
-    | {
-        format: "json";
-        type: string;
-        authentication?: boolean;
-        cors?: { origins?: string[] };
-      }
-    | { format: "json"; type: string }
+    | CloudflarePipelinesWorkersPipelinesHTTPSource
+    | CloudflarePipelinesWorkersPipelinesBindingSource
   )[];
 }
 
@@ -585,59 +1041,18 @@ export const UpdatePipelineRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pipelineName: Schema.String.pipe(T.HttpPath("pipelineName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   destination: Schema.Struct({
-    batch: Schema.Struct({
-      maxBytes: Schema.optional(Schema.Number),
-      maxDurationS: Schema.optional(Schema.Number),
-      maxRows: Schema.optional(Schema.Number),
-    }).pipe(
-      Schema.encodeKeys({
-        maxBytes: "max_bytes",
-        maxDurationS: "max_duration_s",
-        maxRows: "max_rows",
-      }),
-    ),
-    compression: Schema.Struct({
-      type: Schema.optional(Schema.Literals(["none", "gzip", "deflate"])),
-    }),
+    batch: Batch,
+    compression: Compression,
     format: Schema.Literal("json"),
-    path: Schema.Struct({
-      bucket: Schema.String,
-      filename: Schema.optional(Schema.String),
-      filepath: Schema.optional(Schema.String),
-      prefix: Schema.optional(Schema.String),
-    }),
+    path: Path,
     type: Schema.Literal("r2"),
-    credentials: Schema.optional(
-      Schema.Struct({
-        accessKeyId: SensitiveString,
-        endpoint: Schema.String,
-        secretAccessKey: SensitiveString,
-      }).pipe(
-        Schema.encodeKeys({
-          accessKeyId: "access_key_id",
-          endpoint: "endpoint",
-          secretAccessKey: "secret_access_key",
-        }),
-      ),
-    ),
+    credentials: Schema.optional(Credentials2),
   }),
   name: Schema.String,
   source: Schema.Array(
     Schema.Union([
-      Schema.Struct({
-        format: Schema.Literal("json"),
-        type: Schema.String,
-        authentication: Schema.optional(Schema.Boolean),
-        cors: Schema.optional(
-          Schema.Struct({
-            origins: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
-      Schema.Struct({
-        format: Schema.Literal("json"),
-        type: Schema.String,
-      }),
+      CloudflarePipelinesWorkersPipelinesHTTPSource,
+      CloudflarePipelinesWorkersPipelinesBindingSource,
     ]),
   ),
 }).pipe(
@@ -654,12 +1069,7 @@ export interface UpdatePipelineResponse {
     batch: { maxBytes: number; maxDurationS: number; maxRows: number };
     compression: { type: "none" | "gzip" | "deflate" };
     format: "json";
-    path: {
-      bucket: string;
-      filename?: string | null;
-      filepath?: string | null;
-      prefix?: string | null;
-    };
+    path: Path;
     type: "r2";
   };
   /** Indicates the endpoint URL to send traffic. */
@@ -667,13 +1077,8 @@ export interface UpdatePipelineResponse {
   /** Defines the name of the pipeline. */
   name: string;
   source: (
-    | {
-        format: "json";
-        type: string;
-        authentication?: boolean | null;
-        cors?: { origins?: string[] | null } | null;
-      }
-    | { format: "json"; type: string }
+    | CloudflarePipelinesWorkersPipelinesHTTPSource
+    | CloudflarePipelinesWorkersPipelinesBindingSource
   )[];
   /** Indicates the version number of last saved configuration. */
   version: number;
@@ -698,39 +1103,15 @@ export const UpdatePipelineResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         type: Schema.Literals(["none", "gzip", "deflate"]),
       }),
       format: Schema.Literal("json"),
-      path: Schema.Struct({
-        bucket: Schema.String,
-        filename: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        filepath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        prefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
+      path: Path,
       type: Schema.Literal("r2"),
     }),
     endpoint: Schema.String,
     name: Schema.String,
     source: Schema.Array(
       Schema.Union([
-        Schema.Struct({
-          format: Schema.Literal("json"),
-          type: Schema.String,
-          authentication: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          cors: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                origins: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          format: Schema.Literal("json"),
-          type: Schema.String,
-        }),
+        CloudflarePipelinesWorkersPipelinesHTTPSource,
+        CloudflarePipelinesWorkersPipelinesBindingSource,
       ]),
     ),
     version: Schema.Number,
@@ -817,36 +1198,8 @@ export interface GetSinkResponse {
   type: "r2" | "r2_data_catalog";
   /** Defines the configuration of the R2 Sink. */
   config?:
-    | {
-        accountId: string;
-        bucket: string;
-        credentials: { accessKeyId: string; secretAccessKey: string };
-        fileNaming?: {
-          prefix?: string | null;
-          strategy?: "serial" | "uuid" | "uuid_v7" | "ulid" | null;
-          suffix?: string | null;
-        } | null;
-        jurisdiction?: string | null;
-        partitioning?: { timePattern?: string | null } | null;
-        path?: string | null;
-        rollingPolicy?: {
-          fileSizeBytes?: number | null;
-          inactivitySeconds?: number | null;
-          intervalSeconds?: number | null;
-        } | null;
-      }
-    | {
-        token: string;
-        accountId: string;
-        bucket: string;
-        tableName: string;
-        namespace?: string | null;
-        rollingPolicy?: {
-          fileSizeBytes?: number | null;
-          inactivitySeconds?: number | null;
-          intervalSeconds?: number | null;
-        } | null;
-      }
+    | CloudflarePipelinesR2Table
+    | CloudflarePipelinesR2DataCatalogTable
     | null;
   format?:
     | {
@@ -855,115 +1208,9 @@ export interface GetSinkResponse {
         timestampFormat?: "rfc3339" | "unix_millis" | null;
         unstructured?: boolean | null;
       }
-    | {
-        type: "parquet";
-        compression?:
-          | "uncompressed"
-          | "snappy"
-          | "gzip"
-          | "zstd"
-          | "lz4"
-          | null;
-        rowGroupBytes?: number | null;
-      }
+    | Parquet
     | null;
-  schema?: {
-    fields?:
-      | (
-          | {
-              type: "int32";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "int64";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "float32";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "float64";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "bool";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "string";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "binary";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "timestamp";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-              unit?:
-                | "second"
-                | "millisecond"
-                | "microsecond"
-                | "nanosecond"
-                | null;
-            }
-          | {
-              type: "json";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | unknown
-        )[]
-      | null;
-    format?:
-      | {
-          type: "json";
-          metadataKey?: string | null;
-          name?: string | null;
-          required?: boolean | null;
-          sqlName?: string | null;
-        }
-      | {
-          type: "parquet";
-          compression?:
-            | "uncompressed"
-            | "snappy"
-            | "gzip"
-            | "zstd"
-            | "lz4"
-            | null;
-          rowGroupBytes?: number | null;
-        }
-      | null;
-    inferred?: boolean | null;
-  } | null;
+  schema?: Schema2 | null;
 }
 
 export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -975,125 +1222,8 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   config: Schema.optional(
     Schema.Union([
       Schema.Union([
-        Schema.Struct({
-          accountId: Schema.String,
-          bucket: Schema.String,
-          credentials: Schema.Struct({
-            accessKeyId: SensitiveString,
-            secretAccessKey: SensitiveString,
-          }).pipe(
-            Schema.encodeKeys({
-              accessKeyId: "access_key_id",
-              secretAccessKey: "secret_access_key",
-            }),
-          ),
-          fileNaming: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                prefix: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                strategy: Schema.optional(
-                  Schema.Union([
-                    Schema.Literals(["serial", "uuid", "uuid_v7", "ulid"]),
-                    Schema.Null,
-                  ]),
-                ),
-                suffix: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          jurisdiction: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          partitioning: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                timePattern: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(Schema.encodeKeys({ timePattern: "time_pattern" })),
-              Schema.Null,
-            ]),
-          ),
-          path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          rollingPolicy: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                fileSizeBytes: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                inactivitySeconds: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                intervalSeconds: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  fileSizeBytes: "file_size_bytes",
-                  inactivitySeconds: "inactivity_seconds",
-                  intervalSeconds: "interval_seconds",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            accountId: "account_id",
-            bucket: "bucket",
-            credentials: "credentials",
-            fileNaming: "file_naming",
-            jurisdiction: "jurisdiction",
-            partitioning: "partitioning",
-            path: "path",
-            rollingPolicy: "rolling_policy",
-          }),
-        ),
-        Schema.Struct({
-          token: Schema.String,
-          accountId: Schema.String,
-          bucket: Schema.String,
-          tableName: Schema.String,
-          namespace: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          rollingPolicy: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                fileSizeBytes: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                inactivitySeconds: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                intervalSeconds: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  fileSizeBytes: "file_size_bytes",
-                  inactivitySeconds: "inactivity_seconds",
-                  intervalSeconds: "interval_seconds",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            token: "token",
-            accountId: "account_id",
-            bucket: "bucket",
-            tableName: "table_name",
-            namespace: "namespace",
-            rollingPolicy: "rolling_policy",
-          }),
-        ),
+        CloudflarePipelinesR2Table,
+        CloudflarePipelinesR2DataCatalogTable,
       ]),
       Schema.Null,
     ]),
@@ -1126,325 +1256,12 @@ export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             unstructured: "unstructured",
           }),
         ),
-        Schema.Struct({
-          type: Schema.Literal("parquet"),
-          compression: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "uncompressed",
-                "snappy",
-                "gzip",
-                "zstd",
-                "lz4",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          rowGroupBytes: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            type: "type",
-            compression: "compression",
-            rowGroupBytes: "row_group_bytes",
-          }),
-        ),
+        Parquet,
       ]),
       Schema.Null,
     ]),
   ),
-  schema: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        fields: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Union([
-                Schema.Struct({
-                  type: Schema.Literal("int32"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("int64"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("float32"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("float64"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("bool"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("string"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("binary"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("timestamp"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  unit: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals([
-                        "second",
-                        "millisecond",
-                        "microsecond",
-                        "nanosecond",
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                    unit: "unit",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("json"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Unknown,
-              ]),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        format: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Struct({
-                type: Schema.Literal("json"),
-                metadataKey: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                required: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                sqlName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  metadataKey: "metadata_key",
-                  name: "name",
-                  required: "required",
-                  sqlName: "sql_name",
-                }),
-              ),
-              Schema.Struct({
-                type: Schema.Literal("parquet"),
-                compression: Schema.optional(
-                  Schema.Union([
-                    Schema.Literals([
-                      "uncompressed",
-                      "snappy",
-                      "gzip",
-                      "zstd",
-                      "lz4",
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                rowGroupBytes: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  compression: "compression",
-                  rowGroupBytes: "row_group_bytes",
-                }),
-              ),
-            ]),
-            Schema.Null,
-          ]),
-        ),
-        inferred: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  schema: Schema.optional(Schema.Union([Schema2, Schema.Null])),
 })
   .pipe(
     Schema.encodeKeys({
@@ -1495,36 +1312,8 @@ export interface ListSinksResponse {
     name: string;
     type: "r2" | "r2_data_catalog";
     config?:
-      | {
-          accountId: string;
-          bucket: string;
-          credentials: { accessKeyId: string; secretAccessKey: string };
-          fileNaming?: {
-            prefix?: string | null;
-            strategy?: "serial" | "uuid" | "uuid_v7" | "ulid" | null;
-            suffix?: string | null;
-          } | null;
-          jurisdiction?: string | null;
-          partitioning?: { timePattern?: string | null } | null;
-          path?: string | null;
-          rollingPolicy?: {
-            fileSizeBytes?: number | null;
-            inactivitySeconds?: number | null;
-            intervalSeconds?: number | null;
-          } | null;
-        }
-      | {
-          token: string;
-          accountId: string;
-          bucket: string;
-          tableName: string;
-          namespace?: string | null;
-          rollingPolicy?: {
-            fileSizeBytes?: number | null;
-            inactivitySeconds?: number | null;
-            intervalSeconds?: number | null;
-          } | null;
-        }
+      | CloudflarePipelinesR2Table
+      | CloudflarePipelinesR2DataCatalogTable
       | null;
     format?:
       | {
@@ -1533,115 +1322,9 @@ export interface ListSinksResponse {
           timestampFormat?: "rfc3339" | "unix_millis" | null;
           unstructured?: boolean | null;
         }
-      | {
-          type: "parquet";
-          compression?:
-            | "uncompressed"
-            | "snappy"
-            | "gzip"
-            | "zstd"
-            | "lz4"
-            | null;
-          rowGroupBytes?: number | null;
-        }
+      | Parquet
       | null;
-    schema?: {
-      fields?:
-        | (
-            | {
-                type: "int32";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-              }
-            | {
-                type: "int64";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-              }
-            | {
-                type: "float32";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-              }
-            | {
-                type: "float64";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-              }
-            | {
-                type: "bool";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-              }
-            | {
-                type: "string";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-              }
-            | {
-                type: "binary";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-              }
-            | {
-                type: "timestamp";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-                unit?:
-                  | "second"
-                  | "millisecond"
-                  | "microsecond"
-                  | "nanosecond"
-                  | null;
-              }
-            | {
-                type: "json";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-              }
-            | unknown
-          )[]
-        | null;
-      format?:
-        | {
-            type: "json";
-            metadataKey?: string | null;
-            name?: string | null;
-            required?: boolean | null;
-            sqlName?: string | null;
-          }
-        | {
-            type: "parquet";
-            compression?:
-              | "uncompressed"
-              | "snappy"
-              | "gzip"
-              | "zstd"
-              | "lz4"
-              | null;
-            rowGroupBytes?: number | null;
-          }
-        | null;
-      inferred?: boolean | null;
-    } | null;
+    schema?: Schema2 | null;
   }[];
   resultInfo?: {
     count?: number | null;
@@ -1662,125 +1345,8 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       config: Schema.optional(
         Schema.Union([
           Schema.Union([
-            Schema.Struct({
-              accountId: Schema.String,
-              bucket: Schema.String,
-              credentials: Schema.Struct({
-                accessKeyId: SensitiveString,
-                secretAccessKey: SensitiveString,
-              }).pipe(
-                Schema.encodeKeys({
-                  accessKeyId: "access_key_id",
-                  secretAccessKey: "secret_access_key",
-                }),
-              ),
-              fileNaming: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    prefix: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    strategy: Schema.optional(
-                      Schema.Union([
-                        Schema.Literals(["serial", "uuid", "uuid_v7", "ulid"]),
-                        Schema.Null,
-                      ]),
-                    ),
-                    suffix: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              jurisdiction: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              partitioning: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    timePattern: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }).pipe(Schema.encodeKeys({ timePattern: "time_pattern" })),
-                  Schema.Null,
-                ]),
-              ),
-              path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              rollingPolicy: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    fileSizeBytes: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    inactivitySeconds: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    intervalSeconds: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      fileSizeBytes: "file_size_bytes",
-                      inactivitySeconds: "inactivity_seconds",
-                      intervalSeconds: "interval_seconds",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                accountId: "account_id",
-                bucket: "bucket",
-                credentials: "credentials",
-                fileNaming: "file_naming",
-                jurisdiction: "jurisdiction",
-                partitioning: "partitioning",
-                path: "path",
-                rollingPolicy: "rolling_policy",
-              }),
-            ),
-            Schema.Struct({
-              token: Schema.String,
-              accountId: Schema.String,
-              bucket: Schema.String,
-              tableName: Schema.String,
-              namespace: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              rollingPolicy: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    fileSizeBytes: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    inactivitySeconds: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    intervalSeconds: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      fileSizeBytes: "file_size_bytes",
-                      inactivitySeconds: "inactivity_seconds",
-                      intervalSeconds: "interval_seconds",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                token: "token",
-                accountId: "account_id",
-                bucket: "bucket",
-                tableName: "table_name",
-                namespace: "namespace",
-                rollingPolicy: "rolling_policy",
-              }),
-            ),
+            CloudflarePipelinesR2Table,
+            CloudflarePipelinesR2DataCatalogTable,
           ]),
           Schema.Null,
         ]),
@@ -1813,327 +1379,12 @@ export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 unstructured: "unstructured",
               }),
             ),
-            Schema.Struct({
-              type: Schema.Literal("parquet"),
-              compression: Schema.optional(
-                Schema.Union([
-                  Schema.Literals([
-                    "uncompressed",
-                    "snappy",
-                    "gzip",
-                    "zstd",
-                    "lz4",
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              rowGroupBytes: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                compression: "compression",
-                rowGroupBytes: "row_group_bytes",
-              }),
-            ),
+            Parquet,
           ]),
           Schema.Null,
         ]),
       ),
-      schema: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            fields: Schema.optional(
-              Schema.Union([
-                Schema.Array(
-                  Schema.Union([
-                    Schema.Struct({
-                      type: Schema.Literal("int32"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                      }),
-                    ),
-                    Schema.Struct({
-                      type: Schema.Literal("int64"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                      }),
-                    ),
-                    Schema.Struct({
-                      type: Schema.Literal("float32"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                      }),
-                    ),
-                    Schema.Struct({
-                      type: Schema.Literal("float64"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                      }),
-                    ),
-                    Schema.Struct({
-                      type: Schema.Literal("bool"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                      }),
-                    ),
-                    Schema.Struct({
-                      type: Schema.Literal("string"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                      }),
-                    ),
-                    Schema.Struct({
-                      type: Schema.Literal("binary"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                      }),
-                    ),
-                    Schema.Struct({
-                      type: Schema.Literal("timestamp"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      unit: Schema.optional(
-                        Schema.Union([
-                          Schema.Literals([
-                            "second",
-                            "millisecond",
-                            "microsecond",
-                            "nanosecond",
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                        unit: "unit",
-                      }),
-                    ),
-                    Schema.Struct({
-                      type: Schema.Literal("json"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                      }),
-                    ),
-                    Schema.Unknown,
-                  ]),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            format: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Struct({
-                    type: Schema.Literal("json"),
-                    metadataKey: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    name: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    required: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    sqlName: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      type: "type",
-                      metadataKey: "metadata_key",
-                      name: "name",
-                      required: "required",
-                      sqlName: "sql_name",
-                    }),
-                  ),
-                  Schema.Struct({
-                    type: Schema.Literal("parquet"),
-                    compression: Schema.optional(
-                      Schema.Union([
-                        Schema.Literals([
-                          "uncompressed",
-                          "snappy",
-                          "gzip",
-                          "zstd",
-                          "lz4",
-                        ]),
-                        Schema.Null,
-                      ]),
-                    ),
-                    rowGroupBytes: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      type: "type",
-                      compression: "compression",
-                      rowGroupBytes: "row_group_bytes",
-                    }),
-                  ),
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            inferred: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      schema: Schema.optional(Schema.Union([Schema2, Schema.Null])),
     }).pipe(
       Schema.encodeKeys({
         id: "id",
@@ -2192,36 +1443,8 @@ export const listSinks: API.PaginatedOperationMethod<
       name: string;
       type: "r2" | "r2_data_catalog";
       config?:
-        | {
-            accountId: string;
-            bucket: string;
-            credentials: { accessKeyId: string; secretAccessKey: string };
-            fileNaming?: {
-              prefix?: string | null;
-              strategy?: "serial" | "uuid" | "uuid_v7" | "ulid" | null;
-              suffix?: string | null;
-            } | null;
-            jurisdiction?: string | null;
-            partitioning?: { timePattern?: string | null } | null;
-            path?: string | null;
-            rollingPolicy?: {
-              fileSizeBytes?: number | null;
-              inactivitySeconds?: number | null;
-              intervalSeconds?: number | null;
-            } | null;
-          }
-        | {
-            token: string;
-            accountId: string;
-            bucket: string;
-            tableName: string;
-            namespace?: string | null;
-            rollingPolicy?: {
-              fileSizeBytes?: number | null;
-              inactivitySeconds?: number | null;
-              intervalSeconds?: number | null;
-            } | null;
-          }
+        | CloudflarePipelinesR2Table
+        | CloudflarePipelinesR2DataCatalogTable
         | null;
       format?:
         | {
@@ -2230,115 +1453,9 @@ export const listSinks: API.PaginatedOperationMethod<
             timestampFormat?: "rfc3339" | "unix_millis" | null;
             unstructured?: boolean | null;
           }
-        | {
-            type: "parquet";
-            compression?:
-              | "uncompressed"
-              | "snappy"
-              | "gzip"
-              | "zstd"
-              | "lz4"
-              | null;
-            rowGroupBytes?: number | null;
-          }
+        | Parquet
         | null;
-      schema?: {
-        fields?:
-          | (
-              | {
-                  type: "int32";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                }
-              | {
-                  type: "int64";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                }
-              | {
-                  type: "float32";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                }
-              | {
-                  type: "float64";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                }
-              | {
-                  type: "bool";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                }
-              | {
-                  type: "string";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                }
-              | {
-                  type: "binary";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                }
-              | {
-                  type: "timestamp";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                  unit?:
-                    | "second"
-                    | "millisecond"
-                    | "microsecond"
-                    | "nanosecond"
-                    | null;
-                }
-              | {
-                  type: "json";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                }
-              | unknown
-            )[]
-          | null;
-        format?:
-          | {
-              type: "json";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "parquet";
-              compression?:
-                | "uncompressed"
-                | "snappy"
-                | "gzip"
-                | "zstd"
-                | "lz4"
-                | null;
-              rowGroupBytes?: number | null;
-            }
-          | null;
-        inferred?: boolean | null;
-      } | null;
+      schema?: Schema2 | null;
     },
     ListSinksError,
     Credentials | HttpClient.HttpClient
@@ -2364,37 +1481,7 @@ export interface CreateSinkRequest {
   /** Body param: Specifies the type of sink. */
   type: "r2" | "r2_data_catalog";
   /** Body param: Defines the configuration of the R2 Sink. */
-  config?:
-    | {
-        accountId: string;
-        bucket: string;
-        credentials: { accessKeyId: string; secretAccessKey: string };
-        fileNaming?: {
-          prefix?: string;
-          strategy?: "serial" | "uuid" | "uuid_v7" | "ulid";
-          suffix?: string;
-        };
-        jurisdiction?: string;
-        partitioning?: { timePattern?: string };
-        path?: string;
-        rollingPolicy?: {
-          fileSizeBytes?: number;
-          inactivitySeconds?: number;
-          intervalSeconds?: number;
-        };
-      }
-    | {
-        token: string;
-        accountId: string;
-        bucket: string;
-        tableName: string;
-        namespace?: string;
-        rollingPolicy?: {
-          fileSizeBytes?: number;
-          inactivitySeconds?: number;
-          intervalSeconds?: number;
-        };
-      };
+  config?: CloudflarePipelinesR2Table | CloudflarePipelinesR2DataCatalogTable;
   /** Body param: */
   format?:
     | {
@@ -2403,95 +1490,9 @@ export interface CreateSinkRequest {
         timestampFormat?: "rfc3339" | "unix_millis";
         unstructured?: boolean;
       }
-    | {
-        type: "parquet";
-        compression?: "uncompressed" | "snappy" | "gzip" | "zstd" | "lz4";
-        rowGroupBytes?: number | null;
-      };
+    | Parquet;
   /** Body param: */
-  schema?: {
-    fields?: (
-      | {
-          type: "int32";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | {
-          type: "int64";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | {
-          type: "float32";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | {
-          type: "float64";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | {
-          type: "bool";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | {
-          type: "string";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | {
-          type: "binary";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | {
-          type: "timestamp";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-          unit?: "second" | "millisecond" | "microsecond" | "nanosecond";
-        }
-      | {
-          type: "json";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | unknown
-    )[];
-    format?:
-      | {
-          type: "json";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | {
-          type: "parquet";
-          compression?: "uncompressed" | "snappy" | "gzip" | "zstd" | "lz4";
-          rowGroupBytes?: number | null;
-        };
-    inferred?: boolean | null;
-  };
+  schema?: Schema2;
 }
 
 export const CreateSinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2500,88 +1501,8 @@ export const CreateSinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.Literals(["r2", "r2_data_catalog"]),
   config: Schema.optional(
     Schema.Union([
-      Schema.Struct({
-        accountId: Schema.String,
-        bucket: Schema.String,
-        credentials: Schema.Struct({
-          accessKeyId: SensitiveString,
-          secretAccessKey: SensitiveString,
-        }).pipe(
-          Schema.encodeKeys({
-            accessKeyId: "access_key_id",
-            secretAccessKey: "secret_access_key",
-          }),
-        ),
-        fileNaming: Schema.optional(
-          Schema.Struct({
-            prefix: Schema.optional(Schema.String),
-            strategy: Schema.optional(
-              Schema.Literals(["serial", "uuid", "uuid_v7", "ulid"]),
-            ),
-            suffix: Schema.optional(Schema.String),
-          }),
-        ),
-        jurisdiction: Schema.optional(Schema.String),
-        partitioning: Schema.optional(
-          Schema.Struct({
-            timePattern: Schema.optional(Schema.String),
-          }).pipe(Schema.encodeKeys({ timePattern: "time_pattern" })),
-        ),
-        path: Schema.optional(Schema.String),
-        rollingPolicy: Schema.optional(
-          Schema.Struct({
-            fileSizeBytes: Schema.optional(Schema.Number),
-            inactivitySeconds: Schema.optional(Schema.Number),
-            intervalSeconds: Schema.optional(Schema.Number),
-          }).pipe(
-            Schema.encodeKeys({
-              fileSizeBytes: "file_size_bytes",
-              inactivitySeconds: "inactivity_seconds",
-              intervalSeconds: "interval_seconds",
-            }),
-          ),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          accountId: "account_id",
-          bucket: "bucket",
-          credentials: "credentials",
-          fileNaming: "file_naming",
-          jurisdiction: "jurisdiction",
-          partitioning: "partitioning",
-          path: "path",
-          rollingPolicy: "rolling_policy",
-        }),
-      ),
-      Schema.Struct({
-        token: Schema.String,
-        accountId: Schema.String,
-        bucket: Schema.String,
-        tableName: Schema.String,
-        namespace: Schema.optional(Schema.String),
-        rollingPolicy: Schema.optional(
-          Schema.Struct({
-            fileSizeBytes: Schema.optional(Schema.Number),
-            inactivitySeconds: Schema.optional(Schema.Number),
-            intervalSeconds: Schema.optional(Schema.Number),
-          }).pipe(
-            Schema.encodeKeys({
-              fileSizeBytes: "file_size_bytes",
-              inactivitySeconds: "inactivity_seconds",
-              intervalSeconds: "interval_seconds",
-            }),
-          ),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          token: "token",
-          accountId: "account_id",
-          bucket: "bucket",
-          tableName: "table_name",
-          namespace: "namespace",
-          rollingPolicy: "rolling_policy",
-        }),
-      ),
+      CloudflarePipelinesR2Table,
+      CloudflarePipelinesR2DataCatalogTable,
     ]),
   ),
   format: Schema.optional(
@@ -2603,239 +1524,10 @@ export const CreateSinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           unstructured: "unstructured",
         }),
       ),
-      Schema.Struct({
-        type: Schema.Literal("parquet"),
-        compression: Schema.optional(
-          Schema.Literals(["uncompressed", "snappy", "gzip", "zstd", "lz4"]),
-        ),
-        rowGroupBytes: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          type: "type",
-          compression: "compression",
-          rowGroupBytes: "row_group_bytes",
-        }),
-      ),
+      Parquet,
     ]),
   ),
-  schema: Schema.optional(
-    Schema.Struct({
-      fields: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Struct({
-              type: Schema.Literal("int32"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-              }),
-            ),
-            Schema.Struct({
-              type: Schema.Literal("int64"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-              }),
-            ),
-            Schema.Struct({
-              type: Schema.Literal("float32"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-              }),
-            ),
-            Schema.Struct({
-              type: Schema.Literal("float64"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-              }),
-            ),
-            Schema.Struct({
-              type: Schema.Literal("bool"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-              }),
-            ),
-            Schema.Struct({
-              type: Schema.Literal("string"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-              }),
-            ),
-            Schema.Struct({
-              type: Schema.Literal("binary"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-              }),
-            ),
-            Schema.Struct({
-              type: Schema.Literal("timestamp"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-              unit: Schema.optional(
-                Schema.Literals([
-                  "second",
-                  "millisecond",
-                  "microsecond",
-                  "nanosecond",
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-                unit: "unit",
-              }),
-            ),
-            Schema.Struct({
-              type: Schema.Literal("json"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-              }),
-            ),
-            Schema.Unknown,
-          ]),
-        ),
-      ),
-      format: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            type: Schema.Literal("json"),
-            metadataKey: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            name: Schema.optional(Schema.String),
-            required: Schema.optional(Schema.Boolean),
-            sqlName: Schema.optional(Schema.String),
-          }).pipe(
-            Schema.encodeKeys({
-              type: "type",
-              metadataKey: "metadata_key",
-              name: "name",
-              required: "required",
-              sqlName: "sql_name",
-            }),
-          ),
-          Schema.Struct({
-            type: Schema.Literal("parquet"),
-            compression: Schema.optional(
-              Schema.Literals([
-                "uncompressed",
-                "snappy",
-                "gzip",
-                "zstd",
-                "lz4",
-              ]),
-            ),
-            rowGroupBytes: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              type: "type",
-              compression: "compression",
-              rowGroupBytes: "row_group_bytes",
-            }),
-          ),
-        ]),
-      ),
-      inferred: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }),
-  ),
+  schema: Schema.optional(Schema2),
 }).pipe(
   T.Http({ method: "POST", path: "/accounts/{account_id}/pipelines/v1/sinks" }),
 ) as unknown as Schema.Schema<CreateSinkRequest>;
@@ -2851,36 +1543,8 @@ export interface CreateSinkResponse {
   type: "r2" | "r2_data_catalog";
   /** R2 Data Catalog Sink */
   config?:
-    | {
-        accountId: string;
-        bucket: string;
-        credentials: { accessKeyId: string; secretAccessKey: string };
-        fileNaming?: {
-          prefix?: string | null;
-          strategy?: "serial" | "uuid" | "uuid_v7" | "ulid" | null;
-          suffix?: string | null;
-        } | null;
-        jurisdiction?: string | null;
-        partitioning?: { timePattern?: string | null } | null;
-        path?: string | null;
-        rollingPolicy?: {
-          fileSizeBytes?: number | null;
-          inactivitySeconds?: number | null;
-          intervalSeconds?: number | null;
-        } | null;
-      }
-    | {
-        token: string;
-        accountId: string;
-        bucket: string;
-        tableName: string;
-        namespace?: string | null;
-        rollingPolicy?: {
-          fileSizeBytes?: number | null;
-          inactivitySeconds?: number | null;
-          intervalSeconds?: number | null;
-        } | null;
-      }
+    | CloudflarePipelinesR2Table
+    | CloudflarePipelinesR2DataCatalogTable
     | null;
   format?:
     | {
@@ -2889,115 +1553,9 @@ export interface CreateSinkResponse {
         timestampFormat?: "rfc3339" | "unix_millis" | null;
         unstructured?: boolean | null;
       }
-    | {
-        type: "parquet";
-        compression?:
-          | "uncompressed"
-          | "snappy"
-          | "gzip"
-          | "zstd"
-          | "lz4"
-          | null;
-        rowGroupBytes?: number | null;
-      }
+    | Parquet
     | null;
-  schema?: {
-    fields?:
-      | (
-          | {
-              type: "int32";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "int64";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "float32";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "float64";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "bool";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "string";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "binary";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "timestamp";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-              unit?:
-                | "second"
-                | "millisecond"
-                | "microsecond"
-                | "nanosecond"
-                | null;
-            }
-          | {
-              type: "json";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | unknown
-        )[]
-      | null;
-    format?:
-      | {
-          type: "json";
-          metadataKey?: string | null;
-          name?: string | null;
-          required?: boolean | null;
-          sqlName?: string | null;
-        }
-      | {
-          type: "parquet";
-          compression?:
-            | "uncompressed"
-            | "snappy"
-            | "gzip"
-            | "zstd"
-            | "lz4"
-            | null;
-          rowGroupBytes?: number | null;
-        }
-      | null;
-    inferred?: boolean | null;
-  } | null;
+  schema?: Schema2 | null;
 }
 
 export const CreateSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3009,125 +1567,8 @@ export const CreateSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   config: Schema.optional(
     Schema.Union([
       Schema.Union([
-        Schema.Struct({
-          accountId: Schema.String,
-          bucket: Schema.String,
-          credentials: Schema.Struct({
-            accessKeyId: SensitiveString,
-            secretAccessKey: SensitiveString,
-          }).pipe(
-            Schema.encodeKeys({
-              accessKeyId: "access_key_id",
-              secretAccessKey: "secret_access_key",
-            }),
-          ),
-          fileNaming: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                prefix: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                strategy: Schema.optional(
-                  Schema.Union([
-                    Schema.Literals(["serial", "uuid", "uuid_v7", "ulid"]),
-                    Schema.Null,
-                  ]),
-                ),
-                suffix: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          jurisdiction: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          partitioning: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                timePattern: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(Schema.encodeKeys({ timePattern: "time_pattern" })),
-              Schema.Null,
-            ]),
-          ),
-          path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          rollingPolicy: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                fileSizeBytes: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                inactivitySeconds: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                intervalSeconds: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  fileSizeBytes: "file_size_bytes",
-                  inactivitySeconds: "inactivity_seconds",
-                  intervalSeconds: "interval_seconds",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            accountId: "account_id",
-            bucket: "bucket",
-            credentials: "credentials",
-            fileNaming: "file_naming",
-            jurisdiction: "jurisdiction",
-            partitioning: "partitioning",
-            path: "path",
-            rollingPolicy: "rolling_policy",
-          }),
-        ),
-        Schema.Struct({
-          token: Schema.String,
-          accountId: Schema.String,
-          bucket: Schema.String,
-          tableName: Schema.String,
-          namespace: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          rollingPolicy: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                fileSizeBytes: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                inactivitySeconds: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                intervalSeconds: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  fileSizeBytes: "file_size_bytes",
-                  inactivitySeconds: "inactivity_seconds",
-                  intervalSeconds: "interval_seconds",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            token: "token",
-            accountId: "account_id",
-            bucket: "bucket",
-            tableName: "table_name",
-            namespace: "namespace",
-            rollingPolicy: "rolling_policy",
-          }),
-        ),
+        CloudflarePipelinesR2Table,
+        CloudflarePipelinesR2DataCatalogTable,
       ]),
       Schema.Null,
     ]),
@@ -3160,325 +1601,12 @@ export const CreateSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             unstructured: "unstructured",
           }),
         ),
-        Schema.Struct({
-          type: Schema.Literal("parquet"),
-          compression: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "uncompressed",
-                "snappy",
-                "gzip",
-                "zstd",
-                "lz4",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          rowGroupBytes: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            type: "type",
-            compression: "compression",
-            rowGroupBytes: "row_group_bytes",
-          }),
-        ),
+        Parquet,
       ]),
       Schema.Null,
     ]),
   ),
-  schema: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        fields: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Union([
-                Schema.Struct({
-                  type: Schema.Literal("int32"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("int64"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("float32"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("float64"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("bool"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("string"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("binary"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("timestamp"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  unit: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals([
-                        "second",
-                        "millisecond",
-                        "microsecond",
-                        "nanosecond",
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                    unit: "unit",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("json"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Unknown,
-              ]),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        format: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Struct({
-                type: Schema.Literal("json"),
-                metadataKey: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                required: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                sqlName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  metadataKey: "metadata_key",
-                  name: "name",
-                  required: "required",
-                  sqlName: "sql_name",
-                }),
-              ),
-              Schema.Struct({
-                type: Schema.Literal("parquet"),
-                compression: Schema.optional(
-                  Schema.Union([
-                    Schema.Literals([
-                      "uncompressed",
-                      "snappy",
-                      "gzip",
-                      "zstd",
-                      "lz4",
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                rowGroupBytes: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  compression: "compression",
-                  rowGroupBytes: "row_group_bytes",
-                }),
-              ),
-            ]),
-            Schema.Null,
-          ]),
-        ),
-        inferred: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  schema: Schema.optional(Schema.Union([Schema2, Schema.Null])),
 })
   .pipe(
     Schema.encodeKeys({
@@ -3671,17 +1799,13 @@ export interface GetStreamResponse {
   /** Indicates a unique identifier for this stream. */
   id: string;
   createdAt: string;
-  http: {
-    authentication: boolean;
-    enabled: boolean;
-    cors?: { origins?: string[] | null } | null;
-  };
+  http: Http;
   modifiedAt: string;
   /** Indicates the name of the Stream. */
   name: string;
   /** Indicates the current version of this stream. */
   version: number;
-  workerBinding: { enabled: boolean };
+  workerBinding: WorkerBinding;
   /** Indicates the endpoint URL of this stream. */
   endpoint?: string | null;
   format?:
@@ -3691,140 +1815,19 @@ export interface GetStreamResponse {
         timestampFormat?: "rfc3339" | "unix_millis" | null;
         unstructured?: boolean | null;
       }
-    | {
-        type: "parquet";
-        compression?:
-          | "uncompressed"
-          | "snappy"
-          | "gzip"
-          | "zstd"
-          | "lz4"
-          | null;
-        rowGroupBytes?: number | null;
-      }
+    | Parquet
     | null;
-  schema?: {
-    fields?:
-      | (
-          | {
-              type: "int32";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "int64";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "float32";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "float64";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "bool";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "string";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "binary";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "timestamp";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-              unit?:
-                | "second"
-                | "millisecond"
-                | "microsecond"
-                | "nanosecond"
-                | null;
-            }
-          | {
-              type: "json";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | unknown
-        )[]
-      | null;
-    format?:
-      | {
-          type: "json";
-          metadataKey?: string | null;
-          name?: string | null;
-          required?: boolean | null;
-          sqlName?: string | null;
-        }
-      | {
-          type: "parquet";
-          compression?:
-            | "uncompressed"
-            | "snappy"
-            | "gzip"
-            | "zstd"
-            | "lz4"
-            | null;
-          rowGroupBytes?: number | null;
-        }
-      | null;
-    inferred?: boolean | null;
-  } | null;
+  schema?: Schema2 | null;
 }
 
 export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   createdAt: Schema.String,
-  http: Schema.Struct({
-    authentication: Schema.Boolean,
-    enabled: Schema.Boolean,
-    cors: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          origins: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
-  }),
+  http: Http,
   modifiedAt: Schema.String,
   name: Schema.String,
   version: Schema.Number,
-  workerBinding: Schema.Struct({
-    enabled: Schema.Boolean,
-  }),
+  workerBinding: WorkerBinding,
   endpoint: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   format: Schema.optional(
     Schema.Union([
@@ -3854,325 +1857,12 @@ export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             unstructured: "unstructured",
           }),
         ),
-        Schema.Struct({
-          type: Schema.Literal("parquet"),
-          compression: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "uncompressed",
-                "snappy",
-                "gzip",
-                "zstd",
-                "lz4",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          rowGroupBytes: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            type: "type",
-            compression: "compression",
-            rowGroupBytes: "row_group_bytes",
-          }),
-        ),
+        Parquet,
       ]),
       Schema.Null,
     ]),
   ),
-  schema: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        fields: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Union([
-                Schema.Struct({
-                  type: Schema.Literal("int32"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("int64"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("float32"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("float64"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("bool"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("string"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("binary"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("timestamp"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  unit: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals([
-                        "second",
-                        "millisecond",
-                        "microsecond",
-                        "nanosecond",
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                    unit: "unit",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("json"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Unknown,
-              ]),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        format: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Struct({
-                type: Schema.Literal("json"),
-                metadataKey: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                required: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                sqlName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  metadataKey: "metadata_key",
-                  name: "name",
-                  required: "required",
-                  sqlName: "sql_name",
-                }),
-              ),
-              Schema.Struct({
-                type: Schema.Literal("parquet"),
-                compression: Schema.optional(
-                  Schema.Union([
-                    Schema.Literals([
-                      "uncompressed",
-                      "snappy",
-                      "gzip",
-                      "zstd",
-                      "lz4",
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                rowGroupBytes: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  compression: "compression",
-                  rowGroupBytes: "row_group_bytes",
-                }),
-              ),
-            ]),
-            Schema.Null,
-          ]),
-        ),
-        inferred: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  schema: Schema.optional(Schema.Union([Schema2, Schema.Null])),
 })
   .pipe(
     Schema.encodeKeys({
@@ -4226,15 +1916,11 @@ export interface ListStreamsResponse {
   result: {
     id: string;
     createdAt: string;
-    http: {
-      authentication: boolean;
-      enabled: boolean;
-      cors?: { origins?: string[] | null } | null;
-    };
+    http: Http;
     modifiedAt: string;
     name: string;
     version: number;
-    workerBinding: { enabled: boolean };
+    workerBinding: WorkerBinding;
     endpoint?: string | null;
     format?:
       | {
@@ -4243,115 +1929,9 @@ export interface ListStreamsResponse {
           timestampFormat?: "rfc3339" | "unix_millis" | null;
           unstructured?: boolean | null;
         }
-      | {
-          type: "parquet";
-          compression?:
-            | "uncompressed"
-            | "snappy"
-            | "gzip"
-            | "zstd"
-            | "lz4"
-            | null;
-          rowGroupBytes?: number | null;
-        }
+      | Parquet
       | null;
-    schema?: {
-      fields?:
-        | (
-            | {
-                type: "int32";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-              }
-            | {
-                type: "int64";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-              }
-            | {
-                type: "float32";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-              }
-            | {
-                type: "float64";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-              }
-            | {
-                type: "bool";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-              }
-            | {
-                type: "string";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-              }
-            | {
-                type: "binary";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-              }
-            | {
-                type: "timestamp";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-                unit?:
-                  | "second"
-                  | "millisecond"
-                  | "microsecond"
-                  | "nanosecond"
-                  | null;
-              }
-            | {
-                type: "json";
-                metadataKey?: string | null;
-                name?: string | null;
-                required?: boolean | null;
-                sqlName?: string | null;
-              }
-            | unknown
-          )[]
-        | null;
-      format?:
-        | {
-            type: "json";
-            metadataKey?: string | null;
-            name?: string | null;
-            required?: boolean | null;
-            sqlName?: string | null;
-          }
-        | {
-            type: "parquet";
-            compression?:
-              | "uncompressed"
-              | "snappy"
-              | "gzip"
-              | "zstd"
-              | "lz4"
-              | null;
-            rowGroupBytes?: number | null;
-          }
-        | null;
-      inferred?: boolean | null;
-    } | null;
+    schema?: Schema2 | null;
   }[];
   resultInfo?: {
     count?: number | null;
@@ -4366,26 +1946,11 @@ export const ListStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
-      http: Schema.Struct({
-        authentication: Schema.Boolean,
-        enabled: Schema.Boolean,
-        cors: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              origins: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }),
+      http: Http,
       modifiedAt: Schema.String,
       name: Schema.String,
       version: Schema.Number,
-      workerBinding: Schema.Struct({
-        enabled: Schema.Boolean,
-      }),
+      workerBinding: WorkerBinding,
       endpoint: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       format: Schema.optional(
         Schema.Union([
@@ -4415,327 +1980,12 @@ export const ListStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 unstructured: "unstructured",
               }),
             ),
-            Schema.Struct({
-              type: Schema.Literal("parquet"),
-              compression: Schema.optional(
-                Schema.Union([
-                  Schema.Literals([
-                    "uncompressed",
-                    "snappy",
-                    "gzip",
-                    "zstd",
-                    "lz4",
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              rowGroupBytes: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                compression: "compression",
-                rowGroupBytes: "row_group_bytes",
-              }),
-            ),
+            Parquet,
           ]),
           Schema.Null,
         ]),
       ),
-      schema: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            fields: Schema.optional(
-              Schema.Union([
-                Schema.Array(
-                  Schema.Union([
-                    Schema.Struct({
-                      type: Schema.Literal("int32"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                      }),
-                    ),
-                    Schema.Struct({
-                      type: Schema.Literal("int64"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                      }),
-                    ),
-                    Schema.Struct({
-                      type: Schema.Literal("float32"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                      }),
-                    ),
-                    Schema.Struct({
-                      type: Schema.Literal("float64"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                      }),
-                    ),
-                    Schema.Struct({
-                      type: Schema.Literal("bool"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                      }),
-                    ),
-                    Schema.Struct({
-                      type: Schema.Literal("string"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                      }),
-                    ),
-                    Schema.Struct({
-                      type: Schema.Literal("binary"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                      }),
-                    ),
-                    Schema.Struct({
-                      type: Schema.Literal("timestamp"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      unit: Schema.optional(
-                        Schema.Union([
-                          Schema.Literals([
-                            "second",
-                            "millisecond",
-                            "microsecond",
-                            "nanosecond",
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                        unit: "unit",
-                      }),
-                    ),
-                    Schema.Struct({
-                      type: Schema.Literal("json"),
-                      metadataKey: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      required: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      sqlName: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        type: "type",
-                        metadataKey: "metadata_key",
-                        name: "name",
-                        required: "required",
-                        sqlName: "sql_name",
-                      }),
-                    ),
-                    Schema.Unknown,
-                  ]),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            format: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Struct({
-                    type: Schema.Literal("json"),
-                    metadataKey: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    name: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    required: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    sqlName: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      type: "type",
-                      metadataKey: "metadata_key",
-                      name: "name",
-                      required: "required",
-                      sqlName: "sql_name",
-                    }),
-                  ),
-                  Schema.Struct({
-                    type: Schema.Literal("parquet"),
-                    compression: Schema.optional(
-                      Schema.Union([
-                        Schema.Literals([
-                          "uncompressed",
-                          "snappy",
-                          "gzip",
-                          "zstd",
-                          "lz4",
-                        ]),
-                        Schema.Null,
-                      ]),
-                    ),
-                    rowGroupBytes: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      type: "type",
-                      compression: "compression",
-                      rowGroupBytes: "row_group_bytes",
-                    }),
-                  ),
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            inferred: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      schema: Schema.optional(Schema.Union([Schema2, Schema.Null])),
     }).pipe(
       Schema.encodeKeys({
         id: "id",
@@ -4792,15 +2042,11 @@ export const listStreams: API.PaginatedOperationMethod<
     {
       id: string;
       createdAt: string;
-      http: {
-        authentication: boolean;
-        enabled: boolean;
-        cors?: { origins?: string[] | null } | null;
-      };
+      http: Http;
       modifiedAt: string;
       name: string;
       version: number;
-      workerBinding: { enabled: boolean };
+      workerBinding: WorkerBinding;
       endpoint?: string | null;
       format?:
         | {
@@ -4809,115 +2055,9 @@ export const listStreams: API.PaginatedOperationMethod<
             timestampFormat?: "rfc3339" | "unix_millis" | null;
             unstructured?: boolean | null;
           }
-        | {
-            type: "parquet";
-            compression?:
-              | "uncompressed"
-              | "snappy"
-              | "gzip"
-              | "zstd"
-              | "lz4"
-              | null;
-            rowGroupBytes?: number | null;
-          }
+        | Parquet
         | null;
-      schema?: {
-        fields?:
-          | (
-              | {
-                  type: "int32";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                }
-              | {
-                  type: "int64";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                }
-              | {
-                  type: "float32";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                }
-              | {
-                  type: "float64";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                }
-              | {
-                  type: "bool";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                }
-              | {
-                  type: "string";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                }
-              | {
-                  type: "binary";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                }
-              | {
-                  type: "timestamp";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                  unit?:
-                    | "second"
-                    | "millisecond"
-                    | "microsecond"
-                    | "nanosecond"
-                    | null;
-                }
-              | {
-                  type: "json";
-                  metadataKey?: string | null;
-                  name?: string | null;
-                  required?: boolean | null;
-                  sqlName?: string | null;
-                }
-              | unknown
-            )[]
-          | null;
-        format?:
-          | {
-              type: "json";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "parquet";
-              compression?:
-                | "uncompressed"
-                | "snappy"
-                | "gzip"
-                | "zstd"
-                | "lz4"
-                | null;
-              rowGroupBytes?: number | null;
-            }
-          | null;
-        inferred?: boolean | null;
-      } | null;
+      schema?: Schema2 | null;
     },
     ListStreamsError,
     Credentials | HttpClient.HttpClient
@@ -4948,103 +2088,13 @@ export interface CreateStreamRequest {
         timestampFormat?: "rfc3339" | "unix_millis";
         unstructured?: boolean;
       }
-    | {
-        type: "parquet";
-        compression?: "uncompressed" | "snappy" | "gzip" | "zstd" | "lz4";
-        rowGroupBytes?: number | null;
-      };
+    | Parquet;
   /** Body param: */
-  http?: {
-    authentication: boolean;
-    enabled: boolean;
-    cors?: { origins?: string[] };
-  };
+  http?: Http;
   /** Body param: */
-  schema?: {
-    fields?: (
-      | {
-          type: "int32";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | {
-          type: "int64";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | {
-          type: "float32";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | {
-          type: "float64";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | {
-          type: "bool";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | {
-          type: "string";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | {
-          type: "binary";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | {
-          type: "timestamp";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-          unit?: "second" | "millisecond" | "microsecond" | "nanosecond";
-        }
-      | {
-          type: "json";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | unknown
-    )[];
-    format?:
-      | {
-          type: "json";
-          metadataKey?: string | null;
-          name?: string;
-          required?: boolean;
-          sqlName?: string;
-        }
-      | {
-          type: "parquet";
-          compression?: "uncompressed" | "snappy" | "gzip" | "zstd" | "lz4";
-          rowGroupBytes?: number | null;
-        };
-    inferred?: boolean | null;
-  };
+  schema?: Schema2;
   /** Body param: */
-  workerBinding?: { enabled: boolean };
+  workerBinding?: WorkerBinding;
 }
 
 export const CreateStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5069,255 +2119,12 @@ export const CreateStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           unstructured: "unstructured",
         }),
       ),
-      Schema.Struct({
-        type: Schema.Literal("parquet"),
-        compression: Schema.optional(
-          Schema.Literals(["uncompressed", "snappy", "gzip", "zstd", "lz4"]),
-        ),
-        rowGroupBytes: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          type: "type",
-          compression: "compression",
-          rowGroupBytes: "row_group_bytes",
-        }),
-      ),
+      Parquet,
     ]),
   ),
-  http: Schema.optional(
-    Schema.Struct({
-      authentication: Schema.Boolean,
-      enabled: Schema.Boolean,
-      cors: Schema.optional(
-        Schema.Struct({
-          origins: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-    }),
-  ),
-  schema: Schema.optional(
-    Schema.Struct({
-      fields: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Struct({
-              type: Schema.Literal("int32"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-              }),
-            ),
-            Schema.Struct({
-              type: Schema.Literal("int64"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-              }),
-            ),
-            Schema.Struct({
-              type: Schema.Literal("float32"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-              }),
-            ),
-            Schema.Struct({
-              type: Schema.Literal("float64"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-              }),
-            ),
-            Schema.Struct({
-              type: Schema.Literal("bool"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-              }),
-            ),
-            Schema.Struct({
-              type: Schema.Literal("string"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-              }),
-            ),
-            Schema.Struct({
-              type: Schema.Literal("binary"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-              }),
-            ),
-            Schema.Struct({
-              type: Schema.Literal("timestamp"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-              unit: Schema.optional(
-                Schema.Literals([
-                  "second",
-                  "millisecond",
-                  "microsecond",
-                  "nanosecond",
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-                unit: "unit",
-              }),
-            ),
-            Schema.Struct({
-              type: Schema.Literal("json"),
-              metadataKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.String),
-              required: Schema.optional(Schema.Boolean),
-              sqlName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                metadataKey: "metadata_key",
-                name: "name",
-                required: "required",
-                sqlName: "sql_name",
-              }),
-            ),
-            Schema.Unknown,
-          ]),
-        ),
-      ),
-      format: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            type: Schema.Literal("json"),
-            metadataKey: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            name: Schema.optional(Schema.String),
-            required: Schema.optional(Schema.Boolean),
-            sqlName: Schema.optional(Schema.String),
-          }).pipe(
-            Schema.encodeKeys({
-              type: "type",
-              metadataKey: "metadata_key",
-              name: "name",
-              required: "required",
-              sqlName: "sql_name",
-            }),
-          ),
-          Schema.Struct({
-            type: Schema.Literal("parquet"),
-            compression: Schema.optional(
-              Schema.Literals([
-                "uncompressed",
-                "snappy",
-                "gzip",
-                "zstd",
-                "lz4",
-              ]),
-            ),
-            rowGroupBytes: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              type: "type",
-              compression: "compression",
-              rowGroupBytes: "row_group_bytes",
-            }),
-          ),
-        ]),
-      ),
-      inferred: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }),
-  ),
-  workerBinding: Schema.optional(
-    Schema.Struct({
-      enabled: Schema.Boolean,
-    }),
-  ),
+  http: Schema.optional(Http),
+  schema: Schema.optional(Schema2),
+  workerBinding: Schema.optional(WorkerBinding),
 }).pipe(
   Schema.encodeKeys({
     name: "name",
@@ -5336,17 +2143,13 @@ export interface CreateStreamResponse {
   /** Indicates a unique identifier for this stream. */
   id: string;
   createdAt: string;
-  http: {
-    authentication: boolean;
-    enabled: boolean;
-    cors?: { origins?: string[] | null } | null;
-  };
+  http: Http;
   modifiedAt: string;
   /** Indicates the name of the Stream. */
   name: string;
   /** Indicates the current version of this stream. */
   version: number;
-  workerBinding: { enabled: boolean };
+  workerBinding: WorkerBinding;
   /** Indicates the endpoint URL of this stream. */
   endpoint?: string | null;
   format?:
@@ -5356,140 +2159,19 @@ export interface CreateStreamResponse {
         timestampFormat?: "rfc3339" | "unix_millis" | null;
         unstructured?: boolean | null;
       }
-    | {
-        type: "parquet";
-        compression?:
-          | "uncompressed"
-          | "snappy"
-          | "gzip"
-          | "zstd"
-          | "lz4"
-          | null;
-        rowGroupBytes?: number | null;
-      }
+    | Parquet
     | null;
-  schema?: {
-    fields?:
-      | (
-          | {
-              type: "int32";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "int64";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "float32";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "float64";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "bool";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "string";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "binary";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | {
-              type: "timestamp";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-              unit?:
-                | "second"
-                | "millisecond"
-                | "microsecond"
-                | "nanosecond"
-                | null;
-            }
-          | {
-              type: "json";
-              metadataKey?: string | null;
-              name?: string | null;
-              required?: boolean | null;
-              sqlName?: string | null;
-            }
-          | unknown
-        )[]
-      | null;
-    format?:
-      | {
-          type: "json";
-          metadataKey?: string | null;
-          name?: string | null;
-          required?: boolean | null;
-          sqlName?: string | null;
-        }
-      | {
-          type: "parquet";
-          compression?:
-            | "uncompressed"
-            | "snappy"
-            | "gzip"
-            | "zstd"
-            | "lz4"
-            | null;
-          rowGroupBytes?: number | null;
-        }
-      | null;
-    inferred?: boolean | null;
-  } | null;
+  schema?: Schema2 | null;
 }
 
 export const CreateStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   createdAt: Schema.String,
-  http: Schema.Struct({
-    authentication: Schema.Boolean,
-    enabled: Schema.Boolean,
-    cors: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          origins: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
-  }),
+  http: Http,
   modifiedAt: Schema.String,
   name: Schema.String,
   version: Schema.Number,
-  workerBinding: Schema.Struct({
-    enabled: Schema.Boolean,
-  }),
+  workerBinding: WorkerBinding,
   endpoint: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   format: Schema.optional(
     Schema.Union([
@@ -5519,325 +2201,12 @@ export const CreateStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             unstructured: "unstructured",
           }),
         ),
-        Schema.Struct({
-          type: Schema.Literal("parquet"),
-          compression: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "uncompressed",
-                "snappy",
-                "gzip",
-                "zstd",
-                "lz4",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          rowGroupBytes: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            type: "type",
-            compression: "compression",
-            rowGroupBytes: "row_group_bytes",
-          }),
-        ),
+        Parquet,
       ]),
       Schema.Null,
     ]),
   ),
-  schema: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        fields: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Union([
-                Schema.Struct({
-                  type: Schema.Literal("int32"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("int64"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("float32"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("float64"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("bool"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("string"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("binary"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("timestamp"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  unit: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals([
-                        "second",
-                        "millisecond",
-                        "microsecond",
-                        "nanosecond",
-                      ]),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                    unit: "unit",
-                  }),
-                ),
-                Schema.Struct({
-                  type: Schema.Literal("json"),
-                  metadataKey: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  required: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  sqlName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    type: "type",
-                    metadataKey: "metadata_key",
-                    name: "name",
-                    required: "required",
-                    sqlName: "sql_name",
-                  }),
-                ),
-                Schema.Unknown,
-              ]),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        format: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Struct({
-                type: Schema.Literal("json"),
-                metadataKey: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                required: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                sqlName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  metadataKey: "metadata_key",
-                  name: "name",
-                  required: "required",
-                  sqlName: "sql_name",
-                }),
-              ),
-              Schema.Struct({
-                type: Schema.Literal("parquet"),
-                compression: Schema.optional(
-                  Schema.Union([
-                    Schema.Literals([
-                      "uncompressed",
-                      "snappy",
-                      "gzip",
-                      "zstd",
-                      "lz4",
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                rowGroupBytes: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  compression: "compression",
-                  rowGroupBytes: "row_group_bytes",
-                }),
-              ),
-            ]),
-            Schema.Null,
-          ]),
-        ),
-        inferred: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  schema: Schema.optional(Schema.Union([Schema2, Schema.Null])),
 })
   .pipe(
     Schema.encodeKeys({
@@ -5878,34 +2247,16 @@ export interface PatchStreamRequest {
   /** Path param: Specifies the public ID of the account. */
   accountId: string;
   /** Body param: */
-  http?: {
-    authentication: boolean;
-    enabled: boolean;
-    cors?: { origins?: string[] };
-  };
+  http?: Http;
   /** Body param: */
-  workerBinding?: { enabled: boolean };
+  workerBinding?: WorkerBinding;
 }
 
 export const PatchStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   streamId: Schema.String.pipe(T.HttpPath("streamId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  http: Schema.optional(
-    Schema.Struct({
-      authentication: Schema.Boolean,
-      enabled: Schema.Boolean,
-      cors: Schema.optional(
-        Schema.Struct({
-          origins: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-    }),
-  ),
-  workerBinding: Schema.optional(
-    Schema.Struct({
-      enabled: Schema.Boolean,
-    }),
-  ),
+  http: Schema.optional(Http),
+  workerBinding: Schema.optional(WorkerBinding),
 }).pipe(
   Schema.encodeKeys({ http: "http", workerBinding: "worker_binding" }),
   T.Http({
@@ -5918,17 +2269,13 @@ export interface PatchStreamResponse {
   /** Indicates a unique identifier for this stream. */
   id: string;
   createdAt: string;
-  http: {
-    authentication: boolean;
-    enabled: boolean;
-    cors?: { origins?: string[] | null } | null;
-  };
+  http: Http;
   modifiedAt: string;
   /** Indicates the name of the Stream. */
   name: string;
   /** Indicates the current version of this stream. */
   version: number;
-  workerBinding: { enabled: boolean };
+  workerBinding: WorkerBinding;
   /** Indicates the endpoint URL of this stream. */
   endpoint?: string | null;
   format?:
@@ -5938,43 +2285,18 @@ export interface PatchStreamResponse {
         timestampFormat?: "rfc3339" | "unix_millis" | null;
         unstructured?: boolean | null;
       }
-    | {
-        type: "parquet";
-        compression?:
-          | "uncompressed"
-          | "snappy"
-          | "gzip"
-          | "zstd"
-          | "lz4"
-          | null;
-        rowGroupBytes?: number | null;
-      }
+    | Parquet
     | null;
 }
 
 export const PatchStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   createdAt: Schema.String,
-  http: Schema.Struct({
-    authentication: Schema.Boolean,
-    enabled: Schema.Boolean,
-    cors: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          origins: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
-  }),
+  http: Http,
   modifiedAt: Schema.String,
   name: Schema.String,
   version: Schema.Number,
-  workerBinding: Schema.Struct({
-    enabled: Schema.Boolean,
-  }),
+  workerBinding: WorkerBinding,
   endpoint: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   format: Schema.optional(
     Schema.Union([
@@ -6004,30 +2326,7 @@ export const PatchStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             unstructured: "unstructured",
           }),
         ),
-        Schema.Struct({
-          type: Schema.Literal("parquet"),
-          compression: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "uncompressed",
-                "snappy",
-                "gzip",
-                "zstd",
-                "lz4",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          rowGroupBytes: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            type: "type",
-            compression: "compression",
-            rowGroupBytes: "row_group_bytes",
-          }),
-        ),
+        Parquet,
       ]),
       Schema.Null,
     ]),

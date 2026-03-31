@@ -48,6 +48,233 @@ export class ValidationError extends Schema.TaggedErrorClass<ValidationError>()(
 T.applyErrorMatchers(ValidationError, [{ code: 7001 }]);
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface ChatCompletionsEndpoint {
+  disabled?: boolean | null;
+}
+
+export const ChatCompletionsEndpoint: Schema.Schema<ChatCompletionsEndpoint> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<ChatCompletionsEndpoint>;
+
+export interface Mcp {
+  disabled?: boolean | null;
+}
+
+export const Mcp: Schema.Schema<Mcp> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Mcp>;
+
+export interface Metadata {
+  createdFromAisearchWizard?: boolean | null;
+  workerDomain?: string | null;
+}
+
+export const Metadata: Schema.Schema<Metadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      createdFromAisearchWizard: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      workerDomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        createdFromAisearchWizard: "created_from_aisearch_wizard",
+        workerDomain: "worker_domain",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Metadata>;
+
+export interface ParseOptions {
+  includeHeaders?: Record<string, unknown> | null;
+  includeImages?: boolean | null;
+  useBrowserRendering?: boolean | null;
+}
+
+export const ParseOptions: Schema.Schema<ParseOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      includeHeaders: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      includeImages: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      useBrowserRendering: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        includeHeaders: "include_headers",
+        includeImages: "include_images",
+        useBrowserRendering: "use_browser_rendering",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ParseOptions>;
+
+export interface PublicEndpointParams {
+  authorizedHosts?: string[] | null;
+  chatCompletionsEndpoint?: SearchEndpoint | null;
+  enabled?: boolean | null;
+  mcp?: SearchEndpoint | null;
+  rateLimit?: RateLimit | null;
+  searchEndpoint?: SearchEndpoint | null;
+}
+
+export const PublicEndpointParams: Schema.Schema<PublicEndpointParams> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      authorizedHosts: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      chatCompletionsEndpoint: Schema.optional(
+        Schema.Union([SearchEndpoint, Schema.Null]),
+      ),
+      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      mcp: Schema.optional(Schema.Union([SearchEndpoint, Schema.Null])),
+      rateLimit: Schema.optional(Schema.Union([RateLimit, Schema.Null])),
+      searchEndpoint: Schema.optional(
+        Schema.Union([SearchEndpoint, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        authorizedHosts: "authorized_hosts",
+        chatCompletionsEndpoint: "chat_completions_endpoint",
+        enabled: "enabled",
+        mcp: "mcp",
+        rateLimit: "rate_limit",
+        searchEndpoint: "search_endpoint",
+      }),
+    ),
+  ) as unknown as Schema.Schema<PublicEndpointParams>;
+
+export interface RateLimit {
+  periodMs?: number | null;
+  requests?: number | null;
+  technique?: "fixed" | "sliding" | null;
+}
+
+export const RateLimit: Schema.Schema<RateLimit> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      periodMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      requests: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      technique: Schema.optional(
+        Schema.Union([Schema.Literals(["fixed", "sliding"]), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        periodMs: "period_ms",
+        requests: "requests",
+        technique: "technique",
+      }),
+    ),
+  ) as unknown as Schema.Schema<RateLimit>;
+
+export interface SearchEndpoint {
+  disabled?: boolean | null;
+}
+
+export const SearchEndpoint: Schema.Schema<SearchEndpoint> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<SearchEndpoint>;
+
+export interface SourceParams {
+  excludeItems?: string[] | null;
+  includeItems?: string[] | null;
+  prefix?: string | null;
+  r2Jurisdiction?: string | null;
+  webCrawler?: WebCrawler | null;
+}
+
+export const SourceParams: Schema.Schema<SourceParams> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      excludeItems: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      includeItems: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      prefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      r2Jurisdiction: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      webCrawler: Schema.optional(Schema.Union([WebCrawler, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        excludeItems: "exclude_items",
+        includeItems: "include_items",
+        prefix: "prefix",
+        r2Jurisdiction: "r2_jurisdiction",
+        webCrawler: "web_crawler",
+      }),
+    ),
+  ) as unknown as Schema.Schema<SourceParams>;
+
+export interface StoreOptions {
+  storageId: string;
+  r2Jurisdiction?: string | null;
+  storageType?: "r2" | null;
+}
+
+export const StoreOptions: Schema.Schema<StoreOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      storageId: Schema.String,
+      r2Jurisdiction: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      storageType: Schema.optional(
+        Schema.Union([Schema.Literal("r2"), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        storageId: "storage_id",
+        r2Jurisdiction: "r2_jurisdiction",
+        storageType: "storage_type",
+      }),
+    ),
+  ) as unknown as Schema.Schema<StoreOptions>;
+
+export interface WebCrawler {
+  parseOptions?: ParseOptions | null;
+  parseType?: "sitemap" | "feed-rss" | null;
+  storeOptions?: StoreOptions | null;
+}
+
+export const WebCrawler: Schema.Schema<WebCrawler> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      parseOptions: Schema.optional(Schema.Union([ParseOptions, Schema.Null])),
+      parseType: Schema.optional(
+        Schema.Union([Schema.Literals(["sitemap", "feed-rss"]), Schema.Null]),
+      ),
+      storeOptions: Schema.optional(Schema.Union([StoreOptions, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        parseOptions: "parse_options",
+        parseType: "parse_type",
+        storeOptions: "store_options",
+      }),
+    ),
+  ) as unknown as Schema.Schema<WebCrawler>;
+
+// =============================================================================
 // Instance
 // =============================================================================
 
@@ -132,25 +359,11 @@ export interface ListInstancesResponse {
     hybridSearchEnabled?: boolean | null;
     lastActivity?: string | null;
     maxNumResults?: number | null;
-    metadata?: {
-      createdFromAisearchWizard?: boolean | null;
-      workerDomain?: string | null;
-    } | null;
+    metadata?: Metadata | null;
     modifiedBy?: string | null;
     paused?: boolean | null;
     publicEndpointId?: string | null;
-    publicEndpointParams?: {
-      authorizedHosts?: string[] | null;
-      chatCompletionsEndpoint?: { disabled?: boolean | null } | null;
-      enabled?: boolean | null;
-      mcp?: { disabled?: boolean | null } | null;
-      rateLimit?: {
-        periodMs?: number | null;
-        requests?: number | null;
-        technique?: "fixed" | "sliding" | null;
-      } | null;
-      searchEndpoint?: { disabled?: boolean | null } | null;
-    } | null;
+    publicEndpointParams?: PublicEndpointParams | null;
     reranking?: boolean | null;
     rerankingModel?: "@cf/baai/bge-reranker-base" | "" | null;
     rewriteModel?:
@@ -183,25 +396,7 @@ export interface ListInstancesResponse {
       | null;
     rewriteQuery?: boolean | null;
     scoreThreshold?: number | null;
-    sourceParams?: {
-      excludeItems?: string[] | null;
-      includeItems?: string[] | null;
-      prefix?: string | null;
-      r2Jurisdiction?: string | null;
-      webCrawler?: {
-        parseOptions?: {
-          includeHeaders?: Record<string, unknown> | null;
-          includeImages?: boolean | null;
-          useBrowserRendering?: boolean | null;
-        } | null;
-        parseType?: "sitemap" | "feed-rss" | null;
-        storeOptions?: {
-          storageId: string;
-          r2Jurisdiction?: string | null;
-          storageType?: "r2" | null;
-        } | null;
-      } | null;
-    } | null;
+    sourceParams?: SourceParams | null;
     status?: string | null;
     summarization?: boolean | null;
     summarizationModel?:
@@ -332,105 +527,14 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       maxNumResults: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
       ),
-      metadata: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            createdFromAisearchWizard: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            workerDomain: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              createdFromAisearchWizard: "created_from_aisearch_wizard",
-              workerDomain: "worker_domain",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
       modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       publicEndpointId: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
       ),
       publicEndpointParams: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            authorizedHosts: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            chatCompletionsEndpoint: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  disabled: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            enabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            mcp: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  disabled: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            rateLimit: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  periodMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  requests: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  technique: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["fixed", "sliding"]),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    periodMs: "period_ms",
-                    requests: "requests",
-                    technique: "technique",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            searchEndpoint: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  disabled: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              authorizedHosts: "authorized_hosts",
-              chatCompletionsEndpoint: "chat_completions_endpoint",
-              enabled: "enabled",
-              mcp: "mcp",
-              rateLimit: "rate_limit",
-              searchEndpoint: "search_endpoint",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([PublicEndpointParams, Schema.Null]),
       ),
       reranking: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       rerankingModel: Schema.optional(
@@ -478,95 +582,7 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       scoreThreshold: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
       ),
-      sourceParams: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            excludeItems: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            includeItems: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            prefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            r2Jurisdiction: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            webCrawler: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  parseOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        includeHeaders: Schema.optional(
-                          Schema.Union([
-                            Schema.Record(Schema.String, Schema.Unknown),
-                            Schema.Null,
-                          ]),
-                        ),
-                        includeImages: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        useBrowserRendering: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          includeHeaders: "include_headers",
-                          includeImages: "include_images",
-                          useBrowserRendering: "use_browser_rendering",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  parseType: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["sitemap", "feed-rss"]),
-                      Schema.Null,
-                    ]),
-                  ),
-                  storeOptions: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        storageId: Schema.String,
-                        r2Jurisdiction: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        storageType: Schema.optional(
-                          Schema.Union([Schema.Literal("r2"), Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          storageId: "storage_id",
-                          r2Jurisdiction: "r2_jurisdiction",
-                          storageType: "storage_type",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    parseOptions: "parse_options",
-                    parseType: "parse_type",
-                    storeOptions: "store_options",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              excludeItems: "exclude_items",
-              includeItems: "include_items",
-              prefix: "prefix",
-              r2Jurisdiction: "r2_jurisdiction",
-              webCrawler: "web_crawler",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
       status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       summarization: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -767,25 +783,11 @@ export const listInstances: API.PaginatedOperationMethod<
       hybridSearchEnabled?: boolean | null;
       lastActivity?: string | null;
       maxNumResults?: number | null;
-      metadata?: {
-        createdFromAisearchWizard?: boolean | null;
-        workerDomain?: string | null;
-      } | null;
+      metadata?: Metadata | null;
       modifiedBy?: string | null;
       paused?: boolean | null;
       publicEndpointId?: string | null;
-      publicEndpointParams?: {
-        authorizedHosts?: string[] | null;
-        chatCompletionsEndpoint?: { disabled?: boolean | null } | null;
-        enabled?: boolean | null;
-        mcp?: { disabled?: boolean | null } | null;
-        rateLimit?: {
-          periodMs?: number | null;
-          requests?: number | null;
-          technique?: "fixed" | "sliding" | null;
-        } | null;
-        searchEndpoint?: { disabled?: boolean | null } | null;
-      } | null;
+      publicEndpointParams?: PublicEndpointParams | null;
       reranking?: boolean | null;
       rerankingModel?: "@cf/baai/bge-reranker-base" | "" | null;
       rewriteModel?:
@@ -818,25 +820,7 @@ export const listInstances: API.PaginatedOperationMethod<
         | null;
       rewriteQuery?: boolean | null;
       scoreThreshold?: number | null;
-      sourceParams?: {
-        excludeItems?: string[] | null;
-        includeItems?: string[] | null;
-        prefix?: string | null;
-        r2Jurisdiction?: string | null;
-        webCrawler?: {
-          parseOptions?: {
-            includeHeaders?: Record<string, unknown> | null;
-            includeImages?: boolean | null;
-            useBrowserRendering?: boolean | null;
-          } | null;
-          parseType?: "sitemap" | "feed-rss" | null;
-          storeOptions?: {
-            storageId: string;
-            r2Jurisdiction?: string | null;
-            storageType?: "r2" | null;
-          } | null;
-        } | null;
-      } | null;
+      sourceParams?: SourceParams | null;
       status?: string | null;
       summarization?: boolean | null;
       summarizationModel?:
@@ -950,20 +934,9 @@ export interface CreateInstanceRequest {
   /** Body param: */
   maxNumResults?: number;
   /** Body param: */
-  metadata?: { createdFromAisearchWizard?: boolean; workerDomain?: string };
+  metadata?: Metadata;
   /** Body param: */
-  publicEndpointParams?: {
-    authorizedHosts?: string[];
-    chatCompletionsEndpoint?: { disabled?: boolean };
-    enabled?: boolean;
-    mcp?: { disabled?: boolean };
-    rateLimit?: {
-      periodMs?: number;
-      requests?: number;
-      technique?: "fixed" | "sliding";
-    };
-    searchEndpoint?: { disabled?: boolean };
-  };
+  publicEndpointParams?: PublicEndpointParams;
   /** Body param: */
   reranking?: boolean;
   /** Body param: */
@@ -1001,25 +974,7 @@ export interface CreateInstanceRequest {
   /** Body param: */
   scoreThreshold?: number;
   /** Body param: */
-  sourceParams?: {
-    excludeItems?: string[];
-    includeItems?: string[];
-    prefix?: string;
-    r2Jurisdiction?: string;
-    webCrawler?: {
-      parseOptions?: {
-        includeHeaders?: Record<string, unknown>;
-        includeImages?: boolean;
-        useBrowserRendering?: boolean;
-      };
-      parseType?: "sitemap" | "feed-rss";
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string;
-        storageType?: "r2";
-      };
-    };
-  };
+  sourceParams?: SourceParams;
 }
 
 export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1076,60 +1031,8 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   hybridSearchEnabled: Schema.optional(Schema.Boolean),
   maxNumResults: Schema.optional(Schema.Number),
-  metadata: Schema.optional(
-    Schema.Struct({
-      createdFromAisearchWizard: Schema.optional(Schema.Boolean),
-      workerDomain: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        createdFromAisearchWizard: "created_from_aisearch_wizard",
-        workerDomain: "worker_domain",
-      }),
-    ),
-  ),
-  publicEndpointParams: Schema.optional(
-    Schema.Struct({
-      authorizedHosts: Schema.optional(Schema.Array(Schema.String)),
-      chatCompletionsEndpoint: Schema.optional(
-        Schema.Struct({
-          disabled: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      enabled: Schema.optional(Schema.Boolean),
-      mcp: Schema.optional(
-        Schema.Struct({
-          disabled: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      rateLimit: Schema.optional(
-        Schema.Struct({
-          periodMs: Schema.optional(Schema.Number),
-          requests: Schema.optional(Schema.Number),
-          technique: Schema.optional(Schema.Literals(["fixed", "sliding"])),
-        }).pipe(
-          Schema.encodeKeys({
-            periodMs: "period_ms",
-            requests: "requests",
-            technique: "technique",
-          }),
-        ),
-      ),
-      searchEndpoint: Schema.optional(
-        Schema.Struct({
-          disabled: Schema.optional(Schema.Boolean),
-        }),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        authorizedHosts: "authorized_hosts",
-        chatCompletionsEndpoint: "chat_completions_endpoint",
-        enabled: "enabled",
-        mcp: "mcp",
-        rateLimit: "rate_limit",
-        searchEndpoint: "search_endpoint",
-      }),
-    ),
-  ),
+  metadata: Schema.optional(Metadata),
+  publicEndpointParams: Schema.optional(PublicEndpointParams),
   reranking: Schema.optional(Schema.Boolean),
   rerankingModel: Schema.optional(
     Schema.Literals(["@cf/baai/bge-reranker-base", ""]),
@@ -1166,61 +1069,7 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   rewriteQuery: Schema.optional(Schema.Boolean),
   scoreThreshold: Schema.optional(Schema.Number),
-  sourceParams: Schema.optional(
-    Schema.Struct({
-      excludeItems: Schema.optional(Schema.Array(Schema.String)),
-      includeItems: Schema.optional(Schema.Array(Schema.String)),
-      prefix: Schema.optional(Schema.String),
-      r2Jurisdiction: Schema.optional(Schema.String),
-      webCrawler: Schema.optional(
-        Schema.Struct({
-          parseOptions: Schema.optional(
-            Schema.Struct({
-              includeHeaders: Schema.optional(
-                Schema.Record(Schema.String, Schema.Unknown),
-              ),
-              includeImages: Schema.optional(Schema.Boolean),
-              useBrowserRendering: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                includeHeaders: "include_headers",
-                includeImages: "include_images",
-                useBrowserRendering: "use_browser_rendering",
-              }),
-            ),
-          ),
-          parseType: Schema.optional(Schema.Literals(["sitemap", "feed-rss"])),
-          storeOptions: Schema.optional(
-            Schema.Struct({
-              storageId: Schema.String,
-              r2Jurisdiction: Schema.optional(Schema.String),
-              storageType: Schema.optional(Schema.Literal("r2")),
-            }).pipe(
-              Schema.encodeKeys({
-                storageId: "storage_id",
-                r2Jurisdiction: "r2_jurisdiction",
-                storageType: "storage_type",
-              }),
-            ),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            parseOptions: "parse_options",
-            parseType: "parse_type",
-            storeOptions: "store_options",
-          }),
-        ),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        excludeItems: "exclude_items",
-        includeItems: "include_items",
-        prefix: "prefix",
-        r2Jurisdiction: "r2_jurisdiction",
-        webCrawler: "web_crawler",
-      }),
-    ),
-  ),
+  sourceParams: Schema.optional(SourceParams),
 }).pipe(
   Schema.encodeKeys({
     id: "id",
@@ -1317,25 +1166,11 @@ export interface CreateInstanceResponse {
   hybridSearchEnabled?: boolean | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: {
-    createdFromAisearchWizard?: boolean | null;
-    workerDomain?: string | null;
-  } | null;
+  metadata?: Metadata | null;
   modifiedBy?: string | null;
   paused?: boolean | null;
   publicEndpointId?: string | null;
-  publicEndpointParams?: {
-    authorizedHosts?: string[] | null;
-    chatCompletionsEndpoint?: { disabled?: boolean | null } | null;
-    enabled?: boolean | null;
-    mcp?: { disabled?: boolean | null } | null;
-    rateLimit?: {
-      periodMs?: number | null;
-      requests?: number | null;
-      technique?: "fixed" | "sliding" | null;
-    } | null;
-    searchEndpoint?: { disabled?: boolean | null } | null;
-  } | null;
+  publicEndpointParams?: PublicEndpointParams | null;
   reranking?: boolean | null;
   rerankingModel?: "@cf/baai/bge-reranker-base" | "" | null;
   rewriteModel?:
@@ -1368,25 +1203,7 @@ export interface CreateInstanceResponse {
     | null;
   rewriteQuery?: boolean | null;
   scoreThreshold?: number | null;
-  sourceParams?: {
-    excludeItems?: string[] | null;
-    includeItems?: string[] | null;
-    prefix?: string | null;
-    r2Jurisdiction?: string | null;
-    webCrawler?: {
-      parseOptions?: {
-        includeHeaders?: Record<string, unknown> | null;
-        includeImages?: boolean | null;
-        useBrowserRendering?: boolean | null;
-      } | null;
-      parseType?: "sitemap" | "feed-rss" | null;
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string | null;
-        storageType?: "r2" | null;
-      } | null;
-    } | null;
-  } | null;
+  sourceParams?: SourceParams | null;
   status?: string | null;
   summarization?: boolean | null;
   summarizationModel?:
@@ -1505,103 +1322,14 @@ export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     lastActivity: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     maxNumResults: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    metadata: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          createdFromAisearchWizard: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          workerDomain: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            createdFromAisearchWizard: "created_from_aisearch_wizard",
-            workerDomain: "worker_domain",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
     modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     publicEndpointId: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
     ),
     publicEndpointParams: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          authorizedHosts: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          chatCompletionsEndpoint: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                disabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          mcp: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                disabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          rateLimit: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                periodMs: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                requests: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                technique: Schema.optional(
-                  Schema.Union([
-                    Schema.Literals(["fixed", "sliding"]),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  periodMs: "period_ms",
-                  requests: "requests",
-                  technique: "technique",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          searchEndpoint: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                disabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            authorizedHosts: "authorized_hosts",
-            chatCompletionsEndpoint: "chat_completions_endpoint",
-            enabled: "enabled",
-            mcp: "mcp",
-            rateLimit: "rate_limit",
-            searchEndpoint: "search_endpoint",
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([PublicEndpointParams, Schema.Null]),
     ),
     reranking: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     rerankingModel: Schema.optional(
@@ -1645,95 +1373,7 @@ export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     rewriteQuery: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     scoreThreshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    sourceParams: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          excludeItems: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          includeItems: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          prefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          r2Jurisdiction: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          webCrawler: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                parseOptions: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      includeHeaders: Schema.optional(
-                        Schema.Union([
-                          Schema.Record(Schema.String, Schema.Unknown),
-                          Schema.Null,
-                        ]),
-                      ),
-                      includeImages: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      useBrowserRendering: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        includeHeaders: "include_headers",
-                        includeImages: "include_images",
-                        useBrowserRendering: "use_browser_rendering",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                parseType: Schema.optional(
-                  Schema.Union([
-                    Schema.Literals(["sitemap", "feed-rss"]),
-                    Schema.Null,
-                  ]),
-                ),
-                storeOptions: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      storageId: Schema.String,
-                      r2Jurisdiction: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      storageType: Schema.optional(
-                        Schema.Union([Schema.Literal("r2"), Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        storageId: "storage_id",
-                        r2Jurisdiction: "r2_jurisdiction",
-                        storageType: "storage_type",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  parseOptions: "parse_options",
-                  parseType: "parse_type",
-                  storeOptions: "store_options",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            excludeItems: "exclude_items",
-            includeItems: "include_items",
-            prefix: "prefix",
-            r2Jurisdiction: "r2_jurisdiction",
-            webCrawler: "web_crawler",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
     status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     summarization: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     summarizationModel: Schema.optional(
@@ -1913,22 +1553,11 @@ export interface UpdateInstanceRequest {
   /** Body param: */
   maxNumResults?: number;
   /** Body param: */
-  metadata?: { createdFromAisearchWizard?: boolean; workerDomain?: string };
+  metadata?: Metadata;
   /** Body param: */
   paused?: boolean;
   /** Body param: */
-  publicEndpointParams?: {
-    authorizedHosts?: string[];
-    chatCompletionsEndpoint?: { disabled?: boolean };
-    enabled?: boolean;
-    mcp?: { disabled?: boolean };
-    rateLimit?: {
-      periodMs?: number;
-      requests?: number;
-      technique?: "fixed" | "sliding";
-    };
-    searchEndpoint?: { disabled?: boolean };
-  };
+  publicEndpointParams?: PublicEndpointParams;
   /** Body param: */
   reranking?: boolean;
   /** Body param: */
@@ -1966,25 +1595,7 @@ export interface UpdateInstanceRequest {
   /** Body param: */
   scoreThreshold?: number;
   /** Body param: */
-  sourceParams?: {
-    excludeItems?: string[];
-    includeItems?: string[];
-    prefix?: string;
-    r2Jurisdiction?: string;
-    webCrawler?: {
-      parseOptions?: {
-        includeHeaders?: Record<string, unknown>;
-        includeImages?: boolean;
-        useBrowserRendering?: boolean;
-      };
-      parseType?: "sitemap" | "feed-rss";
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string;
-        storageType?: "r2";
-      };
-    };
-  };
+  sourceParams?: SourceParams;
   /** Body param: */
   summarization?: boolean;
   /** Body param: */
@@ -2085,61 +1696,9 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   hybridSearchEnabled: Schema.optional(Schema.Boolean),
   maxNumResults: Schema.optional(Schema.Number),
-  metadata: Schema.optional(
-    Schema.Struct({
-      createdFromAisearchWizard: Schema.optional(Schema.Boolean),
-      workerDomain: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        createdFromAisearchWizard: "created_from_aisearch_wizard",
-        workerDomain: "worker_domain",
-      }),
-    ),
-  ),
+  metadata: Schema.optional(Metadata),
   paused: Schema.optional(Schema.Boolean),
-  publicEndpointParams: Schema.optional(
-    Schema.Struct({
-      authorizedHosts: Schema.optional(Schema.Array(Schema.String)),
-      chatCompletionsEndpoint: Schema.optional(
-        Schema.Struct({
-          disabled: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      enabled: Schema.optional(Schema.Boolean),
-      mcp: Schema.optional(
-        Schema.Struct({
-          disabled: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      rateLimit: Schema.optional(
-        Schema.Struct({
-          periodMs: Schema.optional(Schema.Number),
-          requests: Schema.optional(Schema.Number),
-          technique: Schema.optional(Schema.Literals(["fixed", "sliding"])),
-        }).pipe(
-          Schema.encodeKeys({
-            periodMs: "period_ms",
-            requests: "requests",
-            technique: "technique",
-          }),
-        ),
-      ),
-      searchEndpoint: Schema.optional(
-        Schema.Struct({
-          disabled: Schema.optional(Schema.Boolean),
-        }),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        authorizedHosts: "authorized_hosts",
-        chatCompletionsEndpoint: "chat_completions_endpoint",
-        enabled: "enabled",
-        mcp: "mcp",
-        rateLimit: "rate_limit",
-        searchEndpoint: "search_endpoint",
-      }),
-    ),
-  ),
+  publicEndpointParams: Schema.optional(PublicEndpointParams),
   reranking: Schema.optional(Schema.Boolean),
   rerankingModel: Schema.optional(
     Schema.Literals(["@cf/baai/bge-reranker-base", ""]),
@@ -2176,61 +1735,7 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   rewriteQuery: Schema.optional(Schema.Boolean),
   scoreThreshold: Schema.optional(Schema.Number),
-  sourceParams: Schema.optional(
-    Schema.Struct({
-      excludeItems: Schema.optional(Schema.Array(Schema.String)),
-      includeItems: Schema.optional(Schema.Array(Schema.String)),
-      prefix: Schema.optional(Schema.String),
-      r2Jurisdiction: Schema.optional(Schema.String),
-      webCrawler: Schema.optional(
-        Schema.Struct({
-          parseOptions: Schema.optional(
-            Schema.Struct({
-              includeHeaders: Schema.optional(
-                Schema.Record(Schema.String, Schema.Unknown),
-              ),
-              includeImages: Schema.optional(Schema.Boolean),
-              useBrowserRendering: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                includeHeaders: "include_headers",
-                includeImages: "include_images",
-                useBrowserRendering: "use_browser_rendering",
-              }),
-            ),
-          ),
-          parseType: Schema.optional(Schema.Literals(["sitemap", "feed-rss"])),
-          storeOptions: Schema.optional(
-            Schema.Struct({
-              storageId: Schema.String,
-              r2Jurisdiction: Schema.optional(Schema.String),
-              storageType: Schema.optional(Schema.Literal("r2")),
-            }).pipe(
-              Schema.encodeKeys({
-                storageId: "storage_id",
-                r2Jurisdiction: "r2_jurisdiction",
-                storageType: "storage_type",
-              }),
-            ),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            parseOptions: "parse_options",
-            parseType: "parse_type",
-            storeOptions: "store_options",
-          }),
-        ),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        excludeItems: "exclude_items",
-        includeItems: "include_items",
-        prefix: "prefix",
-        r2Jurisdiction: "r2_jurisdiction",
-        webCrawler: "web_crawler",
-      }),
-    ),
-  ),
+  sourceParams: Schema.optional(SourceParams),
   summarization: Schema.optional(Schema.Boolean),
   summarizationModel: Schema.optional(
     Schema.Literals([
@@ -2367,25 +1872,11 @@ export interface UpdateInstanceResponse {
   hybridSearchEnabled?: boolean | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: {
-    createdFromAisearchWizard?: boolean | null;
-    workerDomain?: string | null;
-  } | null;
+  metadata?: Metadata | null;
   modifiedBy?: string | null;
   paused?: boolean | null;
   publicEndpointId?: string | null;
-  publicEndpointParams?: {
-    authorizedHosts?: string[] | null;
-    chatCompletionsEndpoint?: { disabled?: boolean | null } | null;
-    enabled?: boolean | null;
-    mcp?: { disabled?: boolean | null } | null;
-    rateLimit?: {
-      periodMs?: number | null;
-      requests?: number | null;
-      technique?: "fixed" | "sliding" | null;
-    } | null;
-    searchEndpoint?: { disabled?: boolean | null } | null;
-  } | null;
+  publicEndpointParams?: PublicEndpointParams | null;
   reranking?: boolean | null;
   rerankingModel?: "@cf/baai/bge-reranker-base" | "" | null;
   rewriteModel?:
@@ -2418,25 +1909,7 @@ export interface UpdateInstanceResponse {
     | null;
   rewriteQuery?: boolean | null;
   scoreThreshold?: number | null;
-  sourceParams?: {
-    excludeItems?: string[] | null;
-    includeItems?: string[] | null;
-    prefix?: string | null;
-    r2Jurisdiction?: string | null;
-    webCrawler?: {
-      parseOptions?: {
-        includeHeaders?: Record<string, unknown> | null;
-        includeImages?: boolean | null;
-        useBrowserRendering?: boolean | null;
-      } | null;
-      parseType?: "sitemap" | "feed-rss" | null;
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string | null;
-        storageType?: "r2" | null;
-      } | null;
-    } | null;
-  } | null;
+  sourceParams?: SourceParams | null;
   status?: string | null;
   summarization?: boolean | null;
   summarizationModel?:
@@ -2555,103 +2028,14 @@ export const UpdateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     lastActivity: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     maxNumResults: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    metadata: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          createdFromAisearchWizard: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          workerDomain: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            createdFromAisearchWizard: "created_from_aisearch_wizard",
-            workerDomain: "worker_domain",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
     modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     publicEndpointId: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
     ),
     publicEndpointParams: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          authorizedHosts: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          chatCompletionsEndpoint: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                disabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          mcp: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                disabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          rateLimit: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                periodMs: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                requests: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                technique: Schema.optional(
-                  Schema.Union([
-                    Schema.Literals(["fixed", "sliding"]),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  periodMs: "period_ms",
-                  requests: "requests",
-                  technique: "technique",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          searchEndpoint: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                disabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            authorizedHosts: "authorized_hosts",
-            chatCompletionsEndpoint: "chat_completions_endpoint",
-            enabled: "enabled",
-            mcp: "mcp",
-            rateLimit: "rate_limit",
-            searchEndpoint: "search_endpoint",
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([PublicEndpointParams, Schema.Null]),
     ),
     reranking: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     rerankingModel: Schema.optional(
@@ -2695,95 +2079,7 @@ export const UpdateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     rewriteQuery: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     scoreThreshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    sourceParams: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          excludeItems: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          includeItems: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          prefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          r2Jurisdiction: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          webCrawler: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                parseOptions: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      includeHeaders: Schema.optional(
-                        Schema.Union([
-                          Schema.Record(Schema.String, Schema.Unknown),
-                          Schema.Null,
-                        ]),
-                      ),
-                      includeImages: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      useBrowserRendering: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        includeHeaders: "include_headers",
-                        includeImages: "include_images",
-                        useBrowserRendering: "use_browser_rendering",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                parseType: Schema.optional(
-                  Schema.Union([
-                    Schema.Literals(["sitemap", "feed-rss"]),
-                    Schema.Null,
-                  ]),
-                ),
-                storeOptions: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      storageId: Schema.String,
-                      r2Jurisdiction: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      storageType: Schema.optional(
-                        Schema.Union([Schema.Literal("r2"), Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        storageId: "storage_id",
-                        r2Jurisdiction: "r2_jurisdiction",
-                        storageType: "storage_type",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  parseOptions: "parse_options",
-                  parseType: "parse_type",
-                  storeOptions: "store_options",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            excludeItems: "exclude_items",
-            includeItems: "include_items",
-            prefix: "prefix",
-            r2Jurisdiction: "r2_jurisdiction",
-            webCrawler: "web_crawler",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
     status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     summarization: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     summarizationModel: Schema.optional(
@@ -2982,25 +2278,11 @@ export interface DeleteInstanceResponse {
   hybridSearchEnabled?: boolean | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: {
-    createdFromAisearchWizard?: boolean | null;
-    workerDomain?: string | null;
-  } | null;
+  metadata?: Metadata | null;
   modifiedBy?: string | null;
   paused?: boolean | null;
   publicEndpointId?: string | null;
-  publicEndpointParams?: {
-    authorizedHosts?: string[] | null;
-    chatCompletionsEndpoint?: { disabled?: boolean | null } | null;
-    enabled?: boolean | null;
-    mcp?: { disabled?: boolean | null } | null;
-    rateLimit?: {
-      periodMs?: number | null;
-      requests?: number | null;
-      technique?: "fixed" | "sliding" | null;
-    } | null;
-    searchEndpoint?: { disabled?: boolean | null } | null;
-  } | null;
+  publicEndpointParams?: PublicEndpointParams | null;
   reranking?: boolean | null;
   rerankingModel?: "@cf/baai/bge-reranker-base" | "" | null;
   rewriteModel?:
@@ -3033,25 +2315,7 @@ export interface DeleteInstanceResponse {
     | null;
   rewriteQuery?: boolean | null;
   scoreThreshold?: number | null;
-  sourceParams?: {
-    excludeItems?: string[] | null;
-    includeItems?: string[] | null;
-    prefix?: string | null;
-    r2Jurisdiction?: string | null;
-    webCrawler?: {
-      parseOptions?: {
-        includeHeaders?: Record<string, unknown> | null;
-        includeImages?: boolean | null;
-        useBrowserRendering?: boolean | null;
-      } | null;
-      parseType?: "sitemap" | "feed-rss" | null;
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string | null;
-        storageType?: "r2" | null;
-      } | null;
-    } | null;
-  } | null;
+  sourceParams?: SourceParams | null;
   status?: string | null;
   summarization?: boolean | null;
   summarizationModel?:
@@ -3170,103 +2434,14 @@ export const DeleteInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     lastActivity: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     maxNumResults: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    metadata: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          createdFromAisearchWizard: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          workerDomain: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            createdFromAisearchWizard: "created_from_aisearch_wizard",
-            workerDomain: "worker_domain",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
     modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     publicEndpointId: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
     ),
     publicEndpointParams: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          authorizedHosts: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          chatCompletionsEndpoint: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                disabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          mcp: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                disabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          rateLimit: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                periodMs: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                requests: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                technique: Schema.optional(
-                  Schema.Union([
-                    Schema.Literals(["fixed", "sliding"]),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  periodMs: "period_ms",
-                  requests: "requests",
-                  technique: "technique",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          searchEndpoint: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                disabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            authorizedHosts: "authorized_hosts",
-            chatCompletionsEndpoint: "chat_completions_endpoint",
-            enabled: "enabled",
-            mcp: "mcp",
-            rateLimit: "rate_limit",
-            searchEndpoint: "search_endpoint",
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([PublicEndpointParams, Schema.Null]),
     ),
     reranking: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     rerankingModel: Schema.optional(
@@ -3310,95 +2485,7 @@ export const DeleteInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     rewriteQuery: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     scoreThreshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    sourceParams: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          excludeItems: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          includeItems: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          prefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          r2Jurisdiction: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          webCrawler: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                parseOptions: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      includeHeaders: Schema.optional(
-                        Schema.Union([
-                          Schema.Record(Schema.String, Schema.Unknown),
-                          Schema.Null,
-                        ]),
-                      ),
-                      includeImages: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      useBrowserRendering: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        includeHeaders: "include_headers",
-                        includeImages: "include_images",
-                        useBrowserRendering: "use_browser_rendering",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                parseType: Schema.optional(
-                  Schema.Union([
-                    Schema.Literals(["sitemap", "feed-rss"]),
-                    Schema.Null,
-                  ]),
-                ),
-                storeOptions: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      storageId: Schema.String,
-                      r2Jurisdiction: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      storageType: Schema.optional(
-                        Schema.Union([Schema.Literal("r2"), Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        storageId: "storage_id",
-                        r2Jurisdiction: "r2_jurisdiction",
-                        storageType: "storage_type",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  parseOptions: "parse_options",
-                  parseType: "parse_type",
-                  storeOptions: "store_options",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            excludeItems: "exclude_items",
-            includeItems: "include_items",
-            prefix: "prefix",
-            r2Jurisdiction: "r2_jurisdiction",
-            webCrawler: "web_crawler",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
     status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     summarization: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     summarizationModel: Schema.optional(
@@ -3597,25 +2684,11 @@ export interface ReadInstanceResponse {
   hybridSearchEnabled?: boolean | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: {
-    createdFromAisearchWizard?: boolean | null;
-    workerDomain?: string | null;
-  } | null;
+  metadata?: Metadata | null;
   modifiedBy?: string | null;
   paused?: boolean | null;
   publicEndpointId?: string | null;
-  publicEndpointParams?: {
-    authorizedHosts?: string[] | null;
-    chatCompletionsEndpoint?: { disabled?: boolean | null } | null;
-    enabled?: boolean | null;
-    mcp?: { disabled?: boolean | null } | null;
-    rateLimit?: {
-      periodMs?: number | null;
-      requests?: number | null;
-      technique?: "fixed" | "sliding" | null;
-    } | null;
-    searchEndpoint?: { disabled?: boolean | null } | null;
-  } | null;
+  publicEndpointParams?: PublicEndpointParams | null;
   reranking?: boolean | null;
   rerankingModel?: "@cf/baai/bge-reranker-base" | "" | null;
   rewriteModel?:
@@ -3648,25 +2721,7 @@ export interface ReadInstanceResponse {
     | null;
   rewriteQuery?: boolean | null;
   scoreThreshold?: number | null;
-  sourceParams?: {
-    excludeItems?: string[] | null;
-    includeItems?: string[] | null;
-    prefix?: string | null;
-    r2Jurisdiction?: string | null;
-    webCrawler?: {
-      parseOptions?: {
-        includeHeaders?: Record<string, unknown> | null;
-        includeImages?: boolean | null;
-        useBrowserRendering?: boolean | null;
-      } | null;
-      parseType?: "sitemap" | "feed-rss" | null;
-      storeOptions?: {
-        storageId: string;
-        r2Jurisdiction?: string | null;
-        storageType?: "r2" | null;
-      } | null;
-    } | null;
-  } | null;
+  sourceParams?: SourceParams | null;
   status?: string | null;
   summarization?: boolean | null;
   summarizationModel?:
@@ -3784,101 +2839,12 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   lastActivity: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   maxNumResults: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  metadata: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        createdFromAisearchWizard: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        workerDomain: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          createdFromAisearchWizard: "created_from_aisearch_wizard",
-          workerDomain: "worker_domain",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
   modifiedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   publicEndpointId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   publicEndpointParams: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        authorizedHosts: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-        chatCompletionsEndpoint: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              disabled: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        mcp: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              disabled: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        rateLimit: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              periodMs: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              requests: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              technique: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["fixed", "sliding"]),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                periodMs: "period_ms",
-                requests: "requests",
-                technique: "technique",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        searchEndpoint: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              disabled: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          authorizedHosts: "authorized_hosts",
-          chatCompletionsEndpoint: "chat_completions_endpoint",
-          enabled: "enabled",
-          mcp: "mcp",
-          rateLimit: "rate_limit",
-          searchEndpoint: "search_endpoint",
-        }),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([PublicEndpointParams, Schema.Null]),
   ),
   reranking: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   rerankingModel: Schema.optional(
@@ -3922,95 +2888,7 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   rewriteQuery: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   scoreThreshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  sourceParams: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        excludeItems: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-        includeItems: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-        prefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        r2Jurisdiction: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        webCrawler: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              parseOptions: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    includeHeaders: Schema.optional(
-                      Schema.Union([
-                        Schema.Record(Schema.String, Schema.Unknown),
-                        Schema.Null,
-                      ]),
-                    ),
-                    includeImages: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    useBrowserRendering: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      includeHeaders: "include_headers",
-                      includeImages: "include_images",
-                      useBrowserRendering: "use_browser_rendering",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              parseType: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["sitemap", "feed-rss"]),
-                  Schema.Null,
-                ]),
-              ),
-              storeOptions: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    storageId: Schema.String,
-                    r2Jurisdiction: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    storageType: Schema.optional(
-                      Schema.Union([Schema.Literal("r2"), Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      storageId: "storage_id",
-                      r2Jurisdiction: "r2_jurisdiction",
-                      storageType: "storage_type",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                parseOptions: "parse_options",
-                parseType: "parse_type",
-                storeOptions: "store_options",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          excludeItems: "exclude_items",
-          includeItems: "include_items",
-          prefix: "prefix",
-          r2Jurisdiction: "r2_jurisdiction",
-          webCrawler: "web_crawler",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
   status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   summarization: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   summarizationModel: Schema.optional(

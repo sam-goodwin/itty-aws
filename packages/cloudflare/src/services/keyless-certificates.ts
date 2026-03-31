@@ -14,6 +14,36 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Tunnel {
+  privateIp: string;
+  vnetId: string;
+}
+
+export const Tunnel: Schema.Schema<Tunnel> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      privateIp: Schema.String,
+      vnetId: Schema.String,
+    }).pipe(Schema.encodeKeys({ privateIp: "private_ip", vnetId: "vnet_id" })),
+  ) as unknown as Schema.Schema<Tunnel>;
+
+export interface TunnelParam {
+  privateIp: string;
+  vnetId: string;
+}
+
+export const TunnelParam: Schema.Schema<TunnelParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      privateIp: Schema.String,
+      vnetId: Schema.String,
+    }).pipe(Schema.encodeKeys({ privateIp: "private_ip", vnetId: "vnet_id" })),
+  ) as unknown as Schema.Schema<TunnelParam>;
+
+// =============================================================================
 // KeylessCertificate
 // =============================================================================
 
@@ -56,7 +86,7 @@ export interface GetKeylessCertificateResponse {
   /** Status of the Keyless SSL. */
   status: "active" | "deleted";
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel */
-  tunnel?: { privateIp: string; vnetId: string } | null;
+  tunnel?: Tunnel | null;
 }
 
 export const GetKeylessCertificateResponse =
@@ -70,17 +100,7 @@ export const GetKeylessCertificateResponse =
     permissions: Schema.Array(Schema.String),
     port: Schema.Number,
     status: Schema.Literals(["active", "deleted"]),
-    tunnel: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          privateIp: Schema.String,
-          vnetId: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({ privateIp: "private_ip", vnetId: "vnet_id" }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    tunnel: Schema.optional(Schema.Union([Tunnel, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
@@ -136,7 +156,7 @@ export interface ListKeylessCertificatesResponse {
     permissions: string[];
     port: number;
     status: "active" | "deleted";
-    tunnel?: { privateIp: string; vnetId: string } | null;
+    tunnel?: Tunnel | null;
   }[];
 }
 
@@ -153,17 +173,7 @@ export const ListKeylessCertificatesResponse =
         permissions: Schema.Array(Schema.String),
         port: Schema.Number,
         status: Schema.Literals(["active", "deleted"]),
-        tunnel: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              privateIp: Schema.String,
-              vnetId: Schema.String,
-            }).pipe(
-              Schema.encodeKeys({ privateIp: "private_ip", vnetId: "vnet_id" }),
-            ),
-            Schema.Null,
-          ]),
-        ),
+        tunnel: Schema.optional(Schema.Union([Tunnel, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
           id: "id",
@@ -207,7 +217,7 @@ export const listKeylessCertificates: API.PaginatedOperationMethod<
       permissions: string[];
       port: number;
       status: "active" | "deleted";
-      tunnel?: { privateIp: string; vnetId: string } | null;
+      tunnel?: Tunnel | null;
     },
     ListKeylessCertificatesError,
     Credentials | HttpClient.HttpClient
@@ -236,7 +246,7 @@ export interface CreateKeylessCertificateRequest {
   /** Body param: The keyless SSL name. */
   name?: string;
   /** Body param: Configuration for using Keyless SSL through a Cloudflare Tunnel */
-  tunnel?: { privateIp: string; vnetId: string };
+  tunnel?: Tunnel;
 }
 
 export const CreateKeylessCertificateRequest =
@@ -249,14 +259,7 @@ export const CreateKeylessCertificateRequest =
       Schema.Literals(["ubiquitous", "optimal", "force"]),
     ),
     name: Schema.optional(Schema.String),
-    tunnel: Schema.optional(
-      Schema.Struct({
-        privateIp: Schema.String,
-        vnetId: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({ privateIp: "private_ip", vnetId: "vnet_id" }),
-      ),
-    ),
+    tunnel: Schema.optional(Tunnel),
   }).pipe(
     Schema.encodeKeys({
       certificate: "certificate",
@@ -289,7 +292,7 @@ export interface CreateKeylessCertificateResponse {
   /** Status of the Keyless SSL. */
   status: "active" | "deleted";
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel */
-  tunnel?: { privateIp: string; vnetId: string } | null;
+  tunnel?: Tunnel | null;
 }
 
 export const CreateKeylessCertificateResponse =
@@ -303,17 +306,7 @@ export const CreateKeylessCertificateResponse =
     permissions: Schema.Array(Schema.String),
     port: Schema.Number,
     status: Schema.Literals(["active", "deleted"]),
-    tunnel: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          privateIp: Schema.String,
-          vnetId: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({ privateIp: "private_ip", vnetId: "vnet_id" }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    tunnel: Schema.optional(Schema.Union([Tunnel, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
@@ -359,7 +352,7 @@ export interface PatchKeylessCertificateRequest {
   /** Body param: The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
   port?: number;
   /** Body param: Configuration for using Keyless SSL through a Cloudflare Tunnel */
-  tunnel?: { privateIp: string; vnetId: string };
+  tunnel?: Tunnel;
 }
 
 export const PatchKeylessCertificateRequest =
@@ -372,14 +365,7 @@ export const PatchKeylessCertificateRequest =
     host: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     port: Schema.optional(Schema.Number),
-    tunnel: Schema.optional(
-      Schema.Struct({
-        privateIp: Schema.String,
-        vnetId: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({ privateIp: "private_ip", vnetId: "vnet_id" }),
-      ),
-    ),
+    tunnel: Schema.optional(Tunnel),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -407,7 +393,7 @@ export interface PatchKeylessCertificateResponse {
   /** Status of the Keyless SSL. */
   status: "active" | "deleted";
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel */
-  tunnel?: { privateIp: string; vnetId: string } | null;
+  tunnel?: Tunnel | null;
 }
 
 export const PatchKeylessCertificateResponse =
@@ -421,17 +407,7 @@ export const PatchKeylessCertificateResponse =
     permissions: Schema.Array(Schema.String),
     port: Schema.Number,
     status: Schema.Literals(["active", "deleted"]),
-    tunnel: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          privateIp: Schema.String,
-          vnetId: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({ privateIp: "private_ip", vnetId: "vnet_id" }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    tunnel: Schema.optional(Schema.Union([Tunnel, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({

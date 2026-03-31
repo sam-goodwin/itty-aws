@@ -14,78 +14,57 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
-// Investigate
+// Shared Types
 // =============================================================================
 
-export interface GetInvestigateRequest {
-  postfixId: string;
-  /** Account Identifier */
-  accountId: string;
+export interface Authorization {
+  authorized: boolean;
+  timestamp: string;
+  statusMessage?: string | null;
 }
 
-export const GetInvestigateRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  postfixId: Schema.String.pipe(T.HttpPath("postfixId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/email-security/investigate/{postfixId}",
-  }),
-) as unknown as Schema.Schema<GetInvestigateRequest>;
+export const Authorization: Schema.Schema<Authorization> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      authorized: Schema.Boolean,
+      timestamp: Schema.String,
+      statusMessage: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        authorized: "authorized",
+        timestamp: "timestamp",
+        statusMessage: "status_message",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Authorization>;
 
-export interface GetInvestigateResponse {
-  id: string;
-  actionLog: unknown;
-  clientRecipients: string[];
-  detectionReasons: string[];
-  isPhishSubmission: boolean;
-  isQuarantined: boolean;
-  /** The identifier of the message. */
-  postfixId: string;
-  properties: {
-    allowlistedPattern?: string | null;
-    allowlistedPatternType?:
-      | "quarantine_release"
-      | "acceptable_sender"
-      | "allowed_sender"
-      | "allowed_recipient"
-      | "domain_similarity"
-      | "domain_recency"
-      | "managed_acceptable_sender"
-      | "outbound_ndr"
-      | null;
-    blocklistedMessage?: boolean | null;
-    blocklistedPattern?: string | null;
-    whitelistedPatternType?:
-      | "quarantine_release"
-      | "acceptable_sender"
-      | "allowed_sender"
-      | "allowed_recipient"
-      | "domain_similarity"
-      | "domain_recency"
-      | "managed_acceptable_sender"
-      | "outbound_ndr"
-      | null;
-  };
-  ts: string;
-  alertId?: string | null;
-  deliveryMode?:
-    | "DIRECT"
-    | "BCC"
-    | "JOURNAL"
-    | "REVIEW_SUBMISSION"
-    | "DMARC_UNVERIFIED"
-    | "DMARC_FAILURE_REPORT"
-    | "DMARC_AGGREGATE_REPORT"
-    | "THREAT_INTEL_SUBMISSION"
-    | "SIMULATION_SUBMISSION"
-    | "API"
-    | "RETRO_SCAN"
-    | null;
-  edfHash?: string | null;
-  envelopeFrom?: string | null;
-  envelopeTo?: string[] | null;
-  finalDisposition?:
+export interface EmailsProcessed {
+  timestamp: string;
+  totalEmailsProcessed: number;
+  totalEmailsProcessedPrevious: number;
+}
+
+export const EmailsProcessed: Schema.Schema<EmailsProcessed> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      timestamp: Schema.String,
+      totalEmailsProcessed: Schema.Number,
+      totalEmailsProcessedPrevious: Schema.Number,
+    }).pipe(
+      Schema.encodeKeys({
+        timestamp: "timestamp",
+        totalEmailsProcessed: "total_emails_processed",
+        totalEmailsProcessedPrevious: "total_emails_processed_previous",
+      }),
+    ),
+  ) as unknown as Schema.Schema<EmailsProcessed>;
+
+export interface Finding {
+  attachment?: string | null;
+  detail?: string | null;
+  detection?:
     | "MALICIOUS"
     | "MALICIOUS-BEC"
     | "SUSPICIOUS"
@@ -97,59 +76,72 @@ export interface GetInvestigateResponse {
     | "UNKNOWN"
     | "NONE"
     | null;
-  findings?:
-    | {
-        attachment?: string | null;
-        detail?: string | null;
-        detection?:
-          | "MALICIOUS"
-          | "MALICIOUS-BEC"
-          | "SUSPICIOUS"
-          | "SPOOF"
-          | "SPAM"
-          | "BULK"
-          | "ENCRYPTED"
-          | "EXTERNAL"
-          | "UNKNOWN"
-          | "NONE"
-          | null;
-        field?: string | null;
-        name?: string | null;
-        portion?: string | null;
-        reason?: string | null;
-        score?: number | null;
-        value?: string | null;
-      }[]
-    | null;
-  from?: string | null;
-  fromName?: string | null;
-  htmltextStructureHash?: string | null;
-  messageId?: string | null;
-  postfixIdOutbound?: string | null;
-  replyto?: string | null;
-  sentDate?: string | null;
-  subject?: string | null;
-  threatCategories?: string[] | null;
-  to?: string[] | null;
-  toName?: string[] | null;
-  validation?: {
-    comment?: string | null;
-    dkim?: "pass" | "neutral" | "fail" | "error" | "none" | null;
-    dmarc?: "pass" | "neutral" | "fail" | "error" | "none" | null;
-    spf?: "pass" | "neutral" | "fail" | "error" | "none" | null;
-  } | null;
+  field?: string | null;
+  name?: string | null;
+  portion?: string | null;
+  reason?: string | null;
+  score?: number | null;
+  value?: string | null;
 }
 
-export const GetInvestigateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String,
-    actionLog: Schema.Unknown,
-    clientRecipients: Schema.Array(Schema.String),
-    detectionReasons: Schema.Array(Schema.String),
-    isPhishSubmission: Schema.Boolean,
-    isQuarantined: Schema.Boolean,
-    postfixId: Schema.String,
-    properties: Schema.Struct({
+export const Finding: Schema.Schema<Finding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      attachment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      detail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      detection: Schema.optional(
+        Schema.Union([
+          Schema.Literal("MALICIOUS"),
+          Schema.Literal("MALICIOUS-BEC"),
+          Schema.Literal("SUSPICIOUS"),
+          Schema.Literal("SPOOF"),
+          Schema.Literal("SPAM"),
+          Schema.Literal("BULK"),
+          Schema.Literal("ENCRYPTED"),
+          Schema.Literal("EXTERNAL"),
+          Schema.Literal("UNKNOWN"),
+          Schema.Literal("NONE"),
+          Schema.Null,
+        ]),
+      ),
+      field: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      portion: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      reason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      score: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Finding>;
+
+export interface Properties {
+  allowlistedPattern?: string | null;
+  allowlistedPatternType?:
+    | "quarantine_release"
+    | "acceptable_sender"
+    | "allowed_sender"
+    | "allowed_recipient"
+    | "domain_similarity"
+    | "domain_recency"
+    | "managed_acceptable_sender"
+    | "outbound_ndr"
+    | null;
+  blocklistedMessage?: boolean | null;
+  blocklistedPattern?: string | null;
+  whitelistedPatternType?:
+    | "quarantine_release"
+    | "acceptable_sender"
+    | "allowed_sender"
+    | "allowed_recipient"
+    | "domain_similarity"
+    | "domain_recency"
+    | "managed_acceptable_sender"
+    | "outbound_ndr"
+    | null;
+}
+
+export const Properties: Schema.Schema<Properties> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
       allowlistedPattern: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
       ),
@@ -198,6 +190,137 @@ export const GetInvestigateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         whitelistedPatternType: "whitelisted_pattern_type",
       }),
     ),
+  ) as unknown as Schema.Schema<Properties>;
+
+export interface Validation {
+  comment?: string | null;
+  dkim?: "pass" | "neutral" | "fail" | "error" | "none" | null;
+  dmarc?: "pass" | "neutral" | "fail" | "error" | "none" | null;
+  spf?: "pass" | "neutral" | "fail" | "error" | "none" | null;
+}
+
+export const Validation: Schema.Schema<Validation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      dkim: Schema.optional(
+        Schema.Union([
+          Schema.Literal("pass"),
+          Schema.Literal("neutral"),
+          Schema.Literal("fail"),
+          Schema.Literal("error"),
+          Schema.Literal("none"),
+          Schema.Null,
+        ]),
+      ),
+      dmarc: Schema.optional(
+        Schema.Union([
+          Schema.Literal("pass"),
+          Schema.Literal("neutral"),
+          Schema.Literal("fail"),
+          Schema.Literal("error"),
+          Schema.Literal("none"),
+          Schema.Null,
+        ]),
+      ),
+      spf: Schema.optional(
+        Schema.Union([
+          Schema.Literal("pass"),
+          Schema.Literal("neutral"),
+          Schema.Literal("fail"),
+          Schema.Literal("error"),
+          Schema.Literal("none"),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Validation>;
+
+// =============================================================================
+// Investigate
+// =============================================================================
+
+export interface GetInvestigateRequest {
+  postfixId: string;
+  /** Account Identifier */
+  accountId: string;
+}
+
+export const GetInvestigateRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  postfixId: Schema.String.pipe(T.HttpPath("postfixId")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/email-security/investigate/{postfixId}",
+  }),
+) as unknown as Schema.Schema<GetInvestigateRequest>;
+
+export interface GetInvestigateResponse {
+  id: string;
+  actionLog: unknown;
+  clientRecipients: string[];
+  detectionReasons: string[];
+  isPhishSubmission: boolean;
+  isQuarantined: boolean;
+  /** The identifier of the message. */
+  postfixId: string;
+  properties: Properties;
+  ts: string;
+  alertId?: string | null;
+  deliveryMode?:
+    | "DIRECT"
+    | "BCC"
+    | "JOURNAL"
+    | "REVIEW_SUBMISSION"
+    | "DMARC_UNVERIFIED"
+    | "DMARC_FAILURE_REPORT"
+    | "DMARC_AGGREGATE_REPORT"
+    | "THREAT_INTEL_SUBMISSION"
+    | "SIMULATION_SUBMISSION"
+    | "API"
+    | "RETRO_SCAN"
+    | null;
+  edfHash?: string | null;
+  envelopeFrom?: string | null;
+  envelopeTo?: string[] | null;
+  finalDisposition?:
+    | "MALICIOUS"
+    | "MALICIOUS-BEC"
+    | "SUSPICIOUS"
+    | "SPOOF"
+    | "SPAM"
+    | "BULK"
+    | "ENCRYPTED"
+    | "EXTERNAL"
+    | "UNKNOWN"
+    | "NONE"
+    | null;
+  findings?: Finding[] | null;
+  from?: string | null;
+  fromName?: string | null;
+  htmltextStructureHash?: string | null;
+  messageId?: string | null;
+  postfixIdOutbound?: string | null;
+  replyto?: string | null;
+  sentDate?: string | null;
+  subject?: string | null;
+  threatCategories?: string[] | null;
+  to?: string[] | null;
+  toName?: string[] | null;
+  validation?: Validation | null;
+}
+
+export const GetInvestigateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.String,
+    actionLog: Schema.Unknown,
+    clientRecipients: Schema.Array(Schema.String),
+    detectionReasons: Schema.Array(Schema.String),
+    isPhishSubmission: Schema.Boolean,
+    isQuarantined: Schema.Boolean,
+    postfixId: Schema.String,
+    properties: Properties,
     ts: Schema.String,
     alertId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     deliveryMode: Schema.optional(
@@ -237,40 +360,7 @@ export const GetInvestigateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ]),
     ),
     findings: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            attachment: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            detail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            detection: Schema.optional(
-              Schema.Union([
-                Schema.Literal("MALICIOUS"),
-                Schema.Literal("MALICIOUS-BEC"),
-                Schema.Literal("SUSPICIOUS"),
-                Schema.Literal("SPOOF"),
-                Schema.Literal("SPAM"),
-                Schema.Literal("BULK"),
-                Schema.Literal("ENCRYPTED"),
-                Schema.Literal("EXTERNAL"),
-                Schema.Literal("UNKNOWN"),
-                Schema.Literal("NONE"),
-                Schema.Null,
-              ]),
-            ),
-            field: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            portion: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            reason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            score: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(Finding), Schema.Null]),
     ),
     from: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     fromName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -293,44 +383,7 @@ export const GetInvestigateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     toName: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
-    validation: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          dkim: Schema.optional(
-            Schema.Union([
-              Schema.Literal("pass"),
-              Schema.Literal("neutral"),
-              Schema.Literal("fail"),
-              Schema.Literal("error"),
-              Schema.Literal("none"),
-              Schema.Null,
-            ]),
-          ),
-          dmarc: Schema.optional(
-            Schema.Union([
-              Schema.Literal("pass"),
-              Schema.Literal("neutral"),
-              Schema.Literal("fail"),
-              Schema.Literal("error"),
-              Schema.Literal("none"),
-              Schema.Null,
-            ]),
-          ),
-          spf: Schema.optional(
-            Schema.Union([
-              Schema.Literal("pass"),
-              Schema.Literal("neutral"),
-              Schema.Literal("fail"),
-              Schema.Literal("error"),
-              Schema.Literal("none"),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
+    validation: Schema.optional(Schema.Union([Validation, Schema.Null])),
   },
 )
   .pipe(
@@ -470,31 +523,7 @@ export interface ListInvestigatesResponse {
     isPhishSubmission: boolean;
     isQuarantined: boolean;
     postfixId: string;
-    properties: {
-      allowlistedPattern?: string | null;
-      allowlistedPatternType?:
-        | "quarantine_release"
-        | "acceptable_sender"
-        | "allowed_sender"
-        | "allowed_recipient"
-        | "domain_similarity"
-        | "domain_recency"
-        | "managed_acceptable_sender"
-        | "outbound_ndr"
-        | null;
-      blocklistedMessage?: boolean | null;
-      blocklistedPattern?: string | null;
-      whitelistedPatternType?:
-        | "quarantine_release"
-        | "acceptable_sender"
-        | "allowed_sender"
-        | "allowed_recipient"
-        | "domain_similarity"
-        | "domain_recency"
-        | "managed_acceptable_sender"
-        | "outbound_ndr"
-        | null;
-    };
+    properties: Properties;
     ts: string;
     alertId?: string | null;
     deliveryMode?:
@@ -525,30 +554,7 @@ export interface ListInvestigatesResponse {
       | "UNKNOWN"
       | "NONE"
       | null;
-    findings?:
-      | {
-          attachment?: string | null;
-          detail?: string | null;
-          detection?:
-            | "MALICIOUS"
-            | "MALICIOUS-BEC"
-            | "SUSPICIOUS"
-            | "SPOOF"
-            | "SPAM"
-            | "BULK"
-            | "ENCRYPTED"
-            | "EXTERNAL"
-            | "UNKNOWN"
-            | "NONE"
-            | null;
-          field?: string | null;
-          name?: string | null;
-          portion?: string | null;
-          reason?: string | null;
-          score?: number | null;
-          value?: string | null;
-        }[]
-      | null;
+    findings?: Finding[] | null;
     from?: string | null;
     fromName?: string | null;
     htmltextStructureHash?: string | null;
@@ -560,12 +566,7 @@ export interface ListInvestigatesResponse {
     threatCategories?: string[] | null;
     to?: string[] | null;
     toName?: string[] | null;
-    validation?: {
-      comment?: string | null;
-      dkim?: "pass" | "neutral" | "fail" | "error" | "none" | null;
-      dmarc?: "pass" | "neutral" | "fail" | "error" | "none" | null;
-      spf?: "pass" | "neutral" | "fail" | "error" | "none" | null;
-    } | null;
+    validation?: Validation | null;
   }[];
   resultInfo: {
     count?: number | null;
@@ -586,55 +587,7 @@ export const ListInvestigatesResponse =
         isPhishSubmission: Schema.Boolean,
         isQuarantined: Schema.Boolean,
         postfixId: Schema.String,
-        properties: Schema.Struct({
-          allowlistedPattern: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          allowlistedPatternType: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "quarantine_release",
-                "acceptable_sender",
-                "allowed_sender",
-                "allowed_recipient",
-                "domain_similarity",
-                "domain_recency",
-                "managed_acceptable_sender",
-                "outbound_ndr",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          blocklistedMessage: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          blocklistedPattern: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          whitelistedPatternType: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "quarantine_release",
-                "acceptable_sender",
-                "allowed_sender",
-                "allowed_recipient",
-                "domain_similarity",
-                "domain_recency",
-                "managed_acceptable_sender",
-                "outbound_ndr",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            allowlistedPattern: "allowlisted_pattern",
-            allowlistedPatternType: "allowlisted_pattern_type",
-            blocklistedMessage: "blocklisted_message",
-            blocklistedPattern: "blocklisted_pattern",
-            whitelistedPatternType: "whitelisted_pattern_type",
-          }),
-        ),
+        properties: Properties,
         ts: Schema.String,
         alertId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         deliveryMode: Schema.optional(
@@ -676,52 +629,7 @@ export const ListInvestigatesResponse =
           ]),
         ),
         findings: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                attachment: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                detail: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                detection: Schema.optional(
-                  Schema.Union([
-                    Schema.Literal("MALICIOUS"),
-                    Schema.Literal("MALICIOUS-BEC"),
-                    Schema.Literal("SUSPICIOUS"),
-                    Schema.Literal("SPOOF"),
-                    Schema.Literal("SPAM"),
-                    Schema.Literal("BULK"),
-                    Schema.Literal("ENCRYPTED"),
-                    Schema.Literal("EXTERNAL"),
-                    Schema.Literal("UNKNOWN"),
-                    Schema.Literal("NONE"),
-                    Schema.Null,
-                  ]),
-                ),
-                field: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                portion: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                reason: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                score: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                value: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-            ),
-            Schema.Null,
-          ]),
+          Schema.Union([Schema.Array(Finding), Schema.Null]),
         ),
         from: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         fromName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -744,46 +652,7 @@ export const ListInvestigatesResponse =
         toName: Schema.optional(
           Schema.Union([Schema.Array(Schema.String), Schema.Null]),
         ),
-        validation: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              comment: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              dkim: Schema.optional(
-                Schema.Union([
-                  Schema.Literal("pass"),
-                  Schema.Literal("neutral"),
-                  Schema.Literal("fail"),
-                  Schema.Literal("error"),
-                  Schema.Literal("none"),
-                  Schema.Null,
-                ]),
-              ),
-              dmarc: Schema.optional(
-                Schema.Union([
-                  Schema.Literal("pass"),
-                  Schema.Literal("neutral"),
-                  Schema.Literal("fail"),
-                  Schema.Literal("error"),
-                  Schema.Literal("none"),
-                  Schema.Null,
-                ]),
-              ),
-              spf: Schema.optional(
-                Schema.Union([
-                  Schema.Literal("pass"),
-                  Schema.Literal("neutral"),
-                  Schema.Literal("fail"),
-                  Schema.Literal("error"),
-                  Schema.Literal("none"),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
+        validation: Schema.optional(Schema.Union([Validation, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
           id: "id",
@@ -858,31 +727,7 @@ export const listInvestigates: API.PaginatedOperationMethod<
       isPhishSubmission: boolean;
       isQuarantined: boolean;
       postfixId: string;
-      properties: {
-        allowlistedPattern?: string | null;
-        allowlistedPatternType?:
-          | "quarantine_release"
-          | "acceptable_sender"
-          | "allowed_sender"
-          | "allowed_recipient"
-          | "domain_similarity"
-          | "domain_recency"
-          | "managed_acceptable_sender"
-          | "outbound_ndr"
-          | null;
-        blocklistedMessage?: boolean | null;
-        blocklistedPattern?: string | null;
-        whitelistedPatternType?:
-          | "quarantine_release"
-          | "acceptable_sender"
-          | "allowed_sender"
-          | "allowed_recipient"
-          | "domain_similarity"
-          | "domain_recency"
-          | "managed_acceptable_sender"
-          | "outbound_ndr"
-          | null;
-      };
+      properties: Properties;
       ts: string;
       alertId?: string | null;
       deliveryMode?:
@@ -913,30 +758,7 @@ export const listInvestigates: API.PaginatedOperationMethod<
         | "UNKNOWN"
         | "NONE"
         | null;
-      findings?:
-        | {
-            attachment?: string | null;
-            detail?: string | null;
-            detection?:
-              | "MALICIOUS"
-              | "MALICIOUS-BEC"
-              | "SUSPICIOUS"
-              | "SPOOF"
-              | "SPAM"
-              | "BULK"
-              | "ENCRYPTED"
-              | "EXTERNAL"
-              | "UNKNOWN"
-              | "NONE"
-              | null;
-            field?: string | null;
-            name?: string | null;
-            portion?: string | null;
-            reason?: string | null;
-            score?: number | null;
-            value?: string | null;
-          }[]
-        | null;
+      findings?: Finding[] | null;
       from?: string | null;
       fromName?: string | null;
       htmltextStructureHash?: string | null;
@@ -948,12 +770,7 @@ export const listInvestigates: API.PaginatedOperationMethod<
       threatCategories?: string[] | null;
       to?: string[] | null;
       toName?: string[] | null;
-      validation?: {
-        comment?: string | null;
-        dkim?: "pass" | "neutral" | "fail" | "error" | "none" | null;
-        dmarc?: "pass" | "neutral" | "fail" | "error" | "none" | null;
-        spf?: "pass" | "neutral" | "fail" | "error" | "none" | null;
-      } | null;
+      validation?: Validation | null;
     },
     ListInvestigatesError,
     Credentials | HttpClient.HttpClient
@@ -1026,12 +843,7 @@ export interface GetInvestigateDetectionResponse {
     description?: string | null;
     name?: string | null;
   }[];
-  validation: {
-    comment?: string | null;
-    dkim?: "pass" | "neutral" | "fail" | "error" | "none" | null;
-    dmarc?: "pass" | "neutral" | "fail" | "error" | "none" | null;
-    spf?: "pass" | "neutral" | "fail" | "error" | "none" | null;
-  };
+  validation: Validation;
   finalDisposition?:
     | "MALICIOUS"
     | "MALICIOUS-BEC"
@@ -1118,39 +930,7 @@ export const GetInvestigateDetectionResponse =
         name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }),
     ),
-    validation: Schema.Struct({
-      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      dkim: Schema.optional(
-        Schema.Union([
-          Schema.Literal("pass"),
-          Schema.Literal("neutral"),
-          Schema.Literal("fail"),
-          Schema.Literal("error"),
-          Schema.Literal("none"),
-          Schema.Null,
-        ]),
-      ),
-      dmarc: Schema.optional(
-        Schema.Union([
-          Schema.Literal("pass"),
-          Schema.Literal("neutral"),
-          Schema.Literal("fail"),
-          Schema.Literal("error"),
-          Schema.Literal("none"),
-          Schema.Null,
-        ]),
-      ),
-      spf: Schema.optional(
-        Schema.Union([
-          Schema.Literal("pass"),
-          Schema.Literal("neutral"),
-          Schema.Literal("fail"),
-          Schema.Literal("error"),
-          Schema.Literal("none"),
-          Schema.Null,
-        ]),
-      ),
-    }),
+    validation: Validation,
     finalDisposition: Schema.optional(
       Schema.Union([
         Schema.Literal("MALICIOUS"),
@@ -2886,17 +2666,9 @@ export interface GetSettingDomainResponse {
   lookbackHops: number;
   regions: ("GLOBAL" | "AU" | "DE" | "IN" | "US")[];
   transport: string;
-  authorization?: {
-    authorized: boolean;
-    timestamp: string;
-    statusMessage?: string | null;
-  } | null;
+  authorization?: Authorization | null;
   dmarcStatus?: "none" | "good" | "invalid" | null;
-  emailsProcessed?: {
-    timestamp: string;
-    totalEmailsProcessed: number;
-    totalEmailsProcessedPrevious: number;
-  } | null;
+  emailsProcessed?: EmailsProcessed | null;
   folder?: "AllItems" | "Inbox" | null;
   inboxProvider?: "Microsoft" | "Google" | null;
   integrationId?: string | null;
@@ -2933,24 +2705,7 @@ export const GetSettingDomainResponse =
     lookbackHops: Schema.Number,
     regions: Schema.Array(Schema.Literals(["GLOBAL", "AU", "DE", "IN", "US"])),
     transport: Schema.String,
-    authorization: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          authorized: Schema.Boolean,
-          timestamp: Schema.String,
-          statusMessage: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            authorized: "authorized",
-            timestamp: "timestamp",
-            statusMessage: "status_message",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    authorization: Schema.optional(Schema.Union([Authorization, Schema.Null])),
     dmarcStatus: Schema.optional(
       Schema.Union([
         Schema.Literal("none"),
@@ -2960,20 +2715,7 @@ export const GetSettingDomainResponse =
       ]),
     ),
     emailsProcessed: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          timestamp: Schema.String,
-          totalEmailsProcessed: Schema.Number,
-          totalEmailsProcessedPrevious: Schema.Number,
-        }).pipe(
-          Schema.encodeKeys({
-            timestamp: "timestamp",
-            totalEmailsProcessed: "total_emails_processed",
-            totalEmailsProcessedPrevious: "total_emails_processed_previous",
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([EmailsProcessed, Schema.Null]),
     ),
     folder: Schema.optional(
       Schema.Union([
@@ -3126,17 +2868,9 @@ export interface ListSettingDomainsResponse {
     lookbackHops: number;
     regions: ("GLOBAL" | "AU" | "DE" | "IN" | "US")[];
     transport: string;
-    authorization?: {
-      authorized: boolean;
-      timestamp: string;
-      statusMessage?: string | null;
-    } | null;
+    authorization?: Authorization | null;
     dmarcStatus?: "none" | "good" | "invalid" | null;
-    emailsProcessed?: {
-      timestamp: string;
-      totalEmailsProcessed: number;
-      totalEmailsProcessedPrevious: number;
-    } | null;
+    emailsProcessed?: EmailsProcessed | null;
     folder?: "AllItems" | "Inbox" | null;
     inboxProvider?: "Microsoft" | "Google" | null;
     integrationId?: string | null;
@@ -3185,22 +2919,7 @@ export const ListSettingDomainsResponse =
         ),
         transport: Schema.String,
         authorization: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              authorized: Schema.Boolean,
-              timestamp: Schema.String,
-              statusMessage: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                authorized: "authorized",
-                timestamp: "timestamp",
-                statusMessage: "status_message",
-              }),
-            ),
-            Schema.Null,
-          ]),
+          Schema.Union([Authorization, Schema.Null]),
         ),
         dmarcStatus: Schema.optional(
           Schema.Union([
@@ -3211,20 +2930,7 @@ export const ListSettingDomainsResponse =
           ]),
         ),
         emailsProcessed: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              timestamp: Schema.String,
-              totalEmailsProcessed: Schema.Number,
-              totalEmailsProcessedPrevious: Schema.Number,
-            }).pipe(
-              Schema.encodeKeys({
-                timestamp: "timestamp",
-                totalEmailsProcessed: "total_emails_processed",
-                totalEmailsProcessedPrevious: "total_emails_processed_previous",
-              }),
-            ),
-            Schema.Null,
-          ]),
+          Schema.Union([EmailsProcessed, Schema.Null]),
         ),
         folder: Schema.optional(
           Schema.Union([
@@ -3348,17 +3054,9 @@ export const listSettingDomains: API.PaginatedOperationMethod<
       lookbackHops: number;
       regions: ("GLOBAL" | "AU" | "DE" | "IN" | "US")[];
       transport: string;
-      authorization?: {
-        authorized: boolean;
-        timestamp: string;
-        statusMessage?: string | null;
-      } | null;
+      authorization?: Authorization | null;
       dmarcStatus?: "none" | "good" | "invalid" | null;
-      emailsProcessed?: {
-        timestamp: string;
-        totalEmailsProcessed: number;
-        totalEmailsProcessedPrevious: number;
-      } | null;
+      emailsProcessed?: EmailsProcessed | null;
       folder?: "AllItems" | "Inbox" | null;
       inboxProvider?: "Microsoft" | "Google" | null;
       integrationId?: string | null;
@@ -3507,17 +3205,9 @@ export interface PatchSettingDomainResponse {
   lookbackHops: number;
   regions: ("GLOBAL" | "AU" | "DE" | "IN" | "US")[];
   transport: string;
-  authorization?: {
-    authorized: boolean;
-    timestamp: string;
-    statusMessage?: string | null;
-  } | null;
+  authorization?: Authorization | null;
   dmarcStatus?: "none" | "good" | "invalid" | null;
-  emailsProcessed?: {
-    timestamp: string;
-    totalEmailsProcessed: number;
-    totalEmailsProcessedPrevious: number;
-  } | null;
+  emailsProcessed?: EmailsProcessed | null;
   folder?: "AllItems" | "Inbox" | null;
   inboxProvider?: "Microsoft" | "Google" | null;
   integrationId?: string | null;
@@ -3554,24 +3244,7 @@ export const PatchSettingDomainResponse =
     lookbackHops: Schema.Number,
     regions: Schema.Array(Schema.Literals(["GLOBAL", "AU", "DE", "IN", "US"])),
     transport: Schema.String,
-    authorization: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          authorized: Schema.Boolean,
-          timestamp: Schema.String,
-          statusMessage: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            authorized: "authorized",
-            timestamp: "timestamp",
-            statusMessage: "status_message",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    authorization: Schema.optional(Schema.Union([Authorization, Schema.Null])),
     dmarcStatus: Schema.optional(
       Schema.Union([
         Schema.Literal("none"),
@@ -3581,20 +3254,7 @@ export const PatchSettingDomainResponse =
       ]),
     ),
     emailsProcessed: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          timestamp: Schema.String,
-          totalEmailsProcessed: Schema.Number,
-          totalEmailsProcessedPrevious: Schema.Number,
-        }).pipe(
-          Schema.encodeKeys({
-            timestamp: "timestamp",
-            totalEmailsProcessed: "total_emails_processed",
-            totalEmailsProcessedPrevious: "total_emails_processed_previous",
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([EmailsProcessed, Schema.Null]),
     ),
     folder: Schema.optional(
       Schema.Union([

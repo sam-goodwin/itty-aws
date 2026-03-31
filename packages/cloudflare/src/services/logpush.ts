@@ -14,6 +14,282 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface LogpushJob {
+  id?: number | null;
+  dataset?:
+    | "access_requests"
+    | "audit_logs"
+    | "audit_logs_v2"
+    | "biso_user_actions"
+    | "casb_findings"
+    | "device_posture_results"
+    | "dex_application_tests"
+    | "dex_device_state_events"
+    | "dlp_forensic_copies"
+    | "dns_firewall_logs"
+    | "dns_logs"
+    | "email_security_alerts"
+    | "firewall_events"
+    | "gateway_dns"
+    | "gateway_http"
+    | "gateway_network"
+    | "http_requests"
+    | "ipsec_logs"
+    | "magic_ids_detections"
+    | "nel_reports"
+    | "network_analytics_logs"
+    | "page_shield_events"
+    | "sinkhole_http_logs"
+    | "spectrum_events"
+    | "ssh_logs"
+    | "warp_config_changes"
+    | "warp_toggle_changes"
+    | "workers_trace_events"
+    | "zaraz_events"
+    | "zero_trust_network_sessions"
+    | null;
+  destinationConf?: string | null;
+  enabled?: boolean | null;
+  errorMessage?: string | null;
+  frequency?: "high" | "low" | null;
+  kind?: "" | "edge" | null;
+  lastComplete?: string | null;
+  lastError?: string | null;
+  logpullOptions?: string | null;
+  maxUploadBytes?: "0" | number | null;
+  maxUploadIntervalSeconds?: "0" | number | null;
+  maxUploadRecords?: "0" | number | null;
+  name?: string | null;
+  outputOptions?: OutputOptionsParam | null;
+}
+
+export const LogpushJob: Schema.Schema<LogpushJob> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      dataset: Schema.optional(
+        Schema.Union([
+          Schema.Literal("access_requests"),
+          Schema.Literal("audit_logs"),
+          Schema.Literal("audit_logs_v2"),
+          Schema.Literal("biso_user_actions"),
+          Schema.Literal("casb_findings"),
+          Schema.Literal("device_posture_results"),
+          Schema.Literal("dex_application_tests"),
+          Schema.Literal("dex_device_state_events"),
+          Schema.Literal("dlp_forensic_copies"),
+          Schema.Literal("dns_firewall_logs"),
+          Schema.Literal("dns_logs"),
+          Schema.Literal("email_security_alerts"),
+          Schema.Literal("firewall_events"),
+          Schema.Literal("gateway_dns"),
+          Schema.Literal("gateway_http"),
+          Schema.Literal("gateway_network"),
+          Schema.Literal("http_requests"),
+          Schema.Literal("ipsec_logs"),
+          Schema.Literal("magic_ids_detections"),
+          Schema.Literal("nel_reports"),
+          Schema.Literal("network_analytics_logs"),
+          Schema.Literal("page_shield_events"),
+          Schema.Literal("sinkhole_http_logs"),
+          Schema.Literal("spectrum_events"),
+          Schema.Literal("ssh_logs"),
+          Schema.Literal("warp_config_changes"),
+          Schema.Literal("warp_toggle_changes"),
+          Schema.Literal("workers_trace_events"),
+          Schema.Literal("zaraz_events"),
+          Schema.Literal("zero_trust_network_sessions"),
+          Schema.Null,
+        ]),
+      ),
+      destinationConf: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      errorMessage: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      frequency: Schema.optional(
+        Schema.Union([
+          Schema.Literal("high"),
+          Schema.Literal("low"),
+          Schema.Null,
+        ]),
+      ),
+      kind: Schema.optional(
+        Schema.Union([Schema.Literals(["", "edge"]), Schema.Null]),
+      ),
+      lastComplete: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      lastError: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      logpullOptions: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      maxUploadBytes: Schema.optional(
+        Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
+      ),
+      maxUploadIntervalSeconds: Schema.optional(
+        Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
+      ),
+      maxUploadRecords: Schema.optional(
+        Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
+      ),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      outputOptions: Schema.optional(
+        Schema.Union([OutputOptionsParam, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        dataset: "dataset",
+        destinationConf: "destination_conf",
+        enabled: "enabled",
+        errorMessage: "error_message",
+        frequency: "frequency",
+        kind: "kind",
+        lastComplete: "last_complete",
+        lastError: "last_error",
+        logpullOptions: "logpull_options",
+        maxUploadBytes: "max_upload_bytes",
+        maxUploadIntervalSeconds: "max_upload_interval_seconds",
+        maxUploadRecords: "max_upload_records",
+        name: "name",
+        outputOptions: "output_options",
+      }),
+    ),
+  ) as unknown as Schema.Schema<LogpushJob>;
+
+export interface OutputOptions {
+  batchPrefix?: string | null;
+  batchSuffix?: string | null;
+  "cve-2021-44228"?: boolean | null;
+  fieldDelimiter?: string | null;
+  fieldNames?: string[] | null;
+  outputType?: "ndjson" | "csv" | null;
+  recordDelimiter?: string | null;
+  recordPrefix?: string | null;
+  recordSuffix?: string | null;
+  recordTemplate?: string | null;
+  sampleRate?: number | null;
+  timestampFormat?: "unixnano" | "unix" | "rfc3339" | null;
+}
+
+export const OutputOptions: Schema.Schema<OutputOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      batchPrefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      batchSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      "cve-2021-44228": Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      fieldDelimiter: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      fieldNames: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      outputType: Schema.optional(
+        Schema.Union([Schema.Literals(["ndjson", "csv"]), Schema.Null]),
+      ),
+      recordDelimiter: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      recordPrefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      recordSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      recordTemplate: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      sampleRate: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      timestampFormat: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["unixnano", "unix", "rfc3339"]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        batchPrefix: "batch_prefix",
+        batchSuffix: "batch_suffix",
+        "cve-2021-44228": "CVE-2021-44228",
+        fieldDelimiter: "field_delimiter",
+        fieldNames: "field_names",
+        outputType: "output_type",
+        recordDelimiter: "record_delimiter",
+        recordPrefix: "record_prefix",
+        recordSuffix: "record_suffix",
+        recordTemplate: "record_template",
+        sampleRate: "sample_rate",
+        timestampFormat: "timestamp_format",
+      }),
+    ),
+  ) as unknown as Schema.Schema<OutputOptions>;
+
+export interface OutputOptionsParam {
+  batchPrefix?: string | null;
+  batchSuffix?: string | null;
+  "cve-2021-44228"?: boolean | null;
+  fieldDelimiter?: string | null;
+  fieldNames?: string[] | null;
+  outputType?: "ndjson" | "csv" | null;
+  recordDelimiter?: string | null;
+  recordPrefix?: string | null;
+  recordSuffix?: string | null;
+  recordTemplate?: string | null;
+  sampleRate?: number | null;
+  timestampFormat?: "unixnano" | "unix" | "rfc3339" | null;
+}
+
+export const OutputOptionsParam: Schema.Schema<OutputOptionsParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      batchPrefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      batchSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      "cve-2021-44228": Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      fieldDelimiter: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      fieldNames: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      outputType: Schema.optional(
+        Schema.Union([Schema.Literals(["ndjson", "csv"]), Schema.Null]),
+      ),
+      recordDelimiter: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      recordPrefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      recordSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      recordTemplate: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      sampleRate: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      timestampFormat: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["unixnano", "unix", "rfc3339"]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        batchPrefix: "batch_prefix",
+        batchSuffix: "batch_suffix",
+        "cve-2021-44228": "CVE-2021-44228",
+        fieldDelimiter: "field_delimiter",
+        fieldNames: "field_names",
+        outputType: "output_type",
+        recordDelimiter: "record_delimiter",
+        recordPrefix: "record_prefix",
+        recordSuffix: "record_suffix",
+        recordTemplate: "record_template",
+        sampleRate: "sample_rate",
+        timestampFormat: "timestamp_format",
+      }),
+    ),
+  ) as unknown as Schema.Schema<OutputOptionsParam>;
+
+// =============================================================================
 // DatasetField
 // =============================================================================
 
@@ -196,226 +472,11 @@ export const GetDatasetJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetDatasetJobRequest>;
 
 export interface GetDatasetJobResponse {
-  result: ({
-    id?: number | null;
-    dataset?:
-      | "access_requests"
-      | "audit_logs"
-      | "audit_logs_v2"
-      | "biso_user_actions"
-      | "casb_findings"
-      | "device_posture_results"
-      | "dex_application_tests"
-      | "dex_device_state_events"
-      | "dlp_forensic_copies"
-      | "dns_firewall_logs"
-      | "dns_logs"
-      | "email_security_alerts"
-      | "firewall_events"
-      | "gateway_dns"
-      | "gateway_http"
-      | "gateway_network"
-      | "http_requests"
-      | "ipsec_logs"
-      | "magic_ids_detections"
-      | "nel_reports"
-      | "network_analytics_logs"
-      | "page_shield_events"
-      | "sinkhole_http_logs"
-      | "spectrum_events"
-      | "ssh_logs"
-      | "warp_config_changes"
-      | "warp_toggle_changes"
-      | "workers_trace_events"
-      | "zaraz_events"
-      | "zero_trust_network_sessions"
-      | null;
-    destinationConf?: string | null;
-    enabled?: boolean | null;
-    errorMessage?: string | null;
-    frequency?: "high" | "low" | null;
-    kind?: "" | "edge" | null;
-    lastComplete?: string | null;
-    lastError?: string | null;
-    logpullOptions?: string | null;
-    maxUploadBytes?: "0" | number | null;
-    maxUploadIntervalSeconds?: "0" | number | null;
-    maxUploadRecords?: "0" | number | null;
-    name?: string | null;
-    outputOptions?: {
-      batchPrefix?: string | null;
-      batchSuffix?: string | null;
-      "cve-2021-44228"?: boolean | null;
-      fieldDelimiter?: string | null;
-      fieldNames?: string[] | null;
-      outputType?: "ndjson" | "csv" | null;
-      recordDelimiter?: string | null;
-      recordPrefix?: string | null;
-      recordSuffix?: string | null;
-      recordTemplate?: string | null;
-      sampleRate?: number | null;
-      timestampFormat?: "unixnano" | "unix" | "rfc3339" | null;
-    } | null;
-  } | null)[];
+  result: (LogpushJob | null)[];
 }
 
 export const GetDatasetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        dataset: Schema.optional(
-          Schema.Union([
-            Schema.Literal("access_requests"),
-            Schema.Literal("audit_logs"),
-            Schema.Literal("audit_logs_v2"),
-            Schema.Literal("biso_user_actions"),
-            Schema.Literal("casb_findings"),
-            Schema.Literal("device_posture_results"),
-            Schema.Literal("dex_application_tests"),
-            Schema.Literal("dex_device_state_events"),
-            Schema.Literal("dlp_forensic_copies"),
-            Schema.Literal("dns_firewall_logs"),
-            Schema.Literal("dns_logs"),
-            Schema.Literal("email_security_alerts"),
-            Schema.Literal("firewall_events"),
-            Schema.Literal("gateway_dns"),
-            Schema.Literal("gateway_http"),
-            Schema.Literal("gateway_network"),
-            Schema.Literal("http_requests"),
-            Schema.Literal("ipsec_logs"),
-            Schema.Literal("magic_ids_detections"),
-            Schema.Literal("nel_reports"),
-            Schema.Literal("network_analytics_logs"),
-            Schema.Literal("page_shield_events"),
-            Schema.Literal("sinkhole_http_logs"),
-            Schema.Literal("spectrum_events"),
-            Schema.Literal("ssh_logs"),
-            Schema.Literal("warp_config_changes"),
-            Schema.Literal("warp_toggle_changes"),
-            Schema.Literal("workers_trace_events"),
-            Schema.Literal("zaraz_events"),
-            Schema.Literal("zero_trust_network_sessions"),
-            Schema.Null,
-          ]),
-        ),
-        destinationConf: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        errorMessage: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        frequency: Schema.optional(
-          Schema.Union([
-            Schema.Literal("high"),
-            Schema.Literal("low"),
-            Schema.Null,
-          ]),
-        ),
-        kind: Schema.optional(
-          Schema.Union([Schema.Literals(["", "edge"]), Schema.Null]),
-        ),
-        lastComplete: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        lastError: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        logpullOptions: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        maxUploadBytes: Schema.optional(
-          Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
-        ),
-        maxUploadIntervalSeconds: Schema.optional(
-          Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
-        ),
-        maxUploadRecords: Schema.optional(
-          Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
-        ),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        outputOptions: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              batchPrefix: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              batchSuffix: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              "cve-2021-44228": Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              fieldDelimiter: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              fieldNames: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              outputType: Schema.optional(
-                Schema.Union([Schema.Literals(["ndjson", "csv"]), Schema.Null]),
-              ),
-              recordDelimiter: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              recordPrefix: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              recordSuffix: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              recordTemplate: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              sampleRate: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              timestampFormat: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["unixnano", "unix", "rfc3339"]),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                batchPrefix: "batch_prefix",
-                batchSuffix: "batch_suffix",
-                "cve-2021-44228": "CVE-2021-44228",
-                fieldDelimiter: "field_delimiter",
-                fieldNames: "field_names",
-                outputType: "output_type",
-                recordDelimiter: "record_delimiter",
-                recordPrefix: "record_prefix",
-                recordSuffix: "record_suffix",
-                recordTemplate: "record_template",
-                sampleRate: "sample_rate",
-                timestampFormat: "timestamp_format",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          dataset: "dataset",
-          destinationConf: "destination_conf",
-          enabled: "enabled",
-          errorMessage: "error_message",
-          frequency: "frequency",
-          kind: "kind",
-          lastComplete: "last_complete",
-          lastError: "last_error",
-          logpullOptions: "logpull_options",
-          maxUploadBytes: "max_upload_bytes",
-          maxUploadIntervalSeconds: "max_upload_interval_seconds",
-          maxUploadRecords: "max_upload_records",
-          name: "name",
-          outputOptions: "output_options",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  result: Schema.Array(Schema.Union([LogpushJob, Schema.Null])),
 }) as unknown as Schema.Schema<GetDatasetJobResponse>;
 
 export type GetDatasetJobError = DefaultErrors;
@@ -433,68 +494,10 @@ export const getDatasetJob: API.PaginatedOperationMethod<
     GetDatasetJobError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: GetDatasetJobRequest) => stream.Stream<
-    {
-      id?: number | null;
-      dataset?:
-        | "access_requests"
-        | "audit_logs"
-        | "audit_logs_v2"
-        | "biso_user_actions"
-        | "casb_findings"
-        | "device_posture_results"
-        | "dex_application_tests"
-        | "dex_device_state_events"
-        | "dlp_forensic_copies"
-        | "dns_firewall_logs"
-        | "dns_logs"
-        | "email_security_alerts"
-        | "firewall_events"
-        | "gateway_dns"
-        | "gateway_http"
-        | "gateway_network"
-        | "http_requests"
-        | "ipsec_logs"
-        | "magic_ids_detections"
-        | "nel_reports"
-        | "network_analytics_logs"
-        | "page_shield_events"
-        | "sinkhole_http_logs"
-        | "spectrum_events"
-        | "ssh_logs"
-        | "warp_config_changes"
-        | "warp_toggle_changes"
-        | "workers_trace_events"
-        | "zaraz_events"
-        | "zero_trust_network_sessions"
-        | null;
-      destinationConf?: string | null;
-      enabled?: boolean | null;
-      errorMessage?: string | null;
-      frequency?: "high" | "low" | null;
-      kind?: "" | "edge" | null;
-      lastComplete?: string | null;
-      lastError?: string | null;
-      logpullOptions?: string | null;
-      maxUploadBytes?: "0" | number | null;
-      maxUploadIntervalSeconds?: "0" | number | null;
-      maxUploadRecords?: "0" | number | null;
-      name?: string | null;
-      outputOptions?: {
-        batchPrefix?: string | null;
-        batchSuffix?: string | null;
-        "cve-2021-44228"?: boolean | null;
-        fieldDelimiter?: string | null;
-        fieldNames?: string[] | null;
-        outputType?: "ndjson" | "csv" | null;
-        recordDelimiter?: string | null;
-        recordPrefix?: string | null;
-        recordSuffix?: string | null;
-        recordTemplate?: string | null;
-        sampleRate?: number | null;
-        timestampFormat?: "unixnano" | "unix" | "rfc3339" | null;
-      } | null;
-    } | null,
+  items: (
+    input: GetDatasetJobRequest,
+  ) => stream.Stream<
+    LogpushJob | null,
     GetDatasetJobError,
     Credentials | HttpClient.HttpClient
   >;
@@ -788,20 +791,7 @@ export interface GetJobResponse {
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string | null;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: {
-    batchPrefix?: string | null;
-    batchSuffix?: string | null;
-    "cve-2021-44228"?: boolean | null;
-    fieldDelimiter?: string | null;
-    fieldNames?: string[] | null;
-    outputType?: "ndjson" | "csv" | null;
-    recordDelimiter?: string | null;
-    recordPrefix?: string | null;
-    recordSuffix?: string | null;
-    recordTemplate?: string | null;
-    sampleRate?: number | null;
-    timestampFormat?: "unixnano" | "unix" | "rfc3339" | null;
-  } | null;
+  outputOptions?: OutputOptionsParam | null;
 }
 
 export const GetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -864,63 +854,7 @@ export const GetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   outputOptions: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        batchPrefix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        batchSuffix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        "cve-2021-44228": Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        fieldDelimiter: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        fieldNames: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-        outputType: Schema.optional(
-          Schema.Union([Schema.Literals(["ndjson", "csv"]), Schema.Null]),
-        ),
-        recordDelimiter: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        recordPrefix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        recordSuffix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        recordTemplate: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        sampleRate: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        timestampFormat: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["unixnano", "unix", "rfc3339"]),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          batchPrefix: "batch_prefix",
-          batchSuffix: "batch_suffix",
-          "cve-2021-44228": "CVE-2021-44228",
-          fieldDelimiter: "field_delimiter",
-          fieldNames: "field_names",
-          outputType: "output_type",
-          recordDelimiter: "record_delimiter",
-          recordPrefix: "record_prefix",
-          recordSuffix: "record_suffix",
-          recordTemplate: "record_template",
-          sampleRate: "sample_rate",
-          timestampFormat: "timestamp_format",
-        }),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([OutputOptionsParam, Schema.Null]),
   ),
 })
   .pipe(
@@ -969,226 +903,11 @@ export const ListJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Schema<ListJobsRequest>;
 
 export interface ListJobsResponse {
-  result: ({
-    id?: number | null;
-    dataset?:
-      | "access_requests"
-      | "audit_logs"
-      | "audit_logs_v2"
-      | "biso_user_actions"
-      | "casb_findings"
-      | "device_posture_results"
-      | "dex_application_tests"
-      | "dex_device_state_events"
-      | "dlp_forensic_copies"
-      | "dns_firewall_logs"
-      | "dns_logs"
-      | "email_security_alerts"
-      | "firewall_events"
-      | "gateway_dns"
-      | "gateway_http"
-      | "gateway_network"
-      | "http_requests"
-      | "ipsec_logs"
-      | "magic_ids_detections"
-      | "nel_reports"
-      | "network_analytics_logs"
-      | "page_shield_events"
-      | "sinkhole_http_logs"
-      | "spectrum_events"
-      | "ssh_logs"
-      | "warp_config_changes"
-      | "warp_toggle_changes"
-      | "workers_trace_events"
-      | "zaraz_events"
-      | "zero_trust_network_sessions"
-      | null;
-    destinationConf?: string | null;
-    enabled?: boolean | null;
-    errorMessage?: string | null;
-    frequency?: "high" | "low" | null;
-    kind?: "" | "edge" | null;
-    lastComplete?: string | null;
-    lastError?: string | null;
-    logpullOptions?: string | null;
-    maxUploadBytes?: "0" | number | null;
-    maxUploadIntervalSeconds?: "0" | number | null;
-    maxUploadRecords?: "0" | number | null;
-    name?: string | null;
-    outputOptions?: {
-      batchPrefix?: string | null;
-      batchSuffix?: string | null;
-      "cve-2021-44228"?: boolean | null;
-      fieldDelimiter?: string | null;
-      fieldNames?: string[] | null;
-      outputType?: "ndjson" | "csv" | null;
-      recordDelimiter?: string | null;
-      recordPrefix?: string | null;
-      recordSuffix?: string | null;
-      recordTemplate?: string | null;
-      sampleRate?: number | null;
-      timestampFormat?: "unixnano" | "unix" | "rfc3339" | null;
-    } | null;
-  } | null)[];
+  result: (LogpushJob | null)[];
 }
 
 export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        dataset: Schema.optional(
-          Schema.Union([
-            Schema.Literal("access_requests"),
-            Schema.Literal("audit_logs"),
-            Schema.Literal("audit_logs_v2"),
-            Schema.Literal("biso_user_actions"),
-            Schema.Literal("casb_findings"),
-            Schema.Literal("device_posture_results"),
-            Schema.Literal("dex_application_tests"),
-            Schema.Literal("dex_device_state_events"),
-            Schema.Literal("dlp_forensic_copies"),
-            Schema.Literal("dns_firewall_logs"),
-            Schema.Literal("dns_logs"),
-            Schema.Literal("email_security_alerts"),
-            Schema.Literal("firewall_events"),
-            Schema.Literal("gateway_dns"),
-            Schema.Literal("gateway_http"),
-            Schema.Literal("gateway_network"),
-            Schema.Literal("http_requests"),
-            Schema.Literal("ipsec_logs"),
-            Schema.Literal("magic_ids_detections"),
-            Schema.Literal("nel_reports"),
-            Schema.Literal("network_analytics_logs"),
-            Schema.Literal("page_shield_events"),
-            Schema.Literal("sinkhole_http_logs"),
-            Schema.Literal("spectrum_events"),
-            Schema.Literal("ssh_logs"),
-            Schema.Literal("warp_config_changes"),
-            Schema.Literal("warp_toggle_changes"),
-            Schema.Literal("workers_trace_events"),
-            Schema.Literal("zaraz_events"),
-            Schema.Literal("zero_trust_network_sessions"),
-            Schema.Null,
-          ]),
-        ),
-        destinationConf: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        errorMessage: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        frequency: Schema.optional(
-          Schema.Union([
-            Schema.Literal("high"),
-            Schema.Literal("low"),
-            Schema.Null,
-          ]),
-        ),
-        kind: Schema.optional(
-          Schema.Union([Schema.Literals(["", "edge"]), Schema.Null]),
-        ),
-        lastComplete: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        lastError: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        logpullOptions: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        maxUploadBytes: Schema.optional(
-          Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
-        ),
-        maxUploadIntervalSeconds: Schema.optional(
-          Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
-        ),
-        maxUploadRecords: Schema.optional(
-          Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
-        ),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        outputOptions: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              batchPrefix: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              batchSuffix: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              "cve-2021-44228": Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              fieldDelimiter: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              fieldNames: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              outputType: Schema.optional(
-                Schema.Union([Schema.Literals(["ndjson", "csv"]), Schema.Null]),
-              ),
-              recordDelimiter: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              recordPrefix: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              recordSuffix: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              recordTemplate: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              sampleRate: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              timestampFormat: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["unixnano", "unix", "rfc3339"]),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                batchPrefix: "batch_prefix",
-                batchSuffix: "batch_suffix",
-                "cve-2021-44228": "CVE-2021-44228",
-                fieldDelimiter: "field_delimiter",
-                fieldNames: "field_names",
-                outputType: "output_type",
-                recordDelimiter: "record_delimiter",
-                recordPrefix: "record_prefix",
-                recordSuffix: "record_suffix",
-                recordTemplate: "record_template",
-                sampleRate: "sample_rate",
-                timestampFormat: "timestamp_format",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          dataset: "dataset",
-          destinationConf: "destination_conf",
-          enabled: "enabled",
-          errorMessage: "error_message",
-          frequency: "frequency",
-          kind: "kind",
-          lastComplete: "last_complete",
-          lastError: "last_error",
-          logpullOptions: "logpull_options",
-          maxUploadBytes: "max_upload_bytes",
-          maxUploadIntervalSeconds: "max_upload_interval_seconds",
-          maxUploadRecords: "max_upload_records",
-          name: "name",
-          outputOptions: "output_options",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  result: Schema.Array(Schema.Union([LogpushJob, Schema.Null])),
 }) as unknown as Schema.Schema<ListJobsResponse>;
 
 export type ListJobsError = DefaultErrors;
@@ -1206,68 +925,10 @@ export const listJobs: API.PaginatedOperationMethod<
     ListJobsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListJobsRequest) => stream.Stream<
-    {
-      id?: number | null;
-      dataset?:
-        | "access_requests"
-        | "audit_logs"
-        | "audit_logs_v2"
-        | "biso_user_actions"
-        | "casb_findings"
-        | "device_posture_results"
-        | "dex_application_tests"
-        | "dex_device_state_events"
-        | "dlp_forensic_copies"
-        | "dns_firewall_logs"
-        | "dns_logs"
-        | "email_security_alerts"
-        | "firewall_events"
-        | "gateway_dns"
-        | "gateway_http"
-        | "gateway_network"
-        | "http_requests"
-        | "ipsec_logs"
-        | "magic_ids_detections"
-        | "nel_reports"
-        | "network_analytics_logs"
-        | "page_shield_events"
-        | "sinkhole_http_logs"
-        | "spectrum_events"
-        | "ssh_logs"
-        | "warp_config_changes"
-        | "warp_toggle_changes"
-        | "workers_trace_events"
-        | "zaraz_events"
-        | "zero_trust_network_sessions"
-        | null;
-      destinationConf?: string | null;
-      enabled?: boolean | null;
-      errorMessage?: string | null;
-      frequency?: "high" | "low" | null;
-      kind?: "" | "edge" | null;
-      lastComplete?: string | null;
-      lastError?: string | null;
-      logpullOptions?: string | null;
-      maxUploadBytes?: "0" | number | null;
-      maxUploadIntervalSeconds?: "0" | number | null;
-      maxUploadRecords?: "0" | number | null;
-      name?: string | null;
-      outputOptions?: {
-        batchPrefix?: string | null;
-        batchSuffix?: string | null;
-        "cve-2021-44228"?: boolean | null;
-        fieldDelimiter?: string | null;
-        fieldNames?: string[] | null;
-        outputType?: "ndjson" | "csv" | null;
-        recordDelimiter?: string | null;
-        recordPrefix?: string | null;
-        recordSuffix?: string | null;
-        recordTemplate?: string | null;
-        sampleRate?: number | null;
-        timestampFormat?: "unixnano" | "unix" | "rfc3339" | null;
-      } | null;
-    } | null,
+  items: (
+    input: ListJobsRequest,
+  ) => stream.Stream<
+    LogpushJob | null,
     ListJobsError,
     Credentials | HttpClient.HttpClient
   >;
@@ -1340,20 +1001,7 @@ export interface CreateJobRequest {
   /** Body param: Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string | null;
   /** Body param: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: {
-    batchPrefix?: string | null;
-    batchSuffix?: string | null;
-    "cve-2021-44228"?: boolean | null;
-    fieldDelimiter?: string | null;
-    fieldNames?: string[];
-    outputType?: "ndjson" | "csv";
-    recordDelimiter?: string | null;
-    recordPrefix?: string | null;
-    recordSuffix?: string | null;
-    recordTemplate?: string | null;
-    sampleRate?: number | null;
-    timestampFormat?: "unixnano" | "unix" | "rfc3339";
-  } | null;
+  outputOptions?: OutputOptionsParam | null;
   /** Body param: Ownership challenge token to prove destination ownership. */
   ownershipChallenge?: string;
 }
@@ -1415,56 +1063,7 @@ export const CreateJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   outputOptions: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        batchPrefix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        batchSuffix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        "cve-2021-44228": Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        fieldDelimiter: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        fieldNames: Schema.optional(Schema.Array(Schema.String)),
-        outputType: Schema.optional(Schema.Literals(["ndjson", "csv"])),
-        recordDelimiter: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        recordPrefix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        recordSuffix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        recordTemplate: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        sampleRate: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        timestampFormat: Schema.optional(
-          Schema.Literals(["unixnano", "unix", "rfc3339"]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          batchPrefix: "batch_prefix",
-          batchSuffix: "batch_suffix",
-          "cve-2021-44228": "CVE-2021-44228",
-          fieldDelimiter: "field_delimiter",
-          fieldNames: "field_names",
-          outputType: "output_type",
-          recordDelimiter: "record_delimiter",
-          recordPrefix: "record_prefix",
-          recordSuffix: "record_suffix",
-          recordTemplate: "record_template",
-          sampleRate: "sample_rate",
-          timestampFormat: "timestamp_format",
-        }),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([OutputOptionsParam, Schema.Null]),
   ),
   ownershipChallenge: Schema.optional(Schema.String),
 }).pipe(
@@ -1550,20 +1149,7 @@ export interface CreateJobResponse {
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string | null;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: {
-    batchPrefix?: string | null;
-    batchSuffix?: string | null;
-    "cve-2021-44228"?: boolean | null;
-    fieldDelimiter?: string | null;
-    fieldNames?: string[] | null;
-    outputType?: "ndjson" | "csv" | null;
-    recordDelimiter?: string | null;
-    recordPrefix?: string | null;
-    recordSuffix?: string | null;
-    recordTemplate?: string | null;
-    sampleRate?: number | null;
-    timestampFormat?: "unixnano" | "unix" | "rfc3339" | null;
-  } | null;
+  outputOptions?: OutputOptionsParam | null;
 }
 
 export const CreateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1626,63 +1212,7 @@ export const CreateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   outputOptions: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        batchPrefix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        batchSuffix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        "cve-2021-44228": Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        fieldDelimiter: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        fieldNames: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-        outputType: Schema.optional(
-          Schema.Union([Schema.Literals(["ndjson", "csv"]), Schema.Null]),
-        ),
-        recordDelimiter: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        recordPrefix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        recordSuffix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        recordTemplate: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        sampleRate: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        timestampFormat: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["unixnano", "unix", "rfc3339"]),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          batchPrefix: "batch_prefix",
-          batchSuffix: "batch_suffix",
-          "cve-2021-44228": "CVE-2021-44228",
-          fieldDelimiter: "field_delimiter",
-          fieldNames: "field_names",
-          outputType: "output_type",
-          recordDelimiter: "record_delimiter",
-          recordPrefix: "record_prefix",
-          recordSuffix: "record_suffix",
-          recordTemplate: "record_template",
-          sampleRate: "sample_rate",
-          timestampFormat: "timestamp_format",
-        }),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([OutputOptionsParam, Schema.Null]),
   ),
 })
   .pipe(
@@ -1748,20 +1278,7 @@ export interface UpdateJobRequest {
   /** Body param: Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string | null;
   /** Body param: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: {
-    batchPrefix?: string | null;
-    batchSuffix?: string | null;
-    "cve-2021-44228"?: boolean | null;
-    fieldDelimiter?: string | null;
-    fieldNames?: string[];
-    outputType?: "ndjson" | "csv";
-    recordDelimiter?: string | null;
-    recordPrefix?: string | null;
-    recordSuffix?: string | null;
-    recordTemplate?: string | null;
-    sampleRate?: number | null;
-    timestampFormat?: "unixnano" | "unix" | "rfc3339";
-  } | null;
+  outputOptions?: OutputOptionsParam | null;
   /** Body param: Ownership challenge token to prove destination ownership. */
   ownershipChallenge?: string;
 }
@@ -1789,56 +1306,7 @@ export const UpdateJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   outputOptions: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        batchPrefix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        batchSuffix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        "cve-2021-44228": Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        fieldDelimiter: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        fieldNames: Schema.optional(Schema.Array(Schema.String)),
-        outputType: Schema.optional(Schema.Literals(["ndjson", "csv"])),
-        recordDelimiter: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        recordPrefix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        recordSuffix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        recordTemplate: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        sampleRate: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        timestampFormat: Schema.optional(
-          Schema.Literals(["unixnano", "unix", "rfc3339"]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          batchPrefix: "batch_prefix",
-          batchSuffix: "batch_suffix",
-          "cve-2021-44228": "CVE-2021-44228",
-          fieldDelimiter: "field_delimiter",
-          fieldNames: "field_names",
-          outputType: "output_type",
-          recordDelimiter: "record_delimiter",
-          recordPrefix: "record_prefix",
-          recordSuffix: "record_suffix",
-          recordTemplate: "record_template",
-          sampleRate: "sample_rate",
-          timestampFormat: "timestamp_format",
-        }),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([OutputOptionsParam, Schema.Null]),
   ),
   ownershipChallenge: Schema.optional(Schema.String),
 }).pipe(
@@ -1923,20 +1391,7 @@ export interface UpdateJobResponse {
   /** Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
   name?: string | null;
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: {
-    batchPrefix?: string | null;
-    batchSuffix?: string | null;
-    "cve-2021-44228"?: boolean | null;
-    fieldDelimiter?: string | null;
-    fieldNames?: string[] | null;
-    outputType?: "ndjson" | "csv" | null;
-    recordDelimiter?: string | null;
-    recordPrefix?: string | null;
-    recordSuffix?: string | null;
-    recordTemplate?: string | null;
-    sampleRate?: number | null;
-    timestampFormat?: "unixnano" | "unix" | "rfc3339" | null;
-  } | null;
+  outputOptions?: OutputOptionsParam | null;
 }
 
 export const UpdateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1999,63 +1454,7 @@ export const UpdateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   outputOptions: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        batchPrefix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        batchSuffix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        "cve-2021-44228": Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        fieldDelimiter: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        fieldNames: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-        outputType: Schema.optional(
-          Schema.Union([Schema.Literals(["ndjson", "csv"]), Schema.Null]),
-        ),
-        recordDelimiter: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        recordPrefix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        recordSuffix: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        recordTemplate: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        sampleRate: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        timestampFormat: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["unixnano", "unix", "rfc3339"]),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          batchPrefix: "batch_prefix",
-          batchSuffix: "batch_suffix",
-          "cve-2021-44228": "CVE-2021-44228",
-          fieldDelimiter: "field_delimiter",
-          fieldNames: "field_names",
-          outputType: "output_type",
-          recordDelimiter: "record_delimiter",
-          recordPrefix: "record_prefix",
-          recordSuffix: "record_suffix",
-          recordTemplate: "record_template",
-          sampleRate: "sample_rate",
-          timestampFormat: "timestamp_format",
-        }),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([OutputOptionsParam, Schema.Null]),
   ),
 })
   .pipe(

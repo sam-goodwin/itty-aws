@@ -60,6 +60,65 @@ export class WorkflowNotFound extends Schema.TaggedErrorClass<WorkflowNotFound>(
 T.applyErrorMatchers(WorkflowNotFound, [{ code: 10200 }]);
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface InstanceRetention {
+  errorRetention?: number | string | null;
+  successRetention?: number | string | null;
+}
+
+export const InstanceRetention: Schema.Schema<InstanceRetention> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errorRetention: Schema.optional(
+        Schema.Union([
+          Schema.Union([Schema.Number, Schema.String]),
+          Schema.Null,
+        ]),
+      ),
+      successRetention: Schema.optional(
+        Schema.Union([
+          Schema.Union([Schema.Number, Schema.String]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        errorRetention: "error_retention",
+        successRetention: "success_retention",
+      }),
+    ),
+  ) as unknown as Schema.Schema<InstanceRetention>;
+
+export interface Instances {
+  complete?: number | null;
+  errored?: number | null;
+  paused?: number | null;
+  queued?: number | null;
+  running?: number | null;
+  terminated?: number | null;
+  waiting?: number | null;
+  waitingForPause?: number | null;
+}
+
+export const Instances: Schema.Schema<Instances> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      complete: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      errored: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      paused: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      queued: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      running: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      terminated: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      waiting: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      waitingForPause: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Instances>;
+
+// =============================================================================
 // Instance
 // =============================================================================
 
@@ -457,10 +516,7 @@ export interface CreateInstanceRequest {
   /** Body param: */
   instanceId?: string;
   /** Body param: */
-  instanceRetention?: {
-    errorRetention?: number | string;
-    successRetention?: number | string;
-  };
+  instanceRetention?: InstanceRetention;
   /** Body param: */
   params?: unknown;
 }
@@ -469,21 +525,7 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   instanceId: Schema.optional(Schema.String),
-  instanceRetention: Schema.optional(
-    Schema.Struct({
-      errorRetention: Schema.optional(
-        Schema.Union([Schema.Number, Schema.String]),
-      ),
-      successRetention: Schema.optional(
-        Schema.Union([Schema.Number, Schema.String]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        errorRetention: "error_retention",
-        successRetention: "success_retention",
-      }),
-    ),
-  ),
+  instanceRetention: Schema.optional(InstanceRetention),
   params: Schema.optional(Schema.Unknown),
 }).pipe(
   Schema.encodeKeys({
@@ -565,10 +607,7 @@ export interface BulkInstanceRequest {
   /** Body param: */
   body?: {
     instanceId?: string;
-    instanceRetention?: {
-      errorRetention?: number | string;
-      successRetention?: number | string;
-    };
+    instanceRetention?: InstanceRetention;
     params?: unknown;
   }[];
 }
@@ -580,21 +619,7 @@ export const BulkInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Array(
       Schema.Struct({
         instanceId: Schema.optional(Schema.String),
-        instanceRetention: Schema.optional(
-          Schema.Struct({
-            errorRetention: Schema.optional(
-              Schema.Union([Schema.Number, Schema.String]),
-            ),
-            successRetention: Schema.optional(
-              Schema.Union([Schema.Number, Schema.String]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              errorRetention: "error_retention",
-              successRetention: "success_retention",
-            }),
-          ),
-        ),
+        instanceRetention: Schema.optional(InstanceRetention),
         params: Schema.optional(Schema.Unknown),
       }).pipe(
         Schema.encodeKeys({
@@ -1031,16 +1056,7 @@ export interface GetWorkflowResponse {
   id: string;
   className: string;
   createdOn: string;
-  instances: {
-    complete?: number | null;
-    errored?: number | null;
-    paused?: number | null;
-    queued?: number | null;
-    running?: number | null;
-    terminated?: number | null;
-    waiting?: number | null;
-    waitingForPause?: number | null;
-  };
+  instances: Instances;
   modifiedOn: string;
   name: string;
   scriptName: string;
@@ -1051,18 +1067,7 @@ export const GetWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   className: Schema.String,
   createdOn: Schema.String,
-  instances: Schema.Struct({
-    complete: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    errored: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    paused: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    queued: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    running: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    terminated: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    waiting: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    waitingForPause: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-  }),
+  instances: Instances,
   modifiedOn: Schema.String,
   name: Schema.String,
   scriptName: Schema.String,
@@ -1116,16 +1121,7 @@ export interface ListWorkflowsResponse {
     id: string;
     className: string;
     createdOn: string;
-    instances: {
-      complete?: number | null;
-      errored?: number | null;
-      paused?: number | null;
-      queued?: number | null;
-      running?: number | null;
-      terminated?: number | null;
-      waiting?: number | null;
-      waitingForPause?: number | null;
-    };
+    instances: Instances;
     modifiedOn: string;
     name: string;
     scriptName: string;
@@ -1145,18 +1141,7 @@ export const ListWorkflowsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       id: Schema.String,
       className: Schema.String,
       createdOn: Schema.String,
-      instances: Schema.Struct({
-        complete: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        errored: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        paused: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        queued: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        running: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        terminated: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        waiting: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        waitingForPause: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-      }),
+      instances: Instances,
       modifiedOn: Schema.String,
       name: Schema.String,
       scriptName: Schema.String,
@@ -1211,16 +1196,7 @@ export const listWorkflows: API.PaginatedOperationMethod<
       id: string;
       className: string;
       createdOn: string;
-      instances: {
-        complete?: number | null;
-        errored?: number | null;
-        paused?: number | null;
-        queued?: number | null;
-        running?: number | null;
-        terminated?: number | null;
-        waiting?: number | null;
-        waitingForPause?: number | null;
-      };
+      instances: Instances;
       modifiedOn: string;
       name: string;
       scriptName: string;

@@ -913,6 +913,204 @@ function getPaginationTrait(paginationClassName: string): {
   }
 }
 
+// =============================================================================
+// Shared Type Deduplication
+// =============================================================================
+
+interface SharedTypeEntry {
+  tsName: string;
+  type: TypeInfo;
+  operationNames: string[];
+}
+
+function fingerprint(type: TypeInfo, depth = 0): string {
+  if (depth > 15) return "?";
+  switch (type.kind) {
+    case "primitive":
+      return `p:${type.value}`;
+    case "literal":
+      return `l:${type.value}`;
+    case "null":
+      return "null";
+    case "unknown":
+      return "?";
+    case "file":
+      return "file";
+    case "array":
+      return `[${type.elementType ? fingerprint(type.elementType, depth + 1) : "?"}]`;
+    case "union": {
+      if (!type.values?.length) return "?";
+      return `(${type.values.map((v) => fingerprint(v, depth + 1)).sort().join("|")})`;
+    }
+    case "object": {
+      if (!type.properties?.length) return "{}";
+      return `{${type.properties.map((p) => `${p.name}${p.required ? "!" : "?"}:${fingerprint(p.type, depth + 1)}`).sort().join(",")}}`;
+    }
+    default:
+      return "?";
+  }
+}
+
+function collectSharedTypes(
+  operations: ParsedOperation[],
+  patches: Map<string, OperationPatch>,
+): Map<string, SharedTypeEntry> {
+  const nameMap = new Map<
+    string,
+    { type: TypeInfo; ops: Set<string>; fps: Set<string> }
+  >();
+
+  for (const op of operations) {
+    const patch = patches.get(op.operationName);
+    let resolvedModel: ResolvedOperationModel | undefined;
+    try {
+      resolvedModel = resolveOperationModel(op, patch);
+    } catch {
+      continue;
+    }
+
+    const walk = (type: TypeInfo) => {
+      if (type.kind === "object" && type.name && type.properties?.length) {
+        const fp = fingerprint(type);
+        const existing = nameMap.get(type.name);
+        if (existing) {
+          existing.ops.add(op.operationName);
+          existing.fps.add(fp);
+          if (
+            type.properties!.length > (existing.type.properties?.length ?? 0)
+          ) {
+            existing.type = type;
+          }
+        } else {
+          nameMap.set(type.name, {
+            type,
+            ops: new Set([op.operationName]),
+            fps: new Set([fp]),
+          });
+        }
+      }
+      if (type.kind === "array" && type.elementType) walk(type.elementType);
+      if (type.kind === "union" && type.values) type.values.forEach(walk);
+      if (type.kind === "object" && type.properties) {
+        type.properties.forEach((p) => walk(p.type));
+      }
+    };
+
+    for (const param of resolvedModel.allParams) {
+      walk(param.type);
+    }
+    if (resolvedModel.responseType) walk(resolvedModel.responseType);
+  }
+
+  const reservedNames = new Set<string>([
+    "Schema",
+    "Effect",
+    "stream",
+    "API",
+    "T",
+    "Credentials",
+    "DefaultErrors",
+    "HttpClient",
+    "UploadableSchema",
+    "SensitiveString",
+    "Error",
+    "Source",
+  ]);
+  for (const op of operations) {
+    const pascal = toPascalCase(op.operationName);
+    reservedNames.add(`${pascal}Request`);
+    reservedNames.add(`${pascal}Response`);
+    reservedNames.add(`${pascal}Error`);
+  }
+
+  const shared = new Map<string, SharedTypeEntry>();
+  const usedTsNames = new Set<string>(reservedNames);
+
+  for (const [name, data] of nameMap) {
+    if (data.ops.size < 2) continue;
+
+    let tsName = toPascalCase(name.replace(/\./g, ""));
+    let candidate = tsName;
+    let suffix = 2;
+    while (usedTsNames.has(candidate)) {
+      candidate = `${tsName}${suffix++}`;
+    }
+    tsName = candidate;
+    usedTsNames.add(tsName);
+
+    shared.set(name, {
+      tsName,
+      type: data.type,
+      operationNames: [...data.ops],
+    });
+  }
+
+  return shared;
+}
+
+function generateSharedTypeDefinitions(
+  sharedTypes: Map<string, SharedTypeEntry>,
+): string {
+  if (sharedTypes.size === 0) return "";
+
+  const sharedByFp = new Map<string, string>();
+  for (const [, entry] of sharedTypes) {
+    sharedByFp.set(fingerprint(entry.type), entry.tsName);
+  }
+
+  const lines: string[] = [];
+  lines.push(`// ${"=".repeat(77)}`);
+  lines.push(`// Shared Types`);
+  lines.push(`// ${"=".repeat(77)}`);
+  lines.push("");
+
+  const sorted = [...sharedTypes.entries()].sort(([, a], [, b]) =>
+    a.tsName.localeCompare(b.tsName),
+  );
+
+  for (const [upstreamName, entry] of sorted) {
+    const { tsName, type } = entry;
+    const selfFp = fingerprint(type);
+
+    if (type.kind === "object" && type.properties) {
+      lines.push(`export interface ${tsName} {`);
+      for (const p of type.properties) {
+        const propName = toCamelCase(p.name);
+        const opt = p.required ? "" : "?";
+        const tsType = typeInfoToTsType(p.type, 0, true, sharedByFp);
+        const nullableSuffix =
+          !p.required && !typeIncludesNull(p.type) ? " | null" : "";
+        lines.push(`  ${quotePropKey(propName)}${opt}: ${tsType}${nullableSuffix};`);
+      }
+      lines.push(`}`);
+      lines.push("");
+
+      lines.push(
+        `export const ${tsName}: Schema.Schema<${tsName}> =`,
+      );
+      lines.push(`  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>`);
+      const schemaBody = typeInfoToSchema(
+        type,
+        "    ",
+        0,
+        true,
+        sharedByFp,
+        selfFp,
+      );
+      lines.push(`    ${schemaBody}`);
+      lines.push(`  ) as unknown as Schema.Schema<${tsName}>;`);
+    }
+
+    lines.push("");
+  }
+
+  return lines.join("\n");
+}
+
+// =============================================================================
+// Schema / TS-type emission
+// =============================================================================
+
 /**
  * Convert TypeInfo to Effect Schema code.
  * This is used for response schemas where the API may omit "required" fields.
@@ -922,10 +1120,19 @@ function typeInfoToSchema(
   indent: string = "",
   depth: number = 0,
   optionalObjectPropsNullable: boolean = false,
+  sharedByFp?: Map<string, string>,
+  excludeFp?: string,
 ): string {
   // Prevent infinite recursion
   if (depth > 10) {
     return "Schema.Unknown";
+  }
+
+  if (sharedByFp && type.kind === "object" && type.name && type.properties?.length) {
+    const fp = fingerprint(type);
+    if (fp !== excludeFp && sharedByFp.has(fp)) {
+      return sharedByFp.get(fp)!;
+    }
   }
 
   switch (type.kind) {
@@ -976,7 +1183,7 @@ function typeInfoToSchema(
       const unionParts = type.values
         .filter((v) => v.kind !== "unknown")
         .map((v) =>
-          typeInfoToSchema(v, indent, depth + 1, optionalObjectPropsNullable),
+          typeInfoToSchema(v, indent, depth + 1, optionalObjectPropsNullable, sharedByFp, excludeFp),
         );
       const uniqueUnionParts = [...new Set(unionParts)];
       if (uniqueUnionParts.length === 0) {
@@ -996,6 +1203,8 @@ function typeInfoToSchema(
         indent,
         depth + 1,
         optionalObjectPropsNullable,
+        sharedByFp,
+        excludeFp,
       );
       return `Schema.Array(${elementSchema})`;
 
@@ -1025,6 +1234,8 @@ function typeInfoToSchema(
                 indent + "  ",
                 depth + 1,
                 optionalObjectPropsNullable,
+                sharedByFp,
+                excludeFp,
               );
             }
             if (!p.required) {
@@ -1069,10 +1280,18 @@ function typeInfoToTsType(
   type: TypeInfo,
   depth: number = 0,
   optionalObjectPropsNullable: boolean = false,
+  sharedByFp?: Map<string, string>,
 ): string {
   // Prevent infinite recursion
   if (depth > 10) {
     return "unknown";
+  }
+
+  if (sharedByFp && type.kind === "object" && type.name && type.properties?.length) {
+    const fp = fingerprint(type);
+    if (sharedByFp.has(fp)) {
+      return sharedByFp.get(fp)!;
+    }
   }
 
   switch (type.kind) {
@@ -1106,7 +1325,7 @@ function typeInfoToTsType(
         ) {
           continue;
         }
-        const t = typeInfoToTsType(v, depth + 1, optionalObjectPropsNullable);
+        const t = typeInfoToTsType(v, depth + 1, optionalObjectPropsNullable, sharedByFp);
         tsTypeSet.add(t);
       }
       const uniqueTsTypes = [...tsTypeSet];
@@ -1123,6 +1342,7 @@ function typeInfoToTsType(
         type.elementType,
         depth + 1,
         optionalObjectPropsNullable,
+        sharedByFp,
       );
       // Wrap union types in parentheses
       if (elementType.includes("|")) {
@@ -1144,6 +1364,7 @@ function typeInfoToTsType(
               p.type,
               depth + 1,
               optionalObjectPropsNullable,
+              sharedByFp,
             );
             return `${quotePropKey(propName)}${optMark}: ${
               !p.required &&
@@ -1181,6 +1402,7 @@ function typeIncludesNull(type: TypeInfo): boolean {
 function generateOperationSchemaAst(
   op: ParsedOperation,
   patch?: OperationPatch,
+  sharedByFp?: Map<string, string>,
 ): string {
   // Use pre-computed operation name from the model
   const normalizedOpName = op.operationName;
@@ -1283,7 +1505,7 @@ function generateOperationSchemaAst(
   lines.push(`export interface ${requestTypeName} {`);
   for (const param of allParams) {
     const propName = toCamelCase(param.name); // Use camelCase in interface
-    const tsType = typeInfoToTsType(param.type);
+    const tsType = typeInfoToTsType(param.type, 0, false, sharedByFp);
     const optMark = param.required ? "" : "?";
     if (param.description) {
       lines.push(
@@ -1302,7 +1524,7 @@ function generateOperationSchemaAst(
   for (const param of resolvedPathParams) {
     const propName = toCamelCase(param.name);
     const wireName = param.name;
-    const schema = typeInfoToSchema(param.type);
+    const schema = typeInfoToSchema(param.type, "", 0, false, sharedByFp);
     requestProps.push(
       `  ${quotePropKey(propName)}: ${schema}.pipe(T.HttpPath("${wireName}"))`,
     );
@@ -1312,7 +1534,7 @@ function generateOperationSchemaAst(
   for (const param of resolvedQueryParams) {
     const propName = toCamelCase(param.name);
     const wireName = param.name;
-    let schema = typeInfoToSchema(param.type);
+    let schema = typeInfoToSchema(param.type, "", 0, false, sharedByFp);
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
     }
@@ -1324,7 +1546,7 @@ function generateOperationSchemaAst(
   // Add header params
   for (const param of resolvedHeaderParams) {
     const propName = toCamelCase(param.name);
-    let schema = typeInfoToSchema(param.type);
+    let schema = typeInfoToSchema(param.type, "", 0, false, sharedByFp);
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
     }
@@ -1340,7 +1562,7 @@ function generateOperationSchemaAst(
   for (const param of resolvedBodyParams) {
     const propName = toCamelCase(param.name);
     const wireName = param.name;
-    let schema = typeInfoToSchema(param.type);
+    let schema = typeInfoToSchema(param.type, "", 0, false, sharedByFp);
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
     }
@@ -1449,8 +1671,8 @@ function generateOperationSchemaAst(
 
   if (isTypeAlias && resolvedResponseType) {
     // Type alias response (e.g., `type Response = string` or `type Response = unknown`)
-    const tsType = typeInfoToTsType(resolvedResponseType, 0, true);
-    const schema = typeInfoToSchema(resolvedResponseType, "", 0, true);
+    const tsType = typeInfoToTsType(resolvedResponseType, 0, true, sharedByFp);
+    const schema = typeInfoToSchema(resolvedResponseType, "", 0, true, sharedByFp);
     const responsePathPipe = responsePath
       ? `.pipe(T.ResponsePath("${responsePath}"))`
       : "";
@@ -1470,7 +1692,7 @@ function generateOperationSchemaAst(
     lines.push(`export interface ${responseTypeName} {`);
     for (const prop of resolvedResponseType.properties) {
       const propName = toCamelCase(prop.name);
-      const tsType = typeInfoToTsType(prop.type, 0, true);
+      const tsType = typeInfoToTsType(prop.type, 0, true, sharedByFp);
       const optMark = prop.required ? "" : "?";
       const nullableSuffix =
         !prop.required && !typeIncludesNull(prop.type) ? " | null" : "";
@@ -1494,7 +1716,7 @@ function generateOperationSchemaAst(
     const responseProps = resolvedResponseType.properties.map((prop) => {
       const wireName = prop.wireKey ?? prop.name;
       const propName = toCamelCase(prop.name);
-      let schema = typeInfoToSchema(prop.type, "", 0, true);
+      let schema = typeInfoToSchema(prop.type, "", 0, true, sharedByFp);
       if (!prop.required) {
         if (!typeIncludesNull(prop.type)) {
           schema = `Schema.Union([${schema}, Schema.Null])`;
@@ -1554,7 +1776,7 @@ function generateOperationSchemaAst(
 
   if (op.paginationClassName && paginatedItemType) {
     const pagination = getPaginationTrait(op.paginationClassName);
-    const itemTypeName = typeInfoToTsType(paginatedItemType, 0, true);
+    const itemTypeName = typeInfoToTsType(paginatedItemType, 0, true, sharedByFp);
     lines.push(
       `export const ${normalizedOpName}: API.PaginatedOperationMethod<`,
     );
@@ -1617,9 +1839,10 @@ function generateOperationSchemaAst(
 function generateOperationSchema(
   op: ParsedOperation,
   patch?: OperationPatch,
+  sharedByFp?: Map<string, string>,
 ): string {
   if (op.source === "ast") {
-    return generateOperationSchemaAst(op, patch);
+    return generateOperationSchemaAst(op, patch, sharedByFp);
   }
 
   // Use pre-computed operation name from the model
@@ -1646,7 +1869,7 @@ function generateOperationSchema(
   lines.push(`export interface ${requestTypeName} {`);
   for (const param of allParams) {
     const propName = toCamelCase(param.name);
-    const tsType = typeInfoToTsType(param.type);
+    const tsType = typeInfoToTsType(param.type, 0, false, sharedByFp);
     const optMark = param.required ? "" : "?";
     if (param.description) {
       lines.push(
@@ -1662,7 +1885,7 @@ function generateOperationSchema(
   for (const param of resolvedPathParams) {
     const propName = toCamelCase(param.name);
     const wireName = param.name;
-    const schema = typeInfoToSchema(param.type);
+    const schema = typeInfoToSchema(param.type, "", 0, false, sharedByFp);
     requestProps.push(
       `  ${quotePropKey(propName)}: ${schema}.pipe(T.HttpPath("${wireName}"))`,
     );
@@ -1670,7 +1893,7 @@ function generateOperationSchema(
   for (const param of resolvedQueryParams) {
     const propName = toCamelCase(param.name);
     const wireName = param.name;
-    let schema = typeInfoToSchema(param.type);
+    let schema = typeInfoToSchema(param.type, "", 0, false, sharedByFp);
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
     }
@@ -1680,7 +1903,7 @@ function generateOperationSchema(
   }
   for (const param of resolvedHeaderParams) {
     const propName = toCamelCase(param.name);
-    let schema = typeInfoToSchema(param.type);
+    let schema = typeInfoToSchema(param.type, "", 0, false, sharedByFp);
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
     }
@@ -1695,7 +1918,7 @@ function generateOperationSchema(
   for (const param of resolvedBodyParams) {
     const propName = toCamelCase(param.name);
     const wireName = param.name;
-    let schema = typeInfoToSchema(param.type);
+    let schema = typeInfoToSchema(param.type, "", 0, false, sharedByFp);
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
     }
@@ -1746,8 +1969,8 @@ function generateOperationSchema(
   const responsePath = resolved.responsePath;
 
   if (isTypeAlias && resolvedResponseType) {
-    const tsType = typeInfoToTsType(resolvedResponseType, 0, true);
-    const schema = typeInfoToSchema(resolvedResponseType, "", 0, true);
+    const tsType = typeInfoToTsType(resolvedResponseType, 0, true, sharedByFp);
+    const schema = typeInfoToSchema(resolvedResponseType, "", 0, true, sharedByFp);
     const responsePathPipe = responsePath
       ? `.pipe(T.ResponsePath("${responsePath}"))`
       : "";
@@ -1765,7 +1988,7 @@ function generateOperationSchema(
     lines.push(`export interface ${responseTypeName} {`);
     for (const prop of resolvedResponseType.properties) {
       const propName = toCamelCase(prop.name);
-      const tsType = typeInfoToTsType(prop.type, 0, true);
+      const tsType = typeInfoToTsType(prop.type, 0, true, sharedByFp);
       const optMark = prop.required ? "" : "?";
       const nullableSuffix =
         !prop.required && !typeIncludesNull(prop.type) ? " | null" : "";
@@ -1786,7 +2009,7 @@ function generateOperationSchema(
     const responseProps = resolvedResponseType.properties.map((prop) => {
       const wireName = prop.wireKey ?? prop.name;
       const propName = toCamelCase(prop.name);
-      let schema = typeInfoToSchema(prop.type, "", 0, true);
+      let schema = typeInfoToSchema(prop.type, "", 0, true, sharedByFp);
       if (!prop.required) {
         if (!typeIncludesNull(prop.type)) {
           schema = `Schema.Union([${schema}, Schema.Null])`;
@@ -1844,7 +2067,7 @@ function generateOperationSchema(
 
   if (op.paginationClassName && paginatedItemType) {
     const pagination = getPaginationTrait(op.paginationClassName);
-    const itemTypeName = typeInfoToTsType(paginatedItemType, 0, true);
+    const itemTypeName = typeInfoToTsType(paginatedItemType, 0, true, sharedByFp);
     lines.push(
       `export const ${normalizedOpName}: API.PaginatedOperationMethod<`,
     );
@@ -2290,6 +2513,15 @@ function generateServiceFile(
 ): string {
   const lines: string[] = [];
 
+  // Collect shared types (named types referenced in 2+ operations)
+  const sharedTypes = collectSharedTypes(service.operations, patches);
+
+  // Build fingerprint -> tsName lookup for emission
+  const sharedByFp = new Map<string, string>();
+  for (const [, entry] of sharedTypes) {
+    sharedByFp.set(fingerprint(entry.type), entry.tsName);
+  }
+
   // Check if any operation has file uploads
   const hasFileUploads = service.operations.some(operationHasFiles);
 
@@ -2345,11 +2577,16 @@ T.applyErrorMatchers(${tag}, ${JSON.stringify(matchers)});`);
     }
   }
 
+  // Emit shared type definitions before operations
+  if (sharedTypes.size > 0) {
+    lines.push(generateSharedTypeDefinitions(sharedTypes));
+  }
+
   // Operations are already normalized by parse.ts (update -> put renaming, etc.)
   // Sort operations by resource, then by verb order
   const sortedOperations = sortOperations(service.operations);
 
-  // Generate each operation with inlined types, adding resource group separators
+  // Generate each operation, referencing shared types instead of inlining
   let currentResource: string | null = null;
   for (const op of sortedOperations) {
     const resource = extractResourceFromOperationName(op.operationName);
@@ -2368,7 +2605,7 @@ T.applyErrorMatchers(${tag}, ${JSON.stringify(matchers)});`);
 
     // Get patch for this operation
     const patch = patches.get(op.operationName);
-    lines.push(generateOperationSchema(op, patch));
+    lines.push(generateOperationSchema(op, patch, sharedByFp));
   }
 
   let code = lines.join("\n");

@@ -13,6 +13,520 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Content {
+  id: number;
+  name: string;
+  superCategoryId: number;
+}
+
+export const Content: Schema.Schema<Content> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Number,
+      name: Schema.String,
+      superCategoryId: Schema.Number,
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        name: "name",
+        superCategoryId: "super_category_id",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Content>;
+
+export interface Options {
+  customHeaders?: unknown | null;
+  screenshotsResolutions?: string[] | null;
+}
+
+export const Options: Schema.Schema<Options> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      customHeaders: Schema.optional(
+        Schema.Union([Schema.Unknown, Schema.Null]),
+      ),
+      screenshotsResolutions: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Options>;
+
+export interface Page {
+  apexDomain: string;
+  asn: string;
+  asnname: string;
+  city: string;
+  country: string;
+  domain: string;
+  ip: string;
+  mimeType: string;
+  server: string;
+  status: string;
+  title: string;
+  tlsAgeDays: number;
+  tlsIssuer: string;
+  tlsValidDays: number;
+  tlsValidFrom: string;
+  url: string;
+  screenshot?: {
+    dhash: string;
+    mm3Hash: number;
+    name: string;
+    phash: string;
+  } | null;
+}
+
+export const Page: Schema.Schema<Page> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      apexDomain: Schema.String,
+      asn: Schema.String,
+      asnname: Schema.String,
+      city: Schema.String,
+      country: Schema.String,
+      domain: Schema.String,
+      ip: Schema.String,
+      mimeType: Schema.String,
+      server: Schema.String,
+      status: Schema.String,
+      title: Schema.String,
+      tlsAgeDays: Schema.Number,
+      tlsIssuer: Schema.String,
+      tlsValidDays: Schema.Number,
+      tlsValidFrom: Schema.String,
+      url: Schema.String,
+      screenshot: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            dhash: Schema.String,
+            mm3Hash: Schema.Number,
+            name: Schema.String,
+            phash: Schema.String,
+          }),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Page>;
+
+export interface Request {
+  documentURL: string;
+  hasUserGesture: boolean;
+  initiator: { host: string; type: string; url: string };
+  redirectHasExtraInfo: boolean;
+  request: {
+    initialPriority: string;
+    isSameSite: boolean;
+    method: string;
+    mixedContentType: string;
+    referrerPolicy: string;
+    url: string;
+    headers?: unknown | null;
+  };
+  requestId: string;
+  type: string;
+  wallTime: number;
+  frameId?: string | null;
+  loaderId?: string | null;
+  primaryRequest?: boolean | null;
+  redirectResponse?: {
+    charset: string;
+    mimeType: string;
+    protocol: string;
+    remoteIPAddress: string;
+    remotePort: number;
+    securityHeaders: { name: string; value: string }[];
+    securityState: string;
+    status: number;
+    statusText: string;
+    url: string;
+    headers?: unknown | null;
+  } | null;
+}
+
+export const Request: Schema.Schema<Request> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      documentURL: Schema.String,
+      hasUserGesture: Schema.Boolean,
+      initiator: Schema.Struct({
+        host: Schema.String,
+        type: Schema.String,
+        url: Schema.String,
+      }),
+      redirectHasExtraInfo: Schema.Boolean,
+      request: Schema.Struct({
+        initialPriority: Schema.String,
+        isSameSite: Schema.Boolean,
+        method: Schema.String,
+        mixedContentType: Schema.String,
+        referrerPolicy: Schema.String,
+        url: Schema.String,
+        headers: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+      }),
+      requestId: Schema.String,
+      type: Schema.String,
+      wallTime: Schema.Number,
+      frameId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      loaderId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      primaryRequest: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      redirectResponse: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            charset: Schema.String,
+            mimeType: Schema.String,
+            protocol: Schema.String,
+            remoteIPAddress: Schema.String,
+            remotePort: Schema.Number,
+            securityHeaders: Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                value: Schema.String,
+              }),
+            ),
+            securityState: Schema.String,
+            status: Schema.Number,
+            statusText: Schema.String,
+            url: Schema.String,
+            headers: Schema.optional(
+              Schema.Union([Schema.Unknown, Schema.Null]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Request>;
+
+export interface Response {
+  charset: string;
+  mimeType: string;
+  protocol: string;
+  remoteIPAddress: string;
+  remotePort: number;
+  securityDetails: {
+    certificateId: number;
+    certificateTransparencyCompliance: string;
+    cipher: string;
+    encryptedClientHello: boolean;
+    issuer: string;
+    keyExchange: string;
+    keyExchangeGroup: string;
+    protocol: string;
+    sanList: string[];
+    serverSignatureAlgorithm: number;
+    subjectName: string;
+    validFrom: number;
+    validTo: number;
+  };
+  securityHeaders: { name: string; value: string }[];
+  securityState: string;
+  status: number;
+  statusText: string;
+  url: string;
+  headers?: unknown | null;
+}
+
+export const Response: Schema.Schema<Response> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      charset: Schema.String,
+      mimeType: Schema.String,
+      protocol: Schema.String,
+      remoteIPAddress: Schema.String,
+      remotePort: Schema.Number,
+      securityDetails: Schema.Struct({
+        certificateId: Schema.Number,
+        certificateTransparencyCompliance: Schema.String,
+        cipher: Schema.String,
+        encryptedClientHello: Schema.Boolean,
+        issuer: Schema.String,
+        keyExchange: Schema.String,
+        keyExchangeGroup: Schema.String,
+        protocol: Schema.String,
+        sanList: Schema.Array(Schema.String),
+        serverSignatureAlgorithm: Schema.Number,
+        subjectName: Schema.String,
+        validFrom: Schema.Number,
+        validTo: Schema.Number,
+      }),
+      securityHeaders: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          value: Schema.String,
+        }),
+      ),
+      securityState: Schema.String,
+      status: Schema.Number,
+      statusText: Schema.String,
+      url: Schema.String,
+      headers: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Response>;
+
+export interface Stats {
+  domainStats: {
+    count: number;
+    countries: string[];
+    domain: string;
+    encodedSize: number;
+    index: number;
+    initiators: string[];
+    ips: string[];
+    redirects: number;
+    size: number;
+  }[];
+  ipStats: {
+    asn: {
+      asn: string;
+      country: string;
+      description: string;
+      ip: string;
+      name: string;
+      org: string;
+    };
+    countries: string[];
+    domains: string[];
+    encodedSize: number;
+    geoip: {
+      city: string;
+      country: string;
+      countryName: string;
+      ll: number[];
+      region: string;
+    };
+    index: number;
+    ip: string;
+    ipv6: boolean;
+    redirects: number;
+    requests: number;
+    size: number;
+    count?: number | null;
+  }[];
+  ipv6Percentage: number;
+  malicious: number;
+  protocolStats: {
+    count: number;
+    countries: string[];
+    encodedSize: number;
+    ips: string[];
+    protocol: string;
+    size: number;
+  }[];
+  resourceStats: {
+    compression: number;
+    count: number;
+    countries: string[];
+    encodedSize: number;
+    ips: string[];
+    percentage: number;
+    size: number;
+    type: string;
+  }[];
+  securePercentage: number;
+  secureRequests: number;
+  serverStats: {
+    count: number;
+    countries: string[];
+    encodedSize: number;
+    ips: string[];
+    server: string;
+    size: number;
+  }[];
+  tlsStats: {
+    count: number;
+    countries: string[];
+    encodedSize: number;
+    ips: string[];
+    protocols: { "tls 1.3 / AES_128GCM": number };
+    securityState: string;
+    size: number;
+  }[];
+  totalLinks: number;
+  uniqASNs: number;
+  uniqCountries: number;
+}
+
+export const Stats: Schema.Schema<Stats> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      domainStats: Schema.Array(
+        Schema.Struct({
+          count: Schema.Number,
+          countries: Schema.Array(Schema.String),
+          domain: Schema.String,
+          encodedSize: Schema.Number,
+          index: Schema.Number,
+          initiators: Schema.Array(Schema.String),
+          ips: Schema.Array(Schema.String),
+          redirects: Schema.Number,
+          size: Schema.Number,
+        }),
+      ),
+      ipStats: Schema.Array(
+        Schema.Struct({
+          asn: Schema.Struct({
+            asn: Schema.String,
+            country: Schema.String,
+            description: Schema.String,
+            ip: Schema.String,
+            name: Schema.String,
+            org: Schema.String,
+          }),
+          countries: Schema.Array(Schema.String),
+          domains: Schema.Array(Schema.String),
+          encodedSize: Schema.Number,
+          geoip: Schema.Struct({
+            city: Schema.String,
+            country: Schema.String,
+            countryName: Schema.String,
+            ll: Schema.Array(Schema.Number),
+            region: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              city: "city",
+              country: "country",
+              countryName: "country_name",
+              ll: "ll",
+              region: "region",
+            }),
+          ),
+          index: Schema.Number,
+          ip: Schema.String,
+          ipv6: Schema.Boolean,
+          redirects: Schema.Number,
+          requests: Schema.Number,
+          size: Schema.Number,
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        }),
+      ),
+      ipv6Percentage: Schema.Number,
+      malicious: Schema.Number,
+      protocolStats: Schema.Array(
+        Schema.Struct({
+          count: Schema.Number,
+          countries: Schema.Array(Schema.String),
+          encodedSize: Schema.Number,
+          ips: Schema.Array(Schema.String),
+          protocol: Schema.String,
+          size: Schema.Number,
+        }),
+      ),
+      resourceStats: Schema.Array(
+        Schema.Struct({
+          compression: Schema.Number,
+          count: Schema.Number,
+          countries: Schema.Array(Schema.String),
+          encodedSize: Schema.Number,
+          ips: Schema.Array(Schema.String),
+          percentage: Schema.Number,
+          size: Schema.Number,
+          type: Schema.String,
+        }),
+      ),
+      securePercentage: Schema.Number,
+      secureRequests: Schema.Number,
+      serverStats: Schema.Array(
+        Schema.Struct({
+          count: Schema.Number,
+          countries: Schema.Array(Schema.String),
+          encodedSize: Schema.Number,
+          ips: Schema.Array(Schema.String),
+          server: Schema.String,
+          size: Schema.Number,
+        }),
+      ),
+      tlsStats: Schema.Array(
+        Schema.Struct({
+          count: Schema.Number,
+          countries: Schema.Array(Schema.String),
+          encodedSize: Schema.Number,
+          ips: Schema.Array(Schema.String),
+          protocols: Schema.Struct({
+            "tls 1.3 / AES_128GCM": Schema.Number,
+          }).pipe(
+            Schema.encodeKeys({
+              "tls 1.3 / AES_128GCM": "TLS 1.3 / AES_128_GCM",
+            }),
+          ),
+          securityState: Schema.String,
+          size: Schema.Number,
+        }),
+      ),
+      totalLinks: Schema.Number,
+      uniqASNs: Schema.Number,
+      uniqCountries: Schema.Number,
+    }).pipe(
+      Schema.encodeKeys({
+        domainStats: "domainStats",
+        ipStats: "ipStats",
+        ipv6Percentage: "IPv6Percentage",
+        malicious: "malicious",
+        protocolStats: "protocolStats",
+        resourceStats: "resourceStats",
+        securePercentage: "securePercentage",
+        secureRequests: "secureRequests",
+        serverStats: "serverStats",
+        tlsStats: "tlsStats",
+        totalLinks: "totalLinks",
+        uniqASNs: "uniqASNs",
+        uniqCountries: "uniqCountries",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Stats>;
+
+export interface Task {
+  apexDomain: string;
+  domain: string;
+  domURL: string;
+  method: string;
+  options: Options;
+  reportURL: string;
+  screenshotURL: string;
+  source: string;
+  success: boolean;
+  time: string;
+  url: string;
+  uuid: string;
+  visibility: string;
+}
+
+export const Task: Schema.Schema<Task> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      apexDomain: Schema.String,
+      domain: Schema.String,
+      domURL: Schema.String,
+      method: Schema.String,
+      options: Options,
+      reportURL: Schema.String,
+      screenshotURL: Schema.String,
+      source: Schema.String,
+      success: Schema.Boolean,
+      time: Schema.String,
+      url: Schema.String,
+      uuid: Schema.String,
+      visibility: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<Task>;
+
+export interface Verdicts {
+  malicious: boolean;
+}
+
+export const Verdicts: Schema.Schema<Verdicts> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      malicious: Schema.Boolean,
+    }),
+  ) as unknown as Schema.Schema<Verdicts>;
+
+// =============================================================================
 // Respon
 // =============================================================================
 
@@ -99,40 +613,7 @@ export interface GetScanResponse {
       startTime: number;
     }[];
     requests: {
-      request: {
-        documentURL: string;
-        hasUserGesture: boolean;
-        initiator: { host: string; type: string; url: string };
-        redirectHasExtraInfo: boolean;
-        request: {
-          initialPriority: string;
-          isSameSite: boolean;
-          method: string;
-          mixedContentType: string;
-          referrerPolicy: string;
-          url: string;
-          headers?: unknown | null;
-        };
-        requestId: string;
-        type: string;
-        wallTime: number;
-        frameId?: string | null;
-        loaderId?: string | null;
-        primaryRequest?: boolean | null;
-        redirectResponse?: {
-          charset: string;
-          mimeType: string;
-          protocol: string;
-          remoteIPAddress: string;
-          remotePort: number;
-          securityHeaders: { name: string; value: string }[];
-          securityState: string;
-          status: number;
-          statusText: string;
-          url: string;
-          headers?: unknown | null;
-        } | null;
-      };
+      request: Request;
       response: {
         asn: {
           asn: string;
@@ -154,34 +635,7 @@ export interface GetScanResponse {
         };
         hasExtraInfo: boolean;
         requestId: string;
-        response: {
-          charset: string;
-          mimeType: string;
-          protocol: string;
-          remoteIPAddress: string;
-          remotePort: number;
-          securityDetails: {
-            certificateId: number;
-            certificateTransparencyCompliance: string;
-            cipher: string;
-            encryptedClientHello: boolean;
-            issuer: string;
-            keyExchange: string;
-            keyExchangeGroup: string;
-            protocol: string;
-            sanList: string[];
-            serverSignatureAlgorithm: number;
-            subjectName: string;
-            validFrom: number;
-            validTo: number;
-          };
-          securityHeaders: { name: string; value: string }[];
-          securityState: string;
-          status: number;
-          statusText: string;
-          url: string;
-          headers?: unknown | null;
-        };
+        response: Response;
         size: number;
         type: string;
         contentAvailable?: boolean | null;
@@ -283,143 +737,18 @@ export interface GetScanResponse {
       };
       urlCategories?: {
         data: {
-          content: { id: number; name: string; superCategoryId: number }[];
-          inherited: {
-            content: { id: number; name: string; superCategoryId: number }[];
-            from: string;
-            risks: { id: number; name: string; superCategoryId: number }[];
-          };
+          content: Content[];
+          inherited: { content: Content[]; from: string; risks: Content[] };
           name: string;
-          risks: { id: number; name: string; superCategoryId: number }[];
+          risks: Content[];
         }[];
       } | null;
     };
   };
-  page: {
-    apexDomain: string;
-    asn: string;
-    asnname: string;
-    city: string;
-    country: string;
-    domain: string;
-    ip: string;
-    mimeType: string;
-    server: string;
-    status: string;
-    title: string;
-    tlsAgeDays: number;
-    tlsIssuer: string;
-    tlsValidDays: number;
-    tlsValidFrom: string;
-    url: string;
-    screenshot?: {
-      dhash: string;
-      mm3Hash: number;
-      name: string;
-      phash: string;
-    } | null;
-  };
+  page: Page;
   scanner: { colo: string; country: string };
-  stats: {
-    domainStats: {
-      count: number;
-      countries: string[];
-      domain: string;
-      encodedSize: number;
-      index: number;
-      initiators: string[];
-      ips: string[];
-      redirects: number;
-      size: number;
-    }[];
-    ipStats: {
-      asn: {
-        asn: string;
-        country: string;
-        description: string;
-        ip: string;
-        name: string;
-        org: string;
-      };
-      countries: string[];
-      domains: string[];
-      encodedSize: number;
-      geoip: {
-        city: string;
-        country: string;
-        countryName: string;
-        ll: number[];
-        region: string;
-      };
-      index: number;
-      ip: string;
-      ipv6: boolean;
-      redirects: number;
-      requests: number;
-      size: number;
-      count?: number | null;
-    }[];
-    ipv6Percentage: number;
-    malicious: number;
-    protocolStats: {
-      count: number;
-      countries: string[];
-      encodedSize: number;
-      ips: string[];
-      protocol: string;
-      size: number;
-    }[];
-    resourceStats: {
-      compression: number;
-      count: number;
-      countries: string[];
-      encodedSize: number;
-      ips: string[];
-      percentage: number;
-      size: number;
-      type: string;
-    }[];
-    securePercentage: number;
-    secureRequests: number;
-    serverStats: {
-      count: number;
-      countries: string[];
-      encodedSize: number;
-      ips: string[];
-      server: string;
-      size: number;
-    }[];
-    tlsStats: {
-      count: number;
-      countries: string[];
-      encodedSize: number;
-      ips: string[];
-      protocols: { "tls 1.3 / AES_128GCM": number };
-      securityState: string;
-      size: number;
-    }[];
-    totalLinks: number;
-    uniqASNs: number;
-    uniqCountries: number;
-  };
-  task: {
-    apexDomain: string;
-    domain: string;
-    domURL: string;
-    method: string;
-    options: {
-      customHeaders?: unknown | null;
-      screenshotsResolutions?: string[] | null;
-    };
-    reportURL: string;
-    screenshotURL: string;
-    source: string;
-    success: boolean;
-    time: string;
-    url: string;
-    uuid: string;
-    visibility: string;
-  };
+  stats: Stats;
+  task: Task;
   verdicts: {
     overall: {
       categories: string[];
@@ -481,60 +810,7 @@ export const GetScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
     requests: Schema.Array(
       Schema.Struct({
-        request: Schema.Struct({
-          documentURL: Schema.String,
-          hasUserGesture: Schema.Boolean,
-          initiator: Schema.Struct({
-            host: Schema.String,
-            type: Schema.String,
-            url: Schema.String,
-          }),
-          redirectHasExtraInfo: Schema.Boolean,
-          request: Schema.Struct({
-            initialPriority: Schema.String,
-            isSameSite: Schema.Boolean,
-            method: Schema.String,
-            mixedContentType: Schema.String,
-            referrerPolicy: Schema.String,
-            url: Schema.String,
-            headers: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
-          }),
-          requestId: Schema.String,
-          type: Schema.String,
-          wallTime: Schema.Number,
-          frameId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          loaderId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          primaryRequest: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          redirectResponse: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                charset: Schema.String,
-                mimeType: Schema.String,
-                protocol: Schema.String,
-                remoteIPAddress: Schema.String,
-                remotePort: Schema.Number,
-                securityHeaders: Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                    value: Schema.String,
-                  }),
-                ),
-                securityState: Schema.String,
-                status: Schema.Number,
-                statusText: Schema.String,
-                url: Schema.String,
-                headers: Schema.optional(
-                  Schema.Union([Schema.Unknown, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }),
+        request: Request,
         response: Schema.Struct({
           asn: Schema.Struct({
             asn: Schema.String,
@@ -565,41 +841,7 @@ export const GetScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           ),
           hasExtraInfo: Schema.Boolean,
           requestId: Schema.String,
-          response: Schema.Struct({
-            charset: Schema.String,
-            mimeType: Schema.String,
-            protocol: Schema.String,
-            remoteIPAddress: Schema.String,
-            remotePort: Schema.Number,
-            securityDetails: Schema.Struct({
-              certificateId: Schema.Number,
-              certificateTransparencyCompliance: Schema.String,
-              cipher: Schema.String,
-              encryptedClientHello: Schema.Boolean,
-              issuer: Schema.String,
-              keyExchange: Schema.String,
-              keyExchangeGroup: Schema.String,
-              protocol: Schema.String,
-              sanList: Schema.Array(Schema.String),
-              serverSignatureAlgorithm: Schema.Number,
-              subjectName: Schema.String,
-              validFrom: Schema.Number,
-              validTo: Schema.Number,
-            }),
-            securityHeaders: Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                value: Schema.String,
-              }),
-            ),
-            securityState: Schema.String,
-            status: Schema.Number,
-            statusText: Schema.String,
-            url: Schema.String,
-            headers: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
-          }),
+          response: Response,
           size: Schema.Number,
           type: Schema.String,
           contentAvailable: Schema.optional(
@@ -762,62 +1004,14 @@ export const GetScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           Schema.Struct({
             data: Schema.Array(
               Schema.Struct({
-                content: Schema.Array(
-                  Schema.Struct({
-                    id: Schema.Number,
-                    name: Schema.String,
-                    superCategoryId: Schema.Number,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      id: "id",
-                      name: "name",
-                      superCategoryId: "super_category_id",
-                    }),
-                  ),
-                ),
+                content: Schema.Array(Content),
                 inherited: Schema.Struct({
-                  content: Schema.Array(
-                    Schema.Struct({
-                      id: Schema.Number,
-                      name: Schema.String,
-                      superCategoryId: Schema.Number,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        id: "id",
-                        name: "name",
-                        superCategoryId: "super_category_id",
-                      }),
-                    ),
-                  ),
+                  content: Schema.Array(Content),
                   from: Schema.String,
-                  risks: Schema.Array(
-                    Schema.Struct({
-                      id: Schema.Number,
-                      name: Schema.String,
-                      superCategoryId: Schema.Number,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        id: "id",
-                        name: "name",
-                        superCategoryId: "super_category_id",
-                      }),
-                    ),
-                  ),
+                  risks: Schema.Array(Content),
                 }),
                 name: Schema.String,
-                risks: Schema.Array(
-                  Schema.Struct({
-                    id: Schema.Number,
-                    name: Schema.String,
-                    superCategoryId: Schema.Number,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      id: "id",
-                      name: "name",
-                      superCategoryId: "super_category_id",
-                    }),
-                  ),
-                ),
+                risks: Schema.Array(Content),
               }),
             ),
           }),
@@ -826,185 +1020,13 @@ export const GetScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   }),
-  page: Schema.Struct({
-    apexDomain: Schema.String,
-    asn: Schema.String,
-    asnname: Schema.String,
-    city: Schema.String,
-    country: Schema.String,
-    domain: Schema.String,
-    ip: Schema.String,
-    mimeType: Schema.String,
-    server: Schema.String,
-    status: Schema.String,
-    title: Schema.String,
-    tlsAgeDays: Schema.Number,
-    tlsIssuer: Schema.String,
-    tlsValidDays: Schema.Number,
-    tlsValidFrom: Schema.String,
-    url: Schema.String,
-    screenshot: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          dhash: Schema.String,
-          mm3Hash: Schema.Number,
-          name: Schema.String,
-          phash: Schema.String,
-        }),
-        Schema.Null,
-      ]),
-    ),
-  }),
+  page: Page,
   scanner: Schema.Struct({
     colo: Schema.String,
     country: Schema.String,
   }),
-  stats: Schema.Struct({
-    domainStats: Schema.Array(
-      Schema.Struct({
-        count: Schema.Number,
-        countries: Schema.Array(Schema.String),
-        domain: Schema.String,
-        encodedSize: Schema.Number,
-        index: Schema.Number,
-        initiators: Schema.Array(Schema.String),
-        ips: Schema.Array(Schema.String),
-        redirects: Schema.Number,
-        size: Schema.Number,
-      }),
-    ),
-    ipStats: Schema.Array(
-      Schema.Struct({
-        asn: Schema.Struct({
-          asn: Schema.String,
-          country: Schema.String,
-          description: Schema.String,
-          ip: Schema.String,
-          name: Schema.String,
-          org: Schema.String,
-        }),
-        countries: Schema.Array(Schema.String),
-        domains: Schema.Array(Schema.String),
-        encodedSize: Schema.Number,
-        geoip: Schema.Struct({
-          city: Schema.String,
-          country: Schema.String,
-          countryName: Schema.String,
-          ll: Schema.Array(Schema.Number),
-          region: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            city: "city",
-            country: "country",
-            countryName: "country_name",
-            ll: "ll",
-            region: "region",
-          }),
-        ),
-        index: Schema.Number,
-        ip: Schema.String,
-        ipv6: Schema.Boolean,
-        redirects: Schema.Number,
-        requests: Schema.Number,
-        size: Schema.Number,
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-    ),
-    ipv6Percentage: Schema.Number,
-    malicious: Schema.Number,
-    protocolStats: Schema.Array(
-      Schema.Struct({
-        count: Schema.Number,
-        countries: Schema.Array(Schema.String),
-        encodedSize: Schema.Number,
-        ips: Schema.Array(Schema.String),
-        protocol: Schema.String,
-        size: Schema.Number,
-      }),
-    ),
-    resourceStats: Schema.Array(
-      Schema.Struct({
-        compression: Schema.Number,
-        count: Schema.Number,
-        countries: Schema.Array(Schema.String),
-        encodedSize: Schema.Number,
-        ips: Schema.Array(Schema.String),
-        percentage: Schema.Number,
-        size: Schema.Number,
-        type: Schema.String,
-      }),
-    ),
-    securePercentage: Schema.Number,
-    secureRequests: Schema.Number,
-    serverStats: Schema.Array(
-      Schema.Struct({
-        count: Schema.Number,
-        countries: Schema.Array(Schema.String),
-        encodedSize: Schema.Number,
-        ips: Schema.Array(Schema.String),
-        server: Schema.String,
-        size: Schema.Number,
-      }),
-    ),
-    tlsStats: Schema.Array(
-      Schema.Struct({
-        count: Schema.Number,
-        countries: Schema.Array(Schema.String),
-        encodedSize: Schema.Number,
-        ips: Schema.Array(Schema.String),
-        protocols: Schema.Struct({
-          "tls 1.3 / AES_128GCM": Schema.Number,
-        }).pipe(
-          Schema.encodeKeys({
-            "tls 1.3 / AES_128GCM": "TLS 1.3 / AES_128_GCM",
-          }),
-        ),
-        securityState: Schema.String,
-        size: Schema.Number,
-      }),
-    ),
-    totalLinks: Schema.Number,
-    uniqASNs: Schema.Number,
-    uniqCountries: Schema.Number,
-  }).pipe(
-    Schema.encodeKeys({
-      domainStats: "domainStats",
-      ipStats: "ipStats",
-      ipv6Percentage: "IPv6Percentage",
-      malicious: "malicious",
-      protocolStats: "protocolStats",
-      resourceStats: "resourceStats",
-      securePercentage: "securePercentage",
-      secureRequests: "secureRequests",
-      serverStats: "serverStats",
-      tlsStats: "tlsStats",
-      totalLinks: "totalLinks",
-      uniqASNs: "uniqASNs",
-      uniqCountries: "uniqCountries",
-    }),
-  ),
-  task: Schema.Struct({
-    apexDomain: Schema.String,
-    domain: Schema.String,
-    domURL: Schema.String,
-    method: Schema.String,
-    options: Schema.Struct({
-      customHeaders: Schema.optional(
-        Schema.Union([Schema.Unknown, Schema.Null]),
-      ),
-      screenshotsResolutions: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-    }),
-    reportURL: Schema.String,
-    screenshotURL: Schema.String,
-    source: Schema.String,
-    success: Schema.Boolean,
-    time: Schema.String,
-    url: Schema.String,
-    uuid: Schema.String,
-    visibility: Schema.String,
-  }),
+  stats: Stats,
+  task: Task,
   verdicts: Schema.Struct({
     overall: Schema.Struct({
       categories: Schema.Array(Schema.String),
@@ -1060,7 +1082,7 @@ export interface ListScansResponse {
       uniqIPs: number;
     };
     task: { time: string; url: string; uuid: string; visibility: string };
-    verdicts: { malicious: boolean };
+    verdicts: Verdicts;
   }[];
 }
 
@@ -1087,9 +1109,7 @@ export const ListScansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         uuid: Schema.String,
         visibility: Schema.String,
       }),
-      verdicts: Schema.Struct({
-        malicious: Schema.Boolean,
-      }),
+      verdicts: Verdicts,
     }).pipe(
       Schema.encodeKeys({
         id: "_id",

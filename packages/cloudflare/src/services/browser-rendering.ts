@@ -14,6 +14,242 @@ import { type DefaultErrors } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface AddScriptTag {
+  id?: string | null;
+  content?: string | null;
+  type?: string | null;
+  url?: string | null;
+}
+
+export const AddScriptTag: Schema.Schema<AddScriptTag> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<AddScriptTag>;
+
+export interface AddStyleTag {
+  content?: string | null;
+  url?: string | null;
+}
+
+export const AddStyleTag: Schema.Schema<AddStyleTag> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<AddStyleTag>;
+
+export interface Authenticate {
+  password: string;
+  username: string;
+}
+
+export const Authenticate: Schema.Schema<Authenticate> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      password: SensitiveString,
+      username: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<Authenticate>;
+
+export interface Clip {
+  height: number;
+  width: number;
+  x: number;
+  y: number;
+  scale?: number | null;
+}
+
+export const Clip: Schema.Schema<Clip> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      height: Schema.Number,
+      width: Schema.Number,
+      x: Schema.Number,
+      y: Schema.Number,
+      scale: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Clip>;
+
+export interface Cookie {
+  name: string;
+  value: string;
+  domain?: string | null;
+  expires?: number | null;
+  httpOnly?: boolean | null;
+  partitionKey?: string | null;
+  path?: string | null;
+  priority?: "Low" | "Medium" | "High" | null;
+  sameParty?: boolean | null;
+  sameSite?: "Strict" | "Lax" | "None" | null;
+  secure?: boolean | null;
+  sourcePort?: number | null;
+  sourceScheme?: "Unset" | "NonSecure" | "Secure" | null;
+  url?: string | null;
+}
+
+export const Cookie: Schema.Schema<Cookie> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      value: Schema.String,
+      domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      expires: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      httpOnly: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      partitionKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      priority: Schema.optional(
+        Schema.Union([Schema.Literals(["Low", "Medium", "High"]), Schema.Null]),
+      ),
+      sameParty: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      sameSite: Schema.optional(
+        Schema.Union([Schema.Literals(["Strict", "Lax", "None"]), Schema.Null]),
+      ),
+      secure: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      sourcePort: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      sourceScheme: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["Unset", "NonSecure", "Secure"]),
+          Schema.Null,
+        ]),
+      ),
+      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Cookie>;
+
+export interface GotoOptions {
+  referer?: string | null;
+  referrerPolicy?: string | null;
+  timeout?: number | null;
+  waitUntil?:
+    | "load"
+    | "domcontentloaded"
+    | "networkidle0"
+    | "networkidle2"
+    | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[]
+    | null;
+}
+
+export const GotoOptions: Schema.Schema<GotoOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      referer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      referrerPolicy: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      waitUntil: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literal("load"),
+            Schema.Literal("domcontentloaded"),
+            Schema.Literal("networkidle0"),
+            Schema.Literal("networkidle2"),
+            Schema.Array(
+              Schema.Literals([
+                "load",
+                "domcontentloaded",
+                "networkidle0",
+                "networkidle2",
+              ]),
+            ),
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<GotoOptions>;
+
+export interface ScreenshotOptions {
+  captureBeyondViewport?: boolean | null;
+  clip?: Clip | null;
+  encoding?: "binary" | "base64" | null;
+  fromSurface?: boolean | null;
+  fullPage?: boolean | null;
+  omitBackground?: boolean | null;
+  optimizeForSpeed?: boolean | null;
+  quality?: number | null;
+  type?: "png" | "jpeg" | "webp" | null;
+}
+
+export const ScreenshotOptions: Schema.Schema<ScreenshotOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      captureBeyondViewport: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      clip: Schema.optional(Schema.Union([Clip, Schema.Null])),
+      encoding: Schema.optional(
+        Schema.Union([Schema.Literals(["binary", "base64"]), Schema.Null]),
+      ),
+      fromSurface: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      fullPage: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      omitBackground: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      optimizeForSpeed: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      quality: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literals(["png", "jpeg", "webp"]), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<ScreenshotOptions>;
+
+export interface Viewport {
+  height: number;
+  width: number;
+  deviceScaleFactor?: number | null;
+  hasTouch?: boolean | null;
+  isLandscape?: boolean | null;
+  isMobile?: boolean | null;
+}
+
+export const Viewport: Schema.Schema<Viewport> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      height: Schema.Number,
+      width: Schema.Number,
+      deviceScaleFactor: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      hasTouch: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      isLandscape: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      isMobile: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Viewport>;
+
+export interface WaitForSelector {
+  selector: string;
+  hidden?: true | null;
+  timeout?: number | null;
+  visible?: true | null;
+}
+
+export const WaitForSelector: Schema.Schema<WaitForSelector> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      selector: Schema.String,
+      hidden: Schema.optional(
+        Schema.Union([Schema.Literal(true), Schema.Null]),
+      ),
+      timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      visible: Schema.optional(
+        Schema.Union([Schema.Literal(true), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<WaitForSelector>;
+
+// =============================================================================
 // Content
 // =============================================================================
 
@@ -27,14 +263,9 @@ export interface CreateContentRequest {
   /** Body param: The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceed */
   actionTimeout?: number;
   /** Body param: Adds a `<script>` tag into the page with the desired URL or content. */
-  addScriptTag?: {
-    id?: string;
-    content?: string;
-    type?: string;
-    url?: string;
-  }[];
+  addScriptTag?: AddScriptTag[];
   /** Body param: Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
-  addStyleTag?: { content?: string; url?: string }[];
+  addStyleTag?: AddStyleTag[];
   /** Body param: Only allow requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   allowRequestPattern?: string[];
   /** Body param: Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
@@ -59,40 +290,15 @@ export interface CreateContentRequest {
     | "other"
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
-  authenticate?: { password: string; username: string };
+  authenticate?: Authenticate;
   /** Body param: Attempt to proceed when 'awaited' events fail or timeout. */
   bestAttempt?: boolean;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
-  cookies?: {
-    name: string;
-    value: string;
-    domain?: string;
-    expires?: number;
-    httpOnly?: boolean;
-    partitionKey?: string;
-    path?: string;
-    priority?: "Low" | "Medium" | "High";
-    sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
-    secure?: boolean;
-    sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
-    url?: string;
-  }[];
+  cookies?: Cookie[];
   /** Body param: */
   emulateMediaType?: string;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: {
-    referer?: string;
-    referrerPolicy?: string;
-    timeout?: number;
-    waitUntil?:
-      | "load"
-      | "domcontentloaded"
-      | "networkidle0"
-      | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
-  };
+  gotoOptions?: GotoOptions;
   /** Body param: Block undesired requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   rejectRequestPattern?: string[];
   /** Body param: Block undesired requests that match the provided resource types, eg. 'image' or 'script'. */
@@ -123,21 +329,9 @@ export interface CreateContentRequest {
   /** Body param: */
   userAgent?: string;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: {
-    height: number;
-    width: number;
-    deviceScaleFactor?: number;
-    hasTouch?: boolean;
-    isLandscape?: boolean;
-    isMobile?: boolean;
-  };
+  viewport?: Viewport;
   /** Body param: Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: {
-    selector: string;
-    hidden?: true;
-    timeout?: number;
-    visible?: true;
-  };
+  waitForSelector?: WaitForSelector;
   /** Body param: Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
@@ -147,24 +341,8 @@ export const CreateContentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
   url: Schema.String,
   actionTimeout: Schema.optional(Schema.Number),
-  addScriptTag: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        content: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
-  addStyleTag: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        content: Schema.optional(Schema.String),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  addScriptTag: Schema.optional(Schema.Array(AddScriptTag)),
+  addStyleTag: Schema.optional(Schema.Array(AddStyleTag)),
   allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   allowResourceTypes: Schema.optional(
     Schema.Array(
@@ -190,59 +368,11 @@ export const CreateContentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
-  authenticate: Schema.optional(
-    Schema.Struct({
-      password: SensitiveString,
-      username: Schema.String,
-    }),
-  ),
+  authenticate: Schema.optional(Authenticate),
   bestAttempt: Schema.optional(Schema.Boolean),
-  cookies: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-        domain: Schema.optional(Schema.String),
-        expires: Schema.optional(Schema.Number),
-        httpOnly: Schema.optional(Schema.Boolean),
-        partitionKey: Schema.optional(Schema.String),
-        path: Schema.optional(Schema.String),
-        priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
-        sameParty: Schema.optional(Schema.Boolean),
-        sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
-        secure: Schema.optional(Schema.Boolean),
-        sourcePort: Schema.optional(Schema.Number),
-        sourceScheme: Schema.optional(
-          Schema.Literals(["Unset", "NonSecure", "Secure"]),
-        ),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  cookies: Schema.optional(Schema.Array(Cookie)),
   emulateMediaType: Schema.optional(Schema.String),
-  gotoOptions: Schema.optional(
-    Schema.Struct({
-      referer: Schema.optional(Schema.String),
-      referrerPolicy: Schema.optional(Schema.String),
-      timeout: Schema.optional(Schema.Number),
-      waitUntil: Schema.optional(
-        Schema.Union([
-          Schema.Literal("load"),
-          Schema.Literal("domcontentloaded"),
-          Schema.Literal("networkidle0"),
-          Schema.Literal("networkidle2"),
-          Schema.Array(
-            Schema.Literals([
-              "load",
-              "domcontentloaded",
-              "networkidle0",
-              "networkidle2",
-            ]),
-          ),
-        ]),
-      ),
-    }),
-  ),
+  gotoOptions: Schema.optional(GotoOptions),
   rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   rejectResourceTypes: Schema.optional(
     Schema.Array(
@@ -273,24 +403,8 @@ export const CreateContentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   setJavaScriptEnabled: Schema.optional(Schema.Boolean),
   userAgent: Schema.optional(Schema.String),
-  viewport: Schema.optional(
-    Schema.Struct({
-      height: Schema.Number,
-      width: Schema.Number,
-      deviceScaleFactor: Schema.optional(Schema.Number),
-      hasTouch: Schema.optional(Schema.Boolean),
-      isLandscape: Schema.optional(Schema.Boolean),
-      isMobile: Schema.optional(Schema.Boolean),
-    }),
-  ),
-  waitForSelector: Schema.optional(
-    Schema.Struct({
-      selector: Schema.String,
-      hidden: Schema.optional(Schema.Literal(true)),
-      timeout: Schema.optional(Schema.Number),
-      visible: Schema.optional(Schema.Literal(true)),
-    }),
-  ),
+  viewport: Schema.optional(Viewport),
+  waitForSelector: Schema.optional(WaitForSelector),
   waitForTimeout: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({
@@ -333,14 +447,9 @@ export interface CreateJsonRequest {
   /** Body param: The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceed */
   actionTimeout?: number;
   /** Body param: Adds a `<script>` tag into the page with the desired URL or content. */
-  addScriptTag?: {
-    id?: string;
-    content?: string;
-    type?: string;
-    url?: string;
-  }[];
+  addScriptTag?: AddScriptTag[];
   /** Body param: Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
-  addStyleTag?: { content?: string; url?: string }[];
+  addStyleTag?: AddStyleTag[];
   /** Body param: Only allow requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   allowRequestPattern?: string[];
   /** Body param: Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
@@ -365,42 +474,17 @@ export interface CreateJsonRequest {
     | "other"
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
-  authenticate?: { password: string; username: string };
+  authenticate?: Authenticate;
   /** Body param: Attempt to proceed when 'awaited' events fail or timeout. */
   bestAttempt?: boolean;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
-  cookies?: {
-    name: string;
-    value: string;
-    domain?: string;
-    expires?: number;
-    httpOnly?: boolean;
-    partitionKey?: string;
-    path?: string;
-    priority?: "Low" | "Medium" | "High";
-    sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
-    secure?: boolean;
-    sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
-    url?: string;
-  }[];
+  cookies?: Cookie[];
   /** Body param: Optional list of custom AI models to use for the request. The models will be tried in the order provided, and in case a model returns an error, the next one will be used as fallback. */
   customAi?: { authorization: string; model: string }[];
   /** Body param: */
   emulateMediaType?: string;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: {
-    referer?: string;
-    referrerPolicy?: string;
-    timeout?: number;
-    waitUntil?:
-      | "load"
-      | "domcontentloaded"
-      | "networkidle0"
-      | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
-  };
+  gotoOptions?: GotoOptions;
   /** Body param: */
   prompt?: string;
   /** Body param: Block undesired requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
@@ -438,21 +522,9 @@ export interface CreateJsonRequest {
   /** Body param: */
   userAgent?: string;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: {
-    height: number;
-    width: number;
-    deviceScaleFactor?: number;
-    hasTouch?: boolean;
-    isLandscape?: boolean;
-    isMobile?: boolean;
-  };
+  viewport?: Viewport;
   /** Body param: Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: {
-    selector: string;
-    hidden?: true;
-    timeout?: number;
-    visible?: true;
-  };
+  waitForSelector?: WaitForSelector;
   /** Body param: Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
@@ -462,24 +534,8 @@ export const CreateJsonRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
   html: Schema.String,
   actionTimeout: Schema.optional(Schema.Number),
-  addScriptTag: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        content: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
-  addStyleTag: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        content: Schema.optional(Schema.String),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  addScriptTag: Schema.optional(Schema.Array(AddScriptTag)),
+  addStyleTag: Schema.optional(Schema.Array(AddStyleTag)),
   allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   allowResourceTypes: Schema.optional(
     Schema.Array(
@@ -505,35 +561,9 @@ export const CreateJsonRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
-  authenticate: Schema.optional(
-    Schema.Struct({
-      password: SensitiveString,
-      username: Schema.String,
-    }),
-  ),
+  authenticate: Schema.optional(Authenticate),
   bestAttempt: Schema.optional(Schema.Boolean),
-  cookies: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-        domain: Schema.optional(Schema.String),
-        expires: Schema.optional(Schema.Number),
-        httpOnly: Schema.optional(Schema.Boolean),
-        partitionKey: Schema.optional(Schema.String),
-        path: Schema.optional(Schema.String),
-        priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
-        sameParty: Schema.optional(Schema.Boolean),
-        sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
-        secure: Schema.optional(Schema.Boolean),
-        sourcePort: Schema.optional(Schema.Number),
-        sourceScheme: Schema.optional(
-          Schema.Literals(["Unset", "NonSecure", "Secure"]),
-        ),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  cookies: Schema.optional(Schema.Array(Cookie)),
   customAi: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -543,29 +573,7 @@ export const CreateJsonRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   emulateMediaType: Schema.optional(Schema.String),
-  gotoOptions: Schema.optional(
-    Schema.Struct({
-      referer: Schema.optional(Schema.String),
-      referrerPolicy: Schema.optional(Schema.String),
-      timeout: Schema.optional(Schema.Number),
-      waitUntil: Schema.optional(
-        Schema.Union([
-          Schema.Literal("load"),
-          Schema.Literal("domcontentloaded"),
-          Schema.Literal("networkidle0"),
-          Schema.Literal("networkidle2"),
-          Schema.Array(
-            Schema.Literals([
-              "load",
-              "domcontentloaded",
-              "networkidle0",
-              "networkidle2",
-            ]),
-          ),
-        ]),
-      ),
-    }),
-  ),
+  gotoOptions: Schema.optional(GotoOptions),
   prompt: Schema.optional(Schema.String),
   rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   rejectResourceTypes: Schema.optional(
@@ -608,24 +616,8 @@ export const CreateJsonRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   setJavaScriptEnabled: Schema.optional(Schema.Boolean),
   userAgent: Schema.optional(Schema.String),
-  viewport: Schema.optional(
-    Schema.Struct({
-      height: Schema.Number,
-      width: Schema.Number,
-      deviceScaleFactor: Schema.optional(Schema.Number),
-      hasTouch: Schema.optional(Schema.Boolean),
-      isLandscape: Schema.optional(Schema.Boolean),
-      isMobile: Schema.optional(Schema.Boolean),
-    }),
-  ),
-  waitForSelector: Schema.optional(
-    Schema.Struct({
-      selector: Schema.String,
-      hidden: Schema.optional(Schema.Literal(true)),
-      timeout: Schema.optional(Schema.Number),
-      visible: Schema.optional(Schema.Literal(true)),
-    }),
-  ),
+  viewport: Schema.optional(Viewport),
+  waitForSelector: Schema.optional(WaitForSelector),
   waitForTimeout: Schema.optional(Schema.Number),
 }).pipe(
   Schema.encodeKeys({
@@ -694,14 +686,9 @@ export interface CreateLinkRequest {
   /** Body param: The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceed */
   actionTimeout?: number;
   /** Body param: Adds a `<script>` tag into the page with the desired URL or content. */
-  addScriptTag?: {
-    id?: string;
-    content?: string;
-    type?: string;
-    url?: string;
-  }[];
+  addScriptTag?: AddScriptTag[];
   /** Body param: Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
-  addStyleTag?: { content?: string; url?: string }[];
+  addStyleTag?: AddStyleTag[];
   /** Body param: Only allow requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   allowRequestPattern?: string[];
   /** Body param: Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
@@ -726,42 +713,17 @@ export interface CreateLinkRequest {
     | "other"
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
-  authenticate?: { password: string; username: string };
+  authenticate?: Authenticate;
   /** Body param: Attempt to proceed when 'awaited' events fail or timeout. */
   bestAttempt?: boolean;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
-  cookies?: {
-    name: string;
-    value: string;
-    domain?: string;
-    expires?: number;
-    httpOnly?: boolean;
-    partitionKey?: string;
-    path?: string;
-    priority?: "Low" | "Medium" | "High";
-    sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
-    secure?: boolean;
-    sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
-    url?: string;
-  }[];
+  cookies?: Cookie[];
   /** Body param: */
   emulateMediaType?: string;
   /** Body param: */
   excludeExternalLinks?: boolean;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: {
-    referer?: string;
-    referrerPolicy?: string;
-    timeout?: number;
-    waitUntil?:
-      | "load"
-      | "domcontentloaded"
-      | "networkidle0"
-      | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
-  };
+  gotoOptions?: GotoOptions;
   /** Body param: Block undesired requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   rejectRequestPattern?: string[];
   /** Body param: Block undesired requests that match the provided resource types, eg. 'image' or 'script'. */
@@ -792,23 +754,11 @@ export interface CreateLinkRequest {
   /** Body param: */
   userAgent?: string;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: {
-    height: number;
-    width: number;
-    deviceScaleFactor?: number;
-    hasTouch?: boolean;
-    isLandscape?: boolean;
-    isMobile?: boolean;
-  };
+  viewport?: Viewport;
   /** Body param: */
   visibleLinksOnly?: boolean;
   /** Body param: Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: {
-    selector: string;
-    hidden?: true;
-    timeout?: number;
-    visible?: true;
-  };
+  waitForSelector?: WaitForSelector;
   /** Body param: Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
@@ -818,24 +768,8 @@ export const CreateLinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
   html: Schema.String,
   actionTimeout: Schema.optional(Schema.Number),
-  addScriptTag: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        content: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
-  addStyleTag: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        content: Schema.optional(Schema.String),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  addScriptTag: Schema.optional(Schema.Array(AddScriptTag)),
+  addStyleTag: Schema.optional(Schema.Array(AddStyleTag)),
   allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   allowResourceTypes: Schema.optional(
     Schema.Array(
@@ -861,60 +795,12 @@ export const CreateLinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
-  authenticate: Schema.optional(
-    Schema.Struct({
-      password: SensitiveString,
-      username: Schema.String,
-    }),
-  ),
+  authenticate: Schema.optional(Authenticate),
   bestAttempt: Schema.optional(Schema.Boolean),
-  cookies: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-        domain: Schema.optional(Schema.String),
-        expires: Schema.optional(Schema.Number),
-        httpOnly: Schema.optional(Schema.Boolean),
-        partitionKey: Schema.optional(Schema.String),
-        path: Schema.optional(Schema.String),
-        priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
-        sameParty: Schema.optional(Schema.Boolean),
-        sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
-        secure: Schema.optional(Schema.Boolean),
-        sourcePort: Schema.optional(Schema.Number),
-        sourceScheme: Schema.optional(
-          Schema.Literals(["Unset", "NonSecure", "Secure"]),
-        ),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  cookies: Schema.optional(Schema.Array(Cookie)),
   emulateMediaType: Schema.optional(Schema.String),
   excludeExternalLinks: Schema.optional(Schema.Boolean),
-  gotoOptions: Schema.optional(
-    Schema.Struct({
-      referer: Schema.optional(Schema.String),
-      referrerPolicy: Schema.optional(Schema.String),
-      timeout: Schema.optional(Schema.Number),
-      waitUntil: Schema.optional(
-        Schema.Union([
-          Schema.Literal("load"),
-          Schema.Literal("domcontentloaded"),
-          Schema.Literal("networkidle0"),
-          Schema.Literal("networkidle2"),
-          Schema.Array(
-            Schema.Literals([
-              "load",
-              "domcontentloaded",
-              "networkidle0",
-              "networkidle2",
-            ]),
-          ),
-        ]),
-      ),
-    }),
-  ),
+  gotoOptions: Schema.optional(GotoOptions),
   rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   rejectResourceTypes: Schema.optional(
     Schema.Array(
@@ -945,25 +831,9 @@ export const CreateLinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   setJavaScriptEnabled: Schema.optional(Schema.Boolean),
   userAgent: Schema.optional(Schema.String),
-  viewport: Schema.optional(
-    Schema.Struct({
-      height: Schema.Number,
-      width: Schema.Number,
-      deviceScaleFactor: Schema.optional(Schema.Number),
-      hasTouch: Schema.optional(Schema.Boolean),
-      isLandscape: Schema.optional(Schema.Boolean),
-      isMobile: Schema.optional(Schema.Boolean),
-    }),
-  ),
+  viewport: Schema.optional(Viewport),
   visibleLinksOnly: Schema.optional(Schema.Boolean),
-  waitForSelector: Schema.optional(
-    Schema.Struct({
-      selector: Schema.String,
-      hidden: Schema.optional(Schema.Literal(true)),
-      timeout: Schema.optional(Schema.Number),
-      visible: Schema.optional(Schema.Literal(true)),
-    }),
-  ),
+  waitForSelector: Schema.optional(WaitForSelector),
   waitForTimeout: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({
@@ -1007,14 +877,9 @@ export interface CreateMarkdownRequest {
   /** Body param: The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceed */
   actionTimeout?: number;
   /** Body param: Adds a `<script>` tag into the page with the desired URL or content. */
-  addScriptTag?: {
-    id?: string;
-    content?: string;
-    type?: string;
-    url?: string;
-  }[];
+  addScriptTag?: AddScriptTag[];
   /** Body param: Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
-  addStyleTag?: { content?: string; url?: string }[];
+  addStyleTag?: AddStyleTag[];
   /** Body param: Only allow requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   allowRequestPattern?: string[];
   /** Body param: Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
@@ -1039,40 +904,15 @@ export interface CreateMarkdownRequest {
     | "other"
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
-  authenticate?: { password: string; username: string };
+  authenticate?: Authenticate;
   /** Body param: Attempt to proceed when 'awaited' events fail or timeout. */
   bestAttempt?: boolean;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
-  cookies?: {
-    name: string;
-    value: string;
-    domain?: string;
-    expires?: number;
-    httpOnly?: boolean;
-    partitionKey?: string;
-    path?: string;
-    priority?: "Low" | "Medium" | "High";
-    sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
-    secure?: boolean;
-    sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
-    url?: string;
-  }[];
+  cookies?: Cookie[];
   /** Body param: */
   emulateMediaType?: string;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: {
-    referer?: string;
-    referrerPolicy?: string;
-    timeout?: number;
-    waitUntil?:
-      | "load"
-      | "domcontentloaded"
-      | "networkidle0"
-      | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
-  };
+  gotoOptions?: GotoOptions;
   /** Body param: Block undesired requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   rejectRequestPattern?: string[];
   /** Body param: Block undesired requests that match the provided resource types, eg. 'image' or 'script'. */
@@ -1103,21 +943,9 @@ export interface CreateMarkdownRequest {
   /** Body param: */
   userAgent?: string;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: {
-    height: number;
-    width: number;
-    deviceScaleFactor?: number;
-    hasTouch?: boolean;
-    isLandscape?: boolean;
-    isMobile?: boolean;
-  };
+  viewport?: Viewport;
   /** Body param: Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: {
-    selector: string;
-    hidden?: true;
-    timeout?: number;
-    visible?: true;
-  };
+  waitForSelector?: WaitForSelector;
   /** Body param: Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
@@ -1127,24 +955,8 @@ export const CreateMarkdownRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
   url: Schema.String,
   actionTimeout: Schema.optional(Schema.Number),
-  addScriptTag: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        content: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
-  addStyleTag: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        content: Schema.optional(Schema.String),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  addScriptTag: Schema.optional(Schema.Array(AddScriptTag)),
+  addStyleTag: Schema.optional(Schema.Array(AddStyleTag)),
   allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   allowResourceTypes: Schema.optional(
     Schema.Array(
@@ -1170,59 +982,11 @@ export const CreateMarkdownRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
-  authenticate: Schema.optional(
-    Schema.Struct({
-      password: SensitiveString,
-      username: Schema.String,
-    }),
-  ),
+  authenticate: Schema.optional(Authenticate),
   bestAttempt: Schema.optional(Schema.Boolean),
-  cookies: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-        domain: Schema.optional(Schema.String),
-        expires: Schema.optional(Schema.Number),
-        httpOnly: Schema.optional(Schema.Boolean),
-        partitionKey: Schema.optional(Schema.String),
-        path: Schema.optional(Schema.String),
-        priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
-        sameParty: Schema.optional(Schema.Boolean),
-        sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
-        secure: Schema.optional(Schema.Boolean),
-        sourcePort: Schema.optional(Schema.Number),
-        sourceScheme: Schema.optional(
-          Schema.Literals(["Unset", "NonSecure", "Secure"]),
-        ),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  cookies: Schema.optional(Schema.Array(Cookie)),
   emulateMediaType: Schema.optional(Schema.String),
-  gotoOptions: Schema.optional(
-    Schema.Struct({
-      referer: Schema.optional(Schema.String),
-      referrerPolicy: Schema.optional(Schema.String),
-      timeout: Schema.optional(Schema.Number),
-      waitUntil: Schema.optional(
-        Schema.Union([
-          Schema.Literal("load"),
-          Schema.Literal("domcontentloaded"),
-          Schema.Literal("networkidle0"),
-          Schema.Literal("networkidle2"),
-          Schema.Array(
-            Schema.Literals([
-              "load",
-              "domcontentloaded",
-              "networkidle0",
-              "networkidle2",
-            ]),
-          ),
-        ]),
-      ),
-    }),
-  ),
+  gotoOptions: Schema.optional(GotoOptions),
   rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   rejectResourceTypes: Schema.optional(
     Schema.Array(
@@ -1253,24 +1017,8 @@ export const CreateMarkdownRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   setJavaScriptEnabled: Schema.optional(Schema.Boolean),
   userAgent: Schema.optional(Schema.String),
-  viewport: Schema.optional(
-    Schema.Struct({
-      height: Schema.Number,
-      width: Schema.Number,
-      deviceScaleFactor: Schema.optional(Schema.Number),
-      hasTouch: Schema.optional(Schema.Boolean),
-      isLandscape: Schema.optional(Schema.Boolean),
-      isMobile: Schema.optional(Schema.Boolean),
-    }),
-  ),
-  waitForSelector: Schema.optional(
-    Schema.Struct({
-      selector: Schema.String,
-      hidden: Schema.optional(Schema.Literal(true)),
-      timeout: Schema.optional(Schema.Number),
-      visible: Schema.optional(Schema.Literal(true)),
-    }),
-  ),
+  viewport: Schema.optional(Viewport),
+  waitForSelector: Schema.optional(WaitForSelector),
   waitForTimeout: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({
@@ -1313,14 +1061,9 @@ export interface CreatePdfRequest {
   /** Body param: The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceed */
   actionTimeout?: number;
   /** Body param: Adds a `<script>` tag into the page with the desired URL or content. */
-  addScriptTag?: {
-    id?: string;
-    content?: string;
-    type?: string;
-    url?: string;
-  }[];
+  addScriptTag?: AddScriptTag[];
   /** Body param: Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
-  addStyleTag?: { content?: string; url?: string }[];
+  addStyleTag?: AddStyleTag[];
   /** Body param: Only allow requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   allowRequestPattern?: string[];
   /** Body param: Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
@@ -1345,40 +1088,15 @@ export interface CreatePdfRequest {
     | "other"
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
-  authenticate?: { password: string; username: string };
+  authenticate?: Authenticate;
   /** Body param: Attempt to proceed when 'awaited' events fail or timeout. */
   bestAttempt?: boolean;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
-  cookies?: {
-    name: string;
-    value: string;
-    domain?: string;
-    expires?: number;
-    httpOnly?: boolean;
-    partitionKey?: string;
-    path?: string;
-    priority?: "Low" | "Medium" | "High";
-    sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
-    secure?: boolean;
-    sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
-    url?: string;
-  }[];
+  cookies?: Cookie[];
   /** Body param: */
   emulateMediaType?: string;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: {
-    referer?: string;
-    referrerPolicy?: string;
-    timeout?: number;
-    waitUntil?:
-      | "load"
-      | "domcontentloaded"
-      | "networkidle0"
-      | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
-  };
+  gotoOptions?: GotoOptions;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.pdfoptions). */
   pdfOptions?: {
     displayHeaderFooter?: boolean;
@@ -1444,21 +1162,9 @@ export interface CreatePdfRequest {
   /** Body param: */
   userAgent?: string;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: {
-    height: number;
-    width: number;
-    deviceScaleFactor?: number;
-    hasTouch?: boolean;
-    isLandscape?: boolean;
-    isMobile?: boolean;
-  };
+  viewport?: Viewport;
   /** Body param: Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: {
-    selector: string;
-    hidden?: true;
-    timeout?: number;
-    visible?: true;
-  };
+  waitForSelector?: WaitForSelector;
   /** Body param: Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
@@ -1468,24 +1174,8 @@ export const CreatePdfRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
   html: Schema.String,
   actionTimeout: Schema.optional(Schema.Number),
-  addScriptTag: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        content: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
-  addStyleTag: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        content: Schema.optional(Schema.String),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  addScriptTag: Schema.optional(Schema.Array(AddScriptTag)),
+  addStyleTag: Schema.optional(Schema.Array(AddStyleTag)),
   allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   allowResourceTypes: Schema.optional(
     Schema.Array(
@@ -1511,59 +1201,11 @@ export const CreatePdfRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
-  authenticate: Schema.optional(
-    Schema.Struct({
-      password: SensitiveString,
-      username: Schema.String,
-    }),
-  ),
+  authenticate: Schema.optional(Authenticate),
   bestAttempt: Schema.optional(Schema.Boolean),
-  cookies: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-        domain: Schema.optional(Schema.String),
-        expires: Schema.optional(Schema.Number),
-        httpOnly: Schema.optional(Schema.Boolean),
-        partitionKey: Schema.optional(Schema.String),
-        path: Schema.optional(Schema.String),
-        priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
-        sameParty: Schema.optional(Schema.Boolean),
-        sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
-        secure: Schema.optional(Schema.Boolean),
-        sourcePort: Schema.optional(Schema.Number),
-        sourceScheme: Schema.optional(
-          Schema.Literals(["Unset", "NonSecure", "Secure"]),
-        ),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  cookies: Schema.optional(Schema.Array(Cookie)),
   emulateMediaType: Schema.optional(Schema.String),
-  gotoOptions: Schema.optional(
-    Schema.Struct({
-      referer: Schema.optional(Schema.String),
-      referrerPolicy: Schema.optional(Schema.String),
-      timeout: Schema.optional(Schema.Number),
-      waitUntil: Schema.optional(
-        Schema.Union([
-          Schema.Literal("load"),
-          Schema.Literal("domcontentloaded"),
-          Schema.Literal("networkidle0"),
-          Schema.Literal("networkidle2"),
-          Schema.Array(
-            Schema.Literals([
-              "load",
-              "domcontentloaded",
-              "networkidle0",
-              "networkidle2",
-            ]),
-          ),
-        ]),
-      ),
-    }),
-  ),
+  gotoOptions: Schema.optional(GotoOptions),
   pdfOptions: Schema.optional(
     Schema.Struct({
       displayHeaderFooter: Schema.optional(Schema.Boolean),
@@ -1635,24 +1277,8 @@ export const CreatePdfRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   setJavaScriptEnabled: Schema.optional(Schema.Boolean),
   userAgent: Schema.optional(Schema.String),
-  viewport: Schema.optional(
-    Schema.Struct({
-      height: Schema.Number,
-      width: Schema.Number,
-      deviceScaleFactor: Schema.optional(Schema.Number),
-      hasTouch: Schema.optional(Schema.Boolean),
-      isLandscape: Schema.optional(Schema.Boolean),
-      isMobile: Schema.optional(Schema.Boolean),
-    }),
-  ),
-  waitForSelector: Schema.optional(
-    Schema.Struct({
-      selector: Schema.String,
-      hidden: Schema.optional(Schema.Literal(true)),
-      timeout: Schema.optional(Schema.Number),
-      visible: Schema.optional(Schema.Literal(true)),
-    }),
-  ),
+  viewport: Schema.optional(Viewport),
+  waitForSelector: Schema.optional(WaitForSelector),
   waitForTimeout: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({
@@ -1695,14 +1321,9 @@ export interface CreateScrapeRequest {
   /** Body param: The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceed */
   actionTimeout?: number;
   /** Body param: Adds a `<script>` tag into the page with the desired URL or content. */
-  addScriptTag?: {
-    id?: string;
-    content?: string;
-    type?: string;
-    url?: string;
-  }[];
+  addScriptTag?: AddScriptTag[];
   /** Body param: Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
-  addStyleTag?: { content?: string; url?: string }[];
+  addStyleTag?: AddStyleTag[];
   /** Body param: Only allow requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   allowRequestPattern?: string[];
   /** Body param: Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
@@ -1727,40 +1348,15 @@ export interface CreateScrapeRequest {
     | "other"
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
-  authenticate?: { password: string; username: string };
+  authenticate?: Authenticate;
   /** Body param: Attempt to proceed when 'awaited' events fail or timeout. */
   bestAttempt?: boolean;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
-  cookies?: {
-    name: string;
-    value: string;
-    domain?: string;
-    expires?: number;
-    httpOnly?: boolean;
-    partitionKey?: string;
-    path?: string;
-    priority?: "Low" | "Medium" | "High";
-    sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
-    secure?: boolean;
-    sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
-    url?: string;
-  }[];
+  cookies?: Cookie[];
   /** Body param: */
   emulateMediaType?: string;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: {
-    referer?: string;
-    referrerPolicy?: string;
-    timeout?: number;
-    waitUntil?:
-      | "load"
-      | "domcontentloaded"
-      | "networkidle0"
-      | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
-  };
+  gotoOptions?: GotoOptions;
   /** Body param: Block undesired requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   rejectRequestPattern?: string[];
   /** Body param: Block undesired requests that match the provided resource types, eg. 'image' or 'script'. */
@@ -1791,21 +1387,9 @@ export interface CreateScrapeRequest {
   /** Body param: */
   userAgent?: string;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: {
-    height: number;
-    width: number;
-    deviceScaleFactor?: number;
-    hasTouch?: boolean;
-    isLandscape?: boolean;
-    isMobile?: boolean;
-  };
+  viewport?: Viewport;
   /** Body param: Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: {
-    selector: string;
-    hidden?: true;
-    timeout?: number;
-    visible?: true;
-  };
+  waitForSelector?: WaitForSelector;
   /** Body param: Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
@@ -1820,24 +1404,8 @@ export const CreateScrapeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   html: Schema.String,
   actionTimeout: Schema.optional(Schema.Number),
-  addScriptTag: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        content: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
-  addStyleTag: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        content: Schema.optional(Schema.String),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  addScriptTag: Schema.optional(Schema.Array(AddScriptTag)),
+  addStyleTag: Schema.optional(Schema.Array(AddStyleTag)),
   allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   allowResourceTypes: Schema.optional(
     Schema.Array(
@@ -1863,59 +1431,11 @@ export const CreateScrapeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
-  authenticate: Schema.optional(
-    Schema.Struct({
-      password: SensitiveString,
-      username: Schema.String,
-    }),
-  ),
+  authenticate: Schema.optional(Authenticate),
   bestAttempt: Schema.optional(Schema.Boolean),
-  cookies: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-        domain: Schema.optional(Schema.String),
-        expires: Schema.optional(Schema.Number),
-        httpOnly: Schema.optional(Schema.Boolean),
-        partitionKey: Schema.optional(Schema.String),
-        path: Schema.optional(Schema.String),
-        priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
-        sameParty: Schema.optional(Schema.Boolean),
-        sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
-        secure: Schema.optional(Schema.Boolean),
-        sourcePort: Schema.optional(Schema.Number),
-        sourceScheme: Schema.optional(
-          Schema.Literals(["Unset", "NonSecure", "Secure"]),
-        ),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  cookies: Schema.optional(Schema.Array(Cookie)),
   emulateMediaType: Schema.optional(Schema.String),
-  gotoOptions: Schema.optional(
-    Schema.Struct({
-      referer: Schema.optional(Schema.String),
-      referrerPolicy: Schema.optional(Schema.String),
-      timeout: Schema.optional(Schema.Number),
-      waitUntil: Schema.optional(
-        Schema.Union([
-          Schema.Literal("load"),
-          Schema.Literal("domcontentloaded"),
-          Schema.Literal("networkidle0"),
-          Schema.Literal("networkidle2"),
-          Schema.Array(
-            Schema.Literals([
-              "load",
-              "domcontentloaded",
-              "networkidle0",
-              "networkidle2",
-            ]),
-          ),
-        ]),
-      ),
-    }),
-  ),
+  gotoOptions: Schema.optional(GotoOptions),
   rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   rejectResourceTypes: Schema.optional(
     Schema.Array(
@@ -1946,24 +1466,8 @@ export const CreateScrapeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   setJavaScriptEnabled: Schema.optional(Schema.Boolean),
   userAgent: Schema.optional(Schema.String),
-  viewport: Schema.optional(
-    Schema.Struct({
-      height: Schema.Number,
-      width: Schema.Number,
-      deviceScaleFactor: Schema.optional(Schema.Number),
-      hasTouch: Schema.optional(Schema.Boolean),
-      isLandscape: Schema.optional(Schema.Boolean),
-      isMobile: Schema.optional(Schema.Boolean),
-    }),
-  ),
-  waitForSelector: Schema.optional(
-    Schema.Struct({
-      selector: Schema.String,
-      hidden: Schema.optional(Schema.Literal(true)),
-      timeout: Schema.optional(Schema.Number),
-      visible: Schema.optional(Schema.Literal(true)),
-    }),
-  ),
+  viewport: Schema.optional(Viewport),
+  waitForSelector: Schema.optional(WaitForSelector),
   waitForTimeout: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({
@@ -2034,14 +1538,9 @@ export interface CreateScreenshotRequest {
   /** Body param: The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceed */
   actionTimeout?: number;
   /** Body param: Adds a `<script>` tag into the page with the desired URL or content. */
-  addScriptTag?: {
-    id?: string;
-    content?: string;
-    type?: string;
-    url?: string;
-  }[];
+  addScriptTag?: AddScriptTag[];
   /** Body param: Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
-  addStyleTag?: { content?: string; url?: string }[];
+  addStyleTag?: AddStyleTag[];
   /** Body param: Only allow requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   allowRequestPattern?: string[];
   /** Body param: Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
@@ -2066,40 +1565,15 @@ export interface CreateScreenshotRequest {
     | "other"
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
-  authenticate?: { password: string; username: string };
+  authenticate?: Authenticate;
   /** Body param: Attempt to proceed when 'awaited' events fail or timeout. */
   bestAttempt?: boolean;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
-  cookies?: {
-    name: string;
-    value: string;
-    domain?: string;
-    expires?: number;
-    httpOnly?: boolean;
-    partitionKey?: string;
-    path?: string;
-    priority?: "Low" | "Medium" | "High";
-    sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
-    secure?: boolean;
-    sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
-    url?: string;
-  }[];
+  cookies?: Cookie[];
   /** Body param: */
   emulateMediaType?: string;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: {
-    referer?: string;
-    referrerPolicy?: string;
-    timeout?: number;
-    waitUntil?:
-      | "load"
-      | "domcontentloaded"
-      | "networkidle0"
-      | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
-  };
+  gotoOptions?: GotoOptions;
   /** Body param: Block undesired requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   rejectRequestPattern?: string[];
   /** Body param: Block undesired requests that match the provided resource types, eg. 'image' or 'script'. */
@@ -2124,23 +1598,7 @@ export interface CreateScreenshotRequest {
     | "other"
   )[];
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.screenshotoptions). */
-  screenshotOptions?: {
-    captureBeyondViewport?: boolean;
-    clip?: {
-      height: number;
-      width: number;
-      x: number;
-      y: number;
-      scale?: number;
-    };
-    encoding?: "binary" | "base64";
-    fromSurface?: boolean;
-    fullPage?: boolean;
-    omitBackground?: boolean;
-    optimizeForSpeed?: boolean;
-    quality?: number;
-    type?: "png" | "jpeg" | "webp";
-  };
+  screenshotOptions?: ScreenshotOptions;
   /** Body param: */
   scrollPage?: boolean;
   /** Body param: */
@@ -2152,21 +1610,9 @@ export interface CreateScreenshotRequest {
   /** Body param: */
   userAgent?: string;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: {
-    height: number;
-    width: number;
-    deviceScaleFactor?: number;
-    hasTouch?: boolean;
-    isLandscape?: boolean;
-    isMobile?: boolean;
-  };
+  viewport?: Viewport;
   /** Body param: Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: {
-    selector: string;
-    hidden?: true;
-    timeout?: number;
-    visible?: true;
-  };
+  waitForSelector?: WaitForSelector;
   /** Body param: Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
@@ -2177,24 +1623,8 @@ export const CreateScreenshotRequest =
     cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
     html: Schema.String,
     actionTimeout: Schema.optional(Schema.Number),
-    addScriptTag: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          url: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    addStyleTag: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          content: Schema.optional(Schema.String),
-          url: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    addScriptTag: Schema.optional(Schema.Array(AddScriptTag)),
+    addStyleTag: Schema.optional(Schema.Array(AddStyleTag)),
     allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
     allowResourceTypes: Schema.optional(
       Schema.Array(
@@ -2220,59 +1650,11 @@ export const CreateScreenshotRequest =
         ]),
       ),
     ),
-    authenticate: Schema.optional(
-      Schema.Struct({
-        password: SensitiveString,
-        username: Schema.String,
-      }),
-    ),
+    authenticate: Schema.optional(Authenticate),
     bestAttempt: Schema.optional(Schema.Boolean),
-    cookies: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          value: Schema.String,
-          domain: Schema.optional(Schema.String),
-          expires: Schema.optional(Schema.Number),
-          httpOnly: Schema.optional(Schema.Boolean),
-          partitionKey: Schema.optional(Schema.String),
-          path: Schema.optional(Schema.String),
-          priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
-          sameParty: Schema.optional(Schema.Boolean),
-          sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
-          secure: Schema.optional(Schema.Boolean),
-          sourcePort: Schema.optional(Schema.Number),
-          sourceScheme: Schema.optional(
-            Schema.Literals(["Unset", "NonSecure", "Secure"]),
-          ),
-          url: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    cookies: Schema.optional(Schema.Array(Cookie)),
     emulateMediaType: Schema.optional(Schema.String),
-    gotoOptions: Schema.optional(
-      Schema.Struct({
-        referer: Schema.optional(Schema.String),
-        referrerPolicy: Schema.optional(Schema.String),
-        timeout: Schema.optional(Schema.Number),
-        waitUntil: Schema.optional(
-          Schema.Union([
-            Schema.Literal("load"),
-            Schema.Literal("domcontentloaded"),
-            Schema.Literal("networkidle0"),
-            Schema.Literal("networkidle2"),
-            Schema.Array(
-              Schema.Literals([
-                "load",
-                "domcontentloaded",
-                "networkidle0",
-                "networkidle2",
-              ]),
-            ),
-          ]),
-        ),
-      }),
-    ),
+    gotoOptions: Schema.optional(GotoOptions),
     rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
     rejectResourceTypes: Schema.optional(
       Schema.Array(
@@ -2298,27 +1680,7 @@ export const CreateScreenshotRequest =
         ]),
       ),
     ),
-    screenshotOptions: Schema.optional(
-      Schema.Struct({
-        captureBeyondViewport: Schema.optional(Schema.Boolean),
-        clip: Schema.optional(
-          Schema.Struct({
-            height: Schema.Number,
-            width: Schema.Number,
-            x: Schema.Number,
-            y: Schema.Number,
-            scale: Schema.optional(Schema.Number),
-          }),
-        ),
-        encoding: Schema.optional(Schema.Literals(["binary", "base64"])),
-        fromSurface: Schema.optional(Schema.Boolean),
-        fullPage: Schema.optional(Schema.Boolean),
-        omitBackground: Schema.optional(Schema.Boolean),
-        optimizeForSpeed: Schema.optional(Schema.Boolean),
-        quality: Schema.optional(Schema.Number),
-        type: Schema.optional(Schema.Literals(["png", "jpeg", "webp"])),
-      }),
-    ),
+    screenshotOptions: Schema.optional(ScreenshotOptions),
     scrollPage: Schema.optional(Schema.Boolean),
     selector: Schema.optional(Schema.String),
     setExtraHTTPHeaders: Schema.optional(
@@ -2326,24 +1688,8 @@ export const CreateScreenshotRequest =
     ),
     setJavaScriptEnabled: Schema.optional(Schema.Boolean),
     userAgent: Schema.optional(Schema.String),
-    viewport: Schema.optional(
-      Schema.Struct({
-        height: Schema.Number,
-        width: Schema.Number,
-        deviceScaleFactor: Schema.optional(Schema.Number),
-        hasTouch: Schema.optional(Schema.Boolean),
-        isLandscape: Schema.optional(Schema.Boolean),
-        isMobile: Schema.optional(Schema.Boolean),
-      }),
-    ),
-    waitForSelector: Schema.optional(
-      Schema.Struct({
-        selector: Schema.String,
-        hidden: Schema.optional(Schema.Literal(true)),
-        timeout: Schema.optional(Schema.Number),
-        visible: Schema.optional(Schema.Literal(true)),
-      }),
-    ),
+    viewport: Schema.optional(Viewport),
+    waitForSelector: Schema.optional(WaitForSelector),
     waitForTimeout: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -2401,14 +1747,9 @@ export interface CreateSnapshotRequest {
   /** Body param: The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceed */
   actionTimeout?: number;
   /** Body param: Adds a `<script>` tag into the page with the desired URL or content. */
-  addScriptTag?: {
-    id?: string;
-    content?: string;
-    type?: string;
-    url?: string;
-  }[];
+  addScriptTag?: AddScriptTag[];
   /** Body param: Adds a `<link rel="stylesheet">` tag into the page with the desired URL or a `<style type="text/css">` tag with the content. */
-  addStyleTag?: { content?: string; url?: string }[];
+  addStyleTag?: AddStyleTag[];
   /** Body param: Only allow requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   allowRequestPattern?: string[];
   /** Body param: Only allow requests that match the provided resource types, eg. 'image' or 'script'. */
@@ -2433,40 +1774,15 @@ export interface CreateSnapshotRequest {
     | "other"
   )[];
   /** Body param: Provide credentials for HTTP authentication. */
-  authenticate?: { password: string; username: string };
+  authenticate?: Authenticate;
   /** Body param: Attempt to proceed when 'awaited' events fail or timeout. */
   bestAttempt?: boolean;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setcookie). */
-  cookies?: {
-    name: string;
-    value: string;
-    domain?: string;
-    expires?: number;
-    httpOnly?: boolean;
-    partitionKey?: string;
-    path?: string;
-    priority?: "Low" | "Medium" | "High";
-    sameParty?: boolean;
-    sameSite?: "Strict" | "Lax" | "None";
-    secure?: boolean;
-    sourcePort?: number;
-    sourceScheme?: "Unset" | "NonSecure" | "Secure";
-    url?: string;
-  }[];
+  cookies?: Cookie[];
   /** Body param: */
   emulateMediaType?: string;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.gotooptions). */
-  gotoOptions?: {
-    referer?: string;
-    referrerPolicy?: string;
-    timeout?: number;
-    waitUntil?:
-      | "load"
-      | "domcontentloaded"
-      | "networkidle0"
-      | "networkidle2"
-      | ("load" | "domcontentloaded" | "networkidle0" | "networkidle2")[];
-  };
+  gotoOptions?: GotoOptions;
   /** Body param: Block undesired requests that match the provided regex patterns, eg. '/^.\ \.(css)'. */
   rejectRequestPattern?: string[];
   /** Body param: Block undesired requests that match the provided resource types, eg. 'image' or 'script'. */
@@ -2493,13 +1809,7 @@ export interface CreateSnapshotRequest {
   /** Body param: */
   screenshotOptions?: {
     captureBeyondViewport?: boolean;
-    clip?: {
-      height: number;
-      width: number;
-      x: number;
-      y: number;
-      scale?: number;
-    };
+    clip?: Clip;
     fromSurface?: boolean;
     fullPage?: boolean;
     omitBackground?: boolean;
@@ -2514,21 +1824,9 @@ export interface CreateSnapshotRequest {
   /** Body param: */
   userAgent?: string;
   /** Body param: Check [options](https://pptr.dev/api/puppeteer.page.setviewport). */
-  viewport?: {
-    height: number;
-    width: number;
-    deviceScaleFactor?: number;
-    hasTouch?: boolean;
-    isLandscape?: boolean;
-    isMobile?: boolean;
-  };
+  viewport?: Viewport;
   /** Body param: Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector). */
-  waitForSelector?: {
-    selector: string;
-    hidden?: true;
-    timeout?: number;
-    visible?: true;
-  };
+  waitForSelector?: WaitForSelector;
   /** Body param: Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
@@ -2538,24 +1836,8 @@ export const CreateSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   cacheTTL: Schema.optional(Schema.Number).pipe(T.HttpQuery("cacheTTL")),
   html: Schema.String,
   actionTimeout: Schema.optional(Schema.Number),
-  addScriptTag: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        content: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
-  addStyleTag: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        content: Schema.optional(Schema.String),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  addScriptTag: Schema.optional(Schema.Array(AddScriptTag)),
+  addStyleTag: Schema.optional(Schema.Array(AddStyleTag)),
   allowRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   allowResourceTypes: Schema.optional(
     Schema.Array(
@@ -2581,59 +1863,11 @@ export const CreateSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
-  authenticate: Schema.optional(
-    Schema.Struct({
-      password: SensitiveString,
-      username: Schema.String,
-    }),
-  ),
+  authenticate: Schema.optional(Authenticate),
   bestAttempt: Schema.optional(Schema.Boolean),
-  cookies: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        value: Schema.String,
-        domain: Schema.optional(Schema.String),
-        expires: Schema.optional(Schema.Number),
-        httpOnly: Schema.optional(Schema.Boolean),
-        partitionKey: Schema.optional(Schema.String),
-        path: Schema.optional(Schema.String),
-        priority: Schema.optional(Schema.Literals(["Low", "Medium", "High"])),
-        sameParty: Schema.optional(Schema.Boolean),
-        sameSite: Schema.optional(Schema.Literals(["Strict", "Lax", "None"])),
-        secure: Schema.optional(Schema.Boolean),
-        sourcePort: Schema.optional(Schema.Number),
-        sourceScheme: Schema.optional(
-          Schema.Literals(["Unset", "NonSecure", "Secure"]),
-        ),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  cookies: Schema.optional(Schema.Array(Cookie)),
   emulateMediaType: Schema.optional(Schema.String),
-  gotoOptions: Schema.optional(
-    Schema.Struct({
-      referer: Schema.optional(Schema.String),
-      referrerPolicy: Schema.optional(Schema.String),
-      timeout: Schema.optional(Schema.Number),
-      waitUntil: Schema.optional(
-        Schema.Union([
-          Schema.Literal("load"),
-          Schema.Literal("domcontentloaded"),
-          Schema.Literal("networkidle0"),
-          Schema.Literal("networkidle2"),
-          Schema.Array(
-            Schema.Literals([
-              "load",
-              "domcontentloaded",
-              "networkidle0",
-              "networkidle2",
-            ]),
-          ),
-        ]),
-      ),
-    }),
-  ),
+  gotoOptions: Schema.optional(GotoOptions),
   rejectRequestPattern: Schema.optional(Schema.Array(Schema.String)),
   rejectResourceTypes: Schema.optional(
     Schema.Array(
@@ -2662,15 +1896,7 @@ export const CreateSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   screenshotOptions: Schema.optional(
     Schema.Struct({
       captureBeyondViewport: Schema.optional(Schema.Boolean),
-      clip: Schema.optional(
-        Schema.Struct({
-          height: Schema.Number,
-          width: Schema.Number,
-          x: Schema.Number,
-          y: Schema.Number,
-          scale: Schema.optional(Schema.Number),
-        }),
-      ),
+      clip: Schema.optional(Clip),
       fromSurface: Schema.optional(Schema.Boolean),
       fullPage: Schema.optional(Schema.Boolean),
       omitBackground: Schema.optional(Schema.Boolean),
@@ -2684,24 +1910,8 @@ export const CreateSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   setJavaScriptEnabled: Schema.optional(Schema.Boolean),
   userAgent: Schema.optional(Schema.String),
-  viewport: Schema.optional(
-    Schema.Struct({
-      height: Schema.Number,
-      width: Schema.Number,
-      deviceScaleFactor: Schema.optional(Schema.Number),
-      hasTouch: Schema.optional(Schema.Boolean),
-      isLandscape: Schema.optional(Schema.Boolean),
-      isMobile: Schema.optional(Schema.Boolean),
-    }),
-  ),
-  waitForSelector: Schema.optional(
-    Schema.Struct({
-      selector: Schema.String,
-      hidden: Schema.optional(Schema.Literal(true)),
-      timeout: Schema.optional(Schema.Number),
-      visible: Schema.optional(Schema.Literal(true)),
-    }),
-  ),
+  viewport: Schema.optional(Viewport),
+  waitForSelector: Schema.optional(WaitForSelector),
   waitForTimeout: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({

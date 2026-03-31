@@ -13,6 +13,73 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Error2 {
+  code: number;
+  message: string;
+  documentationUrl?: string | null;
+  source?: Source2 | null;
+}
+
+export const Error2: Schema.Schema<Error2> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      code: Schema.Number,
+      message: Schema.String,
+      documentationUrl: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      source: Schema.optional(Schema.Union([Source2, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        code: "code",
+        message: "message",
+        documentationUrl: "documentation_url",
+        source: "source",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Error2>;
+
+export interface Message {
+  code: number;
+  message: string;
+  documentationUrl?: string | null;
+  source?: Source2 | null;
+}
+
+export const Message: Schema.Schema<Message> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      code: Schema.Number,
+      message: Schema.String,
+      documentationUrl: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      source: Schema.optional(Schema.Union([Source2, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        code: "code",
+        message: "message",
+        documentationUrl: "documentation_url",
+        source: "source",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Message>;
+
+export interface Source2 {
+  pointer?: string | null;
+}
+
+export const Source2: Schema.Schema<Source2> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Source2>;
+
+// =============================================================================
 // SecurityTXT
 // =============================================================================
 
@@ -127,76 +194,16 @@ export const PutSecurityTXTRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<PutSecurityTXTRequest>;
 
 export interface PutSecurityTXTResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
 }
 
 export const PutSecurityTXTResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
+    errors: Schema.Array(Message),
+    messages: Schema.Array(Message),
     success: Schema.Literal(true),
   },
 ) as unknown as Schema.Schema<PutSecurityTXTResponse>;
@@ -230,76 +237,16 @@ export const DeleteSecurityTXTRequest =
   ) as unknown as Schema.Schema<DeleteSecurityTXTRequest>;
 
 export interface DeleteSecurityTXTResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
 }
 
 export const DeleteSecurityTXTResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
+    errors: Schema.Array(Message),
+    messages: Schema.Array(Message),
     success: Schema.Literal(true),
   }) as unknown as Schema.Schema<DeleteSecurityTXTResponse>;
 

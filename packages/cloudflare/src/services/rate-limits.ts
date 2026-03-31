@@ -14,6 +14,145 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Action {
+  mode?:
+    | "simulate"
+    | "ban"
+    | "challenge"
+    | "js_challenge"
+    | "managed_challenge"
+    | null;
+  response?: Response | null;
+  timeout?: number | null;
+}
+
+export const Action: Schema.Schema<Action> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      mode: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "simulate",
+            "ban",
+            "challenge",
+            "js_challenge",
+            "managed_challenge",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      response: Schema.optional(Schema.Union([Response, Schema.Null])),
+      timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Action>;
+
+export interface Bypass {
+  name?: "url" | null;
+  value?: string | null;
+}
+
+export const Bypass: Schema.Schema<Bypass> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.optional(Schema.Union([Schema.Literal("url"), Schema.Null])),
+      value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Bypass>;
+
+export interface Header {
+  name?: string | null;
+  op?: "eq" | "ne" | null;
+  value?: string | null;
+}
+
+export const Header: Schema.Schema<Header> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      op: Schema.optional(
+        Schema.Union([Schema.Literals(["eq", "ne"]), Schema.Null]),
+      ),
+      value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Header>;
+
+export interface Match {
+  headers?: Header[] | null;
+  request?: Request | null;
+  response?: { originTraffic?: boolean | null } | null;
+}
+
+export const Match: Schema.Schema<Match> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      headers: Schema.optional(
+        Schema.Union([Schema.Array(Header), Schema.Null]),
+      ),
+      request: Schema.optional(Schema.Union([Request, Schema.Null])),
+      response: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            originTraffic: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(Schema.encodeKeys({ originTraffic: "origin_traffic" })),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Match>;
+
+export interface Request {
+  methods?:
+    | ("GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "_ALL_")[]
+    | null;
+  schemes?: string[] | null;
+  url?: string | null;
+}
+
+export const Request: Schema.Schema<Request> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      methods: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Literals([
+              "GET",
+              "POST",
+              "PUT",
+              "DELETE",
+              "PATCH",
+              "HEAD",
+              "_ALL_",
+            ]),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      schemes: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Request>;
+
+export interface Response {
+  body?: string | null;
+  contentType?: string | null;
+}
+
+export const Response: Schema.Schema<Response> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      body: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      contentType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ body: "body", contentType: "content_type" })),
+  ) as unknown as Schema.Schema<Response>;
+
+// =============================================================================
 // RateLimit
 // =============================================================================
 
@@ -34,41 +173,15 @@ export interface GetRateLimitResponse {
   /** The unique identifier of the rate limit. */
   id?: string | null;
   /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
-  action?: {
-    mode?:
-      | "simulate"
-      | "ban"
-      | "challenge"
-      | "js_challenge"
-      | "managed_challenge"
-      | null;
-    response?: { body?: string | null; contentType?: string | null } | null;
-    timeout?: number | null;
-  } | null;
+  action?: Action | null;
   /** Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs. */
-  bypass?: { name?: "url" | null; value?: string | null }[] | null;
+  bypass?: Bypass[] | null;
   /** An informative summary of the rule. This value is sanitized and any tags will be removed. */
   description?: string | null;
   /** When true, indicates that the rate limit is currently disabled. */
   disabled?: boolean | null;
   /** Determines which traffic the rate limit counts towards the threshold. */
-  match?: {
-    headers?:
-      | {
-          name?: string | null;
-          op?: "eq" | "ne" | null;
-          value?: string | null;
-        }[]
-      | null;
-    request?: {
-      methods?:
-        | ("GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "_ALL_")[]
-        | null;
-      schemes?: string[] | null;
-      url?: string | null;
-    } | null;
-    response?: { originTraffic?: boolean | null } | null;
-  } | null;
+  match?: Match | null;
   /** The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action. */
   period?: number | null;
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
@@ -77,116 +190,11 @@ export interface GetRateLimitResponse {
 
 export const GetRateLimitResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  action: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        mode: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "simulate",
-              "ban",
-              "challenge",
-              "js_challenge",
-              "managed_challenge",
-            ]),
-            Schema.Null,
-          ]),
-        ),
-        response: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              body: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              contentType: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({ body: "body", contentType: "content_type" }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
-  bypass: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(
-            Schema.Union([Schema.Literal("url"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  action: Schema.optional(Schema.Union([Action, Schema.Null])),
+  bypass: Schema.optional(Schema.Union([Schema.Array(Bypass), Schema.Null])),
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  match: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        headers: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                op: Schema.optional(
-                  Schema.Union([Schema.Literals(["eq", "ne"]), Schema.Null]),
-                ),
-                value: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        request: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              methods: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Literals([
-                      "GET",
-                      "POST",
-                      "PUT",
-                      "DELETE",
-                      "PATCH",
-                      "HEAD",
-                      "_ALL_",
-                    ]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              schemes: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        response: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              originTraffic: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(Schema.encodeKeys({ originTraffic: "origin_traffic" })),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  match: Schema.optional(Schema.Union([Match, Schema.Null])),
   period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
 }).pipe(
@@ -220,37 +228,11 @@ export const ListRateLimitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ListRateLimitsResponse {
   result: {
     id?: string | null;
-    action?: {
-      mode?:
-        | "simulate"
-        | "ban"
-        | "challenge"
-        | "js_challenge"
-        | "managed_challenge"
-        | null;
-      response?: { body?: string | null; contentType?: string | null } | null;
-      timeout?: number | null;
-    } | null;
-    bypass?: { name?: "url" | null; value?: string | null }[] | null;
+    action?: Action | null;
+    bypass?: Bypass[] | null;
     description?: string | null;
     disabled?: boolean | null;
-    match?: {
-      headers?:
-        | {
-            name?: string | null;
-            op?: "eq" | "ne" | null;
-            value?: string | null;
-          }[]
-        | null;
-      request?: {
-        methods?:
-          | ("GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "_ALL_")[]
-          | null;
-        schemes?: string[] | null;
-        url?: string | null;
-      } | null;
-      response?: { originTraffic?: boolean | null } | null;
-    } | null;
+    match?: Match | null;
     period?: number | null;
     threshold?: number | null;
   }[];
@@ -267,134 +249,15 @@ export const ListRateLimitsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     result: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        action: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              mode: Schema.optional(
-                Schema.Union([
-                  Schema.Literals([
-                    "simulate",
-                    "ban",
-                    "challenge",
-                    "js_challenge",
-                    "managed_challenge",
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              response: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    body: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    contentType: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      body: "body",
-                      contentType: "content_type",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              timeout: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
+        action: Schema.optional(Schema.Union([Action, Schema.Null])),
         bypass: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(
-                  Schema.Union([Schema.Literal("url"), Schema.Null]),
-                ),
-                value: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-            ),
-            Schema.Null,
-          ]),
+          Schema.Union([Schema.Array(Bypass), Schema.Null]),
         ),
         description: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
         ),
         disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        match: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              headers: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      op: Schema.optional(
-                        Schema.Union([
-                          Schema.Literals(["eq", "ne"]),
-                          Schema.Null,
-                        ]),
-                      ),
-                      value: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              request: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    methods: Schema.optional(
-                      Schema.Union([
-                        Schema.Array(
-                          Schema.Literals([
-                            "GET",
-                            "POST",
-                            "PUT",
-                            "DELETE",
-                            "PATCH",
-                            "HEAD",
-                            "_ALL_",
-                          ]),
-                        ),
-                        Schema.Null,
-                      ]),
-                    ),
-                    schemes: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                    ),
-                    url: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              response: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    originTraffic: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({ originTraffic: "origin_traffic" }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
+        match: Schema.optional(Schema.Union([Match, Schema.Null])),
         period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
         threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       }),
@@ -435,37 +298,11 @@ export const listRateLimits: API.PaginatedOperationMethod<
   items: (input: ListRateLimitsRequest) => stream.Stream<
     {
       id?: string | null;
-      action?: {
-        mode?:
-          | "simulate"
-          | "ban"
-          | "challenge"
-          | "js_challenge"
-          | "managed_challenge"
-          | null;
-        response?: { body?: string | null; contentType?: string | null } | null;
-        timeout?: number | null;
-      } | null;
-      bypass?: { name?: "url" | null; value?: string | null }[] | null;
+      action?: Action | null;
+      bypass?: Bypass[] | null;
       description?: string | null;
       disabled?: boolean | null;
-      match?: {
-        headers?:
-          | {
-              name?: string | null;
-              op?: "eq" | "ne" | null;
-              value?: string | null;
-            }[]
-          | null;
-        request?: {
-          methods?:
-            | ("GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "_ALL_")[]
-            | null;
-          schemes?: string[] | null;
-          url?: string | null;
-        } | null;
-        response?: { originTraffic?: boolean | null } | null;
-      } | null;
+      match?: Match | null;
       period?: number | null;
       threshold?: number | null;
     },
@@ -489,34 +326,9 @@ export interface CreateRateLimitRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
   /** Body param: The action to perform when the threshold of matched traffic within the configured period is exceeded. */
-  action: {
-    mode?:
-      | "simulate"
-      | "ban"
-      | "challenge"
-      | "js_challenge"
-      | "managed_challenge";
-    response?: { body?: string; contentType?: string };
-    timeout?: number;
-  };
+  action: Action;
   /** Body param: Determines which traffic the rate limit counts towards the threshold. */
-  match: {
-    headers?: { name?: string; op?: "eq" | "ne"; value?: string }[];
-    request?: {
-      methods?: (
-        | "GET"
-        | "POST"
-        | "PUT"
-        | "DELETE"
-        | "PATCH"
-        | "HEAD"
-        | "_ALL_"
-      )[];
-      schemes?: string[];
-      url?: string;
-    };
-    response?: { originTraffic?: boolean };
-  };
+  match: Match;
   /** Body param: The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action. */
   period: number;
   /** Body param: The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
@@ -526,61 +338,8 @@ export interface CreateRateLimitRequest {
 export const CreateRateLimitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    action: Schema.Struct({
-      mode: Schema.optional(
-        Schema.Literals([
-          "simulate",
-          "ban",
-          "challenge",
-          "js_challenge",
-          "managed_challenge",
-        ]),
-      ),
-      response: Schema.optional(
-        Schema.Struct({
-          body: Schema.optional(Schema.String),
-          contentType: Schema.optional(Schema.String),
-        }).pipe(
-          Schema.encodeKeys({ body: "body", contentType: "content_type" }),
-        ),
-      ),
-      timeout: Schema.optional(Schema.Number),
-    }),
-    match: Schema.Struct({
-      headers: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            op: Schema.optional(Schema.Literals(["eq", "ne"])),
-            value: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      request: Schema.optional(
-        Schema.Struct({
-          methods: Schema.optional(
-            Schema.Array(
-              Schema.Literals([
-                "GET",
-                "POST",
-                "PUT",
-                "DELETE",
-                "PATCH",
-                "HEAD",
-                "_ALL_",
-              ]),
-            ),
-          ),
-          schemes: Schema.optional(Schema.Array(Schema.String)),
-          url: Schema.optional(Schema.String),
-        }),
-      ),
-      response: Schema.optional(
-        Schema.Struct({
-          originTraffic: Schema.optional(Schema.Boolean),
-        }).pipe(Schema.encodeKeys({ originTraffic: "origin_traffic" })),
-      ),
-    }),
+    action: Action,
+    match: Match,
     period: Schema.Number,
     threshold: Schema.Number,
   },
@@ -592,41 +351,15 @@ export interface CreateRateLimitResponse {
   /** The unique identifier of the rate limit. */
   id?: string | null;
   /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
-  action?: {
-    mode?:
-      | "simulate"
-      | "ban"
-      | "challenge"
-      | "js_challenge"
-      | "managed_challenge"
-      | null;
-    response?: { body?: string | null; contentType?: string | null } | null;
-    timeout?: number | null;
-  } | null;
+  action?: Action | null;
   /** Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs. */
-  bypass?: { name?: "url" | null; value?: string | null }[] | null;
+  bypass?: Bypass[] | null;
   /** An informative summary of the rule. This value is sanitized and any tags will be removed. */
   description?: string | null;
   /** When true, indicates that the rate limit is currently disabled. */
   disabled?: boolean | null;
   /** Determines which traffic the rate limit counts towards the threshold. */
-  match?: {
-    headers?:
-      | {
-          name?: string | null;
-          op?: "eq" | "ne" | null;
-          value?: string | null;
-        }[]
-      | null;
-    request?: {
-      methods?:
-        | ("GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "_ALL_")[]
-        | null;
-      schemes?: string[] | null;
-      url?: string | null;
-    } | null;
-    response?: { originTraffic?: boolean | null } | null;
-  } | null;
+  match?: Match | null;
   /** The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action. */
   period?: number | null;
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
@@ -636,123 +369,11 @@ export interface CreateRateLimitResponse {
 export const CreateRateLimitResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    action: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          mode: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "simulate",
-                "ban",
-                "challenge",
-                "js_challenge",
-                "managed_challenge",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          response: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                body: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                contentType: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  body: "body",
-                  contentType: "content_type",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    bypass: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(
-              Schema.Union([Schema.Literal("url"), Schema.Null]),
-            ),
-            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    action: Schema.optional(Schema.Union([Action, Schema.Null])),
+    bypass: Schema.optional(Schema.Union([Schema.Array(Bypass), Schema.Null])),
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    match: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          headers: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  op: Schema.optional(
-                    Schema.Union([Schema.Literals(["eq", "ne"]), Schema.Null]),
-                  ),
-                  value: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          request: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                methods: Schema.optional(
-                  Schema.Union([
-                    Schema.Array(
-                      Schema.Literals([
-                        "GET",
-                        "POST",
-                        "PUT",
-                        "DELETE",
-                        "PATCH",
-                        "HEAD",
-                        "_ALL_",
-                      ]),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                schemes: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-                url: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          response: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                originTraffic: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(Schema.encodeKeys({ originTraffic: "origin_traffic" })),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
+    match: Schema.optional(Schema.Union([Match, Schema.Null])),
     period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   }).pipe(
@@ -794,41 +415,15 @@ export interface DeleteRateLimitResponse {
   /** The unique identifier of the rate limit. */
   id?: string | null;
   /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
-  action?: {
-    mode?:
-      | "simulate"
-      | "ban"
-      | "challenge"
-      | "js_challenge"
-      | "managed_challenge"
-      | null;
-    response?: { body?: string | null; contentType?: string | null } | null;
-    timeout?: number | null;
-  } | null;
+  action?: Action | null;
   /** Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs. */
-  bypass?: { name?: "url" | null; value?: string | null }[] | null;
+  bypass?: Bypass[] | null;
   /** An informative summary of the rule. This value is sanitized and any tags will be removed. */
   description?: string | null;
   /** When true, indicates that the rate limit is currently disabled. */
   disabled?: boolean | null;
   /** Determines which traffic the rate limit counts towards the threshold. */
-  match?: {
-    headers?:
-      | {
-          name?: string | null;
-          op?: "eq" | "ne" | null;
-          value?: string | null;
-        }[]
-      | null;
-    request?: {
-      methods?:
-        | ("GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "_ALL_")[]
-        | null;
-      schemes?: string[] | null;
-      url?: string | null;
-    } | null;
-    response?: { originTraffic?: boolean | null } | null;
-  } | null;
+  match?: Match | null;
   /** The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action. */
   period?: number | null;
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
@@ -838,123 +433,11 @@ export interface DeleteRateLimitResponse {
 export const DeleteRateLimitResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    action: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          mode: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "simulate",
-                "ban",
-                "challenge",
-                "js_challenge",
-                "managed_challenge",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          response: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                body: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                contentType: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  body: "body",
-                  contentType: "content_type",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    bypass: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(
-              Schema.Union([Schema.Literal("url"), Schema.Null]),
-            ),
-            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    action: Schema.optional(Schema.Union([Action, Schema.Null])),
+    bypass: Schema.optional(Schema.Union([Schema.Array(Bypass), Schema.Null])),
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    match: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          headers: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  op: Schema.optional(
-                    Schema.Union([Schema.Literals(["eq", "ne"]), Schema.Null]),
-                  ),
-                  value: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          request: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                methods: Schema.optional(
-                  Schema.Union([
-                    Schema.Array(
-                      Schema.Literals([
-                        "GET",
-                        "POST",
-                        "PUT",
-                        "DELETE",
-                        "PATCH",
-                        "HEAD",
-                        "_ALL_",
-                      ]),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                schemes: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-                url: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          response: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                originTraffic: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(Schema.encodeKeys({ originTraffic: "origin_traffic" })),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
+    match: Schema.optional(Schema.Union([Match, Schema.Null])),
     period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   }).pipe(
@@ -979,34 +462,9 @@ export interface EditRateLimitRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
   /** Body param: The action to perform when the threshold of matched traffic within the configured period is exceeded. */
-  action: {
-    mode?:
-      | "simulate"
-      | "ban"
-      | "challenge"
-      | "js_challenge"
-      | "managed_challenge";
-    response?: { body?: string; contentType?: string };
-    timeout?: number;
-  };
+  action: Action;
   /** Body param: Determines which traffic the rate limit counts towards the threshold. */
-  match: {
-    headers?: { name?: string; op?: "eq" | "ne"; value?: string }[];
-    request?: {
-      methods?: (
-        | "GET"
-        | "POST"
-        | "PUT"
-        | "DELETE"
-        | "PATCH"
-        | "HEAD"
-        | "_ALL_"
-      )[];
-      schemes?: string[];
-      url?: string;
-    };
-    response?: { originTraffic?: boolean };
-  };
+  match: Match;
   /** Body param: The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action. */
   period: number;
   /** Body param: The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
@@ -1016,59 +474,8 @@ export interface EditRateLimitRequest {
 export const EditRateLimitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rateLimitId: Schema.String.pipe(T.HttpPath("rateLimitId")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  action: Schema.Struct({
-    mode: Schema.optional(
-      Schema.Literals([
-        "simulate",
-        "ban",
-        "challenge",
-        "js_challenge",
-        "managed_challenge",
-      ]),
-    ),
-    response: Schema.optional(
-      Schema.Struct({
-        body: Schema.optional(Schema.String),
-        contentType: Schema.optional(Schema.String),
-      }).pipe(Schema.encodeKeys({ body: "body", contentType: "content_type" })),
-    ),
-    timeout: Schema.optional(Schema.Number),
-  }),
-  match: Schema.Struct({
-    headers: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          op: Schema.optional(Schema.Literals(["eq", "ne"])),
-          value: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    request: Schema.optional(
-      Schema.Struct({
-        methods: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "GET",
-              "POST",
-              "PUT",
-              "DELETE",
-              "PATCH",
-              "HEAD",
-              "_ALL_",
-            ]),
-          ),
-        ),
-        schemes: Schema.optional(Schema.Array(Schema.String)),
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-    response: Schema.optional(
-      Schema.Struct({
-        originTraffic: Schema.optional(Schema.Boolean),
-      }).pipe(Schema.encodeKeys({ originTraffic: "origin_traffic" })),
-    ),
-  }),
+  action: Action,
+  match: Match,
   period: Schema.Number,
   threshold: Schema.Number,
 }).pipe(
@@ -1079,41 +486,15 @@ export interface EditRateLimitResponse {
   /** The unique identifier of the rate limit. */
   id?: string | null;
   /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
-  action?: {
-    mode?:
-      | "simulate"
-      | "ban"
-      | "challenge"
-      | "js_challenge"
-      | "managed_challenge"
-      | null;
-    response?: { body?: string | null; contentType?: string | null } | null;
-    timeout?: number | null;
-  } | null;
+  action?: Action | null;
   /** Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs. */
-  bypass?: { name?: "url" | null; value?: string | null }[] | null;
+  bypass?: Bypass[] | null;
   /** An informative summary of the rule. This value is sanitized and any tags will be removed. */
   description?: string | null;
   /** When true, indicates that the rate limit is currently disabled. */
   disabled?: boolean | null;
   /** Determines which traffic the rate limit counts towards the threshold. */
-  match?: {
-    headers?:
-      | {
-          name?: string | null;
-          op?: "eq" | "ne" | null;
-          value?: string | null;
-        }[]
-      | null;
-    request?: {
-      methods?:
-        | ("GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "_ALL_")[]
-        | null;
-      schemes?: string[] | null;
-      url?: string | null;
-    } | null;
-    response?: { originTraffic?: boolean | null } | null;
-  } | null;
+  match?: Match | null;
   /** The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action. */
   period?: number | null;
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
@@ -1122,116 +503,11 @@ export interface EditRateLimitResponse {
 
 export const EditRateLimitResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  action: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        mode: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "simulate",
-              "ban",
-              "challenge",
-              "js_challenge",
-              "managed_challenge",
-            ]),
-            Schema.Null,
-          ]),
-        ),
-        response: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              body: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              contentType: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({ body: "body", contentType: "content_type" }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        timeout: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
-  bypass: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(
-            Schema.Union([Schema.Literal("url"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  action: Schema.optional(Schema.Union([Action, Schema.Null])),
+  bypass: Schema.optional(Schema.Union([Schema.Array(Bypass), Schema.Null])),
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  match: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        headers: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                op: Schema.optional(
-                  Schema.Union([Schema.Literals(["eq", "ne"]), Schema.Null]),
-                ),
-                value: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        request: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              methods: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Literals([
-                      "GET",
-                      "POST",
-                      "PUT",
-                      "DELETE",
-                      "PATCH",
-                      "HEAD",
-                      "_ALL_",
-                    ]),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              schemes: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        response: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              originTraffic: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(Schema.encodeKeys({ originTraffic: "origin_traffic" })),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  match: Schema.optional(Schema.Union([Match, Schema.Null])),
   period: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   threshold: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
 }).pipe(

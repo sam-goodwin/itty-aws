@@ -75,6 +75,74 @@ export class TitleRequired extends Schema.TaggedErrorClass<TitleRequired>()(
 T.applyErrorMatchers(TitleRequired, [{ code: 10019 }]);
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Body {
+  key: string;
+  value: string;
+  base64?: boolean | null;
+  expiration?: number | null;
+  expirationTtl?: number | null;
+  metadata?: unknown | null;
+}
+
+export const Body: Schema.Schema<Body> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      key: Schema.String,
+      value: Schema.String,
+      base64: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      expiration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      expirationTtl: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      metadata: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        key: "key",
+        value: "value",
+        base64: "base64",
+        expiration: "expiration",
+        expirationTtl: "expiration_ttl",
+        metadata: "metadata",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Body>;
+
+export interface WorkersKVBulkGetResult {
+  values?: Record<string, unknown> | null;
+}
+
+export const WorkersKVBulkGetResult: Schema.Schema<WorkersKVBulkGetResult> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      values: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<WorkersKVBulkGetResult>;
+
+export interface WorkersKVBulkGetResultWithMetadata {
+  values?: Record<string, unknown> | null;
+}
+
+export const WorkersKVBulkGetResultWithMetadata: Schema.Schema<WorkersKVBulkGetResultWithMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      values: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<WorkersKVBulkGetResultWithMetadata>;
+
+// =============================================================================
 // Namespace
 // =============================================================================
 
@@ -445,16 +513,10 @@ export const BulkGetNamespacesRequest =
     }),
   ) as unknown as Schema.Schema<BulkGetNamespacesRequest>;
 
-export type BulkGetNamespacesResponse = {
-  values?: Record<string, unknown> | null;
-};
+export type BulkGetNamespacesResponse = WorkersKVBulkGetResultWithMetadata;
 
 export const BulkGetNamespacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    values: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ WorkersKVBulkGetResultWithMetadata.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<BulkGetNamespacesResponse>;
 
@@ -663,16 +725,10 @@ export const BulkGetNamespaceKeysRequest =
     }),
   ) as unknown as Schema.Schema<BulkGetNamespaceKeysRequest>;
 
-export type BulkGetNamespaceKeysResponse = {
-  values?: Record<string, unknown> | null;
-};
+export type BulkGetNamespaceKeysResponse = WorkersKVBulkGetResultWithMetadata;
 
 export const BulkGetNamespaceKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    values: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-  }).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ WorkersKVBulkGetResultWithMetadata.pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<BulkGetNamespaceKeysResponse>;
 
@@ -957,39 +1013,14 @@ export interface BulkPutNamespacesRequest {
   /** Path param: Identifier. */
   accountId: string;
   /** Body param: */
-  body: {
-    key: string;
-    value: string;
-    base64?: boolean;
-    expiration?: number;
-    expirationTtl?: number;
-    metadata?: unknown;
-  }[];
+  body: Body[];
 }
 
 export const BulkPutNamespacesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    body: Schema.Array(
-      Schema.Struct({
-        key: Schema.String,
-        value: Schema.String,
-        base64: Schema.optional(Schema.Boolean),
-        expiration: Schema.optional(Schema.Number),
-        expirationTtl: Schema.optional(Schema.Number),
-        metadata: Schema.optional(Schema.Unknown),
-      }).pipe(
-        Schema.encodeKeys({
-          key: "key",
-          value: "value",
-          base64: "base64",
-          expiration: "expiration",
-          expirationTtl: "expiration_ttl",
-          metadata: "metadata",
-        }),
-      ),
-    ).pipe(T.HttpBody()),
+    body: Schema.Array(Body).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1049,39 +1080,14 @@ export interface BulkPutNamespaceKeysRequest {
   /** Path param: Identifier. */
   accountId: string;
   /** Body param: */
-  body: {
-    key: string;
-    value: string;
-    base64?: boolean;
-    expiration?: number;
-    expirationTtl?: number;
-    metadata?: unknown;
-  }[];
+  body: Body[];
 }
 
 export const BulkPutNamespaceKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    body: Schema.Array(
-      Schema.Struct({
-        key: Schema.String,
-        value: Schema.String,
-        base64: Schema.optional(Schema.Boolean),
-        expiration: Schema.optional(Schema.Number),
-        expirationTtl: Schema.optional(Schema.Number),
-        metadata: Schema.optional(Schema.Unknown),
-      }).pipe(
-        Schema.encodeKeys({
-          key: "key",
-          value: "value",
-          base64: "base64",
-          expiration: "expiration",
-          expirationTtl: "expiration_ttl",
-          metadata: "metadata",
-        }),
-      ),
-    ).pipe(T.HttpBody()),
+    body: Schema.Array(Body).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "PUT",

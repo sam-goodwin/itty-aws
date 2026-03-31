@@ -14,6 +14,209 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Condition {
+  requestIp?: ConditionRequestIP | null;
+}
+
+export const Condition: Schema.Schema<Condition> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      requestIp: Schema.optional(
+        Schema.Union([ConditionRequestIP, Schema.Null]),
+      ),
+    }).pipe(Schema.encodeKeys({ requestIp: "request_ip" })),
+  ) as unknown as Schema.Schema<Condition>;
+
+export interface ConditionRequestIP {
+  in?: string[] | null;
+  notIn?: string[] | null;
+}
+
+export const ConditionRequestIP: Schema.Schema<ConditionRequestIP> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      in: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      notIn: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })),
+  ) as unknown as Schema.Schema<ConditionRequestIP>;
+
+export interface Meta {
+  key?: string | null;
+  value?: string | null;
+}
+
+export const Meta: Schema.Schema<Meta> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Meta>;
+
+export interface Organization {
+  id?: string | null;
+  name?: string | null;
+  permissions?: string[] | null;
+  roles?: string[] | null;
+  status?: "member" | "invited" | null;
+}
+
+export const Organization: Schema.Schema<Organization> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      permissions: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      roles: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      status: Schema.optional(
+        Schema.Union([Schema.Literals(["member", "invited"]), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Organization>;
+
+export interface PermissionGroup {
+  id: string;
+  meta?: Meta | null;
+  name?: string | null;
+}
+
+export const PermissionGroup: Schema.Schema<PermissionGroup> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      meta: Schema.optional(Schema.Union([Meta, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<PermissionGroup>;
+
+export interface RequestIP {
+  in?: string[] | null;
+  notIn?: string[] | null;
+}
+
+export const RequestIP: Schema.Schema<RequestIP> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      in: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      notIn: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })),
+  ) as unknown as Schema.Schema<RequestIP>;
+
+export interface Token {
+  id?: string | null;
+  condition?: Condition | null;
+  expiresOn?: string | null;
+  issuedOn?: string | null;
+  lastUsedOn?: string | null;
+  modifiedOn?: string | null;
+  name?: string | null;
+  notBefore?: string | null;
+  policies?: TokenPolicy[] | null;
+  status?: "active" | "disabled" | "expired" | null;
+}
+
+export const Token: Schema.Schema<Token> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      condition: Schema.optional(Schema.Union([Condition, Schema.Null])),
+      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      issuedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      lastUsedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      policies: Schema.optional(
+        Schema.Union([Schema.Array(TokenPolicy), Schema.Null]),
+      ),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["active", "disabled", "expired"]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        condition: "condition",
+        expiresOn: "expires_on",
+        issuedOn: "issued_on",
+        lastUsedOn: "last_used_on",
+        modifiedOn: "modified_on",
+        name: "name",
+        notBefore: "not_before",
+        policies: "policies",
+        status: "status",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Token>;
+
+export interface TokenPolicy {
+  id: string;
+  effect: "allow" | "deny";
+  permissionGroups: PermissionGroup[];
+  resources: Record<string, unknown>;
+}
+
+export const TokenPolicy: Schema.Schema<TokenPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      effect: Schema.Literals(["allow", "deny"]),
+      permissionGroups: Schema.Array(PermissionGroup),
+      resources: Schema.Record(Schema.String, Schema.Unknown),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        effect: "effect",
+        permissionGroups: "permission_groups",
+        resources: "resources",
+      }),
+    ),
+  ) as unknown as Schema.Schema<TokenPolicy>;
+
+export interface TokenPolicyParam {
+  effect: "allow" | "deny";
+  permissionGroups: { id: string; meta?: Meta | null }[];
+  resources: Record<string, unknown>;
+}
+
+export const TokenPolicyParam: Schema.Schema<TokenPolicyParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      effect: Schema.Literals(["allow", "deny"]),
+      permissionGroups: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          meta: Schema.optional(Schema.Union([Meta, Schema.Null])),
+        }),
+      ),
+      resources: Schema.Record(Schema.String, Schema.Unknown),
+    }).pipe(
+      Schema.encodeKeys({
+        effect: "effect",
+        permissionGroups: "permission_groups",
+        resources: "resources",
+      }),
+    ),
+  ) as unknown as Schema.Schema<TokenPolicyParam>;
+
+// =============================================================================
 // AuditLog
 // =============================================================================
 
@@ -1284,9 +1487,7 @@ export const GetTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface GetTokenResponse {
   /** Token identifier tag. */
   id?: string | null;
-  condition?: {
-    requestIp?: { in?: string[] | null; notIn?: string[] | null } | null;
-  } | null;
+  condition?: Condition | null;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
   expiresOn?: string | null;
   /** The time on which the token was created. */
@@ -1300,44 +1501,14 @@ export interface GetTokenResponse {
   /** The time before which the token MUST NOT be accepted for processing. */
   notBefore?: string | null;
   /** List of access policies assigned to the token. */
-  policies?:
-    | {
-        id: string;
-        effect: "allow" | "deny";
-        permissionGroups: {
-          id: string;
-          meta?: { key?: string | null; value?: string | null } | null;
-          name?: string | null;
-        }[];
-        resources: Record<string, unknown>;
-      }[]
-    | null;
+  policies?: TokenPolicy[] | null;
   /** Status of the token. */
   status?: "active" | "disabled" | "expired" | null;
 }
 
 export const GetTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  condition: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        requestIp: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              in: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              notIn: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-            }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(Schema.encodeKeys({ requestIp: "request_ip" })),
-      Schema.Null,
-    ]),
-  ),
+  condition: Schema.optional(Schema.Union([Condition, Schema.Null])),
   expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   issuedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   lastUsedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1345,42 +1516,7 @@ export const GetTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   policies: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          effect: Schema.Literals(["allow", "deny"]),
-          permissionGroups: Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              meta: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    key: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    value: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }),
-          ),
-          resources: Schema.Record(Schema.String, Schema.Unknown),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            effect: "effect",
-            permissionGroups: "permission_groups",
-            resources: "resources",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([Schema.Array(TokenPolicy), Schema.Null]),
   ),
   status: Schema.optional(
     Schema.Union([
@@ -1427,31 +1563,7 @@ export const ListTokensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Schema<ListTokensRequest>;
 
 export interface ListTokensResponse {
-  result: {
-    id?: string | null;
-    condition?: {
-      requestIp?: { in?: string[] | null; notIn?: string[] | null } | null;
-    } | null;
-    expiresOn?: string | null;
-    issuedOn?: string | null;
-    lastUsedOn?: string | null;
-    modifiedOn?: string | null;
-    name?: string | null;
-    notBefore?: string | null;
-    policies?:
-      | {
-          id: string;
-          effect: "allow" | "deny";
-          permissionGroups: {
-            id: string;
-            meta?: { key?: string | null; value?: string | null } | null;
-            name?: string | null;
-          }[];
-          resources: Record<string, unknown>;
-        }[]
-      | null;
-    status?: "active" | "disabled" | "expired" | null;
-  }[];
+  result: Token[];
   resultInfo: {
     count?: number | null;
     page?: number | null;
@@ -1461,96 +1573,7 @@ export interface ListTokensResponse {
 }
 
 export const ListTokensResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      condition: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            requestIp: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  in: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                  notIn: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(Schema.encodeKeys({ requestIp: "request_ip" })),
-          Schema.Null,
-        ]),
-      ),
-      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      issuedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      lastUsedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      policies: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              effect: Schema.Literals(["allow", "deny"]),
-              permissionGroups: Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                  meta: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        key: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        value: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                      }),
-                      Schema.Null,
-                    ]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-              ),
-              resources: Schema.Record(Schema.String, Schema.Unknown),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                effect: "effect",
-                permissionGroups: "permission_groups",
-                resources: "resources",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["active", "disabled", "expired"]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        condition: "condition",
-        expiresOn: "expires_on",
-        issuedOn: "issued_on",
-        lastUsedOn: "last_used_on",
-        modifiedOn: "modified_on",
-        name: "name",
-        notBefore: "not_before",
-        policies: "policies",
-        status: "status",
-      }),
-    ),
-  ),
+  result: Schema.Array(Token),
   resultInfo: Schema.Struct({
     count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1583,32 +1606,10 @@ export const listTokens: API.PaginatedOperationMethod<
     ListTokensError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListTokensRequest) => stream.Stream<
-    {
-      id?: string | null;
-      condition?: {
-        requestIp?: { in?: string[] | null; notIn?: string[] | null } | null;
-      } | null;
-      expiresOn?: string | null;
-      issuedOn?: string | null;
-      lastUsedOn?: string | null;
-      modifiedOn?: string | null;
-      name?: string | null;
-      notBefore?: string | null;
-      policies?:
-        | {
-            id: string;
-            effect: "allow" | "deny";
-            permissionGroups: {
-              id: string;
-              meta?: { key?: string | null; value?: string | null } | null;
-              name?: string | null;
-            }[];
-            resources: Record<string, unknown>;
-          }[]
-        | null;
-      status?: "active" | "disabled" | "expired" | null;
-    },
+  items: (
+    input: ListTokensRequest,
+  ) => stream.Stream<
+    Token,
     ListTokensError,
     Credentials | HttpClient.HttpClient
   >;
@@ -1629,12 +1630,8 @@ export interface CreateTokenRequest {
   /** Token name. */
   name: string;
   /** List of access policies assigned to the token. */
-  policies: {
-    effect: "allow" | "deny";
-    permissionGroups: { id: string; meta?: { key?: string; value?: string } }[];
-    resources: Record<string, unknown>;
-  }[];
-  condition?: { requestIp?: { in?: string[]; notIn?: string[] } };
+  policies: TokenPolicyParam[];
+  condition?: Condition;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
   expiresOn?: string;
   /** The time before which the token MUST NOT be accepted for processing. */
@@ -1643,39 +1640,8 @@ export interface CreateTokenRequest {
 
 export const CreateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
-  policies: Schema.Array(
-    Schema.Struct({
-      effect: Schema.Literals(["allow", "deny"]),
-      permissionGroups: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          meta: Schema.optional(
-            Schema.Struct({
-              key: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      resources: Schema.Record(Schema.String, Schema.Unknown),
-    }).pipe(
-      Schema.encodeKeys({
-        effect: "effect",
-        permissionGroups: "permission_groups",
-        resources: "resources",
-      }),
-    ),
-  ),
-  condition: Schema.optional(
-    Schema.Struct({
-      requestIp: Schema.optional(
-        Schema.Struct({
-          in: Schema.optional(Schema.Array(Schema.String)),
-          notIn: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })),
-      ),
-    }).pipe(Schema.encodeKeys({ requestIp: "request_ip" })),
-  ),
+  policies: Schema.Array(TokenPolicyParam),
+  condition: Schema.optional(Condition),
   expiresOn: Schema.optional(Schema.String),
   notBefore: Schema.optional(Schema.String),
 }).pipe(
@@ -1692,9 +1658,7 @@ export const CreateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface CreateTokenResponse {
   /** Token identifier tag. */
   id?: string | null;
-  condition?: {
-    requestIp?: { in?: string[] | null; notIn?: string[] | null } | null;
-  } | null;
+  condition?: Condition | null;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
   expiresOn?: string | null;
   /** The time on which the token was created. */
@@ -1708,18 +1672,7 @@ export interface CreateTokenResponse {
   /** The time before which the token MUST NOT be accepted for processing. */
   notBefore?: string | null;
   /** List of access policies assigned to the token. */
-  policies?:
-    | {
-        id: string;
-        effect: "allow" | "deny";
-        permissionGroups: {
-          id: string;
-          meta?: { key?: string | null; value?: string | null } | null;
-          name?: string | null;
-        }[];
-        resources: Record<string, unknown>;
-      }[]
-    | null;
+  policies?: TokenPolicy[] | null;
   /** Status of the token. */
   status?: "active" | "disabled" | "expired" | null;
   /** The token value. */
@@ -1728,26 +1681,7 @@ export interface CreateTokenResponse {
 
 export const CreateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  condition: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        requestIp: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              in: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              notIn: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-            }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(Schema.encodeKeys({ requestIp: "request_ip" })),
-      Schema.Null,
-    ]),
-  ),
+  condition: Schema.optional(Schema.Union([Condition, Schema.Null])),
   expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   issuedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   lastUsedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1755,42 +1689,7 @@ export const CreateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   policies: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          effect: Schema.Literals(["allow", "deny"]),
-          permissionGroups: Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              meta: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    key: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    value: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }),
-          ),
-          resources: Schema.Record(Schema.String, Schema.Unknown),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            effect: "effect",
-            permissionGroups: "permission_groups",
-            resources: "resources",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([Schema.Array(TokenPolicy), Schema.Null]),
   ),
   status: Schema.optional(
     Schema.Union([
@@ -1837,12 +1736,8 @@ export interface UpdateTokenRequest {
   /** Token name. */
   name: string;
   /** List of access policies assigned to the token. */
-  policies: {
-    effect: "allow" | "deny";
-    permissionGroups: { id: string; meta?: { key?: string; value?: string } }[];
-    resources: Record<string, unknown>;
-  }[];
-  condition?: { requestIp?: { in?: string[]; notIn?: string[] } };
+  policies: TokenPolicyParam[];
+  condition?: Condition;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
   expiresOn?: string;
   /** The time before which the token MUST NOT be accepted for processing. */
@@ -1854,39 +1749,8 @@ export interface UpdateTokenRequest {
 export const UpdateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
   name: Schema.String,
-  policies: Schema.Array(
-    Schema.Struct({
-      effect: Schema.Literals(["allow", "deny"]),
-      permissionGroups: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          meta: Schema.optional(
-            Schema.Struct({
-              key: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      resources: Schema.Record(Schema.String, Schema.Unknown),
-    }).pipe(
-      Schema.encodeKeys({
-        effect: "effect",
-        permissionGroups: "permission_groups",
-        resources: "resources",
-      }),
-    ),
-  ),
-  condition: Schema.optional(
-    Schema.Struct({
-      requestIp: Schema.optional(
-        Schema.Struct({
-          in: Schema.optional(Schema.Array(Schema.String)),
-          notIn: Schema.optional(Schema.Array(Schema.String)),
-        }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })),
-      ),
-    }).pipe(Schema.encodeKeys({ requestIp: "request_ip" })),
-  ),
+  policies: Schema.Array(TokenPolicyParam),
+  condition: Schema.optional(Condition),
   expiresOn: Schema.optional(Schema.String),
   notBefore: Schema.optional(Schema.String),
   status: Schema.optional(Schema.Literals(["active", "disabled", "expired"])),
@@ -1905,9 +1769,7 @@ export const UpdateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface UpdateTokenResponse {
   /** Token identifier tag. */
   id?: string | null;
-  condition?: {
-    requestIp?: { in?: string[] | null; notIn?: string[] | null } | null;
-  } | null;
+  condition?: Condition | null;
   /** The expiration time on or after which the JWT MUST NOT be accepted for processing. */
   expiresOn?: string | null;
   /** The time on which the token was created. */
@@ -1921,44 +1783,14 @@ export interface UpdateTokenResponse {
   /** The time before which the token MUST NOT be accepted for processing. */
   notBefore?: string | null;
   /** List of access policies assigned to the token. */
-  policies?:
-    | {
-        id: string;
-        effect: "allow" | "deny";
-        permissionGroups: {
-          id: string;
-          meta?: { key?: string | null; value?: string | null } | null;
-          name?: string | null;
-        }[];
-        resources: Record<string, unknown>;
-      }[]
-    | null;
+  policies?: TokenPolicy[] | null;
   /** Status of the token. */
   status?: "active" | "disabled" | "expired" | null;
 }
 
 export const UpdateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  condition: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        requestIp: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              in: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              notIn: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-            }).pipe(Schema.encodeKeys({ in: "in", notIn: "not_in" })),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(Schema.encodeKeys({ requestIp: "request_ip" })),
-      Schema.Null,
-    ]),
-  ),
+  condition: Schema.optional(Schema.Union([Condition, Schema.Null])),
   expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   issuedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   lastUsedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1966,42 +1798,7 @@ export const UpdateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   policies: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          effect: Schema.Literals(["allow", "deny"]),
-          permissionGroups: Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              meta: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    key: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    value: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }),
-          ),
-          resources: Schema.Record(Schema.String, Schema.Unknown),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            effect: "effect",
-            permissionGroups: "permission_groups",
-            resources: "resources",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([Schema.Array(TokenPolicy), Schema.Null]),
   ),
   status: Schema.optional(
     Schema.Union([
@@ -2278,15 +2075,7 @@ export interface GetUserResponse {
   hasProZones?: boolean | null;
   /** User's last name */
   lastName?: string | null;
-  organizations?:
-    | {
-        id?: string | null;
-        name?: string | null;
-        permissions?: string[] | null;
-        roles?: string[] | null;
-        status?: "member" | "invited" | null;
-      }[]
-    | null;
+  organizations?: Organization[] | null;
   /** Indicates whether user has been suspended */
   suspended?: boolean | null;
   /** User's telephone number */
@@ -2315,24 +2104,7 @@ export const GetUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   hasProZones: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   lastName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   organizations: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          permissions: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          roles: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          status: Schema.optional(
-            Schema.Union([Schema.Literals(["member", "invited"]), Schema.Null]),
-          ),
-        }),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([Schema.Array(Organization), Schema.Null]),
   ),
   suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   telephone: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2424,15 +2196,7 @@ export interface PatchUserResponse {
   hasProZones?: boolean | null;
   /** User's last name */
   lastName?: string | null;
-  organizations?:
-    | {
-        id?: string | null;
-        name?: string | null;
-        permissions?: string[] | null;
-        roles?: string[] | null;
-        status?: "member" | "invited" | null;
-      }[]
-    | null;
+  organizations?: Organization[] | null;
   /** Indicates whether user has been suspended */
   suspended?: boolean | null;
   /** User's telephone number */
@@ -2461,24 +2225,7 @@ export const PatchUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   hasProZones: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   lastName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   organizations: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          permissions: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          roles: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          status: Schema.optional(
-            Schema.Union([Schema.Literals(["member", "invited"]), Schema.Null]),
-          ),
-        }),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([Schema.Array(Organization), Schema.Null]),
   ),
   suspended: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   telephone: Schema.optional(Schema.Union([Schema.String, Schema.Null])),

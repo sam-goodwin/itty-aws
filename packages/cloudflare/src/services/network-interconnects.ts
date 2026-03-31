@@ -13,6 +13,186 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Bgp {
+  customerAsn: number;
+  extraPrefixes: string[];
+  md5Key?: string | null;
+}
+
+export const Bgp: Schema.Schema<Bgp> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      customerAsn: Schema.Number,
+      extraPrefixes: Schema.Array(Schema.String),
+      md5Key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        customerAsn: "customer_asn",
+        extraPrefixes: "extra_prefixes",
+        md5Key: "md5_key",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Bgp>;
+
+export interface Facility {
+  address: string[];
+  name: string;
+}
+
+export const Facility: Schema.Schema<Facility> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      address: Schema.Array(Schema.String),
+      name: Schema.String,
+    }),
+  ) as unknown as Schema.Schema<Facility>;
+
+export interface Item {
+  id: string;
+  account: string;
+  custIp: string;
+  interconnect: string;
+  magic: Magic;
+  p2pIp: string;
+  bgp?: Bgp | null;
+}
+
+export const Item: Schema.Schema<Item> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      account: Schema.String,
+      custIp: Schema.String,
+      interconnect: Schema.String,
+      magic: Magic,
+      p2pIp: Schema.String,
+      bgp: Schema.optional(Schema.Union([Bgp, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        account: "account",
+        custIp: "cust_ip",
+        interconnect: "interconnect",
+        magic: "magic",
+        p2pIp: "p2p_ip",
+        bgp: "bgp",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Item>;
+
+export interface Magic {
+  conduitName: string;
+  description: string;
+  mtu: number;
+}
+
+export const Magic: Schema.Schema<Magic> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      conduitName: Schema.String,
+      description: Schema.String,
+      mtu: Schema.Number,
+    }).pipe(
+      Schema.encodeKeys({
+        conduitName: "conduit_name",
+        description: "description",
+        mtu: "mtu",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Magic>;
+
+export interface NscInterconnectGcpPartnerBody {
+  account: string;
+  name: string;
+  region: string;
+  type: string;
+  owner?: string | null;
+  speed?:
+    | "50M"
+    | "100M"
+    | "200M"
+    | "300M"
+    | "400M"
+    | "500M"
+    | "1G"
+    | "2G"
+    | "5G"
+    | "10G"
+    | "20G"
+    | "50G"
+    | null;
+}
+
+export const NscInterconnectGcpPartnerBody: Schema.Schema<NscInterconnectGcpPartnerBody> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      account: Schema.String,
+      name: Schema.String,
+      region: Schema.String,
+      type: Schema.String,
+      owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      speed: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "50M",
+            "100M",
+            "200M",
+            "300M",
+            "400M",
+            "500M",
+            "1G",
+            "2G",
+            "5G",
+            "10G",
+            "20G",
+            "50G",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<NscInterconnectGcpPartnerBody>;
+
+export interface NscInterconnectPhysicalBody {
+  account: string;
+  facility: Facility;
+  name: string;
+  site: string;
+  slotId: string;
+  speed: string;
+  type: string;
+  owner?: string | null;
+}
+
+export const NscInterconnectPhysicalBody: Schema.Schema<NscInterconnectPhysicalBody> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      account: Schema.String,
+      facility: Facility,
+      name: Schema.String,
+      site: Schema.String,
+      slotId: Schema.String,
+      speed: Schema.String,
+      type: Schema.String,
+      owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        account: "account",
+        facility: "facility",
+        name: "name",
+        site: "site",
+        slotId: "slot_id",
+        speed: "speed",
+        type: "type",
+        owner: "owner",
+      }),
+    ),
+  ) as unknown as Schema.Schema<NscInterconnectPhysicalBody>;
+
+// =============================================================================
 // Cni
 // =============================================================================
 
@@ -37,14 +217,10 @@ export interface GetCniResponse {
   custIp: string;
   /** Interconnect identifier hosting this CNI */
   interconnect: string;
-  magic: { conduitName: string; description: string; mtu: number };
+  magic: Magic;
   /** Cloudflare end of the point-to-point link */
   p2pIp: string;
-  bgp?: {
-    customerAsn: number;
-    extraPrefixes: string[];
-    md5Key?: string | null;
-  } | null;
+  bgp?: Bgp | null;
 }
 
 export const GetCniResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -52,34 +228,9 @@ export const GetCniResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   account: Schema.String,
   custIp: Schema.String,
   interconnect: Schema.String,
-  magic: Schema.Struct({
-    conduitName: Schema.String,
-    description: Schema.String,
-    mtu: Schema.Number,
-  }).pipe(
-    Schema.encodeKeys({
-      conduitName: "conduit_name",
-      description: "description",
-      mtu: "mtu",
-    }),
-  ),
+  magic: Magic,
   p2pIp: Schema.String,
-  bgp: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        customerAsn: Schema.Number,
-        extraPrefixes: Schema.Array(Schema.String),
-        md5Key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          customerAsn: "customer_asn",
-          extraPrefixes: "extra_prefixes",
-          md5Key: "md5_key",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  bgp: Schema.optional(Schema.Union([Bgp, Schema.Null])),
 }).pipe(
   Schema.encodeKeys({
     id: "id",
@@ -137,69 +288,12 @@ export const ListCnisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListCnisRequest>;
 
 export interface ListCnisResponse {
-  items: {
-    id: string;
-    account: string;
-    custIp: string;
-    interconnect: string;
-    magic: { conduitName: string; description: string; mtu: number };
-    p2pIp: string;
-    bgp?: {
-      customerAsn: number;
-      extraPrefixes: string[];
-      md5Key?: string | null;
-    } | null;
-  }[];
+  items: Item[];
   next?: number | null;
 }
 
 export const ListCnisResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  items: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      account: Schema.String,
-      custIp: Schema.String,
-      interconnect: Schema.String,
-      magic: Schema.Struct({
-        conduitName: Schema.String,
-        description: Schema.String,
-        mtu: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          conduitName: "conduit_name",
-          description: "description",
-          mtu: "mtu",
-        }),
-      ),
-      p2pIp: Schema.String,
-      bgp: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            customerAsn: Schema.Number,
-            extraPrefixes: Schema.Array(Schema.String),
-            md5Key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }).pipe(
-            Schema.encodeKeys({
-              customerAsn: "customer_asn",
-              extraPrefixes: "extra_prefixes",
-              md5Key: "md5_key",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        account: "account",
-        custIp: "cust_ip",
-        interconnect: "interconnect",
-        magic: "magic",
-        p2pIp: "p2p_ip",
-        bgp: "bgp",
-      }),
-    ),
-  ),
+  items: Schema.Array(Item),
   next: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
 }) as unknown as Schema.Schema<ListCnisResponse>;
 
@@ -224,43 +318,17 @@ export interface CreateCniRequest {
   /** Body param: */
   interconnect: string;
   /** Body param: */
-  magic: { conduitName: string; description: string; mtu: number };
+  magic: Magic;
   /** Body param: */
-  bgp?: {
-    customerAsn: number;
-    extraPrefixes: string[];
-    md5Key?: string | null;
-  };
+  bgp?: Bgp;
 }
 
 export const CreateCniRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   account: Schema.String,
   interconnect: Schema.String,
-  magic: Schema.Struct({
-    conduitName: Schema.String,
-    description: Schema.String,
-    mtu: Schema.Number,
-  }).pipe(
-    Schema.encodeKeys({
-      conduitName: "conduit_name",
-      description: "description",
-      mtu: "mtu",
-    }),
-  ),
-  bgp: Schema.optional(
-    Schema.Struct({
-      customerAsn: Schema.Number,
-      extraPrefixes: Schema.Array(Schema.String),
-      md5Key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        customerAsn: "customer_asn",
-        extraPrefixes: "extra_prefixes",
-        md5Key: "md5_key",
-      }),
-    ),
-  ),
+  magic: Magic,
+  bgp: Schema.optional(Bgp),
 }).pipe(
   T.Http({ method: "POST", path: "/accounts/{account_id}/cni/cnis" }),
 ) as unknown as Schema.Schema<CreateCniRequest>;
@@ -273,14 +341,10 @@ export interface CreateCniResponse {
   custIp: string;
   /** Interconnect identifier hosting this CNI */
   interconnect: string;
-  magic: { conduitName: string; description: string; mtu: number };
+  magic: Magic;
   /** Cloudflare end of the point-to-point link */
   p2pIp: string;
-  bgp?: {
-    customerAsn: number;
-    extraPrefixes: string[];
-    md5Key?: string | null;
-  } | null;
+  bgp?: Bgp | null;
 }
 
 export const CreateCniResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -288,34 +352,9 @@ export const CreateCniResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   account: Schema.String,
   custIp: Schema.String,
   interconnect: Schema.String,
-  magic: Schema.Struct({
-    conduitName: Schema.String,
-    description: Schema.String,
-    mtu: Schema.Number,
-  }).pipe(
-    Schema.encodeKeys({
-      conduitName: "conduit_name",
-      description: "description",
-      mtu: "mtu",
-    }),
-  ),
+  magic: Magic,
   p2pIp: Schema.String,
-  bgp: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        customerAsn: Schema.Number,
-        extraPrefixes: Schema.Array(Schema.String),
-        md5Key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          customerAsn: "customer_asn",
-          extraPrefixes: "extra_prefixes",
-          md5Key: "md5_key",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  bgp: Schema.optional(Schema.Union([Bgp, Schema.Null])),
 }).pipe(
   Schema.encodeKeys({
     id: "id",
@@ -354,15 +393,11 @@ export interface UpdateCniRequest {
   /** Body param: Interconnect identifier hosting this CNI */
   interconnect: string;
   /** Body param: */
-  magic: { conduitName: string; description: string; mtu: number };
+  magic: Magic;
   /** Body param: Cloudflare end of the point-to-point link */
   p2pIp: string;
   /** Body param: */
-  bgp?: {
-    customerAsn: number;
-    extraPrefixes: string[];
-    md5Key?: string | null;
-  };
+  bgp?: Bgp;
 }
 
 export const UpdateCniRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -372,31 +407,9 @@ export const UpdateCniRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   account: Schema.String,
   custIp: Schema.String,
   interconnect: Schema.String,
-  magic: Schema.Struct({
-    conduitName: Schema.String,
-    description: Schema.String,
-    mtu: Schema.Number,
-  }).pipe(
-    Schema.encodeKeys({
-      conduitName: "conduit_name",
-      description: "description",
-      mtu: "mtu",
-    }),
-  ),
+  magic: Magic,
   p2pIp: Schema.String,
-  bgp: Schema.optional(
-    Schema.Struct({
-      customerAsn: Schema.Number,
-      extraPrefixes: Schema.Array(Schema.String),
-      md5Key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        customerAsn: "customer_asn",
-        extraPrefixes: "extra_prefixes",
-        md5Key: "md5_key",
-      }),
-    ),
-  ),
+  bgp: Schema.optional(Bgp),
 }).pipe(
   Schema.encodeKeys({
     id: "id",
@@ -418,14 +431,10 @@ export interface UpdateCniResponse {
   custIp: string;
   /** Interconnect identifier hosting this CNI */
   interconnect: string;
-  magic: { conduitName: string; description: string; mtu: number };
+  magic: Magic;
   /** Cloudflare end of the point-to-point link */
   p2pIp: string;
-  bgp?: {
-    customerAsn: number;
-    extraPrefixes: string[];
-    md5Key?: string | null;
-  } | null;
+  bgp?: Bgp | null;
 }
 
 export const UpdateCniResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -433,34 +442,9 @@ export const UpdateCniResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   account: Schema.String,
   custIp: Schema.String,
   interconnect: Schema.String,
-  magic: Schema.Struct({
-    conduitName: Schema.String,
-    description: Schema.String,
-    mtu: Schema.Number,
-  }).pipe(
-    Schema.encodeKeys({
-      conduitName: "conduit_name",
-      description: "description",
-      mtu: "mtu",
-    }),
-  ),
+  magic: Magic,
   p2pIp: Schema.String,
-  bgp: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        customerAsn: Schema.Number,
-        extraPrefixes: Schema.Array(Schema.String),
-        md5Key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          customerAsn: "customer_asn",
-          extraPrefixes: "extra_prefixes",
-          md5Key: "md5_key",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  bgp: Schema.optional(Schema.Union([Bgp, Schema.Null])),
 }).pipe(
   Schema.encodeKeys({
     id: "id",
@@ -540,91 +524,11 @@ export const GetInterconnectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Schema<GetInterconnectRequest>;
 
 export type GetInterconnectResponse =
-  | {
-      account: string;
-      facility: { address: string[]; name: string };
-      name: string;
-      site: string;
-      slotId: string;
-      speed: string;
-      type: string;
-      owner?: string | null;
-    }
-  | {
-      account: string;
-      name: string;
-      region: string;
-      type: string;
-      owner?: string | null;
-      speed?:
-        | "50M"
-        | "100M"
-        | "200M"
-        | "300M"
-        | "400M"
-        | "500M"
-        | "1G"
-        | "2G"
-        | "5G"
-        | "10G"
-        | "20G"
-        | "50G"
-        | null;
-    };
+  | NscInterconnectPhysicalBody
+  | NscInterconnectGcpPartnerBody;
 
 export const GetInterconnectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
-  [
-    Schema.Struct({
-      account: Schema.String,
-      facility: Schema.Struct({
-        address: Schema.Array(Schema.String),
-        name: Schema.String,
-      }),
-      name: Schema.String,
-      site: Schema.String,
-      slotId: Schema.String,
-      speed: Schema.String,
-      type: Schema.String,
-      owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        account: "account",
-        facility: "facility",
-        name: "name",
-        site: "site",
-        slotId: "slot_id",
-        speed: "speed",
-        type: "type",
-        owner: "owner",
-      }),
-    ),
-    Schema.Struct({
-      account: Schema.String,
-      name: Schema.String,
-      region: Schema.String,
-      type: Schema.String,
-      owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      speed: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "50M",
-            "100M",
-            "200M",
-            "300M",
-            "400M",
-            "500M",
-            "1G",
-            "2G",
-            "5G",
-            "10G",
-            "20G",
-            "50G",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }),
-  ],
+  [NscInterconnectPhysicalBody, NscInterconnectGcpPartnerBody],
 ) as unknown as Schema.Schema<GetInterconnectResponse>;
 
 export type GetInterconnectError = DefaultErrors;
@@ -673,39 +577,7 @@ export const ListInterconnectsRequest =
   ) as unknown as Schema.Schema<ListInterconnectsRequest>;
 
 export interface ListInterconnectsResponse {
-  items: (
-    | {
-        account: string;
-        facility: { address: string[]; name: string };
-        name: string;
-        site: string;
-        slotId: string;
-        speed: string;
-        type: string;
-        owner?: string | null;
-      }
-    | {
-        account: string;
-        name: string;
-        region: string;
-        type: string;
-        owner?: string | null;
-        speed?:
-          | "50M"
-          | "100M"
-          | "200M"
-          | "300M"
-          | "400M"
-          | "500M"
-          | "1G"
-          | "2G"
-          | "5G"
-          | "10G"
-          | "20G"
-          | "50G"
-          | null;
-      }
-  )[];
+  items: (NscInterconnectPhysicalBody | NscInterconnectGcpPartnerBody)[];
   next?: number | null;
 }
 
@@ -713,56 +585,8 @@ export const ListInterconnectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.Array(
       Schema.Union([
-        Schema.Struct({
-          account: Schema.String,
-          facility: Schema.Struct({
-            address: Schema.Array(Schema.String),
-            name: Schema.String,
-          }),
-          name: Schema.String,
-          site: Schema.String,
-          slotId: Schema.String,
-          speed: Schema.String,
-          type: Schema.String,
-          owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            account: "account",
-            facility: "facility",
-            name: "name",
-            site: "site",
-            slotId: "slot_id",
-            speed: "speed",
-            type: "type",
-            owner: "owner",
-          }),
-        ),
-        Schema.Struct({
-          account: Schema.String,
-          name: Schema.String,
-          region: Schema.String,
-          type: Schema.String,
-          owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          speed: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "50M",
-                "100M",
-                "200M",
-                "300M",
-                "400M",
-                "500M",
-                "1G",
-                "2G",
-                "5G",
-                "10G",
-                "20G",
-                "50G",
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
+        NscInterconnectPhysicalBody,
+        NscInterconnectGcpPartnerBody,
       ]),
     ),
     next: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -815,90 +639,13 @@ export const CreateInterconnectRequest =
   ) as unknown as Schema.Schema<CreateInterconnectRequest>;
 
 export type CreateInterconnectResponse =
-  | {
-      account: string;
-      facility: { address: string[]; name: string };
-      name: string;
-      site: string;
-      slotId: string;
-      speed: string;
-      type: string;
-      owner?: string | null;
-    }
-  | {
-      account: string;
-      name: string;
-      region: string;
-      type: string;
-      owner?: string | null;
-      speed?:
-        | "50M"
-        | "100M"
-        | "200M"
-        | "300M"
-        | "400M"
-        | "500M"
-        | "1G"
-        | "2G"
-        | "5G"
-        | "10G"
-        | "20G"
-        | "50G"
-        | null;
-    };
+  | NscInterconnectPhysicalBody
+  | NscInterconnectGcpPartnerBody;
 
 export const CreateInterconnectResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-    Schema.Struct({
-      account: Schema.String,
-      facility: Schema.Struct({
-        address: Schema.Array(Schema.String),
-        name: Schema.String,
-      }),
-      name: Schema.String,
-      site: Schema.String,
-      slotId: Schema.String,
-      speed: Schema.String,
-      type: Schema.String,
-      owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        account: "account",
-        facility: "facility",
-        name: "name",
-        site: "site",
-        slotId: "slot_id",
-        speed: "speed",
-        type: "type",
-        owner: "owner",
-      }),
-    ),
-    Schema.Struct({
-      account: Schema.String,
-      name: Schema.String,
-      region: Schema.String,
-      type: Schema.String,
-      owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      speed: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "50M",
-            "100M",
-            "200M",
-            "300M",
-            "400M",
-            "500M",
-            "1G",
-            "2G",
-            "5G",
-            "10G",
-            "20G",
-            "50G",
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }),
+    NscInterconnectPhysicalBody,
+    NscInterconnectGcpPartnerBody,
   ]) as unknown as Schema.Schema<CreateInterconnectResponse>;
 
 export type CreateInterconnectError = DefaultErrors;
@@ -1135,7 +882,7 @@ export const GetSlotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface GetSlotResponse {
   /** Slot ID */
   id: string;
-  facility: { address: string[]; name: string };
+  facility: Facility;
   /** Whether the slot is occupied or not */
   occupied: boolean;
   site: string;
@@ -1146,10 +893,7 @@ export interface GetSlotResponse {
 
 export const GetSlotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
-  facility: Schema.Struct({
-    address: Schema.Array(Schema.String),
-    name: Schema.String,
-  }),
+  facility: Facility,
   occupied: Schema.Boolean,
   site: Schema.String,
   speed: Schema.String,
@@ -1213,7 +957,7 @@ export const ListSlotsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ListSlotsResponse {
   items: {
     id: string;
-    facility: { address: string[]; name: string };
+    facility: Facility;
     occupied: boolean;
     site: string;
     speed: string;
@@ -1226,10 +970,7 @@ export const ListSlotsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   items: Schema.Array(
     Schema.Struct({
       id: Schema.String,
-      facility: Schema.Struct({
-        address: Schema.Array(Schema.String),
-        name: Schema.String,
-      }),
+      facility: Facility,
       occupied: Schema.Boolean,
       site: Schema.String,
       speed: Schema.String,

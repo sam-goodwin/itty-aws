@@ -14,6 +14,42 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Entry {
+  id?: string | null;
+  content?: string | null;
+  createdOn?: string | null;
+  description?: string | null;
+  modifiedOn?: string | null;
+  type?: "cid" | "content_path" | null;
+}
+
+export const Entry: Schema.Schema<Entry> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literals(["cid", "content_path"]), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        content: "content",
+        createdOn: "created_on",
+        description: "description",
+        modifiedOn: "modified_on",
+        type: "type",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Entry>;
+
+// =============================================================================
 // Hostname
 // =============================================================================
 
@@ -622,57 +658,12 @@ export const ListHostnameIpfsUniversalPathContentListEntriesRequest =
 
 export interface ListHostnameIpfsUniversalPathContentListEntriesResponse {
   /** Provides content list entries. */
-  entries?:
-    | {
-        id?: string | null;
-        content?: string | null;
-        createdOn?: string | null;
-        description?: string | null;
-        modifiedOn?: string | null;
-        type?: "cid" | "content_path" | null;
-      }[]
-    | null;
+  entries?: Entry[] | null;
 }
 
 export const ListHostnameIpfsUniversalPathContentListEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    entries: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            content: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            createdOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            description: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            modifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            type: Schema.optional(
-              Schema.Union([
-                Schema.Literals(["cid", "content_path"]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              content: "content",
-              createdOn: "created_on",
-              description: "description",
-              modifiedOn: "modified_on",
-              type: "type",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    entries: Schema.optional(Schema.Union([Schema.Array(Entry), Schema.Null])),
   }).pipe(
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<ListHostnameIpfsUniversalPathContentListEntriesResponse>;

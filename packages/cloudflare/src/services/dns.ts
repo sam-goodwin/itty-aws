@@ -15,6 +15,2218 @@ import { type DefaultErrors } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface A {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const A: Schema.Schema<A> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<A>;
+
+export interface Aaaa {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Aaaa: Schema.Schema<Aaaa> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Aaaa>;
+
+export interface AaaarecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "AAAA";
+  comment?: string | null;
+  content?: string | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const AaaarecordParam: Schema.Schema<AaaarecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("AAAA"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<AaaarecordParam>;
+
+export interface ArecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "A";
+  comment?: string | null;
+  content?: string | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const ArecordParam: Schema.Schema<ArecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("A"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<ArecordParam>;
+
+export interface Caa {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Caa: Schema.Schema<Caa> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Caa>;
+
+export interface CaarecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "CAA";
+  comment?: string | null;
+  data?: {
+    flags?: number | null;
+    tag?: string | null;
+    value?: string | null;
+  } | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const CaarecordParam: Schema.Schema<CaarecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("CAA"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      data: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            flags: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<CaarecordParam>;
+
+export interface Cert {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Cert: Schema.Schema<Cert> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Cert>;
+
+export interface CertrecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "CERT";
+  comment?: string | null;
+  data?: {
+    algorithm?: number | null;
+    certificate?: string | null;
+    keyTag?: number | null;
+    type?: number | null;
+  } | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const CertrecordParam: Schema.Schema<CertrecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("CERT"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      data: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            algorithm: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            certificate: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            keyTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            type: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }).pipe(
+            Schema.encodeKeys({
+              algorithm: "algorithm",
+              certificate: "certificate",
+              keyTag: "key_tag",
+              type: "type",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<CertrecordParam>;
+
+export interface Cname {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Cname: Schema.Schema<Cname> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Cname>;
+
+export interface CnamerecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "CNAME";
+  comment?: string | null;
+  content?: string | null;
+  proxied?: boolean | null;
+  settings?: Settings | null;
+  tags?: string[] | null;
+}
+
+export const CnamerecordParam: Schema.Schema<CnamerecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("CNAME"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(Schema.Union([Settings, Schema.Null])),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<CnamerecordParam>;
+
+export interface Data {
+  altitude?: number | null;
+  latDegrees?: number | null;
+  latDirection?: "N" | "S" | null;
+  latMinutes?: number | null;
+  latSeconds?: number | null;
+  longDegrees?: number | null;
+  longDirection?: "E" | "W" | null;
+  longMinutes?: number | null;
+  longSeconds?: number | null;
+  precisionHorz?: number | null;
+  precisionVert?: number | null;
+  size?: number | null;
+}
+
+export const Data: Schema.Schema<Data> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      altitude: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      latDegrees: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      latDirection: Schema.optional(
+        Schema.Union([Schema.Literals(["N", "S"]), Schema.Null]),
+      ),
+      latMinutes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      latSeconds: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      longDegrees: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      longDirection: Schema.optional(
+        Schema.Union([Schema.Literals(["E", "W"]), Schema.Null]),
+      ),
+      longMinutes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      longSeconds: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      precisionHorz: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      precisionVert: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        altitude: "altitude",
+        latDegrees: "lat_degrees",
+        latDirection: "lat_direction",
+        latMinutes: "lat_minutes",
+        latSeconds: "lat_seconds",
+        longDegrees: "long_degrees",
+        longDirection: "long_direction",
+        longMinutes: "long_minutes",
+        longSeconds: "long_seconds",
+        precisionHorz: "precision_horz",
+        precisionVert: "precision_vert",
+        size: "size",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Data>;
+
+export interface Dnskey {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Dnskey: Schema.Schema<Dnskey> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Dnskey>;
+
+export interface DnskeyrecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "DNSKEY";
+  comment?: string | null;
+  data?: {
+    algorithm?: number | null;
+    flags?: number | null;
+    protocol?: number | null;
+    publicKey?: string | null;
+  } | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const DnskeyrecordParam: Schema.Schema<DnskeyrecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("DNSKEY"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      data: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            algorithm: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            flags: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            protocol: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            publicKey: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              algorithm: "algorithm",
+              flags: "flags",
+              protocol: "protocol",
+              publicKey: "public_key",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<DnskeyrecordParam>;
+
+export interface DnsrecordsOpenpgpkeyRecord {
+  name: string;
+  ttl: number | "1";
+  type: "OPENPGPKEY";
+  comment?: string | null;
+  content?: string | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const DnsrecordsOpenpgpkeyRecord: Schema.Schema<DnsrecordsOpenpgpkeyRecord> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("OPENPGPKEY"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<DnsrecordsOpenpgpkeyRecord>;
+
+export interface Ds {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Ds: Schema.Schema<Ds> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Ds>;
+
+export interface DsrecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "DS";
+  comment?: string | null;
+  data?: {
+    algorithm?: number | null;
+    digest?: string | null;
+    digestType?: number | null;
+    keyTag?: number | null;
+  } | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const DsrecordParam: Schema.Schema<DsrecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("DS"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      data: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            algorithm: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            digest: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            digestType: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            keyTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }).pipe(
+            Schema.encodeKeys({
+              algorithm: "algorithm",
+              digest: "digest",
+              digestType: "digest_type",
+              keyTag: "key_tag",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<DsrecordParam>;
+
+export interface Https {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Https: Schema.Schema<Https> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Https>;
+
+export interface HttpsrecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "HTTPS";
+  comment?: string | null;
+  data?: {
+    priority?: number | null;
+    target?: string | null;
+    value?: string | null;
+  } | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const HttpsrecordParam: Schema.Schema<HttpsrecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("HTTPS"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      data: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            priority: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            target: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<HttpsrecordParam>;
+
+export interface InternalDNS {
+  referenceZoneId?: string | null;
+}
+
+export const InternalDNS: Schema.Schema<InternalDNS> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      referenceZoneId: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(Schema.encodeKeys({ referenceZoneId: "reference_zone_id" })),
+  ) as unknown as Schema.Schema<InternalDNS>;
+
+export interface Loc {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Loc: Schema.Schema<Loc> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Loc>;
+
+export interface LocrecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "LOC";
+  comment?: string | null;
+  data?: Data | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const LocrecordParam: Schema.Schema<LocrecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("LOC"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      data: Schema.optional(Schema.Union([Data, Schema.Null])),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<LocrecordParam>;
+
+export interface Mx {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Mx: Schema.Schema<Mx> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Mx>;
+
+export interface MxrecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "MX";
+  comment?: string | null;
+  content?: string | null;
+  priority?: number | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const MxrecordParam: Schema.Schema<MxrecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("MX"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<MxrecordParam>;
+
+export interface Name {
+  contains?: string | null;
+  endswith?: string | null;
+  exact?: string | null;
+  startswith?: string | null;
+}
+
+export const Name: Schema.Schema<Name> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      contains: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      endswith: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      exact: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      startswith: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Name>;
+
+export interface Nameservers {
+  nsSet?: number | null;
+  type?:
+    | "cloudflare.standard"
+    | "custom.account"
+    | "custom.tenant"
+    | "custom.zone"
+    | null;
+}
+
+export const Nameservers: Schema.Schema<Nameservers> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      nsSet: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "cloudflare.standard",
+            "custom.account",
+            "custom.tenant",
+            "custom.zone",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ nsSet: "ns_set", type: "type" })),
+  ) as unknown as Schema.Schema<Nameservers>;
+
+export interface Naptr {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Naptr: Schema.Schema<Naptr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Naptr>;
+
+export interface NaptrrecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "NAPTR";
+  comment?: string | null;
+  data?: {
+    flags?: string | null;
+    order?: number | null;
+    preference?: number | null;
+    regex?: string | null;
+    replacement?: string | null;
+    service?: string | null;
+  } | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const NaptrrecordParam: Schema.Schema<NaptrrecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("NAPTR"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      data: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            flags: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            order: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            preference: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            regex: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            replacement: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            service: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<NaptrrecordParam>;
+
+export interface Ns {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Ns: Schema.Schema<Ns> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Ns>;
+
+export interface NsrecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "NS";
+  comment?: string | null;
+  content?: string | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const NsrecordParam: Schema.Schema<NsrecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("NS"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<NsrecordParam>;
+
+export interface Openpgpkey {
+  id: string;
+  comment: string;
+  content: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  name: string;
+  proxiable: boolean;
+  proxied: boolean;
+  settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
+  tags: string[];
+  ttl: number | "1";
+  type: "OPENPGPKEY";
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Openpgpkey: Schema.Schema<Openpgpkey> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      comment: Schema.String,
+      content: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      proxiable: Schema.Boolean,
+      proxied: Schema.Boolean,
+      settings: Schema.Struct({
+        ipv4Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        ipv6Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+      ),
+      tags: Schema.Array(Schema.String),
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("OPENPGPKEY"),
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        comment: "comment",
+        content: "content",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        name: "name",
+        proxiable: "proxiable",
+        proxied: "proxied",
+        settings: "settings",
+        tags: "tags",
+        ttl: "ttl",
+        type: "type",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Openpgpkey>;
+
+export interface Ptr {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Ptr: Schema.Schema<Ptr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Ptr>;
+
+export interface PtrrecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "PTR";
+  comment?: string | null;
+  content?: string | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const PtrrecordParam: Schema.Schema<PtrrecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("PTR"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<PtrrecordParam>;
+
+export interface Query {
+  dimensions: string[];
+  limit: number;
+  metrics: string[];
+  since: string;
+  timeDelta:
+    | "all"
+    | "auto"
+    | "year"
+    | "quarter"
+    | "month"
+    | "week"
+    | "day"
+    | "hour"
+    | "dekaminute"
+    | "minute";
+  until: string;
+  filters?: string | null;
+  sort?: string[] | null;
+}
+
+export const Query: Schema.Schema<Query> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      dimensions: Schema.Array(Schema.String),
+      limit: Schema.Number,
+      metrics: Schema.Array(Schema.String),
+      since: Schema.String,
+      timeDelta: Schema.Literals([
+        "all",
+        "auto",
+        "year",
+        "quarter",
+        "month",
+        "week",
+        "day",
+        "hour",
+        "dekaminute",
+        "minute",
+      ]),
+      until: Schema.String,
+      filters: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      sort: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        dimensions: "dimensions",
+        limit: "limit",
+        metrics: "metrics",
+        since: "since",
+        timeDelta: "time_delta",
+        until: "until",
+        filters: "filters",
+        sort: "sort",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Query>;
+
+export interface Settings {
+  flattenCname?: boolean | null;
+  ipv4Only?: boolean | null;
+  ipv6Only?: boolean | null;
+}
+
+export const Settings: Schema.Schema<Settings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      flattenCname: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      ipv4Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      ipv6Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        flattenCname: "flatten_cname",
+        ipv4Only: "ipv4_only",
+        ipv6Only: "ipv6_only",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Settings>;
+
+export interface Smimea {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Smimea: Schema.Schema<Smimea> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Smimea>;
+
+export interface SmimearecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "SMIMEA";
+  comment?: string | null;
+  data?: {
+    certificate?: string | null;
+    matchingType?: number | null;
+    selector?: number | null;
+    usage?: number | null;
+  } | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const SmimearecordParam: Schema.Schema<SmimearecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("SMIMEA"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      data: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            certificate: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            matchingType: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            selector: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            usage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }).pipe(
+            Schema.encodeKeys({
+              certificate: "certificate",
+              matchingType: "matching_type",
+              selector: "selector",
+              usage: "usage",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<SmimearecordParam>;
+
+export interface Soa {
+  expire?: number | null;
+  minTtl?: number | null;
+  mname?: string | null;
+  refresh?: number | null;
+  retry?: number | null;
+  rname?: string | null;
+  ttl?: number | null;
+}
+
+export const Soa: Schema.Schema<Soa> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      expire: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      minTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      mname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      refresh: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      retry: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      rname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        expire: "expire",
+        minTtl: "min_ttl",
+        mname: "mname",
+        refresh: "refresh",
+        retry: "retry",
+        rname: "rname",
+        ttl: "ttl",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Soa>;
+
+export interface Srv {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Srv: Schema.Schema<Srv> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Srv>;
+
+export interface SrvrecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "SRV";
+  comment?: string | null;
+  data?: {
+    port?: number | null;
+    priority?: number | null;
+    target?: string | null;
+    weight?: number | null;
+  } | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const SrvrecordParam: Schema.Schema<SrvrecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("SRV"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      data: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            priority: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            target: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            weight: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<SrvrecordParam>;
+
+export interface Sshfp {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Sshfp: Schema.Schema<Sshfp> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Sshfp>;
+
+export interface SshfprecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "SSHFP";
+  comment?: string | null;
+  data?: {
+    algorithm?: number | null;
+    fingerprint?: string | null;
+    type?: number | null;
+  } | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const SshfprecordParam: Schema.Schema<SshfprecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("SSHFP"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      data: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            algorithm: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            fingerprint: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            type: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<SshfprecordParam>;
+
+export interface Svcb {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Svcb: Schema.Schema<Svcb> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Svcb>;
+
+export interface SvcbrecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "SVCB";
+  comment?: string | null;
+  data?: {
+    priority?: number | null;
+    target?: string | null;
+    value?: string | null;
+  } | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const SvcbrecordParam: Schema.Schema<SvcbrecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("SVCB"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      data: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            priority: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            target: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<SvcbrecordParam>;
+
+export interface Tlsa {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Tlsa: Schema.Schema<Tlsa> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Tlsa>;
+
+export interface TlsarecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "TLSA";
+  comment?: string | null;
+  data?: {
+    certificate?: string | null;
+    matchingType?: number | null;
+    selector?: number | null;
+    usage?: number | null;
+  } | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const TlsarecordParam: Schema.Schema<TlsarecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("TLSA"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      data: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            certificate: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            matchingType: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            selector: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            usage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }).pipe(
+            Schema.encodeKeys({
+              certificate: "certificate",
+              matchingType: "matching_type",
+              selector: "selector",
+              usage: "usage",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<TlsarecordParam>;
+
+export interface Txt {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Txt: Schema.Schema<Txt> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Txt>;
+
+export interface TxtrecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "TXT";
+  comment?: string | null;
+  content?: string | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const TxtrecordParam: Schema.Schema<TxtrecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("TXT"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<TxtrecordParam>;
+
+export interface Uri {
+  id: string;
+  createdOn: string;
+  meta: unknown;
+  modifiedOn: string;
+  proxiable: boolean;
+  commentModifiedOn?: string | null;
+  tagsModifiedOn?: string | null;
+}
+
+export const Uri: Schema.Schema<Uri> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      meta: Schema.Unknown,
+      modifiedOn: Schema.String,
+      proxiable: Schema.Boolean,
+      commentModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      tagsModifiedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        meta: "meta",
+        modifiedOn: "modified_on",
+        proxiable: "proxiable",
+        commentModifiedOn: "comment_modified_on",
+        tagsModifiedOn: "tags_modified_on",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Uri>;
+
+export interface UrirecordParam {
+  name: string;
+  ttl: number | "1";
+  type: "URI";
+  comment?: string | null;
+  data?: { target?: string | null; weight?: number | null } | null;
+  priority?: number | null;
+  proxied?: boolean | null;
+  settings?: { ipv4Only?: boolean | null; ipv6Only?: boolean | null } | null;
+  tags?: string[] | null;
+}
+
+export const UrirecordParam: Schema.Schema<UrirecordParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+      type: Schema.Literal("URI"),
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      data: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            target: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            weight: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      settings: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            ipv4Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            ipv6Only: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      tags: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<UrirecordParam>;
+
+export interface ZoneDefaults {
+  flattenAllCnames?: boolean | null;
+  foundationDns?: boolean | null;
+  internalDns?: InternalDNS | null;
+  multiProvider?: boolean | null;
+  nameservers?: {
+    type?:
+      | "cloudflare.standard"
+      | "cloudflare.standard.random"
+      | "custom.account"
+      | "custom.tenant"
+      | null;
+  } | null;
+  nsTtl?: number | null;
+  secondaryOverrides?: boolean | null;
+  soa?: Soa | null;
+  zoneMode?: "standard" | "cdn_only" | "dns_only" | null;
+}
+
+export const ZoneDefaults: Schema.Schema<ZoneDefaults> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      flattenAllCnames: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      foundationDns: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      internalDns: Schema.optional(Schema.Union([InternalDNS, Schema.Null])),
+      multiProvider: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      nameservers: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "cloudflare.standard",
+                  "cloudflare.standard.random",
+                  "custom.account",
+                  "custom.tenant",
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      nsTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      secondaryOverrides: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      soa: Schema.optional(Schema.Union([Soa, Schema.Null])),
+      zoneMode: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["standard", "cdn_only", "dns_only"]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        flattenAllCnames: "flatten_all_cnames",
+        foundationDns: "foundation_dns",
+        internalDns: "internal_dns",
+        multiProvider: "multi_provider",
+        nameservers: "nameservers",
+        nsTtl: "ns_ttl",
+        secondaryOverrides: "secondary_overrides",
+        soa: "soa",
+        zoneMode: "zone_mode",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ZoneDefaults>;
+
+// =============================================================================
 // AnalyticReport
 // =============================================================================
 
@@ -203,26 +2415,7 @@ export interface GetAnalyticReportBytimeResponse {
   max: unknown;
   /** Minimum results for each metric (object mapping metric names to values). Currently always an empty object. */
   min: unknown;
-  query: {
-    dimensions: string[];
-    limit: number;
-    metrics: string[];
-    since: string;
-    timeDelta:
-      | "all"
-      | "auto"
-      | "year"
-      | "quarter"
-      | "month"
-      | "week"
-      | "day"
-      | "hour"
-      | "dekaminute"
-      | "minute";
-    until: string;
-    filters?: string | null;
-    sort?: string[] | null;
-  };
+  query: Query;
   /** Total number of rows in the result. */
   rows: number;
   /** Array of time intervals in the response data. Each interval is represented as an array containing two values: the start time, and the end time. */
@@ -242,40 +2435,7 @@ export const GetAnalyticReportBytimeResponse =
     dataLag: Schema.Number,
     max: Schema.Unknown,
     min: Schema.Unknown,
-    query: Schema.Struct({
-      dimensions: Schema.Array(Schema.String),
-      limit: Schema.Number,
-      metrics: Schema.Array(Schema.String),
-      since: Schema.String,
-      timeDelta: Schema.Literals([
-        "all",
-        "auto",
-        "year",
-        "quarter",
-        "month",
-        "week",
-        "day",
-        "hour",
-        "dekaminute",
-        "minute",
-      ]),
-      until: Schema.String,
-      filters: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sort: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        dimensions: "dimensions",
-        limit: "limit",
-        metrics: "metrics",
-        since: "since",
-        timeDelta: "time_delta",
-        until: "until",
-        filters: "filters",
-        sort: "sort",
-      }),
-    ),
+    query: Query,
     rows: Schema.Number,
     timeIntervals: Schema.Array(Schema.Array(Schema.String)),
     totals: Schema.Unknown,
@@ -602,113 +2762,12 @@ export const ScanListRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ScanListRecordRequest>;
 
 export interface ScanListRecordResponse {
-  result: (
-    | {
-        id: string;
-        createdOn: string;
-        meta: unknown;
-        modifiedOn: string;
-        proxiable: boolean;
-        commentModifiedOn?: string | null;
-        tagsModifiedOn?: string | null;
-      }
-    | {
-        id: string;
-        comment: string;
-        content: string;
-        createdOn: string;
-        meta: unknown;
-        modifiedOn: string;
-        name: string;
-        proxiable: boolean;
-        proxied: boolean;
-        settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
-        tags: string[];
-        ttl: number | "1";
-        type: "OPENPGPKEY";
-        commentModifiedOn?: string | null;
-        tagsModifiedOn?: string | null;
-      }
-  )[];
+  result: (Uri | Openpgpkey)[];
 }
 
 export const ScanListRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    result: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.String,
-          createdOn: Schema.String,
-          meta: Schema.Unknown,
-          modifiedOn: Schema.String,
-          proxiable: Schema.Boolean,
-          commentModifiedOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          tagsModifiedOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdOn: "created_on",
-            meta: "meta",
-            modifiedOn: "modified_on",
-            proxiable: "proxiable",
-            commentModifiedOn: "comment_modified_on",
-            tagsModifiedOn: "tags_modified_on",
-          }),
-        ),
-        Schema.Struct({
-          id: Schema.String,
-          comment: Schema.String,
-          content: Schema.String,
-          createdOn: Schema.String,
-          meta: Schema.Unknown,
-          modifiedOn: Schema.String,
-          name: Schema.String,
-          proxiable: Schema.Boolean,
-          proxied: Schema.Boolean,
-          settings: Schema.Struct({
-            ipv4Only: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            ipv6Only: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
-          ),
-          tags: Schema.Array(Schema.String),
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("OPENPGPKEY"),
-          commentModifiedOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          tagsModifiedOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            comment: "comment",
-            content: "content",
-            createdOn: "created_on",
-            meta: "meta",
-            modifiedOn: "modified_on",
-            name: "name",
-            proxiable: "proxiable",
-            proxied: "proxied",
-            settings: "settings",
-            tags: "tags",
-            ttl: "ttl",
-            type: "type",
-            commentModifiedOn: "comment_modified_on",
-            tagsModifiedOn: "tags_modified_on",
-          }),
-        ),
-      ]),
-    ),
+    result: Schema.Array(Schema.Union([Uri, Openpgpkey])),
   },
 ) as unknown as Schema.Schema<ScanListRecordResponse>;
 
@@ -727,33 +2786,10 @@ export const scanListRecord: API.PaginatedOperationMethod<
     ScanListRecordError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ScanListRecordRequest) => stream.Stream<
-    | {
-        id: string;
-        createdOn: string;
-        meta: unknown;
-        modifiedOn: string;
-        proxiable: boolean;
-        commentModifiedOn?: string | null;
-        tagsModifiedOn?: string | null;
-      }
-    | {
-        id: string;
-        comment: string;
-        content: string;
-        createdOn: string;
-        meta: unknown;
-        modifiedOn: string;
-        name: string;
-        proxiable: boolean;
-        proxied: boolean;
-        settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
-        tags: string[];
-        ttl: number | "1";
-        type: "OPENPGPKEY";
-        commentModifiedOn?: string | null;
-        tagsModifiedOn?: string | null;
-      },
+  items: (
+    input: ScanListRecordRequest,
+  ) => stream.Stream<
+    Uri | Openpgpkey,
     ScanListRecordError,
     Credentials | HttpClient.HttpClient
   >;
@@ -826,98 +2862,11 @@ export const GetRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "GET", path: "/zones/{zone_id}/dns_records/{dnsRecordId}" }),
 ) as unknown as Schema.Schema<GetRecordRequest>;
 
-export type GetRecordResponse =
-  | {
-      id: string;
-      createdOn: string;
-      meta: unknown;
-      modifiedOn: string;
-      proxiable: boolean;
-      commentModifiedOn?: string | null;
-      tagsModifiedOn?: string | null;
-    }
-  | {
-      id: string;
-      comment: string;
-      content: string;
-      createdOn: string;
-      meta: unknown;
-      modifiedOn: string;
-      name: string;
-      proxiable: boolean;
-      proxied: boolean;
-      settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
-      tags: string[];
-      ttl: number | "1";
-      type: "OPENPGPKEY";
-      commentModifiedOn?: string | null;
-      tagsModifiedOn?: string | null;
-    };
+export type GetRecordResponse = Uri | Openpgpkey;
 
 export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-  Schema.Struct({
-    id: Schema.String,
-    createdOn: Schema.String,
-    meta: Schema.Unknown,
-    modifiedOn: Schema.String,
-    proxiable: Schema.Boolean,
-    commentModifiedOn: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    tagsModifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdOn: "created_on",
-      meta: "meta",
-      modifiedOn: "modified_on",
-      proxiable: "proxiable",
-      commentModifiedOn: "comment_modified_on",
-      tagsModifiedOn: "tags_modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    comment: Schema.String,
-    content: Schema.String,
-    createdOn: Schema.String,
-    meta: Schema.Unknown,
-    modifiedOn: Schema.String,
-    name: Schema.String,
-    proxiable: Schema.Boolean,
-    proxied: Schema.Boolean,
-    settings: Schema.Struct({
-      ipv4Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      ipv6Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
-    ),
-    tags: Schema.Array(Schema.String),
-    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-    type: Schema.Literal("OPENPGPKEY"),
-    commentModifiedOn: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    tagsModifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      comment: "comment",
-      content: "content",
-      createdOn: "created_on",
-      meta: "meta",
-      modifiedOn: "modified_on",
-      name: "name",
-      proxiable: "proxiable",
-      proxied: "proxied",
-      settings: "settings",
-      tags: "tags",
-      ttl: "ttl",
-      type: "type",
-      commentModifiedOn: "comment_modified_on",
-      tagsModifiedOn: "tags_modified_on",
-    }),
-  ),
+  Uri,
+  Openpgpkey,
 ]).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetRecordResponse>;
@@ -948,23 +2897,13 @@ export interface ListRecordsRequest {
     startswith?: string;
   };
   /** Query param: */
-  content?: {
-    contains?: string;
-    endswith?: string;
-    exact?: string;
-    startswith?: string;
-  };
+  content?: Name;
   /** Query param: Direction to order DNS records in. */
   direction?: "asc" | "desc";
   /** Query param: Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the in */
   match?: "any" | "all";
   /** Query param: */
-  name?: {
-    contains?: string;
-    endswith?: string;
-    exact?: string;
-    startswith?: string;
-  };
+  name?: Name;
   /** Query param: Field to order DNS records by. */
   order?: "type" | "name" | "content" | "ttl" | "proxied";
   /** Query param: Whether the record is receiving the performance and security benefits of Cloudflare. */
@@ -1019,28 +2958,14 @@ export const ListRecordsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       startswith: Schema.optional(Schema.String),
     }),
   ).pipe(T.HttpQuery("comment")),
-  content: Schema.optional(
-    Schema.Struct({
-      contains: Schema.optional(Schema.String),
-      endswith: Schema.optional(Schema.String),
-      exact: Schema.optional(Schema.String),
-      startswith: Schema.optional(Schema.String),
-    }),
-  ).pipe(T.HttpQuery("content")),
+  content: Schema.optional(Name).pipe(T.HttpQuery("content")),
   direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
     T.HttpQuery("direction"),
   ),
   match: Schema.optional(Schema.Literals(["any", "all"])).pipe(
     T.HttpQuery("match"),
   ),
-  name: Schema.optional(
-    Schema.Struct({
-      contains: Schema.optional(Schema.String),
-      endswith: Schema.optional(Schema.String),
-      exact: Schema.optional(Schema.String),
-      startswith: Schema.optional(Schema.String),
-    }),
-  ).pipe(T.HttpQuery("name")),
+  name: Schema.optional(Name).pipe(T.HttpQuery("name")),
   order: Schema.optional(
     Schema.Literals(["type", "name", "content", "ttl", "proxied"]),
   ).pipe(T.HttpQuery("order")),
@@ -1089,34 +3014,7 @@ export const ListRecordsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListRecordsRequest>;
 
 export interface ListRecordsResponse {
-  result: (
-    | {
-        id: string;
-        createdOn: string;
-        meta: unknown;
-        modifiedOn: string;
-        proxiable: boolean;
-        commentModifiedOn?: string | null;
-        tagsModifiedOn?: string | null;
-      }
-    | {
-        id: string;
-        comment: string;
-        content: string;
-        createdOn: string;
-        meta: unknown;
-        modifiedOn: string;
-        name: string;
-        proxiable: boolean;
-        proxied: boolean;
-        settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
-        tags: string[];
-        ttl: number | "1";
-        type: "OPENPGPKEY";
-        commentModifiedOn?: string | null;
-        tagsModifiedOn?: string | null;
-      }
-  )[];
+  result: (Uri | Openpgpkey)[];
   resultInfo: {
     count?: number | null;
     page?: number | null;
@@ -1126,81 +3024,7 @@ export interface ListRecordsResponse {
 }
 
 export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.String,
-        createdOn: Schema.String,
-        meta: Schema.Unknown,
-        modifiedOn: Schema.String,
-        proxiable: Schema.Boolean,
-        commentModifiedOn: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        tagsModifiedOn: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          meta: "meta",
-          modifiedOn: "modified_on",
-          proxiable: "proxiable",
-          commentModifiedOn: "comment_modified_on",
-          tagsModifiedOn: "tags_modified_on",
-        }),
-      ),
-      Schema.Struct({
-        id: Schema.String,
-        comment: Schema.String,
-        content: Schema.String,
-        createdOn: Schema.String,
-        meta: Schema.Unknown,
-        modifiedOn: Schema.String,
-        name: Schema.String,
-        proxiable: Schema.Boolean,
-        proxied: Schema.Boolean,
-        settings: Schema.Struct({
-          ipv4Only: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          ipv6Only: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
-        ),
-        tags: Schema.Array(Schema.String),
-        ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-        type: Schema.Literal("OPENPGPKEY"),
-        commentModifiedOn: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        tagsModifiedOn: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          comment: "comment",
-          content: "content",
-          createdOn: "created_on",
-          meta: "meta",
-          modifiedOn: "modified_on",
-          name: "name",
-          proxiable: "proxiable",
-          proxied: "proxied",
-          settings: "settings",
-          tags: "tags",
-          ttl: "ttl",
-          type: "type",
-          commentModifiedOn: "comment_modified_on",
-          tagsModifiedOn: "tags_modified_on",
-        }),
-      ),
-    ]),
-  ),
+  result: Schema.Array(Schema.Union([Uri, Openpgpkey])),
   resultInfo: Schema.Struct({
     count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1233,33 +3057,10 @@ export const listRecords: API.PaginatedOperationMethod<
     ListRecordsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListRecordsRequest) => stream.Stream<
-    | {
-        id: string;
-        createdOn: string;
-        meta: unknown;
-        modifiedOn: string;
-        proxiable: boolean;
-        commentModifiedOn?: string | null;
-        tagsModifiedOn?: string | null;
-      }
-    | {
-        id: string;
-        comment: string;
-        content: string;
-        createdOn: string;
-        meta: unknown;
-        modifiedOn: string;
-        name: string;
-        proxiable: boolean;
-        proxied: boolean;
-        settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
-        tags: string[];
-        ttl: number | "1";
-        type: "OPENPGPKEY";
-        commentModifiedOn?: string | null;
-        tagsModifiedOn?: string | null;
-      },
+  items: (
+    input: ListRecordsRequest,
+  ) => stream.Stream<
+    Uri | Openpgpkey,
     ListRecordsError,
     Credentials | HttpClient.HttpClient
   >;
@@ -1318,98 +3119,11 @@ export const CreateRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "POST", path: "/zones/{zone_id}/dns_records" }),
 ) as unknown as Schema.Schema<CreateRecordRequest>;
 
-export type CreateRecordResponse =
-  | {
-      id: string;
-      createdOn: string;
-      meta: unknown;
-      modifiedOn: string;
-      proxiable: boolean;
-      commentModifiedOn?: string | null;
-      tagsModifiedOn?: string | null;
-    }
-  | {
-      id: string;
-      comment: string;
-      content: string;
-      createdOn: string;
-      meta: unknown;
-      modifiedOn: string;
-      name: string;
-      proxiable: boolean;
-      proxied: boolean;
-      settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
-      tags: string[];
-      ttl: number | "1";
-      type: "OPENPGPKEY";
-      commentModifiedOn?: string | null;
-      tagsModifiedOn?: string | null;
-    };
+export type CreateRecordResponse = Uri | Openpgpkey;
 
 export const CreateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-  Schema.Struct({
-    id: Schema.String,
-    createdOn: Schema.String,
-    meta: Schema.Unknown,
-    modifiedOn: Schema.String,
-    proxiable: Schema.Boolean,
-    commentModifiedOn: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    tagsModifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdOn: "created_on",
-      meta: "meta",
-      modifiedOn: "modified_on",
-      proxiable: "proxiable",
-      commentModifiedOn: "comment_modified_on",
-      tagsModifiedOn: "tags_modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    comment: Schema.String,
-    content: Schema.String,
-    createdOn: Schema.String,
-    meta: Schema.Unknown,
-    modifiedOn: Schema.String,
-    name: Schema.String,
-    proxiable: Schema.Boolean,
-    proxied: Schema.Boolean,
-    settings: Schema.Struct({
-      ipv4Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      ipv6Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
-    ),
-    tags: Schema.Array(Schema.String),
-    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-    type: Schema.Literal("OPENPGPKEY"),
-    commentModifiedOn: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    tagsModifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      comment: "comment",
-      content: "content",
-      createdOn: "created_on",
-      meta: "meta",
-      modifiedOn: "modified_on",
-      name: "name",
-      proxiable: "proxiable",
-      proxied: "proxied",
-      settings: "settings",
-      tags: "tags",
-      ttl: "ttl",
-      type: "type",
-      commentModifiedOn: "comment_modified_on",
-      tagsModifiedOn: "tags_modified_on",
-    }),
-  ),
+  Uri,
+  Openpgpkey,
 ]).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<CreateRecordResponse>;
@@ -1471,98 +3185,11 @@ export const UpdateRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({ method: "PUT", path: "/zones/{zone_id}/dns_records/{dnsRecordId}" }),
 ) as unknown as Schema.Schema<UpdateRecordRequest>;
 
-export type UpdateRecordResponse =
-  | {
-      id: string;
-      createdOn: string;
-      meta: unknown;
-      modifiedOn: string;
-      proxiable: boolean;
-      commentModifiedOn?: string | null;
-      tagsModifiedOn?: string | null;
-    }
-  | {
-      id: string;
-      comment: string;
-      content: string;
-      createdOn: string;
-      meta: unknown;
-      modifiedOn: string;
-      name: string;
-      proxiable: boolean;
-      proxied: boolean;
-      settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
-      tags: string[];
-      ttl: number | "1";
-      type: "OPENPGPKEY";
-      commentModifiedOn?: string | null;
-      tagsModifiedOn?: string | null;
-    };
+export type UpdateRecordResponse = Uri | Openpgpkey;
 
 export const UpdateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-  Schema.Struct({
-    id: Schema.String,
-    createdOn: Schema.String,
-    meta: Schema.Unknown,
-    modifiedOn: Schema.String,
-    proxiable: Schema.Boolean,
-    commentModifiedOn: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    tagsModifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdOn: "created_on",
-      meta: "meta",
-      modifiedOn: "modified_on",
-      proxiable: "proxiable",
-      commentModifiedOn: "comment_modified_on",
-      tagsModifiedOn: "tags_modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    comment: Schema.String,
-    content: Schema.String,
-    createdOn: Schema.String,
-    meta: Schema.Unknown,
-    modifiedOn: Schema.String,
-    name: Schema.String,
-    proxiable: Schema.Boolean,
-    proxied: Schema.Boolean,
-    settings: Schema.Struct({
-      ipv4Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      ipv6Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
-    ),
-    tags: Schema.Array(Schema.String),
-    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-    type: Schema.Literal("OPENPGPKEY"),
-    commentModifiedOn: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    tagsModifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      comment: "comment",
-      content: "content",
-      createdOn: "created_on",
-      meta: "meta",
-      modifiedOn: "modified_on",
-      name: "name",
-      proxiable: "proxiable",
-      proxied: "proxied",
-      settings: "settings",
-      tags: "tags",
-      ttl: "ttl",
-      type: "type",
-      commentModifiedOn: "comment_modified_on",
-      tagsModifiedOn: "tags_modified_on",
-    }),
-  ),
+  Uri,
+  Openpgpkey,
 ]).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<UpdateRecordResponse>;
@@ -1627,98 +3254,11 @@ export const PatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<PatchRecordRequest>;
 
-export type PatchRecordResponse =
-  | {
-      id: string;
-      createdOn: string;
-      meta: unknown;
-      modifiedOn: string;
-      proxiable: boolean;
-      commentModifiedOn?: string | null;
-      tagsModifiedOn?: string | null;
-    }
-  | {
-      id: string;
-      comment: string;
-      content: string;
-      createdOn: string;
-      meta: unknown;
-      modifiedOn: string;
-      name: string;
-      proxiable: boolean;
-      proxied: boolean;
-      settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
-      tags: string[];
-      ttl: number | "1";
-      type: "OPENPGPKEY";
-      commentModifiedOn?: string | null;
-      tagsModifiedOn?: string | null;
-    };
+export type PatchRecordResponse = Uri | Openpgpkey;
 
 export const PatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-  Schema.Struct({
-    id: Schema.String,
-    createdOn: Schema.String,
-    meta: Schema.Unknown,
-    modifiedOn: Schema.String,
-    proxiable: Schema.Boolean,
-    commentModifiedOn: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    tagsModifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdOn: "created_on",
-      meta: "meta",
-      modifiedOn: "modified_on",
-      proxiable: "proxiable",
-      commentModifiedOn: "comment_modified_on",
-      tagsModifiedOn: "tags_modified_on",
-    }),
-  ),
-  Schema.Struct({
-    id: Schema.String,
-    comment: Schema.String,
-    content: Schema.String,
-    createdOn: Schema.String,
-    meta: Schema.Unknown,
-    modifiedOn: Schema.String,
-    name: Schema.String,
-    proxiable: Schema.Boolean,
-    proxied: Schema.Boolean,
-    settings: Schema.Struct({
-      ipv4Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      ipv6Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({ ipv4Only: "ipv4_only", ipv6Only: "ipv6_only" }),
-    ),
-    tags: Schema.Array(Schema.String),
-    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-    type: Schema.Literal("OPENPGPKEY"),
-    commentModifiedOn: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    tagsModifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      comment: "comment",
-      content: "content",
-      createdOn: "created_on",
-      meta: "meta",
-      modifiedOn: "modified_on",
-      name: "name",
-      proxiable: "proxiable",
-      proxied: "proxied",
-      settings: "settings",
-      tags: "tags",
-      ttl: "ttl",
-      type: "type",
-      commentModifiedOn: "comment_modified_on",
-      tagsModifiedOn: "tags_modified_on",
-    }),
-  ),
+  Uri,
+  Openpgpkey,
 ]).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<PatchRecordResponse>;
@@ -1798,272 +3338,27 @@ export interface BatchRecordRequest {
   )[];
   /** Body param: */
   posts?: (
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "A";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "AAAA";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "CNAME";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: {
-          flattenCname?: boolean;
-          ipv4Only?: boolean;
-          ipv6Only?: boolean;
-        };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "MX";
-        comment?: string;
-        content?: string;
-        priority?: number;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "NS";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "OPENPGPKEY";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "PTR";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "TXT";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "CAA";
-        comment?: string;
-        data?: { flags?: number; tag?: string; value?: string };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "CERT";
-        comment?: string;
-        data?: {
-          algorithm?: number;
-          certificate?: string;
-          keyTag?: number;
-          type?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "DNSKEY";
-        comment?: string;
-        data?: {
-          algorithm?: number;
-          flags?: number;
-          protocol?: number;
-          publicKey?: string;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "DS";
-        comment?: string;
-        data?: {
-          algorithm?: number;
-          digest?: string;
-          digestType?: number;
-          keyTag?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "HTTPS";
-        comment?: string;
-        data?: { priority?: number; target?: string; value?: string };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "LOC";
-        comment?: string;
-        data?: {
-          altitude?: number;
-          latDegrees?: number;
-          latDirection?: "N" | "S";
-          latMinutes?: number;
-          latSeconds?: number;
-          longDegrees?: number;
-          longDirection?: "E" | "W";
-          longMinutes?: number;
-          longSeconds?: number;
-          precisionHorz?: number;
-          precisionVert?: number;
-          size?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "NAPTR";
-        comment?: string;
-        data?: {
-          flags?: string;
-          order?: number;
-          preference?: number;
-          regex?: string;
-          replacement?: string;
-          service?: string;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "SMIMEA";
-        comment?: string;
-        data?: {
-          certificate?: string;
-          matchingType?: number;
-          selector?: number;
-          usage?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "SRV";
-        comment?: string;
-        data?: {
-          port?: number;
-          priority?: number;
-          target?: string;
-          weight?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "SSHFP";
-        comment?: string;
-        data?: { algorithm?: number; fingerprint?: string; type?: number };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "SVCB";
-        comment?: string;
-        data?: { priority?: number; target?: string; value?: string };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "TLSA";
-        comment?: string;
-        data?: {
-          certificate?: string;
-          matchingType?: number;
-          selector?: number;
-          usage?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "URI";
-        comment?: string;
-        data?: { target?: string; weight?: number };
-        priority?: number;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
+    | ArecordParam
+    | AaaarecordParam
+    | CnamerecordParam
+    | MxrecordParam
+    | NsrecordParam
+    | DnsrecordsOpenpgpkeyRecord
+    | PtrrecordParam
+    | TxtrecordParam
+    | CaarecordParam
+    | CertrecordParam
+    | DnskeyrecordParam
+    | DsrecordParam
+    | HttpsrecordParam
+    | LocrecordParam
+    | NaptrrecordParam
+    | SmimearecordParam
+    | SrvrecordParam
+    | SshfprecordParam
+    | SvcbrecordParam
+    | TlsarecordParam
+    | UrirecordParam
   )[];
   /** Body param: */
   puts?: (
@@ -2124,575 +3419,27 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   posts: Schema.optional(
     Schema.Array(
       Schema.Union([
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("A"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("AAAA"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("CNAME"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              flattenCname: Schema.optional(Schema.Boolean),
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                flattenCname: "flatten_cname",
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("MX"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          priority: Schema.optional(Schema.Number),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("NS"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("OPENPGPKEY"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("PTR"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("TXT"),
-          comment: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("CAA"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              flags: Schema.optional(Schema.Number),
-              tag: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("CERT"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              algorithm: Schema.optional(Schema.Number),
-              certificate: Schema.optional(Schema.String),
-              keyTag: Schema.optional(Schema.Number),
-              type: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                algorithm: "algorithm",
-                certificate: "certificate",
-                keyTag: "key_tag",
-                type: "type",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("DNSKEY"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              algorithm: Schema.optional(Schema.Number),
-              flags: Schema.optional(Schema.Number),
-              protocol: Schema.optional(Schema.Number),
-              publicKey: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                algorithm: "algorithm",
-                flags: "flags",
-                protocol: "protocol",
-                publicKey: "public_key",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("DS"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              algorithm: Schema.optional(Schema.Number),
-              digest: Schema.optional(Schema.String),
-              digestType: Schema.optional(Schema.Number),
-              keyTag: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                algorithm: "algorithm",
-                digest: "digest",
-                digestType: "digest_type",
-                keyTag: "key_tag",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("HTTPS"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              priority: Schema.optional(Schema.Number),
-              target: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("LOC"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              altitude: Schema.optional(Schema.Number),
-              latDegrees: Schema.optional(Schema.Number),
-              latDirection: Schema.optional(Schema.Literals(["N", "S"])),
-              latMinutes: Schema.optional(Schema.Number),
-              latSeconds: Schema.optional(Schema.Number),
-              longDegrees: Schema.optional(Schema.Number),
-              longDirection: Schema.optional(Schema.Literals(["E", "W"])),
-              longMinutes: Schema.optional(Schema.Number),
-              longSeconds: Schema.optional(Schema.Number),
-              precisionHorz: Schema.optional(Schema.Number),
-              precisionVert: Schema.optional(Schema.Number),
-              size: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                altitude: "altitude",
-                latDegrees: "lat_degrees",
-                latDirection: "lat_direction",
-                latMinutes: "lat_minutes",
-                latSeconds: "lat_seconds",
-                longDegrees: "long_degrees",
-                longDirection: "long_direction",
-                longMinutes: "long_minutes",
-                longSeconds: "long_seconds",
-                precisionHorz: "precision_horz",
-                precisionVert: "precision_vert",
-                size: "size",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("NAPTR"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              flags: Schema.optional(Schema.String),
-              order: Schema.optional(Schema.Number),
-              preference: Schema.optional(Schema.Number),
-              regex: Schema.optional(Schema.String),
-              replacement: Schema.optional(Schema.String),
-              service: Schema.optional(Schema.String),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("SMIMEA"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              certificate: Schema.optional(Schema.String),
-              matchingType: Schema.optional(Schema.Number),
-              selector: Schema.optional(Schema.Number),
-              usage: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                certificate: "certificate",
-                matchingType: "matching_type",
-                selector: "selector",
-                usage: "usage",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("SRV"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              port: Schema.optional(Schema.Number),
-              priority: Schema.optional(Schema.Number),
-              target: Schema.optional(Schema.String),
-              weight: Schema.optional(Schema.Number),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("SSHFP"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              algorithm: Schema.optional(Schema.Number),
-              fingerprint: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.Number),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("SVCB"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              priority: Schema.optional(Schema.Number),
-              target: Schema.optional(Schema.String),
-              value: Schema.optional(Schema.String),
-            }),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("TLSA"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              certificate: Schema.optional(Schema.String),
-              matchingType: Schema.optional(Schema.Number),
-              selector: Schema.optional(Schema.Number),
-              usage: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                certificate: "certificate",
-                matchingType: "matching_type",
-                selector: "selector",
-                usage: "usage",
-              }),
-            ),
-          ),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-        Schema.Struct({
-          name: Schema.String,
-          ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-          type: Schema.Literal("URI"),
-          comment: Schema.optional(Schema.String),
-          data: Schema.optional(
-            Schema.Struct({
-              target: Schema.optional(Schema.String),
-              weight: Schema.optional(Schema.Number),
-            }),
-          ),
-          priority: Schema.optional(Schema.Number),
-          proxied: Schema.optional(Schema.Boolean),
-          settings: Schema.optional(
-            Schema.Struct({
-              ipv4Only: Schema.optional(Schema.Boolean),
-              ipv6Only: Schema.optional(Schema.Boolean),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-          ),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
+        ArecordParam,
+        AaaarecordParam,
+        CnamerecordParam,
+        MxrecordParam,
+        NsrecordParam,
+        DnsrecordsOpenpgpkeyRecord,
+        PtrrecordParam,
+        TxtrecordParam,
+        CaarecordParam,
+        CertrecordParam,
+        DnskeyrecordParam,
+        DsrecordParam,
+        HttpsrecordParam,
+        LocrecordParam,
+        NaptrrecordParam,
+        SmimearecordParam,
+        SrvrecordParam,
+        SshfprecordParam,
+        SvcbrecordParam,
+        TlsarecordParam,
+        UrirecordParam,
       ]),
     ),
   ),
@@ -2731,460 +3478,24 @@ export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<BatchRecordRequest>;
 
 export interface BatchRecordResponse {
-  deletes?:
-    | (
-        | {
-            id: string;
-            createdOn: string;
-            meta: unknown;
-            modifiedOn: string;
-            proxiable: boolean;
-            commentModifiedOn?: string | null;
-            tagsModifiedOn?: string | null;
-          }
-        | {
-            id: string;
-            comment: string;
-            content: string;
-            createdOn: string;
-            meta: unknown;
-            modifiedOn: string;
-            name: string;
-            proxiable: boolean;
-            proxied: boolean;
-            settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
-            tags: string[];
-            ttl: number | "1";
-            type: "OPENPGPKEY";
-            commentModifiedOn?: string | null;
-            tagsModifiedOn?: string | null;
-          }
-      )[]
-    | null;
-  patches?:
-    | (
-        | {
-            id: string;
-            createdOn: string;
-            meta: unknown;
-            modifiedOn: string;
-            proxiable: boolean;
-            commentModifiedOn?: string | null;
-            tagsModifiedOn?: string | null;
-          }
-        | {
-            id: string;
-            comment: string;
-            content: string;
-            createdOn: string;
-            meta: unknown;
-            modifiedOn: string;
-            name: string;
-            proxiable: boolean;
-            proxied: boolean;
-            settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
-            tags: string[];
-            ttl: number | "1";
-            type: "OPENPGPKEY";
-            commentModifiedOn?: string | null;
-            tagsModifiedOn?: string | null;
-          }
-      )[]
-    | null;
-  posts?:
-    | (
-        | {
-            id: string;
-            createdOn: string;
-            meta: unknown;
-            modifiedOn: string;
-            proxiable: boolean;
-            commentModifiedOn?: string | null;
-            tagsModifiedOn?: string | null;
-          }
-        | {
-            id: string;
-            comment: string;
-            content: string;
-            createdOn: string;
-            meta: unknown;
-            modifiedOn: string;
-            name: string;
-            proxiable: boolean;
-            proxied: boolean;
-            settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
-            tags: string[];
-            ttl: number | "1";
-            type: "OPENPGPKEY";
-            commentModifiedOn?: string | null;
-            tagsModifiedOn?: string | null;
-          }
-      )[]
-    | null;
-  puts?:
-    | (
-        | {
-            id: string;
-            createdOn: string;
-            meta: unknown;
-            modifiedOn: string;
-            proxiable: boolean;
-            commentModifiedOn?: string | null;
-            tagsModifiedOn?: string | null;
-          }
-        | {
-            id: string;
-            comment: string;
-            content: string;
-            createdOn: string;
-            meta: unknown;
-            modifiedOn: string;
-            name: string;
-            proxiable: boolean;
-            proxied: boolean;
-            settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
-            tags: string[];
-            ttl: number | "1";
-            type: "OPENPGPKEY";
-            commentModifiedOn?: string | null;
-            tagsModifiedOn?: string | null;
-          }
-      )[]
-    | null;
+  deletes?: (Uri | Openpgpkey)[] | null;
+  patches?: (Uri | Openpgpkey)[] | null;
+  posts?: (Uri | Openpgpkey)[] | null;
+  puts?: (Uri | Openpgpkey)[] | null;
 }
 
 export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   deletes: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.String,
-            createdOn: Schema.String,
-            meta: Schema.Unknown,
-            modifiedOn: Schema.String,
-            proxiable: Schema.Boolean,
-            commentModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            tagsModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdOn: "created_on",
-              meta: "meta",
-              modifiedOn: "modified_on",
-              proxiable: "proxiable",
-              commentModifiedOn: "comment_modified_on",
-              tagsModifiedOn: "tags_modified_on",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            comment: Schema.String,
-            content: Schema.String,
-            createdOn: Schema.String,
-            meta: Schema.Unknown,
-            modifiedOn: Schema.String,
-            name: Schema.String,
-            proxiable: Schema.Boolean,
-            proxied: Schema.Boolean,
-            settings: Schema.Struct({
-              ipv4Only: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              ipv6Only: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-            tags: Schema.Array(Schema.String),
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("OPENPGPKEY"),
-            commentModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            tagsModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              comment: "comment",
-              content: "content",
-              createdOn: "created_on",
-              meta: "meta",
-              modifiedOn: "modified_on",
-              name: "name",
-              proxiable: "proxiable",
-              proxied: "proxied",
-              settings: "settings",
-              tags: "tags",
-              ttl: "ttl",
-              type: "type",
-              commentModifiedOn: "comment_modified_on",
-              tagsModifiedOn: "tags_modified_on",
-            }),
-          ),
-        ]),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([Schema.Array(Schema.Union([Uri, Openpgpkey])), Schema.Null]),
   ),
   patches: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.String,
-            createdOn: Schema.String,
-            meta: Schema.Unknown,
-            modifiedOn: Schema.String,
-            proxiable: Schema.Boolean,
-            commentModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            tagsModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdOn: "created_on",
-              meta: "meta",
-              modifiedOn: "modified_on",
-              proxiable: "proxiable",
-              commentModifiedOn: "comment_modified_on",
-              tagsModifiedOn: "tags_modified_on",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            comment: Schema.String,
-            content: Schema.String,
-            createdOn: Schema.String,
-            meta: Schema.Unknown,
-            modifiedOn: Schema.String,
-            name: Schema.String,
-            proxiable: Schema.Boolean,
-            proxied: Schema.Boolean,
-            settings: Schema.Struct({
-              ipv4Only: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              ipv6Only: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-            tags: Schema.Array(Schema.String),
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("OPENPGPKEY"),
-            commentModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            tagsModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              comment: "comment",
-              content: "content",
-              createdOn: "created_on",
-              meta: "meta",
-              modifiedOn: "modified_on",
-              name: "name",
-              proxiable: "proxiable",
-              proxied: "proxied",
-              settings: "settings",
-              tags: "tags",
-              ttl: "ttl",
-              type: "type",
-              commentModifiedOn: "comment_modified_on",
-              tagsModifiedOn: "tags_modified_on",
-            }),
-          ),
-        ]),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([Schema.Array(Schema.Union([Uri, Openpgpkey])), Schema.Null]),
   ),
   posts: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.String,
-            createdOn: Schema.String,
-            meta: Schema.Unknown,
-            modifiedOn: Schema.String,
-            proxiable: Schema.Boolean,
-            commentModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            tagsModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdOn: "created_on",
-              meta: "meta",
-              modifiedOn: "modified_on",
-              proxiable: "proxiable",
-              commentModifiedOn: "comment_modified_on",
-              tagsModifiedOn: "tags_modified_on",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            comment: Schema.String,
-            content: Schema.String,
-            createdOn: Schema.String,
-            meta: Schema.Unknown,
-            modifiedOn: Schema.String,
-            name: Schema.String,
-            proxiable: Schema.Boolean,
-            proxied: Schema.Boolean,
-            settings: Schema.Struct({
-              ipv4Only: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              ipv6Only: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-            tags: Schema.Array(Schema.String),
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("OPENPGPKEY"),
-            commentModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            tagsModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              comment: "comment",
-              content: "content",
-              createdOn: "created_on",
-              meta: "meta",
-              modifiedOn: "modified_on",
-              name: "name",
-              proxiable: "proxiable",
-              proxied: "proxied",
-              settings: "settings",
-              tags: "tags",
-              ttl: "ttl",
-              type: "type",
-              commentModifiedOn: "comment_modified_on",
-              tagsModifiedOn: "tags_modified_on",
-            }),
-          ),
-        ]),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([Schema.Array(Schema.Union([Uri, Openpgpkey])), Schema.Null]),
   ),
   puts: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.String,
-            createdOn: Schema.String,
-            meta: Schema.Unknown,
-            modifiedOn: Schema.String,
-            proxiable: Schema.Boolean,
-            commentModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            tagsModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdOn: "created_on",
-              meta: "meta",
-              modifiedOn: "modified_on",
-              proxiable: "proxiable",
-              commentModifiedOn: "comment_modified_on",
-              tagsModifiedOn: "tags_modified_on",
-            }),
-          ),
-          Schema.Struct({
-            id: Schema.String,
-            comment: Schema.String,
-            content: Schema.String,
-            createdOn: Schema.String,
-            meta: Schema.Unknown,
-            modifiedOn: Schema.String,
-            name: Schema.String,
-            proxiable: Schema.Boolean,
-            proxied: Schema.Boolean,
-            settings: Schema.Struct({
-              ipv4Only: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              ipv6Only: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                ipv4Only: "ipv4_only",
-                ipv6Only: "ipv6_only",
-              }),
-            ),
-            tags: Schema.Array(Schema.String),
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("OPENPGPKEY"),
-            commentModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            tagsModifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              comment: "comment",
-              content: "content",
-              createdOn: "created_on",
-              meta: "meta",
-              modifiedOn: "modified_on",
-              name: "name",
-              proxiable: "proxiable",
-              proxied: "proxied",
-              settings: "settings",
-              tags: "tags",
-              ttl: "ttl",
-              type: "type",
-              commentModifiedOn: "comment_modified_on",
-              tagsModifiedOn: "tags_modified_on",
-            }),
-          ),
-        ]),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([Schema.Array(Schema.Union([Uri, Openpgpkey])), Schema.Null]),
   ),
 }).pipe(
   T.ResponsePath("result"),
@@ -3348,272 +3659,27 @@ export interface ScanReviewRecordRequest {
   zoneId: string;
   /** Body param: */
   accepts?: (
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "A";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "AAAA";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "CNAME";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: {
-          flattenCname?: boolean;
-          ipv4Only?: boolean;
-          ipv6Only?: boolean;
-        };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "MX";
-        comment?: string;
-        content?: string;
-        priority?: number;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "NS";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "OPENPGPKEY";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "PTR";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "TXT";
-        comment?: string;
-        content?: string;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "CAA";
-        comment?: string;
-        data?: { flags?: number; tag?: string; value?: string };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "CERT";
-        comment?: string;
-        data?: {
-          algorithm?: number;
-          certificate?: string;
-          keyTag?: number;
-          type?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "DNSKEY";
-        comment?: string;
-        data?: {
-          algorithm?: number;
-          flags?: number;
-          protocol?: number;
-          publicKey?: string;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "DS";
-        comment?: string;
-        data?: {
-          algorithm?: number;
-          digest?: string;
-          digestType?: number;
-          keyTag?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "HTTPS";
-        comment?: string;
-        data?: { priority?: number; target?: string; value?: string };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "LOC";
-        comment?: string;
-        data?: {
-          altitude?: number;
-          latDegrees?: number;
-          latDirection?: "N" | "S";
-          latMinutes?: number;
-          latSeconds?: number;
-          longDegrees?: number;
-          longDirection?: "E" | "W";
-          longMinutes?: number;
-          longSeconds?: number;
-          precisionHorz?: number;
-          precisionVert?: number;
-          size?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "NAPTR";
-        comment?: string;
-        data?: {
-          flags?: string;
-          order?: number;
-          preference?: number;
-          regex?: string;
-          replacement?: string;
-          service?: string;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "SMIMEA";
-        comment?: string;
-        data?: {
-          certificate?: string;
-          matchingType?: number;
-          selector?: number;
-          usage?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "SRV";
-        comment?: string;
-        data?: {
-          port?: number;
-          priority?: number;
-          target?: string;
-          weight?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "SSHFP";
-        comment?: string;
-        data?: { algorithm?: number; fingerprint?: string; type?: number };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "SVCB";
-        comment?: string;
-        data?: { priority?: number; target?: string; value?: string };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "TLSA";
-        comment?: string;
-        data?: {
-          certificate?: string;
-          matchingType?: number;
-          selector?: number;
-          usage?: number;
-        };
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
-    | {
-        name: string;
-        ttl: number | "1";
-        type: "URI";
-        comment?: string;
-        data?: { target?: string; weight?: number };
-        priority?: number;
-        proxied?: boolean;
-        settings?: { ipv4Only?: boolean; ipv6Only?: boolean };
-        tags?: string[];
-      }
+    | ArecordParam
+    | AaaarecordParam
+    | CnamerecordParam
+    | MxrecordParam
+    | NsrecordParam
+    | DnsrecordsOpenpgpkeyRecord
+    | PtrrecordParam
+    | TxtrecordParam
+    | CaarecordParam
+    | CertrecordParam
+    | DnskeyrecordParam
+    | DsrecordParam
+    | HttpsrecordParam
+    | LocrecordParam
+    | NaptrrecordParam
+    | SmimearecordParam
+    | SrvrecordParam
+    | SshfprecordParam
+    | SvcbrecordParam
+    | TlsarecordParam
+    | UrirecordParam
   )[];
   /** Body param: */
   rejects?: { id: string }[];
@@ -3625,575 +3691,27 @@ export const ScanReviewRecordRequest =
     accepts: Schema.optional(
       Schema.Array(
         Schema.Union([
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("A"),
-            comment: Schema.optional(Schema.String),
-            content: Schema.optional(Schema.String),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("AAAA"),
-            comment: Schema.optional(Schema.String),
-            content: Schema.optional(Schema.String),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("CNAME"),
-            comment: Schema.optional(Schema.String),
-            content: Schema.optional(Schema.String),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                flattenCname: Schema.optional(Schema.Boolean),
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  flattenCname: "flatten_cname",
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("MX"),
-            comment: Schema.optional(Schema.String),
-            content: Schema.optional(Schema.String),
-            priority: Schema.optional(Schema.Number),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("NS"),
-            comment: Schema.optional(Schema.String),
-            content: Schema.optional(Schema.String),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("OPENPGPKEY"),
-            comment: Schema.optional(Schema.String),
-            content: Schema.optional(Schema.String),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("PTR"),
-            comment: Schema.optional(Schema.String),
-            content: Schema.optional(Schema.String),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("TXT"),
-            comment: Schema.optional(Schema.String),
-            content: Schema.optional(Schema.String),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("CAA"),
-            comment: Schema.optional(Schema.String),
-            data: Schema.optional(
-              Schema.Struct({
-                flags: Schema.optional(Schema.Number),
-                tag: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("CERT"),
-            comment: Schema.optional(Schema.String),
-            data: Schema.optional(
-              Schema.Struct({
-                algorithm: Schema.optional(Schema.Number),
-                certificate: Schema.optional(Schema.String),
-                keyTag: Schema.optional(Schema.Number),
-                type: Schema.optional(Schema.Number),
-              }).pipe(
-                Schema.encodeKeys({
-                  algorithm: "algorithm",
-                  certificate: "certificate",
-                  keyTag: "key_tag",
-                  type: "type",
-                }),
-              ),
-            ),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("DNSKEY"),
-            comment: Schema.optional(Schema.String),
-            data: Schema.optional(
-              Schema.Struct({
-                algorithm: Schema.optional(Schema.Number),
-                flags: Schema.optional(Schema.Number),
-                protocol: Schema.optional(Schema.Number),
-                publicKey: Schema.optional(Schema.String),
-              }).pipe(
-                Schema.encodeKeys({
-                  algorithm: "algorithm",
-                  flags: "flags",
-                  protocol: "protocol",
-                  publicKey: "public_key",
-                }),
-              ),
-            ),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("DS"),
-            comment: Schema.optional(Schema.String),
-            data: Schema.optional(
-              Schema.Struct({
-                algorithm: Schema.optional(Schema.Number),
-                digest: Schema.optional(Schema.String),
-                digestType: Schema.optional(Schema.Number),
-                keyTag: Schema.optional(Schema.Number),
-              }).pipe(
-                Schema.encodeKeys({
-                  algorithm: "algorithm",
-                  digest: "digest",
-                  digestType: "digest_type",
-                  keyTag: "key_tag",
-                }),
-              ),
-            ),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("HTTPS"),
-            comment: Schema.optional(Schema.String),
-            data: Schema.optional(
-              Schema.Struct({
-                priority: Schema.optional(Schema.Number),
-                target: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("LOC"),
-            comment: Schema.optional(Schema.String),
-            data: Schema.optional(
-              Schema.Struct({
-                altitude: Schema.optional(Schema.Number),
-                latDegrees: Schema.optional(Schema.Number),
-                latDirection: Schema.optional(Schema.Literals(["N", "S"])),
-                latMinutes: Schema.optional(Schema.Number),
-                latSeconds: Schema.optional(Schema.Number),
-                longDegrees: Schema.optional(Schema.Number),
-                longDirection: Schema.optional(Schema.Literals(["E", "W"])),
-                longMinutes: Schema.optional(Schema.Number),
-                longSeconds: Schema.optional(Schema.Number),
-                precisionHorz: Schema.optional(Schema.Number),
-                precisionVert: Schema.optional(Schema.Number),
-                size: Schema.optional(Schema.Number),
-              }).pipe(
-                Schema.encodeKeys({
-                  altitude: "altitude",
-                  latDegrees: "lat_degrees",
-                  latDirection: "lat_direction",
-                  latMinutes: "lat_minutes",
-                  latSeconds: "lat_seconds",
-                  longDegrees: "long_degrees",
-                  longDirection: "long_direction",
-                  longMinutes: "long_minutes",
-                  longSeconds: "long_seconds",
-                  precisionHorz: "precision_horz",
-                  precisionVert: "precision_vert",
-                  size: "size",
-                }),
-              ),
-            ),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("NAPTR"),
-            comment: Schema.optional(Schema.String),
-            data: Schema.optional(
-              Schema.Struct({
-                flags: Schema.optional(Schema.String),
-                order: Schema.optional(Schema.Number),
-                preference: Schema.optional(Schema.Number),
-                regex: Schema.optional(Schema.String),
-                replacement: Schema.optional(Schema.String),
-                service: Schema.optional(Schema.String),
-              }),
-            ),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("SMIMEA"),
-            comment: Schema.optional(Schema.String),
-            data: Schema.optional(
-              Schema.Struct({
-                certificate: Schema.optional(Schema.String),
-                matchingType: Schema.optional(Schema.Number),
-                selector: Schema.optional(Schema.Number),
-                usage: Schema.optional(Schema.Number),
-              }).pipe(
-                Schema.encodeKeys({
-                  certificate: "certificate",
-                  matchingType: "matching_type",
-                  selector: "selector",
-                  usage: "usage",
-                }),
-              ),
-            ),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("SRV"),
-            comment: Schema.optional(Schema.String),
-            data: Schema.optional(
-              Schema.Struct({
-                port: Schema.optional(Schema.Number),
-                priority: Schema.optional(Schema.Number),
-                target: Schema.optional(Schema.String),
-                weight: Schema.optional(Schema.Number),
-              }),
-            ),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("SSHFP"),
-            comment: Schema.optional(Schema.String),
-            data: Schema.optional(
-              Schema.Struct({
-                algorithm: Schema.optional(Schema.Number),
-                fingerprint: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.Number),
-              }),
-            ),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("SVCB"),
-            comment: Schema.optional(Schema.String),
-            data: Schema.optional(
-              Schema.Struct({
-                priority: Schema.optional(Schema.Number),
-                target: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.String),
-              }),
-            ),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("TLSA"),
-            comment: Schema.optional(Schema.String),
-            data: Schema.optional(
-              Schema.Struct({
-                certificate: Schema.optional(Schema.String),
-                matchingType: Schema.optional(Schema.Number),
-                selector: Schema.optional(Schema.Number),
-                usage: Schema.optional(Schema.Number),
-              }).pipe(
-                Schema.encodeKeys({
-                  certificate: "certificate",
-                  matchingType: "matching_type",
-                  selector: "selector",
-                  usage: "usage",
-                }),
-              ),
-            ),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-            type: Schema.Literal("URI"),
-            comment: Schema.optional(Schema.String),
-            data: Schema.optional(
-              Schema.Struct({
-                target: Schema.optional(Schema.String),
-                weight: Schema.optional(Schema.Number),
-              }),
-            ),
-            priority: Schema.optional(Schema.Number),
-            proxied: Schema.optional(Schema.Boolean),
-            settings: Schema.optional(
-              Schema.Struct({
-                ipv4Only: Schema.optional(Schema.Boolean),
-                ipv6Only: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-            ),
-            tags: Schema.optional(Schema.Array(Schema.String)),
-          }),
+          ArecordParam,
+          AaaarecordParam,
+          CnamerecordParam,
+          MxrecordParam,
+          NsrecordParam,
+          DnsrecordsOpenpgpkeyRecord,
+          PtrrecordParam,
+          TxtrecordParam,
+          CaarecordParam,
+          CertrecordParam,
+          DnskeyrecordParam,
+          DsrecordParam,
+          HttpsrecordParam,
+          LocrecordParam,
+          NaptrrecordParam,
+          SmimearecordParam,
+          SrvrecordParam,
+          SshfprecordParam,
+          SvcbrecordParam,
+          TlsarecordParam,
+          UrirecordParam,
         ]),
       ),
     ),
@@ -4212,36 +3730,7 @@ export const ScanReviewRecordRequest =
   ) as unknown as Schema.Schema<ScanReviewRecordRequest>;
 
 export interface ScanReviewRecordResponse {
-  accepts?:
-    | (
-        | {
-            id: string;
-            createdOn: string;
-            meta: unknown;
-            modifiedOn: string;
-            proxiable: boolean;
-            commentModifiedOn?: string | null;
-            tagsModifiedOn?: string | null;
-          }
-        | {
-            id: string;
-            comment: string;
-            content: string;
-            createdOn: string;
-            meta: unknown;
-            modifiedOn: string;
-            name: string;
-            proxiable: boolean;
-            proxied: boolean;
-            settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
-            tags: string[];
-            ttl: number | "1";
-            type: "OPENPGPKEY";
-            commentModifiedOn?: string | null;
-            tagsModifiedOn?: string | null;
-          }
-      )[]
-    | null;
+  accepts?: (Uri | Openpgpkey)[] | null;
   rejects?: string[] | null;
 }
 
@@ -4249,84 +3738,7 @@ export const ScanReviewRecordResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accepts: Schema.optional(
       Schema.Union([
-        Schema.Array(
-          Schema.Union([
-            Schema.Struct({
-              id: Schema.String,
-              createdOn: Schema.String,
-              meta: Schema.Unknown,
-              modifiedOn: Schema.String,
-              proxiable: Schema.Boolean,
-              commentModifiedOn: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              tagsModifiedOn: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                createdOn: "created_on",
-                meta: "meta",
-                modifiedOn: "modified_on",
-                proxiable: "proxiable",
-                commentModifiedOn: "comment_modified_on",
-                tagsModifiedOn: "tags_modified_on",
-              }),
-            ),
-            Schema.Struct({
-              id: Schema.String,
-              comment: Schema.String,
-              content: Schema.String,
-              createdOn: Schema.String,
-              meta: Schema.Unknown,
-              modifiedOn: Schema.String,
-              name: Schema.String,
-              proxiable: Schema.Boolean,
-              proxied: Schema.Boolean,
-              settings: Schema.Struct({
-                ipv4Only: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                ipv6Only: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  ipv4Only: "ipv4_only",
-                  ipv6Only: "ipv6_only",
-                }),
-              ),
-              tags: Schema.Array(Schema.String),
-              ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-              type: Schema.Literal("OPENPGPKEY"),
-              commentModifiedOn: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              tagsModifiedOn: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                comment: "comment",
-                content: "content",
-                createdOn: "created_on",
-                meta: "meta",
-                modifiedOn: "modified_on",
-                name: "name",
-                proxiable: "proxiable",
-                proxied: "proxied",
-                settings: "settings",
-                tags: "tags",
-                ttl: "ttl",
-                type: "type",
-                commentModifiedOn: "comment_modified_on",
-                tagsModifiedOn: "tags_modified_on",
-              }),
-            ),
-          ]),
-        ),
+        Schema.Array(Schema.Union([Uri, Openpgpkey])),
         Schema.Null,
       ]),
     ),
@@ -4370,7 +3782,7 @@ export interface GetSettingAccountResponse {
   zoneDefaults: {
     flattenAllCnames: boolean;
     foundationDns: boolean;
-    internalDns: { referenceZoneId?: string | null };
+    internalDns: InternalDNS;
     multiProvider: boolean;
     nameservers: {
       type:
@@ -4381,15 +3793,7 @@ export interface GetSettingAccountResponse {
     };
     nsTtl: number;
     secondaryOverrides: boolean;
-    soa: {
-      expire?: number | null;
-      minTtl?: number | null;
-      mname?: string | null;
-      refresh?: number | null;
-      retry?: number | null;
-      rname?: string | null;
-      ttl?: number | null;
-    };
+    soa: Soa;
     zoneMode: "standard" | "cdn_only" | "dns_only";
   };
 }
@@ -4399,11 +3803,7 @@ export const GetSettingAccountResponse =
     zoneDefaults: Schema.Struct({
       flattenAllCnames: Schema.Boolean,
       foundationDns: Schema.Boolean,
-      internalDns: Schema.Struct({
-        referenceZoneId: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(Schema.encodeKeys({ referenceZoneId: "reference_zone_id" })),
+      internalDns: InternalDNS,
       multiProvider: Schema.Boolean,
       nameservers: Schema.Struct({
         type: Schema.Literals([
@@ -4415,25 +3815,7 @@ export const GetSettingAccountResponse =
       }),
       nsTtl: Schema.Number,
       secondaryOverrides: Schema.Boolean,
-      soa: Schema.Struct({
-        expire: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        minTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        mname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        refresh: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        retry: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        rname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          expire: "expire",
-          minTtl: "min_ttl",
-          mname: "mname",
-          refresh: "refresh",
-          retry: "retry",
-          rname: "rname",
-          ttl: "ttl",
-        }),
-      ),
+      soa: Soa,
       zoneMode: Schema.Literals(["standard", "cdn_only", "dns_only"]),
     }).pipe(
       Schema.encodeKeys({
@@ -4471,98 +3853,13 @@ export interface PatchSettingAccountRequest {
   /** Path param: Identifier. */
   accountId: string;
   /** Body param: */
-  zoneDefaults?: {
-    flattenAllCnames?: boolean;
-    foundationDns?: boolean;
-    internalDns?: { referenceZoneId?: string };
-    multiProvider?: boolean;
-    nameservers?: {
-      type?:
-        | "cloudflare.standard"
-        | "cloudflare.standard.random"
-        | "custom.account"
-        | "custom.tenant";
-    };
-    nsTtl?: number;
-    secondaryOverrides?: boolean;
-    soa?: {
-      expire?: number;
-      minTtl?: number;
-      mname?: string | null;
-      refresh?: number;
-      retry?: number;
-      rname?: string;
-      ttl?: number;
-    };
-    zoneMode?: "standard" | "cdn_only" | "dns_only";
-  };
+  zoneDefaults?: ZoneDefaults;
 }
 
 export const PatchSettingAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    zoneDefaults: Schema.optional(
-      Schema.Struct({
-        flattenAllCnames: Schema.optional(Schema.Boolean),
-        foundationDns: Schema.optional(Schema.Boolean),
-        internalDns: Schema.optional(
-          Schema.Struct({
-            referenceZoneId: Schema.optional(Schema.String),
-          }).pipe(Schema.encodeKeys({ referenceZoneId: "reference_zone_id" })),
-        ),
-        multiProvider: Schema.optional(Schema.Boolean),
-        nameservers: Schema.optional(
-          Schema.Struct({
-            type: Schema.optional(
-              Schema.Literals([
-                "cloudflare.standard",
-                "cloudflare.standard.random",
-                "custom.account",
-                "custom.tenant",
-              ]),
-            ),
-          }),
-        ),
-        nsTtl: Schema.optional(Schema.Number),
-        secondaryOverrides: Schema.optional(Schema.Boolean),
-        soa: Schema.optional(
-          Schema.Struct({
-            expire: Schema.optional(Schema.Number),
-            minTtl: Schema.optional(Schema.Number),
-            mname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            refresh: Schema.optional(Schema.Number),
-            retry: Schema.optional(Schema.Number),
-            rname: Schema.optional(Schema.String),
-            ttl: Schema.optional(Schema.Number),
-          }).pipe(
-            Schema.encodeKeys({
-              expire: "expire",
-              minTtl: "min_ttl",
-              mname: "mname",
-              refresh: "refresh",
-              retry: "retry",
-              rname: "rname",
-              ttl: "ttl",
-            }),
-          ),
-        ),
-        zoneMode: Schema.optional(
-          Schema.Literals(["standard", "cdn_only", "dns_only"]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          flattenAllCnames: "flatten_all_cnames",
-          foundationDns: "foundation_dns",
-          internalDns: "internal_dns",
-          multiProvider: "multi_provider",
-          nameservers: "nameservers",
-          nsTtl: "ns_ttl",
-          secondaryOverrides: "secondary_overrides",
-          soa: "soa",
-          zoneMode: "zone_mode",
-        }),
-      ),
-    ),
+    zoneDefaults: Schema.optional(ZoneDefaults),
   }).pipe(
     Schema.encodeKeys({ zoneDefaults: "zone_defaults" }),
     T.Http({ method: "PATCH", path: "/accounts/{account_id}/dns_settings" }),
@@ -4572,7 +3869,7 @@ export interface PatchSettingAccountResponse {
   zoneDefaults: {
     flattenAllCnames: boolean;
     foundationDns: boolean;
-    internalDns: { referenceZoneId?: string | null };
+    internalDns: InternalDNS;
     multiProvider: boolean;
     nameservers: {
       type:
@@ -4583,15 +3880,7 @@ export interface PatchSettingAccountResponse {
     };
     nsTtl: number;
     secondaryOverrides: boolean;
-    soa: {
-      expire?: number | null;
-      minTtl?: number | null;
-      mname?: string | null;
-      refresh?: number | null;
-      retry?: number | null;
-      rname?: string | null;
-      ttl?: number | null;
-    };
+    soa: Soa;
     zoneMode: "standard" | "cdn_only" | "dns_only";
   };
 }
@@ -4601,11 +3890,7 @@ export const PatchSettingAccountResponse =
     zoneDefaults: Schema.Struct({
       flattenAllCnames: Schema.Boolean,
       foundationDns: Schema.Boolean,
-      internalDns: Schema.Struct({
-        referenceZoneId: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(Schema.encodeKeys({ referenceZoneId: "reference_zone_id" })),
+      internalDns: InternalDNS,
       multiProvider: Schema.Boolean,
       nameservers: Schema.Struct({
         type: Schema.Literals([
@@ -4617,25 +3902,7 @@ export const PatchSettingAccountResponse =
       }),
       nsTtl: Schema.Number,
       secondaryOverrides: Schema.Boolean,
-      soa: Schema.Struct({
-        expire: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        minTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        mname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        refresh: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        retry: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        rname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          expire: "expire",
-          minTtl: "min_ttl",
-          mname: "mname",
-          refresh: "refresh",
-          retry: "retry",
-          rname: "rname",
-          ttl: "ttl",
-        }),
-      ),
+      soa: Soa,
       zoneMode: Schema.Literals(["standard", "cdn_only", "dns_only"]),
     }).pipe(
       Schema.encodeKeys({
@@ -4745,12 +4012,7 @@ export interface ListSettingAccountViewsRequest {
   /** Query param: Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. */
   match?: "any" | "all";
   /** Query param: */
-  name?: {
-    contains?: string;
-    endswith?: string;
-    exact?: string;
-    startswith?: string;
-  };
+  name?: Name;
   /** Query param: Field to order DNS views by. */
   order?: "name" | "created_on" | "modified_on";
   /** Query param: A zone ID that exists in the zones list for the view. */
@@ -4768,14 +4030,7 @@ export const ListSettingAccountViewsRequest =
     match: Schema.optional(Schema.Literals(["any", "all"])).pipe(
       T.HttpQuery("match"),
     ),
-    name: Schema.optional(
-      Schema.Struct({
-        contains: Schema.optional(Schema.String),
-        endswith: Schema.optional(Schema.String),
-        exact: Schema.optional(Schema.String),
-        startswith: Schema.optional(Schema.String),
-      }),
-    ).pipe(T.HttpQuery("name")),
+    name: Schema.optional(Name).pipe(T.HttpQuery("name")),
     order: Schema.optional(
       Schema.Literals(["name", "created_on", "modified_on"]),
     ).pipe(T.HttpQuery("order")),
@@ -5080,7 +4335,7 @@ export interface GetSettingZoneResponse {
   /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
   foundationDns: boolean;
   /** Settings for this internal zone. */
-  internalDns: { referenceZoneId?: string | null };
+  internalDns: InternalDNS;
   /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
   multiProvider: boolean;
   /** Settings determining the nameservers through which the zone should be available. */
@@ -5097,15 +4352,7 @@ export interface GetSettingZoneResponse {
   /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
   secondaryOverrides: boolean;
   /** Components of the zone's SOA record. */
-  soa: {
-    expire?: number | null;
-    minTtl?: number | null;
-    mname?: string | null;
-    refresh?: number | null;
-    retry?: number | null;
-    rname?: string | null;
-    ttl?: number | null;
-  };
+  soa: Soa;
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
   zoneMode: "standard" | "cdn_only" | "dns_only";
 }
@@ -5114,11 +4361,7 @@ export const GetSettingZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     flattenAllCnames: Schema.Boolean,
     foundationDns: Schema.Boolean,
-    internalDns: Schema.Struct({
-      referenceZoneId: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ referenceZoneId: "reference_zone_id" })),
+    internalDns: InternalDNS,
     multiProvider: Schema.Boolean,
     nameservers: Schema.Struct({
       type: Schema.Literals([
@@ -5131,25 +4374,7 @@ export const GetSettingZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     }).pipe(Schema.encodeKeys({ type: "type", nsSet: "ns_set" })),
     nsTtl: Schema.Number,
     secondaryOverrides: Schema.Boolean,
-    soa: Schema.Struct({
-      expire: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      minTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      mname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      refresh: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      retry: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      rname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        expire: "expire",
-        minTtl: "min_ttl",
-        mname: "mname",
-        refresh: "refresh",
-        retry: "retry",
-        rname: "rname",
-        ttl: "ttl",
-      }),
-    ),
+    soa: Soa,
     zoneMode: Schema.Literals(["standard", "cdn_only", "dns_only"]),
   },
 )
@@ -5191,32 +4416,17 @@ export interface PatchSettingZoneRequest {
   /** Body param: Whether to enable Foundation DNS Advanced Nameservers on the zone. */
   foundationDns?: boolean;
   /** Body param: Settings for this internal zone. */
-  internalDns?: { referenceZoneId?: string };
+  internalDns?: InternalDNS;
   /** Body param: Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zon */
   multiProvider?: boolean;
   /** Body param: Settings determining the nameservers through which the zone should be available. */
-  nameservers?: {
-    nsSet?: number;
-    type?:
-      | "cloudflare.standard"
-      | "custom.account"
-      | "custom.tenant"
-      | "custom.zone";
-  };
+  nameservers?: Nameservers;
   /** Body param: The time to live (TTL) of the zone's nameserver (NS) records. */
   nsTtl?: number;
   /** Body param: Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
   secondaryOverrides?: boolean;
   /** Body param: Components of the zone's SOA record. */
-  soa?: {
-    expire?: number;
-    minTtl?: number;
-    mname?: string | null;
-    refresh?: number;
-    retry?: number;
-    rname?: string;
-    ttl?: number;
-  };
+  soa?: Soa;
   /** Body param: Whether the zone mode is a regular or CDN/DNS only zone. */
   zoneMode?: "standard" | "cdn_only" | "dns_only";
 }
@@ -5226,48 +4436,12 @@ export const PatchSettingZoneRequest =
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     flattenAllCnames: Schema.optional(Schema.Boolean),
     foundationDns: Schema.optional(Schema.Boolean),
-    internalDns: Schema.optional(
-      Schema.Struct({
-        referenceZoneId: Schema.optional(Schema.String),
-      }).pipe(Schema.encodeKeys({ referenceZoneId: "reference_zone_id" })),
-    ),
+    internalDns: Schema.optional(InternalDNS),
     multiProvider: Schema.optional(Schema.Boolean),
-    nameservers: Schema.optional(
-      Schema.Struct({
-        nsSet: Schema.optional(Schema.Number),
-        type: Schema.optional(
-          Schema.Literals([
-            "cloudflare.standard",
-            "custom.account",
-            "custom.tenant",
-            "custom.zone",
-          ]),
-        ),
-      }).pipe(Schema.encodeKeys({ nsSet: "ns_set", type: "type" })),
-    ),
+    nameservers: Schema.optional(Nameservers),
     nsTtl: Schema.optional(Schema.Number),
     secondaryOverrides: Schema.optional(Schema.Boolean),
-    soa: Schema.optional(
-      Schema.Struct({
-        expire: Schema.optional(Schema.Number),
-        minTtl: Schema.optional(Schema.Number),
-        mname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        refresh: Schema.optional(Schema.Number),
-        retry: Schema.optional(Schema.Number),
-        rname: Schema.optional(Schema.String),
-        ttl: Schema.optional(Schema.Number),
-      }).pipe(
-        Schema.encodeKeys({
-          expire: "expire",
-          minTtl: "min_ttl",
-          mname: "mname",
-          refresh: "refresh",
-          retry: "retry",
-          rname: "rname",
-          ttl: "ttl",
-        }),
-      ),
-    ),
+    soa: Schema.optional(Soa),
     zoneMode: Schema.optional(
       Schema.Literals(["standard", "cdn_only", "dns_only"]),
     ),
@@ -5292,7 +4466,7 @@ export interface PatchSettingZoneResponse {
   /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
   foundationDns: boolean;
   /** Settings for this internal zone. */
-  internalDns: { referenceZoneId?: string | null };
+  internalDns: InternalDNS;
   /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
   multiProvider: boolean;
   /** Settings determining the nameservers through which the zone should be available. */
@@ -5309,15 +4483,7 @@ export interface PatchSettingZoneResponse {
   /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
   secondaryOverrides: boolean;
   /** Components of the zone's SOA record. */
-  soa: {
-    expire?: number | null;
-    minTtl?: number | null;
-    mname?: string | null;
-    refresh?: number | null;
-    retry?: number | null;
-    rname?: string | null;
-    ttl?: number | null;
-  };
+  soa: Soa;
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
   zoneMode: "standard" | "cdn_only" | "dns_only";
 }
@@ -5326,11 +4492,7 @@ export const PatchSettingZoneResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flattenAllCnames: Schema.Boolean,
     foundationDns: Schema.Boolean,
-    internalDns: Schema.Struct({
-      referenceZoneId: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ referenceZoneId: "reference_zone_id" })),
+    internalDns: InternalDNS,
     multiProvider: Schema.Boolean,
     nameservers: Schema.Struct({
       type: Schema.Literals([
@@ -5343,25 +4505,7 @@ export const PatchSettingZoneResponse =
     }).pipe(Schema.encodeKeys({ type: "type", nsSet: "ns_set" })),
     nsTtl: Schema.Number,
     secondaryOverrides: Schema.Boolean,
-    soa: Schema.Struct({
-      expire: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      minTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      mname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      refresh: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      retry: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      rname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        expire: "expire",
-        minTtl: "min_ttl",
-        mname: "mname",
-        refresh: "refresh",
-        retry: "retry",
-        rname: "rname",
-        ttl: "ttl",
-      }),
-    ),
+    soa: Soa,
     zoneMode: Schema.Literals(["standard", "cdn_only", "dns_only"]),
   })
     .pipe(

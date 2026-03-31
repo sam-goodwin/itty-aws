@@ -14,6 +14,151 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Action {
+  type: "drop" | "forward" | "worker";
+  value?: string[] | null;
+}
+
+export const Action: Schema.Schema<Action> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Literals(["drop", "forward", "worker"]),
+      value: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Action>;
+
+export interface ActionParam {
+  type: "drop" | "forward" | "worker";
+  value?: string[] | null;
+}
+
+export const ActionParam: Schema.Schema<ActionParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Literals(["drop", "forward", "worker"]),
+      value: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<ActionParam>;
+
+export interface CatchAllAction {
+  type: "drop" | "forward" | "worker";
+  value?: string[] | null;
+}
+
+export const CatchAllAction: Schema.Schema<CatchAllAction> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Literals(["drop", "forward", "worker"]),
+      value: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<CatchAllAction>;
+
+export interface CatchAllMatcher {
+  type: "all";
+}
+
+export const CatchAllMatcher: Schema.Schema<CatchAllMatcher> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Literal("all"),
+    }),
+  ) as unknown as Schema.Schema<CatchAllMatcher>;
+
+export interface Matcher {
+  type: "all" | "literal";
+  field?: "to" | null;
+  value?: string | null;
+}
+
+export const Matcher: Schema.Schema<Matcher> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Literals(["all", "literal"]),
+      field: Schema.optional(Schema.Union([Schema.Literal("to"), Schema.Null])),
+      value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Matcher>;
+
+export interface MatcherParam {
+  type: "all" | "literal";
+  field?: "to" | null;
+  value?: string | null;
+}
+
+export const MatcherParam: Schema.Schema<MatcherParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Literals(["all", "literal"]),
+      field: Schema.optional(Schema.Union([Schema.Literal("to"), Schema.Null])),
+      value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<MatcherParam>;
+
+export interface Settings {
+  id: string;
+  enabled: true | false;
+  name: string;
+  created?: string | null;
+  modified?: string | null;
+  skipWizard?: true | false | null;
+  status?:
+    | "ready"
+    | "unconfigured"
+    | "misconfigured"
+    | "misconfigured/locked"
+    | "unlocked"
+    | null;
+  tag?: string | null;
+}
+
+export const Settings: Schema.Schema<Settings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      enabled: Schema.Literals([true, false]),
+      name: Schema.String,
+      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      skipWizard: Schema.optional(
+        Schema.Union([Schema.Literals([true, false]), Schema.Null]),
+      ),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "ready",
+            "unconfigured",
+            "misconfigured",
+            "misconfigured/locked",
+            "unlocked",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        enabled: "enabled",
+        name: "name",
+        created: "created",
+        modified: "modified",
+        skipWizard: "skip_wizard",
+        status: "status",
+        tag: "tag",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Settings>;
+
+// =============================================================================
 // Address
 // =============================================================================
 
@@ -1412,15 +1557,11 @@ export interface GetRuleResponse {
   /** Routing rule identifier. */
   id?: string | null;
   /** List actions patterns. */
-  actions?:
-    | { type: "drop" | "forward" | "worker"; value?: string[] | null }[]
-    | null;
+  actions?: Action[] | null;
   /** Routing rule status. */
   enabled?: true | false | null;
   /** Matching patterns to forward to your actions. */
-  matchers?:
-    | { type: "all" | "literal"; field?: "to" | null; value?: string | null }[]
-    | null;
+  matchers?: Matcher[] | null;
   /** Routing rule name. */
   name?: string | null;
   /** Priority of the routing rule. */
@@ -1431,36 +1572,11 @@ export interface GetRuleResponse {
 
 export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  actions: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          type: Schema.Literals(["drop", "forward", "worker"]),
-          value: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  actions: Schema.optional(Schema.Union([Schema.Array(Action), Schema.Null])),
   enabled: Schema.optional(
     Schema.Union([Schema.Literals([true, false]), Schema.Null]),
   ),
-  matchers: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          type: Schema.Literals(["all", "literal"]),
-          field: Schema.optional(
-            Schema.Union([Schema.Literal("to"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  matchers: Schema.optional(Schema.Union([Schema.Array(Matcher), Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1498,17 +1614,9 @@ export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ListRulesResponse {
   result: {
     id?: string | null;
-    actions?:
-      | { type: "drop" | "forward" | "worker"; value?: string[] | null }[]
-      | null;
+    actions?: Action[] | null;
     enabled?: true | false | null;
-    matchers?:
-      | {
-          type: "all" | "literal";
-          field?: "to" | null;
-          value?: string | null;
-        }[]
-      | null;
+    matchers?: Matcher[] | null;
     name?: string | null;
     priority?: number | null;
     tag?: string | null;
@@ -1526,36 +1634,13 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       actions: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.Literals(["drop", "forward", "worker"]),
-              value: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Action), Schema.Null]),
       ),
       enabled: Schema.optional(
         Schema.Union([Schema.Literals([true, false]), Schema.Null]),
       ),
       matchers: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              type: Schema.Literals(["all", "literal"]),
-              field: Schema.optional(
-                Schema.Union([Schema.Literal("to"), Schema.Null]),
-              ),
-              value: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Matcher), Schema.Null]),
       ),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1597,17 +1682,9 @@ export const listRules: API.PaginatedOperationMethod<
   items: (input: ListRulesRequest) => stream.Stream<
     {
       id?: string | null;
-      actions?:
-        | { type: "drop" | "forward" | "worker"; value?: string[] | null }[]
-        | null;
+      actions?: Action[] | null;
       enabled?: true | false | null;
-      matchers?:
-        | {
-            type: "all" | "literal";
-            field?: "to" | null;
-            value?: string | null;
-          }[]
-        | null;
+      matchers?: Matcher[] | null;
       name?: string | null;
       priority?: number | null;
       tag?: string | null;
@@ -1632,9 +1709,9 @@ export interface CreateRuleRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: List actions patterns. */
-  actions: { type: "drop" | "forward" | "worker"; value?: string[] }[];
+  actions: Action[];
   /** Body param: Matching patterns to forward to your actions. */
-  matchers: { type: "all" | "literal"; field?: "to"; value?: string }[];
+  matchers: Matcher[];
   /** Body param: Routing rule status. */
   enabled?: true | false;
   /** Body param: Routing rule name. */
@@ -1645,19 +1722,8 @@ export interface CreateRuleRequest {
 
 export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  actions: Schema.Array(
-    Schema.Struct({
-      type: Schema.Literals(["drop", "forward", "worker"]),
-      value: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ),
-  matchers: Schema.Array(
-    Schema.Struct({
-      type: Schema.Literals(["all", "literal"]),
-      field: Schema.optional(Schema.Literal("to")),
-      value: Schema.optional(Schema.String),
-    }),
-  ),
+  actions: Schema.Array(Action),
+  matchers: Schema.Array(Matcher),
   enabled: Schema.optional(Schema.Literals([true, false])),
   name: Schema.optional(Schema.String),
   priority: Schema.optional(Schema.Number),
@@ -1669,15 +1735,11 @@ export interface CreateRuleResponse {
   /** Routing rule identifier. */
   id?: string | null;
   /** List actions patterns. */
-  actions?:
-    | { type: "drop" | "forward" | "worker"; value?: string[] | null }[]
-    | null;
+  actions?: Action[] | null;
   /** Routing rule status. */
   enabled?: true | false | null;
   /** Matching patterns to forward to your actions. */
-  matchers?:
-    | { type: "all" | "literal"; field?: "to" | null; value?: string | null }[]
-    | null;
+  matchers?: Matcher[] | null;
   /** Routing rule name. */
   name?: string | null;
   /** Priority of the routing rule. */
@@ -1688,36 +1750,11 @@ export interface CreateRuleResponse {
 
 export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  actions: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          type: Schema.Literals(["drop", "forward", "worker"]),
-          value: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  actions: Schema.optional(Schema.Union([Schema.Array(Action), Schema.Null])),
   enabled: Schema.optional(
     Schema.Union([Schema.Literals([true, false]), Schema.Null]),
   ),
-  matchers: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          type: Schema.Literals(["all", "literal"]),
-          field: Schema.optional(
-            Schema.Union([Schema.Literal("to"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  matchers: Schema.optional(Schema.Union([Schema.Array(Matcher), Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1743,9 +1780,9 @@ export interface UpdateRuleRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: List actions patterns. */
-  actions: { type: "drop" | "forward" | "worker"; value?: string[] }[];
+  actions: Action[];
   /** Body param: Matching patterns to forward to your actions. */
-  matchers: { type: "all" | "literal"; field?: "to"; value?: string }[];
+  matchers: Matcher[];
   /** Body param: Routing rule status. */
   enabled?: true | false;
   /** Body param: Routing rule name. */
@@ -1757,19 +1794,8 @@ export interface UpdateRuleRequest {
 export const UpdateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ruleIdentifier: Schema.String.pipe(T.HttpPath("ruleIdentifier")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  actions: Schema.Array(
-    Schema.Struct({
-      type: Schema.Literals(["drop", "forward", "worker"]),
-      value: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ),
-  matchers: Schema.Array(
-    Schema.Struct({
-      type: Schema.Literals(["all", "literal"]),
-      field: Schema.optional(Schema.Literal("to")),
-      value: Schema.optional(Schema.String),
-    }),
-  ),
+  actions: Schema.Array(Action),
+  matchers: Schema.Array(Matcher),
   enabled: Schema.optional(Schema.Literals([true, false])),
   name: Schema.optional(Schema.String),
   priority: Schema.optional(Schema.Number),
@@ -1784,15 +1810,11 @@ export interface UpdateRuleResponse {
   /** Routing rule identifier. */
   id?: string | null;
   /** List actions patterns. */
-  actions?:
-    | { type: "drop" | "forward" | "worker"; value?: string[] | null }[]
-    | null;
+  actions?: Action[] | null;
   /** Routing rule status. */
   enabled?: true | false | null;
   /** Matching patterns to forward to your actions. */
-  matchers?:
-    | { type: "all" | "literal"; field?: "to" | null; value?: string | null }[]
-    | null;
+  matchers?: Matcher[] | null;
   /** Routing rule name. */
   name?: string | null;
   /** Priority of the routing rule. */
@@ -1803,36 +1825,11 @@ export interface UpdateRuleResponse {
 
 export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  actions: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          type: Schema.Literals(["drop", "forward", "worker"]),
-          value: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  actions: Schema.optional(Schema.Union([Schema.Array(Action), Schema.Null])),
   enabled: Schema.optional(
     Schema.Union([Schema.Literals([true, false]), Schema.Null]),
   ),
-  matchers: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          type: Schema.Literals(["all", "literal"]),
-          field: Schema.optional(
-            Schema.Union([Schema.Literal("to"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  matchers: Schema.optional(Schema.Union([Schema.Array(Matcher), Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1873,15 +1870,11 @@ export interface DeleteRuleResponse {
   /** Routing rule identifier. */
   id?: string | null;
   /** List actions patterns. */
-  actions?:
-    | { type: "drop" | "forward" | "worker"; value?: string[] | null }[]
-    | null;
+  actions?: Action[] | null;
   /** Routing rule status. */
   enabled?: true | false | null;
   /** Matching patterns to forward to your actions. */
-  matchers?:
-    | { type: "all" | "literal"; field?: "to" | null; value?: string | null }[]
-    | null;
+  matchers?: Matcher[] | null;
   /** Routing rule name. */
   name?: string | null;
   /** Priority of the routing rule. */
@@ -1892,36 +1885,11 @@ export interface DeleteRuleResponse {
 
 export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  actions: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          type: Schema.Literals(["drop", "forward", "worker"]),
-          value: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  actions: Schema.optional(Schema.Union([Schema.Array(Action), Schema.Null])),
   enabled: Schema.optional(
     Schema.Union([Schema.Literals([true, false]), Schema.Null]),
   ),
-  matchers: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          type: Schema.Literals(["all", "literal"]),
-          field: Schema.optional(
-            Schema.Union([Schema.Literal("to"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  matchers: Schema.optional(Schema.Union([Schema.Array(Matcher), Schema.Null])),
   name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1966,13 +1934,11 @@ export interface GetRuleCatchAllResponse {
   /** Routing rule identifier. */
   id?: string | null;
   /** List actions for the catch-all routing rule. */
-  actions?:
-    | { type: "drop" | "forward" | "worker"; value?: string[] | null }[]
-    | null;
+  actions?: Action[] | null;
   /** Routing rule status. */
   enabled?: true | false | null;
   /** List of matchers for the catch-all routing rule. */
-  matchers?: { type: "all" }[] | null;
+  matchers?: CatchAllMatcher[] | null;
   /** Routing rule name. */
   name?: string | null;
   /** @deprecated Routing rule tag. (Deprecated, replaced by routing rule identifier) */
@@ -1982,31 +1948,12 @@ export interface GetRuleCatchAllResponse {
 export const GetRuleCatchAllResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    actions: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.Literals(["drop", "forward", "worker"]),
-            value: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    actions: Schema.optional(Schema.Union([Schema.Array(Action), Schema.Null])),
     enabled: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
     matchers: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.Literal("all"),
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(CatchAllMatcher), Schema.Null]),
     ),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2031,9 +1978,9 @@ export interface PutRuleCatchAllRequest {
   /** Path param: Identifier. */
   zoneId: string;
   /** Body param: List actions for the catch-all routing rule. */
-  actions: { type: "drop" | "forward" | "worker"; value?: string[] }[];
+  actions: Action[];
   /** Body param: List of matchers for the catch-all routing rule. */
-  matchers: { type: "all" }[];
+  matchers: CatchAllMatcher[];
   /** Body param: Routing rule status. */
   enabled?: true | false;
   /** Body param: Routing rule name. */
@@ -2043,17 +1990,8 @@ export interface PutRuleCatchAllRequest {
 export const PutRuleCatchAllRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    actions: Schema.Array(
-      Schema.Struct({
-        type: Schema.Literals(["drop", "forward", "worker"]),
-        value: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-    matchers: Schema.Array(
-      Schema.Struct({
-        type: Schema.Literal("all"),
-      }),
-    ),
+    actions: Schema.Array(Action),
+    matchers: Schema.Array(CatchAllMatcher),
     enabled: Schema.optional(Schema.Literals([true, false])),
     name: Schema.optional(Schema.String),
   },
@@ -2068,13 +2006,11 @@ export interface PutRuleCatchAllResponse {
   /** Routing rule identifier. */
   id?: string | null;
   /** List actions for the catch-all routing rule. */
-  actions?:
-    | { type: "drop" | "forward" | "worker"; value?: string[] | null }[]
-    | null;
+  actions?: Action[] | null;
   /** Routing rule status. */
   enabled?: true | false | null;
   /** List of matchers for the catch-all routing rule. */
-  matchers?: { type: "all" }[] | null;
+  matchers?: CatchAllMatcher[] | null;
   /** Routing rule name. */
   name?: string | null;
   /** @deprecated Routing rule tag. (Deprecated, replaced by routing rule identifier) */
@@ -2084,31 +2020,12 @@ export interface PutRuleCatchAllResponse {
 export const PutRuleCatchAllResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    actions: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.Literals(["drop", "forward", "worker"]),
-            value: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    actions: Schema.optional(Schema.Union([Schema.Array(Action), Schema.Null])),
     enabled: Schema.optional(
       Schema.Union([Schema.Literals([true, false]), Schema.Null]),
     ),
     matchers: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.Literal("all"),
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(CatchAllMatcher), Schema.Null]),
     ),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),

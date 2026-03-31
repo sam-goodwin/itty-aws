@@ -160,6 +160,197 @@ export class UnsupportedBindingConfiguration extends Schema.TaggedErrorClass<Uns
 T.applyErrorMatchers(UnsupportedBindingConfiguration, [{ code: 1003 }]);
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface BgpsignalOpts {
+  enabled?: boolean | null;
+  modifiedAt?: string | null;
+}
+
+export const BgpsignalOpts: Schema.Schema<BgpsignalOpts> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({ enabled: "enabled", modifiedAt: "modified_at" }),
+    ),
+  ) as unknown as Schema.Schema<BgpsignalOpts>;
+
+export interface Error2 {
+  code: number;
+  message: string;
+  documentationUrl?: string | null;
+  source?: Source2 | null;
+}
+
+export const Error2: Schema.Schema<Error2> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      code: Schema.Number,
+      message: Schema.String,
+      documentationUrl: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      source: Schema.optional(Schema.Union([Source2, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        code: "code",
+        message: "message",
+        documentationUrl: "documentation_url",
+        source: "source",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Error2>;
+
+export interface IpsArrayItem {
+  createdAt?: string | null;
+  ip?: string | null;
+}
+
+export const IpsArrayItem: Schema.Schema<IpsArrayItem> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ createdAt: "created_at", ip: "ip" })),
+  ) as unknown as Schema.Schema<IpsArrayItem>;
+
+export interface Membership {
+  canDelete?: boolean | null;
+  createdAt?: string | null;
+  identifier?: string | null;
+  kind?: "zone" | "account" | null;
+}
+
+export const Membership: Schema.Schema<Membership> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      canDelete: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      identifier: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      kind: Schema.optional(
+        Schema.Union([Schema.Literals(["zone", "account"]), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        canDelete: "can_delete",
+        createdAt: "created_at",
+        identifier: "identifier",
+        kind: "kind",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Membership>;
+
+export interface Message {
+  code: number;
+  message: string;
+  documentationUrl?: string | null;
+  source?: Source2 | null;
+}
+
+export const Message: Schema.Schema<Message> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      code: Schema.Number,
+      message: Schema.String,
+      documentationUrl: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      source: Schema.optional(Schema.Union([Source2, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        code: "code",
+        message: "message",
+        documentationUrl: "documentation_url",
+        source: "source",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Message>;
+
+export interface OnDemand {
+  advertised?: boolean | null;
+  advertisedModifiedAt?: string | null;
+  onDemandEnabled?: boolean | null;
+  onDemandLocked?: boolean | null;
+}
+
+export const OnDemand: Schema.Schema<OnDemand> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      advertised: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      advertisedModifiedAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      onDemandEnabled: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      onDemandLocked: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        advertised: "advertised",
+        advertisedModifiedAt: "advertised_modified_at",
+        onDemandEnabled: "on_demand_enabled",
+        onDemandLocked: "on_demand_locked",
+      }),
+    ),
+  ) as unknown as Schema.Schema<OnDemand>;
+
+export interface Provisioning {
+  state?: "provisioning" | "active" | null;
+}
+
+export const Provisioning: Schema.Schema<Provisioning> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      state: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["provisioning", "active"]),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<Provisioning>;
+
+export interface ResultInfo {
+  count?: number | null;
+  page?: number | null;
+  perPage?: number | null;
+  totalCount?: number | null;
+}
+
+export const ResultInfo: Schema.Schema<ResultInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        totalCount: "total_count",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ResultInfo>;
+
+export interface Source2 {
+  pointer?: string | null;
+}
+
+export const Source2: Schema.Schema<Source2> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Source2>;
+
+// =============================================================================
 // AddressMap
 // =============================================================================
 
@@ -194,16 +385,9 @@ export interface GetAddressMapResponse {
   /** Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
   enabled?: boolean | null;
   /** The set of IPs on the Address Map. */
-  ips?: { createdAt?: string | null; ip?: string | null }[] | null;
+  ips?: IpsArrayItem[] | null;
   /** Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership. */
-  memberships?:
-    | {
-        canDelete?: boolean | null;
-        createdAt?: string | null;
-        identifier?: string | null;
-        kind?: "zone" | "account" | null;
-      }[]
-    | null;
+  memberships?: Membership[] | null;
   modifiedAt?: string | null;
 }
 
@@ -215,46 +399,9 @@ export const GetAddressMapResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   defaultSni: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  ips: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          createdAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(Schema.encodeKeys({ createdAt: "created_at", ip: "ip" })),
-      ),
-      Schema.Null,
-    ]),
-  ),
+  ips: Schema.optional(Schema.Union([Schema.Array(IpsArrayItem), Schema.Null])),
   memberships: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          canDelete: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          createdAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          identifier: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          kind: Schema.optional(
-            Schema.Union([Schema.Literals(["zone", "account"]), Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            canDelete: "can_delete",
-            createdAt: "created_at",
-            identifier: "identifier",
-            kind: "kind",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([Schema.Array(Membership), Schema.Null]),
   ),
   modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
 })
@@ -440,16 +587,9 @@ export interface CreateAddressMapResponse {
   /** Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
   enabled?: boolean | null;
   /** The set of IPs on the Address Map. */
-  ips?: { createdAt?: string | null; ip?: string | null }[] | null;
+  ips?: IpsArrayItem[] | null;
   /** Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership. */
-  memberships?:
-    | {
-        canDelete?: boolean | null;
-        createdAt?: string | null;
-        identifier?: string | null;
-        kind?: "zone" | "account" | null;
-      }[]
-    | null;
+  memberships?: Membership[] | null;
   modifiedAt?: string | null;
 }
 
@@ -463,45 +603,10 @@ export const CreateAddressMapResponse =
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     ips: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            createdAt: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }).pipe(Schema.encodeKeys({ createdAt: "created_at", ip: "ip" })),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(IpsArrayItem), Schema.Null]),
     ),
     memberships: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            canDelete: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            createdAt: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            identifier: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            kind: Schema.optional(
-              Schema.Union([Schema.Literals(["zone", "account"]), Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              canDelete: "can_delete",
-              createdAt: "created_at",
-              identifier: "identifier",
-              kind: "kind",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(Membership), Schema.Null]),
     ),
     modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
@@ -650,103 +755,19 @@ export const DeleteAddressMapRequest =
   ) as unknown as Schema.Schema<DeleteAddressMapRequest>;
 
 export interface DeleteAddressMapResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
-  resultInfo?: {
-    count?: number | null;
-    page?: number | null;
-    perPage?: number | null;
-    totalCount?: number | null;
-  } | null;
+  resultInfo?: ResultInfo | null;
 }
 
 export const DeleteAddressMapResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
+    errors: Schema.Array(Message),
+    messages: Schema.Array(Message),
     success: Schema.Literal(true),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    resultInfo: Schema.optional(Schema.Union([ResultInfo, Schema.Null])),
   }).pipe(
     Schema.encodeKeys({
       errors: "errors",
@@ -804,103 +825,19 @@ export const PutAddressMapAccountRequest =
   ) as unknown as Schema.Schema<PutAddressMapAccountRequest>;
 
 export interface PutAddressMapAccountResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
-  resultInfo?: {
-    count?: number | null;
-    page?: number | null;
-    perPage?: number | null;
-    totalCount?: number | null;
-  } | null;
+  resultInfo?: ResultInfo | null;
 }
 
 export const PutAddressMapAccountResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
+    errors: Schema.Array(Message),
+    messages: Schema.Array(Message),
     success: Schema.Literal(true),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    resultInfo: Schema.optional(Schema.Union([ResultInfo, Schema.Null])),
   }).pipe(
     Schema.encodeKeys({
       errors: "errors",
@@ -945,103 +882,19 @@ export const DeleteAddressMapAccountRequest =
   ) as unknown as Schema.Schema<DeleteAddressMapAccountRequest>;
 
 export interface DeleteAddressMapAccountResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
-  resultInfo?: {
-    count?: number | null;
-    page?: number | null;
-    perPage?: number | null;
-    totalCount?: number | null;
-  } | null;
+  resultInfo?: ResultInfo | null;
 }
 
 export const DeleteAddressMapAccountResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
+    errors: Schema.Array(Message),
+    messages: Schema.Array(Message),
     success: Schema.Literal(true),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    resultInfo: Schema.optional(Schema.Union([ResultInfo, Schema.Null])),
   }).pipe(
     Schema.encodeKeys({
       errors: "errors",
@@ -1096,103 +949,19 @@ export const PutAddressMapIpRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Schema<PutAddressMapIpRequest>;
 
 export interface PutAddressMapIpResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
-  resultInfo?: {
-    count?: number | null;
-    page?: number | null;
-    perPage?: number | null;
-    totalCount?: number | null;
-  } | null;
+  resultInfo?: ResultInfo | null;
 }
 
 export const PutAddressMapIpResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
+    errors: Schema.Array(Message),
+    messages: Schema.Array(Message),
     success: Schema.Literal(true),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    resultInfo: Schema.optional(Schema.Union([ResultInfo, Schema.Null])),
   }).pipe(
     Schema.encodeKeys({
       errors: "errors",
@@ -1245,103 +1014,19 @@ export const DeleteAddressMapIpRequest =
   ) as unknown as Schema.Schema<DeleteAddressMapIpRequest>;
 
 export interface DeleteAddressMapIpResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
-  resultInfo?: {
-    count?: number | null;
-    page?: number | null;
-    perPage?: number | null;
-    totalCount?: number | null;
-  } | null;
+  resultInfo?: ResultInfo | null;
 }
 
 export const DeleteAddressMapIpResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
+    errors: Schema.Array(Message),
+    messages: Schema.Array(Message),
     success: Schema.Literal(true),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    resultInfo: Schema.optional(Schema.Union([ResultInfo, Schema.Null])),
   }).pipe(
     Schema.encodeKeys({
       errors: "errors",
@@ -1402,103 +1087,19 @@ export const PutAddressMapZoneRequest =
   ) as unknown as Schema.Schema<PutAddressMapZoneRequest>;
 
 export interface PutAddressMapZoneResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
-  resultInfo?: {
-    count?: number | null;
-    page?: number | null;
-    perPage?: number | null;
-    totalCount?: number | null;
-  } | null;
+  resultInfo?: ResultInfo | null;
 }
 
 export const PutAddressMapZoneResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
+    errors: Schema.Array(Message),
+    messages: Schema.Array(Message),
     success: Schema.Literal(true),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    resultInfo: Schema.optional(Schema.Union([ResultInfo, Schema.Null])),
   }).pipe(
     Schema.encodeKeys({
       errors: "errors",
@@ -1546,103 +1147,19 @@ export const DeleteAddressMapZoneRequest =
   ) as unknown as Schema.Schema<DeleteAddressMapZoneRequest>;
 
 export interface DeleteAddressMapZoneResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
-  resultInfo?: {
-    count?: number | null;
-    page?: number | null;
-    perPage?: number | null;
-    totalCount?: number | null;
-  } | null;
+  resultInfo?: ResultInfo | null;
 }
 
 export const DeleteAddressMapZoneResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
+    errors: Schema.Array(Message),
+    messages: Schema.Array(Message),
     success: Schema.Literal(true),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    resultInfo: Schema.optional(Schema.Union([ResultInfo, Schema.Null])),
   }).pipe(
     Schema.encodeKeys({
       errors: "errors",
@@ -2364,75 +1881,15 @@ export const DeletePrefixRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<DeletePrefixRequest>;
 
 export interface DeletePrefixResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
 }
 
 export const DeletePrefixResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  errors: Schema.Array(
-    Schema.Struct({
-      code: Schema.Number,
-      message: Schema.String,
-      documentationUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      source: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            pointer: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        code: "code",
-        message: "message",
-        documentationUrl: "documentation_url",
-        source: "source",
-      }),
-    ),
-  ),
-  messages: Schema.Array(
-    Schema.Struct({
-      code: Schema.Number,
-      message: Schema.String,
-      documentationUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      source: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            pointer: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        code: "code",
-        message: "message",
-        documentationUrl: "documentation_url",
-        source: "source",
-      }),
-    ),
-  ),
+  errors: Schema.Array(Message),
+  messages: Schema.Array(Message),
   success: Schema.Literal(true),
 }) as unknown as Schema.Schema<DeletePrefixResponse>;
 
@@ -2606,20 +2063,12 @@ export interface GetPrefixBgpPrefixResponse {
   asnPrependCount?: number | null;
   /** Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there */
   autoAdvertiseWithdraw?: boolean | null;
-  bgpSignalOpts?: {
-    enabled?: boolean | null;
-    modifiedAt?: string | null;
-  } | null;
+  bgpSignalOpts?: BgpsignalOpts | null;
   /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr?: string | null;
   createdAt?: string | null;
   modifiedAt?: string | null;
-  onDemand?: {
-    advertised?: boolean | null;
-    advertisedModifiedAt?: string | null;
-    onDemandEnabled?: boolean | null;
-    onDemandLocked?: boolean | null;
-  } | null;
+  onDemand?: OnDemand | null;
 }
 
 export const GetPrefixBgpPrefixResponse =
@@ -2632,48 +2081,11 @@ export const GetPrefixBgpPrefixResponse =
     autoAdvertiseWithdraw: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
     ),
-    bgpSignalOpts: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          modifiedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({ enabled: "enabled", modifiedAt: "modified_at" }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    bgpSignalOpts: Schema.optional(Schema.Union([BgpsignalOpts, Schema.Null])),
     cidr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    onDemand: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          advertised: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          advertisedModifiedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          onDemandEnabled: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          onDemandLocked: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            advertised: "advertised",
-            advertisedModifiedAt: "advertised_modified_at",
-            onDemandEnabled: "on_demand_enabled",
-            onDemandLocked: "on_demand_locked",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    onDemand: Schema.optional(Schema.Union([OnDemand, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
@@ -2732,19 +2144,11 @@ export interface ListPrefixBgpPrefixesResponse {
     asn?: number | null;
     asnPrependCount?: number | null;
     autoAdvertiseWithdraw?: boolean | null;
-    bgpSignalOpts?: {
-      enabled?: boolean | null;
-      modifiedAt?: string | null;
-    } | null;
+    bgpSignalOpts?: BgpsignalOpts | null;
     cidr?: string | null;
     createdAt?: string | null;
     modifiedAt?: string | null;
-    onDemand?: {
-      advertised?: boolean | null;
-      advertisedModifiedAt?: string | null;
-      onDemandEnabled?: boolean | null;
-      onDemandLocked?: boolean | null;
-    } | null;
+    onDemand?: OnDemand | null;
   }[];
 }
 
@@ -2761,52 +2165,12 @@ export const ListPrefixBgpPrefixesResponse =
           Schema.Union([Schema.Boolean, Schema.Null]),
         ),
         bgpSignalOpts: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              enabled: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              modifiedAt: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                enabled: "enabled",
-                modifiedAt: "modified_at",
-              }),
-            ),
-            Schema.Null,
-          ]),
+          Schema.Union([BgpsignalOpts, Schema.Null]),
         ),
         cidr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        onDemand: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              advertised: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              advertisedModifiedAt: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              onDemandEnabled: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              onDemandLocked: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                advertised: "advertised",
-                advertisedModifiedAt: "advertised_modified_at",
-                onDemandEnabled: "on_demand_enabled",
-                onDemandLocked: "on_demand_locked",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
+        onDemand: Schema.optional(Schema.Union([OnDemand, Schema.Null])),
       }).pipe(
         Schema.encodeKeys({
           id: "id",
@@ -2844,19 +2208,11 @@ export const listPrefixBgpPrefixes: API.PaginatedOperationMethod<
       asn?: number | null;
       asnPrependCount?: number | null;
       autoAdvertiseWithdraw?: boolean | null;
-      bgpSignalOpts?: {
-        enabled?: boolean | null;
-        modifiedAt?: string | null;
-      } | null;
+      bgpSignalOpts?: BgpsignalOpts | null;
       cidr?: string | null;
       createdAt?: string | null;
       modifiedAt?: string | null;
-      onDemand?: {
-        advertised?: boolean | null;
-        advertisedModifiedAt?: string | null;
-        onDemandEnabled?: boolean | null;
-        onDemandLocked?: boolean | null;
-      } | null;
+      onDemand?: OnDemand | null;
     },
     ListPrefixBgpPrefixesError,
     Credentials | HttpClient.HttpClient
@@ -2900,20 +2256,12 @@ export interface CreatePrefixBgpPrefixResponse {
   asnPrependCount?: number | null;
   /** Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there */
   autoAdvertiseWithdraw?: boolean | null;
-  bgpSignalOpts?: {
-    enabled?: boolean | null;
-    modifiedAt?: string | null;
-  } | null;
+  bgpSignalOpts?: BgpsignalOpts | null;
   /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr?: string | null;
   createdAt?: string | null;
   modifiedAt?: string | null;
-  onDemand?: {
-    advertised?: boolean | null;
-    advertisedModifiedAt?: string | null;
-    onDemandEnabled?: boolean | null;
-    onDemandLocked?: boolean | null;
-  } | null;
+  onDemand?: OnDemand | null;
 }
 
 export const CreatePrefixBgpPrefixResponse =
@@ -2926,48 +2274,11 @@ export const CreatePrefixBgpPrefixResponse =
     autoAdvertiseWithdraw: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
     ),
-    bgpSignalOpts: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          modifiedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({ enabled: "enabled", modifiedAt: "modified_at" }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    bgpSignalOpts: Schema.optional(Schema.Union([BgpsignalOpts, Schema.Null])),
     cidr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    onDemand: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          advertised: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          advertisedModifiedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          onDemandEnabled: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          onDemandLocked: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            advertised: "advertised",
-            advertisedModifiedAt: "advertised_modified_at",
-            onDemandEnabled: "on_demand_enabled",
-            onDemandLocked: "on_demand_locked",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    onDemand: Schema.optional(Schema.Union([OnDemand, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
@@ -3049,20 +2360,12 @@ export interface PatchPrefixBgpPrefixResponse {
   asnPrependCount?: number | null;
   /** Determines if Cloudflare advertises a BYOIP BGP prefix even when there is no matching BGP prefix in the Magic routing table. When true, Cloudflare will automatically withdraw the BGP prefix when there */
   autoAdvertiseWithdraw?: boolean | null;
-  bgpSignalOpts?: {
-    enabled?: boolean | null;
-    modifiedAt?: string | null;
-  } | null;
+  bgpSignalOpts?: BgpsignalOpts | null;
   /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr?: string | null;
   createdAt?: string | null;
   modifiedAt?: string | null;
-  onDemand?: {
-    advertised?: boolean | null;
-    advertisedModifiedAt?: string | null;
-    onDemandEnabled?: boolean | null;
-    onDemandLocked?: boolean | null;
-  } | null;
+  onDemand?: OnDemand | null;
 }
 
 export const PatchPrefixBgpPrefixResponse =
@@ -3075,48 +2378,11 @@ export const PatchPrefixBgpPrefixResponse =
     autoAdvertiseWithdraw: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
     ),
-    bgpSignalOpts: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          modifiedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({ enabled: "enabled", modifiedAt: "modified_at" }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    bgpSignalOpts: Schema.optional(Schema.Union([BgpsignalOpts, Schema.Null])),
     cidr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    onDemand: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          advertised: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          advertisedModifiedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          onDemandEnabled: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          onDemandLocked: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            advertised: "advertised",
-            advertisedModifiedAt: "advertised_modified_at",
-            onDemandEnabled: "on_demand_enabled",
-            onDemandLocked: "on_demand_locked",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    onDemand: Schema.optional(Schema.Union([OnDemand, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
@@ -3405,7 +2671,7 @@ export interface GetPrefixServiceBindingResponse {
   /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr?: string | null;
   /** Status of a Service Binding's deployment to the Cloudflare network */
-  provisioning?: { state?: "provisioning" | "active" | null } | null;
+  provisioning?: Provisioning | null;
   /** Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the  List Services  endpoint. */
   serviceId?: string | null;
   /** Name of a service running on the Cloudflare network */
@@ -3416,19 +2682,7 @@ export const GetPrefixServiceBindingResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     cidr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    provisioning: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          state: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["provisioning", "active"]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
+    provisioning: Schema.optional(Schema.Union([Provisioning, Schema.Null])),
     serviceId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     serviceName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
@@ -3483,7 +2737,7 @@ export interface ListPrefixServiceBindingsResponse {
   result: {
     id?: string | null;
     cidr?: string | null;
-    provisioning?: { state?: "provisioning" | "active" | null } | null;
+    provisioning?: Provisioning | null;
     serviceId?: string | null;
     serviceName?: string | null;
   }[];
@@ -3496,17 +2750,7 @@ export const ListPrefixServiceBindingsResponse =
         id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         cidr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         provisioning: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              state: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["provisioning", "active"]),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Null,
-          ]),
+          Schema.Union([Provisioning, Schema.Null]),
         ),
         serviceId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         serviceName: Schema.optional(
@@ -3543,7 +2787,7 @@ export const listPrefixServiceBindings: API.PaginatedOperationMethod<
     {
       id?: string | null;
       cidr?: string | null;
-      provisioning?: { state?: "provisioning" | "active" | null } | null;
+      provisioning?: Provisioning | null;
       serviceId?: string | null;
       serviceName?: string | null;
     },
@@ -3590,7 +2834,7 @@ export interface CreatePrefixServiceBindingResponse {
   /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr?: string | null;
   /** Status of a Service Binding's deployment to the Cloudflare network */
-  provisioning?: { state?: "provisioning" | "active" | null } | null;
+  provisioning?: Provisioning | null;
   /** Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the  List Services  endpoint. */
   serviceId?: string | null;
   /** Name of a service running on the Cloudflare network */
@@ -3601,19 +2845,7 @@ export const CreatePrefixServiceBindingResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     cidr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    provisioning: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          state: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["provisioning", "active"]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
+    provisioning: Schema.optional(Schema.Union([Provisioning, Schema.Null])),
     serviceId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     serviceName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
@@ -3666,76 +2898,16 @@ export const DeletePrefixServiceBindingRequest =
   ) as unknown as Schema.Schema<DeletePrefixServiceBindingRequest>;
 
 export interface DeletePrefixServiceBindingResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
 }
 
 export const DeletePrefixServiceBindingResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
+    errors: Schema.Array(Message),
+    messages: Schema.Array(Message),
     success: Schema.Literal(true),
   }) as unknown as Schema.Schema<DeletePrefixServiceBindingResponse>;
 
@@ -4064,76 +3236,16 @@ export const DeleteRegionalHostnameRequest =
   ) as unknown as Schema.Schema<DeleteRegionalHostnameRequest>;
 
 export interface DeleteRegionalHostnameResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
 }
 
 export const DeleteRegionalHostnameResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
+    errors: Schema.Array(Message),
+    messages: Schema.Array(Message),
     success: Schema.Literal(true),
   }) as unknown as Schema.Schema<DeleteRegionalHostnameResponse>;
 

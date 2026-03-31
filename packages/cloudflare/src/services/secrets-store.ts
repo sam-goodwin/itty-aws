@@ -94,6 +94,27 @@ T.applyErrorMatchers(StoreNotFound, [
 ]);
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Body {
+  name: string;
+  scopes: string[];
+  value: string;
+  comment?: string | null;
+}
+
+export const Body: Schema.Schema<Body> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      scopes: Schema.Array(Schema.String),
+      value: Schema.String,
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Body>;
+
+// =============================================================================
 // Quota
 // =============================================================================
 
@@ -579,21 +600,14 @@ export interface CreateStoreSecretRequest {
   /** Path param: Account Identifier */
   accountId: string;
   /** Body param: */
-  body: { name: string; scopes: string[]; value: string; comment?: string }[];
+  body: Body[];
 }
 
 export const CreateStoreSecretRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     storeId: Schema.String.pipe(T.HttpPath("storeId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    body: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        scopes: Schema.Array(Schema.String),
-        value: Schema.String,
-        comment: Schema.optional(Schema.String),
-      }),
-    ).pipe(T.HttpBody()),
+    body: Schema.Array(Body).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",

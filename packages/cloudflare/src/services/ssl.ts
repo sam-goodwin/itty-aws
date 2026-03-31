@@ -14,6 +14,116 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface Certificate {
+  id: string;
+  hosts: string[];
+  status: string;
+  bundleMethod?: string | null;
+  expiresOn?: string | null;
+  geoRestrictions?: GeoRestrictions | null;
+  issuer?: string | null;
+  modifiedOn?: string | null;
+  priority?: number | null;
+  signature?: string | null;
+  uploadedOn?: string | null;
+  zoneId?: string | null;
+}
+
+export const Certificate: Schema.Schema<Certificate> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      hosts: Schema.Array(Schema.String),
+      status: Schema.String,
+      bundleMethod: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      geoRestrictions: Schema.optional(
+        Schema.Union([GeoRestrictions, Schema.Null]),
+      ),
+      issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      zoneId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        hosts: "hosts",
+        status: "status",
+        bundleMethod: "bundle_method",
+        expiresOn: "expires_on",
+        geoRestrictions: "geo_restrictions",
+        issuer: "issuer",
+        modifiedOn: "modified_on",
+        priority: "priority",
+        signature: "signature",
+        uploadedOn: "uploaded_on",
+        zoneId: "zone_id",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Certificate>;
+
+export interface GeoRestrictions {
+  label?: "us" | "eu" | "highest_security" | null;
+}
+
+export const GeoRestrictions: Schema.Schema<GeoRestrictions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      label: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["us", "eu", "highest_security"]),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<GeoRestrictions>;
+
+export interface ValidationError {
+  message?: string | null;
+}
+
+export const ValidationError: Schema.Schema<ValidationError> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      message: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<ValidationError>;
+
+export interface ValidationRecord {
+  emails?: string[] | null;
+  httpBody?: string | null;
+  httpUrl?: string | null;
+  txtName?: string | null;
+  txtValue?: string | null;
+}
+
+export const ValidationRecord: Schema.Schema<ValidationRecord> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      emails: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      httpBody: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      httpUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      txtName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      txtValue: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        emails: "emails",
+        httpBody: "http_body",
+        httpUrl: "http_url",
+        txtName: "txt_name",
+        txtValue: "txt_value",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ValidationRecord>;
+
+// =============================================================================
 // Analyze
 // =============================================================================
 
@@ -85,22 +195,7 @@ export interface GetCertificatePackResponse {
   /** Identifier. */
   id: string;
   /** Array of certificates in this pack. */
-  certificates: {
-    id: string;
-    hosts: string[];
-    status: string;
-    bundleMethod?: string | null;
-    expiresOn?: string | null;
-    geoRestrictions?: {
-      label?: "us" | "eu" | "highest_security" | null;
-    } | null;
-    issuer?: string | null;
-    modifiedOn?: string | null;
-    priority?: number | null;
-    signature?: string | null;
-    uploadedOn?: string | null;
-    zoneId?: string | null;
-  }[];
+  certificates: Certificate[];
   /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
   hosts: string[];
   /** Status of certificate pack. */
@@ -143,19 +238,11 @@ export interface GetCertificatePackResponse {
   /** Identifier of the primary certificate in a pack. */
   primaryCertificate?: string | null;
   /** Domain validation errors that have been received by the certificate authority (CA). */
-  validationErrors?: { message?: string | null }[] | null;
+  validationErrors?: ValidationError[] | null;
   /** Validation Method selected for the order. */
   validationMethod?: "txt" | "http" | "email" | null;
   /** Certificates' validation records. */
-  validationRecords?:
-    | {
-        emails?: string[] | null;
-        httpBody?: string | null;
-        httpUrl?: string | null;
-        txtName?: string | null;
-        txtValue?: string | null;
-      }[]
-    | null;
+  validationRecords?: ValidationRecord[] | null;
   /** Validity Days selected for the order. */
   validityDays?: "14" | "30" | "90" | "365" | null;
 }
@@ -163,51 +250,7 @@ export interface GetCertificatePackResponse {
 export const GetCertificatePackResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    certificates: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        hosts: Schema.Array(Schema.String),
-        status: Schema.String,
-        bundleMethod: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        geoRestrictions: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              label: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["us", "eu", "highest_security"]),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        zoneId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          hosts: "hosts",
-          status: "status",
-          bundleMethod: "bundle_method",
-          expiresOn: "expires_on",
-          geoRestrictions: "geo_restrictions",
-          issuer: "issuer",
-          modifiedOn: "modified_on",
-          priority: "priority",
-          signature: "signature",
-          uploadedOn: "uploaded_on",
-          zoneId: "zone_id",
-        }),
-      ),
-    ),
+    certificates: Schema.Array(Certificate),
     hosts: Schema.Array(Schema.String),
     status: Schema.Literals([
       "initializing",
@@ -255,51 +298,13 @@ export const GetCertificatePackResponse =
       Schema.Union([Schema.String, Schema.Null]),
     ),
     validationErrors: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            message: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(ValidationError), Schema.Null]),
     ),
     validationMethod: Schema.optional(
       Schema.Union([Schema.Literals(["txt", "http", "email"]), Schema.Null]),
     ),
     validationRecords: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            emails: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            httpBody: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            httpUrl: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            txtName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            txtValue: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              emails: "emails",
-              httpBody: "http_body",
-              httpUrl: "http_url",
-              txtName: "txt_name",
-              txtValue: "txt_value",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(ValidationRecord), Schema.Null]),
     ),
     validityDays: Schema.optional(
       Schema.Union([Schema.Literals(["14", "30", "90", "365"]), Schema.Null]),
@@ -356,22 +361,7 @@ export const ListCertificatePacksRequest =
 export interface ListCertificatePacksResponse {
   result: {
     id: string;
-    certificates: {
-      id: string;
-      hosts: string[];
-      status: string;
-      bundleMethod?: string | null;
-      expiresOn?: string | null;
-      geoRestrictions?: {
-        label?: "us" | "eu" | "highest_security" | null;
-      } | null;
-      issuer?: string | null;
-      modifiedOn?: string | null;
-      priority?: number | null;
-      signature?: string | null;
-      uploadedOn?: string | null;
-      zoneId?: string | null;
-    }[];
+    certificates: Certificate[];
     hosts: string[];
     status:
       | "initializing"
@@ -407,17 +397,9 @@ export interface ListCertificatePacksResponse {
     certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | null;
     cloudflareBranding?: boolean | null;
     primaryCertificate?: string | null;
-    validationErrors?: { message?: string | null }[] | null;
+    validationErrors?: ValidationError[] | null;
     validationMethod?: "txt" | "http" | "email" | null;
-    validationRecords?:
-      | {
-          emails?: string[] | null;
-          httpBody?: string | null;
-          httpUrl?: string | null;
-          txtName?: string | null;
-          txtValue?: string | null;
-        }[]
-      | null;
+    validationRecords?: ValidationRecord[] | null;
     validityDays?: "14" | "30" | "90" | "365" | null;
   }[];
 }
@@ -427,61 +409,7 @@ export const ListCertificatePacksResponse =
     result: Schema.Array(
       Schema.Struct({
         id: Schema.String,
-        certificates: Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            hosts: Schema.Array(Schema.String),
-            status: Schema.String,
-            bundleMethod: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            expiresOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            geoRestrictions: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  label: Schema.optional(
-                    Schema.Union([
-                      Schema.Literals(["us", "eu", "highest_security"]),
-                      Schema.Null,
-                    ]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            modifiedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            priority: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            signature: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            uploadedOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            zoneId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              hosts: "hosts",
-              status: "status",
-              bundleMethod: "bundle_method",
-              expiresOn: "expires_on",
-              geoRestrictions: "geo_restrictions",
-              issuer: "issuer",
-              modifiedOn: "modified_on",
-              priority: "priority",
-              signature: "signature",
-              uploadedOn: "uploaded_on",
-              zoneId: "zone_id",
-            }),
-          ),
-        ),
+        certificates: Schema.Array(Certificate),
         hosts: Schema.Array(Schema.String),
         status: Schema.Literals([
           "initializing",
@@ -529,16 +457,7 @@ export const ListCertificatePacksResponse =
           Schema.Union([Schema.String, Schema.Null]),
         ),
         validationErrors: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                message: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-            ),
-            Schema.Null,
-          ]),
+          Schema.Union([Schema.Array(ValidationError), Schema.Null]),
         ),
         validationMethod: Schema.optional(
           Schema.Union([
@@ -547,36 +466,7 @@ export const ListCertificatePacksResponse =
           ]),
         ),
         validationRecords: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                emails: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-                httpBody: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                httpUrl: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                txtName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                txtValue: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  emails: "emails",
-                  httpBody: "http_body",
-                  httpUrl: "http_url",
-                  txtName: "txt_name",
-                  txtValue: "txt_value",
-                }),
-              ),
-            ),
-            Schema.Null,
-          ]),
+          Schema.Union([Schema.Array(ValidationRecord), Schema.Null]),
         ),
         validityDays: Schema.optional(
           Schema.Union([
@@ -621,22 +511,7 @@ export const listCertificatePacks: API.PaginatedOperationMethod<
   items: (input: ListCertificatePacksRequest) => stream.Stream<
     {
       id: string;
-      certificates: {
-        id: string;
-        hosts: string[];
-        status: string;
-        bundleMethod?: string | null;
-        expiresOn?: string | null;
-        geoRestrictions?: {
-          label?: "us" | "eu" | "highest_security" | null;
-        } | null;
-        issuer?: string | null;
-        modifiedOn?: string | null;
-        priority?: number | null;
-        signature?: string | null;
-        uploadedOn?: string | null;
-        zoneId?: string | null;
-      }[];
+      certificates: Certificate[];
       hosts: string[];
       status:
         | "initializing"
@@ -672,17 +547,9 @@ export const listCertificatePacks: API.PaginatedOperationMethod<
       certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | null;
       cloudflareBranding?: boolean | null;
       primaryCertificate?: string | null;
-      validationErrors?: { message?: string | null }[] | null;
+      validationErrors?: ValidationError[] | null;
       validationMethod?: "txt" | "http" | "email" | null;
-      validationRecords?:
-        | {
-            emails?: string[] | null;
-            httpBody?: string | null;
-            httpUrl?: string | null;
-            txtName?: string | null;
-            txtValue?: string | null;
-          }[]
-        | null;
+      validationRecords?: ValidationRecord[] | null;
       validityDays?: "14" | "30" | "90" | "365" | null;
     },
     ListCertificatePacksError,
@@ -747,22 +614,7 @@ export interface CreateCertificatePackResponse {
   /** Identifier. */
   id: string;
   /** Array of certificates in this pack. */
-  certificates: {
-    id: string;
-    hosts: string[];
-    status: string;
-    bundleMethod?: string | null;
-    expiresOn?: string | null;
-    geoRestrictions?: {
-      label?: "us" | "eu" | "highest_security" | null;
-    } | null;
-    issuer?: string | null;
-    modifiedOn?: string | null;
-    priority?: number | null;
-    signature?: string | null;
-    uploadedOn?: string | null;
-    zoneId?: string | null;
-  }[];
+  certificates: Certificate[];
   /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
   hosts: string[];
   /** Status of certificate pack. */
@@ -805,19 +657,11 @@ export interface CreateCertificatePackResponse {
   /** Identifier of the primary certificate in a pack. */
   primaryCertificate?: string | null;
   /** Domain validation errors that have been received by the certificate authority (CA). */
-  validationErrors?: { message?: string | null }[] | null;
+  validationErrors?: ValidationError[] | null;
   /** Validation Method selected for the order. */
   validationMethod?: "txt" | "http" | "email" | null;
   /** Certificates' validation records. */
-  validationRecords?:
-    | {
-        emails?: string[] | null;
-        httpBody?: string | null;
-        httpUrl?: string | null;
-        txtName?: string | null;
-        txtValue?: string | null;
-      }[]
-    | null;
+  validationRecords?: ValidationRecord[] | null;
   /** Validity Days selected for the order. */
   validityDays?: "14" | "30" | "90" | "365" | null;
 }
@@ -825,51 +669,7 @@ export interface CreateCertificatePackResponse {
 export const CreateCertificatePackResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    certificates: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        hosts: Schema.Array(Schema.String),
-        status: Schema.String,
-        bundleMethod: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        geoRestrictions: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              label: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["us", "eu", "highest_security"]),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        zoneId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          hosts: "hosts",
-          status: "status",
-          bundleMethod: "bundle_method",
-          expiresOn: "expires_on",
-          geoRestrictions: "geo_restrictions",
-          issuer: "issuer",
-          modifiedOn: "modified_on",
-          priority: "priority",
-          signature: "signature",
-          uploadedOn: "uploaded_on",
-          zoneId: "zone_id",
-        }),
-      ),
-    ),
+    certificates: Schema.Array(Certificate),
     hosts: Schema.Array(Schema.String),
     status: Schema.Literals([
       "initializing",
@@ -917,51 +717,13 @@ export const CreateCertificatePackResponse =
       Schema.Union([Schema.String, Schema.Null]),
     ),
     validationErrors: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            message: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(ValidationError), Schema.Null]),
     ),
     validationMethod: Schema.optional(
       Schema.Union([Schema.Literals(["txt", "http", "email"]), Schema.Null]),
     ),
     validationRecords: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            emails: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            httpBody: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            httpUrl: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            txtName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            txtValue: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              emails: "emails",
-              httpBody: "http_body",
-              httpUrl: "http_url",
-              txtName: "txt_name",
-              txtValue: "txt_value",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(ValidationRecord), Schema.Null]),
     ),
     validityDays: Schema.optional(
       Schema.Union([Schema.Literals(["14", "30", "90", "365"]), Schema.Null]),
@@ -1025,22 +787,7 @@ export interface PatchCertificatePackResponse {
   /** Identifier. */
   id: string;
   /** Array of certificates in this pack. */
-  certificates: {
-    id: string;
-    hosts: string[];
-    status: string;
-    bundleMethod?: string | null;
-    expiresOn?: string | null;
-    geoRestrictions?: {
-      label?: "us" | "eu" | "highest_security" | null;
-    } | null;
-    issuer?: string | null;
-    modifiedOn?: string | null;
-    priority?: number | null;
-    signature?: string | null;
-    uploadedOn?: string | null;
-    zoneId?: string | null;
-  }[];
+  certificates: Certificate[];
   /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
   hosts: string[];
   /** Status of certificate pack. */
@@ -1083,19 +830,11 @@ export interface PatchCertificatePackResponse {
   /** Identifier of the primary certificate in a pack. */
   primaryCertificate?: string | null;
   /** Domain validation errors that have been received by the certificate authority (CA). */
-  validationErrors?: { message?: string | null }[] | null;
+  validationErrors?: ValidationError[] | null;
   /** Validation Method selected for the order. */
   validationMethod?: "txt" | "http" | "email" | null;
   /** Certificates' validation records. */
-  validationRecords?:
-    | {
-        emails?: string[] | null;
-        httpBody?: string | null;
-        httpUrl?: string | null;
-        txtName?: string | null;
-        txtValue?: string | null;
-      }[]
-    | null;
+  validationRecords?: ValidationRecord[] | null;
   /** Validity Days selected for the order. */
   validityDays?: "14" | "30" | "90" | "365" | null;
 }
@@ -1103,51 +842,7 @@ export interface PatchCertificatePackResponse {
 export const PatchCertificatePackResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    certificates: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        hosts: Schema.Array(Schema.String),
-        status: Schema.String,
-        bundleMethod: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        geoRestrictions: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              label: Schema.optional(
-                Schema.Union([
-                  Schema.Literals(["us", "eu", "highest_security"]),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        zoneId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          hosts: "hosts",
-          status: "status",
-          bundleMethod: "bundle_method",
-          expiresOn: "expires_on",
-          geoRestrictions: "geo_restrictions",
-          issuer: "issuer",
-          modifiedOn: "modified_on",
-          priority: "priority",
-          signature: "signature",
-          uploadedOn: "uploaded_on",
-          zoneId: "zone_id",
-        }),
-      ),
-    ),
+    certificates: Schema.Array(Certificate),
     hosts: Schema.Array(Schema.String),
     status: Schema.Literals([
       "initializing",
@@ -1195,51 +890,13 @@ export const PatchCertificatePackResponse =
       Schema.Union([Schema.String, Schema.Null]),
     ),
     validationErrors: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            message: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(ValidationError), Schema.Null]),
     ),
     validationMethod: Schema.optional(
       Schema.Union([Schema.Literals(["txt", "http", "email"]), Schema.Null]),
     ),
     validationRecords: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            emails: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            httpBody: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            httpUrl: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            txtName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            txtValue: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              emails: "emails",
-              httpBody: "http_body",
-              httpUrl: "http_url",
-              txtName: "txt_name",
-              txtValue: "txt_value",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(ValidationRecord), Schema.Null]),
     ),
     validityDays: Schema.optional(
       Schema.Union([Schema.Literals(["14", "30", "90", "365"]), Schema.Null]),

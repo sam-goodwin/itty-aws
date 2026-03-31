@@ -14,6 +14,193 @@ import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface AdditionalInformation {
+  suspectedMalwareFamily?: string | null;
+}
+
+export const AdditionalInformation: Schema.Schema<AdditionalInformation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      suspectedMalwareFamily: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({ suspectedMalwareFamily: "suspected_malware_family" }),
+    ),
+  ) as unknown as Schema.Schema<AdditionalInformation>;
+
+export interface Application {
+  id?: number | null;
+  name?: string | null;
+}
+
+export const Application: Schema.Schema<Application> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Application>;
+
+export interface ContentCategory {
+  id?: number | null;
+  name?: string | null;
+  superCategoryId?: number | null;
+}
+
+export const ContentCategory: Schema.Schema<ContentCategory> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      superCategoryId: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        name: "name",
+        superCategoryId: "super_category_id",
+      }),
+    ),
+  ) as unknown as Schema.Schema<ContentCategory>;
+
+export interface Error2 {
+  code: number;
+  message: string;
+  documentationUrl?: string | null;
+  source?: Source2 | null;
+}
+
+export const Error2: Schema.Schema<Error2> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      code: Schema.Number,
+      message: Schema.String,
+      documentationUrl: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      source: Schema.optional(Schema.Union([Source2, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        code: "code",
+        message: "message",
+        documentationUrl: "documentation_url",
+        source: "source",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Error2>;
+
+export interface InheritedContentCategory {
+  id?: number | null;
+  name?: string | null;
+  superCategoryId?: number | null;
+}
+
+export const InheritedContentCategory: Schema.Schema<InheritedContentCategory> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      superCategoryId: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        name: "name",
+        superCategoryId: "super_category_id",
+      }),
+    ),
+  ) as unknown as Schema.Schema<InheritedContentCategory>;
+
+export interface InheritedRiskType {
+  id?: number | null;
+  name?: string | null;
+  superCategoryId?: number | null;
+}
+
+export const InheritedRiskType: Schema.Schema<InheritedRiskType> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      superCategoryId: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        name: "name",
+        superCategoryId: "super_category_id",
+      }),
+    ),
+  ) as unknown as Schema.Schema<InheritedRiskType>;
+
+export interface Message {
+  code: number;
+  message: string;
+  documentationUrl?: string | null;
+  source?: Source2 | null;
+}
+
+export const Message: Schema.Schema<Message> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      code: Schema.Number,
+      message: Schema.String,
+      documentationUrl: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      source: Schema.optional(Schema.Union([Source2, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        code: "code",
+        message: "message",
+        documentationUrl: "documentation_url",
+        source: "source",
+      }),
+    ),
+  ) as unknown as Schema.Schema<Message>;
+
+export interface RiskType {
+  id?: number | null;
+  name?: string | null;
+  superCategoryId?: number | null;
+}
+
+export const RiskType: Schema.Schema<RiskType> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      superCategoryId: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        name: "name",
+        superCategoryId: "super_category_id",
+      }),
+    ),
+  ) as unknown as Schema.Schema<RiskType>;
+
+export interface Source2 {
+  pointer?: string | null;
+}
+
+export const Source2: Schema.Schema<Source2> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<Source2>;
+
+// =============================================================================
 // Asn
 // =============================================================================
 
@@ -596,76 +783,16 @@ export const DismissAttackSurfaceReportIssueRequest =
   ) as unknown as Schema.Schema<DismissAttackSurfaceReportIssueRequest>;
 
 export interface DismissAttackSurfaceReportIssueResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
 }
 
 export const DismissAttackSurfaceReportIssueResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
+    errors: Schema.Array(Message),
+    messages: Schema.Array(Message),
     success: Schema.Literal(true),
   }) as unknown as Schema.Schema<DismissAttackSurfaceReportIssueResponse>;
 
@@ -1178,133 +1305,39 @@ export const GetDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GetDomainResponse {
   /** Additional information related to the host name. */
-  additionalInformation?: { suspectedMalwareFamily?: string | null } | null;
+  additionalInformation?: AdditionalInformation | null;
   /** Application that the hostname belongs to. */
-  application?: { id?: number | null; name?: string | null } | null;
-  contentCategories?:
-    | {
-        id?: number | null;
-        name?: string | null;
-        superCategoryId?: number | null;
-      }[]
-    | null;
+  application?: Application | null;
+  contentCategories?: RiskType[] | null;
   domain?: string | null;
-  inheritedContentCategories?:
-    | {
-        id?: number | null;
-        name?: string | null;
-        superCategoryId?: number | null;
-      }[]
-    | null;
+  inheritedContentCategories?: RiskType[] | null;
   /** Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable. */
   inheritedFrom?: string | null;
-  inheritedRiskTypes?:
-    | {
-        id?: number | null;
-        name?: string | null;
-        superCategoryId?: number | null;
-      }[]
-    | null;
+  inheritedRiskTypes?: RiskType[] | null;
   /** Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000. */
   popularityRank?: number | null;
   /** Specifies a list of references to one or more IP addresses or domain names that the domain name currently resolves to. */
   resolvesToRefs?: { id?: string | null; value?: string | null }[] | null;
   /** Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk). */
   riskScore?: number | null;
-  riskTypes?:
-    | {
-        id?: number | null;
-        name?: string | null;
-        superCategoryId?: number | null;
-      }[]
-    | null;
+  riskTypes?: RiskType[] | null;
 }
 
 export const GetDomainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   additionalInformation: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        suspectedMalwareFamily: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          suspectedMalwareFamily: "suspected_malware_family",
-        }),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([AdditionalInformation, Schema.Null]),
   ),
-  application: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
+  application: Schema.optional(Schema.Union([Application, Schema.Null])),
   contentCategories: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          superCategoryId: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            name: "name",
-            superCategoryId: "super_category_id",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([Schema.Array(RiskType), Schema.Null]),
   ),
   domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   inheritedContentCategories: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          superCategoryId: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            name: "name",
-            superCategoryId: "super_category_id",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([Schema.Array(RiskType), Schema.Null]),
   ),
   inheritedFrom: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   inheritedRiskTypes: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          superCategoryId: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            name: "name",
-            superCategoryId: "super_category_id",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([Schema.Array(RiskType), Schema.Null]),
   ),
   popularityRank: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   resolvesToRefs: Schema.optional(
@@ -1320,24 +1353,7 @@ export const GetDomainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   riskScore: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   riskTypes: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          superCategoryId: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            name: "name",
-            superCategoryId: "super_category_id",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
+    Schema.Union([Schema.Array(RiskType), Schema.Null]),
   ),
 })
   .pipe(
@@ -1393,150 +1409,39 @@ export const GetDomainBulkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetDomainBulkRequest>;
 
 export type GetDomainBulkResponse = {
-  additionalInformation?: { suspectedMalwareFamily?: string | null } | null;
-  application?: { id?: number | null; name?: string | null } | null;
-  contentCategories?:
-    | {
-        id?: number | null;
-        name?: string | null;
-        superCategoryId?: number | null;
-      }[]
-    | null;
+  additionalInformation?: AdditionalInformation | null;
+  application?: Application | null;
+  contentCategories?: RiskType[] | null;
   domain?: string | null;
-  inheritedContentCategories?:
-    | {
-        id?: number | null;
-        name?: string | null;
-        superCategoryId?: number | null;
-      }[]
-    | null;
+  inheritedContentCategories?: RiskType[] | null;
   inheritedFrom?: string | null;
-  inheritedRiskTypes?:
-    | {
-        id?: number | null;
-        name?: string | null;
-        superCategoryId?: number | null;
-      }[]
-    | null;
+  inheritedRiskTypes?: RiskType[] | null;
   popularityRank?: number | null;
   riskScore?: number | null;
-  riskTypes?:
-    | {
-        id?: number | null;
-        name?: string | null;
-        superCategoryId?: number | null;
-      }[]
-    | null;
+  riskTypes?: RiskType[] | null;
 }[];
 
 export const GetDomainBulkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     additionalInformation: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          suspectedMalwareFamily: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            suspectedMalwareFamily: "suspected_malware_family",
-          }),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([AdditionalInformation, Schema.Null]),
     ),
-    application: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
+    application: Schema.optional(Schema.Union([Application, Schema.Null])),
     contentCategories: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            superCategoryId: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              name: "name",
-              superCategoryId: "super_category_id",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(RiskType), Schema.Null]),
     ),
     domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     inheritedContentCategories: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            superCategoryId: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              name: "name",
-              superCategoryId: "super_category_id",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(RiskType), Schema.Null]),
     ),
     inheritedFrom: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     inheritedRiskTypes: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            superCategoryId: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              name: "name",
-              superCategoryId: "super_category_id",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(RiskType), Schema.Null]),
     ),
     popularityRank: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     riskScore: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     riskTypes: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            superCategoryId: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              name: "name",
-              superCategoryId: "super_category_id",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(RiskType), Schema.Null]),
     ),
   }).pipe(
     Schema.encodeKeys({
@@ -1594,7 +1499,7 @@ export const GetDomainHistoryRequest =
 export type GetDomainHistoryResponse = {
   categorizations?:
     | {
-        categories?: { id?: number | null; name?: string | null }[] | null;
+        categories?: Application[] | null;
         end?: string | null;
         start?: string | null;
       }[]
@@ -1610,19 +1515,7 @@ export const GetDomainHistoryResponse =
           Schema.Array(
             Schema.Struct({
               categories: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
+                Schema.Union([Schema.Array(Application), Schema.Null]),
               ),
               end: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
               start: Schema.optional(
@@ -2344,13 +2237,7 @@ export type GetIpResponse = {
     value?: string | null;
   } | null;
   ip?: string | null;
-  riskTypes?:
-    | {
-        id?: number | null;
-        name?: string | null;
-        superCategoryId?: number | null;
-      }[]
-    | null;
+  riskTypes?: RiskType[] | null;
 }[];
 
 export const GetIpResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
@@ -2376,24 +2263,7 @@ export const GetIpResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     ),
     ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     riskTypes: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            superCategoryId: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              name: "name",
-              superCategoryId: "super_category_id",
-            }),
-          ),
-        ),
-        Schema.Null,
-      ]),
+      Schema.Union([Schema.Array(RiskType), Schema.Null]),
     ),
   }).pipe(
     Schema.encodeKeys({
@@ -2534,76 +2404,16 @@ export const CreateMiscategorizationRequest =
   ) as unknown as Schema.Schema<CreateMiscategorizationRequest>;
 
 export interface CreateMiscategorizationResponse {
-  errors: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
-  messages: {
-    code: number;
-    message: string;
-    documentationUrl?: string | null;
-    source?: { pointer?: string | null } | null;
-  }[];
+  errors: Message[];
+  messages: Message[];
   /** Whether the API call was successful. */
   success: true;
 }
 
 export const CreateMiscategorizationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
-      ),
-    ),
+    errors: Schema.Array(Message),
+    messages: Schema.Array(Message),
     success: Schema.Literal(true),
   }) as unknown as Schema.Schema<CreateMiscategorizationResponse>;
 

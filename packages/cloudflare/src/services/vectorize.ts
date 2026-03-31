@@ -15,6 +15,23 @@ import { type DefaultErrors } from "../errors.ts";
 import { UploadableSchema } from "../schemas.ts";
 
 // =============================================================================
+// Shared Types
+// =============================================================================
+
+export interface IndexDimensionConfiguration {
+  dimensions: number;
+  metric: "cosine" | "euclidean" | "dot-product";
+}
+
+export const IndexDimensionConfiguration: Schema.Schema<IndexDimensionConfiguration> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      dimensions: Schema.Number,
+      metric: Schema.Literals(["cosine", "euclidean", "dot-product"]),
+    }),
+  ) as unknown as Schema.Schema<IndexDimensionConfiguration>;
+
+// =============================================================================
 // ByIdsIndex
 // =============================================================================
 
@@ -123,10 +140,7 @@ export const GetIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<GetIndexRequest>;
 
 export interface GetIndexResponse {
-  config?: {
-    dimensions: number;
-    metric: "cosine" | "euclidean" | "dot-product";
-  } | null;
+  config?: IndexDimensionConfiguration | null;
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
   createdOn?: string | null;
   /** Specifies the description of the index. */
@@ -138,13 +152,7 @@ export interface GetIndexResponse {
 
 export const GetIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   config: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        dimensions: Schema.Number,
-        metric: Schema.Literals(["cosine", "euclidean", "dot-product"]),
-      }),
-      Schema.Null,
-    ]),
+    Schema.Union([IndexDimensionConfiguration, Schema.Null]),
   ),
   createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -191,10 +199,7 @@ export const ListIndexesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListIndexesResponse {
   result: {
-    config?: {
-      dimensions: number;
-      metric: "cosine" | "euclidean" | "dot-product";
-    } | null;
+    config?: IndexDimensionConfiguration | null;
     createdOn?: string | null;
     description?: string | null;
     modifiedOn?: string | null;
@@ -206,13 +211,7 @@ export const ListIndexesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
       config: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            dimensions: Schema.Number,
-            metric: Schema.Literals(["cosine", "euclidean", "dot-product"]),
-          }),
-          Schema.Null,
-        ]),
+        Schema.Union([IndexDimensionConfiguration, Schema.Null]),
       ),
       createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -247,10 +246,7 @@ export const listIndexes: API.PaginatedOperationMethod<
   >;
   items: (input: ListIndexesRequest) => stream.Stream<
     {
-      config?: {
-        dimensions: number;
-        metric: "cosine" | "euclidean" | "dot-product";
-      } | null;
+      config?: IndexDimensionConfiguration | null;
       createdOn?: string | null;
       description?: string | null;
       modifiedOn?: string | null;
@@ -274,7 +270,7 @@ export interface CreateIndexRequest {
   accountId: string;
   /** Body param: Specifies the type of configuration to use for the index. */
   config:
-    | { dimensions: number; metric: "cosine" | "euclidean" | "dot-product" }
+    | IndexDimensionConfiguration
     | {
         preset:
           | "@cf/baai/bge-small-en-v1.5"
@@ -292,10 +288,7 @@ export interface CreateIndexRequest {
 export const CreateIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
   config: Schema.Union([
-    Schema.Struct({
-      dimensions: Schema.Number,
-      metric: Schema.Literals(["cosine", "euclidean", "dot-product"]),
-    }),
+    IndexDimensionConfiguration,
     Schema.Struct({
       preset: Schema.Literals([
         "@cf/baai/bge-small-en-v1.5",
@@ -316,10 +309,7 @@ export const CreateIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<CreateIndexRequest>;
 
 export interface CreateIndexResponse {
-  config?: {
-    dimensions: number;
-    metric: "cosine" | "euclidean" | "dot-product";
-  } | null;
+  config?: IndexDimensionConfiguration | null;
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
   createdOn?: string | null;
   /** Specifies the description of the index. */
@@ -331,13 +321,7 @@ export interface CreateIndexResponse {
 
 export const CreateIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   config: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        dimensions: Schema.Number,
-        metric: Schema.Literals(["cosine", "euclidean", "dot-product"]),
-      }),
-      Schema.Null,
-    ]),
+    Schema.Union([IndexDimensionConfiguration, Schema.Null]),
   ),
   createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
