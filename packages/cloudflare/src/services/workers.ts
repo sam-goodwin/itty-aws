@@ -6893,6 +6893,7 @@ export interface PutScriptRequest {
       | { service: string; environment?: string; namespace?: string }[]
       | null;
     usageModel?: "standard" | "bundled" | "unbound";
+    containers?: { className: string }[];
   };
   /** Body param: An array of modules (often JavaScript files) comprising a Worker script. At least one module must be present and referenced in the metadata as `main_module` or `body_part` by filename.<br/ */
   files?: (File | Blob)[];
@@ -7373,6 +7374,13 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     usageModel: Schema.optional(
       Schema.Literals(["standard", "bundled", "unbound"]),
     ),
+    containers: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          className: Schema.String,
+        }).pipe(Schema.encodeKeys({ className: "class_name" })),
+      ),
+    ),
   }).pipe(
     Schema.encodeKeys({
       assets: "assets",
@@ -7391,6 +7399,7 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       tags: "tags",
       tailConsumers: "tail_consumers",
       usageModel: "usage_model",
+      containers: "containers",
     }),
   ),
   files: Schema.optional(

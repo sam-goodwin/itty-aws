@@ -113,6 +113,12 @@ interface PropertyPatch {
   addValues?: string[];
   /** Override the wire key used in Schema.encodeKeys (e.g. rename "results" → "result" on the wire) */
   wireKey?: string;
+  /**
+   * Full TypeInfo definition for adding a property that doesn't exist in the
+   * upstream SDK. When the target property is not found during patching, a new
+   * property is created using this definition.
+   */
+  definition?: TypeInfo;
 }
 
 interface ResponsePatch {
@@ -233,10 +239,12 @@ function getOperationErrors(
   op: ParsedOperation,
   patch?: OperationPatch,
 ): OperationErrorInfo[] {
-  const patchErrors = Object.entries(patch?.errors ?? {}).map(([tag, matchers]) => ({
-    tag,
-    matchers,
-  }));
+  const patchErrors = Object.entries(patch?.errors ?? {}).map(
+    ([tag, matchers]) => ({
+      tag,
+      matchers,
+    }),
+  );
   const existing = op.errors ?? [];
   return [...existing, ...patchErrors];
 }
@@ -248,7 +256,10 @@ function mergeServiceErrors(
   const merged = new Map<string, ErrorMatcherInfo[]>();
 
   for (const op of service.operations) {
-    for (const { tag, matchers } of getOperationErrors(op, patches.get(op.operationName))) {
+    for (const { tag, matchers } of getOperationErrors(
+      op,
+      patches.get(op.operationName),
+    )) {
       const existing = merged.get(tag);
       if (!existing) {
         merged.set(tag, [...matchers]);
@@ -367,7 +378,17 @@ function applyPropertyPatch(
   if (typeInfo.kind !== "object" || !typeInfo.properties) return;
 
   const prop = typeInfo.properties.find((p) => p.name === current);
-  if (!prop) return;
+  if (!prop) {
+    if (rest.length === 0 && patch.definition) {
+      typeInfo.properties.push({
+        name: current,
+        type: JSON.parse(JSON.stringify(patch.definition)),
+        required: !patch.optional,
+        wireKey: patch.wireKey,
+      });
+    }
+    return;
+  }
 
   if (rest.length === 0) {
     // This is the target property — apply the patch
@@ -472,7 +493,10 @@ function unwrapToArray(typeInfo: TypeInfo): TypeInfo | undefined {
   return undefined;
 }
 
-function resolveOperationTypeInfo(op: ParsedOperation, type: TypeInfo): TypeInfo {
+function resolveOperationTypeInfo(
+  op: ParsedOperation,
+  type: TypeInfo,
+): TypeInfo {
   return op.registry ? resolveTypeInfoDeep(type, op.registry) : type;
 }
 
@@ -525,12 +549,13 @@ function resolveOperationModel(
     ...p,
     type: resolveOperationTypeInfo(op, p.type),
   }));
-  const resolvedHeaderParams = [...op.headerParams, ...syntheticHeaderParams].map(
-    (p) => ({
-      ...p,
-      type: resolveOperationTypeInfo(op, p.type),
-    }),
-  );
+  const resolvedHeaderParams = [
+    ...op.headerParams,
+    ...syntheticHeaderParams,
+  ].map((p) => ({
+    ...p,
+    type: resolveOperationTypeInfo(op, p.type),
+  }));
   const resolvedBodyParams = filteredBodyParams.map((p) => ({
     ...p,
     type: resolveOperationTypeInfo(op, p.type),
@@ -595,13 +620,15 @@ function resolveOperationModel(
   } else if (op.responseType.kind !== "unknown") {
     resolvedResponseType = resolveOperationTypeInfo(op, op.responseType);
     isTypeAlias =
-      resolvedResponseType.kind !== "object" || !resolvedResponseType.properties;
+      resolvedResponseType.kind !== "object" ||
+      !resolvedResponseType.properties;
   }
 
   if (!resolvedResponseType && op.responseType.kind !== "unknown") {
     resolvedResponseType = resolveOperationTypeInfo(op, op.responseType);
     isTypeAlias =
-      resolvedResponseType.kind !== "object" || !resolvedResponseType.properties;
+      resolvedResponseType.kind !== "object" ||
+      !resolvedResponseType.properties;
   }
 
   if (patch?.responseType === "array" && resolvedResponseType) {
@@ -624,7 +651,10 @@ function resolveOperationModel(
   }
 
   if (patch?.response && resolvedResponseType) {
-    resolvedResponseType = applyResponsePatch(resolvedResponseType, patch.response);
+    resolvedResponseType = applyResponsePatch(
+      resolvedResponseType,
+      patch.response,
+    );
   }
 
   return {
@@ -816,9 +846,7 @@ function buildPaginatedResponseType(
   }
 }
 
-function getPaginationTrait(
-  paginationClassName: string,
-): {
+function getPaginationTrait(paginationClassName: string): {
   mode: "page" | "cursor" | "single";
   inputToken?: string;
   outputToken?: string;
@@ -1202,12 +1230,13 @@ function generateOperationSchemaAst(
     ...p,
     type: resolveTypeInfoDeep(p.type, op.registry!),
   }));
-  const resolvedHeaderParams = [...op.headerParams, ...syntheticHeaderParams].map(
-    (p) => ({
-      ...p,
-      type: resolveTypeInfoDeep(p.type, op.registry!),
-    }),
-  );
+  const resolvedHeaderParams = [
+    ...op.headerParams,
+    ...syntheticHeaderParams,
+  ].map((p) => ({
+    ...p,
+    type: resolveTypeInfoDeep(p.type, op.registry!),
+  }));
   const resolvedBodyParams = filteredBodyParams.map((p) => ({
     ...p,
     type: resolveTypeInfoDeep(p.type, op.registry!),
@@ -1388,7 +1417,8 @@ function generateOperationSchemaAst(
   if (!resolvedResponseType && op.responseType.kind !== "unknown") {
     resolvedResponseType = resolveOperationTypeInfo(op, op.responseType);
     isTypeAlias =
-      resolvedResponseType.kind !== "object" || !resolvedResponseType.properties;
+      resolvedResponseType.kind !== "object" ||
+      !resolvedResponseType.properties;
   }
 
   if (patch?.responseType === "array" && resolvedResponseType) {
@@ -1525,7 +1555,9 @@ function generateOperationSchemaAst(
   if (op.paginationClassName && paginatedItemType) {
     const pagination = getPaginationTrait(op.paginationClassName);
     const itemTypeName = typeInfoToTsType(paginatedItemType, 0, true);
-    lines.push(`export const ${normalizedOpName}: API.PaginatedOperationMethod<`);
+    lines.push(
+      `export const ${normalizedOpName}: API.PaginatedOperationMethod<`,
+    );
     lines.push(`  ${requestTypeName},`);
     lines.push(`  ${responseTypeName},`);
     lines.push(`  ${errorTypeName},`);
@@ -1813,7 +1845,9 @@ function generateOperationSchema(
   if (op.paginationClassName && paginatedItemType) {
     const pagination = getPaginationTrait(op.paginationClassName);
     const itemTypeName = typeInfoToTsType(paginatedItemType, 0, true);
-    lines.push(`export const ${normalizedOpName}: API.PaginatedOperationMethod<`);
+    lines.push(
+      `export const ${normalizedOpName}: API.PaginatedOperationMethod<`,
+    );
     lines.push(`  ${requestTypeName},`);
     lines.push(`  ${responseTypeName},`);
     lines.push(`  ${errorTypeName},`);
@@ -2032,13 +2066,17 @@ function typeInfoToOpenApiSchema(type: TypeInfo): Record<string, unknown> {
         const normalized = literalValues.map((value) => {
           if (value.value === "true") return true;
           if (value.value === "false") return false;
-          if (value.value !== undefined && /^-?\d+(\.\d+)?$/.test(value.value)) {
+          if (
+            value.value !== undefined &&
+            /^-?\d+(\.\d+)?$/.test(value.value)
+          ) {
             return Number(value.value);
           }
           return value.value;
         });
         const schema: Record<string, unknown> = {
-          type: typeof normalized[0] === "number" ? "number" : typeof normalized[0],
+          type:
+            typeof normalized[0] === "number" ? "number" : typeof normalized[0],
           enum: normalized,
         };
         if (nullable) schema.nullable = true;
@@ -2369,19 +2407,22 @@ interface GenerateOptions {
   debug?: boolean;
 }
 
-const emitServiceSpecs = (
-  services: ServiceInfo[],
-  specOutputPath: string,
-) =>
+const emitServiceSpecs = (services: ServiceInfo[], specOutputPath: string) =>
   Effect.gen(function* () {
     const fs = yield* FileSystem.FileSystem;
     yield* fs.makeDirectory(specOutputPath, { recursive: true });
 
     for (const service of services) {
       if (service.operations.length === 0) continue;
-      const patches = yield* loadServicePatches(service.name, service.operations);
+      const patches = yield* loadServicePatches(
+        service.name,
+        service.operations,
+      );
       const document = buildServiceOpenApiDocument(service, patches);
-      const outputFile = path.join(specOutputPath, `${service.name}.openapi.yml`);
+      const outputFile = path.join(
+        specOutputPath,
+        `${service.name}.openapi.yml`,
+      );
       yield* fs.writeFileString(outputFile, stringifyYaml(document));
     }
   });

@@ -1,5 +1,25 @@
 {
   "errors": {
     "InvalidRoute": [{ "code": 7003 }]
+  },
+  "request": {
+    "properties": {
+      "metadata.containers": {
+        "optional": true,
+        "definition": {
+          "kind": "array",
+          "elementType": {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "class_name",
+                "type": { "kind": "primitive", "value": "string" },
+                "required": true
+              }
+            ]
+          }
+        }
+      }
+    }
   }
 }

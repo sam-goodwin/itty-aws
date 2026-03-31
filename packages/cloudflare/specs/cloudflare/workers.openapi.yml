@@ -6864,6 +6864,15 @@ paths:
                         - bundled
                         - unbound
                       description: Usage model for the Worker invocations.
+                    containers:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          class_name:
+                            type: string
+                        required:
+                          - class_name
                   description: "Body param: JSON-encoded metadata about the uploaded parts and
                     Worker configuration."
                 files:
