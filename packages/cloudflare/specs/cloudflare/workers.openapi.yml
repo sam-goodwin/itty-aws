@@ -7151,6 +7151,10 @@ paths:
       x-distilled-errors:
         InvalidRoute:
           - code: 7003
+        DurableObjectMustBeSqlite:
+          - code: 10074
+            message:
+              includes: not a SQLite Durable Object
     delete:
       operationId: deleteScript
       description: "Delete your worker. This call has no response body on a successful

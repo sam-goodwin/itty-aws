@@ -2,6 +2,7 @@ import { describe, expect } from "vitest";
 import * as Effect from "effect/Effect";
 import { test, getAccountId, testRunId } from "./test.ts";
 import * as Containers from "~/services/containers";
+import * as DurableObjects from "~/services/durable-objects";
 import type {
   CreateContainerApplicationRequest,
   ListContainerApplicationsResponse,
@@ -97,9 +98,20 @@ const getCreateContainerInput = (name: string, namespaceId?: string) =>
         configuration: toCreateConfiguration(base.configuration),
         durableObjects: namespaceId ? { namespaceId } : undefined,
         constraints: {
-          tier: base.constraints.tier ?? undefined,
+          tier: base.constraints?.tier ?? undefined,
         },
       }),
+    ),
+  );
+
+const getFirstNonSqliteDurableObjectNamespace = () =>
+  DurableObjects.listNamespaces({
+    accountId: accountId(),
+  }).pipe(
+    Effect.map((response) =>
+      response.result.find(
+        (namespace) => namespace.id && namespace.useSqlite === false,
+      ),
     ),
   );
 
@@ -199,6 +211,42 @@ describe("Containers", () => {
           ),
         ),
     );
+
+    test(
+      "error - DurableObjectNotContainerEnabled for a non-SQLite durable object namespace",
+      { timeout: 30_000 },
+      () =>
+        getFirstNonSqliteDurableObjectNamespace().pipe(
+          Effect.flatMap((namespace) => {
+            if (!namespace?.id) {
+              return Effect.void;
+            }
+
+            return getCreateContainerInput(
+              containerName("create-non-sqlite-durable-object"),
+              namespace.id,
+            ).pipe(
+              Effect.flatMap((input) =>
+                Containers.createContainerApplication(input),
+              ),
+              Effect.matchEffect({
+                onFailure: (e) =>
+                  Effect.sync(() =>
+                    expect((e as { _tag?: string })._tag).toBe(
+                      "DurableObjectNotContainerEnabled",
+                    ),
+                  ),
+                onSuccess: () =>
+                  Effect.fail(
+                    new Error(
+                      "Expected createContainerApplication to fail for a non-SQLite durable object namespace",
+                    ),
+                  ),
+              }),
+            );
+          }),
+        ),
+    );
   });
 
   describe("getContainerApplication", () => {
@@ -251,7 +299,7 @@ describe("Containers", () => {
               maxInstances: existing.maxInstances,
               schedulingPolicy: existing.schedulingPolicy,
               constraints: {
-                tier: existing.constraints.tier ?? undefined,
+                tier: existing.constraints?.tier ?? undefined,
               },
               configuration: toUpdateConfiguration(existing.configuration),
             });

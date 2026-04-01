@@ -40,6 +40,10 @@ paths:
           - code: 1608
             message:
               includes: DURABLE_OBJECT_ALREADY_HAS_APPLICATION
+        DurableObjectNotContainerEnabled:
+          - code: 1607
+            message:
+              includes: DURABLE_OBJECT_NOT_CONTAINER_ENABLED
       summary: Create container application
       parameters:
         - $ref: "#/components/parameters/AccountId"

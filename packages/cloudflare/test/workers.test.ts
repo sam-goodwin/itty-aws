@@ -29,6 +29,20 @@ const scriptName = (name: string) =>
  */
 const workerModuleSource = `export default { async fetch(request) { return new Response("Hello from test worker"); } };`;
 
+const containerDurableObjectWorkerSource = `
+export class Agents {
+  async fetch() {
+    return new Response("ok");
+  }
+}
+
+export default {
+  async fetch() {
+    return new Response("worker ok");
+  },
+};
+`;
+
 const assetHash = (content: string, extension: string) =>
   createHash("sha256")
     .update(Buffer.from(content).toString("base64") + extension)
@@ -944,6 +958,57 @@ describe("Workers", () => {
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
+
+    test(
+      "error - DurableObjectMustBeSqlite when enabling containers on a non-SQLite durable object",
+      () =>
+        Effect.gen(function* () {
+          const name = scriptName("put-script-container-non-sqlite");
+
+          yield* Workers.deleteScript({
+            accountId: accountId(),
+            scriptName: name,
+            force: true,
+          }).pipe(Effect.catch(() => Effect.void));
+
+          const scriptFile = new File(
+            [containerDurableObjectWorkerSource],
+            "index.mjs",
+            {
+              type: "application/javascript+module",
+            },
+          );
+
+          yield* Workers.putScript({
+            accountId: accountId(),
+            scriptName: name,
+            metadata: {
+              mainModule: "index.mjs",
+              compatibilityDate: "2024-01-01",
+              bindings: [
+                {
+                  name: "AGENTS",
+                  type: "durable_object_namespace",
+                  className: "Agents",
+                },
+              ],
+              migrations: {
+                newTag: "v1",
+                newClasses: ["Agents"],
+              },
+              containers: [{ className: "Agents" }],
+            },
+            files: [scriptFile],
+          }).pipe(
+            Effect.flip,
+            Effect.map((e) =>
+              expect((e as { _tag?: string })._tag).toBe(
+                "DurableObjectMustBeSqlite",
+              ),
+            ),
+          );
+        }),
+    );
   });
 
   describe("getScript", () => {

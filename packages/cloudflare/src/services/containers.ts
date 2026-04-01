@@ -37,6 +37,14 @@ T.applyErrorMatchers(DurableObjectAlreadyHasApplication, [
   },
 ]);
 
+export class DurableObjectNotContainerEnabled extends Schema.TaggedErrorClass<DurableObjectNotContainerEnabled>()(
+  "DurableObjectNotContainerEnabled",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(DurableObjectNotContainerEnabled, [
+  { code: 1607, message: { includes: "DURABLE_OBJECT_NOT_CONTAINER_ENABLED" } },
+]);
+
 export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
   "InvalidRoute",
   { code: Schema.Number, message: Schema.String },
@@ -1418,7 +1426,8 @@ export const CreateContainerApplicationResponse =
 export type CreateContainerApplicationError =
   | DefaultErrors
   | InvalidRoute
-  | DurableObjectAlreadyHasApplication;
+  | DurableObjectAlreadyHasApplication
+  | DurableObjectNotContainerEnabled;
 
 export const createContainerApplication: API.OperationMethod<
   CreateContainerApplicationRequest,
@@ -1428,7 +1437,11 @@ export const createContainerApplication: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateContainerApplicationRequest,
   output: CreateContainerApplicationResponse,
-  errors: [InvalidRoute, DurableObjectAlreadyHasApplication],
+  errors: [
+    InvalidRoute,
+    DurableObjectAlreadyHasApplication,
+    DurableObjectNotContainerEnabled,
+  ],
 }));
 
 export interface UpdateContainerApplicationRequest {

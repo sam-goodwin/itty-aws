@@ -1,6 +1,12 @@
 {
   "errors": {
-    "InvalidRoute": [{ "code": 7003 }]
+    "InvalidRoute": [{ "code": 7003 }],
+    "DurableObjectMustBeSqlite": [
+      {
+        "code": 10074,
+        "message": { "includes": "not a SQLite Durable Object" }
+      }
+    ]
   },
   "request": {
     "properties": {
