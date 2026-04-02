@@ -959,6 +959,23 @@ describe("Workers", () => {
         Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
+    test("error - InvalidWorkerScript for script with no event handlers", () =>
+      Workers.putScript({
+        accountId: accountId(),
+        scriptName: scriptName("put-no-handlers"),
+        metadata: {
+          mainModule: "index.mjs",
+        },
+        files: [
+          new File(["export default {}"], "index.mjs", {
+            type: "application/javascript+module",
+          }),
+        ],
+      }).pipe(
+        Effect.flip,
+        Effect.map((e) => expect(e._tag).toBe("InvalidWorkerScript")),
+      ));
+
     test(
       "error - DurableObjectMustBeSqlite when enabling containers on a non-SQLite durable object",
       () =>

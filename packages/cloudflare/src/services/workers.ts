@@ -2339,7 +2339,9 @@ export const listBetaWorkerVersions: API.PaginatedOperationMethod<
     ListBetaWorkerVersionsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListBetaWorkerVersionsRequest) => stream.Stream<
+  items: (
+    input: ListBetaWorkerVersionsRequest,
+  ) => stream.Stream<
     {
       id: string;
       createdOn: string;
@@ -4077,7 +4079,9 @@ export const listDomains: API.PaginatedOperationMethod<
     ListDomainsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListDomainsRequest) => stream.Stream<
+  items: (
+    input: ListDomainsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       environment?: string | null;
@@ -5968,7 +5972,9 @@ export const valuesObservabilityTelemetry: API.PaginatedOperationMethod<
     ValuesObservabilityTelemetryError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ValuesObservabilityTelemetryRequest) => stream.Stream<
+  items: (
+    input: ValuesObservabilityTelemetryRequest,
+  ) => stream.Stream<
     {
       dataset: string;
       key: string;
@@ -6641,7 +6647,9 @@ export const listScripts: API.PaginatedOperationMethod<
     ListScriptsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListScriptsRequest) => stream.Stream<
+  items: (
+    input: ListScriptsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       compatibilityDate?: string | null;
@@ -7772,6 +7780,7 @@ export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PutScriptError =
   | DefaultErrors
   | InvalidRoute
+  | InvalidWorkerScript
   | DurableObjectMustBeSqlite;
 
 export const putScript: API.OperationMethod<
@@ -7782,7 +7791,7 @@ export const putScript: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutScriptRequest,
   output: PutScriptResponse,
-  errors: [InvalidRoute, DurableObjectMustBeSqlite],
+  errors: [InvalidRoute, InvalidWorkerScript, DurableObjectMustBeSqlite],
 }));
 
 export interface DeleteScriptRequest {
@@ -10865,7 +10874,9 @@ export const listScriptSecrets: API.PaginatedOperationMethod<
     ListScriptSecretsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListScriptSecretsRequest) => stream.Stream<
+  items: (
+    input: ListScriptSecretsRequest,
+  ) => stream.Stream<
     | { name: string; type: "secret_text" }
     | {
         algorithm: unknown;
@@ -12525,7 +12536,9 @@ export const listScriptVersions: API.PaginatedOperationMethod<
     ListScriptVersionsError,
     Credentials | HttpClient.HttpClient
   >;
-  items: (input: ListScriptVersionsRequest) => stream.Stream<
+  items: (
+    input: ListScriptVersionsRequest,
+  ) => stream.Stream<
     {
       id?: string | null;
       metadata?: {
