@@ -537,6 +537,17 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
             ? config.transformResponse(rawBody)
             : rawBody;
 
+          // Some APIs return a JSON *string* (double-encoded JSON). `response.json`
+          // then yields a string, `getPath` bails out, and we would decode the wrong
+          // shape (e.g. Cloudflare envelopes without unwrapping `result`).
+          if (typeof responseBody === "string") {
+            try {
+              responseBody = JSON.parse(responseBody) as unknown;
+            } catch {
+              // leave as string for callers that expect raw text
+            }
+          }
+
           if (responsePath) {
             const nested = getPath(responseBody, responsePath);
             if (nested !== undefined) {

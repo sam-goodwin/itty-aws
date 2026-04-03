@@ -1279,6 +1279,17 @@ paths:
                             - name
                             - part
                             - type
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - worker_loader
+                          required:
+                            - name
+                            - type
                     description: "List of bindings attached to a Worker. You can find more about
                       bindings on our docs:
                       https://developers.cloudflare.com/workers/configuration/m\
@@ -2967,6 +2978,17 @@ paths:
                           - name
                           - part
                           - type
+                      - type: object
+                        properties:
+                          name:
+                            type: string
+                          type:
+                            type: string
+                            enum:
+                              - worker_loader
+                        required:
+                          - name
+                          - type
                   description: "Body param: List of bindings attached to a Worker. You can find
                     more about bindings on our docs:
                     https://developers.cloudflare.com/workers/configuration/mul\
@@ -3779,6 +3801,17 @@ paths:
                           required:
                             - name
                             - part
+                            - type
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - worker_loader
+                          required:
+                            - name
                             - type
                     description: "List of bindings attached to a Worker. You can find more about
                       bindings on our docs:
@@ -4917,13 +4950,11 @@ paths:
                       - id
                       - accountId
                       - dry
-                      - environmentId
                       - granularity
                       - query
                       - status
                       - timeframe
                       - userId
-                      - workspaceId
                     description: A Workers Observability Query Object
                   statistics:
                     type: object
@@ -5390,6 +5421,8 @@ paths:
                                         description: "@deprecated"
                                       bin:
                                         description: "@deprecated"
+                                      _countErrors:
+                                        type: number
                                     required:
                                       - _count
                                       - _interval
@@ -5415,9 +5448,8 @@ paths:
                           required:
                             - data
                             - time
-                  invocations:
-                    type: object
-                    additionalProperties: true
+                      statistics: {}
+                  invocations: {}
                   patterns:
                     type: array
                     items:
@@ -9045,6 +9077,17 @@ paths:
                             - name
                             - part
                             - type
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - worker_loader
+                          required:
+                            - name
+                            - type
                     description: "List of bindings attached to a Worker. You can find more about
                       bindings on our docs:
                       https://developers.cloudflare.com/workers/configuration/m\
@@ -9756,6 +9799,17 @@ paths:
                             required:
                               - name
                               - part
+                              - type
+                          - type: object
+                            properties:
+                              name:
+                                type: string
+                              type:
+                                type: string
+                                enum:
+                                  - worker_loader
+                            required:
+                              - name
                               - type
                       description: "List of bindings attached to a Worker. You can find more about
                         bindings on our docs:
@@ -10573,6 +10627,17 @@ paths:
                           required:
                             - name
                             - part
+                            - type
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                              enum:
+                                - worker_loader
+                          required:
+                            - name
                             - type
                     description: "List of bindings attached to a Worker. You can find more about
                       bindings on our docs:
@@ -12229,6 +12294,17 @@ paths:
                                 - name
                                 - part
                                 - type
+                            - type: object
+                              properties:
+                                name:
+                                  type: string
+                                type:
+                                  type: string
+                                  enum:
+                                    - worker_loader
+                              required:
+                                - name
+                                - type
                         description: "List of bindings attached to a Worker. You can find more about
                           bindings on our docs:
                           https://developers.cloudflare.com/workers/configurati\
@@ -13034,6 +13110,17 @@ paths:
                               - name
                               - part
                               - type
+                          - type: object
+                            properties:
+                              name:
+                                type: string
+                              type:
+                                type: string
+                                enum:
+                                  - worker_loader
+                            required:
+                              - name
+                              - type
                       description: "List of bindings attached to a Worker. You can find more about
                         bindings on our docs:
                         https://developers.cloudflare.com/workers/configuration\
@@ -13649,6 +13736,17 @@ paths:
                               required:
                                 - name
                                 - part
+                                - type
+                            - type: object
+                              properties:
+                                name:
+                                  type: string
+                                type:
+                                  type: string
+                                  enum:
+                                    - worker_loader
+                              required:
+                                - name
                                 - type
                         description: "List of bindings attached to a Worker. You can find more about
                           bindings on our docs:

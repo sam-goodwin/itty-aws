@@ -2,5 +2,28 @@
   "errors": {
     "WorkerNotFound": [{ "code": 10007 }, { "code": 10013 }],
     "WorkerVersionNotFound": [{ "code": 10071 }]
+  },
+  "response": {
+    "properties": {
+      "bindings[]": {
+        "appendUnion": [
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "name",
+                "required": true,
+                "type": { "kind": "primitive", "value": "string" }
+              },
+              {
+                "name": "type",
+                "required": true,
+                "type": { "kind": "literal", "value": "worker_loader" }
+              }
+            ]
+          }
+        ]
+      }
+    }
   }
 }
