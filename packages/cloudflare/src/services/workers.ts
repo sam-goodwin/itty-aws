@@ -6842,6 +6842,7 @@ export interface PutScriptRequest {
           scriptName?: string;
         }
       | { name: string; part: string; type: "wasm_module" }
+      | { name: string; type: "worker_loader" }
     )[];
     bodyPart?: string;
     compatibilityDate?: string;
@@ -7204,6 +7205,10 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             name: Schema.String,
             part: Schema.String,
             type: Schema.Literal("wasm_module"),
+          }),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("worker_loader"),
           }),
         ]),
       ),

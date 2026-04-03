@@ -6594,6 +6594,17 @@ paths:
                               - name
                               - part
                               - type
+                          - type: object
+                            properties:
+                              name:
+                                type: string
+                              type:
+                                type: string
+                                enum:
+                                  - worker_loader
+                            required:
+                              - name
+                              - type
                       description: "List of bindings attached to a Worker. You can find more about
                         bindings on our docs:
                         https://developers.cloudflare.com/workers/configuration\

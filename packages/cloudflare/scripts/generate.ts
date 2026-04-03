@@ -119,6 +119,11 @@ interface PropertyPatch {
    * property is created using this definition.
    */
   definition?: TypeInfo;
+  /**
+   * Append discriminated-union variants (e.g. a new Worker metadata binding).
+   * Only applies when the patched type is a `union` and `type` is not set.
+   */
+  appendUnion?: TypeInfo[];
 }
 
 interface ResponsePatch {
@@ -314,6 +319,7 @@ const parseArgs = (): { service: string | undefined; debug: boolean } => {
  * - optional: make field not required
  * - type: replace type entirely
  * - addValues: add literal values to existing enum
+ * - appendUnion: append TypeInfo variants to a union
  */
 function applyResponsePatch(
   typeInfo: TypeInfo,
@@ -458,6 +464,21 @@ function applyPatchToTypeInfo(typeInfo: TypeInfo, patch: PropertyPatch): void {
           existingLiterals.add(v);
         }
       }
+    }
+  }
+
+  // Append variants to an object union (e.g. new binding type in metadata.bindings)
+  if (
+    !patch.type &&
+    patch.appendUnion &&
+    patch.appendUnion.length > 0 &&
+    typeInfo.kind === "union" &&
+    typeInfo.values
+  ) {
+    for (const variant of patch.appendUnion) {
+      typeInfo.values.push(
+        JSON.parse(JSON.stringify(variant)) as TypeInfo,
+      );
     }
   }
 

@@ -769,8 +769,9 @@ describe("Workers", () => {
   });
 
   describe("updateRoute", () => {
-    if (hasZoneId()) {
-      test("error - RouteNotFound or InvalidRoutePattern for non-existent routeId", () =>
+    (hasZoneId() ? test : test.skip)(
+      "error - RouteNotFound or InvalidRoutePattern for non-existent routeId",
+      () =>
         Workers.updateRoute({
           zoneId: zoneId(),
           routeId: "00000000000000000000000000000000",
@@ -781,21 +782,22 @@ describe("Workers", () => {
           Effect.map((e) =>
             expect(["RouteNotFound", "InvalidRoutePattern"]).toContain(e._tag),
           ),
-        ));
-    }
+        ),
+    );
   });
 
   describe("deleteRoute", () => {
-    if (hasZoneId()) {
-      test("error - RouteNotFound for non-existent routeId", () =>
+    (hasZoneId() ? test : test.skip)(
+      "error - RouteNotFound for non-existent routeId",
+      () =>
         Workers.deleteRoute({
           zoneId: zoneId(),
           routeId: "00000000000000000000000000000000",
         }).pipe(
           Effect.flip,
           Effect.map((e) => expect(e._tag).toBe("RouteNotFound")),
-        ));
-    }
+        ),
+    );
   });
 
   // ==========================================================================
@@ -863,6 +865,46 @@ describe("Workers", () => {
           force: true,
         }).pipe(Effect.catch(() => Effect.void));
       }));
+
+    test(
+      "happy path - uploads with worker_loader binding in metadata",
+      { timeout: 30_000 },
+      () =>
+        Effect.gen(function* () {
+          const name = scriptName("put-script-worker-loader");
+
+          yield* Workers.deleteScript({
+            accountId: accountId(),
+            scriptName: name,
+            force: true,
+          }).pipe(Effect.catch(() => Effect.void));
+
+          const scriptFile = new File([workerModuleSource], "index.mjs", {
+            type: "application/javascript+module",
+          });
+
+          const result = yield* Workers.putScript({
+            accountId: accountId(),
+            scriptName: name,
+            metadata: {
+              mainModule: "index.mjs",
+              compatibilityDate: "2024-01-01",
+              bindings: [{ name: "LOADER", type: "worker_loader" }],
+            },
+            files: [scriptFile],
+          });
+
+          expect(result).toBeDefined();
+          expect(result.id).toBe(name);
+          expect(typeof result.startupTimeMs).toBe("number");
+
+          yield* Workers.deleteScript({
+            accountId: accountId(),
+            scriptName: name,
+            force: true,
+          }).pipe(Effect.catch(() => Effect.void));
+        }),
+    );
 
     test("happy path - decodes response with nullable observability fields", () =>
       Effect.gen(function* () {
