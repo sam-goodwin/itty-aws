@@ -72,6 +72,31 @@ test.skip = function (
   return it.skip(name, () => {}, options.timeout ?? 120_000);
 };
 
+/** When `condition` is true, the test is skipped (Vitest `it.skipIf`). */
+test.skipIf = function (condition: boolean): typeof test {
+  const skipIfIt = it.skipIf(condition);
+  return Object.assign(
+    (
+      name: string,
+      ...args: [{ timeout?: number }, TestCase] | [TestCase]
+    ) => {
+      const [options = {}, testCase] =
+        args.length === 1 ? [undefined, args[0]] : args;
+
+      return skipIfIt(
+        name,
+        async () => {
+          await Effect.runPromise(
+            provideTestEnv(Effect.scoped(resolveTestCase(testCase))),
+          );
+        },
+        options.timeout ?? 120_000,
+      );
+    },
+    { skip: test.skip, skipIf: test.skipIf },
+  ) as typeof test;
+};
+
 /** Run an Effect for use in beforeAll/beforeEach hooks */
 export async function run<E>(
   effect: Effect.Effect<void, E, Provided>,

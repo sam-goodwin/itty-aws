@@ -769,7 +769,7 @@ describe("Workers", () => {
   });
 
   describe("updateRoute", () => {
-    (hasZoneId() ? test : test.skip)(
+    test.skipIf(!hasZoneId())(
       "error - RouteNotFound or InvalidRoutePattern for non-existent routeId",
       () =>
         Workers.updateRoute({
@@ -787,7 +787,7 @@ describe("Workers", () => {
   });
 
   describe("deleteRoute", () => {
-    (hasZoneId() ? test : test.skip)(
+    test.skipIf(!hasZoneId())(
       "error - RouteNotFound for non-existent routeId",
       () =>
         Workers.deleteRoute({
