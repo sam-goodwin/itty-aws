@@ -1,5 +1,6 @@
 {
   "errors": {
-    "WorkerNotFound": [{ "code": 10007 }]
+    "WorkerNotFound": [{ "code": 10007 }],
+    "QueueConsumerConflict": [{ "code": 10064 }]
   }
 }

@@ -62,6 +62,12 @@ export class InvalidWorkerScript extends Schema.TaggedErrorClass<InvalidWorkerSc
 ) {}
 T.applyErrorMatchers(InvalidWorkerScript, [{ code: 10068 }]);
 
+export class QueueConsumerConflict extends Schema.TaggedErrorClass<QueueConsumerConflict>()(
+  "QueueConsumerConflict",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(QueueConsumerConflict, [{ code: 10064 }]);
+
 export class RouteNotFound extends Schema.TaggedErrorClass<RouteNotFound>()(
   "RouteNotFound",
   { code: Schema.Number, message: Schema.String },
@@ -7846,7 +7852,10 @@ export const DeleteScriptResponse =
     T.ResponsePath("result"),
   ) as unknown as Schema.Schema<DeleteScriptResponse>;
 
-export type DeleteScriptError = DefaultErrors | WorkerNotFound;
+export type DeleteScriptError =
+  | DefaultErrors
+  | WorkerNotFound
+  | QueueConsumerConflict;
 
 export const deleteScript: API.OperationMethod<
   DeleteScriptRequest,
@@ -7856,7 +7865,7 @@ export const deleteScript: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteScriptRequest,
   output: DeleteScriptResponse,
-  errors: [WorkerNotFound],
+  errors: [WorkerNotFound, QueueConsumerConflict],
 }));
 
 export interface SearchScriptRequest {
