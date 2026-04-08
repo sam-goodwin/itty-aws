@@ -7239,6 +7239,8 @@ paths:
           - code: 10007
         QueueConsumerConflict:
           - code: 10064
+        ServiceBindingConflict:
+          - code: 10142
   /accounts/{account_id}/workers/scripts:
     get:
       operationId: listScripts

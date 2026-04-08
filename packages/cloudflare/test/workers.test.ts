@@ -3,6 +3,7 @@ import { describe, expect } from "vitest";
 import * as Effect from "effect/Effect";
 import { test, getAccountId, getZoneId, testRunId } from "./test.ts";
 import * as Workers from "~/services/workers";
+import * as Queues from "~/services/queues";
 
 const accountId = () => getAccountId();
 const hasZoneId = () => !!getZoneId();
@@ -1146,6 +1147,173 @@ describe("Workers", () => {
         Effect.flip,
         Effect.map((e) => expect(e._tag).toBe("WorkerNotFound")),
       ));
+
+    test(
+      "error - QueueConsumerConflict when worker is a queue consumer",
+      { timeout: 60_000 },
+      () =>
+        Effect.gen(function* () {
+          const name = scriptName("del-queue-conflict");
+          const qName = `distilled-cf-workers-q-${testRunId}`;
+
+          // Cleanup
+          yield* Workers.deleteScript({
+            accountId: accountId(),
+            scriptName: name,
+            force: true,
+          }).pipe(Effect.catch(() => Effect.void));
+
+          // Create a worker that can handle queue messages
+          const queueWorkerSource = `export default {
+  async fetch(request) { return new Response("ok"); },
+  async queue(batch, env) { for (const msg of batch.messages) { msg.ack(); } }
+};`;
+          const scriptFile = new File([queueWorkerSource], "index.mjs", {
+            type: "application/javascript+module",
+          });
+
+          yield* Workers.putScript({
+            accountId: accountId(),
+            scriptName: name,
+            metadata: {
+              mainModule: "index.mjs",
+              compatibilityDate: "2024-01-01",
+            },
+            files: [scriptFile],
+          });
+
+          // Create a queue and bind the worker as a consumer
+          const deleteQueueByName = (n: string) =>
+            Effect.gen(function* () {
+              const queues = yield* Queues.listQueues({
+                accountId: accountId(),
+              });
+              const found = queues.result.find((q) => q.queueName === n);
+              if (found?.queueId) {
+                yield* Queues.deleteQueue({
+                  accountId: accountId(),
+                  queueId: found.queueId,
+                }).pipe(Effect.catch(() => Effect.void));
+              }
+            }).pipe(Effect.catch(() => Effect.void));
+
+          yield* deleteQueueByName(qName);
+
+          const queue = yield* Queues.createQueue({
+            accountId: accountId(),
+            queueName: qName,
+          });
+
+          yield* Queues.createConsumer({
+            accountId: accountId(),
+            queueId: queue.queueId!,
+            scriptName: name,
+            type: "worker",
+          });
+
+          // Try to delete the worker WITHOUT force — should fail with QueueConsumerConflict
+          yield* Workers.deleteScript({
+            accountId: accountId(),
+            scriptName: name,
+          }).pipe(
+            Effect.flip,
+            Effect.map((e) => expect(e._tag).toBe("QueueConsumerConflict")),
+          );
+
+          // Cleanup: remove consumer, delete queue, delete worker with force
+          yield* Queues.deleteQueue({
+            accountId: accountId(),
+            queueId: queue.queueId!,
+          }).pipe(Effect.catch(() => Effect.void));
+
+          yield* Workers.deleteScript({
+            accountId: accountId(),
+            scriptName: name,
+            force: true,
+          }).pipe(Effect.catch(() => Effect.void));
+        }),
+    );
+
+    test(
+      "error - ServiceBindingConflict when another worker has a service binding to this worker",
+      { timeout: 60_000 },
+      () =>
+        Effect.gen(function* () {
+          const targetName = scriptName("del-svc-target");
+          const dependentName = scriptName("del-svc-dependent");
+
+          // Cleanup
+          yield* Workers.deleteScript({
+            accountId: accountId(),
+            scriptName: dependentName,
+            force: true,
+          }).pipe(Effect.catch(() => Effect.void));
+
+          yield* Workers.deleteScript({
+            accountId: accountId(),
+            scriptName: targetName,
+            force: true,
+          }).pipe(Effect.catch(() => Effect.void));
+
+          // Create the target worker
+          yield* Workers.putScript({
+            accountId: accountId(),
+            scriptName: targetName,
+            metadata: {
+              mainModule: "index.mjs",
+              compatibilityDate: "2024-01-01",
+            },
+            files: [
+              new File([workerModuleSource], "index.mjs", {
+                type: "application/javascript+module",
+              }),
+            ],
+          });
+
+          // Create a dependent worker with a service binding to the target
+          yield* Workers.putScript({
+            accountId: accountId(),
+            scriptName: dependentName,
+            metadata: {
+              mainModule: "index.mjs",
+              compatibilityDate: "2024-01-01",
+              bindings: [
+                {
+                  name: "TARGET_SERVICE",
+                  type: "service",
+                  service: targetName,
+                },
+              ],
+            },
+            files: [
+              new File([workerModuleSource], "index.mjs", {
+                type: "application/javascript+module",
+              }),
+            ],
+          });
+
+          // Try to delete the target worker WITHOUT force — should fail
+          const error = yield* Workers.deleteScript({
+            accountId: accountId(),
+            scriptName: targetName,
+          }).pipe(Effect.flip);
+
+          expect(error._tag).toBe("ServiceBindingConflict");
+
+          // Cleanup
+          yield* Workers.deleteScript({
+            accountId: accountId(),
+            scriptName: dependentName,
+            force: true,
+          }).pipe(Effect.catch(() => Effect.void));
+
+          yield* Workers.deleteScript({
+            accountId: accountId(),
+            scriptName: targetName,
+            force: true,
+          }).pipe(Effect.catch(() => Effect.void));
+        }),
+    );
   });
 
   describe("searchScript", () => {

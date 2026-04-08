@@ -1,6 +1,7 @@
 {
   "errors": {
     "WorkerNotFound": [{ "code": 10007 }],
-    "QueueConsumerConflict": [{ "code": 10064 }]
+    "QueueConsumerConflict": [{ "code": 10064 }],
+    "ServiceBindingConflict": [{ "code": 10142 }]
   }
 }

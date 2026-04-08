@@ -80,6 +80,12 @@ export class SecretNotFound extends Schema.TaggedErrorClass<SecretNotFound>()(
 ) {}
 T.applyErrorMatchers(SecretNotFound, [{ code: 10056 }]);
 
+export class ServiceBindingConflict extends Schema.TaggedErrorClass<ServiceBindingConflict>()(
+  "ServiceBindingConflict",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(ServiceBindingConflict, [{ code: 10142 }]);
+
 export class VersionNotFound extends Schema.TaggedErrorClass<VersionNotFound>()(
   "VersionNotFound",
   { code: Schema.Number, message: Schema.String },
@@ -7855,7 +7861,8 @@ export const DeleteScriptResponse =
 export type DeleteScriptError =
   | DefaultErrors
   | WorkerNotFound
-  | QueueConsumerConflict;
+  | QueueConsumerConflict
+  | ServiceBindingConflict;
 
 export const deleteScript: API.OperationMethod<
   DeleteScriptRequest,
@@ -7865,7 +7872,7 @@ export const deleteScript: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteScriptRequest,
   output: DeleteScriptResponse,
-  errors: [WorkerNotFound, QueueConsumerConflict],
+  errors: [WorkerNotFound, QueueConsumerConflict, ServiceBindingConflict],
 }));
 
 export interface SearchScriptRequest {
