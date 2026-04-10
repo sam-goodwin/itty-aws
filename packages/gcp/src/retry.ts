@@ -1,6 +1,6 @@
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
-import * as ServiceMap from "effect/ServiceMap";
+import * as Context from "effect/Context";
 export {
   type Options,
   type Factory,
@@ -13,7 +13,7 @@ export {
 } from "@distilled.cloud/core/retry";
 import type { Policy } from "@distilled.cloud/core/retry";
 
-export class Retry extends ServiceMap.Service<Retry, Policy>()("GCPRetry") {}
+export class Retry extends Context.Service<Retry, Policy>()("GCPRetry") {}
 
 export const policy = (optionsOrFactory: Policy) =>
   Effect.provide(Layer.succeed(Retry, optionsOrFactory));

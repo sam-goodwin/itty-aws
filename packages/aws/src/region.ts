@@ -1,8 +1,8 @@
 import * as Config from "effect/Config";
 import * as Layer from "effect/Layer";
-import * as ServiceMap from "effect/ServiceMap";
+import * as Context from "effect/Context";
 
-export class Region extends ServiceMap.Service<Region, RegionName>()(
+export class Region extends Context.Service<Region, RegionName>()(
   "AWS::Region",
 ) {}
 

@@ -4,7 +4,7 @@ import { pipe } from "effect/Function";
 import * as Layer from "effect/Layer";
 import * as Ref from "effect/Ref";
 import * as Schedule from "effect/Schedule";
-import * as ServiceMap from "effect/ServiceMap";
+import * as Context from "effect/Context";
 import {
   isRetryable,
   isThrottlingError,
@@ -39,7 +39,7 @@ export type Policy = Options | Factory;
 /**
  * Context tag for configuring retry behavior of AWS API calls.
  */
-export class Retry extends ServiceMap.Service<Retry, Policy>()("AWS::Retry") {}
+export class Retry extends Context.Service<Retry, Policy>()("AWS::Retry") {}
 
 /**
  * Provides a custom retry policy to all AWS API calls in the effect.

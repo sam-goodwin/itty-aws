@@ -1,5 +1,5 @@
-import * as ServiceMap from "effect/ServiceMap";
+import * as Context from "effect/Context";
 
-export class Endpoint extends ServiceMap.Service<Endpoint, string>()(
+export class Endpoint extends Context.Service<Endpoint, string>()(
   "AWS::Endpoint",
 ) {}

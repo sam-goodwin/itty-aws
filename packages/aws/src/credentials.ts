@@ -17,7 +17,7 @@ import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import type { PlatformError } from "effect/PlatformError";
 import * as Redacted from "effect/Redacted";
-import * as ServiceMap from "effect/ServiceMap";
+import * as Context from "effect/Context";
 import type { HttpClientError } from "effect/unstable/http/HttpClientError";
 import { Auth } from "./auth.ts";
 export * as AWSTypes from "@aws-sdk/types";
@@ -56,7 +56,7 @@ export type CredentialsError =
   | HttpClientError
   | PlatformError;
 
-export class Credentials extends ServiceMap.Service<
+export class Credentials extends Context.Service<
   Credentials,
   Effect.Effect<ResolvedCredentials, CredentialsError>
 >()("AWS::Credentials") {}
@@ -217,10 +217,10 @@ export const fromTokenFile = () =>
 
 export const ssoRegion = (region: string) => Layer.succeed(SsoRegion, region);
 
-export class SsoRegion extends ServiceMap.Service<SsoRegion, string>()(
+export class SsoRegion extends Context.Service<SsoRegion, string>()(
   "AWS::SsoRegion",
 ) {}
-export class SsoStartUrl extends ServiceMap.Service<SsoStartUrl, string>()(
+export class SsoStartUrl extends Context.Service<SsoStartUrl, string>()(
   "AWS::SsoStartUrl",
 ) {}
 

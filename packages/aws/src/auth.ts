@@ -5,7 +5,7 @@ import * as FileSystem from "effect/FileSystem";
 import * as Option from "effect/Option";
 import * as Path from "effect/Path";
 import * as Redacted from "effect/Redacted";
-import * as ServiceMap from "effect/ServiceMap";
+import * as Context from "effect/Context";
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import { createHash } from "node:crypto";
 import {
@@ -30,7 +30,7 @@ const EXPIRE_WINDOW_MS = 5 * 60 * 1000;
 
 const REFRESH_MESSAGE = `To refresh this SSO session run 'aws sso login' with the corresponding profile.`;
 
-export class Auth extends ServiceMap.Service<
+export class Auth extends Context.Service<
   Auth,
   {
     loadProfile: (
