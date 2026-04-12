@@ -3,25 +3,16 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateFederationSettingConnectedOrgConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    federationSettingsId: Schema.String.pipe(T.PathParam()),
-    orgId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}",
-    }),
-  );
-export type UpdateFederationSettingConnectedOrgConfigInput =
-  typeof UpdateFederationSettingConnectedOrgConfigInput.Type;
+export const UpdateFederationSettingConnectedOrgConfigInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  federationSettingsId: Schema.String.pipe(T.PathParam()),
+  orgId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}" }));
+export type UpdateFederationSettingConnectedOrgConfigInput = typeof UpdateFederationSettingConnectedOrgConfigInput.Type;
 
 // Output Schema
-export const UpdateFederationSettingConnectedOrgConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateFederationSettingConnectedOrgConfigOutput =
-  typeof UpdateFederationSettingConnectedOrgConfigOutput.Type;
+export const UpdateFederationSettingConnectedOrgConfigOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateFederationSettingConnectedOrgConfigOutput = typeof UpdateFederationSettingConnectedOrgConfigOutput.Type;
 
 // The operation
 /**
@@ -37,8 +28,7 @@ export type UpdateFederationSettingConnectedOrgConfigOutput =
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param orgId - Unique 24-hexadecimal digit string that identifies the connected organization configuration to update.
  */
-export const updateFederationSettingConnectedOrgConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UpdateFederationSettingConnectedOrgConfigInput,
-    outputSchema: UpdateFederationSettingConnectedOrgConfigOutput,
-  }));
+export const updateFederationSettingConnectedOrgConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: UpdateFederationSettingConnectedOrgConfigInput,
+  outputSchema: UpdateFederationSettingConnectedOrgConfigOutput,
+}));

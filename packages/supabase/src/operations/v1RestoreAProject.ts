@@ -3,11 +3,9 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const V1RestoreAProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(T.Http({ method: "POST", path: "/v1/projects/{ref}/restore" }));
+export const V1RestoreAProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "POST", path: "/v1/projects/{ref}/restore" }));
 export type V1RestoreAProjectInput = typeof V1RestoreAProjectInput.Type;
 
 // Output Schema

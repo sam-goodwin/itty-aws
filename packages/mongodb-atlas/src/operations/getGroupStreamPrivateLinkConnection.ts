@@ -3,25 +3,16 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupStreamPrivateLinkConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    connectionId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}",
-    }),
-  );
-export type GetGroupStreamPrivateLinkConnectionInput =
-  typeof GetGroupStreamPrivateLinkConnectionInput.Type;
+export const GetGroupStreamPrivateLinkConnectionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  connectionId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}" }));
+export type GetGroupStreamPrivateLinkConnectionInput = typeof GetGroupStreamPrivateLinkConnectionInput.Type;
 
 // Output Schema
-export const GetGroupStreamPrivateLinkConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupStreamPrivateLinkConnectionOutput =
-  typeof GetGroupStreamPrivateLinkConnectionOutput.Type;
+export const GetGroupStreamPrivateLinkConnectionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupStreamPrivateLinkConnectionOutput = typeof GetGroupStreamPrivateLinkConnectionOutput.Type;
 
 // The operation
 /**
@@ -35,8 +26,7 @@ export type GetGroupStreamPrivateLinkConnectionOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param connectionId - Unique ID that identifies the Private Link connection.
  */
-export const getGroupStreamPrivateLinkConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetGroupStreamPrivateLinkConnectionInput,
-    outputSchema: GetGroupStreamPrivateLinkConnectionOutput,
-  }));
+export const getGroupStreamPrivateLinkConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupStreamPrivateLinkConnectionInput,
+  outputSchema: GetGroupStreamPrivateLinkConnectionOutput,
+}));

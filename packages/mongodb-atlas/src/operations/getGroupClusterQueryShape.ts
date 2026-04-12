@@ -3,27 +3,18 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupClusterQueryShapeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    queryShapeHash: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash}",
-    }),
-  );
-export type GetGroupClusterQueryShapeInput =
-  typeof GetGroupClusterQueryShapeInput.Type;
+export const GetGroupClusterQueryShapeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  queryShapeHash: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash}" }));
+export type GetGroupClusterQueryShapeInput = typeof GetGroupClusterQueryShapeInput.Type;
 
 // Output Schema
-export const GetGroupClusterQueryShapeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupClusterQueryShapeOutput =
-  typeof GetGroupClusterQueryShapeOutput.Type;
+export const GetGroupClusterQueryShapeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupClusterQueryShapeOutput = typeof GetGroupClusterQueryShapeOutput.Type;
 
 // The operation
 /**
@@ -39,9 +30,7 @@ export type GetGroupClusterQueryShapeOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  * @param queryShapeHash - A SHA256 hash of a query shape, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs.
  */
-export const getGroupClusterQueryShape = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupClusterQueryShapeInput,
-    outputSchema: GetGroupClusterQueryShapeOutput,
-  }),
-);
+export const getGroupClusterQueryShape = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupClusterQueryShapeInput,
+  outputSchema: GetGroupClusterQueryShapeOutput,
+}));

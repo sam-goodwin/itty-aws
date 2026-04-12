@@ -3,31 +3,22 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateOrganizationMemberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    org_id: Schema.String.pipe(T.PathParam()),
-    member_id: Schema.String.pipe(T.PathParam()),
-    role: Schema.Literals(["admin", "member"]),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/organizations/{org_id}/members/{member_id}",
-    }),
-  );
-export type UpdateOrganizationMemberInput =
-  typeof UpdateOrganizationMemberInput.Type;
+export const UpdateOrganizationMemberInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  org_id: Schema.String.pipe(T.PathParam()),
+  member_id: Schema.String.pipe(T.PathParam()),
+  role: Schema.Literals(["admin", "member"]),
+}).pipe(T.Http({ method: "PATCH", path: "/organizations/{org_id}/members/{member_id}" }));
+export type UpdateOrganizationMemberInput = typeof UpdateOrganizationMemberInput.Type;
 
 // Output Schema
-export const UpdateOrganizationMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    user_id: Schema.String,
-    org_id: Schema.String,
-    role: Schema.Literals(["admin", "member"]),
-    joined_at: Schema.optional(Schema.String),
-  });
-export type UpdateOrganizationMemberOutput =
-  typeof UpdateOrganizationMemberOutput.Type;
+export const UpdateOrganizationMemberOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  user_id: Schema.String,
+  org_id: Schema.String,
+  role: Schema.Literals(["admin", "member"]),
+  joined_at: Schema.optional(Schema.String),
+});
+export type UpdateOrganizationMemberOutput = typeof UpdateOrganizationMemberOutput.Type;
 
 // The operation
 /**
@@ -38,9 +29,7 @@ export type UpdateOrganizationMemberOutput =
  * @param org_id - The Neon organization ID
  * @param member_id - The Neon organization member ID
  */
-export const updateOrganizationMember = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateOrganizationMemberInput,
-    outputSchema: UpdateOrganizationMemberOutput,
-  }),
-);
+export const updateOrganizationMember = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: UpdateOrganizationMemberInput,
+  outputSchema: UpdateOrganizationMemberOutput,
+}));

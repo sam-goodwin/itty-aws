@@ -3,32 +3,21 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupMongoDbVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-    cloudProvider: Schema.optional(
-      Schema.Literals(["AWS", "AZURE", "GCP", "TENANT"]),
-    ),
-    instanceSize: Schema.optional(Schema.String),
-    defaultStatus: Schema.optional(Schema.Literals(["DEFAULT"])),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/mongoDBVersions",
-    }),
-  );
-export type GetGroupMongoDbVersionsInput =
-  typeof GetGroupMongoDbVersionsInput.Type;
+export const GetGroupMongoDbVersionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+  cloudProvider: Schema.optional(Schema.Literals(["AWS", "AZURE", "GCP", "TENANT"])),
+  instanceSize: Schema.optional(Schema.String),
+  defaultStatus: Schema.optional(Schema.Literals(["DEFAULT"])),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/mongoDBVersions" }));
+export type GetGroupMongoDbVersionsInput = typeof GetGroupMongoDbVersionsInput.Type;
 
 // Output Schema
-export const GetGroupMongoDbVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupMongoDbVersionsOutput =
-  typeof GetGroupMongoDbVersionsOutput.Type;
+export const GetGroupMongoDbVersionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupMongoDbVersionsOutput = typeof GetGroupMongoDbVersionsOutput.Type;
 
 // The operation
 /**
@@ -47,9 +36,7 @@ export type GetGroupMongoDbVersionsOutput =
  * @param itemsPerPage - Number of items that the response returns per page.
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  */
-export const getGroupMongoDbVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupMongoDbVersionsInput,
-    outputSchema: GetGroupMongoDbVersionsOutput,
-  }),
-);
+export const getGroupMongoDbVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupMongoDbVersionsInput,
+  outputSchema: GetGroupMongoDbVersionsOutput,
+}));

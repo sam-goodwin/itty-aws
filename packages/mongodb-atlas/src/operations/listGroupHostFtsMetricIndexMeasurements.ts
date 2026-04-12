@@ -3,32 +3,23 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupHostFtsMetricIndexMeasurementsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    processId: Schema.String.pipe(T.PathParam()),
-    databaseName: Schema.String.pipe(T.PathParam()),
-    collectionName: Schema.String.pipe(T.PathParam()),
-    groupId: Schema.String.pipe(T.PathParam()),
-    granularity: Schema.String,
-    period: Schema.optional(Schema.String),
-    start: Schema.optional(Schema.String),
-    end: Schema.optional(Schema.String),
-    envelope: Schema.optional(Schema.Boolean),
-    metrics: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/measurements",
-    }),
-  );
-export type ListGroupHostFtsMetricIndexMeasurementsInput =
-  typeof ListGroupHostFtsMetricIndexMeasurementsInput.Type;
+export const ListGroupHostFtsMetricIndexMeasurementsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  processId: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
+  collectionName: Schema.String.pipe(T.PathParam()),
+  groupId: Schema.String.pipe(T.PathParam()),
+  granularity: Schema.String,
+  period: Schema.optional(Schema.String),
+  start: Schema.optional(Schema.String),
+  end: Schema.optional(Schema.String),
+  envelope: Schema.optional(Schema.Boolean),
+  metrics: Schema.String,
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/measurements" }));
+export type ListGroupHostFtsMetricIndexMeasurementsInput = typeof ListGroupHostFtsMetricIndexMeasurementsInput.Type;
 
 // Output Schema
-export const ListGroupHostFtsMetricIndexMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupHostFtsMetricIndexMeasurementsOutput =
-  typeof ListGroupHostFtsMetricIndexMeasurementsOutput.Type;
+export const ListGroupHostFtsMetricIndexMeasurementsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupHostFtsMetricIndexMeasurementsOutput = typeof ListGroupHostFtsMetricIndexMeasurementsOutput.Type;
 
 // The operation
 /**
@@ -49,8 +40,7 @@ export type ListGroupHostFtsMetricIndexMeasurementsOutput =
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param metrics - List that contains the measurements that MongoDB Atlas reports for the associated data series.
  */
-export const listGroupHostFtsMetricIndexMeasurements =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListGroupHostFtsMetricIndexMeasurementsInput,
-    outputSchema: ListGroupHostFtsMetricIndexMeasurementsOutput,
-  }));
+export const listGroupHostFtsMetricIndexMeasurements = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupHostFtsMetricIndexMeasurementsInput,
+  outputSchema: ListGroupHostFtsMetricIndexMeasurementsOutput,
+}));

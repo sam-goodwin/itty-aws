@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service durable-objects
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -113,26 +112,7 @@ export const listNamespaces: API.PaginatedOperationMethod<
   ListNamespacesResponse,
   ListNamespacesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNamespacesRequest,
-  ) => stream.Stream<
-    ListNamespacesResponse,
-    ListNamespacesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListNamespacesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      class?: string | null;
-      name?: string | null;
-      script?: string | null;
-      useSqlite?: boolean | null;
-    },
-    ListNamespacesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNamespacesRequest,
   output: ListNamespacesResponse,
   errors: [InvalidIdentifier],
@@ -209,22 +189,7 @@ export const listNamespaceObjects: API.PaginatedOperationMethod<
   ListNamespaceObjectsResponse,
   ListNamespaceObjectsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNamespaceObjectsRequest,
-  ) => stream.Stream<
-    ListNamespaceObjectsResponse,
-    ListNamespaceObjectsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNamespaceObjectsRequest,
-  ) => stream.Stream<
-    { id?: string | null; hasStoredData?: boolean | null },
-    ListNamespaceObjectsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNamespaceObjectsRequest,
   output: ListNamespaceObjectsResponse,
   errors: [NamespaceNotFound, InvalidIdentifier, MalformedParameter],

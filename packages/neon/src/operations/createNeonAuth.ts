@@ -8,12 +8,7 @@ export const CreateNeonAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   branch_id: Schema.String.pipe(T.PathParam()),
   auth_provider: Schema.Literals(["mock", "stack", "stack_v2", "better_auth"]),
   database_name: Schema.optional(Schema.String),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/projects/{project_id}/branches/{branch_id}/auth",
-  }),
-);
+}).pipe(T.Http({ method: "POST", path: "/projects/{project_id}/branches/{branch_id}/auth" }));
 export type CreateNeonAuthInput = typeof CreateNeonAuthInput.Type;
 
 // Output Schema

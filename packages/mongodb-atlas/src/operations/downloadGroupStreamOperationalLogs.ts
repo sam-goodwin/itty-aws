@@ -3,28 +3,19 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DownloadGroupStreamOperationalLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    endDate: Schema.optional(Schema.Number),
-    startDate: Schema.optional(Schema.Number),
-    spName: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}:downloadOperationalLogs",
-    }),
-  );
-export type DownloadGroupStreamOperationalLogsInput =
-  typeof DownloadGroupStreamOperationalLogsInput.Type;
+export const DownloadGroupStreamOperationalLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  endDate: Schema.optional(Schema.Number),
+  startDate: Schema.optional(Schema.Number),
+  spName: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}:downloadOperationalLogs" }));
+export type DownloadGroupStreamOperationalLogsInput = typeof DownloadGroupStreamOperationalLogsInput.Type;
 
 // Output Schema
-export const DownloadGroupStreamOperationalLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DownloadGroupStreamOperationalLogsOutput =
-  typeof DownloadGroupStreamOperationalLogsOutput.Type;
+export const DownloadGroupStreamOperationalLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DownloadGroupStreamOperationalLogsOutput = typeof DownloadGroupStreamOperationalLogsOutput.Type;
 
 // The operation
 /**
@@ -41,8 +32,7 @@ export type DownloadGroupStreamOperationalLogsOutput =
  * @param spName - Name of the stream processor to download logs for. An empty string will download logs for all stream processors in the workspace.
  * @param tenantName - Label that identifies the stream workspace.
  */
-export const downloadGroupStreamOperationalLogs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DownloadGroupStreamOperationalLogsInput,
-    outputSchema: DownloadGroupStreamOperationalLogsOutput,
-  }));
+export const downloadGroupStreamOperationalLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DownloadGroupStreamOperationalLogsInput,
+  outputSchema: DownloadGroupStreamOperationalLogsOutput,
+}));

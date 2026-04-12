@@ -3,34 +3,16 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    integrationType: Schema.Literals([
-      "PAGER_DUTY",
-      "SLACK",
-      "DATADOG",
-      "NEW_RELIC",
-      "OPS_GENIE",
-      "VICTOR_OPS",
-      "WEBHOOK",
-      "HIP_CHAT",
-      "PROMETHEUS",
-      "MICROSOFT_TEAMS",
-    ]).pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}",
-    }),
-  );
+export const GetGroupIntegrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  integrationType: Schema.Literals(["PAGER_DUTY", "SLACK", "DATADOG", "NEW_RELIC", "OPS_GENIE", "VICTOR_OPS", "WEBHOOK", "HIP_CHAT", "PROMETHEUS", "MICROSOFT_TEAMS"]).pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}" }));
 export type GetGroupIntegrationInput = typeof GetGroupIntegrationInput.Type;
 
 // Output Schema
-export const GetGroupIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupIntegrationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type GetGroupIntegrationOutput = typeof GetGroupIntegrationOutput.Type;
 
 // The operation

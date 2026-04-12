@@ -3,23 +3,16 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupFlexClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}",
-    }),
-  );
+export const GetGroupFlexClusterInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}" }));
 export type GetGroupFlexClusterInput = typeof GetGroupFlexClusterInput.Type;
 
 // Output Schema
-export const GetGroupFlexClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupFlexClusterOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type GetGroupFlexClusterOutput = typeof GetGroupFlexClusterOutput.Type;
 
 // The operation

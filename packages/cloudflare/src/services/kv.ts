@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service kv
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -213,22 +212,7 @@ export const listNamespaces: API.PaginatedOperationMethod<
   ListNamespacesResponse,
   ListNamespacesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNamespacesRequest,
-  ) => stream.Stream<
-    ListNamespacesResponse,
-    ListNamespacesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNamespacesRequest,
-  ) => stream.Stream<
-    { id: string; title: string; supportsUrlEncoding?: boolean | null },
-    ListNamespacesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNamespacesRequest,
   output: ListNamespacesResponse,
   errors: [],
@@ -610,22 +594,7 @@ export const listNamespaceKeys: API.PaginatedOperationMethod<
   ListNamespaceKeysResponse,
   ListNamespaceKeysError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListNamespaceKeysRequest,
-  ) => stream.Stream<
-    ListNamespaceKeysResponse,
-    ListNamespaceKeysError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListNamespaceKeysRequest,
-  ) => stream.Stream<
-    { name: string; expiration?: number | null; metadata?: unknown | null },
-    ListNamespaceKeysError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNamespaceKeysRequest,
   output: ListNamespaceKeysResponse,
   errors: [],

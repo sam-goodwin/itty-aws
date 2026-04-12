@@ -3,26 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DownloadGroupFlexClusterBackupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.PathParam()),
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download",
-    }),
-  );
-export type DownloadGroupFlexClusterBackupInput =
-  typeof DownloadGroupFlexClusterBackupInput.Type;
+export const DownloadGroupFlexClusterBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.PathParam()),
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download" }));
+export type DownloadGroupFlexClusterBackupInput = typeof DownloadGroupFlexClusterBackupInput.Type;
 
 // Output Schema
-export const DownloadGroupFlexClusterBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DownloadGroupFlexClusterBackupOutput =
-  typeof DownloadGroupFlexClusterBackupOutput.Type;
+export const DownloadGroupFlexClusterBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DownloadGroupFlexClusterBackupOutput = typeof DownloadGroupFlexClusterBackupOutput.Type;
 
 // The operation
 /**
@@ -37,8 +28,7 @@ export type DownloadGroupFlexClusterBackupOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const downloadGroupFlexClusterBackup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DownloadGroupFlexClusterBackupInput,
-    outputSchema: DownloadGroupFlexClusterBackupOutput,
-  }));
+export const downloadGroupFlexClusterBackup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DownloadGroupFlexClusterBackupInput,
+  outputSchema: DownloadGroupFlexClusterBackupOutput,
+}));

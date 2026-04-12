@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service rulesets
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -12992,51 +12991,7 @@ export const listPhasVersions: API.PaginatedOperationMethod<
   ListPhasVersionsResponse,
   ListPhasVersionsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPhasVersionsRequest,
-  ) => stream.Stream<
-    ListPhasVersionsResponse,
-    ListPhasVersionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListPhasVersionsRequest) => stream.Stream<
-    {
-      id: string;
-      kind: "managed" | "custom" | "root" | "zone";
-      lastUpdated: string;
-      name: string;
-      phase:
-        | "ddos_l4"
-        | "ddos_l7"
-        | "http_config_settings"
-        | "http_custom_errors"
-        | "http_log_custom_fields"
-        | "http_ratelimit"
-        | "http_request_cache_settings"
-        | "http_request_dynamic_redirect"
-        | "http_request_firewall_custom"
-        | "http_request_firewall_managed"
-        | "http_request_late_transform"
-        | "http_request_origin"
-        | "http_request_redirect"
-        | "http_request_sanitize"
-        | "http_request_sbfm"
-        | "http_request_transform"
-        | "http_response_compression"
-        | "http_response_firewall_managed"
-        | "http_response_headers_transform"
-        | "magic_transit"
-        | "magic_transit_ids_managed"
-        | "magic_transit_managed"
-        | "magic_transit_ratelimit";
-      version: string;
-      description?: string | null;
-    },
-    ListPhasVersionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPhasVersionsRequest,
   output: ListPhasVersionsResponse,
   errors: [],
@@ -27429,51 +27384,7 @@ export const listRulesets: API.PaginatedOperationMethod<
   ListRulesetsResponse,
   ListRulesetsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesetsRequest,
-  ) => stream.Stream<
-    ListRulesetsResponse,
-    ListRulesetsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListRulesetsRequest) => stream.Stream<
-    {
-      id: string;
-      kind: "managed" | "custom" | "root" | "zone";
-      lastUpdated: string;
-      name: string;
-      phase:
-        | "ddos_l4"
-        | "ddos_l7"
-        | "http_config_settings"
-        | "http_custom_errors"
-        | "http_log_custom_fields"
-        | "http_ratelimit"
-        | "http_request_cache_settings"
-        | "http_request_dynamic_redirect"
-        | "http_request_firewall_custom"
-        | "http_request_firewall_managed"
-        | "http_request_late_transform"
-        | "http_request_origin"
-        | "http_request_redirect"
-        | "http_request_sanitize"
-        | "http_request_sbfm"
-        | "http_request_transform"
-        | "http_response_compression"
-        | "http_response_firewall_managed"
-        | "http_response_headers_transform"
-        | "magic_transit"
-        | "magic_transit_ids_managed"
-        | "magic_transit_managed"
-        | "magic_transit_ratelimit";
-      version: string;
-      description?: string | null;
-    },
-    ListRulesetsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRulesetsRequest,
   output: ListRulesetsResponse,
   errors: [],
@@ -42884,51 +42795,7 @@ export const listVersions: API.PaginatedOperationMethod<
   ListVersionsResponse,
   ListVersionsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVersionsRequest,
-  ) => stream.Stream<
-    ListVersionsResponse,
-    ListVersionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListVersionsRequest) => stream.Stream<
-    {
-      id: string;
-      kind: "managed" | "custom" | "root" | "zone";
-      lastUpdated: string;
-      name: string;
-      phase:
-        | "ddos_l4"
-        | "ddos_l7"
-        | "http_config_settings"
-        | "http_custom_errors"
-        | "http_log_custom_fields"
-        | "http_ratelimit"
-        | "http_request_cache_settings"
-        | "http_request_dynamic_redirect"
-        | "http_request_firewall_custom"
-        | "http_request_firewall_managed"
-        | "http_request_late_transform"
-        | "http_request_origin"
-        | "http_request_redirect"
-        | "http_request_sanitize"
-        | "http_request_sbfm"
-        | "http_request_transform"
-        | "http_response_compression"
-        | "http_response_firewall_managed"
-        | "http_response_headers_transform"
-        | "magic_transit"
-        | "magic_transit_ids_managed"
-        | "magic_transit_managed"
-        | "magic_transit_ratelimit";
-      version: string;
-      description?: string | null;
-    },
-    ListVersionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListVersionsRequest,
   output: ListVersionsResponse,
   errors: [],

@@ -3,25 +3,16 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const RevokeFederationSettingIdentityProviderJwksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    federationSettingsId: Schema.String.pipe(T.PathParam()),
-    identityProviderId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks",
-    }),
-  );
-export type RevokeFederationSettingIdentityProviderJwksInput =
-  typeof RevokeFederationSettingIdentityProviderJwksInput.Type;
+export const RevokeFederationSettingIdentityProviderJwksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  federationSettingsId: Schema.String.pipe(T.PathParam()),
+  identityProviderId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks" }));
+export type RevokeFederationSettingIdentityProviderJwksInput = typeof RevokeFederationSettingIdentityProviderJwksInput.Type;
 
 // Output Schema
-export const RevokeFederationSettingIdentityProviderJwksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RevokeFederationSettingIdentityProviderJwksOutput =
-  typeof RevokeFederationSettingIdentityProviderJwksOutput.Type;
+export const RevokeFederationSettingIdentityProviderJwksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type RevokeFederationSettingIdentityProviderJwksOutput = typeof RevokeFederationSettingIdentityProviderJwksOutput.Type;
 
 // The operation
 /**
@@ -34,8 +25,7 @@ export type RevokeFederationSettingIdentityProviderJwksOutput =
  * @param identityProviderId - Unique 24-hexadecimal digit string that identifies the identity provider to connect.
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  */
-export const revokeFederationSettingIdentityProviderJwks =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RevokeFederationSettingIdentityProviderJwksInput,
-    outputSchema: RevokeFederationSettingIdentityProviderJwksOutput,
-  }));
+export const revokeFederationSettingIdentityProviderJwks = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: RevokeFederationSettingIdentityProviderJwksInput,
+  outputSchema: RevokeFederationSettingIdentityProviderJwksOutput,
+}));

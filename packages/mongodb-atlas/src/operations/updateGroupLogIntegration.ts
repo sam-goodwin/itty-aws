@@ -3,26 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateGroupLogIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/api/atlas/v2/groups/{groupId}/logIntegrations/{id}",
-    }),
-  );
-export type UpdateGroupLogIntegrationInput =
-  typeof UpdateGroupLogIntegrationInput.Type;
+export const UpdateGroupLogIntegrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "PUT", path: "/api/atlas/v2/groups/{groupId}/logIntegrations/{id}" }));
+export type UpdateGroupLogIntegrationInput = typeof UpdateGroupLogIntegrationInput.Type;
 
 // Output Schema
-export const UpdateGroupLogIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupLogIntegrationOutput =
-  typeof UpdateGroupLogIntegrationOutput.Type;
+export const UpdateGroupLogIntegrationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateGroupLogIntegrationOutput = typeof UpdateGroupLogIntegrationOutput.Type;
 
 // The operation
 /**
@@ -37,9 +28,7 @@ export type UpdateGroupLogIntegrationOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param id - Unique identifier of the log integration configuration.
  */
-export const updateGroupLogIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupLogIntegrationInput,
-    outputSchema: UpdateGroupLogIntegrationOutput,
-  }),
-);
+export const updateGroupLogIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupLogIntegrationInput,
+  outputSchema: UpdateGroupLogIntegrationOutput,
+}));

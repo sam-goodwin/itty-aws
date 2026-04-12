@@ -11,58 +11,44 @@ export const GetV1ConnectionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetV1ConnectionsInput = typeof GetV1ConnectionsInput.Type;
 
 // Output Schema
-export const GetV1ConnectionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    data: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        type: Schema.String,
-        url: Schema.String,
-        name: Schema.String,
-        createdAt: Schema.String,
-        kind: Schema.Literals(["postgres", "accelerate"]),
-        endpoints: Schema.Struct({
-          direct: Schema.optional(
-            Schema.Struct({
-              host: Schema.String,
-              port: Schema.Number,
-            }),
-          ),
-          pooled: Schema.optional(
-            Schema.Struct({
-              host: Schema.String,
-              port: Schema.Number,
-            }),
-          ),
-          accelerate: Schema.optional(
-            Schema.Struct({
-              host: Schema.String,
-              port: Schema.Number,
-            }),
-          ),
-        }),
-        directConnection: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              host: Schema.String,
-              pass: Schema.String,
-              user: Schema.String,
-            }),
-          ),
-        ),
-        database: Schema.Struct({
-          id: Schema.String,
-          url: Schema.String,
-          name: Schema.String,
-        }),
-      }),
-    ),
-    pagination: Schema.Struct({
-      nextCursor: Schema.NullOr(Schema.String),
-      hasMore: Schema.Boolean,
+export const GetV1ConnectionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.Array(Schema.Struct({
+    id: Schema.String,
+    type: Schema.String,
+    url: Schema.String,
+    name: Schema.String,
+    createdAt: Schema.String,
+    kind: Schema.Literals(["postgres", "accelerate"]),
+    endpoints: Schema.Struct({
+      direct: Schema.optional(Schema.Struct({
+        host: Schema.String,
+        port: Schema.Number,
+      })),
+      pooled: Schema.optional(Schema.Struct({
+        host: Schema.String,
+        port: Schema.Number,
+      })),
+      accelerate: Schema.optional(Schema.Struct({
+        host: Schema.String,
+        port: Schema.Number,
+      })),
     }),
-  },
-);
+    directConnection: Schema.optional(Schema.NullOr(Schema.Struct({
+      host: Schema.String,
+      pass: Schema.String,
+      user: Schema.String,
+    }))),
+    database: Schema.Struct({
+      id: Schema.String,
+      url: Schema.String,
+      name: Schema.String,
+    }),
+  })),
+  pagination: Schema.Struct({
+    nextCursor: Schema.NullOr(Schema.String),
+    hasMore: Schema.Boolean,
+  }),
+});
 export type GetV1ConnectionsOutput = typeof GetV1ConnectionsOutput.Type;
 
 // The operation

@@ -8,12 +8,7 @@ export const GetOrgInvoiceCsvInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   invoiceId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv",
-  }),
-);
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv" }));
 export type GetOrgInvoiceCsvInput = typeof GetOrgInvoiceCsvInput.Type;
 
 // Output Schema

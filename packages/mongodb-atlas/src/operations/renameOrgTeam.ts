@@ -8,12 +8,7 @@ export const RenameOrgTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   teamId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "/api/atlas/v2/orgs/{orgId}/teams/{teamId}",
-  }),
-);
+}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/orgs/{orgId}/teams/{teamId}" }));
 export type RenameOrgTeamInput = typeof RenameOrgTeamInput.Type;
 
 // Output Schema

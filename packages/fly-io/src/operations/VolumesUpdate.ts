@@ -8,9 +8,7 @@ export const VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   volume_id: Schema.String.pipe(T.PathParam()),
   auto_backup_enabled: Schema.optional(Schema.Boolean),
   snapshot_retention: Schema.optional(Schema.Number),
-}).pipe(
-  T.Http({ method: "PUT", path: "/apps/{app_name}/volumes/{volume_id}" }),
-);
+}).pipe(T.Http({ method: "PUT", path: "/apps/{app_name}/volumes/{volume_id}" }));
 export type VolumesUpdateInput = typeof VolumesUpdateInput.Type;
 
 // Output Schema
@@ -27,9 +25,7 @@ export const VolumesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   created_at: Schema.optional(Schema.String),
   encrypted: Schema.optional(Schema.Boolean),
   fstype: Schema.optional(Schema.String),
-  host_status: Schema.optional(
-    Schema.Literals(["ok", "unknown", "unreachable"]),
-  ),
+  host_status: Schema.optional(Schema.Literals(["ok", "unknown", "unreachable"])),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   region: Schema.optional(Schema.String),

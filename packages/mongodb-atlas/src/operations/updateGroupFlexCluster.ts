@@ -3,26 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateGroupFlexClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}",
-    }),
-  );
-export type UpdateGroupFlexClusterInput =
-  typeof UpdateGroupFlexClusterInput.Type;
+export const UpdateGroupFlexClusterInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}" }));
+export type UpdateGroupFlexClusterInput = typeof UpdateGroupFlexClusterInput.Type;
 
 // Output Schema
-export const UpdateGroupFlexClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupFlexClusterOutput =
-  typeof UpdateGroupFlexClusterOutput.Type;
+export const UpdateGroupFlexClusterOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateGroupFlexClusterOutput = typeof UpdateGroupFlexClusterOutput.Type;
 
 // The operation
 /**
@@ -37,9 +28,7 @@ export type UpdateGroupFlexClusterOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param name - Human-readable label that identifies the flex cluster.
  */
-export const updateGroupFlexCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupFlexClusterInput,
-    outputSchema: UpdateGroupFlexClusterOutput,
-  }),
-);
+export const updateGroupFlexCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupFlexClusterInput,
+  outputSchema: UpdateGroupFlexClusterOutput,
+}));

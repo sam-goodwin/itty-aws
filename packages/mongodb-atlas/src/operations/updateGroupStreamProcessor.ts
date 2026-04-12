@@ -3,27 +3,18 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateGroupStreamProcessorInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    processorName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}",
-    }),
-  );
-export type UpdateGroupStreamProcessorInput =
-  typeof UpdateGroupStreamProcessorInput.Type;
+export const UpdateGroupStreamProcessorInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  processorName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}" }));
+export type UpdateGroupStreamProcessorInput = typeof UpdateGroupStreamProcessorInput.Type;
 
 // Output Schema
-export const UpdateGroupStreamProcessorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupStreamProcessorOutput =
-  typeof UpdateGroupStreamProcessorOutput.Type;
+export const UpdateGroupStreamProcessorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateGroupStreamProcessorOutput = typeof UpdateGroupStreamProcessorOutput.Type;
 
 // The operation
 /**
@@ -39,9 +30,7 @@ export type UpdateGroupStreamProcessorOutput =
  * @param tenantName - Label that identifies the stream workspace.
  * @param processorName - Label that identifies the stream processor.
  */
-export const updateGroupStreamProcessor = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupStreamProcessorInput,
-    outputSchema: UpdateGroupStreamProcessorOutput,
-  }),
-);
+export const updateGroupStreamProcessor = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupStreamProcessorInput,
+  outputSchema: UpdateGroupStreamProcessorOutput,
+}));

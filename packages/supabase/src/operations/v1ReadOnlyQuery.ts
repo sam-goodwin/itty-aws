@@ -7,12 +7,7 @@ export const V1ReadOnlyQueryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   query: Schema.String,
   parameters: Schema.optional(Schema.Array(Schema.Unknown)),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/v1/projects/{ref}/database/query/read-only",
-  }),
-);
+}).pipe(T.Http({ method: "POST", path: "/v1/projects/{ref}/database/query/read-only" }));
 export type V1ReadOnlyQueryInput = typeof V1ReadOnlyQueryInput.Type;
 
 // Output Schema

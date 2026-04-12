@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service magic-transit
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -99,33 +98,7 @@ export const listApps: API.PaginatedOperationMethod<
   ListAppsResponse,
   ListAppsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppsRequest,
-  ) => stream.Stream<
-    ListAppsResponse,
-    ListAppsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListAppsRequest) => stream.Stream<
-    | {
-        accountAppId: string;
-        hostnames?: string[] | null;
-        ipSubnets?: string[] | null;
-        name?: string | null;
-        type?: string | null;
-      }
-    | {
-        managedAppId: string;
-        hostnames?: string[] | null;
-        ipSubnets?: string[] | null;
-        name?: string | null;
-        type?: string | null;
-      },
-    ListAppsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppsRequest,
   output: ListAppsResponse,
   errors: [],
@@ -1175,32 +1148,7 @@ export const listConnectors: API.PaginatedOperationMethod<
   ListConnectorsResponse,
   ListConnectorsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectorsRequest,
-  ) => stream.Stream<
-    ListConnectorsResponse,
-    ListConnectorsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListConnectorsRequest) => stream.Stream<
-    {
-      id: string;
-      activated: boolean;
-      interruptWindowDurationHours: number;
-      interruptWindowHourOfDay: number;
-      lastUpdated: string;
-      notes: string;
-      timezone: string;
-      device?: { id: string; serialNumber?: string | null } | null;
-      lastHeartbeat?: string | null;
-      lastSeenVersion?: string | null;
-      licenseKey?: string | null;
-    },
-    ListConnectorsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConnectorsRequest,
   output: ListConnectorsResponse,
   errors: [],
@@ -8032,74 +7980,7 @@ export const listPcaps: API.PaginatedOperationMethod<
   ListPcapsResponse,
   ListPcapsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPcapsRequest,
-  ) => stream.Stream<
-    ListPcapsResponse,
-    ListPcapsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListPcapsRequest) => stream.Stream<
-    | {
-        id?: string | null;
-        filterV1?: {
-          destinationAddress?: string | null;
-          destinationPort?: number | null;
-          protocol?: number | null;
-          sourceAddress?: string | null;
-          sourcePort?: number | null;
-        } | null;
-        offsetTime?: string | null;
-        status?:
-          | "unknown"
-          | "success"
-          | "pending"
-          | "running"
-          | "conversion_pending"
-          | "conversion_running"
-          | "complete"
-          | "failed"
-          | null;
-        submitted?: string | null;
-        system?: "magic-transit" | null;
-        timeLimit?: number | null;
-        type?: "simple" | "full" | null;
-      }
-    | {
-        id?: string | null;
-        byteLimit?: number | null;
-        coloName?: string | null;
-        destinationConf?: string | null;
-        errorMessage?: string | null;
-        filterV1?: {
-          destinationAddress?: string | null;
-          destinationPort?: number | null;
-          protocol?: number | null;
-          sourceAddress?: string | null;
-          sourcePort?: number | null;
-        } | null;
-        packetsCaptured?: number | null;
-        status?:
-          | "unknown"
-          | "success"
-          | "pending"
-          | "running"
-          | "conversion_pending"
-          | "conversion_running"
-          | "complete"
-          | "failed"
-          | null;
-        stopRequested?: string | null;
-        submitted?: string | null;
-        system?: "magic-transit" | null;
-        timeLimit?: number | null;
-        type?: "simple" | "full" | null;
-      },
-    ListPcapsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPcapsRequest,
   output: ListPcapsResponse,
   errors: [],
@@ -8517,27 +8398,7 @@ export const getPcapOwnership: API.PaginatedOperationMethod<
   GetPcapOwnershipResponse,
   GetPcapOwnershipError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetPcapOwnershipRequest,
-  ) => stream.Stream<
-    GetPcapOwnershipResponse,
-    GetPcapOwnershipError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: GetPcapOwnershipRequest) => stream.Stream<
-    {
-      id: string;
-      destinationConf: string;
-      filename: string;
-      status: "pending" | "success" | "failed";
-      submitted: string;
-      validated?: string | null;
-    },
-    GetPcapOwnershipError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetPcapOwnershipRequest,
   output: GetPcapOwnershipResponse,
   errors: [],
@@ -10403,28 +10264,7 @@ export const listSites: API.PaginatedOperationMethod<
   ListSitesResponse,
   ListSitesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSitesRequest,
-  ) => stream.Stream<
-    ListSitesResponse,
-    ListSitesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSitesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      connectorId?: string | null;
-      description?: string | null;
-      haMode?: boolean | null;
-      location?: { lat?: string | null; lon?: string | null } | null;
-      name?: string | null;
-      secondaryConnectorId?: string | null;
-    },
-    ListSitesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSitesRequest,
   output: ListSitesResponse,
   errors: [],
@@ -11111,41 +10951,7 @@ export const listSiteAcls: API.PaginatedOperationMethod<
   ListSiteAclsResponse,
   ListSiteAclsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSiteAclsRequest,
-  ) => stream.Stream<
-    ListSiteAclsResponse,
-    ListSiteAclsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSiteAclsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      description?: string | null;
-      forwardLocally?: boolean | null;
-      lan_1?: {
-        lanId: string;
-        lanName?: string | null;
-        portRanges?: string[] | null;
-        ports?: number[] | null;
-        subnets?: string[] | null;
-      } | null;
-      lan_2?: {
-        lanId: string;
-        lanName?: string | null;
-        portRanges?: string[] | null;
-        ports?: number[] | null;
-        subnets?: string[] | null;
-      } | null;
-      name?: string | null;
-      protocols?: ("tcp" | "udp" | "icmp")[] | null;
-      unidirectional?: boolean | null;
-    },
-    ListSiteAclsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSiteAclsRequest,
   output: ListSiteAclsResponse,
   errors: [],
@@ -12318,48 +12124,7 @@ export const listSiteLans: API.PaginatedOperationMethod<
   ListSiteLansResponse,
   ListSiteLansError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSiteLansRequest,
-  ) => stream.Stream<
-    ListSiteLansResponse,
-    ListSiteLansError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSiteLansRequest) => stream.Stream<
-    {
-      id?: string | null;
-      haLink?: boolean | null;
-      name?: string | null;
-      nat?: { staticPrefix?: string | null } | null;
-      physport?: number | null;
-      routedSubnets?:
-        | {
-            nextHop: string;
-            prefix: string;
-            nat?: { staticPrefix?: string | null } | null;
-          }[]
-        | null;
-      siteId?: string | null;
-      staticAddressing?: {
-        address: string;
-        dhcpRelay?: { serverAddresses?: string[] | null } | null;
-        dhcpServer?: {
-          dhcpPoolEnd?: string | null;
-          dhcpPoolStart?: string | null;
-          dnsServer?: string | null;
-          dnsServers?: string[] | null;
-          reservations?: Record<string, unknown> | null;
-        } | null;
-        secondaryAddress?: string | null;
-        virtualAddress?: string | null;
-      } | null;
-      vlanTag?: number | null;
-    },
-    ListSiteLansError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSiteLansRequest,
   output: ListSiteLansResponse,
   errors: [],
@@ -12659,48 +12424,7 @@ export const createSiteLan: API.PaginatedOperationMethod<
   CreateSiteLanResponse,
   CreateSiteLanError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: CreateSiteLanRequest,
-  ) => stream.Stream<
-    CreateSiteLanResponse,
-    CreateSiteLanError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: CreateSiteLanRequest) => stream.Stream<
-    {
-      id?: string | null;
-      haLink?: boolean | null;
-      name?: string | null;
-      nat?: { staticPrefix?: string | null } | null;
-      physport?: number | null;
-      routedSubnets?:
-        | {
-            nextHop: string;
-            prefix: string;
-            nat?: { staticPrefix?: string | null } | null;
-          }[]
-        | null;
-      siteId?: string | null;
-      staticAddressing?: {
-        address: string;
-        dhcpRelay?: { serverAddresses?: string[] | null } | null;
-        dhcpServer?: {
-          dhcpPoolEnd?: string | null;
-          dhcpPoolStart?: string | null;
-          dnsServer?: string | null;
-          dnsServers?: string[] | null;
-          reservations?: Record<string, unknown> | null;
-        } | null;
-        secondaryAddress?: string | null;
-        virtualAddress?: string | null;
-      } | null;
-      vlanTag?: number | null;
-    },
-    CreateSiteLanError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreateSiteLanRequest,
   output: CreateSiteLanResponse,
   errors: [],
@@ -13679,33 +13403,7 @@ export const listSiteWans: API.PaginatedOperationMethod<
   ListSiteWansResponse,
   ListSiteWansError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSiteWansRequest,
-  ) => stream.Stream<
-    ListSiteWansResponse,
-    ListSiteWansError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSiteWansRequest) => stream.Stream<
-    {
-      id?: string | null;
-      healthCheckRate?: "low" | "mid" | "high" | null;
-      name?: string | null;
-      physport?: number | null;
-      priority?: number | null;
-      siteId?: string | null;
-      staticAddressing?: {
-        address: string;
-        gatewayAddress: string;
-        secondaryAddress?: string | null;
-      } | null;
-      vlanTag?: number | null;
-    },
-    ListSiteWansError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSiteWansRequest,
   output: ListSiteWansResponse,
   errors: [],
@@ -13838,33 +13536,7 @@ export const createSiteWan: API.PaginatedOperationMethod<
   CreateSiteWanResponse,
   CreateSiteWanError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: CreateSiteWanRequest,
-  ) => stream.Stream<
-    CreateSiteWanResponse,
-    CreateSiteWanError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: CreateSiteWanRequest) => stream.Stream<
-    {
-      id?: string | null;
-      healthCheckRate?: "low" | "mid" | "high" | null;
-      name?: string | null;
-      physport?: number | null;
-      priority?: number | null;
-      siteId?: string | null;
-      staticAddressing?: {
-        address: string;
-        gatewayAddress: string;
-        secondaryAddress?: string | null;
-      } | null;
-      vlanTag?: number | null;
-    },
-    CreateSiteWanError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreateSiteWanRequest,
   output: CreateSiteWanResponse,
   errors: [],

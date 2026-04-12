@@ -3,29 +3,20 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupAlertConfigAlertsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    alertConfigId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}/alerts",
-    }),
-  );
-export type GetGroupAlertConfigAlertsInput =
-  typeof GetGroupAlertConfigAlertsInput.Type;
+export const GetGroupAlertConfigAlertsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  alertConfigId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}/alerts" }));
+export type GetGroupAlertConfigAlertsInput = typeof GetGroupAlertConfigAlertsInput.Type;
 
 // Output Schema
-export const GetGroupAlertConfigAlertsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupAlertConfigAlertsOutput =
-  typeof GetGroupAlertConfigAlertsOutput.Type;
+export const GetGroupAlertConfigAlertsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupAlertConfigAlertsOutput = typeof GetGroupAlertConfigAlertsOutput.Type;
 
 // The operation
 /**
@@ -44,9 +35,7 @@ export type GetGroupAlertConfigAlertsOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param alertConfigId - Unique 24-hexadecimal digit string that identifies the alert configuration.
  */
-export const getGroupAlertConfigAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupAlertConfigAlertsInput,
-    outputSchema: GetGroupAlertConfigAlertsOutput,
-  }),
-);
+export const getGroupAlertConfigAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupAlertConfigAlertsInput,
+  outputSchema: GetGroupAlertConfigAlertsOutput,
+}));

@@ -10,9 +10,7 @@ export const ListGroupApiKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   itemsPerPage: Schema.optional(Schema.Number),
   pageNum: Schema.optional(Schema.Number),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(
-  T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/apiKeys" }),
-);
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/apiKeys" }));
 export type ListGroupApiKeysInput = typeof ListGroupApiKeysInput.Type;
 
 // Output Schema

@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service stream
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -65,25 +64,7 @@ export const getAudioTrack: API.PaginatedOperationMethod<
   GetAudioTrackResponse,
   GetAudioTrackError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAudioTrackRequest,
-  ) => stream.Stream<
-    GetAudioTrackResponse,
-    GetAudioTrackError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: GetAudioTrackRequest) => stream.Stream<
-    {
-      default?: boolean | null;
-      label?: string | null;
-      status?: "queued" | "ready" | "error" | null;
-      uid?: string | null;
-    },
-    GetAudioTrackError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetAudioTrackRequest,
   output: GetAudioTrackResponse,
   errors: [],
@@ -311,25 +292,7 @@ export const getCaption: API.PaginatedOperationMethod<
   GetCaptionResponse,
   GetCaptionError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCaptionRequest,
-  ) => stream.Stream<
-    GetCaptionResponse,
-    GetCaptionError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: GetCaptionRequest) => stream.Stream<
-    {
-      generated?: boolean | null;
-      label?: string | null;
-      language?: string | null;
-      status?: "ready" | "inprogress" | "error" | null;
-    },
-    GetCaptionError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetCaptionRequest,
   output: GetCaptionResponse,
   errors: [],
@@ -1366,22 +1329,7 @@ export const getKey: API.PaginatedOperationMethod<
   GetKeyResponse,
   GetKeyError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetKeyRequest,
-  ) => stream.Stream<
-    GetKeyResponse,
-    GetKeyError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetKeyRequest,
-  ) => stream.Stream<
-    { id?: string | null; created?: string | null },
-    GetKeyError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetKeyRequest,
   output: GetKeyResponse,
   errors: [],
@@ -1851,25 +1799,7 @@ export const listLiveInputOutputs: API.PaginatedOperationMethod<
   ListLiveInputOutputsResponse,
   ListLiveInputOutputsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLiveInputOutputsRequest,
-  ) => stream.Stream<
-    ListLiveInputOutputsResponse,
-    ListLiveInputOutputsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListLiveInputOutputsRequest) => stream.Stream<
-    {
-      enabled?: boolean | null;
-      streamKey?: string | null;
-      uid?: string | null;
-      url?: string | null;
-    },
-    ListLiveInputOutputsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLiveInputOutputsRequest,
   output: ListLiveInputOutputsResponse,
   errors: [],
@@ -2468,69 +2398,7 @@ export const listStreams: API.PaginatedOperationMethod<
   ListStreamsResponse,
   ListStreamsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamsRequest,
-  ) => stream.Stream<
-    ListStreamsResponse,
-    ListStreamsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListStreamsRequest) => stream.Stream<
-    {
-      allowedOrigins?: string[] | null;
-      created?: string | null;
-      creator?: string | null;
-      duration?: number | null;
-      input?: { height?: number | null; width?: number | null } | null;
-      liveInput?: string | null;
-      maxDurationSeconds?: number | null;
-      meta?: unknown | null;
-      modified?: string | null;
-      playback?: { dash?: string | null; hls?: string | null } | null;
-      preview?: string | null;
-      readyToStream?: boolean | null;
-      readyToStreamAt?: string | null;
-      requireSignedURLs?: boolean | null;
-      scheduledDeletion?: string | null;
-      size?: number | null;
-      status?: {
-        errorReasonCode?: string | null;
-        errorReasonText?: string | null;
-        pctComplete?: string | null;
-        state?:
-          | "pendingupload"
-          | "downloading"
-          | "queued"
-          | "inprogress"
-          | "ready"
-          | "error"
-          | "live-inprogress"
-          | null;
-      } | null;
-      thumbnail?: string | null;
-      thumbnailTimestampPct?: number | null;
-      uid?: string | null;
-      uploaded?: string | null;
-      uploadExpiry?: string | null;
-      watermark?: {
-        created?: string | null;
-        downloadedFrom?: string | null;
-        height?: number | null;
-        name?: string | null;
-        opacity?: number | null;
-        padding?: number | null;
-        position?: string | null;
-        scale?: number | null;
-        size?: number | null;
-        uid?: string | null;
-        width?: number | null;
-      } | null;
-    },
-    ListStreamsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsRequest,
   output: ListStreamsResponse,
   errors: [],
@@ -3119,32 +2987,7 @@ export const listWatermarks: API.PaginatedOperationMethod<
   ListWatermarksResponse,
   ListWatermarksError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWatermarksRequest,
-  ) => stream.Stream<
-    ListWatermarksResponse,
-    ListWatermarksError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListWatermarksRequest) => stream.Stream<
-    {
-      created?: string | null;
-      downloadedFrom?: string | null;
-      height?: number | null;
-      name?: string | null;
-      opacity?: number | null;
-      padding?: number | null;
-      position?: string | null;
-      scale?: number | null;
-      size?: number | null;
-      uid?: string | null;
-      width?: number | null;
-    },
-    ListWatermarksError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWatermarksRequest,
   output: ListWatermarksResponse,
   errors: [],

@@ -8,21 +8,14 @@ export const V1GetProjectLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   sql: Schema.optional(Schema.String),
   iso_timestamp_start: Schema.optional(Schema.String),
   iso_timestamp_end: Schema.optional(Schema.String),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/v1/projects/{ref}/analytics/endpoints/logs.all",
-  }),
-);
+}).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/analytics/endpoints/logs.all" }));
 export type V1GetProjectLogsInput = typeof V1GetProjectLogsInput.Type;
 
 // Output Schema
-export const V1GetProjectLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    result: Schema.optional(Schema.Array(Schema.Unknown)),
-    error: Schema.optional(Schema.Unknown),
-  },
-);
+export const V1GetProjectLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  result: Schema.optional(Schema.Array(Schema.Unknown)),
+  error: Schema.optional(Schema.Unknown),
+});
 export type V1GetProjectLogsOutput = typeof V1GetProjectLogsOutput.Type;
 
 // The operation

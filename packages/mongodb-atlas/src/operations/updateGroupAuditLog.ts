@@ -3,22 +3,15 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateGroupAuditLogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/auditLog",
-    }),
-  );
+export const UpdateGroupAuditLogInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/auditLog" }));
 export type UpdateGroupAuditLogInput = typeof UpdateGroupAuditLogInput.Type;
 
 // Output Schema
-export const UpdateGroupAuditLogOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UpdateGroupAuditLogOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type UpdateGroupAuditLogOutput = typeof UpdateGroupAuditLogOutput.Type;
 
 // The operation

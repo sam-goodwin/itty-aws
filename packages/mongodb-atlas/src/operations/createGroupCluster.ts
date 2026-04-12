@@ -3,14 +3,11 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateGroupClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/clusters" }),
-  );
+export const CreateGroupClusterInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/clusters" }));
 export type CreateGroupClusterInput = typeof CreateGroupClusterInput.Type;
 
 // Output Schema

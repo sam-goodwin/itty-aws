@@ -3,43 +3,35 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const V1UpdateAFunctionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-    function_slug: Schema.String.pipe(T.PathParam()),
-    slug: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    verify_jwt: Schema.optional(Schema.Boolean),
-    import_map: Schema.optional(Schema.Boolean),
-    entrypoint_path: Schema.optional(Schema.String),
-    import_map_path: Schema.optional(Schema.String),
-    ezbr_sha256: Schema.optional(Schema.String),
-    body: Schema.optional(Schema.String),
-  },
-).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "/v1/projects/{ref}/functions/{function_slug}",
-  }),
-);
+export const V1UpdateAFunctionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  function_slug: Schema.String.pipe(T.PathParam()),
+  slug: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  verify_jwt: Schema.optional(Schema.Boolean),
+  import_map: Schema.optional(Schema.Boolean),
+  entrypoint_path: Schema.optional(Schema.String),
+  import_map_path: Schema.optional(Schema.String),
+  ezbr_sha256: Schema.optional(Schema.String),
+  body: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "PATCH", path: "/v1/projects/{ref}/functions/{function_slug}" }));
 export type V1UpdateAFunctionInput = typeof V1UpdateAFunctionInput.Type;
 
 // Output Schema
-export const V1UpdateAFunctionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    slug: Schema.String,
-    name: Schema.String,
-    status: Schema.Literals(["ACTIVE", "REMOVED", "THROTTLED"]),
-    version: Schema.Number,
-    created_at: Schema.Number,
-    updated_at: Schema.Number,
-    verify_jwt: Schema.optional(Schema.Boolean),
-    import_map: Schema.optional(Schema.Boolean),
-    entrypoint_path: Schema.optional(Schema.String),
-    import_map_path: Schema.optional(Schema.String),
-    ezbr_sha256: Schema.optional(Schema.String),
-  });
+export const V1UpdateAFunctionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  slug: Schema.String,
+  name: Schema.String,
+  status: Schema.Literals(["ACTIVE", "REMOVED", "THROTTLED"]),
+  version: Schema.Number,
+  created_at: Schema.Number,
+  updated_at: Schema.Number,
+  verify_jwt: Schema.optional(Schema.Boolean),
+  import_map: Schema.optional(Schema.Boolean),
+  entrypoint_path: Schema.optional(Schema.String),
+  import_map_path: Schema.optional(Schema.String),
+  ezbr_sha256: Schema.optional(Schema.String),
+});
 export type V1UpdateAFunctionOutput = typeof V1UpdateAFunctionOutput.Type;
 
 // The operation

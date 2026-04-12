@@ -3,26 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateGroupEncryptionAtRestPrivateEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    cloudProvider: Schema.Literals(["AZURE", "AWS"]).pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints",
-    }),
-  );
-export type CreateGroupEncryptionAtRestPrivateEndpointInput =
-  typeof CreateGroupEncryptionAtRestPrivateEndpointInput.Type;
+export const CreateGroupEncryptionAtRestPrivateEndpointInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  cloudProvider: Schema.Literals(["AZURE", "AWS"]).pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints" }));
+export type CreateGroupEncryptionAtRestPrivateEndpointInput = typeof CreateGroupEncryptionAtRestPrivateEndpointInput.Type;
 
 // Output Schema
-export const CreateGroupEncryptionAtRestPrivateEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupEncryptionAtRestPrivateEndpointOutput =
-  typeof CreateGroupEncryptionAtRestPrivateEndpointOutput.Type;
+export const CreateGroupEncryptionAtRestPrivateEndpointOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CreateGroupEncryptionAtRestPrivateEndpointOutput = typeof CreateGroupEncryptionAtRestPrivateEndpointOutput.Type;
 
 // The operation
 /**
@@ -37,8 +28,7 @@ export type CreateGroupEncryptionAtRestPrivateEndpointOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param cloudProvider - Human-readable label that identifies the cloud provider for the private endpoint to create.
  */
-export const createGroupEncryptionAtRestPrivateEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateGroupEncryptionAtRestPrivateEndpointInput,
-    outputSchema: CreateGroupEncryptionAtRestPrivateEndpointOutput,
-  }));
+export const createGroupEncryptionAtRestPrivateEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupEncryptionAtRestPrivateEndpointInput,
+  outputSchema: CreateGroupEncryptionAtRestPrivateEndpointOutput,
+}));

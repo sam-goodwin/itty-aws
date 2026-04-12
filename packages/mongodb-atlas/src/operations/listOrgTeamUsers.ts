@@ -13,12 +13,7 @@ export const ListOrgTeamUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   username: Schema.optional(Schema.String),
   orgMembershipStatus: Schema.optional(Schema.String),
   userId: Schema.optional(Schema.String),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/api/atlas/v2/orgs/{orgId}/teams/{teamId}/users",
-  }),
-);
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/teams/{teamId}/users" }));
 export type ListOrgTeamUsersInput = typeof ListOrgTeamUsersInput.Type;
 
 // Output Schema

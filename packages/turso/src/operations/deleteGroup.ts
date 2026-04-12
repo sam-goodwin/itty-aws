@@ -6,26 +6,19 @@ import * as T from "../traits";
 export const DeleteGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/v1/organizations/{organizationSlug}/groups/{groupName}",
-  }),
-);
+}).pipe(T.Http({ method: "DELETE", path: "/v1/organizations/{organizationSlug}/groups/{groupName}" }));
 export type DeleteGroupInput = typeof DeleteGroupInput.Type;
 
 // Output Schema
 export const DeleteGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  group: Schema.optional(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      uuid: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(Schema.String)),
-      primary: Schema.optional(Schema.String),
-      delete_protection: Schema.optional(Schema.Boolean),
-    }),
-  ),
+  group: Schema.optional(Schema.Struct({
+    name: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    uuid: Schema.optional(Schema.String),
+    locations: Schema.optional(Schema.Array(Schema.String)),
+    primary: Schema.optional(Schema.String),
+    delete_protection: Schema.optional(Schema.Boolean),
+  })),
 });
 export type DeleteGroupOutput = typeof DeleteGroupOutput.Type;
 

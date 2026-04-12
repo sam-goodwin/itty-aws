@@ -3,19 +3,12 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const RemoveGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    groupId: Schema.String.pipe(T.PathParam()),
-    apiUserId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  },
-).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}",
-  }),
-);
+export const RemoveGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  apiUserId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}" }));
 export type RemoveGroupApiKeyInput = typeof RemoveGroupApiKeyInput.Type;
 
 // Output Schema

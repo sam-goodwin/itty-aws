@@ -11,9 +11,7 @@ export const ListGroupAlertsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageNum: Schema.optional(Schema.Number),
   pretty: Schema.optional(Schema.Boolean),
   status: Schema.optional(Schema.Literals(["OPEN", "TRACKING", "CLOSED"])),
-}).pipe(
-  T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/alerts" }),
-);
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/alerts" }));
 export type ListGroupAlertsInput = typeof ListGroupAlertsInput.Type;
 
 // Output Schema

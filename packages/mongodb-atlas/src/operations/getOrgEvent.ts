@@ -9,12 +9,7 @@ export const GetOrgEventInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
   includeRaw: Schema.optional(Schema.Boolean),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/api/atlas/v2/orgs/{orgId}/events/{eventId}",
-  }),
-);
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/events/{eventId}" }));
 export type GetOrgEventInput = typeof GetOrgEventInput.Type;
 
 // Output Schema

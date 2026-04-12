@@ -3,26 +3,24 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListApiKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "GET", path: "/api_keys" }));
+export const ListApiKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+
+}).pipe(T.Http({ method: "GET", path: "/api_keys" }));
 export type ListApiKeysInput = typeof ListApiKeysInput.Type;
 
 // Output Schema
-export const ListApiKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    id: Schema.Number,
+export const ListApiKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(Schema.Struct({
+  id: Schema.Number,
+  name: Schema.String,
+  created_at: Schema.String,
+  created_by: Schema.Struct({
+    id: Schema.String,
     name: Schema.String,
-    created_at: Schema.String,
-    created_by: Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      image: Schema.String,
-    }),
-    last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
-    last_used_from_addr: Schema.String,
+    image: Schema.String,
   }),
-);
+  last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
+  last_used_from_addr: Schema.String,
+}));
 export type ListApiKeysOutput = typeof ListApiKeysOutput.Type;
 
 // The operation

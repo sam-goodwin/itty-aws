@@ -3,26 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupClusterGlobalWriteCustomZoneMappingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping",
-    }),
-  );
-export type DeleteGroupClusterGlobalWriteCustomZoneMappingInput =
-  typeof DeleteGroupClusterGlobalWriteCustomZoneMappingInput.Type;
+export const DeleteGroupClusterGlobalWriteCustomZoneMappingInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping" }));
+export type DeleteGroupClusterGlobalWriteCustomZoneMappingInput = typeof DeleteGroupClusterGlobalWriteCustomZoneMappingInput.Type;
 
 // Output Schema
-export const DeleteGroupClusterGlobalWriteCustomZoneMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupClusterGlobalWriteCustomZoneMappingOutput =
-  typeof DeleteGroupClusterGlobalWriteCustomZoneMappingOutput.Type;
+export const DeleteGroupClusterGlobalWriteCustomZoneMappingOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupClusterGlobalWriteCustomZoneMappingOutput = typeof DeleteGroupClusterGlobalWriteCustomZoneMappingOutput.Type;
 
 // The operation
 /**
@@ -37,8 +28,7 @@ export type DeleteGroupClusterGlobalWriteCustomZoneMappingOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param clusterName - Human-readable label that identifies this cluster.
  */
-export const deleteGroupClusterGlobalWriteCustomZoneMapping =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteGroupClusterGlobalWriteCustomZoneMappingInput,
-    outputSchema: DeleteGroupClusterGlobalWriteCustomZoneMappingOutput,
-  }));
+export const deleteGroupClusterGlobalWriteCustomZoneMapping = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupClusterGlobalWriteCustomZoneMappingInput,
+  outputSchema: DeleteGroupClusterGlobalWriteCustomZoneMappingOutput,
+}));

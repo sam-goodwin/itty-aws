@@ -11,12 +11,7 @@ export const MachinesExecInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   container: Schema.optional(Schema.String),
   stdin: Schema.optional(Schema.String),
   timeout: Schema.optional(Schema.Number),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/apps/{app_name}/machines/{machine_id}/exec",
-  }),
-);
+}).pipe(T.Http({ method: "POST", path: "/apps/{app_name}/machines/{machine_id}/exec" }));
 export type MachinesExecInput = typeof MachinesExecInput.Type;
 
 // Output Schema

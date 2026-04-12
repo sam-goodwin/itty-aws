@@ -3,25 +3,16 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetOrgFederationSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orgId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/orgs/{orgId}/federationSettings",
-    }),
-  );
-export type GetOrgFederationSettingsInput =
-  typeof GetOrgFederationSettingsInput.Type;
+export const GetOrgFederationSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  orgId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/federationSettings" }));
+export type GetOrgFederationSettingsInput = typeof GetOrgFederationSettingsInput.Type;
 
 // Output Schema
-export const GetOrgFederationSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetOrgFederationSettingsOutput =
-  typeof GetOrgFederationSettingsOutput.Type;
+export const GetOrgFederationSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetOrgFederationSettingsOutput = typeof GetOrgFederationSettingsOutput.Type;
 
 // The operation
 /**
@@ -33,9 +24,7 @@ export type GetOrgFederationSettingsOutput =
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const getOrgFederationSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetOrgFederationSettingsInput,
-    outputSchema: GetOrgFederationSettingsOutput,
-  }),
-);
+export const getOrgFederationSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: GetOrgFederationSettingsInput,
+  outputSchema: GetOrgFederationSettingsOutput,
+}));

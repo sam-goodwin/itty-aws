@@ -3,26 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupClusterBackupScheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule",
-    }),
-  );
-export type GetGroupClusterBackupScheduleInput =
-  typeof GetGroupClusterBackupScheduleInput.Type;
+export const GetGroupClusterBackupScheduleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule" }));
+export type GetGroupClusterBackupScheduleInput = typeof GetGroupClusterBackupScheduleInput.Type;
 
 // Output Schema
-export const GetGroupClusterBackupScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupClusterBackupScheduleOutput =
-  typeof GetGroupClusterBackupScheduleOutput.Type;
+export const GetGroupClusterBackupScheduleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupClusterBackupScheduleOutput = typeof GetGroupClusterBackupScheduleOutput.Type;
 
 // The operation
 /**
@@ -37,8 +28,7 @@ export type GetGroupClusterBackupScheduleOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param clusterName - Human-readable label that identifies the cluster.
  */
-export const getGroupClusterBackupSchedule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetGroupClusterBackupScheduleInput,
-    outputSchema: GetGroupClusterBackupScheduleOutput,
-  }));
+export const getGroupClusterBackupSchedule = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupClusterBackupScheduleInput,
+  outputSchema: GetGroupClusterBackupScheduleOutput,
+}));

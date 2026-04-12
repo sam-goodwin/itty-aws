@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service keyless-certificates
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -188,31 +187,7 @@ export const listKeylessCertificates: API.PaginatedOperationMethod<
   ListKeylessCertificatesResponse,
   ListKeylessCertificatesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListKeylessCertificatesRequest,
-  ) => stream.Stream<
-    ListKeylessCertificatesResponse,
-    ListKeylessCertificatesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListKeylessCertificatesRequest) => stream.Stream<
-    {
-      id: string;
-      createdOn: string;
-      enabled: boolean;
-      host: string;
-      modifiedOn: string;
-      name: string;
-      permissions: string[];
-      port: number;
-      status: "active" | "deleted";
-      tunnel?: { privateIp: string; vnetId: string } | null;
-    },
-    ListKeylessCertificatesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListKeylessCertificatesRequest,
   output: ListKeylessCertificatesResponse,
   errors: [],

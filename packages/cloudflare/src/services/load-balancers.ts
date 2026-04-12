@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service load-balancers
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -1166,122 +1165,7 @@ export const listLoadBalancers: API.PaginatedOperationMethod<
   ListLoadBalancersResponse,
   ListLoadBalancersError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLoadBalancersRequest,
-  ) => stream.Stream<
-    ListLoadBalancersResponse,
-    ListLoadBalancersError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListLoadBalancersRequest) => stream.Stream<
-    {
-      id?: string | null;
-      adaptiveRouting?: { failoverAcrossPools?: boolean | null } | null;
-      countryPools?: Record<string, unknown> | null;
-      createdOn?: string | null;
-      defaultPools?: string[] | null;
-      description?: string | null;
-      enabled?: boolean | null;
-      fallbackPool?: string | null;
-      locationStrategy?: {
-        mode?: "pop" | "resolver_ip" | null;
-        preferEcs?: "always" | "never" | "proximity" | "geo" | null;
-      } | null;
-      modifiedOn?: string | null;
-      name?: string | null;
-      networks?: string[] | null;
-      popPools?: Record<string, unknown> | null;
-      proxied?: boolean | null;
-      randomSteering?: {
-        defaultWeight?: number | null;
-        poolWeights?: Record<string, unknown> | null;
-      } | null;
-      regionPools?: Record<string, unknown> | null;
-      rules?:
-        | {
-            condition?: string | null;
-            disabled?: boolean | null;
-            fixedResponse?: {
-              contentType?: string | null;
-              location?: string | null;
-              messageBody?: string | null;
-              statusCode?: number | null;
-            } | null;
-            name?: string | null;
-            overrides?: {
-              adaptiveRouting?: { failoverAcrossPools?: boolean | null } | null;
-              countryPools?: Record<string, unknown> | null;
-              defaultPools?: string[] | null;
-              fallbackPool?: string | null;
-              locationStrategy?: {
-                mode?: "pop" | "resolver_ip" | null;
-                preferEcs?: "always" | "never" | "proximity" | "geo" | null;
-              } | null;
-              popPools?: Record<string, unknown> | null;
-              randomSteering?: {
-                defaultWeight?: number | null;
-                poolWeights?: Record<string, unknown> | null;
-              } | null;
-              regionPools?: Record<string, unknown> | null;
-              sessionAffinity?:
-                | "none"
-                | "cookie"
-                | "ip_cookie"
-                | "header"
-                | null;
-              sessionAffinityAttributes?: {
-                drainDuration?: number | null;
-                headers?: string[] | null;
-                requireAllHeaders?: boolean | null;
-                samesite?: "Auto" | "Lax" | "None" | "Strict" | null;
-                secure?: "Auto" | "Always" | "Never" | null;
-                zeroDowntimeFailover?: "none" | "temporary" | "sticky" | null;
-              } | null;
-              sessionAffinityTtl?: number | null;
-              steeringPolicy?:
-                | "off"
-                | "geo"
-                | "random"
-                | "dynamic_latency"
-                | "proximity"
-                | "least_outstanding_requests"
-                | "least_connections"
-                | ""
-                | null;
-              ttl?: number | null;
-            } | null;
-            priority?: number | null;
-            terminates?: boolean | null;
-          }[]
-        | null;
-      sessionAffinity?: "none" | "cookie" | "ip_cookie" | "header" | null;
-      sessionAffinityAttributes?: {
-        drainDuration?: number | null;
-        headers?: string[] | null;
-        requireAllHeaders?: boolean | null;
-        samesite?: "Auto" | "Lax" | "None" | "Strict" | null;
-        secure?: "Auto" | "Always" | "Never" | null;
-        zeroDowntimeFailover?: "none" | "temporary" | "sticky" | null;
-      } | null;
-      sessionAffinityTtl?: number | null;
-      steeringPolicy?:
-        | "off"
-        | "geo"
-        | "random"
-        | "dynamic_latency"
-        | "proximity"
-        | "least_outstanding_requests"
-        | "least_connections"
-        | ""
-        | null;
-      ttl?: number | null;
-      zoneName?: string | null;
-    },
-    ListLoadBalancersError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLoadBalancersRequest,
   output: ListLoadBalancersResponse,
   errors: [],
@@ -4337,47 +4221,7 @@ export const listMonitors: API.PaginatedOperationMethod<
   ListMonitorsResponse,
   ListMonitorsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMonitorsRequest,
-  ) => stream.Stream<
-    ListMonitorsResponse,
-    ListMonitorsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListMonitorsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      allowInsecure?: boolean | null;
-      consecutiveDown?: number | null;
-      consecutiveUp?: number | null;
-      createdOn?: string | null;
-      description?: string | null;
-      expectedBody?: string | null;
-      expectedCodes?: string | null;
-      followRedirects?: boolean | null;
-      header?: Record<string, unknown> | null;
-      interval?: number | null;
-      method?: string | null;
-      modifiedOn?: string | null;
-      path?: string | null;
-      port?: number | null;
-      probeZone?: string | null;
-      retries?: number | null;
-      timeout?: number | null;
-      type?:
-        | "http"
-        | "https"
-        | "tcp"
-        | "udp_icmp"
-        | "icmp_ping"
-        | "smtp"
-        | null;
-    },
-    ListMonitorsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorsRequest,
   output: ListMonitorsResponse,
   errors: [],
@@ -5191,33 +5035,7 @@ export const listMonitorGroups: API.PaginatedOperationMethod<
   ListMonitorGroupsResponse,
   ListMonitorGroupsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMonitorGroupsRequest,
-  ) => stream.Stream<
-    ListMonitorGroupsResponse,
-    ListMonitorGroupsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListMonitorGroupsRequest) => stream.Stream<
-    {
-      id: string;
-      description: string;
-      members: {
-        enabled: boolean;
-        monitorId: string;
-        monitoringOnly: boolean;
-        mustBeHealthy: boolean;
-        createdAt?: string | null;
-        updatedAt?: string | null;
-      }[];
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    },
-    ListMonitorGroupsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorGroupsRequest,
   output: ListMonitorGroupsResponse,
   errors: [],
@@ -5857,25 +5675,7 @@ export const getMonitorReference: API.PaginatedOperationMethod<
   GetMonitorReferenceResponse,
   GetMonitorReferenceError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetMonitorReferenceRequest,
-  ) => stream.Stream<
-    GetMonitorReferenceResponse,
-    GetMonitorReferenceError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: GetMonitorReferenceRequest) => stream.Stream<
-    {
-      referenceType?: "*" | "referral" | "referrer" | null;
-      resourceId?: string | null;
-      resourceName?: string | null;
-      resourceType?: string | null;
-    },
-    GetMonitorReferenceError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetMonitorReferenceRequest,
   output: GetMonitorReferenceResponse,
   errors: [],
@@ -6472,83 +6272,7 @@ export const listPools: API.PaginatedOperationMethod<
   ListPoolsResponse,
   ListPoolsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoolsRequest,
-  ) => stream.Stream<
-    ListPoolsResponse,
-    ListPoolsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListPoolsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      checkRegions?:
-        | (
-            | "WNAM"
-            | "ENAM"
-            | "WEU"
-            | "EEU"
-            | "NSAM"
-            | "SSAM"
-            | "OC"
-            | "ME"
-            | "NAF"
-            | "SAF"
-            | "SAS"
-            | "SEAS"
-            | "NEAS"
-            | "ALL_REGIONS"
-          )[]
-        | null;
-      createdOn?: string | null;
-      description?: string | null;
-      disabledAt?: string | null;
-      enabled?: boolean | null;
-      latitude?: number | null;
-      loadShedding?: {
-        defaultPercent?: number | null;
-        defaultPolicy?: "random" | "hash" | null;
-        sessionPercent?: number | null;
-        sessionPolicy?: "hash" | null;
-      } | null;
-      longitude?: number | null;
-      minimumOrigins?: number | null;
-      modifiedOn?: string | null;
-      monitor?: string | null;
-      monitorGroup?: string | null;
-      name?: string | null;
-      networks?: string[] | null;
-      notificationEmail?: string | null;
-      notificationFilter?: {
-        origin?: { disable?: boolean | null; healthy?: boolean | null } | null;
-        pool?: { disable?: boolean | null; healthy?: boolean | null } | null;
-      } | null;
-      originSteering?: {
-        policy?:
-          | "random"
-          | "hash"
-          | "least_outstanding_requests"
-          | "least_connections"
-          | null;
-      } | null;
-      origins?:
-        | {
-            address?: string | null;
-            disabledAt?: string | null;
-            enabled?: boolean | null;
-            header?: { host?: string[] | null } | null;
-            name?: string | null;
-            port?: number | null;
-            virtualNetworkId?: string | null;
-            weight?: number | null;
-          }[]
-        | null;
-    },
-    ListPoolsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPoolsRequest,
   output: ListPoolsResponse,
   errors: [],
@@ -8358,83 +8082,7 @@ export const bulkPatchPools: API.PaginatedOperationMethod<
   BulkPatchPoolsResponse,
   BulkPatchPoolsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BulkPatchPoolsRequest,
-  ) => stream.Stream<
-    BulkPatchPoolsResponse,
-    BulkPatchPoolsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: BulkPatchPoolsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      checkRegions?:
-        | (
-            | "WNAM"
-            | "ENAM"
-            | "WEU"
-            | "EEU"
-            | "NSAM"
-            | "SSAM"
-            | "OC"
-            | "ME"
-            | "NAF"
-            | "SAF"
-            | "SAS"
-            | "SEAS"
-            | "NEAS"
-            | "ALL_REGIONS"
-          )[]
-        | null;
-      createdOn?: string | null;
-      description?: string | null;
-      disabledAt?: string | null;
-      enabled?: boolean | null;
-      latitude?: number | null;
-      loadShedding?: {
-        defaultPercent?: number | null;
-        defaultPolicy?: "random" | "hash" | null;
-        sessionPercent?: number | null;
-        sessionPolicy?: "hash" | null;
-      } | null;
-      longitude?: number | null;
-      minimumOrigins?: number | null;
-      modifiedOn?: string | null;
-      monitor?: string | null;
-      monitorGroup?: string | null;
-      name?: string | null;
-      networks?: string[] | null;
-      notificationEmail?: string | null;
-      notificationFilter?: {
-        origin?: { disable?: boolean | null; healthy?: boolean | null } | null;
-        pool?: { disable?: boolean | null; healthy?: boolean | null } | null;
-      } | null;
-      originSteering?: {
-        policy?:
-          | "random"
-          | "hash"
-          | "least_outstanding_requests"
-          | "least_connections"
-          | null;
-      } | null;
-      origins?:
-        | {
-            address?: string | null;
-            disabledAt?: string | null;
-            enabled?: boolean | null;
-            header?: { host?: string[] | null } | null;
-            name?: string | null;
-            port?: number | null;
-            virtualNetworkId?: string | null;
-            weight?: number | null;
-          }[]
-        | null;
-    },
-    BulkPatchPoolsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: BulkPatchPoolsRequest,
   output: BulkPatchPoolsResponse,
   errors: [],
@@ -8735,25 +8383,7 @@ export const getPoolReference: API.PaginatedOperationMethod<
   GetPoolReferenceResponse,
   GetPoolReferenceError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetPoolReferenceRequest,
-  ) => stream.Stream<
-    GetPoolReferenceResponse,
-    GetPoolReferenceError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: GetPoolReferenceRequest) => stream.Stream<
-    {
-      referenceType?: "*" | "referral" | "referrer" | null;
-      resourceId?: string | null;
-      resourceName?: string | null;
-      resourceType?: string | null;
-    },
-    GetPoolReferenceError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetPoolReferenceRequest,
   output: GetPoolReferenceResponse,
   errors: [],
@@ -9049,30 +8679,7 @@ export const listSearches: API.PaginatedOperationMethod<
   ListSearchesResponse,
   ListSearchesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSearchesRequest,
-  ) => stream.Stream<
-    ListSearchesResponse,
-    ListSearchesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSearchesRequest) => stream.Stream<
-    {
-      resources?:
-        | {
-            referenceType?: "referral" | "referrer" | null;
-            references?: unknown[] | null;
-            resourceId?: string | null;
-            resourceName?: string | null;
-            resourceType?: "load_balancer" | "monitor" | "pool" | null;
-          }[]
-        | null;
-    },
-    ListSearchesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSearchesRequest,
   output: ListSearchesResponse,
   errors: [],

@@ -6,9 +6,7 @@ import * as T from "../traits";
 export const V1UndoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
-}).pipe(
-  T.Http({ method: "POST", path: "/v1/projects/{ref}/database/backups/undo" }),
-);
+}).pipe(T.Http({ method: "POST", path: "/v1/projects/{ref}/database/backups/undo" }));
 export type V1UndoInput = typeof V1UndoInput.Type;
 
 // Output Schema

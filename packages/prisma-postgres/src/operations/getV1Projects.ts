@@ -11,21 +11,19 @@ export type GetV1ProjectsInput = typeof GetV1ProjectsInput.Type;
 
 // Output Schema
 export const GetV1ProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.Array(
-    Schema.Struct({
+  data: Schema.Array(Schema.Struct({
+    id: Schema.String,
+    type: Schema.String,
+    url: Schema.String,
+    name: Schema.String,
+    createdAt: Schema.String,
+    defaultRegion: Schema.NullOr(Schema.String),
+    workspace: Schema.Struct({
       id: Schema.String,
-      type: Schema.String,
       url: Schema.String,
       name: Schema.String,
-      createdAt: Schema.String,
-      defaultRegion: Schema.NullOr(Schema.String),
-      workspace: Schema.Struct({
-        id: Schema.String,
-        url: Schema.String,
-        name: Schema.String,
-      }),
     }),
-  ),
+  })),
   pagination: Schema.Struct({
     nextCursor: Schema.NullOr(Schema.String),
     hasMore: Schema.Boolean,

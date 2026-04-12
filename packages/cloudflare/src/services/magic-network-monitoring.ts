@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service magic-network-monitoring
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -681,41 +680,7 @@ export const listRules: API.PaginatedOperationMethod<
   ListRulesResponse,
   ListRulesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    ListRulesResponse,
-    ListRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListRulesRequest) => stream.Stream<
-    {
-      automaticAdvertisement: boolean | null;
-      name: string;
-      prefixes: string[];
-      type: "threshold" | "zscore" | "advanced_ddos";
-      id?: string | null;
-      bandwidthThreshold?: number | null;
-      duration?:
-        | "1m"
-        | "5m"
-        | "10m"
-        | "15m"
-        | "20m"
-        | "30m"
-        | "45m"
-        | "60m"
-        | null;
-      packetThreshold?: number | null;
-      prefixMatch?: "exact" | "subnet" | "supernet" | null;
-      zscoreSensitivity?: "low" | "medium" | "high" | null;
-      zscoreTarget?: "bits" | "packets" | null;
-    } | null,
-    ListRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [],

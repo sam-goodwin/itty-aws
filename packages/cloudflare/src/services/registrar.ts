@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service registrar
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -263,73 +262,7 @@ export const listDomains: API.PaginatedOperationMethod<
   ListDomainsResponse,
   ListDomainsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    ListDomainsResponse,
-    ListDomainsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListDomainsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      available?: boolean | null;
-      canRegister?: boolean | null;
-      createdAt?: string | null;
-      currentRegistrar?: string | null;
-      expiresAt?: string | null;
-      locked?: boolean | null;
-      registrantContact?: {
-        address: string;
-        city: string;
-        country: string | null;
-        firstName: string | null;
-        lastName: string | null;
-        organization: string;
-        phone: string | null;
-        state: string;
-        zip: string | null;
-        id?: string | null;
-        address2?: string | null;
-        email?: string | null;
-        fax?: string | null;
-      } | null;
-      registryStatuses?: string | null;
-      supportedTld?: boolean | null;
-      transferIn?: {
-        acceptFoa?: "needed" | "ok" | null;
-        approveTransfer?:
-          | "needed"
-          | "ok"
-          | "pending"
-          | "trying"
-          | "rejected"
-          | "unknown"
-          | null;
-        canCancelTransfer?: boolean | null;
-        disablePrivacy?: "needed" | "ok" | "unknown" | null;
-        enterAuthCode?:
-          | "needed"
-          | "ok"
-          | "pending"
-          | "trying"
-          | "rejected"
-          | null;
-        unlockDomain?:
-          | "needed"
-          | "ok"
-          | "pending"
-          | "trying"
-          | "unknown"
-          | null;
-      } | null;
-      updatedAt?: string | null;
-    },
-    ListDomainsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [],

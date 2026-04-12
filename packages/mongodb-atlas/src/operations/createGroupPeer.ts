@@ -7,9 +7,7 @@ export const CreateGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(
-  T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/peers" }),
-);
+}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/peers" }));
 export type CreateGroupPeerInput = typeof CreateGroupPeerInput.Type;
 
 // Output Schema

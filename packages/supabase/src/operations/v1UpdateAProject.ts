@@ -10,13 +10,11 @@ export const V1UpdateAProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type V1UpdateAProjectInput = typeof V1UpdateAProjectInput.Type;
 
 // Output Schema
-export const V1UpdateAProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.Number,
-    ref: Schema.String,
-    name: Schema.String,
-  },
-);
+export const V1UpdateAProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.Number,
+  ref: Schema.String,
+  name: Schema.String,
+});
 export type V1UpdateAProjectOutput = typeof V1UpdateAProjectOutput.Type;
 
 // The operation

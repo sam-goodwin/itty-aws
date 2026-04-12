@@ -3,28 +3,19 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DownloadGroupClusterOnlineArchiveQueryLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    startDate: Schema.optional(Schema.Number),
-    endDate: Schema.optional(Schema.Number),
-    archiveOnly: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/queryLogs.gz",
-    }),
-  );
-export type DownloadGroupClusterOnlineArchiveQueryLogsInput =
-  typeof DownloadGroupClusterOnlineArchiveQueryLogsInput.Type;
+export const DownloadGroupClusterOnlineArchiveQueryLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  startDate: Schema.optional(Schema.Number),
+  endDate: Schema.optional(Schema.Number),
+  archiveOnly: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/queryLogs.gz" }));
+export type DownloadGroupClusterOnlineArchiveQueryLogsInput = typeof DownloadGroupClusterOnlineArchiveQueryLogsInput.Type;
 
 // Output Schema
-export const DownloadGroupClusterOnlineArchiveQueryLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DownloadGroupClusterOnlineArchiveQueryLogsOutput =
-  typeof DownloadGroupClusterOnlineArchiveQueryLogsOutput.Type;
+export const DownloadGroupClusterOnlineArchiveQueryLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DownloadGroupClusterOnlineArchiveQueryLogsOutput = typeof DownloadGroupClusterOnlineArchiveQueryLogsOutput.Type;
 
 // The operation
 /**
@@ -41,8 +32,7 @@ export type DownloadGroupClusterOnlineArchiveQueryLogsOutput =
  * @param clusterName - Human-readable label that identifies the cluster that contains the collection for which you want to return the query logs from one online archive.
  * @param archiveOnly - Flag that indicates whether to download logs for queries against your online archive only or both your online archive and cluster.
  */
-export const downloadGroupClusterOnlineArchiveQueryLogs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DownloadGroupClusterOnlineArchiveQueryLogsInput,
-    outputSchema: DownloadGroupClusterOnlineArchiveQueryLogsOutput,
-  }));
+export const downloadGroupClusterOnlineArchiveQueryLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DownloadGroupClusterOnlineArchiveQueryLogsInput,
+  outputSchema: DownloadGroupClusterOnlineArchiveQueryLogsOutput,
+}));

@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service security-center
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -203,49 +202,7 @@ export const listInsights: API.PaginatedOperationMethod<
   ListInsightsResponse,
   ListInsightsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInsightsRequest,
-  ) => stream.Stream<
-    ListInsightsResponse,
-    ListInsightsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListInsightsRequest) => stream.Stream<
-    {
-      count?: number | null;
-      issues?:
-        | {
-            id?: string | null;
-            dismissed?: boolean | null;
-            issueClass?: string | null;
-            issueType?:
-              | "compliance_violation"
-              | "email_security"
-              | "exposed_infrastructure"
-              | "insecure_configuration"
-              | "weak_authentication"
-              | "configuration_suggestion"
-              | null;
-            payload?: {
-              detectionMethod?: string | null;
-              zoneTag?: string | null;
-            } | null;
-            resolveLink?: string | null;
-            resolveText?: string | null;
-            severity?: "Low" | "Moderate" | "Critical" | null;
-            since?: string | null;
-            subject?: string | null;
-            timestamp?: string | null;
-          }[]
-        | null;
-      page?: number | null;
-      perPage?: number | null;
-    },
-    ListInsightsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInsightsRequest,
   output: ListInsightsResponse,
   errors: [],

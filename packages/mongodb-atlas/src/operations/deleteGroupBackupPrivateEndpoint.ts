@@ -3,27 +3,18 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupBackupPrivateEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    cloudProvider: Schema.Literals(["AWS"]).pipe(T.PathParam()),
-    endpointId: Schema.String.pipe(T.PathParam()),
-    pretty: Schema.optional(Schema.Boolean),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId}",
-    }),
-  );
-export type DeleteGroupBackupPrivateEndpointInput =
-  typeof DeleteGroupBackupPrivateEndpointInput.Type;
+export const DeleteGroupBackupPrivateEndpointInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  cloudProvider: Schema.Literals(["AWS"]).pipe(T.PathParam()),
+  endpointId: Schema.String.pipe(T.PathParam()),
+  pretty: Schema.optional(Schema.Boolean),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId}" }));
+export type DeleteGroupBackupPrivateEndpointInput = typeof DeleteGroupBackupPrivateEndpointInput.Type;
 
 // Output Schema
-export const DeleteGroupBackupPrivateEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupBackupPrivateEndpointOutput =
-  typeof DeleteGroupBackupPrivateEndpointOutput.Type;
+export const DeleteGroupBackupPrivateEndpointOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupBackupPrivateEndpointOutput = typeof DeleteGroupBackupPrivateEndpointOutput.Type;
 
 // The operation
 /**
@@ -39,8 +30,7 @@ export type DeleteGroupBackupPrivateEndpointOutput =
  * @param cloudProvider - Human-readable label that identifies the cloud provider of the private endpoint to delete.
  * @param endpointId - Unique 24-hexadecimal digit string that identifies the private endpoint to delete.
  */
-export const deleteGroupBackupPrivateEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteGroupBackupPrivateEndpointInput,
-    outputSchema: DeleteGroupBackupPrivateEndpointOutput,
-  }));
+export const deleteGroupBackupPrivateEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupBackupPrivateEndpointInput,
+  outputSchema: DeleteGroupBackupPrivateEndpointOutput,
+}));

@@ -3,25 +3,16 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupEncryptionAtRestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest",
-    }),
-  );
-export type GetGroupEncryptionAtRestInput =
-  typeof GetGroupEncryptionAtRestInput.Type;
+export const GetGroupEncryptionAtRestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest" }));
+export type GetGroupEncryptionAtRestInput = typeof GetGroupEncryptionAtRestInput.Type;
 
 // Output Schema
-export const GetGroupEncryptionAtRestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupEncryptionAtRestOutput =
-  typeof GetGroupEncryptionAtRestOutput.Type;
+export const GetGroupEncryptionAtRestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupEncryptionAtRestOutput = typeof GetGroupEncryptionAtRestOutput.Type;
 
 // The operation
 /**
@@ -36,9 +27,7 @@ export type GetGroupEncryptionAtRestOutput =
 
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
-export const getGroupEncryptionAtRest = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupEncryptionAtRestInput,
-    outputSchema: GetGroupEncryptionAtRestOutput,
-  }),
-);
+export const getGroupEncryptionAtRest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupEncryptionAtRestInput,
+  outputSchema: GetGroupEncryptionAtRestOutput,
+}));

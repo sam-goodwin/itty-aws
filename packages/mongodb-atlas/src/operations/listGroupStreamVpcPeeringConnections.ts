@@ -3,28 +3,19 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupStreamVpcPeeringConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    requesterAccountId: Schema.String,
-    envelope: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections",
-    }),
-  );
-export type ListGroupStreamVpcPeeringConnectionsInput =
-  typeof ListGroupStreamVpcPeeringConnectionsInput.Type;
+export const ListGroupStreamVpcPeeringConnectionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  requesterAccountId: Schema.String,
+  envelope: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections" }));
+export type ListGroupStreamVpcPeeringConnectionsInput = typeof ListGroupStreamVpcPeeringConnectionsInput.Type;
 
 // Output Schema
-export const ListGroupStreamVpcPeeringConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupStreamVpcPeeringConnectionsOutput =
-  typeof ListGroupStreamVpcPeeringConnectionsOutput.Type;
+export const ListGroupStreamVpcPeeringConnectionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupStreamVpcPeeringConnectionsOutput = typeof ListGroupStreamVpcPeeringConnectionsOutput.Type;
 
 // The operation
 /**
@@ -41,8 +32,7 @@ export type ListGroupStreamVpcPeeringConnectionsOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupStreamVpcPeeringConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListGroupStreamVpcPeeringConnectionsInput,
-    outputSchema: ListGroupStreamVpcPeeringConnectionsOutput,
-  }));
+export const listGroupStreamVpcPeeringConnections = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupStreamVpcPeeringConnectionsInput,
+  outputSchema: ListGroupStreamVpcPeeringConnectionsOutput,
+}));

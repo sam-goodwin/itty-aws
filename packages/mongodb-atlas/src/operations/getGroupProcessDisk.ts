@@ -3,23 +3,16 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupProcessDiskInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    partitionName: Schema.String.pipe(T.PathParam()),
-    groupId: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}",
-    }),
-  );
+export const GetGroupProcessDiskInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partitionName: Schema.String.pipe(T.PathParam()),
+  groupId: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}" }));
 export type GetGroupProcessDiskInput = typeof GetGroupProcessDiskInput.Type;
 
 // Output Schema
-export const GetGroupProcessDiskOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupProcessDiskOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type GetGroupProcessDiskOutput = typeof GetGroupProcessDiskOutput.Type;
 
 // The operation

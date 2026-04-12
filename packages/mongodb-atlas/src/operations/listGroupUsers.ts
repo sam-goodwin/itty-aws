@@ -14,9 +14,7 @@ export const ListGroupUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   includeOrgUsers: Schema.optional(Schema.Boolean),
   orgMembershipStatus: Schema.optional(Schema.String),
   username: Schema.optional(Schema.String),
-}).pipe(
-  T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/users" }),
-);
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/users" }));
 export type ListGroupUsersInput = typeof ListGroupUsersInput.Type;
 
 // Output Schema

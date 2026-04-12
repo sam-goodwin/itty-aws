@@ -3,28 +3,19 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupProcessPerformanceAdvisorNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-    duration: Schema.optional(Schema.Number),
-    since: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/namespaces",
-    }),
-  );
-export type ListGroupProcessPerformanceAdvisorNamespacesInput =
-  typeof ListGroupProcessPerformanceAdvisorNamespacesInput.Type;
+export const ListGroupProcessPerformanceAdvisorNamespacesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+  duration: Schema.optional(Schema.Number),
+  since: Schema.optional(Schema.Number),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/namespaces" }));
+export type ListGroupProcessPerformanceAdvisorNamespacesInput = typeof ListGroupProcessPerformanceAdvisorNamespacesInput.Type;
 
 // Output Schema
-export const ListGroupProcessPerformanceAdvisorNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupProcessPerformanceAdvisorNamespacesOutput =
-  typeof ListGroupProcessPerformanceAdvisorNamespacesOutput.Type;
+export const ListGroupProcessPerformanceAdvisorNamespacesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupProcessPerformanceAdvisorNamespacesOutput = typeof ListGroupProcessPerformanceAdvisorNamespacesOutput.Type;
 
 // The operation
 /**
@@ -47,8 +38,7 @@ export type ListGroupProcessPerformanceAdvisorNamespacesOutput =
 - If you don't specify the **duration** parameter, the endpoint returns data covering from the **since** value and the current time.
 - If you specify neither the **duration** nor the **since** parameters, the endpoint returns data from the previous 24 hours.
  */
-export const listGroupProcessPerformanceAdvisorNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListGroupProcessPerformanceAdvisorNamespacesInput,
-    outputSchema: ListGroupProcessPerformanceAdvisorNamespacesOutput,
-  }));
+export const listGroupProcessPerformanceAdvisorNamespaces = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupProcessPerformanceAdvisorNamespacesInput,
+  outputSchema: ListGroupProcessPerformanceAdvisorNamespacesOutput,
+}));

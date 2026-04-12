@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service dns-firewall
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -546,37 +545,7 @@ export const listDnsFirewalls: API.PaginatedOperationMethod<
   ListDnsFirewallsResponse,
   ListDnsFirewallsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDnsFirewallsRequest,
-  ) => stream.Stream<
-    ListDnsFirewallsResponse,
-    ListDnsFirewallsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListDnsFirewallsRequest) => stream.Stream<
-    {
-      id: string;
-      deprecateAnyRequests: boolean;
-      dnsFirewallIps: string[];
-      ecsFallback: boolean;
-      maximumCacheTtl: number;
-      minimumCacheTtl: number;
-      modifiedOn: string;
-      name: string;
-      negativeCacheTtl: number | null;
-      ratelimit: number | null;
-      retries: number;
-      upstreamIps: string[];
-      attackMitigation?: {
-        enabled?: boolean | null;
-        onlyWhenUpstreamUnhealthy?: boolean | null;
-      } | null;
-    },
-    ListDnsFirewallsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDnsFirewallsRequest,
   output: ListDnsFirewallsResponse,
   errors: [],

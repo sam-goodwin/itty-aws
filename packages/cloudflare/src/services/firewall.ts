@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service firewall
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -327,49 +326,7 @@ export const listAccessRules: API.PaginatedOperationMethod<
   ListAccessRulesResponse,
   ListAccessRulesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAccessRulesRequest,
-  ) => stream.Stream<
-    ListAccessRulesResponse,
-    ListAccessRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListAccessRulesRequest) => stream.Stream<
-    {
-      id: string;
-      allowedModes: (
-        | "block"
-        | "challenge"
-        | "whitelist"
-        | "js_challenge"
-        | "managed_challenge"
-      )[];
-      configuration:
-        | { target?: "ip" | null; value?: string | null }
-        | { target?: "ip6" | null; value?: string | null }
-        | { target?: "ip_range" | null; value?: string | null }
-        | { target?: "asn" | null; value?: string | null }
-        | { target?: "country" | null; value?: string | null };
-      mode:
-        | "block"
-        | "challenge"
-        | "whitelist"
-        | "js_challenge"
-        | "managed_challenge";
-      createdOn?: string | null;
-      modifiedOn?: string | null;
-      notes?: string | null;
-      scope?: {
-        id?: string | null;
-        email?: string | null;
-        type?: "user" | "organization" | null;
-      } | null;
-    },
-    ListAccessRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessRulesRequest,
   output: ListAccessRulesResponse,
   errors: [],
@@ -1044,31 +1001,7 @@ export const listLockdowns: API.PaginatedOperationMethod<
   ListLockdownsResponse,
   ListLockdownsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLockdownsRequest,
-  ) => stream.Stream<
-    ListLockdownsResponse,
-    ListLockdownsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListLockdownsRequest) => stream.Stream<
-    {
-      id: string;
-      configurations: (
-        | { target?: "ip" | null; value?: string | null }
-        | { target?: "ip_range" | null; value?: string | null }
-      )[];
-      createdOn: string;
-      description: string;
-      modifiedOn: string;
-      paused: boolean;
-      urls: string[];
-    },
-    ListLockdownsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLockdownsRequest,
   output: ListLockdownsResponse,
   errors: [],
@@ -1478,56 +1411,7 @@ export const bulkPutRules: API.PaginatedOperationMethod<
   BulkPutRulesResponse,
   BulkPutRulesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BulkPutRulesRequest,
-  ) => stream.Stream<
-    BulkPutRulesResponse,
-    BulkPutRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: BulkPutRulesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      action?:
-        | "block"
-        | "challenge"
-        | "js_challenge"
-        | "managed_challenge"
-        | "allow"
-        | "log"
-        | "bypass"
-        | null;
-      description?: string | null;
-      filter?:
-        | {
-            id?: string | null;
-            description?: string | null;
-            expression?: string | null;
-            paused?: boolean | null;
-            ref?: string | null;
-          }
-        | { id: string; deleted: boolean }
-        | null;
-      paused?: boolean | null;
-      priority?: number | null;
-      products?:
-        | (
-            | "zoneLockdown"
-            | "uaBlock"
-            | "bic"
-            | "hot"
-            | "securityLevel"
-            | "rateLimit"
-            | "waf"
-          )[]
-        | null;
-      ref?: string | null;
-    },
-    BulkPutRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: BulkPutRulesRequest,
   output: BulkPutRulesResponse,
   errors: [],
@@ -1828,56 +1712,7 @@ export const listRules: API.PaginatedOperationMethod<
   ListRulesResponse,
   ListRulesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    ListRulesResponse,
-    ListRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListRulesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      action?:
-        | "block"
-        | "challenge"
-        | "js_challenge"
-        | "managed_challenge"
-        | "allow"
-        | "log"
-        | "bypass"
-        | null;
-      description?: string | null;
-      filter?:
-        | {
-            id?: string | null;
-            description?: string | null;
-            expression?: string | null;
-            paused?: boolean | null;
-            ref?: string | null;
-          }
-        | { id: string; deleted: boolean }
-        | null;
-      paused?: boolean | null;
-      priority?: number | null;
-      products?:
-        | (
-            | "zoneLockdown"
-            | "uaBlock"
-            | "bic"
-            | "hot"
-            | "securityLevel"
-            | "rateLimit"
-            | "waf"
-          )[]
-        | null;
-      ref?: string | null;
-    },
-    ListRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [],
@@ -2056,56 +1891,7 @@ export const createRule: API.PaginatedOperationMethod<
   CreateRuleResponse,
   CreateRuleError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: CreateRuleRequest,
-  ) => stream.Stream<
-    CreateRuleResponse,
-    CreateRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: CreateRuleRequest) => stream.Stream<
-    {
-      id?: string | null;
-      action?:
-        | "block"
-        | "challenge"
-        | "js_challenge"
-        | "managed_challenge"
-        | "allow"
-        | "log"
-        | "bypass"
-        | null;
-      description?: string | null;
-      filter?:
-        | {
-            id?: string | null;
-            description?: string | null;
-            expression?: string | null;
-            paused?: boolean | null;
-            ref?: string | null;
-          }
-        | { id: string; deleted: boolean }
-        | null;
-      paused?: boolean | null;
-      priority?: number | null;
-      products?:
-        | (
-            | "zoneLockdown"
-            | "uaBlock"
-            | "bic"
-            | "hot"
-            | "securityLevel"
-            | "rateLimit"
-            | "waf"
-          )[]
-        | null;
-      ref?: string | null;
-    },
-    CreateRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreateRuleRequest,
   output: CreateRuleResponse,
   errors: [],
@@ -2415,56 +2201,7 @@ export const patchRule: API.PaginatedOperationMethod<
   PatchRuleResponse,
   PatchRuleError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: PatchRuleRequest,
-  ) => stream.Stream<
-    PatchRuleResponse,
-    PatchRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: PatchRuleRequest) => stream.Stream<
-    {
-      id?: string | null;
-      action?:
-        | "block"
-        | "challenge"
-        | "js_challenge"
-        | "managed_challenge"
-        | "allow"
-        | "log"
-        | "bypass"
-        | null;
-      description?: string | null;
-      filter?:
-        | {
-            id?: string | null;
-            description?: string | null;
-            expression?: string | null;
-            paused?: boolean | null;
-            ref?: string | null;
-          }
-        | { id: string; deleted: boolean }
-        | null;
-      paused?: boolean | null;
-      priority?: number | null;
-      products?:
-        | (
-            | "zoneLockdown"
-            | "uaBlock"
-            | "bic"
-            | "hot"
-            | "securityLevel"
-            | "rateLimit"
-            | "waf"
-          )[]
-        | null;
-      ref?: string | null;
-    },
-    PatchRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: PatchRuleRequest,
   output: PatchRuleResponse,
   errors: [],
@@ -2742,56 +2479,7 @@ export const bulkPatchRules: API.PaginatedOperationMethod<
   BulkPatchRulesResponse,
   BulkPatchRulesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BulkPatchRulesRequest,
-  ) => stream.Stream<
-    BulkPatchRulesResponse,
-    BulkPatchRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: BulkPatchRulesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      action?:
-        | "block"
-        | "challenge"
-        | "js_challenge"
-        | "managed_challenge"
-        | "allow"
-        | "log"
-        | "bypass"
-        | null;
-      description?: string | null;
-      filter?:
-        | {
-            id?: string | null;
-            description?: string | null;
-            expression?: string | null;
-            paused?: boolean | null;
-            ref?: string | null;
-          }
-        | { id: string; deleted: boolean }
-        | null;
-      paused?: boolean | null;
-      priority?: number | null;
-      products?:
-        | (
-            | "zoneLockdown"
-            | "uaBlock"
-            | "bic"
-            | "hot"
-            | "securityLevel"
-            | "rateLimit"
-            | "waf"
-          )[]
-        | null;
-      ref?: string | null;
-    },
-    BulkPatchRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: BulkPatchRulesRequest,
   output: BulkPatchRulesResponse,
   errors: [],
@@ -2932,56 +2620,7 @@ export const bulkDeleteRules: API.PaginatedOperationMethod<
   BulkDeleteRulesResponse,
   BulkDeleteRulesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BulkDeleteRulesRequest,
-  ) => stream.Stream<
-    BulkDeleteRulesResponse,
-    BulkDeleteRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: BulkDeleteRulesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      action?:
-        | "block"
-        | "challenge"
-        | "js_challenge"
-        | "managed_challenge"
-        | "allow"
-        | "log"
-        | "bypass"
-        | null;
-      description?: string | null;
-      filter?:
-        | {
-            id?: string | null;
-            description?: string | null;
-            expression?: string | null;
-            paused?: boolean | null;
-            ref?: string | null;
-          }
-        | { id: string; deleted: boolean }
-        | null;
-      paused?: boolean | null;
-      priority?: number | null;
-      products?:
-        | (
-            | "zoneLockdown"
-            | "uaBlock"
-            | "bic"
-            | "hot"
-            | "securityLevel"
-            | "rateLimit"
-            | "waf"
-          )[]
-        | null;
-      ref?: string | null;
-    },
-    BulkDeleteRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: BulkDeleteRulesRequest,
   output: BulkDeleteRulesResponse,
   errors: [],
@@ -3153,31 +2792,7 @@ export const listUaRules: API.PaginatedOperationMethod<
   ListUaRulesResponse,
   ListUaRulesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUaRulesRequest,
-  ) => stream.Stream<
-    ListUaRulesResponse,
-    ListUaRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListUaRulesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      configuration?: { target?: string | null; value?: string | null } | null;
-      description?: string | null;
-      mode?:
-        | "block"
-        | "challenge"
-        | "js_challenge"
-        | "managed_challenge"
-        | null;
-      paused?: boolean | null;
-    },
-    ListUaRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUaRulesRequest,
   output: ListUaRulesResponse,
   errors: [],
@@ -3830,65 +3445,7 @@ export const listWafOverrides: API.PaginatedOperationMethod<
   ListWafOverridesResponse,
   ListWafOverridesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWafOverridesRequest,
-  ) => stream.Stream<
-    ListWafOverridesResponse,
-    ListWafOverridesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListWafOverridesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      description?: string | null;
-      groups?: Record<string, unknown> | null;
-      paused?: boolean | null;
-      priority?: number | null;
-      rewriteAction?: {
-        block?:
-          | "challenge"
-          | "block"
-          | "simulate"
-          | "disable"
-          | "default"
-          | null;
-        challenge?:
-          | "challenge"
-          | "block"
-          | "simulate"
-          | "disable"
-          | "default"
-          | null;
-        default?:
-          | "challenge"
-          | "block"
-          | "simulate"
-          | "disable"
-          | "default"
-          | null;
-        disable?:
-          | "challenge"
-          | "block"
-          | "simulate"
-          | "disable"
-          | "default"
-          | null;
-        simulate?:
-          | "challenge"
-          | "block"
-          | "simulate"
-          | "disable"
-          | "default"
-          | null;
-      } | null;
-      rules?: Record<string, unknown> | null;
-      urls?: string[] | null;
-    },
-    ListWafOverridesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWafOverridesRequest,
   output: ListWafOverridesResponse,
   errors: [],
@@ -4523,22 +4080,7 @@ export const listWafPackages: API.PaginatedOperationMethod<
   ListWafPackagesResponse,
   ListWafPackagesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWafPackagesRequest,
-  ) => stream.Stream<
-    ListWafPackagesResponse,
-    ListWafPackagesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListWafPackagesRequest,
-  ) => stream.Stream<
-    unknown,
-    ListWafPackagesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWafPackagesRequest,
   output: ListWafPackagesResponse,
   errors: [],
@@ -4712,29 +4254,7 @@ export const listWafPackageGroups: API.PaginatedOperationMethod<
   ListWafPackageGroupsResponse,
   ListWafPackageGroupsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWafPackageGroupsRequest,
-  ) => stream.Stream<
-    ListWafPackageGroupsResponse,
-    ListWafPackageGroupsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListWafPackageGroupsRequest) => stream.Stream<
-    {
-      id: string;
-      description: string | null;
-      mode: "on" | "off";
-      name: string;
-      rulesCount: number;
-      allowedModes?: ("on" | "off")[] | null;
-      modifiedRulesCount?: number | null;
-      packageId?: string | null;
-    },
-    ListWafPackageGroupsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWafPackageGroupsRequest,
   output: ListWafPackageGroupsResponse,
   errors: [],
@@ -5011,44 +4531,7 @@ export const listWafPackageRules: API.PaginatedOperationMethod<
   ListWafPackageRulesResponse,
   ListWafPackageRulesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWafPackageRulesRequest,
-  ) => stream.Stream<
-    ListWafPackageRulesResponse,
-    ListWafPackageRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListWafPackageRulesRequest) => stream.Stream<
-    | {
-        id: string;
-        allowedModes: ("on" | "off")[];
-        description: string;
-        group: { id?: string | null; name?: string | null };
-        mode: "on" | "off";
-        packageId: string;
-        priority: string;
-      }
-    | {
-        id: string;
-        allowedModes: (
-          | "default"
-          | "disable"
-          | "simulate"
-          | "block"
-          | "challenge"
-        )[];
-        defaultMode: "disable" | "simulate" | "block" | "challenge";
-        description: string;
-        group: { id?: string | null; name?: string | null };
-        mode: "default" | "disable" | "simulate" | "block" | "challenge";
-        packageId: string;
-        priority: string;
-      },
-    ListWafPackageRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWafPackageRulesRequest,
   output: ListWafPackageRulesResponse,
   errors: [],

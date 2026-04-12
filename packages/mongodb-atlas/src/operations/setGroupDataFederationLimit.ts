@@ -3,31 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const SetGroupDataFederationLimitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    limitName: Schema.Literals([
-      "bytesProcessed.query",
-      "bytesProcessed.daily",
-      "bytesProcessed.weekly",
-      "bytesProcessed.monthly",
-    ]).pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}",
-    }),
-  );
-export type SetGroupDataFederationLimitInput =
-  typeof SetGroupDataFederationLimitInput.Type;
+export const SetGroupDataFederationLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  limitName: Schema.Literals(["bytesProcessed.query", "bytesProcessed.daily", "bytesProcessed.weekly", "bytesProcessed.monthly"]).pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}" }));
+export type SetGroupDataFederationLimitInput = typeof SetGroupDataFederationLimitInput.Type;
 
 // Output Schema
-export const SetGroupDataFederationLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SetGroupDataFederationLimitOutput =
-  typeof SetGroupDataFederationLimitOutput.Type;
+export const SetGroupDataFederationLimitOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type SetGroupDataFederationLimitOutput = typeof SetGroupDataFederationLimitOutput.Type;
 
 // The operation
 /**
@@ -50,9 +36,7 @@ export type SetGroupDataFederationLimitOutput =
 | `bytesProcessed.monthly` | Limit on the number of bytes processed for the data federation instance for the current month | N/A |
 
  */
-export const setGroupDataFederationLimit = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SetGroupDataFederationLimitInput,
-    outputSchema: SetGroupDataFederationLimitOutput,
-  }),
-);
+export const setGroupDataFederationLimit = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: SetGroupDataFederationLimitInput,
+  outputSchema: SetGroupDataFederationLimitOutput,
+}));

@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service email-security
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -841,124 +840,7 @@ export const listInvestigates: API.PaginatedOperationMethod<
   ListInvestigatesResponse,
   ListInvestigatesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvestigatesRequest,
-  ) => stream.Stream<
-    ListInvestigatesResponse,
-    ListInvestigatesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListInvestigatesRequest) => stream.Stream<
-    {
-      id: string;
-      actionLog: unknown;
-      clientRecipients: string[];
-      detectionReasons: string[];
-      isPhishSubmission: boolean;
-      isQuarantined: boolean;
-      postfixId: string;
-      properties: {
-        allowlistedPattern?: string | null;
-        allowlistedPatternType?:
-          | "quarantine_release"
-          | "acceptable_sender"
-          | "allowed_sender"
-          | "allowed_recipient"
-          | "domain_similarity"
-          | "domain_recency"
-          | "managed_acceptable_sender"
-          | "outbound_ndr"
-          | null;
-        blocklistedMessage?: boolean | null;
-        blocklistedPattern?: string | null;
-        whitelistedPatternType?:
-          | "quarantine_release"
-          | "acceptable_sender"
-          | "allowed_sender"
-          | "allowed_recipient"
-          | "domain_similarity"
-          | "domain_recency"
-          | "managed_acceptable_sender"
-          | "outbound_ndr"
-          | null;
-      };
-      ts: string;
-      alertId?: string | null;
-      deliveryMode?:
-        | "DIRECT"
-        | "BCC"
-        | "JOURNAL"
-        | "REVIEW_SUBMISSION"
-        | "DMARC_UNVERIFIED"
-        | "DMARC_FAILURE_REPORT"
-        | "DMARC_AGGREGATE_REPORT"
-        | "THREAT_INTEL_SUBMISSION"
-        | "SIMULATION_SUBMISSION"
-        | "API"
-        | "RETRO_SCAN"
-        | null;
-      edfHash?: string | null;
-      envelopeFrom?: string | null;
-      envelopeTo?: string[] | null;
-      finalDisposition?:
-        | "MALICIOUS"
-        | "MALICIOUS-BEC"
-        | "SUSPICIOUS"
-        | "SPOOF"
-        | "SPAM"
-        | "BULK"
-        | "ENCRYPTED"
-        | "EXTERNAL"
-        | "UNKNOWN"
-        | "NONE"
-        | null;
-      findings?:
-        | {
-            attachment?: string | null;
-            detail?: string | null;
-            detection?:
-              | "MALICIOUS"
-              | "MALICIOUS-BEC"
-              | "SUSPICIOUS"
-              | "SPOOF"
-              | "SPAM"
-              | "BULK"
-              | "ENCRYPTED"
-              | "EXTERNAL"
-              | "UNKNOWN"
-              | "NONE"
-              | null;
-            field?: string | null;
-            name?: string | null;
-            portion?: string | null;
-            reason?: string | null;
-            score?: number | null;
-            value?: string | null;
-          }[]
-        | null;
-      from?: string | null;
-      fromName?: string | null;
-      htmltextStructureHash?: string | null;
-      messageId?: string | null;
-      postfixIdOutbound?: string | null;
-      replyto?: string | null;
-      sentDate?: string | null;
-      subject?: string | null;
-      threatCategories?: string[] | null;
-      to?: string[] | null;
-      toName?: string[] | null;
-      validation?: {
-        comment?: string | null;
-        dkim?: "pass" | "neutral" | "fail" | "error" | "none" | null;
-        dmarc?: "pass" | "neutral" | "fail" | "error" | "none" | null;
-        spf?: "pass" | "neutral" | "fail" | "error" | "none" | null;
-      } | null;
-    },
-    ListInvestigatesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInvestigatesRequest,
   output: ListInvestigatesResponse,
   errors: [],
@@ -1280,29 +1162,7 @@ export const createInvestigateMove: API.PaginatedOperationMethod<
   CreateInvestigateMoveResponse,
   CreateInvestigateMoveError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: CreateInvestigateMoveRequest,
-  ) => stream.Stream<
-    CreateInvestigateMoveResponse,
-    CreateInvestigateMoveError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: CreateInvestigateMoveRequest) => stream.Stream<
-    {
-      completedTimestamp: string;
-      itemCount: number;
-      success: boolean;
-      destination?: string | null;
-      messageId?: string | null;
-      operation?: string | null;
-      recipient?: string | null;
-      status?: string | null;
-    },
-    CreateInvestigateMoveError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreateInvestigateMoveRequest,
   output: CreateInvestigateMoveResponse,
   errors: [],
@@ -1397,29 +1257,7 @@ export const bulkInvestigateMove: API.PaginatedOperationMethod<
   BulkInvestigateMoveResponse,
   BulkInvestigateMoveError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BulkInvestigateMoveRequest,
-  ) => stream.Stream<
-    BulkInvestigateMoveResponse,
-    BulkInvestigateMoveError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: BulkInvestigateMoveRequest) => stream.Stream<
-    {
-      completedTimestamp: string;
-      itemCount: number;
-      success: boolean;
-      destination?: string | null;
-      messageId?: string | null;
-      operation?: string | null;
-      recipient?: string | null;
-      status?: string | null;
-    },
-    BulkInvestigateMoveError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: BulkInvestigateMoveRequest,
   output: BulkInvestigateMoveResponse,
   errors: [],
@@ -1696,25 +1534,7 @@ export const bulkInvestigateRelease: API.PaginatedOperationMethod<
   BulkInvestigateReleaseResponse,
   BulkInvestigateReleaseError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BulkInvestigateReleaseRequest,
-  ) => stream.Stream<
-    BulkInvestigateReleaseResponse,
-    BulkInvestigateReleaseError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: BulkInvestigateReleaseRequest) => stream.Stream<
-    {
-      postfixId: string;
-      delivered?: string[] | null;
-      failed?: string[] | null;
-      undelivered?: string[] | null;
-    },
-    BulkInvestigateReleaseError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: BulkInvestigateReleaseRequest,
   output: BulkInvestigateReleaseResponse,
   errors: [],
@@ -2058,35 +1878,7 @@ export const listSettingAllowPolicies: API.PaginatedOperationMethod<
   ListSettingAllowPoliciesResponse,
   ListSettingAllowPoliciesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSettingAllowPoliciesRequest,
-  ) => stream.Stream<
-    ListSettingAllowPoliciesResponse,
-    ListSettingAllowPoliciesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSettingAllowPoliciesRequest) => stream.Stream<
-    {
-      id: number;
-      createdAt: string;
-      isAcceptableSender: boolean;
-      isExemptRecipient: boolean;
-      isRegex: boolean;
-      isTrustedSender: boolean;
-      lastModified: string;
-      pattern: string;
-      patternType: "EMAIL" | "DOMAIN" | "IP" | "UNKNOWN";
-      verifySender: boolean;
-      comments?: string | null;
-      isRecipient?: boolean | null;
-      isSender?: boolean | null;
-      isSpoof?: boolean | null;
-    },
-    ListSettingAllowPoliciesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSettingAllowPoliciesRequest,
   output: ListSettingAllowPoliciesResponse,
   errors: [],
@@ -2592,28 +2384,7 @@ export const listSettingBlockSenders: API.PaginatedOperationMethod<
   ListSettingBlockSendersResponse,
   ListSettingBlockSendersError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSettingBlockSendersRequest,
-  ) => stream.Stream<
-    ListSettingBlockSendersResponse,
-    ListSettingBlockSendersError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSettingBlockSendersRequest) => stream.Stream<
-    {
-      id: number;
-      createdAt: string;
-      isRegex: boolean;
-      lastModified: string;
-      pattern: string;
-      patternType: "EMAIL" | "DOMAIN" | "IP" | "UNKNOWN";
-      comments?: string | null;
-    },
-    ListSettingBlockSendersError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSettingBlockSendersRequest,
   output: ListSettingBlockSendersResponse,
   errors: [],
@@ -3311,66 +3082,7 @@ export const listSettingDomains: API.PaginatedOperationMethod<
   ListSettingDomainsResponse,
   ListSettingDomainsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSettingDomainsRequest,
-  ) => stream.Stream<
-    ListSettingDomainsResponse,
-    ListSettingDomainsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSettingDomainsRequest) => stream.Stream<
-    {
-      id: number;
-      allowedDeliveryModes: (
-        | "DIRECT"
-        | "BCC"
-        | "JOURNAL"
-        | "API"
-        | "RETRO_SCAN"
-      )[];
-      createdAt: string;
-      domain: string;
-      dropDispositions: (
-        | "MALICIOUS"
-        | "MALICIOUS-BEC"
-        | "SUSPICIOUS"
-        | "SPOOF"
-        | "SPAM"
-        | "BULK"
-        | "ENCRYPTED"
-        | "EXTERNAL"
-        | "UNKNOWN"
-        | "NONE"
-      )[];
-      ipRestrictions: string[];
-      lastModified: string;
-      lookbackHops: number;
-      regions: ("GLOBAL" | "AU" | "DE" | "IN" | "US")[];
-      transport: string;
-      authorization?: {
-        authorized: boolean;
-        timestamp: string;
-        statusMessage?: string | null;
-      } | null;
-      dmarcStatus?: "none" | "good" | "invalid" | null;
-      emailsProcessed?: {
-        timestamp: string;
-        totalEmailsProcessed: number;
-        totalEmailsProcessedPrevious: number;
-      } | null;
-      folder?: "AllItems" | "Inbox" | null;
-      inboxProvider?: "Microsoft" | "Google" | null;
-      integrationId?: string | null;
-      o365TenantId?: string | null;
-      requireTlsInbound?: boolean | null;
-      requireTlsOutbound?: boolean | null;
-      spfStatus?: "none" | "good" | "neutral" | "open" | "invalid" | null;
-    },
-    ListSettingDomainsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSettingDomainsRequest,
   output: ListSettingDomainsResponse,
   errors: [],
@@ -3747,22 +3459,7 @@ export const bulkDeleteSettingDomains: API.PaginatedOperationMethod<
   BulkDeleteSettingDomainsResponse,
   BulkDeleteSettingDomainsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BulkDeleteSettingDomainsRequest,
-  ) => stream.Stream<
-    BulkDeleteSettingDomainsResponse,
-    BulkDeleteSettingDomainsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: BulkDeleteSettingDomainsRequest,
-  ) => stream.Stream<
-    { id: number },
-    BulkDeleteSettingDomainsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: BulkDeleteSettingDomainsRequest,
   output: BulkDeleteSettingDomainsResponse,
   errors: [],
@@ -3983,32 +3680,7 @@ export const listSettingImpersonationRegistries: API.PaginatedOperationMethod<
   ListSettingImpersonationRegistriesResponse,
   ListSettingImpersonationRegistriesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSettingImpersonationRegistriesRequest,
-  ) => stream.Stream<
-    ListSettingImpersonationRegistriesResponse,
-    ListSettingImpersonationRegistriesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSettingImpersonationRegistriesRequest) => stream.Stream<
-    {
-      id: number;
-      createdAt: string;
-      email: string;
-      isEmailRegex: boolean;
-      lastModified: string;
-      name: string;
-      comments?: string | null;
-      directoryId?: number | null;
-      directoryNodeId?: number | null;
-      externalDirectoryNodeId?: string | null;
-      provenance?: string | null;
-    },
-    ListSettingImpersonationRegistriesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSettingImpersonationRegistriesRequest,
   output: ListSettingImpersonationRegistriesResponse,
   errors: [],
@@ -4434,29 +4106,7 @@ export const listSettingTrustedDomains: API.PaginatedOperationMethod<
   ListSettingTrustedDomainsResponse,
   ListSettingTrustedDomainsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSettingTrustedDomainsRequest,
-  ) => stream.Stream<
-    ListSettingTrustedDomainsResponse,
-    ListSettingTrustedDomainsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSettingTrustedDomainsRequest) => stream.Stream<
-    {
-      id: number;
-      createdAt: string;
-      isRecent: boolean;
-      isRegex: boolean;
-      isSimilarity: boolean;
-      lastModified: string;
-      pattern: string;
-      comments?: string | null;
-    },
-    ListSettingTrustedDomainsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSettingTrustedDomainsRequest,
   output: ListSettingTrustedDomainsResponse,
   errors: [],
@@ -4980,65 +4630,7 @@ export const listSubmissions: API.PaginatedOperationMethod<
   ListSubmissionsResponse,
   ListSubmissionsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubmissionsRequest,
-  ) => stream.Stream<
-    ListSubmissionsResponse,
-    ListSubmissionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSubmissionsRequest) => stream.Stream<
-    {
-      requestedTs: string;
-      submissionId: string;
-      originalDisposition?:
-        | "MALICIOUS"
-        | "MALICIOUS-BEC"
-        | "SUSPICIOUS"
-        | "SPOOF"
-        | "SPAM"
-        | "BULK"
-        | "ENCRYPTED"
-        | "EXTERNAL"
-        | "UNKNOWN"
-        | "NONE"
-        | null;
-      originalEdfHash?: string | null;
-      outcome?: string | null;
-      outcomeDisposition?:
-        | "MALICIOUS"
-        | "MALICIOUS-BEC"
-        | "SUSPICIOUS"
-        | "SPOOF"
-        | "SPAM"
-        | "BULK"
-        | "ENCRYPTED"
-        | "EXTERNAL"
-        | "UNKNOWN"
-        | "NONE"
-        | null;
-      requestedBy?: string | null;
-      requestedDisposition?:
-        | "MALICIOUS"
-        | "MALICIOUS-BEC"
-        | "SUSPICIOUS"
-        | "SPOOF"
-        | "SPAM"
-        | "BULK"
-        | "ENCRYPTED"
-        | "EXTERNAL"
-        | "UNKNOWN"
-        | "NONE"
-        | null;
-      status?: string | null;
-      subject?: string | null;
-      type?: string | null;
-    },
-    ListSubmissionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubmissionsRequest,
   output: ListSubmissionsResponse,
   errors: [],

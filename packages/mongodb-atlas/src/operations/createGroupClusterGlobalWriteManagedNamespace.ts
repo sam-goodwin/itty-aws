@@ -3,26 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateGroupClusterGlobalWriteManagedNamespaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces",
-    }),
-  );
-export type CreateGroupClusterGlobalWriteManagedNamespaceInput =
-  typeof CreateGroupClusterGlobalWriteManagedNamespaceInput.Type;
+export const CreateGroupClusterGlobalWriteManagedNamespaceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces" }));
+export type CreateGroupClusterGlobalWriteManagedNamespaceInput = typeof CreateGroupClusterGlobalWriteManagedNamespaceInput.Type;
 
 // Output Schema
-export const CreateGroupClusterGlobalWriteManagedNamespaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupClusterGlobalWriteManagedNamespaceOutput =
-  typeof CreateGroupClusterGlobalWriteManagedNamespaceOutput.Type;
+export const CreateGroupClusterGlobalWriteManagedNamespaceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CreateGroupClusterGlobalWriteManagedNamespaceOutput = typeof CreateGroupClusterGlobalWriteManagedNamespaceOutput.Type;
 
 // The operation
 /**
@@ -37,8 +28,7 @@ export type CreateGroupClusterGlobalWriteManagedNamespaceOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param clusterName - Human-readable label that identifies this cluster.
  */
-export const createGroupClusterGlobalWriteManagedNamespace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateGroupClusterGlobalWriteManagedNamespaceInput,
-    outputSchema: CreateGroupClusterGlobalWriteManagedNamespaceOutput,
-  }));
+export const createGroupClusterGlobalWriteManagedNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupClusterGlobalWriteManagedNamespaceInput,
+  outputSchema: CreateGroupClusterGlobalWriteManagedNamespaceOutput,
+}));

@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service workers-for-platforms
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -166,29 +165,7 @@ export const listDispatchNamespaces: API.PaginatedOperationMethod<
   ListDispatchNamespacesResponse,
   ListDispatchNamespacesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDispatchNamespacesRequest,
-  ) => stream.Stream<
-    ListDispatchNamespacesResponse,
-    ListDispatchNamespacesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListDispatchNamespacesRequest) => stream.Stream<
-    {
-      createdBy?: string | null;
-      createdOn?: string | null;
-      modifiedBy?: string | null;
-      modifiedOn?: string | null;
-      namespaceId?: string | null;
-      namespaceName?: string | null;
-      scriptCount?: number | null;
-      trustedWorkers?: boolean | null;
-    },
-    ListDispatchNamespacesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDispatchNamespacesRequest,
   output: ListDispatchNamespacesResponse,
   errors: [],
@@ -2273,112 +2250,7 @@ export const getDispatchNamespaceScriptBinding: API.PaginatedOperationMethod<
   GetDispatchNamespaceScriptBindingResponse,
   GetDispatchNamespaceScriptBindingError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDispatchNamespaceScriptBindingRequest,
-  ) => stream.Stream<
-    GetDispatchNamespaceScriptBindingResponse,
-    GetDispatchNamespaceScriptBindingError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: GetDispatchNamespaceScriptBindingRequest) => stream.Stream<
-    | { name: string; type: "ai" }
-    | { dataset: string; name: string; type: "analytics_engine" }
-    | { name: string; type: "assets" }
-    | { name: string; type: "browser" }
-    | { id: string; name: string; type: "d1" }
-    | { name: string; part: string; type: "data_blob" }
-    | {
-        name: string;
-        namespace: string;
-        type: "dispatch_namespace";
-        outbound?: {
-          params?: string[] | null;
-          worker?: {
-            environment?: string | null;
-            service?: string | null;
-          } | null;
-        } | null;
-      }
-    | {
-        name: string;
-        type: "durable_object_namespace";
-        className?: string | null;
-        environment?: string | null;
-        namespaceId?: string | null;
-        scriptName?: string | null;
-      }
-    | { id: string; name: string; type: "hyperdrive" }
-    | {
-        name: string;
-        type: "inherit";
-        oldName?: string | null;
-        versionId?: string | null;
-      }
-    | { name: string; type: "images" }
-    | { json: string; name: string; type: "json" }
-    | { name: string; namespaceId: string; type: "kv_namespace" }
-    | { certificateId: string; name: string; type: "mtls_certificate" }
-    | { name: string; text: string; type: "plain_text" }
-    | { name: string; pipeline: string; type: "pipelines" }
-    | { name: string; queueName: string; type: "queue" }
-    | {
-        bucketName: string;
-        name: string;
-        type: "r2_bucket";
-        jurisdiction?: "eu" | "fedramp" | null;
-      }
-    | { name: string; type: "secret_text" }
-    | {
-        name: string;
-        type: "send_email";
-        allowedDestinationAddresses?: string[] | null;
-        allowedSenderAddresses?: string[] | null;
-        destinationAddress?: string | null;
-      }
-    | {
-        name: string;
-        service: string;
-        type: "service";
-        environment?: string | null;
-      }
-    | { name: string; part: string; type: "text_blob" }
-    | { indexName: string; name: string; type: "vectorize" }
-    | { name: string; type: "version_metadata" }
-    | {
-        name: string;
-        secretName: string;
-        storeId: string;
-        type: "secrets_store_secret";
-      }
-    | {
-        algorithm: unknown;
-        format: "raw" | "pkcs8" | "spki" | "jwk";
-        name: string;
-        type: "secret_key";
-        usages: (
-          | "encrypt"
-          | "decrypt"
-          | "sign"
-          | "verify"
-          | "deriveKey"
-          | "deriveBits"
-          | "wrapKey"
-          | "unwrapKey"
-        )[];
-      }
-    | {
-        name: string;
-        type: "workflow";
-        workflowName: string;
-        className?: string | null;
-        scriptName?: string | null;
-      }
-    | { name: string; part: string; type: "wasm_module" },
-    GetDispatchNamespaceScriptBindingError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetDispatchNamespaceScriptBindingRequest,
   output: GetDispatchNamespaceScriptBindingResponse,
   errors: [],
@@ -2997,36 +2869,7 @@ export const listDispatchNamespaceScriptSecrets: API.PaginatedOperationMethod<
   ListDispatchNamespaceScriptSecretsResponse,
   ListDispatchNamespaceScriptSecretsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDispatchNamespaceScriptSecretsRequest,
-  ) => stream.Stream<
-    ListDispatchNamespaceScriptSecretsResponse,
-    ListDispatchNamespaceScriptSecretsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListDispatchNamespaceScriptSecretsRequest) => stream.Stream<
-    | { name: string; type: "secret_text" }
-    | {
-        algorithm: unknown;
-        format: "raw" | "pkcs8" | "spki" | "jwk";
-        name: string;
-        type: "secret_key";
-        usages: (
-          | "encrypt"
-          | "decrypt"
-          | "sign"
-          | "verify"
-          | "deriveKey"
-          | "deriveBits"
-          | "wrapKey"
-          | "unwrapKey"
-        )[];
-      },
-    ListDispatchNamespaceScriptSecretsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDispatchNamespaceScriptSecretsRequest,
   output: ListDispatchNamespaceScriptSecretsResponse,
   errors: [],
@@ -4975,22 +4818,7 @@ export const listDispatchNamespaceScriptTags: API.PaginatedOperationMethod<
   ListDispatchNamespaceScriptTagsResponse,
   ListDispatchNamespaceScriptTagsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDispatchNamespaceScriptTagsRequest,
-  ) => stream.Stream<
-    ListDispatchNamespaceScriptTagsResponse,
-    ListDispatchNamespaceScriptTagsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDispatchNamespaceScriptTagsRequest,
-  ) => stream.Stream<
-    string,
-    ListDispatchNamespaceScriptTagsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDispatchNamespaceScriptTagsRequest,
   output: ListDispatchNamespaceScriptTagsResponse,
   errors: [],
@@ -5040,22 +4868,7 @@ export const putDispatchNamespaceScriptTag: API.PaginatedOperationMethod<
   PutDispatchNamespaceScriptTagResponse,
   PutDispatchNamespaceScriptTagError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: PutDispatchNamespaceScriptTagRequest,
-  ) => stream.Stream<
-    PutDispatchNamespaceScriptTagResponse,
-    PutDispatchNamespaceScriptTagError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: PutDispatchNamespaceScriptTagRequest,
-  ) => stream.Stream<
-    string,
-    PutDispatchNamespaceScriptTagError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: PutDispatchNamespaceScriptTagRequest,
   output: PutDispatchNamespaceScriptTagResponse,
   errors: [],

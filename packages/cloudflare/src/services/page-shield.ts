@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service page-shield
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -242,34 +241,7 @@ export const listConnections: API.PaginatedOperationMethod<
   ListConnectionsResponse,
   ListConnectionsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConnectionsRequest,
-  ) => stream.Stream<
-    ListConnectionsResponse,
-    ListConnectionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListConnectionsRequest) => stream.Stream<
-    {
-      id: string;
-      addedAt: string;
-      firstSeenAt: string;
-      host: string;
-      lastSeenAt: string;
-      url: string;
-      urlContainsCdnCgiPath: boolean;
-      domainReportedMalicious?: boolean | null;
-      firstPageUrl?: string | null;
-      maliciousDomainCategories?: string[] | null;
-      maliciousUrlCategories?: string[] | null;
-      pageUrls?: string[] | null;
-      urlReportedMalicious?: boolean | null;
-    },
-    ListConnectionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionsRequest,
   output: ListConnectionsResponse,
   errors: [],
@@ -513,35 +485,7 @@ export const listCookies: API.PaginatedOperationMethod<
   ListCookiesResponse,
   ListCookiesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCookiesRequest,
-  ) => stream.Stream<
-    ListCookiesResponse,
-    ListCookiesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListCookiesRequest) => stream.Stream<
-    {
-      id: string;
-      firstSeenAt: string;
-      host: string;
-      lastSeenAt: string;
-      name: string;
-      type: "first_party" | "unknown";
-      domainAttribute?: string | null;
-      expiresAttribute?: string | null;
-      httpOnlyAttribute?: boolean | null;
-      maxAgeAttribute?: number | null;
-      pageUrls?: string[] | null;
-      pathAttribute?: string | null;
-      sameSiteAttribute?: "lax" | "strict" | "none" | null;
-      secureAttribute?: boolean | null;
-    },
-    ListCookiesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCookiesRequest,
   output: ListCookiesResponse,
   errors: [],
@@ -776,27 +720,7 @@ export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesResponse,
   ListPoliciesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    ListPoliciesResponse,
-    ListPoliciesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListPoliciesRequest) => stream.Stream<
-    {
-      id: string;
-      action: "allow" | "log";
-      description: string;
-      enabled: boolean;
-      expression: string;
-      value: string;
-    },
-    ListPoliciesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [],
@@ -1325,42 +1249,7 @@ export const listScripts: API.PaginatedOperationMethod<
   ListScriptsResponse,
   ListScriptsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScriptsRequest,
-  ) => stream.Stream<
-    ListScriptsResponse,
-    ListScriptsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListScriptsRequest) => stream.Stream<
-    {
-      id: string;
-      addedAt: string;
-      firstSeenAt: string;
-      host: string;
-      lastSeenAt: string;
-      url: string;
-      urlContainsCdnCgiPath: boolean;
-      cryptominingScore?: number | null;
-      dataflowScore?: number | null;
-      domainReportedMalicious?: boolean | null;
-      fetchedAt?: string | null;
-      firstPageUrl?: string | null;
-      hash?: string | null;
-      jsIntegrityScore?: number | null;
-      magecartScore?: number | null;
-      maliciousDomainCategories?: string[] | null;
-      maliciousUrlCategories?: string[] | null;
-      malwareScore?: number | null;
-      obfuscationScore?: number | null;
-      pageUrls?: string[] | null;
-      urlReportedMalicious?: boolean | null;
-    },
-    ListScriptsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListScriptsRequest,
   output: ListScriptsResponse,
   errors: [],

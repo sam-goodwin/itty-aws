@@ -3,9 +3,9 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const TokensRequestKmsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(T.Http({ method: "POST", path: "/tokens/kms" }));
+export const TokensRequestKmsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+
+}).pipe(T.Http({ method: "POST", path: "/tokens/kms" }));
 export type TokensRequestKmsInput = typeof TokensRequestKmsInput.Type;
 
 // Output Schema

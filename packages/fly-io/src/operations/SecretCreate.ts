@@ -7,9 +7,7 @@ export const SecretCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
   value: Schema.optional(Schema.String),
-}).pipe(
-  T.Http({ method: "POST", path: "/apps/{app_name}/secrets/{secret_name}" }),
-);
+}).pipe(T.Http({ method: "POST", path: "/apps/{app_name}/secrets/{secret_name}" }));
 export type SecretCreateInput = typeof SecretCreateInput.Type;
 
 // Output Schema

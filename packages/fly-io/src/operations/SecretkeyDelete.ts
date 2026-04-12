@@ -6,12 +6,7 @@ import * as T from "../traits";
 export const SecretkeyDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/apps/{app_name}/secretkeys/{secret_name}",
-  }),
-);
+}).pipe(T.Http({ method: "DELETE", path: "/apps/{app_name}/secretkeys/{secret_name}" }));
 export type SecretkeyDeleteInput = typeof SecretkeyDeleteInput.Type;
 
 // Output Schema

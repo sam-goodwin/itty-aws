@@ -3,27 +3,18 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateGroupDatabaseUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    databaseName: Schema.String.pipe(T.PathParam()),
-    username: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}",
-    }),
-  );
-export type UpdateGroupDatabaseUserInput =
-  typeof UpdateGroupDatabaseUserInput.Type;
+export const UpdateGroupDatabaseUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
+  username: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}" }));
+export type UpdateGroupDatabaseUserInput = typeof UpdateGroupDatabaseUserInput.Type;
 
 // Output Schema
-export const UpdateGroupDatabaseUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupDatabaseUserOutput =
-  typeof UpdateGroupDatabaseUserOutput.Type;
+export const UpdateGroupDatabaseUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateGroupDatabaseUserOutput = typeof UpdateGroupDatabaseUserOutput.Type;
 
 // The operation
 /**
@@ -52,9 +43,7 @@ export type UpdateGroupDatabaseUserOutput =
 | SCRAM-SHA | `awsIAMType`, `x509Type`, `ldapAuthType`, `oidcAuthType` | `NONE` | Alphanumeric string |
 
  */
-export const updateGroupDatabaseUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupDatabaseUserInput,
-    outputSchema: UpdateGroupDatabaseUserOutput,
-  }),
-);
+export const updateGroupDatabaseUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupDatabaseUserInput,
+  outputSchema: UpdateGroupDatabaseUserOutput,
+}));

@@ -3,25 +3,16 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateGroupBackupExportBucketInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/backup/exportBuckets",
-    }),
-  );
-export type CreateGroupBackupExportBucketInput =
-  typeof CreateGroupBackupExportBucketInput.Type;
+export const CreateGroupBackupExportBucketInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/backup/exportBuckets" }));
+export type CreateGroupBackupExportBucketInput = typeof CreateGroupBackupExportBucketInput.Type;
 
 // Output Schema
-export const CreateGroupBackupExportBucketOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupBackupExportBucketOutput =
-  typeof CreateGroupBackupExportBucketOutput.Type;
+export const CreateGroupBackupExportBucketOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CreateGroupBackupExportBucketOutput = typeof CreateGroupBackupExportBucketOutput.Type;
 
 // The operation
 /**
@@ -35,8 +26,7 @@ export type CreateGroupBackupExportBucketOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupBackupExportBucket =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateGroupBackupExportBucketInput,
-    outputSchema: CreateGroupBackupExportBucketOutput,
-  }));
+export const createGroupBackupExportBucket = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupBackupExportBucketInput,
+  outputSchema: CreateGroupBackupExportBucketOutput,
+}));

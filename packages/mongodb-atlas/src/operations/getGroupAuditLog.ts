@@ -7,9 +7,7 @@ export const GetGroupAuditLogInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(
-  T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/auditLog" }),
-);
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/auditLog" }));
 export type GetGroupAuditLogInput = typeof GetGroupAuditLogInput.Type;
 
 // Output Schema

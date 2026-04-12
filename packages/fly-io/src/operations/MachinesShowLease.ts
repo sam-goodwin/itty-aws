@@ -3,28 +3,20 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const MachinesShowLeaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    app_name: Schema.String.pipe(T.PathParam()),
-    machine_id: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "/apps/{app_name}/machines/{machine_id}/lease",
-  }),
-);
+export const MachinesShowLeaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  app_name: Schema.String.pipe(T.PathParam()),
+  machine_id: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "GET", path: "/apps/{app_name}/machines/{machine_id}/lease" }));
 export type MachinesShowLeaseInput = typeof MachinesShowLeaseInput.Type;
 
 // Output Schema
-export const MachinesShowLeaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    description: Schema.optional(Schema.String),
-    expires_at: Schema.optional(Schema.Number),
-    nonce: Schema.optional(Schema.String),
-    owner: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.String),
-  });
+export const MachinesShowLeaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  expires_at: Schema.optional(Schema.Number),
+  nonce: Schema.optional(Schema.String),
+  owner: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+});
 export type MachinesShowLeaseOutput = typeof MachinesShowLeaseOutput.Type;
 
 // The operation

@@ -7,16 +7,7 @@ import { SensitiveString, SensitiveNullableString } from "../sensitive";
 export const PostV1ProjectsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   createDatabase: Schema.optional(Schema.Boolean),
   name: Schema.optional(Schema.String),
-  region: Schema.optional(
-    Schema.Literals([
-      "us-east-1",
-      "us-west-1",
-      "eu-west-3",
-      "eu-central-1",
-      "ap-northeast-1",
-      "ap-southeast-1",
-    ]),
-  ),
+  region: Schema.optional(Schema.Literals(["us-east-1", "us-west-1", "eu-west-3", "eu-central-1", "ap-northeast-1", "ap-southeast-1"])),
 }).pipe(T.Http({ method: "POST", path: "/v1/projects" }));
 export type PostV1ProjectsInput = typeof PostV1ProjectsInput.Type;
 
@@ -34,117 +25,89 @@ export const PostV1ProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       url: Schema.String,
       name: Schema.String,
     }),
-    database: Schema.NullOr(
-      Schema.Struct({
+    database: Schema.NullOr(Schema.Struct({
+      id: Schema.String,
+      type: Schema.String,
+      url: Schema.String,
+      name: Schema.String,
+      status: Schema.Literals(["provisioning", "ready"]),
+      createdAt: Schema.String,
+      isDefault: Schema.Boolean,
+      defaultConnectionId: Schema.NullOr(Schema.String),
+      connections: Schema.Array(Schema.Struct({
         id: Schema.String,
         type: Schema.String,
         url: Schema.String,
         name: Schema.String,
-        status: Schema.Literals(["provisioning", "ready"]),
         createdAt: Schema.String,
-        isDefault: Schema.Boolean,
-        defaultConnectionId: Schema.NullOr(Schema.String),
-        connections: Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            type: Schema.String,
-            url: Schema.String,
-            name: Schema.String,
-            createdAt: Schema.String,
-            kind: Schema.Literals(["postgres", "accelerate"]),
-            endpoints: Schema.Struct({
-              direct: Schema.optional(
-                Schema.Struct({
-                  host: Schema.String,
-                  port: Schema.Number,
-                  connectionString: Schema.optional(SensitiveString),
-                }),
-              ),
-              pooled: Schema.optional(
-                Schema.Struct({
-                  host: Schema.String,
-                  port: Schema.Number,
-                  connectionString: Schema.optional(SensitiveString),
-                }),
-              ),
-              accelerate: Schema.optional(
-                Schema.Struct({
-                  host: Schema.String,
-                  port: Schema.Number,
-                  connectionString: Schema.optional(SensitiveString),
-                }),
-              ),
-            }),
-            directConnection: Schema.optional(
-              Schema.NullOr(
-                Schema.Struct({
-                  host: Schema.String,
-                  pass: Schema.String,
-                  user: Schema.String,
-                }),
-              ),
-            ),
-            database: Schema.Struct({
-              id: Schema.String,
-              url: Schema.String,
-              name: Schema.String,
-            }),
-          }),
-        ),
-        region: Schema.Struct({
+        kind: Schema.Literals(["postgres", "accelerate"]),
+        endpoints: Schema.Struct({
+          direct: Schema.optional(Schema.Struct({
+            host: Schema.String,
+            port: Schema.Number,
+            connectionString: Schema.optional(SensitiveString),
+          })),
+          pooled: Schema.optional(Schema.Struct({
+            host: Schema.String,
+            port: Schema.Number,
+            connectionString: Schema.optional(SensitiveString),
+          })),
+          accelerate: Schema.optional(Schema.Struct({
+            host: Schema.String,
+            port: Schema.Number,
+            connectionString: Schema.optional(SensitiveString),
+          })),
+        }),
+        directConnection: Schema.optional(Schema.NullOr(Schema.Struct({
+          host: Schema.String,
+          pass: Schema.String,
+          user: Schema.String,
+        }))),
+        database: Schema.Struct({
           id: Schema.String,
+          url: Schema.String,
           name: Schema.String,
         }),
-        apiKeys: Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            type: Schema.String,
-            url: Schema.String,
-            name: Schema.String,
-            createdAt: Schema.String,
-            kind: Schema.Literals(["postgres", "accelerate"]),
-            endpoints: Schema.Struct({
-              direct: Schema.optional(
-                Schema.Struct({
-                  host: Schema.String,
-                  port: Schema.Number,
-                }),
-              ),
-              pooled: Schema.optional(
-                Schema.Struct({
-                  host: Schema.String,
-                  port: Schema.Number,
-                }),
-              ),
-              accelerate: Schema.optional(
-                Schema.Struct({
-                  host: Schema.String,
-                  port: Schema.Number,
-                }),
-              ),
-            }),
-            connectionString: SensitiveString,
-            directConnection: Schema.optional(
-              Schema.NullOr(
-                Schema.Struct({
-                  host: Schema.String,
-                  pass: Schema.String,
-                  user: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-        connectionString: SensitiveNullableString,
-        directConnection: Schema.NullOr(
-          Schema.Struct({
-            host: Schema.String,
-            pass: Schema.String,
-            user: Schema.String,
-          }),
-        ),
+      })),
+      region: Schema.Struct({
+        id: Schema.String,
+        name: Schema.String,
       }),
-    ),
+      apiKeys: Schema.Array(Schema.Struct({
+        id: Schema.String,
+        type: Schema.String,
+        url: Schema.String,
+        name: Schema.String,
+        createdAt: Schema.String,
+        kind: Schema.Literals(["postgres", "accelerate"]),
+        endpoints: Schema.Struct({
+          direct: Schema.optional(Schema.Struct({
+            host: Schema.String,
+            port: Schema.Number,
+          })),
+          pooled: Schema.optional(Schema.Struct({
+            host: Schema.String,
+            port: Schema.Number,
+          })),
+          accelerate: Schema.optional(Schema.Struct({
+            host: Schema.String,
+            port: Schema.Number,
+          })),
+        }),
+        connectionString: SensitiveString,
+        directConnection: Schema.optional(Schema.NullOr(Schema.Struct({
+          host: Schema.String,
+          pass: Schema.String,
+          user: Schema.String,
+        }))),
+      })),
+      connectionString: SensitiveNullableString,
+      directConnection: Schema.NullOr(Schema.Struct({
+        host: Schema.String,
+        pass: Schema.String,
+        user: Schema.String,
+      })),
+    })),
   }),
 });
 export type PostV1ProjectsOutput = typeof PostV1ProjectsOutput.Type;

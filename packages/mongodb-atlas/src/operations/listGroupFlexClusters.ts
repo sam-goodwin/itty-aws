@@ -3,27 +3,19 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupFlexClustersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/flexClusters",
-    }),
-  );
+export const ListGroupFlexClustersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/flexClusters" }));
 export type ListGroupFlexClustersInput = typeof ListGroupFlexClustersInput.Type;
 
 // Output Schema
-export const ListGroupFlexClustersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupFlexClustersOutput =
-  typeof ListGroupFlexClustersOutput.Type;
+export const ListGroupFlexClustersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupFlexClustersOutput = typeof ListGroupFlexClustersOutput.Type;
 
 // The operation
 /**
@@ -40,9 +32,7 @@ export type ListGroupFlexClustersOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupFlexClusters = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupFlexClustersInput,
-    outputSchema: ListGroupFlexClustersOutput,
-  }),
-);
+export const listGroupFlexClusters = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupFlexClustersInput,
+  outputSchema: ListGroupFlexClustersOutput,
+}));

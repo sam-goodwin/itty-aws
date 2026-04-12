@@ -6,12 +6,7 @@ import * as T from "../traits";
 export const MachinesCordonInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/apps/{app_name}/machines/{machine_id}/cordon",
-  }),
-);
+}).pipe(T.Http({ method: "POST", path: "/apps/{app_name}/machines/{machine_id}/cordon" }));
 export type MachinesCordonInput = typeof MachinesCordonInput.Type;
 
 // Output Schema

@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service origin-tls-client-auth
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -227,27 +226,7 @@ export const putHostname: API.PaginatedOperationMethod<
   PutHostnameResponse,
   PutHostnameError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: PutHostnameRequest,
-  ) => stream.Stream<
-    PutHostnameResponse,
-    PutHostnameError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: PutHostnameRequest) => stream.Stream<
-    {
-      id?: string | null;
-      certId?: string | null;
-      certificate?: string | null;
-      enabled?: boolean | null;
-      hostname?: string | null;
-      privateKey?: string | null;
-    },
-    PutHostnameError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: PutHostnameRequest,
   output: PutHostnameResponse,
   errors: [],
@@ -418,27 +397,7 @@ export const listHostnameCertificates: API.PaginatedOperationMethod<
   ListHostnameCertificatesResponse,
   ListHostnameCertificatesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHostnameCertificatesRequest,
-  ) => stream.Stream<
-    ListHostnameCertificatesResponse,
-    ListHostnameCertificatesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListHostnameCertificatesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      certId?: string | null;
-      certificate?: string | null;
-      enabled?: boolean | null;
-      hostname?: string | null;
-      privateKey?: string | null;
-    },
-    ListHostnameCertificatesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHostnameCertificatesRequest,
   output: ListHostnameCertificatesResponse,
   errors: [],
@@ -765,25 +724,7 @@ export const listOriginTlsClientAuths: API.PaginatedOperationMethod<
   ListOriginTlsClientAuthsResponse,
   ListOriginTlsClientAuthsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOriginTlsClientAuthsRequest,
-  ) => stream.Stream<
-    ListOriginTlsClientAuthsResponse,
-    ListOriginTlsClientAuthsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListOriginTlsClientAuthsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      certificate?: string | null;
-      enabled?: boolean | null;
-      privateKey?: string | null;
-    },
-    ListOriginTlsClientAuthsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOriginTlsClientAuthsRequest,
   output: ListOriginTlsClientAuthsResponse,
   errors: [],

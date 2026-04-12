@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service diagnostics
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -617,56 +616,7 @@ export const createTraceroute: API.PaginatedOperationMethod<
   CreateTracerouteResponse,
   CreateTracerouteError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: CreateTracerouteRequest,
-  ) => stream.Stream<
-    CreateTracerouteResponse,
-    CreateTracerouteError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: CreateTracerouteRequest) => stream.Stream<
-    {
-      colos?:
-        | {
-            colo?: { city?: string | null; name?: string | null } | null;
-            error?:
-              | ""
-              | "Could not gather traceroute data: Code 1"
-              | "Could not gather traceroute data: Code 2"
-              | "Could not gather traceroute data: Code 3"
-              | "Could not gather traceroute data: Code 4"
-              | null;
-            hops?:
-              | {
-                  nodes?:
-                    | {
-                        asn?: string | null;
-                        ip?: string | null;
-                        labels?: string[] | null;
-                        maxRttMs?: number | null;
-                        meanRttMs?: number | null;
-                        minRttMs?: number | null;
-                        name?: string | null;
-                        packetCount?: number | null;
-                        stdDevRttMs?: number | null;
-                      }[]
-                    | null;
-                  packetsLost?: number | null;
-                  packetsSent?: number | null;
-                  packetsTtl?: number | null;
-                }[]
-              | null;
-            targetSummary?: unknown | null;
-            tracerouteTimeMs?: number | null;
-          }[]
-        | null;
-      target?: string | null;
-    },
-    CreateTracerouteError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreateTracerouteRequest,
   output: CreateTracerouteResponse,
   errors: [],

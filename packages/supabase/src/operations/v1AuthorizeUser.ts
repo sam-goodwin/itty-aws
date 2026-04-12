@@ -11,9 +11,7 @@ export const V1AuthorizeUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   state: Schema.optional(Schema.String),
   response_mode: Schema.optional(Schema.String),
   code_challenge: Schema.optional(Schema.String),
-  code_challenge_method: Schema.optional(
-    Schema.Literals(["plain", "sha256", "S256"]),
-  ),
+  code_challenge_method: Schema.optional(Schema.Literals(["plain", "sha256", "S256"])),
   organization_slug: Schema.optional(Schema.String),
   resource: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "GET", path: "/v1/oauth/authorize" }));

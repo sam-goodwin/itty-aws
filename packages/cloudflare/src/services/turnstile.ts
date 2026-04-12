@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service turnstile
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -317,36 +316,7 @@ export const listWidgets: API.PaginatedOperationMethod<
   ListWidgetsResponse,
   ListWidgetsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWidgetsRequest,
-  ) => stream.Stream<
-    ListWidgetsResponse,
-    ListWidgetsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListWidgetsRequest) => stream.Stream<
-    {
-      botFightMode: boolean;
-      clearanceLevel:
-        | "no_clearance"
-        | "jschallenge"
-        | "managed"
-        | "interactive";
-      createdOn: string;
-      domains: string[];
-      ephemeralId: boolean;
-      mode: "non-interactive" | "invisible" | "managed";
-      modifiedOn: string;
-      name: string;
-      offlabel: boolean;
-      region: "world" | "china";
-      sitekey: string;
-    },
-    ListWidgetsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWidgetsRequest,
   output: ListWidgetsResponse,
   errors: [],

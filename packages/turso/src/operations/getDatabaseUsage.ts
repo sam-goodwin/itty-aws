@@ -8,47 +8,30 @@ export const GetDatabaseUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   databaseName: Schema.String.pipe(T.PathParam()),
   from: Schema.optional(Schema.String),
   to: Schema.optional(Schema.String),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/usage",
-  }),
-);
+}).pipe(T.Http({ method: "GET", path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/usage" }));
 export type GetDatabaseUsageInput = typeof GetDatabaseUsageInput.Type;
 
 // Output Schema
-export const GetDatabaseUsageOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    database: Schema.optional(
-      Schema.Struct({
-        uuid: Schema.optional(Schema.String),
-        instances: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              uuid: Schema.optional(Schema.String),
-              usage: Schema.optional(
-                Schema.Struct({
-                  rows_read: Schema.optional(Schema.Number),
-                  rows_written: Schema.optional(Schema.Number),
-                  storage_bytes: Schema.optional(Schema.Number),
-                  bytes_synced: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-        ),
-        total: Schema.optional(
-          Schema.Struct({
-            rows_read: Schema.optional(Schema.Number),
-            rows_written: Schema.optional(Schema.Number),
-            storage_bytes: Schema.optional(Schema.Number),
-            bytes_synced: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
-  },
-);
+export const GetDatabaseUsageOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  database: Schema.optional(Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    instances: Schema.optional(Schema.Array(Schema.Struct({
+      uuid: Schema.optional(Schema.String),
+      usage: Schema.optional(Schema.Struct({
+        rows_read: Schema.optional(Schema.Number),
+        rows_written: Schema.optional(Schema.Number),
+        storage_bytes: Schema.optional(Schema.Number),
+        bytes_synced: Schema.optional(Schema.Number),
+      })),
+    }))),
+    total: Schema.optional(Schema.Struct({
+      rows_read: Schema.optional(Schema.Number),
+      rows_written: Schema.optional(Schema.Number),
+      storage_bytes: Schema.optional(Schema.Number),
+      bytes_synced: Schema.optional(Schema.Number),
+    })),
+  })),
+});
 export type GetDatabaseUsageOutput = typeof GetDatabaseUsageOutput.Type;
 
 // The operation

@@ -3,26 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupPrivateNetworkSettingEndpointIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    endpointId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId}",
-    }),
-  );
-export type DeleteGroupPrivateNetworkSettingEndpointIdInput =
-  typeof DeleteGroupPrivateNetworkSettingEndpointIdInput.Type;
+export const DeleteGroupPrivateNetworkSettingEndpointIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  endpointId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId}" }));
+export type DeleteGroupPrivateNetworkSettingEndpointIdInput = typeof DeleteGroupPrivateNetworkSettingEndpointIdInput.Type;
 
 // Output Schema
-export const DeleteGroupPrivateNetworkSettingEndpointIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupPrivateNetworkSettingEndpointIdOutput =
-  typeof DeleteGroupPrivateNetworkSettingEndpointIdOutput.Type;
+export const DeleteGroupPrivateNetworkSettingEndpointIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupPrivateNetworkSettingEndpointIdOutput = typeof DeleteGroupPrivateNetworkSettingEndpointIdOutput.Type;
 
 // The operation
 /**
@@ -37,8 +28,7 @@ export type DeleteGroupPrivateNetworkSettingEndpointIdOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param endpointId - Unique 22-character alphanumeric string that identifies the private endpoint to remove. Atlas Data Federation supports AWS private endpoints using the AWS PrivateLink feature.
  */
-export const deleteGroupPrivateNetworkSettingEndpointId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteGroupPrivateNetworkSettingEndpointIdInput,
-    outputSchema: DeleteGroupPrivateNetworkSettingEndpointIdOutput,
-  }));
+export const deleteGroupPrivateNetworkSettingEndpointId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupPrivateNetworkSettingEndpointIdInput,
+  outputSchema: DeleteGroupPrivateNetworkSettingEndpointIdOutput,
+}));

@@ -8,12 +8,7 @@ export const GetOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiUserId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}",
-  }),
-);
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}" }));
 export type GetOrgApiKeyInput = typeof GetOrgApiKeyInput.Type;
 
 // Output Schema

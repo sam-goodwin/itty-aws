@@ -16,9 +16,7 @@ export const ListGroupEventsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   includeRaw: Schema.optional(Schema.Boolean),
   maxDate: Schema.optional(Schema.String),
   minDate: Schema.optional(Schema.String),
-}).pipe(
-  T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/events" }),
-);
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/events" }));
 export type ListGroupEventsInput = typeof ListGroupEventsInput.Type;
 
 // Output Schema

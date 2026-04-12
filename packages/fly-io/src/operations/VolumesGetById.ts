@@ -6,9 +6,7 @@ import * as T from "../traits";
 export const VolumesGetByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   volume_id: Schema.String.pipe(T.PathParam()),
-}).pipe(
-  T.Http({ method: "GET", path: "/apps/{app_name}/volumes/{volume_id}" }),
-);
+}).pipe(T.Http({ method: "GET", path: "/apps/{app_name}/volumes/{volume_id}" }));
 export type VolumesGetByIdInput = typeof VolumesGetByIdInput.Type;
 
 // Output Schema
@@ -25,9 +23,7 @@ export const VolumesGetByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   created_at: Schema.optional(Schema.String),
   encrypted: Schema.optional(Schema.Boolean),
   fstype: Schema.optional(Schema.String),
-  host_status: Schema.optional(
-    Schema.Literals(["ok", "unknown", "unreachable"]),
-  ),
+  host_status: Schema.optional(Schema.Literals(["ok", "unknown", "unreachable"])),
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   region: Schema.optional(Schema.String),

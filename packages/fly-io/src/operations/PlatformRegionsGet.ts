@@ -3,37 +3,31 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const PlatformRegionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    size: Schema.optional(Schema.String),
-    cpu_kind: Schema.optional(Schema.String),
-    memory_mb: Schema.optional(Schema.Number),
-    cpus: Schema.optional(Schema.Number),
-    gpus: Schema.optional(Schema.Number),
-    gpu_kind: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/platform/regions" }));
+export const PlatformRegionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  size: Schema.optional(Schema.String),
+  cpu_kind: Schema.optional(Schema.String),
+  memory_mb: Schema.optional(Schema.Number),
+  cpus: Schema.optional(Schema.Number),
+  gpus: Schema.optional(Schema.Number),
+  gpu_kind: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "GET", path: "/platform/regions" }));
 export type PlatformRegionsGetInput = typeof PlatformRegionsGetInput.Type;
 
 // Output Schema
-export const PlatformRegionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nearest: Schema.optional(Schema.String),
-    regions: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          capacity: Schema.optional(Schema.Number),
-          code: Schema.optional(Schema.String),
-          deprecated: Schema.optional(Schema.Boolean),
-          gateway_available: Schema.optional(Schema.Boolean),
-          geo_region: Schema.optional(Schema.String),
-          latitude: Schema.optional(Schema.Number),
-          longitude: Schema.optional(Schema.Number),
-          name: Schema.optional(Schema.String),
-          requires_paid_plan: Schema.optional(Schema.Boolean),
-        }),
-      ),
-    ),
-  });
+export const PlatformRegionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nearest: Schema.optional(Schema.String),
+  regions: Schema.optional(Schema.Array(Schema.Struct({
+    capacity: Schema.optional(Schema.Number),
+    code: Schema.optional(Schema.String),
+    deprecated: Schema.optional(Schema.Boolean),
+    gateway_available: Schema.optional(Schema.Boolean),
+    geo_region: Schema.optional(Schema.String),
+    latitude: Schema.optional(Schema.Number),
+    longitude: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    requires_paid_plan: Schema.optional(Schema.Boolean),
+  }))),
+});
 export type PlatformRegionsGetOutput = typeof PlatformRegionsGetOutput.Type;
 
 // The operation

@@ -3,23 +3,16 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupAlertConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    alertConfigId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}",
-    }),
-  );
+export const GetGroupAlertConfigInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  alertConfigId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}" }));
 export type GetGroupAlertConfigInput = typeof GetGroupAlertConfigInput.Type;
 
 // Output Schema
-export const GetGroupAlertConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupAlertConfigOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type GetGroupAlertConfigOutput = typeof GetGroupAlertConfigOutput.Type;
 
 // The operation

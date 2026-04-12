@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service secrets-store
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -203,22 +202,7 @@ export const listStores: API.PaginatedOperationMethod<
   ListStoresResponse,
   ListStoresError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStoresRequest,
-  ) => stream.Stream<
-    ListStoresResponse,
-    ListStoresError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStoresRequest,
-  ) => stream.Stream<
-    { id: string; created: string; modified: string; name: string },
-    ListStoresError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStoresRequest,
   output: ListStoresResponse,
   errors: [InvalidAccountId],
@@ -277,22 +261,7 @@ export const createStore: API.PaginatedOperationMethod<
   CreateStoreResponse,
   CreateStoreError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: CreateStoreRequest,
-  ) => stream.Stream<
-    CreateStoreResponse,
-    CreateStoreError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: CreateStoreRequest,
-  ) => stream.Stream<
-    { id: string; created: string; modified: string; name: string },
-    CreateStoreError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreateStoreRequest,
   output: CreateStoreResponse,
   errors: [InvalidAccountId, MaximumStoresExceeded],
@@ -540,28 +509,7 @@ export const listStoreSecrets: API.PaginatedOperationMethod<
   ListStoreSecretsResponse,
   ListStoreSecretsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStoreSecretsRequest,
-  ) => stream.Stream<
-    ListStoreSecretsResponse,
-    ListStoreSecretsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListStoreSecretsRequest) => stream.Stream<
-    {
-      id: string;
-      created: string;
-      modified: string;
-      name: string;
-      status: "pending" | "active" | "deleted";
-      storeId: string;
-      comment?: string | null;
-    },
-    ListStoreSecretsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStoreSecretsRequest,
   output: ListStoreSecretsResponse,
   errors: [StoreNotFound, InvalidAccountId],
@@ -651,28 +599,7 @@ export const createStoreSecret: API.PaginatedOperationMethod<
   CreateStoreSecretResponse,
   CreateStoreSecretError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: CreateStoreSecretRequest,
-  ) => stream.Stream<
-    CreateStoreSecretResponse,
-    CreateStoreSecretError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: CreateStoreSecretRequest) => stream.Stream<
-    {
-      id: string;
-      created: string;
-      modified: string;
-      name: string;
-      status: "pending" | "active" | "deleted";
-      storeId: string;
-      comment?: string | null;
-    },
-    CreateStoreSecretError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreateStoreSecretRequest,
   output: CreateStoreSecretResponse,
   errors: [
@@ -920,28 +847,7 @@ export const bulkDeleteStoreSecrets: API.PaginatedOperationMethod<
   BulkDeleteStoreSecretsResponse,
   BulkDeleteStoreSecretsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BulkDeleteStoreSecretsRequest,
-  ) => stream.Stream<
-    BulkDeleteStoreSecretsResponse,
-    BulkDeleteStoreSecretsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: BulkDeleteStoreSecretsRequest) => stream.Stream<
-    {
-      id: string;
-      created: string;
-      modified: string;
-      name: string;
-      status: "pending" | "active" | "deleted";
-      storeId: string;
-      comment?: string | null;
-    },
-    BulkDeleteStoreSecretsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: BulkDeleteStoreSecretsRequest,
   output: BulkDeleteStoreSecretsResponse,
   errors: [StoreNotFound, InvalidAccountId, InvalidJsonBody],

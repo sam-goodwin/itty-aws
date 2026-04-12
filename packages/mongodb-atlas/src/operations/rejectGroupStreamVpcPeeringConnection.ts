@@ -3,25 +3,16 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const RejectGroupStreamVpcPeeringConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    id: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject",
-    }),
-  );
-export type RejectGroupStreamVpcPeeringConnectionInput =
-  typeof RejectGroupStreamVpcPeeringConnectionInput.Type;
+export const RejectGroupStreamVpcPeeringConnectionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  id: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject" }));
+export type RejectGroupStreamVpcPeeringConnectionInput = typeof RejectGroupStreamVpcPeeringConnectionInput.Type;
 
 // Output Schema
-export const RejectGroupStreamVpcPeeringConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RejectGroupStreamVpcPeeringConnectionOutput =
-  typeof RejectGroupStreamVpcPeeringConnectionOutput.Type;
+export const RejectGroupStreamVpcPeeringConnectionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type RejectGroupStreamVpcPeeringConnectionOutput = typeof RejectGroupStreamVpcPeeringConnectionOutput.Type;
 
 // The operation
 /**
@@ -35,8 +26,7 @@ export type RejectGroupStreamVpcPeeringConnectionOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param id - The VPC Peering Connection id.
  */
-export const rejectGroupStreamVpcPeeringConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: RejectGroupStreamVpcPeeringConnectionInput,
-    outputSchema: RejectGroupStreamVpcPeeringConnectionOutput,
-  }));
+export const rejectGroupStreamVpcPeeringConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: RejectGroupStreamVpcPeeringConnectionInput,
+  outputSchema: RejectGroupStreamVpcPeeringConnectionOutput,
+}));

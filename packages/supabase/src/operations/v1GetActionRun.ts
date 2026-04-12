@@ -13,30 +13,12 @@ export type V1GetActionRunInput = typeof V1GetActionRunInput.Type;
 export const V1GetActionRunOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   branch_id: Schema.String,
-  run_steps: Schema.Array(
-    Schema.Struct({
-      name: Schema.Literals([
-        "clone",
-        "pull",
-        "health",
-        "configure",
-        "migrate",
-        "seed",
-        "deploy",
-      ]),
-      status: Schema.Literals([
-        "CREATED",
-        "DEAD",
-        "EXITED",
-        "PAUSED",
-        "REMOVING",
-        "RESTARTING",
-        "RUNNING",
-      ]),
-      created_at: Schema.String,
-      updated_at: Schema.String,
-    }),
-  ),
+  run_steps: Schema.Array(Schema.Struct({
+    name: Schema.Literals(["clone", "pull", "health", "configure", "migrate", "seed", "deploy"]),
+    status: Schema.Literals(["CREATED", "DEAD", "EXITED", "PAUSED", "REMOVING", "RESTARTING", "RUNNING"]),
+    created_at: Schema.String,
+    updated_at: Schema.String,
+  })),
   git_config: Schema.optional(Schema.NullOr(Schema.Unknown)),
   workdir: Schema.NullOr(Schema.String),
   check_run_id: Schema.NullOr(Schema.Number),

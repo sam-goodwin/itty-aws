@@ -3,24 +3,15 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DisableGroupUserSecurityCustomerX509Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/userSecurity/customerX509",
-    }),
-  );
-export type DisableGroupUserSecurityCustomerX509Input =
-  typeof DisableGroupUserSecurityCustomerX509Input.Type;
+export const DisableGroupUserSecurityCustomerX509Input = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/userSecurity/customerX509" }));
+export type DisableGroupUserSecurityCustomerX509Input = typeof DisableGroupUserSecurityCustomerX509Input.Type;
 
 // Output Schema
-export const DisableGroupUserSecurityCustomerX509Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DisableGroupUserSecurityCustomerX509Output =
-  typeof DisableGroupUserSecurityCustomerX509Output.Type;
+export const DisableGroupUserSecurityCustomerX509Output = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DisableGroupUserSecurityCustomerX509Output = typeof DisableGroupUserSecurityCustomerX509Output.Type;
 
 // The operation
 /**
@@ -34,8 +25,7 @@ export type DisableGroupUserSecurityCustomerX509Output =
 
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
-export const disableGroupUserSecurityCustomerX509 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DisableGroupUserSecurityCustomerX509Input,
-    outputSchema: DisableGroupUserSecurityCustomerX509Output,
-  }));
+export const disableGroupUserSecurityCustomerX509 = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DisableGroupUserSecurityCustomerX509Input,
+  outputSchema: DisableGroupUserSecurityCustomerX509Output,
+}));

@@ -3,27 +3,18 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateGroupClusterQueryShapeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    queryShapeHash: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash}",
-    }),
-  );
-export type UpdateGroupClusterQueryShapeInput =
-  typeof UpdateGroupClusterQueryShapeInput.Type;
+export const UpdateGroupClusterQueryShapeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  queryShapeHash: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash}" }));
+export type UpdateGroupClusterQueryShapeInput = typeof UpdateGroupClusterQueryShapeInput.Type;
 
 // Output Schema
-export const UpdateGroupClusterQueryShapeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupClusterQueryShapeOutput =
-  typeof UpdateGroupClusterQueryShapeOutput.Type;
+export const UpdateGroupClusterQueryShapeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateGroupClusterQueryShapeOutput = typeof UpdateGroupClusterQueryShapeOutput.Type;
 
 // The operation
 /**
@@ -39,8 +30,7 @@ export type UpdateGroupClusterQueryShapeOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  * @param queryShapeHash - A SHA256 hash of a query shape, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs.
  */
-export const updateGroupClusterQueryShape =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UpdateGroupClusterQueryShapeInput,
-    outputSchema: UpdateGroupClusterQueryShapeOutput,
-  }));
+export const updateGroupClusterQueryShape = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupClusterQueryShapeInput,
+  outputSchema: UpdateGroupClusterQueryShapeOutput,
+}));

@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service healthchecks
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -471,68 +470,7 @@ export const listHealthchecks: API.PaginatedOperationMethod<
   ListHealthchecksResponse,
   ListHealthchecksError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHealthchecksRequest,
-  ) => stream.Stream<
-    ListHealthchecksResponse,
-    ListHealthchecksError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListHealthchecksRequest) => stream.Stream<
-    {
-      id?: string | null;
-      address?: string | null;
-      checkRegions?:
-        | (
-            | "WNAM"
-            | "ENAM"
-            | "WEU"
-            | "EEU"
-            | "NSAM"
-            | "SSAM"
-            | "OC"
-            | "ME"
-            | "NAF"
-            | "SAF"
-            | "IN"
-            | "SEAS"
-            | "NEAS"
-            | "ALL_REGIONS"
-          )[]
-        | null;
-      consecutiveFails?: number | null;
-      consecutiveSuccesses?: number | null;
-      createdOn?: string | null;
-      description?: string | null;
-      failureReason?: string | null;
-      httpConfig?: {
-        allowInsecure?: boolean | null;
-        expectedBody?: string | null;
-        expectedCodes?: string[] | null;
-        followRedirects?: boolean | null;
-        header?: Record<string, unknown> | null;
-        method?: "GET" | "HEAD" | null;
-        path?: string | null;
-        port?: number | null;
-      } | null;
-      interval?: number | null;
-      modifiedOn?: string | null;
-      name?: string | null;
-      retries?: number | null;
-      status?: "unknown" | "healthy" | "unhealthy" | "suspended" | null;
-      suspended?: boolean | null;
-      tcpConfig?: {
-        method?: "connection_established" | null;
-        port?: number | null;
-      } | null;
-      timeout?: number | null;
-      type?: string | null;
-    },
-    ListHealthchecksError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHealthchecksRequest,
   output: ListHealthchecksResponse,
   errors: [],

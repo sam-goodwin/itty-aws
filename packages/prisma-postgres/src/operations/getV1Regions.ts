@@ -10,15 +10,13 @@ export type GetV1RegionsInput = typeof GetV1RegionsInput.Type;
 
 // Output Schema
 export const GetV1RegionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      type: Schema.String,
-      name: Schema.String,
-      product: Schema.Literals(["postgres", "accelerate"]),
-      status: Schema.optional(Schema.Literals(["available", "unavailable"])),
-    }),
-  ),
+  data: Schema.Array(Schema.Struct({
+    id: Schema.String,
+    type: Schema.String,
+    name: Schema.String,
+    product: Schema.Literals(["postgres", "accelerate"]),
+    status: Schema.optional(Schema.Literals(["available", "unavailable"])),
+  })),
 });
 export type GetV1RegionsOutput = typeof GetV1RegionsOutput.Type;
 

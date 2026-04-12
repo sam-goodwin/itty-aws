@@ -9,12 +9,7 @@ export const UpdateSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   snapshot: Schema.Struct({
     name: Schema.optional(Schema.String),
   }),
-}).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "/projects/{project_id}/snapshots/{snapshot_id}",
-  }),
-);
+}).pipe(T.Http({ method: "PATCH", path: "/projects/{project_id}/snapshots/{snapshot_id}" }));
 export type UpdateSnapshotInput = typeof UpdateSnapshotInput.Type;
 
 // Output Schema

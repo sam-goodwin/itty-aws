@@ -7,9 +7,7 @@ export const MachinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
-}).pipe(
-  T.Http({ method: "DELETE", path: "/apps/{app_name}/machines/{machine_id}" }),
-);
+}).pipe(T.Http({ method: "DELETE", path: "/apps/{app_name}/machines/{machine_id}" }));
 export type MachinesDeleteInput = typeof MachinesDeleteInput.Type;
 
 // Output Schema

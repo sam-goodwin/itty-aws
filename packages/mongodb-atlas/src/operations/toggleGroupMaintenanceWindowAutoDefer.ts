@@ -3,24 +3,15 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ToggleGroupMaintenanceWindowAutoDeferInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/maintenanceWindow/autoDefer",
-    }),
-  );
-export type ToggleGroupMaintenanceWindowAutoDeferInput =
-  typeof ToggleGroupMaintenanceWindowAutoDeferInput.Type;
+export const ToggleGroupMaintenanceWindowAutoDeferInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/maintenanceWindow/autoDefer" }));
+export type ToggleGroupMaintenanceWindowAutoDeferInput = typeof ToggleGroupMaintenanceWindowAutoDeferInput.Type;
 
 // Output Schema
-export const ToggleGroupMaintenanceWindowAutoDeferOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ToggleGroupMaintenanceWindowAutoDeferOutput =
-  typeof ToggleGroupMaintenanceWindowAutoDeferOutput.Type;
+export const ToggleGroupMaintenanceWindowAutoDeferOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ToggleGroupMaintenanceWindowAutoDeferOutput = typeof ToggleGroupMaintenanceWindowAutoDeferOutput.Type;
 
 // The operation
 /**
@@ -33,8 +24,7 @@ export type ToggleGroupMaintenanceWindowAutoDeferOutput =
 
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
-export const toggleGroupMaintenanceWindowAutoDefer =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ToggleGroupMaintenanceWindowAutoDeferInput,
-    outputSchema: ToggleGroupMaintenanceWindowAutoDeferOutput,
-  }));
+export const toggleGroupMaintenanceWindowAutoDefer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ToggleGroupMaintenanceWindowAutoDeferInput,
+  outputSchema: ToggleGroupMaintenanceWindowAutoDeferOutput,
+}));

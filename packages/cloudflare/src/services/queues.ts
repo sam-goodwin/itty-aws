@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service queues
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -352,45 +351,7 @@ export const listConsumers: API.PaginatedOperationMethod<
   ListConsumersResponse,
   ListConsumersError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConsumersRequest,
-  ) => stream.Stream<
-    ListConsumersResponse,
-    ListConsumersError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListConsumersRequest) => stream.Stream<
-    | {
-        consumerId?: string | null;
-        createdOn?: string | null;
-        queueId?: string | null;
-        script?: string | null;
-        settings?: {
-          batchSize?: number | null;
-          maxConcurrency?: number | null;
-          maxRetries?: number | null;
-          maxWaitTimeMs?: number | null;
-          retryDelay?: number | null;
-        } | null;
-        type?: "worker" | null;
-      }
-    | {
-        consumerId?: string | null;
-        createdOn?: string | null;
-        queueId?: string | null;
-        settings?: {
-          batchSize?: number | null;
-          maxRetries?: number | null;
-          retryDelay?: number | null;
-          visibilityTimeoutMs?: number | null;
-        } | null;
-        type?: "http_pull" | null;
-      },
-    ListConsumersError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConsumersRequest,
   output: ListConsumersResponse,
   errors: [InvalidRequestBody],
@@ -2104,68 +2065,7 @@ export const listQueues: API.PaginatedOperationMethod<
   ListQueuesResponse,
   ListQueuesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListQueuesRequest,
-  ) => stream.Stream<
-    ListQueuesResponse,
-    ListQueuesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListQueuesRequest) => stream.Stream<
-    {
-      consumers?:
-        | (
-            | {
-                consumerId?: string | null;
-                createdOn?: string | null;
-                queueId?: string | null;
-                script?: string | null;
-                settings?: {
-                  batchSize?: number | null;
-                  maxConcurrency?: number | null;
-                  maxRetries?: number | null;
-                  maxWaitTimeMs?: number | null;
-                  retryDelay?: number | null;
-                } | null;
-                type?: "worker" | null;
-              }
-            | {
-                consumerId?: string | null;
-                createdOn?: string | null;
-                queueId?: string | null;
-                settings?: {
-                  batchSize?: number | null;
-                  maxRetries?: number | null;
-                  retryDelay?: number | null;
-                  visibilityTimeoutMs?: number | null;
-                } | null;
-                type?: "http_pull" | null;
-              }
-          )[]
-        | null;
-      consumersTotalCount?: number | null;
-      createdOn?: string | null;
-      modifiedOn?: string | null;
-      producers?:
-        | (
-            | { script?: string | null; type?: "worker" | null }
-            | { bucketName?: string | null; type?: "r2_bucket" | null }
-          )[]
-        | null;
-      producersTotalCount?: number | null;
-      queueId?: string | null;
-      queueName?: string | null;
-      settings?: {
-        deliveryDelay?: number | null;
-        deliveryPaused?: boolean | null;
-        messageRetentionPeriod?: number | null;
-      } | null;
-    },
-    ListQueuesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListQueuesRequest,
   output: ListQueuesResponse,
   errors: [],
@@ -3391,37 +3291,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsResponse,
   ListSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSubscriptionsRequest,
-  ) => stream.Stream<
-    ListSubscriptionsResponse,
-    ListSubscriptionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSubscriptionsRequest) => stream.Stream<
-    {
-      id: string;
-      createdAt: string;
-      destination: { queueId: string; type: "queues.queue" };
-      enabled: boolean;
-      events: string[];
-      modifiedAt: string;
-      name: string;
-      source:
-        | { type?: "images" | null }
-        | { type?: "kv" | null }
-        | { type?: "r2" | null }
-        | { type?: "superSlurper" | null }
-        | { type?: "vectorize" | null }
-        | { modelName?: string | null; type?: "workersAi.model" | null }
-        | { type?: "workersBuilds.worker" | null; workerName?: string | null }
-        | { type?: "workflows.workflow" | null; workflowName?: string | null };
-    },
-    ListSubscriptionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse,
   errors: [],

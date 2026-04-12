@@ -11,9 +11,7 @@ export const ListGroupPeersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageNum: Schema.optional(Schema.Number),
   pretty: Schema.optional(Schema.Boolean),
   providerName: Schema.optional(Schema.Literals(["AWS", "AZURE", "GCP"])),
-}).pipe(
-  T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/peers" }),
-);
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/peers" }));
 export type ListGroupPeersInput = typeof ListGroupPeersInput.Type;
 
 // Output Schema

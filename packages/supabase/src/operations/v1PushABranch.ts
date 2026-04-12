@@ -6,9 +6,7 @@ import * as T from "../traits";
 export const V1PushABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   branch_id_or_ref: Schema.String.pipe(T.PathParam()),
   migration_version: Schema.optional(Schema.String),
-}).pipe(
-  T.Http({ method: "POST", path: "/v1/branches/{branch_id_or_ref}/push" }),
-);
+}).pipe(T.Http({ method: "POST", path: "/v1/branches/{branch_id_or_ref}/push" }));
 export type V1PushABranchInput = typeof V1PushABranchInput.Type;
 
 // Output Schema

@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service rules
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -146,29 +145,7 @@ export const listLists: API.PaginatedOperationMethod<
   ListListsResponse,
   ListListsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListListsRequest,
-  ) => stream.Stream<
-    ListListsResponse,
-    ListListsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListListsRequest) => stream.Stream<
-    {
-      id: string;
-      createdOn: string;
-      kind: "ip" | "redirect" | "hostname" | "asn";
-      modifiedOn: string;
-      name: string;
-      numItems: number;
-      numReferencingFilters: number;
-      description?: string | null;
-    },
-    ListListsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListListsRequest,
   output: ListListsResponse,
   errors: [],
@@ -806,58 +783,7 @@ export const listListItems: API.PaginatedOperationMethod<
   ListListItemsResponse,
   ListListItemsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListListItemsRequest,
-  ) => stream.Stream<
-    ListListItemsResponse,
-    ListListItemsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListListItemsRequest) => stream.Stream<
-    | {
-        id: string;
-        createdOn: string;
-        ip: string;
-        modifiedOn: string;
-        comment?: string | null;
-      }
-    | {
-        id: string;
-        createdOn: string;
-        hostname: {
-          urlHostname: string;
-          excludeExactHostname?: boolean | null;
-        };
-        modifiedOn: string;
-        comment?: string | null;
-      }
-    | {
-        id: string;
-        createdOn: string;
-        modifiedOn: string;
-        redirect: {
-          sourceUrl: string;
-          targetUrl: string;
-          includeSubdomains?: boolean | null;
-          preservePathSuffix?: boolean | null;
-          preserveQueryString?: boolean | null;
-          statusCode?: "301" | "302" | "307" | "308" | null;
-          subpathMatching?: boolean | null;
-        };
-        comment?: string | null;
-      }
-    | {
-        id: string;
-        asn: number;
-        createdOn: string;
-        modifiedOn: string;
-        comment?: string | null;
-      },
-    ListListItemsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListListItemsRequest,
   output: ListListItemsResponse,
   errors: [],

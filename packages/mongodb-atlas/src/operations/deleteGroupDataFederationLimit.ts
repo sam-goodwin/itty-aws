@@ -3,31 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupDataFederationLimitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    limitName: Schema.Literals([
-      "bytesProcessed.query",
-      "bytesProcessed.daily",
-      "bytesProcessed.weekly",
-      "bytesProcessed.monthly",
-    ]).pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}",
-    }),
-  );
-export type DeleteGroupDataFederationLimitInput =
-  typeof DeleteGroupDataFederationLimitInput.Type;
+export const DeleteGroupDataFederationLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  limitName: Schema.Literals(["bytesProcessed.query", "bytesProcessed.daily", "bytesProcessed.weekly", "bytesProcessed.monthly"]).pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}" }));
+export type DeleteGroupDataFederationLimitInput = typeof DeleteGroupDataFederationLimitInput.Type;
 
 // Output Schema
-export const DeleteGroupDataFederationLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupDataFederationLimitOutput =
-  typeof DeleteGroupDataFederationLimitOutput.Type;
+export const DeleteGroupDataFederationLimitOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupDataFederationLimitOutput = typeof DeleteGroupDataFederationLimitOutput.Type;
 
 // The operation
 /**
@@ -50,8 +36,7 @@ export type DeleteGroupDataFederationLimitOutput =
 | `bytesProcessed.monthly` | Limit on the number of bytes processed for the data federation instance for the current month | N/A |
 
  */
-export const deleteGroupDataFederationLimit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteGroupDataFederationLimitInput,
-    outputSchema: DeleteGroupDataFederationLimitOutput,
-  }));
+export const deleteGroupDataFederationLimit = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupDataFederationLimitInput,
+  outputSchema: DeleteGroupDataFederationLimitOutput,
+}));

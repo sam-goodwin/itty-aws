@@ -3,22 +3,16 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateGroupStreamWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/streams" }),
-  );
-export type CreateGroupStreamWorkspaceInput =
-  typeof CreateGroupStreamWorkspaceInput.Type;
+export const CreateGroupStreamWorkspaceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/streams" }));
+export type CreateGroupStreamWorkspaceInput = typeof CreateGroupStreamWorkspaceInput.Type;
 
 // Output Schema
-export const CreateGroupStreamWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupStreamWorkspaceOutput =
-  typeof CreateGroupStreamWorkspaceOutput.Type;
+export const CreateGroupStreamWorkspaceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CreateGroupStreamWorkspaceOutput = typeof CreateGroupStreamWorkspaceOutput.Type;
 
 // The operation
 /**
@@ -32,9 +26,7 @@ export type CreateGroupStreamWorkspaceOutput =
 
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
-export const createGroupStreamWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupStreamWorkspaceInput,
-    outputSchema: CreateGroupStreamWorkspaceOutput,
-  }),
-);
+export const createGroupStreamWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupStreamWorkspaceInput,
+  outputSchema: CreateGroupStreamWorkspaceOutput,
+}));

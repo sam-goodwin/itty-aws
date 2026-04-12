@@ -3,29 +3,20 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupClusterBackupExportsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports",
-    }),
-  );
-export type ListGroupClusterBackupExportsInput =
-  typeof ListGroupClusterBackupExportsInput.Type;
+export const ListGroupClusterBackupExportsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports" }));
+export type ListGroupClusterBackupExportsInput = typeof ListGroupClusterBackupExportsInput.Type;
 
 // Output Schema
-export const ListGroupClusterBackupExportsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterBackupExportsOutput =
-  typeof ListGroupClusterBackupExportsOutput.Type;
+export const ListGroupClusterBackupExportsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupClusterBackupExportsOutput = typeof ListGroupClusterBackupExportsOutput.Type;
 
 // The operation
 /**
@@ -43,8 +34,7 @@ export type ListGroupClusterBackupExportsOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param clusterName - Human-readable label that identifies the cluster.
  */
-export const listGroupClusterBackupExports =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListGroupClusterBackupExportsInput,
-    outputSchema: ListGroupClusterBackupExportsOutput,
-  }));
+export const listGroupClusterBackupExports = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupClusterBackupExportsInput,
+  outputSchema: ListGroupClusterBackupExportsOutput,
+}));

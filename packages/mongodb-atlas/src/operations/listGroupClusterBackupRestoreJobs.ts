@@ -3,29 +3,20 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupClusterBackupRestoreJobsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs",
-    }),
-  );
-export type ListGroupClusterBackupRestoreJobsInput =
-  typeof ListGroupClusterBackupRestoreJobsInput.Type;
+export const ListGroupClusterBackupRestoreJobsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs" }));
+export type ListGroupClusterBackupRestoreJobsInput = typeof ListGroupClusterBackupRestoreJobsInput.Type;
 
 // Output Schema
-export const ListGroupClusterBackupRestoreJobsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterBackupRestoreJobsOutput =
-  typeof ListGroupClusterBackupRestoreJobsOutput.Type;
+export const ListGroupClusterBackupRestoreJobsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupClusterBackupRestoreJobsOutput = typeof ListGroupClusterBackupRestoreJobsOutput.Type;
 
 // The operation
 /**
@@ -43,8 +34,7 @@ export type ListGroupClusterBackupRestoreJobsOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Human-readable label that identifies the cluster with the restore jobs you want to return.
  */
-export const listGroupClusterBackupRestoreJobs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListGroupClusterBackupRestoreJobsInput,
-    outputSchema: ListGroupClusterBackupRestoreJobsOutput,
-  }));
+export const listGroupClusterBackupRestoreJobs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupClusterBackupRestoreJobsInput,
+  outputSchema: ListGroupClusterBackupRestoreJobsOutput,
+}));

@@ -3,29 +3,20 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateOrgServiceAccountAccessListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orgId: Schema.String.pipe(T.PathParam()),
-    clientId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList",
-    }),
-  );
-export type CreateOrgServiceAccountAccessListInput =
-  typeof CreateOrgServiceAccountAccessListInput.Type;
+export const CreateOrgServiceAccountAccessListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  orgId: Schema.String.pipe(T.PathParam()),
+  clientId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList" }));
+export type CreateOrgServiceAccountAccessListInput = typeof CreateOrgServiceAccountAccessListInput.Type;
 
 // Output Schema
-export const CreateOrgServiceAccountAccessListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateOrgServiceAccountAccessListOutput =
-  typeof CreateOrgServiceAccountAccessListOutput.Type;
+export const CreateOrgServiceAccountAccessListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CreateOrgServiceAccountAccessListOutput = typeof CreateOrgServiceAccountAccessListOutput.Type;
 
 // The operation
 /**
@@ -41,8 +32,7 @@ export type CreateOrgServiceAccountAccessListOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clientId - The Client ID of the Service Account.
  */
-export const createOrgServiceAccountAccessList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateOrgServiceAccountAccessListInput,
-    outputSchema: CreateOrgServiceAccountAccessListOutput,
-  }));
+export const createOrgServiceAccountAccessList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CreateOrgServiceAccountAccessListInput,
+  outputSchema: CreateOrgServiceAccountAccessListOutput,
+}));

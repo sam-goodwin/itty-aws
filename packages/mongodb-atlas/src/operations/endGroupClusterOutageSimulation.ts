@@ -3,26 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const EndGroupClusterOutageSimulationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation",
-    }),
-  );
-export type EndGroupClusterOutageSimulationInput =
-  typeof EndGroupClusterOutageSimulationInput.Type;
+export const EndGroupClusterOutageSimulationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation" }));
+export type EndGroupClusterOutageSimulationInput = typeof EndGroupClusterOutageSimulationInput.Type;
 
 // Output Schema
-export const EndGroupClusterOutageSimulationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EndGroupClusterOutageSimulationOutput =
-  typeof EndGroupClusterOutageSimulationOutput.Type;
+export const EndGroupClusterOutageSimulationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type EndGroupClusterOutageSimulationOutput = typeof EndGroupClusterOutageSimulationOutput.Type;
 
 // The operation
 /**
@@ -37,8 +28,7 @@ export type EndGroupClusterOutageSimulationOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param clusterName - Human-readable label that identifies the cluster that is undergoing outage simulation.
  */
-export const endGroupClusterOutageSimulation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: EndGroupClusterOutageSimulationInput,
-    outputSchema: EndGroupClusterOutageSimulationOutput,
-  }));
+export const endGroupClusterOutageSimulation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: EndGroupClusterOutageSimulationInput,
+  outputSchema: EndGroupClusterOutageSimulationOutput,
+}));

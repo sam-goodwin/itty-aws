@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service leaked-credential-checks
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -105,22 +104,7 @@ export const listDetections: API.PaginatedOperationMethod<
   ListDetectionsResponse,
   ListDetectionsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDetectionsRequest,
-  ) => stream.Stream<
-    ListDetectionsResponse,
-    ListDetectionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDetectionsRequest,
-  ) => stream.Stream<
-    { id?: string | null; password?: string | null; username?: string | null },
-    ListDetectionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDetectionsRequest,
   output: ListDetectionsResponse,
   errors: [],

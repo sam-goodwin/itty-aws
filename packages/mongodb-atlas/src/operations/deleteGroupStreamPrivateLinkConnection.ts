@@ -3,26 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupStreamPrivateLinkConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    connectionId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}",
-    }),
-  );
-export type DeleteGroupStreamPrivateLinkConnectionInput =
-  typeof DeleteGroupStreamPrivateLinkConnectionInput.Type;
+export const DeleteGroupStreamPrivateLinkConnectionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  connectionId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}" }));
+export type DeleteGroupStreamPrivateLinkConnectionInput = typeof DeleteGroupStreamPrivateLinkConnectionInput.Type;
 
 // Output Schema
-export const DeleteGroupStreamPrivateLinkConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupStreamPrivateLinkConnectionOutput =
-  typeof DeleteGroupStreamPrivateLinkConnectionOutput.Type;
+export const DeleteGroupStreamPrivateLinkConnectionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupStreamPrivateLinkConnectionOutput = typeof DeleteGroupStreamPrivateLinkConnectionOutput.Type;
 
 // The operation
 /**
@@ -37,8 +28,7 @@ export type DeleteGroupStreamPrivateLinkConnectionOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param connectionId - Unique ID that identifies the Private Link connection.
  */
-export const deleteGroupStreamPrivateLinkConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteGroupStreamPrivateLinkConnectionInput,
-    outputSchema: DeleteGroupStreamPrivateLinkConnectionOutput,
-  }));
+export const deleteGroupStreamPrivateLinkConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupStreamPrivateLinkConnectionInput,
+  outputSchema: DeleteGroupStreamPrivateLinkConnectionOutput,
+}));

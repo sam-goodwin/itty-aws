@@ -3,17 +3,10 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const V1DeleteJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-    user_id: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/v1/projects/{ref}/database/jit/{user_id}",
-  }),
-);
+export const V1DeleteJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  user_id: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "DELETE", path: "/v1/projects/{ref}/database/jit/{user_id}" }));
 export type V1DeleteJitAccessInput = typeof V1DeleteJitAccessInput.Type;
 
 // Output Schema

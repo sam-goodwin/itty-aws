@@ -8,12 +8,7 @@ export const SecretkeySignInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   secret_name: Schema.String.pipe(T.PathParam()),
   min_version: Schema.optional(Schema.String),
   plaintext: Schema.optional(Schema.Array(Schema.Number)),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/apps/{app_name}/secretkeys/{secret_name}/sign",
-  }),
-);
+}).pipe(T.Http({ method: "POST", path: "/apps/{app_name}/secretkeys/{secret_name}/sign" }));
 export type SecretkeySignInput = typeof SecretkeySignInput.Type;
 
 // Output Schema

@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service ssl
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -610,85 +609,7 @@ export const listCertificatePacks: API.PaginatedOperationMethod<
   ListCertificatePacksResponse,
   ListCertificatePacksError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCertificatePacksRequest,
-  ) => stream.Stream<
-    ListCertificatePacksResponse,
-    ListCertificatePacksError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListCertificatePacksRequest) => stream.Stream<
-    {
-      id: string;
-      certificates: {
-        id: string;
-        hosts: string[];
-        status: string;
-        bundleMethod?: string | null;
-        expiresOn?: string | null;
-        geoRestrictions?: {
-          label?: "us" | "eu" | "highest_security" | null;
-        } | null;
-        issuer?: string | null;
-        modifiedOn?: string | null;
-        priority?: number | null;
-        signature?: string | null;
-        uploadedOn?: string | null;
-        zoneId?: string | null;
-      }[];
-      hosts: string[];
-      status:
-        | "initializing"
-        | "pending_validation"
-        | "deleted"
-        | "pending_issuance"
-        | "pending_deployment"
-        | "pending_deletion"
-        | "pending_expiration"
-        | "expired"
-        | "active"
-        | "initializing_timed_out"
-        | "validation_timed_out"
-        | "issuance_timed_out"
-        | "deployment_timed_out"
-        | "deletion_timed_out"
-        | "pending_cleanup"
-        | "staging_deployment"
-        | "staging_active"
-        | "deactivating"
-        | "inactive"
-        | "backup_issued"
-        | "holding_deployment";
-      type:
-        | "mh_custom"
-        | "managed_hostname"
-        | "sni_custom"
-        | "universal"
-        | "advanced"
-        | "total_tls"
-        | "keyless"
-        | "legacy_custom";
-      certificateAuthority?: "google" | "lets_encrypt" | "ssl_com" | null;
-      cloudflareBranding?: boolean | null;
-      primaryCertificate?: string | null;
-      validationErrors?: { message?: string | null }[] | null;
-      validationMethod?: "txt" | "http" | "email" | null;
-      validationRecords?:
-        | {
-            emails?: string[] | null;
-            httpBody?: string | null;
-            httpUrl?: string | null;
-            txtName?: string | null;
-            txtValue?: string | null;
-          }[]
-        | null;
-      validityDays?: "14" | "30" | "90" | "365" | null;
-    },
-    ListCertificatePacksError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCertificatePacksRequest,
   output: ListCertificatePacksResponse,
   errors: [],

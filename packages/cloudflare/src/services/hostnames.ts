@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service hostnames
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -81,26 +80,7 @@ export const getSettingTls: API.PaginatedOperationMethod<
   GetSettingTlsResponse,
   GetSettingTlsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetSettingTlsRequest,
-  ) => stream.Stream<
-    GetSettingTlsResponse,
-    GetSettingTlsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: GetSettingTlsRequest) => stream.Stream<
-    {
-      createdAt?: string | null;
-      hostname?: string | null;
-      status?: string | null;
-      updatedAt?: string | null;
-      value?: number | string | string[] | null;
-    },
-    GetSettingTlsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetSettingTlsRequest,
   output: GetSettingTlsResponse,
   errors: [],

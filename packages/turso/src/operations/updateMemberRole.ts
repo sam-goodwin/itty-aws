@@ -7,26 +7,17 @@ export const UpdateMemberRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   username: Schema.String.pipe(T.PathParam()),
   role: Schema.Literals(["admin", "member", "viewer"]),
-}).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "/v1/organizations/{organizationSlug}/members/{username}",
-  }),
-);
+}).pipe(T.Http({ method: "PATCH", path: "/v1/organizations/{organizationSlug}/members/{username}" }));
 export type UpdateMemberRoleInput = typeof UpdateMemberRoleInput.Type;
 
 // Output Schema
-export const UpdateMemberRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    member: Schema.optional(
-      Schema.Struct({
-        username: Schema.optional(Schema.String),
-        email: Schema.optional(Schema.String),
-        role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
-      }),
-    ),
-  },
-);
+export const UpdateMemberRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  member: Schema.optional(Schema.Struct({
+    username: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
+  })),
+});
 export type UpdateMemberRoleOutput = typeof UpdateMemberRoleOutput.Type;
 
 // The operation

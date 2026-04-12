@@ -3,26 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupClusterSearchDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment",
-    }),
-  );
-export type DeleteGroupClusterSearchDeploymentInput =
-  typeof DeleteGroupClusterSearchDeploymentInput.Type;
+export const DeleteGroupClusterSearchDeploymentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment" }));
+export type DeleteGroupClusterSearchDeploymentInput = typeof DeleteGroupClusterSearchDeploymentInput.Type;
 
 // Output Schema
-export const DeleteGroupClusterSearchDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupClusterSearchDeploymentOutput =
-  typeof DeleteGroupClusterSearchDeploymentOutput.Type;
+export const DeleteGroupClusterSearchDeploymentOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupClusterSearchDeploymentOutput = typeof DeleteGroupClusterSearchDeploymentOutput.Type;
 
 // The operation
 /**
@@ -37,8 +28,7 @@ export type DeleteGroupClusterSearchDeploymentOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param clusterName - Label that identifies the cluster to delete.
  */
-export const deleteGroupClusterSearchDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteGroupClusterSearchDeploymentInput,
-    outputSchema: DeleteGroupClusterSearchDeploymentOutput,
-  }));
+export const deleteGroupClusterSearchDeployment = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupClusterSearchDeploymentInput,
+  outputSchema: DeleteGroupClusterSearchDeploymentOutput,
+}));

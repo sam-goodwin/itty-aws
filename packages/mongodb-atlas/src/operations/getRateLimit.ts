@@ -11,9 +11,7 @@ export const GetRateLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.optional(Schema.String),
   userId: Schema.optional(Schema.String),
   ipAddress: Schema.optional(Schema.String),
-}).pipe(
-  T.Http({ method: "GET", path: "/api/atlas/v2/rateLimits/{endpointSetId}" }),
-);
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/rateLimits/{endpointSetId}" }));
 export type GetRateLimitInput = typeof GetRateLimitInput.Type;
 
 // Output Schema

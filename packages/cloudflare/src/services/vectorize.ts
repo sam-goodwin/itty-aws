@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service vectorize
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -237,29 +236,7 @@ export const listIndexes: API.PaginatedOperationMethod<
   ListIndexesResponse,
   ListIndexesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIndexesRequest,
-  ) => stream.Stream<
-    ListIndexesResponse,
-    ListIndexesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListIndexesRequest) => stream.Stream<
-    {
-      config?: {
-        dimensions: number;
-        metric: "cosine" | "euclidean" | "dot-product";
-      } | null;
-      createdOn?: string | null;
-      description?: string | null;
-      modifiedOn?: string | null;
-      name?: string | null;
-    },
-    ListIndexesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIndexesRequest,
   output: ListIndexesResponse,
   errors: [],

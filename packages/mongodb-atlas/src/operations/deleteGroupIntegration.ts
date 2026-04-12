@@ -3,37 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    integrationType: Schema.Literals([
-      "PAGER_DUTY",
-      "SLACK",
-      "DATADOG",
-      "NEW_RELIC",
-      "OPS_GENIE",
-      "VICTOR_OPS",
-      "WEBHOOK",
-      "HIP_CHAT",
-      "PROMETHEUS",
-      "MICROSOFT_TEAMS",
-    ]).pipe(T.PathParam()),
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}",
-    }),
-  );
-export type DeleteGroupIntegrationInput =
-  typeof DeleteGroupIntegrationInput.Type;
+export const DeleteGroupIntegrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  integrationType: Schema.Literals(["PAGER_DUTY", "SLACK", "DATADOG", "NEW_RELIC", "OPS_GENIE", "VICTOR_OPS", "WEBHOOK", "HIP_CHAT", "PROMETHEUS", "MICROSOFT_TEAMS"]).pipe(T.PathParam()),
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}" }));
+export type DeleteGroupIntegrationInput = typeof DeleteGroupIntegrationInput.Type;
 
 // Output Schema
-export const DeleteGroupIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupIntegrationOutput =
-  typeof DeleteGroupIntegrationOutput.Type;
+export const DeleteGroupIntegrationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupIntegrationOutput = typeof DeleteGroupIntegrationOutput.Type;
 
 // The operation
 /**
@@ -48,9 +28,7 @@ export type DeleteGroupIntegrationOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const deleteGroupIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupIntegrationInput,
-    outputSchema: DeleteGroupIntegrationOutput,
-  }),
-);
+export const deleteGroupIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupIntegrationInput,
+  outputSchema: DeleteGroupIntegrationOutput,
+}));

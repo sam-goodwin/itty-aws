@@ -8,9 +8,7 @@ export const SecretGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   secret_name: Schema.String.pipe(T.PathParam()),
   min_version: Schema.optional(Schema.String),
   show_secrets: Schema.optional(Schema.Boolean),
-}).pipe(
-  T.Http({ method: "GET", path: "/apps/{app_name}/secrets/{secret_name}" }),
-);
+}).pipe(T.Http({ method: "GET", path: "/apps/{app_name}/secrets/{secret_name}" }));
 export type SecretGetInput = typeof SecretGetInput.Type;
 
 // Output Schema

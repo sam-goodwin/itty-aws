@@ -8,12 +8,7 @@ export const GetGroupProcessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   processId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/api/atlas/v2/groups/{groupId}/processes/{processId}",
-  }),
-);
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/processes/{processId}" }));
 export type GetGroupProcessInput = typeof GetGroupProcessInput.Type;
 
 // Output Schema

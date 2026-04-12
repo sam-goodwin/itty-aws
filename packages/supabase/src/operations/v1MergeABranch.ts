@@ -6,9 +6,7 @@ import * as T from "../traits";
 export const V1MergeABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   branch_id_or_ref: Schema.String.pipe(T.PathParam()),
   migration_version: Schema.optional(Schema.String),
-}).pipe(
-  T.Http({ method: "POST", path: "/v1/branches/{branch_id_or_ref}/merge" }),
-);
+}).pipe(T.Http({ method: "POST", path: "/v1/branches/{branch_id_or_ref}/merge" }));
 export type V1MergeABranchInput = typeof V1MergeABranchInput.Type;
 
 // Output Schema

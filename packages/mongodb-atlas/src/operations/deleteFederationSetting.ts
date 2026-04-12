@@ -3,23 +3,14 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteFederationSettingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    federationSettingsId: Schema.String.pipe(T.PathParam()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/federationSettings/{federationSettingsId}",
-    }),
-  );
-export type DeleteFederationSettingInput =
-  typeof DeleteFederationSettingInput.Type;
+export const DeleteFederationSettingInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  federationSettingsId: Schema.String.pipe(T.PathParam()),
+}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/federationSettings/{federationSettingsId}" }));
+export type DeleteFederationSettingInput = typeof DeleteFederationSettingInput.Type;
 
 // Output Schema
-export const DeleteFederationSettingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteFederationSettingOutput =
-  typeof DeleteFederationSettingOutput.Type;
+export const DeleteFederationSettingOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteFederationSettingOutput = typeof DeleteFederationSettingOutput.Type;
 
 // The operation
 /**
@@ -29,9 +20,7 @@ export type DeleteFederationSettingOutput =
  *
  * @param federationSettingsId - Unique 24-hexadecimal digit string that identifies your federation.
  */
-export const deleteFederationSetting = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteFederationSettingInput,
-    outputSchema: DeleteFederationSettingOutput,
-  }),
-);
+export const deleteFederationSetting = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DeleteFederationSettingInput,
+  outputSchema: DeleteFederationSettingOutput,
+}));

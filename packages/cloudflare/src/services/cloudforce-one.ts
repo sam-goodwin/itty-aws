@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service cloudforce-one
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -370,40 +369,7 @@ export const listRequests: API.PaginatedOperationMethod<
   ListRequestsResponse,
   ListRequestsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRequestsRequest,
-  ) => stream.Stream<
-    ListRequestsResponse,
-    ListRequestsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListRequestsRequest) => stream.Stream<
-    {
-      id: string;
-      created: string;
-      priority: "routine" | "high" | "urgent";
-      request: string;
-      summary: string;
-      tlp: "clear" | "amber" | "amber-strict" | "green" | "red";
-      updated: string;
-      completed?: string | null;
-      messageTokens?: number | null;
-      readableId?: string | null;
-      status?:
-        | "open"
-        | "accepted"
-        | "reported"
-        | "approved"
-        | "completed"
-        | "declined"
-        | null;
-      tokens?: number | null;
-    },
-    ListRequestsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRequestsRequest,
   output: ListRequestsResponse,
   errors: [],
@@ -944,22 +910,7 @@ export const typesRequest: API.PaginatedOperationMethod<
   TypesRequestResponse,
   TypesRequestError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: TypesRequestRequest,
-  ) => stream.Stream<
-    TypesRequestResponse,
-    TypesRequestError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: TypesRequestRequest,
-  ) => stream.Stream<
-    string,
-    TypesRequestError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: TypesRequestRequest,
   output: TypesRequestResponse,
   errors: [],
@@ -1033,26 +984,7 @@ export const getRequestAsset: API.PaginatedOperationMethod<
   GetRequestAssetResponse,
   GetRequestAssetError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetRequestAssetRequest,
-  ) => stream.Stream<
-    GetRequestAssetResponse,
-    GetRequestAssetError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: GetRequestAssetRequest) => stream.Stream<
-    {
-      id: number;
-      name: string;
-      created?: string | null;
-      description?: string | null;
-      fileType?: string | null;
-    },
-    GetRequestAssetError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetRequestAssetRequest,
   output: GetRequestAssetResponse,
   errors: [],
@@ -1126,26 +1058,7 @@ export const createRequestAsset: API.PaginatedOperationMethod<
   CreateRequestAssetResponse,
   CreateRequestAssetError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: CreateRequestAssetRequest,
-  ) => stream.Stream<
-    CreateRequestAssetResponse,
-    CreateRequestAssetError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: CreateRequestAssetRequest) => stream.Stream<
-    {
-      id: number;
-      name: string;
-      created?: string | null;
-      description?: string | null;
-      fileType?: string | null;
-    },
-    CreateRequestAssetError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreateRequestAssetRequest,
   output: CreateRequestAssetResponse,
   errors: [],
@@ -1423,25 +1336,7 @@ export const getRequestMessage: API.PaginatedOperationMethod<
   GetRequestMessageResponse,
   GetRequestMessageError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetRequestMessageRequest,
-  ) => stream.Stream<
-    GetRequestMessageResponse,
-    GetRequestMessageError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: GetRequestMessageRequest) => stream.Stream<
-    {
-      code: number;
-      message: string;
-      documentationUrl?: string | null;
-      source?: { pointer?: string | null } | null;
-    },
-    GetRequestMessageError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetRequestMessageRequest,
   output: GetRequestMessageResponse,
   errors: [],
@@ -2227,26 +2122,7 @@ export const listScanConfigs: API.PaginatedOperationMethod<
   ListScanConfigsResponse,
   ListScanConfigsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScanConfigsRequest,
-  ) => stream.Stream<
-    ListScanConfigsResponse,
-    ListScanConfigsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListScanConfigsRequest) => stream.Stream<
-    {
-      id: string;
-      accountId: string;
-      frequency: number;
-      ips: string[];
-      ports: string[];
-    },
-    ListScanConfigsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListScanConfigsRequest,
   output: ListScanConfigsResponse,
   errors: [],

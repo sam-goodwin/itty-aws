@@ -3,25 +3,16 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupCustomDbRoleRolesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles",
-    }),
-  );
-export type ListGroupCustomDbRoleRolesInput =
-  typeof ListGroupCustomDbRoleRolesInput.Type;
+export const ListGroupCustomDbRoleRolesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles" }));
+export type ListGroupCustomDbRoleRolesInput = typeof ListGroupCustomDbRoleRolesInput.Type;
 
 // Output Schema
-export const ListGroupCustomDbRoleRolesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupCustomDbRoleRolesOutput =
-  typeof ListGroupCustomDbRoleRolesOutput.Type;
+export const ListGroupCustomDbRoleRolesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupCustomDbRoleRolesOutput = typeof ListGroupCustomDbRoleRolesOutput.Type;
 
 // The operation
 /**
@@ -35,9 +26,7 @@ export type ListGroupCustomDbRoleRolesOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupCustomDbRoleRoles = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupCustomDbRoleRolesInput,
-    outputSchema: ListGroupCustomDbRoleRolesOutput,
-  }),
-);
+export const listGroupCustomDbRoleRoles = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupCustomDbRoleRolesInput,
+  outputSchema: ListGroupCustomDbRoleRolesOutput,
+}));

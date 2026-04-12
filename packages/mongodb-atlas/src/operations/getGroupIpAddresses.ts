@@ -3,22 +3,15 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupIpAddressesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/ipAddresses",
-    }),
-  );
+export const GetGroupIpAddressesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/ipAddresses" }));
 export type GetGroupIpAddressesInput = typeof GetGroupIpAddressesInput.Type;
 
 // Output Schema
-export const GetGroupIpAddressesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupIpAddressesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type GetGroupIpAddressesOutput = typeof GetGroupIpAddressesOutput.Type;
 
 // The operation

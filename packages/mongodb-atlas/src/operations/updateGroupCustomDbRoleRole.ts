@@ -3,26 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateGroupCustomDbRoleRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    roleName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}",
-    }),
-  );
-export type UpdateGroupCustomDbRoleRoleInput =
-  typeof UpdateGroupCustomDbRoleRoleInput.Type;
+export const UpdateGroupCustomDbRoleRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  roleName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}" }));
+export type UpdateGroupCustomDbRoleRoleInput = typeof UpdateGroupCustomDbRoleRoleInput.Type;
 
 // Output Schema
-export const UpdateGroupCustomDbRoleRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupCustomDbRoleRoleOutput =
-  typeof UpdateGroupCustomDbRoleRoleOutput.Type;
+export const UpdateGroupCustomDbRoleRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateGroupCustomDbRoleRoleOutput = typeof UpdateGroupCustomDbRoleRoleOutput.Type;
 
 // The operation
 /**
@@ -37,9 +28,7 @@ export type UpdateGroupCustomDbRoleRoleOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param roleName - Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
  */
-export const updateGroupCustomDbRoleRole = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupCustomDbRoleRoleInput,
-    outputSchema: UpdateGroupCustomDbRoleRoleOutput,
-  }),
-);
+export const updateGroupCustomDbRoleRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupCustomDbRoleRoleInput,
+  outputSchema: UpdateGroupCustomDbRoleRoleOutput,
+}));

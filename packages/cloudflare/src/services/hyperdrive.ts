@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service hyperdrive
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -388,54 +387,7 @@ export const listConfigs: API.PaginatedOperationMethod<
   ListConfigsResponse,
   ListConfigsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigsRequest,
-  ) => stream.Stream<
-    ListConfigsResponse,
-    ListConfigsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListConfigsRequest) => stream.Stream<
-    {
-      id: string;
-      name: string;
-      origin:
-        | {
-            database: string;
-            host: string;
-            port: number;
-            scheme: "postgres" | "postgresql" | "mysql";
-            user: string;
-          }
-        | {
-            accessClientId: string;
-            database: string;
-            host: string;
-            scheme: "postgres" | "postgresql" | "mysql";
-            user: string;
-          };
-      caching?:
-        | { disabled?: boolean | null }
-        | {
-            disabled?: boolean | null;
-            maxAge?: number | null;
-            staleWhileRevalidate?: number | null;
-          }
-        | null;
-      createdOn?: string | null;
-      modifiedOn?: string | null;
-      mtls?: {
-        caCertificateId?: string | null;
-        mtlsCertificateId?: string | null;
-        sslmode?: string | null;
-      } | null;
-      originConnectionLimit?: number | null;
-    },
-    ListConfigsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConfigsRequest,
   output: ListConfigsResponse,
   errors: [PrivateHostNotAllowed, InvalidObjectIdentifier],

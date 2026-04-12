@@ -3,27 +3,18 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupClusterBackupSnapshotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    snapshotId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}",
-    }),
-  );
-export type DeleteGroupClusterBackupSnapshotInput =
-  typeof DeleteGroupClusterBackupSnapshotInput.Type;
+export const DeleteGroupClusterBackupSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  snapshotId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}" }));
+export type DeleteGroupClusterBackupSnapshotInput = typeof DeleteGroupClusterBackupSnapshotInput.Type;
 
 // Output Schema
-export const DeleteGroupClusterBackupSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupClusterBackupSnapshotOutput =
-  typeof DeleteGroupClusterBackupSnapshotOutput.Type;
+export const DeleteGroupClusterBackupSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupClusterBackupSnapshotOutput = typeof DeleteGroupClusterBackupSnapshotOutput.Type;
 
 // The operation
 /**
@@ -39,8 +30,7 @@ export type DeleteGroupClusterBackupSnapshotOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  * @param snapshotId - Unique 24-hexadecimal digit string that identifies the desired snapshot.
  */
-export const deleteGroupClusterBackupSnapshot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteGroupClusterBackupSnapshotInput,
-    outputSchema: DeleteGroupClusterBackupSnapshotOutput,
-  }));
+export const deleteGroupClusterBackupSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupClusterBackupSnapshotInput,
+  outputSchema: DeleteGroupClusterBackupSnapshotOutput,
+}));

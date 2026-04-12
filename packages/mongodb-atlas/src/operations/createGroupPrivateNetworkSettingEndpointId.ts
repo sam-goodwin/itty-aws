@@ -3,25 +3,16 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateGroupPrivateNetworkSettingEndpointIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds",
-    }),
-  );
-export type CreateGroupPrivateNetworkSettingEndpointIdInput =
-  typeof CreateGroupPrivateNetworkSettingEndpointIdInput.Type;
+export const CreateGroupPrivateNetworkSettingEndpointIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds" }));
+export type CreateGroupPrivateNetworkSettingEndpointIdInput = typeof CreateGroupPrivateNetworkSettingEndpointIdInput.Type;
 
 // Output Schema
-export const CreateGroupPrivateNetworkSettingEndpointIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupPrivateNetworkSettingEndpointIdOutput =
-  typeof CreateGroupPrivateNetworkSettingEndpointIdOutput.Type;
+export const CreateGroupPrivateNetworkSettingEndpointIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CreateGroupPrivateNetworkSettingEndpointIdOutput = typeof CreateGroupPrivateNetworkSettingEndpointIdOutput.Type;
 
 // The operation
 /**
@@ -44,8 +35,7 @@ export type CreateGroupPrivateNetworkSettingEndpointIdOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupPrivateNetworkSettingEndpointId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateGroupPrivateNetworkSettingEndpointIdInput,
-    outputSchema: CreateGroupPrivateNetworkSettingEndpointIdOutput,
-  }));
+export const createGroupPrivateNetworkSettingEndpointId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupPrivateNetworkSettingEndpointIdInput,
+  outputSchema: CreateGroupPrivateNetworkSettingEndpointIdOutput,
+}));

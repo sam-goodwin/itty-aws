@@ -3,29 +3,20 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupServiceAccountAccessListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clientId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList",
-    }),
-  );
-export type ListGroupServiceAccountAccessListInput =
-  typeof ListGroupServiceAccountAccessListInput.Type;
+export const ListGroupServiceAccountAccessListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clientId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList" }));
+export type ListGroupServiceAccountAccessListInput = typeof ListGroupServiceAccountAccessListInput.Type;
 
 // Output Schema
-export const ListGroupServiceAccountAccessListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupServiceAccountAccessListOutput =
-  typeof ListGroupServiceAccountAccessListOutput.Type;
+export const ListGroupServiceAccountAccessListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupServiceAccountAccessListOutput = typeof ListGroupServiceAccountAccessListOutput.Type;
 
 // The operation
 /**
@@ -43,8 +34,7 @@ export type ListGroupServiceAccountAccessListOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clientId - The Client ID of the Service Account.
  */
-export const listGroupServiceAccountAccessList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListGroupServiceAccountAccessListInput,
-    outputSchema: ListGroupServiceAccountAccessListOutput,
-  }));
+export const listGroupServiceAccountAccessList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupServiceAccountAccessListInput,
+  outputSchema: ListGroupServiceAccountAccessListOutput,
+}));

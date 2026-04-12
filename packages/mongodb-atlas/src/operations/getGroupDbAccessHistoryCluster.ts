@@ -3,31 +3,22 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupDbAccessHistoryClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-    authResult: Schema.optional(Schema.Boolean),
-    end: Schema.optional(Schema.Number),
-    ipAddress: Schema.optional(Schema.String),
-    nLogs: Schema.optional(Schema.Number),
-    start: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}",
-    }),
-  );
-export type GetGroupDbAccessHistoryClusterInput =
-  typeof GetGroupDbAccessHistoryClusterInput.Type;
+export const GetGroupDbAccessHistoryClusterInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+  authResult: Schema.optional(Schema.Boolean),
+  end: Schema.optional(Schema.Number),
+  ipAddress: Schema.optional(Schema.String),
+  nLogs: Schema.optional(Schema.Number),
+  start: Schema.optional(Schema.Number),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}" }));
+export type GetGroupDbAccessHistoryClusterInput = typeof GetGroupDbAccessHistoryClusterInput.Type;
 
 // Output Schema
-export const GetGroupDbAccessHistoryClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupDbAccessHistoryClusterOutput =
-  typeof GetGroupDbAccessHistoryClusterOutput.Type;
+export const GetGroupDbAccessHistoryClusterOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupDbAccessHistoryClusterOutput = typeof GetGroupDbAccessHistoryClusterOutput.Type;
 
 // The operation
 /**
@@ -47,8 +38,7 @@ export type GetGroupDbAccessHistoryClusterOutput =
  * @param nLogs - Maximum number of lines from the log to return.
  * @param start - Date and time when MongoDB Cloud begins retrieving database history. If you specify **start**, you must also specify **end**. This parameter uses UNIX epoch time in milliseconds.
  */
-export const getGroupDbAccessHistoryCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetGroupDbAccessHistoryClusterInput,
-    outputSchema: GetGroupDbAccessHistoryClusterOutput,
-  }));
+export const getGroupDbAccessHistoryCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupDbAccessHistoryClusterInput,
+  outputSchema: GetGroupDbAccessHistoryClusterOutput,
+}));

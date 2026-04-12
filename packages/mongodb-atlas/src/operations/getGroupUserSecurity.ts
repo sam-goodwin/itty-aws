@@ -3,22 +3,15 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupUserSecurityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/userSecurity",
-    }),
-  );
+export const GetGroupUserSecurityInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/userSecurity" }));
 export type GetGroupUserSecurityInput = typeof GetGroupUserSecurityInput.Type;
 
 // Output Schema
-export const GetGroupUserSecurityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupUserSecurityOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type GetGroupUserSecurityOutput = typeof GetGroupUserSecurityOutput.Type;
 
 // The operation
@@ -33,9 +26,7 @@ export type GetGroupUserSecurityOutput = typeof GetGroupUserSecurityOutput.Type;
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const getGroupUserSecurity = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupUserSecurityInput,
-    outputSchema: GetGroupUserSecurityOutput,
-  }),
-);
+export const getGroupUserSecurity = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupUserSecurityInput,
+  outputSchema: GetGroupUserSecurityOutput,
+}));

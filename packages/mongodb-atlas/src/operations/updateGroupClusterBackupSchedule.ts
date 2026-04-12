@@ -3,26 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateGroupClusterBackupScheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule",
-    }),
-  );
-export type UpdateGroupClusterBackupScheduleInput =
-  typeof UpdateGroupClusterBackupScheduleInput.Type;
+export const UpdateGroupClusterBackupScheduleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule" }));
+export type UpdateGroupClusterBackupScheduleInput = typeof UpdateGroupClusterBackupScheduleInput.Type;
 
 // Output Schema
-export const UpdateGroupClusterBackupScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupClusterBackupScheduleOutput =
-  typeof UpdateGroupClusterBackupScheduleOutput.Type;
+export const UpdateGroupClusterBackupScheduleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateGroupClusterBackupScheduleOutput = typeof UpdateGroupClusterBackupScheduleOutput.Type;
 
 // The operation
 /**
@@ -37,8 +28,7 @@ export type UpdateGroupClusterBackupScheduleOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Human-readable label that identifies the cluster.
  */
-export const updateGroupClusterBackupSchedule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: UpdateGroupClusterBackupScheduleInput,
-    outputSchema: UpdateGroupClusterBackupScheduleOutput,
-  }));
+export const updateGroupClusterBackupSchedule = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupClusterBackupScheduleInput,
+  outputSchema: UpdateGroupClusterBackupScheduleOutput,
+}));

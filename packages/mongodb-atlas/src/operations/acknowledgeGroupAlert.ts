@@ -3,25 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const AcknowledgeGroupAlertInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    alertId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/alerts/{alertId}",
-    }),
-  );
+export const AcknowledgeGroupAlertInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  alertId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/alerts/{alertId}" }));
 export type AcknowledgeGroupAlertInput = typeof AcknowledgeGroupAlertInput.Type;
 
 // Output Schema
-export const AcknowledgeGroupAlertOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AcknowledgeGroupAlertOutput =
-  typeof AcknowledgeGroupAlertOutput.Type;
+export const AcknowledgeGroupAlertOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type AcknowledgeGroupAlertOutput = typeof AcknowledgeGroupAlertOutput.Type;
 
 // The operation
 /**
@@ -37,9 +29,7 @@ export type AcknowledgeGroupAlertOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param alertId - Unique 24-hexadecimal digit string that identifies the alert.
  */
-export const acknowledgeGroupAlert = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AcknowledgeGroupAlertInput,
-    outputSchema: AcknowledgeGroupAlertOutput,
-  }),
-);
+export const acknowledgeGroupAlert = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AcknowledgeGroupAlertInput,
+  outputSchema: AcknowledgeGroupAlertOutput,
+}));

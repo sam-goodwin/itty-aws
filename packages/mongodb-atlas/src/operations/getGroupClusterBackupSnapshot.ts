@@ -3,27 +3,18 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupClusterBackupSnapshotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    snapshotId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}",
-    }),
-  );
-export type GetGroupClusterBackupSnapshotInput =
-  typeof GetGroupClusterBackupSnapshotInput.Type;
+export const GetGroupClusterBackupSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  snapshotId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}" }));
+export type GetGroupClusterBackupSnapshotInput = typeof GetGroupClusterBackupSnapshotInput.Type;
 
 // Output Schema
-export const GetGroupClusterBackupSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupClusterBackupSnapshotOutput =
-  typeof GetGroupClusterBackupSnapshotOutput.Type;
+export const GetGroupClusterBackupSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupClusterBackupSnapshotOutput = typeof GetGroupClusterBackupSnapshotOutput.Type;
 
 // The operation
 /**
@@ -39,8 +30,7 @@ export type GetGroupClusterBackupSnapshotOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  * @param snapshotId - Unique 24-hexadecimal digit string that identifies the desired snapshot.
  */
-export const getGroupClusterBackupSnapshot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetGroupClusterBackupSnapshotInput,
-    outputSchema: GetGroupClusterBackupSnapshotOutput,
-  }));
+export const getGroupClusterBackupSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupClusterBackupSnapshotInput,
+  outputSchema: GetGroupClusterBackupSnapshotOutput,
+}));

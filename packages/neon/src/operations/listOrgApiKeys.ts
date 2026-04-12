@@ -9,21 +9,19 @@ export const ListOrgApiKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListOrgApiKeysInput = typeof ListOrgApiKeysInput.Type;
 
 // Output Schema
-export const ListOrgApiKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    id: Schema.Number,
+export const ListOrgApiKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(Schema.Struct({
+  id: Schema.Number,
+  name: Schema.String,
+  created_at: Schema.String,
+  created_by: Schema.Struct({
+    id: Schema.String,
     name: Schema.String,
-    created_at: Schema.String,
-    created_by: Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      image: Schema.String,
-    }),
-    last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
-    last_used_from_addr: Schema.String,
-    project_id: Schema.optional(Schema.String),
+    image: Schema.String,
   }),
-);
+  last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
+  last_used_from_addr: Schema.String,
+  project_id: Schema.optional(Schema.String),
+}));
 export type ListOrgApiKeysOutput = typeof ListOrgApiKeysOutput.Type;
 
 // The operation

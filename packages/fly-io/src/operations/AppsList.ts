@@ -11,26 +11,20 @@ export type AppsListInput = typeof AppsListInput.Type;
 
 // Output Schema
 export const AppsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  apps: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        internal_numeric_id: Schema.optional(Schema.Number),
-        machine_count: Schema.optional(Schema.Number),
-        name: Schema.optional(Schema.String),
-        network: Schema.optional(Schema.String),
-        organization: Schema.optional(
-          Schema.Struct({
-            internal_numeric_id: Schema.optional(Schema.Number),
-            name: Schema.optional(Schema.String),
-            slug: Schema.optional(Schema.String),
-          }),
-        ),
-        status: Schema.optional(Schema.String),
-        volume_count: Schema.optional(Schema.Number),
-      }),
-    ),
-  ),
+  apps: Schema.optional(Schema.Array(Schema.Struct({
+    id: Schema.optional(Schema.String),
+    internal_numeric_id: Schema.optional(Schema.Number),
+    machine_count: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    network: Schema.optional(Schema.String),
+    organization: Schema.optional(Schema.Struct({
+      internal_numeric_id: Schema.optional(Schema.Number),
+      name: Schema.optional(Schema.String),
+      slug: Schema.optional(Schema.String),
+    })),
+    status: Schema.optional(Schema.String),
+    volume_count: Schema.optional(Schema.Number),
+  }))),
   total_apps: Schema.optional(Schema.Number),
 });
 export type AppsListOutput = typeof AppsListOutput.Type;

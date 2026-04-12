@@ -8,12 +8,7 @@ export const GetOrgTeamByNameInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   teamName: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/api/atlas/v2/orgs/{orgId}/teams/byName/{teamName}",
-  }),
-);
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/teams/byName/{teamName}" }));
 export type GetOrgTeamByNameInput = typeof GetOrgTeamByNameInput.Type;
 
 // Output Schema

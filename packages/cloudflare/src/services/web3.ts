@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service web3
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -166,29 +165,7 @@ export const listHostnames: API.PaginatedOperationMethod<
   ListHostnamesResponse,
   ListHostnamesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHostnamesRequest,
-  ) => stream.Stream<
-    ListHostnamesResponse,
-    ListHostnamesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListHostnamesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      createdOn?: string | null;
-      description?: string | null;
-      dnslink?: string | null;
-      modifiedOn?: string | null;
-      name?: string | null;
-      status?: "active" | "pending" | "deleting" | "error" | null;
-      target?: "ethereum" | "ipfs" | "ipfs_universal_path" | null;
-    },
-    ListHostnamesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHostnamesRequest,
   output: ListHostnamesResponse,
   errors: [],

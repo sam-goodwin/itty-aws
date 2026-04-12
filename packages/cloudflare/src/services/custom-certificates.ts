@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service custom-certificates
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -373,48 +372,7 @@ export const listCustomCertificates: API.PaginatedOperationMethod<
   ListCustomCertificatesResponse,
   ListCustomCertificatesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomCertificatesRequest,
-  ) => stream.Stream<
-    ListCustomCertificatesResponse,
-    ListCustomCertificatesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListCustomCertificatesRequest) => stream.Stream<
-    {
-      id: string;
-      bundleMethod: "ubiquitous" | "optimal" | "force";
-      expiresOn: string;
-      hosts: string[];
-      issuer: string;
-      modifiedOn: string;
-      priority: number;
-      signature: string;
-      status: "active" | "expired" | "deleted" | "pending" | "initializing";
-      uploadedOn: string;
-      zoneId: string;
-      geoRestrictions?: {
-        label?: "us" | "eu" | "highest_security" | null;
-      } | null;
-      keylessServer?: {
-        id: string;
-        createdOn: string;
-        enabled: boolean;
-        host: string;
-        modifiedOn: string;
-        name: string;
-        permissions: string[];
-        port: number;
-        status: "active" | "deleted";
-        tunnel?: { privateIp: string; vnetId: string } | null;
-      } | null;
-      policy?: string | null;
-    },
-    ListCustomCertificatesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomCertificatesRequest,
   output: ListCustomCertificatesResponse,
   errors: [],
@@ -1029,48 +987,7 @@ export const putPrioritize: API.PaginatedOperationMethod<
   PutPrioritizeResponse,
   PutPrioritizeError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: PutPrioritizeRequest,
-  ) => stream.Stream<
-    PutPrioritizeResponse,
-    PutPrioritizeError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: PutPrioritizeRequest) => stream.Stream<
-    {
-      id: string;
-      bundleMethod: "ubiquitous" | "optimal" | "force";
-      expiresOn: string;
-      hosts: string[];
-      issuer: string;
-      modifiedOn: string;
-      priority: number;
-      signature: string;
-      status: "active" | "expired" | "deleted" | "pending" | "initializing";
-      uploadedOn: string;
-      zoneId: string;
-      geoRestrictions?: {
-        label?: "us" | "eu" | "highest_security" | null;
-      } | null;
-      keylessServer?: {
-        id: string;
-        createdOn: string;
-        enabled: boolean;
-        host: string;
-        modifiedOn: string;
-        name: string;
-        permissions: string[];
-        port: number;
-        status: "active" | "deleted";
-        tunnel?: { privateIp: string; vnetId: string } | null;
-      } | null;
-      policy?: string | null;
-    },
-    PutPrioritizeError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: PutPrioritizeRequest,
   output: PutPrioritizeResponse,
   errors: [],

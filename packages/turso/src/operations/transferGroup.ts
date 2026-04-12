@@ -7,12 +7,7 @@ export const TransferGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
   organization: Schema.optional(Schema.String),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/v1/organizations/{organizationSlug}/groups/{groupName}/transfer",
-  }),
-);
+}).pipe(T.Http({ method: "POST", path: "/v1/organizations/{organizationSlug}/groups/{groupName}/transfer" }));
 export type TransferGroupInput = typeof TransferGroupInput.Type;
 
 // Output Schema

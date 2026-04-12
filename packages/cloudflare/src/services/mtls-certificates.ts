@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service mtls-certificates
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -55,22 +54,7 @@ export const getAssociation: API.PaginatedOperationMethod<
   GetAssociationResponse,
   GetAssociationError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAssociationRequest,
-  ) => stream.Stream<
-    GetAssociationResponse,
-    GetAssociationError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAssociationRequest,
-  ) => stream.Stream<
-    { service?: string | null; status?: string | null },
-    GetAssociationError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetAssociationRequest,
   output: GetAssociationResponse,
   errors: [],
@@ -230,30 +214,7 @@ export const listMtlsCertificates: API.PaginatedOperationMethod<
   ListMtlsCertificatesResponse,
   ListMtlsCertificatesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMtlsCertificatesRequest,
-  ) => stream.Stream<
-    ListMtlsCertificatesResponse,
-    ListMtlsCertificatesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListMtlsCertificatesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      ca?: boolean | null;
-      certificates?: string | null;
-      expiresOn?: string | null;
-      issuer?: string | null;
-      name?: string | null;
-      serialNumber?: string | null;
-      signature?: string | null;
-      uploadedOn?: string | null;
-    },
-    ListMtlsCertificatesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMtlsCertificatesRequest,
   output: ListMtlsCertificatesResponse,
   errors: [],

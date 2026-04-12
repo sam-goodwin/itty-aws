@@ -3,26 +3,19 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupContainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-    providerName: Schema.Literals(["AWS", "AZURE", "GCP"]),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/containers",
-    }),
-  );
+export const ListGroupContainersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+  providerName: Schema.Literals(["AWS", "AZURE", "GCP"]),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/containers" }));
 export type ListGroupContainersInput = typeof ListGroupContainersInput.Type;
 
 // Output Schema
-export const ListGroupContainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const ListGroupContainersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type ListGroupContainersOutput = typeof ListGroupContainersOutput.Type;
 
 // The operation

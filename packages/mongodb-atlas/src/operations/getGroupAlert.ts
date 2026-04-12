@@ -8,12 +8,7 @@ export const GetGroupAlertInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   alertId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/api/atlas/v2/groups/{groupId}/alerts/{alertId}",
-  }),
-);
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/alerts/{alertId}" }));
 export type GetGroupAlertInput = typeof GetGroupAlertInput.Type;
 
 // Output Schema

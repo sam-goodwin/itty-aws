@@ -3,34 +3,25 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupProcessPerformanceAdvisorSuggestedIndexesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    processId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    includeCount: Schema.optional(Schema.Boolean),
-    itemsPerPage: Schema.optional(Schema.Number),
-    pageNum: Schema.optional(Schema.Number),
-    pretty: Schema.optional(Schema.Boolean),
-    duration: Schema.optional(Schema.Number),
-    namespaces: Schema.optional(Schema.String),
-    nExamples: Schema.optional(Schema.Number),
-    nIndexes: Schema.optional(Schema.Number),
-    since: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/suggestedIndexes",
-    }),
-  );
-export type ListGroupProcessPerformanceAdvisorSuggestedIndexesInput =
-  typeof ListGroupProcessPerformanceAdvisorSuggestedIndexesInput.Type;
+export const ListGroupProcessPerformanceAdvisorSuggestedIndexesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  processId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  includeCount: Schema.optional(Schema.Boolean),
+  itemsPerPage: Schema.optional(Schema.Number),
+  pageNum: Schema.optional(Schema.Number),
+  pretty: Schema.optional(Schema.Boolean),
+  duration: Schema.optional(Schema.Number),
+  namespaces: Schema.optional(Schema.String),
+  nExamples: Schema.optional(Schema.Number),
+  nIndexes: Schema.optional(Schema.Number),
+  since: Schema.optional(Schema.Number),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/suggestedIndexes" }));
+export type ListGroupProcessPerformanceAdvisorSuggestedIndexesInput = typeof ListGroupProcessPerformanceAdvisorSuggestedIndexesInput.Type;
 
 // Output Schema
-export const ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput =
-  typeof ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput.Type;
+export const ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput = typeof ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput.Type;
 
 // The operation
 /**
@@ -59,8 +50,7 @@ export type ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput =
 - If you don't specify the **duration** parameter, the endpoint returns data covering from the **since** value and the current time.
 - If you specify neither the **duration** nor the **since** parameters, the endpoint returns data from the previous 24 hours.
  */
-export const listGroupProcessPerformanceAdvisorSuggestedIndexes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListGroupProcessPerformanceAdvisorSuggestedIndexesInput,
-    outputSchema: ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput,
-  }));
+export const listGroupProcessPerformanceAdvisorSuggestedIndexes = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupProcessPerformanceAdvisorSuggestedIndexesInput,
+  outputSchema: ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput,
+}));

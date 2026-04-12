@@ -3,26 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupPrivateEndpointEndpointServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService",
-    }),
-  );
-export type ListGroupPrivateEndpointEndpointServiceInput =
-  typeof ListGroupPrivateEndpointEndpointServiceInput.Type;
+export const ListGroupPrivateEndpointEndpointServiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService" }));
+export type ListGroupPrivateEndpointEndpointServiceInput = typeof ListGroupPrivateEndpointEndpointServiceInput.Type;
 
 // Output Schema
-export const ListGroupPrivateEndpointEndpointServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupPrivateEndpointEndpointServiceOutput =
-  typeof ListGroupPrivateEndpointEndpointServiceOutput.Type;
+export const ListGroupPrivateEndpointEndpointServiceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupPrivateEndpointEndpointServiceOutput = typeof ListGroupPrivateEndpointEndpointServiceOutput.Type;
 
 // The operation
 /**
@@ -37,8 +28,7 @@ export type ListGroupPrivateEndpointEndpointServiceOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param cloudProvider - Cloud service provider that manages this private endpoint service.
  */
-export const listGroupPrivateEndpointEndpointService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListGroupPrivateEndpointEndpointServiceInput,
-    outputSchema: ListGroupPrivateEndpointEndpointServiceOutput,
-  }));
+export const listGroupPrivateEndpointEndpointService = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupPrivateEndpointEndpointServiceInput,
+  outputSchema: ListGroupPrivateEndpointEndpointServiceOutput,
+}));

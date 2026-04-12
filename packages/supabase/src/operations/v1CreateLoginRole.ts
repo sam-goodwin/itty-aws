@@ -4,21 +4,18 @@ import * as T from "../traits";
 import { SensitiveString } from "../sensitive";
 
 // Input Schema
-export const V1CreateLoginRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-    read_only: Schema.Boolean,
-  },
-).pipe(T.Http({ method: "POST", path: "/v1/projects/{ref}/cli/login-role" }));
+export const V1CreateLoginRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  read_only: Schema.Boolean,
+}).pipe(T.Http({ method: "POST", path: "/v1/projects/{ref}/cli/login-role" }));
 export type V1CreateLoginRoleInput = typeof V1CreateLoginRoleInput.Type;
 
 // Output Schema
-export const V1CreateLoginRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    role: Schema.String,
-    password: SensitiveString,
-    ttl_seconds: Schema.Number,
-  });
+export const V1CreateLoginRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.String,
+  password: SensitiveString,
+  ttl_seconds: Schema.Number,
+});
 export type V1CreateLoginRoleOutput = typeof V1CreateLoginRoleOutput.Type;
 
 // The operation

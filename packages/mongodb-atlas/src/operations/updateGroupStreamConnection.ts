@@ -3,27 +3,18 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateGroupStreamConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    connectionName: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}",
-    }),
-  );
-export type UpdateGroupStreamConnectionInput =
-  typeof UpdateGroupStreamConnectionInput.Type;
+export const UpdateGroupStreamConnectionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  connectionName: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}" }));
+export type UpdateGroupStreamConnectionInput = typeof UpdateGroupStreamConnectionInput.Type;
 
 // Output Schema
-export const UpdateGroupStreamConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupStreamConnectionOutput =
-  typeof UpdateGroupStreamConnectionOutput.Type;
+export const UpdateGroupStreamConnectionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateGroupStreamConnectionOutput = typeof UpdateGroupStreamConnectionOutput.Type;
 
 // The operation
 /**
@@ -39,9 +30,7 @@ export type UpdateGroupStreamConnectionOutput =
  * @param tenantName - Label that identifies the stream workspace.
  * @param connectionName - Label that identifies the stream connection.
  */
-export const updateGroupStreamConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupStreamConnectionInput,
-    outputSchema: UpdateGroupStreamConnectionOutput,
-  }),
-);
+export const updateGroupStreamConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupStreamConnectionInput,
+  outputSchema: UpdateGroupStreamConnectionOutput,
+}));

@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service ai
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -256,22 +255,7 @@ export const listAuthors: API.PaginatedOperationMethod<
   ListAuthorsResponse,
   ListAuthorsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAuthorsRequest,
-  ) => stream.Stream<
-    ListAuthorsResponse,
-    ListAuthorsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAuthorsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListAuthorsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAuthorsRequest,
   output: ListAuthorsResponse,
   errors: [],
@@ -542,28 +526,7 @@ export const listFinetunePublics: API.PaginatedOperationMethod<
   ListFinetunePublicsResponse,
   ListFinetunePublicsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFinetunePublicsRequest,
-  ) => stream.Stream<
-    ListFinetunePublicsResponse,
-    ListFinetunePublicsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListFinetunePublicsRequest) => stream.Stream<
-    {
-      id: string;
-      createdAt: string;
-      model: string;
-      modifiedAt: string;
-      name: string;
-      public: boolean;
-      description?: string | null;
-    },
-    ListFinetunePublicsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFinetunePublicsRequest,
   output: ListFinetunePublicsResponse,
   errors: [],
@@ -641,22 +604,7 @@ export const listModels: API.PaginatedOperationMethod<
   ListModelsResponse,
   ListModelsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListModelsRequest,
-  ) => stream.Stream<
-    ListModelsResponse,
-    ListModelsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListModelsRequest,
-  ) => stream.Stream<
-    unknown,
-    ListModelsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListModelsRequest,
   output: ListModelsResponse,
   errors: [],
@@ -740,22 +688,7 @@ export const listTasks: API.PaginatedOperationMethod<
   ListTasksResponse,
   ListTasksError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTasksRequest,
-  ) => stream.Stream<
-    ListTasksResponse,
-    ListTasksError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTasksRequest,
-  ) => stream.Stream<
-    unknown,
-    ListTasksError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTasksRequest,
   output: ListTasksResponse,
   errors: [],
@@ -804,22 +737,7 @@ export const supportedToMarkdown: API.PaginatedOperationMethod<
   SupportedToMarkdownResponse,
   SupportedToMarkdownError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: SupportedToMarkdownRequest,
-  ) => stream.Stream<
-    SupportedToMarkdownResponse,
-    SupportedToMarkdownError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: SupportedToMarkdownRequest,
-  ) => stream.Stream<
-    { extension: string; mimeType: string },
-    SupportedToMarkdownError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SupportedToMarkdownRequest,
   output: SupportedToMarkdownResponse,
   errors: [],
@@ -871,26 +789,7 @@ export const transformToMarkdown: API.PaginatedOperationMethod<
   TransformToMarkdownResponse,
   TransformToMarkdownError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: TransformToMarkdownRequest,
-  ) => stream.Stream<
-    TransformToMarkdownResponse,
-    TransformToMarkdownError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: TransformToMarkdownRequest) => stream.Stream<
-    {
-      data: string;
-      format: string;
-      mimeType: string;
-      name: string;
-      tokens: string;
-    },
-    TransformToMarkdownError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: TransformToMarkdownRequest,
   output: TransformToMarkdownResponse,
   errors: [],

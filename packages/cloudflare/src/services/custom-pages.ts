@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service custom-pages
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -176,29 +175,7 @@ export const listCustomPages: API.PaginatedOperationMethod<
   ListCustomPagesResponse,
   ListCustomPagesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomPagesRequest,
-  ) => stream.Stream<
-    ListCustomPagesResponse,
-    ListCustomPagesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListCustomPagesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      createdOn?: string | null;
-      description?: string | null;
-      modifiedOn?: string | null;
-      previewTarget?: string | null;
-      requiredTokens?: string[] | null;
-      state?: "default" | "customized" | null;
-      url?: string | null;
-    },
-    ListCustomPagesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomPagesRequest,
   output: ListCustomPagesResponse,
   errors: [],

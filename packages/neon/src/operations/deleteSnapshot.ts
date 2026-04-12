@@ -6,12 +6,7 @@ import * as T from "../traits";
 export const DeleteSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   snapshot_id: Schema.String.pipe(T.PathParam()),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/projects/{project_id}/snapshots/{snapshot_id}",
-  }),
-);
+}).pipe(T.Http({ method: "DELETE", path: "/projects/{project_id}/snapshots/{snapshot_id}" }));
 export type DeleteSnapshotInput = typeof DeleteSnapshotInput.Type;
 
 // Output Schema

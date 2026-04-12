@@ -8,12 +8,7 @@ export const GetGroupPeerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   peerId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/api/atlas/v2/groups/{groupId}/peers/{peerId}",
-  }),
-);
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/peers/{peerId}" }));
 export type GetGroupPeerInput = typeof GetGroupPeerInput.Type;
 
 // Output Schema

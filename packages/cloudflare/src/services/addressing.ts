@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service addressing
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -359,29 +358,7 @@ export const listAddressMaps: API.PaginatedOperationMethod<
   ListAddressMapsResponse,
   ListAddressMapsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAddressMapsRequest,
-  ) => stream.Stream<
-    ListAddressMapsResponse,
-    ListAddressMapsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListAddressMapsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      canDelete?: boolean | null;
-      canModifyIps?: boolean | null;
-      createdAt?: string | null;
-      defaultSni?: string | null;
-      description?: string | null;
-      enabled?: boolean | null;
-      modifiedAt?: string | null;
-    },
-    ListAddressMapsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAddressMapsRequest,
   output: ListAddressMapsResponse,
   errors: [],
@@ -2026,39 +2003,7 @@ export const listPrefixes: API.PaginatedOperationMethod<
   ListPrefixesResponse,
   ListPrefixesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPrefixesRequest,
-  ) => stream.Stream<
-    ListPrefixesResponse,
-    ListPrefixesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListPrefixesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      accountId?: string | null;
-      advertised?: boolean | null;
-      advertisedModifiedAt?: string | null;
-      approved?: string | null;
-      asn?: number | null;
-      cidr?: string | null;
-      createdAt?: string | null;
-      delegateLoaCreation?: boolean | null;
-      description?: string | null;
-      irrValidationState?: string | null;
-      loaDocumentId?: string | null;
-      modifiedAt?: string | null;
-      onDemandEnabled?: boolean | null;
-      onDemandLocked?: boolean | null;
-      ownershipValidationState?: string | null;
-      ownershipValidationToken?: string | null;
-      rpkiValidationState?: string | null;
-    },
-    ListPrefixesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPrefixesRequest,
   output: ListPrefixesResponse,
   errors: [],
@@ -2830,38 +2775,7 @@ export const listPrefixBgpPrefixes: API.PaginatedOperationMethod<
   ListPrefixBgpPrefixesResponse,
   ListPrefixBgpPrefixesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPrefixBgpPrefixesRequest,
-  ) => stream.Stream<
-    ListPrefixBgpPrefixesResponse,
-    ListPrefixBgpPrefixesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListPrefixBgpPrefixesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      asn?: number | null;
-      asnPrependCount?: number | null;
-      autoAdvertiseWithdraw?: boolean | null;
-      bgpSignalOpts?: {
-        enabled?: boolean | null;
-        modifiedAt?: string | null;
-      } | null;
-      cidr?: string | null;
-      createdAt?: string | null;
-      modifiedAt?: string | null;
-      onDemand?: {
-        advertised?: boolean | null;
-        advertisedModifiedAt?: string | null;
-        onDemandEnabled?: boolean | null;
-        onDemandLocked?: boolean | null;
-      } | null;
-    },
-    ListPrefixBgpPrefixesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPrefixBgpPrefixesRequest,
   output: ListPrefixBgpPrefixesResponse,
   errors: [],
@@ -3217,27 +3131,7 @@ export const listPrefixDelegations: API.PaginatedOperationMethod<
   ListPrefixDelegationsResponse,
   ListPrefixDelegationsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPrefixDelegationsRequest,
-  ) => stream.Stream<
-    ListPrefixDelegationsResponse,
-    ListPrefixDelegationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListPrefixDelegationsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      cidr?: string | null;
-      createdAt?: string | null;
-      delegatedAccountId?: string | null;
-      modifiedAt?: string | null;
-      parentPrefixId?: string | null;
-    },
-    ListPrefixDelegationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPrefixDelegationsRequest,
   output: ListPrefixDelegationsResponse,
   errors: [],
@@ -3531,26 +3425,7 @@ export const listPrefixServiceBindings: API.PaginatedOperationMethod<
   ListPrefixServiceBindingsResponse,
   ListPrefixServiceBindingsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPrefixServiceBindingsRequest,
-  ) => stream.Stream<
-    ListPrefixServiceBindingsResponse,
-    ListPrefixServiceBindingsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListPrefixServiceBindingsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      cidr?: string | null;
-      provisioning?: { state?: "provisioning" | "active" | null } | null;
-      serviceId?: string | null;
-      serviceName?: string | null;
-    },
-    ListPrefixServiceBindingsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPrefixServiceBindingsRequest,
   output: ListPrefixServiceBindingsResponse,
   errors: [],
@@ -3874,25 +3749,7 @@ export const listRegionalHostnames: API.PaginatedOperationMethod<
   ListRegionalHostnamesResponse,
   ListRegionalHostnamesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegionalHostnamesRequest,
-  ) => stream.Stream<
-    ListRegionalHostnamesResponse,
-    ListRegionalHostnamesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListRegionalHostnamesRequest) => stream.Stream<
-    {
-      createdOn: string;
-      hostname: string;
-      regionKey: string;
-      routing?: string | null;
-    },
-    ListRegionalHostnamesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionalHostnamesRequest,
   output: ListRegionalHostnamesResponse,
   errors: [],
@@ -4200,22 +4057,7 @@ export const listRegionalHostnameRegions: API.PaginatedOperationMethod<
   ListRegionalHostnameRegionsResponse,
   ListRegionalHostnameRegionsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegionalHostnameRegionsRequest,
-  ) => stream.Stream<
-    ListRegionalHostnameRegionsResponse,
-    ListRegionalHostnameRegionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegionalHostnameRegionsRequest,
-  ) => stream.Stream<
-    { key?: string | null; label?: string | null },
-    ListRegionalHostnameRegionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionalHostnameRegionsRequest,
   output: ListRegionalHostnameRegionsResponse,
   errors: [],
@@ -4260,22 +4102,7 @@ export const listServices: API.PaginatedOperationMethod<
   ListServicesResponse,
   ListServicesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    ListServicesResponse,
-    ListServicesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesRequest,
-  ) => stream.Stream<
-    { id?: string | null; name?: string | null },
-    ListServicesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [],

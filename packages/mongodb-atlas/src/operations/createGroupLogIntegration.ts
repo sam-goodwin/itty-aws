@@ -3,25 +3,16 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateGroupLogIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/api/atlas/v2/groups/{groupId}/logIntegrations",
-    }),
-  );
-export type CreateGroupLogIntegrationInput =
-  typeof CreateGroupLogIntegrationInput.Type;
+export const CreateGroupLogIntegrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/logIntegrations" }));
+export type CreateGroupLogIntegrationInput = typeof CreateGroupLogIntegrationInput.Type;
 
 // Output Schema
-export const CreateGroupLogIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupLogIntegrationOutput =
-  typeof CreateGroupLogIntegrationOutput.Type;
+export const CreateGroupLogIntegrationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CreateGroupLogIntegrationOutput = typeof CreateGroupLogIntegrationOutput.Type;
 
 // The operation
 /**
@@ -35,9 +26,7 @@ export type CreateGroupLogIntegrationOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupLogIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupLogIntegrationInput,
-    outputSchema: CreateGroupLogIntegrationOutput,
-  }),
-);
+export const createGroupLogIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupLogIntegrationInput,
+  outputSchema: CreateGroupLogIntegrationOutput,
+}));

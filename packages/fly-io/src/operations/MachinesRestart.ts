@@ -8,12 +8,7 @@ export const MachinesRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   machine_id: Schema.String.pipe(T.PathParam()),
   timeout: Schema.optional(Schema.String),
   signal: Schema.optional(Schema.String),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/apps/{app_name}/machines/{machine_id}/restart",
-  }),
-);
+}).pipe(T.Http({ method: "POST", path: "/apps/{app_name}/machines/{machine_id}/restart" }));
 export type MachinesRestartInput = typeof MachinesRestartInput.Type;
 
 // Output Schema

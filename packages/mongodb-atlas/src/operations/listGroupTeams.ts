@@ -10,9 +10,7 @@ export const ListGroupTeamsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   includeCount: Schema.optional(Schema.Boolean),
   itemsPerPage: Schema.optional(Schema.Number),
   pageNum: Schema.optional(Schema.Number),
-}).pipe(
-  T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/teams" }),
-);
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/teams" }));
 export type ListGroupTeamsInput = typeof ListGroupTeamsInput.Type;
 
 // Output Schema

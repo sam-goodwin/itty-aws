@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service origin-ca-certificates
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -193,28 +192,7 @@ export const listOriginCACertificates: API.PaginatedOperationMethod<
   ListOriginCACertificatesResponse,
   ListOriginCACertificatesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOriginCACertificatesRequest,
-  ) => stream.Stream<
-    ListOriginCACertificatesResponse,
-    ListOriginCACertificatesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListOriginCACertificatesRequest) => stream.Stream<
-    {
-      csr: string;
-      hostnames: string[];
-      requestType: "origin-rsa" | "origin-ecc" | "keyless-certificate";
-      requestedValidity: "7" | "30" | "90" | "365" | "730" | "1095" | "5475";
-      id?: string | null;
-      certificate?: string | null;
-      expiresOn?: string | null;
-    },
-    ListOriginCACertificatesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOriginCACertificatesRequest,
   output: ListOriginCACertificatesResponse,
   errors: [],

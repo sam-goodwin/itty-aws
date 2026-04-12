@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service images
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -229,32 +228,7 @@ export const listV1s: API.PaginatedOperationMethod<
   ListV1sResponse,
   ListV1sError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListV1sRequest,
-  ) => stream.Stream<
-    ListV1sResponse,
-    ListV1sError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListV1sRequest) => stream.Stream<
-    {
-      images?:
-        | {
-            id?: string | null;
-            creator?: string | null;
-            filename?: string | null;
-            meta?: unknown | null;
-            requireSignedURLs?: boolean | null;
-            uploaded?: string | null;
-            variants?: string[] | null;
-          }[]
-        | null;
-    },
-    ListV1sError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListV1sRequest,
   output: ListV1sResponse,
   errors: [ImagesAccessNotEnabled],

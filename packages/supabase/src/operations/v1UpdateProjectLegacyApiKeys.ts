@@ -3,23 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const V1UpdateProjectLegacyApiKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ref: Schema.String.pipe(T.PathParam()),
-    enabled: Schema.Boolean,
-  }).pipe(
-    T.Http({ method: "PUT", path: "/v1/projects/{ref}/api-keys/legacy" }),
-  );
-export type V1UpdateProjectLegacyApiKeysInput =
-  typeof V1UpdateProjectLegacyApiKeysInput.Type;
+export const V1UpdateProjectLegacyApiKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  enabled: Schema.Boolean,
+}).pipe(T.Http({ method: "PUT", path: "/v1/projects/{ref}/api-keys/legacy" }));
+export type V1UpdateProjectLegacyApiKeysInput = typeof V1UpdateProjectLegacyApiKeysInput.Type;
 
 // Output Schema
-export const V1UpdateProjectLegacyApiKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    enabled: Schema.Boolean,
-  });
-export type V1UpdateProjectLegacyApiKeysOutput =
-  typeof V1UpdateProjectLegacyApiKeysOutput.Type;
+export const V1UpdateProjectLegacyApiKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.Boolean,
+});
+export type V1UpdateProjectLegacyApiKeysOutput = typeof V1UpdateProjectLegacyApiKeysOutput.Type;
 
 // The operation
 /**
@@ -28,8 +22,7 @@ export type V1UpdateProjectLegacyApiKeysOutput =
  * @param ref - Project ref
  * @param enabled - Boolean string, true or false
  */
-export const v1UpdateProjectLegacyApiKeys =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: V1UpdateProjectLegacyApiKeysInput,
-    outputSchema: V1UpdateProjectLegacyApiKeysOutput,
-  }));
+export const v1UpdateProjectLegacyApiKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: V1UpdateProjectLegacyApiKeysInput,
+  outputSchema: V1UpdateProjectLegacyApiKeysOutput,
+}));

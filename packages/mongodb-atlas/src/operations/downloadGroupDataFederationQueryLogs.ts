@@ -3,26 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DownloadGroupDataFederationQueryLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    tenantName: Schema.String.pipe(T.PathParam()),
-    endDate: Schema.optional(Schema.Number),
-    startDate: Schema.optional(Schema.Number),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/queryLogs.gz",
-    }),
-  );
-export type DownloadGroupDataFederationQueryLogsInput =
-  typeof DownloadGroupDataFederationQueryLogsInput.Type;
+export const DownloadGroupDataFederationQueryLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  tenantName: Schema.String.pipe(T.PathParam()),
+  endDate: Schema.optional(Schema.Number),
+  startDate: Schema.optional(Schema.Number),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/queryLogs.gz" }));
+export type DownloadGroupDataFederationQueryLogsInput = typeof DownloadGroupDataFederationQueryLogsInput.Type;
 
 // Output Schema
-export const DownloadGroupDataFederationQueryLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DownloadGroupDataFederationQueryLogsOutput =
-  typeof DownloadGroupDataFederationQueryLogsOutput.Type;
+export const DownloadGroupDataFederationQueryLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DownloadGroupDataFederationQueryLogsOutput = typeof DownloadGroupDataFederationQueryLogsOutput.Type;
 
 // The operation
 /**
@@ -37,8 +28,7 @@ export type DownloadGroupDataFederationQueryLogsOutput =
  * @param startDate - Timestamp that specifies the starting point for the range of log messages to download. MongoDB Cloud expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch.
  * @param tenantName - Human-readable label that identifies the federated database instance for which you want to download query logs.
  */
-export const downloadGroupDataFederationQueryLogs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DownloadGroupDataFederationQueryLogsInput,
-    outputSchema: DownloadGroupDataFederationQueryLogsOutput,
-  }));
+export const downloadGroupDataFederationQueryLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DownloadGroupDataFederationQueryLogsInput,
+  outputSchema: DownloadGroupDataFederationQueryLogsOutput,
+}));

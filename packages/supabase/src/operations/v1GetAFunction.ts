@@ -6,12 +6,7 @@ import * as T from "../traits";
 export const V1GetAFunctionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   function_slug: Schema.String.pipe(T.PathParam()),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/v1/projects/{ref}/functions/{function_slug}",
-  }),
-);
+}).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/functions/{function_slug}" }));
 export type V1GetAFunctionInput = typeof V1GetAFunctionInput.Type;
 
 // Output Schema

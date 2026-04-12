@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service intel
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -392,49 +391,7 @@ export const listAttackSurfaceReportIssues: API.PaginatedOperationMethod<
   ListAttackSurfaceReportIssuesResponse,
   ListAttackSurfaceReportIssuesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAttackSurfaceReportIssuesRequest,
-  ) => stream.Stream<
-    ListAttackSurfaceReportIssuesResponse,
-    ListAttackSurfaceReportIssuesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListAttackSurfaceReportIssuesRequest) => stream.Stream<
-    {
-      count?: number | null;
-      issues?:
-        | {
-            id?: string | null;
-            dismissed?: boolean | null;
-            issueClass?: string | null;
-            issueType?:
-              | "compliance_violation"
-              | "email_security"
-              | "exposed_infrastructure"
-              | "insecure_configuration"
-              | "weak_authentication"
-              | "configuration_suggestion"
-              | null;
-            payload?: {
-              detectionMethod?: string | null;
-              zoneTag?: string | null;
-            } | null;
-            resolveLink?: string | null;
-            resolveText?: string | null;
-            severity?: "Low" | "Moderate" | "Critical" | null;
-            since?: string | null;
-            subject?: string | null;
-            timestamp?: string | null;
-          }[]
-        | null;
-      page?: number | null;
-      perPage?: number | null;
-    },
-    ListAttackSurfaceReportIssuesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAttackSurfaceReportIssuesRequest,
   output: ListAttackSurfaceReportIssuesResponse,
   errors: [],
@@ -973,22 +930,7 @@ export const getAttackSurfaceReportIssueType: API.PaginatedOperationMethod<
   GetAttackSurfaceReportIssueTypeResponse,
   GetAttackSurfaceReportIssueTypeError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetAttackSurfaceReportIssueTypeRequest,
-  ) => stream.Stream<
-    GetAttackSurfaceReportIssueTypeResponse,
-    GetAttackSurfaceReportIssueTypeError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetAttackSurfaceReportIssueTypeRequest,
-  ) => stream.Stream<
-    string,
-    GetAttackSurfaceReportIssueTypeError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetAttackSurfaceReportIssueTypeRequest,
   output: GetAttackSurfaceReportIssueTypeResponse,
   errors: [],
@@ -1121,31 +1063,7 @@ export const listDns: API.PaginatedOperationMethod<
   ListDnsResponse,
   ListDnsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDnsRequest,
-  ) => stream.Stream<
-    ListDnsResponse,
-    ListDnsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListDnsRequest) => stream.Stream<
-    {
-      count?: number | null;
-      page?: number | null;
-      perPage?: number | null;
-      reverseRecords?:
-        | {
-            firstSeen?: string | null;
-            hostname?: string | null;
-            lastSeen?: string | null;
-          }[]
-        | null;
-    },
-    ListDnsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDnsRequest,
   output: ListDnsResponse,
   errors: [],
@@ -1835,29 +1753,7 @@ export const listIndicatorFeeds: API.PaginatedOperationMethod<
   ListIndicatorFeedsResponse,
   ListIndicatorFeedsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIndicatorFeedsRequest,
-  ) => stream.Stream<
-    ListIndicatorFeedsResponse,
-    ListIndicatorFeedsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListIndicatorFeedsRequest) => stream.Stream<
-    {
-      id?: number | null;
-      createdOn?: string | null;
-      description?: string | null;
-      isAttributable?: boolean | null;
-      isDownloadable?: boolean | null;
-      isPublic?: boolean | null;
-      modifiedOn?: string | null;
-      name?: string | null;
-    },
-    ListIndicatorFeedsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIndicatorFeedsRequest,
   output: ListIndicatorFeedsResponse,
   errors: [],
@@ -2457,22 +2353,7 @@ export const getIpList: API.PaginatedOperationMethod<
   GetIpListResponse,
   GetIpListError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetIpListRequest,
-  ) => stream.Stream<
-    GetIpListResponse,
-    GetIpListError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetIpListRequest,
-  ) => stream.Stream<
-    { id?: number | null; description?: string | null; name?: string | null },
-    GetIpListError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetIpListRequest,
   output: GetIpListResponse,
   errors: [],
@@ -2678,28 +2559,7 @@ export const listSinkholes: API.PaginatedOperationMethod<
   ListSinkholesResponse,
   ListSinkholesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSinkholesRequest,
-  ) => stream.Stream<
-    ListSinkholesResponse,
-    ListSinkholesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSinkholesRequest) => stream.Stream<
-    {
-      id?: number | null;
-      accountTag?: string | null;
-      createdOn?: string | null;
-      modifiedOn?: string | null;
-      name?: string | null;
-      r2Bucket?: string | null;
-      r2Id?: string | null;
-    },
-    ListSinkholesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSinkholesRequest,
   output: ListSinkholesResponse,
   errors: [],

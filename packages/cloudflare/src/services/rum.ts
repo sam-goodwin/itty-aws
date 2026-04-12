@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service rum
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -773,43 +772,7 @@ export const listSiteInfos: API.PaginatedOperationMethod<
   ListSiteInfosResponse,
   ListSiteInfosError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSiteInfosRequest,
-  ) => stream.Stream<
-    ListSiteInfosResponse,
-    ListSiteInfosError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSiteInfosRequest) => stream.Stream<
-    {
-      autoInstall?: boolean | null;
-      created?: string | null;
-      rules?:
-        | {
-            id?: string | null;
-            created?: string | null;
-            host?: string | null;
-            inclusive?: boolean | null;
-            isPaused?: boolean | null;
-            paths?: string[] | null;
-            priority?: number | null;
-          }[]
-        | null;
-      ruleset?: {
-        id?: string | null;
-        enabled?: boolean | null;
-        zoneName?: string | null;
-        zoneTag?: string | null;
-      } | null;
-      siteTag?: string | null;
-      siteToken?: string | null;
-      snippet?: string | null;
-    },
-    ListSiteInfosError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSiteInfosRequest,
   output: ListSiteInfosResponse,
   errors: [],

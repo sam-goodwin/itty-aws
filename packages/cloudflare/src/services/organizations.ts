@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service organizations
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -252,42 +251,7 @@ export const listOrganizations: API.PaginatedOperationMethod<
   ListOrganizationsResponse,
   ListOrganizationsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationsRequest,
-  ) => stream.Stream<
-    ListOrganizationsResponse,
-    ListOrganizationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListOrganizationsRequest) => stream.Stream<
-    {
-      id: string;
-      createTime: string;
-      meta: {
-        flags?: {
-          accountCreation: string;
-          accountDeletion: string;
-          accountMigration: string;
-          accountMobility: string;
-          subOrgCreation: string;
-        } | null;
-        managedBy?: string | null;
-      };
-      name: string;
-      parent?: { id: string; name: string } | null;
-      profile?: {
-        businessAddress: string;
-        businessEmail: string;
-        businessName: string;
-        businessPhone: string;
-        externalMetadata: string;
-      } | null;
-    },
-    ListOrganizationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsRequest,
   output: ListOrganizationsResponse,
   errors: [],

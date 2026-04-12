@@ -3,27 +3,18 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupPrivateEndpointEndpointServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
-    endpointServiceId: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}",
-    }),
-  );
-export type DeleteGroupPrivateEndpointEndpointServiceInput =
-  typeof DeleteGroupPrivateEndpointEndpointServiceInput.Type;
+export const DeleteGroupPrivateEndpointEndpointServiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
+  endpointServiceId: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}" }));
+export type DeleteGroupPrivateEndpointEndpointServiceInput = typeof DeleteGroupPrivateEndpointEndpointServiceInput.Type;
 
 // Output Schema
-export const DeleteGroupPrivateEndpointEndpointServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupPrivateEndpointEndpointServiceOutput =
-  typeof DeleteGroupPrivateEndpointEndpointServiceOutput.Type;
+export const DeleteGroupPrivateEndpointEndpointServiceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupPrivateEndpointEndpointServiceOutput = typeof DeleteGroupPrivateEndpointEndpointServiceOutput.Type;
 
 // The operation
 /**
@@ -39,8 +30,7 @@ export type DeleteGroupPrivateEndpointEndpointServiceOutput =
  * @param cloudProvider - Cloud service provider that manages this private endpoint service.
  * @param endpointServiceId - Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to delete.
  */
-export const deleteGroupPrivateEndpointEndpointService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteGroupPrivateEndpointEndpointServiceInput,
-    outputSchema: DeleteGroupPrivateEndpointEndpointServiceOutput,
-  }));
+export const deleteGroupPrivateEndpointEndpointService = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupPrivateEndpointEndpointServiceInput,
+  outputSchema: DeleteGroupPrivateEndpointEndpointServiceOutput,
+}));

@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service radar
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -1618,26 +1617,7 @@ export const createAiToMarkdown: API.PaginatedOperationMethod<
   CreateAiToMarkdownResponse,
   CreateAiToMarkdownError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: CreateAiToMarkdownRequest,
-  ) => stream.Stream<
-    CreateAiToMarkdownResponse,
-    CreateAiToMarkdownError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: CreateAiToMarkdownRequest) => stream.Stream<
-    {
-      data: string;
-      format: string;
-      mimeType: string;
-      name: string;
-      tokens: string;
-    },
-    CreateAiToMarkdownError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreateAiToMarkdownRequest,
   output: CreateAiToMarkdownResponse,
   errors: [],
@@ -9821,43 +9801,7 @@ export const listBgpHijackEvents: API.PaginatedOperationMethod<
   ListBgpHijackEventsResponse,
   ListBgpHijackEventsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBgpHijackEventsRequest,
-  ) => stream.Stream<
-    ListBgpHijackEventsResponse,
-    ListBgpHijackEventsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListBgpHijackEventsRequest) => stream.Stream<
-    {
-      asnInfo: { asn: number; countryCode: string; orgName: string }[];
-      events: {
-        id: number;
-        confidenceScore: number;
-        duration: number;
-        eventType: number;
-        hijackMsgsCount: number;
-        hijackerAsn: number;
-        hijackerCountry: string;
-        isStale: boolean;
-        maxHijackTs: string;
-        maxMsgTs: string;
-        minHijackTs: string;
-        onGoingCount: number;
-        peerAsns: number[];
-        peerIpCount: number;
-        prefixes: string[];
-        tags: { name: string; score: number }[];
-        victimAsns: number[];
-        victimCountries: string[];
-      }[];
-      totalMonitors: number;
-    },
-    ListBgpHijackEventsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBgpHijackEventsRequest,
   output: ListBgpHijackEventsResponse,
   errors: [],
@@ -10237,37 +10181,7 @@ export const listBgpLeakEvents: API.PaginatedOperationMethod<
   ListBgpLeakEventsResponse,
   ListBgpLeakEventsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBgpLeakEventsRequest,
-  ) => stream.Stream<
-    ListBgpLeakEventsResponse,
-    ListBgpLeakEventsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListBgpLeakEventsRequest) => stream.Stream<
-    {
-      asnInfo: { asn: number; countryCode: string; orgName: string }[];
-      events: {
-        id: number;
-        countries: string[];
-        detectedTs: string;
-        finished: boolean;
-        leakAsn: number;
-        leakCount: number;
-        leakSeg: number[];
-        leakType: number;
-        maxTs: string;
-        minTs: string;
-        originCount: number;
-        peerCount: number;
-        prefixCount: number;
-      }[];
-    },
-    ListBgpLeakEventsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBgpLeakEventsRequest,
   output: ListBgpLeakEventsResponse,
   errors: [],

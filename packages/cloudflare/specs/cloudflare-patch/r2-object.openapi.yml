@@ -1,0 +1,55 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare R2 Object API
+  version: 0.0.0
+  description: R2 object operations not exposed in the Cloudflare TypeScript SDK.
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: r2
+paths:
+  /accounts/{account_id}/r2/buckets/{bucketName}/objects/{objectName}:
+    delete:
+      operationId: deleteObject
+      summary: Delete an object from an R2 bucket.
+      description: Deletes an object from an R2 bucket.
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+        NoRoute:
+          - code: 10015
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: objectName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: Jurisdiction where objects in this bucket are guaranteed to be stored.
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema: {}

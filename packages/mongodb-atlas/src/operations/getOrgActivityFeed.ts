@@ -3,16 +3,13 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetOrgActivityFeedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orgId: Schema.String.pipe(T.PathParam()),
-    pretty: Schema.optional(Schema.Boolean),
-    eventType: Schema.optional(Schema.String),
-    maxDate: Schema.optional(Schema.String),
-    minDate: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/activityFeed" }),
-  );
+export const GetOrgActivityFeedInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  orgId: Schema.String.pipe(T.PathParam()),
+  pretty: Schema.optional(Schema.Boolean),
+  eventType: Schema.optional(Schema.String),
+  maxDate: Schema.optional(Schema.String),
+  minDate: Schema.optional(Schema.String),
+}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/activityFeed" }));
 export type GetOrgActivityFeedInput = typeof GetOrgActivityFeedInput.Type;
 
 // Output Schema

@@ -3,26 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupAccessListEntryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    groupId: Schema.String.pipe(T.PathParam()),
-    entryValue: Schema.String.pipe(T.PathParam()),
-    envelope: Schema.optional(Schema.Boolean),
-    pretty: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}",
-    }),
-  );
-export type DeleteGroupAccessListEntryInput =
-  typeof DeleteGroupAccessListEntryInput.Type;
+export const DeleteGroupAccessListEntryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.String.pipe(T.PathParam()),
+  entryValue: Schema.String.pipe(T.PathParam()),
+  envelope: Schema.optional(Schema.Boolean),
+  pretty: Schema.optional(Schema.Boolean),
+}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}" }));
+export type DeleteGroupAccessListEntryInput = typeof DeleteGroupAccessListEntryInput.Type;
 
 // Output Schema
-export const DeleteGroupAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupAccessListEntryOutput =
-  typeof DeleteGroupAccessListEntryOutput.Type;
+export const DeleteGroupAccessListEntryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupAccessListEntryOutput = typeof DeleteGroupAccessListEntryOutput.Type;
 
 // The operation
 /**
@@ -41,9 +32,7 @@ export type DeleteGroupAccessListEntryOutput =
 - how MongoDB Cloud or the driver using the address behaves, and
 - which protocol (like TCP or UDP) the connection uses.
  */
-export const deleteGroupAccessListEntry = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupAccessListEntryInput,
-    outputSchema: DeleteGroupAccessListEntryOutput,
-  }),
-);
+export const deleteGroupAccessListEntry = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupAccessListEntryInput,
+  outputSchema: DeleteGroupAccessListEntryOutput,
+}));
