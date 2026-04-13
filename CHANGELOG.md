@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.10.0](https://github.com/alchemy-run/distilled/releases/tag/v0.10.0) (2026-04-13)
+
+### Features
+
+- update specs - by Michael K in [#187](https://github.com/alchemy-run/distilled/pull/187) [(be858fc)](https://github.com/alchemy-run/distilled/commit/be858fc498da9362093a7798bf8f1ea8223c0d70)
+
 ## [v0.9.0](https://github.com/alchemy-run/distilled/releases/tag/v0.9.0) (2026-04-13)
 
 *No significant changes*
