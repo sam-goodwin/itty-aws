@@ -441,7 +441,7 @@ paths:
           schema:
             type: string
       requestBody:
-        required: false
+        required: true
         content:
           application/json:
             schema:
@@ -480,7 +480,10 @@ paths:
                   type: string
                   enum:
                     - worker
+                    - http_pull
                   description: "Body param:"
+              required:
+                - type
       responses:
         "200":
           description: Success

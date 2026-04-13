@@ -1,5 +1,13 @@
 {
   "errors": {
     "InvalidRequestBody": [{ "code": 10026 }]
+  },
+  "request": {
+    "properties": {
+      "type": {
+        "optional": false,
+        "addValues": ["http_pull"]
+      }
+    }
   }
 }
