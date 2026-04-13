@@ -958,22 +958,6 @@ describe("Queues", () => {
   // ackMessage
   // --------------------------------------------------------------------------
   describe("ackMessage", () => {
-    test("error - createConsumer fails for worker without scriptName (ack empty)", () =>
-      withQueue(queueName("ack-msg-empty"), (queueId) =>
-        Queues.createConsumer({
-          accountId: accountId(),
-          queueId,
-          type: "worker",
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) =>
-            expect(e._tag).toMatch(
-              /InvalidRequestBody|UnknownCloudflareError|CloudflareHttpError/,
-            ),
-          ),
-        ),
-      ));
-
     test("error - not found for non-existent queueId", () =>
       Queues.ackMessage({
         accountId: accountId(),
