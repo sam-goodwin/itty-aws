@@ -40,7 +40,10 @@ export class DuplicateMigrationTarget extends Schema.TaggedErrorClass<DuplicateM
   { code: Schema.Number, message: Schema.String },
 ) {}
 T.applyErrorMatchers(DuplicateMigrationTarget, [
-  { code: 10074, message: { includes: "cannot be the target of more than one migration" } },
+  {
+    code: 10074,
+    message: { includes: "cannot be the target of more than one migration" },
+  },
 ]);
 
 export class DurableObjectMustBeSqlite extends Schema.TaggedErrorClass<DurableObjectMustBeSqlite>()(
@@ -7491,7 +7494,12 @@ export const putScript: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutScriptRequest,
   output: PutScriptResponse,
-  errors: [DuplicateMigrationTarget, InvalidRoute, InvalidWorkerScript, DurableObjectMustBeSqlite],
+  errors: [
+    DuplicateMigrationTarget,
+    InvalidRoute,
+    InvalidWorkerScript,
+    DurableObjectMustBeSqlite,
+  ],
 }));
 
 export interface DeleteScriptRequest {
