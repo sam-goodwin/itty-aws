@@ -20,7 +20,7 @@ export class InvalidCredential extends Schema.TaggedErrorClass<InvalidCredential
   "InvalidCredential",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(InvalidCredential, [{ code: 30004 }]);
+T.applyErrorMatchers(InvalidCredential, [{ code: 30004 }, { code: 30005 }]);
 
 export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
   "InvalidRoute",
