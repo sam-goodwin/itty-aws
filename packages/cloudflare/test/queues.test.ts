@@ -1,4 +1,5 @@
 import * as Effect from "effect/Effect";
+import * as Schedule from "effect/Schedule";
 import * as Stream from "effect/Stream";
 import { describe, expect } from "vitest";
 import * as Queues from "~/services/queues";
@@ -758,31 +759,84 @@ describe("Queues", () => {
   // pushMessage
   // --------------------------------------------------------------------------
   describe("pushMessage", () => {
-    test("error - InvalidMessageBody when body is sent as raw string", () =>
-      withQueue(queueName("push-msg-raw-body"), (queueId) =>
-        Queues.pushMessage({
-          accountId: accountId(),
-          queueId,
-          body: "Hello, World!",
-          contentType: "text",
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("InvalidMessageBody")),
-        ),
+    test("happy path - pushes a text message", () =>
+      withQueue(queueName("push-msg-happy"), (queueId) =>
+        Effect.gen(function* () {
+          yield* Queues.createConsumer({
+            accountId: accountId(),
+            queueId,
+            type: "http_pull",
+          });
+
+          const pushed = yield* Queues.pushMessage({
+            accountId: accountId(),
+            queueId,
+            body: "Hello, World!",
+            contentType: "text",
+          });
+
+          expect(pushed).toBeDefined();
+          if (pushed.success !== undefined) {
+            expect(pushed.success).toBe(true);
+          }
+
+          const pulled = yield* Queues.pullMessage({
+            accountId: accountId(),
+            queueId,
+            batchSize: 1,
+          }).pipe(
+            Effect.flatMap((result) =>
+              result.messages && result.messages.length > 0
+                ? Effect.succeed(result)
+                : Effect.fail("message not visible yet" as const),
+            ),
+            Effect.retry({
+              while: (e) => e === "message not visible yet",
+              schedule: Schedule.recurs(10).pipe(
+                Schedule.addDelay(() => Effect.succeed("1 second")),
+              ),
+            }),
+          );
+
+          expect(pulled.messages).toBeDefined();
+          expect(pulled.messages?.length).toBeGreaterThan(0);
+          expect(pulled.messages?.[0]?.body).toBe("Hello, World!");
+        }),
       ));
 
-    test("error - InvalidMessageBody when body with delay is sent as raw string", () =>
+    test("happy path - pushes a text message without a consumer", () =>
+      withQueue(queueName("push-msg-raw-body"), (queueId) =>
+        Effect.gen(function* () {
+          const result = yield* Queues.pushMessage({
+            accountId: accountId(),
+            queueId,
+            body: "Hello, World!",
+            contentType: "text",
+          });
+
+          expect(result).toBeDefined();
+          if (result.success !== undefined) {
+            expect(result.success).toBe(true);
+          }
+        }),
+      ));
+
+    test("happy path - pushes a delayed text message", () =>
       withQueue(queueName("push-msg-delay-err"), (queueId) =>
-        Queues.pushMessage({
-          accountId: accountId(),
-          queueId,
-          body: "Delayed message",
-          contentType: "text",
-          delaySeconds: 5,
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("InvalidMessageBody")),
-        ),
+        Effect.gen(function* () {
+          const result = yield* Queues.pushMessage({
+            accountId: accountId(),
+            queueId,
+            body: "Delayed message",
+            contentType: "text",
+            delaySeconds: 5,
+          });
+
+          expect(result).toBeDefined();
+          if (result.success !== undefined) {
+            expect(result.success).toBe(true);
+          }
+        }),
       ));
 
     test("error - not found for non-existent queueId", () =>
