@@ -1,6 +1,4 @@
-import * as NodeFileSystem from "@effect/platform-node-shared/NodeFileSystem";
-import * as NodePath from "@effect/platform-node-shared/NodePath";
-import * as NodeStdio from "@effect/platform-node-shared/NodeStdio";
+import { NodeServices } from "@effect/platform-node";
 import {
   afterAll as _afterAll,
   beforeAll as _beforeAll,
@@ -23,7 +21,7 @@ type Provided =
   | Retry.Retry;
 
 const platform = Layer.mergeAll(
-  Layer.mergeAll(NodeFileSystem.layer, NodePath.layer, NodeStdio.layer),
+  NodeServices.layer,
   FetchHttpClient.layer,
   Logger.layer([Logger.consolePretty()]),
 );

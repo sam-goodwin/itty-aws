@@ -1,6 +1,4 @@
-import * as NodeFileSystem from "@effect/platform-node-shared/NodeFileSystem";
-import * as NodePath from "@effect/platform-node-shared/NodePath";
-import * as NodeStdio from "@effect/platform-node-shared/NodeStdio";
+import { NodeServices } from "@effect/platform-node";
 import {
   afterAll as _afterAll,
   beforeAll as _beforeAll,
@@ -31,7 +29,7 @@ type Provided =
   | Credentials.Credentials;
 
 const platform = Layer.mergeAll(
-  Layer.mergeAll(NodeFileSystem.layer, NodePath.layer, NodeStdio.layer),
+  NodeServices.layer,
   FetchHttpClient.layer,
   Logger.layer([Logger.consolePretty()]),
 );
@@ -128,7 +126,7 @@ function provideTestEnv<A, E, R extends Provided>(
       MinimumLogLevel,
       process.env.DEBUG ? "Debug" : "Info",
     ),
-    Effect.provide(Layer.mergeAll(NodeFileSystem.layer, NodePath.layer, NodeStdio.layer)),
+    Effect.provide(NodeServices.layer),
     Retry.transient,
   );
 

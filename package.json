@@ -56,6 +56,9 @@
     "@effect/platform-bun": "catalog:",
     "effect": "catalog:"
   },
+  "overrides": {
+    "undici": "7.10.0"
+  },
   "devDependencies": {
     "@types/bun": "catalog:",
     "@types/node": "catalog:",
