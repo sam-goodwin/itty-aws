@@ -558,7 +558,7 @@ describe("Queues", () => {
           });
 
           expect(consumer.type).toBe("http_pull");
-          expect(consumer.queueId).toBe(queueId);
+          expect(consumer.queueId).toBeUndefined();
           expect(consumer.consumerId).toBeDefined();
           expect(consumer.createdOn).toBeDefined();
 
