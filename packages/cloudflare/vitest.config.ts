@@ -2,7 +2,7 @@ import { loadEnv } from "vite";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, ".", "");
+  const env = { ...loadEnv(mode, "../..", ""), ...loadEnv(mode, ".", "") };
 
   return {
     test: {
