@@ -1365,9 +1365,9 @@ function generateOperationSchemaAst(
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
     }
-    // If param is named "body", it IS the entire HTTP body (e.g. raw array),
-    // not a named field within a JSON object
-    if (wireName === "body") {
+    // Treat a lone `body` param as the entire HTTP body (e.g. raw string/array).
+    // When there are sibling body fields, `body` is just a property in a JSON object.
+    if (wireName === "body" && resolvedBodyParams.length === 1) {
       requestProps.push(
         `  ${quotePropKey(propName)}: ${schema}.pipe(T.HttpBody())`,
       );
@@ -1708,7 +1708,7 @@ function generateOperationSchema(
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
     }
-    if (wireName === "body") {
+    if (wireName === "body" && resolvedBodyParams.length === 1) {
       requestProps.push(
         `  ${quotePropKey(propName)}: ${schema}.pipe(T.HttpBody())`,
       );

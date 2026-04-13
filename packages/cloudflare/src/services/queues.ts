@@ -1068,11 +1068,12 @@ export interface PushMessageRequest {
 export const PushMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   queueId: Schema.String.pipe(T.HttpPath("queueId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  body: Schema.optional(Schema.String).pipe(T.HttpBody()),
+  body: Schema.optional(Schema.String),
   contentType: Schema.optional(Schema.Literal("text")),
   delaySeconds: Schema.optional(Schema.Number),
 }).pipe(
   Schema.encodeKeys({
+    body: "body",
     contentType: "content_type",
     delaySeconds: "delay_seconds",
   }),
