@@ -7,6 +7,12 @@
         "code": 10074,
         "message": { "includes": "not a SQLite Durable Object" }
       }
+    ],
+    "DuplicateMigrationTarget": [
+      {
+        "code": 10074,
+        "message": { "includes": "cannot be the target of more than one migration" }
+      }
     ]
   },
   "request": {
