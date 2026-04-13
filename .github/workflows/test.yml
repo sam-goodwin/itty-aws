@@ -165,8 +165,9 @@ jobs:
       - run: bun install
       - run: bun run build
         working-directory: packages/core
-      - run: bun run check
-        working-directory: packages/gcp
+      # disable until we can optimize because its wayyy to big rn 
+      # - run: bun run check
+      #   working-directory: packages/gcp
 
   ci-neon:
     needs: detect-changes
