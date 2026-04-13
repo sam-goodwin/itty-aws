@@ -24,7 +24,24 @@
       "Bash(DEBUG=1 bun run --env-file=../../.env test tests/organizations.test.ts -t \"can list organizations$\")",
       "Bash(bun -e ':*)",
       "Bash(ls node_modules/.bun/effect*/node_modules/effect/src/Effect.ts)",
-      "Bash(grep -E \"\\\\.\\(ts|js|json\\)$\")"
+      "Bash(grep -E \"\\\\.\\(ts|js|json\\)$\")",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:bun.com)",
+      "Bash(gh api:*)",
+      "Bash(xargs wc:*)",
+      "Bash(gh run:*)",
+      "Bash(find /d/code/alchemy/distilled-2/packages/gcp/src/services -type f -name '*.ts' -exec wc -l {} +)",
+      "Bash(grep -v \"^\\\\s*$\")",
+      "Bash(grep -l \"platform-node\" packages/*/package.json)",
+      "Bash(grep -l \"platform-bun\" packages/*/package.json)",
+      "Bash(ls \"node_modules/.bun/@effect+platform-node\"*/node_modules/@effect/platform-node/src/)",
+      "Bash(ls \"node_modules/.bun/@effect+platform-bun\"*/node_modules/@effect/platform-bun/src/)",
+      "Bash(bun install:*)",
+      "Bash(tsgo)",
+      "Bash(bunx tsgo:*)",
+      "Bash(ls \"node_modules/.bun/@effect+platform-node-shared\"*/node_modules/@effect/platform-node-shared/src/)",
+      "Bash(ls node_modules/.bun/@effect+platform-node-shared*/node_modules/@effect/platform-node-shared/package.json)"
     ]
   }
 }

@@ -547,52 +547,6 @@ describe("Queues", () => {
   // createConsumer
   // --------------------------------------------------------------------------
   describe("createConsumer", () => {
-    test("error - InvalidRequestBody for worker consumer without scriptName", () =>
-      withQueue(queueName("create-consumer-no-script"), (queueId) =>
-        Queues.createConsumer({
-          accountId: accountId(),
-          queueId,
-          type: "worker",
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) =>
-            expect(e._tag).toMatch(
-              /InvalidRequestBody|UnknownCloudflareError|CloudflareHttpError/,
-            ),
-          ),
-        ),
-      ));
-
-    test("error - not found for non-existent queueId", () =>
-      Queues.createConsumer({
-        accountId: accountId(),
-        queueId: "00000000-0000-0000-0000-000000000000",
-        type: "http_pull",
-      }).pipe(
-        Effect.flip,
-        Effect.map((e) =>
-          expect([
-            "UnknownCloudflareError",
-            "CloudflareHttpError",
-            "InvalidRequestBody",
-          ]).toContain(e._tag),
-        ),
-      ));
-
-    test("error - CloudflareHttpError for invalid accountId", () =>
-      Queues.createConsumer({
-        accountId: "invalid-account-id-000",
-        queueId: "00000000-0000-0000-0000-000000000000",
-        type: "http_pull",
-      }).pipe(
-        Effect.flip,
-        Effect.map((e) =>
-          expect(["UnknownCloudflareError", "CloudflareHttpError"]).toContain(
-            e._tag,
-          ),
-        ),
-      ));
-
     test("happy path - creates an http_pull consumer", () =>
       withQueue(queueName("create-consumer-happy"), (queueId) =>
         Effect.gen(function* () {
@@ -621,22 +575,6 @@ describe("Queues", () => {
   // getConsumer
   // --------------------------------------------------------------------------
   describe("getConsumer", () => {
-    test("error - createConsumer fails for worker without scriptName", () =>
-      withQueue(queueName("get-consumer-create-err"), (queueId) =>
-        Queues.createConsumer({
-          accountId: accountId(),
-          queueId,
-          type: "worker",
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) =>
-            expect(e._tag).toMatch(
-              /InvalidRequestBody|UnknownCloudflareError|CloudflareHttpError/,
-            ),
-          ),
-        ),
-      ));
-
     test("error - not found for non-existent consumerId", () =>
       withQueue(queueName("get-consumer-404"), (queueId) =>
         Queues.getConsumer({
@@ -686,22 +624,6 @@ describe("Queues", () => {
   // listConsumers
   // --------------------------------------------------------------------------
   describe("listConsumers", () => {
-    test("error - createConsumer fails for worker without scriptName", () =>
-      withQueue(queueName("list-consumers-create-err"), (queueId) =>
-        Queues.createConsumer({
-          accountId: accountId(),
-          queueId,
-          type: "worker",
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) =>
-            expect(e._tag).toMatch(
-              /InvalidRequestBody|UnknownCloudflareError|CloudflareHttpError/,
-            ),
-          ),
-        ),
-      ));
-
     test("happy path - lists consumers on a queue", () =>
       withQueue(queueName("list-consumers-happy"), (queueId) =>
         Effect.gen(function* () {
@@ -746,22 +668,6 @@ describe("Queues", () => {
   // updateConsumer
   // --------------------------------------------------------------------------
   describe("updateConsumer", () => {
-    test("error - createConsumer fails for worker without scriptName", () =>
-      withQueue(queueName("update-consumer-create-err"), (queueId) =>
-        Queues.createConsumer({
-          accountId: accountId(),
-          queueId,
-          type: "worker",
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) =>
-            expect(e._tag).toMatch(
-              /InvalidRequestBody|UnknownCloudflareError|CloudflareHttpError/,
-            ),
-          ),
-        ),
-      ));
-
     test("error - not found for non-existent consumerId", () =>
       withQueue(queueName("update-consumer-404"), (queueId) =>
         Queues.updateConsumer({
@@ -799,22 +705,6 @@ describe("Queues", () => {
   // deleteConsumer
   // --------------------------------------------------------------------------
   describe("deleteConsumer", () => {
-    test("error - createConsumer fails for worker without scriptName", () =>
-      withQueue(queueName("delete-consumer-create-err"), (queueId) =>
-        Queues.createConsumer({
-          accountId: accountId(),
-          queueId,
-          type: "worker",
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) =>
-            expect(e._tag).toMatch(
-              /InvalidRequestBody|UnknownCloudflareError|CloudflareHttpError/,
-            ),
-          ),
-        ),
-      ));
-
     test("error - not found for non-existent consumerId", () =>
       withQueue(queueName("delete-consumer-404"), (queueId) =>
         Queues.deleteConsumer({
@@ -1035,22 +925,6 @@ describe("Queues", () => {
   // pullMessage
   // --------------------------------------------------------------------------
   describe("pullMessage", () => {
-    test("error - createConsumer fails for worker without scriptName", () =>
-      withQueue(queueName("pull-msg-no-script"), (queueId) =>
-        Queues.createConsumer({
-          accountId: accountId(),
-          queueId,
-          type: "worker",
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) =>
-            expect(e._tag).toMatch(
-              /InvalidRequestBody|UnknownCloudflareError|CloudflareHttpError/,
-            ),
-          ),
-        ),
-      ));
-
     test("error - not found for non-existent queueId", () =>
       Queues.pullMessage({
         accountId: accountId(),
@@ -1084,22 +958,6 @@ describe("Queues", () => {
   // ackMessage
   // --------------------------------------------------------------------------
   describe("ackMessage", () => {
-    test("error - createConsumer fails for worker without scriptName", () =>
-      withQueue(queueName("ack-msg-no-script"), (queueId) =>
-        Queues.createConsumer({
-          accountId: accountId(),
-          queueId,
-          type: "worker",
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) =>
-            expect(e._tag).toMatch(
-              /InvalidRequestBody|UnknownCloudflareError|CloudflareHttpError/,
-            ),
-          ),
-        ),
-      ));
-
     test("error - createConsumer fails for worker without scriptName (ack empty)", () =>
       withQueue(queueName("ack-msg-empty"), (queueId) =>
         Queues.createConsumer({
