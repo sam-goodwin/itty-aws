@@ -18,18 +18,22 @@ export type MachinesOrgListInput = typeof MachinesOrgListInput.Type;
 export const MachinesOrgListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   last_machine_id: Schema.optional(Schema.String),
   last_updated_at: Schema.optional(Schema.String),
-  machines: Schema.optional(Schema.Array(Schema.Struct({
-    app_id: Schema.optional(Schema.Number),
-    app_name: Schema.optional(Schema.String),
-    created_at: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    instance_id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    private_ip: Schema.optional(Schema.String),
-    region: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    updated_at: Schema.optional(Schema.String),
-  }))),
+  machines: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        app_id: Schema.optional(Schema.Number),
+        app_name: Schema.optional(Schema.String),
+        created_at: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        instance_id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        private_ip: Schema.optional(Schema.String),
+        region: Schema.optional(Schema.String),
+        state: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
   next_cursor: Schema.optional(Schema.String),
 });
 export type MachinesOrgListOutput = typeof MachinesOrgListOutput.Type;

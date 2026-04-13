@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListFederationSettingConnectedOrgConfigsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  federationSettingsId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  itemsPerPage: Schema.optional(Schema.Number),
-  pageNum: Schema.optional(Schema.Number),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs" }));
-export type ListFederationSettingConnectedOrgConfigsInput = typeof ListFederationSettingConnectedOrgConfigsInput.Type;
+export const ListFederationSettingConnectedOrgConfigsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    federationSettingsId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    itemsPerPage: Schema.optional(Schema.Number),
+    pageNum: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs",
+    }),
+  );
+export type ListFederationSettingConnectedOrgConfigsInput =
+  typeof ListFederationSettingConnectedOrgConfigsInput.Type;
 
 // Output Schema
-export const ListFederationSettingConnectedOrgConfigsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListFederationSettingConnectedOrgConfigsOutput = typeof ListFederationSettingConnectedOrgConfigsOutput.Type;
+export const ListFederationSettingConnectedOrgConfigsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListFederationSettingConnectedOrgConfigsOutput =
+  typeof ListFederationSettingConnectedOrgConfigsOutput.Type;
 
 // The operation
 /**
@@ -26,7 +35,8 @@ export type ListFederationSettingConnectedOrgConfigsOutput = typeof ListFederati
  * @param itemsPerPage - Number of items that the response returns per page.
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  */
-export const listFederationSettingConnectedOrgConfigs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListFederationSettingConnectedOrgConfigsInput,
-  outputSchema: ListFederationSettingConnectedOrgConfigsOutput,
-}));
+export const listFederationSettingConnectedOrgConfigs =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ListFederationSettingConnectedOrgConfigsInput,
+    outputSchema: ListFederationSettingConnectedOrgConfigsOutput,
+  }));

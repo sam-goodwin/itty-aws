@@ -3,16 +3,25 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateGroupCustomDbRoleRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles" }));
-export type CreateGroupCustomDbRoleRoleInput = typeof CreateGroupCustomDbRoleRoleInput.Type;
+export const CreateGroupCustomDbRoleRoleInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles",
+    }),
+  );
+export type CreateGroupCustomDbRoleRoleInput =
+  typeof CreateGroupCustomDbRoleRoleInput.Type;
 
 // Output Schema
-export const CreateGroupCustomDbRoleRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupCustomDbRoleRoleOutput = typeof CreateGroupCustomDbRoleRoleOutput.Type;
+export const CreateGroupCustomDbRoleRoleOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CreateGroupCustomDbRoleRoleOutput =
+  typeof CreateGroupCustomDbRoleRoleOutput.Type;
 
 // The operation
 /**
@@ -26,7 +35,9 @@ export type CreateGroupCustomDbRoleRoleOutput = typeof CreateGroupCustomDbRoleRo
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupCustomDbRoleRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: CreateGroupCustomDbRoleRoleInput,
-  outputSchema: CreateGroupCustomDbRoleRoleOutput,
-}));
+export const createGroupCustomDbRoleRole = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: CreateGroupCustomDbRoleRoleInput,
+    outputSchema: CreateGroupCustomDbRoleRoleOutput,
+  }),
+);

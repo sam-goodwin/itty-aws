@@ -3,18 +3,27 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupStreamProcessorInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  tenantName: Schema.String.pipe(T.PathParam()),
-  processorName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}" }));
-export type GetGroupStreamProcessorInput = typeof GetGroupStreamProcessorInput.Type;
+export const GetGroupStreamProcessorInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    tenantName: Schema.String.pipe(T.PathParam()),
+    processorName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}",
+    }),
+  );
+export type GetGroupStreamProcessorInput =
+  typeof GetGroupStreamProcessorInput.Type;
 
 // Output Schema
-export const GetGroupStreamProcessorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupStreamProcessorOutput = typeof GetGroupStreamProcessorOutput.Type;
+export const GetGroupStreamProcessorOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupStreamProcessorOutput =
+  typeof GetGroupStreamProcessorOutput.Type;
 
 // The operation
 /**
@@ -30,7 +39,9 @@ export type GetGroupStreamProcessorOutput = typeof GetGroupStreamProcessorOutput
  * @param tenantName - Label that identifies the stream workspace.
  * @param processorName - Label that identifies the stream processor.
  */
-export const getGroupStreamProcessor = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupStreamProcessorInput,
-  outputSchema: GetGroupStreamProcessorOutput,
-}));
+export const getGroupStreamProcessor = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: GetGroupStreamProcessorInput,
+    outputSchema: GetGroupStreamProcessorOutput,
+  }),
+);

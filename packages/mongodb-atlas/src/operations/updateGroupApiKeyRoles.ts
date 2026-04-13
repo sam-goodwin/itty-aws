@@ -3,20 +3,29 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateGroupApiKeyRolesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  apiUserId: Schema.String.pipe(T.PathParam()),
-  pageNum: Schema.optional(Schema.Number),
-  itemsPerPage: Schema.optional(Schema.Number),
-  includeCount: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-  envelope: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}" }));
-export type UpdateGroupApiKeyRolesInput = typeof UpdateGroupApiKeyRolesInput.Type;
+export const UpdateGroupApiKeyRolesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    apiUserId: Schema.String.pipe(T.PathParam()),
+    pageNum: Schema.optional(Schema.Number),
+    itemsPerPage: Schema.optional(Schema.Number),
+    includeCount: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+    envelope: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}",
+    }),
+  );
+export type UpdateGroupApiKeyRolesInput =
+  typeof UpdateGroupApiKeyRolesInput.Type;
 
 // Output Schema
-export const UpdateGroupApiKeyRolesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupApiKeyRolesOutput = typeof UpdateGroupApiKeyRolesOutput.Type;
+export const UpdateGroupApiKeyRolesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateGroupApiKeyRolesOutput =
+  typeof UpdateGroupApiKeyRolesOutput.Type;
 
 // The operation
 /**
@@ -34,7 +43,9 @@ export type UpdateGroupApiKeyRolesOutput = typeof UpdateGroupApiKeyRolesOutput.T
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param apiUserId - Unique 24-hexadecimal digit string that identifies this organization API key that you want to unassign from one project.
  */
-export const updateGroupApiKeyRoles = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: UpdateGroupApiKeyRolesInput,
-  outputSchema: UpdateGroupApiKeyRolesOutput,
-}));
+export const updateGroupApiKeyRoles = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: UpdateGroupApiKeyRolesInput,
+    outputSchema: UpdateGroupApiKeyRolesOutput,
+  }),
+);

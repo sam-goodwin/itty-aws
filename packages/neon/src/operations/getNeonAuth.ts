@@ -6,7 +6,12 @@ import * as T from "../traits";
 export const GetNeonAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/projects/{project_id}/branches/{branch_id}/auth" }));
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/projects/{project_id}/branches/{branch_id}/auth",
+  }),
+);
 export type GetNeonAuthInput = typeof GetNeonAuthInput.Type;
 
 // Output Schema

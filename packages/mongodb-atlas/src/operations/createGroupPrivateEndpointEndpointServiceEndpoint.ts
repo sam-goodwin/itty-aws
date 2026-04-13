@@ -3,18 +3,27 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateGroupPrivateEndpointEndpointServiceEndpointInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
-  endpointServiceId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint" }));
-export type CreateGroupPrivateEndpointEndpointServiceEndpointInput = typeof CreateGroupPrivateEndpointEndpointServiceEndpointInput.Type;
+export const CreateGroupPrivateEndpointEndpointServiceEndpointInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
+    endpointServiceId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint",
+    }),
+  );
+export type CreateGroupPrivateEndpointEndpointServiceEndpointInput =
+  typeof CreateGroupPrivateEndpointEndpointServiceEndpointInput.Type;
 
 // Output Schema
-export const CreateGroupPrivateEndpointEndpointServiceEndpointOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupPrivateEndpointEndpointServiceEndpointOutput = typeof CreateGroupPrivateEndpointEndpointServiceEndpointOutput.Type;
+export const CreateGroupPrivateEndpointEndpointServiceEndpointOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CreateGroupPrivateEndpointEndpointServiceEndpointOutput =
+  typeof CreateGroupPrivateEndpointEndpointServiceEndpointOutput.Type;
 
 // The operation
 /**
@@ -30,7 +39,8 @@ export type CreateGroupPrivateEndpointEndpointServiceEndpointOutput = typeof Cre
  * @param cloudProvider - Cloud service provider that manages this private endpoint.
  * @param endpointServiceId - Unique 24-hexadecimal digit string that identifies the private endpoint service for which you want to create a private endpoint.
  */
-export const createGroupPrivateEndpointEndpointServiceEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: CreateGroupPrivateEndpointEndpointServiceEndpointInput,
-  outputSchema: CreateGroupPrivateEndpointEndpointServiceEndpointOutput,
-}));
+export const createGroupPrivateEndpointEndpointServiceEndpoint =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CreateGroupPrivateEndpointEndpointServiceEndpointInput,
+    outputSchema: CreateGroupPrivateEndpointEndpointServiceEndpointOutput,
+  }));

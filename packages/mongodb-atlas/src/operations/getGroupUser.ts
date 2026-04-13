@@ -8,7 +8,12 @@ export const GetGroupUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   userId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/users/{userId}" }));
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/users/{userId}",
+  }),
+);
 export type GetGroupUserInput = typeof GetGroupUserInput.Type;
 
 // Output Schema

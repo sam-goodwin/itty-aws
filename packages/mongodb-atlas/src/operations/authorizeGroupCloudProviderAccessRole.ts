@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const AuthorizeGroupCloudProviderAccessRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  roleId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId}" }));
-export type AuthorizeGroupCloudProviderAccessRoleInput = typeof AuthorizeGroupCloudProviderAccessRoleInput.Type;
+export const AuthorizeGroupCloudProviderAccessRoleInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    roleId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId}",
+    }),
+  );
+export type AuthorizeGroupCloudProviderAccessRoleInput =
+  typeof AuthorizeGroupCloudProviderAccessRoleInput.Type;
 
 // Output Schema
-export const AuthorizeGroupCloudProviderAccessRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AuthorizeGroupCloudProviderAccessRoleOutput = typeof AuthorizeGroupCloudProviderAccessRoleOutput.Type;
+export const AuthorizeGroupCloudProviderAccessRoleOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type AuthorizeGroupCloudProviderAccessRoleOutput =
+  typeof AuthorizeGroupCloudProviderAccessRoleOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,8 @@ export type AuthorizeGroupCloudProviderAccessRoleOutput = typeof AuthorizeGroupC
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param roleId - Unique 24-hexadecimal digit string that identifies the role.
  */
-export const authorizeGroupCloudProviderAccessRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: AuthorizeGroupCloudProviderAccessRoleInput,
-  outputSchema: AuthorizeGroupCloudProviderAccessRoleOutput,
-}));
+export const authorizeGroupCloudProviderAccessRole =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AuthorizeGroupCloudProviderAccessRoleInput,
+    outputSchema: AuthorizeGroupCloudProviderAccessRoleOutput,
+  }));

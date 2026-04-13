@@ -3,19 +3,28 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupStreamConnectionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  tenantName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  itemsPerPage: Schema.optional(Schema.Number),
-  pageNum: Schema.optional(Schema.Number),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections" }));
-export type ListGroupStreamConnectionsInput = typeof ListGroupStreamConnectionsInput.Type;
+export const ListGroupStreamConnectionsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    tenantName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    itemsPerPage: Schema.optional(Schema.Number),
+    pageNum: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections",
+    }),
+  );
+export type ListGroupStreamConnectionsInput =
+  typeof ListGroupStreamConnectionsInput.Type;
 
 // Output Schema
-export const ListGroupStreamConnectionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupStreamConnectionsOutput = typeof ListGroupStreamConnectionsOutput.Type;
+export const ListGroupStreamConnectionsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupStreamConnectionsOutput =
+  typeof ListGroupStreamConnectionsOutput.Type;
 
 // The operation
 /**
@@ -32,7 +41,9 @@ export type ListGroupStreamConnectionsOutput = typeof ListGroupStreamConnections
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param tenantName - Label that identifies the stream workspace.
  */
-export const listGroupStreamConnections = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListGroupStreamConnectionsInput,
-  outputSchema: ListGroupStreamConnectionsOutput,
-}));
+export const listGroupStreamConnections = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ListGroupStreamConnectionsInput,
+    outputSchema: ListGroupStreamConnectionsOutput,
+  }),
+);

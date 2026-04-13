@@ -3,18 +3,27 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeauthorizeGroupCloudProviderAccessRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
-  roleId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{cloudProvider}/{roleId}" }));
-export type DeauthorizeGroupCloudProviderAccessRoleInput = typeof DeauthorizeGroupCloudProviderAccessRoleInput.Type;
+export const DeauthorizeGroupCloudProviderAccessRoleInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
+    roleId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{cloudProvider}/{roleId}",
+    }),
+  );
+export type DeauthorizeGroupCloudProviderAccessRoleInput =
+  typeof DeauthorizeGroupCloudProviderAccessRoleInput.Type;
 
 // Output Schema
-export const DeauthorizeGroupCloudProviderAccessRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeauthorizeGroupCloudProviderAccessRoleOutput = typeof DeauthorizeGroupCloudProviderAccessRoleOutput.Type;
+export const DeauthorizeGroupCloudProviderAccessRoleOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeauthorizeGroupCloudProviderAccessRoleOutput =
+  typeof DeauthorizeGroupCloudProviderAccessRoleOutput.Type;
 
 // The operation
 /**
@@ -30,7 +39,8 @@ export type DeauthorizeGroupCloudProviderAccessRoleOutput = typeof DeauthorizeGr
  * @param cloudProvider - Human-readable label that identifies the cloud provider of the role to deauthorize.
  * @param roleId - Unique 24-hexadecimal digit string that identifies the role.
  */
-export const deauthorizeGroupCloudProviderAccessRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: DeauthorizeGroupCloudProviderAccessRoleInput,
-  outputSchema: DeauthorizeGroupCloudProviderAccessRoleOutput,
-}));
+export const deauthorizeGroupCloudProviderAccessRole =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: DeauthorizeGroupCloudProviderAccessRoleInput,
+    outputSchema: DeauthorizeGroupCloudProviderAccessRoleOutput,
+  }));

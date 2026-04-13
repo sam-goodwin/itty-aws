@@ -3,18 +3,27 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupClusterOnlineArchiveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  archiveId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}" }));
-export type DeleteGroupClusterOnlineArchiveInput = typeof DeleteGroupClusterOnlineArchiveInput.Type;
+export const DeleteGroupClusterOnlineArchiveInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    archiveId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}",
+    }),
+  );
+export type DeleteGroupClusterOnlineArchiveInput =
+  typeof DeleteGroupClusterOnlineArchiveInput.Type;
 
 // Output Schema
-export const DeleteGroupClusterOnlineArchiveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupClusterOnlineArchiveOutput = typeof DeleteGroupClusterOnlineArchiveOutput.Type;
+export const DeleteGroupClusterOnlineArchiveOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupClusterOnlineArchiveOutput =
+  typeof DeleteGroupClusterOnlineArchiveOutput.Type;
 
 // The operation
 /**
@@ -30,7 +39,8 @@ export type DeleteGroupClusterOnlineArchiveOutput = typeof DeleteGroupClusterOnl
  * @param archiveId - Unique 24-hexadecimal digit string that identifies the online archive to delete.
  * @param clusterName - Human-readable label that identifies the cluster that contains the collection from which you want to remove an online archive.
  */
-export const deleteGroupClusterOnlineArchive = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: DeleteGroupClusterOnlineArchiveInput,
-  outputSchema: DeleteGroupClusterOnlineArchiveOutput,
-}));
+export const deleteGroupClusterOnlineArchive =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: DeleteGroupClusterOnlineArchiveInput,
+    outputSchema: DeleteGroupClusterOnlineArchiveOutput,
+  }));

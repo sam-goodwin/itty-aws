@@ -3,18 +3,27 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CancelGroupClusterBackupRestoreJobInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  restoreJobId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId}" }));
-export type CancelGroupClusterBackupRestoreJobInput = typeof CancelGroupClusterBackupRestoreJobInput.Type;
+export const CancelGroupClusterBackupRestoreJobInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    restoreJobId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId}",
+    }),
+  );
+export type CancelGroupClusterBackupRestoreJobInput =
+  typeof CancelGroupClusterBackupRestoreJobInput.Type;
 
 // Output Schema
-export const CancelGroupClusterBackupRestoreJobOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CancelGroupClusterBackupRestoreJobOutput = typeof CancelGroupClusterBackupRestoreJobOutput.Type;
+export const CancelGroupClusterBackupRestoreJobOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CancelGroupClusterBackupRestoreJobOutput =
+  typeof CancelGroupClusterBackupRestoreJobOutput.Type;
 
 // The operation
 /**
@@ -30,7 +39,8 @@ export type CancelGroupClusterBackupRestoreJobOutput = typeof CancelGroupCluster
  * @param clusterName - Human-readable label that identifies the cluster.
  * @param restoreJobId - Unique 24-hexadecimal digit string that identifies the restore job to remove.
  */
-export const cancelGroupClusterBackupRestoreJob = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: CancelGroupClusterBackupRestoreJobInput,
-  outputSchema: CancelGroupClusterBackupRestoreJobOutput,
-}));
+export const cancelGroupClusterBackupRestoreJob =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CancelGroupClusterBackupRestoreJobInput,
+    outputSchema: CancelGroupClusterBackupRestoreJobOutput,
+  }));

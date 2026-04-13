@@ -3,19 +3,28 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupProcessCollStatNamespacesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  processId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  start: Schema.optional(Schema.String),
-  end: Schema.optional(Schema.String),
-  period: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/collStats/namespaces" }));
-export type GetGroupProcessCollStatNamespacesInput = typeof GetGroupProcessCollStatNamespacesInput.Type;
+export const GetGroupProcessCollStatNamespacesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    processId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    start: Schema.optional(Schema.String),
+    end: Schema.optional(Schema.String),
+    period: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/collStats/namespaces",
+    }),
+  );
+export type GetGroupProcessCollStatNamespacesInput =
+  typeof GetGroupProcessCollStatNamespacesInput.Type;
 
 // Output Schema
-export const GetGroupProcessCollStatNamespacesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupProcessCollStatNamespacesOutput = typeof GetGroupProcessCollStatNamespacesOutput.Type;
+export const GetGroupProcessCollStatNamespacesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupProcessCollStatNamespacesOutput =
+  typeof GetGroupProcessCollStatNamespacesOutput.Type;
 
 // The operation
 /**
@@ -32,7 +41,8 @@ export type GetGroupProcessCollStatNamespacesOutput = typeof GetGroupProcessColl
  * @param end - Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
  * @param period - Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**.
  */
-export const getGroupProcessCollStatNamespaces = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupProcessCollStatNamespacesInput,
-  outputSchema: GetGroupProcessCollStatNamespacesOutput,
-}));
+export const getGroupProcessCollStatNamespaces =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GetGroupProcessCollStatNamespacesInput,
+    outputSchema: GetGroupProcessCollStatNamespacesOutput,
+  }));

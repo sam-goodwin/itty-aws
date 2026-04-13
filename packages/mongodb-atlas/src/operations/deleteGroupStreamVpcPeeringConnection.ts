@@ -3,16 +3,25 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupStreamVpcPeeringConnectionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  id: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}" }));
-export type DeleteGroupStreamVpcPeeringConnectionInput = typeof DeleteGroupStreamVpcPeeringConnectionInput.Type;
+export const DeleteGroupStreamVpcPeeringConnectionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    id: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}",
+    }),
+  );
+export type DeleteGroupStreamVpcPeeringConnectionInput =
+  typeof DeleteGroupStreamVpcPeeringConnectionInput.Type;
 
 // Output Schema
-export const DeleteGroupStreamVpcPeeringConnectionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupStreamVpcPeeringConnectionOutput = typeof DeleteGroupStreamVpcPeeringConnectionOutput.Type;
+export const DeleteGroupStreamVpcPeeringConnectionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupStreamVpcPeeringConnectionOutput =
+  typeof DeleteGroupStreamVpcPeeringConnectionOutput.Type;
 
 // The operation
 /**
@@ -26,7 +35,8 @@ export type DeleteGroupStreamVpcPeeringConnectionOutput = typeof DeleteGroupStre
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param id - The VPC Peering Connection id.
  */
-export const deleteGroupStreamVpcPeeringConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: DeleteGroupStreamVpcPeeringConnectionInput,
-  outputSchema: DeleteGroupStreamVpcPeeringConnectionOutput,
-}));
+export const deleteGroupStreamVpcPeeringConnection =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: DeleteGroupStreamVpcPeeringConnectionInput,
+    outputSchema: DeleteGroupStreamVpcPeeringConnectionOutput,
+  }));

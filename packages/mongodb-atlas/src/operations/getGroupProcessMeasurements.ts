@@ -3,22 +3,31 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupProcessMeasurementsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  processId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-  m: Schema.optional(Schema.String),
-  period: Schema.optional(Schema.String),
-  granularity: Schema.String,
-  start: Schema.optional(Schema.String),
-  end: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/measurements" }));
-export type GetGroupProcessMeasurementsInput = typeof GetGroupProcessMeasurementsInput.Type;
+export const GetGroupProcessMeasurementsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    processId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+    m: Schema.optional(Schema.String),
+    period: Schema.optional(Schema.String),
+    granularity: Schema.String,
+    start: Schema.optional(Schema.String),
+    end: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/measurements",
+    }),
+  );
+export type GetGroupProcessMeasurementsInput =
+  typeof GetGroupProcessMeasurementsInput.Type;
 
 // Output Schema
-export const GetGroupProcessMeasurementsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupProcessMeasurementsOutput = typeof GetGroupProcessMeasurementsOutput.Type;
+export const GetGroupProcessMeasurementsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupProcessMeasurementsOutput =
+  typeof GetGroupProcessMeasurementsOutput.Type;
 
 // The operation
 /**
@@ -44,7 +53,9 @@ export type GetGroupProcessMeasurementsOutput = typeof GetGroupProcessMeasuremen
  * @param start - Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
  * @param end - Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
  */
-export const getGroupProcessMeasurements = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupProcessMeasurementsInput,
-  outputSchema: GetGroupProcessMeasurementsOutput,
-}));
+export const getGroupProcessMeasurements = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: GetGroupProcessMeasurementsInput,
+    outputSchema: GetGroupProcessMeasurementsOutput,
+  }),
+);

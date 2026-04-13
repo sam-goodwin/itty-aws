@@ -7,7 +7,9 @@ export const SecretkeyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
   min_version: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/apps/{app_name}/secretkeys/{secret_name}" }));
+}).pipe(
+  T.Http({ method: "GET", path: "/apps/{app_name}/secretkeys/{secret_name}" }),
+);
 export type SecretkeyGetInput = typeof SecretkeyGetInput.Type;
 
 // Output Schema

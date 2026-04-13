@@ -3,16 +3,25 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ValidateOrgResourcePoliciesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  orgId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/orgs/{orgId}/resourcePolicies:validate" }));
-export type ValidateOrgResourcePoliciesInput = typeof ValidateOrgResourcePoliciesInput.Type;
+export const ValidateOrgResourcePoliciesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orgId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/atlas/v2/orgs/{orgId}/resourcePolicies:validate",
+    }),
+  );
+export type ValidateOrgResourcePoliciesInput =
+  typeof ValidateOrgResourcePoliciesInput.Type;
 
 // Output Schema
-export const ValidateOrgResourcePoliciesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ValidateOrgResourcePoliciesOutput = typeof ValidateOrgResourcePoliciesOutput.Type;
+export const ValidateOrgResourcePoliciesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ValidateOrgResourcePoliciesOutput =
+  typeof ValidateOrgResourcePoliciesOutput.Type;
 
 // The operation
 /**
@@ -24,7 +33,9 @@ export type ValidateOrgResourcePoliciesOutput = typeof ValidateOrgResourcePolici
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  */
-export const validateOrgResourcePolicies = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ValidateOrgResourcePoliciesInput,
-  outputSchema: ValidateOrgResourcePoliciesOutput,
-}));
+export const validateOrgResourcePolicies = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ValidateOrgResourcePoliciesInput,
+    outputSchema: ValidateOrgResourcePoliciesOutput,
+  }),
+);

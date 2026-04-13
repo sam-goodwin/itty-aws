@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteOrgResourcePolicyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  orgId: Schema.String.pipe(T.PathParam()),
-  resourcePolicyId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}" }));
-export type DeleteOrgResourcePolicyInput = typeof DeleteOrgResourcePolicyInput.Type;
+export const DeleteOrgResourcePolicyInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orgId: Schema.String.pipe(T.PathParam()),
+    resourcePolicyId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}",
+    }),
+  );
+export type DeleteOrgResourcePolicyInput =
+  typeof DeleteOrgResourcePolicyInput.Type;
 
 // Output Schema
-export const DeleteOrgResourcePolicyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteOrgResourcePolicyOutput = typeof DeleteOrgResourcePolicyOutput.Type;
+export const DeleteOrgResourcePolicyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteOrgResourcePolicyOutput =
+  typeof DeleteOrgResourcePolicyOutput.Type;
 
 // The operation
 /**
@@ -26,7 +35,9 @@ export type DeleteOrgResourcePolicyOutput = typeof DeleteOrgResourcePolicyOutput
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  * @param resourcePolicyId - Unique 24-hexadecimal digit string that identifies an atlas resource policy.
  */
-export const deleteOrgResourcePolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: DeleteOrgResourcePolicyInput,
-  outputSchema: DeleteOrgResourcePolicyOutput,
-}));
+export const deleteOrgResourcePolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: DeleteOrgResourcePolicyInput,
+    outputSchema: DeleteOrgResourcePolicyOutput,
+  }),
+);

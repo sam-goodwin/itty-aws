@@ -3,16 +3,23 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupContainerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  containerId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/containers/{containerId}" }));
+export const DeleteGroupContainerInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    containerId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/api/atlas/v2/groups/{groupId}/containers/{containerId}",
+    }),
+  );
 export type DeleteGroupContainerInput = typeof DeleteGroupContainerInput.Type;
 
 // Output Schema
-export const DeleteGroupContainerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const DeleteGroupContainerOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type DeleteGroupContainerOutput = typeof DeleteGroupContainerOutput.Type;
 
 // The operation
@@ -28,7 +35,9 @@ export type DeleteGroupContainerOutput = typeof DeleteGroupContainerOutput.Type;
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param containerId - Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
  */
-export const deleteGroupContainer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: DeleteGroupContainerInput,
-  outputSchema: DeleteGroupContainerOutput,
-}));
+export const deleteGroupContainer = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: DeleteGroupContainerInput,
+    outputSchema: DeleteGroupContainerOutput,
+  }),
+);

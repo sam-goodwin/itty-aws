@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupDataFederationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  tenantName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}" }));
-export type DeleteGroupDataFederationInput = typeof DeleteGroupDataFederationInput.Type;
+export const DeleteGroupDataFederationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    tenantName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}",
+    }),
+  );
+export type DeleteGroupDataFederationInput =
+  typeof DeleteGroupDataFederationInput.Type;
 
 // Output Schema
-export const DeleteGroupDataFederationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupDataFederationOutput = typeof DeleteGroupDataFederationOutput.Type;
+export const DeleteGroupDataFederationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupDataFederationOutput =
+  typeof DeleteGroupDataFederationOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,9 @@ export type DeleteGroupDataFederationOutput = typeof DeleteGroupDataFederationOu
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param tenantName - Human-readable label that identifies the federated database instance to remove.
  */
-export const deleteGroupDataFederation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: DeleteGroupDataFederationInput,
-  outputSchema: DeleteGroupDataFederationOutput,
-}));
+export const deleteGroupDataFederation = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: DeleteGroupDataFederationInput,
+    outputSchema: DeleteGroupDataFederationOutput,
+  }),
+);

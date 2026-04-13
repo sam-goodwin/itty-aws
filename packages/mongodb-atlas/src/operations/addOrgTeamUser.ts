@@ -8,7 +8,12 @@ export const AddOrgTeamUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   teamId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/orgs/{orgId}/teams/{teamId}:addUser" }));
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/orgs/{orgId}/teams/{teamId}:addUser",
+  }),
+);
 export type AddOrgTeamUserInput = typeof AddOrgTeamUserInput.Type;
 
 // Output Schema

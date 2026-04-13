@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupFlexClusterBackupSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  name: Schema.String.pipe(T.PathParam()),
-  snapshotId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId}" }));
-export type GetGroupFlexClusterBackupSnapshotInput = typeof GetGroupFlexClusterBackupSnapshotInput.Type;
+export const GetGroupFlexClusterBackupSnapshotInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    snapshotId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId}",
+    }),
+  );
+export type GetGroupFlexClusterBackupSnapshotInput =
+  typeof GetGroupFlexClusterBackupSnapshotInput.Type;
 
 // Output Schema
-export const GetGroupFlexClusterBackupSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupFlexClusterBackupSnapshotOutput = typeof GetGroupFlexClusterBackupSnapshotOutput.Type;
+export const GetGroupFlexClusterBackupSnapshotOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupFlexClusterBackupSnapshotOutput =
+  typeof GetGroupFlexClusterBackupSnapshotOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,8 @@ export type GetGroupFlexClusterBackupSnapshotOutput = typeof GetGroupFlexCluster
  * @param name - Human-readable label that identifies the flex cluster.
  * @param snapshotId - Unique 24-hexadecimal digit string that identifies the desired snapshot.
  */
-export const getGroupFlexClusterBackupSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupFlexClusterBackupSnapshotInput,
-  outputSchema: GetGroupFlexClusterBackupSnapshotOutput,
-}));
+export const getGroupFlexClusterBackupSnapshot =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GetGroupFlexClusterBackupSnapshotInput,
+    outputSchema: GetGroupFlexClusterBackupSnapshotOutput,
+  }));

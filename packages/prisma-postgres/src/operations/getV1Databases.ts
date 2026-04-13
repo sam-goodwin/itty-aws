@@ -12,57 +12,78 @@ export type GetV1DatabasesInput = typeof GetV1DatabasesInput.Type;
 
 // Output Schema
 export const GetV1DatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.Array(Schema.Struct({
-    id: Schema.String,
-    type: Schema.String,
-    url: Schema.String,
-    name: Schema.String,
-    status: Schema.Literals(["failure", "provisioning", "ready", "recovering"]),
-    createdAt: Schema.String,
-    isDefault: Schema.Boolean,
-    defaultConnectionId: Schema.NullOr(Schema.String),
-    connections: Schema.Array(Schema.Struct({
+  data: Schema.Array(
+    Schema.Struct({
       id: Schema.String,
       type: Schema.String,
       url: Schema.String,
       name: Schema.String,
+      status: Schema.Literals([
+        "failure",
+        "provisioning",
+        "ready",
+        "recovering",
+      ]),
       createdAt: Schema.String,
-      kind: Schema.Literals(["postgres", "accelerate"]),
-      endpoints: Schema.Struct({
-        direct: Schema.optional(Schema.Struct({
-          host: Schema.String,
-          port: Schema.Number,
-        })),
-        pooled: Schema.optional(Schema.Struct({
-          host: Schema.String,
-          port: Schema.Number,
-        })),
-        accelerate: Schema.optional(Schema.Struct({
-          host: Schema.String,
-          port: Schema.Number,
-        })),
-      }),
-      directConnection: Schema.optional(Schema.NullOr(Schema.Struct({
-        host: Schema.String,
-        pass: Schema.String,
-        user: Schema.String,
-      }))),
-      database: Schema.Struct({
+      isDefault: Schema.Boolean,
+      defaultConnectionId: Schema.NullOr(Schema.String),
+      connections: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          type: Schema.String,
+          url: Schema.String,
+          name: Schema.String,
+          createdAt: Schema.String,
+          kind: Schema.Literals(["postgres", "accelerate"]),
+          endpoints: Schema.Struct({
+            direct: Schema.optional(
+              Schema.Struct({
+                host: Schema.String,
+                port: Schema.Number,
+              }),
+            ),
+            pooled: Schema.optional(
+              Schema.Struct({
+                host: Schema.String,
+                port: Schema.Number,
+              }),
+            ),
+            accelerate: Schema.optional(
+              Schema.Struct({
+                host: Schema.String,
+                port: Schema.Number,
+              }),
+            ),
+          }),
+          directConnection: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                host: Schema.String,
+                pass: Schema.String,
+                user: Schema.String,
+              }),
+            ),
+          ),
+          database: Schema.Struct({
+            id: Schema.String,
+            url: Schema.String,
+            name: Schema.String,
+          }),
+        }),
+      ),
+      project: Schema.Struct({
         id: Schema.String,
         url: Schema.String,
         name: Schema.String,
       }),
-    })),
-    project: Schema.Struct({
-      id: Schema.String,
-      url: Schema.String,
-      name: Schema.String,
+      region: Schema.NullOr(
+        Schema.Struct({
+          id: Schema.String,
+          name: Schema.String,
+        }),
+      ),
     }),
-    region: Schema.NullOr(Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-    })),
-  })),
+  ),
   pagination: Schema.Struct({
     nextCursor: Schema.NullOr(Schema.String),
     hasMore: Schema.Boolean,

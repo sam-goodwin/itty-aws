@@ -7,6 +7,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
 export const DEFAULT_API_BASE_URL = "https://api.planetscale.com/v1";
 
 export interface Config {
+  readonly tokenId: string;
   readonly token: Redacted.Redacted<string>;
   readonly organization: string;
   readonly apiBaseUrl: string;
@@ -19,8 +20,15 @@ export class Credentials extends ServiceMap.Service<Credentials, Config>()(
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
   Effect.gen(function* () {
+    const tokenId = process.env.PLANETSCALE_API_TOKEN_ID;
     const token = process.env.PLANETSCALE_API_TOKEN;
     const organization = process.env.PLANETSCALE_ORGANIZATION;
+
+    if (!tokenId) {
+      return yield* new ConfigError({
+        message: "PLANETSCALE_API_TOKEN_ID environment variable is required",
+      });
+    }
 
     if (!token) {
       return yield* new ConfigError({
@@ -35,6 +43,7 @@ export const CredentialsFromEnv = Layer.effect(
     }
 
     return {
+      tokenId,
       token: Redacted.make(token),
       organization,
       apiBaseUrl: DEFAULT_API_BASE_URL,

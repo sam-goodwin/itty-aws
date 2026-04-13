@@ -3,18 +3,27 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const StartGroupStreamProcessorWithInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  tenantName: Schema.String.pipe(T.PathParam()),
-  processorName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:startWith" }));
-export type StartGroupStreamProcessorWithInput = typeof StartGroupStreamProcessorWithInput.Type;
+export const StartGroupStreamProcessorWithInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    tenantName: Schema.String.pipe(T.PathParam()),
+    processorName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:startWith",
+    }),
+  );
+export type StartGroupStreamProcessorWithInput =
+  typeof StartGroupStreamProcessorWithInput.Type;
 
 // Output Schema
-export const StartGroupStreamProcessorWithOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StartGroupStreamProcessorWithOutput = typeof StartGroupStreamProcessorWithOutput.Type;
+export const StartGroupStreamProcessorWithOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type StartGroupStreamProcessorWithOutput =
+  typeof StartGroupStreamProcessorWithOutput.Type;
 
 // The operation
 /**
@@ -30,7 +39,8 @@ export type StartGroupStreamProcessorWithOutput = typeof StartGroupStreamProcess
  * @param tenantName - Label that identifies the stream workspace.
  * @param processorName - Label that identifies the stream processor.
  */
-export const startGroupStreamProcessorWith = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: StartGroupStreamProcessorWithInput,
-  outputSchema: StartGroupStreamProcessorWithOutput,
-}));
+export const startGroupStreamProcessorWith =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: StartGroupStreamProcessorWithInput,
+    outputSchema: StartGroupStreamProcessorWithOutput,
+  }));

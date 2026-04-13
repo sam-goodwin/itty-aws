@@ -66,7 +66,7 @@
     "fmt": "oxfmt --write src",
     "lint": "oxlint --fix src",
     "check": "tsgo && oxlint src && oxfmt --check src",
-    "test": "bunx vitest run test",
+    "test": "bunx vitest run test --exclude specs",
     "publish:npm": "bun run build && bun publish --access public",
     "generate": "bun run scripts/generate.ts && oxlint --fix src && oxfmt --write src && oxfmt --write src",
     "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/distilled-spec-fly-io && git -C specs/distilled-spec-fly-io checkout -- .",

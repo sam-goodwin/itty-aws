@@ -8,27 +8,40 @@ export const ListDatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   group: Schema.optional(Schema.String),
   schema: Schema.optional(Schema.String),
   parent: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/v1/organizations/{organizationSlug}/databases" }));
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/organizations/{organizationSlug}/databases",
+  }),
+);
 export type ListDatabasesInput = typeof ListDatabasesInput.Type;
 
 // Output Schema
 export const ListDatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  databases: Schema.optional(Schema.Array(Schema.Struct({
-    Name: Schema.optional(Schema.String),
-    DbId: Schema.optional(Schema.String),
-    Hostname: Schema.optional(Schema.String),
-    block_reads: Schema.optional(Schema.Boolean),
-    block_writes: Schema.optional(Schema.Boolean),
-    regions: Schema.optional(Schema.Array(Schema.String)),
-    primaryRegion: Schema.optional(Schema.String),
-    group: Schema.optional(Schema.String),
-    delete_protection: Schema.optional(Schema.Boolean),
-    parent: Schema.optional(Schema.NullOr(Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      branched_at: Schema.optional(Schema.String),
-    }))),
-  }))),
+  databases: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        Name: Schema.optional(Schema.String),
+        DbId: Schema.optional(Schema.String),
+        Hostname: Schema.optional(Schema.String),
+        block_reads: Schema.optional(Schema.Boolean),
+        block_writes: Schema.optional(Schema.Boolean),
+        regions: Schema.optional(Schema.Array(Schema.String)),
+        primaryRegion: Schema.optional(Schema.String),
+        group: Schema.optional(Schema.String),
+        delete_protection: Schema.optional(Schema.Boolean),
+        parent: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              id: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              branched_at: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  ),
 });
 export type ListDatabasesOutput = typeof ListDatabasesOutput.Type;
 

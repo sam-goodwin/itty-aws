@@ -3,24 +3,33 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupProcessPerformanceAdvisorSlowQueryLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  processId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-  duration: Schema.optional(Schema.Number),
-  namespaces: Schema.optional(Schema.String),
-  nLogs: Schema.optional(Schema.Number),
-  since: Schema.optional(Schema.Number),
-  includeMetrics: Schema.optional(Schema.Boolean),
-  includeReplicaState: Schema.optional(Schema.Boolean),
-  includeOpType: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/slowQueryLogs" }));
-export type ListGroupProcessPerformanceAdvisorSlowQueryLogsInput = typeof ListGroupProcessPerformanceAdvisorSlowQueryLogsInput.Type;
+export const ListGroupProcessPerformanceAdvisorSlowQueryLogsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    processId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+    duration: Schema.optional(Schema.Number),
+    namespaces: Schema.optional(Schema.String),
+    nLogs: Schema.optional(Schema.Number),
+    since: Schema.optional(Schema.Number),
+    includeMetrics: Schema.optional(Schema.Boolean),
+    includeReplicaState: Schema.optional(Schema.Boolean),
+    includeOpType: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/slowQueryLogs",
+    }),
+  );
+export type ListGroupProcessPerformanceAdvisorSlowQueryLogsInput =
+  typeof ListGroupProcessPerformanceAdvisorSlowQueryLogsInput.Type;
 
 // Output Schema
-export const ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput = typeof ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput.Type;
+export const ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput =
+  typeof ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput.Type;
 
 // The operation
 /**
@@ -48,7 +57,8 @@ export type ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput = typeof ListG
  * @param includeReplicaState - Whether or not to include the replica state of the host when the slow query log was generated as a separate field.
  * @param includeOpType - Whether or not to include the operation type (read/write/command) extracted from the slow query log as a separate field.
  */
-export const listGroupProcessPerformanceAdvisorSlowQueryLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListGroupProcessPerformanceAdvisorSlowQueryLogsInput,
-  outputSchema: ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput,
-}));
+export const listGroupProcessPerformanceAdvisorSlowQueryLogs =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ListGroupProcessPerformanceAdvisorSlowQueryLogsInput,
+    outputSchema: ListGroupProcessPerformanceAdvisorSlowQueryLogsOutput,
+  }));

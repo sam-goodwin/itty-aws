@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupCustomDbRoleRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  roleName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}" }));
-export type GetGroupCustomDbRoleRoleInput = typeof GetGroupCustomDbRoleRoleInput.Type;
+export const GetGroupCustomDbRoleRoleInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    roleName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}",
+    }),
+  );
+export type GetGroupCustomDbRoleRoleInput =
+  typeof GetGroupCustomDbRoleRoleInput.Type;
 
 // Output Schema
-export const GetGroupCustomDbRoleRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupCustomDbRoleRoleOutput = typeof GetGroupCustomDbRoleRoleOutput.Type;
+export const GetGroupCustomDbRoleRoleOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupCustomDbRoleRoleOutput =
+  typeof GetGroupCustomDbRoleRoleOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,9 @@ export type GetGroupCustomDbRoleRoleOutput = typeof GetGroupCustomDbRoleRoleOutp
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param roleName - Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
  */
-export const getGroupCustomDbRoleRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupCustomDbRoleRoleInput,
-  outputSchema: GetGroupCustomDbRoleRoleOutput,
-}));
+export const getGroupCustomDbRoleRole = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: GetGroupCustomDbRoleRoleInput,
+    outputSchema: GetGroupCustomDbRoleRoleOutput,
+  }),
+);

@@ -6,7 +6,9 @@ import * as T from "../traits";
 export const V1ResetABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   branch_id_or_ref: Schema.String.pipe(T.PathParam()),
   migration_version: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "POST", path: "/v1/branches/{branch_id_or_ref}/reset" }));
+}).pipe(
+  T.Http({ method: "POST", path: "/v1/branches/{branch_id_or_ref}/reset" }),
+);
 export type V1ResetABranchInput = typeof V1ResetABranchInput.Type;
 
 // Output Schema

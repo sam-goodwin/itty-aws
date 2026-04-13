@@ -29,10 +29,15 @@ export interface ApplicationTransferParam {
   value?: Array<string>;
 }
 
-export const ApplicationTransferParam: Schema.Schema<ApplicationTransferParam> = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({
-  key: Schema.optional(Schema.String),
-  value: Schema.optional(Schema.Array(Schema.String)),
-})).annotate({ identifier: "ApplicationTransferParam" }) as any as Schema.Schema<ApplicationTransferParam>;
+export const ApplicationTransferParam: Schema.Schema<ApplicationTransferParam> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      key: Schema.optional(Schema.String),
+      value: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ).annotate({
+    identifier: "ApplicationTransferParam",
+  }) as any as Schema.Schema<ApplicationTransferParam>;
 
 export interface Application {
   /** The application's ID. Retrievable by using the [`applications.list()`](https://developers.google.com/workspace/admin/data-transfer/reference/rest/v1/applications/list) method. */
@@ -47,13 +52,18 @@ export interface Application {
   etag?: string;
 }
 
-export const Application: Schema.Schema<Application> = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({
-  id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  transferParams: Schema.optional(Schema.Array(ApplicationTransferParam)),
-  kind: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-})).annotate({ identifier: "Application" }) as any as Schema.Schema<Application>;
+export const Application: Schema.Schema<Application> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      transferParams: Schema.optional(Schema.Array(ApplicationTransferParam)),
+      kind: Schema.optional(Schema.String),
+      etag: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "Application",
+  }) as any as Schema.Schema<Application>;
 
 export interface ApplicationsListResponse {
   /** Identifies the resource as a collection of Applications. */
@@ -66,12 +76,17 @@ export interface ApplicationsListResponse {
   nextPageToken?: string;
 }
 
-export const ApplicationsListResponse: Schema.Schema<ApplicationsListResponse> = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-  applications: Schema.optional(Schema.Array(Application)),
-  nextPageToken: Schema.optional(Schema.String),
-})).annotate({ identifier: "ApplicationsListResponse" }) as any as Schema.Schema<ApplicationsListResponse>;
+export const ApplicationsListResponse: Schema.Schema<ApplicationsListResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kind: Schema.optional(Schema.String),
+      etag: Schema.optional(Schema.String),
+      applications: Schema.optional(Schema.Array(Application)),
+      nextPageToken: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "ApplicationsListResponse",
+  }) as any as Schema.Schema<ApplicationsListResponse>;
 
 export interface ApplicationDataTransfer {
   /** The application's ID. */
@@ -82,11 +97,18 @@ export interface ApplicationDataTransfer {
   applicationTransferStatus?: string;
 }
 
-export const ApplicationDataTransfer: Schema.Schema<ApplicationDataTransfer> = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({
-  applicationId: Schema.optional(Schema.String),
-  applicationTransferParams: Schema.optional(Schema.Array(ApplicationTransferParam)),
-  applicationTransferStatus: Schema.optional(Schema.String),
-})).annotate({ identifier: "ApplicationDataTransfer" }) as any as Schema.Schema<ApplicationDataTransfer>;
+export const ApplicationDataTransfer: Schema.Schema<ApplicationDataTransfer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      applicationId: Schema.optional(Schema.String),
+      applicationTransferParams: Schema.optional(
+        Schema.Array(ApplicationTransferParam),
+      ),
+      applicationTransferStatus: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "ApplicationDataTransfer",
+  }) as any as Schema.Schema<ApplicationDataTransfer>;
 
 export interface DataTransfer {
   /** Read-only. The transfer's ID. */
@@ -107,16 +129,23 @@ export interface DataTransfer {
   requestTime?: string;
 }
 
-export const DataTransfer: Schema.Schema<DataTransfer> = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({
-  id: Schema.optional(Schema.String),
-  oldOwnerUserId: Schema.optional(Schema.String),
-  newOwnerUserId: Schema.optional(Schema.String),
-  applicationDataTransfers: Schema.optional(Schema.Array(ApplicationDataTransfer)),
-  overallTransferStatusCode: Schema.optional(Schema.String),
-  kind: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-  requestTime: Schema.optional(Schema.String),
-})).annotate({ identifier: "DataTransfer" }) as any as Schema.Schema<DataTransfer>;
+export const DataTransfer: Schema.Schema<DataTransfer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      oldOwnerUserId: Schema.optional(Schema.String),
+      newOwnerUserId: Schema.optional(Schema.String),
+      applicationDataTransfers: Schema.optional(
+        Schema.Array(ApplicationDataTransfer),
+      ),
+      overallTransferStatusCode: Schema.optional(Schema.String),
+      kind: Schema.optional(Schema.String),
+      etag: Schema.optional(Schema.String),
+      requestTime: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "DataTransfer",
+  }) as any as Schema.Schema<DataTransfer>;
 
 export interface DataTransfersListResponse {
   /** Identifies the resource as a collection of data transfer requests. */
@@ -129,12 +158,17 @@ export interface DataTransfersListResponse {
   nextPageToken?: string;
 }
 
-export const DataTransfersListResponse: Schema.Schema<DataTransfersListResponse> = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({
-  kind: Schema.optional(Schema.String),
-  etag: Schema.optional(Schema.String),
-  dataTransfers: Schema.optional(Schema.Array(DataTransfer)),
-  nextPageToken: Schema.optional(Schema.String),
-})).annotate({ identifier: "DataTransfersListResponse" }) as any as Schema.Schema<DataTransfersListResponse>;
+export const DataTransfersListResponse: Schema.Schema<DataTransfersListResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      kind: Schema.optional(Schema.String),
+      etag: Schema.optional(Schema.String),
+      dataTransfers: Schema.optional(Schema.Array(DataTransfer)),
+      nextPageToken: Schema.optional(Schema.String),
+    }),
+  ).annotate({
+    identifier: "DataTransfersListResponse",
+  }) as any as Schema.Schema<DataTransfersListResponse>;
 
 // ==========================================================================
 // Operations
@@ -145,10 +179,15 @@ export interface GetApplicationsRequest {
   applicationId: string;
 }
 
-export const GetApplicationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  applicationId: Schema.String.pipe(T.HttpPath("applicationId")),
-}).pipe(
-  T.Http({ method: "GET", path: "admin/datatransfer/v1/applications/{applicationId}" }),
+export const GetApplicationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    applicationId: Schema.String.pipe(T.HttpPath("applicationId")),
+  },
+).pipe(
+  T.Http({
+    method: "GET",
+    path: "admin/datatransfer/v1/applications/{applicationId}",
+  }),
   svc,
 ) as unknown as Schema.Schema<GetApplicationsRequest>;
 
@@ -158,7 +197,12 @@ export const GetApplicationsResponse = /*@__PURE__*/ /*#__PURE__*/ Application;
 export type GetApplicationsError = DefaultErrors;
 
 /** Retrieves information about an application for the given application ID. */
-export const getApplications: API.OperationMethod<GetApplicationsRequest, GetApplicationsResponse, GetApplicationsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getApplications: API.OperationMethod<
+  GetApplicationsRequest,
+  GetApplicationsResponse,
+  GetApplicationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApplicationsRequest,
   output: GetApplicationsResponse,
   errors: [],
@@ -173,22 +217,29 @@ export interface ListApplicationsRequest {
   pageToken?: string;
 }
 
-export const ListApplicationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
-  maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-}).pipe(
-  T.Http({ method: "GET", path: "admin/datatransfer/v1/applications" }),
-  svc,
-) as unknown as Schema.Schema<ListApplicationsRequest>;
+export const ListApplicationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "admin/datatransfer/v1/applications" }),
+    svc,
+  ) as unknown as Schema.Schema<ListApplicationsRequest>;
 
 export type ListApplicationsResponse = ApplicationsListResponse;
-export const ListApplicationsResponse = /*@__PURE__*/ /*#__PURE__*/ ApplicationsListResponse;
+export const ListApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ApplicationsListResponse;
 
 export type ListApplicationsError = DefaultErrors;
 
 /** Lists the applications available for data transfer for a customer. */
-export const listApplications: API.PaginatedOperationMethod<ListApplicationsRequest, ListApplicationsResponse, ListApplicationsError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+export const listApplications: API.PaginatedOperationMethod<
+  ListApplicationsRequest,
+  ListApplicationsResponse,
+  ListApplicationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [],
@@ -206,7 +257,10 @@ export interface GetTransfersRequest {
 export const GetTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dataTransferId: Schema.String.pipe(T.HttpPath("dataTransferId")),
 }).pipe(
-  T.Http({ method: "GET", path: "admin/datatransfer/v1/transfers/{dataTransferId}" }),
+  T.Http({
+    method: "GET",
+    path: "admin/datatransfer/v1/transfers/{dataTransferId}",
+  }),
   svc,
 ) as unknown as Schema.Schema<GetTransfersRequest>;
 
@@ -216,7 +270,12 @@ export const GetTransfersResponse = /*@__PURE__*/ /*#__PURE__*/ DataTransfer;
 export type GetTransfersError = DefaultErrors;
 
 /** Retrieves a data transfer request by its resource ID. */
-export const getTransfers: API.OperationMethod<GetTransfersRequest, GetTransfersResponse, GetTransfersError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getTransfers: API.OperationMethod<
+  GetTransfersRequest,
+  GetTransfersResponse,
+  GetTransfersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTransfersRequest,
   output: GetTransfersResponse,
   errors: [],
@@ -227,10 +286,16 @@ export interface InsertTransfersRequest {
   body?: DataTransfer;
 }
 
-export const InsertTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  body: Schema.optional(DataTransfer).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({ method: "POST", path: "admin/datatransfer/v1/transfers", hasBody: true }),
+export const InsertTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    body: Schema.optional(DataTransfer).pipe(T.HttpBody()),
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "admin/datatransfer/v1/transfers",
+    hasBody: true,
+  }),
   svc,
 ) as unknown as Schema.Schema<InsertTransfersRequest>;
 
@@ -240,7 +305,12 @@ export const InsertTransfersResponse = /*@__PURE__*/ /*#__PURE__*/ DataTransfer;
 export type InsertTransfersError = DefaultErrors;
 
 /** Inserts a data transfer request. See the [Transfer parameters](https://developers.google.com/workspace/admin/data-transfer/v1/parameters) reference for specific application requirements. */
-export const insertTransfers: API.OperationMethod<InsertTransfersRequest, InsertTransfersResponse, InsertTransfersError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const insertTransfers: API.OperationMethod<
+  InsertTransfersRequest,
+  InsertTransfersResponse,
+  InsertTransfersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTransfersRequest,
   output: InsertTransfersResponse,
   errors: [],
@@ -264,8 +334,12 @@ export interface ListTransfersRequest {
 export const ListTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-  newOwnerUserId: Schema.optional(Schema.String).pipe(T.HttpQuery("newOwnerUserId")),
-  oldOwnerUserId: Schema.optional(Schema.String).pipe(T.HttpQuery("oldOwnerUserId")),
+  newOwnerUserId: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("newOwnerUserId"),
+  ),
+  oldOwnerUserId: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("oldOwnerUserId"),
+  ),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   status: Schema.optional(Schema.String).pipe(T.HttpQuery("status")),
 }).pipe(
@@ -274,12 +348,18 @@ export const ListTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ListTransfersRequest>;
 
 export type ListTransfersResponse = DataTransfersListResponse;
-export const ListTransfersResponse = /*@__PURE__*/ /*#__PURE__*/ DataTransfersListResponse;
+export const ListTransfersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ DataTransfersListResponse;
 
 export type ListTransfersError = DefaultErrors;
 
 /** Lists the transfers for a customer by source user, destination user, or status. */
-export const listTransfers: API.PaginatedOperationMethod<ListTransfersRequest, ListTransfersResponse, ListTransfersError, Credentials | HttpClient.HttpClient> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+export const listTransfers: API.PaginatedOperationMethod<
+  ListTransfersRequest,
+  ListTransfersResponse,
+  ListTransfersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTransfersRequest,
   output: ListTransfersResponse,
   errors: [],
@@ -288,4 +368,3 @@ export const listTransfers: API.PaginatedOperationMethod<ListTransfersRequest, L
     outputToken: "nextPageToken",
   },
 }));
-

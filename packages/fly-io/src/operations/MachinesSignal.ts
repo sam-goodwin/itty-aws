@@ -6,8 +6,29 @@ import * as T from "../traits";
 export const MachinesSignalInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
-  signal: Schema.optional(Schema.Literals(["SIGABRT", "SIGALRM", "SIGFPE", "SIGHUP", "SIGILL", "SIGINT", "SIGKILL", "SIGPIPE", "SIGQUIT", "SIGSEGV", "SIGTERM", "SIGTRAP", "SIGUSR1"])),
-}).pipe(T.Http({ method: "POST", path: "/apps/{app_name}/machines/{machine_id}/signal" }));
+  signal: Schema.optional(
+    Schema.Literals([
+      "SIGABRT",
+      "SIGALRM",
+      "SIGFPE",
+      "SIGHUP",
+      "SIGILL",
+      "SIGINT",
+      "SIGKILL",
+      "SIGPIPE",
+      "SIGQUIT",
+      "SIGSEGV",
+      "SIGTERM",
+      "SIGTRAP",
+      "SIGUSR1",
+    ]),
+  ),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/apps/{app_name}/machines/{machine_id}/signal",
+  }),
+);
 export type MachinesSignalInput = typeof MachinesSignalInput.Type;
 
 // Output Schema

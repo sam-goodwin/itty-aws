@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupClusterBackupSnapshotShardedClustersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedClusters" }));
-export type ListGroupClusterBackupSnapshotShardedClustersInput = typeof ListGroupClusterBackupSnapshotShardedClustersInput.Type;
+export const ListGroupClusterBackupSnapshotShardedClustersInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedClusters",
+    }),
+  );
+export type ListGroupClusterBackupSnapshotShardedClustersInput =
+  typeof ListGroupClusterBackupSnapshotShardedClustersInput.Type;
 
 // Output Schema
-export const ListGroupClusterBackupSnapshotShardedClustersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterBackupSnapshotShardedClustersOutput = typeof ListGroupClusterBackupSnapshotShardedClustersOutput.Type;
+export const ListGroupClusterBackupSnapshotShardedClustersOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupClusterBackupSnapshotShardedClustersOutput =
+  typeof ListGroupClusterBackupSnapshotShardedClustersOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,8 @@ export type ListGroupClusterBackupSnapshotShardedClustersOutput = typeof ListGro
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Human-readable label that identifies the cluster.
  */
-export const listGroupClusterBackupSnapshotShardedClusters = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListGroupClusterBackupSnapshotShardedClustersInput,
-  outputSchema: ListGroupClusterBackupSnapshotShardedClustersOutput,
-}));
+export const listGroupClusterBackupSnapshotShardedClusters =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ListGroupClusterBackupSnapshotShardedClustersInput,
+    outputSchema: ListGroupClusterBackupSnapshotShardedClustersOutput,
+  }));

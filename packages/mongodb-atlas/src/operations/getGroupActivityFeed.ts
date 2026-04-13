@@ -3,18 +3,25 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupActivityFeedInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  pretty: Schema.optional(Schema.Boolean),
-  eventType: Schema.optional(Schema.String),
-  maxDate: Schema.optional(Schema.String),
-  minDate: Schema.optional(Schema.String),
-  clusterName: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/activityFeed" }));
+export const GetGroupActivityFeedInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.Boolean),
+    eventType: Schema.optional(Schema.String),
+    maxDate: Schema.optional(Schema.String),
+    minDate: Schema.optional(Schema.String),
+    clusterName: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/activityFeed",
+    }),
+  );
 export type GetGroupActivityFeedInput = typeof GetGroupActivityFeedInput.Type;
 
 // Output Schema
-export const GetGroupActivityFeedOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupActivityFeedOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type GetGroupActivityFeedOutput = typeof GetGroupActivityFeedOutput.Type;
 
 // The operation
@@ -34,7 +41,9 @@ export type GetGroupActivityFeedOutput = typeof GetGroupActivityFeedOutput.Type;
  * @param minDate - Start date and time for events to include in the activity feed link. ISO 8601 timestamp format in UTC.
  * @param clusterName - Human-readable label that identifies the cluster.
  */
-export const getGroupActivityFeed = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupActivityFeedInput,
-  outputSchema: GetGroupActivityFeedOutput,
-}));
+export const getGroupActivityFeed = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: GetGroupActivityFeedInput,
+    outputSchema: GetGroupActivityFeedOutput,
+  }),
+);

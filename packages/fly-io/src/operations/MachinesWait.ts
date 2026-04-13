@@ -8,8 +8,21 @@ export const MachinesWaitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   machine_id: Schema.String.pipe(T.PathParam()),
   instance_id: Schema.optional(Schema.String),
   timeout: Schema.optional(Schema.Number),
-  state: Schema.optional(Schema.Literals(["started", "stopped", "suspended", "destroyed", "settled"])),
-}).pipe(T.Http({ method: "GET", path: "/apps/{app_name}/machines/{machine_id}/wait" }));
+  state: Schema.optional(
+    Schema.Literals([
+      "started",
+      "stopped",
+      "suspended",
+      "destroyed",
+      "settled",
+    ]),
+  ),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/apps/{app_name}/machines/{machine_id}/wait",
+  }),
+);
 export type MachinesWaitInput = typeof MachinesWaitInput.Type;
 
 // Output Schema

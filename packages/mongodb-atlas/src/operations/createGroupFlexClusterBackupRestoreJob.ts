@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateGroupFlexClusterBackupRestoreJobInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  name: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs" }));
-export type CreateGroupFlexClusterBackupRestoreJobInput = typeof CreateGroupFlexClusterBackupRestoreJobInput.Type;
+export const CreateGroupFlexClusterBackupRestoreJobInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs",
+    }),
+  );
+export type CreateGroupFlexClusterBackupRestoreJobInput =
+  typeof CreateGroupFlexClusterBackupRestoreJobInput.Type;
 
 // Output Schema
-export const CreateGroupFlexClusterBackupRestoreJobOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupFlexClusterBackupRestoreJobOutput = typeof CreateGroupFlexClusterBackupRestoreJobOutput.Type;
+export const CreateGroupFlexClusterBackupRestoreJobOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CreateGroupFlexClusterBackupRestoreJobOutput =
+  typeof CreateGroupFlexClusterBackupRestoreJobOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,8 @@ export type CreateGroupFlexClusterBackupRestoreJobOutput = typeof CreateGroupFle
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param name - Human-readable label that identifies the flex cluster whose snapshot you want to restore.
  */
-export const createGroupFlexClusterBackupRestoreJob = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: CreateGroupFlexClusterBackupRestoreJobInput,
-  outputSchema: CreateGroupFlexClusterBackupRestoreJobOutput,
-}));
+export const createGroupFlexClusterBackupRestoreJob =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CreateGroupFlexClusterBackupRestoreJobInput,
+    outputSchema: CreateGroupFlexClusterBackupRestoreJobOutput,
+  }));

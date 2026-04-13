@@ -3,16 +3,25 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupPrivateEndpointRegionalModeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode" }));
-export type GetGroupPrivateEndpointRegionalModeInput = typeof GetGroupPrivateEndpointRegionalModeInput.Type;
+export const GetGroupPrivateEndpointRegionalModeInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode",
+    }),
+  );
+export type GetGroupPrivateEndpointRegionalModeInput =
+  typeof GetGroupPrivateEndpointRegionalModeInput.Type;
 
 // Output Schema
-export const GetGroupPrivateEndpointRegionalModeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupPrivateEndpointRegionalModeOutput = typeof GetGroupPrivateEndpointRegionalModeOutput.Type;
+export const GetGroupPrivateEndpointRegionalModeOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupPrivateEndpointRegionalModeOutput =
+  typeof GetGroupPrivateEndpointRegionalModeOutput.Type;
 
 // The operation
 /**
@@ -26,7 +35,8 @@ export type GetGroupPrivateEndpointRegionalModeOutput = typeof GetGroupPrivateEn
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const getGroupPrivateEndpointRegionalMode = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupPrivateEndpointRegionalModeInput,
-  outputSchema: GetGroupPrivateEndpointRegionalModeOutput,
-}));
+export const getGroupPrivateEndpointRegionalMode =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GetGroupPrivateEndpointRegionalModeInput,
+    outputSchema: GetGroupPrivateEndpointRegionalModeOutput,
+  }));

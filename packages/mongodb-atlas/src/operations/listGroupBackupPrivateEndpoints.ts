@@ -3,20 +3,29 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupBackupPrivateEndpointsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  cloudProvider: Schema.Literals(["AWS"]).pipe(T.PathParam()),
-  pretty: Schema.optional(Schema.Boolean),
-  envelope: Schema.optional(Schema.Boolean),
-  includeCount: Schema.optional(Schema.Boolean),
-  itemsPerPage: Schema.optional(Schema.Number),
-  pageNum: Schema.optional(Schema.Number),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints" }));
-export type ListGroupBackupPrivateEndpointsInput = typeof ListGroupBackupPrivateEndpointsInput.Type;
+export const ListGroupBackupPrivateEndpointsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    cloudProvider: Schema.Literals(["AWS"]).pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.Boolean),
+    envelope: Schema.optional(Schema.Boolean),
+    includeCount: Schema.optional(Schema.Boolean),
+    itemsPerPage: Schema.optional(Schema.Number),
+    pageNum: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints",
+    }),
+  );
+export type ListGroupBackupPrivateEndpointsInput =
+  typeof ListGroupBackupPrivateEndpointsInput.Type;
 
 // Output Schema
-export const ListGroupBackupPrivateEndpointsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupBackupPrivateEndpointsOutput = typeof ListGroupBackupPrivateEndpointsOutput.Type;
+export const ListGroupBackupPrivateEndpointsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupBackupPrivateEndpointsOutput =
+  typeof ListGroupBackupPrivateEndpointsOutput.Type;
 
 // The operation
 /**
@@ -34,7 +43,8 @@ export type ListGroupBackupPrivateEndpointsOutput = typeof ListGroupBackupPrivat
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param cloudProvider - Human-readable label that identifies the cloud provider for the private endpoints to return.
  */
-export const listGroupBackupPrivateEndpoints = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListGroupBackupPrivateEndpointsInput,
-  outputSchema: ListGroupBackupPrivateEndpointsOutput,
-}));
+export const listGroupBackupPrivateEndpoints =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ListGroupBackupPrivateEndpointsInput,
+    outputSchema: ListGroupBackupPrivateEndpointsOutput,
+  }));

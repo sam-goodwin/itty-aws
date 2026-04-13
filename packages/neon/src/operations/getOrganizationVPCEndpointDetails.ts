@@ -3,22 +3,31 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetOrganizationVPCEndpointDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  org_id: Schema.String.pipe(T.PathParam()),
-  region_id: Schema.String.pipe(T.PathParam()),
-  vpc_endpoint_id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}" }));
-export type GetOrganizationVPCEndpointDetailsInput = typeof GetOrganizationVPCEndpointDetailsInput.Type;
+export const GetOrganizationVPCEndpointDetailsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    org_id: Schema.String.pipe(T.PathParam()),
+    region_id: Schema.String.pipe(T.PathParam()),
+    vpc_endpoint_id: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}",
+    }),
+  );
+export type GetOrganizationVPCEndpointDetailsInput =
+  typeof GetOrganizationVPCEndpointDetailsInput.Type;
 
 // Output Schema
-export const GetOrganizationVPCEndpointDetailsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  vpc_endpoint_id: Schema.String,
-  label: Schema.String,
-  state: Schema.String,
-  num_restricted_projects: Schema.Number,
-  example_restricted_projects: Schema.Array(Schema.String),
-});
-export type GetOrganizationVPCEndpointDetailsOutput = typeof GetOrganizationVPCEndpointDetailsOutput.Type;
+export const GetOrganizationVPCEndpointDetailsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vpc_endpoint_id: Schema.String,
+    label: Schema.String,
+    state: Schema.String,
+    num_restricted_projects: Schema.Number,
+    example_restricted_projects: Schema.Array(Schema.String),
+  });
+export type GetOrganizationVPCEndpointDetailsOutput =
+  typeof GetOrganizationVPCEndpointDetailsOutput.Type;
 
 // The operation
 /**
@@ -32,7 +41,8 @@ Azure regions are currently not supported.
 
  * @param vpc_endpoint_id - The VPC endpoint ID
  */
-export const getOrganizationVPCEndpointDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetOrganizationVPCEndpointDetailsInput,
-  outputSchema: GetOrganizationVPCEndpointDetailsOutput,
-}));
+export const getOrganizationVPCEndpointDetails =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GetOrganizationVPCEndpointDetailsInput,
+    outputSchema: GetOrganizationVPCEndpointDetailsOutput,
+  }));

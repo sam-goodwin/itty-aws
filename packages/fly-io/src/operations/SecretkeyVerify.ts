@@ -9,7 +9,12 @@ export const SecretkeyVerifyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   min_version: Schema.optional(Schema.String),
   plaintext: Schema.optional(Schema.Array(Schema.Number)),
   signature: Schema.optional(Schema.Array(Schema.Number)),
-}).pipe(T.Http({ method: "POST", path: "/apps/{app_name}/secretkeys/{secret_name}/verify" }));
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/apps/{app_name}/secretkeys/{secret_name}/verify",
+  }),
+);
 export type SecretkeyVerifyInput = typeof SecretkeyVerifyInput.Type;
 
 // Output Schema

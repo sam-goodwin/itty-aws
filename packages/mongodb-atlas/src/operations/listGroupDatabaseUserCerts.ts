@@ -3,20 +3,29 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupDatabaseUserCertsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  username: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  includeCount: Schema.optional(Schema.Boolean),
-  itemsPerPage: Schema.optional(Schema.Number),
-  pageNum: Schema.optional(Schema.Number),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs" }));
-export type ListGroupDatabaseUserCertsInput = typeof ListGroupDatabaseUserCertsInput.Type;
+export const ListGroupDatabaseUserCertsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    username: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    includeCount: Schema.optional(Schema.Boolean),
+    itemsPerPage: Schema.optional(Schema.Number),
+    pageNum: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs",
+    }),
+  );
+export type ListGroupDatabaseUserCertsInput =
+  typeof ListGroupDatabaseUserCertsInput.Type;
 
 // Output Schema
-export const ListGroupDatabaseUserCertsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupDatabaseUserCertsOutput = typeof ListGroupDatabaseUserCertsOutput.Type;
+export const ListGroupDatabaseUserCertsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupDatabaseUserCertsOutput =
+  typeof ListGroupDatabaseUserCertsOutput.Type;
 
 // The operation
 /**
@@ -34,7 +43,9 @@ export type ListGroupDatabaseUserCertsOutput = typeof ListGroupDatabaseUserCerts
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param username - Human-readable label that represents the MongoDB database user account whose certificates you want to return.
  */
-export const listGroupDatabaseUserCerts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListGroupDatabaseUserCertsInput,
-  outputSchema: ListGroupDatabaseUserCertsOutput,
-}));
+export const listGroupDatabaseUserCerts = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ListGroupDatabaseUserCertsInput,
+    outputSchema: ListGroupDatabaseUserCertsOutput,
+  }),
+);

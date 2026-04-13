@@ -3,15 +3,23 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const MachinesPatchMetadataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  app_name: Schema.String.pipe(T.PathParam()),
-  machine_id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "PATCH", path: "/apps/{app_name}/machines/{machine_id}/metadata" }));
+export const MachinesPatchMetadataInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    app_name: Schema.String.pipe(T.PathParam()),
+    machine_id: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/apps/{app_name}/machines/{machine_id}/metadata",
+    }),
+  );
 export type MachinesPatchMetadataInput = typeof MachinesPatchMetadataInput.Type;
 
 // Output Schema
-export const MachinesPatchMetadataOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MachinesPatchMetadataOutput = typeof MachinesPatchMetadataOutput.Type;
+export const MachinesPatchMetadataOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type MachinesPatchMetadataOutput =
+  typeof MachinesPatchMetadataOutput.Type;
 
 // The operation
 /**
@@ -23,7 +31,9 @@ export type MachinesPatchMetadataOutput = typeof MachinesPatchMetadataOutput.Typ
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesPatchMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: MachinesPatchMetadataInput,
-  outputSchema: MachinesPatchMetadataOutput,
-}));
+export const MachinesPatchMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: MachinesPatchMetadataInput,
+    outputSchema: MachinesPatchMetadataOutput,
+  }),
+);

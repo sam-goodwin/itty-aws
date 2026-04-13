@@ -3,15 +3,24 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeferGroupMaintenanceWindowInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/maintenanceWindow/defer" }));
-export type DeferGroupMaintenanceWindowInput = typeof DeferGroupMaintenanceWindowInput.Type;
+export const DeferGroupMaintenanceWindowInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/atlas/v2/groups/{groupId}/maintenanceWindow/defer",
+    }),
+  );
+export type DeferGroupMaintenanceWindowInput =
+  typeof DeferGroupMaintenanceWindowInput.Type;
 
 // Output Schema
-export const DeferGroupMaintenanceWindowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeferGroupMaintenanceWindowOutput = typeof DeferGroupMaintenanceWindowOutput.Type;
+export const DeferGroupMaintenanceWindowOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeferGroupMaintenanceWindowOutput =
+  typeof DeferGroupMaintenanceWindowOutput.Type;
 
 // The operation
 /**
@@ -24,7 +33,9 @@ export type DeferGroupMaintenanceWindowOutput = typeof DeferGroupMaintenanceWind
 
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
-export const deferGroupMaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: DeferGroupMaintenanceWindowInput,
-  outputSchema: DeferGroupMaintenanceWindowOutput,
-}));
+export const deferGroupMaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: DeferGroupMaintenanceWindowInput,
+    outputSchema: DeferGroupMaintenanceWindowOutput,
+  }),
+);

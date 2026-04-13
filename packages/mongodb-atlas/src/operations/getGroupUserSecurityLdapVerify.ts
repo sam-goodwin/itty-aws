@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupUserSecurityLdapVerifyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  requestId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId}" }));
-export type GetGroupUserSecurityLdapVerifyInput = typeof GetGroupUserSecurityLdapVerifyInput.Type;
+export const GetGroupUserSecurityLdapVerifyInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    requestId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId}",
+    }),
+  );
+export type GetGroupUserSecurityLdapVerifyInput =
+  typeof GetGroupUserSecurityLdapVerifyInput.Type;
 
 // Output Schema
-export const GetGroupUserSecurityLdapVerifyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupUserSecurityLdapVerifyOutput = typeof GetGroupUserSecurityLdapVerifyOutput.Type;
+export const GetGroupUserSecurityLdapVerifyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupUserSecurityLdapVerifyOutput =
+  typeof GetGroupUserSecurityLdapVerifyOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,8 @@ export type GetGroupUserSecurityLdapVerifyOutput = typeof GetGroupUserSecurityLd
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param requestId - Unique string that identifies the request to verify an Lightweight Directory Access Protocol (LDAP) configuration.
  */
-export const getGroupUserSecurityLdapVerify = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupUserSecurityLdapVerifyInput,
-  outputSchema: GetGroupUserSecurityLdapVerifyOutput,
-}));
+export const getGroupUserSecurityLdapVerify =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GetGroupUserSecurityLdapVerifyInput,
+    outputSchema: GetGroupUserSecurityLdapVerifyOutput,
+  }));

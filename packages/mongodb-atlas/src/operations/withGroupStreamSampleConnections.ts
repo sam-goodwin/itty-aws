@@ -3,16 +3,25 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const WithGroupStreamSampleConnectionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/streams:withSampleConnections" }));
-export type WithGroupStreamSampleConnectionsInput = typeof WithGroupStreamSampleConnectionsInput.Type;
+export const WithGroupStreamSampleConnectionsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/atlas/v2/groups/{groupId}/streams:withSampleConnections",
+    }),
+  );
+export type WithGroupStreamSampleConnectionsInput =
+  typeof WithGroupStreamSampleConnectionsInput.Type;
 
 // Output Schema
-export const WithGroupStreamSampleConnectionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WithGroupStreamSampleConnectionsOutput = typeof WithGroupStreamSampleConnectionsOutput.Type;
+export const WithGroupStreamSampleConnectionsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type WithGroupStreamSampleConnectionsOutput =
+  typeof WithGroupStreamSampleConnectionsOutput.Type;
 
 // The operation
 /**
@@ -26,7 +35,8 @@ export type WithGroupStreamSampleConnectionsOutput = typeof WithGroupStreamSampl
 
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
-export const withGroupStreamSampleConnections = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: WithGroupStreamSampleConnectionsInput,
-  outputSchema: WithGroupStreamSampleConnectionsOutput,
-}));
+export const withGroupStreamSampleConnections =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: WithGroupStreamSampleConnectionsInput,
+    outputSchema: WithGroupStreamSampleConnectionsOutput,
+  }));

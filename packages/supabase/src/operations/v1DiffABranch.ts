@@ -7,7 +7,9 @@ export const V1DiffABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   branch_id_or_ref: Schema.String.pipe(T.PathParam()),
   included_schemas: Schema.optional(Schema.String),
   pgdelta: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/v1/branches/{branch_id_or_ref}/diff" }));
+}).pipe(
+  T.Http({ method: "GET", path: "/v1/branches/{branch_id_or_ref}/diff" }),
+);
 export type V1DiffABranchInput = typeof V1DiffABranchInput.Type;
 
 // Output Schema

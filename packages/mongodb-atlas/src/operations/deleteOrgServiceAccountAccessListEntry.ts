@@ -3,18 +3,27 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteOrgServiceAccountAccessListEntryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  orgId: Schema.String.pipe(T.PathParam()),
-  clientId: Schema.String.pipe(T.PathParam()),
-  ipAddress: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress}" }));
-export type DeleteOrgServiceAccountAccessListEntryInput = typeof DeleteOrgServiceAccountAccessListEntryInput.Type;
+export const DeleteOrgServiceAccountAccessListEntryInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orgId: Schema.String.pipe(T.PathParam()),
+    clientId: Schema.String.pipe(T.PathParam()),
+    ipAddress: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress}",
+    }),
+  );
+export type DeleteOrgServiceAccountAccessListEntryInput =
+  typeof DeleteOrgServiceAccountAccessListEntryInput.Type;
 
 // Output Schema
-export const DeleteOrgServiceAccountAccessListEntryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteOrgServiceAccountAccessListEntryOutput = typeof DeleteOrgServiceAccountAccessListEntryOutput.Type;
+export const DeleteOrgServiceAccountAccessListEntryOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteOrgServiceAccountAccessListEntryOutput =
+  typeof DeleteOrgServiceAccountAccessListEntryOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,8 @@ export type DeleteOrgServiceAccountAccessListEntryOutput = typeof DeleteOrgServi
  * @param clientId - The Client ID of the Service Account.
  * @param ipAddress - One IP address or multiple IP addresses represented as one CIDR block. When specifying a CIDR block with a subnet mask, such as 192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
  */
-export const deleteOrgServiceAccountAccessListEntry = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: DeleteOrgServiceAccountAccessListEntryInput,
-  outputSchema: DeleteOrgServiceAccountAccessListEntryOutput,
-}));
+export const deleteOrgServiceAccountAccessListEntry =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: DeleteOrgServiceAccountAccessListEntryInput,
+    outputSchema: DeleteOrgServiceAccountAccessListEntryOutput,
+  }));

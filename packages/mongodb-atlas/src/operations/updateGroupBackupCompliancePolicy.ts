@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateGroupBackupCompliancePolicyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  overwriteBackupPolicies: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "PUT", path: "/api/atlas/v2/groups/{groupId}/backupCompliancePolicy" }));
-export type UpdateGroupBackupCompliancePolicyInput = typeof UpdateGroupBackupCompliancePolicyInput.Type;
+export const UpdateGroupBackupCompliancePolicyInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    overwriteBackupPolicies: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/api/atlas/v2/groups/{groupId}/backupCompliancePolicy",
+    }),
+  );
+export type UpdateGroupBackupCompliancePolicyInput =
+  typeof UpdateGroupBackupCompliancePolicyInput.Type;
 
 // Output Schema
-export const UpdateGroupBackupCompliancePolicyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupBackupCompliancePolicyOutput = typeof UpdateGroupBackupCompliancePolicyOutput.Type;
+export const UpdateGroupBackupCompliancePolicyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateGroupBackupCompliancePolicyOutput =
+  typeof UpdateGroupBackupCompliancePolicyOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,8 @@ export type UpdateGroupBackupCompliancePolicyOutput = typeof UpdateGroupBackupCo
  * @param overwriteBackupPolicies - Flag that indicates whether to overwrite non complying backup policies with the new data protection settings or not.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const updateGroupBackupCompliancePolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: UpdateGroupBackupCompliancePolicyInput,
-  outputSchema: UpdateGroupBackupCompliancePolicyOutput,
-}));
+export const updateGroupBackupCompliancePolicy =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: UpdateGroupBackupCompliancePolicyInput,
+    outputSchema: UpdateGroupBackupCompliancePolicyOutput,
+  }));

@@ -3,19 +3,28 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupClusterPerformanceAdvisorSuggestedIndexesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  processIds: Schema.optional(Schema.String),
-  namespaces: Schema.optional(Schema.String),
-  since: Schema.optional(Schema.Number),
-  until: Schema.optional(Schema.Number),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/suggestedIndexes" }));
-export type ListGroupClusterPerformanceAdvisorSuggestedIndexesInput = typeof ListGroupClusterPerformanceAdvisorSuggestedIndexesInput.Type;
+export const ListGroupClusterPerformanceAdvisorSuggestedIndexesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    processIds: Schema.optional(Schema.String),
+    namespaces: Schema.optional(Schema.String),
+    since: Schema.optional(Schema.Number),
+    until: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/suggestedIndexes",
+    }),
+  );
+export type ListGroupClusterPerformanceAdvisorSuggestedIndexesInput =
+  typeof ListGroupClusterPerformanceAdvisorSuggestedIndexesInput.Type;
 
 // Output Schema
-export const ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput = typeof ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput.Type;
+export const ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput =
+  typeof ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput.Type;
 
 // The operation
 /**
@@ -38,7 +47,8 @@ export type ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput = typeof Li
 - If you specify the **until** parameter, you must specify the **since** parameter.
 - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours.
  */
-export const listGroupClusterPerformanceAdvisorSuggestedIndexes = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListGroupClusterPerformanceAdvisorSuggestedIndexesInput,
-  outputSchema: ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput,
-}));
+export const listGroupClusterPerformanceAdvisorSuggestedIndexes =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ListGroupClusterPerformanceAdvisorSuggestedIndexesInput,
+    outputSchema: ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput,
+  }));

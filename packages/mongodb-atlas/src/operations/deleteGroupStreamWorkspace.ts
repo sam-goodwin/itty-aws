@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupStreamWorkspaceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  tenantName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}" }));
-export type DeleteGroupStreamWorkspaceInput = typeof DeleteGroupStreamWorkspaceInput.Type;
+export const DeleteGroupStreamWorkspaceInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    tenantName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}",
+    }),
+  );
+export type DeleteGroupStreamWorkspaceInput =
+  typeof DeleteGroupStreamWorkspaceInput.Type;
 
 // Output Schema
-export const DeleteGroupStreamWorkspaceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupStreamWorkspaceOutput = typeof DeleteGroupStreamWorkspaceOutput.Type;
+export const DeleteGroupStreamWorkspaceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupStreamWorkspaceOutput =
+  typeof DeleteGroupStreamWorkspaceOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,9 @@ export type DeleteGroupStreamWorkspaceOutput = typeof DeleteGroupStreamWorkspace
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param tenantName - Label that identifies the stream workspace to delete.
  */
-export const deleteGroupStreamWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: DeleteGroupStreamWorkspaceInput,
-  outputSchema: DeleteGroupStreamWorkspaceOutput,
-}));
+export const deleteGroupStreamWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: DeleteGroupStreamWorkspaceInput,
+    outputSchema: DeleteGroupStreamWorkspaceOutput,
+  }),
+);

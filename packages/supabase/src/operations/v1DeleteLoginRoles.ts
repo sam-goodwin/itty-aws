@@ -3,15 +3,19 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const V1DeleteLoginRolesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  ref: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/v1/projects/{ref}/cli/login-role" }));
+export const V1DeleteLoginRolesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ref: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/v1/projects/{ref}/cli/login-role" }),
+  );
 export type V1DeleteLoginRolesInput = typeof V1DeleteLoginRolesInput.Type;
 
 // Output Schema
-export const V1DeleteLoginRolesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  message: Schema.Literals(["ok"]),
-});
+export const V1DeleteLoginRolesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.Literals(["ok"]),
+  });
 export type V1DeleteLoginRolesOutput = typeof V1DeleteLoginRolesOutput.Type;
 
 // The operation

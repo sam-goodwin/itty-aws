@@ -4,11 +4,30 @@ import * as T from "../traits";
 
 // Input Schema
 export const DeleteGroupLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  limitName: Schema.Literals(["atlas.project.security.databaseAccess.users", "atlas.project.deployment.clusters", "atlas.project.deployment.serverlessMTMs", "atlas.project.security.databaseAccess.customRoles", "atlas.project.security.networkAccess.entries", "atlas.project.security.networkAccess.crossRegionEntries", "atlas.project.deployment.nodesPerPrivateLinkRegion", "dataFederation.bytesProcessed.query", "dataFederation.bytesProcessed.daily", "dataFederation.bytesProcessed.weekly", "dataFederation.bytesProcessed.monthly", "atlas.project.deployment.privateServiceConnectionsPerRegionGroup", "atlas.project.deployment.privateServiceConnectionsSubnetMask"]).pipe(T.PathParam()),
+  limitName: Schema.Literals([
+    "atlas.project.security.databaseAccess.users",
+    "atlas.project.deployment.clusters",
+    "atlas.project.deployment.serverlessMTMs",
+    "atlas.project.security.databaseAccess.customRoles",
+    "atlas.project.security.networkAccess.entries",
+    "atlas.project.security.networkAccess.crossRegionEntries",
+    "atlas.project.deployment.nodesPerPrivateLinkRegion",
+    "dataFederation.bytesProcessed.query",
+    "dataFederation.bytesProcessed.daily",
+    "dataFederation.bytesProcessed.weekly",
+    "dataFederation.bytesProcessed.monthly",
+    "atlas.project.deployment.privateServiceConnectionsPerRegionGroup",
+    "atlas.project.deployment.privateServiceConnectionsSubnetMask",
+  ]).pipe(T.PathParam()),
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/limits/{limitName}" }));
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/atlas/v2/groups/{groupId}/limits/{limitName}",
+  }),
+);
 export type DeleteGroupLimitInput = typeof DeleteGroupLimitInput.Type;
 
 // Output Schema

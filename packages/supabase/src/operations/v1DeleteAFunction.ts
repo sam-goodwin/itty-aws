@@ -3,10 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const V1DeleteAFunctionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  ref: Schema.String.pipe(T.PathParam()),
-  function_slug: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/v1/projects/{ref}/functions/{function_slug}" }));
+export const V1DeleteAFunctionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    ref: Schema.String.pipe(T.PathParam()),
+    function_slug: Schema.String.pipe(T.PathParam()),
+  },
+).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/v1/projects/{ref}/functions/{function_slug}",
+  }),
+);
 export type V1DeleteAFunctionInput = typeof V1DeleteAFunctionInput.Type;
 
 // Output Schema

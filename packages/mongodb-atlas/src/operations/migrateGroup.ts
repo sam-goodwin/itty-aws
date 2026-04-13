@@ -6,7 +6,9 @@ import * as T from "../traits";
 export const MigrateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}:migrate" }));
+}).pipe(
+  T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}:migrate" }),
+);
 export type MigrateGroupInput = typeof MigrateGroupInput.Type;
 
 // Output Schema

@@ -3,16 +3,25 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateGroupAlertConfigInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/alertConfigs" }));
-export type CreateGroupAlertConfigInput = typeof CreateGroupAlertConfigInput.Type;
+export const CreateGroupAlertConfigInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/atlas/v2/groups/{groupId}/alertConfigs",
+    }),
+  );
+export type CreateGroupAlertConfigInput =
+  typeof CreateGroupAlertConfigInput.Type;
 
 // Output Schema
-export const CreateGroupAlertConfigOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupAlertConfigOutput = typeof CreateGroupAlertConfigOutput.Type;
+export const CreateGroupAlertConfigOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CreateGroupAlertConfigOutput =
+  typeof CreateGroupAlertConfigOutput.Type;
 
 // The operation
 /**
@@ -27,7 +36,9 @@ export type CreateGroupAlertConfigOutput = typeof CreateGroupAlertConfigOutput.T
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupAlertConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: CreateGroupAlertConfigInput,
-  outputSchema: CreateGroupAlertConfigOutput,
-}));
+export const createGroupAlertConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: CreateGroupAlertConfigInput,
+    outputSchema: CreateGroupAlertConfigOutput,
+  }),
+);

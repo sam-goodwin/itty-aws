@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateGroupClusterGlobalWriteCustomZoneMappingInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping" }));
-export type CreateGroupClusterGlobalWriteCustomZoneMappingInput = typeof CreateGroupClusterGlobalWriteCustomZoneMappingInput.Type;
+export const CreateGroupClusterGlobalWriteCustomZoneMappingInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping",
+    }),
+  );
+export type CreateGroupClusterGlobalWriteCustomZoneMappingInput =
+  typeof CreateGroupClusterGlobalWriteCustomZoneMappingInput.Type;
 
 // Output Schema
-export const CreateGroupClusterGlobalWriteCustomZoneMappingOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupClusterGlobalWriteCustomZoneMappingOutput = typeof CreateGroupClusterGlobalWriteCustomZoneMappingOutput.Type;
+export const CreateGroupClusterGlobalWriteCustomZoneMappingOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CreateGroupClusterGlobalWriteCustomZoneMappingOutput =
+  typeof CreateGroupClusterGlobalWriteCustomZoneMappingOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,8 @@ export type CreateGroupClusterGlobalWriteCustomZoneMappingOutput = typeof Create
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param clusterName - Human-readable label that identifies this cluster.
  */
-export const createGroupClusterGlobalWriteCustomZoneMapping = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: CreateGroupClusterGlobalWriteCustomZoneMappingInput,
-  outputSchema: CreateGroupClusterGlobalWriteCustomZoneMappingOutput,
-}));
+export const createGroupClusterGlobalWriteCustomZoneMapping =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CreateGroupClusterGlobalWriteCustomZoneMappingInput,
+    outputSchema: CreateGroupClusterGlobalWriteCustomZoneMappingOutput,
+  }));

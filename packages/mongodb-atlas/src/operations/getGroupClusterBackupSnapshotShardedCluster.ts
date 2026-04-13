@@ -3,18 +3,27 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupClusterBackupSnapshotShardedClusterInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  snapshotId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId}" }));
-export type GetGroupClusterBackupSnapshotShardedClusterInput = typeof GetGroupClusterBackupSnapshotShardedClusterInput.Type;
+export const GetGroupClusterBackupSnapshotShardedClusterInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    snapshotId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId}",
+    }),
+  );
+export type GetGroupClusterBackupSnapshotShardedClusterInput =
+  typeof GetGroupClusterBackupSnapshotShardedClusterInput.Type;
 
 // Output Schema
-export const GetGroupClusterBackupSnapshotShardedClusterOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupClusterBackupSnapshotShardedClusterOutput = typeof GetGroupClusterBackupSnapshotShardedClusterOutput.Type;
+export const GetGroupClusterBackupSnapshotShardedClusterOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupClusterBackupSnapshotShardedClusterOutput =
+  typeof GetGroupClusterBackupSnapshotShardedClusterOutput.Type;
 
 // The operation
 /**
@@ -30,7 +39,8 @@ export type GetGroupClusterBackupSnapshotShardedClusterOutput = typeof GetGroupC
  * @param clusterName - Human-readable label that identifies the cluster.
  * @param snapshotId - Unique 24-hexadecimal digit string that identifies the desired snapshot.
  */
-export const getGroupClusterBackupSnapshotShardedCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupClusterBackupSnapshotShardedClusterInput,
-  outputSchema: GetGroupClusterBackupSnapshotShardedClusterOutput,
-}));
+export const getGroupClusterBackupSnapshotShardedCluster =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GetGroupClusterBackupSnapshotShardedClusterInput,
+    outputSchema: GetGroupClusterBackupSnapshotShardedClusterOutput,
+  }));

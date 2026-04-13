@@ -8,7 +8,12 @@ export const RemoveOrgUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   userId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/orgs/{orgId}/users/{userId}" }));
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/atlas/v2/orgs/{orgId}/users/{userId}",
+  }),
+);
 export type RemoveOrgUserInput = typeof RemoveOrgUserInput.Type;
 
 // Output Schema

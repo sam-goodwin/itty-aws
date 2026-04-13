@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupClusterProcessArgsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs" }));
-export type GetGroupClusterProcessArgsInput = typeof GetGroupClusterProcessArgsInput.Type;
+export const GetGroupClusterProcessArgsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs",
+    }),
+  );
+export type GetGroupClusterProcessArgsInput =
+  typeof GetGroupClusterProcessArgsInput.Type;
 
 // Output Schema
-export const GetGroupClusterProcessArgsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupClusterProcessArgsOutput = typeof GetGroupClusterProcessArgsOutput.Type;
+export const GetGroupClusterProcessArgsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupClusterProcessArgsOutput =
+  typeof GetGroupClusterProcessArgsOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,9 @@ export type GetGroupClusterProcessArgsOutput = typeof GetGroupClusterProcessArgs
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Human-readable label that identifies the cluster.
  */
-export const getGroupClusterProcessArgs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupClusterProcessArgsInput,
-  outputSchema: GetGroupClusterProcessArgsOutput,
-}));
+export const getGroupClusterProcessArgs = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: GetGroupClusterProcessArgsInput,
+    outputSchema: GetGroupClusterProcessArgsOutput,
+  }),
+);

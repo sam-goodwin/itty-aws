@@ -3,20 +3,29 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupLogIntegrationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  includeCount: Schema.optional(Schema.Boolean),
-  itemsPerPage: Schema.optional(Schema.Number),
-  pageNum: Schema.optional(Schema.Number),
-  pretty: Schema.optional(Schema.Boolean),
-  integrationType: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/logIntegrations" }));
-export type ListGroupLogIntegrationsInput = typeof ListGroupLogIntegrationsInput.Type;
+export const ListGroupLogIntegrationsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    includeCount: Schema.optional(Schema.Boolean),
+    itemsPerPage: Schema.optional(Schema.Number),
+    pageNum: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.Boolean),
+    integrationType: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/logIntegrations",
+    }),
+  );
+export type ListGroupLogIntegrationsInput =
+  typeof ListGroupLogIntegrationsInput.Type;
 
 // Output Schema
-export const ListGroupLogIntegrationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupLogIntegrationsOutput = typeof ListGroupLogIntegrationsOutput.Type;
+export const ListGroupLogIntegrationsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupLogIntegrationsOutput =
+  typeof ListGroupLogIntegrationsOutput.Type;
 
 // The operation
 /**
@@ -34,7 +43,9 @@ export type ListGroupLogIntegrationsOutput = typeof ListGroupLogIntegrationsOutp
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param integrationType - Optional filter by integration type (e.g., `S3_LOG_EXPORT`).
  */
-export const listGroupLogIntegrations = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListGroupLogIntegrationsInput,
-  outputSchema: ListGroupLogIntegrationsOutput,
-}));
+export const listGroupLogIntegrations = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ListGroupLogIntegrationsInput,
+    outputSchema: ListGroupLogIntegrationsOutput,
+  }),
+);

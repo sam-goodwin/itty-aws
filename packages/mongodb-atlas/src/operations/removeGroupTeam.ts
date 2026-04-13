@@ -7,7 +7,12 @@ export const RemoveGroupTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   teamId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/teams/{teamId}" }));
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/api/atlas/v2/groups/{groupId}/teams/{teamId}",
+  }),
+);
 export type RemoveGroupTeamInput = typeof RemoveGroupTeamInput.Type;
 
 // Output Schema

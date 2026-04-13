@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupCustomDbRoleRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  roleName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}" }));
-export type DeleteGroupCustomDbRoleRoleInput = typeof DeleteGroupCustomDbRoleRoleInput.Type;
+export const DeleteGroupCustomDbRoleRoleInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    roleName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}",
+    }),
+  );
+export type DeleteGroupCustomDbRoleRoleInput =
+  typeof DeleteGroupCustomDbRoleRoleInput.Type;
 
 // Output Schema
-export const DeleteGroupCustomDbRoleRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupCustomDbRoleRoleOutput = typeof DeleteGroupCustomDbRoleRoleOutput.Type;
+export const DeleteGroupCustomDbRoleRoleOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupCustomDbRoleRoleOutput =
+  typeof DeleteGroupCustomDbRoleRoleOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,9 @@ export type DeleteGroupCustomDbRoleRoleOutput = typeof DeleteGroupCustomDbRoleRo
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param roleName - Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
  */
-export const deleteGroupCustomDbRoleRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: DeleteGroupCustomDbRoleRoleInput,
-  outputSchema: DeleteGroupCustomDbRoleRoleOutput,
-}));
+export const deleteGroupCustomDbRoleRole = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: DeleteGroupCustomDbRoleRoleInput,
+    outputSchema: DeleteGroupCustomDbRoleRoleOutput,
+  }),
+);

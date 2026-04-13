@@ -6,7 +6,12 @@ import * as T from "../traits";
 export const DeleteDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/v1/organizations/{organizationSlug}/databases/{databaseName}" }));
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/v1/organizations/{organizationSlug}/databases/{databaseName}",
+  }),
+);
 export type DeleteDatabaseInput = typeof DeleteDatabaseInput.Type;
 
 // Output Schema

@@ -3,9 +3,9 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListLocationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-
-}).pipe(T.Http({ method: "GET", path: "/v1/locations" }));
+export const ListLocationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).pipe(T.Http({ method: "GET", path: "/v1/locations" }));
 export type ListLocationsInput = typeof ListLocationsInput.Type;
 
 // Output Schema

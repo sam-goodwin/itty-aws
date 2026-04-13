@@ -3,20 +3,29 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateGroupClusterSearchIndexByNameInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  collectionName: Schema.String.pipe(T.PathParam()),
-  databaseName: Schema.String.pipe(T.PathParam()),
-  indexName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName}" }));
-export type UpdateGroupClusterSearchIndexByNameInput = typeof UpdateGroupClusterSearchIndexByNameInput.Type;
+export const UpdateGroupClusterSearchIndexByNameInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    collectionName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    indexName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName}",
+    }),
+  );
+export type UpdateGroupClusterSearchIndexByNameInput =
+  typeof UpdateGroupClusterSearchIndexByNameInput.Type;
 
 // Output Schema
-export const UpdateGroupClusterSearchIndexByNameOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupClusterSearchIndexByNameOutput = typeof UpdateGroupClusterSearchIndexByNameOutput.Type;
+export const UpdateGroupClusterSearchIndexByNameOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateGroupClusterSearchIndexByNameOutput =
+  typeof UpdateGroupClusterSearchIndexByNameOutput.Type;
 
 // The operation
 /**
@@ -34,7 +43,8 @@ export type UpdateGroupClusterSearchIndexByNameOutput = typeof UpdateGroupCluste
  * @param databaseName - Label that identifies the database that contains the collection with one or more Atlas Search indexes.
  * @param indexName - Name of the Atlas Search index to update.
  */
-export const updateGroupClusterSearchIndexByName = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: UpdateGroupClusterSearchIndexByNameInput,
-  outputSchema: UpdateGroupClusterSearchIndexByNameOutput,
-}));
+export const updateGroupClusterSearchIndexByName =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: UpdateGroupClusterSearchIndexByNameInput,
+    outputSchema: UpdateGroupClusterSearchIndexByNameOutput,
+  }));

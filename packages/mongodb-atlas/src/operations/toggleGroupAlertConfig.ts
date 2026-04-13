@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ToggleGroupAlertConfigInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  alertConfigId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}" }));
-export type ToggleGroupAlertConfigInput = typeof ToggleGroupAlertConfigInput.Type;
+export const ToggleGroupAlertConfigInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    alertConfigId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}",
+    }),
+  );
+export type ToggleGroupAlertConfigInput =
+  typeof ToggleGroupAlertConfigInput.Type;
 
 // Output Schema
-export const ToggleGroupAlertConfigOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ToggleGroupAlertConfigOutput = typeof ToggleGroupAlertConfigOutput.Type;
+export const ToggleGroupAlertConfigOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ToggleGroupAlertConfigOutput =
+  typeof ToggleGroupAlertConfigOutput.Type;
 
 // The operation
 /**
@@ -30,7 +39,9 @@ export type ToggleGroupAlertConfigOutput = typeof ToggleGroupAlertConfigOutput.T
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param alertConfigId - Unique 24-hexadecimal digit string that identifies the alert configuration that triggered this alert.
  */
-export const toggleGroupAlertConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ToggleGroupAlertConfigInput,
-  outputSchema: ToggleGroupAlertConfigOutput,
-}));
+export const toggleGroupAlertConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ToggleGroupAlertConfigInput,
+    outputSchema: ToggleGroupAlertConfigOutput,
+  }),
+);

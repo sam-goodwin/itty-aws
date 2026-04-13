@@ -3,18 +3,27 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateGroupDataFederationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  tenantName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-  skipRoleValidation: Schema.Boolean,
-}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}" }));
-export type UpdateGroupDataFederationInput = typeof UpdateGroupDataFederationInput.Type;
+export const UpdateGroupDataFederationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    tenantName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+    skipRoleValidation: Schema.Boolean,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}",
+    }),
+  );
+export type UpdateGroupDataFederationInput =
+  typeof UpdateGroupDataFederationInput.Type;
 
 // Output Schema
-export const UpdateGroupDataFederationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupDataFederationOutput = typeof UpdateGroupDataFederationOutput.Type;
+export const UpdateGroupDataFederationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateGroupDataFederationOutput =
+  typeof UpdateGroupDataFederationOutput.Type;
 
 // The operation
 /**
@@ -30,7 +39,9 @@ export type UpdateGroupDataFederationOutput = typeof UpdateGroupDataFederationOu
  * @param tenantName - Human-readable label that identifies the federated database instance to update.
  * @param skipRoleValidation - Flag that indicates whether this request should check if the requesting IAM role can read from the S3 bucket. AWS checks if the role can list the objects in the bucket before writing to it. Some IAM roles only need write permissions. This flag allows you to skip that check.
  */
-export const updateGroupDataFederation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: UpdateGroupDataFederationInput,
-  outputSchema: UpdateGroupDataFederationOutput,
-}));
+export const updateGroupDataFederation = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: UpdateGroupDataFederationInput,
+    outputSchema: UpdateGroupDataFederationOutput,
+  }),
+);

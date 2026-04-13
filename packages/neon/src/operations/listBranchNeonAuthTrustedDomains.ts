@@ -3,20 +3,36 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListBranchNeonAuthTrustedDomainsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  project_id: Schema.String.pipe(T.PathParam()),
-  branch_id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/projects/{project_id}/branches/{branch_id}/auth/domains" }));
-export type ListBranchNeonAuthTrustedDomainsInput = typeof ListBranchNeonAuthTrustedDomainsInput.Type;
+export const ListBranchNeonAuthTrustedDomainsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project_id: Schema.String.pipe(T.PathParam()),
+    branch_id: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/projects/{project_id}/branches/{branch_id}/auth/domains",
+    }),
+  );
+export type ListBranchNeonAuthTrustedDomainsInput =
+  typeof ListBranchNeonAuthTrustedDomainsInput.Type;
 
 // Output Schema
-export const ListBranchNeonAuthTrustedDomainsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  domains: Schema.Array(Schema.Struct({
-    domain: Schema.String,
-    auth_provider: Schema.Literals(["mock", "stack", "stack_v2", "better_auth"]),
-  })),
-});
-export type ListBranchNeonAuthTrustedDomainsOutput = typeof ListBranchNeonAuthTrustedDomainsOutput.Type;
+export const ListBranchNeonAuthTrustedDomainsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domains: Schema.Array(
+      Schema.Struct({
+        domain: Schema.String,
+        auth_provider: Schema.Literals([
+          "mock",
+          "stack",
+          "stack_v2",
+          "better_auth",
+        ]),
+      }),
+    ),
+  });
+export type ListBranchNeonAuthTrustedDomainsOutput =
+  typeof ListBranchNeonAuthTrustedDomainsOutput.Type;
 
 // The operation
 /**
@@ -27,7 +43,8 @@ export type ListBranchNeonAuthTrustedDomainsOutput = typeof ListBranchNeonAuthTr
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const listBranchNeonAuthTrustedDomains = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListBranchNeonAuthTrustedDomainsInput,
-  outputSchema: ListBranchNeonAuthTrustedDomainsOutput,
-}));
+export const listBranchNeonAuthTrustedDomains =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ListBranchNeonAuthTrustedDomainsInput,
+    outputSchema: ListBranchNeonAuthTrustedDomainsOutput,
+  }));

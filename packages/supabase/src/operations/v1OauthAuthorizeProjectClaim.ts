@@ -3,21 +3,27 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const V1OauthAuthorizeProjectClaimInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  project_ref: Schema.String,
-  client_id: Schema.String,
-  response_type: Schema.Literals(["code", "token", "id_token token"]),
-  redirect_uri: Schema.String,
-  state: Schema.optional(Schema.String),
-  response_mode: Schema.optional(Schema.String),
-  code_challenge: Schema.optional(Schema.String),
-  code_challenge_method: Schema.optional(Schema.Literals(["plain", "sha256", "S256"])),
-}).pipe(T.Http({ method: "GET", path: "/v1/oauth/authorize/project-claim" }));
-export type V1OauthAuthorizeProjectClaimInput = typeof V1OauthAuthorizeProjectClaimInput.Type;
+export const V1OauthAuthorizeProjectClaimInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project_ref: Schema.String,
+    client_id: Schema.String,
+    response_type: Schema.Literals(["code", "token", "id_token token"]),
+    redirect_uri: Schema.String,
+    state: Schema.optional(Schema.String),
+    response_mode: Schema.optional(Schema.String),
+    code_challenge: Schema.optional(Schema.String),
+    code_challenge_method: Schema.optional(
+      Schema.Literals(["plain", "sha256", "S256"]),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/v1/oauth/authorize/project-claim" }));
+export type V1OauthAuthorizeProjectClaimInput =
+  typeof V1OauthAuthorizeProjectClaimInput.Type;
 
 // Output Schema
-export const V1OauthAuthorizeProjectClaimOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1OauthAuthorizeProjectClaimOutput = typeof V1OauthAuthorizeProjectClaimOutput.Type;
+export const V1OauthAuthorizeProjectClaimOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type V1OauthAuthorizeProjectClaimOutput =
+  typeof V1OauthAuthorizeProjectClaimOutput.Type;
 
 // The operation
 /**
@@ -27,7 +33,8 @@ export type V1OauthAuthorizeProjectClaimOutput = typeof V1OauthAuthorizeProjectC
  *
  * @param project_ref - Project ref
  */
-export const v1OauthAuthorizeProjectClaim = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: V1OauthAuthorizeProjectClaimInput,
-  outputSchema: V1OauthAuthorizeProjectClaimOutput,
-}));
+export const v1OauthAuthorizeProjectClaim =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: V1OauthAuthorizeProjectClaimInput,
+    outputSchema: V1OauthAuthorizeProjectClaimOutput,
+  }));

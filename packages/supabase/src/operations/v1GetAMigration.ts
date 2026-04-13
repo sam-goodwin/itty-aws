@@ -6,7 +6,12 @@ import * as T from "../traits";
 export const V1GetAMigrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   version: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/database/migrations/{version}" }));
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/v1/projects/{ref}/database/migrations/{version}",
+  }),
+);
 export type V1GetAMigrationInput = typeof V1GetAMigrationInput.Type;
 
 // Output Schema

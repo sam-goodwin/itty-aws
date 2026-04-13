@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const RevokeGroupClusterMongoDbEmployeeAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess" }));
-export type RevokeGroupClusterMongoDbEmployeeAccessInput = typeof RevokeGroupClusterMongoDbEmployeeAccessInput.Type;
+export const RevokeGroupClusterMongoDbEmployeeAccessInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess",
+    }),
+  );
+export type RevokeGroupClusterMongoDbEmployeeAccessInput =
+  typeof RevokeGroupClusterMongoDbEmployeeAccessInput.Type;
 
 // Output Schema
-export const RevokeGroupClusterMongoDbEmployeeAccessOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RevokeGroupClusterMongoDbEmployeeAccessOutput = typeof RevokeGroupClusterMongoDbEmployeeAccessOutput.Type;
+export const RevokeGroupClusterMongoDbEmployeeAccessOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type RevokeGroupClusterMongoDbEmployeeAccessOutput =
+  typeof RevokeGroupClusterMongoDbEmployeeAccessOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,8 @@ export type RevokeGroupClusterMongoDbEmployeeAccessOutput = typeof RevokeGroupCl
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param clusterName - Human-readable label that identifies this cluster.
  */
-export const revokeGroupClusterMongoDbEmployeeAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: RevokeGroupClusterMongoDbEmployeeAccessInput,
-  outputSchema: RevokeGroupClusterMongoDbEmployeeAccessOutput,
-}));
+export const revokeGroupClusterMongoDbEmployeeAccess =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: RevokeGroupClusterMongoDbEmployeeAccessInput,
+    outputSchema: RevokeGroupClusterMongoDbEmployeeAccessOutput,
+  }));

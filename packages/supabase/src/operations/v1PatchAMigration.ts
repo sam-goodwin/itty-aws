@@ -3,12 +3,19 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const V1PatchAMigrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  ref: Schema.String.pipe(T.PathParam()),
-  version: Schema.String.pipe(T.PathParam()),
-  name: Schema.optional(Schema.String),
-  rollback: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "PATCH", path: "/v1/projects/{ref}/database/migrations/{version}" }));
+export const V1PatchAMigrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    ref: Schema.String.pipe(T.PathParam()),
+    version: Schema.String.pipe(T.PathParam()),
+    name: Schema.optional(Schema.String),
+    rollback: Schema.optional(Schema.String),
+  },
+).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/v1/projects/{ref}/database/migrations/{version}",
+  }),
+);
 export type V1PatchAMigrationInput = typeof V1PatchAMigrationInput.Type;
 
 // Output Schema

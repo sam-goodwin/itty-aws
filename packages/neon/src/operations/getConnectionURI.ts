@@ -10,13 +10,17 @@ export const GetConnectionURIInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   database_name: Schema.String,
   role_name: Schema.String,
   pooled: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/projects/{project_id}/connection_uri" }));
+}).pipe(
+  T.Http({ method: "GET", path: "/projects/{project_id}/connection_uri" }),
+);
 export type GetConnectionURIInput = typeof GetConnectionURIInput.Type;
 
 // Output Schema
-export const GetConnectionURIOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  uri: Schema.String,
-});
+export const GetConnectionURIOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    uri: Schema.String,
+  },
+);
 export type GetConnectionURIOutput = typeof GetConnectionURIOutput.Type;
 
 // The operation

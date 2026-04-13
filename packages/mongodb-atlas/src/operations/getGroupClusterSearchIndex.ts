@@ -3,18 +3,27 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupClusterSearchIndexInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  indexId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId}" }));
-export type GetGroupClusterSearchIndexInput = typeof GetGroupClusterSearchIndexInput.Type;
+export const GetGroupClusterSearchIndexInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    indexId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId}",
+    }),
+  );
+export type GetGroupClusterSearchIndexInput =
+  typeof GetGroupClusterSearchIndexInput.Type;
 
 // Output Schema
-export const GetGroupClusterSearchIndexOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupClusterSearchIndexOutput = typeof GetGroupClusterSearchIndexOutput.Type;
+export const GetGroupClusterSearchIndexOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupClusterSearchIndexOutput =
+  typeof GetGroupClusterSearchIndexOutput.Type;
 
 // The operation
 /**
@@ -30,7 +39,9 @@ export type GetGroupClusterSearchIndexOutput = typeof GetGroupClusterSearchIndex
  * @param clusterName - Name of the cluster that contains the collection with one or more Atlas Search indexes.
  * @param indexId - Unique 24-hexadecimal digit string that identifies the Application Search [index](https://dochub.mongodb.org/core/index-definitions-fts). Use the [Get All Application Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/) endpoint to find the IDs of all Application Search indexes.
  */
-export const getGroupClusterSearchIndex = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupClusterSearchIndexInput,
-  outputSchema: GetGroupClusterSearchIndexOutput,
-}));
+export const getGroupClusterSearchIndex = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: GetGroupClusterSearchIndexInput,
+    outputSchema: GetGroupClusterSearchIndexOutput,
+  }),
+);

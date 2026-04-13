@@ -3,20 +3,29 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupClusterSearchIndexByNameInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  collectionName: Schema.String.pipe(T.PathParam()),
-  databaseName: Schema.String.pipe(T.PathParam()),
-  indexName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName}" }));
-export type DeleteGroupClusterSearchIndexByNameInput = typeof DeleteGroupClusterSearchIndexByNameInput.Type;
+export const DeleteGroupClusterSearchIndexByNameInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    collectionName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    indexName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName}",
+    }),
+  );
+export type DeleteGroupClusterSearchIndexByNameInput =
+  typeof DeleteGroupClusterSearchIndexByNameInput.Type;
 
 // Output Schema
-export const DeleteGroupClusterSearchIndexByNameOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupClusterSearchIndexByNameOutput = typeof DeleteGroupClusterSearchIndexByNameOutput.Type;
+export const DeleteGroupClusterSearchIndexByNameOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupClusterSearchIndexByNameOutput =
+  typeof DeleteGroupClusterSearchIndexByNameOutput.Type;
 
 // The operation
 /**
@@ -34,7 +43,8 @@ export type DeleteGroupClusterSearchIndexByNameOutput = typeof DeleteGroupCluste
  * @param databaseName - Label that identifies the database that contains the collection with one or more Atlas Search indexes.
  * @param indexName - Name of the Atlas Search index to delete.
  */
-export const deleteGroupClusterSearchIndexByName = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: DeleteGroupClusterSearchIndexByNameInput,
-  outputSchema: DeleteGroupClusterSearchIndexByNameOutput,
-}));
+export const deleteGroupClusterSearchIndexByName =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: DeleteGroupClusterSearchIndexByNameInput,
+    outputSchema: DeleteGroupClusterSearchIndexByNameOutput,
+  }));

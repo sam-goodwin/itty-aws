@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupClusterSearchIndexesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes" }));
-export type ListGroupClusterSearchIndexesInput = typeof ListGroupClusterSearchIndexesInput.Type;
+export const ListGroupClusterSearchIndexesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes",
+    }),
+  );
+export type ListGroupClusterSearchIndexesInput =
+  typeof ListGroupClusterSearchIndexesInput.Type;
 
 // Output Schema
-export const ListGroupClusterSearchIndexesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterSearchIndexesOutput = typeof ListGroupClusterSearchIndexesOutput.Type;
+export const ListGroupClusterSearchIndexesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupClusterSearchIndexesOutput =
+  typeof ListGroupClusterSearchIndexesOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,8 @@ export type ListGroupClusterSearchIndexesOutput = typeof ListGroupClusterSearchI
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Name of the cluster that contains the collection with one or more Atlas Search indexes.
  */
-export const listGroupClusterSearchIndexes = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListGroupClusterSearchIndexesInput,
-  outputSchema: ListGroupClusterSearchIndexesOutput,
-}));
+export const listGroupClusterSearchIndexes =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ListGroupClusterSearchIndexesInput,
+    outputSchema: ListGroupClusterSearchIndexesOutput,
+  }));

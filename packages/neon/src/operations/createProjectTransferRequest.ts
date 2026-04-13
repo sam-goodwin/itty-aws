@@ -3,20 +3,29 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateProjectTransferRequestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  project_id: Schema.String.pipe(T.PathParam()),
-  ttl_seconds: Schema.optional(Schema.Number),
-}).pipe(T.Http({ method: "POST", path: "/projects/{project_id}/transfer_requests" }));
-export type CreateProjectTransferRequestInput = typeof CreateProjectTransferRequestInput.Type;
+export const CreateProjectTransferRequestInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project_id: Schema.String.pipe(T.PathParam()),
+    ttl_seconds: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/projects/{project_id}/transfer_requests",
+    }),
+  );
+export type CreateProjectTransferRequestInput =
+  typeof CreateProjectTransferRequestInput.Type;
 
 // Output Schema
-export const CreateProjectTransferRequestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-  project_id: Schema.String,
-  created_at: Schema.String,
-  expires_at: Schema.String,
-});
-export type CreateProjectTransferRequestOutput = typeof CreateProjectTransferRequestOutput.Type;
+export const CreateProjectTransferRequestOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.String,
+    project_id: Schema.String,
+    created_at: Schema.String,
+    expires_at: Schema.String,
+  });
+export type CreateProjectTransferRequestOutput =
+  typeof CreateProjectTransferRequestOutput.Type;
 
 // The operation
 /**
@@ -33,7 +42,8 @@ export type CreateProjectTransferRequestOutput = typeof CreateProjectTransferReq
  *
  * @param project_id - The Neon project ID
  */
-export const createProjectTransferRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: CreateProjectTransferRequestInput,
-  outputSchema: CreateProjectTransferRequestOutput,
-}));
+export const createProjectTransferRequest =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CreateProjectTransferRequestInput,
+    outputSchema: CreateProjectTransferRequestOutput,
+  }));

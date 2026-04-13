@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateGroupClusterIndexRollingIndexInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index" }));
-export type CreateGroupClusterIndexRollingIndexInput = typeof CreateGroupClusterIndexRollingIndexInput.Type;
+export const CreateGroupClusterIndexRollingIndexInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index",
+    }),
+  );
+export type CreateGroupClusterIndexRollingIndexInput =
+  typeof CreateGroupClusterIndexRollingIndexInput.Type;
 
 // Output Schema
-export const CreateGroupClusterIndexRollingIndexOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupClusterIndexRollingIndexOutput = typeof CreateGroupClusterIndexRollingIndexOutput.Type;
+export const CreateGroupClusterIndexRollingIndexOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CreateGroupClusterIndexRollingIndexOutput =
+  typeof CreateGroupClusterIndexRollingIndexOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,8 @@ export type CreateGroupClusterIndexRollingIndexOutput = typeof CreateGroupCluste
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param clusterName - Human-readable label that identifies the cluster on which MongoDB Cloud creates an index.
  */
-export const createGroupClusterIndexRollingIndex = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: CreateGroupClusterIndexRollingIndexInput,
-  outputSchema: CreateGroupClusterIndexRollingIndexOutput,
-}));
+export const createGroupClusterIndexRollingIndex =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CreateGroupClusterIndexRollingIndexInput,
+    outputSchema: CreateGroupClusterIndexRollingIndexOutput,
+  }));

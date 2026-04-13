@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateGroupAlertConfigInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  alertConfigId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "PUT", path: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}" }));
-export type UpdateGroupAlertConfigInput = typeof UpdateGroupAlertConfigInput.Type;
+export const UpdateGroupAlertConfigInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    alertConfigId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}",
+    }),
+  );
+export type UpdateGroupAlertConfigInput =
+  typeof UpdateGroupAlertConfigInput.Type;
 
 // Output Schema
-export const UpdateGroupAlertConfigOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupAlertConfigOutput = typeof UpdateGroupAlertConfigOutput.Type;
+export const UpdateGroupAlertConfigOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateGroupAlertConfigOutput =
+  typeof UpdateGroupAlertConfigOutput.Type;
 
 // The operation
 /**
@@ -30,7 +39,9 @@ export type UpdateGroupAlertConfigOutput = typeof UpdateGroupAlertConfigOutput.T
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param alertConfigId - Unique 24-hexadecimal digit string that identifies the alert configuration.
  */
-export const updateGroupAlertConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: UpdateGroupAlertConfigInput,
-  outputSchema: UpdateGroupAlertConfigOutput,
-}));
+export const updateGroupAlertConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: UpdateGroupAlertConfigInput,
+    outputSchema: UpdateGroupAlertConfigOutput,
+  }),
+);

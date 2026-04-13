@@ -3,19 +3,28 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListFederationSettingIdentityProvidersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  federationSettingsId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  itemsPerPage: Schema.optional(Schema.Number),
-  pageNum: Schema.optional(Schema.Number),
-  protocol: Schema.optional(Schema.String),
-  idpType: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders" }));
-export type ListFederationSettingIdentityProvidersInput = typeof ListFederationSettingIdentityProvidersInput.Type;
+export const ListFederationSettingIdentityProvidersInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    federationSettingsId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    itemsPerPage: Schema.optional(Schema.Number),
+    pageNum: Schema.optional(Schema.Number),
+    protocol: Schema.optional(Schema.String),
+    idpType: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders",
+    }),
+  );
+export type ListFederationSettingIdentityProvidersInput =
+  typeof ListFederationSettingIdentityProvidersInput.Type;
 
 // Output Schema
-export const ListFederationSettingIdentityProvidersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListFederationSettingIdentityProvidersOutput = typeof ListFederationSettingIdentityProvidersOutput.Type;
+export const ListFederationSettingIdentityProvidersOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListFederationSettingIdentityProvidersOutput =
+  typeof ListFederationSettingIdentityProvidersOutput.Type;
 
 // The operation
 /**
@@ -30,7 +39,8 @@ export type ListFederationSettingIdentityProvidersOutput = typeof ListFederation
  * @param protocol - The protocols of the target identity providers.
  * @param idpType - The types of the target identity providers.
  */
-export const listFederationSettingIdentityProviders = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListFederationSettingIdentityProvidersInput,
-  outputSchema: ListFederationSettingIdentityProvidersOutput,
-}));
+export const listFederationSettingIdentityProviders =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ListFederationSettingIdentityProvidersInput,
+    outputSchema: ListFederationSettingIdentityProvidersOutput,
+  }));

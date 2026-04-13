@@ -3,21 +3,30 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupClusterQueryShapeInsightDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  queryShapeHash: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-  since: Schema.optional(Schema.Number),
-  until: Schema.optional(Schema.Number),
-  processIds: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details" }));
-export type GetGroupClusterQueryShapeInsightDetailsInput = typeof GetGroupClusterQueryShapeInsightDetailsInput.Type;
+export const GetGroupClusterQueryShapeInsightDetailsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    queryShapeHash: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+    since: Schema.optional(Schema.Number),
+    until: Schema.optional(Schema.Number),
+    processIds: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details",
+    }),
+  );
+export type GetGroupClusterQueryShapeInsightDetailsInput =
+  typeof GetGroupClusterQueryShapeInsightDetailsInput.Type;
 
 // Output Schema
-export const GetGroupClusterQueryShapeInsightDetailsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupClusterQueryShapeInsightDetailsOutput = typeof GetGroupClusterQueryShapeInsightDetailsOutput.Type;
+export const GetGroupClusterQueryShapeInsightDetailsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupClusterQueryShapeInsightDetailsOutput =
+  typeof GetGroupClusterQueryShapeInsightDetailsOutput.Type;
 
 // The operation
 /**
@@ -42,7 +51,8 @@ export type GetGroupClusterQueryShapeInsightDetailsOutput = typeof GetGroupClust
  * @param processIds - Process IDs from which to retrieve query shape statistics. A `processId` is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple `processIds`, pass the parameter multiple times delimited with an ampersand (`&`) between each `processId`.
  * @param queryShapeHash - A SHA256 hash of a query shape, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs.
  */
-export const getGroupClusterQueryShapeInsightDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupClusterQueryShapeInsightDetailsInput,
-  outputSchema: GetGroupClusterQueryShapeInsightDetailsOutput,
-}));
+export const getGroupClusterQueryShapeInsightDetails =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GetGroupClusterQueryShapeInsightDetailsInput,
+    outputSchema: GetGroupClusterQueryShapeInsightDetailsOutput,
+  }));

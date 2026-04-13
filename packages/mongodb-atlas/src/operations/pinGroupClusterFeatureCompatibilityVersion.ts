@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const PinGroupClusterFeatureCompatibilityVersionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:pinFeatureCompatibilityVersion" }));
-export type PinGroupClusterFeatureCompatibilityVersionInput = typeof PinGroupClusterFeatureCompatibilityVersionInput.Type;
+export const PinGroupClusterFeatureCompatibilityVersionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:pinFeatureCompatibilityVersion",
+    }),
+  );
+export type PinGroupClusterFeatureCompatibilityVersionInput =
+  typeof PinGroupClusterFeatureCompatibilityVersionInput.Type;
 
 // Output Schema
-export const PinGroupClusterFeatureCompatibilityVersionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PinGroupClusterFeatureCompatibilityVersionOutput = typeof PinGroupClusterFeatureCompatibilityVersionOutput.Type;
+export const PinGroupClusterFeatureCompatibilityVersionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type PinGroupClusterFeatureCompatibilityVersionOutput =
+  typeof PinGroupClusterFeatureCompatibilityVersionOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,8 @@ export type PinGroupClusterFeatureCompatibilityVersionOutput = typeof PinGroupCl
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param clusterName - Human-readable label that identifies this cluster.
  */
-export const pinGroupClusterFeatureCompatibilityVersion = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: PinGroupClusterFeatureCompatibilityVersionInput,
-  outputSchema: PinGroupClusterFeatureCompatibilityVersionOutput,
-}));
+export const pinGroupClusterFeatureCompatibilityVersion =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PinGroupClusterFeatureCompatibilityVersionInput,
+    outputSchema: PinGroupClusterFeatureCompatibilityVersionOutput,
+  }));

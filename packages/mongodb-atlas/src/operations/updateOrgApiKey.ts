@@ -8,7 +8,12 @@ export const UpdateOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiUserId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}" }));
+}).pipe(
+  T.Http({
+    method: "PATCH",
+    path: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}",
+  }),
+);
 export type UpdateOrgApiKeyInput = typeof UpdateOrgApiKeyInput.Type;
 
 // Output Schema

@@ -3,10 +3,13 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const V1GetActionRunLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  ref: Schema.String.pipe(T.PathParam()),
-  run_id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/actions/{run_id}/logs" }));
+export const V1GetActionRunLogsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ref: Schema.String.pipe(T.PathParam()),
+    run_id: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/projects/{ref}/actions/{run_id}/logs" }),
+  );
 export type V1GetActionRunLogsInput = typeof V1GetActionRunLogsInput.Type;
 
 // Output Schema

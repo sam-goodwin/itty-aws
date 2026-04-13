@@ -3,16 +3,25 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const AcceptGroupStreamVpcPeeringConnectionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  id: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept" }));
-export type AcceptGroupStreamVpcPeeringConnectionInput = typeof AcceptGroupStreamVpcPeeringConnectionInput.Type;
+export const AcceptGroupStreamVpcPeeringConnectionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    id: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept",
+    }),
+  );
+export type AcceptGroupStreamVpcPeeringConnectionInput =
+  typeof AcceptGroupStreamVpcPeeringConnectionInput.Type;
 
 // Output Schema
-export const AcceptGroupStreamVpcPeeringConnectionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AcceptGroupStreamVpcPeeringConnectionOutput = typeof AcceptGroupStreamVpcPeeringConnectionOutput.Type;
+export const AcceptGroupStreamVpcPeeringConnectionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type AcceptGroupStreamVpcPeeringConnectionOutput =
+  typeof AcceptGroupStreamVpcPeeringConnectionOutput.Type;
 
 // The operation
 /**
@@ -26,7 +35,8 @@ export type AcceptGroupStreamVpcPeeringConnectionOutput = typeof AcceptGroupStre
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param id - The VPC Peering Connection id.
  */
-export const acceptGroupStreamVpcPeeringConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: AcceptGroupStreamVpcPeeringConnectionInput,
-  outputSchema: AcceptGroupStreamVpcPeeringConnectionOutput,
-}));
+export const acceptGroupStreamVpcPeeringConnection =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AcceptGroupStreamVpcPeeringConnectionInput,
+    outputSchema: AcceptGroupStreamVpcPeeringConnectionOutput,
+  }));

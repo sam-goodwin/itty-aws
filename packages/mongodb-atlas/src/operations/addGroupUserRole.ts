@@ -8,7 +8,12 @@ export const AddGroupUserRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   userId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/users/{userId}:addRole" }));
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/users/{userId}:addRole",
+  }),
+);
 export type AddGroupUserRoleInput = typeof AddGroupUserRoleInput.Type;
 
 // Output Schema

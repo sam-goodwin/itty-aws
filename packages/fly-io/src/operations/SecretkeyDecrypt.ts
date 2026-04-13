@@ -9,13 +9,20 @@ export const SecretkeyDecryptInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   min_version: Schema.optional(Schema.String),
   associated_data: Schema.optional(Schema.Array(Schema.Number)),
   ciphertext: Schema.optional(Schema.Array(Schema.Number)),
-}).pipe(T.Http({ method: "POST", path: "/apps/{app_name}/secretkeys/{secret_name}/decrypt" }));
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/apps/{app_name}/secretkeys/{secret_name}/decrypt",
+  }),
+);
 export type SecretkeyDecryptInput = typeof SecretkeyDecryptInput.Type;
 
 // Output Schema
-export const SecretkeyDecryptOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  plaintext: Schema.optional(Schema.Array(Schema.Number)),
-});
+export const SecretkeyDecryptOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    plaintext: Schema.optional(Schema.Array(Schema.Number)),
+  },
+);
 export type SecretkeyDecryptOutput = typeof SecretkeyDecryptOutput.Type;
 
 // The operation

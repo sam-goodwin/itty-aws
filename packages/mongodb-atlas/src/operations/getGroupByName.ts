@@ -7,7 +7,9 @@ export const GetGroupByNameInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupName: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/byName/{groupName}" }));
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/groups/byName/{groupName}" }),
+);
 export type GetGroupByNameInput = typeof GetGroupByNameInput.Type;
 
 // Output Schema

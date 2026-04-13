@@ -3,18 +3,27 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupEncryptionAtRestPrivateEndpointInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  cloudProvider: Schema.Literals(["AZURE", "AWS"]).pipe(T.PathParam()),
-  endpointId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId}" }));
-export type GetGroupEncryptionAtRestPrivateEndpointInput = typeof GetGroupEncryptionAtRestPrivateEndpointInput.Type;
+export const GetGroupEncryptionAtRestPrivateEndpointInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    cloudProvider: Schema.Literals(["AZURE", "AWS"]).pipe(T.PathParam()),
+    endpointId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId}",
+    }),
+  );
+export type GetGroupEncryptionAtRestPrivateEndpointInput =
+  typeof GetGroupEncryptionAtRestPrivateEndpointInput.Type;
 
 // Output Schema
-export const GetGroupEncryptionAtRestPrivateEndpointOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupEncryptionAtRestPrivateEndpointOutput = typeof GetGroupEncryptionAtRestPrivateEndpointOutput.Type;
+export const GetGroupEncryptionAtRestPrivateEndpointOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupEncryptionAtRestPrivateEndpointOutput =
+  typeof GetGroupEncryptionAtRestPrivateEndpointOutput.Type;
 
 // The operation
 /**
@@ -30,7 +39,8 @@ export type GetGroupEncryptionAtRestPrivateEndpointOutput = typeof GetGroupEncry
  * @param cloudProvider - Human-readable label that identifies the cloud provider of the private endpoint.
  * @param endpointId - Unique 24-hexadecimal digit string that identifies the private endpoint.
  */
-export const getGroupEncryptionAtRestPrivateEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupEncryptionAtRestPrivateEndpointInput,
-  outputSchema: GetGroupEncryptionAtRestPrivateEndpointOutput,
-}));
+export const getGroupEncryptionAtRestPrivateEndpoint =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GetGroupEncryptionAtRestPrivateEndpointInput,
+    outputSchema: GetGroupEncryptionAtRestPrivateEndpointOutput,
+  }));

@@ -7,7 +7,9 @@ export const AddGroupUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/users" }));
+}).pipe(
+  T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/users" }),
+);
 export type AddGroupUsersInput = typeof AddGroupUsersInput.Type;
 
 // Output Schema

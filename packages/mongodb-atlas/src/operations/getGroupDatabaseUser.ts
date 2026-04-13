@@ -3,17 +3,24 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupDatabaseUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  databaseName: Schema.String.pipe(T.PathParam()),
-  username: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}" }));
+export const GetGroupDatabaseUserInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+    username: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}",
+    }),
+  );
 export type GetGroupDatabaseUserInput = typeof GetGroupDatabaseUserInput.Type;
 
 // Output Schema
-export const GetGroupDatabaseUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const GetGroupDatabaseUserOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type GetGroupDatabaseUserOutput = typeof GetGroupDatabaseUserOutput.Type;
 
 // The operation
@@ -43,7 +50,9 @@ export type GetGroupDatabaseUserOutput = typeof GetGroupDatabaseUserOutput.Type;
 | SCRAM-SHA | `awsIAMType`, `x509Type`, `ldapAuthType`, `oidcAuthType` | `NONE` | Alphanumeric string |
 
  */
-export const getGroupDatabaseUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupDatabaseUserInput,
-  outputSchema: GetGroupDatabaseUserOutput,
-}));
+export const getGroupDatabaseUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: GetGroupDatabaseUserInput,
+    outputSchema: GetGroupDatabaseUserOutput,
+  }),
+);

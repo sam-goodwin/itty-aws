@@ -3,14 +3,20 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const V1CancelAProjectRestorationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  ref: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "POST", path: "/v1/projects/{ref}/restore/cancel" }));
-export type V1CancelAProjectRestorationInput = typeof V1CancelAProjectRestorationInput.Type;
+export const V1CancelAProjectRestorationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ref: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({ method: "POST", path: "/v1/projects/{ref}/restore/cancel" }),
+  );
+export type V1CancelAProjectRestorationInput =
+  typeof V1CancelAProjectRestorationInput.Type;
 
 // Output Schema
-export const V1CancelAProjectRestorationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1CancelAProjectRestorationOutput = typeof V1CancelAProjectRestorationOutput.Type;
+export const V1CancelAProjectRestorationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type V1CancelAProjectRestorationOutput =
+  typeof V1CancelAProjectRestorationOutput.Type;
 
 // The operation
 /**
@@ -18,7 +24,9 @@ export type V1CancelAProjectRestorationOutput = typeof V1CancelAProjectRestorati
  *
  * @param ref - Project ref
  */
-export const v1CancelAProjectRestoration = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: V1CancelAProjectRestorationInput,
-  outputSchema: V1CancelAProjectRestorationOutput,
-}));
+export const v1CancelAProjectRestoration = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: V1CancelAProjectRestorationInput,
+    outputSchema: V1CancelAProjectRestorationOutput,
+  }),
+);

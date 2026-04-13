@@ -3,19 +3,28 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupPrivateEndpointEndpointServiceEndpointInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
-  endpointId: Schema.String.pipe(T.PathParam()),
-  endpointServiceId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId}" }));
-export type GetGroupPrivateEndpointEndpointServiceEndpointInput = typeof GetGroupPrivateEndpointEndpointServiceEndpointInput.Type;
+export const GetGroupPrivateEndpointEndpointServiceEndpointInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    cloudProvider: Schema.Literals(["AWS", "AZURE", "GCP"]).pipe(T.PathParam()),
+    endpointId: Schema.String.pipe(T.PathParam()),
+    endpointServiceId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId}",
+    }),
+  );
+export type GetGroupPrivateEndpointEndpointServiceEndpointInput =
+  typeof GetGroupPrivateEndpointEndpointServiceEndpointInput.Type;
 
 // Output Schema
-export const GetGroupPrivateEndpointEndpointServiceEndpointOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupPrivateEndpointEndpointServiceEndpointOutput = typeof GetGroupPrivateEndpointEndpointServiceEndpointOutput.Type;
+export const GetGroupPrivateEndpointEndpointServiceEndpointOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupPrivateEndpointEndpointServiceEndpointOutput =
+  typeof GetGroupPrivateEndpointEndpointServiceEndpointOutput.Type;
 
 // The operation
 /**
@@ -32,7 +41,8 @@ export type GetGroupPrivateEndpointEndpointServiceEndpointOutput = typeof GetGro
  * @param endpointId - Unique string that identifies the private endpoint you want to return. The format of the `endpointId` parameter differs for AWS and Azure. You must URL encode the `endpointId` for Azure private endpoints.
  * @param endpointServiceId - Unique 24-hexadecimal digit string that identifies the private endpoint service for which you want to return a private endpoint.
  */
-export const getGroupPrivateEndpointEndpointServiceEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupPrivateEndpointEndpointServiceEndpointInput,
-  outputSchema: GetGroupPrivateEndpointEndpointServiceEndpointOutput,
-}));
+export const getGroupPrivateEndpointEndpointServiceEndpoint =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GetGroupPrivateEndpointEndpointServiceEndpointInput,
+    outputSchema: GetGroupPrivateEndpointEndpointServiceEndpointOutput,
+  }));

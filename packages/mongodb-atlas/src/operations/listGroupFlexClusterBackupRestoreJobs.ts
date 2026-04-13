@@ -3,20 +3,29 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupFlexClusterBackupRestoreJobsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  name: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  includeCount: Schema.optional(Schema.Boolean),
-  itemsPerPage: Schema.optional(Schema.Number),
-  pageNum: Schema.optional(Schema.Number),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs" }));
-export type ListGroupFlexClusterBackupRestoreJobsInput = typeof ListGroupFlexClusterBackupRestoreJobsInput.Type;
+export const ListGroupFlexClusterBackupRestoreJobsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    name: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    includeCount: Schema.optional(Schema.Boolean),
+    itemsPerPage: Schema.optional(Schema.Number),
+    pageNum: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs",
+    }),
+  );
+export type ListGroupFlexClusterBackupRestoreJobsInput =
+  typeof ListGroupFlexClusterBackupRestoreJobsInput.Type;
 
 // Output Schema
-export const ListGroupFlexClusterBackupRestoreJobsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupFlexClusterBackupRestoreJobsOutput = typeof ListGroupFlexClusterBackupRestoreJobsOutput.Type;
+export const ListGroupFlexClusterBackupRestoreJobsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupFlexClusterBackupRestoreJobsOutput =
+  typeof ListGroupFlexClusterBackupRestoreJobsOutput.Type;
 
 // The operation
 /**
@@ -34,7 +43,8 @@ export type ListGroupFlexClusterBackupRestoreJobsOutput = typeof ListGroupFlexCl
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param name - Human-readable label that identifies the flex cluster.
  */
-export const listGroupFlexClusterBackupRestoreJobs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListGroupFlexClusterBackupRestoreJobsInput,
-  outputSchema: ListGroupFlexClusterBackupRestoreJobsOutput,
-}));
+export const listGroupFlexClusterBackupRestoreJobs =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ListGroupFlexClusterBackupRestoreJobsInput,
+    outputSchema: ListGroupFlexClusterBackupRestoreJobsOutput,
+  }));

@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupLogIntegrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  id: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/logIntegrations/{id}" }));
-export type GetGroupLogIntegrationInput = typeof GetGroupLogIntegrationInput.Type;
+export const GetGroupLogIntegrationInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    id: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/logIntegrations/{id}",
+    }),
+  );
+export type GetGroupLogIntegrationInput =
+  typeof GetGroupLogIntegrationInput.Type;
 
 // Output Schema
-export const GetGroupLogIntegrationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupLogIntegrationOutput = typeof GetGroupLogIntegrationOutput.Type;
+export const GetGroupLogIntegrationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupLogIntegrationOutput =
+  typeof GetGroupLogIntegrationOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,9 @@ export type GetGroupLogIntegrationOutput = typeof GetGroupLogIntegrationOutput.T
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param id - Unique identifier of the log integration configuration.
  */
-export const getGroupLogIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupLogIntegrationInput,
-  outputSchema: GetGroupLogIntegrationOutput,
-}));
+export const getGroupLogIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: GetGroupLogIntegrationInput,
+    outputSchema: GetGroupLogIntegrationOutput,
+  }),
+);

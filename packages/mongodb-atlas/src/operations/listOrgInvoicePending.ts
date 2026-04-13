@@ -3,16 +3,24 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListOrgInvoicePendingInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  orgId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/invoices/pending" }));
+export const ListOrgInvoicePendingInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orgId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/orgs/{orgId}/invoices/pending",
+    }),
+  );
 export type ListOrgInvoicePendingInput = typeof ListOrgInvoicePendingInput.Type;
 
 // Output Schema
-export const ListOrgInvoicePendingOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListOrgInvoicePendingOutput = typeof ListOrgInvoicePendingOutput.Type;
+export const ListOrgInvoicePendingOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListOrgInvoicePendingOutput =
+  typeof ListOrgInvoicePendingOutput.Type;
 
 // The operation
 /**
@@ -24,7 +32,9 @@ export type ListOrgInvoicePendingOutput = typeof ListOrgInvoicePendingOutput.Typ
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listOrgInvoicePending = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListOrgInvoicePendingInput,
-  outputSchema: ListOrgInvoicePendingOutput,
-}));
+export const listOrgInvoicePending = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ListOrgInvoicePendingInput,
+    outputSchema: ListOrgInvoicePendingOutput,
+  }),
+);

@@ -3,27 +3,33 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetOrganizationMembersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  org_id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/organizations/{org_id}/members" }));
-export type GetOrganizationMembersInput = typeof GetOrganizationMembersInput.Type;
+export const GetOrganizationMembersInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    org_id: Schema.String.pipe(T.PathParam()),
+  }).pipe(T.Http({ method: "GET", path: "/organizations/{org_id}/members" }));
+export type GetOrganizationMembersInput =
+  typeof GetOrganizationMembersInput.Type;
 
 // Output Schema
-export const GetOrganizationMembersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  members: Schema.Array(Schema.Struct({
-    member: Schema.Struct({
-      id: Schema.String,
-      user_id: Schema.String,
-      org_id: Schema.String,
-      role: Schema.Literals(["admin", "member"]),
-      joined_at: Schema.optional(Schema.String),
-    }),
-    user: Schema.Struct({
-      email: Schema.String,
-    }),
-  })),
-});
-export type GetOrganizationMembersOutput = typeof GetOrganizationMembersOutput.Type;
+export const GetOrganizationMembersOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    members: Schema.Array(
+      Schema.Struct({
+        member: Schema.Struct({
+          id: Schema.String,
+          user_id: Schema.String,
+          org_id: Schema.String,
+          role: Schema.Literals(["admin", "member"]),
+          joined_at: Schema.optional(Schema.String),
+        }),
+        user: Schema.Struct({
+          email: Schema.String,
+        }),
+      }),
+    ),
+  });
+export type GetOrganizationMembersOutput =
+  typeof GetOrganizationMembersOutput.Type;
 
 // The operation
 /**
@@ -33,7 +39,9 @@ export type GetOrganizationMembersOutput = typeof GetOrganizationMembersOutput.T
  *
  * @param org_id - The Neon organization ID
  */
-export const getOrganizationMembers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetOrganizationMembersInput,
-  outputSchema: GetOrganizationMembersOutput,
-}));
+export const getOrganizationMembers = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: GetOrganizationMembersInput,
+    outputSchema: GetOrganizationMembersOutput,
+  }),
+);

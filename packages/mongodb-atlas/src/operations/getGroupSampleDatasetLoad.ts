@@ -3,16 +3,25 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupSampleDatasetLoadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  sampleDatasetId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{sampleDatasetId}" }));
-export type GetGroupSampleDatasetLoadInput = typeof GetGroupSampleDatasetLoadInput.Type;
+export const GetGroupSampleDatasetLoadInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    sampleDatasetId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{sampleDatasetId}",
+    }),
+  );
+export type GetGroupSampleDatasetLoadInput =
+  typeof GetGroupSampleDatasetLoadInput.Type;
 
 // Output Schema
-export const GetGroupSampleDatasetLoadOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupSampleDatasetLoadOutput = typeof GetGroupSampleDatasetLoadOutput.Type;
+export const GetGroupSampleDatasetLoadOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupSampleDatasetLoadOutput =
+  typeof GetGroupSampleDatasetLoadOutput.Type;
 
 // The operation
 /**
@@ -26,7 +35,9 @@ export type GetGroupSampleDatasetLoadOutput = typeof GetGroupSampleDatasetLoadOu
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param sampleDatasetId - Unique 24-hexadecimal digit string that identifies the loaded sample dataset.
  */
-export const getGroupSampleDatasetLoad = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupSampleDatasetLoadInput,
-  outputSchema: GetGroupSampleDatasetLoadOutput,
-}));
+export const getGroupSampleDatasetLoad = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: GetGroupSampleDatasetLoadInput,
+    outputSchema: GetGroupSampleDatasetLoadOutput,
+  }),
+);

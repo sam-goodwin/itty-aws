@@ -3,25 +3,34 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupClusterQueryShapeInsightSummariesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  since: Schema.optional(Schema.Number),
-  until: Schema.optional(Schema.Number),
-  processIds: Schema.optional(Schema.String),
-  namespaces: Schema.optional(Schema.String),
-  commands: Schema.optional(Schema.String),
-  nSummaries: Schema.optional(Schema.Number),
-  series: Schema.optional(Schema.String),
-  queryShapeHashes: Schema.optional(Schema.String),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries" }));
-export type ListGroupClusterQueryShapeInsightSummariesInput = typeof ListGroupClusterQueryShapeInsightSummariesInput.Type;
+export const ListGroupClusterQueryShapeInsightSummariesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    since: Schema.optional(Schema.Number),
+    until: Schema.optional(Schema.Number),
+    processIds: Schema.optional(Schema.String),
+    namespaces: Schema.optional(Schema.String),
+    commands: Schema.optional(Schema.String),
+    nSummaries: Schema.optional(Schema.Number),
+    series: Schema.optional(Schema.String),
+    queryShapeHashes: Schema.optional(Schema.String),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries",
+    }),
+  );
+export type ListGroupClusterQueryShapeInsightSummariesInput =
+  typeof ListGroupClusterQueryShapeInsightSummariesInput.Type;
 
 // Output Schema
-export const ListGroupClusterQueryShapeInsightSummariesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterQueryShapeInsightSummariesOutput = typeof ListGroupClusterQueryShapeInsightSummariesOutput.Type;
+export const ListGroupClusterQueryShapeInsightSummariesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupClusterQueryShapeInsightSummariesOutput =
+  typeof ListGroupClusterQueryShapeInsightSummariesOutput.Type;
 
 // The operation
 /**
@@ -50,7 +59,8 @@ export type ListGroupClusterQueryShapeInsightSummariesOutput = typeof ListGroupC
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupClusterQueryShapeInsightSummaries = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListGroupClusterQueryShapeInsightSummariesInput,
-  outputSchema: ListGroupClusterQueryShapeInsightSummariesOutput,
-}));
+export const listGroupClusterQueryShapeInsightSummaries =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ListGroupClusterQueryShapeInsightSummariesInput,
+    outputSchema: ListGroupClusterQueryShapeInsightSummariesOutput,
+  }));

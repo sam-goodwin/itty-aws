@@ -3,18 +3,27 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const RequestGroupEncryptionAtRestPrivateEndpointDeletionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  cloudProvider: Schema.Literals(["AZURE", "AWS"]).pipe(T.PathParam()),
-  endpointId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId}" }));
-export type RequestGroupEncryptionAtRestPrivateEndpointDeletionInput = typeof RequestGroupEncryptionAtRestPrivateEndpointDeletionInput.Type;
+export const RequestGroupEncryptionAtRestPrivateEndpointDeletionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    cloudProvider: Schema.Literals(["AZURE", "AWS"]).pipe(T.PathParam()),
+    endpointId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId}",
+    }),
+  );
+export type RequestGroupEncryptionAtRestPrivateEndpointDeletionInput =
+  typeof RequestGroupEncryptionAtRestPrivateEndpointDeletionInput.Type;
 
 // Output Schema
-export const RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput = typeof RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput.Type;
+export const RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput =
+  typeof RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput.Type;
 
 // The operation
 /**
@@ -30,7 +39,8 @@ export type RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput = typeof R
  * @param cloudProvider - Human-readable label that identifies the cloud provider of the private endpoint to delete.
  * @param endpointId - Unique 24-hexadecimal digit string that identifies the private endpoint to delete.
  */
-export const requestGroupEncryptionAtRestPrivateEndpointDeletion = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: RequestGroupEncryptionAtRestPrivateEndpointDeletionInput,
-  outputSchema: RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput,
-}));
+export const requestGroupEncryptionAtRestPrivateEndpointDeletion =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: RequestGroupEncryptionAtRestPrivateEndpointDeletionInput,
+    outputSchema: RequestGroupEncryptionAtRestPrivateEndpointDeletionOutput,
+  }));

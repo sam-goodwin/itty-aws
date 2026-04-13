@@ -3,20 +3,29 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupEncryptionAtRestPrivateEndpointsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  cloudProvider: Schema.Literals(["AZURE", "AWS"]).pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-  includeCount: Schema.optional(Schema.Boolean),
-  itemsPerPage: Schema.optional(Schema.Number),
-  pageNum: Schema.optional(Schema.Number),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints" }));
-export type ListGroupEncryptionAtRestPrivateEndpointsInput = typeof ListGroupEncryptionAtRestPrivateEndpointsInput.Type;
+export const ListGroupEncryptionAtRestPrivateEndpointsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    cloudProvider: Schema.Literals(["AZURE", "AWS"]).pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+    includeCount: Schema.optional(Schema.Boolean),
+    itemsPerPage: Schema.optional(Schema.Number),
+    pageNum: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints",
+    }),
+  );
+export type ListGroupEncryptionAtRestPrivateEndpointsInput =
+  typeof ListGroupEncryptionAtRestPrivateEndpointsInput.Type;
 
 // Output Schema
-export const ListGroupEncryptionAtRestPrivateEndpointsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupEncryptionAtRestPrivateEndpointsOutput = typeof ListGroupEncryptionAtRestPrivateEndpointsOutput.Type;
+export const ListGroupEncryptionAtRestPrivateEndpointsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupEncryptionAtRestPrivateEndpointsOutput =
+  typeof ListGroupEncryptionAtRestPrivateEndpointsOutput.Type;
 
 // The operation
 /**
@@ -34,7 +43,8 @@ export type ListGroupEncryptionAtRestPrivateEndpointsOutput = typeof ListGroupEn
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param cloudProvider - Human-readable label that identifies the cloud provider for the private endpoints to return.
  */
-export const listGroupEncryptionAtRestPrivateEndpoints = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListGroupEncryptionAtRestPrivateEndpointsInput,
-  outputSchema: ListGroupEncryptionAtRestPrivateEndpointsOutput,
-}));
+export const listGroupEncryptionAtRestPrivateEndpoints =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ListGroupEncryptionAtRestPrivateEndpointsInput,
+    outputSchema: ListGroupEncryptionAtRestPrivateEndpointsOutput,
+  }));

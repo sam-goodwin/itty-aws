@@ -3,18 +3,27 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const UpdateGroupClusterOnlineArchiveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  archiveId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "PATCH", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}" }));
-export type UpdateGroupClusterOnlineArchiveInput = typeof UpdateGroupClusterOnlineArchiveInput.Type;
+export const UpdateGroupClusterOnlineArchiveInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    archiveId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}",
+    }),
+  );
+export type UpdateGroupClusterOnlineArchiveInput =
+  typeof UpdateGroupClusterOnlineArchiveInput.Type;
 
 // Output Schema
-export const UpdateGroupClusterOnlineArchiveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupClusterOnlineArchiveOutput = typeof UpdateGroupClusterOnlineArchiveOutput.Type;
+export const UpdateGroupClusterOnlineArchiveOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type UpdateGroupClusterOnlineArchiveOutput =
+  typeof UpdateGroupClusterOnlineArchiveOutput.Type;
 
 // The operation
 /**
@@ -30,7 +39,8 @@ export type UpdateGroupClusterOnlineArchiveOutput = typeof UpdateGroupClusterOnl
  * @param archiveId - Unique 24-hexadecimal digit string that identifies the online archive to update.
  * @param clusterName - Human-readable label that identifies the cluster that contains the specified collection from which Application created the online archive.
  */
-export const updateGroupClusterOnlineArchive = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: UpdateGroupClusterOnlineArchiveInput,
-  outputSchema: UpdateGroupClusterOnlineArchiveOutput,
-}));
+export const updateGroupClusterOnlineArchive =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: UpdateGroupClusterOnlineArchiveInput,
+    outputSchema: UpdateGroupClusterOnlineArchiveOutput,
+  }));

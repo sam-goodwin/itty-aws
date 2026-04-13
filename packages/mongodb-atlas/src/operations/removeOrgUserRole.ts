@@ -3,12 +3,19 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const RemoveOrgUserRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  orgId: Schema.String.pipe(T.PathParam()),
-  userId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/orgs/{orgId}/users/{userId}:removeRole" }));
+export const RemoveOrgUserRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    orgId: Schema.String.pipe(T.PathParam()),
+    userId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/orgs/{orgId}/users/{userId}:removeRole",
+  }),
+);
 export type RemoveOrgUserRoleInput = typeof RemoveOrgUserRoleInput.Type;
 
 // Output Schema

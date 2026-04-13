@@ -11,13 +11,15 @@ export type GetV1WorkspacesInput = typeof GetV1WorkspacesInput.Type;
 
 // Output Schema
 export const GetV1WorkspacesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.Array(Schema.Struct({
-    id: Schema.String,
-    type: Schema.String,
-    url: Schema.String,
-    name: Schema.String,
-    createdAt: Schema.String,
-  })),
+  data: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      type: Schema.String,
+      url: Schema.String,
+      name: Schema.String,
+      createdAt: Schema.String,
+    }),
+  ),
   pagination: Schema.Struct({
     nextCursor: Schema.NullOr(Schema.String),
     hasMore: Schema.Boolean,

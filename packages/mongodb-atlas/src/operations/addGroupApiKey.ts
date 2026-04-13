@@ -8,7 +8,12 @@ export const AddGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiUserId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}" }));
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}",
+  }),
+);
 export type AddGroupApiKeyInput = typeof AddGroupApiKeyInput.Type;
 
 // Output Schema

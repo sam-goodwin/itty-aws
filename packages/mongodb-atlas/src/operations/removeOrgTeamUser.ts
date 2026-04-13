@@ -3,12 +3,19 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const RemoveOrgTeamUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  orgId: Schema.String.pipe(T.PathParam()),
-  teamId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/orgs/{orgId}/teams/{teamId}:removeUser" }));
+export const RemoveOrgTeamUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    orgId: Schema.String.pipe(T.PathParam()),
+    teamId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  },
+).pipe(
+  T.Http({
+    method: "POST",
+    path: "/api/atlas/v2/orgs/{orgId}/teams/{teamId}:removeUser",
+  }),
+);
 export type RemoveOrgTeamUserInput = typeof RemoveOrgTeamUserInput.Type;
 
 // Output Schema

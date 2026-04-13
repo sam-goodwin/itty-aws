@@ -11,18 +11,30 @@ export type V1GetJitAccessInput = typeof V1GetJitAccessInput.Type;
 // Output Schema
 export const V1GetJitAccessOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   user_id: Schema.String,
-  user_roles: Schema.Array(Schema.Struct({
-    role: Schema.String,
-    expires_at: Schema.optional(Schema.Number),
-    allowed_networks: Schema.optional(Schema.Struct({
-      allowed_cidrs: Schema.optional(Schema.Array(Schema.Struct({
-        cidr: Schema.String,
-      }))),
-      allowed_cidrs_v6: Schema.optional(Schema.Array(Schema.Struct({
-        cidr: Schema.String,
-      }))),
-    })),
-  })),
+  user_roles: Schema.Array(
+    Schema.Struct({
+      role: Schema.String,
+      expires_at: Schema.optional(Schema.Number),
+      allowed_networks: Schema.optional(
+        Schema.Struct({
+          allowed_cidrs: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                cidr: Schema.String,
+              }),
+            ),
+          ),
+          allowed_cidrs_v6: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                cidr: Schema.String,
+              }),
+            ),
+          ),
+        }),
+      ),
+    }),
+  ),
 });
 export type V1GetJitAccessOutput = typeof V1GetJitAccessOutput.Type;
 

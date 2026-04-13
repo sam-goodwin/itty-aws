@@ -3,16 +3,25 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateGroupCloudProviderAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess" }));
-export type CreateGroupCloudProviderAccessInput = typeof CreateGroupCloudProviderAccessInput.Type;
+export const CreateGroupCloudProviderAccessInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess",
+    }),
+  );
+export type CreateGroupCloudProviderAccessInput =
+  typeof CreateGroupCloudProviderAccessInput.Type;
 
 // Output Schema
-export const CreateGroupCloudProviderAccessOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupCloudProviderAccessOutput = typeof CreateGroupCloudProviderAccessOutput.Type;
+export const CreateGroupCloudProviderAccessOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CreateGroupCloudProviderAccessOutput =
+  typeof CreateGroupCloudProviderAccessOutput.Type;
 
 // The operation
 /**
@@ -26,7 +35,8 @@ export type CreateGroupCloudProviderAccessOutput = typeof CreateGroupCloudProvid
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupCloudProviderAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: CreateGroupCloudProviderAccessInput,
-  outputSchema: CreateGroupCloudProviderAccessOutput,
-}));
+export const createGroupCloudProviderAccess =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CreateGroupCloudProviderAccessInput,
+    outputSchema: CreateGroupCloudProviderAccessOutput,
+  }));

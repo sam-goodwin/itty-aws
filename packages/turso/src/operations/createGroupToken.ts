@@ -8,18 +8,29 @@ export const CreateGroupTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupName: Schema.String.pipe(T.PathParam()),
   expiration: Schema.optional(Schema.String),
   authorization: Schema.optional(Schema.Literals(["full-access", "read-only"])),
-  permissions: Schema.optional(Schema.Struct({
-    read_attach: Schema.optional(Schema.Struct({
-      databases: Schema.optional(Schema.Array(Schema.String)),
-    })),
-  })),
-}).pipe(T.Http({ method: "POST", path: "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens" }));
+  permissions: Schema.optional(
+    Schema.Struct({
+      read_attach: Schema.optional(
+        Schema.Struct({
+          databases: Schema.optional(Schema.Array(Schema.String)),
+        }),
+      ),
+    }),
+  ),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/v1/organizations/{organizationSlug}/groups/{groupName}/auth/tokens",
+  }),
+);
 export type CreateGroupTokenInput = typeof CreateGroupTokenInput.Type;
 
 // Output Schema
-export const CreateGroupTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  jwt: Schema.optional(Schema.String),
-});
+export const CreateGroupTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    jwt: Schema.optional(Schema.String),
+  },
+);
 export type CreateGroupTokenOutput = typeof CreateGroupTokenOutput.Type;
 
 // The operation

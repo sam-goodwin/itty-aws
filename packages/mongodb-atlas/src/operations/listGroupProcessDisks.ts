@@ -3,20 +3,28 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const ListGroupProcessDisksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  processId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  includeCount: Schema.optional(Schema.Boolean),
-  itemsPerPage: Schema.optional(Schema.Number),
-  pageNum: Schema.optional(Schema.Number),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks" }));
+export const ListGroupProcessDisksInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    processId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    includeCount: Schema.optional(Schema.Boolean),
+    itemsPerPage: Schema.optional(Schema.Number),
+    pageNum: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks",
+    }),
+  );
 export type ListGroupProcessDisksInput = typeof ListGroupProcessDisksInput.Type;
 
 // Output Schema
-export const ListGroupProcessDisksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupProcessDisksOutput = typeof ListGroupProcessDisksOutput.Type;
+export const ListGroupProcessDisksOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type ListGroupProcessDisksOutput =
+  typeof ListGroupProcessDisksOutput.Type;
 
 // The operation
 /**
@@ -34,7 +42,9 @@ export type ListGroupProcessDisksOutput = typeof ListGroupProcessDisksOutput.Typ
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param processId - Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
  */
-export const listGroupProcessDisks = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListGroupProcessDisksInput,
-  outputSchema: ListGroupProcessDisksOutput,
-}));
+export const listGroupProcessDisks = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ListGroupProcessDisksInput,
+    outputSchema: ListGroupProcessDisksOutput,
+  }),
+);

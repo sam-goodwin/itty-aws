@@ -3,17 +3,26 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetGroupStreamAccountDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  cloudProvider: Schema.String,
-  regionName: Schema.String,
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/streams/accountDetails" }));
-export type GetGroupStreamAccountDetailsInput = typeof GetGroupStreamAccountDetailsInput.Type;
+export const GetGroupStreamAccountDetailsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    cloudProvider: Schema.String,
+    regionName: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/streams/accountDetails",
+    }),
+  );
+export type GetGroupStreamAccountDetailsInput =
+  typeof GetGroupStreamAccountDetailsInput.Type;
 
 // Output Schema
-export const GetGroupStreamAccountDetailsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupStreamAccountDetailsOutput = typeof GetGroupStreamAccountDetailsOutput.Type;
+export const GetGroupStreamAccountDetailsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type GetGroupStreamAccountDetailsOutput =
+  typeof GetGroupStreamAccountDetailsOutput.Type;
 
 // The operation
 /**
@@ -28,7 +37,8 @@ export type GetGroupStreamAccountDetailsOutput = typeof GetGroupStreamAccountDet
  * @param cloudProvider - One of "aws", "azure" or "gcp".
  * @param regionName - The cloud provider specific region name, i.e. "US_EAST_1" for cloud provider "aws".
  */
-export const getGroupStreamAccountDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetGroupStreamAccountDetailsInput,
-  outputSchema: GetGroupStreamAccountDetailsOutput,
-}));
+export const getGroupStreamAccountDetails =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: GetGroupStreamAccountDetailsInput,
+    outputSchema: GetGroupStreamAccountDetailsOutput,
+  }));

@@ -8,7 +8,12 @@ export const GetGroupClusterInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   clusterName: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}" }));
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}",
+  }),
+);
 export type GetGroupClusterInput = typeof GetGroupClusterInput.Type;
 
 // Output Schema

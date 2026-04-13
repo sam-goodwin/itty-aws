@@ -3,20 +3,24 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const GetV1RegionsPostgresInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-
-}).pipe(T.Http({ method: "GET", path: "/v1/regions/postgres" }));
+export const GetV1RegionsPostgresInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({ method: "GET", path: "/v1/regions/postgres" }),
+  );
 export type GetV1RegionsPostgresInput = typeof GetV1RegionsPostgresInput.Type;
 
 // Output Schema
-export const GetV1RegionsPostgresOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.Array(Schema.Struct({
-    id: Schema.String,
-    type: Schema.String,
-    name: Schema.String,
-    status: Schema.Literals(["available", "unavailable"]),
-  })),
-});
+export const GetV1RegionsPostgresOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    data: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        type: Schema.String,
+        name: Schema.String,
+        status: Schema.Literals(["available", "unavailable"]),
+      }),
+    ),
+  });
 export type GetV1RegionsPostgresOutput = typeof GetV1RegionsPostgresOutput.Type;
 
 // The operation
@@ -25,7 +29,9 @@ export type GetV1RegionsPostgresOutput = typeof GetV1RegionsPostgresOutput.Type;
  *
  * Returns all available regions for Prisma Postgres.
  */
-export const getV1RegionsPostgres = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetV1RegionsPostgresInput,
-  outputSchema: GetV1RegionsPostgresOutput,
-}));
+export const getV1RegionsPostgres = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: GetV1RegionsPostgresInput,
+    outputSchema: GetV1RegionsPostgresOutput,
+  }),
+);

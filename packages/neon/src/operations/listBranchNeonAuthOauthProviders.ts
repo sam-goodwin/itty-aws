@@ -4,22 +4,33 @@ import * as T from "../traits";
 import { SensitiveString } from "../sensitive";
 
 // Input Schema
-export const ListBranchNeonAuthOauthProvidersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  project_id: Schema.String.pipe(T.PathParam()),
-  branch_id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/projects/{project_id}/branches/{branch_id}/auth/oauth_providers" }));
-export type ListBranchNeonAuthOauthProvidersInput = typeof ListBranchNeonAuthOauthProvidersInput.Type;
+export const ListBranchNeonAuthOauthProvidersInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project_id: Schema.String.pipe(T.PathParam()),
+    branch_id: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/projects/{project_id}/branches/{branch_id}/auth/oauth_providers",
+    }),
+  );
+export type ListBranchNeonAuthOauthProvidersInput =
+  typeof ListBranchNeonAuthOauthProvidersInput.Type;
 
 // Output Schema
-export const ListBranchNeonAuthOauthProvidersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  providers: Schema.Array(Schema.Struct({
-    id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
-    type: Schema.Literals(["standard", "shared"]),
-    client_id: Schema.optional(Schema.String),
-    client_secret: Schema.optional(SensitiveString),
-  })),
-});
-export type ListBranchNeonAuthOauthProvidersOutput = typeof ListBranchNeonAuthOauthProvidersOutput.Type;
+export const ListBranchNeonAuthOauthProvidersOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    providers: Schema.Array(
+      Schema.Struct({
+        id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
+        type: Schema.Literals(["standard", "shared"]),
+        client_id: Schema.optional(Schema.String),
+        client_secret: Schema.optional(SensitiveString),
+      }),
+    ),
+  });
+export type ListBranchNeonAuthOauthProvidersOutput =
+  typeof ListBranchNeonAuthOauthProvidersOutput.Type;
 
 // The operation
 /**
@@ -30,7 +41,8 @@ export type ListBranchNeonAuthOauthProvidersOutput = typeof ListBranchNeonAuthOa
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const listBranchNeonAuthOauthProviders = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListBranchNeonAuthOauthProvidersInput,
-  outputSchema: ListBranchNeonAuthOauthProvidersOutput,
-}));
+export const listBranchNeonAuthOauthProviders =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ListBranchNeonAuthOauthProvidersInput,
+    outputSchema: ListBranchNeonAuthOauthProvidersOutput,
+  }));

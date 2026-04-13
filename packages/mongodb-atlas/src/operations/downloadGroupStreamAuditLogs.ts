@@ -3,19 +3,28 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DownloadGroupStreamAuditLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  tenantName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  endDate: Schema.optional(Schema.Number),
-  startDate: Schema.optional(Schema.Number),
-  spName: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs" }));
-export type DownloadGroupStreamAuditLogsInput = typeof DownloadGroupStreamAuditLogsInput.Type;
+export const DownloadGroupStreamAuditLogsInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    tenantName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    endDate: Schema.optional(Schema.Number),
+    startDate: Schema.optional(Schema.Number),
+    spName: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs",
+    }),
+  );
+export type DownloadGroupStreamAuditLogsInput =
+  typeof DownloadGroupStreamAuditLogsInput.Type;
 
 // Output Schema
-export const DownloadGroupStreamAuditLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DownloadGroupStreamAuditLogsOutput = typeof DownloadGroupStreamAuditLogsOutput.Type;
+export const DownloadGroupStreamAuditLogsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DownloadGroupStreamAuditLogsOutput =
+  typeof DownloadGroupStreamAuditLogsOutput.Type;
 
 // The operation
 /**
@@ -32,7 +41,8 @@ export type DownloadGroupStreamAuditLogsOutput = typeof DownloadGroupStreamAudit
  * @param spName - Name of the stream processor to download logs for. An empty string will download logs for all stream processors in the workspace.
  * @param tenantName - Label that identifies the stream workspace.
  */
-export const downloadGroupStreamAuditLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: DownloadGroupStreamAuditLogsInput,
-  outputSchema: DownloadGroupStreamAuditLogsOutput,
-}));
+export const downloadGroupStreamAuditLogs =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: DownloadGroupStreamAuditLogsInput,
+    outputSchema: DownloadGroupStreamAuditLogsOutput,
+  }));

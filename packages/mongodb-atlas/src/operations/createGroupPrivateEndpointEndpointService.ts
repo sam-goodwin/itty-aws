@@ -3,16 +3,25 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateGroupPrivateEndpointEndpointServiceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService" }));
-export type CreateGroupPrivateEndpointEndpointServiceInput = typeof CreateGroupPrivateEndpointEndpointServiceInput.Type;
+export const CreateGroupPrivateEndpointEndpointServiceInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService",
+    }),
+  );
+export type CreateGroupPrivateEndpointEndpointServiceInput =
+  typeof CreateGroupPrivateEndpointEndpointServiceInput.Type;
 
 // Output Schema
-export const CreateGroupPrivateEndpointEndpointServiceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupPrivateEndpointEndpointServiceOutput = typeof CreateGroupPrivateEndpointEndpointServiceOutput.Type;
+export const CreateGroupPrivateEndpointEndpointServiceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type CreateGroupPrivateEndpointEndpointServiceOutput =
+  typeof CreateGroupPrivateEndpointEndpointServiceOutput.Type;
 
 // The operation
 /**
@@ -26,7 +35,8 @@ export type CreateGroupPrivateEndpointEndpointServiceOutput = typeof CreateGroup
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupPrivateEndpointEndpointService = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: CreateGroupPrivateEndpointEndpointServiceInput,
-  outputSchema: CreateGroupPrivateEndpointEndpointServiceOutput,
-}));
+export const createGroupPrivateEndpointEndpointService =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: CreateGroupPrivateEndpointEndpointServiceInput,
+    outputSchema: CreateGroupPrivateEndpointEndpointServiceOutput,
+  }));

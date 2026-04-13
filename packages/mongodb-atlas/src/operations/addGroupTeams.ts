@@ -7,7 +7,9 @@ export const AddGroupTeamsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/teams" }));
+}).pipe(
+  T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/teams" }),
+);
 export type AddGroupTeamsInput = typeof AddGroupTeamsInput.Type;
 
 // Output Schema

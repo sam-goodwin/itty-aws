@@ -3,19 +3,28 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const DeleteGroupClusterGlobalWriteManagedNamespacesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  clusterName: Schema.String.pipe(T.PathParam()),
-  groupId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-  db: Schema.optional(Schema.String),
-  collection: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "DELETE", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces" }));
-export type DeleteGroupClusterGlobalWriteManagedNamespacesInput = typeof DeleteGroupClusterGlobalWriteManagedNamespacesInput.Type;
+export const DeleteGroupClusterGlobalWriteManagedNamespacesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusterName: Schema.String.pipe(T.PathParam()),
+    groupId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+    db: Schema.optional(Schema.String),
+    collection: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces",
+    }),
+  );
+export type DeleteGroupClusterGlobalWriteManagedNamespacesInput =
+  typeof DeleteGroupClusterGlobalWriteManagedNamespacesInput.Type;
 
 // Output Schema
-export const DeleteGroupClusterGlobalWriteManagedNamespacesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupClusterGlobalWriteManagedNamespacesOutput = typeof DeleteGroupClusterGlobalWriteManagedNamespacesOutput.Type;
+export const DeleteGroupClusterGlobalWriteManagedNamespacesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type DeleteGroupClusterGlobalWriteManagedNamespacesOutput =
+  typeof DeleteGroupClusterGlobalWriteManagedNamespacesOutput.Type;
 
 // The operation
 /**
@@ -32,7 +41,8 @@ export type DeleteGroupClusterGlobalWriteManagedNamespacesOutput = typeof Delete
  * @param db - Human-readable label that identifies the database that contains the collection.
  * @param collection - Human-readable label that identifies the collection associated with the managed namespace.
  */
-export const deleteGroupClusterGlobalWriteManagedNamespaces = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: DeleteGroupClusterGlobalWriteManagedNamespacesInput,
-  outputSchema: DeleteGroupClusterGlobalWriteManagedNamespacesOutput,
-}));
+export const deleteGroupClusterGlobalWriteManagedNamespaces =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: DeleteGroupClusterGlobalWriteManagedNamespacesInput,
+    outputSchema: DeleteGroupClusterGlobalWriteManagedNamespacesOutput,
+  }));

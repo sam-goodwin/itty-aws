@@ -3,16 +3,25 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const PinGroupClusterCollStatPinnedNamespacesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  clusterName: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "PUT", path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned" }));
-export type PinGroupClusterCollStatPinnedNamespacesInput = typeof PinGroupClusterCollStatPinnedNamespacesInput.Type;
+export const PinGroupClusterCollStatPinnedNamespacesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned",
+    }),
+  );
+export type PinGroupClusterCollStatPinnedNamespacesInput =
+  typeof PinGroupClusterCollStatPinnedNamespacesInput.Type;
 
 // Output Schema
-export const PinGroupClusterCollStatPinnedNamespacesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PinGroupClusterCollStatPinnedNamespacesOutput = typeof PinGroupClusterCollStatPinnedNamespacesOutput.Type;
+export const PinGroupClusterCollStatPinnedNamespacesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export type PinGroupClusterCollStatPinnedNamespacesOutput =
+  typeof PinGroupClusterCollStatPinnedNamespacesOutput.Type;
 
 // The operation
 /**
@@ -26,7 +35,8 @@ export type PinGroupClusterCollStatPinnedNamespacesOutput = typeof PinGroupClust
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param clusterName - Human-readable label that identifies the cluster to pin namespaces to.
  */
-export const pinGroupClusterCollStatPinnedNamespaces = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: PinGroupClusterCollStatPinnedNamespacesInput,
-  outputSchema: PinGroupClusterCollStatPinnedNamespacesOutput,
-}));
+export const pinGroupClusterCollStatPinnedNamespaces =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: PinGroupClusterCollStatPinnedNamespacesInput,
+    outputSchema: PinGroupClusterCollStatPinnedNamespacesOutput,
+  }));

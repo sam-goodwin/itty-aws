@@ -3,18 +3,25 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const TransferProjectsFromOrgToOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  source_org_id: Schema.String.pipe(T.PathParam()),
-  destination_org_id: Schema.String,
-  project_ids: Schema.Array(Schema.String),
-}).pipe(T.Http({ method: "POST", path: "/organizations/{source_org_id}/projects/transfer" }));
-export type TransferProjectsFromOrgToOrgInput = typeof TransferProjectsFromOrgToOrgInput.Type;
+export const TransferProjectsFromOrgToOrgInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source_org_id: Schema.String.pipe(T.PathParam()),
+    destination_org_id: Schema.String,
+    project_ids: Schema.Array(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/organizations/{source_org_id}/projects/transfer",
+    }),
+  );
+export type TransferProjectsFromOrgToOrgInput =
+  typeof TransferProjectsFromOrgToOrgInput.Type;
 
 // Output Schema
-export const TransferProjectsFromOrgToOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-
-});
-export type TransferProjectsFromOrgToOrgOutput = typeof TransferProjectsFromOrgToOrgOutput.Type;
+export const TransferProjectsFromOrgToOrgOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
+export type TransferProjectsFromOrgToOrgOutput =
+  typeof TransferProjectsFromOrgToOrgOutput.Type;
 
 // The operation
 /**
@@ -24,7 +31,8 @@ export type TransferProjectsFromOrgToOrgOutput = typeof TransferProjectsFromOrgT
  *
  * @param source_org_id - The Neon organization ID (source org, which currently owns the project)
  */
-export const transferProjectsFromOrgToOrg = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: TransferProjectsFromOrgToOrgInput,
-  outputSchema: TransferProjectsFromOrgToOrgOutput,
-}));
+export const transferProjectsFromOrgToOrg =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: TransferProjectsFromOrgToOrgInput,
+    outputSchema: TransferProjectsFromOrgToOrgOutput,
+  }));

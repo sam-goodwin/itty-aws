@@ -3,14 +3,17 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const TokensRequestOIDCInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  aud: Schema.optional(Schema.String),
-  aws_principal_tags: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/tokens/oidc" }));
+export const TokensRequestOIDCInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    aud: Schema.optional(Schema.String),
+    aws_principal_tags: Schema.optional(Schema.Boolean),
+  },
+).pipe(T.Http({ method: "POST", path: "/tokens/oidc" }));
 export type TokensRequestOIDCInput = typeof TokensRequestOIDCInput.Type;
 
 // Output Schema
-export const TokensRequestOIDCOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
+export const TokensRequestOIDCOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
 export type TokensRequestOIDCOutput = typeof TokensRequestOIDCOutput.Type;
 
 // The operation

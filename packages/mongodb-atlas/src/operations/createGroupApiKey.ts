@@ -3,11 +3,15 @@ import { API } from "../client";
 import * as T from "../traits";
 
 // Input Schema
-export const CreateGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groupId: Schema.String.pipe(T.PathParam()),
-  envelope: Schema.optional(Schema.Boolean),
-  pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/apiKeys" }));
+export const CreateGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    groupId: Schema.String.pipe(T.PathParam()),
+    envelope: Schema.optional(Schema.Boolean),
+    pretty: Schema.optional(Schema.Boolean),
+  },
+).pipe(
+  T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/apiKeys" }),
+);
 export type CreateGroupApiKeyInput = typeof CreateGroupApiKeyInput.Type;
 
 // Output Schema

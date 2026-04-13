@@ -7,7 +7,9 @@ export const GetGroupSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/settings" }));
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/settings" }),
+);
 export type GetGroupSettingsInput = typeof GetGroupSettingsInput.Type;
 
 // Output Schema
