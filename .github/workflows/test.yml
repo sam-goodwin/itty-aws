@@ -204,6 +204,7 @@ jobs:
       - run: bun run test
         working-directory: packages/planetscale
         env:
+          PLANETSCALE_API_TOKEN_ID: ${{ secrets.PLANETSCALE_API_TOKEN_ID }}
           PLANETSCALE_API_TOKEN: ${{ secrets.PLANETSCALE_API_TOKEN }}
           PLANETSCALE_ORGANIZATION: ${{ secrets.PLANETSCALE_ORGANIZATION }}
 
