@@ -1,4 +1,6 @@
-import { BunServices } from "@effect/platform-bun";
+import * as NodeFileSystem from "@effect/platform-node-shared/NodeFileSystem";
+import * as NodePath from "@effect/platform-node-shared/NodePath";
+import * as NodeStdio from "@effect/platform-node-shared/NodeStdio";
 import {
   afterAll as _afterAll,
   beforeAll as _beforeAll,
@@ -29,7 +31,7 @@ type Provided =
   | Credentials.Credentials;
 
 const platform = Layer.mergeAll(
-  BunServices.layer,
+  Layer.mergeAll(NodeFileSystem.layer, NodePath.layer, NodeStdio.layer),
   FetchHttpClient.layer,
   Logger.layer([Logger.consolePretty()]),
 );
@@ -126,7 +128,7 @@ function provideTestEnv<A, E, R extends Provided>(
       MinimumLogLevel,
       process.env.DEBUG ? "Debug" : "Info",
     ),
-    Effect.provide(BunServices.layer),
+    Effect.provide(Layer.mergeAll(NodeFileSystem.layer, NodePath.layer, NodeStdio.layer)),
     Retry.transient,
   );
 
