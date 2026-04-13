@@ -378,7 +378,7 @@ export interface CreateConsumerRequest {
     retryDelay?: number;
   };
   /** Body param: */
-  type?: "worker";
+  type?: "worker" | "http_pull";
 }
 
 export const CreateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -403,7 +403,9 @@ export const CreateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-  type: Schema.optional(Schema.Literal("worker")),
+  type: Schema.optional(
+    Schema.Union([Schema.Literal("worker"), Schema.Literal("http_pull")]),
+  ),
 }).pipe(
   Schema.encodeKeys({
     deadLetterQueue: "dead_letter_queue",

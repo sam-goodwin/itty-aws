@@ -585,6 +585,29 @@ describe("Queues", () => {
           ),
         ),
       ));
+
+    test("happy path - creates an http_pull consumer", () =>
+      withQueue(queueName("create-consumer-happy"), (queueId) =>
+        Effect.gen(function* () {
+          const consumer = yield* Queues.createConsumer({
+            accountId: accountId(),
+            queueId,
+            type: "http_pull",
+          });
+
+          expect(consumer.type).toBe("http_pull");
+          expect(consumer.queueId).toBe(queueId);
+          expect(consumer.consumerId).toBeDefined();
+          expect(consumer.createdOn).toBeDefined();
+
+          // Clean up consumer
+          yield* Queues.deleteConsumer({
+            accountId: accountId(),
+            queueId,
+            consumerId: consumer.consumerId!,
+          }).pipe(Effect.catch(() => Effect.void));
+        }),
+      ));
   });
 
   // --------------------------------------------------------------------------
