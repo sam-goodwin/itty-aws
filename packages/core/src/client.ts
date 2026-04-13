@@ -584,8 +584,8 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
         asEffect() {
           return Effect.map(
             Effect.context(),
-            (context) =>
-              (input: Input) => Effect.provideContext(fn(input), context),
+            (context) => (input: Input) =>
+              Effect.provideContext(fn(input), context),
           );
         },
       };
