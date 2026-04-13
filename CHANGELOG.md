@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.10.1](https://github.com/alchemy-run/distilled/releases/tag/v0.10.1) (2026-04-13)
+
+### Features
+
+- **cloudflare**: add R2 object operations (get, put, delete) - by Michael K in [#190](https://github.com/alchemy-run/distilled/pull/190) [(00e97c6)](https://github.com/alchemy-run/distilled/commit/00e97c61aeb56226d05e27498aab69f2917ef2b2)
+
+### Bug Fixes
+
+- **cloudflare**: add DuplicateMigrationTarget error for PutScript - by Michael K in [#189](https://github.com/alchemy-run/distilled/pull/189) [(14adf68)](https://github.com/alchemy-run/distilled/commit/14adf68c4f050852149ef9f6af34f205b1052949)
+
 ## [v0.10.0](https://github.com/alchemy-run/distilled/releases/tag/v0.10.0) (2026-04-13)
 
 ### Features
