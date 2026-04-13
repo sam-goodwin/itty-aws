@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service user
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -130,36 +129,7 @@ export const listAuditLogs: API.PaginatedOperationMethod<
   ListAuditLogsResponse,
   ListAuditLogsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAuditLogsRequest,
-  ) => stream.Stream<
-    ListAuditLogsResponse,
-    ListAuditLogsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListAuditLogsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      action?: { result?: boolean | null; type?: string | null } | null;
-      actor?: {
-        id?: string | null;
-        email?: string | null;
-        ip?: string | null;
-        type?: "user" | "admin" | "Cloudflare" | null;
-      } | null;
-      interface?: string | null;
-      metadata?: unknown | null;
-      newValue?: string | null;
-      oldValue?: string | null;
-      owner?: { id?: string | null } | null;
-      resource?: { id?: string | null; type?: string | null } | null;
-      when?: string | null;
-    },
-    ListAuditLogsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAuditLogsRequest,
   output: ListAuditLogsResponse,
   errors: [],
@@ -253,29 +223,7 @@ export const listBillingHistories: API.PaginatedOperationMethod<
   ListBillingHistoriesResponse,
   ListBillingHistoriesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBillingHistoriesRequest,
-  ) => stream.Stream<
-    ListBillingHistoriesResponse,
-    ListBillingHistoriesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListBillingHistoriesRequest) => stream.Stream<
-    {
-      id: string;
-      action: string;
-      amount: number;
-      currency: string;
-      description: string;
-      occurredAt: string;
-      type: string;
-      zone: { name?: string | null };
-    },
-    ListBillingHistoriesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingHistoriesRequest,
   output: ListBillingHistoriesResponse,
   errors: [],
@@ -626,32 +574,7 @@ export const listInvites: API.PaginatedOperationMethod<
   ListInvitesResponse,
   ListInvitesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInvitesRequest,
-  ) => stream.Stream<
-    ListInvitesResponse,
-    ListInvitesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListInvitesRequest) => stream.Stream<
-    {
-      invitedMemberId: string | null;
-      organizationId: string;
-      id?: string | null;
-      expiresOn?: string | null;
-      invitedBy?: string | null;
-      invitedMemberEmail?: string | null;
-      invitedOn?: string | null;
-      organizationIsEnforcingTwofactor?: boolean | null;
-      organizationName?: string | null;
-      roles?: string[] | null;
-      status?: "pending" | "accepted" | "rejected" | "expired" | null;
-    },
-    ListInvitesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInvitesRequest,
   output: ListInvitesResponse,
   errors: [],
@@ -854,26 +777,7 @@ export const listOrganizations: API.PaginatedOperationMethod<
   ListOrganizationsResponse,
   ListOrganizationsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOrganizationsRequest,
-  ) => stream.Stream<
-    ListOrganizationsResponse,
-    ListOrganizationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListOrganizationsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      name?: string | null;
-      permissions?: string[] | null;
-      roles?: string[] | null;
-      status?: "member" | "invited" | null;
-    },
-    ListOrganizationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsRequest,
   output: ListOrganizationsResponse,
   errors: [],
@@ -1079,56 +983,7 @@ export const getSubscription: API.PaginatedOperationMethod<
   GetSubscriptionResponse,
   GetSubscriptionError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetSubscriptionRequest,
-  ) => stream.Stream<
-    GetSubscriptionResponse,
-    GetSubscriptionError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: GetSubscriptionRequest) => stream.Stream<
-    {
-      id?: string | null;
-      currency?: string | null;
-      currentPeriodEnd?: string | null;
-      currentPeriodStart?: string | null;
-      frequency?: "weekly" | "monthly" | "quarterly" | "yearly" | null;
-      price?: number | null;
-      ratePlan?: {
-        id?:
-          | "free"
-          | "lite"
-          | "pro"
-          | "pro_plus"
-          | "business"
-          | "enterprise"
-          | "partners_free"
-          | "partners_pro"
-          | "partners_business"
-          | "partners_enterprise"
-          | null;
-        currency?: string | null;
-        externallyManaged?: boolean | null;
-        isContract?: boolean | null;
-        publicName?: string | null;
-        scope?: string | null;
-        sets?: string[] | null;
-      } | null;
-      state?:
-        | "Trial"
-        | "Provisioned"
-        | "Paid"
-        | "AwaitingPayment"
-        | "Cancelled"
-        | "Failed"
-        | "Expired"
-        | null;
-    },
-    GetSubscriptionError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetSubscriptionRequest,
   output: GetSubscriptionResponse,
   errors: [],
@@ -1575,44 +1430,7 @@ export const listTokens: API.PaginatedOperationMethod<
   ListTokensResponse,
   ListTokensError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTokensRequest,
-  ) => stream.Stream<
-    ListTokensResponse,
-    ListTokensError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListTokensRequest) => stream.Stream<
-    {
-      id?: string | null;
-      condition?: {
-        requestIp?: { in?: string[] | null; notIn?: string[] | null } | null;
-      } | null;
-      expiresOn?: string | null;
-      issuedOn?: string | null;
-      lastUsedOn?: string | null;
-      modifiedOn?: string | null;
-      name?: string | null;
-      notBefore?: string | null;
-      policies?:
-        | {
-            id: string;
-            effect: "allow" | "deny";
-            permissionGroups: {
-              id: string;
-              meta?: { key?: string | null; value?: string | null } | null;
-              name?: string | null;
-            }[];
-            resources: Record<string, unknown>;
-          }[]
-        | null;
-      status?: "active" | "disabled" | "expired" | null;
-    },
-    ListTokensError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTokensRequest,
   output: ListTokensResponse,
   errors: [],
@@ -2181,31 +1999,7 @@ export const listTokenPermissionGroups: API.PaginatedOperationMethod<
   ListTokenPermissionGroupsResponse,
   ListTokenPermissionGroupsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTokenPermissionGroupsRequest,
-  ) => stream.Stream<
-    ListTokenPermissionGroupsResponse,
-    ListTokenPermissionGroupsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListTokenPermissionGroupsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      name?: string | null;
-      scopes?:
-        | (
-            | "com.cloudflare.api.account"
-            | "com.cloudflare.api.account.zone"
-            | "com.cloudflare.api.user"
-            | "com.cloudflare.edge.r2.bucket"
-          )[]
-        | null;
-    },
-    ListTokenPermissionGroupsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTokenPermissionGroupsRequest,
   output: ListTokenPermissionGroupsResponse,
   errors: [],

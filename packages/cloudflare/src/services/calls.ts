@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service calls
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -251,25 +250,7 @@ export const listSfus: API.PaginatedOperationMethod<
   ListSfusResponse,
   ListSfusError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSfusRequest,
-  ) => stream.Stream<
-    ListSfusResponse,
-    ListSfusError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSfusRequest) => stream.Stream<
-    {
-      created?: string | null;
-      modified?: string | null;
-      name?: string | null;
-      uid?: string | null;
-    },
-    ListSfusError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSfusRequest,
   output: ListSfusResponse,
   errors: [],
@@ -368,25 +349,7 @@ export const listTurns: API.PaginatedOperationMethod<
   ListTurnsResponse,
   ListTurnsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTurnsRequest,
-  ) => stream.Stream<
-    ListTurnsResponse,
-    ListTurnsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListTurnsRequest) => stream.Stream<
-    {
-      created?: string | null;
-      modified?: string | null;
-      name?: string | null;
-      uid?: string | null;
-    },
-    ListTurnsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTurnsRequest,
   output: ListTurnsResponse,
   errors: [],

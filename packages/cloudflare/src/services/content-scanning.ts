@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service content-scanning
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -260,22 +259,7 @@ export const listPayloads: API.PaginatedOperationMethod<
   ListPayloadsResponse,
   ListPayloadsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPayloadsRequest,
-  ) => stream.Stream<
-    ListPayloadsResponse,
-    ListPayloadsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPayloadsRequest,
-  ) => stream.Stream<
-    { id?: string | null; payload?: string | null },
-    ListPayloadsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPayloadsRequest,
   output: ListPayloadsResponse,
   errors: [],
@@ -326,22 +310,7 @@ export const createPayload: API.PaginatedOperationMethod<
   CreatePayloadResponse,
   CreatePayloadError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: CreatePayloadRequest,
-  ) => stream.Stream<
-    CreatePayloadResponse,
-    CreatePayloadError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: CreatePayloadRequest,
-  ) => stream.Stream<
-    { id?: string | null; payload?: string | null },
-    CreatePayloadError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreatePayloadRequest,
   output: CreatePayloadResponse,
   errors: [],
@@ -387,22 +356,7 @@ export const deletePayload: API.PaginatedOperationMethod<
   DeletePayloadResponse,
   DeletePayloadError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DeletePayloadRequest,
-  ) => stream.Stream<
-    DeletePayloadResponse,
-    DeletePayloadError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: DeletePayloadRequest,
-  ) => stream.Stream<
-    { id?: string | null; payload?: string | null },
-    DeletePayloadError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DeletePayloadRequest,
   output: DeletePayloadResponse,
   errors: [],

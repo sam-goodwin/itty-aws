@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service custom-hostnames
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -1279,117 +1278,7 @@ export const listCustomHostnames: API.PaginatedOperationMethod<
   ListCustomHostnamesResponse,
   ListCustomHostnamesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListCustomHostnamesRequest,
-  ) => stream.Stream<
-    ListCustomHostnamesResponse,
-    ListCustomHostnamesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListCustomHostnamesRequest) => stream.Stream<
-    {
-      id: string;
-      hostname: string;
-      ssl: {
-        id?: string | null;
-        bundleMethod?: "ubiquitous" | "optimal" | "force" | null;
-        certificateAuthority?:
-          | "digicert"
-          | "google"
-          | "lets_encrypt"
-          | "ssl_com"
-          | null;
-        customCertificate?: string | null;
-        customCsrId?: string | null;
-        customKey?: string | null;
-        expiresOn?: string | null;
-        hosts?: string[] | null;
-        issuer?: string | null;
-        method?: "http" | "txt" | "email" | null;
-        serialNumber?: string | null;
-        settings?: {
-          ciphers?: string[] | null;
-          earlyHints?: "on" | "off" | null;
-          http2?: "on" | "off" | null;
-          minTlsVersion?: "1.0" | "1.1" | "1.2" | "1.3" | null;
-          tls_1_3?: "on" | "off" | null;
-        } | null;
-        signature?: string | null;
-        status?:
-          | "initializing"
-          | "pending_validation"
-          | "deleted"
-          | "pending_issuance"
-          | "pending_deployment"
-          | "pending_deletion"
-          | "pending_expiration"
-          | "expired"
-          | "active"
-          | "initializing_timed_out"
-          | "validation_timed_out"
-          | "issuance_timed_out"
-          | "deployment_timed_out"
-          | "deletion_timed_out"
-          | "pending_cleanup"
-          | "staging_deployment"
-          | "staging_active"
-          | "deactivating"
-          | "inactive"
-          | "backup_issued"
-          | "holding_deployment"
-          | null;
-        type?: "dv" | null;
-        uploadedOn?: string | null;
-        validationErrors?: { message?: string | null }[] | null;
-        validationRecords?:
-          | {
-              emails?: string[] | null;
-              httpBody?: string | null;
-              httpUrl?: string | null;
-              txtName?: string | null;
-              txtValue?: string | null;
-            }[]
-          | null;
-        wildcard?: boolean | null;
-      };
-      createdAt?: string | null;
-      customMetadata?: Record<string, unknown> | null;
-      customOriginServer?: string | null;
-      customOriginSni?: string | null;
-      ownershipVerification?: {
-        name?: string | null;
-        type?: "txt" | null;
-        value?: string | null;
-      } | null;
-      ownershipVerificationHttp?: {
-        httpBody?: string | null;
-        httpUrl?: string | null;
-      } | null;
-      status?:
-        | "active"
-        | "pending"
-        | "active_redeploying"
-        | "moved"
-        | "pending_deletion"
-        | "deleted"
-        | "pending_blocked"
-        | "pending_migration"
-        | "pending_provisioned"
-        | "test_pending"
-        | "test_active"
-        | "test_active_apex"
-        | "test_blocked"
-        | "test_failed"
-        | "provisioned"
-        | "blocked"
-        | null;
-      verificationErrors?: string[] | null;
-    },
-    ListCustomHostnamesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomHostnamesRequest,
   output: ListCustomHostnamesResponse,
   errors: [],

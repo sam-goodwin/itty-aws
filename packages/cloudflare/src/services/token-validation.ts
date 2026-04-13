@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service token-validation
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -288,55 +287,7 @@ export const listConfigurations: API.PaginatedOperationMethod<
   ListConfigurationsResponse,
   ListConfigurationsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListConfigurationsRequest,
-  ) => stream.Stream<
-    ListConfigurationsResponse,
-    ListConfigurationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListConfigurationsRequest) => stream.Stream<
-    {
-      id: string;
-      createdAt: string;
-      credentials: {
-        keys: (
-          | {
-              alg: "RS256" | "RS384" | "RS512" | "PS256" | "PS384" | "PS512";
-              e: string;
-              kid: string;
-              kty: "RSA";
-              n: string;
-            }
-          | {
-              alg: "ES256";
-              crv: "P-256";
-              kid: string;
-              kty: "EC";
-              x: string;
-              y: string;
-            }
-          | {
-              alg: "ES384";
-              crv: "P-384";
-              kid: string;
-              kty: "EC";
-              x: string;
-              y: string;
-            }
-        )[];
-      };
-      description: string;
-      lastUpdated: string;
-      title: string;
-      tokenSources: string[];
-      tokenType: "JWT";
-    },
-    ListConfigurationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConfigurationsRequest,
   output: ListConfigurationsResponse,
   errors: [],
@@ -1138,33 +1089,7 @@ export const listRules: API.PaginatedOperationMethod<
   ListRulesResponse,
   ListRulesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    ListRulesResponse,
-    ListRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListRulesRequest) => stream.Stream<
-    {
-      action: "log" | "block";
-      description: string;
-      enabled: boolean;
-      expression: string;
-      selector: {
-        exclude?: { operationIds?: string[] | null }[] | null;
-        include?: { host?: string[] | null }[] | null;
-      };
-      title: string;
-      id?: string | null;
-      createdAt?: string | null;
-      lastUpdated?: string | null;
-    },
-    ListRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [],
@@ -1656,33 +1581,7 @@ export const bulkCreateRules: API.PaginatedOperationMethod<
   BulkCreateRulesResponse,
   BulkCreateRulesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BulkCreateRulesRequest,
-  ) => stream.Stream<
-    BulkCreateRulesResponse,
-    BulkCreateRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: BulkCreateRulesRequest) => stream.Stream<
-    {
-      action: "log" | "block";
-      description: string;
-      enabled: boolean;
-      expression: string;
-      selector: {
-        exclude?: { operationIds?: string[] | null }[] | null;
-        include?: { host?: string[] | null }[] | null;
-      };
-      title: string;
-      id?: string | null;
-      createdAt?: string | null;
-      lastUpdated?: string | null;
-    },
-    BulkCreateRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: BulkCreateRulesRequest,
   output: BulkCreateRulesResponse,
   errors: [],
@@ -1848,33 +1747,7 @@ export const bulkPatchRules: API.PaginatedOperationMethod<
   BulkPatchRulesResponse,
   BulkPatchRulesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BulkPatchRulesRequest,
-  ) => stream.Stream<
-    BulkPatchRulesResponse,
-    BulkPatchRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: BulkPatchRulesRequest) => stream.Stream<
-    {
-      action: "log" | "block";
-      description: string;
-      enabled: boolean;
-      expression: string;
-      selector: {
-        exclude?: { operationIds?: string[] | null }[] | null;
-        include?: { host?: string[] | null }[] | null;
-      };
-      title: string;
-      id?: string | null;
-      createdAt?: string | null;
-      lastUpdated?: string | null;
-    },
-    BulkPatchRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: BulkPatchRulesRequest,
   output: BulkPatchRulesResponse,
   errors: [],

@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service filters
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -142,26 +141,7 @@ export const listFilters: API.PaginatedOperationMethod<
   ListFiltersResponse,
   ListFiltersError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListFiltersRequest,
-  ) => stream.Stream<
-    ListFiltersResponse,
-    ListFiltersError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListFiltersRequest) => stream.Stream<
-    {
-      id?: string | null;
-      description?: string | null;
-      expression?: string | null;
-      paused?: boolean | null;
-      ref?: string | null;
-    },
-    ListFiltersError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFiltersRequest,
   output: ListFiltersResponse,
   errors: [],
@@ -229,26 +209,7 @@ export const createFilter: API.PaginatedOperationMethod<
   CreateFilterResponse,
   CreateFilterError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: CreateFilterRequest,
-  ) => stream.Stream<
-    CreateFilterResponse,
-    CreateFilterError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: CreateFilterRequest) => stream.Stream<
-    {
-      id?: string | null;
-      description?: string | null;
-      expression?: string | null;
-      paused?: boolean | null;
-      ref?: string | null;
-    },
-    CreateFilterError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreateFilterRequest,
   output: CreateFilterResponse,
   errors: [],
@@ -458,26 +419,7 @@ export const bulkPutFilters: API.PaginatedOperationMethod<
   BulkPutFiltersResponse,
   BulkPutFiltersError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BulkPutFiltersRequest,
-  ) => stream.Stream<
-    BulkPutFiltersResponse,
-    BulkPutFiltersError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: BulkPutFiltersRequest) => stream.Stream<
-    {
-      id?: string | null;
-      description?: string | null;
-      expression?: string | null;
-      paused?: boolean | null;
-      ref?: string | null;
-    },
-    BulkPutFiltersError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: BulkPutFiltersRequest,
   output: BulkPutFiltersResponse,
   errors: [],

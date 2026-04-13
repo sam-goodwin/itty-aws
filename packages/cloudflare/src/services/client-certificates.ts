@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service client-certificates
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -327,47 +326,7 @@ export const listClientCertificates: API.PaginatedOperationMethod<
   ListClientCertificatesResponse,
   ListClientCertificatesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListClientCertificatesRequest,
-  ) => stream.Stream<
-    ListClientCertificatesResponse,
-    ListClientCertificatesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListClientCertificatesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      certificate?: string | null;
-      certificateAuthority?: {
-        id?: string | null;
-        name?: string | null;
-      } | null;
-      commonName?: string | null;
-      country?: string | null;
-      csr?: string | null;
-      expiresOn?: string | null;
-      fingerprintSha256?: string | null;
-      issuedOn?: string | null;
-      location?: string | null;
-      organization?: string | null;
-      organizationalUnit?: string | null;
-      serialNumber?: string | null;
-      signature?: string | null;
-      ski?: string | null;
-      state?: string | null;
-      status?:
-        | "active"
-        | "pending_reactivation"
-        | "pending_revocation"
-        | "revoked"
-        | null;
-      validityDays?: number | null;
-    },
-    ListClientCertificatesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListClientCertificatesRequest,
   output: ListClientCertificatesResponse,
   errors: [],

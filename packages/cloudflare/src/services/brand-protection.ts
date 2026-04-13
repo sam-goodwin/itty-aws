@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service brand-protection
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -105,22 +104,7 @@ export const urlInfoBrandProtection: API.PaginatedOperationMethod<
   UrlInfoBrandProtectionResponse,
   UrlInfoBrandProtectionError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: UrlInfoBrandProtectionRequest,
-  ) => stream.Stream<
-    UrlInfoBrandProtectionResponse,
-    UrlInfoBrandProtectionError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: UrlInfoBrandProtectionRequest,
-  ) => stream.Stream<
-    Record<string, unknown>,
-    UrlInfoBrandProtectionError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: UrlInfoBrandProtectionRequest,
   output: UrlInfoBrandProtectionResponse,
   errors: [],

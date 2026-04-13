@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service dns
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -719,45 +718,7 @@ export const scanListRecord: API.PaginatedOperationMethod<
   ScanListRecordResponse,
   ScanListRecordError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ScanListRecordRequest,
-  ) => stream.Stream<
-    ScanListRecordResponse,
-    ScanListRecordError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ScanListRecordRequest) => stream.Stream<
-    | {
-        id: string;
-        createdOn: string;
-        meta: unknown;
-        modifiedOn: string;
-        proxiable: boolean;
-        commentModifiedOn?: string | null;
-        tagsModifiedOn?: string | null;
-      }
-    | {
-        id: string;
-        comment: string;
-        content: string;
-        createdOn: string;
-        meta: unknown;
-        modifiedOn: string;
-        name: string;
-        proxiable: boolean;
-        proxied: boolean;
-        settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
-        tags: string[];
-        ttl: number | "1";
-        type: "OPENPGPKEY";
-        commentModifiedOn?: string | null;
-        tagsModifiedOn?: string | null;
-      },
-    ScanListRecordError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ScanListRecordRequest,
   output: ScanListRecordResponse,
   errors: [],
@@ -1225,45 +1186,7 @@ export const listRecords: API.PaginatedOperationMethod<
   ListRecordsResponse,
   ListRecordsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecordsRequest,
-  ) => stream.Stream<
-    ListRecordsResponse,
-    ListRecordsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListRecordsRequest) => stream.Stream<
-    | {
-        id: string;
-        createdOn: string;
-        meta: unknown;
-        modifiedOn: string;
-        proxiable: boolean;
-        commentModifiedOn?: string | null;
-        tagsModifiedOn?: string | null;
-      }
-    | {
-        id: string;
-        comment: string;
-        content: string;
-        createdOn: string;
-        meta: unknown;
-        modifiedOn: string;
-        name: string;
-        proxiable: boolean;
-        proxied: boolean;
-        settings: { ipv4Only?: boolean | null; ipv6Only?: boolean | null };
-        tags: string[];
-        ttl: number | "1";
-        type: "OPENPGPKEY";
-        commentModifiedOn?: string | null;
-        tagsModifiedOn?: string | null;
-      },
-    ListRecordsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecordsRequest,
   output: ListRecordsResponse,
   errors: [],
@@ -4847,26 +4770,7 @@ export const listSettingAccountViews: API.PaginatedOperationMethod<
   ListSettingAccountViewsResponse,
   ListSettingAccountViewsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSettingAccountViewsRequest,
-  ) => stream.Stream<
-    ListSettingAccountViewsResponse,
-    ListSettingAccountViewsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSettingAccountViewsRequest) => stream.Stream<
-    {
-      id: string;
-      createdTime: string;
-      modifiedTime: string;
-      name: string;
-      zones: string[];
-    },
-    ListSettingAccountViewsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSettingAccountViewsRequest,
   output: ListSettingAccountViewsResponse,
   errors: [],
@@ -5590,22 +5494,7 @@ export const listZoneTransferAcls: API.PaginatedOperationMethod<
   ListZoneTransferAclsResponse,
   ListZoneTransferAclsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListZoneTransferAclsRequest,
-  ) => stream.Stream<
-    ListZoneTransferAclsResponse,
-    ListZoneTransferAclsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListZoneTransferAclsRequest,
-  ) => stream.Stream<
-    { id: string; ipRange: string; name: string },
-    ListZoneTransferAclsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListZoneTransferAclsRequest,
   output: ListZoneTransferAclsResponse,
   errors: [],
@@ -6602,27 +6491,7 @@ export const listZoneTransferPeers: API.PaginatedOperationMethod<
   ListZoneTransferPeersResponse,
   ListZoneTransferPeersError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListZoneTransferPeersRequest,
-  ) => stream.Stream<
-    ListZoneTransferPeersResponse,
-    ListZoneTransferPeersError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListZoneTransferPeersRequest) => stream.Stream<
-    {
-      id: string;
-      name: string;
-      ip?: string | null;
-      ixfrEnable?: boolean | null;
-      port?: number | null;
-      tsigId?: string | null;
-    },
-    ListZoneTransferPeersError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListZoneTransferPeersRequest,
   output: ListZoneTransferPeersResponse,
   errors: [],
@@ -6919,22 +6788,7 @@ export const listZoneTransferTsigs: API.PaginatedOperationMethod<
   ListZoneTransferTsigsResponse,
   ListZoneTransferTsigsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListZoneTransferTsigsRequest,
-  ) => stream.Stream<
-    ListZoneTransferTsigsResponse,
-    ListZoneTransferTsigsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListZoneTransferTsigsRequest,
-  ) => stream.Stream<
-    { id: string; algo: string; name: string; secret: string },
-    ListZoneTransferTsigsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListZoneTransferTsigsRequest,
   output: ListZoneTransferTsigsResponse,
   errors: [],

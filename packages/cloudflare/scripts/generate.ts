@@ -1575,7 +1575,6 @@ function generateOperationSchemaAst(
 
   if (op.paginationClassName && paginatedItemType) {
     const pagination = getPaginationTrait(op.paginationClassName);
-    const itemTypeName = typeInfoToTsType(paginatedItemType, 0, true);
     lines.push(
       `export const ${normalizedOpName}: API.PaginatedOperationMethod<`,
     );
@@ -1583,18 +1582,7 @@ function generateOperationSchemaAst(
     lines.push(`  ${responseTypeName},`);
     lines.push(`  ${errorTypeName},`);
     lines.push(`  Credentials | HttpClient.HttpClient`);
-    lines.push(`> & {`);
-    lines.push(`  pages: (input: ${requestTypeName}) => stream.Stream<`);
-    lines.push(`    ${responseTypeName},`);
-    lines.push(`    ${errorTypeName},`);
-    lines.push(`    Credentials | HttpClient.HttpClient`);
-    lines.push(`  >;`);
-    lines.push(`  items: (input: ${requestTypeName}) => stream.Stream<`);
-    lines.push(`    ${itemTypeName},`);
-    lines.push(`    ${errorTypeName},`);
-    lines.push(`    Credentials | HttpClient.HttpClient`);
-    lines.push(`  >;`);
-    lines.push(`} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({`);
+    lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({`);
     lines.push(`  input: ${requestTypeName},`);
     lines.push(`  output: ${responseTypeName},`);
     lines.push(`  errors: ${errorsArray},`);
@@ -1865,7 +1853,6 @@ function generateOperationSchema(
 
   if (op.paginationClassName && paginatedItemType) {
     const pagination = getPaginationTrait(op.paginationClassName);
-    const itemTypeName = typeInfoToTsType(paginatedItemType, 0, true);
     lines.push(
       `export const ${normalizedOpName}: API.PaginatedOperationMethod<`,
     );
@@ -1873,18 +1860,7 @@ function generateOperationSchema(
     lines.push(`  ${responseTypeName},`);
     lines.push(`  ${errorTypeName},`);
     lines.push(`  Credentials | HttpClient.HttpClient`);
-    lines.push(`> & {`);
-    lines.push(`  pages: (input: ${requestTypeName}) => stream.Stream<`);
-    lines.push(`    ${responseTypeName},`);
-    lines.push(`    ${errorTypeName},`);
-    lines.push(`    Credentials | HttpClient.HttpClient`);
-    lines.push(`  >;`);
-    lines.push(`  items: (input: ${requestTypeName}) => stream.Stream<`);
-    lines.push(`    ${itemTypeName},`);
-    lines.push(`    ${errorTypeName},`);
-    lines.push(`    Credentials | HttpClient.HttpClient`);
-    lines.push(`  >;`);
-    lines.push(`} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({`);
+    lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({`);
     lines.push(`  input: ${requestTypeName},`);
     lines.push(`  output: ${responseTypeName},`);
     lines.push(`  errors: ${errorsArray},`);

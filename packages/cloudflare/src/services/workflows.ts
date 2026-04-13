@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service workflows
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -407,37 +406,7 @@ export const listInstances: API.PaginatedOperationMethod<
   ListInstancesResponse,
   ListInstancesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    ListInstancesResponse,
-    ListInstancesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListInstancesRequest) => stream.Stream<
-    {
-      id: string;
-      createdOn: string;
-      endedOn: string | null;
-      modifiedOn: string;
-      startedOn: string | null;
-      status:
-        | "queued"
-        | "running"
-        | "paused"
-        | "errored"
-        | "terminated"
-        | "complete"
-        | "waitingForPause"
-        | "waiting";
-      versionId: string;
-      workflowId: string;
-    },
-    ListInstancesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [WorkflowNotFound, WorkflowInternalError, InvalidRoute, InvalidBody],
@@ -667,33 +636,7 @@ export const bulkInstance: API.PaginatedOperationMethod<
   BulkInstanceResponse,
   BulkInstanceError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BulkInstanceRequest,
-  ) => stream.Stream<
-    BulkInstanceResponse,
-    BulkInstanceError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: BulkInstanceRequest) => stream.Stream<
-    {
-      id: string;
-      status:
-        | "queued"
-        | "running"
-        | "paused"
-        | "errored"
-        | "terminated"
-        | "complete"
-        | "waitingForPause"
-        | "waiting";
-      versionId: string;
-      workflowId: string;
-    },
-    BulkInstanceError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: BulkInstanceRequest,
   output: BulkInstanceResponse,
   errors: [WorkflowNotFound, InvalidRoute, InvalidBody],
@@ -976,26 +919,7 @@ export const listVersions: API.PaginatedOperationMethod<
   ListVersionsResponse,
   ListVersionsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListVersionsRequest,
-  ) => stream.Stream<
-    ListVersionsResponse,
-    ListVersionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListVersionsRequest) => stream.Stream<
-    {
-      id: string;
-      className: string;
-      createdOn: string;
-      modifiedOn: string;
-      workflowId: string;
-    },
-    ListVersionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListVersionsRequest,
   output: ListVersionsResponse,
   errors: [WorkflowNotFound, InvalidRoute],
@@ -1198,38 +1122,7 @@ export const listWorkflows: API.PaginatedOperationMethod<
   ListWorkflowsResponse,
   ListWorkflowsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWorkflowsRequest,
-  ) => stream.Stream<
-    ListWorkflowsResponse,
-    ListWorkflowsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListWorkflowsRequest) => stream.Stream<
-    {
-      id: string;
-      className: string;
-      createdOn: string;
-      instances: {
-        complete?: number | null;
-        errored?: number | null;
-        paused?: number | null;
-        queued?: number | null;
-        running?: number | null;
-        terminated?: number | null;
-        waiting?: number | null;
-        waitingForPause?: number | null;
-      };
-      modifiedOn: string;
-      name: string;
-      scriptName: string;
-      triggeredOn: string | null;
-    },
-    ListWorkflowsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowsRequest,
   output: ListWorkflowsResponse,
   errors: [InvalidRoute],

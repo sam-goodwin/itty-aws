@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service zaraz
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -1042,26 +1041,7 @@ export const listHistories: API.PaginatedOperationMethod<
   ListHistoriesResponse,
   ListHistoriesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHistoriesRequest,
-  ) => stream.Stream<
-    ListHistoriesResponse,
-    ListHistoriesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListHistoriesRequest) => stream.Stream<
-    {
-      id: number;
-      createdAt: string;
-      description: string;
-      updatedAt: string;
-      userId: string;
-    },
-    ListHistoriesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHistoriesRequest,
   output: ListHistoriesResponse,
   errors: [],

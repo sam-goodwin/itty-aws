@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service snippets
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -106,27 +105,7 @@ export const listRules: API.PaginatedOperationMethod<
   ListRulesResponse,
   ListRulesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    ListRulesResponse,
-    ListRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListRulesRequest) => stream.Stream<
-    {
-      id: string;
-      expression: string;
-      lastUpdated: string;
-      snippetName: string;
-      description?: string | null;
-      enabled?: boolean | null;
-    },
-    ListRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [],
@@ -209,27 +188,7 @@ export const putRule: API.PaginatedOperationMethod<
   PutRuleResponse,
   PutRuleError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: PutRuleRequest,
-  ) => stream.Stream<
-    PutRuleResponse,
-    PutRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: PutRuleRequest) => stream.Stream<
-    {
-      id: string;
-      expression: string;
-      lastUpdated: string;
-      snippetName: string;
-      description?: string | null;
-      enabled?: boolean | null;
-    },
-    PutRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: PutRuleRequest,
   output: PutRuleResponse,
   errors: [],
@@ -290,27 +249,7 @@ export const deleteRule: API.PaginatedOperationMethod<
   DeleteRuleResponse,
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DeleteRuleRequest,
-  ) => stream.Stream<
-    DeleteRuleResponse,
-    DeleteRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: DeleteRuleRequest) => stream.Stream<
-    {
-      id: string;
-      expression: string;
-      lastUpdated: string;
-      snippetName: string;
-      description?: string | null;
-      enabled?: boolean | null;
-    },
-    DeleteRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
   errors: [],
@@ -438,22 +377,7 @@ export const listSnippets: API.PaginatedOperationMethod<
   ListSnippetsResponse,
   ListSnippetsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSnippetsRequest,
-  ) => stream.Stream<
-    ListSnippetsResponse,
-    ListSnippetsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSnippetsRequest,
-  ) => stream.Stream<
-    { createdOn: string; snippetName: string; modifiedOn?: string | null },
-    ListSnippetsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSnippetsRequest,
   output: ListSnippetsResponse,
   errors: [],

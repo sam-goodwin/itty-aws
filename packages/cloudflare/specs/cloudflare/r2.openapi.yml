@@ -2485,6 +2485,50 @@ paths:
           - code: 10006
         InvalidRoute:
           - code: 7003
+  /accounts/{account_id}/r2/buckets/{bucketName}/objects/{objectName}:
+    delete:
+      operationId: deleteObject
+      summary: Delete an object from an R2 bucket.
+      description: Deletes an object from an R2 bucket.
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: objectName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: Jurisdiction where objects in this bucket are guaranteed to be
+            stored.
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+        NoRoute:
+          - code: 10015
   /accounts/{account_id}/slurper/source/connectivity-precheck:
     put:
       operationId: sourceSuperSlurperConnectivityPrecheck

@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service email-routing
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -150,27 +149,7 @@ export const listAddresses: API.PaginatedOperationMethod<
   ListAddressesResponse,
   ListAddressesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAddressesRequest,
-  ) => stream.Stream<
-    ListAddressesResponse,
-    ListAddressesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListAddressesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      created?: string | null;
-      email?: string | null;
-      modified?: string | null;
-      tag?: string | null;
-      verified?: string | null;
-    },
-    ListAddressesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAddressesRequest,
   output: ListAddressesResponse,
   errors: [],
@@ -1059,45 +1038,7 @@ export const deleteDns: API.PaginatedOperationMethod<
   DeleteDnsResponse,
   DeleteDnsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DeleteDnsRequest,
-  ) => stream.Stream<
-    DeleteDnsResponse,
-    DeleteDnsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: DeleteDnsRequest) => stream.Stream<
-    {
-      content?: string | null;
-      name?: string | null;
-      priority?: number | null;
-      ttl?: number | "1" | null;
-      type?:
-        | "A"
-        | "AAAA"
-        | "CNAME"
-        | "HTTPS"
-        | "TXT"
-        | "SRV"
-        | "LOC"
-        | "MX"
-        | "NS"
-        | "CERT"
-        | "DNSKEY"
-        | "DS"
-        | "NAPTR"
-        | "SMIMEA"
-        | "SSHFP"
-        | "SVCB"
-        | "TLSA"
-        | "URI"
-        | null;
-    },
-    DeleteDnsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DeleteDnsRequest,
   output: DeleteDnsResponse,
   errors: [],
@@ -1586,36 +1527,7 @@ export const listRules: API.PaginatedOperationMethod<
   ListRulesResponse,
   ListRulesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    ListRulesResponse,
-    ListRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListRulesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      actions?:
-        | { type: "drop" | "forward" | "worker"; value?: string[] | null }[]
-        | null;
-      enabled?: true | false | null;
-      matchers?:
-        | {
-            type: "all" | "literal";
-            field?: "to" | null;
-            value?: string | null;
-          }[]
-        | null;
-      name?: string | null;
-      priority?: number | null;
-      tag?: string | null;
-    },
-    ListRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [],

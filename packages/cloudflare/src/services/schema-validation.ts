@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service schema-validation
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -169,27 +168,7 @@ export const listSchemas: API.PaginatedOperationMethod<
   ListSchemasResponse,
   ListSchemasError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSchemasRequest,
-  ) => stream.Stream<
-    ListSchemasResponse,
-    ListSchemasError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSchemasRequest) => stream.Stream<
-    {
-      createdAt: string;
-      kind: "openapi_v3";
-      name: string;
-      schemaId: string;
-      source: string;
-      validationEnabled?: boolean | null;
-    },
-    ListSchemasError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSchemasRequest,
   output: ListSchemasResponse,
   errors: [],
@@ -697,22 +676,7 @@ export const listSettingOperations: API.PaginatedOperationMethod<
   ListSettingOperationsResponse,
   ListSettingOperationsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSettingOperationsRequest,
-  ) => stream.Stream<
-    ListSettingOperationsResponse,
-    ListSettingOperationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListSettingOperationsRequest,
-  ) => stream.Stream<
-    { mitigationAction: "log" | "block" | "none"; operationId: string },
-    ListSettingOperationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSettingOperationsRequest,
   output: ListSettingOperationsResponse,
   errors: [],

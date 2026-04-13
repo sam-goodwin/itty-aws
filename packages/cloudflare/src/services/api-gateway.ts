@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service api-gateway
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -416,44 +415,7 @@ export const listDiscoveryOperations: API.PaginatedOperationMethod<
   ListDiscoveryOperationsResponse,
   ListDiscoveryOperationsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDiscoveryOperationsRequest,
-  ) => stream.Stream<
-    ListDiscoveryOperationsResponse,
-    ListDiscoveryOperationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListDiscoveryOperationsRequest) => stream.Stream<
-    {
-      id: string;
-      endpoint: string;
-      host: string;
-      lastUpdated: string;
-      method:
-        | "GET"
-        | "POST"
-        | "HEAD"
-        | "OPTIONS"
-        | "PUT"
-        | "DELETE"
-        | "CONNECT"
-        | "PATCH"
-        | "TRACE";
-      origin: ("ML" | "SessionIdentifier" | "LabelDiscovery")[];
-      state: "review" | "saved" | "ignored";
-      features?: {
-        trafficStats?: {
-          lastUpdated: string;
-          periodSeconds: number;
-          requests: number;
-        } | null;
-      } | null;
-    },
-    ListDiscoveryOperationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDiscoveryOperationsRequest,
   output: ListDiscoveryOperationsResponse,
   errors: [],
@@ -1421,90 +1383,7 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsResponse,
   ListOperationsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOperationsRequest,
-  ) => stream.Stream<
-    ListOperationsResponse,
-    ListOperationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListOperationsRequest) => stream.Stream<
-    {
-      endpoint: string;
-      host: string;
-      lastUpdated: string;
-      method:
-        | "GET"
-        | "POST"
-        | "HEAD"
-        | "OPTIONS"
-        | "PUT"
-        | "DELETE"
-        | "CONNECT"
-        | "PATCH"
-        | "TRACE";
-      operationId: string;
-      features?:
-        | {
-            thresholds?: {
-              authIdTokens?: number | null;
-              dataPoints?: number | null;
-              lastUpdated?: string | null;
-              p50?: number | null;
-              p90?: number | null;
-              p99?: number | null;
-              periodSeconds?: number | null;
-              requests?: number | null;
-              suggestedThreshold?: number | null;
-            } | null;
-          }
-        | {
-            parameterSchemas: {
-              lastUpdated?: string | null;
-              parameterSchemas?: {
-                parameters?: unknown[] | null;
-                responses?: null;
-              } | null;
-            };
-          }
-        | {
-            apiRouting?: {
-              lastUpdated?: string | null;
-              route?: string | null;
-            } | null;
-          }
-        | {
-            confidenceIntervals?: {
-              lastUpdated?: string | null;
-              suggestedThreshold?: {
-                confidenceIntervals?: {
-                  p90?: { lower?: number | null; upper?: number | null } | null;
-                  p95?: { lower?: number | null; upper?: number | null } | null;
-                  p99?: { lower?: number | null; upper?: number | null } | null;
-                } | null;
-                mean?: number | null;
-              } | null;
-            } | null;
-          }
-        | {
-            schemaInfo?: {
-              activeSchema?: {
-                id?: string | null;
-                createdAt?: string | null;
-                isLearned?: boolean | null;
-                name?: string | null;
-              } | null;
-              learnedAvailable?: boolean | null;
-              mitigationAction?: "none" | "log" | "block" | null;
-            } | null;
-          }
-        | null;
-    },
-    ListOperationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [],
@@ -2450,90 +2329,7 @@ export const bulkCreateOperations: API.PaginatedOperationMethod<
   BulkCreateOperationsResponse,
   BulkCreateOperationsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: BulkCreateOperationsRequest,
-  ) => stream.Stream<
-    BulkCreateOperationsResponse,
-    BulkCreateOperationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: BulkCreateOperationsRequest) => stream.Stream<
-    {
-      endpoint: string;
-      host: string;
-      lastUpdated: string;
-      method:
-        | "GET"
-        | "POST"
-        | "HEAD"
-        | "OPTIONS"
-        | "PUT"
-        | "DELETE"
-        | "CONNECT"
-        | "PATCH"
-        | "TRACE";
-      operationId: string;
-      features?:
-        | {
-            thresholds?: {
-              authIdTokens?: number | null;
-              dataPoints?: number | null;
-              lastUpdated?: string | null;
-              p50?: number | null;
-              p90?: number | null;
-              p99?: number | null;
-              periodSeconds?: number | null;
-              requests?: number | null;
-              suggestedThreshold?: number | null;
-            } | null;
-          }
-        | {
-            parameterSchemas: {
-              lastUpdated?: string | null;
-              parameterSchemas?: {
-                parameters?: unknown[] | null;
-                responses?: null;
-              } | null;
-            };
-          }
-        | {
-            apiRouting?: {
-              lastUpdated?: string | null;
-              route?: string | null;
-            } | null;
-          }
-        | {
-            confidenceIntervals?: {
-              lastUpdated?: string | null;
-              suggestedThreshold?: {
-                confidenceIntervals?: {
-                  p90?: { lower?: number | null; upper?: number | null } | null;
-                  p95?: { lower?: number | null; upper?: number | null } | null;
-                  p99?: { lower?: number | null; upper?: number | null } | null;
-                } | null;
-                mean?: number | null;
-              } | null;
-            } | null;
-          }
-        | {
-            schemaInfo?: {
-              activeSchema?: {
-                id?: string | null;
-                createdAt?: string | null;
-                isLearned?: boolean | null;
-                name?: string | null;
-              } | null;
-              learnedAvailable?: boolean | null;
-              mitigationAction?: "none" | "log" | "block" | null;
-            } | null;
-          }
-        | null;
-    },
-    BulkCreateOperationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: BulkCreateOperationsRequest,
   output: BulkCreateOperationsResponse,
   errors: [],
@@ -3241,27 +3037,7 @@ export const listUserSchemas: API.PaginatedOperationMethod<
   ListUserSchemasResponse,
   ListUserSchemasError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserSchemasRequest,
-  ) => stream.Stream<
-    ListUserSchemasResponse,
-    ListUserSchemasError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListUserSchemasRequest) => stream.Stream<
-    {
-      createdAt: string;
-      kind: "openapi_v3";
-      name: string;
-      schemaId: string;
-      source?: string | null;
-      validationEnabled?: boolean | null;
-    },
-    ListUserSchemasError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUserSchemasRequest,
   output: ListUserSchemasResponse,
   errors: [],
@@ -3648,22 +3424,7 @@ export const listUserSchemaHosts: API.PaginatedOperationMethod<
   ListUserSchemaHostsResponse,
   ListUserSchemaHostsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserSchemaHostsRequest,
-  ) => stream.Stream<
-    ListUserSchemaHostsResponse,
-    ListUserSchemaHostsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListUserSchemaHostsRequest,
-  ) => stream.Stream<
-    { createdAt: string; hosts: string[]; name: string; schemaId: string },
-    ListUserSchemaHostsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUserSchemaHostsRequest,
   output: ListUserSchemaHostsResponse,
   errors: [],
@@ -4153,113 +3914,7 @@ export const listUserSchemaOperations: API.PaginatedOperationMethod<
   ListUserSchemaOperationsResponse,
   ListUserSchemaOperationsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserSchemaOperationsRequest,
-  ) => stream.Stream<
-    ListUserSchemaOperationsResponse,
-    ListUserSchemaOperationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListUserSchemaOperationsRequest) => stream.Stream<
-    | {
-        endpoint: string;
-        host: string;
-        lastUpdated: string;
-        method:
-          | "GET"
-          | "POST"
-          | "HEAD"
-          | "OPTIONS"
-          | "PUT"
-          | "DELETE"
-          | "CONNECT"
-          | "PATCH"
-          | "TRACE";
-        operationId: string;
-        features?:
-          | {
-              thresholds?: {
-                authIdTokens?: number | null;
-                dataPoints?: number | null;
-                lastUpdated?: string | null;
-                p50?: number | null;
-                p90?: number | null;
-                p99?: number | null;
-                periodSeconds?: number | null;
-                requests?: number | null;
-                suggestedThreshold?: number | null;
-              } | null;
-            }
-          | {
-              parameterSchemas: {
-                lastUpdated?: string | null;
-                parameterSchemas?: {
-                  parameters?: unknown[] | null;
-                  responses?: null;
-                } | null;
-              };
-            }
-          | {
-              apiRouting?: {
-                lastUpdated?: string | null;
-                route?: string | null;
-              } | null;
-            }
-          | {
-              confidenceIntervals?: {
-                lastUpdated?: string | null;
-                suggestedThreshold?: {
-                  confidenceIntervals?: {
-                    p90?: {
-                      lower?: number | null;
-                      upper?: number | null;
-                    } | null;
-                    p95?: {
-                      lower?: number | null;
-                      upper?: number | null;
-                    } | null;
-                    p99?: {
-                      lower?: number | null;
-                      upper?: number | null;
-                    } | null;
-                  } | null;
-                  mean?: number | null;
-                } | null;
-              } | null;
-            }
-          | {
-              schemaInfo?: {
-                activeSchema?: {
-                  id?: string | null;
-                  createdAt?: string | null;
-                  isLearned?: boolean | null;
-                  name?: string | null;
-                } | null;
-                learnedAvailable?: boolean | null;
-                mitigationAction?: "none" | "log" | "block" | null;
-              } | null;
-            }
-          | null;
-      }
-    | {
-        endpoint: string;
-        host: string;
-        method:
-          | "GET"
-          | "POST"
-          | "HEAD"
-          | "OPTIONS"
-          | "PUT"
-          | "DELETE"
-          | "CONNECT"
-          | "PATCH"
-          | "TRACE";
-      },
-    ListUserSchemaOperationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUserSchemaOperationsRequest,
   output: ListUserSchemaOperationsResponse,
   errors: [],

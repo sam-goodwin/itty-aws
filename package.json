@@ -61,6 +61,7 @@
     "@types/bun": "catalog:",
     "@types/node": "catalog:",
     "@typescript/native-preview": "catalog:",
+    "aws4fetch": "^1.0.20",
     "changelogithub": "^14.0.0",
     "oxfmt": "catalog:",
     "oxlint": "catalog:",

@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service iam
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -171,24 +170,7 @@ export const listPermissionGroups: API.PaginatedOperationMethod<
   ListPermissionGroupsResponse,
   ListPermissionGroupsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPermissionGroupsRequest,
-  ) => stream.Stream<
-    ListPermissionGroupsResponse,
-    ListPermissionGroupsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListPermissionGroupsRequest) => stream.Stream<
-    {
-      id: string;
-      meta?: { key?: string | null; value?: string | null } | null;
-      name?: string | null;
-    },
-    ListPermissionGroupsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionGroupsRequest,
   output: ListPermissionGroupsResponse,
   errors: [],
@@ -323,25 +305,7 @@ export const listResourceGroups: API.PaginatedOperationMethod<
   ListResourceGroupsResponse,
   ListResourceGroupsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceGroupsRequest,
-  ) => stream.Stream<
-    ListResourceGroupsResponse,
-    ListResourceGroupsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListResourceGroupsRequest) => stream.Stream<
-    {
-      id: string;
-      scope: { key: string; objects: { key: string }[] }[];
-      meta?: { key?: string | null; value?: string | null } | null;
-      name?: string | null;
-    },
-    ListResourceGroupsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourceGroupsRequest,
   output: ListResourceGroupsResponse,
   errors: [],
@@ -696,31 +660,7 @@ export const listSsos: API.PaginatedOperationMethod<
   ListSsosResponse,
   ListSsosError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSsosRequest,
-  ) => stream.Stream<
-    ListSsosResponse,
-    ListSsosError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSsosRequest) => stream.Stream<
-    {
-      id?: string | null;
-      createdOn?: string | null;
-      emailDomain?: string | null;
-      enabled?: boolean | null;
-      updatedOn?: string | null;
-      useFedrampLanguage?: boolean | null;
-      verification?: {
-        code?: string | null;
-        status?: "awaiting" | "pending" | "failed" | "verified" | null;
-      } | null;
-    },
-    ListSsosError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSsosRequest,
   output: ListSsosResponse,
   errors: [],
@@ -1300,46 +1240,7 @@ export const listUserGroups: API.PaginatedOperationMethod<
   ListUserGroupsResponse,
   ListUserGroupsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserGroupsRequest,
-  ) => stream.Stream<
-    ListUserGroupsResponse,
-    ListUserGroupsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListUserGroupsRequest) => stream.Stream<
-    {
-      id: string;
-      createdOn: string;
-      modifiedOn: string;
-      name: string;
-      policies?:
-        | {
-            id?: string | null;
-            access?: "allow" | "deny" | null;
-            permissionGroups?:
-              | {
-                  id: string;
-                  meta?: { key?: string | null; value?: string | null } | null;
-                  name?: string | null;
-                }[]
-              | null;
-            resourceGroups?:
-              | {
-                  id: string;
-                  scope: { key: string; objects: { key: string }[] }[];
-                  meta?: { key?: string | null; value?: string | null } | null;
-                  name?: string | null;
-                }[]
-              | null;
-          }[]
-        | null;
-    },
-    ListUserGroupsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUserGroupsRequest,
   output: ListUserGroupsResponse,
   errors: [],
@@ -1846,24 +1747,7 @@ export const listUserGroupMembers: API.PaginatedOperationMethod<
   ListUserGroupMembersResponse,
   ListUserGroupMembersError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListUserGroupMembersRequest,
-  ) => stream.Stream<
-    ListUserGroupMembersResponse,
-    ListUserGroupMembersError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListUserGroupMembersRequest) => stream.Stream<
-    {
-      id: string;
-      email?: string | null;
-      status?: "accepted" | "pending" | null;
-    },
-    ListUserGroupMembersError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUserGroupMembersRequest,
   output: ListUserGroupMembersResponse,
   errors: [],
@@ -1985,24 +1869,7 @@ export const updateUserGroupMember: API.PaginatedOperationMethod<
   UpdateUserGroupMemberResponse,
   UpdateUserGroupMemberError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: UpdateUserGroupMemberRequest,
-  ) => stream.Stream<
-    UpdateUserGroupMemberResponse,
-    UpdateUserGroupMemberError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: UpdateUserGroupMemberRequest) => stream.Stream<
-    {
-      id: string;
-      email?: string | null;
-      status?: "accepted" | "pending" | null;
-    },
-    UpdateUserGroupMemberError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: UpdateUserGroupMemberRequest,
   output: UpdateUserGroupMemberResponse,
   errors: [],

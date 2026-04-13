@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service aisearch
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -692,190 +691,7 @@ export const listInstances: API.PaginatedOperationMethod<
   ListInstancesResponse,
   ListInstancesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstancesRequest,
-  ) => stream.Stream<
-    ListInstancesResponse,
-    ListInstancesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListInstancesRequest) => stream.Stream<
-    {
-      id: string;
-      accountId: string;
-      accountTag: string;
-      createdAt: string;
-      internalId: string;
-      modifiedAt: string;
-      source: string;
-      tokenId: string;
-      type: "r2" | "web-crawler";
-      vectorizeName: string;
-      aiGatewayId?: string | null;
-      aiSearchModel?:
-        | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
-        | "@cf/meta/llama-3.1-8b-instruct-fast"
-        | "@cf/meta/llama-3.1-8b-instruct-fp8"
-        | "@cf/meta/llama-4-scout-17b-16e-instruct"
-        | "@cf/qwen/qwen3-30b-a3b-fp8"
-        | "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"
-        | "@cf/moonshotai/kimi-k2-instruct"
-        | "anthropic/claude-3-7-sonnet"
-        | "anthropic/claude-sonnet-4"
-        | "anthropic/claude-opus-4"
-        | "anthropic/claude-3-5-haiku"
-        | "cerebras/qwen-3-235b-a22b-instruct"
-        | "cerebras/qwen-3-235b-a22b-thinking"
-        | "cerebras/llama-3.3-70b"
-        | "cerebras/llama-4-maverick-17b-128e-instruct"
-        | "cerebras/llama-4-scout-17b-16e-instruct"
-        | "cerebras/gpt-oss-120b"
-        | "google-ai-studio/gemini-2.5-flash"
-        | "google-ai-studio/gemini-2.5-pro"
-        | "grok/grok-4"
-        | "groq/llama-3.3-70b-versatile"
-        | "groq/llama-3.1-8b-instant"
-        | "openai/gpt-5"
-        | "openai/gpt-5-mini"
-        | "openai/gpt-5-nano"
-        | ""
-        | null;
-      cache?: boolean | null;
-      cacheThreshold?:
-        | "super_strict_match"
-        | "close_enough"
-        | "flexible_friend"
-        | "anything_goes"
-        | null;
-      chunk?: boolean | null;
-      chunkOverlap?: number | null;
-      chunkSize?: number | null;
-      createdBy?: string | null;
-      embeddingModel?:
-        | "@cf/baai/bge-m3"
-        | "@cf/baai/bge-large-en-v1.5"
-        | "@cf/google/embeddinggemma-300m"
-        | "@cf/qwen/qwen3-embedding-0.6b"
-        | "google-ai-studio/gemini-embedding-001"
-        | "openai/text-embedding-3-small"
-        | "openai/text-embedding-3-large"
-        | ""
-        | null;
-      enable?: boolean | null;
-      engineVersion?: number | null;
-      hybridSearchEnabled?: boolean | null;
-      lastActivity?: string | null;
-      maxNumResults?: number | null;
-      metadata?: {
-        createdFromAisearchWizard?: boolean | null;
-        workerDomain?: string | null;
-      } | null;
-      modifiedBy?: string | null;
-      paused?: boolean | null;
-      publicEndpointId?: string | null;
-      publicEndpointParams?: {
-        authorizedHosts?: string[] | null;
-        chatCompletionsEndpoint?: { disabled?: boolean | null } | null;
-        enabled?: boolean | null;
-        mcp?: { disabled?: boolean | null } | null;
-        rateLimit?: {
-          periodMs?: number | null;
-          requests?: number | null;
-          technique?: "fixed" | "sliding" | null;
-        } | null;
-        searchEndpoint?: { disabled?: boolean | null } | null;
-      } | null;
-      reranking?: boolean | null;
-      rerankingModel?: "@cf/baai/bge-reranker-base" | "" | null;
-      rewriteModel?:
-        | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
-        | "@cf/meta/llama-3.1-8b-instruct-fast"
-        | "@cf/meta/llama-3.1-8b-instruct-fp8"
-        | "@cf/meta/llama-4-scout-17b-16e-instruct"
-        | "@cf/qwen/qwen3-30b-a3b-fp8"
-        | "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"
-        | "@cf/moonshotai/kimi-k2-instruct"
-        | "anthropic/claude-3-7-sonnet"
-        | "anthropic/claude-sonnet-4"
-        | "anthropic/claude-opus-4"
-        | "anthropic/claude-3-5-haiku"
-        | "cerebras/qwen-3-235b-a22b-instruct"
-        | "cerebras/qwen-3-235b-a22b-thinking"
-        | "cerebras/llama-3.3-70b"
-        | "cerebras/llama-4-maverick-17b-128e-instruct"
-        | "cerebras/llama-4-scout-17b-16e-instruct"
-        | "cerebras/gpt-oss-120b"
-        | "google-ai-studio/gemini-2.5-flash"
-        | "google-ai-studio/gemini-2.5-pro"
-        | "grok/grok-4"
-        | "groq/llama-3.3-70b-versatile"
-        | "groq/llama-3.1-8b-instant"
-        | "openai/gpt-5"
-        | "openai/gpt-5-mini"
-        | "openai/gpt-5-nano"
-        | ""
-        | null;
-      rewriteQuery?: boolean | null;
-      scoreThreshold?: number | null;
-      sourceParams?: {
-        excludeItems?: string[] | null;
-        includeItems?: string[] | null;
-        prefix?: string | null;
-        r2Jurisdiction?: string | null;
-        webCrawler?: {
-          parseOptions?: {
-            includeHeaders?: Record<string, unknown> | null;
-            includeImages?: boolean | null;
-            useBrowserRendering?: boolean | null;
-          } | null;
-          parseType?: "sitemap" | "feed-rss" | null;
-          storeOptions?: {
-            storageId: string;
-            r2Jurisdiction?: string | null;
-            storageType?: "r2" | null;
-          } | null;
-        } | null;
-      } | null;
-      status?: string | null;
-      summarization?: boolean | null;
-      summarizationModel?:
-        | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
-        | "@cf/meta/llama-3.1-8b-instruct-fast"
-        | "@cf/meta/llama-3.1-8b-instruct-fp8"
-        | "@cf/meta/llama-4-scout-17b-16e-instruct"
-        | "@cf/qwen/qwen3-30b-a3b-fp8"
-        | "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"
-        | "@cf/moonshotai/kimi-k2-instruct"
-        | "anthropic/claude-3-7-sonnet"
-        | "anthropic/claude-sonnet-4"
-        | "anthropic/claude-opus-4"
-        | "anthropic/claude-3-5-haiku"
-        | "cerebras/qwen-3-235b-a22b-instruct"
-        | "cerebras/qwen-3-235b-a22b-thinking"
-        | "cerebras/llama-3.3-70b"
-        | "cerebras/llama-4-maverick-17b-128e-instruct"
-        | "cerebras/llama-4-scout-17b-16e-instruct"
-        | "cerebras/gpt-oss-120b"
-        | "google-ai-studio/gemini-2.5-flash"
-        | "google-ai-studio/gemini-2.5-pro"
-        | "grok/grok-4"
-        | "groq/llama-3.3-70b-versatile"
-        | "groq/llama-3.1-8b-instant"
-        | "openai/gpt-5"
-        | "openai/gpt-5-mini"
-        | "openai/gpt-5-nano"
-        | ""
-        | null;
-      systemPromptAiSearch?: string | null;
-      systemPromptIndexSummarization?: string | null;
-      systemPromptRewriteQuery?: string | null;
-      vectorizeActiveNamespace?: string | null;
-    },
-    ListInstancesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [InvalidRoute],
@@ -4377,27 +4193,7 @@ export const listInstanceItems: API.PaginatedOperationMethod<
   ListInstanceItemsResponse,
   ListInstanceItemsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstanceItemsRequest,
-  ) => stream.Stream<
-    ListInstanceItemsResponse,
-    ListInstanceItemsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListInstanceItemsRequest) => stream.Stream<
-    {
-      id: string;
-      key: string;
-      status: "queued" | "running" | "completed" | "error" | "skipped";
-      error?: string | null;
-      lastSeenAt?: string | null;
-      nextAction?: string | null;
-    },
-    ListInstanceItemsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceItemsRequest,
   output: ListInstanceItemsResponse,
   errors: [],
@@ -4567,27 +4363,7 @@ export const listInstanceJobs: API.PaginatedOperationMethod<
   ListInstanceJobsResponse,
   ListInstanceJobsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstanceJobsRequest,
-  ) => stream.Stream<
-    ListInstanceJobsResponse,
-    ListInstanceJobsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListInstanceJobsRequest) => stream.Stream<
-    {
-      id: string;
-      source: "user" | "schedule";
-      endReason?: string | null;
-      endedAt?: string | null;
-      lastSeenAt?: string | null;
-      startedAt?: string | null;
-    },
-    ListInstanceJobsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceJobsRequest,
   output: ListInstanceJobsResponse,
   errors: [],
@@ -4843,34 +4619,7 @@ export const listTokens: API.PaginatedOperationMethod<
   ListTokensResponse,
   ListTokensError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTokensRequest,
-  ) => stream.Stream<
-    ListTokensResponse,
-    ListTokensError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListTokensRequest) => stream.Stream<
-    {
-      id: string;
-      accountId: string;
-      accountTag: string;
-      cfApiId: string;
-      cfApiKey: string;
-      createdAt: string;
-      modifiedAt: string;
-      name: string;
-      createdBy?: string | null;
-      enabled?: boolean | null;
-      legacy?: boolean | null;
-      modifiedBy?: string | null;
-      syncedAt?: string | null;
-    },
-    ListTokensError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTokensRequest,
   output: ListTokensResponse,
   errors: [InvalidRoute],

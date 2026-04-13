@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service r2
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -2530,6 +2529,57 @@ export const deleteBucketSippy: API.OperationMethod<
 }));
 
 // =============================================================================
+// Object
+// =============================================================================
+
+export interface DeleteObjectRequest {
+  bucketName: string;
+  objectName: string;
+  /** Account ID. */
+  accountId: string;
+  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
+  cfR2Jurisdiction?: "default" | "eu" | "fedramp";
+}
+
+export const DeleteObjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucketName: Schema.String.pipe(T.HttpPath("bucketName")),
+  objectName: Schema.String.pipe(T.HttpPath("objectName")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  cfR2Jurisdiction: Schema.optional(
+    Schema.Literals(["default", "eu", "fedramp"]),
+  ).pipe(T.HttpHeader("cf-r2-jurisdiction")),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/accounts/{account_id}/r2/buckets/{bucketName}/objects/{objectName}",
+  }),
+) as unknown as Schema.Schema<DeleteObjectRequest>;
+
+export type DeleteObjectResponse = unknown;
+
+export const DeleteObjectResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<DeleteObjectResponse>;
+
+export type DeleteObjectError =
+  | DefaultErrors
+  | NoSuchBucket
+  | InvalidRoute
+  | NoRoute;
+
+export const deleteObject: API.OperationMethod<
+  DeleteObjectRequest,
+  DeleteObjectResponse,
+  DeleteObjectError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteObjectRequest,
+  output: DeleteObjectResponse,
+  errors: [NoSuchBucket, InvalidRoute, NoRoute],
+}));
+
+// =============================================================================
 // SuperSlurperConnectivityPrecheck
 // =============================================================================
 
@@ -2963,53 +3013,7 @@ export const listSuperSlurperJobs: API.PaginatedOperationMethod<
   ListSuperSlurperJobsResponse,
   ListSuperSlurperJobsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSuperSlurperJobsRequest,
-  ) => stream.Stream<
-    ListSuperSlurperJobsResponse,
-    ListSuperSlurperJobsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSuperSlurperJobsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      createdAt?: string | null;
-      finishedAt?: string | null;
-      overwrite?: boolean | null;
-      source?:
-        | {
-            bucket?: string | null;
-            endpoint?: string | null;
-            keys?: string[] | null;
-            pathPrefix?: string | null;
-            vendor?: "s3" | null;
-          }
-        | {
-            bucket?: string | null;
-            keys?: string[] | null;
-            pathPrefix?: string | null;
-            vendor?: "gcs" | null;
-          }
-        | {
-            bucket?: string | null;
-            jurisdiction?: "default" | "eu" | "fedramp" | null;
-            keys?: string[] | null;
-            pathPrefix?: string | null;
-            vendor?: "r2" | null;
-          }
-        | null;
-      status?: "running" | "paused" | "aborted" | "completed" | null;
-      target?: {
-        bucket?: string | null;
-        jurisdiction?: "default" | "eu" | "fedramp" | null;
-        vendor?: "r2" | null;
-      } | null;
-    },
-    ListSuperSlurperJobsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSuperSlurperJobsRequest,
   output: ListSuperSlurperJobsResponse,
   errors: [],
@@ -3404,42 +3408,7 @@ export const listSuperSlurperJobLogs: API.PaginatedOperationMethod<
   ListSuperSlurperJobLogsResponse,
   ListSuperSlurperJobLogsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSuperSlurperJobLogsRequest,
-  ) => stream.Stream<
-    ListSuperSlurperJobLogsResponse,
-    ListSuperSlurperJobLogsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSuperSlurperJobLogsRequest) => stream.Stream<
-    {
-      createdAt?: string | null;
-      job?: string | null;
-      logType?:
-        | "migrationStart"
-        | "migrationComplete"
-        | "migrationAbort"
-        | "migrationError"
-        | "migrationPause"
-        | "migrationResume"
-        | "migrationErrorFailedContinuation"
-        | "importErrorRetryExhaustion"
-        | "importSkippedStorageClass"
-        | "importSkippedOversized"
-        | "importSkippedEmptyObject"
-        | "importSkippedUnsupportedContentType"
-        | "importSkippedExcludedContentType"
-        | "importSkippedInvalidMedia"
-        | "importSkippedRequiresRetrieval"
-        | null;
-      message?: string | null;
-      objectKey?: string | null;
-    },
-    ListSuperSlurperJobLogsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSuperSlurperJobLogsRequest,
   output: ListSuperSlurperJobLogsResponse,
   errors: [],

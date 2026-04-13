@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service workers
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -379,22 +378,7 @@ export const listBetaWorkers: API.PaginatedOperationMethod<
   ListBetaWorkersResponse,
   ListBetaWorkersError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBetaWorkersRequest,
-  ) => stream.Stream<
-    ListBetaWorkersResponse,
-    ListBetaWorkersError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListBetaWorkersRequest,
-  ) => stream.Stream<
-    { id: string; name: string },
-    ListBetaWorkersError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBetaWorkersRequest,
   output: ListBetaWorkersResponse,
   errors: [InvalidRoute],
@@ -2356,178 +2340,7 @@ export const listBetaWorkerVersions: API.PaginatedOperationMethod<
   ListBetaWorkerVersionsResponse,
   ListBetaWorkerVersionsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListBetaWorkerVersionsRequest,
-  ) => stream.Stream<
-    ListBetaWorkerVersionsResponse,
-    ListBetaWorkerVersionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListBetaWorkerVersionsRequest) => stream.Stream<
-    {
-      id: string;
-      createdOn: string;
-      number: number;
-      annotations?: {
-        workersMessage?: string | null;
-        workersTag?: string | null;
-        workersTriggeredBy?: string | null;
-      } | null;
-      assets?: {
-        config?: {
-          htmlHandling?:
-            | "auto-trailing-slash"
-            | "force-trailing-slash"
-            | "drop-trailing-slash"
-            | "none"
-            | null;
-          notFoundHandling?:
-            | "none"
-            | "404-page"
-            | "single-page-application"
-            | null;
-          runWorkerFirst?: string[] | boolean | null;
-        } | null;
-        jwt?: string | null;
-      } | null;
-      bindings?:
-        | (
-            | { name: string; type: "ai" }
-            | { dataset: string; name: string; type: "analytics_engine" }
-            | { name: string; type: "assets" }
-            | { name: string; type: "browser" }
-            | { id: string; name: string; type: "d1" }
-            | { name: string; part: string; type: "data_blob" }
-            | {
-                name: string;
-                namespace: string;
-                type: "dispatch_namespace";
-                outbound?: {
-                  params?: string[] | null;
-                  worker?: {
-                    environment?: string | null;
-                    service?: string | null;
-                  } | null;
-                } | null;
-              }
-            | {
-                name: string;
-                type: "durable_object_namespace";
-                className?: string | null;
-                environment?: string | null;
-                namespaceId?: string | null;
-                scriptName?: string | null;
-              }
-            | { id: string; name: string; type: "hyperdrive" }
-            | {
-                name: string;
-                type: "inherit";
-                oldName?: string | null;
-                versionId?: string | null;
-              }
-            | { name: string; type: "images" }
-            | { json: string; name: string; type: "json" }
-            | { name: string; namespaceId: string; type: "kv_namespace" }
-            | { certificateId: string; name: string; type: "mtls_certificate" }
-            | { name: string; text: string; type: "plain_text" }
-            | { name: string; pipeline: string; type: "pipelines" }
-            | { name: string; queueName: string; type: "queue" }
-            | {
-                bucketName: string;
-                name: string;
-                type: "r2_bucket";
-                jurisdiction?: "eu" | "fedramp" | null;
-              }
-            | { name: string; type: "secret_text" }
-            | {
-                name: string;
-                type: "send_email";
-                allowedDestinationAddresses?: string[] | null;
-                allowedSenderAddresses?: string[] | null;
-                destinationAddress?: string | null;
-              }
-            | {
-                name: string;
-                service: string;
-                type: "service";
-                environment?: string | null;
-              }
-            | { name: string; part: string; type: "text_blob" }
-            | { indexName: string; name: string; type: "vectorize" }
-            | { name: string; type: "version_metadata" }
-            | {
-                name: string;
-                secretName: string;
-                storeId: string;
-                type: "secrets_store_secret";
-              }
-            | {
-                algorithm: unknown;
-                format: "raw" | "pkcs8" | "spki" | "jwk";
-                name: string;
-                type: "secret_key";
-                usages: (
-                  | "encrypt"
-                  | "decrypt"
-                  | "sign"
-                  | "verify"
-                  | "deriveKey"
-                  | "deriveBits"
-                  | "wrapKey"
-                  | "unwrapKey"
-                )[];
-              }
-            | {
-                name: string;
-                type: "workflow";
-                workflowName: string;
-                className?: string | null;
-                scriptName?: string | null;
-              }
-            | { name: string; part: string; type: "wasm_module" }
-          )[]
-        | null;
-      compatibilityDate?: string | null;
-      compatibilityFlags?: string[] | null;
-      limits?: { cpuMs: number } | null;
-      mainModule?: string | null;
-      migrations?:
-        | unknown
-        | {
-            newTag?: string | null;
-            oldTag?: string | null;
-            steps?:
-              | {
-                  deletedClasses?: string[] | null;
-                  newClasses?: string[] | null;
-                  newSqliteClasses?: string[] | null;
-                  renamedClasses?:
-                    | { from?: string | null; to?: string | null }[]
-                    | null;
-                  transferredClasses?:
-                    | {
-                        from?: string | null;
-                        fromScript?: string | null;
-                        to?: string | null;
-                      }[]
-                    | null;
-                }[]
-              | null;
-          }
-        | null;
-      modules?:
-        | { contentBase64: string; contentType: string; name: string }[]
-        | null;
-      placement?: { mode?: "smart" | null } | null;
-      source?: string | null;
-      startupTimeMs?: number | null;
-      usageModel?: "standard" | "bundled" | "unbound" | null;
-    },
-    ListBetaWorkerVersionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBetaWorkerVersionsRequest,
   output: ListBetaWorkerVersionsResponse,
   errors: [WorkerNotFound],
@@ -4104,27 +3917,7 @@ export const listDomains: API.PaginatedOperationMethod<
   ListDomainsResponse,
   ListDomainsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDomainsRequest,
-  ) => stream.Stream<
-    ListDomainsResponse,
-    ListDomainsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListDomainsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      environment?: string | null;
-      hostname?: string | null;
-      service?: string | null;
-      zoneId?: string | null;
-      zoneName?: string | null;
-    },
-    ListDomainsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [InvalidRoute],
@@ -4406,22 +4199,7 @@ export const keysObservabilityTelemetry: API.PaginatedOperationMethod<
   KeysObservabilityTelemetryResponse,
   KeysObservabilityTelemetryError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: KeysObservabilityTelemetryRequest,
-  ) => stream.Stream<
-    KeysObservabilityTelemetryResponse,
-    KeysObservabilityTelemetryError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: KeysObservabilityTelemetryRequest,
-  ) => stream.Stream<
-    { key: string; lastSeenAt: number; type: "string" | "boolean" | "number" },
-    KeysObservabilityTelemetryError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: KeysObservabilityTelemetryRequest,
   output: KeysObservabilityTelemetryResponse,
   errors: [InvalidRoute],
@@ -6004,25 +5782,7 @@ export const valuesObservabilityTelemetry: API.PaginatedOperationMethod<
   ValuesObservabilityTelemetryResponse,
   ValuesObservabilityTelemetryError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ValuesObservabilityTelemetryRequest,
-  ) => stream.Stream<
-    ValuesObservabilityTelemetryResponse,
-    ValuesObservabilityTelemetryError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ValuesObservabilityTelemetryRequest) => stream.Stream<
-    {
-      dataset: string;
-      key: string;
-      type: "string" | "boolean" | "number";
-      value: string | number | boolean;
-    },
-    ValuesObservabilityTelemetryError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ValuesObservabilityTelemetryRequest,
   output: ValuesObservabilityTelemetryResponse,
   errors: [InvalidRoute],
@@ -6109,22 +5869,7 @@ export const listRoutes: API.PaginatedOperationMethod<
   ListRoutesResponse,
   ListRoutesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRoutesRequest,
-  ) => stream.Stream<
-    ListRoutesResponse,
-    ListRoutesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRoutesRequest,
-  ) => stream.Stream<
-    { id: string; pattern: string; script?: string | null },
-    ListRoutesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRoutesRequest,
   output: ListRoutesResponse,
   errors: [InvalidRoute],
@@ -6677,102 +6422,7 @@ export const listScripts: API.PaginatedOperationMethod<
   ListScriptsResponse,
   ListScriptsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScriptsRequest,
-  ) => stream.Stream<
-    ListScriptsResponse,
-    ListScriptsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListScriptsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      compatibilityDate?: string | null;
-      compatibilityFlags?: string[] | null;
-      createdOn?: string | null;
-      etag?: string | null;
-      handlers?: string[] | null;
-      hasAssets?: boolean | null;
-      hasModules?: boolean | null;
-      lastDeployedFrom?: string | null;
-      logpush?: boolean | null;
-      migrationTag?: string | null;
-      modifiedOn?: string | null;
-      namedHandlers?:
-        | { handlers?: string[] | null; name?: string | null }[]
-        | null;
-      observability?: {
-        enabled: boolean;
-        headSamplingRate?: number | null;
-        logs?: {
-          enabled: boolean;
-          invocationLogs: boolean;
-          destinations?: string[] | null;
-          headSamplingRate?: number | null;
-          persist?: boolean | null;
-        } | null;
-      } | null;
-      placement?:
-        | {
-            mode: "smart";
-            lastAnalyzedAt?: string | null;
-            status?:
-              | "SUCCESS"
-              | "UNSUPPORTED_APPLICATION"
-              | "INSUFFICIENT_INVOCATIONS"
-              | null;
-          }
-        | {
-            region: string;
-            lastAnalyzedAt?: string | null;
-            status?:
-              | "SUCCESS"
-              | "UNSUPPORTED_APPLICATION"
-              | "INSUFFICIENT_INVOCATIONS"
-              | null;
-          }
-        | {
-            hostname: string;
-            lastAnalyzedAt?: string | null;
-            status?:
-              | "SUCCESS"
-              | "UNSUPPORTED_APPLICATION"
-              | "INSUFFICIENT_INVOCATIONS"
-              | null;
-          }
-        | {
-            host: string;
-            lastAnalyzedAt?: string | null;
-            status?:
-              | "SUCCESS"
-              | "UNSUPPORTED_APPLICATION"
-              | "INSUFFICIENT_INVOCATIONS"
-              | null;
-          }
-        | null;
-      placementMode?: "smart" | null;
-      placementStatus?:
-        | "SUCCESS"
-        | "UNSUPPORTED_APPLICATION"
-        | "INSUFFICIENT_INVOCATIONS"
-        | null;
-      routes?: { id: string; pattern: string; script?: string | null }[] | null;
-      tag?: string | null;
-      tags?: string[] | null;
-      tailConsumers?:
-        | {
-            service: string;
-            environment?: string | null;
-            namespace?: string | null;
-          }[]
-        | null;
-      usageModel?: "standard" | "bundled" | "unbound" | null;
-    },
-    ListScriptsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListScriptsRequest,
   output: ListScriptsResponse,
   errors: [InvalidRoute],
@@ -11680,36 +11330,7 @@ export const listScriptSecrets: API.PaginatedOperationMethod<
   ListScriptSecretsResponse,
   ListScriptSecretsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScriptSecretsRequest,
-  ) => stream.Stream<
-    ListScriptSecretsResponse,
-    ListScriptSecretsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListScriptSecretsRequest) => stream.Stream<
-    | { name: string; type: "secret_text" }
-    | {
-        algorithm: unknown;
-        format: "raw" | "pkcs8" | "spki" | "jwk";
-        name: string;
-        type: "secret_key";
-        usages: (
-          | "encrypt"
-          | "decrypt"
-          | "sign"
-          | "verify"
-          | "deriveKey"
-          | "deriveBits"
-          | "wrapKey"
-          | "unwrapKey"
-        )[];
-      },
-    ListScriptSecretsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListScriptSecretsRequest,
   output: ListScriptSecretsResponse,
   errors: [WorkerNotFound],
@@ -13345,42 +12966,7 @@ export const listScriptVersions: API.PaginatedOperationMethod<
   ListScriptVersionsResponse,
   ListScriptVersionsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScriptVersionsRequest,
-  ) => stream.Stream<
-    ListScriptVersionsResponse,
-    ListScriptVersionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListScriptVersionsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      metadata?: {
-        authorEmail?: string | null;
-        authorId?: string | null;
-        createdOn?: string | null;
-        hasPreview?: boolean | null;
-        modifiedOn?: string | null;
-        source?:
-          | "unknown"
-          | "api"
-          | "wrangler"
-          | "terraform"
-          | "dash"
-          | "dash_template"
-          | "integration"
-          | "quick_editor"
-          | "playground"
-          | "workersci"
-          | null;
-      } | null;
-      number?: number | null;
-    },
-    ListScriptVersionsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListScriptVersionsRequest,
   output: ListScriptVersionsResponse,
   errors: [WorkerNotFound],

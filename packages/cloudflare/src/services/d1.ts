@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service d1
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -197,25 +196,7 @@ export const listDatabases: API.PaginatedOperationMethod<
   ListDatabasesResponse,
   ListDatabasesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatabasesRequest,
-  ) => stream.Stream<
-    ListDatabasesResponse,
-    ListDatabasesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListDatabasesRequest) => stream.Stream<
-    {
-      createdAt?: string | null;
-      name?: string | null;
-      uuid?: string | null;
-      version?: string | null;
-    },
-    ListDatabasesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDatabasesRequest,
   output: ListDatabasesResponse,
   errors: [],
@@ -1058,43 +1039,7 @@ export const queryDatabase: API.PaginatedOperationMethod<
   QueryDatabaseResponse,
   QueryDatabaseError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: QueryDatabaseRequest,
-  ) => stream.Stream<
-    QueryDatabaseResponse,
-    QueryDatabaseError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: QueryDatabaseRequest) => stream.Stream<
-    {
-      meta?: {
-        changedDb?: boolean | null;
-        changes?: number | null;
-        duration?: number | null;
-        lastRowId?: number | null;
-        rowsRead?: number | null;
-        rowsWritten?: number | null;
-        servedByColo?: string | null;
-        servedByPrimary?: boolean | null;
-        servedByRegion?:
-          | "WNAM"
-          | "ENAM"
-          | "WEUR"
-          | "EEUR"
-          | "APAC"
-          | "OC"
-          | null;
-        sizeAfter?: number | null;
-        timings?: { sqlDurationMs?: number | null } | null;
-      } | null;
-      results?: unknown[] | null;
-      success?: boolean | null;
-    },
-    QueryDatabaseError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: QueryDatabaseRequest,
   output: QueryDatabaseResponse,
   errors: [],
@@ -1248,46 +1193,7 @@ export const rawDatabase: API.PaginatedOperationMethod<
   RawDatabaseResponse,
   RawDatabaseError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: RawDatabaseRequest,
-  ) => stream.Stream<
-    RawDatabaseResponse,
-    RawDatabaseError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: RawDatabaseRequest) => stream.Stream<
-    {
-      meta?: {
-        changedDb?: boolean | null;
-        changes?: number | null;
-        duration?: number | null;
-        lastRowId?: number | null;
-        rowsRead?: number | null;
-        rowsWritten?: number | null;
-        servedByColo?: string | null;
-        servedByPrimary?: boolean | null;
-        servedByRegion?:
-          | "WNAM"
-          | "ENAM"
-          | "WEUR"
-          | "EEUR"
-          | "APAC"
-          | "OC"
-          | null;
-        sizeAfter?: number | null;
-        timings?: { sqlDurationMs?: number | null } | null;
-      } | null;
-      results?: {
-        columns?: string[] | null;
-        rows?: (number | string)[][] | null;
-      } | null;
-      success?: boolean | null;
-    },
-    RawDatabaseError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: RawDatabaseRequest,
   output: RawDatabaseResponse,
   errors: [],

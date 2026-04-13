@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service abuse-reports
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -415,53 +414,7 @@ export const listAbuseReports: API.PaginatedOperationMethod<
   ListAbuseReportsResponse,
   ListAbuseReportsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAbuseReportsRequest,
-  ) => stream.Stream<
-    ListAbuseReportsResponse,
-    ListAbuseReportsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListAbuseReportsRequest) => stream.Stream<
-    {
-      reports: {
-        id: string;
-        cdate: string;
-        domain: string;
-        mitigationSummary: {
-          acceptedUrlCount: number;
-          activeCount: number;
-          externalHostNotified: boolean;
-          inReviewCount: number;
-          pendingCount: number;
-        };
-        status: "accepted" | "in_review";
-        type:
-          | "PHISH"
-          | "GEN"
-          | "THREAT"
-          | "DMCA"
-          | "EMER"
-          | "TM"
-          | "REG_WHO"
-          | "NCSEI"
-          | "NETWORK";
-        justification?: string | null;
-        originalWork?: string | null;
-        submitter?: {
-          company?: string | null;
-          email?: string | null;
-          name?: string | null;
-          telephone?: string | null;
-        } | null;
-        urls?: string[] | null;
-      }[];
-    },
-    ListAbuseReportsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAbuseReportsRequest,
   output: ListAbuseReportsResponse,
   errors: [InvalidAccountId],
@@ -792,35 +745,7 @@ export const listMitigations: API.PaginatedOperationMethod<
   ListMitigationsResponse,
   ListMitigationsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMitigationsRequest,
-  ) => stream.Stream<
-    ListMitigationsResponse,
-    ListMitigationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListMitigationsRequest) => stream.Stream<
-    {
-      mitigations: {
-        id: string;
-        effectiveDate: string;
-        entityId: string;
-        entityType: "url_pattern" | "account" | "zone";
-        status: "pending" | "active" | "in_review" | "cancelled" | "removed";
-        type:
-          | "legal_block"
-          | "phishing_interstitial"
-          | "network_block"
-          | "rate_limit_cache"
-          | "account_suspend"
-          | "redirect_video_stream";
-      }[];
-    },
-    ListMitigationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMitigationsRequest,
   output: ListMitigationsResponse,
   errors: [],
@@ -918,33 +843,7 @@ export const reviewMitigation: API.PaginatedOperationMethod<
   ReviewMitigationResponse,
   ReviewMitigationError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ReviewMitigationRequest,
-  ) => stream.Stream<
-    ReviewMitigationResponse,
-    ReviewMitigationError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ReviewMitigationRequest) => stream.Stream<
-    {
-      id: string;
-      effectiveDate: string;
-      entityId: string;
-      entityType: "url_pattern" | "account" | "zone";
-      status: "pending" | "active" | "in_review" | "cancelled" | "removed";
-      type:
-        | "legal_block"
-        | "phishing_interstitial"
-        | "network_block"
-        | "rate_limit_cache"
-        | "account_suspend"
-        | "redirect_video_stream";
-    },
-    ReviewMitigationError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ReviewMitigationRequest,
   output: ReviewMitigationResponse,
   errors: [],

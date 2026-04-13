@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service resource-sharing
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -243,38 +242,7 @@ export const listRecipients: API.PaginatedOperationMethod<
   ListRecipientsResponse,
   ListRecipientsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRecipientsRequest,
-  ) => stream.Stream<
-    ListRecipientsResponse,
-    ListRecipientsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListRecipientsRequest) => stream.Stream<
-    {
-      id: string;
-      accountId: string;
-      associationStatus:
-        | "associating"
-        | "associated"
-        | "disassociating"
-        | "disassociated";
-      created: string;
-      modified: string;
-      resources?:
-        | {
-            error: string;
-            resourceId: string;
-            resourceVersion: number;
-            terminal: boolean;
-          }[]
-        | null;
-    },
-    ListRecipientsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecipientsRequest,
   output: ListRecipientsResponse,
   errors: [],
@@ -724,36 +692,7 @@ export const listResources: API.PaginatedOperationMethod<
   ListResourcesResponse,
   ListResourcesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourcesRequest,
-  ) => stream.Stream<
-    ListResourcesResponse,
-    ListResourcesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListResourcesRequest) => stream.Stream<
-    {
-      id: string;
-      created: string;
-      meta: unknown;
-      modified: string;
-      resourceAccountId: string;
-      resourceId: string;
-      resourceType:
-        | "custom-ruleset"
-        | "widget"
-        | "gateway-policy"
-        | "gateway-destination-ip"
-        | "gateway-block-page-settings"
-        | "gateway-extended-email-matching";
-      resourceVersion: number;
-      status: "active" | "deleting" | "deleted";
-    },
-    ListResourcesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesRequest,
   output: ListResourcesResponse,
   errors: [],
@@ -1480,54 +1419,7 @@ export const listResourceSharings: API.PaginatedOperationMethod<
   ListResourceSharingsResponse,
   ListResourceSharingsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListResourceSharingsRequest,
-  ) => stream.Stream<
-    ListResourceSharingsResponse,
-    ListResourceSharingsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListResourceSharingsRequest) => stream.Stream<
-    {
-      id: string;
-      accountId: string;
-      accountName: string;
-      created: string;
-      modified: string;
-      name: string;
-      organizationId: string;
-      status: "active" | "deleting" | "deleted";
-      targetType: "account" | "organization";
-      associatedRecipientCount?: number | null;
-      associatingRecipientCount?: number | null;
-      disassociatedRecipientCount?: number | null;
-      disassociatingRecipientCount?: number | null;
-      kind?: "sent" | "received" | null;
-      resources?:
-        | {
-            id: string;
-            created: string;
-            meta: unknown;
-            modified: string;
-            resourceAccountId: string;
-            resourceId: string;
-            resourceType:
-              | "custom-ruleset"
-              | "widget"
-              | "gateway-policy"
-              | "gateway-destination-ip"
-              | "gateway-block-page-settings"
-              | "gateway-extended-email-matching";
-            resourceVersion: number;
-            status: "active" | "deleting" | "deleted";
-          }[]
-        | null;
-    },
-    ListResourceSharingsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourceSharingsRequest,
   output: ListResourceSharingsResponse,
   errors: [],

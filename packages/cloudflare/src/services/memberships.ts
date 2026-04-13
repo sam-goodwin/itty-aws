@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service memberships
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -787,53 +786,7 @@ export const listMemberships: API.PaginatedOperationMethod<
   ListMembershipsResponse,
   ListMembershipsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListMembershipsRequest,
-  ) => stream.Stream<
-    ListMembershipsResponse,
-    ListMembershipsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListMembershipsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      account?: {
-        id: string;
-        name: string;
-        type: "standard" | "enterprise";
-        createdOn?: string | null;
-        managedBy?: {
-          parentOrgId?: string | null;
-          parentOrgName?: string | null;
-        } | null;
-        settings?: {
-          abuseContactEmail?: string | null;
-          enforceTwofactor?: boolean | null;
-        } | null;
-      } | null;
-      apiAccessEnabled?: boolean | null;
-      permissions?: {
-        analytics?: { read?: boolean | null; write?: boolean | null } | null;
-        billing?: { read?: boolean | null; write?: boolean | null } | null;
-        cachePurge?: { read?: boolean | null; write?: boolean | null } | null;
-        dns?: { read?: boolean | null; write?: boolean | null } | null;
-        dnsRecords?: { read?: boolean | null; write?: boolean | null } | null;
-        lb?: { read?: boolean | null; write?: boolean | null } | null;
-        logs?: { read?: boolean | null; write?: boolean | null } | null;
-        organization?: { read?: boolean | null; write?: boolean | null } | null;
-        ssl?: { read?: boolean | null; write?: boolean | null } | null;
-        waf?: { read?: boolean | null; write?: boolean | null } | null;
-        zoneSettings?: { read?: boolean | null; write?: boolean | null } | null;
-        zones?: { read?: boolean | null; write?: boolean | null } | null;
-      } | null;
-      roles?: string[] | null;
-      status?: "accepted" | "pending" | "rejected" | null;
-    },
-    ListMembershipsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMembershipsRequest,
   output: ListMembershipsResponse,
   errors: [],

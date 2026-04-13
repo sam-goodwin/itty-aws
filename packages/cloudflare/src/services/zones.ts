@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service zones
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -233,22 +232,7 @@ export const putCustomNameserver: API.PaginatedOperationMethod<
   PutCustomNameserverResponse,
   PutCustomNameserverError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: PutCustomNameserverRequest,
-  ) => stream.Stream<
-    PutCustomNameserverResponse,
-    PutCustomNameserverError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: PutCustomNameserverRequest,
-  ) => stream.Stream<
-    string,
-    PutCustomNameserverError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: PutCustomNameserverRequest,
   output: PutCustomNameserverResponse,
   errors: [],
@@ -637,31 +621,7 @@ export const listPlans: API.PaginatedOperationMethod<
   ListPlansResponse,
   ListPlansError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPlansRequest,
-  ) => stream.Stream<
-    ListPlansResponse,
-    ListPlansError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListPlansRequest) => stream.Stream<
-    {
-      id?: string | null;
-      canSubscribe?: boolean | null;
-      currency?: string | null;
-      externallyManaged?: boolean | null;
-      frequency?: "weekly" | "monthly" | "quarterly" | "yearly" | null;
-      isSubscribed?: boolean | null;
-      legacyDiscount?: boolean | null;
-      legacyId?: string | null;
-      name?: string | null;
-      price?: number | null;
-    },
-    ListPlansError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlansRequest,
   output: ListPlansResponse,
   errors: [],
@@ -764,38 +724,7 @@ export const getRatePlan: API.PaginatedOperationMethod<
   GetRatePlanResponse,
   GetRatePlanError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetRatePlanRequest,
-  ) => stream.Stream<
-    GetRatePlanResponse,
-    GetRatePlanError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: GetRatePlanRequest) => stream.Stream<
-    {
-      id?: string | null;
-      components?:
-        | {
-            default?: number | null;
-            name?:
-              | "zones"
-              | "page_rules"
-              | "dedicated_certificates"
-              | "dedicated_certificates_custom"
-              | null;
-            unitPrice?: number | null;
-          }[]
-        | null;
-      currency?: string | null;
-      duration?: number | null;
-      frequency?: "weekly" | "monthly" | "quarterly" | "yearly" | null;
-      name?: string | null;
-    },
-    GetRatePlanError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetRatePlanRequest,
   output: GetRatePlanResponse,
   errors: [],
@@ -4854,63 +4783,7 @@ export const listZones: API.PaginatedOperationMethod<
   ListZonesResponse,
   ListZonesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListZonesRequest,
-  ) => stream.Stream<
-    ListZonesResponse,
-    ListZonesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListZonesRequest) => stream.Stream<
-    {
-      id: string;
-      account: { id?: string | null; name?: string | null };
-      activatedOn: string | null;
-      createdOn: string;
-      developmentMode: number;
-      meta: {
-        cdnOnly?: boolean | null;
-        customCertificateQuota?: number | null;
-        dnsOnly?: boolean | null;
-        foundationDns?: boolean | null;
-        pageRuleQuota?: number | null;
-        phishingDetected?: boolean | null;
-        step?: number | null;
-      };
-      modifiedOn: string;
-      name: string;
-      nameServers: string[];
-      originalDnshost: string | null;
-      originalNameServers: string[] | null;
-      originalRegistrar: string | null;
-      owner: { id?: string | null; name?: string | null; type?: string | null };
-      plan: {
-        id?: string | null;
-        canSubscribe?: boolean | null;
-        currency?: string | null;
-        externallyManaged?: boolean | null;
-        frequency?: string | null;
-        isSubscribed?: boolean | null;
-        legacyDiscount?: boolean | null;
-        legacyId?: string | null;
-        name?: string | null;
-        price?: number | null;
-      };
-      cnameSuffix?: string | null;
-      paused?: boolean | null;
-      permissions?: string[] | null;
-      status?: "initializing" | "pending" | "active" | "moved" | null;
-      tenant?: { id?: string | null; name?: string | null } | null;
-      tenantUnit?: { id?: string | null } | null;
-      type?: "full" | "partial" | "secondary" | "internal" | null;
-      vanityNameServers?: string[] | null;
-      verificationKey?: string | null;
-    },
-    ListZonesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListZonesRequest,
   output: ListZonesResponse,
   errors: [],

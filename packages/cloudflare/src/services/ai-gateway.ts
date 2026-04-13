@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service ai-gateway
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -429,65 +428,7 @@ export const listAiGateways: API.PaginatedOperationMethod<
   ListAiGatewaysResponse,
   ListAiGatewaysError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAiGatewaysRequest,
-  ) => stream.Stream<
-    ListAiGatewaysResponse,
-    ListAiGatewaysError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListAiGatewaysRequest) => stream.Stream<
-    {
-      id: string;
-      accountId: string;
-      accountTag: string;
-      cacheInvalidateOnUpdate: boolean;
-      cacheTtl: number | null;
-      collectLogs: boolean;
-      createdAt: string;
-      internalId: string;
-      modifiedAt: string;
-      rateLimitingInterval: number | null;
-      rateLimitingLimit: number | null;
-      rateLimitingTechnique: "fixed" | "sliding";
-      authentication?: boolean | null;
-      dlp?:
-        | { action: "BLOCK" | "FLAG"; enabled: boolean; profiles: string[] }
-        | {
-            enabled: boolean;
-            policies: {
-              id: string;
-              action: "FLAG" | "BLOCK";
-              check: ("REQUEST" | "RESPONSE")[];
-              enabled: boolean;
-              profiles: string[];
-            }[];
-          }
-        | null;
-      isDefault?: boolean | null;
-      logManagement?: number | null;
-      logManagementStrategy?: "STOP_INSERTING" | "DELETE_OLDEST" | null;
-      logpush?: boolean | null;
-      logpushPublicKey?: string | null;
-      otel?:
-        | {
-            authorization: string;
-            headers: Record<string, unknown>;
-            url: string;
-          }[]
-        | null;
-      storeId?: string | null;
-      stripe?: {
-        authorization: string;
-        usageEvents: { payload: string }[];
-      } | null;
-      zdr?: boolean | null;
-    },
-    ListAiGatewaysError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAiGatewaysRequest,
   output: ListAiGatewaysResponse,
   errors: [],
@@ -1520,47 +1461,7 @@ export const listDatasets: API.PaginatedOperationMethod<
   ListDatasetsResponse,
   ListDatasetsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListDatasetsRequest) => stream.Stream<
-    {
-      id: string;
-      accountId: string;
-      accountTag: string;
-      createdAt: string;
-      enable: boolean;
-      filters: {
-        key:
-          | "created_at"
-          | "request_content_type"
-          | "response_content_type"
-          | "success"
-          | "cached"
-          | "provider"
-          | "model"
-          | "cost"
-          | "tokens"
-          | "tokens_in"
-          | "tokens_out"
-          | "duration"
-          | "feedback";
-        operator: "eq" | "contains" | "lt" | "gt";
-        value: (string | number | boolean)[];
-      }[];
-      gatewayId: string;
-      modifiedAt: string;
-      name: string;
-    },
-    ListDatasetsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [],
@@ -2398,69 +2299,7 @@ export const listEvaluations: API.PaginatedOperationMethod<
   ListEvaluationsResponse,
   ListEvaluationsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEvaluationsRequest,
-  ) => stream.Stream<
-    ListEvaluationsResponse,
-    ListEvaluationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListEvaluationsRequest) => stream.Stream<
-    {
-      id: string;
-      accountId: string;
-      accountTag: string;
-      createdAt: string;
-      datasets: {
-        id: string;
-        accountId: string;
-        accountTag: string;
-        createdAt: string;
-        enable: boolean;
-        filters: {
-          key:
-            | "created_at"
-            | "request_content_type"
-            | "response_content_type"
-            | "success"
-            | "cached"
-            | "provider"
-            | "model"
-            | "cost"
-            | "tokens"
-            | "tokens_in"
-            | "tokens_out"
-            | "duration"
-            | "feedback";
-          operator: "eq" | "contains" | "lt" | "gt";
-          value: (string | number | boolean)[];
-        }[];
-        gatewayId: string;
-        modifiedAt: string;
-        name: string;
-      }[];
-      gatewayId: string;
-      modifiedAt: string;
-      name: string;
-      processed: boolean;
-      results: {
-        id: string;
-        createdAt: string;
-        evaluationId: string;
-        evaluationTypeId: string;
-        modifiedAt: string;
-        result: string;
-        status: number;
-        statusDescription: string;
-        totalLogs: number;
-      }[];
-      totalLogs: number;
-    },
-    ListEvaluationsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEvaluationsRequest,
   output: ListEvaluationsResponse,
   errors: [],
@@ -2953,29 +2792,7 @@ export const listEvaluationTypes: API.PaginatedOperationMethod<
   ListEvaluationTypesResponse,
   ListEvaluationTypesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEvaluationTypesRequest,
-  ) => stream.Stream<
-    ListEvaluationTypesResponse,
-    ListEvaluationTypesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListEvaluationTypesRequest) => stream.Stream<
-    {
-      id: string;
-      createdAt: string;
-      description: string;
-      enable: boolean;
-      mandatory: boolean;
-      modifiedAt: string;
-      name: string;
-      type: string;
-    },
-    ListEvaluationTypesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEvaluationTypesRequest,
   output: ListEvaluationTypesResponse,
   errors: [],
@@ -3424,40 +3241,7 @@ export const listLogs: API.PaginatedOperationMethod<
   ListLogsResponse,
   ListLogsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListLogsRequest,
-  ) => stream.Stream<
-    ListLogsResponse,
-    ListLogsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListLogsRequest) => stream.Stream<
-    {
-      id: string;
-      cached: boolean;
-      createdAt: string;
-      duration: number;
-      model: string;
-      path: string;
-      provider: string;
-      success: boolean;
-      tokensIn: number | null;
-      tokensOut: number | null;
-      cost?: number | null;
-      customCost?: boolean | null;
-      metadata?: string | null;
-      modelType?: string | null;
-      requestContentType?: string | null;
-      requestType?: string | null;
-      responseContentType?: string | null;
-      statusCode?: number | null;
-      step?: number | null;
-    },
-    ListLogsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLogsRequest,
   output: ListLogsResponse,
   errors: [],

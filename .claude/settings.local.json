@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls D:/code/alchemy/distilled/tsconfig*.json)",
+      "Bash(bun --version)",
+      "Bash(bun run:*)",
+      "Bash(ls node_modules/@distilled*)",
+      "Bash(curl -s -H \"Authorization: Bearer o5SqjJ5rozKCAwktsJ2R7mHVjcaSgCic2rclhZJ9EoQ.lEelornofLrRPkI_La5QYXvzIwzMQID2jVP-yCOyamM\" \"https://api.cloudflare.com/client/v4/user/tokens/permission_groups\")",
+      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); [print\\(f'{g[\\\\\"id\\\\\"]} {g[\\\\\"name\\\\\"]}'\\) for g in data.get\\('result',[]\\) if 'r2' in g.get\\('name',''\\).lower\\(\\)]\")",
+      "Bash(bun -e \"const d=JSON.parse\\(require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\)\\); d.result.filter\\(g=>g.name?.toLowerCase\\(\\).includes\\('r2'\\)\\).forEach\\(g=>console.log\\(g.id, g.name\\)\\)\")",
+      "Bash(grep -l \"delete\" /d/code/alchemy/distilled/packages/cloudflare/src/services/*.ts)",
+      "Bash(xargs head:*)",
+      "Bash(grep -E \"\\\\.\\(ts|js\\)$\")",
+      "Bash(find /d/code/alchemy/distilled/packages/cloudflare/src -name \"index.ts\" -exec cat {} \\\\;)",
+      "Bash(find /d/code/alchemy/distilled/packages/cloudflare -name \"package.json\" -exec cat {} \\\\;)",
+      "Bash(ls -d /d/code/alchemy/distilled/packages/cloudflare/patches/*/)",
+      "Bash(xargs -I {} bash -c 'echo -n \"$\\(basename {}\\): \"; ls {}*.json 2>/dev/null | wc -l')",
+      "Bash(ls -lS /d/code/alchemy/distilled/packages/cloudflare/patches/addressing/*.json)",
+      "Bash(bunx oxlint:*)",
+      "Bash(bunx oxfmt:*)",
+      "Bash(grep -n \"PaginatedOperationMethod\" packages/cloudflare/scripts/*.ts packages/core/src/**/*.ts)",
+      "Bash(python3)",
+      "Bash(bunx vitest:*)",
+      "Bash(DEBUG=1 bun run --env-file=../../.env test tests/organizations.test.ts -t \"can list organizations$\")",
+      "Bash(bun -e ':*)",
+      "Bash(ls node_modules/.bun/effect*/node_modules/effect/src/Effect.ts)"
+    ]
+  }
+}

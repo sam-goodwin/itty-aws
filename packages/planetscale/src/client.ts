@@ -56,7 +56,7 @@ export const API = makeAPI({
   credentials: Credentials as any,
   getBaseUrl: (creds: any) => creds.apiBaseUrl,
   getAuthHeaders: (creds: any) => ({
-    Authorization: Redacted.value(creds.token),
+    Authorization: `${creds.tokenId}:${Redacted.value(creds.token)}`,
   }),
   matchError,
   ParseError: PlanetScaleParseError as any,

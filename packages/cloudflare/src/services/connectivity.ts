@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service connectivity
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -264,39 +263,7 @@ export const listDirectoryServices: API.PaginatedOperationMethod<
   ListDirectoryServicesResponse,
   ListDirectoryServicesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDirectoryServicesRequest,
-  ) => stream.Stream<
-    ListDirectoryServicesResponse,
-    ListDirectoryServicesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListDirectoryServicesRequest) => stream.Stream<
-    {
-      host:
-        | { ipv4: string; network: { tunnelId: string } }
-        | { ipv6: string; network: { tunnelId: string } }
-        | { ipv4: string; ipv6: string; network: { tunnelId: string } }
-        | {
-            hostname: string;
-            resolverNetwork: {
-              tunnelId: string;
-              resolverIps?: string[] | null;
-            };
-          };
-      name: string;
-      type: "http";
-      createdAt?: string | null;
-      httpPort?: number | null;
-      httpsPort?: number | null;
-      serviceId?: string | null;
-      updatedAt?: string | null;
-    },
-    ListDirectoryServicesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDirectoryServicesRequest,
   output: ListDirectoryServicesResponse,
   errors: [],

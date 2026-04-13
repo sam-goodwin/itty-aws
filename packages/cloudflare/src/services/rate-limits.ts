@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service rate-limits
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -424,55 +423,7 @@ export const listRateLimits: API.PaginatedOperationMethod<
   ListRateLimitsResponse,
   ListRateLimitsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRateLimitsRequest,
-  ) => stream.Stream<
-    ListRateLimitsResponse,
-    ListRateLimitsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListRateLimitsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      action?: {
-        mode?:
-          | "simulate"
-          | "ban"
-          | "challenge"
-          | "js_challenge"
-          | "managed_challenge"
-          | null;
-        response?: { body?: string | null; contentType?: string | null } | null;
-        timeout?: number | null;
-      } | null;
-      bypass?: { name?: "url" | null; value?: string | null }[] | null;
-      description?: string | null;
-      disabled?: boolean | null;
-      match?: {
-        headers?:
-          | {
-              name?: string | null;
-              op?: "eq" | "ne" | null;
-              value?: string | null;
-            }[]
-          | null;
-        request?: {
-          methods?:
-            | ("GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "_ALL_")[]
-            | null;
-          schemes?: string[] | null;
-          url?: string | null;
-        } | null;
-        response?: { originTraffic?: boolean | null } | null;
-      } | null;
-      period?: number | null;
-      threshold?: number | null;
-    },
-    ListRateLimitsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRateLimitsRequest,
   output: ListRateLimitsResponse,
   errors: [],

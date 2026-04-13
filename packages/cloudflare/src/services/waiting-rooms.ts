@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service waiting-rooms
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -305,44 +304,7 @@ export const listEvents: API.PaginatedOperationMethod<
   ListEventsResponse,
   ListEventsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEventsRequest,
-  ) => stream.Stream<
-    ListEventsResponse,
-    ListEventsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListEventsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      createdOn?: string | null;
-      customPageHtml?: string | null;
-      description?: string | null;
-      disableSessionRenewal?: boolean | null;
-      eventEndTime?: string | null;
-      eventStartTime?: string | null;
-      modifiedOn?: string | null;
-      name?: string | null;
-      newUsersPerMinute?: number | null;
-      prequeueStartTime?: string | null;
-      queueingMethod?: string | null;
-      sessionDuration?: number | null;
-      shuffleAtEventStart?: boolean | null;
-      suspended?: boolean | null;
-      totalActiveUsers?: number | null;
-      turnstileAction?: "log" | "infinite_queue" | null;
-      turnstileMode?:
-        | "off"
-        | "invisible"
-        | "visible_non_interactive"
-        | "visible_managed"
-        | null;
-    },
-    ListEventsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEventsRequest,
   output: ListEventsResponse,
   errors: [],
@@ -1302,28 +1264,7 @@ export const getRule: API.PaginatedOperationMethod<
   GetRuleResponse,
   GetRuleError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetRuleRequest,
-  ) => stream.Stream<
-    GetRuleResponse,
-    GetRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: GetRuleRequest) => stream.Stream<
-    {
-      id?: string | null;
-      action?: "bypass_waiting_room" | null;
-      description?: string | null;
-      enabled?: boolean | null;
-      expression?: string | null;
-      lastUpdated?: string | null;
-      version?: string | null;
-    },
-    GetRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetRuleRequest,
   output: GetRuleResponse,
   errors: [],
@@ -1407,28 +1348,7 @@ export const createRule: API.PaginatedOperationMethod<
   CreateRuleResponse,
   CreateRuleError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: CreateRuleRequest,
-  ) => stream.Stream<
-    CreateRuleResponse,
-    CreateRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: CreateRuleRequest) => stream.Stream<
-    {
-      id?: string | null;
-      action?: "bypass_waiting_room" | null;
-      description?: string | null;
-      enabled?: boolean | null;
-      expression?: string | null;
-      lastUpdated?: string | null;
-      version?: string | null;
-    },
-    CreateRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CreateRuleRequest,
   output: CreateRuleResponse,
   errors: [],
@@ -1514,28 +1434,7 @@ export const updateRule: API.PaginatedOperationMethod<
   UpdateRuleResponse,
   UpdateRuleError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: UpdateRuleRequest,
-  ) => stream.Stream<
-    UpdateRuleResponse,
-    UpdateRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: UpdateRuleRequest) => stream.Stream<
-    {
-      id?: string | null;
-      action?: "bypass_waiting_room" | null;
-      description?: string | null;
-      enabled?: boolean | null;
-      expression?: string | null;
-      lastUpdated?: string | null;
-      version?: string | null;
-    },
-    UpdateRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: UpdateRuleRequest,
   output: UpdateRuleResponse,
   errors: [],
@@ -1635,28 +1534,7 @@ export const patchRule: API.PaginatedOperationMethod<
   PatchRuleResponse,
   PatchRuleError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: PatchRuleRequest,
-  ) => stream.Stream<
-    PatchRuleResponse,
-    PatchRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: PatchRuleRequest) => stream.Stream<
-    {
-      id?: string | null;
-      action?: "bypass_waiting_room" | null;
-      description?: string | null;
-      enabled?: boolean | null;
-      expression?: string | null;
-      lastUpdated?: string | null;
-      version?: string | null;
-    },
-    PatchRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: PatchRuleRequest,
   output: PatchRuleResponse,
   errors: [],
@@ -1729,28 +1607,7 @@ export const deleteRule: API.PaginatedOperationMethod<
   DeleteRuleResponse,
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DeleteRuleRequest,
-  ) => stream.Stream<
-    DeleteRuleResponse,
-    DeleteRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: DeleteRuleRequest) => stream.Stream<
-    {
-      id?: string | null;
-      action?: "bypass_waiting_room" | null;
-      description?: string | null;
-      enabled?: boolean | null;
-      expression?: string | null;
-      lastUpdated?: string | null;
-      version?: string | null;
-    },
-    DeleteRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
   errors: [],
@@ -2583,96 +2440,7 @@ export const listWaitingRooms: API.PaginatedOperationMethod<
   ListWaitingRoomsResponse,
   ListWaitingRoomsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListWaitingRoomsRequest,
-  ) => stream.Stream<
-    ListWaitingRoomsResponse,
-    ListWaitingRoomsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListWaitingRoomsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      additionalRoutes?:
-        | { host?: string | null; path?: string | null }[]
-        | null;
-      cookieAttributes?: {
-        samesite?: "auto" | "lax" | "none" | "strict" | null;
-        secure?: "auto" | "always" | "never" | null;
-      } | null;
-      cookieSuffix?: string | null;
-      createdOn?: string | null;
-      customPageHtml?: string | null;
-      defaultTemplateLanguage?:
-        | "en-US"
-        | "es-ES"
-        | "de-DE"
-        | "fr-FR"
-        | "it-IT"
-        | "ja-JP"
-        | "ko-KR"
-        | "pt-BR"
-        | "zh-CN"
-        | "zh-TW"
-        | "nl-NL"
-        | "pl-PL"
-        | "id-ID"
-        | "tr-TR"
-        | "ar-EG"
-        | "ru-RU"
-        | "fa-IR"
-        | "bg-BG"
-        | "hr-HR"
-        | "cs-CZ"
-        | "da-DK"
-        | "fi-FI"
-        | "lt-LT"
-        | "ms-MY"
-        | "nb-NO"
-        | "ro-RO"
-        | "el-GR"
-        | "he-IL"
-        | "hi-IN"
-        | "hu-HU"
-        | "sr-BA"
-        | "sk-SK"
-        | "sl-SI"
-        | "sv-SE"
-        | "tl-PH"
-        | "th-TH"
-        | "uk-UA"
-        | "vi-VN"
-        | null;
-      description?: string | null;
-      disableSessionRenewal?: boolean | null;
-      enabledOriginCommands?: "revoke"[] | null;
-      host?: string | null;
-      jsonResponseEnabled?: boolean | null;
-      modifiedOn?: string | null;
-      name?: string | null;
-      newUsersPerMinute?: number | null;
-      nextEventPrequeueStartTime?: string | null;
-      nextEventStartTime?: string | null;
-      path?: string | null;
-      queueAll?: boolean | null;
-      queueingMethod?: "fifo" | "random" | "passthrough" | "reject" | null;
-      queueingStatusCode?: "200" | "202" | "429" | null;
-      sessionDuration?: number | null;
-      suspended?: boolean | null;
-      totalActiveUsers?: number | null;
-      turnstileAction?: "log" | "infinite_queue" | null;
-      turnstileMode?:
-        | "off"
-        | "invisible"
-        | "visible_non_interactive"
-        | "visible_managed"
-        | null;
-    },
-    ListWaitingRoomsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWaitingRoomsRequest,
   output: ListWaitingRoomsResponse,
   errors: [],

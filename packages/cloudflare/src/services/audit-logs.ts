@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service audit-logs
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -177,36 +176,7 @@ export const listAuditLogs: API.PaginatedOperationMethod<
   ListAuditLogsResponse,
   ListAuditLogsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAuditLogsRequest,
-  ) => stream.Stream<
-    ListAuditLogsResponse,
-    ListAuditLogsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListAuditLogsRequest) => stream.Stream<
-    {
-      id?: string | null;
-      action?: { result?: boolean | null; type?: string | null } | null;
-      actor?: {
-        id?: string | null;
-        email?: string | null;
-        ip?: string | null;
-        type?: "user" | "admin" | "Cloudflare" | null;
-      } | null;
-      interface?: string | null;
-      metadata?: unknown | null;
-      newValue?: string | null;
-      oldValue?: string | null;
-      owner?: { id?: string | null } | null;
-      resource?: { id?: string | null; type?: string | null } | null;
-      when?: string | null;
-    },
-    ListAuditLogsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAuditLogsRequest,
   output: ListAuditLogsResponse,
   errors: [],

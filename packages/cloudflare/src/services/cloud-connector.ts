@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service cloud-connector
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -81,32 +80,7 @@ export const listRules: API.PaginatedOperationMethod<
   ListRulesResponse,
   ListRulesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRulesRequest,
-  ) => stream.Stream<
-    ListRulesResponse,
-    ListRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListRulesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      description?: string | null;
-      enabled?: boolean | null;
-      expression?: string | null;
-      parameters?: { host?: string | null } | null;
-      provider?:
-        | "aws_s3"
-        | "cloudflare_r2"
-        | "gcp_storage"
-        | "azure_storage"
-        | null;
-    },
-    ListRulesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [],
@@ -212,32 +186,7 @@ export const putRule: API.PaginatedOperationMethod<
   PutRuleResponse,
   PutRuleError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: PutRuleRequest,
-  ) => stream.Stream<
-    PutRuleResponse,
-    PutRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: PutRuleRequest) => stream.Stream<
-    {
-      id?: string | null;
-      description?: string | null;
-      enabled?: boolean | null;
-      expression?: string | null;
-      parameters?: { host?: string | null } | null;
-      provider?:
-        | "aws_s3"
-        | "cloudflare_r2"
-        | "gcp_storage"
-        | "azure_storage"
-        | null;
-    },
-    PutRuleError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: PutRuleRequest,
   output: PutRuleResponse,
   errors: [],

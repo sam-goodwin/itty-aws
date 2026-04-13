@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service custom-nameservers
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -74,26 +73,7 @@ export const getCustomNameserver: API.PaginatedOperationMethod<
   GetCustomNameserverResponse,
   GetCustomNameserverError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetCustomNameserverRequest,
-  ) => stream.Stream<
-    GetCustomNameserverResponse,
-    GetCustomNameserverError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: GetCustomNameserverRequest) => stream.Stream<
-    {
-      dnsRecords: { type?: "A" | "AAAA" | null; value?: string | null }[];
-      nsName: string;
-      status: "moved" | "pending" | "verified";
-      zoneTag: string;
-      nsSet?: number | null;
-    },
-    GetCustomNameserverError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetCustomNameserverRequest,
   output: GetCustomNameserverResponse,
   errors: [],
@@ -209,22 +189,7 @@ export const deleteCustomNameserver: API.PaginatedOperationMethod<
   DeleteCustomNameserverResponse,
   DeleteCustomNameserverError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: DeleteCustomNameserverRequest,
-  ) => stream.Stream<
-    DeleteCustomNameserverResponse,
-    DeleteCustomNameserverError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: DeleteCustomNameserverRequest,
-  ) => stream.Stream<
-    string,
-    DeleteCustomNameserverError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DeleteCustomNameserverRequest,
   output: DeleteCustomNameserverResponse,
   errors: [],

@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service alerting
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -197,22 +196,7 @@ export const getDestinationPagerduty: API.PaginatedOperationMethod<
   GetDestinationPagerdutyResponse,
   GetDestinationPagerdutyError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetDestinationPagerdutyRequest,
-  ) => stream.Stream<
-    GetDestinationPagerdutyResponse,
-    GetDestinationPagerdutyError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetDestinationPagerdutyRequest,
-  ) => stream.Stream<
-    { id?: string | null; name?: string | null },
-    GetDestinationPagerdutyError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetDestinationPagerdutyRequest,
   output: GetDestinationPagerdutyResponse,
   errors: [],
@@ -544,37 +528,7 @@ export const listDestinationWebhooks: API.PaginatedOperationMethod<
   ListDestinationWebhooksResponse,
   ListDestinationWebhooksError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDestinationWebhooksRequest,
-  ) => stream.Stream<
-    ListDestinationWebhooksResponse,
-    ListDestinationWebhooksError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListDestinationWebhooksRequest) => stream.Stream<
-    {
-      id?: string | null;
-      createdAt?: string | null;
-      lastFailure?: string | null;
-      lastSuccess?: string | null;
-      name?: string | null;
-      type?:
-        | "datadog"
-        | "discord"
-        | "feishu"
-        | "gchat"
-        | "generic"
-        | "opsgenie"
-        | "slack"
-        | "splunk"
-        | null;
-      url?: string | null;
-    },
-    ListDestinationWebhooksError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDestinationWebhooksRequest,
   output: ListDestinationWebhooksResponse,
   errors: [],
@@ -843,30 +797,7 @@ export const listHistories: API.PaginatedOperationMethod<
   ListHistoriesResponse,
   ListHistoriesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListHistoriesRequest,
-  ) => stream.Stream<
-    ListHistoriesResponse,
-    ListHistoriesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListHistoriesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      alertBody?: string | null;
-      alertType?: string | null;
-      description?: string | null;
-      mechanism?: string | null;
-      mechanismType?: "email" | "pagerduty" | "webhook" | null;
-      name?: string | null;
-      policyId?: string | null;
-      sent?: string | null;
-    },
-    ListHistoriesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHistoriesRequest,
   output: ListHistoriesResponse,
   errors: [],
@@ -1893,155 +1824,7 @@ export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesResponse,
   ListPoliciesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPoliciesRequest,
-  ) => stream.Stream<
-    ListPoliciesResponse,
-    ListPoliciesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListPoliciesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      alertInterval?: string | null;
-      alertType?:
-        | "abuse_report_alert"
-        | "access_custom_certificate_expiration_type"
-        | "advanced_ddos_attack_l4_alert"
-        | "advanced_ddos_attack_l7_alert"
-        | "advanced_http_alert_error"
-        | "bgp_hijack_notification"
-        | "billing_usage_alert"
-        | "block_notification_block_removed"
-        | "block_notification_new_block"
-        | "block_notification_review_rejected"
-        | "bot_traffic_basic_alert"
-        | "brand_protection_alert"
-        | "brand_protection_digest"
-        | "clickhouse_alert_fw_anomaly"
-        | "clickhouse_alert_fw_ent_anomaly"
-        | "cloudforce_one_request_notification"
-        | "custom_analytics"
-        | "custom_bot_detection_alert"
-        | "custom_ssl_certificate_event_type"
-        | "dedicated_ssl_certificate_event_type"
-        | "device_connectivity_anomaly_alert"
-        | "dos_attack_l4"
-        | "dos_attack_l7"
-        | "expiring_service_token_alert"
-        | "failing_logpush_job_disabled_alert"
-        | "fbm_auto_advertisement"
-        | "fbm_dosd_attack"
-        | "fbm_volumetric_attack"
-        | "health_check_status_notification"
-        | "hostname_aop_custom_certificate_expiration_type"
-        | "http_alert_edge_error"
-        | "http_alert_origin_error"
-        | "image_notification"
-        | "image_resizing_notification"
-        | "incident_alert"
-        | "load_balancing_health_alert"
-        | "load_balancing_pool_enablement_alert"
-        | "logo_match_alert"
-        | "magic_tunnel_health_check_event"
-        | "magic_wan_tunnel_health"
-        | "maintenance_event_notification"
-        | "mtls_certificate_store_certificate_expiration_type"
-        | "pages_event_alert"
-        | "radar_notification"
-        | "real_origin_monitoring"
-        | "scriptmonitor_alert_new_code_change_detections"
-        | "scriptmonitor_alert_new_hosts"
-        | "scriptmonitor_alert_new_malicious_hosts"
-        | "scriptmonitor_alert_new_malicious_scripts"
-        | "scriptmonitor_alert_new_malicious_url"
-        | "scriptmonitor_alert_new_max_length_resource_url"
-        | "scriptmonitor_alert_new_resources"
-        | "secondary_dns_all_primaries_failing"
-        | "secondary_dns_primaries_failing"
-        | "secondary_dns_warning"
-        | "secondary_dns_zone_successfully_updated"
-        | "secondary_dns_zone_validation_warning"
-        | "security_insights_alert"
-        | "sentinel_alert"
-        | "stream_live_notifications"
-        | "synthetic_test_latency_alert"
-        | "synthetic_test_low_availability_alert"
-        | "traffic_anomalies_alert"
-        | "tunnel_health_event"
-        | "tunnel_update_event"
-        | "universal_ssl_event_type"
-        | "web_analytics_metrics_update"
-        | "zone_aop_custom_certificate_expiration_type"
-        | null;
-      created?: string | null;
-      description?: string | null;
-      enabled?: boolean | null;
-      filters?: {
-        actions?: string[] | null;
-        affectedAsns?: string[] | null;
-        affectedComponents?: string[] | null;
-        affectedLocations?: string[] | null;
-        airportCode?: string[] | null;
-        alertTriggerPreferences?: string[] | null;
-        alertTriggerPreferencesValue?: string[] | null;
-        enabled?: string[] | null;
-        environment?: string[] | null;
-        event?: string[] | null;
-        eventSource?: string[] | null;
-        eventType?: string[] | null;
-        groupBy?: string[] | null;
-        healthCheckId?: string[] | null;
-        incidentImpact?:
-          | (
-              | "INCIDENT_IMPACT_NONE"
-              | "INCIDENT_IMPACT_MINOR"
-              | "INCIDENT_IMPACT_MAJOR"
-              | "INCIDENT_IMPACT_CRITICAL"
-            )[]
-          | null;
-        inputId?: string[] | null;
-        insightClass?: string[] | null;
-        limit?: string[] | null;
-        logoTag?: string[] | null;
-        megabitsPerSecond?: string[] | null;
-        newHealth?: string[] | null;
-        newStatus?: string[] | null;
-        packetsPerSecond?: string[] | null;
-        poolId?: string[] | null;
-        popNames?: string[] | null;
-        product?: string[] | null;
-        projectId?: string[] | null;
-        protocol?: string[] | null;
-        queryTag?: string[] | null;
-        requestsPerSecond?: string[] | null;
-        selectors?: string[] | null;
-        services?: string[] | null;
-        slo?: string[] | null;
-        status?: string[] | null;
-        targetHostname?: string[] | null;
-        targetIp?: string[] | null;
-        targetZoneName?: string[] | null;
-        trafficExclusions?: "security_events"[] | null;
-        tunnelId?: string[] | null;
-        tunnelName?: string[] | null;
-        type?: string[] | null;
-        where?: string[] | null;
-        zones?: string[] | null;
-      } | null;
-      mechanisms?: {
-        email?: { id?: string | null }[] | null;
-        pagerduty?: { id?: string | null }[] | null;
-        webhooks?: { id?: string | null }[] | null;
-      } | null;
-      modified?: string | null;
-      name?: string | null;
-    },
-    ListPoliciesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [],
@@ -3056,27 +2839,7 @@ export const listSilences: API.PaginatedOperationMethod<
   ListSilencesResponse,
   ListSilencesError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListSilencesRequest,
-  ) => stream.Stream<
-    ListSilencesResponse,
-    ListSilencesError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListSilencesRequest) => stream.Stream<
-    {
-      id?: string | null;
-      createdAt?: string | null;
-      endTime?: string | null;
-      policyId?: string | null;
-      startTime?: string | null;
-      updatedAt?: string | null;
-    },
-    ListSilencesError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSilencesRequest,
   output: ListSilencesResponse,
   errors: [],
@@ -3220,27 +2983,7 @@ export const updateSilence: API.PaginatedOperationMethod<
   UpdateSilenceResponse,
   UpdateSilenceError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: UpdateSilenceRequest,
-  ) => stream.Stream<
-    UpdateSilenceResponse,
-    UpdateSilenceError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: UpdateSilenceRequest) => stream.Stream<
-    {
-      id?: string | null;
-      createdAt?: string | null;
-      endTime?: string | null;
-      policyId?: string | null;
-      startTime?: string | null;
-      updatedAt?: string | null;
-    },
-    UpdateSilenceError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: UpdateSilenceRequest,
   output: UpdateSilenceResponse,
   errors: [],

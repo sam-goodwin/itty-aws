@@ -5,7 +5,6 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service spectrum
  */
 
-import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -877,53 +876,7 @@ export const listApps: API.PaginatedOperationMethod<
   ListAppsResponse,
   ListAppsError,
   Credentials | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAppsRequest,
-  ) => stream.Stream<
-    ListAppsResponse,
-    ListAppsError,
-    Credentials | HttpClient.HttpClient
-  >;
-  items: (input: ListAppsRequest) => stream.Stream<
-    | {
-        id: string;
-        createdOn: string;
-        dns: { name?: string | null; type?: "CNAME" | "ADDRESS" | null };
-        modifiedOn: string;
-        protocol: string;
-        trafficType: "direct" | "http" | "https";
-        argoSmartRouting?: boolean | null;
-        edgeIps?:
-          | {
-              connectivity?: "all" | "ipv4" | "ipv6" | null;
-              type?: "dynamic" | null;
-            }
-          | { ips?: string[] | null; type?: "static" | null }
-          | null;
-        ipFirewall?: boolean | null;
-        originDirect?: string[] | null;
-        originDns?: {
-          name?: string | null;
-          ttl?: number | null;
-          type?: "" | "A" | "AAAA" | "SRV" | null;
-        } | null;
-        originPort?: number | string | null;
-        proxyProtocol?: "off" | "v1" | "v2" | "simple" | null;
-        tls?: "off" | "flexible" | "full" | "strict" | null;
-      }
-    | {
-        id: string;
-        createdOn: string;
-        dns: { name?: string | null; type?: "CNAME" | "ADDRESS" | null };
-        modifiedOn: string;
-        protocol: string;
-        originDirect?: string[] | null;
-      },
-    ListAppsError,
-    Credentials | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppsRequest,
   output: ListAppsResponse,
   errors: [],
