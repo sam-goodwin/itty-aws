@@ -7481,10 +7481,10 @@ export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type PutScriptError =
   | DefaultErrors
-  | DuplicateMigrationTarget
   | InvalidRoute
   | InvalidWorkerScript
-  | DurableObjectMustBeSqlite;
+  | DurableObjectMustBeSqlite
+  | DuplicateMigrationTarget;
 
 export const putScript: API.OperationMethod<
   PutScriptRequest,
@@ -7495,10 +7495,10 @@ export const putScript: API.OperationMethod<
   input: PutScriptRequest,
   output: PutScriptResponse,
   errors: [
-    DuplicateMigrationTarget,
     InvalidRoute,
     InvalidWorkerScript,
     DurableObjectMustBeSqlite,
+    DuplicateMigrationTarget,
   ],
 }));
 

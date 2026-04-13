@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare WORKERS API
+  title: Cloudflare Workers API
   version: 0.0.0
 servers:
   - url: https://api.cloudflare.com/client/v4
@@ -7200,6 +7200,10 @@ paths:
           - code: 10074
             message:
               includes: not a SQLite Durable Object
+        DuplicateMigrationTarget:
+          - code: 10074
+            message:
+              includes: cannot be the target of more than one migration
     delete:
       operationId: deleteScript
       description: "Delete your worker. This call has no response body on a successful

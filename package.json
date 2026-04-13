@@ -11,7 +11,7 @@
     "typecheck": "bun --filter '@distilled.cloud/*' --filter '!@distilled.cloud/website' typecheck",
     "fmt": "bun --filter '@distilled.cloud/*' --filter '!@distilled.cloud/website' fmt",
     "lint": "bun --filter '@distilled.cloud/*' --filter '!@distilled.cloud/website' lint",
-    "flint": "bun run fmt & bun run lint",
+    "flint": "bun run fmt && bun run lint",
     "check": "bun --filter '@distilled.cloud/*' --filter '!@distilled.cloud/website' check",
     "test": "bun --filter '@distilled.cloud/*' --filter '!@distilled.cloud/website' test",
     "generate": "bun --filter '@distilled.cloud/*' --filter '!@distilled.cloud/website' generate",
