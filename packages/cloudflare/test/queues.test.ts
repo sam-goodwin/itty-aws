@@ -1,8 +1,8 @@
-import { describe, expect } from "vitest";
 import * as Effect from "effect/Effect";
 import * as Stream from "effect/Stream";
-import { test, getAccountId, testRunId } from "./test.ts";
+import { describe, expect } from "vitest";
 import * as Queues from "~/services/queues";
+import { getAccountId, test, testRunId } from "./test.ts";
 
 const accountId = () => getAccountId();
 
@@ -557,7 +557,7 @@ describe("Queues", () => {
           });
 
           expect(consumer.type).toBe("http_pull");
-          expect(consumer.queueId).toBe(queueId);
+          expect(consumer.queueId).toBeUndefined();
           expect(consumer.consumerId).toBeDefined();
           expect(consumer.createdOn).toBeDefined();
 
