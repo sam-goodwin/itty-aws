@@ -23,7 +23,8 @@
       "Bash(bunx vitest:*)",
       "Bash(DEBUG=1 bun run --env-file=../../.env test tests/organizations.test.ts -t \"can list organizations$\")",
       "Bash(bun -e ':*)",
-      "Bash(ls node_modules/.bun/effect*/node_modules/effect/src/Effect.ts)"
+      "Bash(ls node_modules/.bun/effect*/node_modules/effect/src/Effect.ts)",
+      "Bash(grep -E \"\\\\.\\(ts|js|json\\)$\")"
     ]
   }
 }

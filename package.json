@@ -17,8 +17,7 @@
     "specs:fetch": "bun --filter '@distilled.cloud/*' --filter '!@distilled.cloud/website' specs:fetch",
     "specs:update": "bun --filter '@distilled.cloud/*' --filter '!@distilled.cloud/website' specs:update",
     "bump": "bun ./scripts/bump.ts",
-    "create-sdk": "bun ./scripts/create-sdk.ts",
-    "publish:npm": "bun run --filter '@distilled.cloud/core' publish:npm && bun run --filter '@distilled.cloud/*' --filter '!@distilled.cloud/website' publish:npm"
+    "create-sdk": "bun ./scripts/create-sdk.ts"
   },
   "workspaces": {
     "packages": [
