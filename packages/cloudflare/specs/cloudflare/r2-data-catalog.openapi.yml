@@ -51,6 +51,7 @@ paths:
           - code: 7003
         InvalidCredential:
           - code: 30004
+          - code: 30005
   /accounts/{account_id}/r2-catalog/{bucketName}/maintenance-configs:
     get:
       operationId: getMaintenanceConfig

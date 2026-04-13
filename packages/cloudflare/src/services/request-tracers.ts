@@ -70,7 +70,7 @@ export const CreateTraceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         plainText: "plain_text",
       }),
     ),
-  ).pipe(T.HttpBody()),
+  ),
   context: Schema.optional(
     Schema.Struct({
       botScore: Schema.optional(Schema.Number),
@@ -120,6 +120,7 @@ export const CreateTraceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   Schema.encodeKeys({
     method: "method",
     url: "url",
+    body: "body",
     context: "context",
     cookies: "cookies",
     headers: "headers",
