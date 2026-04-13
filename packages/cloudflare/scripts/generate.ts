@@ -398,8 +398,8 @@ function applyPropertyPatch(
 
   if (rest.length === 0) {
     // This is the target property — apply the patch
-    if (patch.optional) {
-      prop.required = false;
+    if (patch.optional !== undefined) {
+      prop.required = !patch.optional;
     }
     if (patch.wireKey) {
       prop.wireKey = patch.wireKey;

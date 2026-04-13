@@ -5,6 +5,7 @@
   "request": {
     "properties": {
       "type": {
+        "optional": false,
         "addValues": ["http_pull"]
       }
     }

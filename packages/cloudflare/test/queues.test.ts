@@ -547,21 +547,11 @@ describe("Queues", () => {
   // createConsumer
   // --------------------------------------------------------------------------
   describe("createConsumer", () => {
-    test("error - InvalidRequestBody when no consumer type provided", () =>
-      withQueue(queueName("create-consumer-no-type"), (queueId) =>
-        Queues.createConsumer({
-          accountId: accountId(),
-          queueId,
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("InvalidRequestBody")),
-        ),
-      ));
-
     test("error - not found for non-existent queueId", () =>
       Queues.createConsumer({
         accountId: accountId(),
         queueId: "00000000-0000-0000-0000-000000000000",
+        type: "http_pull",
       }).pipe(
         Effect.flip,
         Effect.map((e) =>
@@ -577,6 +567,7 @@ describe("Queues", () => {
       Queues.createConsumer({
         accountId: "invalid-account-id-000",
         queueId: "00000000-0000-0000-0000-000000000000",
+        type: "http_pull",
       }).pipe(
         Effect.flip,
         Effect.map((e) =>
@@ -614,17 +605,6 @@ describe("Queues", () => {
   // getConsumer
   // --------------------------------------------------------------------------
   describe("getConsumer", () => {
-    test("error - InvalidRequestBody when createConsumer has no type", () =>
-      withQueue(queueName("get-consumer-create-err"), (queueId) =>
-        Queues.createConsumer({
-          accountId: accountId(),
-          queueId,
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("InvalidRequestBody")),
-        ),
-      ));
-
     test("error - not found for non-existent consumerId", () =>
       withQueue(queueName("get-consumer-404"), (queueId) =>
         Queues.getConsumer({
@@ -687,17 +667,6 @@ describe("Queues", () => {
         }),
       ));
 
-    test("error - InvalidRequestBody when createConsumer has no type", () =>
-      withQueue(queueName("list-consumers-create-err"), (queueId) =>
-        Queues.createConsumer({
-          accountId: accountId(),
-          queueId,
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("InvalidRequestBody")),
-        ),
-      ));
-
     test("error - not found for non-existent queueId", () =>
       Queues.listConsumers({
         accountId: accountId(),
@@ -729,17 +698,6 @@ describe("Queues", () => {
   // updateConsumer
   // --------------------------------------------------------------------------
   describe("updateConsumer", () => {
-    test("error - InvalidRequestBody when createConsumer has no type", () =>
-      withQueue(queueName("update-consumer-create-err"), (queueId) =>
-        Queues.createConsumer({
-          accountId: accountId(),
-          queueId,
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("InvalidRequestBody")),
-        ),
-      ));
-
     test("error - not found for non-existent consumerId", () =>
       withQueue(queueName("update-consumer-404"), (queueId) =>
         Queues.updateConsumer({
@@ -777,17 +735,6 @@ describe("Queues", () => {
   // deleteConsumer
   // --------------------------------------------------------------------------
   describe("deleteConsumer", () => {
-    test("error - InvalidRequestBody when createConsumer has no type", () =>
-      withQueue(queueName("delete-consumer-create-err"), (queueId) =>
-        Queues.createConsumer({
-          accountId: accountId(),
-          queueId,
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("InvalidRequestBody")),
-        ),
-      ));
-
     test("error - not found for non-existent consumerId", () =>
       withQueue(queueName("delete-consumer-404"), (queueId) =>
         Queues.deleteConsumer({
@@ -1008,17 +955,6 @@ describe("Queues", () => {
   // pullMessage
   // --------------------------------------------------------------------------
   describe("pullMessage", () => {
-    test("error - InvalidRequestBody when consumer has no type", () =>
-      withQueue(queueName("pull-msg-no-type"), (queueId) =>
-        Queues.createConsumer({
-          accountId: accountId(),
-          queueId,
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("InvalidRequestBody")),
-        ),
-      ));
-
     test("error - not found for non-existent queueId", () =>
       Queues.pullMessage({
         accountId: accountId(),
@@ -1052,28 +988,6 @@ describe("Queues", () => {
   // ackMessage
   // --------------------------------------------------------------------------
   describe("ackMessage", () => {
-    test("error - InvalidRequestBody when consumer has no type", () =>
-      withQueue(queueName("ack-msg-no-type"), (queueId) =>
-        Queues.createConsumer({
-          accountId: accountId(),
-          queueId,
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("InvalidRequestBody")),
-        ),
-      ));
-
-    test("error - InvalidRequestBody when consumer has no type (ack empty)", () =>
-      withQueue(queueName("ack-msg-empty"), (queueId) =>
-        Queues.createConsumer({
-          accountId: accountId(),
-          queueId,
-        }).pipe(
-          Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("InvalidRequestBody")),
-        ),
-      ));
-
     test("error - not found for non-existent queueId", () =>
       Queues.ackMessage({
         accountId: accountId(),
